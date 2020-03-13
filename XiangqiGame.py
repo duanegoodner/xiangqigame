@@ -1,38 +1,12 @@
 # Author: Duane Goodner
-# Date: 3/4/2020
-# Description: Contains classes and methods for playing an abstract game of Xiangqi.
-
-
-class DoubleOccupancyError(Exception):
-    """
-    Gets raised if somehow end up with two Gamepieces having same ._location values.
-    """
-    pass
-
-
-class PiecesNotInSameCol(Exception):
-    """
-    Gets raised if try to call a method intended for pieces in same col but pieces not in same col
-    """
-    pass
-
-
-class PiecesNotinSameRow(Exception):
-    """
-    Gets raised if try to call a method intended for pieces in same row but pieces not in same row
-    """
-    pass
-
-
-class PiecesNotAligned(Exception):
-    """
-    Gets raised if try to look for same row/col path between pieces not in same row/col
-    """
-    pass
-
-
-class OffBoard(Exception):
-    pass
+# Date: 3/13/2020
+# Description: Contains Gamepiece, Gameboard and XiangqiGame classes for playing an abstract game of Xiangqi.
+# Each type of Gamepiece has its own sub-class that inherits from Gamepiece, but has its own method for checking
+# legal moves. The is_legal_move method in the Gamepiece sub-classes do not test whether or not a move
+# leaves the moving team in check. That is accomplished by the test_move method in the Gameboard class (which
+# calls the is_in_check method of the XiangqiGame). The allowed_move_list method in the Gameboard class generates
+# a list of legal moves for a particular player. If legal_moves returns an empty list for the ._whose_turn player (a
+# data member of the XiangqiGame), then the ._whose_turn player loses.
 
 
 class Gamepiece:
@@ -42,9 +16,15 @@ class Gamepiece:
 
     def __init__(self, label, color, piece_type, position):
         """
-        Initializes
+        Initializes a Gamepiece. Note that piece needs to be initialized that its ._position [row, col] values that match the
+        indices of the element the Gamepiece occupies in a Gameboard object's ._map data member. Any code
+        that changes a Gampiece object's location in the ._map list must be accompanied by code that changes
+        that Gampepiece's ._position data member. Decoupling these parameters was helpful for code development, but
+        in future versions, it will be useful to simplify to by making ._position a function of the ._map indices
+        (or vice-versa).
         :param label: 4-character string in format cXYn. c = 'b' for black, 'r' for red. XY = 1st two letters in
-        name of piece type. n = integer >= 0 to uniquely identify specific piece of color c and type XY.
+        name of piece type. n = integer >= 0 to uniquely identify specific piece of color c and type XY. Used
+        for identifyng pieces when printing board. In future versions, may be useful as library keys.
         :param color: string identifying player that piece belongs to ('red' or 'black')
         :param type: string that is the name of the type of piece.
         :param position: list of integers the form [row-index, col-index] that represents position of Gamepiece on
@@ -70,12 +50,20 @@ class Gamepiece:
         return self._position
 
     def get_forward_direction(self):
+        """
+        Gets a piece's forward direction.
+        :return: Two-integer list describing a piece's forward movement vector.
+        """
         if self._color == 'red':
             return [1, 0]
         if self._color == 'black':
             return [-1, 0]
 
     def get_backward_direction(self):
+        """
+        Gets a piece's backward direction.
+        :return: Two-integer list describing a piece's backward movement vector.
+        """
         if self._color == 'red':
             return [-1, 0]
         if self._color == 'black':
@@ -83,7 +71,8 @@ class Gamepiece:
 
     def set_position(self, new_position):
         """
-        Changes the position of Gamepiece object.
+        Changes the ._position data member of Gamepiece object. This method does NOT change Gamepiece object's
+        position in a Gameboard's ._map list.
         :param new_position: list of the form [row-index, col-index] that represents new position of Gamepiece.
         """
         self._position = new_position
@@ -106,7 +95,8 @@ class Gamepiece:
     def get_type(self):
         """
         Gets the type of a Gamepiece object.
-        :return: self._piece_type, a string indicating the a Gamepiece object's type
+        :return: self._piece_type, a string indicating the a Gamepiece object's type (General, Advisor, Elephant,
+        Horse, ... etc.)
         """
         return self._piece_type
 
@@ -122,20 +112,32 @@ class Gamepiece:
             return 'black'
 
     def get_move_delta(self, destination):
+        """
+        Gets the the vector for moving a piece from current location to new location.
+        :param destination: Two-element list of integers of the form [row, col] that represent
+        Gamepiece's position.
+        :return: Two-element list of integers representing [# of rows, # of cols] to move Gamepiece to a new
+        location.
+        """
         return [destination[0] - self._position[0], destination[1] - self._position[1]]
 
     def get_orthogonal_path(self, destination, board):
         """
+        Gets list of spaces betweeen two spaces that are in either same row or same column.
         Only call after already confirming that have one (and only 1) 0 in move_delta
-        :param destination:
-        :param board:
+        :param destination: two-integer list representing [row, col] of
+        :param board: Gameboard object. self must be an element of Gameboard's ._map list.
         :return: path = list of two-element lists that represent board spaces between
         Gamepiece object's current location and a proposed destination.
         """
 
+        # Get move "vector"
         move_delta = self.get_move_delta(destination)
+
+        # Determine which index of orthogonal move vector is non-zero
         index_nz = [index for index in range(2) if move_delta[index] != 0][0]
 
+        # Get list of
         if index_nz == 0:
             path = board.get_spaces_betw_col(self._position, destination)
         if index_nz == 1:
@@ -157,7 +159,7 @@ class General(Gamepiece):
         since there is only one General of each color.
         :param position: list of integers the form [row-index, col-index] that represents position of General object on
         a Gameboard map.
- sadfsdf       """
+      """
         super().__init__(color[0] + 'GE' + str(index), color, 'general', position)
 
     def is_legal_move(self, destination, board):
@@ -171,13 +173,12 @@ class General(Gamepiece):
 
         # Check for flying general move first, since it is the only move that would allow
         # general to leave castle
-        # print('self in is_legal_move', self)
         other_gen_pos = board.get_general(self.get_opp_color()).get_position()
-        # print('other_gen_pos in is_legal_move', other_gen_pos)
-        #print('destination_being_tested', destination)
 
+        # If in same column as other team's general and destinatin is other general's position
         if self._position[1] == other_gen_pos[1] and destination == other_gen_pos:
-        #if destination == other_gen_pos and destination[1] == other_gen_pos[1]:
+
+            # Find out if all spaces between the two generals are empty
             if set(board.get_pieces_between_col(self.get_position(), destination)) == {None}:
                 return True
 
@@ -318,6 +319,7 @@ class Horse(Gamepiece):
         if move_delta not in hmoves:
             return False
 
+        # Check if a blocking position is occupied
         if abs(move_delta[0]) > abs(move_delta[1]):
             block_pos = [self._position[0] + int(move_delta[0] / 2), self._position[1]]
         elif abs(move_delta[0]) < abs(move_delta[1]):
@@ -436,10 +438,6 @@ class Soldier(Gamepiece):
         if 0 not in move_delta or (1 not in move_delta and -1 not in move_delta):
             return False
 
-        # Check if on board. Factor this out and run for all moves
-        if destination not in board.get_all_spaces():
-            raise OffBoard
-
         # Check if occupied by teammate. Factor this out
         if board.is_occ_byteam(destination, self._color):
             return False
@@ -464,13 +462,17 @@ class Gameboard:
     def __init__(self):
         """
         Initializes Gameboard object with  ._map, ._piece_list, and (in future rev) ati_library data members.
+        ._map is a 9 element list of 10 element lists to represent 10 row, 9 col board. ._castles are lists of spaces
+         in the castles. ._re_red and ._re_black are river edges.
         """
+        # Start with empty ._map
         self._map = [[None] * 9 for row in range(10)]
         self._castle_red = [[row, col + 3] for row in range(3) for col in range(3)]
         self._castle_black = [[row + 7, col + 3] for row in range(3) for col in range(3)]
         self._re_red = 4
         self._re_black = 5
 
+        # Populate the ._map list with Gamepieces
         self._map[0][4] = General('red', 0, [0, 4])
         self._map[9][4] = General('black', 0, [9, 4])
         for piece in range(5):
@@ -499,18 +501,36 @@ class Gameboard:
             self._map[7][6 * piece + 1] = Cannon('black', piece, [7, 6 * piece + 1])
 
     def get_map(self):
+        """
+        :return: self._map, a nine element list of 10 elements in [row][col] form.
+        """
         return self._map
 
     def get_all_spaces(self):
+        """
+        :return: a list of the [row, col] indices of all elements in a Gameboard object's ._map list.
+        """
         return [[row, col] for row in range(len(self._map)) for col in range(len(self._map[0]))]
 
     def get_castle(self, color):
+        """
+        Gets a list of board locations that are part of either the red or black castle.
+        :param color: a string = 'red' or 'black'
+        :return: A list of two-integer lists in the form [row, col] corrsponding to board spaces that are in
+        the color team's castle.
+        """
         if color == 'red':
             return self._castle_red
         if color == 'black':
             return self._castle_black
 
     def get_river_edge(self, color):
+        """
+        Gets the river edge of either red or black team.
+        :param color: a string = 'red' or 'black'
+        :return: an integer corresponding to the row index that represents the river edge on color team's
+        side of the board.
+        """
         if color == 'red':
             return self._re_red
         if color == 'black':
@@ -530,21 +550,37 @@ class Gameboard:
             return [[row, col] for row in range(self._re_black, 10) for col in range(9)]
 
     def is_occupied(self, position):
+        """
+        Determines if a particular element of ._map is occupied by a Gamepiece.
+        :param position: Two integer list corresponding to [row, col] of an element in ._map.
+        :return: Boolean True if a Gamepiece occupies position. False if no Gamepiece at position.
+        """
         if self._map[position[0]][position[1]] is not None:
             return True
         if self._map[position[0]][position[1]] is None:
             return False
 
     def is_occ_byteam(self, position, color):
+        """
+        Determines if particular position on Gameboard is occupied by particular team.
+        :param position: Two integer list representing [row, col]  of board location.
+        :param color: string = 'black' or 'red'
+        :return: Boolean True or False.
+        """
         if self._map[position[0]][position[1]] is not None:
             if self._map[position[0]][position[1]].get_color() == color:
                 return True
 
         return False
 
-    # May be able to combine get_spaces_betw_col and .._row into single method if start by finding
-    # the non-zero index.
+
     def get_spaces_betw_col(self, pos_a, pos_b):
+        """
+        Gets list of spaces between two board spaces located in same column.
+        :param pos_a: [row, col] of position A
+        :param pos_b: [row, col] of position B
+        :return: List of [row, col] indices of baard spaces between (but not including) positions A and B.
+        """
         if pos_a[1] == pos_b[1]:
             col = pos_a[1]
             path_start = min(pos_a[0], pos_b[0]) + 1
@@ -552,6 +588,12 @@ class Gameboard:
             return [[row, col] for row in range(path_start, path_end)]
 
     def get_pieces_between_col(self, pos_a, pos_b):
+        """
+         Gets list of pieces between two board spaces located in same column.
+        :param pos_a: [row, col] of position A
+        :param pos_b: [row, col] of position B
+        :return: List of Gamepieces in spaces between (but not including) positions A and B.
+        """
 
         # Should only be called if positions are in same col, but double-check:
         if pos_a[1] == pos_b[1]:
@@ -561,6 +603,12 @@ class Gameboard:
             return [self.get_map()[row][col] for row in range(path_start, path_end)]
 
     def get_spaces_betw_row(self, pos_a, pos_b):
+        """
+        Gets list of spaces between two board spaces located in same row.
+        :param pos_a: [row, col] of position A
+        :param pos_b: [row, col] of position B
+        :return: List of [row, col] indices of baard spaces between (but not including) positions A and B.
+        """
         if pos_a[0] == pos_b[0]:
             row = pos_a[0]
             path_start = min(pos_a[1], pos_b[1]) + 1
@@ -569,33 +617,47 @@ class Gameboard:
 
     def chariot_check(self, piece, destination):
         """
-        Consider moving to Gamepiece class?
-        :param piece:
-        :param destination:
-        :return:
+        Determines if move a Chariot Gamepiece to specific destination is legal
+        :param piece: a Chariot object.
+        :param destination: [row, col] indices of board location.
+        :return: Boolean True or False
         """
 
+        # Get move vector from current location to destination
         move_delta = piece.get_move_delta(destination)
 
+        # Orthogonal move not allowed for Chariot.
         if 0 not in move_delta:
             return False
 
+        # Can't move to location if occupied by piece of same color
         if self.is_occ_byteam(destination, piece._color):
             return False
 
+        # Get list of spaces in path to destination
         path = piece.get_orthogonal_path(destination, self)
 
+        # If any Gamepiece in path, can't move to destination (destination is not part of path)
         if set([self.get_piece(square) for square in path]) - {None} != set():
             return False
 
         return True
 
     def get_general(self, color):
+        """
+        Gets Gampepiece object corresponding to General of particular team.
+        :param color: string = 'red' or 'black'
+        :return: General gamepiece object.
+        """
         for piece in self.get_team_pieces(color):
             if piece.get_type() == 'general':
                 return piece
 
     def get_all_pieces(self):
+        """
+        Gets all pieces on a Gamebord.
+        :return: list of all pieces present in a Gameboard object's ._map data member.
+        """
         all_piece_list = []
         for row in range(len(self._map)):
             row_list = [item for item in self._map[row] if item != None]
@@ -615,10 +677,10 @@ class Gameboard:
 
     def move_piece(self, from_indices, to_indices):
         """
-        Calling method needs to ensure that element from_indices in ._map is not None.
-        :param from_indices:
-        :param to_indices:
-        :return:
+        Moves a Gamepiece object from one locatoin to another.Calling method needs to ensure that element
+        from_indices in ._map is not None.
+        :param from_indices: list representing [row, col] of location piece is being moved from
+        :param to_indices: list representing [row, col] of location piece is being moved to
         """
 
         # Get / save Gamepiece object being moved
@@ -635,8 +697,7 @@ class Gameboard:
 
     def print_board(self):
         """
-        Prints a deep copy of ._map data member of Gameboard object with '----' displayed in place
-        of 'None' for any ._map elements that are not occupied by a Gamepiece object.
+        ._map data member of Gameboard object .
         """
 
         ita_lib = {
@@ -657,19 +718,11 @@ class Gameboard:
         # Create disp_map, a deep copy of self._map (use deep copy to ensure don't mutate self._map)
         disp_map = copy.deepcopy(self._map)
 
-        # Loop through each row in the deep copy of the map
-        for row in range(len(disp_map)):
-
-            # Any elements that are 'None' get replaced with '----'
-            for entry in range(len(disp_map[row])):
-                if disp_map[row][entry] == None:
-                    disp_map[row][entry] = '----'
-
         header =  [(ita_lib[entry]*4).upper() for entry in range(9)]
         print(header)
 
-        for row in range(len(disp_map)):
-            print(disp_map[9 - row])
+        for row in range(len(self._map)):
+            print(self._map[9 - row])
 
 
     def get_piece(self, board_space):
@@ -688,14 +741,18 @@ class Gameboard:
          """
         self._map[position[0]][position[1]] = None
 
-    def test_move(self, from_indices, to_indices, game):  # game needed as arg?
-
-        # Do we need to test if from_indices are vacant? Or just be sure
-        # to never call this method if from_indices are unoccupied?
+    def test_move(self, from_indices, to_indices, game):
+        """
+        Tests if move is legal by checking Gamepiece ._is_legal. If it is, executes move, tests if move causes
+        moving team to be in check, and then un-does the move. Params include a XiangqiGame object because
+        the Game objects is_in_check method is used.
+        :param from_indices: ._map indices of location of piece involved in the test move.
+        :param to_indices: ._map indices of location of test move destination.
+        :param game: a XiangiGame object.
+        :return: Boolean True of False
+        """
 
         # Test if move is legal based on everything except in-check
-        # print('from_indices', from_indices)
-        # print('to_indices', to_indices)
         if not self.get_piece(from_indices).is_legal_move(to_indices, self):
             return False
 
@@ -780,10 +837,18 @@ class XiangqiGame:
 
 
     def set_legal_moves(self):
+        """
+        Calculates list of legal moves in Game based on status of ._board data member and self._whose_turn.
+        :return: List of legal moves. Each element in list is of the form [from_row, from_col], [to_row, to_col]
+        """
         self._legal_moves = self._board.allowed_move_list(self._whose_turn, self)
 
 
     def set_loser(self, color):
+        """
+        Sets ._games_tate to opposite team of ._whose_turn.
+        :param color: string = 'red' or 'black'
+        """
         if color == 'red':
             self._game_state = 'BLACK_WON'
         if color == 'black':
@@ -905,6 +970,9 @@ class XiangqiGame:
 
 
     def show_game_status(self):
+        """
+        Shows game status (._map, ._whose_turn, and which if any player is in check)
+        """
 
         self._board.print_board()
         print('Game State =  ', self.get_game_state(), '  Whose turn:     ', self.get_whose_turn())
@@ -913,6 +981,11 @@ class XiangqiGame:
 
 
     def move_and_report(self, from_space, to_space):
+        """
+        Executes a move and reports state of game.
+        :param from_space: Board space in algebraic notation.
+        :param to_space:  Board space in algebraic notation
+        """
 
         result = self.make_move(from_space, to_space)
         if result == True:
@@ -922,17 +995,6 @@ class XiangqiGame:
         print('Attempted move from: ', from_space, ' to: ', to_space)
         print(move_ok)
         self.show_game_status()
-
-
-
-
-
-
-
-
-
-
-
 
 
 
