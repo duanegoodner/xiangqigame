@@ -1,3 +1,7 @@
+
+# Description: 
+Contains Gamepiece, Gameboard and XiangqiGame classes for playing an abstract game of Xiangqi. Each type of Gamepiece has its own sub-class that inherits from Gamepiece, but has its own method for checking legal moves. The is_legal_move method in the Gamepiece sub-classes do not test whether or not a move leaves the moving team in check. That is accomplished by the test_move method in the Gameboard class (which calls the is_in_check method of the XiangqiGame). The allowed_move_list method in the Gameboard class generates a list of legal moves for a particular player. If legal_moves returns an empty list for the ._whose_turn player (a data member of the XiangqiGame), then the ._whose_turn player loses.
+
 # portfolio-project
 
 Write a class named XiangqiGame for playing an abstract board game called xiangqi.   Please read the "Board", "Rules", and "Pieces" sections on [the Wikipedia page](https://en.wikipedia.org/wiki/Xiangqi).  You do not have to implement the rules regarding perpetual check or chasing.  You **do** need to correctly handle stalemate.  You also need to correctly handle all piece-specific rules, e.g. generals aren't allowed to "see" each other, horses can be blocked, elephants can't cross the river, etc.
