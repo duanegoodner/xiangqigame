@@ -469,8 +469,8 @@ class Cannon(Gamepiece):
 
             path = self.get_orthogonal_path(destination, board)
 
-            if len(set([board.get_piece(square) for square in path]) - {
-                None}) != 1:
+            if len(set([board.get_piece(square) for square in path])
+                   - {None}) != 1:
                 return False
 
         return True
