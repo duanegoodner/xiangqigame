@@ -193,8 +193,8 @@ class General(Gamepiece):
 
         # If in same column as other team's general and destinatin is other
         # general's position
-        if self._position[1] == other_gen_pos[
-            1] and destination == other_gen_pos:
+        if self._position[1] == other_gen_pos[1] \
+                and destination == other_gen_pos:
 
             # Find out if all spaces between the two generals are empty
             if set(board.get_pieces_between_col(
