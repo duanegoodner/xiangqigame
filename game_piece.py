@@ -33,3 +33,12 @@ class GamePiece:
 
     def get_color(self):
         return self._color
+
+    def get_opp_color(self):
+        if self._color == 'RED':
+            return 'BLACK'
+        if self._color == 'BLACK':
+            return 'RED'
+
+    def is_piece(self, piece_type, color):
+        return self._color == color and self._piece_type == piece_type
