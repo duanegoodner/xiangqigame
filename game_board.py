@@ -1,6 +1,7 @@
 from game_piece import GamePiece
 from board_space import BoardSpace
 import move_rules as move_rules
+import numpy as np
 
 
 _forward_direction = {
@@ -25,8 +26,10 @@ class GameBoard:
         num_ranks = len(board_list)
         num_files = len(board_list[0])
 
-        self._map = [[BoardSpace(GamePiece(board_list[row][col]))
-                      for col in range(num_files)] for row in range(num_ranks)]
+        self._map = np.array(
+            [[BoardSpace(GamePiece(board_list[row][col])) for col in
+              range(num_files)] for row in range(num_ranks)]
+        )
         self._castle_red = [[row, col + 3] for row in range(3) for col in
                             range(3)]
         self._castle_black = [[row + 7, col + 3] for row in range(3) for col in
