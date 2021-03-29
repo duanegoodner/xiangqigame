@@ -1,5 +1,4 @@
 from game_piece import GamePiece
-from board_space import BoardSpace
 import move_rules as move_rules
 import numpy as np
 
@@ -27,7 +26,7 @@ class GameBoard:
         num_files = len(board_list[0])
 
         self._map = np.array(
-            [[BoardSpace(GamePiece(board_list[row][col])) for col in
+            [[GamePiece(board_list[row][col]) for col in
               range(num_files)] for row in range(num_ranks)]
         )
         self._castle_red = [[row, col + 3] for row in range(3) for col in
@@ -40,21 +39,24 @@ class GameBoard:
     def get_map(self):
         return self._map
 
-    def get_general_position(self, color):
-        for rank in range(len(self._map)):
-            for file in range(len(self._map[0])):
-                space = self._map[rank][file]
-                piece = space.get_occupant()
-                if piece.is_piece('GENERAL', color):
-                    return rank, file
+    def get_occupant(self, coordinates):
+        return self._map[coordinates]
 
-    def is_legal_move(self, from_space: BoardSpace, to_space: BoardSpace):
-        piece = from_space.get_occupant()
-        if piece.get_piece_type() == 'EMPTY':
-            return False
-        if piece.get_color() == to_space.get_occupant().get_color():
-            return False
-        if not self._move_rules[piece.get_piece_type()](self):
-            return False
-
-        return True
+    # def get_general_position(self, color):
+    #     for rank in range(len(self._map)):
+    #         for file in range(len(self._map[0])):
+    #             space = self._map[rank][file]
+    #             piece = space.get_occupant()
+    #             if piece.is_piece('GENERAL', color):
+    #                 return rank, file
+    #
+    # def is_legal_move(self, from_space: BoardSpace, to_space: BoardSpace):
+    #     piece = from_space.get_occupant()
+    #     if piece.get_piece_type() == 'EMPTY':
+    #         return False
+    #     if piece.get_color() == to_space.get_occupant().get_color():
+    #         return False
+    #     if not self._move_rules[piece.get_piece_type()](self):
+    #         return False
+    #
+    #     return True

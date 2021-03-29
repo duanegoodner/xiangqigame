@@ -9,10 +9,12 @@ def main():
     new_game = Game(game_config)
     new_board = new_game.get_board()
     new_board_state = new_board.get_map()
+    test_piece = new_board_state[0][0]
+    print(type(test_piece))
     test_from = new_board_state[0][0]
     test_to = new_board_state[1][1]
-    test_val = new_board.is_legal_move(test_from, test_to)
-    print(test_val)
+    # test_val = new_board.is_legal_move(test_from, test_to)
+    # print(test_val)
 
 
 class Game:
