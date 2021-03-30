@@ -25,13 +25,11 @@ class GameBoard:
         num_ranks = len(board_list)
         num_files = len(board_list[0])
 
-        self._map = np.array(
-            [[GamePiece.from_piece_code(board_list[row][col]) for col in
-              range(num_files)] for row in range(num_ranks)]
-        )
-        self._castle_red = [[row, col + 3] for row in range(3) for col in
+        self._map = [[GamePiece.from_piece_code(board_list[row][col]) for col
+                      in range(num_files)] for row in range(num_ranks)]
+        self._castle_red = [(row, col + 3) for row in range(3) for col in
                             range(3)]
-        self._castle_black = [[row + 7, col + 3] for row in range(3) for col in
+        self._castle_black = [(row + 7, col + 3) for row in range(3) for col in
                               range(3)]
         self._re_red = 4
         self._re_black = 5
@@ -40,16 +38,20 @@ class GameBoard:
         return self._map
 
     def get_occupant(self, coordinates):
-        return self._map[coordinates]
+        return self._map[coordinates[0]][coordinates[1]]
 
-    # def get_general_position(self, color):
-    #     for rank in range(len(self._map)):
-    #         for file in range(len(self._map[0])):
-    #             space = self._map[rank][file]
-    #             piece = space.get_occupant()
-    #             if piece.is_piece('GENERAL', color):
-    #                 return rank, file
-    #
+    def get_castle(self, color):
+        if color == 'RED':
+            return self._castle_red
+        if color == 'BLACK':
+            return self._castle_black
+
+    def get_general_position(self, color):
+        for space in self.get_castle(color):
+            if self.get_occupant(space).get_piece_type() == 'GENERAL':
+                return space
+
+
     # def is_legal_move(self, from_space: BoardSpace, to_space: BoardSpace):
     #     piece = from_space.get_occupant()
     #     if piece.get_piece_type() == 'EMPTY':
