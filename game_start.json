@@ -11,6 +11,21 @@
     ["--", "--", "--", "--", "--", "--", "--", "--", "--"],
     ["rB", "hB", "eB", "aB", "gB", "aB", "eB", "hB", "rB"]
   ],
+  "code_to_color": {
+    "R": "RED",
+    "B": "BLACK",
+    "-": "NO COLOR"
+  },
+  "code_to_piece_type": {
+    "r": "CHARIOT",
+    "h": "HORSE",
+    "e": "ELEPHANT",
+    "a": "ADVISOR",
+    "g": "GENERAL",
+    "c": "CANNON",
+    "s": "SOLDIER",
+    "-": "EMPTY"
+  },
   "game_state": "UNFINISHED",
   "whose_turn": "RED"
 }

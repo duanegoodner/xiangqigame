@@ -20,7 +20,7 @@ def main():
 class Game:
     def __init__(self, game_config):
         self._game_state = game_config['game_state']
-        self._board = GameBoard(game_config['board_list'])
+        self._board = GameBoard((game_config['board_list']))
         self._whose_turn = game_config['whose_turn']
 
     def get_game_state(self):

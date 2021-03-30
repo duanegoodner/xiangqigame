@@ -26,7 +26,7 @@ class GameBoard:
         num_files = len(board_list[0])
 
         self._map = np.array(
-            [[GamePiece(board_list[row][col]) for col in
+            [[GamePiece.from_piece_code(board_list[row][col]) for col in
               range(num_files)] for row in range(num_ranks)]
         )
         self._castle_red = [[row, col + 3] for row in range(3) for col in

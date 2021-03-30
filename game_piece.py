@@ -1,48 +1,23 @@
+import piece_encoding as pe
 
 
-_piece_code_to_color = {
-    'R': 'RED',
-    'B': 'BLACK',
-    '-': 'NO COLOR'
-}
+class GamePiece(object):
 
+    def __init__(self, piece_type='NULL COLOR', color='NULL PIECE'):
+        self._piece_type = piece_type
+        self._color = color
 
-_piece_color_to_code = dict((color, code) for code, color
-                            in _piece_code_to_color.items())
-
-
-_piece_code_to_type = {
-    'r': 'CHARIOT',
-    'h': 'HORSE',
-    'e': 'ELEPHANT',
-    'a': 'ADVISOR',
-    'g': 'GENERAL',
-    'c': 'CANNON',
-    's': 'SOLDIER',
-    '-': 'EMPTY'
-}
-
-
-_piece_type_to_code = dict((color, code) for code, color
-                           in _piece_code_to_type.items())
-
-
-class GamePiece:
-
-    def __init__(self, piece_code):
-        self._piece_code = piece_code
-        self._piece_type = _piece_code_to_type[piece_code[0]]
-        self._color = _piece_code_to_color[piece_code[1]]
+    @classmethod
+    def from_piece_code(cls, piece_code):
+        return cls(piece_type=pe.decode_piece_type(piece_code),
+                   color=pe.decode_color(piece_code))
 
     def __repr__(self):
-        return repr(self._piece_code)
+        return repr(pe.encode_piece(self._piece_type, self._color))
 
     def __eq__(self, other):
         return self._piece_type, self._color == \
                other.get_piece_type(), other.get_color()
-
-    def get_piece_code(self):
-        return self._piece_code
 
     def get_piece_type(self):
         return self._piece_type
