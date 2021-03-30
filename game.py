@@ -1,5 +1,6 @@
 import json
 from game_board import GameBoard
+import numpy as np
 
 
 def main():
@@ -9,10 +10,8 @@ def main():
     new_game = Game(game_config)
     new_board = new_game.get_board()
     new_board_state = new_board.get_map()
-    test_from = new_board_state[0][0]
-    test_to = new_board_state[1][1]
-    red_gen_pos = new_board.get_general_position('RED')
-    print(red_gen_pos)
+    print(np.asarray(new_board_state))
+
 
     # test_val = new_board.is_legal_move(test_from, test_to)
     # print(test_val)

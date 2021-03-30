@@ -3,7 +3,7 @@ import piece_encoding as pe
 
 class GamePiece(object):
 
-    def __init__(self, piece_type='NULL COLOR', color='NULL PIECE'):
+    def __init__(self, piece_type='NULL PIECE', color='NULL COLOR'):
         self._piece_type = piece_type
         self._color = color
 
@@ -18,6 +18,9 @@ class GamePiece(object):
     def __eq__(self, other):
         return self._piece_type, self._color == \
                other.get_piece_type(), other.get_color()
+
+    def is_null_piece(self):
+        return self._piece_type == 'NULL PIECE'
 
     def get_piece_type(self):
         return self._piece_type
