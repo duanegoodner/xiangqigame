@@ -11,6 +11,8 @@ def main():
     new_board = new_game.get_board()
     new_board_state = new_board.get_map()
     print(np.asarray(new_board_state))
+    print(new_board.get_all_pieces_of('RED'))
+
 
 
     # test_val = new_board.is_legal_move(test_from, test_to)
@@ -37,6 +39,12 @@ class Game:
 
     def make_move(self, from_square, to_square):
         pass
+
+    def update_turn(self):
+        if self._whose_turn == 'RED':
+            self._whose_turn = 'BLACK'
+        if self._whose_turn == 'BLACK':
+            self._whose_turn = 'RED'
 
 
 if __name__ == '__main__':

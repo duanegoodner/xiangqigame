@@ -3,12 +3,6 @@ import move_rules as move_rules
 import numpy as np
 
 
-_forward_direction = {
-    'RED': 1,
-    'BLACK': -1
-}
-
-
 class GameBoard:
 
     _move_rules = {
@@ -25,7 +19,7 @@ class GameBoard:
         num_ranks = len(board_list)
         num_files = len(board_list[0])
 
-        self._map = [[GamePiece.from_piece_code(board_list[row][col]) for col
+        self._map = [[GamePiece(board_list[row][col]) for col
                       in range(num_files)] for row in range(num_ranks)]
         self._castle_red = [(row, col + 3) for row in range(3) for col in
                             range(3)]
@@ -37,14 +31,37 @@ class GameBoard:
     def get_map(self):
         return self._map
 
-    def get_occupant(self, coordinates):
-        return self._map[coordinates[0]][coordinates[1]]
+    def get_occupant(self, board_space):
+        return self._map[board_space[0]][board_space[1]]
+
+    def is_occupied(self, board_space):
+        return self.get_occupant(board_space).is_not_null_piece()
+
+    def is_occupied_by(self, board_space, color):
+        return self.get_occupant(board_space).get_color() == color
+
+    def get_piece_info(self, board_space):
+        return board_space, self.get_occupant(board_space)
+
+    def get_all_pieces_of(self, color):
+        num_ranks = len(self._map)
+        num_files = len(self._map[0])
+
+        return {(row, col): self.get_occupant((row, col)) for col in
+                range(num_files) for row in range(num_ranks)
+                if self.get_occupant((row, col)).get_color() == color}
 
     def get_castle(self, color):
         if color == 'RED':
             return self._castle_red
         if color == 'BLACK':
             return self._castle_black
+
+    def is_in_homeland_of(self, board_space, color):
+        if color == 'RED':
+            return board_space[1] <= self._re_red
+        if color == 'BLACK':
+            return board_space[1] >= self._re_black
 
     def get_general_position(self, color):
         for space in self.get_castle(color):

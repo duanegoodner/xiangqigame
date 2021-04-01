@@ -34,11 +34,5 @@ def decode_piece(piece_code):
     return _code_to_type[piece_code[0]], _code_to_color[piece_code[1]]
 
 
-def decode_board(encoded_board):
-    return [[decode_piece(encoded_board[row][col]) for col in
-            range(len(encoded_board[0]))] for row in
-            range(len(encoded_board))]
-
-
 def encode_piece(piece_type, color):
     return _type_to_code[piece_type] + _color_to_code[color]
