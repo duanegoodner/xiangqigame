@@ -1,5 +1,6 @@
 import json
 from game_board import GameBoard
+import move_rules as move_rules
 import numpy as np
 
 
@@ -11,7 +12,13 @@ def main():
     new_board = new_game.get_board()
     new_board_state = new_board.get_map()
     print(np.asarray(new_board_state))
-    print(new_board.get_all_pieces_of('RED'))
+    red_pieces = new_board.get_all_pieces_of('RED')
+    print(red_pieces)
+    print(move_rules.general(new_board, (0, 4), red_pieces[(0, 4)]))
+
+    # test_path = new_board.get_vertical_path((0, 4), 6)
+    # test_bool = all(piece.is_null_piece() for piece in test_path)
+    # print(test_bool)
 
 
 

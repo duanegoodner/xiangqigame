@@ -1,5 +1,4 @@
 import piece_encoding as pe
-import move_rules as move_rules
 
 
 class GamePiece(object):
@@ -16,8 +15,8 @@ class GamePiece(object):
         return self._piece_type, self._color == \
                other.get_piece_type(), other.get_color()
 
-    def is_not_null_piece(self):
-        return self._piece_type != 'NULL PIECE'
+    def is_null_piece(self):
+        return self._piece_type == 'NULL PIECE'
 
     def get_piece_type(self):
         return self._piece_type
@@ -33,7 +32,7 @@ class GamePiece(object):
 
     def get_forward_direction(self):
         if self.is_not_null_piece():
-            return move_rules.get_forward_direction(self._color)
+            return pe.get_forward_direction(self._color)
 
     def is_piece(self, piece_type, color):
         return self._color == color and self._piece_type == piece_type

@@ -1,19 +1,18 @@
 from game_piece import GamePiece
-import move_rules as move_rules
 import numpy as np
 
 
 class GameBoard:
 
-    _move_rules = {
-        'CHARIOT': move_rules.chariot,
-        'HORSE': move_rules.horse,
-        'ELEPHANT': move_rules.elephant,
-        'ADVISOR': move_rules.advisor,
-        'GENERAL': move_rules.general,
-        'CANNON': move_rules.cannon,
-        'SOLDIER': move_rules.soldier,
-    }
+    # _move_rules = {
+    #     'CHARIOT': move_rules.chariot,
+    #     'HORSE': move_rules.horse,
+    #     'ELEPHANT': move_rules.elephant,
+    #     'ADVISOR': move_rules.advisor,
+    #     'GENERAL': move_rules.general,
+    #     'CANNON': move_rules.cannon,
+    #     'SOLDIER': move_rules.soldier,
+    # }
 
     def __init__(self, board_list):
         num_ranks = len(board_list)
@@ -37,8 +36,8 @@ class GameBoard:
     def is_occupied(self, board_space):
         return self.get_occupant(board_space).is_not_null_piece()
 
-    def is_occupied_by(self, board_space, color):
-        return self.get_occupant(board_space).get_color() == color
+    # def is_occupied_by(self, board_space, color):
+    #     return self.get_occupant(board_space).get_color() == color
 
     def get_piece_info(self, board_space):
         return board_space, self.get_occupant(board_space)
@@ -67,6 +66,12 @@ class GameBoard:
         for space in self.get_castle(color):
             if self.get_occupant(space).get_piece_type() == 'GENERAL':
                 return space
+
+    def get_vertical_path(self, from_space, to_rank):
+        file = from_space[1]
+        low_rank = min(from_space[0], to_rank)
+        high_rank = max(from_space[0], to_rank)
+        return np.asarray(self._map)[low_rank:high_rank, file].tolist()
 
 
     # def is_legal_move(self, from_space: BoardSpace, to_space: BoardSpace):

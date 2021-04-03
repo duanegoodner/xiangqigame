@@ -21,6 +21,11 @@ _code_to_type = {
 
 _type_to_code = dict((color, code) for code, color in _code_to_type.items())
 
+_forward_direction = {
+    'RED': 1,
+    'BLACK': -1
+}
+
 
 def decode_color(piece_code):
     return _code_to_color[piece_code[1]]
@@ -36,3 +41,7 @@ def decode_piece(piece_code):
 
 def encode_piece(piece_type, color):
     return _type_to_code[piece_type] + _color_to_code[color]
+
+
+def get_forward_direction(color):
+    return _forward_direction[color]
