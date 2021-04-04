@@ -9,13 +9,13 @@ _code_to_color = {
 _color_to_code = dict((color, code) for code, color in _code_to_color.items())
 
 _code_to_type = {
-    'r': 'CHARIOT',
-    'h': 'HORSE',
-    'e': 'ELEPHANT',
-    'a': 'ADVISOR',
-    'g': 'GENERAL',
-    'c': 'CANNON',
-    's': 'SOLDIER',
+    'r': 'chariot',
+    'h': 'horse',
+    'e': 'elephant',
+    'a': 'advisor',
+    'g': 'general',
+    'c': 'cannon',
+    's': 'soldier',
     '-': 'NULL PIECE'
 }
 

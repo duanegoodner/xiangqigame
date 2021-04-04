@@ -21,7 +21,7 @@
     "h": "HORSE",
     "e": "ELEPHANT",
     "a": "ADVISOR",
-    "g": "GENERAL",
+    "g": "general",
     "c": "CANNON",
     "s": "SOLDIER",
     "-": "EMPTY"

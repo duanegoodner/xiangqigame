@@ -1,6 +1,6 @@
 import json
 from game_board import GameBoard
-import move_rules as move_rules
+from move_rules import get_move_function
 import numpy as np
 
 
@@ -14,13 +14,13 @@ def main():
     print(np.asarray(new_board_state))
     red_pieces = new_board.get_all_pieces_of('RED')
     print(red_pieces)
-    print(move_rules.general(new_board, (0, 4), red_pieces[(0, 4)]))
+    # print(move_rules.general(new_board, (0, 4), red_pieces[(0, 4)]))
+    print(get_move_function('general')(new_board, (0, 4), red_pieces[(0, 4)]))
+    print(red_pieces[(0, 1)])
 
     # test_path = new_board.get_vertical_path((0, 4), 6)
     # test_bool = all(piece.is_null_piece() for piece in test_path)
     # print(test_bool)
-
-
 
     # test_val = new_board.is_legal_move(test_from, test_to)
     # print(test_val)
@@ -35,7 +35,7 @@ class Game:
     def get_game_state(self):
         return self._game_state
 
-    def get_legal_moves(self, player):
+    def get_legal_moves(self, color):
         pass
 
     def get_board(self):

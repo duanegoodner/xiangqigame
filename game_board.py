@@ -9,17 +9,17 @@ class GameBoard:
     #     'HORSE': move_rules.horse,
     #     'ELEPHANT': move_rules.elephant,
     #     'ADVISOR': move_rules.advisor,
-    #     'GENERAL': move_rules.general,
+    #     'general': move_rules.general,
     #     'CANNON': move_rules.cannon,
     #     'SOLDIER': move_rules.soldier,
     # }
 
     def __init__(self, board_list):
-        num_ranks = len(board_list)
-        num_files = len(board_list[0])
-
+        self._num_ranks = len(board_list)
+        self._num_files = len(board_list[0])
         self._map = [[GamePiece(board_list[row][col]) for col
-                      in range(num_files)] for row in range(num_ranks)]
+                      in range(self._num_files)] for row in
+                     range(self._num_ranks)]
         self._castle_red = [(row, col + 3) for row in range(3) for col in
                             range(3)]
         self._castle_black = [(row + 7, col + 3) for row in range(3) for col in
@@ -30,14 +30,12 @@ class GameBoard:
     def get_map(self):
         return self._map
 
+    def is_on_board(self, space):
+        return all(index > 0 for index in space) and \
+               space[0] < self._num_ranks and space[1] < self._num_files
+
     def get_occupant(self, board_space):
         return self._map[board_space[0]][board_space[1]]
-
-    def is_occupied(self, board_space):
-        return self.get_occupant(board_space).is_not_null_piece()
-
-    # def is_occupied_by(self, board_space, color):
-    #     return self.get_occupant(board_space).get_color() == color
 
     def get_piece_info(self, board_space):
         return board_space, self.get_occupant(board_space)
@@ -64,7 +62,7 @@ class GameBoard:
 
     def get_general_position(self, color):
         for space in self.get_castle(color):
-            if self.get_occupant(space).get_piece_type() == 'GENERAL':
+            if self.get_occupant(space).get_piece_type() == 'general':
                 return space
 
     def get_vertical_path(self, from_space, to_rank):
@@ -72,6 +70,15 @@ class GameBoard:
         low_rank = min(from_space[0], to_rank)
         high_rank = max(from_space[0], to_rank)
         return np.asarray(self._map)[low_rank:high_rank, file].tolist()
+
+    def get_adjacent_spaces(self, space):
+        unit_deltas = (0, 1), (0, -1), (1, 0), (-1, 0)
+        return {tuple(np.add(space, delta)) for delta in unit_deltas
+                if self.is_on_board(tuple(np.add(space, delta)))}
+
+
+
+
 
 
     # def is_legal_move(self, from_space: BoardSpace, to_space: BoardSpace):
