@@ -31,7 +31,7 @@ class GamePiece(object):
             return 'RED'
 
     def get_forward_direction(self):
-        if self.is_not_null_piece():
+        if not self.is_null_piece():
             return pe.get_forward_direction(self._color)
 
     def is_piece(self, piece_type, color):
