@@ -4,16 +4,6 @@ import numpy as np
 
 class GameBoard:
 
-    # _move_rules = {
-    #     'CHARIOT': move_rules.chariot,
-    #     'HORSE': move_rules.horse,
-    #     'ELEPHANT': move_rules.elephant,
-    #     'ADVISOR': move_rules.advisor,
-    #     'general': move_rules.general,
-    #     'CANNON': move_rules.cannon,
-    #     'SOLDIER': move_rules.soldier,
-    # }
-
     def __init__(self, board_list):
         self._num_ranks = len(board_list)
         self._num_files = len(board_list[0])
@@ -27,15 +17,25 @@ class GameBoard:
         self._re_red = 4
         self._re_black = 5
 
+    def get_num_ranks(self):
+        return self._num_ranks
+
+    def get_num_files(self):
+        return self._num_files
+
     def get_map(self):
         return self._map
 
     def is_on_board(self, space):
-        return all(index > 0 for index in space) and \
+        is_on_board = all(index >= 0 for index in space) and \
                space[0] < self._num_ranks and space[1] < self._num_files
+        return is_on_board
 
     def get_occupant(self, board_space):
         return self._map[board_space[0]][board_space[1]]
+
+    def set_occupant(self, board_space, piece: GamePiece):
+        self._map[board_space[0]][board_space[1]] = piece
 
     def get_piece_info(self, board_space):
         return board_space, self.get_occupant(board_space)
@@ -73,8 +73,9 @@ class GameBoard:
 
     def get_adjacent_spaces(self, space):
         unit_deltas = (0, 1), (0, -1), (1, 0), (-1, 0)
-        return {tuple(np.add(space, delta)) for delta in unit_deltas
-                if self.is_on_board(tuple(np.add(space, delta)))}
+        adj_spaces = {tuple(np.add(space, delta)) for delta in unit_deltas
+                      if self.is_on_board(tuple(np.add(space, delta)))}
+        return adj_spaces
 
 
 

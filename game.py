@@ -1,6 +1,6 @@
 import json
 from game_board import GameBoard
-from move_rules import get_move_function
+from move_rules import get_move_function, get_untested_moves
 import numpy as np
 
 
@@ -14,9 +14,7 @@ def main():
     print(np.asarray(new_board_state))
     red_pieces = new_board.get_all_pieces_of('RED')
     print(red_pieces)
-    # print(move_rules.general(new_board, (0, 4), red_pieces[(0, 4)]))
-    print(get_move_function('general')(new_board, (0, 4), red_pieces[(0, 4)]))
-    print(red_pieces[(0, 1)])
+    print(get_untested_moves(new_board, 'RED'))
 
     # test_path = new_board.get_vertical_path((0, 4), 6)
     # test_bool = all(piece.is_null_piece() for piece in test_path)
