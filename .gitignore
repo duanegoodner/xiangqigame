@@ -1,4 +1,9 @@
 .idea/
 
 misc/
+<<<<<<< HEAD
 /__pycache__
+=======
+
+__pycache__/
+>>>>>>> decouple-game-rules
