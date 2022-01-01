@@ -1,11 +1,11 @@
 import numpy as np
-from typing import Tuple, Dict
+from typing import Tuple, Dict, TypedDict, List
 from piece_decoder import decode_piece, encode_piece
-from enums import GameState, PieceColor, PieceType
+from enums import PieceColor, PieceType
+from game_rules import castles, opponent_of
 from game_piece import GamePiece
-from game_rules import castles
 
-
+import board_utilities as bu
 
 
 class GameBoard:
@@ -13,8 +13,8 @@ class GameBoard:
     def __init__(self, board_data):
         num_files = len(board_data[0])
         num_ranks = len(board_data)
-        self._map = [[decode_piece(board_data[row][col]) for col
-                      in range(num_files)] for row in range(num_ranks)]
+        self._map = np.array([[decode_piece(board_data[row][col]) for col
+                      in range(num_files)] for row in range(num_ranks)])
 
     def __repr__(self):
         return repr(
@@ -27,15 +27,19 @@ class GameBoard:
     def get_occupant(self, space: tuple):
         return self._map[space[0]][space[1]]
 
-    def set_occupant(self, space: Tuple[int], piece: Dict):
+    def get_color(self, space: tuple):
+        return self._map[space[0]][space[1]]['color']
+
+    def set_occupant(self, space: Tuple[int], piece: GamePiece):
         self._map[space[0]][space[1]] = piece
 
     def get_general_position(self, piece_color: PieceColor):
         for space in castles[piece_color]:
-            if self.get_occupant(space) == PieceType.GENERAL:
+            if self.get_occupant(space)['type'] == PieceType.GENERAL:
                 return space
 
-
+    def get_vertical_path(self, from_space: tuple, to_rank: int):
+        file = from_space[1]
 
     def null_piece_moves(self):
         return set()
@@ -60,12 +64,13 @@ class GameBoard:
 
     def flying_general_moves(self, from_position: tuple):
 
-        cur_color = self.get_occupant(from_position).get_piece_color()
+        flying_moves = set()
 
-        flying_move = set()
-        other_gen_position = self.get_general_position()
+        cur_color = self.get_occupant(from_position)['color']
+        other_gen_position =\
+            self.get_general_position(opponent_of['cur_color'])
 
-
+        # if bu.in_same_file(from_position, other_gen_position):
 
 
     def standard_general_moves(self, from_position: tuple):

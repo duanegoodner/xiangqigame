@@ -8,6 +8,7 @@ def main():
     with open('game_start.json') as game_info:
         game_config = json.load(game_info)
     my_game = Game(game_config)
+    print(my_game._board.get_color((0, 0)))
     print(my_game._board)
 
 
