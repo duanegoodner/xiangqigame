@@ -8,8 +8,7 @@ def main():
     with open('game_start.json') as game_info:
         game_config = json.load(game_info)
     my_game = Game(game_config)
-    print('end')
-
+    print(my_game._board)
 
 
 class Game:
@@ -20,7 +19,6 @@ class Game:
         self._game_state = GameState.UNFINISHED
         self._whose_turn = PieceColor.RED
         self._board = GameBoard(board_data)
-
 
 
 if __name__ == '__main__':
