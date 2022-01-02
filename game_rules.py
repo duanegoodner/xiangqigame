@@ -1,7 +1,9 @@
 from enums import PieceColor
+from collections import namedtuple
+from board_space import BoardSpace
 
 
-board_dim = {
+board_dim =  {
     'num_files': 9,
     'num_ranks': 10
 }
@@ -19,10 +21,10 @@ forward_direction = {
 
 castles = {
     PieceColor.RED: [
-        (row, col) for row in range(3) for col in range(4, 7)
+        BoardSpace(row, col) for row in range(3) for col in range(3, 6)
     ],
     PieceColor.BLACK: [
-        (row, col) for row in range(7, 10) for col in range(4, 7)
+        BoardSpace(row, col) for row in range(7, 10) for col in range(3, 6)
     ]
 }
 
