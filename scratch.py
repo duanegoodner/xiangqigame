@@ -2,12 +2,10 @@ from enum import Enum, auto
 from board_space import BoardSpace
 import numpy as np
 
+import board_utilities as bu
 
-board_space = BoardSpace(1, 1)
-unit_delta = BoardSpace(0, 1)
 
-sum = board_space + unit_delta
+first_steps = bu.horse_paths.keys()
+print(first_steps)
 
-print(BoardSpace(board_space.rank + unit_delta.rank,
-                 board_space.file + unit_delta.file))
 
