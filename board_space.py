@@ -2,12 +2,12 @@ from collections import namedtuple
 from typing import TypedDict
 from game_rules import castles
 from enums import PieceColor
-from sys import getsizeof
+from utilities import get_size
 
 
-# BoardSpace = namedtuple("BoardSpace", "rank file")
-# BoardVector = namedtuple("BoardVector", "rank file")
-#
+BoardSpaceTup = namedtuple("BoardSpace", "rank file")
+BoardVectorTup = namedtuple("BoardVector", "rank file")
+
 #
 # def add_board_spaces(space_a: BoardSpace, space_b: BoardSpace):
 #     return BoardSpace(space_a.rank + space_b.rank, space_a.file + space_b.file)
@@ -57,14 +57,8 @@ class BoardSpace(BoardVector):
                (castle.min_file <= self.file <= castle.max_file)
 
 
-my_space = BoardSpace(rank=0, file=0)
-my_other_space = BoardSpace(rank=2, file=3)
-my_board_vector = BoardVector(rank=1, file=1)
-my_other_board_vector = BoardVector(rank=2, file=3)
+board_space_tup = BoardSpaceTup(1, 1)
+board_space_class = BoardSpace(1, 1)
+standard_tup = (1, 1)
 
-my_space_list = [my_space, my_other_space]
-
-my_double_list = my_space_list + my_space_list
-
-print(getsizeof(my_space))
-print(getsizeof(my_board_vector))
+print(get_size(standard_tup), get_size(board_space_tup), get_size(board_space_class))
