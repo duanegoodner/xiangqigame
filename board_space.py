@@ -16,8 +16,9 @@ BoardVectorTup = namedtuple("BoardVector", "rank file")
 #
 
 
-def board_space_plus_vect(space: BoardSpaceTup, vector: BoardVectorTup):
-    return BoardSpace(space.rank + vector.rank, space.file + vector.file)
+def board_space_plus_vector(space: BoardSpaceTup, vector: BoardVectorTup):
+    return BoardSpaceTup(space.rank + vector.rank, space.file + vector.file)
+
 
 
 class BoardVector:
@@ -72,7 +73,7 @@ def class_addition():
 
 
 def tup_addition():
-    return board_space_plus_vect(board_space_tup, board_vect_tup)
+    return board_space_plus_vector(board_space_tup, board_vect_tup)
 
 
 print(get_size(standard_tup), get_size(board_space_tup), get_size(board_space_class))
@@ -81,5 +82,5 @@ print(timeit.Timer(tup_addition).timeit(number=10))
 
 # Output
 # 84 84 288
-# 1.773499999999789e-05
-# 9.310000000005425e-06
+# 1.6948999999995273e-05
+# 9.879000000004301e-06
