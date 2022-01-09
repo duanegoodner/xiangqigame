@@ -4,7 +4,7 @@ from piece_decoder import decode_piece, encode_piece
 from enums import PieceColor, PieceType
 from game_rules import board_dim, opponent_of, forward_direction, castles
 from game_piece import GamePiece
-from board_space import BoardSpace, BoardVector
+from board_space import BoardSpace, BoardVector, board_space_plus_vector
 
 import board_utilities as bu
 
@@ -77,12 +77,12 @@ class GameBoard:
     def search_spaces(self, from_space: BoardSpace, direction: BoardVector):
         empty_spaces = []
         first_occupied_space = None
-        next_step = from_space.add_board_vector(direction)
+        next_step = board_space_plus_vector(from_space, direction)
 
         while bu.is_on_board(next_step) and \
                 self.get_occupant(next_step)['type'] == PieceType.NULL_PIECE:
             empty_spaces.append(next_step)
-            next_step = next_step.add_board_vector(direction)
+            next_step = board_space_plus_vector(next_step, direction)
         if bu.is_on_board(next_step):
             first_occupied_space = next_step
         return {
