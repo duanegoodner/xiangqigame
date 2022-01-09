@@ -4,8 +4,7 @@ from piece_decoder import decode_piece, encode_piece
 from enums import PieceColor, PieceType
 from game_rules import castles, opponent_of, forward_direction
 from game_piece import GamePiece
-from board_space import BoardSpace, BoardVector, add_board_spaces, \
-    board_space_plus_vect
+from board_space import BoardSpace, BoardVector
 
 import board_utilities as bu
 
@@ -28,7 +27,8 @@ class GameBoard:
         )
 
     def is_occupied(self, space: BoardSpace):
-        return self._map[space.rank][space.file]['type'] != PieceType.NULL_PIECE
+        return self._map[space.rank][space.file][
+                   'type'] != PieceType.NULL_PIECE
 
     def get_occupant(self, space: BoardSpace):
         return self._map[space.rank][space.file]
@@ -63,12 +63,12 @@ class GameBoard:
         empty_spaces = []
         first_occupied_space = None
 
-        next_step = board_space_plus_vect(from_space, direction)
+        next_step = from_space.add_board_vector(direction)
 
         while bu.is_on_board(next_step) and \
                 self.get_occupant(next_step)['type'] == PieceType.NULL_PIECE:
             empty_spaces.append(next_step)
-            next_step = board_space_plus_vect(next_step, direction)
+            next_step = next_step.add_board_vector(direction)
 
         if bu.is_on_board(next_step):
             first_occupied_space = next_step
@@ -86,8 +86,9 @@ class GameBoard:
 
         cur_color = self.get_color(from_position)
 
-        forward_space = add_board_spaces(
-            from_position, BoardSpace(0, forward_direction[cur_color]))
+        forward_space = from_position.add_board_vector(
+            BoardVector(0, forward_direction[cur_color])
+        )
         if bu.is_on_board(forward_space):
             soldier_moves.add((from_position, forward_space))
 
@@ -101,7 +102,7 @@ class GameBoard:
 
         cannon_moves = set()
         cur_color = self.get_color(from_position)
-        search_directions = bu.board_vectors_horiz + bu.board_vectors_vert\
+        search_directions = bu.board_vectors_horiz + bu.board_vectors_vert
 
         for direction in search_directions:
             search_results = self.search_spaces(from_position,
@@ -111,8 +112,8 @@ class GameBoard:
                 search_results['empty_spaces'])
 
             if search_results['first_occupied_space']:
-                landing_space = add_board_spaces(
-                    search_results['first_occupied_space'], direction)
+                landing_space = search_results['first_occupied_space'] + \
+                                direction
                 if bu.is_on_board(landing_space) and (
                         self.get_color(landing_space) == opponent_of[cur_color]
                 ):
@@ -127,8 +128,7 @@ class GameBoard:
         search_directions = bu.board_vectors_horiz + bu.board_vectors_vert
 
         for direction in search_directions:
-            search_results = self.search_spaces(from_position,
-                                                BoardVector(*direction))
+            search_results = self.search_spaces(from_position, direction)
             chariot_moves.update(
                 (from_position, empty_space) for empty_space in
                 search_results['empty_spaces'])
@@ -148,10 +148,10 @@ class GameBoard:
         cur_color = self.get_color(from_position)
 
         for direction in bu.horse_paths.keys():
-            first_step = board_space_plus_vect(from_position, direction)
+            first_step = from_position.add_board_vector(direction)
             if bu.is_on_board(first_step) and not self.is_occupied(first_step):
-                second_steps = [board_space_plus_vect(first_step, second_step)
-                                for second_step in bu.horse_paths[direction]]
+                second_steps = [first_step.add_board_vector(direction) for
+                                second_step in bu.horse_paths[direction]]
 
                 horse_moves.update(
                     (from_position, second_step) for second_step in
@@ -160,22 +160,32 @@ class GameBoard:
 
         return horse_moves
 
-    # def elephant_moves(self, from_position: BoardSpace):
-    #
-    #     elephant_moves = set()
-    #     cur_color = self.get_color(from_position)
-    #
-    #     for direction in bu.elephant_directions:
-    #         first_step = board_space_plus_vect(from_position, direction)
-    #         if bu.is_on_board(first_step) and not self.is_occupied(first_step):
+    def elephant_moves(self, from_position: BoardSpace):
 
+        elephant_moves = set()
+        cur_color = self.get_color(from_position)
 
-
+        for direction in bu.diag_directions:
+            first_step = from_position.add_board_vector(direction)
+            if bu.is_on_board(first_step) and not self.is_occupied(first_step):
+                second_step = first_step.add_board_vector(direction)
+                if bu.is_on_board(second_step) and (self.get_color(second_step)
+                                                    != cur_color):
+                    elephant_moves.add((from_position, second_step))
 
         return elephant_moves
 
-    def advisor_moves(self, from_position: tuple):
-        return set()
+    def advisor_moves(self, from_position: BoardSpace):
+        advisor_moves = set()
+        cur_color = self.get_color(from_position)
+
+        for direction in bu.diag_directions:
+            destination = from_position.add_board_vector(direction)
+            if bu.is_on_board(destination) and (self.get_color(destination) !=
+                                                cur_color):
+                advisor_moves.add((from_position, destination))
+
+        return advisor_moves
 
     def flying_general_moves(self, from_position: BoardSpace):
 

@@ -1,7 +1,7 @@
 import json
 from enums import GameState, PieceColor
 from game_board import GameBoard
-from board_space import BoardSpace, BoardVector, board_space_plus_vect
+from board_space import BoardSpace, BoardVector
 import board_utilities as bu
 import numpy as np
 from collections import namedtuple
@@ -22,6 +22,10 @@ def main():
     print(my_game._board.chariot_moves(BoardSpace(0, 0)))
     print(bu.get_adjacent_spaces(BoardSpace(3, 3)))
     print(my_game._board.horse_moves(BoardSpace(0, 1)))
+
+    print(my_game._board.elephant_moves(BoardSpace(0, 2)))
+
+    print(my_game._board.advisor_moves(BoardSpace(0, 3)))
 
 
 
