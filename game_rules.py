@@ -1,9 +1,8 @@
 from enums import PieceColor
 from collections import namedtuple
-from board_space import BoardSpace
 
 
-board_dim =  {
+board_dim = {
     'num_files': 9,
     'num_ranks': 10
 }
@@ -19,14 +18,15 @@ forward_direction = {
     PieceColor.BLACK: -1
 }
 
+CastleEdges = namedtuple("CastleEdges", "min_rank max_rank min_file max_file")
+
 castles = {
-    PieceColor.RED: [
-        BoardSpace(row, col) for row in range(3) for col in range(3, 6)
-    ],
-    PieceColor.BLACK: [
-        BoardSpace(row, col) for row in range(7, 10) for col in range(3, 6)
-    ]
+    PieceColor.RED: CastleEdges(min_rank=0, max_rank=2,
+                                min_file=3, max_file=5),
+    PieceColor.BLACK: CastleEdges(min_rank=7, max_rank=9,
+                                  min_file=3, max_file=5)
 }
+
 
 river_edges = {
     PieceColor.RED: 4,

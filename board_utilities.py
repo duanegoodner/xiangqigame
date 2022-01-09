@@ -32,8 +32,8 @@ def is_on_board(space: BoardSpace):
 
 
 def is_in_homeland_of(piece_color: PieceColor, board_space: BoardSpace):
-    return board_space.rank <= forward_direction[piece_color] * \
-           river_edges[piece_color]
+    return forward_direction[piece_color] * board_space.rank <=\
+           forward_direction[piece_color] * river_edges[piece_color]
 
 
 def get_adjacent_spaces(board_space: BoardSpace, horizontal: bool = True,

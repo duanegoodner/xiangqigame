@@ -42,8 +42,16 @@ class GameBoard:
     def set_occupant(self, space: BoardSpace, piece: GamePiece):
         self._map[space.rank][space.file] = piece
 
-    def get_general_position(self, piece_color: PieceColor):
-        for space in castles[piece_color]:
+    def get_general_position(self, color: PieceColor):
+        castle_edges = castles[color]
+
+        castle_spaces = [
+            BoardSpace(rank, file) for rank in
+            range(castle_edges.min_rank, castles[color].max_rank + 1) for
+            file in range(castle_edges.min_file, castle_edges.max_file)
+        ]
+
+        for space in castle_spaces:
             if self.get_occupant(space)['type'] == PieceType.GENERAL:
                 return space
 
@@ -90,7 +98,7 @@ class GameBoard:
         # color = self.get_color(from_position)
 
         forward_space = from_position.add_board_vector(
-            BoardVector(0, forward_direction[color])
+            BoardVector(forward_direction[color], 0)
         )
         if bu.is_on_board(forward_space):
             soldier_moves.add((from_position, forward_space))
@@ -108,15 +116,14 @@ class GameBoard:
         search_directions = bu.board_vectors_horiz + bu.board_vectors_vert
 
         for direction in search_directions:
-            search_results = self.search_spaces(from_position,
-                                                BoardVector(*direction))
+            search_results = self.search_spaces(from_position, direction)
             cannon_moves.update(
                 (from_position, empty_space) for empty_space in
                 search_results['empty_spaces'])
 
             if search_results['first_occupied_space']:
-                landing_space = search_results['first_occupied_space'] + \
-                                direction
+                landing_space = search_results['first_occupied_space'].\
+                    add_board_vector(direction)
                 if bu.is_on_board(landing_space) and (
                         self.get_color(landing_space) == opponent_of[color]
                 ):
@@ -184,8 +191,9 @@ class GameBoard:
 
         for direction in bu.diag_directions:
             destination = from_position.add_board_vector(direction)
-            if bu.is_on_board(destination) and (self.get_color(destination) !=
-                                                color):
+            if bu.is_on_board(destination) and\
+                    (destination.is_in_castle_of(color))\
+                    and (self.get_color(destination) != color):
                 advisor_moves.add((from_position, destination))
 
         return advisor_moves
@@ -214,8 +222,9 @@ class GameBoard:
         # color = self.get_occupant(from_position)['color']
 
         return {(from_position, space) for space in
-                bu.get_adjacent_spaces(from_position) if space in
-                castles[color]}
+                bu.get_adjacent_spaces(from_position) if
+                space.is_in_castle_of(color) and
+                self.get_color(space) != color}
 
     def general_moves(self, from_position: BoardSpace, color: PieceColor):
         flying_move = self.flying_general_moves(from_position, color)
