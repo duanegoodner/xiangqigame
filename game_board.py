@@ -33,6 +33,9 @@ class GameBoard:
     def get_occupant(self, space: BoardSpace):
         return self._map[space.rank][space.file]
 
+    def get_type(self, space: BoardSpace):
+        return self._map[space.rank][space.file]['type']
+
     def get_color(self, space: BoardSpace) -> PieceColor:
         return self._map[space.rank][space.file]['color']
 
@@ -78,30 +81,30 @@ class GameBoard:
             'first_occupied_space': first_occupied_space
         }
 
-    def null_piece_moves(self):
+    def null_piece_moves(self, *args):
         return set()
 
-    def soldier_moves(self, from_position: BoardSpace):
+    def soldier_moves(self, from_position: BoardSpace, color: PieceColor):
         soldier_moves = set()
 
-        cur_color = self.get_color(from_position)
+        # color = self.get_color(from_position)
 
         forward_space = from_position.add_board_vector(
-            BoardVector(0, forward_direction[cur_color])
+            BoardVector(0, forward_direction[color])
         )
         if bu.is_on_board(forward_space):
             soldier_moves.add((from_position, forward_space))
 
-        if not bu.is_in_homeland_of(cur_color, from_position):
+        if not bu.is_in_homeland_of(color, from_position):
             for space in bu.get_adjacent_spaces(from_position, vertical=False):
                 soldier_moves.add((from_position, space))
 
         return soldier_moves
 
-    def cannon_moves(self, from_position: BoardSpace):
+    def cannon_moves(self, from_position: BoardSpace, color: PieceColor):
 
         cannon_moves = set()
-        cur_color = self.get_color(from_position)
+        # color = self.get_color(from_position)
         search_directions = bu.board_vectors_horiz + bu.board_vectors_vert
 
         for direction in search_directions:
@@ -115,16 +118,16 @@ class GameBoard:
                 landing_space = search_results['first_occupied_space'] + \
                                 direction
                 if bu.is_on_board(landing_space) and (
-                        self.get_color(landing_space) == opponent_of[cur_color]
+                        self.get_color(landing_space) == opponent_of[color]
                 ):
                     cannon_moves.add((from_position, landing_space))
 
         return cannon_moves
 
-    def chariot_moves(self, from_position: BoardSpace):
+    def chariot_moves(self, from_position: BoardSpace, color: PieceColor):
 
         chariot_moves = set()
-        cur_color = self.get_color(from_position)
+        # color = self.get_color(from_position)
         search_directions = bu.board_vectors_horiz + bu.board_vectors_vert
 
         for direction in search_directions:
@@ -135,67 +138,67 @@ class GameBoard:
 
             if (search_results['first_occupied_space']) and \
                     (self.get_occupant(search_results['first_occupied_space'])
-                     ['color'] == opponent_of[cur_color]):
+                     ['color'] == opponent_of[color]):
                 chariot_moves.add(
                     (from_position, search_results['first_occupied_space'])
                 )
 
         return chariot_moves
 
-    def horse_moves(self, from_position: BoardSpace):
+    def horse_moves(self, from_position: BoardSpace, color: PieceColor):
 
         horse_moves = set()
-        cur_color = self.get_color(from_position)
+        # color = self.get_color(from_position)
 
         for direction in bu.horse_paths.keys():
             first_step = from_position.add_board_vector(direction)
             if bu.is_on_board(first_step) and not self.is_occupied(first_step):
-                second_steps = [first_step.add_board_vector(direction) for
+                second_steps = [first_step.add_board_vector(second_step) for
                                 second_step in bu.horse_paths[direction]]
 
                 horse_moves.update(
                     (from_position, second_step) for second_step in
                     second_steps if bu.is_on_board(second_step) and
-                    (self.get_color(second_step) != cur_color))
+                    (self.get_color(second_step) != color))
 
         return horse_moves
 
-    def elephant_moves(self, from_position: BoardSpace):
+    def elephant_moves(self, from_position: BoardSpace, color: PieceColor):
 
         elephant_moves = set()
-        cur_color = self.get_color(from_position)
+        # color = self.get_color(from_position)
 
         for direction in bu.diag_directions:
             first_step = from_position.add_board_vector(direction)
             if bu.is_on_board(first_step) and not self.is_occupied(first_step):
                 second_step = first_step.add_board_vector(direction)
                 if bu.is_on_board(second_step) and (self.get_color(second_step)
-                                                    != cur_color):
+                                                    != color):
                     elephant_moves.add((from_position, second_step))
 
         return elephant_moves
 
-    def advisor_moves(self, from_position: BoardSpace):
+    def advisor_moves(self, from_position: BoardSpace, color: PieceColor):
         advisor_moves = set()
-        cur_color = self.get_color(from_position)
+        # color = self.get_color(from_position)
 
         for direction in bu.diag_directions:
             destination = from_position.add_board_vector(direction)
             if bu.is_on_board(destination) and (self.get_color(destination) !=
-                                                cur_color):
+                                                color):
                 advisor_moves.add((from_position, destination))
 
         return advisor_moves
 
-    def flying_general_moves(self, from_position: BoardSpace):
+    def flying_general_moves(self, from_position: BoardSpace, color: PieceColor):
 
         flying_moves = set()
 
         # is there a way to avoid having this line in every move function??
-        cur_color = self.get_occupant(from_position)['color']
+        # color = self.get_occupant(from_position)['color']
 
         other_gen_position = \
-            self.get_general_position(opponent_of[cur_color])
+            self.get_general_position(opponent_of[color])
 
         if bu.in_same_file(from_position, other_gen_position):
             intermediate_pieces = \
@@ -206,15 +209,32 @@ class GameBoard:
 
         return flying_moves
 
-    def standard_general_moves(self, from_position: BoardSpace):
+    def standard_general_moves(self, from_position: BoardSpace, color: PieceColor):
 
-        cur_color = self.get_occupant(from_position)['color']
+        # color = self.get_occupant(from_position)['color']
 
         return {(from_position, space) for space in
                 bu.get_adjacent_spaces(from_position) if space in
-                castles[cur_color]}
+                castles[color]}
 
-    def general_moves(self, from_position: BoardSpace):
-        flying_move = self.flying_general_moves(from_position)
-        standard_moves = self.standard_general_moves(from_position)
+    def general_moves(self, from_position: BoardSpace, color: PieceColor):
+        flying_move = self.flying_general_moves(from_position, color)
+        standard_moves = self.standard_general_moves(from_position, color)
         return flying_move | standard_moves
+
+    piece_moves = {
+        PieceType.NULL_PIECE: null_piece_moves,
+        PieceType.SOLDIER: soldier_moves,
+        PieceType.CANNON: cannon_moves,
+        PieceType.CHARIOT: chariot_moves,
+        PieceType.HORSE: horse_moves,
+        PieceType.ELEPHANT: elephant_moves,
+        PieceType.ADVISOR: advisor_moves,
+        PieceType.GENERAL: general_moves
+    }
+
+    def calc_moves_from(self, position: BoardSpace):
+
+        color = self.get_color(position)
+
+        return self.piece_moves[self.get_type(position)](self, position, color)
