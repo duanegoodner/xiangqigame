@@ -7,7 +7,6 @@ board_dim = {
     'num_ranks': 10
 }
 
-
 opponent_of = {
     PieceColor.RED: PieceColor.BLACK,
     PieceColor.BLACK: PieceColor.RED
@@ -26,7 +25,6 @@ castles = {
     PieceColor.BLACK: CastleEdges(min_rank=7, max_rank=9,
                                   min_file=3, max_file=5)
 }
-
 
 river_edges = {
     PieceColor.RED: 4,

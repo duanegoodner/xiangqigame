@@ -1,5 +1,6 @@
 from typing import Dict
 from enums import PieceColor, PieceType
+from game_piece import GamePiece
 
 
 _code_to_color = {
@@ -35,10 +36,11 @@ def decode_piece_type(piece_code):
 
 
 def decode_piece(piece_code):
-    return {
+    decoded_piece: GamePiece = {
         'type': _code_to_type[piece_code[0]],
         'color': _code_to_color[piece_code[1]]
     }
+    return decoded_piece
 
 
 def encode_piece(decoded_piece: Dict):

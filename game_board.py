@@ -3,8 +3,9 @@ from typing import Tuple, Dict, TypedDict, List
 from piece_decoder import decode_piece, encode_piece
 from enums import PieceColor, PieceType
 from game_rules import board_dim, opponent_of, forward_direction, castles
-from game_piece import GamePiece
-from board_space import BoardSpace, BoardVector, board_space_plus_vector
+from game_piece import GamePiece, null_piece
+from board_space import BoardSpace, BoardVector, board_space_plus_vector,\
+    is_in_castle_of
 
 import board_utilities as bu
 
@@ -41,6 +42,9 @@ class GameBoard:
 
     def set_occupant(self, space: BoardSpace, piece: GamePiece):
         self._map[space.rank][space.file] = piece
+
+    # def make_move(self, from_space: BoardSpace, to_space: BoardSpace):
+    #    moving_piece = self.get_occupant(from_space)
 
     def get_all_spaces_occupied_by(self, color):
         return {BoardSpace(rank, file) for rank in
@@ -95,8 +99,8 @@ class GameBoard:
 
     def soldier_moves(self, from_position: BoardSpace, color: PieceColor):
         soldier_moves = set()
-        forward_space = from_position.add_board_vector(
-            BoardVector(forward_direction[color], 0))
+        forward_space = board_space_plus_vector(
+            from_position, BoardVector(forward_direction[color], 0))
 
         if bu.is_on_board(forward_space):
             soldier_moves.add((from_position, forward_space))
@@ -116,8 +120,8 @@ class GameBoard:
                 search_results['empty_spaces'])
 
             if search_results['first_occupied_space']:
-                landing_space = search_results['first_occupied_space'].\
-                    add_board_vector(direction)
+                landing_space = board_space_plus_vector(
+                    search_results['first_occupied_space'], direction)
                 if bu.is_on_board(landing_space) and (
                         self.get_color(landing_space) == opponent_of[color]
                 ):
@@ -148,10 +152,12 @@ class GameBoard:
         horse_moves = set()
 
         for direction in bu.horse_paths.keys():
-            first_step = from_position.add_board_vector(direction)
+            first_step = board_space_plus_vector(from_position, direction)
             if bu.is_on_board(first_step) and not self.is_occupied(first_step):
-                second_steps = [first_step.add_board_vector(second_step) for
-                                second_step in bu.horse_paths[direction]]
+                second_steps = [
+                    board_space_plus_vector(first_step, second_step) for
+                    second_step in bu.horse_paths[direction]
+                ]
                 horse_moves.update(
                     (from_position, second_step) for second_step in
                     second_steps if bu.is_on_board(second_step) and
@@ -163,9 +169,9 @@ class GameBoard:
         elephant_moves = set()
 
         for direction in bu.diag_directions:
-            first_step = from_position.add_board_vector(direction)
+            first_step = board_space_plus_vector(from_position, direction)
             if bu.is_on_board(first_step) and not self.is_occupied(first_step):
-                second_step = first_step.add_board_vector(direction)
+                second_step = board_space_plus_vector(first_step, direction)
                 if bu.is_on_board(second_step) and (self.get_color(second_step)
                                                     != color):
                     elephant_moves.add((from_position, second_step))
@@ -176,9 +182,9 @@ class GameBoard:
         advisor_moves = set()
 
         for direction in bu.diag_directions:
-            destination = from_position.add_board_vector(direction)
-            if bu.is_on_board(destination) and\
-                    (destination.is_in_castle_of(color))\
+            destination = board_space_plus_vector(from_position, direction)
+            if bu.is_on_board(destination) and \
+                    (is_in_castle_of(color, destination)) \
                     and (self.get_color(destination) != color):
                 advisor_moves.add((from_position, destination))
 
@@ -204,7 +210,7 @@ class GameBoard:
 
         return {(from_position, space) for space in
                 bu.get_adjacent_spaces(from_position) if
-                space.is_in_castle_of(color) and
+                is_in_castle_of(color, space) and
                 self.get_color(space) != color}
 
     def general_moves(self, from_position: BoardSpace, color: PieceColor):
@@ -223,16 +229,44 @@ class GameBoard:
         PieceType.GENERAL: general_moves
     }
 
-    def calc_moves_from(self, position: BoardSpace):
+    def calc_temp_moves_from(self, position: BoardSpace):
         color = self.get_color(position)
         return self.piece_moves[self.get_type(position)](self, position, color)
 
-    def calc_moves_of(self, color: PieceColor):
+    def calc_temp_moves_of(self, color: PieceColor):
         team_moves = set()
 
         for space in self.get_all_spaces_occupied_by(color):
-            team_moves = team_moves | self.calc_moves_from(space)
+            team_moves = team_moves | self.calc_temp_moves_from(space)
 
         return team_moves
 
+    def calc_final_moves_from(self, position: BoardSpace):
+        moves = self.calc_temp_moves_from(position)
 
+        for move in moves:
+            moving_piece = self.get_occupant(position)
+            destination = move[1]
+            destination_occupant = self.get_occupant(destination)
+            self.set_occupant(position, null_piece)
+            self.set_occupant(destination, moving_piece)
+            resulting_opp_moves = self.calc_temp_moves_of(
+                opponent_of[moving_piece['color']])
+            resulting_opp_destinations = {
+                move[1] for move in resulting_opp_moves
+            }
+            if self.get_general_position(moving_piece['color'])\
+                    in resulting_opp_destinations:
+                moves.remove(move)
+            self.set_occupant(destination, destination_occupant)
+            self.set_occupant(position, moving_piece)
+
+        return moves
+
+    def calc_final_moves_of(self, color):
+        final_moves = set()
+
+        for space in self.get_all_spaces_occupied_by(color):
+            final_moves = final_moves | self.calc_final_moves_from(space)
+
+        return final_moves
