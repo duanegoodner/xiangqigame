@@ -1,13 +1,12 @@
 import numpy as np
-from typing import Tuple, Dict, TypedDict, List
-from piece_decoder import decode_piece, encode_piece
-from enums import PieceColor, PieceType
-from game_rules import board_dim, opponent_of, forward_direction, castles
-from game_piece import GamePiece, null_piece
-from board_space import BoardSpace, BoardVector, board_space_plus_vector,\
+from board.piece_decoder import decode_piece, encode_piece
+from common.enums import PieceColor, PieceType
+from common.game_rules import board_dim, opponent_of, forward_direction, castles
+from board.game_piece import GamePiece, null_piece
+from board.board_space import BoardSpace, BoardVector, board_space_plus_vector,\
     is_in_castle_of
 
-import board_utilities as bu
+from board import board_utilities as bu
 
 
 class GameBoard:

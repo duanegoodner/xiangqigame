@@ -1,7 +1,6 @@
-from game_rules import board_dim, river_edges, forward_direction
-from enums import PieceColor
-from board_space import BoardSpace, BoardVector, board_space_plus_vector
-import numpy as np
+from common.game_rules import board_dim, river_edges, forward_direction
+from common.enums import PieceColor
+from board.board_space import BoardSpace, BoardVector, board_space_plus_vector
 from collections import namedtuple
 
 board_vectors_horiz = [BoardVector(0, 1), BoardVector(0, -1)]

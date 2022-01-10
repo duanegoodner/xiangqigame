@@ -1,6 +1,6 @@
 from typing import Dict
-from enums import PieceColor, PieceType
-from game_piece import GamePiece
+from common.enums import PieceColor, PieceType
+from board.game_piece import GamePiece
 
 
 _code_to_color = {

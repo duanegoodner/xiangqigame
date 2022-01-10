@@ -1,16 +1,14 @@
 import json
-from enums import GameState, PieceColor, PieceType
-from game_board import GameBoard
-from game_piece import null_piece
-from board_space import BoardSpace, BoardVector
-import board_utilities as bu
+from common.enums import GameState, PieceColor
+from board.game_board import GameBoard
+from board.game_piece import null_piece
+from board.board_space import BoardSpace
 
-from game_rules import opponent_of
-
+from common.game_rules import opponent_of
 
 
 def main():
-    with open('game_start.json') as game_info:
+    with open('data/game_start.json') as game_info:
         game_config = json.load(game_info)
     my_game = Game(game_config)
     print(my_game._board)
@@ -54,19 +52,19 @@ class Game:
             move[1] for move in self._moves[opponent_of[color]]}
         return self._board.get_general_position(color) in opp_destinations
 
-    def is_valid_move(self, from_space: BoardSpace, to_space: BoardSpace):
-
-        if not bu.is_on_board(from_space):
-            print("Cannot move from a space that is not on board.")
-            return False
-        if not bu.is_on_board(to_space):
-            print("Cannot move to a space that is not on board.")
-            return False
-        if self._board.get_color(from_space) != self._whose_turn or \
-                (from_space, to_space) not in self._moves[self._whose_turn]:
-            print("Invalid move.")
-            return False
-        return True
+    # def is_valid_move(self, from_space: BoardSpace, to_space: BoardSpace):
+    #
+    #     if not bu.is_on_board(from_space):
+    #         print("Cannot move from a space that is not on board.")
+    #         return False
+    #     if not bu.is_on_board(to_space):
+    #         print("Cannot move to a space that is not on board.")
+    #         return False
+    #     if self._board.get_color(from_space) != self._whose_turn or \
+    #             (from_space, to_space) not in self._moves[self._whose_turn]:
+    #         print("Invalid move.")
+    #         return False
+    #     return True
 
     def make_move(self, from_space: BoardSpace, to_space: BoardSpace):
         moving_piece = self._board.get_occupant(from_space)

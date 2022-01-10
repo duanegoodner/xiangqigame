@@ -1,6 +1,6 @@
 from collections import namedtuple
-from game_rules import castles
-from enums import PieceColor
+from common.game_rules import castles
+from common.enums import PieceColor
 
 
 BoardSpace = namedtuple("BoardSpace", "rank file")

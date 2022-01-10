@@ -1,4 +1,4 @@
-from enums import PieceColor, PieceType
+from common.enums import PieceColor, PieceType
 from typing import TypedDict
 
 

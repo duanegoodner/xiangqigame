@@ -1,4 +1,4 @@
-from enums import PieceColor
+from common.enums import PieceColor
 from collections import namedtuple
 
 
