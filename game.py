@@ -2,13 +2,11 @@ import json
 from enums import GameState, PieceColor, PieceType
 from game_board import GameBoard
 from game_piece import null_piece
-from utilities import get_size
 from board_space import BoardSpace, BoardVector
 import board_utilities as bu
-import numpy as np
-from collections import namedtuple
+
 from game_rules import opponent_of
-from game_piece import GamePiece
+
 
 
 def main():

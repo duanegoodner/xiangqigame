@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/xiangqi_reboot.iml" filepath="$PROJECT_DIR$/.idea/xiangqi_reboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/xiangqi_game.iml" filepath="$PROJECT_DIR$/.idea/xiangqi_game.iml" />
     </modules>
   </component>
 </project>
