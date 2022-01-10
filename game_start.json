@@ -14,17 +14,17 @@
   "code_to_color": {
     "R": "RED",
     "B": "BLACK",
-    "-": "NO COLOR"
+    "-": "NULL COLOR"
   },
   "code_to_piece_type": {
-    "r": "CHARIOT",
-    "h": "HORSE",
-    "e": "ELEPHANT",
-    "a": "ADVISOR",
-    "g": "GENERAL",
-    "c": "CANNON",
-    "s": "SOLDIER",
-    "-": "EMPTY"
+    "r": "chariot",
+    "h": "horse",
+    "e": "elephant",
+    "a": "advisor",
+    "g": "general",
+    "c": "cannon",
+    "s": "soldier",
+    "-": "NULL PIECE"
   },
   "game_state": "UNFINISHED",
   "whose_turn": "RED"
