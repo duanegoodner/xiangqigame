@@ -1,21 +1,7 @@
-import json
 from common.enums import GameState, PieceColor
 from board.game_board import GameBoard
-from board.game_piece import null_piece
-from board.board_space import BoardSpace
-
 from common.game_rules import opponent_of
-
-
-def main():
-    with open('data/game_start.json') as game_info:
-        game_config = json.load(game_info)
-    my_game = Game(game_config)
-    print(my_game._board)
-    print(my_game._board.calc_final_moves_of(PieceColor.RED))
-    print(my_game._board)
-    print(my_game.is_in_check(PieceColor.BLACK))
-    get_user_input()
+from user_io.interactive import get_input_indices
 
 
 def get_user_input():
@@ -66,14 +52,8 @@ class Game:
     #         return False
     #     return True
 
-    def make_move(self, from_space: BoardSpace, to_space: BoardSpace):
-        moving_piece = self._board.get_occupant(from_space)
-        self._board.set_occupant(from_space, null_piece)
-        self._board.set_occupant(to_space, moving_piece)
+    def play(self):
+        pass
 
     def change_whose_turn(self):
         self._whose_turn = opponent_of[self._whose_turn]
-
-
-if __name__ == '__main__':
-    main()

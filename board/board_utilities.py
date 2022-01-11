@@ -1,6 +1,6 @@
 from common.game_rules import board_dim, river_edges, forward_direction
 from common.enums import PieceColor
-from board.board_space import BoardSpace, BoardVector, board_space_plus_vector
+from board.board_space import BoardSpace, BoardVector
 from collections import namedtuple
 
 board_vectors_horiz = [BoardVector(0, 1), BoardVector(0, -1)]
@@ -43,6 +43,6 @@ def get_adjacent_spaces(board_space: BoardSpace, horizontal: bool = True,
     if vertical:
         unit_vectors += board_vectors_vert
 
-    return {board_space_plus_vector(board_space, unit_vector) for unit_vector
+    return {board_space.add_board_vector(unit_vector) for unit_vector
             in unit_vectors if
-            is_on_board(board_space_plus_vector(board_space, unit_vector))}
+            is_on_board(board_space.add_board_vector(unit_vector))}
