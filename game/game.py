@@ -1,23 +1,9 @@
 from common.enums import GameState, PieceColor
 from board.game_board import GameBoard
 from common.game_rules import opponent_of
-from user_io.interactive import get_input_indices
-
-
-def get_user_input():
-    valid_input = None
-    while valid_input is None:
-        user_input = input("Enter move in form ((from.rank, from.file),"
-                           "(to.rank, to.file))")
-
-        print(user_input)
-        if (not isinstance(user_input, tuple)) or (len(user_input) != 2) or \
-                (not all(isinstance(space, tuple) for space in user_input)) or\
-                (not all(len(space) == 2 for space in user_input)):
-            continue
-
-        valid_input = user_input
-    return valid_input
+from board.move import Move
+from user_io.single_move import get_proposed_move
+import user_io.messages as msg
 
 
 class Game:
@@ -38,22 +24,53 @@ class Game:
             move[1] for move in self._moves[opponent_of[color]]}
         return self._board.get_general_position(color) in opp_destinations
 
-    # def is_valid_move(self, from_space: BoardSpace, to_space: BoardSpace):
-    #
-    #     if not bu.is_on_board(from_space):
-    #         print("Cannot move from a space that is not on board.")
-    #         return False
-    #     if not bu.is_on_board(to_space):
-    #         print("Cannot move to a space that is not on board.")
-    #         return False
-    #     if self._board.get_color(from_space) != self._whose_turn or \
-    #             (from_space, to_space) not in self._moves[self._whose_turn]:
-    #         print("Invalid move.")
-    #         return False
-    #     return True
-
-    def play(self):
-        pass
-
     def change_whose_turn(self):
         self._whose_turn = opponent_of[self._whose_turn]
+
+    def is_valid_move(self, proposed_move: Move):
+        if proposed_move not in self._moves[self._whose_turn]:
+            return False
+
+    def get_valid_move(self):
+        valid_move = None
+        while not valid_move:
+            proposed_move = get_proposed_move()
+            if proposed_move in self._moves[self._whose_turn]:
+                valid_move = proposed_move
+            else:
+                msg.display_message(msg.illegal_move)
+        return valid_move
+
+    def player_turn(self):
+        msg.declare_turn_for(self._whose_turn)
+        valid_move = self.get_valid_move()
+        self._board.execute_move(valid_move)
+        msg.display_object(self._board)
+
+    def update_moves(self):
+        self._moves[self._whose_turn] = self._board.calc_final_moves_of(
+            self._whose_turn)
+
+    def set_winner(self, color: PieceColor):
+        if color == PieceColor.RED:
+            self._game_state = GameState.RED_WON
+        else:
+            self._game_state = PieceColor.BLACK
+
+    def play(self):
+        msg.display_object(self._board)
+        while self._game_state == GameState.UNFINISHED:
+            self.player_turn()
+            self.change_whose_turn()
+            self.update_moves()
+            if self._moves[self._whose_turn] == set():
+                self.set_winner(opponent_of[self._whose_turn])
+
+        msg.declare_winner(opponent_of[self._whose_turn])
+
+
+
+
+
+
+

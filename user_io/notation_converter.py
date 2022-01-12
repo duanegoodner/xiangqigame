@@ -17,3 +17,6 @@ def alg_to_indices(alg_val):
     return rank_index_of[alg_val[1:]], file_index_of[alg_val[0]]
 
 
+
+
+
