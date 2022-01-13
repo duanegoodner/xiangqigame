@@ -1,8 +1,9 @@
 from typing import List
-import user_io.notation_converter as nc
+import common.notation_converter as nc
 from board.board_space import BoardSpace
 from board.move import Move
 import user_io.messages as msg
+from common.enums import Out
 
 
 def is_valid_space(alg_entry):
@@ -22,7 +23,8 @@ def valid_input_syntax(parsed_input: List[str]):
 
 def build_move(alg_move: str):
     parsed_alg_move = alg_move.strip().replace(',', ' ').split()
-    raw_spaces = [nc.alg_to_indices(alg_entry) for alg_entry in parsed_alg_move]
+    raw_spaces = [nc.alg_to_indices(alg_entry) for alg_entry in
+                  parsed_alg_move]
     return Move(start=BoardSpace(*raw_spaces[0]),
                 end=BoardSpace(*raw_spaces[1]))
 
@@ -35,17 +37,14 @@ def get_proposed_move():
     valid_input = None
 
     while not valid_input:
-        user_input = input(msg.input_prompt)
+        user_input = input(msg.Out.INPUT_PROMPT)
         parsed_input = user_input.strip().replace(',', ' ').split()
 
         if valid_input_syntax(parsed_input):
             valid_input = parsed_input
         else:
-            print('Invalid notation')
+            msg.output(Out.ILLEGAL_MOVE)
 
     raw_spaces = [nc.alg_to_indices(alg_entry) for alg_entry in valid_input]
     return Move(start=BoardSpace(*raw_spaces[0]),
                 end=BoardSpace(*raw_spaces[1]))
-
-
-

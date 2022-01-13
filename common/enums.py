@@ -22,6 +22,18 @@ class GameState(Enum):
     UNFINISHED = auto()
     RED_WON = auto()
     BLACK_WON = auto()
+    ILLEGAL_AUTO_MOVE = auto()
+
+
+class Out(Enum):
+    INPUT_PROMPT = auto()
+    INVALID_INPUT = auto()
+    ILLEGAL_MOVE = auto()
+    ILLEGAL_AUTO_MOVE = auto()
+    TURN = auto()
+    WON_GAME = auto()
+    IN_CHECK = auto()
+    WHITESPACE = auto()
 
 
 

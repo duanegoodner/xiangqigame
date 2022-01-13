@@ -1,7 +1,8 @@
 import numpy as np
 from board.piece_decoder import decode_piece, encode_piece
 from common.enums import PieceColor, PieceType
-from common.game_rules import board_dim, opponent_of, forward_direction, castles
+from common.game_rules import board_dim, opponent_of, forward_direction, \
+    castles
 from board.game_piece import GamePiece, null_piece
 from board.board_space import BoardSpace, BoardVector
 from board.move import Move, ExecutedMove
@@ -18,12 +19,20 @@ class GameBoard:
                                in range(num_files)] for row in
                               range(num_ranks)])
 
-    def __repr__(self):
-        return repr(
-            np.asarray(
-                [[encode_piece(self._map[row][col]) for col in
-                  range(len(self._map[0]))] for row in range(len(self._map))]
-            )
+    def __str__(self):
+        file_labels = [' ' + char for char in ' abcdefghi']
+
+        board_list = [[encode_piece(self._map[row][col]) for col in
+                       range(len(self._map[0]))]
+                      for row in range(len(self._map))]
+
+        for row_index in range(len(board_list)):
+            board_list[row_index].insert(0, ' ' + str(row_index + 1))
+
+        board_list.insert(0, file_labels)
+
+        return str(
+            '\n'.join([str(rank) for rank in board_list])
         )
 
     def is_occupied(self, space: BoardSpace):
@@ -130,7 +139,7 @@ class GameBoard:
                 search_results['empty_spaces'])
 
             if search_results['first_occupied_space']:
-                landing_space = search_results['first_occupied_space'].\
+                landing_space = search_results['first_occupied_space']. \
                     add_board_vector(direction)
                 if bu.is_on_board(landing_space) and (
                         self.get_color(landing_space) == opponent_of[color]
@@ -262,7 +271,7 @@ class GameBoard:
             resulting_opp_destinations = {
                 move.end for move in resulting_opp_moves
             }
-            if self.get_general_position(test_move.moving_piece['color'])\
+            if self.get_general_position(test_move.moving_piece['color']) \
                     in resulting_opp_destinations:
                 moves_resulting_in_check.add(move)
             self.undo_move(test_move)

@@ -1,10 +1,9 @@
-from common.enums import GameState, PieceColor
+from common.enums import GameState, PieceColor, Out
 from board.game_board import GameBoard
 from common.game_rules import opponent_of
 from board.move import Move
 from user_io.single_move import get_proposed_move
 import user_io.messages as msg
-
 
 
 class Game:
@@ -40,48 +39,57 @@ class Game:
             if proposed_move in self._moves[self._whose_turn]:
                 valid_move = proposed_move
             else:
-                msg.display_message(msg.illegal_move)
+                msg.output(Out.ILLEGAL_MOVE)
         return valid_move
 
     def player_turn(self):
-        msg.declare_turn_for(self._whose_turn)
+        msg.output(self._whose_turn, Out.TURN)
         valid_move = self.get_valid_move()
         self._board.execute_move(valid_move)
         msg.display_object(self._board)
+        msg.output(Out.WHITESPACE)
 
     def auto_player_turn(self):
-        msg.declare_turn_for(self._whose_turn)
+        msg.output(self._whose_turn, Out.TURN)
         if self.is_in_check(self._whose_turn):
-            msg.declare_in_check(self._whose_turn)
+            msg.output(self._whose_turn, Out.IN_CHECK)
         cur_move = self._auto_moves[self._auto_move_idx]
         msg.display_object(cur_move)
         if not self.is_valid_move(cur_move):
-            msg.display_message('ILLEGAL MOVE. NOT EXECUTED ****************')
+            msg.output(Out.ILLEGAL_AUTO_MOVE)
             msg.display_object(self._board)
+            self.set_game_state(GameState.ILLEGAL_AUTO_MOVE)
             return
         self._board.execute_move(cur_move)
+        # self._board.formatted_output()
         msg.display_object(self._board)
+        msg.output(Out.WHITESPACE)
 
     def update_moves(self):
-        self._moves[self._whose_turn] = self._board.calc_final_moves_of(
-            self._whose_turn)
+        self._moves[PieceColor.RED] = self._board.calc_final_moves_of(
+            PieceColor.RED)
+        self._moves[PieceColor.BLACK] = self._board.calc_final_moves_of(
+            PieceColor.BLACK)
+
+    def set_game_state(self, game_state: GameState):
+        self._game_state = game_state
 
     def set_winner(self, color: PieceColor):
         if color == PieceColor.RED:
-            self._game_state = GameState.RED_WON
+            self.set_game_state(GameState.RED_WON)
         else:
-            self._game_state = PieceColor.BLACK
+            self.set_game_state(GameState.BLACK_WON)
 
     def play_interactive(self):
         msg.display_object(self._board)
         while self._game_state == GameState.UNFINISHED:
             self.player_turn()
-            self.change_whose_turn()
             self.update_moves()
+            self.change_whose_turn()
             if self._moves[self._whose_turn] == set():
                 self.set_winner(opponent_of[self._whose_turn])
 
-        msg.declare_winner(opponent_of[self._whose_turn])
+        msg.output(opponent_of[self._whose_turn], Out.WON_GAME)
 
     def play_auto_moves(self):
         msg.display_object(self._board)
@@ -91,11 +99,10 @@ class Game:
             self.update_moves()
             self.change_whose_turn()
             self._auto_move_idx += 1
-            self.update_moves()
             if self._moves[self._whose_turn] == set():
                 self.set_winner(opponent_of[self._whose_turn])
 
-        print(self._game_state)
+        msg.output(self._game_state)
 
 
 
