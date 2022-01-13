@@ -65,7 +65,7 @@ class GameBoard:
         castle_spaces = [
             BoardSpace(rank, file) for rank in
             range(castle_edges.min_rank, castles[color].max_rank + 1) for
-            file in range(castle_edges.min_file, castle_edges.max_file)
+            file in range(castle_edges.min_file, castle_edges.max_file + 1)
         ]
         for space in castle_spaces:
             if self.get_occupant(space)['type'] == PieceType.GENERAL:
@@ -80,11 +80,13 @@ class GameBoard:
             first_step_rank = from_space.rank + 1
             low_rank = first_step_rank
             high_rank = to_rank
+            return self._map[low_rank:high_rank, from_space.file]
+
         else:
             first_step_rank = from_space.rank - 1
             low_rank = to_rank
             high_rank = first_step_rank
-        return self._map[low_rank:(high_rank + 1), from_space.file]
+        return self._map[(low_rank + 1):(high_rank + 1), from_space.file]
 
     def search_spaces(self, from_space: BoardSpace, direction: BoardVector):
         empty_spaces = []
@@ -114,7 +116,7 @@ class GameBoard:
             soldier_moves.add(Move(from_position, forward_space))
         if not bu.is_in_homeland_of(color, from_position):
             for space in bu.get_adjacent_spaces(from_position, vertical=False):
-                soldier_moves.add((from_position, space))
+                soldier_moves.add(Move(from_position, space))
         return soldier_moves
 
     def cannon_moves(self, from_position: BoardSpace, color: PieceColor):
@@ -250,9 +252,10 @@ class GameBoard:
         return team_moves
 
     def calc_final_moves_from(self, position: BoardSpace):
-        moves = self.calc_temp_moves_from(position)
+        potential_moves = self.calc_temp_moves_from(position)
+        moves_resulting_in_check = set()
 
-        for move in moves:
+        for move in potential_moves:
             test_move = self.execute_move(move)
             resulting_opp_moves = self.calc_temp_moves_of(
                 opponent_of[test_move.moving_piece['color']])
@@ -261,10 +264,12 @@ class GameBoard:
             }
             if self.get_general_position(test_move.moving_piece['color'])\
                     in resulting_opp_destinations:
-                moves.remove(move)
+                moves_resulting_in_check.add(move)
             self.undo_move(test_move)
 
-        return moves
+        legal_moves = potential_moves - moves_resulting_in_check
+
+        return legal_moves
 
     def calc_final_moves_of(self, color):
         final_moves = set()

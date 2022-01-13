@@ -20,6 +20,17 @@ def valid_input_syntax(parsed_input: List[str]):
     return all([is_valid_space(alg_entry) for alg_entry in parsed_input])
 
 
+def build_move(alg_move: str):
+    parsed_alg_move = alg_move.strip().replace(',', ' ').split()
+    raw_spaces = [nc.alg_to_indices(alg_entry) for alg_entry in parsed_alg_move]
+    return Move(start=BoardSpace(*raw_spaces[0]),
+                end=BoardSpace(*raw_spaces[1]))
+
+
+def convert_alg_move_list(alg_move_list: List[str]):
+    return [build_move(alg_move) for alg_move in alg_move_list]
+
+
 def get_proposed_move():
     valid_input = None
 

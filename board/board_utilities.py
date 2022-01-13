@@ -10,7 +10,7 @@ horse_paths = {
     BoardVector(1, 0): (BoardVector(1, 1), BoardVector(1, -1)),
     BoardVector(-1, 0): (BoardVector(-1, 1), BoardVector(-1, -1)),
     BoardVector(0, 1): (BoardVector(1, 1), BoardVector(-1, 1)),
-    BoardVector(0, -1): (BoardVector(1, 1), BoardVector(-1, 1))
+    BoardVector(0, -1): (BoardVector(1, -1), BoardVector(-1, -1))
 }
 
 diag_directions = [(BoardVector(rank, file)) for rank in [-1, 1] for file

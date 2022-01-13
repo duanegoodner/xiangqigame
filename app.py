@@ -12,7 +12,7 @@ def run():
     # print(my_game._board)
     # print(my_game.is_in_check(PieceColor.BLACK))
     # print(my_game._board.get_all_spaces_occupied_by(PieceColor.RED))
-    my_game.play()
+    my_game.play_interactive()
 
 
 if __name__ == '__main__':

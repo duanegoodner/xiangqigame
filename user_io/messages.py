@@ -26,3 +26,8 @@ def declare_turn_for(color: PieceColor):
 def declare_winner(color: PieceColor):
     output_string = f'{team[color]} won the game.'
     print(output_string)
+
+
+def declare_in_check(color: PieceColor):
+    output_string = f'{team[color]} is in check.'
+    print(output_string)
