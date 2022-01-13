@@ -1,6 +1,6 @@
 from typing import List
 import common.notation_converter as nc
-from board.board_space import BoardSpace
+from board.board_components import BoardSpace
 from board.move import Move
 import user_io.messages as msg
 from common.enums import Out

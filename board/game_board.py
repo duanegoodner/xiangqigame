@@ -1,10 +1,9 @@
 import numpy as np
 from board.piece_decoder import decode_piece, encode_piece
 from common.enums import PieceColor, PieceType
-from common.game_rules import board_dim, opponent_of, forward_direction, \
-    castles
+from common.game_rules import opponent_of
 from board.game_piece import GamePiece, null_piece
-from board.board_space import BoardSpace, BoardVector
+from board.board_components import BoardSpace, BoardVector, castles
 from board.move import Move, ExecutedMove
 
 from board import board_utilities as bu
@@ -65,8 +64,8 @@ class GameBoard:
 
     def get_all_spaces_occupied_by(self, color):
         return {BoardSpace(rank, file) for rank in
-                range(board_dim['num_ranks']) for file in
-                range(board_dim['num_files']) if
+                range(bu.board_dim['num_ranks']) for file in
+                range(bu.board_dim['num_files']) if
                 self.get_color(BoardSpace(rank, file)) == color}
 
     def get_general_position(self, color: PieceColor):
@@ -119,7 +118,7 @@ class GameBoard:
     def soldier_moves(self, from_position: BoardSpace, color: PieceColor):
         soldier_moves = set()
         forward_space = from_position.add_board_vector(
-            BoardVector(forward_direction[color], 0))
+            BoardVector(bu.forward_direction[color], 0))
 
         if bu.is_on_board(forward_space):
             soldier_moves.add(Move(from_position, forward_space))

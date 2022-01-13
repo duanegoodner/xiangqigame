@@ -1,10 +1,24 @@
-from common.game_rules import board_dim, river_edges, forward_direction
 from common.enums import PieceColor
-from board.board_space import BoardSpace, BoardVector
+from board.board_components import BoardSpace, BoardVector
 from collections import namedtuple
+
+board_dim = {
+    'num_files': 9,
+    'num_ranks': 10
+}
+
+forward_direction = {
+    PieceColor.RED: 1,
+    PieceColor.BLACK: -1
+}
 
 board_vectors_horiz = [BoardVector(0, 1), BoardVector(0, -1)]
 board_vectors_vert = [BoardVector(1, 0), BoardVector(-1, 0)]
+
+river_edges = {
+    PieceColor.RED: 4,
+    PieceColor.BLACK: 5
+}
 
 horse_paths = {
     BoardVector(1, 0): (BoardVector(1, 1), BoardVector(1, -1)),

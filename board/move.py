@@ -1,5 +1,5 @@
 from typing import NamedTuple
-from board.board_space import BoardSpace
+from board.board_components import BoardSpace
 from board.game_piece import GamePiece
 
 
