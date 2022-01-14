@@ -1,15 +1,18 @@
 import numpy as np
-from board.piece_decoder import decode_piece, encode_piece
 from common.enums import PieceColor, PieceType
-from common.game_rules import opponent_of
-from board.game_piece import GamePiece, null_piece
-from board.board_components import BoardSpace, BoardVector, castles
-from board.move import Move, ExecutedMove
-
-from board import board_utilities as bu
+from common.notation_converter import file_index_of
+from .piece_decoder import decode_piece, encode_piece
+from .game_piece import GamePiece, null_piece
+from .board_components import BoardSpace, BoardVector, castles
+from .move import Move, ExecutedMove
+from . import board_utilities as bu
 
 
 class GameBoard:
+    opponent_of = {
+        PieceColor.RED: PieceColor.BLACK,
+        PieceColor.BLACK: PieceColor.RED
+    }
 
     def __init__(self, board_data):
         num_files = len(board_data[0])
@@ -19,7 +22,8 @@ class GameBoard:
                               range(num_ranks)])
 
     def __str__(self):
-        file_labels = [' ' + char for char in ' abcdefghi']
+        file_labels = [' ' + char for char in list(file_index_of.keys())]
+        file_labels.insert(0, '  ')
 
         board_list = [[encode_piece(self._map[row][col]) for col in
                        range(len(self._map[0]))]
@@ -138,12 +142,14 @@ class GameBoard:
                 search_results['empty_spaces'])
 
             if search_results['first_occupied_space']:
-                landing_space = search_results['first_occupied_space']. \
-                    add_board_vector(direction)
-                if bu.is_on_board(landing_space) and (
-                        self.get_color(landing_space) == opponent_of[color]
-                ):
-                    cannon_moves.add(Move(from_position, landing_space))
+                second_search = self.search_spaces(
+                    search_results['first_occupied_space'], direction)
+                if second_search['first_occupied_space'] and\
+                        (self.get_color(second_search['first_occupied_space'])
+                         == self.opponent_of[color]):
+                    cannon_moves.add(
+                        Move(from_position,
+                             second_search['first_occupied_space']))
 
         return cannon_moves
 
@@ -159,7 +165,7 @@ class GameBoard:
 
             if (search_results['first_occupied_space']) and \
                     (self.get_occupant(search_results['first_occupied_space'])
-                     ['color'] == opponent_of[color]):
+                     ['color'] == self.opponent_of[color]):
                 chariot_moves.add(
                     Move(from_position, search_results['first_occupied_space'])
                 )
@@ -212,7 +218,7 @@ class GameBoard:
                              color: PieceColor):
         flying_moves = set()
         other_gen_position = \
-            self.get_general_position(opponent_of[color])
+            self.get_general_position(self.opponent_of[color])
 
         if bu.in_same_file(from_position, other_gen_position):
             intermediate_pieces = \
@@ -266,7 +272,7 @@ class GameBoard:
         for move in potential_moves:
             test_move = self.execute_move(move)
             resulting_opp_moves = self.calc_temp_moves_of(
-                opponent_of[test_move.moving_piece['color']])
+                self.opponent_of[test_move.moving_piece['color']])
             resulting_opp_destinations = {
                 move.end for move in resulting_opp_moves
             }

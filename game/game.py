@@ -1,6 +1,5 @@
 from common.enums import GameState, PieceColor, Out
 from board.game_board import GameBoard
-from common.game_rules import opponent_of
 from board.move import Move
 from user_io.single_move import get_proposed_move
 import user_io.messages as msg
@@ -23,11 +22,11 @@ class Game:
 
     def is_in_check(self, color: PieceColor):
         opp_destinations = {
-            move[1] for move in self._moves[opponent_of[color]]}
+            move[1] for move in self._moves[self._board.opponent_of[color]]}
         return self._board.get_general_position(color) in opp_destinations
 
     def change_whose_turn(self):
-        self._whose_turn = opponent_of[self._whose_turn]
+        self._whose_turn = self._board.opponent_of[self._whose_turn]
 
     def is_valid_move(self, proposed_move: Move):
         return proposed_move in self._moves[self._whose_turn]
@@ -44,6 +43,8 @@ class Game:
 
     def player_turn(self):
         msg.output(self._whose_turn, Out.TURN)
+        if self.is_in_check(self._whose_turn):
+            msg.output(self._whose_turn, Out.IN_CHECK)
         valid_move = self.get_valid_move()
         self._board.execute_move(valid_move)
         msg.display_object(self._board)
@@ -61,7 +62,6 @@ class Game:
             self.set_game_state(GameState.ILLEGAL_AUTO_MOVE)
             return
         self._board.execute_move(cur_move)
-        # self._board.formatted_output()
         msg.display_object(self._board)
         msg.output(Out.WHITESPACE)
 
@@ -87,9 +87,9 @@ class Game:
             self.update_moves()
             self.change_whose_turn()
             if self._moves[self._whose_turn] == set():
-                self.set_winner(opponent_of[self._whose_turn])
+                self.set_winner(self._board.opponent_of[self._whose_turn])
 
-        msg.output(opponent_of[self._whose_turn], Out.WON_GAME)
+        msg.output(self._board.opponent_of[self._whose_turn], Out.WON_GAME)
 
     def play_auto_moves(self):
         msg.display_object(self._board)
@@ -100,7 +100,7 @@ class Game:
             self.change_whose_turn()
             self._auto_move_idx += 1
             if self._moves[self._whose_turn] == set():
-                self.set_winner(opponent_of[self._whose_turn])
+                self.set_winner(self._board.opponent_of[self._whose_turn])
 
         msg.output(self._game_state)
 

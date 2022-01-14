@@ -37,7 +37,7 @@ def get_proposed_move():
     valid_input = None
 
     while not valid_input:
-        user_input = input(msg.Out.INPUT_PROMPT)
+        user_input = input(msg.messages[Out.INPUT_PROMPT])
         parsed_input = user_input.strip().replace(',', ' ').split()
 
         if valid_input_syntax(parsed_input):

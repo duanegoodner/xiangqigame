@@ -1,16 +1,25 @@
 from typing import NamedTuple
-from collections import namedtuple
-# from common.game_rules import castles
 from common.enums import PieceColor
 
 
-CastleEdges = namedtuple("CastleEdges", "min_rank max_rank min_file max_file")
+class CastleEdges(NamedTuple):
+    min_rank: int
+    max_rank: int
+    min_file: int
+    max_file: int
+
 
 castles = {
     PieceColor.RED: CastleEdges(min_rank=0, max_rank=2,
                                 min_file=3, max_file=5),
     PieceColor.BLACK: CastleEdges(min_rank=7, max_rank=9,
                                   min_file=3, max_file=5)
+}
+
+
+river_edges = {
+    PieceColor.RED: 4,
+    PieceColor.BLACK: 5
 }
 
 
