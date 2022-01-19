@@ -1,5 +1,5 @@
 from typing import List
-from xiangqi import common as nc
+from xiangqi.common import notation_converter as nc
 from xiangqi.board.board_components import BoardSpace
 from xiangqi.board.move import Move
 import xiangqi.user_io.messages as msg
