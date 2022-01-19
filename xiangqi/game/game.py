@@ -1,8 +1,8 @@
-from common.enums import GameState, PieceColor, Out
-from board.game_board import GameBoard
-from board.move import Move
-from user_io.single_move import get_proposed_move
-import user_io.messages as msg
+from xiangqi.common.enums import GameState, PieceColor, Out
+from xiangqi.board.game_board import GameBoard
+from xiangqi.board.move import Move
+from xiangqi.user_io.single_move import get_proposed_move
+import xiangqi.user_io.messages as msg
 
 
 class Game:

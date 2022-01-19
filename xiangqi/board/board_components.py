@@ -1,5 +1,5 @@
 from typing import NamedTuple
-from common.enums import PieceColor
+from xiangqi.common.enums import PieceColor
 
 
 class CastleEdges(NamedTuple):

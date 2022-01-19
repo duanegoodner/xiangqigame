@@ -1,6 +1,6 @@
 import numpy as np
-from common.enums import PieceColor, PieceType
-from common.notation_converter import file_index_of
+from xiangqi.common.enums import PieceColor, PieceType
+from xiangqi.common.notation_converter import file_index_of
 from .piece_decoder import decode_piece, encode_piece
 from .game_piece import GamePiece, null_piece
 from .board_components import BoardSpace, BoardVector, castles

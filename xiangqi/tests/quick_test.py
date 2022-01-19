@@ -1,7 +1,7 @@
 import json
-from game.game import Game
-from data import alg_games as ag
-from user_io.single_move import convert_alg_move_list
+from xiangqi.game import Game
+from xiangqi.data import alg_games as ag
+from xiangqi.user_io import convert_alg_move_list
 
 with open('../data/game_start.json') as game_info:
     game_config = json.load(game_info)

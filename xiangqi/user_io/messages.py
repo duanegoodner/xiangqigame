@@ -1,7 +1,4 @@
-import pprint
-from common.enums import PieceColor, Out, GameState
-from game.game import GameBoard
-from board.piece_decoder import encode_piece
+from xiangqi.common.enums import PieceColor, Out, GameState
 
 messages = {
     Out.INPUT_PROMPT: "Enter a move in the form 'from_space, to_space': ",
