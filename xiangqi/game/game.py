@@ -2,6 +2,7 @@ from xiangqi.common.enums import GameState, PieceColor, Out
 from xiangqi.board.game_board import GameBoard
 from xiangqi.board.move import Move
 from xiangqi.user_io.single_move import get_proposed_move
+from xiangqi.user_io.display import clear_screen
 import xiangqi.user_io.messages as msg
 
 
@@ -47,8 +48,9 @@ class Game:
             msg.output(self._whose_turn, Out.IN_CHECK)
         valid_move = self.get_valid_move()
         self._board.execute_move(valid_move)
+        clear_screen()
         msg.display_object(self._board)
-        msg.output(Out.WHITESPACE)
+        # msg.output(Out.WHITESPACE)
 
     def auto_player_turn(self):
         msg.output(self._whose_turn, Out.TURN)
@@ -81,6 +83,7 @@ class Game:
             self.set_game_state(GameState.BLACK_WON)
 
     def play_interactive(self):
+        clear_screen()
         msg.display_object(self._board)
         while self._game_state == GameState.UNFINISHED:
             self.player_turn()
@@ -92,6 +95,7 @@ class Game:
         msg.output(self._board.opponent_of[self._whose_turn], Out.WON_GAME)
 
     def play_auto_moves(self):
+        clear_screen()
         msg.display_object(self._board)
         while self._game_state == GameState.UNFINISHED and self._auto_move_idx\
                 < len(self._auto_moves):
