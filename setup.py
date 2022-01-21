@@ -1,7 +1,9 @@
+from distutils.core import setup
 import setuptools
 
 
-setuptools.setup(
+
+setup(
     name='xiangqi',
     version='0.0.1',
     description='A board game',

@@ -4,6 +4,8 @@ from xiangqi.board.move import Move
 from xiangqi.user_io.single_move import get_proposed_move
 from xiangqi.user_io.display import clear_screen
 import xiangqi.user_io.messages as msg
+from xiangqi.handlers.errors import handle_interactive_eof
+
 
 
 class Game:
@@ -46,7 +48,10 @@ class Game:
         msg.output(self._whose_turn, Out.TURN)
         if self.is_in_check(self._whose_turn):
             msg.output(self._whose_turn, Out.IN_CHECK)
-        valid_move = self.get_valid_move()
+        try:
+            valid_move = self.get_valid_move()
+        except EOFError:
+            handle_interactive_eof()
         self._board.execute_move(valid_move)
         clear_screen()
         msg.display_object(self._board)
