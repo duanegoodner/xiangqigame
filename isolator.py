@@ -12,12 +12,13 @@ def build_venv():
     python_bin = isolated_env_name + '/bin/python'
     pip_bin = isolated_env_name + '/bin/pip'
 
-    # requirements = pkgutil.get_data('xiangqi', '../requirements.txt').decode().split()
-    # install_cmd = [pip_bin, 'install'] + requirements
-    # call(install_cmd)
+    # requirements = pkgutil.get_data('xiangqi_game', '../requirements.txt').decode().split()
+    # print(requirements)
+    install_cmd = [pip_bin, 'install', '-r', 'requirements.txt']
+    call(install_cmd)
 
-    call([pip_bin, 'install', '.'])
-    call([python_bin, '-m', 'xiangqi'])
+    # call([pip_bin, 'install', '.'])
+    call([python_bin, '-m', 'xiangqi_game'])
 
     # call([python_bin, '-m', 'run'])
 

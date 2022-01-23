@@ -1,10 +1,10 @@
-from xiangqi.common.enums import GameState, PieceColor, Out
-from xiangqi.board.game_board import GameBoard
-from xiangqi.board.move import Move
-from xiangqi.user_io.single_move import get_proposed_move
-from xiangqi.user_io.display import clear_screen
-import xiangqi.user_io.messages as msg
-from xiangqi.handlers.errors import handle_interactive_eof
+from xiangqi_game.common.enums import GameState, PieceColor, Out
+from xiangqi_game.board.game_board import GameBoard
+from xiangqi_game.board.move import Move
+from xiangqi_game.user_io.single_move import get_proposed_move
+from xiangqi_game.user_io.display import clear_screen
+import xiangqi_game.user_io.messages as msg
+from xiangqi_game.handlers.errors import handle_interactive_eof
 
 
 

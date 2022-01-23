@@ -1,4 +1,4 @@
-from xiangqi.common.enums import PieceColor, PieceType
+from xiangqi_game.common.enums import PieceColor, PieceType
 from typing import TypedDict
 
 

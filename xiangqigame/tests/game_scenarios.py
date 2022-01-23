@@ -1,8 +1,8 @@
 import json
-from xiangqi.common import GameState
-from xiangqi.game import Game
-from xiangqi.data import alg_games as ag
-from xiangqi.user_io import convert_alg_move_list
+from xiangqi_game.common.enums import GameState
+from xiangqi_game.game import Game
+from xiangqi_game.data import alg_games as ag
+from xiangqi_game.user_io import convert_alg_move_list
 
 import unittest
 

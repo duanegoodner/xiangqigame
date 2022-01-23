@@ -1,4 +1,4 @@
-from xiangqi.common.enums import PieceColor, Out, GameState
+from xiangqi_game.common.enums import PieceColor, Out, GameState
 
 messages = {
     Out.INPUT_PROMPT: "Enter a move in the form 'from_space, to_space': ",

@@ -1,5 +1,5 @@
 import argparse
-from xiangqi import app
+import app
 
 
 parser = argparse.ArgumentParser()

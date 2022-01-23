@@ -1,5 +1,5 @@
-from xiangqi.common.enums import PieceColor
-from xiangqi.board.board_components import BoardSpace, BoardVector, river_edges
+from xiangqi_game.common.enums import PieceColor
+from xiangqi_game.board.board_components import BoardSpace, BoardVector, river_edges
 
 board_dim = {
     'num_files': 9,

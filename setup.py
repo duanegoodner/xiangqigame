@@ -3,7 +3,7 @@ import setuptools
 
 
 setup(
-    name='xiangqi',
+    name='xiangqigame',
     version='0.0.1',
     description='A board game',
     url='#',
