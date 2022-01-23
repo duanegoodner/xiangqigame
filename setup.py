@@ -2,7 +2,6 @@ from distutils.core import setup
 import setuptools
 
 
-
 setup(
     name='xiangqi',
     version='0.0.1',
