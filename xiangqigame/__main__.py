@@ -1,5 +1,5 @@
 import argparse
-import app
+import xiangqigame.app as app
 
 
 parser = argparse.ArgumentParser()
