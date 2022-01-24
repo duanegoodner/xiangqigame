@@ -1,9 +1,9 @@
 from typing import List
-from xiangqi_game.common import notation_converter as nc
-from xiangqi_game.board.board_components import BoardSpace
-from xiangqi_game.board.move import Move
-import xiangqi_game.user_io.messages as msg
-from xiangqi_game.common.enums import Out
+from xiangqigame.common import notation_converter as nc
+from xiangqigame.board.board_components import BoardSpace
+from xiangqigame.board.move import Move
+import xiangqigame.user_io.messages as msg
+from xiangqigame.common.enums import Out
 
 
 def is_valid_space(alg_entry):

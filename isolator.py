@@ -1,4 +1,4 @@
-from subprocess import Popen, call
+from subprocess import call
 import venv
 import os
 import pkgutil

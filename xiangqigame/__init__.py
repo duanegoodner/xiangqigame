@@ -1,2 +1,2 @@
 
-import xiangqi_game.app
+import xiangqigame.app

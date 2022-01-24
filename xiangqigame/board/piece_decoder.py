@@ -1,6 +1,6 @@
 from typing import Dict
-from xiangqi_game.common.enums import PieceColor, PieceType
-from xiangqi_game.board.game_piece import GamePiece
+from xiangqigame.common.enums import PieceColor, PieceType
+from xiangqigame.board.game_piece import GamePiece
 
 
 _code_to_color = {
