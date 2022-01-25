@@ -10,9 +10,10 @@ import venv
 def run():
     set_signal_handlers()
 
-    game_config = json.loads(pkgutil.get_data('xiangqigame', 'data/game_start.json'))
-    my_game = Game(game_config)
-    my_game.play_interactive()
+    game_config = json.loads(pkgutil.get_data(__name__, 'data/game_start.json'))
+    module_info = pkgutil.ModuleInfo()
+    # my_game = Game(game_config)
+    # my_game.play_interactive()
 
 
 if __name__ == '__main__':
