@@ -11,5 +11,7 @@ setup(
     install_requires=['numpy'],
     author_email='dmgoodner@gmail.com',
     packages=setuptools.find_packages(),
+    package_data={"": ["*.json"]},
+    include_package_data=True,
     zip_safe=False
 )
