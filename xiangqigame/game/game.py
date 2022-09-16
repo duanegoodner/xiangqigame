@@ -7,7 +7,6 @@ import xiangqigame.user_io.messages as msg
 from xiangqigame.handlers.errors import handle_interactive_eof
 
 
-
 class Game:
 
     def __init__(self, game_config, auto_moves=None):
