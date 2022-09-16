@@ -30,12 +30,14 @@ class GameBoard:
                       for row in range(len(self._map))]
 
         for row_index in range(len(board_list)):
-            board_list[row_index].insert(0, ' ' + str(row_index + 1))
+            board_list[row_index].insert(0, ' ' + str(row_index + 1) + ' ' * (2 - len(str(row_index + 1))))
 
         board_list.insert(0, file_labels)
 
+        board_list = ["  ".join(row) for row in board_list]
+
         return str(
-            '\n'.join([str(rank) for rank in board_list])
+            '\n\n'.join([str(rank) for rank in board_list])
         )
 
     def is_occupied(self, space: BoardSpace):
