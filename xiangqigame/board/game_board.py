@@ -30,7 +30,8 @@ class GameBoard:
                       for row in range(len(self._map))]
 
         for row_index in range(len(board_list)):
-            board_list[row_index].insert(0, ' ' + str(row_index + 1) + ' ' * (2 - len(str(row_index + 1))))
+            board_list[row_index].insert(0, ' ' + str(row_index + 1) + ' ' * (
+                        2 - len(str(row_index + 1))))
 
         board_list.insert(0, file_labels)
 
@@ -146,7 +147,7 @@ class GameBoard:
             if search_results['first_occupied_space']:
                 second_search = self.search_spaces(
                     search_results['first_occupied_space'], direction)
-                if second_search['first_occupied_space'] and\
+                if second_search['first_occupied_space'] and \
                         (self.get_color(second_search['first_occupied_space'])
                          == self.opponent_of[color]):
                     cannon_moves.add(
@@ -196,10 +197,17 @@ class GameBoard:
 
         for direction in bu.diag_directions:
             first_step = from_position.add_board_vector(direction)
-            if bu.is_on_board(first_step) and not self.is_occupied(first_step):
+            if (
+                    bu.is_on_board(first_step) and
+                    not self.is_occupied(first_step)
+                    and bu.is_in_homeland_of(color, first_step)
+            ):
                 second_step = first_step.add_board_vector(direction)
-                if bu.is_on_board(second_step) and (self.get_color(second_step)
-                                                    != color):
+                if (
+                        bu.is_on_board(second_step) and (
+                        self.get_color(second_step) != color) and (
+                        bu.is_in_homeland_of(color, second_step))
+                ):
                     elephant_moves.add(Move(from_position, second_step))
 
         return elephant_moves
