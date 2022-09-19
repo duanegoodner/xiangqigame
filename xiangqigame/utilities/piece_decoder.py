@@ -62,14 +62,3 @@ def encode_piece(decoded_piece: Dict):
         f"{_color_to_code[decoded_piece['color']]}"
         f"{cr.Style.RESET_ALL}"
     )
-
-
-thing = "\U0001FA60"
-
-
-
-
-
-
-
-

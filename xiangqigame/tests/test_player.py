@@ -1,21 +1,17 @@
 from unittest import mock
 from xiangqigame.board_components import BoardSpace
 from xiangqigame.enums import PieceColor
-from xiangqigame.game_player_interface import HumanPlayer
+from xiangqigame.players import HumanPlayer
 from xiangqigame.move import Move
-from xiangqigame.tests.fixtures import algebraic_move_interpreter, \
-    starting_game_board
+from xiangqigame.tests.fixtures import starting_game_board
 
 
 class TestHumanPlayer:
 
     def test_human_init(
             self,
-            algebraic_move_interpreter,
             starting_game_board):
-        player = HumanPlayer(
-            color=PieceColor.RED,
-            move_interpreter=algebraic_move_interpreter)
+        player = HumanPlayer(color=PieceColor.RED)
 
         with mock.patch("builtins.input", return_value="a4, a5"):
             proposed_move = player.propose_move(

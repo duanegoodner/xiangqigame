@@ -1,7 +1,8 @@
 import json
 import pkgutil
-from xiangqigame.enums import GameState
+from xiangqigame.enums import GameState, PieceColor
 from xiangqigame.game import Game
+from xiangqigame.players import ScriptedPlayer
 from xiangqigame.data import alg_games as ag
 from xiangqigame.user_io.single_move import convert_alg_move_list
 
@@ -13,9 +14,14 @@ class GameResultTests(unittest.TestCase):
         pkgutil.get_data('xiangqigame.data', 'game_start.json'))
 
     def test_a(self):
-        moves_a = convert_alg_move_list(ag.game_a)
-        game_a = Game(self.game_config, scripted_moves=moves_a)
-        game_a.play_scripted_moves()
+        # moves_a = convert_alg_move_list(ag.game_a)
+        moves_a = ag.game_a
+        red_moves = moves_a[::2]
+        black_moves = moves_a[1::2]
+        red_player = ScriptedPlayer(color=PieceColor.RED, move_list=red_moves)
+        black_player = ScriptedPlayer(color=PieceColor.BLACK, move_list=black_moves)
+        game_a = Game(self.game_config, red_player=red_player, black_player=black_player)
+        game_a.play()
         self.assertTrue(game_a._game_state == GameState.RED_WON)
 
     def test_b(self):

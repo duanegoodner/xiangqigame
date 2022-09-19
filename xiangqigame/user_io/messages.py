@@ -6,7 +6,7 @@ messages = {
     Out.ILLEGAL_MOVE: 'Illegal move. Please enter a different move.',
     Out.ILLEGAL_AUTO_MOVE: 'Illegal move in auto play. Move not executed. '
                            'Game ending with no winner.',
-    Out.TURN: " team's turn.",
+    Out.TURN: "Whose turn:\n",
     Out.WON_GAME: ' won the game.',
     Out.IN_CHECK: ' is in check.',
     Out.WHITESPACE: '\n',
@@ -15,8 +15,9 @@ messages = {
     GameState.UNFINISHED: 'Game has not yet finished.',
     GameState.ILLEGAL_AUTO_MOVE: 'Game ended due to illegal move while playing'
                                  ' in auto mode. There was no winner.',
-    GameState.RED_WON: 'Red team won the game.',
-    GameState.BLACK_WON: 'Black team won the game.'
+
+    # GameState.RED_WON: 'Red team won the game.',
+    # GameState.BLACK_WON: 'Black team won the game.'
 }
 
 

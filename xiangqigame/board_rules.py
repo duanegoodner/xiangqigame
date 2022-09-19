@@ -16,7 +16,7 @@ class Castle(NamedTuple):
 
 
 @dataclass
-class BasicRules:
+class BoardRules:
     forward_direction: Dict[PieceColor, int] = field(
         default_factory=lambda: {PieceColor.RED: 1, PieceColor.BLACK: -1})
     river_edges: Dict[PieceColor, int] = field(
@@ -29,17 +29,16 @@ class BasicRules:
                 min_rank=7, max_rank=9, min_file=3, max_file=5)
         }
     ),
-    board_dim: BoardDim = BoardDim(num_files=9, num_ranks=10)
+    opponent_of: Dict[PieceColor, PieceColor] = field(
+        default_factory=lambda: {
+            PieceColor.RED: PieceColor.BLACK,
+            PieceColor.BLACK: PieceColor.RED
+            }
+    )
+    num_ranks: int = 10
+    num_files: int = 9
+
+    # board_dim: BoardDim = BoardDim(num_files=9, num_ranks=10),
 
 
-BOARD_RULES = BasicRules()
-
-
-
-
-
-
-
-
-
-
+BOARD_RULES = BoardRules()

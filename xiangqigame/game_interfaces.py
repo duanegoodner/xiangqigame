@@ -1,5 +1,6 @@
 import abc
-from typing import List, Set
+from dataclasses import dataclass
+from typing import List, Set, NamedTuple
 
 from xiangqigame.enums import PieceColor
 from xiangqigame.game_board import GameBoard
@@ -17,6 +18,10 @@ class Player(abc.ABC):
             move_log = []
         self._move_log = move_log
 
+    @property
+    def move_log(self):
+        return self._move_log
+
     @abc.abstractmethod
     def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
         pass
@@ -25,3 +30,4 @@ class Player(abc.ABC):
     def illegal_move_notice_response(self, game_board: GameBoard,
                                      cur_moves: Set[Move]):
         pass
+

@@ -1,15 +1,16 @@
+from xiangqigame.board_rules import BOARD_RULES as br
 from xiangqigame.enums import PieceColor
 from xiangqigame.board_components import BoardSpace, BoardVector, river_edges
 
-board_dim = {
-    'num_files': 9,
-    'num_ranks': 10
-}
+# board_dim = {
+#     'num_files': 9,
+#     'num_ranks': 10
+# }
 
-forward_direction = {
-    PieceColor.RED: 1,
-    PieceColor.BLACK: -1
-}
+# forward_direction = {
+#     PieceColor.RED: 1,
+#     PieceColor.BLACK: -1
+# }
 
 board_vectors_horiz = [BoardVector(0, 1), BoardVector(0, -1)]
 board_vectors_vert = [BoardVector(1, 0), BoardVector(-1, 0)]
@@ -35,13 +36,13 @@ def in_same_file(curr_position: BoardSpace, dest_position: BoardSpace):
 
 
 def is_on_board(space: BoardSpace):
-    return (0 <= space.rank < board_dim['num_ranks']) and \
-           (0 <= space.file < board_dim['num_files'])
+    return (0 <= space.rank < br.num_ranks) and \
+           (0 <= space.file < br.num_files)
 
 
 def is_in_homeland_of(piece_color: PieceColor, board_space: BoardSpace):
-    return forward_direction[piece_color] * board_space.rank <=\
-           forward_direction[piece_color] * river_edges[piece_color]
+    return br.forward_direction[piece_color] * board_space.rank <=\
+           br.forward_direction[piece_color] * river_edges[piece_color]
 
 
 def get_adjacent_spaces(board_space: BoardSpace, horizontal: bool = True,
