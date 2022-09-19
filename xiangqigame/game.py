@@ -1,3 +1,5 @@
+import time
+
 from xiangqigame.enums import GameState, PieceColor, Out
 from xiangqigame.game_board import GameBoard
 from xiangqigame.move import Move
@@ -61,15 +63,18 @@ class Game:
         if self.is_in_check(self._whose_turn):
             msg.output(self._whose_turn, Out.IN_CHECK)
         cur_move = self._scripted_moves[self._scripted_move_idx]
-        msg.display_object(cur_move)
+        # msg.display_object(cur_move)
         if not self.is_valid_move(cur_move):
             msg.output(Out.ILLEGAL_AUTO_MOVE)
             msg.display_object(self._board)
             self.set_game_state(GameState.ILLEGAL_AUTO_MOVE)
             return
+        # time.sleep(0.5)
         self._board.execute_move(cur_move)
+        # time.sleep(0.5)
+        clear_screen()
         msg.display_object(self._board)
-        msg.output(Out.WHITESPACE)
+        # msg.output(Out.WHITESPACE)
 
     def update_moves(self):
         self._moves[PieceColor.RED] = self._board.calc_final_moves_of(
@@ -102,6 +107,7 @@ class Game:
     def play_scripted_moves(self):
         clear_screen()
         msg.display_object(self._board)
+        # time.sleep(1)
         while self._game_state == GameState.UNFINISHED and self._scripted_move_idx\
                 < len(self._scripted_moves):
             self.auto_player_turn()
@@ -111,6 +117,7 @@ class Game:
             if self._moves[self._whose_turn] == set():
                 self.set_winner(self._board.opponent_of[self._whose_turn])
 
+        msg.output(Out.WHITESPACE)
         msg.output(self._game_state)
 
 

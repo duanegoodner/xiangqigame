@@ -28,7 +28,7 @@ class GameBoard:
 
     def __str__(self):
 
-        cr.init(autoreset=True)
+        # cr.init(autoreset=True)
         file_labels = [f" {char}  "for char in list(file_index_of.keys())]
         file_labels.insert(0, '\t')
         file_labels.insert(len(file_labels), '\n')

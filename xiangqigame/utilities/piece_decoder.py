@@ -5,8 +5,8 @@ from xiangqigame.game_piece import GamePiece
 
 
 _code_to_color = {
-    'R': PieceColor.RED,
-    'B': PieceColor.BLACK,
+    'r': PieceColor.RED,
+    'b': PieceColor.BLACK,
     '-': PieceColor.NULL_COLOR
 }
 
@@ -20,18 +20,23 @@ _color_to_code = dict((color, code) for code, color in
                       _code_to_color.items())
 
 _code_to_type = {
-    'r': PieceType.CHARIOT,
-    'h': PieceType.HORSE,
-    'e': PieceType.ELEPHANT,
-    'a': PieceType.ADVISOR,
-    'g': PieceType.GENERAL,
-    'c': PieceType.CANNON,
-    's': PieceType.SOLDIER,
+    'R': PieceType.CHARIOT,
+    'H': PieceType.HORSE,
+    'E': PieceType.ELEPHANT,
+    'A': PieceType.ADVISOR,
+    'G': PieceType.GENERAL,
+    'C': PieceType.CANNON,
+    'S': PieceType.SOLDIER,
     '-': PieceType.NULL_PIECE
 }
 
 _type_to_code = dict(
     (color, code) for code, color in _code_to_type.items())
+
+
+_piece_color_type_to_utf = {
+    ()
+}
 
 
 def decode_color(piece_code):
@@ -57,6 +62,9 @@ def encode_piece(decoded_piece: Dict):
         f"{_color_to_code[decoded_piece['color']]}"
         f"{cr.Style.RESET_ALL}"
     )
+
+
+thing = "\U0001FA60"
 
 
 

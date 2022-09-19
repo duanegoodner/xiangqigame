@@ -1,3 +1,4 @@
+import colorama
 import json
 import pkgutil
 from xiangqigame.game import Game
@@ -10,6 +11,7 @@ import venv
 
 def run():
     set_signal_handlers()
+    colorama.init()
 
     game_config = json.loads(pkgutil.get_data('xiangqigame.data', 'game_start.json'))
     my_game = Game(game_config)
