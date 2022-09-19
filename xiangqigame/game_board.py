@@ -1,11 +1,14 @@
+from typing import Set
+
 import numpy as np
-from xiangqigame.common.enums import PieceColor, PieceType
-from xiangqigame.common.notation_converter import file_index_of
-from .piece_decoder import decode_piece, encode_piece
-from .game_piece import GamePiece, null_piece
-from .board_components import BoardSpace, BoardVector, castles
-from .move import Move, ExecutedMove
-from . import board_utilities as bu
+from xiangqigame.board_rules import BOARD_RULES as br
+from xiangqigame.enums import PieceColor, PieceType
+from xiangqigame.utilities.notation_converter import file_index_of
+from xiangqigame.utilities.piece_decoder import decode_piece, encode_piece
+from xiangqigame.game_piece import GamePiece, null_piece
+from xiangqigame.board_components import BoardSpace, BoardVector, castles
+from xiangqigame.move import Move, ExecutedMove
+from xiangqigame.utilities import board_utilities as bu
 
 
 class GameBoard:
@@ -15,11 +18,12 @@ class GameBoard:
     }
 
     def __init__(self, board_data):
-        num_files = len(board_data[0])
-        num_ranks = len(board_data)
-        self._map = np.array([[decode_piece(board_data[row][col]) for col
-                               in range(num_files)] for row in
-                              range(num_ranks)])
+        assert len(board_data[0]) == br.board_dim.num_files
+        assert len(board_data) == br.board_dim.num_ranks
+        self._map = np.array(
+            [[decode_piece(board_data[row][col]) for col in
+              range(br.board_dim.num_files)]
+             for row in range(br.board_dim.num_ranks)])
 
     def __str__(self):
         file_labels = [' ' + char for char in list(file_index_of.keys())]
@@ -71,8 +75,8 @@ class GameBoard:
 
     def get_all_spaces_occupied_by(self, color):
         return {BoardSpace(rank, file) for rank in
-                range(bu.board_dim['num_ranks']) for file in
-                range(bu.board_dim['num_files']) if
+                range(br.board_dim.num_ranks) for file in
+                range(br.board_dim.num_files) if
                 self.get_color(BoardSpace(rank, file)) == color}
 
     def get_general_position(self, color: PieceColor):
@@ -295,7 +299,7 @@ class GameBoard:
 
         return legal_moves
 
-    def calc_final_moves_of(self, color):
+    def calc_final_moves_of(self, color) -> Set[Move]:
         final_moves = set()
 
         for space in self.get_all_spaces_occupied_by(color):

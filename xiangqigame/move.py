@@ -1,6 +1,6 @@
 from typing import NamedTuple
-from xiangqigame.board.board_components import BoardSpace
-from xiangqigame.board.game_piece import GamePiece
+from xiangqigame.board_components import BoardSpace
+from xiangqigame.game_piece import GamePiece
 
 
 class Move(NamedTuple):

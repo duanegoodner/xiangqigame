@@ -8,5 +8,5 @@ game_config = json.loads(
         pkgutil.get_data('xiangqigame.data', 'game_start.json'))
 
 moves_d = convert_alg_move_list(ag.game_d)
-game_d = Game(game_config, auto_moves=moves_d)
-game_d.play_auto_moves()
+game_d = Game(game_config, scripted_moves=moves_d)
+game_d.play_scripted_moves()

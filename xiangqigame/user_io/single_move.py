@@ -1,9 +1,9 @@
 from typing import List
-from xiangqigame.common import notation_converter as nc
-from xiangqigame.board.board_components import BoardSpace
-from xiangqigame.board.move import Move
+from xiangqigame.utilities import notation_converter as nc
+from xiangqigame.board_components import BoardSpace
+from xiangqigame.move import Move
 import xiangqigame.user_io.messages as msg
-from xiangqigame.common.enums import Out
+from xiangqigame.enums import Out
 
 
 def is_valid_space(alg_entry):
@@ -23,7 +23,7 @@ def valid_input_syntax(parsed_input: List[str]):
 
 def build_move(alg_move: str):
     parsed_alg_move = alg_move.strip().replace(',', ' ').split()
-    raw_spaces = [nc.alg_to_indices(alg_entry) for alg_entry in
+    raw_spaces = [nc.alg_to_rank_file(alg_entry) for alg_entry in
                   parsed_alg_move]
     return Move(start=BoardSpace(*raw_spaces[0]),
                 end=BoardSpace(*raw_spaces[1]))
@@ -45,6 +45,6 @@ def get_proposed_move():
         else:
             msg.output(Out.ILLEGAL_MOVE)
 
-    raw_spaces = [nc.alg_to_indices(alg_entry) for alg_entry in valid_input]
+    raw_spaces = [nc.alg_to_rank_file(alg_entry) for alg_entry in valid_input]
     return Move(start=BoardSpace(*raw_spaces[0]),
                 end=BoardSpace(*raw_spaces[1]))
