@@ -1,6 +1,7 @@
-from typing import Set
-
 import numpy as np
+import colorama as cr
+
+from typing import Set
 from xiangqigame.board_rules import BOARD_RULES as br
 from xiangqigame.enums import PieceColor, PieceType
 from xiangqigame.utilities.notation_converter import file_index_of
@@ -26,26 +27,21 @@ class GameBoard:
              for row in range(br.board_dim.num_ranks)])
 
     def __str__(self):
-        file_labels = [char + ' ' for char in list(file_index_of.keys())]
+
+        cr.init(autoreset=True)
+        file_labels = [f" {char}  "for char in list(file_index_of.keys())]
         file_labels.insert(0, '\t')
         file_labels.insert(len(file_labels), '\n')
 
-        board_list = [[encode_piece(self._map[row][col]) for col in
+        board_list = [[f" {encode_piece(self._map[row][col])} " for col in
                        range(len(self._map[0]))]
                       for row in range(len(self._map))]
-
         for row_index in range(len(board_list)):
-            board_list[row_index].insert(0, ' ' + str(row_index + 1) + '\t' +
-                                         '' * (
-                        2 - len(str(row_index + 1))))
-
+            board_list[row_index].insert(0, f" {str(row_index + 1)}\t")
         board_list.insert(0, file_labels)
+        board_list = ["".join(row) for row in board_list]
 
-        board_list = ["  ".join(row) for row in board_list]
-
-        return str(
-            '\n\n'.join([str(rank) for rank in board_list])
-        )
+        return str('\n\n'.join([str(rank) for rank in board_list]))
 
     def is_occupied(self, space: BoardSpace):
         return self._map[space.rank][space.file][
