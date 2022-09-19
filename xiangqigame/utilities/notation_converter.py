@@ -13,7 +13,7 @@ file_index_of = {
 rank_index_of = {str(num): num - 1 for num in range(1, 11)}
 
 
-def alg_to_indices(alg_val):
+def alg_to_rank_file(alg_val):
     return rank_index_of[alg_val[1:]], file_index_of[alg_val[0]]
 
 

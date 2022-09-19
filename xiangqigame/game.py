@@ -1,6 +1,6 @@
-from xiangqigame.common.enums import GameState, PieceColor, Out
-from xiangqigame.board.game_board import GameBoard
-from xiangqigame.board.move import Move
+from xiangqigame.enums import GameState, PieceColor, Out
+from xiangqigame.game_board import GameBoard
+from xiangqigame.move import Move
 from xiangqigame.user_io.single_move import get_proposed_move
 from xiangqigame.user_io.display import clear_screen
 import xiangqigame.user_io.messages as msg
@@ -9,18 +9,16 @@ from xiangqigame.handlers.errors import handle_interactive_eof
 
 class Game:
 
-    def __init__(self, game_config, auto_moves=None):
-        board_data = game_config['board_data']
-
+    def __init__(self, game_config, scripted_moves=None):
         self._game_state = GameState.UNFINISHED
         self._whose_turn = PieceColor.RED
-        self._board = GameBoard(board_data)
+        self._board = GameBoard(game_config['board_data'])
         self._moves = {
             PieceColor.RED: self._board.calc_final_moves_of(PieceColor.RED),
             PieceColor.BLACK: self._board.calc_final_moves_of(PieceColor.BLACK)
         }
-        self._auto_moves = auto_moves
-        self._auto_move_idx = 0
+        self._scripted_moves = scripted_moves
+        self._scripted_move_idx = 0
 
     def is_in_check(self, color: PieceColor):
         opp_destinations = {
@@ -60,7 +58,7 @@ class Game:
         msg.output(self._whose_turn, Out.TURN)
         if self.is_in_check(self._whose_turn):
             msg.output(self._whose_turn, Out.IN_CHECK)
-        cur_move = self._auto_moves[self._auto_move_idx]
+        cur_move = self._scripted_moves[self._scripted_move_idx]
         msg.display_object(cur_move)
         if not self.is_valid_move(cur_move):
             msg.output(Out.ILLEGAL_AUTO_MOVE)
@@ -98,15 +96,15 @@ class Game:
 
         msg.output(self._board.opponent_of[self._whose_turn], Out.WON_GAME)
 
-    def play_auto_moves(self):
+    def play_scripted_moves(self):
         clear_screen()
         msg.display_object(self._board)
-        while self._game_state == GameState.UNFINISHED and self._auto_move_idx\
-                < len(self._auto_moves):
+        while self._game_state == GameState.UNFINISHED and self._scripted_move_idx\
+                < len(self._scripted_moves):
             self.auto_player_turn()
             self.update_moves()
             self.change_whose_turn()
-            self._auto_move_idx += 1
+            self._scripted_move_idx += 1
             if self._moves[self._whose_turn] == set():
                 self.set_winner(self._board.opponent_of[self._whose_turn])
 
