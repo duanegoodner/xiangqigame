@@ -26,15 +26,17 @@ class GameBoard:
              for row in range(br.board_dim.num_ranks)])
 
     def __str__(self):
-        file_labels = [' ' + char for char in list(file_index_of.keys())]
-        file_labels.insert(0, '  ')
+        file_labels = [char + ' ' for char in list(file_index_of.keys())]
+        file_labels.insert(0, '\t')
+        file_labels.insert(len(file_labels), '\n')
 
         board_list = [[encode_piece(self._map[row][col]) for col in
                        range(len(self._map[0]))]
                       for row in range(len(self._map))]
 
         for row_index in range(len(board_list)):
-            board_list[row_index].insert(0, ' ' + str(row_index + 1) + ' ' * (
+            board_list[row_index].insert(0, ' ' + str(row_index + 1) + '\t' +
+                                         '' * (
                         2 - len(str(row_index + 1))))
 
         board_list.insert(0, file_labels)

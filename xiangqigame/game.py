@@ -42,6 +42,7 @@ class Game:
         return valid_move
 
     def player_turn(self):
+        msg.output(Out.WHITESPACE)
         msg.output(self._whose_turn, Out.TURN)
         if self.is_in_check(self._whose_turn):
             msg.output(self._whose_turn, Out.IN_CHECK)
@@ -55,6 +56,7 @@ class Game:
         # msg.output(Out.WHITESPACE)
 
     def auto_player_turn(self):
+        msg.output(Out.WHITESPACE)
         msg.output(self._whose_turn, Out.TURN)
         if self.is_in_check(self._whose_turn):
             msg.output(self._whose_turn, Out.IN_CHECK)
@@ -94,6 +96,7 @@ class Game:
             if self._moves[self._whose_turn] == set():
                 self.set_winner(self._board.opponent_of[self._whose_turn])
 
+        msg.output(Out.WHITESPACE)
         msg.output(self._board.opponent_of[self._whose_turn], Out.WON_GAME)
 
     def play_scripted_moves(self):
