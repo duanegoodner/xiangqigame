@@ -13,13 +13,13 @@ class TestHumanPlayer:
             starting_game_board):
         player = HumanPlayer(color=PieceColor.RED)
 
-        with mock.patch("builtins.input", return_value="a4, a5"):
+        with mock.patch("builtins.input", return_value="a7, a6"):
             proposed_move = player.propose_move(
                 game_board=starting_game_board,
                 cur_moves=
                 starting_game_board.calc_final_moves_of(PieceColor.RED))
         assert proposed_move == Move(
-            start=BoardSpace(rank=3, file=0),
-            end=BoardSpace(rank=4, file=0))
+            start=BoardSpace(rank=6, file=0),
+            end=BoardSpace(rank=5, file=0))
 
 

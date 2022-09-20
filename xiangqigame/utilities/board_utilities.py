@@ -1,6 +1,6 @@
 from xiangqigame.board_rules import BOARD_RULES as br
 from xiangqigame.enums import PieceColor
-from xiangqigame.board_components import BoardSpace, BoardVector, river_edges
+from xiangqigame.board_components import BoardSpace, BoardVector#, river_edges
 
 # board_dim = {
 #     'num_files': 9,
@@ -42,7 +42,7 @@ def is_on_board(space: BoardSpace):
 
 def is_in_homeland_of(piece_color: PieceColor, board_space: BoardSpace):
     return br.forward_direction[piece_color] * board_space.rank <=\
-           br.forward_direction[piece_color] * river_edges[piece_color]
+           br.forward_direction[piece_color] * br.river_edges[piece_color]
 
 
 def get_adjacent_spaces(board_space: BoardSpace, horizontal: bool = True,

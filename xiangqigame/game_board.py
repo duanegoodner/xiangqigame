@@ -7,7 +7,7 @@ from xiangqigame.enums import PieceColor, PieceType
 from xiangqigame.utilities.notation_converter import file_index_of
 from xiangqigame.utilities.piece_decoder import decode_piece, encode_piece
 from xiangqigame.game_piece import GamePiece, null_piece
-from xiangqigame.board_components import BoardSpace, BoardVector, castles
+from xiangqigame.board_components import BoardSpace, BoardVector#, castles
 from xiangqigame.move import Move, ExecutedMove
 from xiangqigame.utilities import board_utilities as bu
 
@@ -77,10 +77,10 @@ class GameBoard:
                 self.get_color(BoardSpace(rank, file)) == color}
 
     def get_general_position(self, color: PieceColor):
-        castle_edges = castles[color]
+        castle_edges = br.castles[color]
         castle_spaces = [
             BoardSpace(rank, file) for rank in
-            range(castle_edges.min_rank, castles[color].max_rank + 1) for
+            range(castle_edges.min_rank, br.castles[color].max_rank + 1) for
             file in range(castle_edges.min_file, castle_edges.max_file + 1)
         ]
         for space in castle_spaces:
