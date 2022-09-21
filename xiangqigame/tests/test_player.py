@@ -1,7 +1,7 @@
 from unittest import mock
 from xiangqigame.board_components import BoardSpace
 from xiangqigame.enums import PieceColor
-from xiangqigame.players import HumanPlayer
+from xiangqigame.players import AIPlayer, HumanPlayer
 from xiangqigame.move import Move
 from xiangqigame.tests.fixtures import starting_game_board
 
@@ -23,3 +23,16 @@ class TestHumanPlayer:
             end=BoardSpace(rank=5, file=0))
 
 
+class TestAIPlayer:
+
+    def test_ai_game(
+            self,
+            starting_game_board):
+        player = AIPlayer(color=PieceColor.RED)
+        move = player.propose_move(
+            game_board=starting_game_board,
+            cur_moves=
+            starting_game_board.calc_final_moves_of(
+                PieceColor.RED))
+
+        print(move)

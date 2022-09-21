@@ -5,7 +5,6 @@ from xiangqigame.game import Game
 from xiangqigame.players import ScriptedPlayer
 from xiangqigame.data import alg_games as ag
 from xiangqigame.data import game_a as g_a
-from xiangqigame.user_io.single_move import convert_alg_move_list
 
 import unittest
 

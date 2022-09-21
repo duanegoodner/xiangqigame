@@ -12,22 +12,23 @@ class Player(abc.ABC):
     def __init__(
             self,
             color: PieceColor,
-            move_log: List[Move] = None):
+            # move_log: List[Move] = None
+    ):
         self._color = color
-        if move_log is None:
-            move_log = []
-        self._move_log = move_log
+        # if move_log is None:
+        #     move_log = []
+        # self._move_log = move_log
 
-    @property
-    def move_log(self):
-        return self._move_log
+    # @property
+    # def move_log(self):
+    #     return self._move_log
 
     @abc.abstractmethod
     def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
         pass
 
     @abc.abstractmethod
-    def illegal_move_notice_response(self, game_board: GameBoard,
+    def illegal_move_notice_response(self, illegal_move: Move, game_board: GameBoard,
                                      cur_moves: Set[Move]):
         pass
 

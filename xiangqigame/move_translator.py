@@ -1,8 +1,6 @@
 import re
 from typing import List
-
 from xiangqigame.move import Move
-
 from xiangqigame.board_components import BoardSpace
 
 
@@ -27,9 +25,19 @@ def algebraic_space_to_boardspace(algebraic_space: str):
     return BoardSpace(rank=rank, file=file)
 
 
+def boardspace_to_algebraic_space(board_space: BoardSpace):
+    alg_column = chr(board_space.file + ord('a'))
+    alg_row = str(board_space.rank + 1)
+    return f"{alg_column}{alg_row}"
+
+
 def convert_parsed_input_to_move(parsed_input: List[str]):
     board_space_from_to = [
         algebraic_space_to_boardspace(entry) for entry in parsed_input]
     return Move(start=board_space_from_to[0], end=board_space_from_to[1])
 
 
+def convert_move_to_input_str(move: Move):
+    from_str = boardspace_to_algebraic_space(move.start)
+    to_str = boardspace_to_algebraic_space(move.end)
+    return f"{from_str}, {to_str}"

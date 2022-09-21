@@ -4,10 +4,9 @@ import colorama as cr
 from typing import Set
 from xiangqigame.board_rules import BOARD_RULES as br
 from xiangqigame.enums import PieceColor, PieceType
-from xiangqigame.utilities.notation_converter import file_index_of
 from xiangqigame.utilities.piece_decoder import decode_piece, encode_piece
 from xiangqigame.game_piece import GamePiece, null_piece
-from xiangqigame.board_components import BoardSpace, BoardVector#, castles
+from xiangqigame.board_components import BoardSpace, BoardVector
 from xiangqigame.move import Move, ExecutedMove
 from xiangqigame.utilities import board_utilities as bu
 
@@ -28,7 +27,9 @@ class GameBoard:
 
     def __str__(self):
 
-        file_labels = [f" {char}  "for char in list(file_index_of.keys())]
+        file_labels = [
+            f" {chr(char_num)}  "for char_num in range(ord("a"), ord("j"))
+        ]
         file_labels.insert(0, '\t')
         file_labels.insert(len(file_labels), '\n')
 

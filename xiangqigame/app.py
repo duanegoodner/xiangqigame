@@ -4,7 +4,7 @@ import pkgutil
 from xiangqigame.enums import PieceColor
 from xiangqigame.game import Game
 from xiangqigame.handlers.signals import set_signal_handlers
-from xiangqigame.players import HumanPlayer
+from xiangqigame.players import HumanPlayer, AIPlayer
 import xiangqigame.data
 
 
