@@ -5,22 +5,26 @@ from typing import List, Set, Tuple
 from xiangqigame.game_board import GameBoard
 from xiangqigame.game_interfaces import Player
 import xiangqigame.terminal_output as msg
-from xiangqigame.enums import PieceColor, Out
+from xiangqigame.enums import PieceColor
 from xiangqigame.move import Move
 
 
 class HumanPlayer(Player):
 
+    def __init__(self, color: PieceColor):
+        super().__init__(color)
+        self._input_req = msg.InputRetrievalMessages()
+
     def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
         valid_input = None
 
         while not valid_input:
-            user_input = input(msg.messages[Out.INPUT_PROMPT])
+            user_input = input(self._input_req.input_prompt)
             parsed_input = mt.parse_input(user_input)
             if mt.is_valid_algebraic_pair(parsed_input):
                 valid_input = parsed_input
             else:
-                msg.output(Out.INVALID_INPUT)
+                self._input_req.notify_invalid_input()
 
         proposed_move = mt.convert_parsed_input_to_move(
             parsed_input=valid_input)
@@ -31,7 +35,7 @@ class HumanPlayer(Player):
             illegal_move: Move,
             game_board: GameBoard,
             cur_moves: Set[Move]):
-        msg.output(Out.ILLEGAL_MOVE)
+        self._input_req.notify_illegal_move()
         self.propose_move(game_board, cur_moves)
 
 

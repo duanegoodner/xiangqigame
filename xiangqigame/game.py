@@ -104,7 +104,6 @@ class Game:
     def play(self):
         while self._game_state == GameState.UNFINISHED:
             self.send_game_info_to_status_reporter()
-            # self.send_pre_move_info_to_display()
             self.player_turn()
             self.change_whose_turn()
             if self._board.calc_final_moves_of(self._whose_turn) == set():
