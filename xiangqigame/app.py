@@ -40,6 +40,12 @@ def run():
             color=PieceColor.RED, move_selector=red_move_selector),
         black_player=AIPlayer(
             color=PieceColor.BLACK, move_selector=black_move_selector)
+
+
+        # red_player=AIPlayer(
+        #     color=PieceColor.RED, move_selector=ms.random_move),
+        # black_player=AIPlayer(
+        #     color=PieceColor.BLACK, move_selector=ms.random_move)
     )
 
     my_game.play()
