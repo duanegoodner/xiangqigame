@@ -34,13 +34,8 @@ def run():
 
     my_game = Game(
         game_config=game_config,
-        # red_player=HumanPlayer(color=PieceColor.RED),
-        # black_player=HumanPlayer(color=PieceColor.BLACK)
-        red_player=AIPlayer(
-            color=PieceColor.RED, move_selector=red_move_selector),
-        black_player=AIPlayer(
-            color=PieceColor.BLACK, move_selector=black_move_selector)
-
+        red_player=HumanPlayer(color=PieceColor.RED),
+        black_player=HumanPlayer(color=PieceColor.BLACK)
 
         # red_player=AIPlayer(
         #     color=PieceColor.RED, move_selector=ms.random_move),
