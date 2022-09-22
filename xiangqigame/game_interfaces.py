@@ -1,8 +1,6 @@
 import abc
-from dataclasses import dataclass
-from typing import List, Set, NamedTuple
-
-from xiangqigame.enums import PieceColor
+from typing import Set
+from xiangqigame.enums import PieceColor, GameState
 from xiangqigame.game_board import GameBoard
 from xiangqigame.move import Move
 
@@ -11,24 +9,30 @@ class Player(abc.ABC):
 
     def __init__(
             self,
-            color: PieceColor,
-            # move_log: List[Move] = None
-    ):
+            color: PieceColor):
         self._color = color
-        # if move_log is None:
-        #     move_log = []
-        # self._move_log = move_log
-
-    # @property
-    # def move_log(self):
-    #     return self._move_log
 
     @abc.abstractmethod
     def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
         pass
 
     @abc.abstractmethod
-    def illegal_move_notice_response(self, illegal_move: Move, game_board: GameBoard,
-                                     cur_moves: Set[Move]):
+    def illegal_move_notice_response(
+            self, illegal_move: Move,
+            game_board: GameBoard,
+            cur_moves: Set[Move]):
         pass
 
+
+class GameStatusReporter(abc.ABC):
+
+    @abc.abstractmethod
+    def report_game_info(
+            self,
+            game_state: GameState,
+            game_board: GameBoard,
+            whose_turn: PieceColor,
+            is_in_check: bool,
+            move_count: int,
+            prev_move: Move = None):
+        pass

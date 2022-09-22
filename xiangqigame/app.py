@@ -1,6 +1,7 @@
 import colorama
 import json
 import pkgutil
+import xiangqigame.move_selectors as ms
 from xiangqigame.enums import PieceColor
 from xiangqigame.game import Game
 from xiangqigame.handlers.signals import set_signal_handlers
@@ -16,9 +17,10 @@ def run():
 
     my_game = Game(
         game_config=game_config,
-        red_player=HumanPlayer(color=PieceColor.RED),
-        black_player=HumanPlayer(color=PieceColor.BLACK)
-    )
+        red_player=AIPlayer(
+            color=PieceColor.RED, move_selector=ms.random_move),
+        black_player=AIPlayer(
+            color=PieceColor.BLACK, move_selector=ms.random_move))
 
     my_game.play()
 

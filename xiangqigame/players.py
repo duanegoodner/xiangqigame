@@ -1,7 +1,7 @@
 import random
 import time
 import xiangqigame.move_translator as mt
-from typing import List, Set, Tuple
+from typing import List, Set, Tuple, Callable
 from xiangqigame.game_board import GameBoard
 from xiangqigame.game_interfaces import Player
 import xiangqigame.terminal_output as msg
@@ -68,9 +68,16 @@ class ScriptedPlayer(Player):
 
 class AIPlayer(Player):
 
-    def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
+    def __init__(
+            self,
+            color: PieceColor,
+            move_selector: Callable[..., Move]):
+        super().__init__(color)
+        self._move_selector = move_selector
 
-        proposed_move = random.choice(tuple(cur_moves))
+    def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
+        proposed_move = self._move_selector(
+            game_board=game_board, cur_moves=cur_moves, color=self._color)
         return proposed_move
 
     def illegal_move_notice_response(

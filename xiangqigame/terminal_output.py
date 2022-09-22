@@ -3,6 +3,7 @@ import subprocess
 from dataclasses import dataclass
 import xiangqigame.move_translator as mt
 from xiangqigame.board_rules import BOARD_RULES as br
+from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.move import Move
 from xiangqigame.enums import PieceColor, GameState
 from xiangqigame.game_board import GameBoard
@@ -21,7 +22,7 @@ class InputRetrievalMessages:
         print(self.illegal_move_msg)
 
 
-class TerminalStatusReporter:
+class TerminalStatusReporter(GameStatusReporter):
 
     _display_team_name = {
         PieceColor.RED: "Red",
@@ -60,14 +61,16 @@ class TerminalStatusReporter:
         if game_state == GameState.BLACK_WON:
             print("Black won the game.")
 
-    def display_game_info(
+    def report_game_info(
             self, game_state: GameState,
             game_board: GameBoard,
             whose_turn: PieceColor,
             is_in_check: bool,
+            move_count: int,
             prev_move: Move = None):
         self.clear_screen()
         print(f"{game_board}\n")
+        print(f"Move count: {move_count}\n")
 
         if game_state == GameState.UNFINISHED:
             self.display_prev_move(

@@ -3,6 +3,7 @@ import xiangqigame.terminal_output as msg
 from xiangqigame.board_rules import BOARD_RULES as br
 from xiangqigame.enums import GameState, PieceColor
 from xiangqigame.game_board import GameBoard
+from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.players import Player
 from xiangqigame.move import Move
 
@@ -16,7 +17,7 @@ class Game:
             game_config: Dict,
             red_player: Player,
             black_player: Player,
-            status_reporter=msg.TerminalStatusReporter(),
+            status_reporter: GameStatusReporter = msg.TerminalStatusReporter(),
             move_log: List[Move] = None):
         self._game_state = GameState.UNFINISHED
         self._whose_turn = PieceColor.RED
@@ -28,6 +29,10 @@ class Game:
             move_log = []
         self._move_log = move_log
         # self._winner = None
+
+    @property
+    def _move_count(self):
+        return len(self._move_log)
 
     def is_in_check(self, color: PieceColor):
         opp_destinations = {
@@ -71,33 +76,17 @@ class Game:
         else:
             self.set_game_state(GameState.BLACK_WON)
 
-    def send_pre_move_info_to_display(self):
-        if self._move_log:
-            prev_move = self._move_log[-1]
-        else:
-            prev_move = None
-        msg.display_pre_move_info(
-            board=self._board,
-            whose_turn=self._whose_turn,
-            is_in_check=self.is_in_check(self._whose_turn),
-            prev_move=prev_move)
-
-    def send_post_game_info_to_display(self):
-        msg.display_post_game_info(
-            game_state=self._game_state,
-            game_board=self._board,
-            final_move=self._move_log[-1])
-
     def send_game_info_to_status_reporter(self):
         if self._move_log:
             prev_move = self._move_log[-1]
         else:
             prev_move = None
-        self._status_reporter.display_game_info(
+        self._status_reporter.report_game_info(
             game_state=self._game_state,
             game_board=self._board,
             whose_turn=self._whose_turn,
             is_in_check=self.is_in_check(self._whose_turn),
+            move_count=self._move_count,
             prev_move=prev_move
         )
 
