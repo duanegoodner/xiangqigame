@@ -75,9 +75,9 @@ class AIPlayer(Player):
         super().__init__(color)
         self._move_selector = move_selector
 
-    def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
+    def propose_move(self, game_board: GameBoard) -> Move:
         proposed_move = self._move_selector(
-            game_board=game_board, cur_moves=cur_moves, color=self._color)
+            game_board=game_board, color=self._color)
         return proposed_move
 
     def illegal_move_notice_response(
