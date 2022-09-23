@@ -1,9 +1,8 @@
-from typing import Dict
-
 import numpy as np
-from xiangqigame.enums import PieceType, PieceColor
+from xiangqigame.enums import PieceType
 
-base_pts_icga_2004 = {
+
+base_points = {
     PieceType.GENERAL: 6000,
     PieceType.ADVISOR: 120,
     PieceType.ELEPHANT: 120,
@@ -13,47 +12,11 @@ base_pts_icga_2004 = {
     PieceType.SOLDIER: 30
 }
 
+general_position = np.zeros(90).reshape((10, 9))
+advisor_position = np.zeros(90).reshape((10, 9))
+elephant_position = np.zeros(90).reshape((10, 9))
 
-class BasePoints:
-
-    def __init__(self, piece_vals: Dict[PieceType, int]):
-        assert set(piece_vals.keys()) == set(PieceType.__members__.values()) - {PieceType.NULL_PIECE}
-        self._piece_vals = piece_vals
-
-    @property
-    def vals(self):
-        return self._piece_vals
-
-
-class PositionPts:
-
-    def __init__(
-            self,
-            pts_arrays_black: Dict[PieceType, np.array],
-            pts_arrays_red: Dict[PieceType, np.array] = None
-    ):
-        assert set(pts_arrays_black.keys()) == set(
-            PieceType.__members__.values()) - {PieceType.NULL_PIECE}
-        if pts_arrays_red:
-            assert set(pts_arrays_red.keys()) == set(
-                PieceType.__members__.values()).remove(PieceType.NULL_PIECE)
-        if pts_arrays_red is None:
-            pts_arrays_red = {piece_type: np.flip(pts_array, axis=0) for
-                                piece_type, pts_array in pts_arrays_black.items()}
-        self._pts_arrays = {
-            PieceColor.RED: pts_arrays_red,
-            PieceColor.BLACK: pts_arrays_black}
-
-    @property
-    def vals(self):
-        return self._pts_arrays
-
-
-general_position_icga_2004 = np.zeros(90).reshape((10, 9))
-advisor_position_icga_2004 = np.zeros(90).reshape((10, 9))
-elephant_position_icga_2004 = np.zeros(90).reshape((10, 9))
-
-chariot_position_icga_2004 = np.array([
+chariot_position = np.array([
     [-2, 10, 6, 14, 12, 14, 6, 10, -2],
     [8, 4, 8, 16, 8, 16, 8, 4, 8],
     [4, 8, 6, 14, 12, 14, 6, 8, 4],
@@ -66,7 +29,7 @@ chariot_position_icga_2004 = np.array([
     [14, 14, 12, 18, 16, 18, 12, 14, 14]
 ])
 
-horse_position_icga_2004 = np.array([
+horse_position = np.array([
     [0, -4, 0, 0, 0, 0, 0, -4, 0],
     [0, 2, 4, 4, -2, 4, 4, 2, 0],
     [4, 2, 8, 8, 4, 8, 8, 2, 4],
@@ -79,7 +42,7 @@ horse_position_icga_2004 = np.array([
     [4, 8, 16, 12, 4, 12, 16, 8, 4]
 ])
 
-cannon_position_icga_2004 = np.array([
+cannon_position = np.array([
     [0, 0, 2, 6, 6, 6, 2, 0, 0],
     [0, 2, 4, 6, 6, 6, 4, 2, 0],
     [4, 0, 8, 6, 10, 6, 8, 0, 4],
@@ -92,7 +55,8 @@ cannon_position_icga_2004 = np.array([
     [6, 4, 0, -10, -12, -10, 0, 4, 6]
 ])
 
-soldier_position_icga_2004 = np.array([
+
+soldier_position = np.array([
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -105,12 +69,17 @@ soldier_position_icga_2004 = np.array([
     [0, 3, 6, 9, 12, 9, 6, 3, 0]
 ])
 
-position_points_icga_2004 = {
-    PieceType.GENERAL: general_position_icga_2004,
-    PieceType.ADVISOR: advisor_position_icga_2004,
-    PieceType.ELEPHANT: elephant_position_icga_2004,
-    PieceType.CHARIOT: chariot_position_icga_2004,
-    PieceType.HORSE: horse_position_icga_2004,
-    PieceType.CANNON: cannon_position_icga_2004,
-    PieceType.SOLDIER: soldier_position_icga_2004
+position_points = {
+    PieceType.GENERAL: general_position,
+    PieceType.ADVISOR: advisor_position,
+    PieceType.ELEPHANT: elephant_position,
+    PieceType.CHARIOT: chariot_position,
+    PieceType.HORSE: horse_position,
+    PieceType.CANNON: cannon_position,
+    PieceType.SOLDIER: soldier_position
 }
+
+
+
+
+
