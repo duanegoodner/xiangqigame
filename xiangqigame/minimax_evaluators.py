@@ -148,28 +148,23 @@ class PiecePoints(MinimaxEvaluator):
             game_board: GameBoard,
             cur_player: PieceColor) -> RatedMove:
 
-        if move.end in game_board.get_all_spaces_occupied_by(br.opponent_of[cur_player]):
-            return RatedMove(move=move, rating=1)
-        else:
-            return RatedMove(move=move, rating=0)
+        piece_type = game_board.get_type(move.start)
+        cur_player_position_array = self._position_pts.vals[cur_player][
+            piece_type]
+        position_value_delta = self._position_multiplier * (
+                cur_player_position_array[move.end.rank, move.end.file] -
+                cur_player_position_array[move.start.rank, move.start.file]
+        )
 
-        # piece_type = game_board.get_type(move.start)
-        # cur_player_position_array = self._position_pts.vals[cur_player][
-        #     piece_type]
-        # position_value_delta = self._position_multiplier * (
-        #         cur_player_position_array[move.end.rank, move.end.file] -
-        #         cur_player_position_array[move.start.rank, move.start.file]
-        # )
-        #
-        # if game_board.get_color(move.end) == br.opponent_of[cur_player]:
-        #     captured_piece_type = game_board.get_type(move.end)
-        #     opponent_position_array = self._position_pts.vals[
-        #         br.opponent_of[cur_player]][captured_piece_type]
-        #     capture_val = (
-        #             self._base_pts.vals[captured_piece_type] +
-        #             self._position_multiplier *
-        #             opponent_position_array[move.end.rank, move.end.file])
-        # else:
-        #     capture_val = 0
-        #
-        # return RatedMove(move=move, rating=position_value_delta + capture_val)
+        if game_board.get_color(move.end) == br.opponent_of[cur_player]:
+            captured_piece_type = game_board.get_type(move.end)
+            opponent_position_array = self._position_pts.vals[
+                br.opponent_of[cur_player]][captured_piece_type]
+            capture_val = (
+                    self._base_pts.vals[captured_piece_type] +
+                    self._position_multiplier *
+                    opponent_position_array[move.end.rank, move.end.file])
+        else:
+            capture_val = 0
+
+        return RatedMove(move=move, rating=position_value_delta + capture_val)

@@ -126,7 +126,7 @@ cur_evaluator = PiecePoints(
     base_pts=base_pts, position_pts=position_pts, position_multiplier=1)
 
 start = time.time()
-result = minimax(game_board=cur_board, search_depth=4, alpha=-np.inf,
+result = minimax(game_board=cur_board, search_depth=2, alpha=-np.inf,
                  beta=np.inf, cur_player=PieceColor.RED,
                  initiating_player=PieceColor.RED,
                  evaluator=cur_evaluator)
