@@ -40,14 +40,11 @@ def minimax(
         # else:
         #     return BestMoves(best_eval=np.inf, best_moves=set())
 
-    opponent_moves = game_board.calc_final_moves_of(color=br.opponent_of[cur_player])
-
     if search_depth == 0:
         return evaluator.evaluate_leaf(
             game_board=game_board,
             cur_player=cur_player,
             cur_player_moves=cur_moves,
-            opponent_moves=opponent_moves,
             initiating_player=initiating_player)
 
         # opponent_moves = game_board.calc_final_moves_of(
@@ -129,7 +126,7 @@ cur_evaluator = PiecePoints(
     base_pts=base_pts, position_pts=position_pts, position_multiplier=1)
 
 start = time.time()
-result = minimax(game_board=cur_board, search_depth=3, alpha=-np.inf,
+result = minimax(game_board=cur_board, search_depth=4, alpha=-np.inf,
                  beta=np.inf, cur_player=PieceColor.RED,
                  initiating_player=PieceColor.RED,
                  evaluator=cur_evaluator)

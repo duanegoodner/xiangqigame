@@ -36,7 +36,6 @@ class MinimaxEvaluator(abc.ABC):
             game_board: GameBoard,
             cur_player: PieceColor,
             cur_player_moves: Set[Move],
-            opponent_moves: Set[Move],
             initiating_player: PieceColor) -> BestMoves:
         pass
 
@@ -68,7 +67,6 @@ class MoveCounts(MinimaxEvaluator):
             game_board: GameBoard,
             cur_player: PieceColor,
             cur_player_moves: Set[Move],
-            opponent_moves: Set[Move],
             initiating_player: PieceColor) -> BestMoves:
         updated_opponent_moves = game_board.calc_final_moves_of(
             color=br.opponent_of[cur_player])
@@ -117,7 +115,7 @@ class PiecePoints(MinimaxEvaluator):
                 self._position_pts.vals[color][piece_type][
                     space.rank, space.file])
 
-    def get_pre_attack_total(self, color: PieceColor, game_board: GameBoard):
+    def get_player_total(self, color: PieceColor, game_board: GameBoard):
         pre_attack_total = 0
         for space in game_board.get_all_spaces_occupied_by(color):
             piece_type = game_board.get_type(space)
@@ -125,42 +123,15 @@ class PiecePoints(MinimaxEvaluator):
                 color=color, piece_type=piece_type, space=space)
         return pre_attack_total
 
-    def get_under_attack_deduction(
-            self,
-            color: PieceColor,
-            game_board: GameBoard,
-            opponent_moves: Set[Move]):
-
-        deduction_sum = 0
-        num_under_attack = 0
-
-        for space in game_board.get_all_spaces_occupied_by(color):
-            if space in {move.end for move in opponent_moves}:
-                piece_type = game_board.get_type(space)
-                deduction_sum += self.get_value_of_piece_at_position(
-                    color=color, piece_type=piece_type, space=space)
-                num_under_attack += 1
-
-        if num_under_attack > 0:
-            return deduction_sum / num_under_attack
-        else:
-            return 0
-
     def evaluate_leaf(
             self,
             game_board: GameBoard,
             cur_player: PieceColor,
             cur_player_moves: Set[Move],
-            opponent_moves: Set[Move],
             initiating_player: PieceColor) -> BestMoves:
-        cur_player_pts = (
-                self.get_pre_attack_total(cur_player, game_board) -
-                self.get_under_attack_deduction(
-                    color=cur_player,
-                    game_board=game_board,
-                    opponent_moves=opponent_moves))
-        opponent_pts = self.get_pre_attack_total(br.opponent_of[cur_player],
-                                                 game_board)
+        cur_player_pts = self.get_player_total(cur_player, game_board)
+        opponent_pts = self.get_player_total(br.opponent_of[cur_player],
+                                             game_board)
 
         if cur_player == initiating_player:
             return BestMoves(
