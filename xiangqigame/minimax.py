@@ -10,6 +10,7 @@ from xiangqigame.enums import PieceColor
 from xiangqigame.game_board import GameBoard
 from xiangqigame.minimax_evaluators import BestMoves, MinimaxEvaluator, \
     MoveCounts, PiecePoints
+import xiangqigame.piece_points as pts
 from xiangqigame.move import Move
 
 # class BestMoves(NamedTuple):
@@ -39,11 +40,14 @@ def minimax(
         # else:
         #     return BestMoves(best_eval=np.inf, best_moves=set())
 
+    opponent_moves = game_board.calc_final_moves_of(color=br.opponent_of[cur_player])
+
     if search_depth == 0:
         return evaluator.evaluate_leaf(
             game_board=game_board,
             cur_player=cur_player,
             cur_player_moves=cur_moves,
+            opponent_moves=opponent_moves,
             initiating_player=initiating_player)
 
         # opponent_moves = game_board.calc_final_moves_of(
@@ -119,9 +123,13 @@ def minimax(
 game_config = json.loads(
     pkgutil.get_data('xiangqigame.data', 'game_start.json'))
 cur_board = GameBoard(game_config['board_data'])
+base_pts = pts.BasePoints(piece_vals=pts.base_pts_icga_2004)
+position_pts = pts.PositionPts(pts_arrays_red=pts.position_points_icga_2004)
+cur_evaluator = PiecePoints(
+    base_pts=base_pts, position_pts=position_pts, position_multiplier=1)
+
 start = time.time()
-cur_evaluator = PiecePoints(position_multiplier=1)
-result = minimax(game_board=cur_board, search_depth=4, alpha=-np.inf,
+result = minimax(game_board=cur_board, search_depth=3, alpha=-np.inf,
                  beta=np.inf, cur_player=PieceColor.RED,
                  initiating_player=PieceColor.RED,
                  evaluator=cur_evaluator)

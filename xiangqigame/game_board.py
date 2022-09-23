@@ -1,5 +1,4 @@
 import numpy as np
-import colorama as cr
 
 from typing import Set
 from xiangqigame.board_rules import BOARD_RULES as br
@@ -12,10 +11,6 @@ from xiangqigame.utilities import board_utilities as bu
 
 
 class GameBoard:
-    # opponent_of = {
-    #     PieceColor.RED: PieceColor.BLACK,
-    #     PieceColor.BLACK: PieceColor.RED
-    # }
 
     def __init__(self, board_data):
         assert len(board_data[0]) == br.num_files
