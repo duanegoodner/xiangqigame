@@ -71,7 +71,7 @@ class GameBoard:
         self.set_occupant(move.spaces.start, move.moving_piece)
         self.set_occupant(move.spaces.end, move.destination_piece)
 
-    def get_all_spaces_occupied_by(self, color):
+    def get_all_spaces_occupied_by(self, color) -> Set[BoardSpace]:
         return {BoardSpace(rank, file) for rank in
                 range(br.num_ranks) for file in
                 range(br.num_files) if

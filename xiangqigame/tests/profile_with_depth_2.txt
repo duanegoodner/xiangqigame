@@ -1,0 +1,63 @@
+/Users/duane/miniconda3/envs/xiangqigame/bin/python /Users/duane/dproj/xiangqigame/xiangqigame/minimax.py
+         33463417 function calls (33463034 primitive calls) in 14.969 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      384    0.000    0.000    0.000    0.000 <string>:1(<lambda>)
+        1    0.000    0.000   16.577   16.577 <string>:1(<module>)
+  3060150    1.310    0.000    2.279    0.000 board_components.py:39(add_board_vector)
+   225299    0.134    0.000    0.206    0.000 board_components.py:43(is_in_castle_of)
+    31832    0.006    0.000    0.006    0.000 board_utilities.py:34(in_same_file)
+  3654535    0.942    0.000    0.942    0.000 board_utilities.py:38(is_on_board)
+   404649    0.335    0.000    0.673    0.000 board_utilities.py:43(is_in_homeland_of)
+    31832    0.022    0.000    0.304    0.000 board_utilities.py:48(get_adjacent_spaces)
+    31832    0.087    0.000    0.282    0.000 board_utilities.py:56(<setcomp>)
+  2477913    0.514    0.000    0.761    0.000 enum.py:774(__hash__)
+   690200    1.555    0.000    3.927    0.000 game_board.py:108(search_spaces)
+   159053    0.339    0.000    0.970    0.000 game_board.py:127(soldier_moves)
+    63649    0.358    0.000    4.037    0.000 game_board.py:139(cannon_moves)
+   926483    0.271    0.000    0.486    0.000 game_board.py:145(<genexpr>)
+    63664    0.295    0.000    1.630    0.000 game_board.py:161(chariot_moves)
+   408120    0.095    0.000    0.147    0.000 game_board.py:167(<genexpr>)
+    62012    0.287    0.000    1.084    0.000 game_board.py:180(horse_moves)
+    68444    0.048    0.000    0.148    0.000 game_board.py:186(<listcomp>)
+   182229    0.119    0.000    0.243    0.000 game_board.py:190(<genexpr>)
+    63664    0.390    0.000    1.345    0.000 game_board.py:197(elephant_moves)
+    63650    0.230    0.000    0.658    0.000 game_board.py:217(advisor_moves)
+    31832    0.086    0.000    0.530    0.000 game_board.py:229(flying_general_moves)
+   120649    0.031    0.000    0.031    0.000 game_board.py:238(<genexpr>)
+    31832    0.036    0.000    0.548    0.000 game_board.py:244(standard_general_moves)
+    31832    0.070    0.000    0.208    0.000 game_board.py:247(<setcomp>)
+    31832    0.034    0.000    1.112    0.000 game_board.py:252(general_moves)
+   507524    0.588    0.000   11.946    0.000 game_board.py:268(calc_temp_moves_from)
+    31109    0.495    0.000   15.346    0.000 game_board.py:272(calc_temp_moves_of)
+    11552    0.169    0.000   16.442    0.001 game_board.py:280(calc_final_moves_from)
+    31109    0.111    0.000    0.111    0.000 game_board.py:288(<setcomp>)
+      723    0.053    0.000   16.569    0.023 game_board.py:300(calc_final_moves_of)
+   315853    0.164    0.000    0.164    0.000 game_board.py:46(is_occupied)
+  1828153    0.617    0.000    0.617    0.000 game_board.py:50(get_occupant)
+   507524    0.154    0.000    0.154    0.000 game_board.py:53(get_type)
+  3842598    1.236    0.000    1.236    0.000 game_board.py:56(get_color)
+   125968    0.047    0.000    0.047    0.000 game_board.py:59(set_occupant)
+    31492    0.065    0.000    0.120    0.000 game_board.py:62(execute_move)
+    31492    0.024    0.000    0.050    0.000 game_board.py:70(undo_move)
+    31832    0.027    0.000    3.259    0.000 game_board.py:74(get_all_spaces_occupied_by)
+    31832    1.407    0.000    3.233    0.000 game_board.py:75(<setcomp>)
+    62941    0.192    0.000    0.708    0.000 game_board.py:80(get_general_position)
+    62941    0.209    0.000    0.383    0.000 game_board.py:82(<listcomp>)
+    31798    0.028    0.000    0.028    0.000 game_board.py:91(get_vertical_path)
+    384/1    0.005    0.000   16.577   16.577 minimax.py:22(minimax_red)
+  8551820    1.028    0.000    1.028    0.000 {built-in method __new__ of type object at 0x10add9a40}
+    31798    0.017    0.000    0.043    0.000 {built-in method builtins.all}
+        1    0.000    0.000   16.577   16.577 {built-in method builtins.exec}
+  2477913    0.247    0.000    0.247    0.000 {built-in method builtins.hash}
+      678    0.000    0.000    0.000    0.000 {built-in method builtins.len}
+       44    0.000    0.000    0.000    0.000 {built-in method builtins.max}
+      339    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+   390118    0.051    0.000    0.051    0.000 {method 'add' of 'set' objects}
+   966481    0.089    0.000    0.089    0.000 {method 'append' of 'list' objects}
+      119    0.000    0.000    0.000    0.000 {method 'clear' of 'set' objects}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+    62012    0.007    0.000    0.007    0.000 {method 'keys' of 'dict' objects}
+   577696    0.344    0.000    1.219    0.000 {method 'update' of 'set' objects}
