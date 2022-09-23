@@ -1,6 +1,6 @@
 import abc
 import numpy as np
-from typing import Set, NamedTuple, Dict
+from typing import Set, NamedTuple
 
 from xiangqigame.board_components import BoardSpace
 
@@ -93,17 +93,13 @@ class MoveCounts(MinimaxEvaluator):
 class PiecePoints(MinimaxEvaluator):
 
     def __init__(self,
-                 # color: PieceColor,
                  base_pts: pts.BasePoints,
                  position_pts: pts.PositionPts,
-                 # base_multiplier: int = 1,
                  position_multiplier: int = 1,
 
                  ):
-        # self._color = color
         self._base_pts = base_pts
         self._position_pts = position_pts
-        # self._base_multiplier = base_multiplier
         self._position_multiplier = position_multiplier
 
     def get_value_of_piece_at_position(

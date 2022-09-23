@@ -13,7 +13,7 @@ class Player(abc.ABC):
         self._color = color
 
     @abc.abstractmethod
-    def propose_move(self, game_board: GameBoard) -> Move:
+    def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
         pass
 
     @abc.abstractmethod

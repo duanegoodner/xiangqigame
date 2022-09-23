@@ -6,6 +6,7 @@ from xiangqigame.game_board import GameBoard
 from xiangqigame.game_interfaces import Player
 import xiangqigame.terminal_output as msg
 from xiangqigame.enums import PieceColor
+from xiangqigame.move_selectors import MoveSelector
 from xiangqigame.move import Move
 
 
@@ -71,13 +72,13 @@ class AIPlayer(Player):
     def __init__(
             self,
             color: PieceColor,
-            move_selector: Callable[..., Move]):
+            move_selector: MoveSelector):
         super().__init__(color)
         self._move_selector = move_selector
 
-    def propose_move(self, game_board: GameBoard) -> Move:
-        proposed_move = self._move_selector(
-            game_board=game_board, color=self._color)
+    def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
+        proposed_move = self._move_selector.select_move(
+            game_board=game_board, cur_player=self._color, cur_moves=cur_moves)
         return proposed_move
 
     def illegal_move_notice_response(
