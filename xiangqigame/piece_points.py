@@ -29,17 +29,17 @@ class PositionPts:
 
     def __init__(
             self,
-            pts_arrays_red: Dict[PieceType, np.array],
-            pts_arrays_black: Dict[PieceType, np.array] = None
+            pts_arrays_black: Dict[PieceType, np.array],
+            pts_arrays_red: Dict[PieceType, np.array] = None
     ):
-        assert set(pts_arrays_red.keys()) == set(
+        assert set(pts_arrays_black.keys()) == set(
             PieceType.__members__.values()) - {PieceType.NULL_PIECE}
-        if pts_arrays_black:
+        if pts_arrays_red:
             assert set(pts_arrays_red.keys()) == set(
                 PieceType.__members__.values()).remove(PieceType.NULL_PIECE)
-        if pts_arrays_black is None:
-            pts_arrays_black = {piece_type: np.flip(pts_array, axis=0) for
-                                piece_type, pts_array in pts_arrays_red.items()}
+        if pts_arrays_red is None:
+            pts_arrays_red = {piece_type: np.flip(pts_array, axis=0) for
+                                piece_type, pts_array in pts_arrays_black.items()}
         self._pts_arrays = {
             PieceColor.RED: pts_arrays_red,
             PieceColor.BLACK: pts_arrays_black}
