@@ -1,11 +1,14 @@
 import abc
 import numpy as np
-from typing import Set, NamedTuple
+from typing import Set, NamedTuple, Dict
+
+from xiangqigame.board_components import BoardSpace
+
 import xiangqigame.piece_points as pts
 from xiangqigame.board_rules import BOARD_RULES as br
 from xiangqigame.move import Move
 from xiangqigame.game_board import GameBoard
-from xiangqigame.enums import PieceColor
+from xiangqigame.enums import PieceColor, PieceType
 
 
 class BestMoves(NamedTuple):
@@ -33,6 +36,7 @@ class MinimaxEvaluator(abc.ABC):
             game_board: GameBoard,
             cur_player: PieceColor,
             cur_player_moves: Set[Move],
+            opponent_moves: Set[Move],
             initiating_player: PieceColor) -> BestMoves:
         pass
 
@@ -64,16 +68,17 @@ class MoveCounts(MinimaxEvaluator):
             game_board: GameBoard,
             cur_player: PieceColor,
             cur_player_moves: Set[Move],
+            opponent_moves: Set[Move],
             initiating_player: PieceColor) -> BestMoves:
-        opponent_moves = game_board.calc_final_moves_of(
+        updated_opponent_moves = game_board.calc_final_moves_of(
             color=br.opponent_of[cur_player])
         if cur_player == initiating_player:
             return BestMoves(
-                best_eval=len(cur_player_moves) - len(opponent_moves),
+                best_eval=len(cur_player_moves) - len(updated_opponent_moves),
                 best_moves=set())
         else:
             return BestMoves(
-                best_eval=len(opponent_moves) - len(cur_player_moves),
+                best_eval=len(updated_opponent_moves) - len(cur_player_moves),
                 best_moves=set())
 
     def rate_move(
@@ -89,27 +94,73 @@ class MoveCounts(MinimaxEvaluator):
 
 class PiecePoints(MinimaxEvaluator):
 
-    def __init__(self, position_multiplier: int = 1):
+    def __init__(self,
+                 # color: PieceColor,
+                 base_pts: pts.BasePoints,
+                 position_pts: pts.PositionPts,
+                 # base_multiplier: int = 1,
+                 position_multiplier: int = 1,
+
+                 ):
+        # self._color = color
+        self._base_pts = base_pts
+        self._position_pts = position_pts
+        # self._base_multiplier = base_multiplier
         self._position_multiplier = position_multiplier
 
-    def get_point_total(self, color: PieceColor, game_board: GameBoard):
-        player_total = 0
+    def get_value_of_piece_at_position(
+            self,
+            color: PieceColor,
+            piece_type: PieceType,
+            space: BoardSpace):
+        return (self._base_pts.vals[piece_type] + self._position_multiplier *
+                self._position_pts.vals[color][piece_type][
+                    space.rank, space.file])
+
+    def get_pre_attack_total(self, color: PieceColor, game_board: GameBoard):
+        pre_attack_total = 0
         for space in game_board.get_all_spaces_occupied_by(color):
             piece_type = game_board.get_type(space)
-            player_total += (
-                    pts.base_points[piece_type] + self._position_multiplier *
-                    pts.position_points[piece_type][space.rank, space.file])
-        return player_total
+            pre_attack_total += self.get_value_of_piece_at_position(
+                color=color, piece_type=piece_type, space=space)
+        return pre_attack_total
+
+    def get_under_attack_deduction(
+            self,
+            color: PieceColor,
+            game_board: GameBoard,
+            opponent_moves: Set[Move]):
+
+        deduction_sum = 0
+        num_under_attack = 0
+
+        for space in game_board.get_all_spaces_occupied_by(color):
+            if space in {move.end for move in opponent_moves}:
+                piece_type = game_board.get_type(space)
+                deduction_sum += self.get_value_of_piece_at_position(
+                    color=color, piece_type=piece_type, space=space)
+                num_under_attack += 1
+
+        if num_under_attack > 0:
+            return deduction_sum / num_under_attack
+        else:
+            return 0
 
     def evaluate_leaf(
             self,
             game_board: GameBoard,
             cur_player: PieceColor,
             cur_player_moves: Set[Move],
+            opponent_moves: Set[Move],
             initiating_player: PieceColor) -> BestMoves:
-        cur_player_pts = self.get_point_total(cur_player, game_board)
-        opponent_pts = self.get_point_total(br.opponent_of[cur_player],
-                                            game_board)
+        cur_player_pts = (
+                self.get_pre_attack_total(cur_player, game_board) -
+                self.get_under_attack_deduction(
+                    color=cur_player,
+                    game_board=game_board,
+                    opponent_moves=opponent_moves))
+        opponent_pts = self.get_pre_attack_total(br.opponent_of[cur_player],
+                                                 game_board)
 
         if cur_player == initiating_player:
             return BestMoves(
@@ -126,19 +177,22 @@ class PiecePoints(MinimaxEvaluator):
             game_board: GameBoard,
             cur_player: PieceColor) -> RatedMove:
         piece_type = game_board.get_type(move.start)
-        position_pts_array = pts.position_points[piece_type]
+        cur_player_position_array = self._position_pts.vals[cur_player][
+            piece_type]
+        # position_pts_array = pts.position_points[piece_type]
         position_value_delta = self._position_multiplier * (
-            position_pts_array[move.end.rank, move.end.file] -
-            position_pts_array[move.start.rank, move.start.file]
+                cur_player_position_array[move.end.rank, move.end.file] -
+                cur_player_position_array[move.start.rank, move.start.file]
         )
 
         if game_board.get_color(move.end) == br.opponent_of[cur_player]:
             captured_piece_type = game_board.get_type(move.end)
+            opponent_position_array = self._position_pts.vals[
+                br.opponent_of[cur_player]][captured_piece_type]
             capture_val = (
-                    pts.base_points[captured_piece_type] +
+                    self._base_pts.vals[captured_piece_type] +
                     self._position_multiplier *
-                    pts.position_points[captured_piece_type]
-                    [move.end.rank, move.end.file])
+                    opponent_position_array[move.end.rank, move.end.file])
         else:
             capture_val = 0
 
