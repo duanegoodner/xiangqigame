@@ -2,15 +2,6 @@ from xiangqigame.board_rules import BOARD_RULES as br
 from xiangqigame.enums import PieceColor
 from xiangqigame.board_components import BoardSpace, BoardVector#, river_edges
 
-# board_dim = {
-#     'num_files': 9,
-#     'num_ranks': 10
-# }
-
-# forward_direction = {
-#     PieceColor.RED: 1,
-#     PieceColor.BLACK: -1
-# }
 
 board_vectors_horiz = [BoardVector(0, 1), BoardVector(0, -1)]
 board_vectors_vert = [BoardVector(1, 0), BoardVector(-1, 0)]

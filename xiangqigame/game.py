@@ -36,21 +36,25 @@ class Game:
 
     def is_in_check(self, color: PieceColor):
         opp_destinations = {
-            move[1] for move in self._board.calc_final_moves_of(br.opponent_of[color])}
+            move[1] for move in self._board.calc_final_moves_of(
+                br.opponent_of[color])}
         return self._board.get_general_position(color) in opp_destinations
 
     def change_whose_turn(self):
         self._whose_turn = br.opponent_of[self._whose_turn]
 
     def is_valid_move(self, proposed_move: Move):
-        return proposed_move in self._board.calc_final_moves_of(self._whose_turn)
+        return proposed_move in self._board.calc_final_moves_of(
+            self._whose_turn)
 
     def get_valid_move(self):
         valid_move = None
         while not valid_move:
             proposed_move = self._players[self._whose_turn].propose_move(
-                self._board, cur_moves=self._board.calc_final_moves_of(self._whose_turn))
-            if proposed_move in self._board.calc_final_moves_of(self._whose_turn):
+                self._board, cur_moves=self._board.calc_final_moves_of(
+                    self._whose_turn))
+            if proposed_move in self._board.calc_final_moves_of(
+                    self._whose_turn):
                 valid_move = proposed_move
             else:
                 self._players[self._whose_turn].illegal_move_notice_response(

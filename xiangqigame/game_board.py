@@ -1,5 +1,4 @@
 import numpy as np
-import colorama as cr
 
 from typing import Set
 from xiangqigame.board_rules import BOARD_RULES as br
@@ -12,10 +11,6 @@ from xiangqigame.utilities import board_utilities as bu
 
 
 class GameBoard:
-    # opponent_of = {
-    #     PieceColor.RED: PieceColor.BLACK,
-    #     PieceColor.BLACK: PieceColor.RED
-    # }
 
     def __init__(self, board_data):
         assert len(board_data[0]) == br.num_files
@@ -71,7 +66,7 @@ class GameBoard:
         self.set_occupant(move.spaces.start, move.moving_piece)
         self.set_occupant(move.spaces.end, move.destination_piece)
 
-    def get_all_spaces_occupied_by(self, color):
+    def get_all_spaces_occupied_by(self, color) -> Set[BoardSpace]:
         return {BoardSpace(rank, file) for rank in
                 range(br.num_ranks) for file in
                 range(br.num_files) if
