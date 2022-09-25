@@ -11,21 +11,5 @@
     ["--", "--", "--", "--", "--", "--", "--", "--", "--"],
     ["Rr", "Hr", "Er", "Ar", "Gr", "Ar", "Er", "Hr", "Rr"]
   ],
-  "code_to_color": {
-    "r": "RED",
-    "b": "BLACK",
-    "-": "NULL_COLOR"
-  },
-  "code_to_piece_type": {
-    "R": "CHARIOT",
-    "H": "HORSE",
-    "E": "ELEPHANT",
-    "A": "ADVISOR",
-    "G": "GENERAL",
-    "C": "CANNON",
-    "S": "SOLDER",
-    "-": "NULL_PIECE"
-  },
-  "game_state": "UNFINISHED",
-  "whose_turn": "RED"
+
 }
