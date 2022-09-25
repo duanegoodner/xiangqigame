@@ -39,14 +39,14 @@ class GameBoard:
         return str('\n\n'.join([str(rank) for rank in board_list]))
 
     def is_occupied(self, space: BoardSpace):
-        return self._map[space.rank][space.file][
+        return self._map[space][
                    'type'] != PieceType.NULL_PIECE
 
     def get_occupant(self, space: BoardSpace):
         return self._map[space.rank][space.file]
 
     def get_type(self, space: BoardSpace):
-        return self._map[space.rank][space.file]['type']
+        return self._map[space]['type']
 
     def get_color(self, space: BoardSpace) -> PieceColor:
         return self._map[space.rank][space.file]['color']
