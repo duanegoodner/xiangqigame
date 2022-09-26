@@ -32,17 +32,6 @@ class GamePiece(NamedTuple):
     piece_type: PieceType
 
 
-# class Move(NamedTuple):
-#     start: BoardSpace
-#     end: BoardSpace
-
-
-# class ExecutedMove(NamedTuple):
-#     spaces: NDArray[Shape["2, 2"], Int]
-#     moving_piece: GamePiece
-#     destination_piece: GamePiece
-
-
 class StartingBoardBuilder:
 
     @property
@@ -107,7 +96,7 @@ class GameBoard:
         return self._map[tuple(space)] != 0
 
     def get_piece_type(self, space: NDArray[Shape["2"], Int]):
-        return PieceType(self._map[space[0], space[1]])
+        return PieceType(np.abs(self._map[space[0], space[1]]))
 
     def get_piece_color(self, space: NDArray[Shape["2"], Int]):
         return PieceColor(
@@ -118,9 +107,28 @@ class GameBoard:
         return np.array([color.value, 0])
 
     # TODO consider using lower level array manip instead of set_occupant
-    def set_occupant(self, space: NDArray[Shape["2"], Int], piece: GamePiece):
-        self._map[space[0], space[1]] = piece
+    # def set_occupant(self, space: NDArray[Shape["2"], Int], piece: GamePiece):
+    #     self._map[space[0], space[1]] = piece
                 # piece.color.value * piece.piece_type.value
+
+    def get_slice(
+            self,
+            from_space: NDArray[Shape["2"], Int],
+            direction: NDArray[Shape["2"], Int]):
+
+        slice_axis = np.argwhere(direction != 0).item()
+        slice_sign = np.sign(direction[slice_axis])
+        slice_from = from_space[slice_axis]
+
+        if slice_sign > 0:
+            slice_obj = slice(slice_from + 1, self._map.shape[slice_axis])
+        else:
+            slice_obj = slice(0, slice_from)
+
+        if slice_axis == 0:
+            return self._map[slice_obj, from_space[1]]
+        else:
+            return self._map[from_space[0], slice_obj]
 
     def execute_move(
             self,
@@ -140,8 +148,8 @@ class GameBoard:
 
     def undo_move(self, executed_move: NDArray[Shape["6"], Int]):
 
-        self.set_occupant(executed_move[:2], executed_move[4])
-        self.set_occupant(executed_move[2:4], executed_move[5])
+        self._map[tuple(executed_move[:2])] = executed_move[4]
+        self._map[tuple(executed_move[2:4])] = executed_move[5]
 
     def get_all_spaces_occupied_by(
             self, color: PieceColor) -> NDArray[Shape["*, 2"], Int]:
@@ -153,11 +161,24 @@ class GameBoard:
     def is_in_homeland_of(
             self, color: PieceColor, space: NDArray[Shape["2"], Int]) -> bool:
         if color == PieceColor.RED:
-            return space[1] >= self._river_edge_red
+            return space[0] >= self._river_edge_red
         if color == PieceColor.BLK:
-            return space[1] <= self._river_edge_black
+            return space[0] <= self._river_edge_black
 
-    def remove_off_board_spaces(self, spaces: NDArray[Shape["2, *"], Int]):
+    def search_spaces(
+            self,
+            from_space: NDArray[Shape["2"], Int],
+            direction: NDArray[Shape["2"], Int]):
+        search_axis = np.argwhere(direction != 0).item()
+        non_search_axis = int(not search_axis)
+        search_sign = np.sign(direction[search_axis])
+
+
+
+
+    def remove_off_board_spaces(
+            self,
+            spaces: NDArray[Shape["2, *"], Int]):
         return spaces[
             (spaces[:, 0] >= 0) &
             (spaces[:, 1] >= 0) &
@@ -183,16 +204,6 @@ class GameBoard:
              destinations))
 
 
-# starting_board = StartingBoardBuilder().build_initial_board()
-# print(starting_board)
-# print(np.sign(starting_board))
-
 game_board = GameBoard()
-result = game_board.soldier_moves(np.array([6, 2]), color=PieceColor.RED)
-
-print(game_board._map)
-
-move = np.array([6, 2, 5, 2])
-game_board.execute_move(move)
-print()
-print(game_board._map)
+my_slice = game_board.get_slice(np.array([6, 0]), np.array([0, 1]))
+print(my_slice)
