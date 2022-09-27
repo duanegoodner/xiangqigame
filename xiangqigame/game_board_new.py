@@ -32,6 +32,17 @@ class GamePiece(NamedTuple):
     piece_type: PieceType
 
 
+class Move(NamedTuple):
+    start: Tuple[int, int]
+    end: Tuple[int, int]
+
+
+class ExecutedMove(NamedTuple):
+    move: Move
+    moving_piece: int
+    destination_piece: int
+
+
 class StartingBoardBuilder:
 
     @property
@@ -92,33 +103,31 @@ class GameBoard:
             board_map = StartingBoardBuilder().build_initial_board()
         self._map = board_map
 
-    def is_occupied(self, space: NDArray[Shape["2"], Int]):
-        return self._map[tuple(space)] != 0
+    def is_occupied(self, space: Tuple[int, int]):
+        return self._map[space] != 0
 
-    def get_piece_type(self, space: NDArray[Shape["2"], Int]):
-        return PieceType(np.abs(self._map[space[0], space[1]]))
+    def get_piece_type(self, space: Tuple[int, int]):
+        return PieceType(np.abs(self._map[space]))
 
-    def get_piece_color(self, space: NDArray[Shape["2"], Int]):
+    def get_piece_color(self, space: Tuple[int, int]):
         return PieceColor(
-            np.sign(self._map[tuple(space)]))
+            np.sign(self._map[space]))
 
     @staticmethod
     def forward_direction(color: PieceColor):
         return np.array([color.value, 0])
 
-    # TODO consider using lower level array manip instead of set_occupant
-    # def set_occupant(self, space: NDArray[Shape["2"], Int], piece: GamePiece):
-    #     self._map[space[0], space[1]] = piece
-                # piece.color.value * piece.piece_type.value
-
     def get_slice(
             self,
-            from_space: NDArray[Shape["2"], Int],
-            direction: NDArray[Shape["2"], Int]):
+            from_space: Tuple[int, int],
+            direction: Tuple[int, int]):
 
-        slice_axis = np.argwhere(direction != 0).item()
-        slice_sign = np.sign(direction[slice_axis])
-        slice_from = from_space[slice_axis]
+        from_array = np.array(from_space)
+        direction_array = np.array(direction)
+
+        slice_axis = np.argwhere(direction_array != 0).item()
+        slice_sign = np.sign(direction_array[slice_axis])
+        slice_from = from_array[slice_axis]
 
         if slice_sign > 0:
             slice_obj = slice(slice_from + 1, self._map.shape[slice_axis])
@@ -132,24 +141,24 @@ class GameBoard:
 
     def execute_move(
             self,
-            move: NDArray[Shape["4"], Int]) -> NDArray[Shape["6"], Int]:
-        start = move[:2]
-        end = move[2:]
-        moving_piece = self._map[tuple(start)]
-        destination_piece = self._map[tuple(end)]
-        self._map[tuple(end)] = moving_piece
-        self._map[tuple(start)] = PieceType.NUL.value
+            start: Tuple[int, int],
+            end: Tuple[int, int],
+    ) -> Tuple[Tuple[int, int], Tuple[int, int], int, int]:
+        moving_piece = self._map[start]
+        destination_piece = self._map[end]
+        self._map[end] = moving_piece
+        self._map[start] = PieceType.NUL.value
 
-        executed_move = np.concatenate(
-            (move, np.array([moving_piece, destination_piece]))
-        )
+        executed_move = (start, end, moving_piece, destination_piece)
 
         return executed_move
 
-    def undo_move(self, executed_move: NDArray[Shape["6"], Int]):
+    def undo_move(
+            self,
+            executed_move: Tuple[Tuple[int, int], Tuple[int, int], int, int]):
 
-        self._map[tuple(executed_move[:2])] = executed_move[4]
-        self._map[tuple(executed_move[2:4])] = executed_move[5]
+        self._map[executed_move[0]] = executed_move[2]
+        self._map[executed_move[1]] = executed_move[3]
 
     def get_all_spaces_occupied_by(
             self, color: PieceColor) -> NDArray[Shape["*, 2"], Int]:
@@ -172,9 +181,6 @@ class GameBoard:
         search_axis = np.argwhere(direction != 0).item()
         non_search_axis = int(not search_axis)
         search_sign = np.sign(direction[search_axis])
-
-
-
 
     def remove_off_board_spaces(
             self,
@@ -204,6 +210,3 @@ class GameBoard:
              destinations))
 
 
-game_board = GameBoard()
-my_slice = game_board.get_slice(np.array([6, 0]), np.array([0, 1]))
-print(my_slice)
