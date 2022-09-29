@@ -203,11 +203,19 @@ class StartingBoardBuilder:
         return np.vstack((self._black_board_half_ct, self._red_board_half_ct))
 
 
+class BoardUtilities:
+
+    @staticmethod
+    def get_piece_color(piece: int):
+        return 0 if piece == 0 else int(math.copysign(1, piece))
+
+
+class VectorizedBoardUtilities:
+
+    get_piece_color_vect = np.vectorize(BoardUtilities.get_piece_color)
+
+
 class GameBoard:
-    _index_array = np.array(
-        [[BoardSpace(rank=row, file=col) for col in range(9)] for row in
-         range(10)],
-        dtype=[("rank", int), ("file", int)])
 
     def __init__(
             self,
@@ -243,12 +251,8 @@ class GameBoard:
         return self._map_td[space]["type"]
 
     def get_piece_color_int(self, space: BoardSpace):
-        # piece_val = self._map_int[space]
-        # return PCOLOR.RED if piece_val < 0 else int(bool(piece_val))
-
         piece_val = self._map_int[space]
-        color = 0 if piece_val == 0 else int(math.copysign(1, piece_val))
-        return color
+        return 0 if piece_val == 0 else int(math.copysign(1, piece_val))
 
     @staticmethod
     def get_color(value: int):
@@ -258,8 +262,45 @@ class GameBoard:
     def get_piece_color_td(self, space: tuple):
         return self._map_td[space]["color"]
 
+    @staticmethod
+    def _is_black(piece: int):
+        return piece > 0
+
+    @staticmethod
+    def _is_red(piece: int):
+        return piece < 0
+
+    @staticmethod
+    def _is_null(piece: int):
+        return piece == 0
+
+    _is_color_new = {
+        PCOLOR.BLK: _is_black,
+        PCOLOR.RED: _is_red,
+        PCOLOR.NUL: _is_null
+    }
+
+    _is_color = {
+        PCOLOR.BLK: lambda x: x > 0,
+        PCOLOR.RED: lambda x: x < 0,
+        PCOLOR.NUL: lambda x: x == 0
+    }
+
     def get_all_spaces_occupied_by_int(self, color: int):
         return np.argwhere(np.sign(self._map_int) == color)
+
+    def get_all_spaces_occupied_by_int_lambda(self, color: int):
+        return np.argwhere(self._is_color[color](self._map_int))
+
+    def get_all_spaces_occupied_by_int_vect(self, color: int):
+        return np.argwhere(VectorizedBoardUtilities.get_piece_color_vect(self._map_int) == color)
+
+    def get_all_spaces_occupied_by_int_non_lam_dict(self, color: int):
+        return np.argwhere(self._is_color_new[color](self._map_int))
+
+    @staticmethod
+    def _get_color_quick(piece: int):
+        return 0 if piece == 0 else int(math.copysign(1, piece))
 
     def get_all_spaces_occupied_by_td(self, color: int):
         color_array = np.array(
