@@ -53,48 +53,16 @@ class StartingBoardBuilder:
         PTYPE.SOL, PTYPE.NUL, PTYPE.SOL, PTYPE.NUL, PTYPE.SOL,
         PTYPE.NUL, PTYPE.SOL, PTYPE.NUL, PTYPE.SOL)
 
+    @staticmethod
     def _build_row_of_int_pieces(
-            self,
             pieces: Tuple[int, int, int, int, int, int, int, int, int],
             color: int):
         piece_list = [color * piece for piece in pieces]
         return np.array(piece_list)
 
-    def _build_row_of_td_pieces(
-            self,
-            pieces: Tuple[int, int, int, int, int, int, int, int, int],
-            color: int):
-        row = [GamePiece(type=PTYPE.NUL, color=PCOLOR.NUL)] * self._num_files
-        for file in range(self._num_files):
-            if pieces[file] != PTYPE.NUL:
-                row[file] = GamePiece(type=pieces[file], color=color)
-        return np.array(row)
-
-    def _build_row_of_custom_type(
-            self,
-            pieces: Tuple[int, int, int, int, int, int, int, int, int],
-            color: int):
-        row = []
-        for file in range(self._num_files):
-            if pieces[file] == PTYPE.NUL:
-                row.append((pieces[file], PCOLOR.NUL))
-            else:
-                row.append((pieces[file], color))
-        return np.array(row, dtype=[("type", int), ("color", int)])
-
     @property
     def _black_back_row(self):
         return self._build_row_of_int_pieces(
-            pieces=self._back_row, color=PCOLOR.BLK)
-
-    @property
-    def _black_back_row_td(self):
-        return self._build_row_of_td_pieces(
-            pieces=self._back_row, color=PCOLOR.BLK)
-
-    @property
-    def _black_back_row_ct(self):
-        return self._build_row_of_custom_type(
             pieces=self._back_row, color=PCOLOR.BLK)
 
     @property
@@ -103,43 +71,13 @@ class StartingBoardBuilder:
             pieces=self._cannon_row, color=PCOLOR.BLK)
 
     @property
-    def _black_cannon_row_td(self):
-        return self._build_row_of_td_pieces(
-            pieces=self._cannon_row, color=PCOLOR.BLK)
-
-    @property
-    def _black_cannon_row_ct(self):
-        return self._build_row_of_custom_type(
-            pieces=self._cannon_row, color=PCOLOR.BLK)
-
-    @property
     def _black_soldier_row(self):
         return self._build_row_of_int_pieces(
             pieces=self._soldier_row, color=PCOLOR.BLK)
 
     @property
-    def _black_soldier_row_td(self):
-        return self._build_row_of_td_pieces(
-            pieces=self._soldier_row, color=PCOLOR.BLK)
-
-    @property
-    def _black_soldier_row_ct(self):
-        return self._build_row_of_custom_type(
-            pieces=self._soldier_row, color=PCOLOR.BLK)
-
-    @property
     def _empty_row(self):
         return self._build_row_of_int_pieces(
-            pieces=self._no_pieces_row, color=PCOLOR.NUL)
-
-    @property
-    def _empty_row_td(self):
-        return self._build_row_of_td_pieces(
-            pieces=self._no_pieces_row, color=PCOLOR.NUL)
-
-    @property
-    def _empty_row_ct(self):
-        return self._build_row_of_custom_type(
             pieces=self._no_pieces_row, color=PCOLOR.NUL)
 
     @property
@@ -152,55 +90,16 @@ class StartingBoardBuilder:
             self._empty_row))
 
     @property
-    def _black_board_half_td(self):
-        return np.vstack((
-            self._black_back_row_td,
-            self._empty_row_td,
-            self._black_cannon_row_td,
-            self._black_soldier_row_td,
-            self._empty_row_td
-        ))
-
-    @property
-    def _black_board_half_ct(self):
-        return np.vstack((
-            self._black_back_row_ct,
-            self._empty_row_ct,
-            self._black_cannon_row_ct,
-            self._black_soldier_row_ct,
-            self._empty_row_ct
-        ))
-
-    @property
     def _red_board_half(self):
         return -1 * np.flip(self._black_board_half, axis=0)
-
-    @property
-    def _red_board_half_td(self):
-        red_half = np.flip(self._black_board_half_td, axis=0)
-        for row in range(red_half.shape[0]):
-            for col in range(red_half.shape[1]):
-                if red_half[row, col]["color"] == PCOLOR.BLK:
-                    red_half[row, col]["color"] = PCOLOR.RED
-        return red_half
-
-    @property
-    def _red_board_half_ct(self):
-        red_half = np.flip(self._black_board_half_ct, axis=0)
-        for row in range(red_half.shape[0]):
-            for col in range(red_half.shape[1]):
-                if red_half[row, col]["color"] == PCOLOR.BLK:
-                    red_half[row, col]["color"] = PCOLOR.RED
-        return red_half
 
     def build(self):
         return np.vstack((self._black_board_half, self._red_board_half))
 
-    def build_td(self):
-        return np.vstack((self._black_board_half_td, self._red_board_half_td))
 
-    def build_ct(self):
-        return np.vstack((self._black_board_half_ct, self._red_board_half_ct))
+class CastleLocation(NamedTuple):
+    slices: Tuple[slice, slice]
+    offset: NDArray[Shape["1, 2"], Int]
 
 
 class BoardUtilities:
@@ -209,58 +108,8 @@ class BoardUtilities:
     def get_piece_color(piece: int):
         return 0 if piece == 0 else int(math.copysign(1, piece))
 
-
-class VectorizedBoardUtilities:
-
-    get_piece_color_vect = np.vectorize(BoardUtilities.get_piece_color)
-
-
-class GameBoard:
-
-    def __init__(
-            self,
-            int_map: Union[NDArray[Shape["10, 9"], Int] | None] = None,
-            td_map=None,
-            ct_map=None
-
-    ):
-        if int_map is None:
-            int_map = StartingBoardBuilder().build()
-        if td_map is None:
-            td_map = StartingBoardBuilder().build_td()
-        if ct_map is None:
-            ct_map = StartingBoardBuilder().build_ct()
-
-        self._map_int = int_map
-        self._map_td = td_map
-        self._map_ct = ct_map
-
-    def is_occupied_int(self, space: BoardSpace):
-        return self._map_int[space] != 0
-
-    def is_occupied_td(self, space: BoardSpace):
-        return self._map_td[space]["type"] != PTYPE.NUL
-
-    def is_occupied_ct(self, space: BoardSpace):
-        return self._map_ct[space]["type"] != PTYPE.NUL
-
-    def get_piece_type_int(self, space: BoardSpace):
-        return abs(self._map_int[space])
-
-    def get_piece_type_td(self, space: BoardSpace):
-        return self._map_td[space]["type"]
-
-    def get_piece_color_int(self, space: BoardSpace):
-        piece_val = self._map_int[space]
-        return 0 if piece_val == 0 else int(math.copysign(1, piece_val))
-
-    @staticmethod
-    def get_color(value: int):
-        color = 0 if value == 0 else int(math.copysign(1, value))
-        return color
-
-    def get_piece_color_td(self, space: tuple):
-        return self._map_td[space]["color"]
+    def get_forward_direction(self, piece: int):
+        return self.get_forward_direction(piece)
 
     @staticmethod
     def _is_black(piece: int):
@@ -274,40 +123,59 @@ class GameBoard:
     def _is_null(piece: int):
         return piece == 0
 
-    _is_color_new = {
+    is_color = {
         PCOLOR.BLK: _is_black,
         PCOLOR.RED: _is_red,
         PCOLOR.NUL: _is_null
     }
 
-    _is_color = {
-        PCOLOR.BLK: lambda x: x > 0,
-        PCOLOR.RED: lambda x: x < 0,
-        PCOLOR.NUL: lambda x: x == 0
+    castle_loc = {
+        PCOLOR.BLK: CastleLocation(
+            slices=(slice(0, 3), slice(3, 6)),
+            offset=np.array([[0, 3]])),
+        PCOLOR.RED: CastleLocation(
+            slices=(slice(7, 10), slice(3, 6)),
+            offset=np.array([[7, 3]]))
     }
 
-    def get_all_spaces_occupied_by_int(self, color: int):
-        return np.argwhere(np.sign(self._map_int) == color)
+    river_edge = {
+        PCOLOR.BLK: 4,
+        PCOLOR.RED: 5
+    }
 
-    def get_all_spaces_occupied_by_int_lambda(self, color: int):
-        return np.argwhere(self._is_color[color](self._map_int))
 
-    def get_all_spaces_occupied_by_int_vect(self, color: int):
-        return np.argwhere(VectorizedBoardUtilities.get_piece_color_vect(self._map_int) == color)
+class GameBoard:
 
-    def get_all_spaces_occupied_by_int_non_lam_dict(self, color: int):
-        return np.argwhere(self._is_color_new[color](self._map_int))
+    def __init__(
+            self,
+            int_map: Union[NDArray[Shape["10, 9"], Int] | None] = None):
+        if int_map is None:
+            int_map = StartingBoardBuilder().build()
+        self._map = int_map
+
+    def is_occupied(self, space: NDArray[Shape["2"], Int]):
+        return self._map[space[0], space[1]] != 0
+
+    def get_piece_type(self, space: NDArray[Shape["2"], Int]):
+        return abs(self._map[space[0], space[1]])
+
+    def get_piece_color(self, space: NDArray[Shape["2"], Int]):
+        piece_val = self._map[space[0], space[1]]
+        return 0 if piece_val == 0 else int(math.copysign(1, piece_val))
+
+    def get_all_spaces_occupied_by(self, color: int):
+        return np.argwhere(BoardUtilities.is_color[color](self._map))
+
+    def get_general_position(self, color: int):
+        castle = BoardUtilities.castle_loc[color]
+        return np.argwhere(self._map[castle.slices] == color) + castle.offset
 
     @staticmethod
-    def _get_color_quick(piece: int):
-        return 0 if piece == 0 else int(math.copysign(1, piece))
+    def is_in_homeland_of(color: int, space: NDArray[Shape["2"], Int]):
+        if color == PCOLOR.RED:
+            return space[0] >= BoardUtilities.river_edge[PCOLOR.RED]
+        if color == PCOLOR.BLK:
+            return space[0] <= BoardUtilities.river_edge[PCOLOR.BLK]
 
-    def get_all_spaces_occupied_by_td(self, color: int):
-        color_array = np.array(
-            [[self._map_td[row, col]["color"] for col in range(9)]
-             for row in range(10)])
-        return np.argwhere(color_array == color)
 
-    def get_all_spaces_occupied_by_ct(self, color: int):
-        return np.argwhere(self._map_ct["color"] == color)
 
