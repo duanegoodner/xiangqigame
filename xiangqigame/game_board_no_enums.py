@@ -38,7 +38,6 @@ class GamePiece(TypedDict):
 
 
 class StartingBoardBuilder:
-
     _num_ranks = 10
     _num_files = 9
 
@@ -145,6 +144,8 @@ class BoardUtilities:
 
 
 class GameBoard:
+    _num_ranks = 10
+    _num_files = 9
 
     def __init__(
             self,
@@ -176,6 +177,7 @@ class GameBoard:
             return space[0] >= BoardUtilities.river_edge[PCOLOR.RED]
         if color == PCOLOR.BLK:
             return space[0] <= BoardUtilities.river_edge[PCOLOR.BLK]
+
 
 
 
