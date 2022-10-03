@@ -1,122 +1,21 @@
-from typing import NamedTuple, Tuple
+import math
+from typing import NamedTuple, Tuple, Set, List
 from nptyping import NDArray, Int, Shape
-
 import numpy as np
-from enum import Enum
-
-
-class PieceType(Enum):
-    NUL = 0
-    GEN = 1
-    ADV = 2
-    ELE = 3
-    HOR = 4
-    CHA = 5
-    CAN = 6
-    SOL = 7
-
-
-_piece_type = {
-    0: PieceType.NUL,
-    1: PieceType.GEN,
-    2: PieceType.ADV,
-    3: PieceType.ELE,
-    4: PieceType.HOR,
-    5: PieceType.CHA,
-    6: PieceType.CAN,
-    7: PieceType.SOL
-}
-
-
-class PieceColor(Enum):
-    NUL = 0
-    BLK = 1
-    RED = -1
-
-
-_castle_coords = {
-    PieceColor.RED: [(rank, file) for rank in range(7, 10) for file in range(3, 6)],
-    PieceColor.BLK: [(rank, file) for rank in range(0, 3) for file in range(3, 6)]
-
-}
-
-
-class BoardSpace(NamedTuple):
-    rank: int
-    file: int
-
-
-class GamePiece(NamedTuple):
-    color: PieceColor
-    piece_type: PieceType
-
-
-# class Move(NamedTuple):
-#     start: Tuple[int, int]
-#     end: Tuple[int, int]
-
-
-# class ExecutedMove(NamedTuple):
-#     move: Move
-#     moving_piece: int
-#     destination_piece: int
-
-
-class StartingBoardBuilder:
-
-    @property
-    def back_row(self):
-        return np.array(
-            [piece.value for piece in
-             [PieceType.CHA, PieceType.HOR, PieceType.ELE, PieceType.ADV,
-              PieceType.GEN,
-              PieceType.ADV, PieceType.ELE, PieceType.HOR, PieceType.CHA]])
-
-    @property
-    def cannon_row(self):
-        return np.array(
-            [0, PieceType.CAN.value, 0, 0, 0, 0, 0, PieceType.CAN.value, 0])
-
-    @property
-    def soldier_row(self):
-        return np.array([PieceType.SOL.value, 0, PieceType.SOL.value, 0,
-                         PieceType.SOL.value, 0,
-                         PieceType.SOL.value, 0, PieceType.SOL.value])
-
-    @property
-    def starting_block(self):
-        return np.vstack((
-            self.back_row,
-            np.zeros(9, dtype=int),
-            self.cannon_row,
-            self.soldier_row,
-            np.zeros(9, dtype=int)))
-
-    def build_initial_board(self):
-        black_half = PieceColor.BLK.value * self.starting_block
-        red_half = PieceColor.RED.value * np.flip(self.starting_block, axis=0)
-        return np.vstack((black_half, red_half))
+from xiangqigame.board_components_new import BoardVector, BoardSpace, \
+    SpaceSearchResult
+from xiangqigame.board_rules_new import PType, PColor, RULES
+from xiangqigame.board_utilities_new import BoardUtilities as bu
+from xiangqigame.move_new import Move, ExecutedMove
+from xiangqigame.starting_board_builder import StartingBoardBuilder
 
 
 class GameBoard:
-    """
-    Gameboard._map: 10 x 9 array of ints
-        rows -> ranks, cols -> file, value -> int corresponding to a piece
-
-    space: [2, ] -> [rank, file] (int)
-    move: [4, ] -> [rank_start, file_start, rank_end, file_end] (int)
-    executed_move: [6, ] ->
-        [rank_start, file_start, rank_end, file_end, moving_piece, dest_piece]
-
-
-    """
-
     _river_edge_black = 4
     _river_edge_red = 5
     _num_ranks = 10
     _num_files = 9
     _horizontal_vects = np.array([[0, 1], [0, -1]])
-    _space_dt = np.dtype([("rank", int), ("file", int)])
 
     def __init__(self, board_map: np.array = None):
         if board_map is None:
@@ -126,124 +25,260 @@ class GameBoard:
     @property
     def castles(self):
         return {
-            PieceColor.BLK: self._map[:3, 3:6],
-            PieceColor.RED: self._map[7:, 3:6]
+            PColor.BLK: self._map[RULES.castle_slices[PColor.BLK]],
+            PColor.RED: self._map[RULES.castle_slices[PColor.RED]]
         }
 
     def is_occupied(self, space: BoardSpace):
         return self._map[space] != 0
 
-    def get_piece_type(self, space: BoardSpace):
-        return _piece_type[abs(self._map[space])]
+    def get_type(self, space: BoardSpace) -> int:
+        return abs(self._map[space.rank, space.file])
 
-    def get_piece_color(self, space: NDArray[Shape["2"], Int]):
-        return PieceColor(
-            np.sign(self._map[space[0], space[1]]))
+    def get_color(self, space: BoardSpace):
+        piece_val = self._map[space.rank, space.file]
+        return 0 if piece_val == 0 else int(math.copysign(1, piece_val))
 
-    @staticmethod
-    def forward_direction(color: PieceColor):
-        return np.array([color.value, 0])
+    def get_occupant(self, space: BoardSpace):
+        return self._map[space.rank, space.file]
 
-    def get_slice(
-            self,
-            from_space: NDArray[Shape["2"], Int],
-            direction: NDArray[Shape["2"], Int]):
+    def set_occupant(self, space: BoardSpace, piece: int):
+        self._map[space.rank, space.file] = piece
 
-        slice_axis = np.argwhere(direction != 0).item()
-        slice_sign = np.sign(direction[slice_axis])
-        slice_from = from_space[slice_axis]
+    def exists_and_passes_color_test(
+            self, dest: BoardSpace, moving_piece_color: int):
+        return bu.is_on_board(dest) and (
+                self.get_color(dest) != moving_piece_color)
 
-        if slice_sign > 0:
-            slice_axis_coords = np.arange(
-                slice_from + 1, self._map.shape[slice_axis])
-        else:
-            slice_axis_coords = np.arange(slice_from - 1, -1, -1)
+    def execute_move(self, move: Move):
+        moving_piece = self.get_occupant(move.start)
+        destination_piece = self.get_occupant(move.end)
+        self.set_occupant(space=move.end, piece=moving_piece)
+        self.set_occupant(space=move.start, piece=PType.NUL)
+        return ExecutedMove(spaces=move, moving_piece=moving_piece,
+                            destination_piece=destination_piece)
 
-        if slice_axis == 0:
-            space_coords = np.column_stack(
-                (slice_axis_coords,
-                 np.broadcast_to(from_space[1], slice_axis_coords.size)))
-            pieces = np.take(self._map[:, from_space[1]], slice_axis_coords)
-        else:
-            space_coords = np.column_stack(
-                ((np.broadcast_to(from_space[0], slice_axis_coords.size)),
-                 slice_axis_coords))
-            pieces = np.take(self._map[from_space[0], :], slice_axis_coords)
-
-        return np.column_stack((space_coords, pieces))
-
-    def execute_move(
-            self, move: NDArray[Shape["4"], Int]) -> NDArray[Shape["6"], Int]:
-        moving_piece = self._map[move[0], move[1]]
-        destination_piece = self._map[move[2], move[3]]
-        self._map[move[2], move[3]] = moving_piece
-        self._map[move[0], move[1]] = PieceType.NUL.value
-
-        executed_move = np.concatenate(
-            (move, np.array([moving_piece, destination_piece])))
-
-        return executed_move
-
-    def undo_move(
-            self,
-            executed_move: NDArray[Shape["6"], Int]):
-
-        self._map[executed_move[0], executed_move[1]] = executed_move[4]
-        self._map[executed_move[2], executed_move[3]] = executed_move[5]
+    def undo_move(self, move: ExecutedMove):
+        self.set_occupant(move.spaces.start, move.moving_piece)
+        self.set_occupant(move.spaces.end, move.destination_piece)
 
     def get_all_spaces_occupied_by(
-            self, color: PieceColor) -> NDArray[Shape["*, 2"], Int]:
-        return np.argwhere(np.sign(self._map) == color.value)
+            self, color: int) -> Set[BoardSpace]:
+        spaces_array = np.argwhere(bu.is_color[color](self._map))
+        # return np.argwhere(np.sign(self._map) == color)
+        return set(map(BoardSpace.from_plain_tuple, spaces_array))
 
-    def get_general_position(self, color: PieceColor) -> Tuple[int, int]:
-        for space in _castle_coords[color]:
-            if abs(self._map[space]) == 1:
-                return space
+    def get_general_position(self, color: int) -> BoardSpace:
+        for space in bu.castle_coords[color]:
+            if abs(self._map[space]) == PType.GEN:
+                return BoardSpace.from_plain_tuple(space)
 
-    def get_general_position_b(self, color: PieceColor):
-        return np.argwhere(self.castles[color] == 1)
+    def get_vertical_path(self, from_space: BoardSpace, to_rank: int):
 
-    def is_in_homeland_of(
-            self, color: PieceColor, space: BoardSpace) -> bool:
-        if color == PieceColor.RED:
-            return space.rank >= self._river_edge_red
-        if color == PieceColor.BLK:
-            return space.rank <= self._river_edge_black
-
-    def search_spaces(
-            self,
-            from_space: NDArray[Shape["2"], Int],
-            direction: NDArray[Shape["2"], Int],
-            from_space_color: PieceColor):
-        possible_spaces = self.get_slice(from_space, direction)
-        colors_of_possible_spaces = np.sign(possible_spaces)
-        pieces = np.argwhere(colors_of_possible_spaces != 0)
-        first_encountered_piece = np.min(pieces)
-
-    def remove_off_board_spaces(
-            self,
-            spaces: NDArray[Shape["2, *"], Int]):
-        return spaces[
-            (spaces[:, 0] >= 0) &
-            (spaces[:, 1] >= 0) &
-            (spaces[:, 0] < self._num_ranks) &
-            (spaces[:, 1] < self._num_files)
-            ]
-
-    def soldier_moves(
-            self,
-            from_position: NDArray[Shape["2"], Int],
-            color: PieceColor):
-        if self.is_in_homeland_of(color, from_position):
-            prelim_dest = np.expand_dims(
-                from_position + self.forward_direction(color), axis=0)
-            destinations = self.remove_off_board_spaces(prelim_dest)
+        if from_space.rank == to_rank:
+            return np.array([])
+        elif to_rank > from_space.rank:
+            return self._map[(from_space.rank + 1):to_rank, from_space.file]
         else:
-            prelim_destinations = from_position + np.row_stack(
-                (self.forward_direction(color), self._horizontal_vects))
-            destinations = self.remove_off_board_spaces(
-                prelim_destinations)
+            return self._map[(to_rank + 1):from_space.rank, from_space.file]
 
-        return np.hstack(
-            (np.broadcast_to(from_position, (destinations.shape[0], 2)),
-             destinations))
+    def search_spaces(self, from_space: BoardSpace, direction: BoardVector):
+        empty_spaces = []
+        first_occupied_space = None
+        next_step = from_space + direction
+
+        while bu.is_on_board(next_step) and (
+                self.get_occupant(next_step)["type"] == PType.NUL):
+            empty_spaces.append(next_step)
+            next_step = next_step + direction
+        if bu.is_on_board(next_step):
+            first_occupied_space = next_step
+        return SpaceSearchResult(
+            empty_spaces=empty_spaces,
+            first_occupied_space=first_occupied_space)
+
+    def null_piece_moves(self, *args):
+        return []
+
+    def soldier_moves(self, from_position: BoardSpace, color: int):
+        soldier_moves = []
+        fwd_space = from_position + bu.fwd_unit_vect(color)
+
+        if self.exists_and_passes_color_test(fwd_space, color):
+            soldier_moves.append(Move(from_position, fwd_space))
+        if not bu.is_in_homeland_of(color, from_position):
+            for vector in bu.sideways_unit_vect:
+                dest = from_position + vector
+                if self.exists_and_passes_color_test(dest, color):
+                    soldier_moves.append(Move(from_position, dest))
+        return soldier_moves
+
+    def cannon_moves(self, from_position: BoardSpace, color: int):
+        cannon_moves = []
+        search_directions = (bu.fwd_unit_vect(color), bu.rev_unit_vect(color)
+                             ) + bu.sideways_unit_vect
+
+        for direction in search_directions:
+            search_results = self.search_spaces(from_position, direction)
+            cannon_moves.append(
+                Move(from_position, empty_space) for empty_space in
+                search_results.empty_spaces)
+
+            if search_results.first_occupied_space:
+                second_search = self.search_spaces(
+                    search_results.first_occupied_space, direction)
+                if second_search.first_occupied_space and (
+                        self.get_color(second_search.first_occupied_space)
+                        == RULES.opponent_of[color]):
+                    cannon_moves.append(Move(
+                        from_position, second_search.first_occupied_space))
+
+        return cannon_moves
+
+    def chariot_moves(self, from_position: BoardSpace, color: int):
+        chariot_moves = []
+        search_directions = (bu.fwd_unit_vect(color), bu.rev_unit_vect(color)
+                             ) + bu.sideways_unit_vect
+        for direction in search_directions:
+            search_results = self.search_spaces(from_position, direction)
+            chariot_moves.append(
+                Move(from_position, empty_space) for empty_space in
+                search_results.empty_spaces)
+
+            if search_results.first_occupied_space and (
+                    self.get_occupant(search_results.first_occupied_space)
+                    ['color'] == RULES.opponent_of[color]):
+                chariot_moves.append(
+                    Move(from_position, search_results.first_occupied_space))
+
+        return chariot_moves
+
+    def horse_moves(self, from_position: BoardSpace, color: int):
+        horse_moves = []
+
+        for direction in bu.horse_paths.keys():
+            first_step = from_position + direction
+            if bu.is_on_board(first_step) and not self.is_occupied(first_step):
+                second_steps = [
+                    first_step + second_step for second_step in
+                    bu.horse_paths[direction]
+                ]
+                horse_moves.append(
+                    Move(from_position, second_step) for second_step in
+                    second_steps if
+                    self.exists_and_passes_color_test(second_step, color)
+                )
+
+        return horse_moves
+
+    def elephant_moves(self, from_position: BoardSpace, color: int):
+        elephant_moves = []
+
+        for direction in bu.diag_directions:
+            first_step = from_position + direction
+            if (
+                    bu.is_on_board(first_step) and
+                    not self.is_occupied(first_step) and
+                    bu.is_in_homeland_of(color, first_step)
+            ):
+                second_step = first_step + direction
+                if (
+                        self.exists_and_passes_color_test(second_step, color)
+                        and bu.is_in_homeland_of(color, second_step)
+                ):
+                    elephant_moves.append(Move(from_position, second_step))
+
+        return elephant_moves
+
+    def advisor_moves(self, from_position: BoardSpace, color: int):
+        advisor_moves = []
+
+        for direction in bu.diag_directions:
+            destination = from_position + direction
+            if destination.is_in_castle_of(color) and (
+                    self.get_color(destination) != color):
+                advisor_moves.append(Move(from_position, destination))
+
+        return advisor_moves
+
+    def flying_general_moves(self, from_position: BoardSpace, color: int):
+        flying_moves = []
+        other_gen_position = self.get_general_position(
+            RULES.opponent_of(color))
+
+        if from_position.file == other_gen_position.file:
+
+            slice_start = min(from_position.rank, other_gen_position.rank)
+            slice_end = max(from_position.rank, other_gen_position.rank) + 1
+            if (self._map[slice_start:slice_end, from_position.file]
+                    == PType.NUL).all():
+                flying_moves.append(Move(from_position, other_gen_position))
+
+            return flying_moves
+
+    def standard_general_moves(self, from_position: BoardSpace, color: int):
+        standard_general_moves = []
+
+        for move_vect in bu.all_orthogonal_unit_vects:
+            dest = from_position + move_vect
+            if (from_position + move_vect).is_in_castle_of(color) and (
+                    self.get_color(dest) != color):
+                standard_general_moves.append(Move(from_position, dest))
+
+        return standard_general_moves
+
+    def general_moves(self, from_position: BoardSpace, color: int):
+        return (self.flying_general_moves(from_position, color) +
+                self.standard_general_moves(from_position, color))
+
+    piece_moves = {
+        PType.NUL: null_piece_moves,
+        PType.SOL: soldier_moves,
+        PType.CAN: cannon_moves,
+        PType.CHA: chariot_moves,
+        PType.HOR: horse_moves,
+        PType.ELE: elephant_moves,
+        PType.ADV: advisor_moves,
+        PType.GEN: general_moves
+    }
+
+    def calc_all_temp_moves_of(self, color: int):
+        team_moves = []
+        for space in self.get_all_spaces_occupied_by(color):
+            team_moves += self.piece_moves[self.get_type(space)](
+                self, space, color)
+        return team_moves
+
+    def calc_temp_moves_from(self, position: BoardSpace, color: int):
+        return self.piece_moves[self.get_type(position)](self, position, color)
+
+    def calc_final_moves_from(self, position: BoardSpace, color: int):
+        final_moves = []
+        potential_moves_from = self.calc_temp_moves_from(position, color)
+
+        color_gen_position = self.get_general_position(color)
+
+        for move in potential_moves_from:
+            test_move = self.execute_move(move)
+            resulting_opp_moves = self.calc_all_temp_moves_of(
+                RULES.opponent_of[color])
+            resulting_opp_destinations = [
+                move.end for move in resulting_opp_moves]
+            if color_gen_position not in resulting_opp_destinations:
+                final_moves.append(move)
+            self.undo_move(test_move)
+
+        return final_moves
+
+    def calc_final_moves_of(self, color: int) -> List[Move]:
+        final_moves = []
+        for space in self.get_all_spaces_occupied_by(color):
+            final_moves += self.calc_final_moves_from(space, color)
+        return final_moves
+
+
+
+
+
+
+
