@@ -24,26 +24,29 @@ def time_func_100(func):
     return wrapper
 
 
-# @time_func_100
+@time_func_100
 def old_board_final_moves():
-    for i in range(100):
-        result = old_board.calc_final_moves_of(gb.PieceColor.BLACK)
+    # for i in range(100):
+    result = old_board.calc_final_moves_of(gb.PieceColor.BLACK)
 
 
-# @time_func_100
+@time_func_100
 def new_board_final_moves():
-    for i in range(100):
-        result = new_board.calc_final_moves_of(gbn.PColor.BLK)
+    # for i in range(100):
+    result = new_board.calc_final_moves_of(gbn.PColor.BLK)
 
 
-# print(f"calc_final_moves_of: old = {old_board_final_moves()}, "
-#       f"new = {new_board_final_moves()}")
 
-cProfile.run("old_board_final_moves()",  filename="old_board_profile_100")
-cProfile.run("new_board_final_moves()", filename="new_board_profile_100")
-#
-# old = pstats.Stats("old_board_profile_100")
-# new = pstats.Stats("new_board_profile_100")
+
+
+print(f"calc_final_moves_of: old = {old_board_final_moves()}, "
+      f"new = {new_board_final_moves()}")
+
+# cProfile.run("old_board_final_moves()",  filename="old_board_profile_100")
+# cProfile.run("new_board_final_moves()", filename="new_board_profile_100")
+
+
+
 
 
 
