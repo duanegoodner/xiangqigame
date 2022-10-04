@@ -1,5 +1,5 @@
 import numpy as np
-from xiangqigame.board_rules_new import PType, PColor
+from xiangqigame.piece_definitions import PType, PColor
 
 
 class StartingBoardBuilder:

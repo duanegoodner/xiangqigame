@@ -1,10 +1,12 @@
 import math
-
 from xiangqigame.board_components_new import BoardVector, BoardSpace
-from xiangqigame.board_rules_new import PType, PColor, RULES
+from xiangqigame.board_layout import BoardLayout
+from xiangqigame.piece_definitions import PColor
 
 
 class BoardUtilities:
+
+    opponent_of = {PColor.BLK: PColor.RED, PColor.RED: PColor.BLK}
 
     @staticmethod
     def get_piece_color(piece: int):
@@ -30,15 +32,21 @@ class BoardUtilities:
 
     @staticmethod
     def is_on_board(space: BoardSpace):
-        return (0 <= space.rank < RULES.num_ranks) and (
-                0 <= space.file < RULES.num_files)
+        return (0 <= space.rank < BoardLayout.num_ranks) and (
+                0 <= space.file < BoardLayout.num_files)
 
     @staticmethod
     def is_in_homeland_of(color: int, space: BoardSpace) -> bool:
         if color == PColor.RED:
-            return space.rank >= RULES.river_edges[PColor.RED]
+            return space.rank >= BoardLayout.river_edges[PColor.RED]
         if color == PColor.BLK:
-            return space.rank <= RULES.river_edges[PColor.BLK]
+            return space.rank <= BoardLayout.river_edges[PColor.BLK]
+
+    @staticmethod
+    def is_in_castle_of(color: int, space: BoardSpace) -> bool:
+        castle = BoardLayout.castle_edges[color]
+        return (castle.min_rank <= space.rank <= castle.max_rank) and (
+                castle.min_file <= space.file <= castle.max_file)
 
     @staticmethod
     def fwd_unit_vect(color: int):
@@ -58,33 +66,6 @@ class BoardUtilities:
         BoardVector(0, -1): (BoardVector(1, -1), BoardVector(-1, -1))
     }
 
-    diag_directions = [(BoardVector(rank, file)) for rank in [-1, 1] for file
-                       in [-1, 1]]
-
-    @property
-    def castle_slices(self):
-        black_edges = RULES.castle_slices[PColor.BLK]
-        red_edges = RULES.castle_slices[PColor.RED]
-        return {
-            PColor.BLK: (
-                slice(black_edges.min_rank, black_edges.max_rank),
-                slice(black_edges.min_file, black_edges.max_file)),
-            PColor.RED: (
-                slice(red_edges.min_rank, red_edges.max_rank),
-                slice(black_edges.min_file, black_edges.max_file))
-        }
-
-    @property
-    def castle_coords(self):
-        black_edges = RULES.castle_slices[PColor.BLK]
-        red_edges = RULES.castle_slices[PColor.RED]
-        return {
-            PColor.BLK: [[(rank, file)] for rank in range(0, black_edges.max_rank + 1)
-            for file in range(black_edges.min_file, black_edges.max_file + 1)],
-            PColor.RED: [[(rank, file)] for rank in range(0, red_edges.max_rank + 1)
-            for file in range(red_edges.min_file, red_edges.max_file + 1)]
-        }
-
     all_orthogonal_unit_vects = [
         BoardVector(rank=0, file=1),
         BoardVector(rank=0, file=-1),
@@ -92,9 +73,8 @@ class BoardUtilities:
         BoardVector(rank=-1, file=0)
     ]
 
+    diag_directions = [(BoardVector(rank, file)) for rank in [-1, 1] for file
+                       in [-1, 1]]
 
 
-
-
-
-
+BOARD_UTILITIES = BoardUtilities()

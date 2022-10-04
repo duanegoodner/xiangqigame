@@ -2,6 +2,7 @@ import pytest
 from xiangqigame.board_components_new import BoardVector
 from xiangqigame.board_utilities_new import BoardUtilities as bu
 import xiangqigame.game_board_new as gbn
+from xiangqigame.piece_definitions import PColor
 
 
 @pytest.fixture
@@ -27,9 +28,9 @@ def test_get_piece_color(np_board):
 
 
 def test_forward_direction(np_board):
-    assert bu.forward_direction(gbn.PColor.RED) == BoardVector(rank=-1, file=0)
-    assert bu.forward_direction(gbn.PColor.BLK) == BoardVector(rank=1, file=0)
-    assert bu.forward_direction(gbn.PColor.NUL) == BoardVector(rank=0, file=0)
+    assert bu.fwd_unit_vect(gbn.PColor.RED) == BoardVector(rank=-1, file=0)
+    assert bu.fwd_unit_vect(gbn.PColor.BLK) == BoardVector(rank=1, file=0)
+    assert bu.fwd_unit_vect(gbn.PColor.NUL) == BoardVector(rank=0, file=0)
 
 
 def test_execute_undo_move(np_board):
@@ -62,6 +63,10 @@ def test_is_in_homeland_of(np_board):
         gbn.PColor.RED, gbn.BoardSpace(rank=1, file=5))
     assert not bu.is_in_homeland_of(
         gbn.PColor.BLK, gbn.BoardSpace(rank=9, file=6))
+
+
+def test_calc_final_moves(np_board):
+    result = np_board.calc_final_moves_of(color=PColor.RED)
 
 
 
