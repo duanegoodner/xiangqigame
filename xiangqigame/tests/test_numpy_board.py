@@ -67,6 +67,7 @@ def test_is_in_homeland_of(np_board):
 
 def test_calc_final_moves(np_board):
     result = np_board.calc_final_moves_of(color=PColor.RED)
+    assert len(result) == 44
 
 
 
