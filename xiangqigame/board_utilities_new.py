@@ -76,7 +76,7 @@ class BoardUtilities:
 
     @staticmethod
     def space_plus_vect(space: Tuple[int, int], vect: Tuple[int, int]):
-        return tuple(sum(x) for x in zip(space, vect))
+        return space[0] + vect[0], space[1] + vect[1]
 
 
 BOARD_UTILITIES = BoardUtilities()
