@@ -1,4 +1,6 @@
 import math
+from typing import List, Union, Tuple
+
 from xiangqigame.board_components_new import BoardVector, BoardSpace
 from xiangqigame.board_layout import BoardLayout
 from xiangqigame.piece_definitions import PColor
@@ -31,50 +33,50 @@ class BoardUtilities:
     }
 
     @staticmethod
-    def is_on_board(space: BoardSpace):
-        return (0 <= space.rank < BoardLayout.num_ranks) and (
-                0 <= space.file < BoardLayout.num_files)
+    def is_on_board(space: Union[List[int], Tuple[int, int]]):
+        return (0 <= space[0] < BoardLayout.num_ranks) and (
+                0 <= space[1] < BoardLayout.num_files)
 
     @staticmethod
-    def is_in_homeland_of(color: int, space: BoardSpace) -> bool:
+    def is_in_homeland_of(color: int, space: Union[List[int], Tuple[int, int]]) -> bool:
         if color == PColor.RED:
-            return space.rank >= BoardLayout.river_edges[PColor.RED]
+            return space[0] >= BoardLayout.river_edges[PColor.RED]
         if color == PColor.BLK:
-            return space.rank <= BoardLayout.river_edges[PColor.BLK]
+            return space[0] <= BoardLayout.river_edges[PColor.BLK]
 
     @staticmethod
-    def is_in_castle_of(color: int, space: BoardSpace) -> bool:
+    def is_in_castle_of(color: int, space: Union[List[int], Tuple[int, int]]) -> bool:
         castle = BoardLayout.castle_edges[color]
-        return (castle.min_rank <= space.rank <= castle.max_rank) and (
-                castle.min_file <= space.file <= castle.max_file)
+        return (castle[0] <= space[0] <= castle[1]) and (
+                castle[2] <= space[1] <= castle[3])
 
     @staticmethod
-    def fwd_unit_vect(color: int):
-        return BoardVector(rank=color, file=0)
+    def fwd_unit_vect(color: int) -> Tuple[int, int]:
+        return color, 0
 
     @staticmethod
-    def rev_unit_vect(color: int):
-        return BoardVector(rank=(-1 * color), file=0)
+    def rev_unit_vect(color: int) -> Tuple[int, int]:
+        return -color, 0
 
-    sideways_unit_vect = (
-        BoardVector(rank=0, file=-1), BoardVector(rank=0, file=1))
+    sideways_unit_vect = ((0, -1), (0, 1))
 
     horse_paths = {
-        BoardVector(1, 0): (BoardVector(1, 1), BoardVector(1, -1)),
-        BoardVector(-1, 0): (BoardVector(-1, 1), BoardVector(-1, -1)),
-        BoardVector(0, 1): (BoardVector(1, 1), BoardVector(-1, 1)),
-        BoardVector(0, -1): (BoardVector(1, -1), BoardVector(-1, -1))
+        (1, 0): ((1, 1), (1, -1)),
+        (-1, 0): ((-1, 1), (-1, -1)),
+        (0, 1): ((1, 1), (-1, 1)),
+        (0, -1): ((1, -1), (-1, -1))
     }
 
-    all_orthogonal_unit_vects = [
-        BoardVector(rank=0, file=1),
-        BoardVector(rank=0, file=-1),
-        BoardVector(rank=1, file=0),
-        BoardVector(rank=-1, file=0)
-    ]
+    all_orthogonal_unit_vects = (
+        (0, 1), (0, -1), (1, 0), (-1, 0)
+    )
 
-    diag_directions = [(BoardVector(rank, file)) for rank in [-1, 1] for file
-                       in [-1, 1]]
+    diag_directions = tuple(
+        (rank, file) for rank in (-1, 1) for file in (-1, 1))
+
+    @staticmethod
+    def space_plus_vect(space: Tuple[int, int], vect: Tuple[int, int]):
+        return space[0] + vect[0], space[1] + vect[1]
 
 
 BOARD_UTILITIES = BoardUtilities()
