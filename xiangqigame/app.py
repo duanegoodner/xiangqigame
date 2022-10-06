@@ -10,7 +10,6 @@ from xiangqigame.handlers.signals import set_signal_handlers
 import xiangqigame.piece_points as pts
 from xiangqigame.piece_definitions import PColor
 from xiangqigame.players import HumanPlayer, AIPlayer
-import xiangqigame.data
 
 
 def run():

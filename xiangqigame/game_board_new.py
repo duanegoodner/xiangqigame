@@ -3,7 +3,6 @@ from typing import List, Tuple, Union, Dict, Any
 import numpy as np
 from xiangqigame.board_components_new import SpaceSearchResult
 from xiangqigame.piece_definitions import PType, PColor
-from xiangqigame.utilities.piece_decoder import decode_piece, encode_piece
 from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
 from xiangqigame.board_layout import BoardLayout as blo
 from xiangqigame.starting_board_builder import StartingBoardBuilder

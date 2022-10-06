@@ -1,14 +1,11 @@
 from typing import Dict, List
 import xiangqigame.terminal_output as msg
-# from xiangqigame.board_rules import BOARD_RULES as br
 from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
 from xiangqigame.enums import GameState
 from xiangqigame.piece_definitions import PColor
-# from xiangqigame.game_board import GameBoard
 from xiangqigame.game_board_new import GameBoard
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.players import Player
-# from xiangqigame.move import Move
 
 from xiangqigame.handlers.errors import handle_interactive_eof
 
