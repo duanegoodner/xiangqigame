@@ -4,7 +4,7 @@ import json
 import pkgutil
 import time
 import random
-from typing import Set
+from typing import Set, List, Dict
 
 import numpy as np
 from xiangqigame.move import Move
@@ -23,9 +23,9 @@ class MoveSelector(abc.ABC):
     def select_move(
             self,
             game_board: GameBoard,
-            cur_player: PieceColor,
-            cur_moves: Set[Move]
-    ) -> Move:
+            cur_player: int,
+            cur_moves: List[Dict]
+    ) -> Dict:
         pass
 
 
@@ -35,8 +35,8 @@ class RandomMoveSelector(MoveSelector):
             self,
             game_board: GameBoard,
             cur_player: PieceColor,
-            cur_moves: Set[Move]
-    ) -> Move:
+            cur_moves: List[Dict]
+    ) -> Dict:
         return random.choice(tuple(cur_moves))
 
 
@@ -132,7 +132,7 @@ class MinimaxMoveSelector(MoveSelector):
             self,
             game_board: GameBoard,
             cur_player: PieceColor,
-            cur_moves: Set[Move]):
+            cur_moves: List[Dict]):
         self._reset_node_counter()
         minimax_result = self._minimax_rec(
             game_board=game_board,
@@ -158,7 +158,7 @@ if __name__ == "__main__":
 
     start = time.time()
     proposed_move = move_selector.select_move(
-        game_board=cur_board, cur_player=PieceColor.BLACK, cur_moves=set())
+        game_board=cur_board, cur_player=PieceColor.BLACK, cur_moves=[])
     end = time.time()
 
     print(f"Selected ** move {proposed_move} in {end - start} seconds")

@@ -1,42 +1,49 @@
-import colorama as cr
 from typing import Dict
-from xiangqigame.enums import PieceColor, PieceType
+from xiangqigame.piece_definitions import PColor, PType
 from xiangqigame.game_piece import GamePiece
+
+# Used for decoding/encoding board data provided to Game in following format.
+# (No longer used, may start using again if add ability to pause/resume games)
+# {
+#   "board_data": [
+#     ["Rb", "Hb", "Eb", "Ab", "Gb", "Ab", "Eb", "Hb", "Rb"],
+#     ["--", "--", "--", "--", "--", "--", "--", "--", "--"],
+#     ["--", "Cb", "--", "--", "--", "--", "--", "Cb", "--"],
+#     ["Sb", "--", "Sb", "--", "Sb", "--", "Sb", "--", "Sb"],
+#     ["--", "--", "--", "--", "--", "--", "--", "--", "--"],
+#     ["--", "--", "--", "--", "--", "--", "--", "--", "--"],
+#     ["Sr", "--", "Sr", "--", "Sr", "--", "Sr", "--", "Sr"],
+#     ["--", "Cr", "--", "--", "--", "--", "--", "Cr", "--"],
+#     ["--", "--", "--", "--", "--", "--", "--", "--", "--"],
+#     ["Rr", "Hr", "Er", "Ar", "Gr", "Ar", "Er", "Hr", "Rr"]
+#   ]
+#
+# }
 
 
 _code_to_color = {
-    'r': PieceColor.RED,
-    'b': PieceColor.BLACK,
-    '-': PieceColor.NULL_COLOR
+    'r': PColor.RED,
+    'b': PColor.BLK,
+    '-': PColor.NUL
 }
 
-_disp_format = {
-    PieceColor.RED: cr.Fore.RED + cr.Back.WHITE,
-    PieceColor.BLACK: cr.Fore.BLACK + cr.Back.WHITE,
-    PieceColor.NULL_COLOR: cr.Fore.RESET + cr.Back.RESET
-}
 
 _color_to_code = dict((color, code) for code, color in
                       _code_to_color.items())
 
 _code_to_type = {
-    'R': PieceType.CHARIOT,
-    'H': PieceType.HORSE,
-    'E': PieceType.ELEPHANT,
-    'A': PieceType.ADVISOR,
-    'G': PieceType.GENERAL,
-    'C': PieceType.CANNON,
-    'S': PieceType.SOLDIER,
-    '-': PieceType.NULL_PIECE
+    'R': PType.CHA,
+    'H': PType.HOR,
+    'E': PType.ELE,
+    'A': PType.ADV,
+    'G': PType.GEN,
+    'C': PType.CAN,
+    'S': PType.SOL,
+    '-': PType.NUL
 }
 
 _type_to_code = dict(
     (color, code) for code, color in _code_to_type.items())
-
-
-_piece_color_type_to_utf = {
-    ()
-}
 
 
 def decode_color(piece_code):
@@ -55,10 +62,11 @@ def decode_piece(piece_code):
     return decoded_piece
 
 
-def encode_piece(decoded_piece: Dict):
+def encode_piece(piece_info: Dict):
     return (
-        f"{_disp_format[decoded_piece['color']]}"
-        f"{_type_to_code[decoded_piece['type']]}"
-        f"{_color_to_code[decoded_piece['color']]}"
-        f"{cr.Style.RESET_ALL}"
+        f"{_type_to_code[piece_info['piece_type']]}"
+        f"{_color_to_code[piece_info['color']]}"
     )
+
+
+

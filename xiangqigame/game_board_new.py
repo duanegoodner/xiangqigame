@@ -1,12 +1,11 @@
 import math
-from typing import Set, List, Tuple, Union, Dict, Any
+from typing import List, Tuple, Union, Dict, Any
 import numpy as np
-from xiangqigame.board_components_new import BoardVector, BoardSpace, \
-    SpaceSearchResult
+from xiangqigame.board_components_new import SpaceSearchResult
 from xiangqigame.piece_definitions import PType, PColor
+from xiangqigame.utilities.piece_decoder import decode_piece, encode_piece
 from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
 from xiangqigame.board_layout import BoardLayout as blo
-from xiangqigame.move_new import Move, ExecutedMove
 from xiangqigame.starting_board_builder import StartingBoardBuilder
 
 
@@ -16,6 +15,10 @@ class GameBoard:
         if board_map is None:
             board_map = StartingBoardBuilder().build_initial_board()
         self._map = board_map
+
+    @property
+    def map(self):
+        return self._map
 
     @property
     def castles(self):
@@ -33,6 +36,13 @@ class GameBoard:
     def get_color(self, space: Union[List[int], Tuple[int, int]]):
         piece_val = self._map[space[0], space[1]]
         return 0 if piece_val == 0 else int(math.copysign(1, piece_val))
+
+    def get_piece_info(
+            self, space: Union[List[int], Tuple[int, int]]) -> Dict:
+        return {
+            "piece_type": self.get_type(space),
+            "color": self.get_color(space)
+        }
 
     def get_occupant(self, space: Union[List[int], Tuple[int, int]]):
         return self._map[space[0], space[1]]
@@ -110,7 +120,8 @@ class GameBoard:
             empty_spaces=empty_spaces,
             first_occupied_space=first_occupied_space)
 
-    def soldier_moves(self, from_position: Tuple[int, int], color: int) -> List[Dict]:
+    def soldier_moves(
+            self, from_position: Tuple[int, int], color: int) -> List[Dict]:
         soldier_moves = []
         fwd_space = bu.space_plus_vect(from_position, bu.fwd_unit_vect(color))
 
@@ -123,7 +134,8 @@ class GameBoard:
                     soldier_moves.append({"start": from_position, "end": dest})
         return soldier_moves
 
-    def cannon_moves(self, from_position: Tuple[int, int], color: int) -> List[Dict]:
+    def cannon_moves(
+            self, from_position: Tuple[int, int], color: int) -> List[Dict]:
         cannon_moves = []
         search_directions = bu.all_orthogonal_unit_vects
 
@@ -145,7 +157,8 @@ class GameBoard:
 
         return cannon_moves
 
-    def chariot_moves(self, from_position: Tuple[int, int], color: int) -> List[Dict]:
+    def chariot_moves(
+            self, from_position: Tuple[int, int], color: int) -> List[Dict]:
         chariot_moves = []
         search_directions = bu.all_orthogonal_unit_vects
         for direction in search_directions:
@@ -164,7 +177,8 @@ class GameBoard:
 
         return chariot_moves
 
-    def horse_moves(self, from_position: Tuple[int, int], color: int) -> List[Dict]:
+    def horse_moves(
+            self, from_position: Tuple[int, int], color: int) -> List[Dict]:
         horse_moves = []
 
         for direction in bu.horse_paths.keys():
@@ -182,7 +196,8 @@ class GameBoard:
 
         return horse_moves
 
-    def elephant_moves(self, from_position: Tuple[int, int], color: int) -> List[Dict]:
+    def elephant_moves(
+            self, from_position: Tuple[int, int], color: int) -> List[Dict]:
         elephant_moves = []
 
         for direction in bu.diag_directions:
@@ -197,7 +212,8 @@ class GameBoard:
 
         return elephant_moves
 
-    def advisor_moves(self, from_position: Tuple[int, int], color: int) -> List[Dict]:
+    def advisor_moves(
+            self, from_position: Tuple[int, int], color: int) -> List[Dict]:
         advisor_moves = []
 
         for direction in bu.diag_directions:
@@ -226,7 +242,7 @@ class GameBoard:
                 flying_moves.append(
                     {"start": from_position, "end": other_gen_position})
 
-            return flying_moves
+        return flying_moves
 
     def standard_general_moves(self, from_position: Tuple[int, int],
                                color: int) -> List[Dict]:
@@ -243,7 +259,8 @@ class GameBoard:
 
         return standard_moves
 
-    def general_moves(self, from_position: Tuple[int, int], color: int) -> List[Dict]:
+    def general_moves(
+            self, from_position: Tuple[int, int], color: int) -> List[Dict]:
         return (self.flying_general_moves(from_position, color) +
                 self.standard_general_moves(from_position, color))
 
@@ -322,4 +339,3 @@ class GeneralNotFound(Exception):
 
     def __str__(self):
         return f"{self._msg}"
-

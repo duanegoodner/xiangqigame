@@ -1,26 +1,25 @@
 import abc
-from typing import Set
+from typing import List, Dict
 from xiangqigame.enums import PieceColor, GameState
 from xiangqigame.game_board import GameBoard
-from xiangqigame.move import Move
 
 
 class Player(abc.ABC):
 
     def __init__(
             self,
-            color: PieceColor):
+            color: int):
         self._color = color
 
     @abc.abstractmethod
-    def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
+    def propose_move(self, game_board: GameBoard, cur_moves: List[Dict]) -> Dict:
         pass
 
     @abc.abstractmethod
     def illegal_move_notice_response(
-            self, illegal_move: Move,
+            self, illegal_move: Dict,
             game_board: GameBoard,
-            cur_moves: Set[Move]):
+            cur_moves: List[Dict]):
         pass
 
 
@@ -34,5 +33,5 @@ class GameStatusReporter(abc.ABC):
             whose_turn: PieceColor,
             is_in_check: bool,
             move_count: int,
-            prev_move: Move = None):
+            prev_move: Dict = None):
         pass

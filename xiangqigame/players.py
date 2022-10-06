@@ -1,22 +1,20 @@
-import random
-import time
 import xiangqigame.move_translator as mt
-from typing import List, Set, Tuple, Callable
+from typing import List, Tuple, Dict
 from xiangqigame.game_board import GameBoard
 from xiangqigame.game_interfaces import Player
 import xiangqigame.terminal_output as msg
-from xiangqigame.enums import PieceColor
 from xiangqigame.move_selectors import MoveSelector
-from xiangqigame.move import Move
+# from xiangqigame.move import Move
 
 
 class HumanPlayer(Player):
 
-    def __init__(self, color: PieceColor):
+    def __init__(self, color: int):
         super().__init__(color)
         self._input_req = msg.InputRetrievalMessages()
 
-    def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
+    def propose_move(
+            self, game_board: GameBoard, cur_moves: List[Dict]) -> Dict:
         valid_input = None
 
         while not valid_input:
@@ -33,9 +31,9 @@ class HumanPlayer(Player):
 
     def illegal_move_notice_response(
             self,
-            illegal_move: Move,
+            illegal_move: Dict,
             game_board: GameBoard,
-            cur_moves: Set[Move]):
+            cur_moves: List[Dict]):
         self._input_req.notify_illegal_move()
         self.propose_move(game_board, cur_moves)
 
@@ -43,13 +41,13 @@ class HumanPlayer(Player):
 class ScriptedPlayer(Player):
 
     def __init__(self,
-                 color: PieceColor,
+                 color: int,
                  move_list: List[str]):
         super().__init__(color)
         self._move_list = move_list
         self._move_index = 0
 
-    def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
+    def propose_move(self, game_board: GameBoard, cur_moves: List[Dict]) -> Dict:
         # time.sleep(0.2)
         parsed_input = mt.parse_input(
             self._move_list[self._move_index])
@@ -61,9 +59,9 @@ class ScriptedPlayer(Player):
 
     def illegal_move_notice_response(
             self,
-            illegal_move: Move,
+            illegal_move: Tuple[str],
             game_board: GameBoard,
-            cur_moves: Set[Move]):
+            cur_moves: List[Dict]):
         raise IllegalMoveInMoveList(illegal_move)
 
 
@@ -71,21 +69,22 @@ class AIPlayer(Player):
 
     def __init__(
             self,
-            color: PieceColor,
+            color: int,
             move_selector: MoveSelector):
         super().__init__(color)
         self._move_selector = move_selector
 
-    def propose_move(self, game_board: GameBoard, cur_moves: Set[Move]) -> Move:
+    def propose_move(
+            self, game_board: GameBoard, cur_moves: List[Dict]) -> Dict:
         proposed_move = self._move_selector.select_move(
             game_board=game_board, cur_player=self._color, cur_moves=cur_moves)
         return proposed_move
 
     def illegal_move_notice_response(
             self,
-            illegal_move: Move,
+            illegal_move: Dict,
             game_board: GameBoard,
-            cur_moves: Set[Move]):
+            cur_moves: List[Dict]):
         raise IllegalAIMove(illegal_move)
 
 
@@ -116,7 +115,7 @@ class IllegalMoveInMoveList(Exception):
 class IllegalAIMove(Exception):
     def __init__(
             self,
-            move: Move,
+            move: Dict,
             message="AI player proposed an illegal move"):
         self._move = move
         self._msg = message

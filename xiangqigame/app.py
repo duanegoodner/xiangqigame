@@ -5,10 +5,10 @@ import pkgutil
 from xiangqigame.minimax_evaluators import PiecePoints
 
 import xiangqigame.move_selectors as ms
-from xiangqigame.enums import PieceColor
 from xiangqigame.game import Game
 from xiangqigame.handlers.signals import set_signal_handlers
 import xiangqigame.piece_points as pts
+from xiangqigame.piece_definitions import PColor
 from xiangqigame.players import HumanPlayer, AIPlayer
 import xiangqigame.data
 
@@ -33,9 +33,8 @@ def run():
         evaluator=pts_evaluator, search_depth=3)
 
     my_game = Game(
-        game_config=game_config,
-        red_player=HumanPlayer(color=PieceColor.RED),
-        black_player=HumanPlayer(color=PieceColor.BLACK)
+        red_player=HumanPlayer(color=PColor.RED),
+        black_player=HumanPlayer(color=PColor.BLK)
         # red_player=AIPlayer(
         #     color=PieceColor.RED, move_selector=red_move_selector),
         # black_player=AIPlayer(

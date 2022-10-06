@@ -1,6 +1,7 @@
 import json
 import pkgutil
-from xiangqigame.enums import GameState, PieceColor
+from xiangqigame.enums import GameState
+from xiangqigame.piece_definitions import PColor
 from xiangqigame.game import Game
 from xiangqigame.players import ScriptedPlayer
 from xiangqigame.data import alg_games as ag
@@ -18,9 +19,12 @@ class GameResultTests(unittest.TestCase):
         moves_a = g_a.game_a
         red_moves = moves_a[::2]
         black_moves = moves_a[1::2]
-        red_player = ScriptedPlayer(color=PieceColor.RED, move_list=red_moves)
-        black_player = ScriptedPlayer(color=PieceColor.BLACK, move_list=black_moves)
-        game_a = Game(self.game_config, red_player=red_player, black_player=black_player)
+        red_player = ScriptedPlayer(color=PColor.RED, move_list=red_moves)
+        black_player = ScriptedPlayer(
+            color=PColor.BLK,
+            move_list=black_moves
+        )
+        game_a = Game(red_player=red_player, black_player=black_player)
         game_a.play()
         self.assertTrue(game_a._game_state == GameState.RED_WON)
 

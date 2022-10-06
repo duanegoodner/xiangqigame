@@ -1,11 +1,14 @@
 from typing import Dict, List
 import xiangqigame.terminal_output as msg
-from xiangqigame.board_rules import BOARD_RULES as br
-from xiangqigame.enums import GameState, PieceColor
-from xiangqigame.game_board import GameBoard
+# from xiangqigame.board_rules import BOARD_RULES as br
+from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
+from xiangqigame.enums import GameState
+from xiangqigame.piece_definitions import PColor
+# from xiangqigame.game_board import GameBoard
+from xiangqigame.game_board_new import GameBoard
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.players import Player
-from xiangqigame.move import Move
+# from xiangqigame.move import Move
 
 from xiangqigame.handlers.errors import handle_interactive_eof
 
@@ -14,16 +17,16 @@ class Game:
 
     def __init__(
             self,
-            game_config: Dict,
+            # game_config: Dict,
             red_player: Player,
             black_player: Player,
             status_reporter: GameStatusReporter = msg.TerminalStatusReporter(),
-            move_log: List[Move] = None):
+            move_log: List[Dict] = None):
         self._game_state = GameState.UNFINISHED
-        self._whose_turn = PieceColor.RED
-        self._board = GameBoard(game_config['board_data'])
-        self._players = {PieceColor.RED: red_player,
-                         PieceColor.BLACK: black_player}
+        self._whose_turn = PColor.RED
+        self._board = GameBoard()
+        self._players = {PColor.RED: red_player,
+                         PColor.BLK: black_player}
         self._status_reporter = status_reporter
         if move_log is None:
             move_log = []
@@ -34,16 +37,16 @@ class Game:
     def _move_count(self):
         return len(self._move_log)
 
-    def is_in_check(self, color: PieceColor):
+    def is_in_check(self, color: int):
         opp_destinations = {
-            move[1] for move in self._board.calc_final_moves_of(
-                br.opponent_of[color])}
+            move["end"] for move in self._board.calc_final_moves_of(
+                bu.opponent_of[color])}
         return self._board.get_general_position(color) in opp_destinations
 
     def change_whose_turn(self):
-        self._whose_turn = br.opponent_of[self._whose_turn]
+        self._whose_turn = bu.opponent_of[self._whose_turn]
 
-    def is_valid_move(self, proposed_move: Move):
+    def is_valid_move(self, proposed_move: Dict):
         return proposed_move in self._board.calc_final_moves_of(
             self._whose_turn)
 
@@ -74,8 +77,8 @@ class Game:
     def set_game_state(self, game_state: GameState):
         self._game_state = game_state
 
-    def set_winner(self, color: PieceColor):
-        if color == PieceColor.RED:
+    def set_winner(self, color: int):
+        if color == PColor.RED:
             self.set_game_state(GameState.RED_WON)
         else:
             self.set_game_state(GameState.BLACK_WON)
@@ -99,7 +102,7 @@ class Game:
             self.send_game_info_to_status_reporter()
             self.player_turn()
             self.change_whose_turn()
-            if self._board.calc_final_moves_of(self._whose_turn) == set():
-                self.set_winner(br.opponent_of[self._whose_turn])
+            if not self._board.calc_final_moves_of(self._whose_turn):
+                self.set_winner(bu.opponent_of[self._whose_turn])
 
         self.send_game_info_to_status_reporter()
