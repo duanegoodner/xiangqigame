@@ -12,7 +12,7 @@ class GameBoard:
 
     def __init__(self, board_map: np.array = None):
         if board_map is None:
-            board_map = StartingBoardBuilder().build_initial_board()
+            board_map = StartingBoardBuilder().build_initial_board_array()
         self._map = board_map
 
     @property
