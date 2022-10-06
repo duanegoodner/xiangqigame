@@ -62,8 +62,6 @@ class GameBoard:
         destination_piece = self.get_occupant(move["end"])
         self.set_occupant(space=move["end"], piece=moving_piece)
         self.set_occupant(space=move["start"], piece=PType.NUL)
-        # executed mv: ((from_rank, to_rank), (from_file, to_file),
-        # moving piece, dest_piece)
         pieces = {
             "moving_piece": moving_piece,
             "destination_piece": destination_piece
@@ -73,10 +71,12 @@ class GameBoard:
     def undo_move(
             self,
             prev_move: Dict[str, Any]):
-        self.set_occupant(space=prev_move["start"],
-                          piece=prev_move["moving_piece"])
-        self.set_occupant(space=prev_move["end"],
-                          piece=prev_move["destination_piece"])
+        self.set_occupant(
+            space=prev_move["start"],
+            piece=prev_move["moving_piece"])
+        self.set_occupant(
+            space=prev_move["end"],
+            piece=prev_move["destination_piece"])
 
     def get_all_spaces_occupied_by(
             self, color: int) -> List[Tuple]:
