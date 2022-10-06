@@ -1,7 +1,7 @@
 import abc
 from typing import List, Dict
-from xiangqigame.enums import PieceColor, GameState
-from xiangqigame.game_board import GameBoard
+from xiangqigame.enums import GameState
+from xiangqigame.game_board_new import GameBoard
 
 
 class Player(abc.ABC):
@@ -12,7 +12,8 @@ class Player(abc.ABC):
         self._color = color
 
     @abc.abstractmethod
-    def propose_move(self, game_board: GameBoard, cur_moves: List[Dict]) -> Dict:
+    def propose_move(
+            self, game_board: GameBoard, cur_moves: List[Dict]) -> Dict:
         pass
 
     @abc.abstractmethod
@@ -30,7 +31,7 @@ class GameStatusReporter(abc.ABC):
             self,
             game_state: GameState,
             game_board: GameBoard,
-            whose_turn: PieceColor,
+            whose_turn: int,
             is_in_check: bool,
             move_count: int,
             prev_move: Dict = None):

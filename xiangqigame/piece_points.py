@@ -1,23 +1,24 @@
 from typing import Dict
 
 import numpy as np
-from xiangqigame.enums import PieceType, PieceColor
+# from xiangqigame.enums import PieceType, PieceColor
+from xiangqigame.piece_definitions import PType, PColor
 
 base_pts_icga_2004 = {
-    PieceType.GENERAL: 6000,
-    PieceType.ADVISOR: 120,
-    PieceType.ELEPHANT: 120,
-    PieceType.CHARIOT: 600,
-    PieceType.HORSE: 270,
-    PieceType.CANNON: 285,
-    PieceType.SOLDIER: 30
+    PType.GEN: 6000,
+    PType.ADV: 120,
+    PType.ELE: 120,
+    PType.CHA: 600,
+    PType.HOR: 270,
+    PType.CAN: 285,
+    PType.SOL: 30
 }
 
 
 class BasePoints:
 
-    def __init__(self, piece_vals: Dict[PieceType, int]):
-        assert set(piece_vals.keys()) == set(PieceType.__members__.values()) - {PieceType.NULL_PIECE}
+    def __init__(self, piece_vals: Dict[int, int]):
+        assert set(piece_vals.keys()) == set(PType) - {PType.NUL}
         self._piece_vals = piece_vals
 
     @property
@@ -29,20 +30,18 @@ class PositionPts:
 
     def __init__(
             self,
-            pts_arrays_black: Dict[PieceType, np.array],
-            pts_arrays_red: Dict[PieceType, np.array] = None
+            pts_arrays_black: Dict[int, np.array],
+            pts_arrays_red: Dict[int, np.array] = None
     ):
-        assert set(pts_arrays_black.keys()) == set(
-            PieceType.__members__.values()) - {PieceType.NULL_PIECE}
+        assert set(pts_arrays_black.keys()) == set(PType) - {PType.NUL}
         if pts_arrays_red:
-            assert set(pts_arrays_red.keys()) == set(
-                PieceType.__members__.values()).remove(PieceType.NULL_PIECE)
+            assert set(pts_arrays_red.keys()) == set(PType) - {PType.NUL}
         if pts_arrays_red is None:
             pts_arrays_red = {piece_type: np.flip(pts_array, axis=0) for
-                                piece_type, pts_array in pts_arrays_black.items()}
+                              piece_type, pts_array in pts_arrays_black.items()}
         self._pts_arrays = {
-            PieceColor.RED: pts_arrays_red,
-            PieceColor.BLACK: pts_arrays_black}
+            PColor.RED: pts_arrays_red,
+            PColor.BLK: pts_arrays_black}
 
     @property
     def vals(self):
@@ -106,11 +105,11 @@ soldier_position_icga_2004 = np.array([
 ])
 
 position_points_icga_2004 = {
-    PieceType.GENERAL: general_position_icga_2004,
-    PieceType.ADVISOR: advisor_position_icga_2004,
-    PieceType.ELEPHANT: elephant_position_icga_2004,
-    PieceType.CHARIOT: chariot_position_icga_2004,
-    PieceType.HORSE: horse_position_icga_2004,
-    PieceType.CANNON: cannon_position_icga_2004,
-    PieceType.SOLDIER: soldier_position_icga_2004
+    PType.GEN: general_position_icga_2004,
+    PType.ADV: advisor_position_icga_2004,
+    PType.ELE: elephant_position_icga_2004,
+    PType.CHA: chariot_position_icga_2004,
+    PType.HOR: horse_position_icga_2004,
+    PType.CAN: cannon_position_icga_2004,
+    PType.SOL: soldier_position_icga_2004
 }

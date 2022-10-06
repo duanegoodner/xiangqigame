@@ -1,5 +1,3 @@
-import json
-import pkgutil
 from xiangqigame.enums import GameState
 from xiangqigame.piece_definitions import PColor
 from xiangqigame.game import Game
@@ -11,8 +9,8 @@ import unittest
 
 
 class GameResultTests(unittest.TestCase):
-    game_config = json.loads(
-        pkgutil.get_data('xiangqigame.data', 'game_start.json'))
+    # game_config = json.loads(
+    #     pkgutil.get_data('xiangqigame.data', 'game_start.json'))
 
     def test_a(self):
         # moves_a = convert_alg_move_list(ag.game_a)

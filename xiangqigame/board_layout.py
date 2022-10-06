@@ -1,13 +1,4 @@
-from typing import NamedTuple
-from xiangqigame.board_components_new import BoardSpace
 from xiangqigame.piece_definitions import PColor
-
-
-# class CastleEdges(NamedTuple):
-#     min_rank: int
-#     max_rank: int
-#     min_file: int
-#     max_file: int
 
 
 class BoardLayout:

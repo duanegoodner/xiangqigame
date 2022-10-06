@@ -1,6 +1,5 @@
 import re
-from typing import List, Dict
-from xiangqigame.board_components import BoardSpace
+from typing import List, Dict, Tuple
 
 
 def parse_input(player_input: str) -> List[str]:
@@ -24,7 +23,7 @@ def algebraic_space_to_boardspace(algebraic_space: str):
     return rank, file
 
 
-def boardspace_to_algebraic_space(board_space: BoardSpace):
+def boardspace_to_algebraic_space(board_space: Tuple[int, int]):
     alg_column = chr(board_space[1] + ord('a'))
     alg_row = str(board_space[0] + 1)
     return f"{alg_column}{alg_row}"

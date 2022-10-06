@@ -1,7 +1,5 @@
 import math
 from typing import List, Union, Tuple
-
-from xiangqigame.board_components_new import BoardVector, BoardSpace
 from xiangqigame.board_layout import BoardLayout
 from xiangqigame.piece_definitions import PColor
 
@@ -38,14 +36,16 @@ class BoardUtilities:
                 0 <= space[1] < BoardLayout.num_files)
 
     @staticmethod
-    def is_in_homeland_of(color: int, space: Union[List[int], Tuple[int, int]]) -> bool:
+    def is_in_homeland_of(
+            color: int, space: Union[List[int], Tuple[int, int]]) -> bool:
         if color == PColor.RED:
             return space[0] >= BoardLayout.river_edges[PColor.RED]
         if color == PColor.BLK:
             return space[0] <= BoardLayout.river_edges[PColor.BLK]
 
     @staticmethod
-    def is_in_castle_of(color: int, space: Union[List[int], Tuple[int, int]]) -> bool:
+    def is_in_castle_of(
+            color: int, space: Union[List[int], Tuple[int, int]]) -> bool:
         castle = BoardLayout.castle_edges[color]
         return (castle[0] <= space[0] <= castle[1]) and (
                 castle[2] <= space[1] <= castle[3])

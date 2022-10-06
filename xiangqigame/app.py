@@ -1,9 +1,5 @@
 import colorama
-import json
-import pkgutil
-
 from xiangqigame.minimax_evaluators import PiecePoints
-
 import xiangqigame.move_selectors as ms
 from xiangqigame.game import Game
 from xiangqigame.handlers.signals import set_signal_handlers
@@ -16,8 +12,6 @@ def run():
     set_signal_handlers()
     colorama.init()
 
-    game_config = json.loads(pkgutil.get_data(
-        'xiangqigame.data', 'game_start.json'))
     # black_move_selector = ms.RandomMoveSelector()
 
     base_pts = pts.BasePoints(piece_vals=pts.base_pts_icga_2004)
@@ -32,12 +26,12 @@ def run():
         evaluator=pts_evaluator, search_depth=3)
 
     my_game = Game(
-        red_player=HumanPlayer(color=PColor.RED),
-        black_player=HumanPlayer(color=PColor.BLK)
-        # red_player=AIPlayer(
-        #     color=PieceColor.RED, move_selector=red_move_selector),
-        # black_player=AIPlayer(
-        #     color=PieceColor.BLACK, move_selector=black_move_selector)
+        # red_player=HumanPlayer(color=PColor.RED),
+        # black_player=HumanPlayer(color=PColor.BLK)
+        red_player=AIPlayer(
+            color=PColor.RED, move_selector=red_move_selector),
+        black_player=AIPlayer(
+            color=PColor.BLK, move_selector=black_move_selector)
     )
 
     my_game.play()

@@ -1,6 +1,6 @@
 import xiangqigame.move_translator as mt
 from typing import List, Tuple, Dict
-from xiangqigame.game_board import GameBoard
+from xiangqigame.game_board_new import GameBoard
 from xiangqigame.game_interfaces import Player
 import xiangqigame.terminal_output as msg
 from xiangqigame.move_selectors import MoveSelector
