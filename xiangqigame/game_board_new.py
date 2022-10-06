@@ -16,25 +16,9 @@ class GameBoard:
             board_map = StartingBoardBuilder().build_initial_board()
         self._map = board_map
 
-    def __str__(self):
-
-        file_labels = [
-            f" {chr(char_num)}  " for char_num in range(ord("a"), ord("j"))
-        ]
-        file_labels.insert(0, '\t')
-        file_labels.insert(len(file_labels), '\n')
-
-        board_list = [
-            [f" {encode_piece(self.get_piece_info((row, col)))} "
-                for col in range(len(self._map[0]))]
-            for row in range(len(self._map))
-        ]
-        for row_index in range(len(board_list)):
-            board_list[row_index].insert(0, f" {str(row_index + 1)}\t")
-        board_list.insert(0, file_labels)
-        board_list = ["".join(row) for row in board_list]
-
-        return str('\n\n'.join([str(rank) for rank in board_list]))
+    @property
+    def map(self):
+        return self._map
 
     @property
     def castles(self):
