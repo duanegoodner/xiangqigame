@@ -1,4 +1,5 @@
 import numpy as np
+import cython
 
 
 DTYPE = np.intc
@@ -10,8 +11,9 @@ cpdef enum PType:
     BLK = 1
 
 
-
-cdef (int, int) search_spaces(
+@cython.boundscheck(False)
+@cython.wraparound(False)
+cdef void search_spaces(
         int [:, :] board_map,
         int [:] start,
         int [:] search_direction,
@@ -35,12 +37,12 @@ cdef (int, int) search_spaces(
     if (next_step[0] < board_map.shape[0]) and (
             next_step[1] < board_map.shape[1]):
         has_first_occ = True
-        first_occupied_space = next_step
-        # first_occupied_space[1] = next_step[1]
-
-    return num_empty, has_first_occ
+        first_occupied_space[0] = next_step[0]
+        first_occupied_space[1] = next_step[1]
 
 
+@cython.boundscheck(False)
+@cython.wraparound(False)
 def run_search_space(
         int [:, :] board_map,
         int [:] start,
@@ -48,14 +50,14 @@ def run_search_space(
 
     cdef int [:, :] board_map_view = board_map
 
-    cdef (int, int) num_empty_has_first_occ
+    # cdef (int, int) num_empty_has_first_occ
 
-    empty_spaces = np.zeros(20, dtype=DTYPE).reshape((10,2))
+    empty_spaces = np.full((11, 2), -1, dtype=DTYPE).reshape((11,2))
     cdef int [:, :] empty_spaces_view = empty_spaces
     first_occupied = np.zeros(2, dtype=DTYPE)
     cdef int [:] first_occupied_view = first_occupied
 
-    num_empty_has_first_occ = search_spaces(
+    search_spaces(
         board_map=board_map_view,
         start=start,
         search_direction=direction,
@@ -63,12 +65,4 @@ def run_search_space(
         first_occupied_space=first_occupied_view
     )
 
-    return num_empty_has_first_occ
-
-
-
-
-
-
-
-
+    return empty_spaces, first_occupied

@@ -1,9 +1,11 @@
-
 import numpy as np
 import time
 from xiangqigame.game_board_new import GameBoard
 import xiangqigame.starting_board_builder as bb
-import xiangqigame.cython_modules.search_spaces as ss
+import xiangqigame.cython_modules.search_spaces_v1 as ss_v1
+import xiangqigame.cython_modules.search_spaces_v2 as ss_v2
+import xiangqigame.cython_modules.search_spaces_v3 as ss_v3
+import xiangqigame.cython_modules.search_spaces_v4 as ss_v4
 
 
 def time_func_100(func):
@@ -25,23 +27,51 @@ direction = np.array([0, 1], dtype=np.intc)
 
 
 @time_func_100
-def search_spaces_cython():
-    for row in range(board._map.shape[0]):
-        for col in range(board._map.shape[1]):
-            cython_resul_a = ss.run_search_space(
-                board_map=board._map,
-                start=np.array([row, col], dtype=np.intc),
-                direction=np.array([0, 1], dtype=np.intc))
+def search_spaces_cython_v1():
+    cython_result = ss_v1.run_search_space(
+        board_map=board._map,
+        start=start,
+        direction=direction)
+
+
+@time_func_100
+def search_spaces_cython_v2():
+    result = ss_v2.run_search_space(
+        board_map=board._map,
+        start_rank=5,
+        start_file=5,
+        dir_rank=0,
+        dir_file=1)
+
+
+@time_func_100
+def search_spaces_cython_v3():
+    cython_result = ss_v3.run_search_space(
+        board_map=board._map,
+        start=start,
+        direction=direction)
+
+
+# @time_func_100
+def search_spaces_cython_v4():
+    cython_result = ss_v4.run_search_space(
+        board_map=board._map,
+        start_rank=5,
+        start_file=5,
+        dir_rank=0,
+        dir_file=1)
+    print(cython_result)
 
 
 @time_func_100
 def search_spaces_reg():
-    for row in range(board._map.shape[0]):
-        for col in range(board._map.shape[1]):
-            reg_result = board.search_spaces(from_space=(row, col), direction=(0, 1))
+    reg_result = board.search_spaces(from_space=(5, 5), direction=(0, 1))
 
 
-print(f"cython = {search_spaces_cython()}, "
-      f"regular = {search_spaces_reg()}")
+print(f"regular = {search_spaces_reg()}, "
+      # f"cython_v1 = {search_spaces_cython_v1()}, "
+      # f"cython_v2 = {search_spaces_cython_v2()}, "
+      # f"cython_v3 = {search_spaces_cython_v3()}, "
+      f"cython_v4 = {search_spaces_cython_v4()}")
 
 
