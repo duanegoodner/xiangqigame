@@ -1,7 +1,7 @@
 import math
 from typing import List, Tuple, Union, Dict, Any
 import numpy as np
-# from xiangqigame.board_components_new import SpaceSearchResult
+from xiangqigame.board_components_new import SpaceSearchResult
 from xiangqigame.piece_definitions import PType, PColor
 from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
 from xiangqigame.board_layout import BoardLayout as blo
@@ -115,9 +115,9 @@ class GameBoard:
             next_step = bu.space_plus_vect(next_step, direction)
         if bu.is_on_board(next_step):
             first_occupied_space = next_step
-        return {
-            "empty_spaces": empty_spaces,
-            "first_occupied_space": first_occupied_space}
+        return SpaceSearchResult(
+            empty_spaces=empty_spaces,
+            first_occupied_space=first_occupied_space)
 
     def soldier_moves(
             self, from_position: Tuple[int, int], color: int) -> List[Dict]:
@@ -140,19 +140,19 @@ class GameBoard:
 
         for direction in search_directions:
             search_results = self.search_spaces(from_position, direction)
-            for empty_space in search_results["empty_spaces"]:
+            for empty_space in search_results.empty_spaces:
                 cannon_moves.append(
                     {"start": from_position, "end": empty_space})
 
-            if search_results["first_occupied_space"]:
+            if search_results.first_occupied_space:
                 second_search = self.search_spaces(
-                    search_results["first_occupied_space"], direction)
-                if second_search["first_occupied_space"] and (
-                        self.get_color(second_search["first_occupied_space"])
+                    search_results.first_occupied_space, direction)
+                if second_search.first_occupied_space and (
+                        self.get_color(second_search.first_occupied_space)
                         == bu.opponent_of[color]):
                     cannon_moves.append({
                         "start": from_position,
-                        "end": second_search["first_occupied_space"]})
+                        "end": second_search.first_occupied_space})
 
         return cannon_moves
 
@@ -163,16 +163,16 @@ class GameBoard:
         for direction in search_directions:
             search_results = self.search_spaces(from_position, direction)
 
-            for empty_space in search_results["empty_spaces"]:
+            for empty_space in search_results.empty_spaces:
                 chariot_moves.append({
                     "start": from_position, "end": empty_space})
 
-            if search_results["first_occupied_space"] and (
-                    self.get_color(search_results["first_occupied_space"])
+            if search_results.first_occupied_space and (
+                    self.get_color(search_results.first_occupied_space)
                     == bu.opponent_of[color]):
                 chariot_moves.append(
                     {"start": from_position,
-                     "end": search_results["first_occupied_space"]})
+                     "end": search_results.first_occupied_space})
 
         return chariot_moves
 
