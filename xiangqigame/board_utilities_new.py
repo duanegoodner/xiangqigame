@@ -71,6 +71,20 @@ class BoardUtilities:
         (0, 1), (0, -1), (1, 0), (-1, 0)
     )
 
+    @staticmethod
+    def all_orthogonal_unit_vects_from(space: Tuple[int, int]):
+        orthogonal_unit_vects = []
+        if space[0] != 0:
+            orthogonal_unit_vects.append((-1, 0))
+        if space[1] != 0:
+            orthogonal_unit_vects.append((0, -1))
+        if space[0] < BoardLayout.num_ranks - 1:
+            orthogonal_unit_vects.append((1, 0))
+        if space[1] < BoardLayout.num_files - 1:
+            orthogonal_unit_vects.append((0, 1))
+
+        return tuple(orthogonal_unit_vects)
+
     diag_directions = tuple(
         (rank, file) for rank in (-1, 1) for file in (-1, 1))
 

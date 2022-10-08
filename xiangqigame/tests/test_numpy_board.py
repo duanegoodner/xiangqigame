@@ -1,5 +1,4 @@
 import pytest
-from xiangqigame.board_components_new import BoardVector
 from xiangqigame.board_utilities_new import BoardUtilities as bu
 import xiangqigame.game_board_new as gbn
 from xiangqigame.piece_definitions import PColor
@@ -66,5 +65,13 @@ def test_calc_final_moves(np_board):
     result = np_board.calc_final_moves_of(color=PColor.RED)
     assert len(result) == 44
 
+
+def test_get_general_moves(np_board):
+    red_gen_moves = np_board.general_moves(from_position=(9, 4), color=PColor.RED)
+    print()
+    print(red_gen_moves)
+    print()
+    black_cannon_moves = np_board.cannon_moves(from_position=(2, 1), color=PColor.BLK)
+    print(black_cannon_moves)
 
 
