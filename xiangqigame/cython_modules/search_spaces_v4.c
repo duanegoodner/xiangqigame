@@ -1097,9 +1097,9 @@ enum __pyx_t_11xiangqigame_14cython_modules_16search_spaces_v4_PType {
   __pyx_e_11xiangqigame_14cython_modules_16search_spaces_v4_BLK = 1
 };
 
-/* "xiangqigame/cython_modules/search_spaces_v4.pyx":27
+/* "xiangqigame/cython_modules/search_spaces_v4.pyx":26
+ * 
  *     cdef long num_empty = 0
- *     cdef has_first_occ = False
  *     cdef (long, long) next_step = (             # <<<<<<<<<<<<<<
  *         start[0] + search_direction[0], start[1] + search_direction[1])
  * 
@@ -1366,6 +1366,17 @@ static CYTHON_INLINE void __Pyx_XDEC_MEMVIEW(__Pyx_memviewslice *, int, int);
 static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
 #else
 #define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
+#endif
+
+/* PyIntCompare.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_EqObjC(PyObject *op1, PyObject *op2, long intval, long inplace);
+
+/* PyIntBinop.proto */
+#if !CYTHON_COMPILING_IN_PYPY
+static PyObject* __Pyx_PyInt_RemainderObjC(PyObject *op1, PyObject *op2, long intval, int inplace, int zerodivision_check);
+#else
+#define __Pyx_PyInt_RemainderObjC(op1, op2, intval, inplace, zerodivision_check)\
+    (inplace ? PyNumber_InPlaceRemainder(op1, op2) : PyNumber_Remainder(op1, op2))
 #endif
 
 /* ListCompAppend.proto */
@@ -1954,11 +1965,11 @@ __pyx_memoryview_copy_new_contig(const __Pyx_memviewslice *from_mvs,
 /* CIntFromPy.proto */
 static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
 
-/* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
-
 /* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
+
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
@@ -2066,6 +2077,7 @@ static const char __pyx_k_RED[] = "RED";
 static const char __pyx_k_cls[] = "cls";
 static const char __pyx_k_dct[] = "dct";
 static const char __pyx_k_doc[] = "__doc__";
+static const char __pyx_k_idx[] = "idx";
 static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_obj[] = "obj";
 static const char __pyx_k_res[] = "res";
@@ -2168,6 +2180,7 @@ static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
 static const char __pyx_k_Pyx_EnumBase___repr[] = "__Pyx_EnumBase.__repr__";
 static const char __pyx_k_has_first_occ_space[] = "has_first_occ_space";
 static const char __pyx_k_Unknown_enum_value_s[] = "Unknown enum value: '%s'";
+static const char __pyx_k_first_occupied_space[] = "first_occupied_space";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
 static const char __pyx_k_MemoryView_of_r_object[] = "<MemoryView of %r object>";
@@ -2258,6 +2271,7 @@ static PyObject *__pyx_n_s_enumerate;
 static PyObject *__pyx_n_s_error;
 static PyObject *__pyx_n_s_first_occ_tuple;
 static PyObject *__pyx_n_s_first_occupied;
+static PyObject *__pyx_n_s_first_occupied_space;
 static PyObject *__pyx_n_s_flags;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_fortran;
@@ -2266,6 +2280,7 @@ static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_kp_s_got_differing_extents_in_dimensi;
 static PyObject *__pyx_n_s_has_first_occ_space;
 static PyObject *__pyx_n_s_id;
+static PyObject *__pyx_n_s_idx;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_init;
 static PyObject *__pyx_n_s_item;
@@ -2452,93 +2467,94 @@ static PyObject *__pyx_codeobj__38;
  *         long* start,
  */
 
-static void __pyx_f_11xiangqigame_14cython_modules_16search_spaces_v4_search_spaces(__Pyx_memviewslice __pyx_v_board_map, long *__pyx_v_start, long *__pyx_v_search_direction, long *__pyx_v_num_empty_spaces, long *__pyx_v_empty_spaces, CYTHON_UNUSED long *__pyx_v_has_first_occ_space, long *__pyx_v_first_occupied) {
+static void __pyx_f_11xiangqigame_14cython_modules_16search_spaces_v4_search_spaces(__Pyx_memviewslice __pyx_v_board_map, long *__pyx_v_start, long *__pyx_v_search_direction, long *__pyx_v_num_empty_spaces, long *__pyx_v_empty_spaces, long *__pyx_v_has_first_occ_space, long *__pyx_v_first_occupied) {
   long __pyx_v_num_empty;
-  CYTHON_UNUSED PyObject *__pyx_v_has_first_occ = 0;
   __pyx_ctuple_long__and_long __pyx_v_next_step;
   __Pyx_RefNannyDeclarations
   __pyx_ctuple_long__and_long __pyx_t_1;
   int __pyx_t_2;
-  int __pyx_t_3;
-  Py_ssize_t __pyx_t_4;
-  Py_ssize_t __pyx_t_5;
+  long __pyx_t_3;
+  int __pyx_t_4;
+  int __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
   __Pyx_RefNannySetupContext("search_spaces", 0);
 
   /* "xiangqigame/cython_modules/search_spaces_v4.pyx":25
  *         long* first_occupied):
  * 
  *     cdef long num_empty = 0             # <<<<<<<<<<<<<<
- *     cdef has_first_occ = False
- *     cdef (long, long) next_step = (
- */
-  __pyx_v_num_empty = 0;
-
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":26
- * 
- *     cdef long num_empty = 0
- *     cdef has_first_occ = False             # <<<<<<<<<<<<<<
  *     cdef (long, long) next_step = (
  *         start[0] + search_direction[0], start[1] + search_direction[1])
  */
-  __Pyx_INCREF(Py_False);
-  __pyx_v_has_first_occ = Py_False;
+  __pyx_v_num_empty = 0;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":28
- *     cdef has_first_occ = False
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":27
+ *     cdef long num_empty = 0
  *     cdef (long, long) next_step = (
  *         start[0] + search_direction[0], start[1] + search_direction[1])             # <<<<<<<<<<<<<<
  * 
- *     while (next_step[0] < board_map.shape[0]) and (
+ *     while (0 <= next_step[0] < board_map.shape[0]) and (
  */
   __pyx_t_1.f0 = ((__pyx_v_start[0]) + (__pyx_v_search_direction[0]));
   __pyx_t_1.f1 = ((__pyx_v_start[1]) + (__pyx_v_search_direction[1]));
   __pyx_v_next_step = __pyx_t_1;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":30
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":29
  *         start[0] + search_direction[0], start[1] + search_direction[1])
  * 
- *     while (next_step[0] < board_map.shape[0]) and (             # <<<<<<<<<<<<<<
- *             next_step[1] < board_map.shape[1]) and (
+ *     while (0 <= next_step[0] < board_map.shape[0]) and (             # <<<<<<<<<<<<<<
+ *             0 <= next_step[1] < board_map.shape[1]) and (
  *             board_map[next_step[0], next_step[1]] == PType.NUL):
  */
   while (1) {
-    __pyx_t_3 = ((__pyx_v_next_step.f0 < (__pyx_v_board_map.shape[0])) != 0);
-    if (__pyx_t_3) {
+    __pyx_t_3 = __pyx_v_next_step.f0;
+    __pyx_t_4 = (0 <= __pyx_t_3);
+    if (__pyx_t_4) {
+      __pyx_t_4 = (__pyx_t_3 < (__pyx_v_board_map.shape[0]));
+    }
+    __pyx_t_5 = (__pyx_t_4 != 0);
+    if (__pyx_t_5) {
     } else {
-      __pyx_t_2 = __pyx_t_3;
+      __pyx_t_2 = __pyx_t_5;
+      goto __pyx_L5_bool_binop_done;
+    }
+
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":30
+ * 
+ *     while (0 <= next_step[0] < board_map.shape[0]) and (
+ *             0 <= next_step[1] < board_map.shape[1]) and (             # <<<<<<<<<<<<<<
+ *             board_map[next_step[0], next_step[1]] == PType.NUL):
+ *         empty_spaces[2 * num_empty] = next_step[0]
+ */
+    __pyx_t_3 = __pyx_v_next_step.f1;
+    __pyx_t_5 = (0 <= __pyx_t_3);
+    if (__pyx_t_5) {
+      __pyx_t_5 = (__pyx_t_3 < (__pyx_v_board_map.shape[1]));
+    }
+    __pyx_t_4 = (__pyx_t_5 != 0);
+    if (__pyx_t_4) {
+    } else {
+      __pyx_t_2 = __pyx_t_4;
       goto __pyx_L5_bool_binop_done;
     }
 
     /* "xiangqigame/cython_modules/search_spaces_v4.pyx":31
- * 
- *     while (next_step[0] < board_map.shape[0]) and (
- *             next_step[1] < board_map.shape[1]) and (             # <<<<<<<<<<<<<<
- *             board_map[next_step[0], next_step[1]] == PType.NUL):
- *         empty_spaces[2 * num_empty] = next_step[0]
- */
-    __pyx_t_3 = ((__pyx_v_next_step.f1 < (__pyx_v_board_map.shape[1])) != 0);
-    if (__pyx_t_3) {
-    } else {
-      __pyx_t_2 = __pyx_t_3;
-      goto __pyx_L5_bool_binop_done;
-    }
-
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":32
- *     while (next_step[0] < board_map.shape[0]) and (
- *             next_step[1] < board_map.shape[1]) and (
+ *     while (0 <= next_step[0] < board_map.shape[0]) and (
+ *             0 <= next_step[1] < board_map.shape[1]) and (
  *             board_map[next_step[0], next_step[1]] == PType.NUL):             # <<<<<<<<<<<<<<
  *         empty_spaces[2 * num_empty] = next_step[0]
  *         empty_spaces[2 * num_empty + 1] = next_step[1]
  */
-    __pyx_t_4 = __pyx_v_next_step.f0;
-    __pyx_t_5 = __pyx_v_next_step.f1;
-    __pyx_t_3 = (((*((long *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_board_map.data + __pyx_t_4 * __pyx_v_board_map.strides[0]) ) + __pyx_t_5 * __pyx_v_board_map.strides[1]) ))) == __pyx_e_11xiangqigame_14cython_modules_16search_spaces_v4_NUL) != 0);
-    __pyx_t_2 = __pyx_t_3;
+    __pyx_t_6 = __pyx_v_next_step.f0;
+    __pyx_t_7 = __pyx_v_next_step.f1;
+    __pyx_t_4 = (((*((long *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_board_map.data + __pyx_t_6 * __pyx_v_board_map.strides[0]) ) + __pyx_t_7 * __pyx_v_board_map.strides[1]) ))) == __pyx_e_11xiangqigame_14cython_modules_16search_spaces_v4_NUL) != 0);
+    __pyx_t_2 = __pyx_t_4;
     __pyx_L5_bool_binop_done:;
     if (!__pyx_t_2) break;
 
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":33
- *             next_step[1] < board_map.shape[1]) and (
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":32
+ *             0 <= next_step[1] < board_map.shape[1]) and (
  *             board_map[next_step[0], next_step[1]] == PType.NUL):
  *         empty_spaces[2 * num_empty] = next_step[0]             # <<<<<<<<<<<<<<
  *         empty_spaces[2 * num_empty + 1] = next_step[1]
@@ -2546,7 +2562,7 @@ static void __pyx_f_11xiangqigame_14cython_modules_16search_spaces_v4_search_spa
  */
     (__pyx_v_empty_spaces[(2 * __pyx_v_num_empty)]) = __pyx_v_next_step.f0;
 
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":34
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":33
  *             board_map[next_step[0], next_step[1]] == PType.NUL):
  *         empty_spaces[2 * num_empty] = next_step[0]
  *         empty_spaces[2 * num_empty + 1] = next_step[1]             # <<<<<<<<<<<<<<
@@ -2555,7 +2571,7 @@ static void __pyx_f_11xiangqigame_14cython_modules_16search_spaces_v4_search_spa
  */
     (__pyx_v_empty_spaces[((2 * __pyx_v_num_empty) + 1)]) = __pyx_v_next_step.f1;
 
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":35
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":34
  *         empty_spaces[2 * num_empty] = next_step[0]
  *         empty_spaces[2 * num_empty + 1] = next_step[1]
  *         num_empty += 1             # <<<<<<<<<<<<<<
@@ -2564,73 +2580,82 @@ static void __pyx_f_11xiangqigame_14cython_modules_16search_spaces_v4_search_spa
  */
     __pyx_v_num_empty = (__pyx_v_num_empty + 1);
 
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":37
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":36
  *         num_empty += 1
  *         next_step = (
  *             next_step[0] + search_direction[0],             # <<<<<<<<<<<<<<
  *             next_step[1] + search_direction[1])
- *     if (next_step[0] < board_map.shape[0]) and (
+ *     if (0 <= next_step[0] < board_map.shape[0]) and (
  */
     __pyx_t_1.f0 = (__pyx_v_next_step.f0 + (__pyx_v_search_direction[0]));
     __pyx_t_1.f1 = (__pyx_v_next_step.f1 + (__pyx_v_search_direction[1]));
     __pyx_v_next_step = __pyx_t_1;
   }
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":39
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":38
  *             next_step[0] + search_direction[0],
  *             next_step[1] + search_direction[1])
- *     if (next_step[0] < board_map.shape[0]) and (             # <<<<<<<<<<<<<<
- *             next_step[1] < board_map.shape[1]):
- *         has_first_occ = 1
+ *     if (0 <= next_step[0] < board_map.shape[0]) and (             # <<<<<<<<<<<<<<
+ *             0 <= next_step[1] < board_map.shape[1]):
+ *         has_first_occ_space[0] = 1
  */
-  __pyx_t_3 = ((__pyx_v_next_step.f0 < (__pyx_v_board_map.shape[0])) != 0);
-  if (__pyx_t_3) {
+  __pyx_t_3 = __pyx_v_next_step.f0;
+  __pyx_t_4 = (0 <= __pyx_t_3);
+  if (__pyx_t_4) {
+    __pyx_t_4 = (__pyx_t_3 < (__pyx_v_board_map.shape[0]));
+  }
+  __pyx_t_5 = (__pyx_t_4 != 0);
+  if (__pyx_t_5) {
   } else {
-    __pyx_t_2 = __pyx_t_3;
+    __pyx_t_2 = __pyx_t_5;
     goto __pyx_L9_bool_binop_done;
   }
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":40
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":39
  *             next_step[1] + search_direction[1])
- *     if (next_step[0] < board_map.shape[0]) and (
- *             next_step[1] < board_map.shape[1]):             # <<<<<<<<<<<<<<
- *         has_first_occ = 1
+ *     if (0 <= next_step[0] < board_map.shape[0]) and (
+ *             0 <= next_step[1] < board_map.shape[1]):             # <<<<<<<<<<<<<<
+ *         has_first_occ_space[0] = 1
  *         first_occupied[0] = next_step[0]
  */
-  __pyx_t_3 = ((__pyx_v_next_step.f1 < (__pyx_v_board_map.shape[1])) != 0);
-  __pyx_t_2 = __pyx_t_3;
+  __pyx_t_3 = __pyx_v_next_step.f1;
+  __pyx_t_5 = (0 <= __pyx_t_3);
+  if (__pyx_t_5) {
+    __pyx_t_5 = (__pyx_t_3 < (__pyx_v_board_map.shape[1]));
+  }
+  __pyx_t_4 = (__pyx_t_5 != 0);
+  __pyx_t_2 = __pyx_t_4;
   __pyx_L9_bool_binop_done:;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":39
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":38
  *             next_step[0] + search_direction[0],
  *             next_step[1] + search_direction[1])
- *     if (next_step[0] < board_map.shape[0]) and (             # <<<<<<<<<<<<<<
- *             next_step[1] < board_map.shape[1]):
- *         has_first_occ = 1
+ *     if (0 <= next_step[0] < board_map.shape[0]) and (             # <<<<<<<<<<<<<<
+ *             0 <= next_step[1] < board_map.shape[1]):
+ *         has_first_occ_space[0] = 1
  */
   if (__pyx_t_2) {
 
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":41
- *     if (next_step[0] < board_map.shape[0]) and (
- *             next_step[1] < board_map.shape[1]):
- *         has_first_occ = 1             # <<<<<<<<<<<<<<
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":40
+ *     if (0 <= next_step[0] < board_map.shape[0]) and (
+ *             0 <= next_step[1] < board_map.shape[1]):
+ *         has_first_occ_space[0] = 1             # <<<<<<<<<<<<<<
  *         first_occupied[0] = next_step[0]
  *         first_occupied[1] = next_step[1]
  */
-    __Pyx_INCREF(__pyx_int_1);
-    __Pyx_DECREF_SET(__pyx_v_has_first_occ, __pyx_int_1);
+    (__pyx_v_has_first_occ_space[0]) = 1;
 
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":42
- *             next_step[1] < board_map.shape[1]):
- *         has_first_occ = 1
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":41
+ *             0 <= next_step[1] < board_map.shape[1]):
+ *         has_first_occ_space[0] = 1
  *         first_occupied[0] = next_step[0]             # <<<<<<<<<<<<<<
  *         first_occupied[1] = next_step[1]
  *     num_empty_spaces[0] = num_empty
  */
     (__pyx_v_first_occupied[0]) = __pyx_v_next_step.f0;
 
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":43
- *         has_first_occ = 1
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":42
+ *         has_first_occ_space[0] = 1
  *         first_occupied[0] = next_step[0]
  *         first_occupied[1] = next_step[1]             # <<<<<<<<<<<<<<
  *     num_empty_spaces[0] = num_empty
@@ -2638,16 +2663,16 @@ static void __pyx_f_11xiangqigame_14cython_modules_16search_spaces_v4_search_spa
  */
     (__pyx_v_first_occupied[1]) = __pyx_v_next_step.f1;
 
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":39
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":38
  *             next_step[0] + search_direction[0],
  *             next_step[1] + search_direction[1])
- *     if (next_step[0] < board_map.shape[0]) and (             # <<<<<<<<<<<<<<
- *             next_step[1] < board_map.shape[1]):
- *         has_first_occ = 1
+ *     if (0 <= next_step[0] < board_map.shape[0]) and (             # <<<<<<<<<<<<<<
+ *             0 <= next_step[1] < board_map.shape[1]):
+ *         has_first_occ_space[0] = 1
  */
   }
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":44
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":43
  *         first_occupied[0] = next_step[0]
  *         first_occupied[1] = next_step[1]
  *     num_empty_spaces[0] = num_empty             # <<<<<<<<<<<<<<
@@ -2665,11 +2690,10 @@ static void __pyx_f_11xiangqigame_14cython_modules_16search_spaces_v4_search_spa
  */
 
   /* function exit code */
-  __Pyx_XDECREF(__pyx_v_has_first_occ);
   __Pyx_RefNannyFinishContext();
 }
 
-/* "xiangqigame/cython_modules/search_spaces_v4.pyx":49
+/* "xiangqigame/cython_modules/search_spaces_v4.pyx":48
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def run_search_space(             # <<<<<<<<<<<<<<
@@ -2721,29 +2745,29 @@ static PyObject *__pyx_pw_11xiangqigame_14cython_modules_16search_spaces_v4_1run
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_start_rank)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run_search_space", 1, 5, 5, 1); __PYX_ERR(0, 49, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run_search_space", 1, 5, 5, 1); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_start_file)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run_search_space", 1, 5, 5, 2); __PYX_ERR(0, 49, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run_search_space", 1, 5, 5, 2); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dir_rank)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run_search_space", 1, 5, 5, 3); __PYX_ERR(0, 49, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run_search_space", 1, 5, 5, 3); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dir_file)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run_search_space", 1, 5, 5, 4); __PYX_ERR(0, 49, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run_search_space", 1, 5, 5, 4); __PYX_ERR(0, 48, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "run_search_space") < 0)) __PYX_ERR(0, 49, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "run_search_space") < 0)) __PYX_ERR(0, 48, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 5) {
       goto __pyx_L5_argtuple_error;
@@ -2754,15 +2778,15 @@ static PyObject *__pyx_pw_11xiangqigame_14cython_modules_16search_spaces_v4_1run
       values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
       values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
     }
-    __pyx_v_board_map = __Pyx_PyObject_to_MemoryviewSlice_dsds_long(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_board_map.memview)) __PYX_ERR(0, 50, __pyx_L3_error)
-    __pyx_v_start_rank = __Pyx_PyInt_As_long(values[1]); if (unlikely((__pyx_v_start_rank == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 51, __pyx_L3_error)
-    __pyx_v_start_file = __Pyx_PyInt_As_long(values[2]); if (unlikely((__pyx_v_start_file == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 52, __pyx_L3_error)
-    __pyx_v_dir_rank = __Pyx_PyInt_As_long(values[3]); if (unlikely((__pyx_v_dir_rank == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 53, __pyx_L3_error)
-    __pyx_v_dir_file = __Pyx_PyInt_As_long(values[4]); if (unlikely((__pyx_v_dir_file == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 54, __pyx_L3_error)
+    __pyx_v_board_map = __Pyx_PyObject_to_MemoryviewSlice_dsds_long(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_board_map.memview)) __PYX_ERR(0, 49, __pyx_L3_error)
+    __pyx_v_start_rank = __Pyx_PyInt_As_long(values[1]); if (unlikely((__pyx_v_start_rank == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L3_error)
+    __pyx_v_start_file = __Pyx_PyInt_As_long(values[2]); if (unlikely((__pyx_v_start_file == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 51, __pyx_L3_error)
+    __pyx_v_dir_rank = __Pyx_PyInt_As_long(values[3]); if (unlikely((__pyx_v_dir_rank == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 52, __pyx_L3_error)
+    __pyx_v_dir_file = __Pyx_PyInt_As_long(values[4]); if (unlikely((__pyx_v_dir_file == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 53, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("run_search_space", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 49, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("run_search_space", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 48, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("xiangqigame.cython_modules.search_spaces_v4.run_search_space", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2781,6 +2805,7 @@ static PyObject *__pyx_pf_11xiangqigame_14cython_modules_16search_spaces_v4_run_
   long __pyx_v_search_dir[2];
   long __pyx_v_num_empty_spaces[1];
   long __pyx_v_empty_spaces[22];
+  int __pyx_v_idx;
   long __pyx_v_has_first_occ_space[1];
   long __pyx_v_first_occupied[2];
   PyObject *__pyx_v_empty_space_list = NULL;
@@ -2789,21 +2814,23 @@ static PyObject *__pyx_pf_11xiangqigame_14cython_modules_16search_spaces_v4_run_
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   long __pyx_t_1[1];
-  PyObject *__pyx_t_2 = NULL;
-  PyObject *__pyx_t_3 = NULL;
+  int __pyx_t_2;
+  long __pyx_t_3[1];
   PyObject *__pyx_t_4 = NULL;
-  Py_ssize_t __pyx_t_5;
-  PyObject *(*__pyx_t_6)(PyObject *);
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
   Py_ssize_t __pyx_t_7;
-  PyObject *__pyx_t_8 = NULL;
+  PyObject *(*__pyx_t_8)(PyObject *);
   PyObject *__pyx_t_9 = NULL;
   int __pyx_t_10;
+  Py_ssize_t __pyx_t_11;
+  PyObject *__pyx_t_12 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("run_search_space", 0);
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":56
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":55
  *         long dir_file):
  * 
  *     cdef long [:, :] board_map_view = board_map             # <<<<<<<<<<<<<<
@@ -2813,7 +2840,7 @@ static PyObject *__pyx_pf_11xiangqigame_14cython_modules_16search_spaces_v4_run_
   __PYX_INC_MEMVIEW(&__pyx_v_board_map, 0);
   __pyx_v_board_map_view = __pyx_v_board_map;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":59
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":58
  * 
  *     cdef long search_start[2]
  *     search_start[0] = start_rank             # <<<<<<<<<<<<<<
@@ -2822,7 +2849,7 @@ static PyObject *__pyx_pf_11xiangqigame_14cython_modules_16search_spaces_v4_run_
  */
   (__pyx_v_search_start[0]) = __pyx_v_start_rank;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":60
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":59
  *     cdef long search_start[2]
  *     search_start[0] = start_rank
  *     search_start[1] = start_file             # <<<<<<<<<<<<<<
@@ -2831,7 +2858,7 @@ static PyObject *__pyx_pf_11xiangqigame_14cython_modules_16search_spaces_v4_run_
  */
   (__pyx_v_search_start[1]) = __pyx_v_start_file;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":63
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":62
  * 
  *     cdef long search_dir[2]
  *     search_dir[0] = dir_rank             # <<<<<<<<<<<<<<
@@ -2840,26 +2867,56 @@ static PyObject *__pyx_pf_11xiangqigame_14cython_modules_16search_spaces_v4_run_
  */
   (__pyx_v_search_dir[0]) = __pyx_v_dir_rank;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":64
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":63
  *     cdef long search_dir[2]
  *     search_dir[0] = dir_rank
  *     search_dir[1] = dir_file             # <<<<<<<<<<<<<<
  * 
- *     cdef long[1] num_empty_spaces
+ *     cdef long[1] num_empty_spaces = [0]
  */
   (__pyx_v_search_dir[1]) = __pyx_v_dir_file;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":70
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":65
+ *     search_dir[1] = dir_file
+ * 
+ *     cdef long[1] num_empty_spaces = [0]             # <<<<<<<<<<<<<<
+ * 
  *     cdef long empty_spaces[22]
+ */
+  __pyx_t_1[0] = 0;
+  memcpy(&(__pyx_v_num_empty_spaces[0]), __pyx_t_1, sizeof(__pyx_v_num_empty_spaces[0]) * (1));
+
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":69
+ *     cdef long empty_spaces[22]
+ *     cdef int idx
+ *     for idx in range(22):             # <<<<<<<<<<<<<<
+ *         empty_spaces[idx] = -1
+ * 
+ */
+  for (__pyx_t_2 = 0; __pyx_t_2 < 22; __pyx_t_2+=1) {
+    __pyx_v_idx = __pyx_t_2;
+
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":70
+ *     cdef int idx
+ *     for idx in range(22):
+ *         empty_spaces[idx] = -1             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+    (__pyx_v_empty_spaces[__pyx_v_idx]) = -1L;
+  }
+
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":73
+ * 
  * 
  *     cdef long[1] has_first_occ_space = [0]             # <<<<<<<<<<<<<<
  * 
  *     cdef long first_occupied[2]
  */
-  __pyx_t_1[0] = 0;
-  memcpy(&(__pyx_v_has_first_occ_space[0]), __pyx_t_1, sizeof(__pyx_v_has_first_occ_space[0]) * (1));
+  __pyx_t_3[0] = 0;
+  memcpy(&(__pyx_v_has_first_occ_space[0]), __pyx_t_3, sizeof(__pyx_v_has_first_occ_space[0]) * (1));
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":74
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":77
  *     cdef long first_occupied[2]
  * 
  *     search_spaces(             # <<<<<<<<<<<<<<
@@ -2868,115 +2925,137 @@ static PyObject *__pyx_pf_11xiangqigame_14cython_modules_16search_spaces_v4_run_
  */
   __pyx_f_11xiangqigame_14cython_modules_16search_spaces_v4_search_spaces(__pyx_v_board_map_view, __pyx_v_search_start, __pyx_v_search_dir, __pyx_v_num_empty_spaces, __pyx_v_empty_spaces, __pyx_v_has_first_occ_space, __pyx_v_first_occupied);
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":84
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":87
  *     )
  * 
  *     empty_space_list = [(empty_spaces[item], empty_spaces[item + 1]) for item             # <<<<<<<<<<<<<<
- *                         in range(0, num_empty_spaces[0] + 2, 2)]
+ *                         in range(0, (2 * num_empty_spaces[0])) if (item % 2 == 0)]
  * 
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":85
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":88
  * 
  *     empty_space_list = [(empty_spaces[item], empty_spaces[item + 1]) for item
- *                         in range(0, num_empty_spaces[0] + 2, 2)]             # <<<<<<<<<<<<<<
+ *                         in range(0, (2 * num_empty_spaces[0])) if (item % 2 == 0)]             # <<<<<<<<<<<<<<
  * 
  *     if has_first_occ_space[0]:
  */
-  __pyx_t_3 = __Pyx_PyInt_From_long(((__pyx_v_num_empty_spaces[0]) + 2)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_4);
+  __pyx_t_5 = __Pyx_PyInt_From_long((2 * (__pyx_v_num_empty_spaces[0]))); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
-  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_int_0);
-  __Pyx_GIVEREF(__pyx_t_3);
-  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
-  __Pyx_INCREF(__pyx_int_2);
-  __Pyx_GIVEREF(__pyx_int_2);
-  PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_int_2);
-  __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
-    __pyx_t_4 = __pyx_t_3; __Pyx_INCREF(__pyx_t_4); __pyx_t_5 = 0;
-    __pyx_t_6 = NULL;
+  PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_int_0);
+  __Pyx_GIVEREF(__pyx_t_5);
+  PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5);
+  __pyx_t_5 = 0;
+  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_6, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_5);
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  if (likely(PyList_CheckExact(__pyx_t_5)) || PyTuple_CheckExact(__pyx_t_5)) {
+    __pyx_t_6 = __pyx_t_5; __Pyx_INCREF(__pyx_t_6); __pyx_t_7 = 0;
+    __pyx_t_8 = NULL;
   } else {
-    __pyx_t_5 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 85, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 85, __pyx_L1_error)
+    __pyx_t_7 = -1; __pyx_t_6 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_8 = Py_TYPE(__pyx_t_6)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 88, __pyx_L1_error)
   }
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   for (;;) {
-    if (likely(!__pyx_t_6)) {
-      if (likely(PyList_CheckExact(__pyx_t_4))) {
-        if (__pyx_t_5 >= PyList_GET_SIZE(__pyx_t_4)) break;
+    if (likely(!__pyx_t_8)) {
+      if (likely(PyList_CheckExact(__pyx_t_6))) {
+        if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_6)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 85, __pyx_L1_error)
+        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 88, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
         #endif
       } else {
-        if (__pyx_t_5 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
+        if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_6)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_5); __Pyx_INCREF(__pyx_t_3); __pyx_t_5++; if (unlikely(0 < 0)) __PYX_ERR(0, 85, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_6, __pyx_t_7); __Pyx_INCREF(__pyx_t_5); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_4, __pyx_t_5); __pyx_t_5++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 85, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_3);
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_6, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 88, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
         #endif
       }
     } else {
-      __pyx_t_3 = __pyx_t_6(__pyx_t_4);
-      if (unlikely(!__pyx_t_3)) {
+      __pyx_t_5 = __pyx_t_8(__pyx_t_6);
+      if (unlikely(!__pyx_t_5)) {
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 85, __pyx_L1_error)
+          else __PYX_ERR(0, 88, __pyx_L1_error)
         }
         break;
       }
-      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_GOTREF(__pyx_t_5);
     }
-    __Pyx_XDECREF_SET(__pyx_v_item, __pyx_t_3);
-    __pyx_t_3 = 0;
+    __Pyx_XDECREF_SET(__pyx_v_item, __pyx_t_5);
+    __pyx_t_5 = 0;
+    __pyx_t_5 = __Pyx_PyInt_RemainderObjC(__pyx_v_item, __pyx_int_2, 2, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_9 = __Pyx_PyInt_EqObjC(__pyx_t_5, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_9);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_9); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+    if (__pyx_t_10) {
 
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":84
+      /* "xiangqigame/cython_modules/search_spaces_v4.pyx":87
  *     )
  * 
  *     empty_space_list = [(empty_spaces[item], empty_spaces[item + 1]) for item             # <<<<<<<<<<<<<<
- *                         in range(0, num_empty_spaces[0] + 2, 2)]
+ *                         in range(0, (2 * num_empty_spaces[0])) if (item % 2 == 0)]
  * 
  */
-    __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_v_item); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 84, __pyx_L1_error)
-    __pyx_t_3 = __Pyx_PyInt_From_long((__pyx_v_empty_spaces[__pyx_t_7])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_8 = __Pyx_PyInt_AddObjC(__pyx_v_item, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_7 = __Pyx_PyIndex_AsSsize_t(__pyx_t_8); if (unlikely((__pyx_t_7 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyInt_From_long((__pyx_v_empty_spaces[__pyx_t_7])); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_GIVEREF(__pyx_t_3);
-    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_3);
-    __Pyx_GIVEREF(__pyx_t_8);
-    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_8);
-    __pyx_t_3 = 0;
-    __pyx_t_8 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_9))) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  }
-  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_v_empty_space_list = ((PyObject*)__pyx_t_2);
-  __pyx_t_2 = 0;
+      __pyx_t_11 = __Pyx_PyIndex_AsSsize_t(__pyx_v_item); if (unlikely((__pyx_t_11 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 87, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_From_long((__pyx_v_empty_spaces[__pyx_t_11])); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 87, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_item, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_11 = __Pyx_PyIndex_AsSsize_t(__pyx_t_5); if (unlikely((__pyx_t_11 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 87, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_5 = __Pyx_PyInt_From_long((__pyx_v_empty_spaces[__pyx_t_11])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 87, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 87, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_GIVEREF(__pyx_t_9);
+      PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_9);
+      __Pyx_GIVEREF(__pyx_t_5);
+      PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_5);
+      __pyx_t_9 = 0;
+      __pyx_t_5 = 0;
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_12))) __PYX_ERR(0, 87, __pyx_L1_error)
+      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":87
- *                         in range(0, num_empty_spaces[0] + 2, 2)]
+      /* "xiangqigame/cython_modules/search_spaces_v4.pyx":88
+ * 
+ *     empty_space_list = [(empty_spaces[item], empty_spaces[item + 1]) for item
+ *                         in range(0, (2 * num_empty_spaces[0])) if (item % 2 == 0)]             # <<<<<<<<<<<<<<
+ * 
+ *     if has_first_occ_space[0]:
+ */
+    }
+
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":87
+ *     )
+ * 
+ *     empty_space_list = [(empty_spaces[item], empty_spaces[item + 1]) for item             # <<<<<<<<<<<<<<
+ *                         in range(0, (2 * num_empty_spaces[0])) if (item % 2 == 0)]
+ * 
+ */
+  }
+  __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+  __pyx_v_empty_space_list = ((PyObject*)__pyx_t_4);
+  __pyx_t_4 = 0;
+
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":90
+ *                         in range(0, (2 * num_empty_spaces[0])) if (item % 2 == 0)]
  * 
  *     if has_first_occ_space[0]:             # <<<<<<<<<<<<<<
  *         first_occ_tuple = (first_occupied[0], first_occupied[1])
@@ -2985,39 +3064,39 @@ static PyObject *__pyx_pf_11xiangqigame_14cython_modules_16search_spaces_v4_run_
   __pyx_t_10 = ((__pyx_v_has_first_occ_space[0]) != 0);
   if (__pyx_t_10) {
 
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":88
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":91
  * 
  *     if has_first_occ_space[0]:
  *         first_occ_tuple = (first_occupied[0], first_occupied[1])             # <<<<<<<<<<<<<<
  *     else:
  *         first_occ_tuple = None
  */
-    __pyx_t_2 = __Pyx_PyInt_From_long((__pyx_v_first_occupied[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyInt_From_long((__pyx_v_first_occupied[1])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 88, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_long((__pyx_v_first_occupied[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 88, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_GIVEREF(__pyx_t_2);
-    PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_2);
+    __pyx_t_6 = __Pyx_PyInt_From_long((__pyx_v_first_occupied[1])); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_12);
     __Pyx_GIVEREF(__pyx_t_4);
-    PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_4);
-    __pyx_t_2 = 0;
+    PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_4);
+    __Pyx_GIVEREF(__pyx_t_6);
+    PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_6);
     __pyx_t_4 = 0;
-    __pyx_v_first_occ_tuple = __pyx_t_9;
-    __pyx_t_9 = 0;
+    __pyx_t_6 = 0;
+    __pyx_v_first_occ_tuple = __pyx_t_12;
+    __pyx_t_12 = 0;
 
-    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":87
- *                         in range(0, num_empty_spaces[0] + 2, 2)]
+    /* "xiangqigame/cython_modules/search_spaces_v4.pyx":90
+ *                         in range(0, (2 * num_empty_spaces[0])) if (item % 2 == 0)]
  * 
  *     if has_first_occ_space[0]:             # <<<<<<<<<<<<<<
  *         first_occ_tuple = (first_occupied[0], first_occupied[1])
  *     else:
  */
-    goto __pyx_L5;
+    goto __pyx_L8;
   }
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":90
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":93
  *         first_occ_tuple = (first_occupied[0], first_occupied[1])
  *     else:
  *         first_occ_tuple = None             # <<<<<<<<<<<<<<
@@ -3028,40 +3107,40 @@ static PyObject *__pyx_pf_11xiangqigame_14cython_modules_16search_spaces_v4_run_
     __Pyx_INCREF(Py_None);
     __pyx_v_first_occ_tuple = Py_None;
   }
-  __pyx_L5:;
+  __pyx_L8:;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":92
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":95
  *         first_occ_tuple = None
  * 
  *     return {             # <<<<<<<<<<<<<<
  *         "empty_spaces": empty_space_list,
- *         "first_occupied": first_occ_tuple
+ *         "first_occupied_space": first_occ_tuple
  */
   __Pyx_XDECREF(__pyx_r);
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":93
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":96
  * 
  *     return {
  *         "empty_spaces": empty_space_list,             # <<<<<<<<<<<<<<
- *         "first_occupied": first_occ_tuple
+ *         "first_occupied_space": first_occ_tuple
  *         }
  */
-  __pyx_t_9 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 93, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_9);
-  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_empty_spaces, __pyx_v_empty_space_list) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_12);
+  if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_empty_spaces, __pyx_v_empty_space_list) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":94
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":97
  *     return {
  *         "empty_spaces": empty_space_list,
- *         "first_occupied": first_occ_tuple             # <<<<<<<<<<<<<<
+ *         "first_occupied_space": first_occ_tuple             # <<<<<<<<<<<<<<
  *         }
  */
-  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_first_occupied, __pyx_v_first_occ_tuple) < 0) __PYX_ERR(0, 93, __pyx_L1_error)
-  __pyx_r = __pyx_t_9;
-  __pyx_t_9 = 0;
+  if (PyDict_SetItem(__pyx_t_12, __pyx_n_s_first_occupied_space, __pyx_v_first_occ_tuple) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_r = __pyx_t_12;
+  __pyx_t_12 = 0;
   goto __pyx_L0;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":49
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":48
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def run_search_space(             # <<<<<<<<<<<<<<
@@ -3071,11 +3150,11 @@ static PyObject *__pyx_pf_11xiangqigame_14cython_modules_16search_spaces_v4_run_
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
-  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_12);
   __Pyx_AddTraceback("xiangqigame.cython_modules.search_spaces_v4.run_search_space", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -18661,6 +18740,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_error, __pyx_k_error, sizeof(__pyx_k_error), 0, 0, 1, 1},
   {&__pyx_n_s_first_occ_tuple, __pyx_k_first_occ_tuple, sizeof(__pyx_k_first_occ_tuple), 0, 0, 1, 1},
   {&__pyx_n_s_first_occupied, __pyx_k_first_occupied, sizeof(__pyx_k_first_occupied), 0, 0, 1, 1},
+  {&__pyx_n_s_first_occupied_space, __pyx_k_first_occupied_space, sizeof(__pyx_k_first_occupied_space), 0, 0, 1, 1},
   {&__pyx_n_s_flags, __pyx_k_flags, sizeof(__pyx_k_flags), 0, 0, 1, 1},
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_s_fortran, __pyx_k_fortran, sizeof(__pyx_k_fortran), 0, 0, 1, 1},
@@ -18669,6 +18749,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_got_differing_extents_in_dimensi, __pyx_k_got_differing_extents_in_dimensi, sizeof(__pyx_k_got_differing_extents_in_dimensi), 0, 0, 1, 0},
   {&__pyx_n_s_has_first_occ_space, __pyx_k_has_first_occ_space, sizeof(__pyx_k_has_first_occ_space), 0, 0, 1, 1},
   {&__pyx_n_s_id, __pyx_k_id, sizeof(__pyx_k_id), 0, 0, 1, 1},
+  {&__pyx_n_s_idx, __pyx_k_idx, sizeof(__pyx_k_idx), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_init, __pyx_k_init, sizeof(__pyx_k_init), 0, 0, 1, 1},
   {&__pyx_n_s_item, __pyx_k_item, sizeof(__pyx_k_item), 0, 0, 1, 1},
@@ -18743,7 +18824,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 69, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 33, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(1, 149, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(1, 152, __pyx_L1_error)
@@ -18966,17 +19047,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":49
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":48
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def run_search_space(             # <<<<<<<<<<<<<<
  *         long [:, :] board_map,
  *         long start_rank,
  */
-  __pyx_tuple__21 = PyTuple_Pack(15, __pyx_n_s_board_map, __pyx_n_s_start_rank, __pyx_n_s_start_file, __pyx_n_s_dir_rank, __pyx_n_s_dir_file, __pyx_n_s_board_map_view, __pyx_n_s_search_start, __pyx_n_s_search_dir, __pyx_n_s_num_empty_spaces, __pyx_n_s_empty_spaces, __pyx_n_s_has_first_occ_space, __pyx_n_s_first_occupied, __pyx_n_s_empty_space_list, __pyx_n_s_first_occ_tuple, __pyx_n_s_item); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(16, __pyx_n_s_board_map, __pyx_n_s_start_rank, __pyx_n_s_start_file, __pyx_n_s_dir_rank, __pyx_n_s_dir_file, __pyx_n_s_board_map_view, __pyx_n_s_search_start, __pyx_n_s_search_dir, __pyx_n_s_num_empty_spaces, __pyx_n_s_empty_spaces, __pyx_n_s_idx, __pyx_n_s_has_first_occ_space, __pyx_n_s_first_occupied, __pyx_n_s_empty_space_list, __pyx_n_s_first_occ_tuple, __pyx_n_s_item); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(5, 0, 15, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_xiangqigame_cython_modules_searc, __pyx_n_s_run_search_space, 49, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(5, 0, 16, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_xiangqigame_cython_modules_searc, __pyx_n_s_run_search_space, 48, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 48, __pyx_L1_error)
 
   /* "EnumBase":28
  * class __Pyx_EnumBase(int):
@@ -19469,16 +19550,16 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":49
+  /* "xiangqigame/cython_modules/search_spaces_v4.pyx":48
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * def run_search_space(             # <<<<<<<<<<<<<<
  *         long [:, :] board_map,
  *         long start_rank,
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_11xiangqigame_14cython_modules_16search_spaces_v4_1run_search_space, NULL, __pyx_n_s_xiangqigame_cython_modules_searc_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_11xiangqigame_14cython_modules_16search_spaces_v4_1run_search_space, NULL, __pyx_n_s_xiangqigame_cython_modules_searc_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_run_search_space, __pyx_t_1) < 0) __PYX_ERR(0, 49, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_run_search_space, __pyx_t_1) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "xiangqigame/cython_modules/search_spaces_v4.pyx":1
@@ -20488,6 +20569,198 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg
             "NULL result without error in PyObject_Call");
     }
     return result;
+}
+#endif
+
+/* PyIntCompare */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_EqObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, CYTHON_UNUSED long inplace) {
+    if (op1 == op2) {
+        Py_RETURN_TRUE;
+    }
+    #if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_CheckExact(op1))) {
+        const long b = intval;
+        long a = PyInt_AS_LONG(op1);
+        if (a == b) Py_RETURN_TRUE; else Py_RETURN_FALSE;
+    }
+    #endif
+    #if CYTHON_USE_PYLONG_INTERNALS
+    if (likely(PyLong_CheckExact(op1))) {
+        int unequal;
+        unsigned long uintval;
+        Py_ssize_t size = Py_SIZE(op1);
+        const digit* digits = ((PyLongObject*)op1)->ob_digit;
+        if (intval == 0) {
+            if (size == 0) Py_RETURN_TRUE; else Py_RETURN_FALSE;
+        } else if (intval < 0) {
+            if (size >= 0)
+                Py_RETURN_FALSE;
+            intval = -intval;
+            size = -size;
+        } else {
+            if (size <= 0)
+                Py_RETURN_FALSE;
+        }
+        uintval = (unsigned long) intval;
+#if PyLong_SHIFT * 4 < SIZEOF_LONG*8
+        if (uintval >> (PyLong_SHIFT * 4)) {
+            unequal = (size != 5) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
+                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[2] != ((uintval >> (2 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[3] != ((uintval >> (3 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[4] != ((uintval >> (4 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
+        } else
+#endif
+#if PyLong_SHIFT * 3 < SIZEOF_LONG*8
+        if (uintval >> (PyLong_SHIFT * 3)) {
+            unequal = (size != 4) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
+                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[2] != ((uintval >> (2 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[3] != ((uintval >> (3 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
+        } else
+#endif
+#if PyLong_SHIFT * 2 < SIZEOF_LONG*8
+        if (uintval >> (PyLong_SHIFT * 2)) {
+            unequal = (size != 3) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
+                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK)) | (digits[2] != ((uintval >> (2 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
+        } else
+#endif
+#if PyLong_SHIFT * 1 < SIZEOF_LONG*8
+        if (uintval >> (PyLong_SHIFT * 1)) {
+            unequal = (size != 2) || (digits[0] != (uintval & (unsigned long) PyLong_MASK))
+                 | (digits[1] != ((uintval >> (1 * PyLong_SHIFT)) & (unsigned long) PyLong_MASK));
+        } else
+#endif
+            unequal = (size != 1) || (((unsigned long) digits[0]) != (uintval & (unsigned long) PyLong_MASK));
+        if (unequal == 0) Py_RETURN_TRUE; else Py_RETURN_FALSE;
+    }
+    #endif
+    if (PyFloat_CheckExact(op1)) {
+        const long b = intval;
+        double a = PyFloat_AS_DOUBLE(op1);
+        if ((double)a == (double)b) Py_RETURN_TRUE; else Py_RETURN_FALSE;
+    }
+    return (
+        PyObject_RichCompare(op1, op2, Py_EQ));
+}
+
+/* PyIntBinop */
+#if !CYTHON_COMPILING_IN_PYPY
+#if PY_MAJOR_VERSION < 3 || CYTHON_USE_PYLONG_INTERNALS
+#define __Pyx_PyInt_RemainderObjC_ZeroDivisionError(operand)\
+    if (unlikely(zerodivision_check && ((operand) == 0))) {\
+        PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");\
+        return NULL;\
+    }
+#endif
+static PyObject* __Pyx_PyInt_RemainderObjC(PyObject *op1, PyObject *op2, CYTHON_UNUSED long intval, int inplace, int zerodivision_check) {
+    (void)inplace;
+    (void)zerodivision_check;
+    #if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_CheckExact(op1))) {
+        const long b = intval;
+        long x;
+        long a = PyInt_AS_LONG(op1);
+            __Pyx_PyInt_RemainderObjC_ZeroDivisionError(b)
+            x = a % b;
+            x += ((x != 0) & ((x ^ b) < 0)) * b;
+            return PyInt_FromLong(x);
+    }
+    #endif
+    #if CYTHON_USE_PYLONG_INTERNALS
+    if (likely(PyLong_CheckExact(op1))) {
+        const long b = intval;
+        long a, x;
+#ifdef HAVE_LONG_LONG
+        const PY_LONG_LONG llb = intval;
+        PY_LONG_LONG lla, llx;
+#endif
+        const digit* digits = ((PyLongObject*)op1)->ob_digit;
+        const Py_ssize_t size = Py_SIZE(op1);
+        if (likely(__Pyx_sst_abs(size) <= 1)) {
+            a = likely(size) ? digits[0] : 0;
+            if (size == -1) a = -a;
+        } else {
+            switch (size) {
+                case -2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 2:
+                    if (8 * sizeof(long) - 1 > 2 * PyLong_SHIFT) {
+                        a = (long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 2 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 3:
+                    if (8 * sizeof(long) - 1 > 3 * PyLong_SHIFT) {
+                        a = (long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 3 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case -4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = -(PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                case 4:
+                    if (8 * sizeof(long) - 1 > 4 * PyLong_SHIFT) {
+                        a = (long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0]));
+                        break;
+#ifdef HAVE_LONG_LONG
+                    } else if (8 * sizeof(PY_LONG_LONG) - 1 > 4 * PyLong_SHIFT) {
+                        lla = (PY_LONG_LONG) (((((((((unsigned PY_LONG_LONG)digits[3]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[2]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[1]) << PyLong_SHIFT) | (unsigned PY_LONG_LONG)digits[0]));
+                        goto long_long;
+#endif
+                    }
+                    CYTHON_FALLTHROUGH;
+                default: return PyLong_Type.tp_as_number->nb_remainder(op1, op2);
+            }
+        }
+                __Pyx_PyInt_RemainderObjC_ZeroDivisionError(b)
+                x = a % b;
+                x += ((x != 0) & ((x ^ b) < 0)) * b;
+            return PyLong_FromLong(x);
+#ifdef HAVE_LONG_LONG
+        long_long:
+                llx = lla % llb;
+                llx += ((llx != 0) & ((llx ^ llb) < 0)) * llb;
+            return PyLong_FromLongLong(llx);
+#endif
+        
+        
+    }
+    #endif
+    return (inplace ? PyNumber_InPlaceRemainder : PyNumber_Remainder)(op1, op2);
 }
 #endif
 
@@ -24285,44 +24558,6 @@ raise_neg_overflow:
     return (long) -1;
 }
 
-/* CIntToPy */
-  static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const long neg_one = (long) -1, const_zero = (long) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(long) < sizeof(long)) {
-            return PyInt_FromLong((long) value);
-        } else if (sizeof(long) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(long) <= sizeof(long)) {
-            return PyInt_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        unsigned char *bytes = (unsigned char *)&value;
-        return _PyLong_FromByteArray(bytes, sizeof(long),
-                                     little, !is_unsigned);
-    }
-}
-
 /* CIntFromPy */
   static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *x) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
@@ -24517,6 +24752,44 @@ raise_neg_overflow:
     PyErr_SetString(PyExc_OverflowError,
         "can't convert negative value to int");
     return (int) -1;
+}
+
+/* CIntToPy */
+  static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const long neg_one = (long) -1, const_zero = (long) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(long) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(long) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(long) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(long) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(long),
+                                     little, !is_unsigned);
+    }
 }
 
 /* CIntToPy */

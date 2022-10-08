@@ -23,12 +23,11 @@ cdef void search_spaces(
         long* first_occupied):
 
     cdef long num_empty = 0
-    cdef has_first_occ = False
     cdef (long, long) next_step = (
         start[0] + search_direction[0], start[1] + search_direction[1])
 
-    while (next_step[0] < board_map.shape[0]) and (
-            next_step[1] < board_map.shape[1]) and (
+    while (0 <= next_step[0] < board_map.shape[0]) and (
+            0 <= next_step[1] < board_map.shape[1]) and (
             board_map[next_step[0], next_step[1]] == PType.NUL):
         empty_spaces[2 * num_empty] = next_step[0]
         empty_spaces[2 * num_empty + 1] = next_step[1]
@@ -36,9 +35,9 @@ cdef void search_spaces(
         next_step = (
             next_step[0] + search_direction[0],
             next_step[1] + search_direction[1])
-    if (next_step[0] < board_map.shape[0]) and (
-            next_step[1] < board_map.shape[1]):
-        has_first_occ = 1
+    if (0 <= next_step[0] < board_map.shape[0]) and (
+            0 <= next_step[1] < board_map.shape[1]):
+        has_first_occ_space[0] = 1
         first_occupied[0] = next_step[0]
         first_occupied[1] = next_step[1]
     num_empty_spaces[0] = num_empty
@@ -63,9 +62,13 @@ def run_search_space(
     search_dir[0] = dir_rank
     search_dir[1] = dir_file
 
-    cdef long[1] num_empty_spaces
+    cdef long[1] num_empty_spaces = [0]
 
     cdef long empty_spaces[22]
+    cdef int idx
+    for idx in range(22):
+        empty_spaces[idx] = -1
+
 
     cdef long[1] has_first_occ_space = [0]
 
@@ -82,7 +85,7 @@ def run_search_space(
     )
 
     empty_space_list = [(empty_spaces[item], empty_spaces[item + 1]) for item
-                        in range(0, num_empty_spaces[0] + 2, 2)]
+                        in range(0, (2 * num_empty_spaces[0])) if (item % 2 == 0)]
 
     if has_first_occ_space[0]:
         first_occ_tuple = (first_occupied[0], first_occupied[1])
@@ -91,5 +94,5 @@ def run_search_space(
 
     return {
         "empty_spaces": empty_space_list,
-        "first_occupied": first_occ_tuple
+        "first_occupied_space": first_occ_tuple
         }

@@ -1,0 +1,107 @@
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    1.532    1.532 {built-in method builtins.exec}
+        1    0.000    0.000    1.532    1.532 <string>:1(<module>)
+        1    0.000    0.000    1.532    1.532 starting_move_selection_profiler.py:13(select_red_starting_move)
+        1    0.000    0.000    1.532    1.532 move_selectors.py:127(select_move)
+    133/1    0.001    0.000    1.532    1.532 move_selectors.py:49(_minimax_rec)
+      133    0.007    0.000    1.508    0.011 game_board_new.py:333(calc_final_moves_of)
+     2077    0.029    0.000    1.496    0.001 game_board_new.py:288(calc_final_moves_from)
+     5580    0.037    0.000    1.351    0.000 game_board_new.py:307(calc_temp_moves_of)
+    89149    0.083    0.000    1.168    0.000 game_board_new.py:283(calc_temp_moves_from)
+    11417    0.079    0.000    0.227    0.000 game_board_new.py:143(cannon_moves)
+   129961    0.050    0.000    0.189    0.000 game_board_new.py:104(search_spaces)
+     5889    0.068    0.000    0.184    0.000 game_board_new.py:81(get_all_spaces_occupied_by)
+   251467    0.132    0.000    0.155    0.000 game_board_new.py:35(get_color)
+     5713    0.006    0.000    0.152    0.000 game_board_new.py:268(general_moves)
+    11426    0.056    0.000    0.147    0.000 game_board_new.py:205(elephant_moves)
+    11258    0.045    0.000    0.144    0.000 game_board_new.py:166(chariot_moves)
+   129961    0.139    0.000    0.139    0.000 {xiangqigame.cython_modules.search_spaces_v4.run_search_space}
+     9400    0.050    0.000    0.130    0.000 game_board_new.py:186(horse_moves)
+    28554    0.038    0.000    0.101    0.000 game_board_new.py:129(soldier_moves)
+     5889    0.005    0.000    0.099    0.000 <__array_function__ internals>:177(argwhere)
+23556/5889    0.011    0.000    0.093    0.000 {built-in method numpy.core._multiarray_umath.implement_array_function}
+    74642    0.037    0.000    0.091    0.000 game_board_new.py:53(exists_and_passes_color_test)
+     5889    0.009    0.000    0.090    0.000 numeric.py:577(argwhere)
+     5713    0.029    0.000    0.084    0.000 game_board_new.py:234(flying_general_moves)
+   226322    0.074    0.000    0.074    0.000 board_utilities_new.py:77(space_plus_vect)
+    11381    0.029    0.000    0.067    0.000 game_board_new.py:221(advisor_moves)
+     5713    0.022    0.000    0.063    0.000 game_board_new.py:253(standard_general_moves)
+   157946    0.056    0.000    0.056    0.000 board_utilities_new.py:33(is_on_board)
+    11778    0.010    0.000    0.055    0.000 fromnumeric.py:51(_wrapfunc)
+    94244    0.041    0.000    0.052    0.000 game_board_new.py:32(get_type)
+     5889    0.003    0.000    0.046    0.000 <__array_function__ internals>:177(transpose)
+    11293    0.036    0.000    0.046    0.000 game_board_new.py:86(get_general_position)
+     5889    0.002    0.000    0.040    0.000 fromnumeric.py:601(transpose)
+     5889    0.015    0.000    0.031    0.000 fromnumeric.py:38(_wrapit)
+    68376    0.029    0.000    0.029    0.000 board_utilities_new.py:46(is_in_castle_of)
+     5580    0.029    0.000    0.029    0.000 game_board_new.py:297(<setcomp>)
+     5709    0.004    0.000    0.028    0.000 {method 'all' of 'numpy.ndarray' objects}
+    73191    0.026    0.000    0.026    0.000 board_utilities_new.py:38(is_in_homeland_of)
+     5889    0.003    0.000    0.026    0.000 <__array_function__ internals>:177(nonzero)
+   168013    0.025    0.000    0.025    0.000 {built-in method math.copysign}
+     5709    0.003    0.000    0.024    0.000 _methods.py:60(_all)
+   263906    0.022    0.000    0.022    0.000 {method 'append' of 'list' objects}
+     5709    0.021    0.000    0.021    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+   195881    0.020    0.000    0.020    0.000 {built-in method builtins.abs}
+     5889    0.003    0.000    0.020    0.000 fromnumeric.py:1866(nonzero)
+    51452    0.019    0.000    0.019    0.000 game_board_new.py:29(is_occupied)
+     5712    0.010    0.000    0.018    0.000 game_board_new.py:60(execute_move)
+    28565    0.009    0.000    0.017    0.000 game_board_new.py:258(<genexpr>)
+    11607    0.008    0.000    0.015    0.000 game_board_new.py:193(<listcomp>)
+       88    0.000    0.000    0.013    0.000 minimax_evaluators.py:117(evaluate_leaf)
+     5889    0.013    0.000    0.013    0.000 {built-in method numpy.asarray}
+      176    0.002    0.000    0.013    0.000 minimax_evaluators.py:109(get_player_total)
+     5889    0.012    0.000    0.012    0.000 {method 'nonzero' of 'numpy.ndarray' objects}
+     5712    0.006    0.000    0.012    0.000 game_board_new.py:71(undo_move)
+     3618    0.011    0.000    0.011    0.000 board_utilities_new.py:15(_is_black)
+    22848    0.009    0.000    0.009    0.000 game_board_new.py:49(set_occupant)
+       45    0.000    0.000    0.009    0.000 minimax_evaluators.py:45(generate_ranked_move_list)
+       45    0.001    0.000    0.008    0.000 minimax_evaluators.py:50(<listcomp>)
+     5889    0.003    0.000    0.008    0.000 <__array_function__ internals>:177(ndim)
+     2132    0.004    0.000    0.007    0.000 minimax_evaluators.py:136(rate_move)
+    11160    0.005    0.000    0.007    0.000 board_utilities_new.py:11(get_piece_color)
+     2271    0.006    0.000    0.006    0.000 board_utilities_new.py:19(_is_red)
+    28554    0.004    0.000    0.004    0.000 board_utilities_new.py:53(fwd_unit_vect)
+    17667    0.004    0.000    0.004    0.000 {built-in method builtins.getattr}
+     2721    0.003    0.000    0.004    0.000 minimax_evaluators.py:100(get_value_of_piece_at_position)
+    11424    0.004    0.000    0.004    0.000 game_board_new.py:46(get_occupant)
+     5797    0.003    0.000    0.003    0.000 {built-in method builtins.min}
+     5889    0.002    0.000    0.002    0.000 fromnumeric.py:3121(ndim)
+     5889    0.002    0.000    0.002    0.000 {method 'transpose' of 'numpy.ndarray' objects}
+     5753    0.002    0.000    0.002    0.000 {built-in method builtins.max}
+     9403    0.001    0.000    0.001    0.000 {method 'keys' of 'dict' objects}
+     5889    0.001    0.000    0.001    0.000 numeric.py:573(_argwhere_dispatcher)
+     5889    0.001    0.000    0.001    0.000 fromnumeric.py:3117(_ndim_dispatcher)
+     2132    0.000    0.000    0.001    0.000 <string>:1(<lambda>)
+       45    0.001    0.000    0.001    0.000 {method 'sort' of 'list' objects}
+     5889    0.001    0.000    0.001    0.000 fromnumeric.py:1862(_nonzero_dispatcher)
+     5889    0.001    0.000    0.001    0.000 fromnumeric.py:597(_transpose_dispatcher)
+     5095    0.001    0.000    0.001    0.000 piece_points.py:46(vals)
+     2265    0.000    0.000    0.000    0.000 {built-in method __new__ of type object at 0x1067741d0}
+     2963    0.000    0.000    0.000    0.000 piece_points.py:24(vals)
+     2132    0.000    0.000    0.000    0.000 minimax_evaluators.py:54(<lambda>)
+        1    0.000    0.000    0.000    0.000 game_board_new.py:13(__init__)
+        1    0.000    0.000    0.000    0.000 starting_board_builder.py:38(build_initial_board_array)
+        1    0.000    0.000    0.000    0.000 starting_board_builder.py:29(build_initial_board_list)
+        1    0.000    0.000    0.000    0.000 __init__.py:274(__getattr__)
+        1    0.000    0.000    0.000    0.000 {built-in method numpy.array}
+        1    0.000    0.000    0.000    0.000 {built-in method _warnings.warn}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.print}
+        1    0.000    0.000    0.000    0.000 starting_board_builder.py:30(<listcomp>)
+        5    0.000    0.000    0.000    0.000 starting_board_builder.py:31(<listcomp>)
+        1    0.000    0.000    0.000    0.000 random.py:375(choice)
+       45    0.000    0.000    0.000    0.000 {method 'clear' of 'list' objects}
+        1    0.000    0.000    0.000    0.000 piece_points.py:20(__init__)
+        1    0.000    0.000    0.000    0.000 starting_board_builder.py:33(<listcomp>)
+        1    0.000    0.000    0.000    0.000 random.py:239(_randbelow_with_getrandbits)
+        5    0.000    0.000    0.000    0.000 starting_board_builder.py:34(<listcomp>)
+        1    0.000    0.000    0.000    0.000 piece_points.py:31(__init__)
+        2    0.000    0.000    0.000    0.000 starting_board_builder.py:20(starting_block)
+        3    0.000    0.000    0.000    0.000 {method 'getrandbits' of '_random.Random' objects}
+        1    0.000    0.000    0.000    0.000 minimax_evaluators.py:90(__init__)
+        2    0.000    0.000    0.000    0.000 {built-in method time.time}
+        1    0.000    0.000    0.000    0.000 move_selectors.py:41(__init__)
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+        1    0.000    0.000    0.000    0.000 move_selectors.py:46(_reset_node_counter)
+        1    0.000    0.000    0.000    0.000 {method 'bit_length' of 'int' objects}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.len}

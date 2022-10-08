@@ -29,7 +29,7 @@ def new_board_final_moves():
 
 print(f"calc_final_moves_of: new = {new_board_final_moves()}")
 
-cProfile.run("new_board_final_moves()", filename="new_board_profile_100")
+# cProfile.run("new_board_final_moves()", filename="new_board_profile_100")
 
 
 

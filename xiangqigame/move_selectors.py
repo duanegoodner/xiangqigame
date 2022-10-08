@@ -55,11 +55,13 @@ class MinimaxMoveSelector(MoveSelector):
             cur_player: int,
             initiating_player: int):
         self._node_counter += 1
+        # print(self._node_counter)
         cur_moves = game_board.calc_final_moves_of(color=cur_player)
         if cur_moves == set():
             return self._evaluator.evaluate_winner(
                 cur_player, initiating_player)
-
+        # print(cur_player)
+        # print(game_board.get_general_position(cur_player))
         if search_depth == 0:
             return self._evaluator.evaluate_leaf(
                 game_board=game_board,
@@ -74,7 +76,9 @@ class MinimaxMoveSelector(MoveSelector):
                 game_board=game_board,
                 cur_player=cur_player,
                 cur_player_moves=cur_moves)
+            # print(ranked_moves)
             for rated_move in ranked_moves:
+                # print(rated_move)
                 executed_move = game_board.execute_move(rated_move.move)
                 cur_eval = self._minimax_rec(
                     game_board=game_board,

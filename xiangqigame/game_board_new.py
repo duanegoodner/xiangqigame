@@ -1,7 +1,7 @@
 import math
 from typing import List, Tuple, Union, Dict, Any
 import numpy as np
-from xiangqigame.board_components_new import SpaceSearchResult
+import xiangqigame.cython_modules.search_spaces_v4 as ss_v4
 from xiangqigame.piece_definitions import PType, PColor
 from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
 from xiangqigame.board_layout import BoardLayout as blo
@@ -89,7 +89,7 @@ class GameBoard:
             if abs(self._map[space]) == PType.GEN:
                 general_space = space
         if general_space is None:
-            raise GeneralNotFound
+            raise GeneralNotFound(self._map)
         return general_space
 
     def get_vertical_path(self, from_space: Tuple[int, int], to_rank: int):
@@ -105,19 +105,27 @@ class GameBoard:
             self,
             from_space: Tuple[int, int],
             direction: Tuple[int, int]):
-        empty_spaces = []
-        first_occupied_space = None
-        next_step = bu.space_plus_vect(from_space, direction)
+        return ss_v4.run_search_space(
+            board_map=self._map,
+            start_rank=from_space[0],
+            start_file=from_space[1],
+            dir_rank=direction[0],
+            dir_file=direction[1]
+        )
 
-        while bu.is_on_board(next_step) and (
-                self.get_occupant(next_step) == PType.NUL):
-            empty_spaces.append(next_step)
-            next_step = bu.space_plus_vect(next_step, direction)
-        if bu.is_on_board(next_step):
-            first_occupied_space = next_step
-        return {
-            "empty_spaces": empty_spaces,
-            "first_occupied_space": first_occupied_space}
+        # empty_spaces = []
+        # first_occupied_space = None
+        # next_step = bu.space_plus_vect(from_space, direction)
+        #
+        # while bu.is_on_board(next_step) and (
+        #         self.get_occupant(next_step) == PType.NUL):
+        #     empty_spaces.append(next_step)
+        #     next_step = bu.space_plus_vect(next_step, direction)
+        # if bu.is_on_board(next_step):
+        #     first_occupied_space = next_step
+        # return {
+        #     "empty_spaces": empty_spaces,
+        #     "first_occupied_space": first_occupied_space}
 
     def soldier_moves(
             self, from_position: Tuple[int, int], color: int) -> List[Dict]:
@@ -333,8 +341,10 @@ class GameBoard:
 class GeneralNotFound(Exception):
     def __init__(
             self,
+            board_map: np.array,
             msg="General not found"):
         self._msg = msg
+        self._board_map = board_map
 
     def __str__(self):
-        return f"{self._msg}"
+        return f"{self._msg}\n\n{self._board_map}"
