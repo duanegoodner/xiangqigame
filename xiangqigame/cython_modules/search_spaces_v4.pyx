@@ -82,7 +82,7 @@ def run_search_space(
     )
 
     empty_space_list = [(empty_spaces[item], empty_spaces[item + 1]) for item
-                        in range(0, num_empty_spaces[0], 2)]
+                        in range(0, num_empty_spaces[0] + 2, 2)]
 
     if has_first_occ_space[0]:
         first_occ_tuple = (first_occupied[0], first_occupied[1])
