@@ -2,7 +2,7 @@ import numpy as np
 import cython
 
 
-DTYPE = np.intc
+# DTYPE = np.longc
 
 
 cpdef enum PType:
@@ -14,17 +14,17 @@ cpdef enum PType:
 @cython.boundscheck(False)
 @cython.wraparound(False)
 cdef void search_spaces(
-        int [:, :] board_map,
-        int* start,
-        int* search_direction,
-        int* num_empty_spaces,
-        int* empty_spaces,
-        int* has_first_occ_space,
-        int* first_occupied):
+        long [:, :] board_map,
+        long* start,
+        long* search_direction,
+        long* num_empty_spaces,
+        long* empty_spaces,
+        long* has_first_occ_space,
+        long* first_occupied):
 
-    cdef int num_empty = 0
+    cdef long num_empty = 0
     cdef has_first_occ = False
-    cdef (int, int) next_step = (
+    cdef (long, long) next_step = (
         start[0] + search_direction[0], start[1] + search_direction[1])
 
     while (next_step[0] < board_map.shape[0]) and (
@@ -47,29 +47,29 @@ cdef void search_spaces(
 @cython.boundscheck(False)
 @cython.wraparound(False)
 def run_search_space(
-        int [:, :] board_map,
-        int start_rank,
-        int start_file,
-        int dir_rank,
-        int dir_file):
+        long [:, :] board_map,
+        long start_rank,
+        long start_file,
+        long dir_rank,
+        long dir_file):
 
-    cdef int [:, :] board_map_view = board_map
+    cdef long [:, :] board_map_view = board_map
 
-    cdef int search_start[2]
+    cdef long search_start[2]
     search_start[0] = start_rank
     search_start[1] = start_file
 
-    cdef int search_dir[2]
+    cdef long search_dir[2]
     search_dir[0] = dir_rank
     search_dir[1] = dir_file
 
-    cdef int[1] num_empty_spaces
+    cdef long[1] num_empty_spaces
 
-    cdef int empty_spaces[22]
+    cdef long empty_spaces[22]
 
-    cdef int[1] has_first_occ_space = [0]
+    cdef long[1] has_first_occ_space = [0]
 
-    cdef int first_occupied[2]
+    cdef long first_occupied[2]
 
     search_spaces(
         board_map=board_map_view,
