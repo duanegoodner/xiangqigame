@@ -296,8 +296,15 @@ class GameBoard:
 
     def general_moves(
             self, from_position: Tuple[int, int], color: int) -> List[Dict]:
-        return (self.flying_general_moves(from_position, color) +
-                self.standard_general_moves(from_position, color))
+
+        return gm.run_general_moves(
+            from_rank=from_position[0],
+            from_file=from_position[1],
+            board_map=self._map,
+            color=color)
+        #
+        # return (self.flying_general_moves(from_position, color) +
+        #         self.standard_general_moves(from_position, color))
 
     piece_moves = {
         PType.SOL: soldier_moves,

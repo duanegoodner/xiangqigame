@@ -214,5 +214,51 @@ def run_standard_general_moves(
     } for item in range(0, (2 * num_dests)) if (item % 2 == 0)]
 
 
+def run_general_moves(
+        const long from_rank,
+        const long from_file,
+        const long [:, ::1] board_map,
+        const long color):
+
+
+    cdef long[4] flying_move = [-1, -1, -1, -1]
+    has_flying_move = flying_general_move(
+        from_rank=from_rank, from_file=from_file, color=color,
+        board_map=board_map, flying_move=flying_move)
+
+    if not has_flying_move:
+        general_moves = []
+    else:
+        general_moves =  [{
+            "start": (flying_move[0], flying_move[1]),
+            "end": (flying_move[2], flying_move[1])
+        }]
+
+    cdef long[8] standard_dest_coords
+    cdef long num_standard_dests = standard_general_moves(
+        from_rank=from_rank,
+        from_file=from_file,
+        color=color,
+        board_map=board_map,
+        dest_coords=standard_dest_coords
+    )
+
+    general_moves += [{
+        "start": (from_rank, from_file),
+        "end": (standard_dest_coords[item], standard_dest_coords[item + 1])
+    } for item in range(0, (2 * num_standard_dests)) if (item % 2 == 0)]
+
+    return general_moves
+
+
+
+
+
+
+
+
+
+
+
 
 

@@ -34,7 +34,7 @@ def select_red_starting_move(
 
 if __name__ == "__main__":
     depth = 2
-    select_red_starting_move(depth)
-    # cProfile.run(
-    #     f"select_red_starting_move({depth})",
-    #     filename=f"red_starting_move_depth_{depth}")
+    # select_red_starting_move(depth)
+    cProfile.run(
+        f"select_red_starting_move({depth})",
+        filename=f"red_starting_move_depth_{depth}")
