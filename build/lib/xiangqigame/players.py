@@ -1,4 +1,3 @@
-import numpy as np
 import xiangqigame.move_translator as mt
 from typing import List, Tuple, Dict
 from xiangqigame.game_board_new import GameBoard
@@ -63,7 +62,7 @@ class ScriptedPlayer(Player):
             illegal_move: Tuple[str],
             game_board: GameBoard,
             cur_moves: List[Dict]):
-        raise IllegalMoveInMoveList(illegal_move, game_board.map)
+        raise IllegalMoveInMoveList(illegal_move)
 
 
 class AIPlayer(Player):
@@ -104,15 +103,13 @@ class InvalidEntryInMoveList(Exception):
 class IllegalMoveInMoveList(Exception):
     def __init__(
             self,
-            board_map: np.array,
             move: Tuple[str],
             message="Illegal move in list provided by scripted player"):
         self._move = move
         self._msg = message
-        self._board_map = board_map
 
     def __str__(self):
-        return f"{self._move} -> {self._msg}\n{self._board_map}"
+        return f"{self._move} -> {self._msg}"
 
 
 class IllegalAIMove(Exception):

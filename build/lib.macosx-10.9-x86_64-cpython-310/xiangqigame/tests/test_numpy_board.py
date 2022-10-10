@@ -68,6 +68,10 @@ def test_calc_final_moves(np_board):
 
 def test_get_general_moves(np_board):
     red_gen_moves = np_board.general_moves(from_position=(9, 4), color=PColor.RED)
+    print()
+    print(red_gen_moves)
+    print()
     black_cannon_moves = np_board.cannon_moves(from_position=(2, 1), color=PColor.BLK)
+    print(black_cannon_moves)
 
 

@@ -1,8 +1,33 @@
-# from distutils.core import setup
-import setuptools
+from setuptools import setup, Extension
 
-setuptools.setup()
-
+setup(
+    ext_modules=[
+        Extension(name="xiangqigame.cython_modules.general_moves",
+                  sources=["xiangqigame/cython_modules/general_moves.c",
+                           "xiangqigame/cython_modules/general_moves.pyx"],
+                  include_dirs=["xiangqigame/cython_modules"]),
+        Extension(name="xiangqigame.cython_modules.get_all_spaces_occupied_by",
+                  sources=[
+                      "xiangqigame/cython_modules/get_all_spaces_occupied_by.c",
+                      "xiangqigame/cython_modules/get_all_spaces_occupied_by.pyx"],
+                  include_dirs=["xiangqigame/cython_modules"]),
+        Extension(name="xiangqigame.cython_modules.get_color",
+                  sources=[
+                      "xiangqigame/cython_modules/get_color.c",
+                      "xiangqigame/cython_modules/get_color.pyx"],
+                  include_dirs=["xiangqigame/cython_modules"]),
+        Extension(name="xiangqigame.cython_modules.get_color",
+                  sources=[
+                      "xiangqigame/cython_modules/get_color.c",
+                      "xiangqigame/cython_modules/get_color.pyx"],
+                  include_dirs=["xiangqigame/cython_modules"]),
+        Extension(name="xiangqigame.cython_modules.search_spaces",
+                  sources=[
+                      "xiangqigame/cython_modules/search_spaces.c",
+                      "xiangqigame/cython_modules/search_spaces.pyx"],
+                  include_dirs=["xiangqigame/cython_modules"]),
+    ]
+)
 
 # setup(
 #     name='xiangqigame',
