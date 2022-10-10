@@ -1,13 +1,9 @@
-import math
 from typing import List, Tuple, Union, Dict, Any
 import numpy as np
-import xiangqigame.cython_modules.get_all_spaces_occupied_by as gas
-import xiangqigame.cython_modules.get_color as gc
+import xiangqigame.cython_modules.cython_board_utilities as cbu
 import xiangqigame.cython_modules.general_moves as gm
-import xiangqigame.cython_modules.search_spaces as ss
 from xiangqigame.piece_definitions import PType, PColor
 from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
-from xiangqigame.board_layout import BoardLayout as blo
 from xiangqigame.starting_board_builder import StartingBoardBuilder
 
 
@@ -36,7 +32,7 @@ class GameBoard:
         return abs(self._map[space[0], space[1]])
 
     def get_color(self, space: Union[List[int], Tuple[int, int]]):
-        return gc.run_get_color(
+        return cbu.run_get_color(
             rank=space[0],
             file=space[1],
             board_map=self._map)
@@ -89,13 +85,13 @@ class GameBoard:
     def get_all_spaces_occupied_by(
             self, color: int) -> List[Tuple]:
 
-        return gas.run_get_all_spaces_occupied_by(self._map, color)
+        return cbu.run_get_all_spaces_occupied_by(self._map, color)
         # spaces_array = np.argwhere(bu.is_color[color](self._map))
         # return list(map(tuple, spaces_array))
 
     def get_general_position(self, color: int) -> Tuple[int, int]:
 
-        general_space = gm.run_get_general_position(
+        general_space = cbu.run_get_general_position(
             color=color,
             board_map=self._map)
 
@@ -120,7 +116,7 @@ class GameBoard:
             self,
             from_space: Tuple[int, int],
             direction: Tuple[int, int]):
-        return ss.run_search_space(
+        return cbu.run_search_space(
             board_map=self._map,
             start_rank=from_space[0],
             start_file=from_space[1],
@@ -247,53 +243,6 @@ class GameBoard:
 
         return advisor_moves
 
-    def flying_general_moves(
-            self,
-            from_position: Tuple[int, int],
-            color: int) -> List[Dict]:
-        # flying_moves = []
-        # other_gen_position = self.get_general_position(
-        #     bu.opponent_of[color])
-        #
-        # if from_position[1] == other_gen_position[1]:
-        #
-        #     slice_start = min(from_position[0], other_gen_position[0]) + 1
-        #     slice_end = max(from_position[0], other_gen_position[0])
-        #     if (self._map[slice_start:slice_end, from_position[1]] ==
-        #         PType.NUL).all():
-        #         flying_moves.append(
-        #             {"start": from_position, "end": other_gen_position})
-        #
-        # return flying_moves
-
-        flying_move = gm.run_flying_general_moves(
-            from_rank=from_position[0],
-            from_file=from_position[1],
-            color=color,
-            board_map=self._map)
-
-        return flying_move
-
-    def standard_general_moves(self, from_position: Tuple[int, int],
-                               color: int) -> List[Dict]:
-        # return gm.run_standard_general_moves(
-        #     from_rank=from_position[0],
-        #     from_file=from_position[1],
-        #     color=color,
-        #     board_map=self._map)
-
-        standard_moves = []
-
-        adjacent_spaces = (bu.space_plus_vect(from_position, vect) for vect in
-                           bu.all_orthogonal_unit_vects)
-
-        for space in adjacent_spaces:
-            if bu.is_in_castle_of(color, space) and self.get_color(
-                    space) != color:
-                standard_moves.append({"start": from_position, "end": space})
-
-        return standard_moves
-
     def general_moves(
             self, from_position: Tuple[int, int], color: int) -> List[Dict]:
 
@@ -302,9 +251,6 @@ class GameBoard:
             from_file=from_position[1],
             board_map=self._map,
             color=color)
-        #
-        # return (self.flying_general_moves(from_position, color) +
-        #         self.standard_general_moves(from_position, color))
 
     piece_moves = {
         PType.SOL: soldier_moves,

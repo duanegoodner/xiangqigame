@@ -1,80 +1,6 @@
 from libc.stdlib cimport labs
-from libc.math cimport copysign
-
-
-# mimic NamedTuple definition as cdef enum so search_spaces can be pure C
-cdef enum PColor:
-    RED = -1
-    BLK = 1
-
-
-cdef enum PType:
-    NUL = 0
-    GEN = 1
-    ADV = 2
-    ELE = 3
-    HOR = 4
-    CHA = 5
-    CAN = 6
-    SOL = 7
-
-
-cdef long get_color(
-        const long rank,
-        const long file,
-        const long [:, ::1] board_map):
-
-    cdef long piece_val = board_map[rank, file]
-    return 0 if piece_val == 0 else <long>copysign(1, piece_val)
-
-
-cdef void get_castle_edges(
-        const long color,
-        long *castle_edges):
-    if color == PColor.RED:
-        castle_edges[0] = 7
-        castle_edges[1] = 9
-        castle_edges[2] = 3
-        castle_edges[3] = 5
-    elif color == PColor.BLK:
-        castle_edges[0] = 0
-        castle_edges[1] = 2
-        castle_edges[2] = 3
-        castle_edges[3] = 5
-
-
-cdef long get_general_position(
-        const long color,
-        const long [:, ::1] board_map,
-        long* general_position
-):
-
-    cdef long[4] castle
-    get_castle_edges(color, castle)
-
-    cdef Py_ssize_t cur_rank
-    cdef Py_ssize_t cur_file
-    cdef long general_found = 0
-
-    for cur_rank in range(castle[0], castle[1] + 1):
-        for cur_file in range(castle[2], castle[3] + 1):
-            if labs(board_map[cur_rank, cur_file]) == PType.GEN:
-                general_position[0] = cur_rank
-                general_position[1] = cur_file
-                general_found = 1
-
-    return general_found
-
-
-def run_get_general_position(const long color, const long [:, ::1] board_map):
-
-    cdef long[2] general_position
-    cdef long general_found = get_general_position(
-        color=color, board_map=board_map, general_position = general_position
-    )
-
-    if general_found:
-        return general_position[0], general_position[1]
+from cython_board_utilities cimport get_color, get_castle_edges
+from cython_board_utilities cimport get_general_position, is_in_castle
 
 
 cdef long flying_general_move(
@@ -118,34 +44,6 @@ cdef long flying_general_move(
     return has_flying_move
 
 
-def run_flying_general_moves(
-        const long from_rank,
-        const long from_file,
-        const long color,
-        const long [:, ::1] board_map):
-    cdef long[4] flying_move = [-1, -1, -1, -1]
-
-    has_flying_move = flying_general_move(
-        from_rank=from_rank, from_file=from_file, color=color,
-        board_map=board_map, flying_move=flying_move)
-
-    if not has_flying_move:
-        return []
-    else:
-        return [{
-            "start": (flying_move[0], flying_move[1]),
-            "end": (flying_move[2], flying_move[1])
-        }]
-
-
-cdef is_in_castle(
-        const long rank,
-        const long file,
-        const long[4] castle):
-
-    return (castle[0] < rank < castle[1]) and (castle[2] < file < castle[3])
-
-
 cdef long standard_general_moves(
         const long from_rank,
         const long from_file,
@@ -180,8 +78,10 @@ cdef long standard_general_moves(
         adjacent_spaces[file_idx] = (
             from_file + orthog_directions[file_idx])
 
-        if (castle[0] < adjacent_spaces[rank_idx] < castle[1]) and (
-            castle[2] < adjacent_spaces[file_idx] < castle[3]) and (
+        if is_in_castle(
+                rank=adjacent_spaces[rank_idx],
+                file=adjacent_spaces[file_idx],
+                castle=castle) and (
                 get_color(
             rank=adjacent_spaces[rank_idx],
             file=adjacent_spaces[file_idx],
@@ -194,32 +94,11 @@ cdef long standard_general_moves(
     return num_destinations
 
 
-def run_standard_general_moves(
-        const long from_rank,
-        const long from_file,
-        const long color,
-        const long [:, ::1] board_map):
-
-    cdef long[8] dest_coords
-    cdef long num_dests = standard_general_moves(
-        from_rank=from_rank,
-        from_file=from_file,
-        color=color,
-        board_map=board_map,
-        dest_coords=dest_coords)
-
-    return [{
-        "start": (from_rank, from_file),
-        "end": (dest_coords[item], dest_coords[item + 1])
-    } for item in range(0, (2 * num_dests)) if (item % 2 == 0)]
-
-
 def run_general_moves(
         const long from_rank,
         const long from_file,
         const long [:, ::1] board_map,
         const long color):
-
 
     cdef long[4] flying_move = [-1, -1, -1, -1]
     has_flying_move = flying_general_move(
