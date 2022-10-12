@@ -32,7 +32,7 @@ def select_red_starting_move(
 
 
 if __name__ == "__main__":
-    depth = 2
+    depth = 3
     select_red_starting_move(depth)
     # cProfile.run(
     #     f"select_red_starting_move({depth})",

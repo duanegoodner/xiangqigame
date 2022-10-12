@@ -1,4 +1,6 @@
 import cython
+import numpy as np
+from libc.stdlib cimport malloc, free
 from libc.stdlib cimport labs
 from libc.math cimport copysign
 
@@ -58,6 +60,12 @@ cdef long get_general_position(
                 general_found = 1
 
     return general_found
+
+
+cdef long is_on_board(
+        long* board_space):
+    return (0 <= board_space[0] < BoardDim.NUM_RANKS) and (
+        0 <= board_space[1] < BoardDim.NUM_FILES)
 
 
 cpdef run_get_general_position(const long color, const long [:, ::1] board_map):
@@ -123,6 +131,76 @@ cpdef run_get_all_spaces_occupied_by(
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
+cdef void search_spaces_2(
+        const long [:, ::1] board_map,
+        OrthogSearch2* search,
+        long [:, ::1] empty_spaces):
+
+    cdef long[2] next_step = (
+        search.start[0] + search.direction[0],
+        search.start[1] + search.direction[1])
+
+    while is_on_board(next_step) and (
+            board_map[next_step[0], next_step[1]] == PColor.NUL):
+        empty_spaces[search.num_empty_spaces, 0] = next_step[0]
+        empty_spaces[search.num_empty_spaces, 1] = next_step[1]
+        search.num_empty_spaces += 1
+        next_step = (
+            next_step[0] + search.direction[0],
+            next_step[1] + search.direction[1])
+    if is_on_board(next_step):
+        search.has_first_occ_space = 1
+        search.first_occupied[0] = next_step[0]
+        search.first_occupied[1] = next_step[1]
+
+
+
+cpdef run_search_space_2(
+        const long [:, ::1] board_map,
+        const long start_rank,
+        const long start_file,
+        const long search_dir_rank,
+        const long search_dir_file):
+
+    cdef long[2] start = [start_rank, start_file]
+    cdef long[2] direction = [search_dir_rank, search_dir_file]
+    cdef long[2] first_occupied = [-1, -1]
+
+
+    cdef OrthogSearch2* search = <OrthogSearch2*> malloc(sizeof(OrthogSearch2))
+    search.start = start
+    search.direction = direction
+    search.num_empty_spaces = 0
+
+    empty_spaces = np.zeros(shape=(BoardDim.NUM_RANKS - 1, 2), dtype=np.int64)
+    empty_spaces.fill(-1)
+    cdef long[:, ::1] empty_spaces_view = empty_spaces
+    #
+    #
+    # search.has_first_occ_space = 0
+    # search.first_occupied = first_occupied
+
+    # search_spaces_2(board_map=board_map, search=search, empty_spaces=empty_spaces_view)
+    #
+    # cdef (long, long) first_occ_tuple
+
+    # if search.has_first_occ_space:
+    #     first_occ_tuple = search.first_occupied[0], search.first_occupied[1]
+    # else:
+    #     first_occ_tuple = (-1, -1)
+    #
+    # result = {
+    #     "empty_spaces": empty_spaces[:(search.num_empty_spaces), :],
+    #     "first_occupied_space": first_occ_tuple
+    # }
+
+    # free(search)
+    #
+    # return result
+
+
+@cython.boundscheck(False)
+@cython.wraparound(False)
 cdef void search_spaces(
         const long [:, ::1] board_map,
         const long* start,
@@ -179,7 +257,7 @@ cpdef run_search_space(
 
     # cdef long [:, :] board_map_view = board_map
 
-    cdef long search_start[2]
+    cdef long[2] search_start
     search_start[0] = start_rank
     search_start[1] = start_file
 
@@ -221,4 +299,8 @@ cpdef run_search_space(
         "empty_spaces": empty_space_list,
         "first_occupied_space": first_occ_tuple
         }
+
+
+
+
 

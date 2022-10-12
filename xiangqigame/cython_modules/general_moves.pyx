@@ -1,6 +1,5 @@
-from libc.stdlib cimport labs
-from cython_board_utilities cimport get_color, get_castle_edges
-from cython_board_utilities cimport get_general_position, is_in_castle
+from .cython_board_utilities cimport get_color, get_castle_edges
+from .cython_board_utilities cimport get_general_position, is_in_castle
 
 
 cdef long flying_general_move(
