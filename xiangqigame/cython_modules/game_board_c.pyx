@@ -1,18 +1,18 @@
-from libc.stdlib cimport malloc, free
+from libc.math cimport copysign
+from libc.stdlib cimport labs, malloc, free
 from .board_layout cimport BoardDim, RiverEdges, CastleEdges
 from .piece_definitions cimport PC, PT
 
 
-cdef struct Castle:
-    long min_rank
-    long max_rank
-    long min_file
-    long max_file
+cdef long space_idx_1d((long, long) space):
+    cdef long idx_1d = BoardDim.NUM_FILES * space[0] + space[1]
+    return idx_1d
 
 
-cdef struct CastleSpace:
-    long rank
-    long file
+cdef (long, long) space_idx_2d(long space_idx_1d):
+    cdef long rank = space_idx_1d / BoardDim.NUM_FILES
+    cdef long file = space_idx_1d % BoardDim.NUM_FILES
+    return rank, file
 
 
 cdef CastleSpace* new_castle_space(long rank, long file):
@@ -24,16 +24,6 @@ cdef CastleSpace* new_castle_space(long rank, long file):
 
 cdef void destruct_castle_space(CastleSpace* self):
     free(<void*> self)
-
-
-cdef struct GameBoardC:
-    long num_ranks
-    long num_files
-    long* board_map
-    long red_river_edge
-    long black_river_edge
-    CastleSpace** red_castle_spaces
-    CastleSpace** black_castle_spaces
 
 
 cdef long* new_board_map():
@@ -63,21 +53,6 @@ cdef long* new_board_map():
 
 
 cdef void destruct_board_map(long* self):
-    free(<void*> self)
-
-
-cdef Castle* new_castle(long min_rank, long max_rank,
-                         long min_file, long max_file):
-    cdef Castle* self = <Castle*> malloc(sizeof(Castle))
-    self.min_rank = min_rank
-    self.max_rank = max_rank
-    self.min_file = min_file
-    self.max_file = max_file
-
-    return self
-
-
-cdef void destruct_castle(Castle* self):
     free(<void*> self)
 
 
@@ -124,12 +99,32 @@ cdef GameBoardC* new_game_board_c():
 
 cdef void destruct_game_board_c(GameBoardC* self):
     destruct_castle_spaces(self.red_castle_spaces)
+    print("red castle spaces destructed")
     destruct_castle_spaces(self.black_castle_spaces)
+    print("black castle spaces destructed")
     destruct_board_map(self.board_map)
+    print("board_map destructed")
     free(<void*> self)
+
+
+cdef bint is_occupied((long, long) space, GameBoardC* self):
+    return self.board_map[space_idx_1d(space)] != PT.NNN
+
+
+cdef long get_type((long, long) space, GameBoardC* self):
+    return labs(self.board_map[space_idx_1d(space)])
+
+
+cdef long get_color((long, long) space, GameBoardC* self):
+    cdef long piece_val = self.board_map[space_idx_1d(space)]
+    return 0 if piece_val == 0 else <long>copysign(1, piece_val)
 
 
 cpdef void create_and_destroy_game_board_c():
     cdef GameBoardC* my_game_board = new_game_board_c()
     print(my_game_board.board_map[0])
+    cdef (long, long) space = (0, 1)
+    print(space)
+    cdef long color_0_1 = get_color(space=space, self=my_game_board)
+    print(color_0_1)
     destruct_game_board_c(my_game_board)

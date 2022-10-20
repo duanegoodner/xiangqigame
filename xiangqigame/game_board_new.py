@@ -292,26 +292,6 @@ class GameBoard:
             team_moves = team_moves + self.calc_temp_moves_from(space)
         return team_moves
 
-    # def calc_final_moves_from(self, position: BoardSpace):
-    #     potential_moves = self.calc_temp_moves_from(position)
-    #     moves_resulting_in_check = set()
-    #
-    #     for move in potential_moves:
-    #         test_move = self.execute_move(move)
-    #         resulting_opp_moves = self.calc_temp_moves_of(
-    #             bu.opponent_of[bu.get_piece_color(test_move.moving_piece)])
-    #         resulting_opp_destinations = {
-    #             move.end for move in resulting_opp_moves}
-    #         if self.get_general_position(
-    #                 bu.get_piece_color(test_move.moving_piece)
-    #         ) in resulting_opp_destinations:
-    #             moves_resulting_in_check.add(move)
-    #         self.undo_move(test_move)
-    #
-    #     legal_moves = potential_moves - moves_resulting_in_check
-    #
-    #     return legal_moves
-
     def calc_final_moves_of(self, color: int) -> List[Dict]:
         final_moves = []
         for space in self.get_all_spaces_occupied_by(color):

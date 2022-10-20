@@ -754,6 +754,7 @@ static CYTHON_INLINE float __PYX_NAN() {
 #define __PYX_HAVE__xiangqigame__cython_modules__game_board_c
 #define __PYX_HAVE_API__xiangqigame__cython_modules__game_board_c
 /* Early includes */
+#include <math.h>
 #include <string.h>
 #include <stdlib.h>
 #ifdef _OPENMP
@@ -1040,25 +1041,24 @@ enum __pyx_t_11xiangqigame_14cython_modules_12board_layout_CastleEdges {
   __pyx_e_11xiangqigame_14cython_modules_12board_layout_BLK_MIN_FILE = 3,
   __pyx_e_11xiangqigame_14cython_modules_12board_layout_BLK_MAX_FILE = 5
 };
-struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_Castle;
+struct __pyx_ctuple_long__and_long;
+typedef struct __pyx_ctuple_long__and_long __pyx_ctuple_long__and_long;
 struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace;
 struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC;
 
-/* "xiangqigame/cython_modules/game_board_c.pyx":6
+/* "xiangqigame/cython_modules/game_board_c.pxd":3
  * 
  * 
- * cdef struct Castle:             # <<<<<<<<<<<<<<
- *     long min_rank
- *     long max_rank
+ * cdef long space_idx_1d((long, long) space)             # <<<<<<<<<<<<<<
+ * 
+ * 
  */
-struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_Castle {
-  long min_rank;
-  long max_rank;
-  long min_file;
-  long max_file;
+struct __pyx_ctuple_long__and_long {
+  long f0;
+  long f1;
 };
 
-/* "xiangqigame/cython_modules/game_board_c.pyx":13
+/* "xiangqigame/cython_modules/game_board_c.pxd":6
  * 
  * 
  * cdef struct CastleSpace:             # <<<<<<<<<<<<<<
@@ -1070,7 +1070,7 @@ struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace {
   long file;
 };
 
-/* "xiangqigame/cython_modules/game_board_c.pyx":29
+/* "xiangqigame/cython_modules/game_board_c.pxd":11
  * 
  * 
  * cdef struct GameBoardC:             # <<<<<<<<<<<<<<
@@ -1161,8 +1161,15 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 /* GetBuiltinName.proto */
 static PyObject *__Pyx_GetBuiltinName(PyObject *name);
 
-/* IncludeStringH.proto */
-#include <string.h>
+/* DivInt[long].proto */
+static CYTHON_INLINE long __Pyx_div_long(long, long);
+
+/* UnaryNegOverflows.proto */
+#define UNARY_NEG_WOULD_OVERFLOW(x)\
+        (((x) < 0) & ((unsigned long)(x) == 0-(unsigned long)(x)))
+
+/* ModInt[long].proto */
+static CYTHON_INLINE long __Pyx_mod_long(long, long);
 
 /* PyThreadStateGet.proto */
 #if CYTHON_FAST_THREAD_STATE
@@ -1204,6 +1211,9 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
 static void __Pyx_WriteUnraisable(const char *name, int clineno,
                                   int lineno, const char *filename,
                                   int full_traceback, int nogil);
+
+/* IncludeStringH.proto */
+#include <string.h>
 
 /* PyDictVersioning.proto */
 #if CYTHON_USE_DICT_VERSIONS && CYTHON_USE_TYPE_SLOTS
@@ -1269,6 +1279,9 @@ static PyObject* __pyx_print = 0;
 static PyObject* __pyx_print_kwargs = 0;
 #endif
 
+/* ToPyCTupleUtility.proto */
+static PyObject* __pyx_convert__to_py___pyx_ctuple_long__and_long(__pyx_ctuple_long__and_long);
+
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_enum____pyx_t_11xiangqigame_14cython_modules_17piece_definitions_PT(enum __pyx_t_11xiangqigame_14cython_modules_17piece_definitions_PT value);
 
@@ -1303,9 +1316,14 @@ static CYTHON_INLINE int __Pyx_PyErr_GivenExceptionMatches2(PyObject *err, PyObj
 /* CheckBinaryVersion.proto */
 static int __Pyx_check_binary_version(void);
 
+/* FunctionExport.proto */
+static int __Pyx_ExportFunction(const char *name, void (*f)(void), const char *sig);
+
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
+
+/* Module declarations from 'libc.math' */
 
 /* Module declarations from 'libc.string' */
 
@@ -1316,6 +1334,7 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 /* Module declarations from 'xiangqigame.cython_modules.board_layout' */
 
 /* Module declarations from 'xiangqigame.cython_modules.game_board_c' */
+static long __pyx_f_11xiangqigame_14cython_modules_12game_board_c_space_idx_1d(__pyx_ctuple_long__and_long); /*proto*/
 static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace *__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_castle_space(long, long); /*proto*/
 static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castle_space(struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace *); /*proto*/
 static long *__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_board_map(void); /*proto*/
@@ -1324,6 +1343,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace 
 static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castle_spaces(struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace **); /*proto*/
 static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_game_board_c(void); /*proto*/
 static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_game_board_c(struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *); /*proto*/
+static long __pyx_f_11xiangqigame_14cython_modules_12game_board_c_get_color(__pyx_ctuple_long__and_long, struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *); /*proto*/
 static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_create_and_destroy_game_board_c(int __pyx_skip_dispatch); /*proto*/
 #define __Pyx_MODULE_NAME "xiangqigame.cython_modules.game_board_c"
 extern int __pyx_module_is_main_xiangqigame__cython_modules__game_board_c;
@@ -1339,6 +1359,11 @@ static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_board_map_destructed[] = "board_map destructed";
+static const char __pyx_k_red_castle_spaces_destructed[] = "red castle spaces destructed";
+static const char __pyx_k_black_castle_spaces_destructed[] = "black castle spaces destructed";
+static PyObject *__pyx_kp_s_black_castle_spaces_destructed;
+static PyObject *__pyx_kp_s_board_map_destructed;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_file;
@@ -1346,9 +1371,135 @@ static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_range;
+static PyObject *__pyx_kp_s_red_castle_spaces_destructed;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_pf_11xiangqigame_14cython_modules_12game_board_c_create_and_destroy_game_board_c(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 /* Late includes */
+
+/* "xiangqigame/cython_modules/game_board_c.pyx":7
+ * 
+ * 
+ * cdef long space_idx_1d((long, long) space):             # <<<<<<<<<<<<<<
+ *     cdef long idx_1d = BoardDim.NUM_FILES * space[0] + space[1]
+ *     return idx_1d
+ */
+
+static long __pyx_f_11xiangqigame_14cython_modules_12game_board_c_space_idx_1d(__pyx_ctuple_long__and_long __pyx_v_space) {
+  long __pyx_v_idx_1d;
+  long __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("space_idx_1d", 0);
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":8
+ * 
+ * cdef long space_idx_1d((long, long) space):
+ *     cdef long idx_1d = BoardDim.NUM_FILES * space[0] + space[1]             # <<<<<<<<<<<<<<
+ *     return idx_1d
+ * 
+ */
+  __pyx_v_idx_1d = ((__pyx_e_11xiangqigame_14cython_modules_12board_layout_NUM_FILES * __pyx_v_space.f0) + __pyx_v_space.f1);
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":9
+ * cdef long space_idx_1d((long, long) space):
+ *     cdef long idx_1d = BoardDim.NUM_FILES * space[0] + space[1]
+ *     return idx_1d             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = __pyx_v_idx_1d;
+  goto __pyx_L0;
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":7
+ * 
+ * 
+ * cdef long space_idx_1d((long, long) space):             # <<<<<<<<<<<<<<
+ *     cdef long idx_1d = BoardDim.NUM_FILES * space[0] + space[1]
+ *     return idx_1d
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "xiangqigame/cython_modules/game_board_c.pyx":12
+ * 
+ * 
+ * cdef (long, long) space_idx_2d(long space_idx_1d):             # <<<<<<<<<<<<<<
+ *     cdef long rank = space_idx_1d / BoardDim.NUM_FILES
+ *     cdef long file = space_idx_1d % BoardDim.NUM_FILES
+ */
+
+static __pyx_ctuple_long__and_long __pyx_f_11xiangqigame_14cython_modules_12game_board_c_space_idx_2d(long __pyx_v_space_idx_1d) {
+  long __pyx_v_rank;
+  long __pyx_v_file;
+  __pyx_ctuple_long__and_long __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __pyx_ctuple_long__and_long __pyx_t_1;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("space_idx_2d", 0);
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":13
+ * 
+ * cdef (long, long) space_idx_2d(long space_idx_1d):
+ *     cdef long rank = space_idx_1d / BoardDim.NUM_FILES             # <<<<<<<<<<<<<<
+ *     cdef long file = space_idx_1d % BoardDim.NUM_FILES
+ *     return rank, file
+ */
+  if (unlikely(__pyx_e_11xiangqigame_14cython_modules_12board_layout_NUM_FILES == 0)) {
+    PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
+    __PYX_ERR(0, 13, __pyx_L1_error)
+  }
+  else if (sizeof(long) == sizeof(long) && (!(((enum __pyx_t_11xiangqigame_14cython_modules_12board_layout_BoardDim)-1) > 0)) && unlikely(__pyx_e_11xiangqigame_14cython_modules_12board_layout_NUM_FILES == (enum __pyx_t_11xiangqigame_14cython_modules_12board_layout_BoardDim)-1)  && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_space_idx_1d))) {
+    PyErr_SetString(PyExc_OverflowError, "value too large to perform division");
+    __PYX_ERR(0, 13, __pyx_L1_error)
+  }
+  __pyx_v_rank = __Pyx_div_long(__pyx_v_space_idx_1d, __pyx_e_11xiangqigame_14cython_modules_12board_layout_NUM_FILES);
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":14
+ * cdef (long, long) space_idx_2d(long space_idx_1d):
+ *     cdef long rank = space_idx_1d / BoardDim.NUM_FILES
+ *     cdef long file = space_idx_1d % BoardDim.NUM_FILES             # <<<<<<<<<<<<<<
+ *     return rank, file
+ * 
+ */
+  if (unlikely(__pyx_e_11xiangqigame_14cython_modules_12board_layout_NUM_FILES == 0)) {
+    PyErr_SetString(PyExc_ZeroDivisionError, "integer division or modulo by zero");
+    __PYX_ERR(0, 14, __pyx_L1_error)
+  }
+  __pyx_v_file = __Pyx_mod_long(__pyx_v_space_idx_1d, __pyx_e_11xiangqigame_14cython_modules_12board_layout_NUM_FILES);
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":15
+ *     cdef long rank = space_idx_1d / BoardDim.NUM_FILES
+ *     cdef long file = space_idx_1d % BoardDim.NUM_FILES
+ *     return rank, file             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_1.f0 = __pyx_v_rank;
+  __pyx_t_1.f1 = __pyx_v_file;
+  __pyx_r = __pyx_t_1;
+  goto __pyx_L0;
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":12
+ * 
+ * 
+ * cdef (long, long) space_idx_2d(long space_idx_1d):             # <<<<<<<<<<<<<<
+ *     cdef long rank = space_idx_1d / BoardDim.NUM_FILES
+ *     cdef long file = space_idx_1d % BoardDim.NUM_FILES
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_WriteUnraisable("xiangqigame.cython_modules.game_board_c.space_idx_2d", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_pretend_to_initialize(&__pyx_r);
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
 
 /* "xiangqigame/cython_modules/game_board_c.pyx":18
  * 
@@ -1448,7 +1599,7 @@ static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castl
   __Pyx_RefNannyFinishContext();
 }
 
-/* "xiangqigame/cython_modules/game_board_c.pyx":51
+/* "xiangqigame/cython_modules/game_board_c.pyx":29
  * 
  * 
  * cdef long* new_board_map():             # <<<<<<<<<<<<<<
@@ -1471,7 +1622,7 @@ static long *__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_board_map
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("new_board_map", 0);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":52
+  /* "xiangqigame/cython_modules/game_board_c.pyx":30
  * 
  * cdef long* new_board_map():
  *     cdef long[10 * 9] starting_pieces = [             # <<<<<<<<<<<<<<
@@ -1570,11 +1721,11 @@ static long *__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_board_map
   __pyx_t_1[89] = (-__pyx_e_11xiangqigame_14cython_modules_17piece_definitions_CHA);
   if (unlikely(((10 * 9)) != (90))) {
     PyErr_Format(PyExc_ValueError, "Assignment to slice of wrong length, expected %" CYTHON_FORMAT_SSIZE_T "d, got %" CYTHON_FORMAT_SSIZE_T "d", (Py_ssize_t)(90), (Py_ssize_t)((10 * 9)));
-    __PYX_ERR(0, 52, __pyx_L1_error)
+    __PYX_ERR(0, 30, __pyx_L1_error)
   }
   memcpy(&(__pyx_v_starting_pieces[0]), __pyx_t_1, sizeof(__pyx_v_starting_pieces[0]) * (90));
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":68
+  /* "xiangqigame/cython_modules/game_board_c.pyx":46
  *     ]
  * 
  *     cdef long* self = <long*> malloc(             # <<<<<<<<<<<<<<
@@ -1583,7 +1734,7 @@ static long *__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_board_map
  */
   __pyx_v_self = ((long *)malloc(((__pyx_e_11xiangqigame_14cython_modules_12board_layout_NUM_RANKS * __pyx_e_11xiangqigame_14cython_modules_12board_layout_NUM_FILES) * (sizeof(long)))));
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":71
+  /* "xiangqigame/cython_modules/game_board_c.pyx":49
  *         BoardDim.NUM_RANKS * BoardDim.NUM_FILES * sizeof(long))
  *     cdef long board_idx_1d
  *     for board_idx_1d in range(BoardDim.NUM_RANKS * BoardDim.NUM_FILES):             # <<<<<<<<<<<<<<
@@ -1595,7 +1746,7 @@ static long *__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_board_map
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_board_idx_1d = __pyx_t_4;
 
-    /* "xiangqigame/cython_modules/game_board_c.pyx":72
+    /* "xiangqigame/cython_modules/game_board_c.pyx":50
  *     cdef long board_idx_1d
  *     for board_idx_1d in range(BoardDim.NUM_RANKS * BoardDim.NUM_FILES):
  *         self[board_idx_1d] = starting_pieces[board_idx_1d]             # <<<<<<<<<<<<<<
@@ -1605,7 +1756,7 @@ static long *__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_board_map
     (__pyx_v_self[__pyx_v_board_idx_1d]) = (__pyx_v_starting_pieces[__pyx_v_board_idx_1d]);
   }
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":74
+  /* "xiangqigame/cython_modules/game_board_c.pyx":52
  *         self[board_idx_1d] = starting_pieces[board_idx_1d]
  * 
  *     return self             # <<<<<<<<<<<<<<
@@ -1615,7 +1766,7 @@ static long *__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_board_map
   __pyx_r = __pyx_v_self;
   goto __pyx_L0;
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":51
+  /* "xiangqigame/cython_modules/game_board_c.pyx":29
  * 
  * 
  * cdef long* new_board_map():             # <<<<<<<<<<<<<<
@@ -1632,7 +1783,7 @@ static long *__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_board_map
   return __pyx_r;
 }
 
-/* "xiangqigame/cython_modules/game_board_c.pyx":77
+/* "xiangqigame/cython_modules/game_board_c.pyx":55
  * 
  * 
  * cdef void destruct_board_map(long* self):             # <<<<<<<<<<<<<<
@@ -1644,7 +1795,7 @@ static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_board
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("destruct_board_map", 0);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":78
+  /* "xiangqigame/cython_modules/game_board_c.pyx":56
  * 
  * cdef void destruct_board_map(long* self):
  *     free(<void*> self)             # <<<<<<<<<<<<<<
@@ -1653,7 +1804,7 @@ static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_board
  */
   free(((void *)__pyx_v_self));
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":77
+  /* "xiangqigame/cython_modules/game_board_c.pyx":55
  * 
  * 
  * cdef void destruct_board_map(long* self):             # <<<<<<<<<<<<<<
@@ -1665,123 +1816,7 @@ static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_board
   __Pyx_RefNannyFinishContext();
 }
 
-/* "xiangqigame/cython_modules/game_board_c.pyx":81
- * 
- * 
- * cdef Castle* new_castle(long min_rank, long max_rank,             # <<<<<<<<<<<<<<
- *                          long min_file, long max_file):
- *     cdef Castle* self = <Castle*> malloc(sizeof(Castle))
- */
-
-static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_Castle *__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_castle(long __pyx_v_min_rank, long __pyx_v_max_rank, long __pyx_v_min_file, long __pyx_v_max_file) {
-  struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_Castle *__pyx_v_self;
-  struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_Castle *__pyx_r;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("new_castle", 0);
-
-  /* "xiangqigame/cython_modules/game_board_c.pyx":83
- * cdef Castle* new_castle(long min_rank, long max_rank,
- *                          long min_file, long max_file):
- *     cdef Castle* self = <Castle*> malloc(sizeof(Castle))             # <<<<<<<<<<<<<<
- *     self.min_rank = min_rank
- *     self.max_rank = max_rank
- */
-  __pyx_v_self = ((struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_Castle *)malloc((sizeof(struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_Castle))));
-
-  /* "xiangqigame/cython_modules/game_board_c.pyx":84
- *                          long min_file, long max_file):
- *     cdef Castle* self = <Castle*> malloc(sizeof(Castle))
- *     self.min_rank = min_rank             # <<<<<<<<<<<<<<
- *     self.max_rank = max_rank
- *     self.min_file = min_file
- */
-  __pyx_v_self->min_rank = __pyx_v_min_rank;
-
-  /* "xiangqigame/cython_modules/game_board_c.pyx":85
- *     cdef Castle* self = <Castle*> malloc(sizeof(Castle))
- *     self.min_rank = min_rank
- *     self.max_rank = max_rank             # <<<<<<<<<<<<<<
- *     self.min_file = min_file
- *     self.max_file = max_file
- */
-  __pyx_v_self->max_rank = __pyx_v_max_rank;
-
-  /* "xiangqigame/cython_modules/game_board_c.pyx":86
- *     self.min_rank = min_rank
- *     self.max_rank = max_rank
- *     self.min_file = min_file             # <<<<<<<<<<<<<<
- *     self.max_file = max_file
- * 
- */
-  __pyx_v_self->min_file = __pyx_v_min_file;
-
-  /* "xiangqigame/cython_modules/game_board_c.pyx":87
- *     self.max_rank = max_rank
- *     self.min_file = min_file
- *     self.max_file = max_file             # <<<<<<<<<<<<<<
- * 
- *     return self
- */
-  __pyx_v_self->max_file = __pyx_v_max_file;
-
-  /* "xiangqigame/cython_modules/game_board_c.pyx":89
- *     self.max_file = max_file
- * 
- *     return self             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __pyx_r = __pyx_v_self;
-  goto __pyx_L0;
-
-  /* "xiangqigame/cython_modules/game_board_c.pyx":81
- * 
- * 
- * cdef Castle* new_castle(long min_rank, long max_rank,             # <<<<<<<<<<<<<<
- *                          long min_file, long max_file):
- *     cdef Castle* self = <Castle*> malloc(sizeof(Castle))
- */
-
-  /* function exit code */
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "xiangqigame/cython_modules/game_board_c.pyx":92
- * 
- * 
- * cdef void destruct_castle(Castle* self):             # <<<<<<<<<<<<<<
- *     free(<void*> self)
- * 
- */
-
-static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castle(struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_Castle *__pyx_v_self) {
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("destruct_castle", 0);
-
-  /* "xiangqigame/cython_modules/game_board_c.pyx":93
- * 
- * cdef void destruct_castle(Castle* self):
- *     free(<void*> self)             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  free(((void *)__pyx_v_self));
-
-  /* "xiangqigame/cython_modules/game_board_c.pyx":92
- * 
- * 
- * cdef void destruct_castle(Castle* self):             # <<<<<<<<<<<<<<
- *     free(<void*> self)
- * 
- */
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-}
-
-/* "xiangqigame/cython_modules/game_board_c.pyx":96
+/* "xiangqigame/cython_modules/game_board_c.pyx":59
  * 
  * 
  * cdef CastleSpace** new_castle_spaces(             # <<<<<<<<<<<<<<
@@ -1804,7 +1839,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace 
   long __pyx_t_6;
   __Pyx_RefNannySetupContext("new_castle_spaces", 0);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":98
+  /* "xiangqigame/cython_modules/game_board_c.pyx":61
  * cdef CastleSpace** new_castle_spaces(
  *         long min_rank, long max_rank,long min_file, long max_file):
  *     cdef CastleSpace** self = <CastleSpace**> malloc(9 * sizeof(CastleSpace*))             # <<<<<<<<<<<<<<
@@ -1813,7 +1848,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace 
  */
   __pyx_v_self = ((struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace **)malloc((9 * (sizeof(struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace *)))));
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":102
+  /* "xiangqigame/cython_modules/game_board_c.pyx":65
  *     cdef long file
  *     cdef CastleSpace* cur_space
  *     for rank in range(min_rank, max_rank + 1):             # <<<<<<<<<<<<<<
@@ -1825,7 +1860,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace 
   for (__pyx_t_3 = __pyx_v_min_rank; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_rank = __pyx_t_3;
 
-    /* "xiangqigame/cython_modules/game_board_c.pyx":103
+    /* "xiangqigame/cython_modules/game_board_c.pyx":66
  *     cdef CastleSpace* cur_space
  *     for rank in range(min_rank, max_rank + 1):
  *         for file in range(min_file, max_file + 1):             # <<<<<<<<<<<<<<
@@ -1837,7 +1872,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace 
     for (__pyx_t_6 = __pyx_v_min_file; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_file = __pyx_t_6;
 
-      /* "xiangqigame/cython_modules/game_board_c.pyx":104
+      /* "xiangqigame/cython_modules/game_board_c.pyx":67
  *     for rank in range(min_rank, max_rank + 1):
  *         for file in range(min_file, max_file + 1):
  *             cur_space = new_castle_space(rank, file)             # <<<<<<<<<<<<<<
@@ -1846,7 +1881,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace 
  */
       __pyx_v_cur_space = __pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_castle_space(__pyx_v_rank, __pyx_v_file);
 
-      /* "xiangqigame/cython_modules/game_board_c.pyx":105
+      /* "xiangqigame/cython_modules/game_board_c.pyx":68
  *         for file in range(min_file, max_file + 1):
  *             cur_space = new_castle_space(rank, file)
  *             self[3 * rank + file] = cur_space             # <<<<<<<<<<<<<<
@@ -1857,7 +1892,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace 
     }
   }
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":106
+  /* "xiangqigame/cython_modules/game_board_c.pyx":69
  *             cur_space = new_castle_space(rank, file)
  *             self[3 * rank + file] = cur_space
  *     return self             # <<<<<<<<<<<<<<
@@ -1867,7 +1902,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace 
   __pyx_r = __pyx_v_self;
   goto __pyx_L0;
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":96
+  /* "xiangqigame/cython_modules/game_board_c.pyx":59
  * 
  * 
  * cdef CastleSpace** new_castle_spaces(             # <<<<<<<<<<<<<<
@@ -1881,7 +1916,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace 
   return __pyx_r;
 }
 
-/* "xiangqigame/cython_modules/game_board_c.pyx":109
+/* "xiangqigame/cython_modules/game_board_c.pyx":72
  * 
  * 
  * cdef void destruct_castle_spaces(CastleSpace** self):             # <<<<<<<<<<<<<<
@@ -1895,7 +1930,7 @@ static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castl
   long __pyx_t_1;
   __Pyx_RefNannySetupContext("destruct_castle_spaces", 0);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":111
+  /* "xiangqigame/cython_modules/game_board_c.pyx":74
  * cdef void destruct_castle_spaces(CastleSpace** self):
  *     cdef long space
  *     for space in range(9):             # <<<<<<<<<<<<<<
@@ -1905,7 +1940,7 @@ static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castl
   for (__pyx_t_1 = 0; __pyx_t_1 < 9; __pyx_t_1+=1) {
     __pyx_v_space = __pyx_t_1;
 
-    /* "xiangqigame/cython_modules/game_board_c.pyx":112
+    /* "xiangqigame/cython_modules/game_board_c.pyx":75
  *     cdef long space
  *     for space in range(9):
  *         destruct_castle_space(self[space])             # <<<<<<<<<<<<<<
@@ -1915,7 +1950,7 @@ static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castl
     __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castle_space((__pyx_v_self[__pyx_v_space]));
   }
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":113
+  /* "xiangqigame/cython_modules/game_board_c.pyx":76
  *     for space in range(9):
  *         destruct_castle_space(self[space])
  *     free(<void*> self)             # <<<<<<<<<<<<<<
@@ -1924,7 +1959,7 @@ static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castl
  */
   free(((void *)__pyx_v_self));
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":109
+  /* "xiangqigame/cython_modules/game_board_c.pyx":72
  * 
  * 
  * cdef void destruct_castle_spaces(CastleSpace** self):             # <<<<<<<<<<<<<<
@@ -1936,7 +1971,7 @@ static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castl
   __Pyx_RefNannyFinishContext();
 }
 
-/* "xiangqigame/cython_modules/game_board_c.pyx":116
+/* "xiangqigame/cython_modules/game_board_c.pyx":79
  * 
  * 
  * cdef GameBoardC* new_game_board_c():             # <<<<<<<<<<<<<<
@@ -1950,7 +1985,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("new_game_board_c", 0);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":117
+  /* "xiangqigame/cython_modules/game_board_c.pyx":80
  * 
  * cdef GameBoardC* new_game_board_c():
  *     cdef GameBoardC* self = <GameBoardC*> malloc(sizeof(GameBoardC))             # <<<<<<<<<<<<<<
@@ -1959,7 +1994,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *
  */
   __pyx_v_self = ((struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *)malloc((sizeof(struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC))));
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":118
+  /* "xiangqigame/cython_modules/game_board_c.pyx":81
  * cdef GameBoardC* new_game_board_c():
  *     cdef GameBoardC* self = <GameBoardC*> malloc(sizeof(GameBoardC))
  *     self.num_ranks = BoardDim.NUM_RANKS             # <<<<<<<<<<<<<<
@@ -1968,7 +2003,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *
  */
   __pyx_v_self->num_ranks = __pyx_e_11xiangqigame_14cython_modules_12board_layout_NUM_RANKS;
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":119
+  /* "xiangqigame/cython_modules/game_board_c.pyx":82
  *     cdef GameBoardC* self = <GameBoardC*> malloc(sizeof(GameBoardC))
  *     self.num_ranks = BoardDim.NUM_RANKS
  *     self.num_files = BoardDim.NUM_FILES             # <<<<<<<<<<<<<<
@@ -1977,7 +2012,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *
  */
   __pyx_v_self->num_files = __pyx_e_11xiangqigame_14cython_modules_12board_layout_NUM_FILES;
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":120
+  /* "xiangqigame/cython_modules/game_board_c.pyx":83
  *     self.num_ranks = BoardDim.NUM_RANKS
  *     self.num_files = BoardDim.NUM_FILES
  *     self.red_river_edge = RiverEdges.RED             # <<<<<<<<<<<<<<
@@ -1986,7 +2021,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *
  */
   __pyx_v_self->red_river_edge = __pyx_e_11xiangqigame_14cython_modules_12board_layout_RED;
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":121
+  /* "xiangqigame/cython_modules/game_board_c.pyx":84
  *     self.num_files = BoardDim.NUM_FILES
  *     self.red_river_edge = RiverEdges.RED
  *     self.black_river_edge = RiverEdges.BLK             # <<<<<<<<<<<<<<
@@ -1995,7 +2030,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *
  */
   __pyx_v_self->black_river_edge = __pyx_e_11xiangqigame_14cython_modules_12board_layout_BLK;
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":122
+  /* "xiangqigame/cython_modules/game_board_c.pyx":85
  *     self.red_river_edge = RiverEdges.RED
  *     self.black_river_edge = RiverEdges.BLK
  *     self.board_map = new_board_map()             # <<<<<<<<<<<<<<
@@ -2004,7 +2039,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *
  */
   __pyx_v_self->board_map = __pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_board_map();
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":123
+  /* "xiangqigame/cython_modules/game_board_c.pyx":86
  *     self.black_river_edge = RiverEdges.BLK
  *     self.board_map = new_board_map()
  *     self.red_castle_spaces = new_castle_spaces(             # <<<<<<<<<<<<<<
@@ -2013,7 +2048,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *
  */
   __pyx_v_self->red_castle_spaces = __pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_castle_spaces(__pyx_e_11xiangqigame_14cython_modules_12board_layout_RED_MIN_RANK, __pyx_e_11xiangqigame_14cython_modules_12board_layout_RED_MAX_RANK, __pyx_e_11xiangqigame_14cython_modules_12board_layout_RED_MIN_FILE, __pyx_e_11xiangqigame_14cython_modules_12board_layout_RED_MAX_FILE);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":128
+  /* "xiangqigame/cython_modules/game_board_c.pyx":91
  *         min_file=CastleEdges.RED_MIN_FILE,
  *         max_file=CastleEdges.RED_MAX_FILE)
  *     self.black_castle_spaces = new_castle_spaces(             # <<<<<<<<<<<<<<
@@ -2022,7 +2057,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *
  */
   __pyx_v_self->black_castle_spaces = __pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_castle_spaces(__pyx_e_11xiangqigame_14cython_modules_12board_layout_BLK_MIN_RANK, __pyx_e_11xiangqigame_14cython_modules_12board_layout_BLK_MAX_RANK, __pyx_e_11xiangqigame_14cython_modules_12board_layout_BLK_MIN_FILE, __pyx_e_11xiangqigame_14cython_modules_12board_layout_BLK_MAX_FILE);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":134
+  /* "xiangqigame/cython_modules/game_board_c.pyx":97
  *         max_file=CastleEdges.BLK_MAX_FILE)
  * 
  *     return self             # <<<<<<<<<<<<<<
@@ -2032,7 +2067,7 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *
   __pyx_r = __pyx_v_self;
   goto __pyx_L0;
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":116
+  /* "xiangqigame/cython_modules/game_board_c.pyx":79
  * 
  * 
  * cdef GameBoardC* new_game_board_c():             # <<<<<<<<<<<<<<
@@ -2046,67 +2081,228 @@ static struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *
   return __pyx_r;
 }
 
-/* "xiangqigame/cython_modules/game_board_c.pyx":137
+/* "xiangqigame/cython_modules/game_board_c.pyx":100
  * 
  * 
  * cdef void destruct_game_board_c(GameBoardC* self):             # <<<<<<<<<<<<<<
- *     # destruct_castle(self.red_castle)
- *     # destruct_castle(self.black_castle)
+ *     destruct_castle_spaces(self.red_castle_spaces)
+ *     print("red castle spaces destructed")
  */
 
 static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_game_board_c(struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *__pyx_v_self) {
   __Pyx_RefNannyDeclarations
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("destruct_game_board_c", 0);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":140
- *     # destruct_castle(self.red_castle)
- *     # destruct_castle(self.black_castle)
+  /* "xiangqigame/cython_modules/game_board_c.pyx":101
+ * 
+ * cdef void destruct_game_board_c(GameBoardC* self):
  *     destruct_castle_spaces(self.red_castle_spaces)             # <<<<<<<<<<<<<<
+ *     print("red castle spaces destructed")
  *     destruct_castle_spaces(self.black_castle_spaces)
- *     destruct_board_map(self.board_map)
  */
   __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castle_spaces(__pyx_v_self->red_castle_spaces);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":141
- *     # destruct_castle(self.black_castle)
+  /* "xiangqigame/cython_modules/game_board_c.pyx":102
+ * cdef void destruct_game_board_c(GameBoardC* self):
  *     destruct_castle_spaces(self.red_castle_spaces)
+ *     print("red castle spaces destructed")             # <<<<<<<<<<<<<<
+ *     destruct_castle_spaces(self.black_castle_spaces)
+ *     print("black castle spaces destructed")
+ */
+  if (__Pyx_PrintOne(0, __pyx_kp_s_red_castle_spaces_destructed) < 0) __PYX_ERR(0, 102, __pyx_L1_error)
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":103
+ *     destruct_castle_spaces(self.red_castle_spaces)
+ *     print("red castle spaces destructed")
  *     destruct_castle_spaces(self.black_castle_spaces)             # <<<<<<<<<<<<<<
+ *     print("black castle spaces destructed")
  *     destruct_board_map(self.board_map)
- *     free(<void*> self)
  */
   __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castle_spaces(__pyx_v_self->black_castle_spaces);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":142
- *     destruct_castle_spaces(self.red_castle_spaces)
+  /* "xiangqigame/cython_modules/game_board_c.pyx":104
+ *     print("red castle spaces destructed")
  *     destruct_castle_spaces(self.black_castle_spaces)
+ *     print("black castle spaces destructed")             # <<<<<<<<<<<<<<
+ *     destruct_board_map(self.board_map)
+ *     print("board_map destructed")
+ */
+  if (__Pyx_PrintOne(0, __pyx_kp_s_black_castle_spaces_destructed) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":105
+ *     destruct_castle_spaces(self.black_castle_spaces)
+ *     print("black castle spaces destructed")
  *     destruct_board_map(self.board_map)             # <<<<<<<<<<<<<<
+ *     print("board_map destructed")
  *     free(<void*> self)
- * 
  */
   __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_board_map(__pyx_v_self->board_map);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":143
- *     destruct_castle_spaces(self.black_castle_spaces)
+  /* "xiangqigame/cython_modules/game_board_c.pyx":106
+ *     print("black castle spaces destructed")
  *     destruct_board_map(self.board_map)
+ *     print("board_map destructed")             # <<<<<<<<<<<<<<
+ *     free(<void*> self)
+ * 
+ */
+  if (__Pyx_PrintOne(0, __pyx_kp_s_board_map_destructed) < 0) __PYX_ERR(0, 106, __pyx_L1_error)
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":107
+ *     destruct_board_map(self.board_map)
+ *     print("board_map destructed")
  *     free(<void*> self)             # <<<<<<<<<<<<<<
  * 
  * 
  */
   free(((void *)__pyx_v_self));
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":137
+  /* "xiangqigame/cython_modules/game_board_c.pyx":100
  * 
  * 
  * cdef void destruct_game_board_c(GameBoardC* self):             # <<<<<<<<<<<<<<
- *     # destruct_castle(self.red_castle)
- *     # destruct_castle(self.black_castle)
+ *     destruct_castle_spaces(self.red_castle_spaces)
+ *     print("red castle spaces destructed")
  */
 
   /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_WriteUnraisable("xiangqigame.cython_modules.game_board_c.destruct_game_board_c", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
 
-/* "xiangqigame/cython_modules/game_board_c.pyx":147
+/* "xiangqigame/cython_modules/game_board_c.pyx":110
+ * 
+ * 
+ * cdef bint is_occupied((long, long) space, GameBoardC* self):             # <<<<<<<<<<<<<<
+ *     return self.board_map[space_idx_1d(space)] != PT.NNN
+ * 
+ */
+
+static int __pyx_f_11xiangqigame_14cython_modules_12game_board_c_is_occupied(__pyx_ctuple_long__and_long __pyx_v_space, struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *__pyx_v_self) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("is_occupied", 0);
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":111
+ * 
+ * cdef bint is_occupied((long, long) space, GameBoardC* self):
+ *     return self.board_map[space_idx_1d(space)] != PT.NNN             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = ((__pyx_v_self->board_map[__pyx_f_11xiangqigame_14cython_modules_12game_board_c_space_idx_1d(__pyx_v_space)]) != __pyx_e_11xiangqigame_14cython_modules_17piece_definitions_NNN);
+  goto __pyx_L0;
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":110
+ * 
+ * 
+ * cdef bint is_occupied((long, long) space, GameBoardC* self):             # <<<<<<<<<<<<<<
+ *     return self.board_map[space_idx_1d(space)] != PT.NNN
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "xiangqigame/cython_modules/game_board_c.pyx":114
+ * 
+ * 
+ * cdef long get_type((long, long) space, GameBoardC* self):             # <<<<<<<<<<<<<<
+ *     return labs(self.board_map[space_idx_1d(space)])
+ * 
+ */
+
+static long __pyx_f_11xiangqigame_14cython_modules_12game_board_c_get_type(__pyx_ctuple_long__and_long __pyx_v_space, struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *__pyx_v_self) {
+  long __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("get_type", 0);
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":115
+ * 
+ * cdef long get_type((long, long) space, GameBoardC* self):
+ *     return labs(self.board_map[space_idx_1d(space)])             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = labs((__pyx_v_self->board_map[__pyx_f_11xiangqigame_14cython_modules_12game_board_c_space_idx_1d(__pyx_v_space)]));
+  goto __pyx_L0;
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":114
+ * 
+ * 
+ * cdef long get_type((long, long) space, GameBoardC* self):             # <<<<<<<<<<<<<<
+ *     return labs(self.board_map[space_idx_1d(space)])
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "xiangqigame/cython_modules/game_board_c.pyx":118
+ * 
+ * 
+ * cdef long get_color((long, long) space, GameBoardC* self):             # <<<<<<<<<<<<<<
+ *     cdef long piece_val = self.board_map[space_idx_1d(space)]
+ *     return 0 if piece_val == 0 else <long>copysign(1, piece_val)
+ */
+
+static long __pyx_f_11xiangqigame_14cython_modules_12game_board_c_get_color(__pyx_ctuple_long__and_long __pyx_v_space, struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *__pyx_v_self) {
+  long __pyx_v_piece_val;
+  long __pyx_r;
+  __Pyx_RefNannyDeclarations
+  long __pyx_t_1;
+  __Pyx_RefNannySetupContext("get_color", 0);
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":119
+ * 
+ * cdef long get_color((long, long) space, GameBoardC* self):
+ *     cdef long piece_val = self.board_map[space_idx_1d(space)]             # <<<<<<<<<<<<<<
+ *     return 0 if piece_val == 0 else <long>copysign(1, piece_val)
+ * 
+ */
+  __pyx_v_piece_val = (__pyx_v_self->board_map[__pyx_f_11xiangqigame_14cython_modules_12game_board_c_space_idx_1d(__pyx_v_space)]);
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":120
+ * cdef long get_color((long, long) space, GameBoardC* self):
+ *     cdef long piece_val = self.board_map[space_idx_1d(space)]
+ *     return 0 if piece_val == 0 else <long>copysign(1, piece_val)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  if (((__pyx_v_piece_val == 0) != 0)) {
+    __pyx_t_1 = 0;
+  } else {
+    __pyx_t_1 = ((long)copysign(1.0, __pyx_v_piece_val));
+  }
+  __pyx_r = __pyx_t_1;
+  goto __pyx_L0;
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":118
+ * 
+ * 
+ * cdef long get_color((long, long) space, GameBoardC* self):             # <<<<<<<<<<<<<<
+ *     cdef long piece_val = self.board_map[space_idx_1d(space)]
+ *     return 0 if piece_val == 0 else <long>copysign(1, piece_val)
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "xiangqigame/cython_modules/game_board_c.pyx":123
  * 
  * 
  * cpdef void create_and_destroy_game_board_c():             # <<<<<<<<<<<<<<
@@ -2117,41 +2313,88 @@ static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_game_
 static PyObject *__pyx_pw_11xiangqigame_14cython_modules_12game_board_c_1create_and_destroy_game_board_c(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
 static void __pyx_f_11xiangqigame_14cython_modules_12game_board_c_create_and_destroy_game_board_c(CYTHON_UNUSED int __pyx_skip_dispatch) {
   struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *__pyx_v_my_game_board;
+  __pyx_ctuple_long__and_long __pyx_v_space;
+  long __pyx_v_color_0_1;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
+  __pyx_ctuple_long__and_long __pyx_t_2;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("create_and_destroy_game_board_c", 0);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":148
+  /* "xiangqigame/cython_modules/game_board_c.pyx":124
  * 
  * cpdef void create_and_destroy_game_board_c():
  *     cdef GameBoardC* my_game_board = new_game_board_c()             # <<<<<<<<<<<<<<
  *     print(my_game_board.board_map[0])
- *     destruct_game_board_c(my_game_board)
+ *     cdef (long, long) space = (0, 1)
  */
   __pyx_v_my_game_board = __pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_game_board_c();
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":149
+  /* "xiangqigame/cython_modules/game_board_c.pyx":125
  * cpdef void create_and_destroy_game_board_c():
  *     cdef GameBoardC* my_game_board = new_game_board_c()
  *     print(my_game_board.board_map[0])             # <<<<<<<<<<<<<<
- *     destruct_game_board_c(my_game_board)
+ *     cdef (long, long) space = (0, 1)
+ *     print(space)
  */
-  __pyx_t_1 = __Pyx_PyInt_From_long((__pyx_v_my_game_board->board_map[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_long((__pyx_v_my_game_board->board_map[0])); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 149, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":150
+  /* "xiangqigame/cython_modules/game_board_c.pyx":126
  *     cdef GameBoardC* my_game_board = new_game_board_c()
  *     print(my_game_board.board_map[0])
+ *     cdef (long, long) space = (0, 1)             # <<<<<<<<<<<<<<
+ *     print(space)
+ *     cdef long color_0_1 = get_color(space=space, self=my_game_board)
+ */
+  __pyx_t_2.f0 = 0;
+  __pyx_t_2.f1 = 1;
+  __pyx_v_space = __pyx_t_2;
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":127
+ *     print(my_game_board.board_map[0])
+ *     cdef (long, long) space = (0, 1)
+ *     print(space)             # <<<<<<<<<<<<<<
+ *     cdef long color_0_1 = get_color(space=space, self=my_game_board)
+ *     print(color_0_1)
+ */
+  __pyx_t_1 = __pyx_convert__to_py___pyx_ctuple_long__and_long(__pyx_v_space); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 127, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":128
+ *     cdef (long, long) space = (0, 1)
+ *     print(space)
+ *     cdef long color_0_1 = get_color(space=space, self=my_game_board)             # <<<<<<<<<<<<<<
+ *     print(color_0_1)
+ *     destruct_game_board_c(my_game_board)
+ */
+  __pyx_v_color_0_1 = __pyx_f_11xiangqigame_14cython_modules_12game_board_c_get_color(__pyx_v_space, __pyx_v_my_game_board);
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":129
+ *     print(space)
+ *     cdef long color_0_1 = get_color(space=space, self=my_game_board)
+ *     print(color_0_1)             # <<<<<<<<<<<<<<
+ *     destruct_game_board_c(my_game_board)
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_color_0_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "xiangqigame/cython_modules/game_board_c.pyx":130
+ *     cdef long color_0_1 = get_color(space=space, self=my_game_board)
+ *     print(color_0_1)
  *     destruct_game_board_c(my_game_board)             # <<<<<<<<<<<<<<
  */
   __pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_game_board_c(__pyx_v_my_game_board);
 
-  /* "xiangqigame/cython_modules/game_board_c.pyx":147
+  /* "xiangqigame/cython_modules/game_board_c.pyx":123
  * 
  * 
  * cpdef void create_and_destroy_game_board_c():             # <<<<<<<<<<<<<<
@@ -2190,7 +2433,7 @@ static PyObject *__pyx_pf_11xiangqigame_14cython_modules_12game_board_c_create_a
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("create_and_destroy_game_board_c", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_11xiangqigame_14cython_modules_12game_board_c_create_and_destroy_game_board_c(0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(__pyx_f_11xiangqigame_14cython_modules_12game_board_c_create_and_destroy_game_board_c(0)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2254,6 +2497,8 @@ static struct PyModuleDef __pyx_moduledef = {
 #endif
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
+  {&__pyx_kp_s_black_castle_spaces_destructed, __pyx_k_black_castle_spaces_destructed, sizeof(__pyx_k_black_castle_spaces_destructed), 0, 0, 1, 0},
+  {&__pyx_kp_s_board_map_destructed, __pyx_k_board_map_destructed, sizeof(__pyx_k_board_map_destructed), 0, 0, 1, 0},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
@@ -2261,11 +2506,12 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
+  {&__pyx_kp_s_red_castle_spaces_destructed, __pyx_k_red_castle_spaces_destructed, sizeof(__pyx_k_red_castle_spaces_destructed), 0, 0, 1, 0},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 49, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -2311,10 +2557,25 @@ static int __Pyx_modinit_variable_export_code(void) {
 
 static int __Pyx_modinit_function_export_code(void) {
   __Pyx_RefNannyDeclarations
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_function_export_code", 0);
   /*--- Function export code ---*/
+  if (__Pyx_ExportFunction("space_idx_1d", (void (*)(void))__pyx_f_11xiangqigame_14cython_modules_12game_board_c_space_idx_1d, "long (__pyx_ctuple_long__and_long)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("new_castle_space", (void (*)(void))__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_castle_space, "struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace *(long, long)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("destruct_castle_space", (void (*)(void))__pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castle_space, "void (struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("new_board_map", (void (*)(void))__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_board_map, "long *(void)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("destruct_board_map", (void (*)(void))__pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_board_map, "void (long *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("new_castle_spaces", (void (*)(void))__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_castle_spaces, "struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace **(long, long, long, long)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("destruct_castle_spaces", (void (*)(void))__pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_castle_spaces, "void (struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_CastleSpace **)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("new_game_board_c", (void (*)(void))__pyx_f_11xiangqigame_14cython_modules_12game_board_c_new_game_board_c, "struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *(void)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ExportFunction("destruct_game_board_c", (void (*)(void))__pyx_f_11xiangqigame_14cython_modules_12game_board_c_destruct_game_board_c, "void (struct __pyx_t_11xiangqigame_14cython_modules_12game_board_c_GameBoardC *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
+  __pyx_L1_error:;
+  __Pyx_RefNannyFinishContext();
+  return -1;
 }
 
 static int __Pyx_modinit_type_init_code(void) {
@@ -2539,7 +2800,7 @@ if (!__Pyx_RefNanny) {
   /*--- Global type/function init code ---*/
   (void)__Pyx_modinit_global_init_code();
   (void)__Pyx_modinit_variable_export_code();
-  (void)__Pyx_modinit_function_export_code();
+  if (unlikely(__Pyx_modinit_function_export_code() < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
   (void)__Pyx_modinit_type_init_code();
   (void)__Pyx_modinit_type_import_code();
   (void)__Pyx_modinit_variable_import_code();
@@ -2550,9 +2811,9 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "xiangqigame/cython_modules/game_board_c.pyx":1
- * from libc.stdlib cimport malloc, free             # <<<<<<<<<<<<<<
+ * from libc.math cimport copysign             # <<<<<<<<<<<<<<
+ * from libc.stdlib cimport labs, malloc, free
  * from .board_layout cimport BoardDim, RiverEdges, CastleEdges
- * from .piece_definitions cimport PC, PT
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -2627,6 +2888,21 @@ static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
 #endif
     }
     return result;
+}
+
+/* DivInt[long] */
+static CYTHON_INLINE long __Pyx_div_long(long a, long b) {
+    long q = a / b;
+    long r = a - q*b;
+    q -= ((r != 0) & ((r ^ b) < 0));
+    return q;
+}
+
+/* ModInt[long] */
+static CYTHON_INLINE long __Pyx_mod_long(long a, long b) {
+    long r = a % b;
+    r += ((r != 0) & ((r ^ b) < 0)) * b;
+    return r;
 }
 
 /* PyErrFetchRestore */
@@ -3077,6 +3353,24 @@ bad:
     return -1;
 }
 #endif
+
+/* ToPyCTupleUtility */
+static PyObject* __pyx_convert__to_py___pyx_ctuple_long__and_long(__pyx_ctuple_long__and_long value) {
+    PyObject* item = NULL;
+    PyObject* result = PyTuple_New(2);
+    if (!result) goto bad;
+        item = __Pyx_PyInt_From_long(value.f0);
+        if (!item) goto bad;
+        PyTuple_SET_ITEM(result, 0, item);
+        item = __Pyx_PyInt_From_long(value.f1);
+        if (!item) goto bad;
+        PyTuple_SET_ITEM(result, 1, item);
+    return result;
+bad:
+    Py_XDECREF(item);
+    Py_XDECREF(result);
+    return NULL;
+}
 
 /* CIntToPy */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_enum____pyx_t_11xiangqigame_14cython_modules_17piece_definitions_PT(enum __pyx_t_11xiangqigame_14cython_modules_17piece_definitions_PT value) {
@@ -3757,6 +4051,43 @@ static int __Pyx_check_binary_version(void) {
         return PyErr_WarnEx(NULL, message, 1);
     }
     return 0;
+}
+
+/* FunctionExport */
+static int __Pyx_ExportFunction(const char *name, void (*f)(void), const char *sig) {
+    PyObject *d = 0;
+    PyObject *cobj = 0;
+    union {
+        void (*fp)(void);
+        void *p;
+    } tmp;
+    d = PyObject_GetAttrString(__pyx_m, (char *)"__pyx_capi__");
+    if (!d) {
+        PyErr_Clear();
+        d = PyDict_New();
+        if (!d)
+            goto bad;
+        Py_INCREF(d);
+        if (PyModule_AddObject(__pyx_m, (char *)"__pyx_capi__", d) < 0)
+            goto bad;
+    }
+    tmp.fp = f;
+#if PY_VERSION_HEX >= 0x02070000
+    cobj = PyCapsule_New(tmp.p, sig, 0);
+#else
+    cobj = PyCObject_FromVoidPtrAndDesc(tmp.p, (void *)sig, 0);
+#endif
+    if (!cobj)
+        goto bad;
+    if (PyDict_SetItemString(d, name, cobj) < 0)
+        goto bad;
+    Py_DECREF(cobj);
+    Py_DECREF(d);
+    return 0;
+bad:
+    Py_XDECREF(cobj);
+    Py_XDECREF(d);
+    return -1;
 }
 
 /* InitStrings */
