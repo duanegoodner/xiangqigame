@@ -1,12 +1,9 @@
-import math
 from typing import List, Tuple, Union, Dict, Any
 import numpy as np
-import xiangqigame.cython_modules.get_all_spaces_occupied_by as gas
-import xiangqigame.cython_modules.get_color as gc
-import xiangqigame.cython_modules.search_spaces as ss
+import xiangqigame.cython_modules.cython_board_utilities as cbu
+import xiangqigame.cython_modules.general_moves as gm
 from xiangqigame.piece_definitions import PType, PColor
 from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
-from xiangqigame.board_layout import BoardLayout as blo
 from xiangqigame.starting_board_builder import StartingBoardBuilder
 
 
@@ -35,7 +32,7 @@ class GameBoard:
         return abs(self._map[space[0], space[1]])
 
     def get_color(self, space: Union[List[int], Tuple[int, int]]):
-        return gc.run_get_color(
+        return cbu.run_get_color(
             rank=space[0],
             file=space[1],
             board_map=self._map)
@@ -88,33 +85,38 @@ class GameBoard:
     def get_all_spaces_occupied_by(
             self, color: int) -> List[Tuple]:
 
-        return gas.run_get_all_spaces_occupied_by(self._map, color)
+        return cbu.run_get_all_spaces_occupied_by(self._map, color)
         # spaces_array = np.argwhere(bu.is_color[color](self._map))
         # return list(map(tuple, spaces_array))
 
     def get_general_position(self, color: int) -> Tuple[int, int]:
-        general_space = None
-        for space in blo.castle_coords[color]:
-            if abs(self._map[space]) == PType.GEN:
-                general_space = space
+
+        general_space = cbu.run_get_general_position(
+            color=color,
+            board_map=self._map)
+
+        # general_space = None
+        # for space in blo.castle_coords[color]:
+        #     if abs(self._map[space]) == PType.GEN:
+        #         general_space = space
         if general_space is None:
             raise GeneralNotFound(self._map)
         return general_space
 
-    def get_vertical_path(self, from_space: Tuple[int, int], to_rank: int):
-
-        if from_space[0] == to_rank:
-            return np.array([])
-        elif to_rank > from_space[0]:
-            return self._map[(from_space[0] + 1):to_rank, from_space[1]]
-        else:
-            return self._map[(to_rank + 1):from_space[0], from_space[1]]
+    # def get_vertical_path(self, from_space: Tuple[int, int], to_rank: int):
+    #
+    #     if from_space[0] == to_rank:
+    #         return np.array([])
+    #     elif to_rank > from_space[0]:
+    #         return self._map[(from_space[0] + 1):to_rank, from_space[1]]
+    #     else:
+    #         return self._map[(to_rank + 1):from_space[0], from_space[1]]
 
     def search_spaces(
             self,
             from_space: Tuple[int, int],
             direction: Tuple[int, int]):
-        return ss.run_search_space(
+        return cbu.run_search_space(
             board_map=self._map,
             start_rank=from_space[0],
             start_file=from_space[1],
@@ -241,44 +243,14 @@ class GameBoard:
 
         return advisor_moves
 
-    def flying_general_moves(
-            self,
-            from_position: Tuple[int, int],
-            color: int) -> List[Dict]:
-        flying_moves = []
-        other_gen_position = self.get_general_position(
-            bu.opponent_of[color])
-
-        if from_position[1] == other_gen_position[1]:
-
-            slice_start = min(from_position[0], other_gen_position[0])
-            slice_end = max(from_position[0], other_gen_position[0]) + 1
-            if (self._map[slice_start:slice_end, from_position[1]] ==
-                PType.NUL).all():
-                flying_moves.append(
-                    {"start": from_position, "end": other_gen_position})
-
-        return flying_moves
-
-    def standard_general_moves(self, from_position: Tuple[int, int],
-                               color: int) -> List[Dict]:
-
-        standard_moves = []
-
-        adjacent_spaces = (bu.space_plus_vect(from_position, vect) for vect in
-                           bu.all_orthogonal_unit_vects)
-
-        for space in adjacent_spaces:
-            if bu.is_in_castle_of(color, space) and self.get_color(
-                    space) != color:
-                standard_moves.append({"start": from_position, "end": space})
-
-        return standard_moves
-
     def general_moves(
             self, from_position: Tuple[int, int], color: int) -> List[Dict]:
-        return (self.flying_general_moves(from_position, color) +
-                self.standard_general_moves(from_position, color))
+
+        return gm.run_general_moves(
+            from_rank=from_position[0],
+            from_file=from_position[1],
+            board_map=self._map,
+            color=color)
 
     piece_moves = {
         PType.SOL: soldier_moves,
@@ -319,26 +291,6 @@ class GameBoard:
         for space in self.get_all_spaces_occupied_by(color):
             team_moves = team_moves + self.calc_temp_moves_from(space)
         return team_moves
-
-    # def calc_final_moves_from(self, position: BoardSpace):
-    #     potential_moves = self.calc_temp_moves_from(position)
-    #     moves_resulting_in_check = set()
-    #
-    #     for move in potential_moves:
-    #         test_move = self.execute_move(move)
-    #         resulting_opp_moves = self.calc_temp_moves_of(
-    #             bu.opponent_of[bu.get_piece_color(test_move.moving_piece)])
-    #         resulting_opp_destinations = {
-    #             move.end for move in resulting_opp_moves}
-    #         if self.get_general_position(
-    #                 bu.get_piece_color(test_move.moving_piece)
-    #         ) in resulting_opp_destinations:
-    #             moves_resulting_in_check.add(move)
-    #         self.undo_move(test_move)
-    #
-    #     legal_moves = potential_moves - moves_resulting_in_check
-    #
-    #     return legal_moves
 
     def calc_final_moves_of(self, color: int) -> List[Dict]:
         final_moves = []

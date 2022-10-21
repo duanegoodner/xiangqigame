@@ -8,7 +8,6 @@ xiangqigame/app.py
 xiangqigame/board_components_new.py
 xiangqigame/board_layout.py
 xiangqigame/board_utilities_new.py
-xiangqigame/cython_quick_test.py
 xiangqigame/enums.py
 xiangqigame/game.py
 xiangqigame/game_board_new.py
@@ -31,12 +30,6 @@ xiangqigame.egg-info/top_level.txt
 xiangqigame/cython_modules/__init__.py
 xiangqigame/cython_modules/general_moves.c
 xiangqigame/cython_modules/general_moves.pyx
-xiangqigame/cython_modules/get_all_spaces_occupied_by.c
-xiangqigame/cython_modules/get_all_spaces_occupied_by.pyx
-xiangqigame/cython_modules/get_color.c
-xiangqigame/cython_modules/get_color.pyx
-xiangqigame/cython_modules/search_spaces.c
-xiangqigame/cython_modules/search_spaces.pyx
 xiangqigame/data/__init__.py
 xiangqigame/data/alg_games.py
 xiangqigame/data/alg_games_flip.py
@@ -45,12 +38,15 @@ xiangqigame/handlers/__init__.py
 xiangqigame/handlers/errors.py
 xiangqigame/handlers/signals.py
 xiangqigame/tests/__init__.py
+xiangqigame/tests/all_c_board.py
+xiangqigame/tests/cython_cannon_moves_optimize.py
 xiangqigame/tests/example_game.py
 xiangqigame/tests/fixtures.py
 xiangqigame/tests/game_scenarios.py
 xiangqigame/tests/get_all_spaces_occ_cython_test.py
 xiangqigame/tests/named_tuple_tests.py
 xiangqigame/tests/search_spaces_cython_optimize.py
+xiangqigame/tests/search_spaces_testing.py
 xiangqigame/tests/speed_test_calc_final_moves.py
 xiangqigame/tests/starting_move_selection_profiler.py
 xiangqigame/tests/test_numpy_board.py

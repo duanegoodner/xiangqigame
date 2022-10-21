@@ -36,7 +36,7 @@ class StartingBoardBuilder:
         return black_half + red_half
 
     def build_initial_board_array(self):
-        return np.array(self.build_initial_board_list(), dtype=np.long)
+        return np.array(self.build_initial_board_list(), dtype=np.int64)
 
 
 if __name__ == "__main__":

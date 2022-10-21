@@ -4,7 +4,6 @@ from typing import Dict
 
 from xiangqigame.piece_definitions import PColor
 
-from xiangqigame.tests.fixtures import starting_game_board, minimax_move_selector
 from xiangqigame.game_board_new import GameBoard
 from xiangqigame.move_selectors import PiecePoints, MinimaxMoveSelector
 import xiangqigame.piece_points as pts
@@ -33,7 +32,7 @@ def select_red_starting_move(
 
 
 if __name__ == "__main__":
-    depth = 4
+    depth = 3
     select_red_starting_move(depth)
     # cProfile.run(
     #     f"select_red_starting_move({depth})",

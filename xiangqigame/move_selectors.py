@@ -57,7 +57,7 @@ class MinimaxMoveSelector(MoveSelector):
         self._node_counter += 1
         # print(self._node_counter)
         cur_moves = game_board.calc_final_moves_of(color=cur_player)
-        if cur_moves == set():
+        if not cur_moves:
             return self._evaluator.evaluate_winner(
                 cur_player, initiating_player)
         # print(cur_player)

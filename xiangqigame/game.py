@@ -43,29 +43,27 @@ class Game:
     def change_whose_turn(self):
         self._whose_turn = bu.opponent_of[self._whose_turn]
 
-    def is_valid_move(self, proposed_move: Dict):
-        return proposed_move in self._board.calc_final_moves_of(
-            self._whose_turn)
+    @staticmethod
+    def is_valid_move(proposed_move: Dict, avail_moves: List[Dict]):
+        return proposed_move in avail_moves
 
-    def get_valid_move(self):
+    def get_valid_move(self, avail_moves: List[Dict]):
         valid_move = None
         while not valid_move:
             proposed_move = self._players[self._whose_turn].propose_move(
-                self._board, cur_moves=self._board.calc_final_moves_of(
-                    self._whose_turn))
-            if proposed_move in self._board.calc_final_moves_of(
-                    self._whose_turn):
+                self._board, cur_moves=avail_moves)
+            if proposed_move in avail_moves:
                 valid_move = proposed_move
             else:
                 self._players[self._whose_turn].illegal_move_notice_response(
                     illegal_move=proposed_move,
                     game_board=self._board,
-                    cur_moves=self._board.calc_final_moves_of(self._whose_turn))
+                    cur_moves=avail_moves)
         return valid_move
 
-    def player_turn(self):
+    def player_turn(self, avail_moves: List[Dict]):
         try:
-            valid_move = self.get_valid_move()
+            valid_move = self.get_valid_move(avail_moves=avail_moves)
         except EOFError:
             handle_interactive_eof()
         self._board.execute_move(valid_move)
@@ -97,9 +95,11 @@ class Game:
     def play(self):
         while self._game_state == GameState.UNFINISHED:
             self.send_game_info_to_status_reporter()
-            self.player_turn()
-            self.change_whose_turn()
-            if not self._board.calc_final_moves_of(self._whose_turn):
+            avail_moves = self._board.calc_final_moves_of(self._whose_turn)
+            if not avail_moves:
                 self.set_winner(bu.opponent_of[self._whose_turn])
+                break
+            self.player_turn(avail_moves=avail_moves)
+            self.change_whose_turn()
 
         self.send_game_info_to_status_reporter()
