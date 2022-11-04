@@ -6,7 +6,7 @@
         "depends": [],
         "name": "xiangqigame.cython_modules.cython_board_utilities",
         "sources": [
-            "/Users/duane/dproj/xiangqigame/xiangqigame/cython_modules/cython_board_utilities.pyx"
+            "xiangqigame/cython_modules/cython_board_utilities.pyx"
         ]
     },
     "module_name": "xiangqigame.cython_modules.cython_board_utilities"
@@ -3087,14 +3087,14 @@ static PyObject *__pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities
   /* "xiangqigame/cython_modules/cython_board_utilities.pyx":87
  *         const long* castle):
  * 
- *     return (castle[0] < rank < castle[1]) and (castle[2] < file < castle[3])             # <<<<<<<<<<<<<<
+ *     return (castle[0] < rank <= castle[1]) and (castle[2] < file <= castle[3])             # <<<<<<<<<<<<<<
  * 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = ((__pyx_v_castle[0]) < __pyx_v_rank);
   if (__pyx_t_2) {
-    __pyx_t_2 = (__pyx_v_rank < (__pyx_v_castle[1]));
+    __pyx_t_2 = (__pyx_v_rank <= (__pyx_v_castle[1]));
   }
   if (__pyx_t_2) {
   } else {
@@ -3106,7 +3106,7 @@ static PyObject *__pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities
   }
   __pyx_t_2 = ((__pyx_v_castle[2]) < __pyx_v_file);
   if (__pyx_t_2) {
-    __pyx_t_2 = (__pyx_v_file < (__pyx_v_castle[3]));
+    __pyx_t_2 = (__pyx_v_file <= (__pyx_v_castle[3]));
   }
   __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);

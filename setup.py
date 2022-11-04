@@ -1,32 +1,18 @@
+
 from setuptools import setup, Extension
+from Cython.Build import cythonize
 
 setup(
-    ext_modules=[
-        Extension(name="xiangqigame.cython_modules.general_moves",
-                  sources=["xiangqigame/cython_modules/general_moves.c",
-                           "xiangqigame/cython_modules/general_moves.pyx"],
-                  include_dirs=["xiangqigame/cython_modules"]),
-        Extension(name="xiangqigame.cython_modules.get_all_spaces_occupied_by",
-                  sources=[
-                      "xiangqigame/cython_modules/get_all_spaces_occupied_by.c",
-                      "xiangqigame/cython_modules/get_all_spaces_occupied_by.pyx"],
-                  include_dirs=["xiangqigame/cython_modules"]),
-        Extension(name="xiangqigame.cython_modules.get_color",
-                  sources=[
-                      "xiangqigame/cython_modules/get_color.c",
-                      "xiangqigame/cython_modules/get_color.pyx"],
-                  include_dirs=["xiangqigame/cython_modules"]),
-        Extension(name="xiangqigame.cython_modules.get_color",
-                  sources=[
-                      "xiangqigame/cython_modules/get_color.c",
-                      "xiangqigame/cython_modules/get_color.pyx"],
-                  include_dirs=["xiangqigame/cython_modules"]),
-        Extension(name="xiangqigame.cython_modules.search_spaces",
-                  sources=[
-                      "xiangqigame/cython_modules/search_spaces.c",
-                      "xiangqigame/cython_modules/search_spaces.pyx"],
-                  include_dirs=["xiangqigame/cython_modules"]),
-    ]
+    ext_modules=cythonize("xiangqigame/cython_modules/*.pyx")
+    # ext_modules=[
+    #     Extension(name="xiangqigame.cython_modules.cython_board_utilities",
+    #               sources=[
+    #                   "xiangqigame/cython_modules/cython_board_utilities.c",
+    #                   "xiangqigame/cython_modules/cython_board_utilities.pyx"]),
+    #     Extension(name="xiangqigame.cython_modules.general_moves",
+    #               sources=["xiangqigame/cython_modules/general_moves.c",
+    #                        "xiangqigame/cython_modules/general_moves.pyx"])
+    # ]
 )
 
 # setup(

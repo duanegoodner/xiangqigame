@@ -84,7 +84,7 @@ cdef is_in_castle(
         const long file,
         const long* castle):
 
-    return (castle[0] < rank < castle[1]) and (castle[2] < file < castle[3])
+    return (castle[0] < rank <= castle[1]) and (castle[2] < file <= castle[3])
 
 
 @cython.boundscheck(False)

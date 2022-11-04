@@ -28,8 +28,8 @@ xiangqigame.egg-info/not-zip-safe
 xiangqigame.egg-info/requires.txt
 xiangqigame.egg-info/top_level.txt
 xiangqigame/cython_modules/__init__.py
+xiangqigame/cython_modules/cython_board_utilities.c
 xiangqigame/cython_modules/general_moves.c
-xiangqigame/cython_modules/general_moves.pyx
 xiangqigame/data/__init__.py
 xiangqigame/data/alg_games.py
 xiangqigame/data/alg_games_flip.py

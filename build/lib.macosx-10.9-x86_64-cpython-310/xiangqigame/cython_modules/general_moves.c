@@ -5,7 +5,7 @@
     "distutils": {
         "name": "xiangqigame.cython_modules.general_moves",
         "sources": [
-            "/Users/duane/dproj/xiangqigame/xiangqigame/cython_modules/general_moves.pyx"
+            "xiangqigame/cython_modules/general_moves.pyx"
         ]
     },
     "module_name": "xiangqigame.cython_modules.general_moves"
@@ -1080,6 +1080,7 @@ struct __pyx_array_obj;
 struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
+struct __pyx_t_11xiangqigame_14cython_modules_22cython_board_utilities_OrthogSearch2;
 
 /* "cython_board_utilities.pxd":3
  * 
@@ -1109,6 +1110,33 @@ enum __pyx_t_11xiangqigame_14cython_modules_22cython_board_utilities_PType {
   __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_CHA = 5,
   __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_CAN = 6,
   __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_SOL = 7
+};
+
+/* "cython_board_utilities.pxd":20
+ * 
+ * 
+ * cdef enum BoardDim:             # <<<<<<<<<<<<<<
+ *     NUM_RANKS = 10
+ *     NUM_FILES = 9
+ */
+enum __pyx_t_11xiangqigame_14cython_modules_22cython_board_utilities_BoardDim {
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_NUM_RANKS = 10,
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_NUM_FILES = 9
+};
+
+/* "cython_board_utilities.pxd":34
+ * 
+ * 
+ * cdef struct OrthogSearch2:             # <<<<<<<<<<<<<<
+ *     long* start
+ *     long* direction
+ */
+struct __pyx_t_11xiangqigame_14cython_modules_22cython_board_utilities_OrthogSearch2 {
+  long *start;
+  long *direction;
+  long num_empty_spaces;
+  long has_first_occ_space;
+  long *first_occupied;
 };
 
 /* "View.MemoryView":106
