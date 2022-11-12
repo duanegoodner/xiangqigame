@@ -1,2 +1,0 @@
-[console_scripts]
-play_xiangqi = xiangqigame.__main__:main

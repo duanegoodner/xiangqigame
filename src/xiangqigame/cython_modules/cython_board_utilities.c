@@ -6,7 +6,7 @@
         "depends": [],
         "name": "xiangqigame.cython_modules.cython_board_utilities",
         "sources": [
-            "xiangqigame/cython_modules/cython_board_utilities.pyx"
+            "src/xiangqigame/cython_modules/cython_board_utilities.pyx"
         ]
     },
     "module_name": "xiangqigame.cython_modules.cython_board_utilities"
@@ -969,7 +969,7 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "xiangqigame/cython_modules/cython_board_utilities.pyx",
+  "src/xiangqigame/cython_modules/cython_board_utilities.pyx",
   "stringsource",
 };
 /* MemviewSliceStruct.proto */
