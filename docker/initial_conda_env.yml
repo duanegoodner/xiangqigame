@@ -1,0 +1,12 @@
+name: null
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - cython
+  - pip
+  - pybind11
+  - python=3.10.6
+  - setuptools
