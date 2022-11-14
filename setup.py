@@ -3,7 +3,7 @@ from setuptools import setup, Extension
 from Cython.Build import cythonize
 
 setup(
-    ext_modules=cythonize("src/xiangqigame/cython_modules/*.pyx")
+    ext_modules=cythonize("./src/xiangqigame/cython_modules/*.pyx")
     # ext_modules=[
     #     Extension(name="xiangqigame.cython_modules.cython_board_utilities",
     #               sources=[

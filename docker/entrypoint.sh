@@ -8,6 +8,7 @@ cleanup() {
 trap 'true' SIGTERM
 
 #Execute command
+# pip install ./project
 tail -f /dev/null &
 
 #Wait

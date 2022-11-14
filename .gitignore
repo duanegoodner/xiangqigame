@@ -1,8 +1,11 @@
 .idea/
-
 misc/
-
 __pycache__/
-
-
 xiangqi_venv/
+**/bin/
+**/debug/
+**/obj/
+**/build/
+CmakeCache.txt
+**/.venv/
+**/*.egg-info

@@ -2,7 +2,7 @@ FROM ubuntu:22.04
 
 ARG username=duane
 ARG user_uid=1000
-ARG user_gid=100
+ARG user_gid=1000
 ENV USERNAME ${username}
 ENV USER_UID ${user_uid}
 ENV USER_GID ${user_gid} 
@@ -47,8 +47,8 @@ RUN sudo apt-get update --fix-missing && \
     && cd / && sudo rm -rf /googletest
 
 # Customize zsh shell
-ADD ./docker/fonts ./fonts
-COPY ./docker/shell_configs/.p10k.zsh ./docker/shell_configs/.zshrc ./
+ADD ./fonts ./fonts
+COPY ./shell_configs/.p10k.zsh ./shell_configs/.zshrc ./
 RUN sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
     && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
     && git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions \
@@ -75,7 +75,7 @@ WORKDIR $HOME/workspace
 ENV MINICONDA_VERSION latest
 ENV CONDA_DIR $HOME/miniconda3
 ENV PATH=$CONDA_DIR/bin:$PATH
-COPY ./docker/initial_conda_env.yml /tmp/
+COPY ./initial_conda_env.yml /tmp/
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-$MINICONDA_VERSION-Linux-x86_64.sh -O ~/miniconda.sh && \
     chmod +x $HOME/miniconda.sh && \
     $HOME/miniconda.sh -b -p $CONDA_DIR && \
@@ -93,6 +93,8 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-$MINICONDA_VERSI
     echo "conda activate ${WORKSPACE}/env" >> ~/.bashrc && \
     echo "conda activate ${WORKSPACE}/env" >> ~/.zshrc
 
-COPY ./docker/entrypoint.sh /usr/local/bin/
+COPY ./entrypoint.sh /usr/local/bin/
 RUN sudo chown $USER_UID:$USER_GID /usr/local/bin/ && \
     sudo chmod u+x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "/usr/local/bin/entrypoint.sh", "/home/${USERNAME}/workspace/env", "/home/${USERNAME}/workspace/project/.conda_snapshots"]
