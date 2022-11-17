@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  cpyenv:
+    image: cpyenv
+    build:
+      context: ../
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        - username=${USER}
+        - user_uid=1000
+        - user_gid=1000
+    container_name: cpyenv
+    entrypoint: [ "/bin/bash", "/usr/local/bin/entrypoint.sh", "/home/${USER}/workspace/env", "/home/${USER}/workspace/project/.conda_snapshots"]
+    volumes:
+      - ../:/home/${USER}/workspace/project
+    init: true
+    stdin_open: true
+    tty: true
+

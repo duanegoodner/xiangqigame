@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  cpppractice:
+    image: cpppractice
+    build:
+      context: .
+      dockerfile: ./Dockerfile
