@@ -14,6 +14,8 @@ services:
     entrypoint: [ "/bin/bash", "/usr/local/bin/entrypoint.sh", "/home/${USER}/workspace/env", "/home/${USER}/workspace/project/.conda_snapshots"]
     volumes:
       - ../:/home/${USER}/workspace/project
+      - ./.vscode/:/home/${USER}/workspace/.vscode
+      - ./.vscode_local_placeholder/:/home/${USER}/workspace/project/.vscode:ro
     init: true
     stdin_open: true
     tty: true

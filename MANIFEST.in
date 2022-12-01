@@ -1,0 +1,4 @@
+# include ./src/cpp_modules/game_board/shared_components.hpp
+# include ./src/cpp_modules/game_board/game_board.hpp
+# include ./src/cpp_modules/move_calculator/board_utilities.hpp
+# include ./src/cpp_modules/move_calculator/move_calculator.hpp

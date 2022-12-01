@@ -1,0 +1,48 @@
+#include <vector>
+
+#ifndef _GAME_BOARD_
+#define _GAME_BOARD_
+
+#include "shared_components.hpp"
+#include "move_calculator.hpp"
+
+
+using namespace std;
+using namespace BoardComponents;
+
+
+const BoardMap_t kStartingBoard{{
+    { 5,  4,  3,  2,  1,  2,  3,  4,  5},
+    { 0,  0,  0,  0,  0,  0,  0,  0,  0},
+    { 0,  6,  0,  0,  0,  0,  0,  6,  0},
+    { 7,  0,  7,  0,  7,  0,  7,  0,  7},
+    { 0,  0,  0,  0,  0,  0,  0,  0,  0},
+    { 0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {-7,  0, -7,  0, -7,  0, -7,  0, -7},
+    { 0, -6,  0,  0,  0,  0,  0, -6,  0},
+    { 0,  0,  0,  0,  0,  0,  0,  0,  0},
+    {-5, -4, -3, -2, -1, -2, -3, -4, -5},
+}};
+
+
+
+class GameBoard {
+    
+    public:
+    GameBoard();
+    Piece_t GetOccupant(BoardSpace space);
+    ExecutedMove ExecuteMove(Move move);
+    void UndoMove(ExecutedMove executed_move);
+    vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color);
+    vector<Move> CalcFinalMovesOf(PieceColor color);
+    bool IsInCheck(PieceColor color);
+    
+
+    private:
+    BoardMap_t board_map_;
+    MoveCalculator move_calculator_;
+    void SetOccupant(BoardSpace space, Piece_t piece);
+};
+
+
+#endif  // _GAME_BOARD_
