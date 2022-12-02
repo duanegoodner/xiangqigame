@@ -2,23 +2,25 @@ from typing import Dict
 
 import numpy as np
 # from xiangqigame.enums import PieceType, PieceColor
-from xiangqigame.piece_definitions import PType, PColor
+# from xiangqigame.piece_definitions import PType, PColor
+
+import cpp_modules.game_board_py.GameBoardPy as gbp
 
 base_pts_icga_2004 = {
-    PType.GEN: 6000,
-    PType.ADV: 120,
-    PType.ELE: 120,
-    PType.CHA: 600,
-    PType.HOR: 270,
-    PType.CAN: 285,
-    PType.SOL: 30
+    gbp.PieceType.kGen: 6000,
+    gbp.PieceType.kAdv: 120,
+    gbp.PieceType.kEle: 120,
+    gbp.PieceType.kCha: 600,
+    gbp.PieceType.kHor: 270,
+    gbp.PieceType.kCan: 285,
+    gbp.PieceType.kSol: 30
 }
 
 
 class BasePoints:
 
     def __init__(self, piece_vals: Dict[int, int]):
-        assert set(piece_vals.keys()) == set(PType) - {PType.NUL}
+        assert set(piece_vals.keys()) == set(gbp.PieceType) - {gbp.PieceType.kNnn}
         self._piece_vals = piece_vals
 
     @property
@@ -33,15 +35,15 @@ class PositionPts:
             pts_arrays_black: Dict[int, np.array],
             pts_arrays_red: Dict[int, np.array] = None
     ):
-        assert set(pts_arrays_black.keys()) == set(PType) - {PType.NUL}
+        assert set(pts_arrays_black.keys()) == set(gbp.PieceType) - {gbp.PieceType.kNnn}
         if pts_arrays_red:
-            assert set(pts_arrays_red.keys()) == set(PType) - {PType.NUL}
+            assert set(pts_arrays_red.keys()) == set(gbp.PieceType) - {gbp.PieceType.kNnn}
         if pts_arrays_red is None:
             pts_arrays_red = {piece_type: np.flip(pts_array, axis=0) for
                               piece_type, pts_array in pts_arrays_black.items()}
         self._pts_arrays = {
-            PColor.RED: pts_arrays_red,
-            PColor.BLK: pts_arrays_black}
+            gbp.PieceColor.kRed: pts_arrays_red,
+            gbp.PieceColor.kBlk: pts_arrays_black}
 
     @property
     def vals(self):
@@ -105,11 +107,11 @@ soldier_position_icga_2004 = np.array([
 ])
 
 position_points_icga_2004 = {
-    PType.GEN: general_position_icga_2004,
-    PType.ADV: advisor_position_icga_2004,
-    PType.ELE: elephant_position_icga_2004,
-    PType.CHA: chariot_position_icga_2004,
-    PType.HOR: horse_position_icga_2004,
-    PType.CAN: cannon_position_icga_2004,
-    PType.SOL: soldier_position_icga_2004
+    gbp.PieceType.kGen: general_position_icga_2004,
+    gbp.PieceType.kAdv: advisor_position_icga_2004,
+    gbp.PieceType.kEle: elephant_position_icga_2004,
+    gbp.PieceType.kCha: chariot_position_icga_2004,
+    gbp.PieceType.kHor: horse_position_icga_2004,
+    gbp.PieceType.kCan: cannon_position_icga_2004,
+    gbp.PieceType.kSol: soldier_position_icga_2004
 }

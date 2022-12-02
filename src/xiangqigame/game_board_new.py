@@ -94,23 +94,9 @@ class GameBoard:
         general_space = cbu.run_get_general_position(
             color=color,
             board_map=self._map)
-
-        # general_space = None
-        # for space in blo.castle_coords[color]:
-        #     if abs(self._map[space]) == PType.GEN:
-        #         general_space = space
         if general_space is None:
             raise GeneralNotFound(self._map)
         return general_space
-
-    # def get_vertical_path(self, from_space: Tuple[int, int], to_rank: int):
-    #
-    #     if from_space[0] == to_rank:
-    #         return np.array([])
-    #     elif to_rank > from_space[0]:
-    #         return self._map[(from_space[0] + 1):to_rank, from_space[1]]
-    #     else:
-    #         return self._map[(to_rank + 1):from_space[0], from_space[1]]
 
     def search_spaces(
             self,
@@ -123,20 +109,6 @@ class GameBoard:
             dir_rank=direction[0],
             dir_file=direction[1]
         )
-
-        # empty_spaces = []
-        # first_occupied_space = None
-        # next_step = bu.space_plus_vect(from_space, direction)
-        #
-        # while bu.is_on_board(next_step) and (
-        #         self.get_occupant(next_step) == PType.NUL):
-        #     empty_spaces.append(next_step)
-        #     next_step = bu.space_plus_vect(next_step, direction)
-        # if bu.is_on_board(next_step):
-        #     first_occupied_space = next_step
-        # return {
-        #     "empty_spaces": empty_spaces,
-        #     "first_occupied_space": first_occupied_space}
 
     def soldier_moves(
             self, from_position: Tuple[int, int], color: int) -> List[Dict]:

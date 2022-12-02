@@ -8,6 +8,6 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true
-        }
+        },
     ]
 }

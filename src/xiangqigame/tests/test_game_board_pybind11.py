@@ -10,7 +10,6 @@ import cpp_modules.game_board_py.GameBoardPy as gbp
 
 import time
 
-
 my_game_board = gbp.GameBoard()
 my_start_space = gbp.BoardSpace(5, 5)
 my_end_space = gbp.BoardSpace(5, 8)

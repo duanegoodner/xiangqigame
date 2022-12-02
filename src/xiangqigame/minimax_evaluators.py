@@ -3,7 +3,8 @@ import numpy as np
 from typing import NamedTuple, Tuple, Dict, List
 import xiangqigame.piece_points as pts
 from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
-from xiangqigame.game_board_new import GameBoard
+# from xiangqigame.game_board_new import GameBoard
+import cpp_modules.game_board_py.GameBoardPy as gbp
 
 
 class BestMoves(NamedTuple):
@@ -28,7 +29,7 @@ class MinimaxEvaluator(abc.ABC):
     @abc.abstractmethod
     def evaluate_leaf(
             self,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             cur_player: int,
             cur_player_moves: List[Dict],
             initiating_player: int) -> BestMoves:
@@ -38,13 +39,13 @@ class MinimaxEvaluator(abc.ABC):
     def rate_move(
             self,
             move: Dict,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             cur_player: int) -> RatedMove:
         pass
 
     def generate_ranked_move_list(
             self,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             cur_player: int,
             cur_player_moves: List[Dict]):
         move_list = [
@@ -59,11 +60,11 @@ class MoveCounts(MinimaxEvaluator):
 
     def evaluate_leaf(
             self,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             cur_player: int,
             cur_player_moves: List[Dict],
             initiating_player: int) -> BestMoves:
-        updated_opponent_moves = game_board.calc_final_moves_of(
+        updated_opponent_moves = game_board.CalcFinalMovesOf(
             color=bu.opponent_of[cur_player])
         if cur_player == initiating_player:
             return BestMoves(
@@ -77,9 +78,9 @@ class MoveCounts(MinimaxEvaluator):
     def rate_move(
             self,
             move: Dict,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             cur_player: int):
-        if game_board.get_color(move["end"]) == bu.opponent_of[cur_player]:
+        if game_board.GetColor(move["end"]) == bu.opponent_of[cur_player]:
             return RatedMove(move=move, rating=1)
         else:
             return RatedMove(move=move, rating=0)
@@ -106,17 +107,17 @@ class PiecePoints(MinimaxEvaluator):
                 self._position_pts.vals[color][piece_type][
                     space[0], space[1]])
 
-    def get_player_total(self, color: int, game_board: GameBoard):
+    def get_player_total(self, color: int, game_board: gbp.GameBoard):
         pre_attack_total = 0
-        for space in game_board.get_all_spaces_occupied_by(color):
-            piece_type = game_board.get_type(space)
+        for space in game_board.GetAllSpacesOccupiedBy(color):
+            piece_type = game_board.GetType(space)
             pre_attack_total += self.get_value_of_piece_at_position(
                 color=color, piece_type=piece_type, space=space)
         return pre_attack_total
 
     def evaluate_leaf(
             self,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             cur_player: int,
             cur_player_moves: List[Dict],
             initiating_player: int) -> BestMoves:
@@ -136,7 +137,7 @@ class PiecePoints(MinimaxEvaluator):
     def rate_move(
             self,
             move: Dict,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             cur_player: int) -> RatedMove:
 
         piece_type = game_board.get_type(move["start"])
@@ -147,8 +148,8 @@ class PiecePoints(MinimaxEvaluator):
                 cur_player_position_array[move["start"][0], move["start"][1]]
         )
 
-        if game_board.get_color(move["end"]) == bu.opponent_of[cur_player]:
-            captured_piece_type = game_board.get_type(move["end"])
+        if game_board.GetColor(move["end"]) == bu.opponent_of[cur_player]:
+            captured_piece_type = game_board.GetType(move["end"])
             opponent_position_array = self._position_pts.vals[
                 bu.opponent_of[cur_player]][captured_piece_type]
             capture_val = (

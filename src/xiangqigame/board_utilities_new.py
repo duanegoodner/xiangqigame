@@ -1,12 +1,13 @@
 import math
 from typing import List, Union, Tuple
 from xiangqigame.board_layout import BoardLayout
-from xiangqigame.piece_definitions import PColor
+# from xiangqigame.piece_definitions import PColor
+import cpp_modules.game_board_py.GameBoardPy as gbp
 
 
 class BoardUtilities:
 
-    opponent_of = {PColor.BLK: PColor.RED, PColor.RED: PColor.BLK}
+    opponent_of = {gbp.PieceColor.kBlk: gbp.PieceColor.kRed, gbp.PieceColor.kRed: gbp.PieceColor.kBlk}
 
     @staticmethod
     def get_piece_color(piece: int):
@@ -25,9 +26,9 @@ class BoardUtilities:
         return piece == 0
 
     is_color = {
-        PColor.BLK: _is_black,
-        PColor.RED: _is_red,
-        PColor.NUL: _is_null
+        gbp.PieceColor.kBlk: _is_black,
+        gbp.PieceColor.kRed: _is_red,
+        gbp.PieceColor.kNul: _is_null
     }
 
     @staticmethod
@@ -38,10 +39,10 @@ class BoardUtilities:
     @staticmethod
     def is_in_homeland_of(
             color: int, space: Union[List[int], Tuple[int, int]]) -> bool:
-        if color == PColor.RED:
-            return space[0] >= BoardLayout.river_edges[PColor.RED]
-        if color == PColor.BLK:
-            return space[0] <= BoardLayout.river_edges[PColor.BLK]
+        if color == gbp.PieceColor.kRed:
+            return space[0] >= BoardLayout.river_edges[gbp.PieceColor.kRed]
+        if color == gbp.PieceColor.kBlk:
+            return space[0] <= BoardLayout.river_edges[gbp.PieceColor.kBlk]
 
     @staticmethod
     def is_in_castle_of(

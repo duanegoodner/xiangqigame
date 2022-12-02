@@ -63,3 +63,11 @@ vector<Move> GameBoard::CalcFinalMovesOf(PieceColor color) {
     }
     return validated_moves;
 }
+
+PieceColor GameBoard::GetColor(BoardSpace space) {
+    return move_calculator_.utils_.GetColor(space);
+}
+
+PieceType GameBoard::GetType(BoardSpace space) {
+    return move_calculator_.utils_.GetType(space);
+}

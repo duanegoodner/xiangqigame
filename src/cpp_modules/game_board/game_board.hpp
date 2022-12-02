@@ -36,6 +36,11 @@ class GameBoard {
     vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color);
     vector<Move> CalcFinalMovesOf(PieceColor color);
     bool IsInCheck(PieceColor color);
+    bool IsOccupied(BoardSpace space);
+    PieceColor GetColor(BoardSpace space);
+    PieceType GetType(BoardSpace space);
+    const BoardMap_t& map() const { return board_map_; }
+
     
 
     private:

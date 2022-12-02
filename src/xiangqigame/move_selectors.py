@@ -5,12 +5,14 @@ import random
 from typing import List, Dict
 
 import numpy as np
-from xiangqigame.piece_definitions import PColor
+# from xiangqigame.piece_definitions import PColor
 from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
-from xiangqigame.game_board_new import GameBoard
+# from xiangqigame.game_board_new import GameBoard
 from xiangqigame.minimax_evaluators import BestMoves, MinimaxEvaluator, \
     PiecePoints
 import xiangqigame.piece_points as pts
+
+import cpp_modules.game_board_py.GameBoardPy as gbp
 
 
 class MoveSelector(abc.ABC):
@@ -18,7 +20,7 @@ class MoveSelector(abc.ABC):
     @abc.abstractmethod
     def select_move(
             self,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             cur_player: int,
             cur_moves: List[Dict]
     ) -> Dict:
@@ -29,7 +31,7 @@ class RandomMoveSelector(MoveSelector):
 
     def select_move(
             self,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             cur_player: int,
             cur_moves: List[Dict]
     ) -> Dict:
@@ -48,20 +50,17 @@ class MinimaxMoveSelector(MoveSelector):
 
     def _minimax_rec(
             self,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             search_depth: int,
             alpha: int,
             beta: int,
             cur_player: int,
             initiating_player: int):
         self._node_counter += 1
-        # print(self._node_counter)
-        cur_moves = game_board.calc_final_moves_of(color=cur_player)
+        cur_moves = game_board.CalcFinalMovesOf(color=cur_player)
         if not cur_moves:
             return self._evaluator.evaluate_winner(
                 cur_player, initiating_player)
-        # print(cur_player)
-        # print(game_board.get_general_position(cur_player))
         if search_depth == 0:
             return self._evaluator.evaluate_leaf(
                 game_board=game_board,
@@ -76,10 +75,8 @@ class MinimaxMoveSelector(MoveSelector):
                 game_board=game_board,
                 cur_player=cur_player,
                 cur_player_moves=cur_moves)
-            # print(ranked_moves)
             for rated_move in ranked_moves:
-                # print(rated_move)
-                executed_move = game_board.execute_move(rated_move.move)
+                executed_move = game_board.ExecuteMove(rated_move.move)
                 cur_eval = self._minimax_rec(
                     game_board=game_board,
                     search_depth=search_depth - 1,
@@ -94,7 +91,7 @@ class MinimaxMoveSelector(MoveSelector):
                     max_eval = cur_eval
                     best_moves.clear()
                     best_moves.append(rated_move.move)
-                game_board.undo_move(executed_move)
+                game_board.UndoMove(executed_move)
                 alpha = max(alpha, cur_eval)
                 if beta <= alpha:
                     break
@@ -107,7 +104,7 @@ class MinimaxMoveSelector(MoveSelector):
                 cur_player=cur_player,
                 cur_player_moves=cur_moves)
             for rated_move in ranked_moves:
-                executed_move = game_board.execute_move(rated_move.move)
+                executed_move = game_board.ExecuteMove(rated_move.move)
                 cur_eval = self._minimax_rec(
                     game_board=game_board,
                     search_depth=search_depth - 1,
@@ -122,7 +119,7 @@ class MinimaxMoveSelector(MoveSelector):
                     min_eval = cur_eval
                     best_moves.clear()
                     best_moves.append(rated_move)
-                game_board.undo_move(executed_move)
+                game_board.UndoMove(executed_move)
                 beta = min(beta, cur_eval)
                 if beta <= alpha:
                     break
@@ -130,7 +127,7 @@ class MinimaxMoveSelector(MoveSelector):
 
     def select_move(
             self,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             cur_player: int,
             cur_moves: List[Dict]):
         self._reset_node_counter()
@@ -146,7 +143,7 @@ class MinimaxMoveSelector(MoveSelector):
 
 
 if __name__ == "__main__":
-    cur_board = GameBoard()
+    cur_board = gbp.GameBoard()
     base_pts = pts.BasePoints(piece_vals=pts.base_pts_icga_2004)
     position_pts = pts.PositionPts(
         pts_arrays_black=pts.position_points_icga_2004,
@@ -158,7 +155,7 @@ if __name__ == "__main__":
 
     start = time.time()
     proposed_move = move_selector.select_move(
-        game_board=cur_board, cur_player=PColor.RED, cur_moves=[])
+        game_board=cur_board, cur_player=gbp.PieceColor.kRed, cur_moves=[])
     end = time.time()
 
     print(f"Selected ** move {proposed_move} in {end - start} seconds")

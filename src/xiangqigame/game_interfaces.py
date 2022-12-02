@@ -1,7 +1,8 @@
 import abc
 from typing import List, Dict
 from xiangqigame.enums import GameState
-from xiangqigame.game_board_new import GameBoard
+# from xiangqigame.game_board_new import GameBoard
+import cpp_modules.game_board_py.GameBoardPy as gbp
 
 
 class Player(abc.ABC):
@@ -13,13 +14,13 @@ class Player(abc.ABC):
 
     @abc.abstractmethod
     def propose_move(
-            self, game_board: GameBoard, cur_moves: List[Dict]) -> Dict:
+            self, game_board: gbp.GameBoard, cur_moves: List[Dict]) -> Dict:
         pass
 
     @abc.abstractmethod
     def illegal_move_notice_response(
             self, illegal_move: Dict,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             cur_moves: List[Dict]):
         pass
 
@@ -30,7 +31,7 @@ class GameStatusReporter(abc.ABC):
     def report_game_info(
             self,
             game_state: GameState,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             whose_turn: int,
             is_in_check: bool,
             move_count: int,

@@ -2,8 +2,9 @@ from typing import Dict, List
 import xiangqigame.terminal_output as msg
 from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
 from xiangqigame.enums import GameState
-from xiangqigame.piece_definitions import PColor
-from xiangqigame.game_board_new import GameBoard
+# from xiangqigame.piece_definitions import PColor
+# from xiangqigame.game_board_new import GameBoard
+import cpp_modules.game_board_py.GameBoardPy as gbp
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.players import Player
 
@@ -20,10 +21,10 @@ class Game:
             status_reporter: GameStatusReporter = msg.TerminalStatusReporter(),
             move_log: List[Dict] = None):
         self._game_state = GameState.UNFINISHED
-        self._whose_turn = PColor.RED
-        self._board = GameBoard()
-        self._players = {PColor.RED: red_player,
-                         PColor.BLK: black_player}
+        self._whose_turn = gbp.PieceColor.kRed
+        self._board = gbp.GameBoard()
+        self._players = {gbp.PieceColor.kRed: red_player,
+                         gbp.PieceColor.kBlk: black_player}
         self._status_reporter = status_reporter
         if move_log is None:
             move_log = []
@@ -34,11 +35,11 @@ class Game:
     def _move_count(self):
         return len(self._move_log)
 
-    def is_in_check(self, color: int):
-        opp_destinations = {
-            move["end"] for move in self._board.calc_final_moves_of(
-                bu.opponent_of[color])}
-        return self._board.get_general_position(color) in opp_destinations
+    # def is_in_check(self, color: int):
+    #     opp_destinations = {
+    #         move["end"] for move in self._board.CalcFinalMovesOf(
+    #             bu.opponent_of[color])}
+    #     return self._board.get_general_position(color) in opp_destinations
 
     def change_whose_turn(self):
         self._whose_turn = bu.opponent_of[self._whose_turn]
@@ -73,7 +74,7 @@ class Game:
         self._game_state = game_state
 
     def set_winner(self, color: int):
-        if color == PColor.RED:
+        if color == gbp.PieceColor.kRed:
             self.set_game_state(GameState.RED_WON)
         else:
             self.set_game_state(GameState.BLACK_WON)
@@ -87,7 +88,8 @@ class Game:
             game_state=self._game_state,
             game_board=self._board,
             whose_turn=self._whose_turn,
-            is_in_check=self.is_in_check(self._whose_turn),
+            is_in_check=gbp.IsInCheck(self._whose_turn),
+            # is_in_check=self.is_in_check(self._whose_turn),
             move_count=self._move_count,
             prev_move=prev_move
         )
@@ -95,7 +97,7 @@ class Game:
     def play(self):
         while self._game_state == GameState.UNFINISHED:
             self.send_game_info_to_status_reporter()
-            avail_moves = self._board.calc_final_moves_of(self._whose_turn)
+            avail_moves = self._board.CalcFinalMovesOf(self._whose_turn)
             if not avail_moves:
                 self.set_winner(bu.opponent_of[self._whose_turn])
                 break

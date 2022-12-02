@@ -8,9 +8,11 @@ import xiangqigame.move_translator as mt
 from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.enums import GameState
-from xiangqigame.game_board_new import GameBoard
-from xiangqigame.piece_definitions import PColor, PType
+# from xiangqigame.game_board_new import GameBoard
+# from xiangqigame.piece_definitions import PColor, PType
 from xiangqigame.piece_definitions import PIECE_DECODER as pd
+
+import cpp_modules.game_board_py.GameBoardPy as gbp
 
 
 @dataclass
@@ -29,31 +31,31 @@ class InputRetrievalMessages:
 class TerminalStatusReporter(GameStatusReporter):
 
     _disp_format = {
-        PColor.RED: cr.Fore.RED + cr.Back.WHITE,
-        PColor.BLK: cr.Fore.BLACK + cr.Back.WHITE,
-        PColor.NUL: cr.Fore.RESET + cr.Back.RESET
+        gbp.PieceColor.kRed: cr.Fore.RED + cr.Back.WHITE,
+        gbp.PieceColor.kBlk: cr.Fore.BLACK + cr.Back.WHITE,
+        gbp.PieceColor.kNul: cr.Fore.RESET + cr.Back.RESET
     }
 
     _display_team_name = {
-        PColor.RED: "Red",
-        PColor.BLK: "Black"
+        gbp.PieceColor.kRed: "Red",
+        gbp.PieceColor.kBlk: "Black"
     }
 
     _color_to_code = {
-        PColor.RED: "r",
-        PColor.BLK: "b",
-        PColor.NUL: "-"
+        gbp.PieceColor.kRed: "r",
+        gbp.PieceColor.kBlk: "b",
+        gbp.PieceColor.kNul: "-"
     }
 
     _type_to_code = {
-        PType.CHA: "R",
-        PType.HOR: "H",
-        PType.ELE: "E",
-        PType.ADV: "A",
-        PType.GEN: "G",
-        PType.CAN: "C",
-        PType.SOL: "S",
-        PType.NUL: "-"
+        gbp.PieceType.kCha: "R",
+        gbp.PieceType.kHor: "H",
+        gbp.PieceType.kEle: "E",
+        gbp.PieceType.kAdv: "A",
+        gbp.PieceType.kGen: "G",
+        gbp.PieceType.kCan: "C",
+        gbp.PieceType.kSol: "S",
+        gbp.PieceType.kNnn: "-"
     }
 
     @staticmethod
@@ -68,7 +70,7 @@ class TerminalStatusReporter(GameStatusReporter):
             f"{cr.Style.RESET_ALL}"
         )
 
-    def format_board_output(self, board: GameBoard):
+    def format_board_output(self, board: gbp.GameBoard):
         file_labels = [
             f" {chr(char_num)}  " for char_num in range(ord("a"), ord("j"))
         ]
@@ -76,9 +78,9 @@ class TerminalStatusReporter(GameStatusReporter):
         file_labels.insert(len(file_labels), '\n')
 
         board_list = [
-            [f" {self.encode_piece(pd.get_piece_info(board.map[row, col]))} "
-             for col in range(len(board.map[0]))]
-            for row in range(len(board.map))
+            [f" {self.encode_piece(pd.get_piece_info(board.map()[row, col]))} "
+             for col in range(len(board.map()[0]))]
+            for row in range(len(board.map()))
         ]
         for row_index in range(len(board_list)):
             board_list[row_index].insert(0, f" {str(row_index + 1)}\t")
@@ -117,7 +119,7 @@ class TerminalStatusReporter(GameStatusReporter):
 
     def report_game_info(
             self, game_state: GameState,
-            game_board: GameBoard,
+            game_board: gbp.GameBoard,
             whose_turn: int,
             is_in_check: bool,
             move_count: int,

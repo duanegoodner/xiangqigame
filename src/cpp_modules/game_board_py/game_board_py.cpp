@@ -31,13 +31,28 @@ PYBIND11_MODULE(GameBoardPy, m) {
         .value("kNul", kNul)
         .value("kBlk", kBlk)
         .export_values();
+    
+    py::enum_<PieceType>(m, "PieceType")
+        .value("kNnn", kNnn)
+        .value("kGen", kGen)
+        .value("kAdv", kAdv)
+        .value("kEle", kEle)
+        .value("kHor", kHor)
+        .value("kCha", kCha)
+        .value("kCan", kCan)
+        .value("kSol", kSol)
+        .export_values();
 
     py::class_<GameBoard>(m, "GameBoard")
         // .def(py::init<void>())
         .def(py::init<>())
+        .def("map", &GameBoard::map)
         .def("ExecuteMove", &GameBoard::ExecuteMove, "move"_a)
         .def("UndoMove", &GameBoard::UndoMove, "executed_move"_a)
         .def("GetAllSpacesOccupiedBy", &GameBoard::GetAllSpacesOccupiedBy, "color"_a)
         .def("CalcFinalMovesOf", &GameBoard::CalcFinalMovesOf, "color"_a)
-        .def("IsInCheck", &GameBoard::IsInCheck, "color"_a);
+        // .def("IsInCheck", &GameBoard::IsInCheck, "color"_a)
+        // .def("IsOccupied", &GameBoard::IsOccupied, "space"_a)
+        .def("GetType", &GameBoard::GetType, "space"_a)
+        .def("GetColor", &GameBoard::GetColor, "space"_a);
 }
