@@ -12,7 +12,21 @@
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"ms-vscode.cpptools",
-				"ms-vscode.cmake-tools"
+				"ms-vscode.cmake-tools",
+				"bungcip.better-toml",
+				"ms-vscode.cpptools",
+				"twxs.cmake",
+				"ms-vscode.cmake-tools",
+				"franneck94.vscode-cpython-extension-pack",
+				"tcwalther.cython",
+				"VisualStudioExptTeam.intellicode-api-usage-examples",
+				"ms-python.isort",
+				"donjayamanne.python-extension-pack",
+				"ms-python.isort",
+				"ms-python.vscode-pylance",
+				"ms-vscode.test-adapter-converter",
+				"tcwalther.cython",
+				"KevinRose.vsc-python-indent"
 			]
 		}
 	},
@@ -23,5 +37,5 @@
 	// "postCreateCommand": "gcc -v",
 
 	// Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode"
+	"remoteUser": "duane"
 }

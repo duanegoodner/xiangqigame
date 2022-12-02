@@ -44,11 +44,11 @@ def test_forward_direction(cpp_board):
 def test_execute_undo_move(cpp_board):
     move_a = cpp_board.ExecuteMove(
         move=gbp.Move(gbp.BoardSpace(6, 2), gbp.BoardSpace(5, 2)))
-    assert cpp_board.map()[5][2] == gbp.PieceColor.kRed * gbp.PieceType.kSol
+    assert cpp_board.map()[5][2] == int(gbp.PieceColor.kRed) * int(gbp.PieceType.kSol)
     assert cpp_board.map()[6][2] == gbp.PieceType.kNnn
 
-    cpp_board.undo_move(move_a)
-    assert cpp_board.map()[6][2] == gbp.PieceColor.kRed * gbp.PieceType.kSol
+    cpp_board.UndoMove(move_a)
+    assert cpp_board.map()[6][2] == int(gbp.PieceColor.kRed) * int(gbp.PieceType.kSol)
     assert cpp_board.map()[5][2] == gbp.PieceType.kNnn
 
 
