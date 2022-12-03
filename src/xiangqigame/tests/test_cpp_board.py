@@ -34,13 +34,6 @@ def test_forward_direction(cpp_board):
     assert bu.fwd_unit_vect(gbp.PieceColor.kNul) == (0, 0)
 
 
-# def test_GetGeneralPosition(cpp_board):
-#     red_gen_position = cpp_board.GetGeneralPosition(gbp.PieceColor.kRed)
-#     assert red_gen_position == (9, 4)
-#     black_gen_position = cpp_board.GetGeneralPosition(gbp.PieceColor.kBlk)
-#     assert black_gen_position == (0, 4)
-
-
 def test_execute_undo_move(cpp_board):
     move_a = cpp_board.ExecuteMove(
         move=gbp.Move(gbp.BoardSpace(6, 2), gbp.BoardSpace(5, 2)))
