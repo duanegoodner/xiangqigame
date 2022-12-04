@@ -3,12 +3,12 @@
 /* BEGIN: Cython Metadata
 {
     "distutils": {
-        "name": "project.src.xiangqigame.cython_modules.general_moves",
+        "name": "xiangqigame.cython_modules.general_moves",
         "sources": [
             "./src/xiangqigame/cython_modules/general_moves.pyx"
         ]
     },
-    "module_name": "project.src.xiangqigame.cython_modules.general_moves"
+    "module_name": "xiangqigame.cython_modules.general_moves"
 }
 END: Cython Metadata */
 
@@ -750,8 +750,8 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__project__src__xiangqigame__cython_modules__general_moves
-#define __PYX_HAVE_API__project__src__xiangqigame__cython_modules__general_moves
+#define __PYX_HAVE__xiangqigame__cython_modules__general_moves
+#define __PYX_HAVE_API__xiangqigame__cython_modules__general_moves
 /* Early includes */
 #include "pythread.h"
 #include <string.h>
@@ -1080,7 +1080,7 @@ struct __pyx_array_obj;
 struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
-struct __pyx_t_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_OrthogSearch2;
+struct __pyx_t_11xiangqigame_14cython_modules_22cython_board_utilities_OrthogSearch2;
 
 /* "cython_board_utilities.pxd":3
  * 
@@ -1089,10 +1089,10 @@ struct __pyx_t_7project_3src_11xiangqigame_14cython_modules_22cython_board_utili
  *     RED = -1
  *     NUL = 0
  */
-enum __pyx_t_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_PColor {
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_RED = -1L,
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_NUL = 0,
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_BLK = 1
+enum __pyx_t_11xiangqigame_14cython_modules_22cython_board_utilities_PColor {
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_RED = -1L,
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_NUL = 0,
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_BLK = 1
 };
 
 /* "cython_board_utilities.pxd":9
@@ -1102,14 +1102,14 @@ enum __pyx_t_7project_3src_11xiangqigame_14cython_modules_22cython_board_utiliti
  *     # NUL = 0
  *     GEN = 1
  */
-enum __pyx_t_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_PType {
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_GEN = 1,
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_ADV = 2,
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_ELE = 3,
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_HOR = 4,
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_CHA = 5,
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_CAN = 6,
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_SOL = 7
+enum __pyx_t_11xiangqigame_14cython_modules_22cython_board_utilities_PType {
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_GEN = 1,
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_ADV = 2,
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_ELE = 3,
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_HOR = 4,
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_CHA = 5,
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_CAN = 6,
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_SOL = 7
 };
 
 /* "cython_board_utilities.pxd":20
@@ -1119,9 +1119,9 @@ enum __pyx_t_7project_3src_11xiangqigame_14cython_modules_22cython_board_utiliti
  *     NUM_RANKS = 10
  *     NUM_FILES = 9
  */
-enum __pyx_t_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_BoardDim {
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_NUM_RANKS = 10,
-  __pyx_e_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_NUM_FILES = 9
+enum __pyx_t_11xiangqigame_14cython_modules_22cython_board_utilities_BoardDim {
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_NUM_RANKS = 10,
+  __pyx_e_11xiangqigame_14cython_modules_22cython_board_utilities_NUM_FILES = 9
 };
 
 /* "cython_board_utilities.pxd":34
@@ -1131,7 +1131,7 @@ enum __pyx_t_7project_3src_11xiangqigame_14cython_modules_22cython_board_utiliti
  *     long* start
  *     long* direction
  */
-struct __pyx_t_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_OrthogSearch2 {
+struct __pyx_t_11xiangqigame_14cython_modules_22cython_board_utilities_OrthogSearch2 {
   long *start;
   long *direction;
   long num_empty_spaces;
@@ -1921,13 +1921,13 @@ static PyObject *__pyx_memoryview_assign_item_from_object(struct __pyx_memoryvie
 static PyObject *__pyx_memoryviewslice_convert_item_to_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp); /* proto*/
 static PyObject *__pyx_memoryviewslice_assign_item_from_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp, PyObject *__pyx_v_value); /* proto*/
 
-/* Module declarations from 'project.src.xiangqigame.cython_modules.cython_board_utilities' */
-static long (*__pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_get_color)(long const , long const , __Pyx_memviewslice); /*proto*/
-static void (*__pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_get_castle_edges)(long const , long *); /*proto*/
-static long (*__pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_get_general_position)(long const , __Pyx_memviewslice, long *); /*proto*/
-static PyObject *(*__pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_is_in_castle)(long const , long const , long *); /*proto*/
+/* Module declarations from 'xiangqigame.cython_modules.cython_board_utilities' */
+static long (*__pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_get_color)(long const , long const , __Pyx_memviewslice); /*proto*/
+static void (*__pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_get_castle_edges)(long const , long *); /*proto*/
+static long (*__pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_get_general_position)(long const , __Pyx_memviewslice, long *); /*proto*/
+static PyObject *(*__pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_is_in_castle)(long const , long const , long *); /*proto*/
 
-/* Module declarations from 'project.src.xiangqigame.cython_modules.general_moves' */
+/* Module declarations from 'xiangqigame.cython_modules.general_moves' */
 static PyTypeObject *__pyx_array_type = 0;
 static PyTypeObject *__pyx_MemviewEnum_type = 0;
 static PyTypeObject *__pyx_memoryview_type = 0;
@@ -1939,8 +1939,8 @@ static PyObject *contiguous = 0;
 static PyObject *indirect_contiguous = 0;
 static int __pyx_memoryview_thread_locks_used;
 static PyThread_type_lock __pyx_memoryview_thread_locks[8];
-static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves_flying_general_move(long const , long const , long const , __Pyx_memviewslice, long *); /*proto*/
-static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves_standard_general_moves(long const , long const , long const , __Pyx_memviewslice, long *); /*proto*/
+static long __pyx_f_11xiangqigame_14cython_modules_13general_moves_flying_general_move(long const , long const , long const , __Pyx_memviewslice, long *); /*proto*/
+static long __pyx_f_11xiangqigame_14cython_modules_13general_moves_standard_general_moves(long const , long const , long const , __Pyx_memviewslice, long *); /*proto*/
 static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
 static void *__pyx_align_pointer(void *, size_t); /*proto*/
 static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
@@ -1975,11 +1975,11 @@ static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size
 static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
 static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
 static __Pyx_TypeInfo __Pyx_TypeInfo_long__const__ = { "const long", NULL, sizeof(long const ), { 0 }, 0, IS_UNSIGNED(long const ) ? 'U' : 'I', IS_UNSIGNED(long const ), 0 };
-#define __Pyx_MODULE_NAME "project.src.xiangqigame.cython_modules.general_moves"
-extern int __pyx_module_is_main_project__src__xiangqigame__cython_modules__general_moves;
-int __pyx_module_is_main_project__src__xiangqigame__cython_modules__general_moves = 0;
+#define __Pyx_MODULE_NAME "xiangqigame.cython_modules.general_moves"
+extern int __pyx_module_is_main_xiangqigame__cython_modules__general_moves;
+int __pyx_module_is_main_xiangqigame__cython_modules__general_moves = 0;
 
-/* Implementation of 'project.src.xiangqigame.cython_modules.general_moves' */
+/* Implementation of 'xiangqigame.cython_modules.general_moves' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_MemoryError;
@@ -2083,9 +2083,9 @@ static const char __pyx_k_Out_of_bounds_on_buffer_access_a[] = "Out of bounds on
 static const char __pyx_k_Unable_to_convert_item_to_object[] = "Unable to convert item to object";
 static const char __pyx_k_got_differing_extents_in_dimensi[] = "got differing extents in dimension %d (got %d and %d)";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
-static const char __pyx_k_project_src_xiangqigame_cython_m[] = "project.src.xiangqigame.cython_modules.general_moves";
 static const char __pyx_k_src_xiangqigame_cython_modules_g[] = "src/xiangqigame/cython_modules/general_moves.pyx";
 static const char __pyx_k_unable_to_allocate_shape_and_str[] = "unable to allocate shape and strides.";
+static const char __pyx_k_xiangqigame_cython_modules_gener[] = "xiangqigame.cython_modules.general_moves";
 static PyObject *__pyx_n_s_ASCII;
 static PyObject *__pyx_kp_s_Buffer_view_does_not_expose_stri;
 static PyObject *__pyx_kp_s_Can_only_create_a_buffer_that_is;
@@ -2153,7 +2153,6 @@ static PyObject *__pyx_n_s_num_standard_dests;
 static PyObject *__pyx_n_s_obj;
 static PyObject *__pyx_n_s_pack;
 static PyObject *__pyx_n_s_pickle;
-static PyObject *__pyx_n_s_project_src_xiangqigame_cython_m;
 static PyObject *__pyx_n_s_pyx_PickleError;
 static PyObject *__pyx_n_s_pyx_checksum;
 static PyObject *__pyx_n_s_pyx_getbuffer;
@@ -2186,7 +2185,8 @@ static PyObject *__pyx_kp_s_unable_to_allocate_array_data;
 static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_n_s_unpack;
 static PyObject *__pyx_n_s_update;
-static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general_moves_run_general_moves(CYTHON_UNUSED PyObject *__pyx_self, long __pyx_v_from_rank, long __pyx_v_from_file, __Pyx_memviewslice __pyx_v_board_map, long __pyx_v_color); /* proto */
+static PyObject *__pyx_n_s_xiangqigame_cython_modules_gener;
+static PyObject *__pyx_pf_11xiangqigame_14cython_modules_13general_moves_run_general_moves(CYTHON_UNUSED PyObject *__pyx_self, long __pyx_v_from_rank, long __pyx_v_from_file, __Pyx_memviewslice __pyx_v_board_map, long __pyx_v_color); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
 static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
@@ -2270,7 +2270,7 @@ static PyObject *__pyx_codeobj__21;
 static PyObject *__pyx_codeobj__28;
 /* Late includes */
 
-/* "project/src/xiangqigame/cython_modules/general_moves.pyx":5
+/* "xiangqigame/cython_modules/general_moves.pyx":5
  * 
  * 
  * cdef long flying_general_move(             # <<<<<<<<<<<<<<
@@ -2278,7 +2278,7 @@ static PyObject *__pyx_codeobj__28;
  *         const long from_file,
  */
 
-static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves_flying_general_move(long const __pyx_v_from_rank, long const __pyx_v_from_file, long const __pyx_v_color, __Pyx_memviewslice __pyx_v_board_map, long *__pyx_v_flying_move) {
+static long __pyx_f_11xiangqigame_14cython_modules_13general_moves_flying_general_move(long const __pyx_v_from_rank, long const __pyx_v_from_file, long const __pyx_v_color, __Pyx_memviewslice __pyx_v_board_map, long *__pyx_v_flying_move) {
   long __pyx_v_has_flying_move;
   long __pyx_v_other_gen_position[2];
   long __pyx_v_opponent_color;
@@ -2304,7 +2304,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("flying_general_move", 0);
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":12
+  /* "xiangqigame/cython_modules/general_moves.pyx":12
  *         long* flying_move):
  * 
  *     cdef long has_flying_move = 1             # <<<<<<<<<<<<<<
@@ -2313,7 +2313,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
   __pyx_v_has_flying_move = 1;
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":13
+  /* "xiangqigame/cython_modules/general_moves.pyx":13
  * 
  *     cdef long has_flying_move = 1
  *     cdef long[2] other_gen_position = [-1, -1]             # <<<<<<<<<<<<<<
@@ -2324,7 +2324,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
   __pyx_t_1[1] = -1L;
   memcpy(&(__pyx_v_other_gen_position[0]), __pyx_t_1, sizeof(__pyx_v_other_gen_position[0]) * (2));
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":15
+  /* "xiangqigame/cython_modules/general_moves.pyx":15
  *     cdef long[2] other_gen_position = [-1, -1]
  * 
  *     cdef long opponent_color = -1 * color             # <<<<<<<<<<<<<<
@@ -2333,16 +2333,16 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
   __pyx_v_opponent_color = (-1L * __pyx_v_color);
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":19
+  /* "xiangqigame/cython_modules/general_moves.pyx":19
  *     cdef long other_gen_position_found
  * 
  *     other_gen_position_found = get_general_position(             # <<<<<<<<<<<<<<
  *         color=opponent_color,
  *         board_map=board_map,
  */
-  __pyx_v_other_gen_position_found = __pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_get_general_position(__pyx_v_opponent_color, __pyx_v_board_map, __pyx_v_other_gen_position);
+  __pyx_v_other_gen_position_found = __pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_get_general_position(__pyx_v_opponent_color, __pyx_v_board_map, __pyx_v_other_gen_position);
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":28
+  /* "xiangqigame/cython_modules/general_moves.pyx":28
  *     cdef Py_ssize_t rank
  * 
  *     if from_file != other_gen_position[1]:             # <<<<<<<<<<<<<<
@@ -2352,7 +2352,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
   __pyx_t_2 = ((__pyx_v_from_file != (__pyx_v_other_gen_position[1])) != 0);
   if (__pyx_t_2) {
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":29
+    /* "xiangqigame/cython_modules/general_moves.pyx":29
  * 
  *     if from_file != other_gen_position[1]:
  *         has_flying_move = 0             # <<<<<<<<<<<<<<
@@ -2361,7 +2361,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
     __pyx_v_has_flying_move = 0;
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":28
+    /* "xiangqigame/cython_modules/general_moves.pyx":28
  *     cdef Py_ssize_t rank
  * 
  *     if from_file != other_gen_position[1]:             # <<<<<<<<<<<<<<
@@ -2371,7 +2371,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
     goto __pyx_L3;
   }
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":31
+  /* "xiangqigame/cython_modules/general_moves.pyx":31
  *         has_flying_move = 0
  *     else:
  *         slice_start = min(from_rank, other_gen_position[0]) + 1             # <<<<<<<<<<<<<<
@@ -2388,7 +2388,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
     }
     __pyx_v_slice_start = (__pyx_t_5 + 1);
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":32
+    /* "xiangqigame/cython_modules/general_moves.pyx":32
  *     else:
  *         slice_start = min(from_rank, other_gen_position[0]) + 1
  *         slice_end = max(from_rank, other_gen_position[0])             # <<<<<<<<<<<<<<
@@ -2404,7 +2404,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
     }
     __pyx_v_slice_end = __pyx_t_4;
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":33
+    /* "xiangqigame/cython_modules/general_moves.pyx":33
  *         slice_start = min(from_rank, other_gen_position[0]) + 1
  *         slice_end = max(from_rank, other_gen_position[0])
  *         for rank in range(slice_start, slice_end):             # <<<<<<<<<<<<<<
@@ -2416,7 +2416,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
     for (__pyx_t_8 = __pyx_v_slice_start; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_rank = __pyx_t_8;
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":34
+      /* "xiangqigame/cython_modules/general_moves.pyx":34
  *         slice_end = max(from_rank, other_gen_position[0])
  *         for rank in range(slice_start, slice_end):
  *             if board_map[rank, from_file] != 0:             # <<<<<<<<<<<<<<
@@ -2441,7 +2441,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
       __pyx_t_2 = (((*((long const  *) ( /* dim=1 */ ((char *) (((long const  *) ( /* dim=0 */ (__pyx_v_board_map.data + __pyx_t_9 * __pyx_v_board_map.strides[0]) )) + __pyx_t_10)) ))) != 0) != 0);
       if (__pyx_t_2) {
 
-        /* "project/src/xiangqigame/cython_modules/general_moves.pyx":35
+        /* "xiangqigame/cython_modules/general_moves.pyx":35
  *         for rank in range(slice_start, slice_end):
  *             if board_map[rank, from_file] != 0:
  *                 has_flying_move = 0             # <<<<<<<<<<<<<<
@@ -2450,7 +2450,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
         __pyx_v_has_flying_move = 0;
 
-        /* "project/src/xiangqigame/cython_modules/general_moves.pyx":36
+        /* "xiangqigame/cython_modules/general_moves.pyx":36
  *             if board_map[rank, from_file] != 0:
  *                 has_flying_move = 0
  *                 break             # <<<<<<<<<<<<<<
@@ -2459,7 +2459,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
         goto __pyx_L5_break;
 
-        /* "project/src/xiangqigame/cython_modules/general_moves.pyx":34
+        /* "xiangqigame/cython_modules/general_moves.pyx":34
  *         slice_end = max(from_rank, other_gen_position[0])
  *         for rank in range(slice_start, slice_end):
  *             if board_map[rank, from_file] != 0:             # <<<<<<<<<<<<<<
@@ -2470,7 +2470,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
     }
     __pyx_L5_break:;
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":37
+    /* "xiangqigame/cython_modules/general_moves.pyx":37
  *                 has_flying_move = 0
  *                 break
  *         if has_flying_move:             # <<<<<<<<<<<<<<
@@ -2480,7 +2480,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
     __pyx_t_2 = (__pyx_v_has_flying_move != 0);
     if (__pyx_t_2) {
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":38
+      /* "xiangqigame/cython_modules/general_moves.pyx":38
  *                 break
  *         if has_flying_move:
  *             flying_move[0] = from_rank             # <<<<<<<<<<<<<<
@@ -2489,7 +2489,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
       (__pyx_v_flying_move[0]) = __pyx_v_from_rank;
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":39
+      /* "xiangqigame/cython_modules/general_moves.pyx":39
  *         if has_flying_move:
  *             flying_move[0] = from_rank
  *             flying_move[1] = from_file             # <<<<<<<<<<<<<<
@@ -2498,7 +2498,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
       (__pyx_v_flying_move[1]) = __pyx_v_from_file;
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":40
+      /* "xiangqigame/cython_modules/general_moves.pyx":40
  *             flying_move[0] = from_rank
  *             flying_move[1] = from_file
  *             flying_move[2] = other_gen_position[0]             # <<<<<<<<<<<<<<
@@ -2507,7 +2507,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
       (__pyx_v_flying_move[2]) = (__pyx_v_other_gen_position[0]);
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":41
+      /* "xiangqigame/cython_modules/general_moves.pyx":41
  *             flying_move[1] = from_file
  *             flying_move[2] = other_gen_position[0]
  *             flying_move[3] = other_gen_position[1]             # <<<<<<<<<<<<<<
@@ -2516,7 +2516,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
       (__pyx_v_flying_move[3]) = (__pyx_v_other_gen_position[1]);
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":37
+      /* "xiangqigame/cython_modules/general_moves.pyx":37
  *                 has_flying_move = 0
  *                 break
  *         if has_flying_move:             # <<<<<<<<<<<<<<
@@ -2527,7 +2527,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
   }
   __pyx_L3:;
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":43
+  /* "xiangqigame/cython_modules/general_moves.pyx":43
  *             flying_move[3] = other_gen_position[1]
  * 
  *     return has_flying_move             # <<<<<<<<<<<<<<
@@ -2537,7 +2537,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
   __pyx_r = __pyx_v_has_flying_move;
   goto __pyx_L0;
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":5
+  /* "xiangqigame/cython_modules/general_moves.pyx":5
  * 
  * 
  * cdef long flying_general_move(             # <<<<<<<<<<<<<<
@@ -2547,14 +2547,14 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
 
   /* function exit code */
   __pyx_L1_error:;
-  __Pyx_WriteUnraisable("project.src.xiangqigame.cython_modules.general_moves.flying_general_move", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("xiangqigame.cython_modules.general_moves.flying_general_move", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "project/src/xiangqigame/cython_modules/general_moves.pyx":46
+/* "xiangqigame/cython_modules/general_moves.pyx":46
  * 
  * 
  * cdef long standard_general_moves(             # <<<<<<<<<<<<<<
@@ -2562,7 +2562,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  *         const long from_file,
  */
 
-static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves_standard_general_moves(long const __pyx_v_from_rank, long const __pyx_v_from_file, long const __pyx_v_color, __Pyx_memviewslice __pyx_v_board_map, long *__pyx_v_dest_coords) {
+static long __pyx_f_11xiangqigame_14cython_modules_13general_moves_standard_general_moves(long const __pyx_v_from_rank, long const __pyx_v_from_file, long const __pyx_v_color, __Pyx_memviewslice __pyx_v_board_map, long *__pyx_v_dest_coords) {
   long __pyx_v_orthog_directions[8];
   long __pyx_v_adjacent_spaces[8];
   long __pyx_v_num_destinations;
@@ -2583,7 +2583,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("standard_general_moves", 0);
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":53
+  /* "xiangqigame/cython_modules/general_moves.pyx":53
  *         long* dest_coords):
  * 
  *     cdef long[8] orthog_directions = [             # <<<<<<<<<<<<<<
@@ -2600,7 +2600,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
   __pyx_t_1[7] = 0;
   memcpy(&(__pyx_v_orthog_directions[0]), __pyx_t_1, sizeof(__pyx_v_orthog_directions[0]) * (8));
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":60
+  /* "xiangqigame/cython_modules/general_moves.pyx":60
  *     ]
  * 
  *     cdef long[8] adjacent_spaces = [-1, -1, -1, -1, -1, -1, -1, -1]             # <<<<<<<<<<<<<<
@@ -2617,7 +2617,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
   __pyx_t_2[7] = -1L;
   memcpy(&(__pyx_v_adjacent_spaces[0]), __pyx_t_2, sizeof(__pyx_v_adjacent_spaces[0]) * (8));
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":61
+  /* "xiangqigame/cython_modules/general_moves.pyx":61
  * 
  *     cdef long[8] adjacent_spaces = [-1, -1, -1, -1, -1, -1, -1, -1]
  *     cdef long num_destinations = 0             # <<<<<<<<<<<<<<
@@ -2626,16 +2626,16 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
   __pyx_v_num_destinations = 0;
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":64
+  /* "xiangqigame/cython_modules/general_moves.pyx":64
  * 
  *     cdef long[4] castle
  *     get_castle_edges(color, castle)             # <<<<<<<<<<<<<<
  * 
  *     cdef long direction
  */
-  __pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_get_castle_edges(__pyx_v_color, __pyx_v_castle);
+  __pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_get_castle_edges(__pyx_v_color, __pyx_v_castle);
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":70
+  /* "xiangqigame/cython_modules/general_moves.pyx":70
  *     cdef long col
  * 
  *     for direction in range(4):             # <<<<<<<<<<<<<<
@@ -2645,7 +2645,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
   for (__pyx_t_3 = 0; __pyx_t_3 < 4; __pyx_t_3+=1) {
     __pyx_v_direction = __pyx_t_3;
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":72
+    /* "xiangqigame/cython_modules/general_moves.pyx":72
  *     for direction in range(4):
  * 
  *         rank_idx = 2 * direction             # <<<<<<<<<<<<<<
@@ -2654,7 +2654,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
     __pyx_v_rank_idx = (2 * __pyx_v_direction);
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":73
+    /* "xiangqigame/cython_modules/general_moves.pyx":73
  * 
  *         rank_idx = 2 * direction
  *         file_idx = 2 * direction + 1             # <<<<<<<<<<<<<<
@@ -2663,7 +2663,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
     __pyx_v_file_idx = ((2 * __pyx_v_direction) + 1);
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":75
+    /* "xiangqigame/cython_modules/general_moves.pyx":75
  *         file_idx = 2 * direction + 1
  * 
  *         adjacent_spaces[rank_idx] = (             # <<<<<<<<<<<<<<
@@ -2672,7 +2672,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
     (__pyx_v_adjacent_spaces[__pyx_v_rank_idx]) = (__pyx_v_from_rank + (__pyx_v_orthog_directions[__pyx_v_rank_idx]));
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":77
+    /* "xiangqigame/cython_modules/general_moves.pyx":77
  *         adjacent_spaces[rank_idx] = (
  *                 from_rank + orthog_directions[rank_idx])
  *         adjacent_spaces[file_idx] = (             # <<<<<<<<<<<<<<
@@ -2681,14 +2681,14 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
     (__pyx_v_adjacent_spaces[__pyx_v_file_idx]) = (__pyx_v_from_file + (__pyx_v_orthog_directions[__pyx_v_file_idx]));
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":80
+    /* "xiangqigame/cython_modules/general_moves.pyx":80
  *             from_file + orthog_directions[file_idx])
  * 
  *         if is_in_castle(             # <<<<<<<<<<<<<<
  *                 rank=adjacent_spaces[rank_idx],
  *                 file=adjacent_spaces[file_idx],
  */
-    __pyx_t_5 = __pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_is_in_castle((__pyx_v_adjacent_spaces[__pyx_v_rank_idx]), (__pyx_v_adjacent_spaces[__pyx_v_file_idx]), __pyx_v_castle); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_5 = __pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_is_in_castle((__pyx_v_adjacent_spaces[__pyx_v_rank_idx]), (__pyx_v_adjacent_spaces[__pyx_v_file_idx]), __pyx_v_castle); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -2698,18 +2698,18 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
       goto __pyx_L6_bool_binop_done;
     }
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":87
+    /* "xiangqigame/cython_modules/general_moves.pyx":87
  *             rank=adjacent_spaces[rank_idx],
  *             file=adjacent_spaces[file_idx],
  *             board_map=board_map) != color):             # <<<<<<<<<<<<<<
  *                 dest_coords[2 * num_destinations] = adjacent_spaces[rank_idx]
  *                 dest_coords[2 * num_destinations + 1] = adjacent_spaces[file_idx]
  */
-    __pyx_t_6 = ((__pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_get_color((__pyx_v_adjacent_spaces[__pyx_v_rank_idx]), (__pyx_v_adjacent_spaces[__pyx_v_file_idx]), __pyx_v_board_map) != __pyx_v_color) != 0);
+    __pyx_t_6 = ((__pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_get_color((__pyx_v_adjacent_spaces[__pyx_v_rank_idx]), (__pyx_v_adjacent_spaces[__pyx_v_file_idx]), __pyx_v_board_map) != __pyx_v_color) != 0);
     __pyx_t_4 = __pyx_t_6;
     __pyx_L6_bool_binop_done:;
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":80
+    /* "xiangqigame/cython_modules/general_moves.pyx":80
  *             from_file + orthog_directions[file_idx])
  * 
  *         if is_in_castle(             # <<<<<<<<<<<<<<
@@ -2718,7 +2718,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
     if (__pyx_t_4) {
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":88
+      /* "xiangqigame/cython_modules/general_moves.pyx":88
  *             file=adjacent_spaces[file_idx],
  *             board_map=board_map) != color):
  *                 dest_coords[2 * num_destinations] = adjacent_spaces[rank_idx]             # <<<<<<<<<<<<<<
@@ -2727,7 +2727,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
       (__pyx_v_dest_coords[(2 * __pyx_v_num_destinations)]) = (__pyx_v_adjacent_spaces[__pyx_v_rank_idx]);
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":89
+      /* "xiangqigame/cython_modules/general_moves.pyx":89
  *             board_map=board_map) != color):
  *                 dest_coords[2 * num_destinations] = adjacent_spaces[rank_idx]
  *                 dest_coords[2 * num_destinations + 1] = adjacent_spaces[file_idx]             # <<<<<<<<<<<<<<
@@ -2736,7 +2736,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
       (__pyx_v_dest_coords[((2 * __pyx_v_num_destinations) + 1)]) = (__pyx_v_adjacent_spaces[__pyx_v_file_idx]);
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":90
+      /* "xiangqigame/cython_modules/general_moves.pyx":90
  *                 dest_coords[2 * num_destinations] = adjacent_spaces[rank_idx]
  *                 dest_coords[2 * num_destinations + 1] = adjacent_spaces[file_idx]
  *                 num_destinations += 1             # <<<<<<<<<<<<<<
@@ -2745,7 +2745,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
       __pyx_v_num_destinations = (__pyx_v_num_destinations + 1);
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":80
+      /* "xiangqigame/cython_modules/general_moves.pyx":80
  *             from_file + orthog_directions[file_idx])
  * 
  *         if is_in_castle(             # <<<<<<<<<<<<<<
@@ -2755,7 +2755,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
     }
   }
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":93
+  /* "xiangqigame/cython_modules/general_moves.pyx":93
  * 
  * 
  *     return num_destinations             # <<<<<<<<<<<<<<
@@ -2765,7 +2765,7 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
   __pyx_r = __pyx_v_num_destinations;
   goto __pyx_L0;
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":46
+  /* "xiangqigame/cython_modules/general_moves.pyx":46
  * 
  * 
  * cdef long standard_general_moves(             # <<<<<<<<<<<<<<
@@ -2776,14 +2776,14 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_5);
-  __Pyx_WriteUnraisable("project.src.xiangqigame.cython_modules.general_moves.standard_general_moves", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_WriteUnraisable("xiangqigame.cython_modules.general_moves.standard_general_moves", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "project/src/xiangqigame/cython_modules/general_moves.pyx":96
+/* "xiangqigame/cython_modules/general_moves.pyx":96
  * 
  * 
  * def run_general_moves(             # <<<<<<<<<<<<<<
@@ -2792,9 +2792,9 @@ static long __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7project_3src_11xiangqigame_14cython_modules_13general_moves_1run_general_moves(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_7project_3src_11xiangqigame_14cython_modules_13general_moves_1run_general_moves = {"run_general_moves", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_7project_3src_11xiangqigame_14cython_modules_13general_moves_1run_general_moves, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_7project_3src_11xiangqigame_14cython_modules_13general_moves_1run_general_moves(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_11xiangqigame_14cython_modules_13general_moves_1run_general_moves(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_11xiangqigame_14cython_modules_13general_moves_1run_general_moves = {"run_general_moves", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_11xiangqigame_14cython_modules_13general_moves_1run_general_moves, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_11xiangqigame_14cython_modules_13general_moves_1run_general_moves(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   long __pyx_v_from_rank;
   long __pyx_v_from_file;
   __Pyx_memviewslice __pyx_v_board_map = { 0, 0, { 0 }, { 0 }, { 0 } };
@@ -2867,18 +2867,18 @@ static PyObject *__pyx_pw_7project_3src_11xiangqigame_14cython_modules_13general
   __pyx_L5_argtuple_error:;
   __Pyx_RaiseArgtupleInvalid("run_general_moves", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 96, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("project.src.xiangqigame.cython_modules.general_moves.run_general_moves", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("xiangqigame.cython_modules.general_moves.run_general_moves", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general_moves_run_general_moves(__pyx_self, __pyx_v_from_rank, __pyx_v_from_file, __pyx_v_board_map, __pyx_v_color);
+  __pyx_r = __pyx_pf_11xiangqigame_14cython_modules_13general_moves_run_general_moves(__pyx_self, __pyx_v_from_rank, __pyx_v_from_file, __pyx_v_board_map, __pyx_v_color);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general_moves_run_general_moves(CYTHON_UNUSED PyObject *__pyx_self, long __pyx_v_from_rank, long __pyx_v_from_file, __Pyx_memviewslice __pyx_v_board_map, long __pyx_v_color) {
+static PyObject *__pyx_pf_11xiangqigame_14cython_modules_13general_moves_run_general_moves(CYTHON_UNUSED PyObject *__pyx_self, long __pyx_v_from_rank, long __pyx_v_from_file, __Pyx_memviewslice __pyx_v_board_map, long __pyx_v_color) {
   long __pyx_v_flying_move[4];
   long __pyx_v_has_flying_move;
   PyObject *__pyx_v_general_moves = NULL;
@@ -2903,7 +2903,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("run_general_moves", 0);
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":102
+  /* "xiangqigame/cython_modules/general_moves.pyx":102
  *         const long color):
  * 
  *     cdef long[4] flying_move = [-1, -1, -1, -1]             # <<<<<<<<<<<<<<
@@ -2916,16 +2916,16 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
   __pyx_t_1[3] = -1L;
   memcpy(&(__pyx_v_flying_move[0]), __pyx_t_1, sizeof(__pyx_v_flying_move[0]) * (4));
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":103
+  /* "xiangqigame/cython_modules/general_moves.pyx":103
  * 
  *     cdef long[4] flying_move = [-1, -1, -1, -1]
  *     has_flying_move = flying_general_move(             # <<<<<<<<<<<<<<
  *         from_rank=from_rank, from_file=from_file, color=color,
  *         board_map=board_map, flying_move=flying_move)
  */
-  __pyx_v_has_flying_move = __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves_flying_general_move(__pyx_v_from_rank, __pyx_v_from_file, __pyx_v_color, __pyx_v_board_map, __pyx_v_flying_move);
+  __pyx_v_has_flying_move = __pyx_f_11xiangqigame_14cython_modules_13general_moves_flying_general_move(__pyx_v_from_rank, __pyx_v_from_file, __pyx_v_color, __pyx_v_board_map, __pyx_v_flying_move);
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":107
+  /* "xiangqigame/cython_modules/general_moves.pyx":107
  *         board_map=board_map, flying_move=flying_move)
  * 
  *     if not has_flying_move:             # <<<<<<<<<<<<<<
@@ -2935,7 +2935,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
   __pyx_t_2 = ((!(__pyx_v_has_flying_move != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":108
+    /* "xiangqigame/cython_modules/general_moves.pyx":108
  * 
  *     if not has_flying_move:
  *         general_moves = []             # <<<<<<<<<<<<<<
@@ -2947,7 +2947,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
     __pyx_v_general_moves = ((PyObject*)__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":107
+    /* "xiangqigame/cython_modules/general_moves.pyx":107
  *         board_map=board_map, flying_move=flying_move)
  * 
  *     if not has_flying_move:             # <<<<<<<<<<<<<<
@@ -2957,7 +2957,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
     goto __pyx_L3;
   }
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":110
+  /* "xiangqigame/cython_modules/general_moves.pyx":110
  *         general_moves = []
  *     else:
  *         general_moves =  [{             # <<<<<<<<<<<<<<
@@ -2966,7 +2966,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
  */
   /*else*/ {
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":111
+    /* "xiangqigame/cython_modules/general_moves.pyx":111
  *     else:
  *         general_moves =  [{
  *             "start": (flying_move[0], flying_move[1]),             # <<<<<<<<<<<<<<
@@ -2990,7 +2990,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
     if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_start, __pyx_t_6) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":112
+    /* "xiangqigame/cython_modules/general_moves.pyx":112
  *         general_moves =  [{
  *             "start": (flying_move[0], flying_move[1]),
  *             "end": (flying_move[2], flying_move[1])             # <<<<<<<<<<<<<<
@@ -3012,7 +3012,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
     if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_end, __pyx_t_4) < 0) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "project/src/xiangqigame/cython_modules/general_moves.pyx":110
+    /* "xiangqigame/cython_modules/general_moves.pyx":110
  *         general_moves = []
  *     else:
  *         general_moves =  [{             # <<<<<<<<<<<<<<
@@ -3029,16 +3029,16 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
   }
   __pyx_L3:;
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":116
+  /* "xiangqigame/cython_modules/general_moves.pyx":116
  * 
  *     cdef long[8] standard_dest_coords
  *     cdef long num_standard_dests = standard_general_moves(             # <<<<<<<<<<<<<<
  *         from_rank=from_rank,
  *         from_file=from_file,
  */
-  __pyx_v_num_standard_dests = __pyx_f_7project_3src_11xiangqigame_14cython_modules_13general_moves_standard_general_moves(__pyx_v_from_rank, __pyx_v_from_file, __pyx_v_color, __pyx_v_board_map, __pyx_v_standard_dest_coords);
+  __pyx_v_num_standard_dests = __pyx_f_11xiangqigame_14cython_modules_13general_moves_standard_general_moves(__pyx_v_from_rank, __pyx_v_from_file, __pyx_v_color, __pyx_v_board_map, __pyx_v_standard_dest_coords);
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":124
+  /* "xiangqigame/cython_modules/general_moves.pyx":124
  *     )
  * 
  *     general_moves += [{             # <<<<<<<<<<<<<<
@@ -3048,7 +3048,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
   __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 124, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":127
+  /* "xiangqigame/cython_modules/general_moves.pyx":127
  *         "start": (from_rank, from_file),
  *         "end": (standard_dest_coords[item], standard_dest_coords[item + 1])
  *     } for item in range(0, (2 * num_standard_dests)) if (item % 2 == 0)]             # <<<<<<<<<<<<<<
@@ -3119,7 +3119,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     if (__pyx_t_2) {
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":125
+      /* "xiangqigame/cython_modules/general_moves.pyx":125
  * 
  *     general_moves += [{
  *         "start": (from_rank, from_file),             # <<<<<<<<<<<<<<
@@ -3143,7 +3143,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
       if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_start, __pyx_t_10) < 0) __PYX_ERR(0, 125, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":126
+      /* "xiangqigame/cython_modules/general_moves.pyx":126
  *     general_moves += [{
  *         "start": (from_rank, from_file),
  *         "end": (standard_dest_coords[item], standard_dest_coords[item + 1])             # <<<<<<<<<<<<<<
@@ -3172,7 +3172,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
       if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 124, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-      /* "project/src/xiangqigame/cython_modules/general_moves.pyx":127
+      /* "xiangqigame/cython_modules/general_moves.pyx":127
  *         "start": (from_rank, from_file),
  *         "end": (standard_dest_coords[item], standard_dest_coords[item + 1])
  *     } for item in range(0, (2 * num_standard_dests)) if (item % 2 == 0)]             # <<<<<<<<<<<<<<
@@ -3183,7 +3183,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":124
+  /* "xiangqigame/cython_modules/general_moves.pyx":124
  *     )
  * 
  *     general_moves += [{             # <<<<<<<<<<<<<<
@@ -3196,7 +3196,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
   __Pyx_DECREF_SET(__pyx_v_general_moves, ((PyObject*)__pyx_t_5));
   __pyx_t_5 = 0;
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":129
+  /* "xiangqigame/cython_modules/general_moves.pyx":129
  *     } for item in range(0, (2 * num_standard_dests)) if (item % 2 == 0)]
  * 
  *     return general_moves             # <<<<<<<<<<<<<<
@@ -3208,7 +3208,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
   __pyx_r = __pyx_v_general_moves;
   goto __pyx_L0;
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":96
+  /* "xiangqigame/cython_modules/general_moves.pyx":96
  * 
  * 
  * def run_general_moves(             # <<<<<<<<<<<<<<
@@ -3224,7 +3224,7 @@ static PyObject *__pyx_pf_7project_3src_11xiangqigame_14cython_modules_13general
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_XDECREF(__pyx_t_9);
   __Pyx_XDECREF(__pyx_t_10);
-  __Pyx_AddTraceback("project.src.xiangqigame.cython_modules.general_moves.run_general_moves", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("xiangqigame.cython_modules.general_moves.run_general_moves", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_general_moves);
@@ -16398,7 +16398,7 @@ static PyBufferProcs __pyx_tp_as_buffer_array = {
 
 static PyTypeObject __pyx_type___pyx_array = {
   PyVarObject_HEAD_INIT(0, 0)
-  "project.src.xiangqigame.cython_modules.general_moves.array", /*tp_name*/
+  "xiangqigame.cython_modules.general_moves.array", /*tp_name*/
   sizeof(struct __pyx_array_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_array, /*tp_dealloc*/
@@ -16520,7 +16520,7 @@ static PyMethodDef __pyx_methods_Enum[] = {
 
 static PyTypeObject __pyx_type___pyx_MemviewEnum = {
   PyVarObject_HEAD_INIT(0, 0)
-  "project.src.xiangqigame.cython_modules.general_moves.Enum", /*tp_name*/
+  "xiangqigame.cython_modules.general_moves.Enum", /*tp_name*/
   sizeof(struct __pyx_MemviewEnum_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_Enum, /*tp_dealloc*/
@@ -16784,7 +16784,7 @@ static PyBufferProcs __pyx_tp_as_buffer_memoryview = {
 
 static PyTypeObject __pyx_type___pyx_memoryview = {
   PyVarObject_HEAD_INIT(0, 0)
-  "project.src.xiangqigame.cython_modules.general_moves.memoryview", /*tp_name*/
+  "xiangqigame.cython_modules.general_moves.memoryview", /*tp_name*/
   sizeof(struct __pyx_memoryview_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc_memoryview, /*tp_dealloc*/
@@ -16925,7 +16925,7 @@ static struct PyGetSetDef __pyx_getsets__memoryviewslice[] = {
 
 static PyTypeObject __pyx_type___pyx_memoryviewslice = {
   PyVarObject_HEAD_INIT(0, 0)
-  "project.src.xiangqigame.cython_modules.general_moves._memoryviewslice", /*tp_name*/
+  "xiangqigame.cython_modules.general_moves._memoryviewslice", /*tp_name*/
   sizeof(struct __pyx_memoryviewslice_obj), /*tp_basicsize*/
   0, /*tp_itemsize*/
   __pyx_tp_dealloc__memoryviewslice, /*tp_dealloc*/
@@ -17116,7 +17116,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_obj, __pyx_k_obj, sizeof(__pyx_k_obj), 0, 0, 1, 1},
   {&__pyx_n_s_pack, __pyx_k_pack, sizeof(__pyx_k_pack), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
-  {&__pyx_n_s_project_src_xiangqigame_cython_m, __pyx_k_project_src_xiangqigame_cython_m, sizeof(__pyx_k_project_src_xiangqigame_cython_m), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_PickleError, __pyx_k_pyx_PickleError, sizeof(__pyx_k_pyx_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_checksum, __pyx_k_pyx_checksum, sizeof(__pyx_k_pyx_checksum), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_getbuffer, __pyx_k_pyx_getbuffer, sizeof(__pyx_k_pyx_getbuffer), 0, 0, 1, 1},
@@ -17149,6 +17148,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_unable_to_allocate_shape_and_str, __pyx_k_unable_to_allocate_shape_and_str, sizeof(__pyx_k_unable_to_allocate_shape_and_str), 0, 0, 1, 0},
   {&__pyx_n_s_unpack, __pyx_k_unpack, sizeof(__pyx_k_unpack), 0, 0, 1, 1},
   {&__pyx_n_s_update, __pyx_k_update, sizeof(__pyx_k_update), 0, 0, 1, 1},
+  {&__pyx_n_s_xiangqigame_cython_modules_gener, __pyx_k_xiangqigame_cython_modules_gener, sizeof(__pyx_k_xiangqigame_cython_modules_gener), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
@@ -17364,7 +17364,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":96
+  /* "xiangqigame/cython_modules/general_moves.pyx":96
  * 
  * 
  * def run_general_moves(             # <<<<<<<<<<<<<<
@@ -17587,12 +17587,12 @@ static int __Pyx_modinit_function_import_code(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__Pyx_modinit_function_import_code", 0);
   /*--- Function import code ---*/
-  __pyx_t_1 = PyImport_ImportModule("project.src.xiangqigame.cython_modules.cython_board_utilities"); if (!__pyx_t_1) __PYX_ERR(0, 1, __pyx_L1_error)
+  __pyx_t_1 = PyImport_ImportModule("xiangqigame.cython_modules.cython_board_utilities"); if (!__pyx_t_1) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_ImportFunction(__pyx_t_1, "get_color", (void (**)(void))&__pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_get_color, "long (long const , long const , __Pyx_memviewslice)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportFunction(__pyx_t_1, "get_castle_edges", (void (**)(void))&__pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_get_castle_edges, "void (long const , long *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportFunction(__pyx_t_1, "get_general_position", (void (**)(void))&__pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_get_general_position, "long (long const , __Pyx_memviewslice, long *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  if (__Pyx_ImportFunction(__pyx_t_1, "is_in_castle", (void (**)(void))&__pyx_f_7project_3src_11xiangqigame_14cython_modules_22cython_board_utilities_is_in_castle, "PyObject *(long const , long const , long *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ImportFunction(__pyx_t_1, "get_color", (void (**)(void))&__pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_get_color, "long (long const , long const , __Pyx_memviewslice)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ImportFunction(__pyx_t_1, "get_castle_edges", (void (**)(void))&__pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_get_castle_edges, "void (long const , long *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ImportFunction(__pyx_t_1, "get_general_position", (void (**)(void))&__pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_get_general_position, "long (long const , __Pyx_memviewslice, long *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  if (__Pyx_ImportFunction(__pyx_t_1, "is_in_castle", (void (**)(void))&__pyx_f_11xiangqigame_14cython_modules_22cython_board_utilities_is_in_castle, "PyObject *(long const , long const , long *)") < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -17775,14 +17775,14 @@ if (!__Pyx_RefNanny) {
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_project__src__xiangqigame__cython_modules__general_moves) {
+  if (__pyx_module_is_main_xiangqigame__cython_modules__general_moves) {
     if (PyObject_SetAttr(__pyx_m, __pyx_n_s_name_2, __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "project.src.xiangqigame.cython_modules.general_moves")) {
-      if (unlikely(PyDict_SetItemString(modules, "project.src.xiangqigame.cython_modules.general_moves", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "xiangqigame.cython_modules.general_moves")) {
+      if (unlikely(PyDict_SetItemString(modules, "xiangqigame.cython_modules.general_moves", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -17803,19 +17803,19 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":96
+  /* "xiangqigame/cython_modules/general_moves.pyx":96
  * 
  * 
  * def run_general_moves(             # <<<<<<<<<<<<<<
  *         const long from_rank,
  *         const long from_file,
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_7project_3src_11xiangqigame_14cython_modules_13general_moves_1run_general_moves, NULL, __pyx_n_s_project_src_xiangqigame_cython_m); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_11xiangqigame_14cython_modules_13general_moves_1run_general_moves, NULL, __pyx_n_s_xiangqigame_cython_modules_gener); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_run_general_moves, __pyx_t_1) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "project/src/xiangqigame/cython_modules/general_moves.pyx":1
+  /* "xiangqigame/cython_modules/general_moves.pyx":1
  * from .cython_board_utilities cimport get_color, get_castle_edges             # <<<<<<<<<<<<<<
  * from .cython_board_utilities cimport get_general_position, is_in_castle
  * 
@@ -17985,11 +17985,11 @@ if (!__Pyx_RefNanny) {
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init project.src.xiangqigame.cython_modules.general_moves", __pyx_clineno, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init xiangqigame.cython_modules.general_moves", __pyx_clineno, __pyx_lineno, __pyx_filename);
     }
     Py_CLEAR(__pyx_m);
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init project.src.xiangqigame.cython_modules.general_moves");
+    PyErr_SetString(PyExc_ImportError, "init xiangqigame.cython_modules.general_moves");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
