@@ -16,6 +16,8 @@ services:
       - ../:/home/${USER}/workspace/project
       - ./.vscode/:/home/${USER}/workspace/.vscode
       - ./.vscode_local_placeholder/:/home/${USER}/workspace/project/.vscode:ro
+    ports:
+      - "2200:22"
     init: true
     stdin_open: true
     tty: true

@@ -5,9 +5,13 @@ channels:
   - defaults
 
 dependencies:
+  - colorama
   - cython
   - pandas
   - pip
   - pybind11
   - python=3.10.6
   - setuptools
+  - pytest
+  - pip:
+    - pytest-fixtures

@@ -4,6 +4,7 @@ from xiangqigame.board_utilities_new import BoardUtilities as bu
 # from xiangqigame.piece_definitions import PColor
 
 import cpp_modules.game_board_py.GameBoardPy as gbp
+# from cpp_modules.game_board_py import BoardSpace, GameBoard, PieceColor, PieceType
 
 
 @pytest.fixture

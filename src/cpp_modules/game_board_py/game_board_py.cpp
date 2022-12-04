@@ -31,7 +31,7 @@ PYBIND11_MODULE(GameBoardPy, m) {
         .value("kNul", kNul)
         .value("kBlk", kBlk)
         .export_values();
-    
+
     py::enum_<PieceType>(m, "PieceType")
         .value("kNnn", kNnn)
         .value("kGen", kGen)
@@ -51,7 +51,7 @@ PYBIND11_MODULE(GameBoardPy, m) {
         .def("UndoMove", &GameBoard::UndoMove, "executed_move"_a)
         .def("GetAllSpacesOccupiedBy", &GameBoard::GetAllSpacesOccupiedBy, "color"_a)
         .def("CalcFinalMovesOf", &GameBoard::CalcFinalMovesOf, "color"_a)
-        // .def("IsInCheck", &GameBoard::IsInCheck, "color"_a)
+        .def("IsInCheck", &GameBoard::IsInCheck, "color"_a)
         // .def("IsOccupied", &GameBoard::IsOccupied, "space"_a)
         .def("GetType", &GameBoard::GetType, "space"_a)
         .def("GetColor", &GameBoard::GetColor, "space"_a);

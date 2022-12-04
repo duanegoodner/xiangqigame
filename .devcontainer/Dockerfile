@@ -5,7 +5,7 @@ ARG user_uid=1000
 ARG user_gid=1000
 ENV USERNAME ${username}
 ENV USER_UID ${user_uid}
-ENV USER_GID ${user_gid} 
+ENV USER_GID ${user_gid}
 
 SHELL [ "/bin/bash", "--login", "-c" ]
 
@@ -28,7 +28,7 @@ RUN sudo apt-get update --fix-missing && \
     sudo apt-get install -y \
     bzip2 \
     ca-certificates \
-    cmake \   
+    cmake \
     curl \
     g++ \
     git \
@@ -58,7 +58,7 @@ RUN sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/t
     && bind "$terminfo[kcud1]" history-substring-search-down \
     && git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k \
     && sudo install -m644 ./fonts/MesloLGS_NF_Bold_Italic.ttf /usr/share/fonts/truetype/ \
-    && sudo install -m644 ./fonts/MesloLGS_NF_Bold.ttf /usr/share/fonts/truetype/ \ 
+    && sudo install -m644 ./fonts/MesloLGS_NF_Bold.ttf /usr/share/fonts/truetype/ \
     && sudo install -m644 ./fonts/MesloLGS_NF_Italic.ttf /usr/share/fonts/truetype/ \
     && sudo install -m644 ./fonts/MesloLGS_NF_Regular.ttf /usr/share/fonts/truetype/ \
     && sudo rm -rf ./fonts \
@@ -84,15 +84,30 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-$MINICONDA_VERSI
     echo ". $HOME/miniconda3/etc/profile.d/conda.sh" >> $HOME/.zshrc && \
     conda init bash && \
     conda init zsh && \
+    conda install mamba -n base -c conda-forge && \
     sudo chown $USER_UID:$USER_GID /tmp/initial_conda_env.yml && \
-    conda update --name base --channel defaults conda && \
-    conda env create --prefix $WORKSPACE/env --file /tmp/initial_conda_env.yml --force && \
-    conda clean --all --yes && \
-    # conda config --set auto_activate_base False && \
-    # automatically activate project env if run a bash or zsh shell
+    mamba update --name base --channel defaults conda
+
+RUN sudo mkdir $WORKSPACE/env && sudo chown ${USERNAME}:${USERNAME} ${WORKSPACE}/env
+
+RUN chmod +rwx $WORKSPACE/env && \
+    mamba env create --prefix $WORKSPACE/env --file /tmp/initial_conda_env.yml --force && \
+    mamba clean --all --yes --force-pkgs-dirs && \
+    find ${CONDA_DIR} -follow -type f -name '*.a' -delete && \
+    find ${CONDA_DIR} -follow -type f -name '*.pyc' -delete && \
     echo "conda activate ${WORKSPACE}/env" >> ~/.bashrc && \
     echo "conda activate ${WORKSPACE}/env" >> ~/.zshrc
 
 COPY ./.devcontainer/entrypoint.sh /usr/local/bin/
 RUN sudo chown $USER_UID:$USER_GID /usr/local/bin/ && \
     sudo chmod u+x /usr/local/bin/entrypoint.sh
+
+COPY ./.devcontainer/xiangqigame_docker.pub ${HOME}/.ssh/authorized_keys
+RUN sudo apt-get update
+RUN sudo apt-get install openssh-server -y
+RUN sudo chown $USER_UID:$USER_GID ${HOME}/.ssh
+RUN sudo chown $USER_UID:$USER_GID ${HOME}/.ssh/authorized_keys
+RUN sudo chmod 600 ${HOME}/.ssh/authorized_keys
+RUN sudo chmod 700 ${HOME}/.ssh
+
+

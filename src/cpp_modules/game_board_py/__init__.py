@@ -1,3 +1,3 @@
-# from .GameBoardPy import BoardSpace, Move, ExecuteMove, PieceColor, GameBoard
+from .GameBoardPy import BoardSpace, Move, PieceColor, GameBoard, PieceType
 
-# __all__ = ("BoardSpace", "Move", "ExecuteMove", "PieceColor", "GameBoard")
+__all__ = ("BoardSpace", "Move", "PieceColor", "GameBoard", "PieceType")

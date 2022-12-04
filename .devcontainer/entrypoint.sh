@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 cleanup() {
     current_time=$(date "+%Y.%m.%d-%H.%M.%S")
@@ -10,6 +10,7 @@ trap 'true' SIGTERM
 #Execute command
 # pip install ./project
 tail -f /dev/null &
+sudo service ssh start
 
 #Wait
 wait $!
