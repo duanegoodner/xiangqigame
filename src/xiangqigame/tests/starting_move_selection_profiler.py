@@ -2,9 +2,10 @@ import cProfile
 import time
 from typing import Dict
 
-from xiangqigame.piece_definitions import PColor
+from cpp_modules.game_board_py import GameBoard, PieceColor
+# from xiangqigame.piece_definitions import PColor
 
-from xiangqigame.game_board_new import GameBoard
+# from xiangqigame.game_board_new import GameBoard
 from xiangqigame.move_selectors import PiecePoints, MinimaxMoveSelector
 import xiangqigame.piece_points as pts
 
@@ -25,15 +26,15 @@ def select_red_starting_move(
         evaluator=evaluator, search_depth=search_depth)
     start = time.time()
     proposed_move = move_selector.select_move(
-        game_board=game_board, cur_player=PColor.RED, cur_moves=[]
+        game_board=game_board, cur_player=PieceColor.kRed, cur_moves=[]
     )
     end = time.time()
     print(f"Selected ** move {proposed_move} in {end - start} seconds")
 
 
 if __name__ == "__main__":
-    depth = 3
-    select_red_starting_move(depth)
-    # cProfile.run(
-    #     f"select_red_starting_move({depth})",
-    #     filename=f"red_starting_move_depth_{depth}")
+    depth = 2
+    # select_red_starting_move(depth)
+    cProfile.run(
+        f"select_red_starting_move({depth})",
+        filename=f"red_starting_move_depth_{depth}")

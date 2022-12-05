@@ -2,17 +2,13 @@ import abc
 import cProfile
 import time
 import random
-from typing import List, Dict
+from typing import List
 
 import numpy as np
-# from xiangqigame.piece_definitions import PColor
-from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
-# from xiangqigame.game_board_new import GameBoard
+from cpp_modules.game_board_py import GameBoard, opponent_of, Move, PieceColor
 from xiangqigame.minimax_evaluators import BestMoves, MinimaxEvaluator, \
     PiecePoints
 import xiangqigame.piece_points as pts
-
-import cpp_modules.game_board_py.GameBoardPy as gbp
 
 
 class MoveSelector(abc.ABC):
@@ -20,10 +16,10 @@ class MoveSelector(abc.ABC):
     @abc.abstractmethod
     def select_move(
             self,
-            game_board: gbp.GameBoard,
-            cur_player: int,
-            cur_moves: List[Dict]
-    ) -> Dict:
+            game_board: GameBoard,
+            cur_player: PieceColor,
+            cur_moves: List[Move]
+    ) -> Move:
         pass
 
 
@@ -31,10 +27,10 @@ class RandomMoveSelector(MoveSelector):
 
     def select_move(
             self,
-            game_board: gbp.GameBoard,
-            cur_player: int,
-            cur_moves: List[Dict]
-    ) -> Dict:
+            game_board: GameBoard,
+            cur_player: PieceColor,
+            cur_moves: List[Move]
+    ) -> Move:
         return random.choice(tuple(cur_moves))
 
 
@@ -50,12 +46,12 @@ class MinimaxMoveSelector(MoveSelector):
 
     def _minimax_rec(
             self,
-            game_board: gbp.GameBoard,
+            game_board: GameBoard,
             search_depth: int,
             alpha: int,
             beta: int,
-            cur_player: int,
-            initiating_player: int):
+            cur_player: PieceColor,
+            initiating_player: PieceColor):
         self._node_counter += 1
         cur_moves = game_board.CalcFinalMovesOf(color=cur_player)
         if not cur_moves:
@@ -82,7 +78,7 @@ class MinimaxMoveSelector(MoveSelector):
                     search_depth=search_depth - 1,
                     alpha=alpha,
                     beta=beta,
-                    cur_player=bu.opponent_of[initiating_player],
+                    cur_player=opponent_of(initiating_player),
                     initiating_player=initiating_player,
                 ).best_eval
                 if cur_eval == max_eval:
@@ -127,9 +123,9 @@ class MinimaxMoveSelector(MoveSelector):
 
     def select_move(
             self,
-            game_board: gbp.GameBoard,
-            cur_player: int,
-            cur_moves: List[Dict]):
+            game_board: GameBoard,
+            cur_player: PieceColor,
+            cur_moves: List[Move]):
         self._reset_node_counter()
         minimax_result = self._minimax_rec(
             game_board=game_board,
@@ -143,7 +139,7 @@ class MinimaxMoveSelector(MoveSelector):
 
 
 if __name__ == "__main__":
-    cur_board = gbp.GameBoard()
+    cur_board = GameBoard()
     base_pts = pts.BasePoints(piece_vals=pts.base_pts_icga_2004)
     position_pts = pts.PositionPts(
         pts_arrays_black=pts.position_points_icga_2004,
@@ -155,7 +151,7 @@ if __name__ == "__main__":
 
     start = time.time()
     proposed_move = move_selector.select_move(
-        game_board=cur_board, cur_player=gbp.PieceColor.kRed, cur_moves=[])
+        game_board=cur_board, cur_player=PieceColor.kRed, cur_moves=[])
     end = time.time()
 
     print(f"Selected ** move {proposed_move} in {end - start} seconds")

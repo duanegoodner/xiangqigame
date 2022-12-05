@@ -88,6 +88,10 @@ struct BoardSpace {
 struct Move {
     BoardSpace start;
     BoardSpace end;
+
+    bool operator==(const Move other) {
+        return (start == other.start) && (end == other.end);
+    }
 };
 
 struct ExecutedMove {

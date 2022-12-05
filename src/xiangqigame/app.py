@@ -4,8 +4,9 @@ import xiangqigame.move_selectors as ms
 from xiangqigame.game import Game
 from xiangqigame.handlers.signals import set_signal_handlers
 import xiangqigame.piece_points as pts
-from xiangqigame.piece_definitions import PColor
 from xiangqigame.players import HumanPlayer, AIPlayer
+
+from cpp_modules.game_board_py import PieceColor
 
 
 def run():
@@ -29,9 +30,9 @@ def run():
         # red_player=HumanPlayer(color=PColor.RED),
         # black_player=HumanPlayer(color=PColor.BLK)
         red_player=AIPlayer(
-            color=PColor.RED, move_selector=red_move_selector),
+            color=PieceColor.kRed, move_selector=red_move_selector),
         black_player=AIPlayer(
-            color=PColor.BLK, move_selector=black_move_selector)
+            color=PieceColor.kBlk, move_selector=black_move_selector)
     )
 
     my_game.play()

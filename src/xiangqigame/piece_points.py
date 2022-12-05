@@ -1,26 +1,23 @@
 from typing import Dict
 
 import numpy as np
-# from xiangqigame.enums import PieceType, PieceColor
-# from xiangqigame.piece_definitions import PType, PColor
-
-import cpp_modules.game_board_py.GameBoardPy as gbp
+from cpp_modules.game_board_py import PieceColor, PieceType
 
 base_pts_icga_2004 = {
-    gbp.PieceType.kGen: 6000,
-    gbp.PieceType.kAdv: 120,
-    gbp.PieceType.kEle: 120,
-    gbp.PieceType.kCha: 600,
-    gbp.PieceType.kHor: 270,
-    gbp.PieceType.kCan: 285,
-    gbp.PieceType.kSol: 30
+    PieceType.kGen: 6000,
+    PieceType.kAdv: 120,
+    PieceType.kEle: 120,
+    PieceType.kCha: 600,
+    PieceType.kHor: 270,
+    PieceType.kCan: 285,
+    PieceType.kSol: 30
 }
 
 
 class BasePoints:
 
     def __init__(self, piece_vals: Dict[int, int]):
-        assert set(piece_vals.keys()) == set(gbp.PieceType) - {gbp.PieceType.kNnn}
+        # assert set(piece_vals.keys()) == set(PieceType) - {PieceType.kNnn}
         self._piece_vals = piece_vals
 
     @property
@@ -35,15 +32,16 @@ class PositionPts:
             pts_arrays_black: Dict[int, np.array],
             pts_arrays_red: Dict[int, np.array] = None
     ):
-        assert set(pts_arrays_black.keys()) == set(gbp.PieceType) - {gbp.PieceType.kNnn}
+        # assert set(pts_arrays_black.keys()) == set(PieceType) - {PieceType.kNnn}
         if pts_arrays_red:
-            assert set(pts_arrays_red.keys()) == set(gbp.PieceType) - {gbp.PieceType.kNnn}
+            pass
+            # assert set(pts_arrays_red.keys()) == set(PieceType) - {PieceType.kNnn}
         if pts_arrays_red is None:
             pts_arrays_red = {piece_type: np.flip(pts_array, axis=0) for
                               piece_type, pts_array in pts_arrays_black.items()}
         self._pts_arrays = {
-            gbp.PieceColor.kRed: pts_arrays_red,
-            gbp.PieceColor.kBlk: pts_arrays_black}
+            PieceColor.kRed: pts_arrays_red,
+            PieceColor.kBlk: pts_arrays_black}
 
     @property
     def vals(self):
@@ -107,11 +105,11 @@ soldier_position_icga_2004 = np.array([
 ])
 
 position_points_icga_2004 = {
-    gbp.PieceType.kGen: general_position_icga_2004,
-    gbp.PieceType.kAdv: advisor_position_icga_2004,
-    gbp.PieceType.kEle: elephant_position_icga_2004,
-    gbp.PieceType.kCha: chariot_position_icga_2004,
-    gbp.PieceType.kHor: horse_position_icga_2004,
-    gbp.PieceType.kCan: cannon_position_icga_2004,
-    gbp.PieceType.kSol: soldier_position_icga_2004
+    PieceType.kGen: general_position_icga_2004,
+    PieceType.kAdv: advisor_position_icga_2004,
+    PieceType.kEle: elephant_position_icga_2004,
+    PieceType.kCha: chariot_position_icga_2004,
+    PieceType.kHor: horse_position_icga_2004,
+    PieceType.kCan: cannon_position_icga_2004,
+    PieceType.kSol: soldier_position_icga_2004
 }

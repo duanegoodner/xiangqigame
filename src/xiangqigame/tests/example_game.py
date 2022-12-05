@@ -1,4 +1,4 @@
-from xiangqigame.tests import game_scenarios as gs
+import game_scenarios as gs
 
 
 test_games = gs.GameResultTests()

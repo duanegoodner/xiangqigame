@@ -1,5 +1,6 @@
+from cpp_modules.game_board_py import PieceColor
 from xiangqigame.enums import GameState
-from xiangqigame.piece_definitions import PColor
+# from xiangqigame.piece_definitions import PColor
 from xiangqigame.game import Game
 from xiangqigame.players import ScriptedPlayer
 from xiangqigame.data import alg_games as ag
@@ -17,9 +18,9 @@ class GameResultTests(unittest.TestCase):
         moves_a = g_a.game_a
         red_moves = moves_a[::2]
         black_moves = moves_a[1::2]
-        red_player = ScriptedPlayer(color=PColor.RED, move_list=red_moves)
+        red_player = ScriptedPlayer(color=PieceColor.kRed, move_list=red_moves)
         black_player = ScriptedPlayer(
-            color=PColor.BLK,
+            color=PieceColor.kBlk,
             move_list=black_moves
         )
         game_a = Game(red_player=red_player, black_player=black_player)

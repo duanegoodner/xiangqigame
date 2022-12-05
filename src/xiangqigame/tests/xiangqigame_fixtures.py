@@ -1,7 +1,8 @@
 from typing import Dict
 
 import pytest
-from xiangqigame.game_board_new import GameBoard
+from cpp_modules.game_board_py import GameBoard
+# from xiangqigame.game_board_new import GameBoard
 from xiangqigame.move_selectors import PiecePoints, MinimaxMoveSelector
 import xiangqigame.piece_points as pts
 

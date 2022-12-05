@@ -1,13 +1,9 @@
 from typing import Dict, List
 import xiangqigame.terminal_output as msg
-from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
+from cpp_modules.game_board_py import GameBoard, opponent_of, PieceColor
 from xiangqigame.enums import GameState
-# from xiangqigame.piece_definitions import PColor
-# from xiangqigame.game_board_new import GameBoard
-import cpp_modules.game_board_py.GameBoardPy as gbp
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.players import Player
-
 from xiangqigame.handlers.errors import handle_interactive_eof
 
 
@@ -21,10 +17,10 @@ class Game:
             status_reporter: GameStatusReporter = msg.TerminalStatusReporter(),
             move_log: List[Dict] = None):
         self._game_state = GameState.UNFINISHED
-        self._whose_turn = gbp.PieceColor.kRed
-        self._board = gbp.GameBoard()
-        self._players = {gbp.PieceColor.kRed: red_player,
-                         gbp.PieceColor.kBlk: black_player}
+        self._whose_turn = PieceColor.kRed
+        self._board = GameBoard()
+        self._players = {PieceColor.kRed: red_player,
+                         PieceColor.kBlk: black_player}
         self._status_reporter = status_reporter
         if move_log is None:
             move_log = []
@@ -42,7 +38,7 @@ class Game:
     #     return self._board.get_general_position(color) in opp_destinations
 
     def change_whose_turn(self):
-        self._whose_turn = bu.opponent_of[self._whose_turn]
+        self._whose_turn = opponent_of(self._whose_turn)
 
     @staticmethod
     def is_valid_move(proposed_move: Dict, avail_moves: List[Dict]):
@@ -74,7 +70,7 @@ class Game:
         self._game_state = game_state
 
     def set_winner(self, color: int):
-        if color == gbp.PieceColor.kRed:
+        if color == PieceColor.kRed:
             self.set_game_state(GameState.RED_WON)
         else:
             self.set_game_state(GameState.BLACK_WON)
@@ -88,7 +84,7 @@ class Game:
             game_state=self._game_state,
             game_board=self._board,
             whose_turn=self._whose_turn,
-            is_in_check=gbp.IsInCheck(self._whose_turn),
+            is_in_check=self._board.IsInCheck(self._whose_turn),
             # is_in_check=self.is_in_check(self._whose_turn),
             move_count=self._move_count,
             prev_move=prev_move
@@ -99,7 +95,7 @@ class Game:
             self.send_game_info_to_status_reporter()
             avail_moves = self._board.CalcFinalMovesOf(self._whose_turn)
             if not avail_moves:
-                self.set_winner(bu.opponent_of[self._whose_turn])
+                self.set_winner(opponent_of(self._whose_turn))
                 break
             self.player_turn(avail_moves=avail_moves)
             self.change_whose_turn()

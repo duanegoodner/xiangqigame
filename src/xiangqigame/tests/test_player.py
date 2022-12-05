@@ -1,9 +1,8 @@
 from unittest import mock
-from xiangqigame.board_components import BoardSpace
-from xiangqigame.enums import PieceColor
+import xiangqigame.move_selectors as ms
+from cpp_modules.game_board_py import BoardSpace, PieceColor, Move
 from xiangqigame.players import AIPlayer, HumanPlayer
-from xiangqigame.move import Move
-from xiangqigame.tests.fixtures import starting_game_board
+from xiangqigame_fixtures import starting_game_board
 
 
 class TestHumanPlayer:
@@ -11,16 +10,17 @@ class TestHumanPlayer:
     def test_human_init(
             self,
             starting_game_board):
-        player = HumanPlayer(color=PieceColor.RED)
+        player = HumanPlayer(color=PieceColor.kRed)
 
         with mock.patch("builtins.input", return_value="a7, a6"):
             proposed_move = player.propose_move(
                 game_board=starting_game_board,
                 cur_moves=
-                starting_game_board.calc_final_moves_of(PieceColor.RED))
-        assert proposed_move == Move(
-            start=BoardSpace(rank=6, file=0),
-            end=BoardSpace(rank=5, file=0))
+                starting_game_board.CalcFinalMovesOf(PieceColor.kRed))
+        assert proposed_move.start.rank == 6
+        assert proposed_move.start.file == 0
+        assert proposed_move.end.rank == 5
+        assert proposed_move.end.file == 0
 
 
 class TestAIPlayer:
@@ -28,11 +28,12 @@ class TestAIPlayer:
     def test_ai_game(
             self,
             starting_game_board):
-        player = AIPlayer(color=PieceColor.RED)
+        player = AIPlayer(
+            color=PieceColor.kRed,
+            move_selector=ms.RandomMoveSelector())
         move = player.propose_move(
             game_board=starting_game_board,
-            cur_moves=
-            starting_game_board.calc_final_moves_of(
-                PieceColor.RED))
+            cur_moves=starting_game_board.CalcFinalMovesOf(
+                PieceColor.kRed))
 
         print(move)

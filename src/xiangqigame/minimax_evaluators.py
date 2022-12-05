@@ -1,26 +1,24 @@
 import abc
 import numpy as np
-from typing import NamedTuple, Tuple, Dict, List
+from cpp_modules.game_board_py import BoardSpace, GameBoard, Move, opponent_of, PieceColor, PieceType
+from typing import NamedTuple, List
 import xiangqigame.piece_points as pts
-from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
-# from xiangqigame.game_board_new import GameBoard
-import cpp_modules.game_board_py.GameBoardPy as gbp
 
 
 class BestMoves(NamedTuple):
     best_eval: int
-    best_moves: List[Dict]
+    best_moves: List[Move]
 
 
 class RatedMove(NamedTuple):
-    move: Dict
+    move: Move
     rating: int
 
 
 class MinimaxEvaluator(abc.ABC):
 
     @staticmethod
-    def evaluate_winner(cur_player: int, initiating_player: int):
+    def evaluate_winner(cur_player: PieceColor, initiating_player: PieceColor):
         if cur_player == initiating_player:
             return BestMoves(best_eval=-np.inf, best_moves=[])
         else:
@@ -29,25 +27,25 @@ class MinimaxEvaluator(abc.ABC):
     @abc.abstractmethod
     def evaluate_leaf(
             self,
-            game_board: gbp.GameBoard,
-            cur_player: int,
-            cur_player_moves: List[Dict],
-            initiating_player: int) -> BestMoves:
+            game_board: GameBoard,
+            cur_player: PieceColor,
+            cur_player_moves: List[Move],
+            initiating_player: PieceColor) -> BestMoves:
         pass
 
     @abc.abstractmethod
     def rate_move(
             self,
-            move: Dict,
-            game_board: gbp.GameBoard,
-            cur_player: int) -> RatedMove:
+            move: Move,
+            game_board: GameBoard,
+            cur_player: PieceColor) -> RatedMove:
         pass
 
     def generate_ranked_move_list(
             self,
-            game_board: gbp.GameBoard,
-            cur_player: int,
-            cur_player_moves: List[Dict]):
+            game_board: GameBoard,
+            cur_player: PieceColor,
+            cur_player_moves: List[Move]):
         move_list = [
             self.rate_move(
                 move=move, game_board=game_board, cur_player=cur_player) for
@@ -60,12 +58,12 @@ class MoveCounts(MinimaxEvaluator):
 
     def evaluate_leaf(
             self,
-            game_board: gbp.GameBoard,
-            cur_player: int,
-            cur_player_moves: List[Dict],
-            initiating_player: int) -> BestMoves:
+            game_board: GameBoard,
+            cur_player: PieceColor,
+            cur_player_moves: List[Move],
+            initiating_player: PieceColor) -> BestMoves:
         updated_opponent_moves = game_board.CalcFinalMovesOf(
-            color=bu.opponent_of[cur_player])
+            color=opponent_of(cur_player))
         if cur_player == initiating_player:
             return BestMoves(
                 best_eval=len(cur_player_moves) - len(updated_opponent_moves),
@@ -77,10 +75,10 @@ class MoveCounts(MinimaxEvaluator):
 
     def rate_move(
             self,
-            move: Dict,
-            game_board: gbp.GameBoard,
-            cur_player: int):
-        if game_board.GetColor(move["end"]) == bu.opponent_of[cur_player]:
+            move: Move,
+            game_board: GameBoard,
+            cur_player: PieceColor):
+        if game_board.GetColor(move.end) == opponent_of(cur_player):
             return RatedMove(move=move, rating=1)
         else:
             return RatedMove(move=move, rating=0)
@@ -100,14 +98,14 @@ class PiecePoints(MinimaxEvaluator):
 
     def get_value_of_piece_at_position(
             self,
-            color: int,
-            piece_type: int,
-            space: Tuple[int, int]):
+            color: PieceColor,
+            piece_type: PieceType,
+            space: BoardSpace):
         return (self._base_pts.vals[piece_type] + self._position_multiplier *
                 self._position_pts.vals[color][piece_type][
-                    space[0], space[1]])
+                    space.rank, space.file])
 
-    def get_player_total(self, color: int, game_board: gbp.GameBoard):
+    def get_player_total(self, color: PieceColor, game_board: GameBoard):
         pre_attack_total = 0
         for space in game_board.GetAllSpacesOccupiedBy(color):
             piece_type = game_board.GetType(space)
@@ -117,12 +115,12 @@ class PiecePoints(MinimaxEvaluator):
 
     def evaluate_leaf(
             self,
-            game_board: gbp.GameBoard,
-            cur_player: int,
-            cur_player_moves: List[Dict],
-            initiating_player: int) -> BestMoves:
+            game_board: GameBoard,
+            cur_player: PieceColor,
+            cur_player_moves: List[Move],
+            initiating_player: PieceColor) -> BestMoves:
         cur_player_pts = self.get_player_total(cur_player, game_board)
-        opponent_pts = self.get_player_total(bu.opponent_of[cur_player],
+        opponent_pts = self.get_player_total(opponent_of(cur_player),
                                              game_board)
 
         if cur_player == initiating_player:
@@ -136,26 +134,26 @@ class PiecePoints(MinimaxEvaluator):
 
     def rate_move(
             self,
-            move: Dict,
-            game_board: gbp.GameBoard,
+            move: Move,
+            game_board: GameBoard,
             cur_player: int) -> RatedMove:
 
-        piece_type = game_board.get_type(move["start"])
+        piece_type = game_board.GetType(move.start)
         cur_player_position_array = self._position_pts.vals[cur_player][
             piece_type]
         position_value_delta = self._position_multiplier * (
-                cur_player_position_array[move["end"][0], move["end"][1]] -
-                cur_player_position_array[move["start"][0], move["start"][1]]
+                cur_player_position_array[move.end.rank, move.end.file] -
+                cur_player_position_array[move.start.rank, move.start.file]
         )
 
-        if game_board.GetColor(move["end"]) == bu.opponent_of[cur_player]:
-            captured_piece_type = game_board.GetType(move["end"])
+        if game_board.GetColor(move.end) == opponent_of(cur_player):
+            captured_piece_type = game_board.GetType(move.end)
             opponent_position_array = self._position_pts.vals[
-                bu.opponent_of[cur_player]][captured_piece_type]
+                opponent_of(cur_player)][captured_piece_type]
             capture_val = (
                     self._base_pts.vals[captured_piece_type] +
                     self._position_multiplier *
-                    opponent_position_array[move["end"][0], move["end"][1]])
+                    opponent_position_array[move.end.rank, move.end.file])
         else:
             capture_val = 0
 

@@ -7,7 +7,7 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": false
         },
         {
             "name": "Docker: Python - General",
@@ -21,7 +21,8 @@
                     }
                 ],
                 "projectType": "general"
-            }
+            },
+            "justMyCode": false
         }
     ]
 }

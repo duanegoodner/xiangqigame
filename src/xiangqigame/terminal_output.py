@@ -5,14 +5,10 @@ from dataclasses import dataclass
 from typing import Dict
 
 import xiangqigame.move_translator as mt
-from xiangqigame.board_utilities_new import BOARD_UTILITIES as bu
+from cpp_modules.game_board_py import GameBoard, Move, opponent_of, PieceColor, PieceType
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.enums import GameState
-# from xiangqigame.game_board_new import GameBoard
-# from xiangqigame.piece_definitions import PColor, PType
 from xiangqigame.piece_definitions import PIECE_DECODER as pd
-
-import cpp_modules.game_board_py.GameBoardPy as gbp
 
 
 @dataclass
@@ -31,31 +27,31 @@ class InputRetrievalMessages:
 class TerminalStatusReporter(GameStatusReporter):
 
     _disp_format = {
-        gbp.PieceColor.kRed: cr.Fore.RED + cr.Back.WHITE,
-        gbp.PieceColor.kBlk: cr.Fore.BLACK + cr.Back.WHITE,
-        gbp.PieceColor.kNul: cr.Fore.RESET + cr.Back.RESET
+        PieceColor.kRed: cr.Fore.RED + cr.Back.WHITE,
+        PieceColor.kBlk: cr.Fore.BLACK + cr.Back.WHITE,
+        PieceColor.kNul: cr.Fore.RESET + cr.Back.RESET
     }
 
     _display_team_name = {
-        gbp.PieceColor.kRed: "Red",
-        gbp.PieceColor.kBlk: "Black"
+        PieceColor.kRed: "Red",
+        PieceColor.kBlk: "Black"
     }
 
     _color_to_code = {
-        gbp.PieceColor.kRed: "r",
-        gbp.PieceColor.kBlk: "b",
-        gbp.PieceColor.kNul: "-"
+        PieceColor.kRed: "r",
+        PieceColor.kBlk: "b",
+        PieceColor.kNul: "-"
     }
 
     _type_to_code = {
-        gbp.PieceType.kCha: "R",
-        gbp.PieceType.kHor: "H",
-        gbp.PieceType.kEle: "E",
-        gbp.PieceType.kAdv: "A",
-        gbp.PieceType.kGen: "G",
-        gbp.PieceType.kCan: "C",
-        gbp.PieceType.kSol: "S",
-        gbp.PieceType.kNnn: "-"
+        PieceType.kCha: "R",
+        PieceType.kHor: "H",
+        PieceType.kEle: "E",
+        PieceType.kAdv: "A",
+        PieceType.kGen: "G",
+        PieceType.kCan: "C",
+        PieceType.kSol: "S",
+        PieceType.kNnn: "-"
     }
 
     @staticmethod
@@ -70,7 +66,7 @@ class TerminalStatusReporter(GameStatusReporter):
             f"{cr.Style.RESET_ALL}"
         )
 
-    def format_board_output(self, board: gbp.GameBoard):
+    def format_board_output(self, board: GameBoard):
         file_labels = [
             f" {chr(char_num)}  " for char_num in range(ord("a"), ord("j"))
         ]
@@ -78,7 +74,7 @@ class TerminalStatusReporter(GameStatusReporter):
         file_labels.insert(len(file_labels), '\n')
 
         board_list = [
-            [f" {self.encode_piece(pd.get_piece_info(board.map()[row, col]))} "
+            [f" {self.encode_piece(pd.get_piece_info(board.map()[row][col]))} "
              for col in range(len(board.map()[0]))]
             for row in range(len(board.map()))
         ]
@@ -89,7 +85,7 @@ class TerminalStatusReporter(GameStatusReporter):
 
         return str('\n\n'.join([str(rank) for rank in board_list]))
 
-    def display_prev_move(self, color: int, prev_move: Dict = None):
+    def display_prev_move(self, color: PieceColor, prev_move: Move = None):
         if prev_move:
             print(f"Most recent move:\n"
                   f"{mt.convert_move_to_input_str(prev_move)} "
@@ -98,14 +94,14 @@ class TerminalStatusReporter(GameStatusReporter):
             print("Most recent move:\n"
                   "NA... No moves executed yet.\n")
 
-    def display_whose_turn(self, color: int):
+    def display_whose_turn(self, color: PieceColor):
         print(f"Whose turn:\n{self._display_team_name[color]}\n")
 
-    def display_if_is_in_check(self, color: int, is_in_check: bool):
+    def display_if_is_in_check(self, color: PieceColor, is_in_check: bool):
         if is_in_check:
             print(f"{self._display_team_name[color]} is in check.")
 
-    def display_final_move(self, color: int, final_move: Dict):
+    def display_final_move(self, color: PieceColor, final_move: Move):
         print(f"Final move:\n"
               f"{mt.convert_move_to_input_str(final_move)} "
               f"({self._display_team_name[color]})\n")
@@ -119,24 +115,24 @@ class TerminalStatusReporter(GameStatusReporter):
 
     def report_game_info(
             self, game_state: GameState,
-            game_board: gbp.GameBoard,
-            whose_turn: int,
+            game_board: GameBoard,
+            whose_turn: PieceColor,
             is_in_check: bool,
             move_count: int,
-            prev_move: Dict = None):
+            prev_move: Move = None):
         self.clear_screen()
         print(f"{self.format_board_output(game_board)}\n")
         print(f"Move count: {move_count}\n")
 
         if game_state == GameState.UNFINISHED:
             self.display_prev_move(
-                color=bu.opponent_of[whose_turn],
+                color=opponent_of(whose_turn),
                 prev_move=prev_move)
             self.display_whose_turn(whose_turn)
             self.display_if_is_in_check(
                 color=whose_turn, is_in_check=is_in_check)
 
         else:
-            self.display_final_move(color=bu.opponent_of[whose_turn],
+            self.display_final_move(color=opponent_of(whose_turn),
                                     final_move=prev_move)
             self.display_winner(game_state)

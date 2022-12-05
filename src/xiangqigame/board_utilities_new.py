@@ -1,7 +1,6 @@
 import math
 from typing import List, Union, Tuple
 from xiangqigame.board_layout import BoardLayout
-# from xiangqigame.piece_definitions import PColor
 import cpp_modules.game_board_py.GameBoardPy as gbp
 
 
