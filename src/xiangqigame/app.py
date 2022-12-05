@@ -22,9 +22,9 @@ def run():
                                 position_multiplier=1)
 
     red_move_selector = ms.MinimaxMoveSelector(
-        evaluator=pts_evaluator, search_depth=2)
+        evaluator=pts_evaluator, search_depth=4)
     black_move_selector = ms.MinimaxMoveSelector(
-        evaluator=pts_evaluator, search_depth=3)
+        evaluator=pts_evaluator, search_depth=5)
 
     my_game = Game(
         # red_player=HumanPlayer(color=PColor.RED),

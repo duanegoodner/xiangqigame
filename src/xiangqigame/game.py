@@ -49,7 +49,13 @@ class Game:
         while not valid_move:
             proposed_move = self._players[self._whose_turn].propose_move(
                 self._board, cur_moves=avail_moves)
-            if proposed_move in avail_moves:
+            # TODO move this comparison to a move_calculator.cpp function
+            if any([(
+                    proposed_move.start.rank == move.start.rank and
+                    proposed_move.start.file == move.start.file and
+                    proposed_move.end.rank == move.end.rank and
+                    proposed_move.end.file == move.end.file
+            ) for move in avail_moves]):
                 valid_move = proposed_move
             else:
                 self._players[self._whose_turn].illegal_move_notice_response(
@@ -63,7 +69,7 @@ class Game:
             valid_move = self.get_valid_move(avail_moves=avail_moves)
         except EOFError:
             handle_interactive_eof()
-        self._board.execute_move(valid_move)
+        self._board.ExecuteMove(valid_move)
         self._move_log.append(valid_move)
 
     def set_game_state(self, game_state: GameState):
