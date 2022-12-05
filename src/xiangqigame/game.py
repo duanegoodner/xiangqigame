@@ -1,6 +1,6 @@
-from typing import Dict, List
+from typing import List
 import xiangqigame.terminal_output as msg
-from cpp_modules.game_board_py import GameBoard, opponent_of, PieceColor
+from cpp_modules.game_board_py import GameBoard, Move, opponent_of, PieceColor
 from xiangqigame.enums import GameState
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.players import Player
@@ -11,11 +11,10 @@ class Game:
 
     def __init__(
             self,
-            # game_config: Dict,
             red_player: Player,
             black_player: Player,
             status_reporter: GameStatusReporter = msg.TerminalStatusReporter(),
-            move_log: List[Dict] = None):
+            move_log: List[Move] = None):
         self._game_state = GameState.UNFINISHED
         self._whose_turn = PieceColor.kRed
         self._board = GameBoard()
@@ -25,26 +24,19 @@ class Game:
         if move_log is None:
             move_log = []
         self._move_log = move_log
-        # self._winner = None
 
     @property
     def _move_count(self):
         return len(self._move_log)
 
-    # def is_in_check(self, color: int):
-    #     opp_destinations = {
-    #         move["end"] for move in self._board.CalcFinalMovesOf(
-    #             bu.opponent_of[color])}
-    #     return self._board.get_general_position(color) in opp_destinations
-
     def change_whose_turn(self):
         self._whose_turn = opponent_of(self._whose_turn)
 
     @staticmethod
-    def is_valid_move(proposed_move: Dict, avail_moves: List[Dict]):
+    def is_valid_move(proposed_move: Move, avail_moves: List[Move]):
         return proposed_move in avail_moves
 
-    def get_valid_move(self, avail_moves: List[Dict]):
+    def get_valid_move(self, avail_moves: List[Move]):
         valid_move = None
         while not valid_move:
             proposed_move = self._players[self._whose_turn].propose_move(
@@ -64,7 +56,7 @@ class Game:
                     cur_moves=avail_moves)
         return valid_move
 
-    def player_turn(self, avail_moves: List[Dict]):
+    def player_turn(self, avail_moves: List[Move]):
         try:
             valid_move = self.get_valid_move(avail_moves=avail_moves)
         except EOFError:
@@ -91,7 +83,6 @@ class Game:
             game_board=self._board,
             whose_turn=self._whose_turn,
             is_in_check=self._board.IsInCheck(self._whose_turn),
-            # is_in_check=self.is_in_check(self._whose_turn),
             move_count=self._move_count,
             prev_move=prev_move
         )

@@ -10,8 +10,6 @@ import unittest
 
 
 class GameResultTests(unittest.TestCase):
-    # game_config = json.loads(
-    #     pkgutil.get_data('xiangqigame.data', 'game_start.json'))
 
     def test_a(self):
         # moves_a = convert_alg_move_list(ag.game_a)

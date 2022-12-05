@@ -22,9 +22,6 @@ setup(
         ]
     },
     zip_safe=False,
-    ext_modules=cythonize("./src/xiangqigame/cython_modules/*.pyx"),
     cmake_install_dir="./src/cpp_modules/game_board_py",
     cmake_source_dir="./src/cpp_modules",
-    
-    
 )
