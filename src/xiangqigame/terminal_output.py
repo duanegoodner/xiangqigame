@@ -8,7 +8,7 @@ import xiangqigame.move_translator as mt
 from cpp_modules.game_board_py import GameBoard, Move, opponent_of, PieceColor, PieceType
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.enums import GameState
-from xiangqigame.piece_definitions import PIECE_DECODER as pd
+from xiangqigame.piece_info_extractor import PIECE_READER
 
 
 @dataclass
@@ -74,7 +74,7 @@ class TerminalStatusReporter(GameStatusReporter):
         file_labels.insert(len(file_labels), '\n')
 
         board_list = [
-            [f" {self.encode_piece(pd.get_piece_info(board.map()[row][col]))} "
+            [f" {self.encode_piece(PIECE_READER.get_piece_info(board.map()[row][col]))} "
              for col in range(len(board.map()[0]))]
             for row in range(len(board.map()))
         ]

@@ -90,7 +90,6 @@ class PiecePoints(MinimaxEvaluator):
                  base_pts: pts.BasePoints,
                  position_pts: pts.PositionPts,
                  position_multiplier: int = 1,
-
                  ):
         self._base_pts = base_pts
         self._position_pts = position_pts
@@ -158,3 +157,9 @@ class PiecePoints(MinimaxEvaluator):
             capture_val = 0
 
         return RatedMove(move=move, rating=position_value_delta + capture_val)
+
+
+DEFAULT_MINIMAX_EVALUATOR = PiecePoints(
+    base_pts=pts.DEFAULT_BASE_POINTS,
+    position_pts=pts.DEFAULT_POSITION_POINTS,
+    position_multiplier=1)

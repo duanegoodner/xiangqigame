@@ -13,7 +13,6 @@ base_pts_icga_2004 = {
     PieceType.kSol: 30
 }
 
-
 class BasePoints:
 
     def __init__(self, piece_vals: Dict[int, int]):
@@ -113,3 +112,10 @@ position_points_icga_2004 = {
     PieceType.kCan: cannon_position_icga_2004,
     PieceType.kSol: soldier_position_icga_2004
 }
+
+
+DEFAULT_BASE_POINTS = BasePoints(piece_vals=base_pts_icga_2004)
+DEFAULT_POSITION_POINTS = PositionPts(
+    pts_arrays_black=position_points_icga_2004)
+
+

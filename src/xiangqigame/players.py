@@ -1,17 +1,15 @@
 import numpy as np
 import xiangqigame.move_translator as mt
-from typing import List, Tuple, Dict
+from typing import List, Tuple
 from cpp_modules.game_board_py import GameBoard, PieceColor, Move
 from xiangqigame.game_interfaces import Player
 import xiangqigame.terminal_output as msg
 from xiangqigame.move_selectors import MoveSelector
 
-# import cpp_modules.game_board_py.GameBoardPy as gbp
-
 
 class HumanPlayer(Player):
 
-    def __init__(self, color: PieceColor):
+    def __init__(self, color: PieceColor, *args):
         super().__init__(color)
         self._input_req = msg.InputRetrievalMessages()
 

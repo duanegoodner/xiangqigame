@@ -1,15 +1,5 @@
 from skbuild import setup
 from setuptools import find_packages
-from Cython.Build import cythonize
-
-
-import sys
-
-# Available at setup time due to pyproject.toml
-# from pybind11 import get_cmake_dir
-# from pybind11.setup_helpers import Pybind11Extension, build_ext
-
-
 
 setup(
     packages=find_packages(where="src"),
