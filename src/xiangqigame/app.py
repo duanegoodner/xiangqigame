@@ -8,8 +8,8 @@ from xiangqigame.handlers.signals import set_signal_handlers
 def run(*args):
     set_signal_handlers()
     colorama.init()
-    command_args = XiangqiGameCommandLine().get_args(*args)
-    players = RedAndBlackPlayersBuilder(command_args=command_args).build()
+    xiangqi_command = XiangqiGameCommandLine().get_args(*args)
+    players = RedAndBlackPlayersBuilder(xiangqi_command=xiangqi_command).build()
     my_game = Game(players)
     my_game.play()
 
