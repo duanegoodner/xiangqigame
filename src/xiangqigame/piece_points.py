@@ -1,7 +1,7 @@
 from typing import Dict
 
 import numpy as np
-from cpp_modules.game_board_py import PieceColor, PieceType
+from GameBoardPy import PieceColor, PieceType
 
 base_pts_icga_2004 = {
     PieceType.kGen: 6000,

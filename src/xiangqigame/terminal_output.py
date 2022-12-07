@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import Dict
 
 import xiangqigame.move_translator as mt
-from cpp_modules.game_board_py import GameBoard, Move, opponent_of, PieceColor, PieceType
+from GameBoardPy import GameBoard, Move, opponent_of, PieceColor, PieceType
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.enums import GameState
 from xiangqigame.piece_info_extractor import PIECE_READER

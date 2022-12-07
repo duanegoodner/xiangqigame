@@ -1,4 +1,4 @@
-import cpp_modules.game_board_py.GameBoardPy as gbp
+import GameBoardPy as gbp
 
 
 # def test_game_board_init():

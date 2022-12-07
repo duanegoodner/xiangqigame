@@ -5,7 +5,7 @@ import random
 from typing import List
 
 import numpy as np
-from cpp_modules.game_board_py import GameBoard, opponent_of, Move, PieceColor
+from GameBoardPy import GameBoard, opponent_of, Move, PieceColor
 from xiangqigame.minimax_evaluators import BestMoves, MinimaxEvaluator, \
     PiecePoints
 import xiangqigame.piece_points as pts

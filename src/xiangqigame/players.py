@@ -1,7 +1,7 @@
 import numpy as np
 import xiangqigame.move_translator as mt
 from typing import List, Tuple
-from cpp_modules.game_board_py import GameBoard, PieceColor, Move
+from GameBoardPy import GameBoard, PieceColor, Move
 from xiangqigame.game_interfaces import Player
 import xiangqigame.terminal_output as msg
 from xiangqigame.move_selectors import MoveSelector

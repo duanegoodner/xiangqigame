@@ -1,5 +1,6 @@
 import re
-from cpp_modules.game_board_py import BoardSpace, Move
+# from cpp_modules.game_board_py import BoardSpace, Move
+from GameBoardPy import BoardSpace, Move
 from typing import List
 
 

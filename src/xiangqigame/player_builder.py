@@ -1,4 +1,4 @@
-from cpp_modules.game_board_py import PieceColor
+from GameBoardPy import PieceColor
 from xiangqigame.command_input import XiangqiGameCommand, XiangqiGameCommandLine, PlayerInput
 from xiangqigame.move_selectors import MinimaxMoveSelector, RandomMoveSelector
 from xiangqigame.players import AIPlayer, HumanPlayer

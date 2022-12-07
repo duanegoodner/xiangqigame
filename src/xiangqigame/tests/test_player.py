@@ -1,6 +1,6 @@
 from unittest import mock
 import xiangqigame.move_selectors as ms
-from cpp_modules.game_board_py import BoardSpace, PieceColor, Move
+from from GameBoardPy import BoardSpace, PieceColor, Move
 from xiangqigame.players import AIPlayer, HumanPlayer
 from xiangqigame_fixtures import starting_game_board
 

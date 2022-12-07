@@ -1,6 +1,6 @@
 from typing import Dict, List
 import xiangqigame.terminal_output as msg
-from cpp_modules.game_board_py import GameBoard, Move, opponent_of, PieceColor
+from GameBoardPy import GameBoard, Move, opponent_of, PieceColor
 from xiangqigame.enums import GameState
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.players import Player
