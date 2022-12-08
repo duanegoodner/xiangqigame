@@ -1,7 +1,4 @@
-# from skbuild import setup
-from setuptools import setup
-from setuptools import find_packages
-
+from setuptools import setup, find_packages
 from pybind11.setup_helpers import Pybind11Extension, build_ext
 
 extension_modules = [
@@ -15,11 +12,11 @@ extension_modules = [
             ],
         include_dirs=["src/cpp_modules/game_board",
                       "src/cpp_modules/move_calculator"],
-        extra_compile_args=["-Wall", "Wextra", "-O3"]
+        language="c++",
+        cxx_std=17,
+        extra_compile_args=["-Wall", "-Wextra", "-O3"]
         )
 ]
-
-
 
 setup(
     packages=find_packages(where="src"),
@@ -33,6 +30,4 @@ setup(
     },
     zip_safe=False,
     ext_modules=extension_modules
-    # cmake_install_dir="./src/cpp_modules/game_board_py",
-    # cmake_source_dir="./src/cpp_modules",
 )

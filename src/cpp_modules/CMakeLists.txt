@@ -12,6 +12,7 @@ add_compile_options(-Wall -Wextra -O3)
 
 find_package(GTest REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
+
 # add_subdirectory(pybind11)
 
 add_subdirectory(game_board)

@@ -1,11 +1,43 @@
+[project]
+name = "xiangqigame"
+version = "0.1.0"
+description = "Xiangqi (a.k.a Chinese Chess) for human and/or AI players"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {file = "LICENSE.txt"}
+authors = [
+    {email = "dmgoodner@gmail.com"},
+    {name = "Duane Goodner"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: POSIX"
+
+]
+dependencies = [
+    "colorama",
+    "numpy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pybind11>=2.10.0"
+]
+test = [
+    "pytest>=7.1.0",
+    "pytest-fixtures>=0.1.0"
+]
+
+[project.urls]
+repository = "https://github.com/duanegoodner/xiangqigame"
+
 [build-system]
 requires = [
-    "setuptools>=42",
-    "scikit-build>=0.13",
-    "cmake",
-    "ninja",
-    "wheel",
-    "Cython",
+    "setuptools>=63.2.0",
+    "wheel>=0.37.1",
     "pybind11>=2.10.0"
 ]
 build-backend = "setuptools.build_meta"
