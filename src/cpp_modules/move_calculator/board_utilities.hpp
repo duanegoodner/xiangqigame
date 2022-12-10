@@ -4,7 +4,7 @@
 #define _BOARD_UTILITIES_
 
 #include "shared_components.hpp"
-using namespace BoardComponents;
+using namespace board_components;
 
 typedef array<BoardSpace, 9> Castle_t;
 inline Castle_t calc_castle_spaces(const CastleEdges edges) {

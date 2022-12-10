@@ -6,7 +6,7 @@
 
 namespace py = pybind11;
 using namespace py::literals;
-using namespace BoardComponents;
+using namespace board_components;
 
 PYBIND11_MODULE(GameBoardPy, m) {
     py::class_<BoardSpace>(m, "BoardSpace")

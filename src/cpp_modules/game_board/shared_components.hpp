@@ -7,7 +7,7 @@
 
 using namespace std;
 
-namespace BoardComponents {
+namespace board_components {
 
 enum PieceType : int {
     kNnn = 0,
@@ -109,6 +109,6 @@ inline PieceColor opponent_of(PieceColor color) {
     return static_cast<PieceColor>(-1 * color);
 }
 
-}  // namespace BoardComponents
+}  // namespace board_components
 
 #endif  // _SHARED_COMPONENTS_

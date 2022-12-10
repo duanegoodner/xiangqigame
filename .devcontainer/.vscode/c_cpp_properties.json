@@ -4,7 +4,9 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/project/src/cpp_modules/game_board"
+                "${workspaceFolder}/project/src/cpp_modules/game_board",
+                "${workspaceFolder}/project/src/cpp_modules/piece_points",
+                "${workspaceFolder}/project/src/cpp_modules/move_calculator"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

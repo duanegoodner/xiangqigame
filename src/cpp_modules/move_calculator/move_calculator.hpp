@@ -13,7 +13,7 @@
 #include "shared_components.hpp"
 
 using namespace std;
-using namespace BoardComponents;
+using namespace board_components;
 
 
 class MoveCalculator;

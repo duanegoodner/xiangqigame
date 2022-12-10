@@ -20,5 +20,12 @@ target_link_libraries(
     move_calculator
 )
 
+add_executable(piece_points_test piece_points_test.cpp)
+target_link_libraries(
+    piece_points_test LINK_PUBLIC
+    piece_points
+    GTest::GTest
+    GTest::Main)
+
 set(CMAKE_BUILD_TYPE Debug)
 add_compile_options(-Wall -Wextra)

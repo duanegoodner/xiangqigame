@@ -8,7 +8,7 @@
 
 
 using namespace std;
-using namespace BoardComponents;
+using namespace board_components;
 
 
 const BoardMap_t kStartingBoard {{

@@ -1,5 +1,5 @@
 import pytest
-from xiangqigame.board_utilities_new import BoardUtilities as bu
+# from xiangqigame.board_utilities_new import BoardUtilities as bu
 from GameBoardPy import BoardSpace, GameBoard, Move, PieceColor, PieceType
 
 
@@ -25,10 +25,10 @@ def test_get_piece_color(cpp_board):
     assert cpp_board.GetColor(BoardSpace(8, 5)) == PieceColor.kNul
 
 
-def test_forward_direction(cpp_board):
-    assert bu.fwd_unit_vect(PieceColor.kRed) == (-1, 0)
-    assert bu.fwd_unit_vect(PieceColor.kBlk) == (1, 0)
-    assert bu.fwd_unit_vect(PieceColor.kNul) == (0, 0)
+# def test_forward_direction(cpp_board):
+#     assert bu.fwd_unit_vect(PieceColor.kRed) == (-1, 0)
+#     assert bu.fwd_unit_vect(PieceColor.kBlk) == (1, 0)
+#     assert bu.fwd_unit_vect(PieceColor.kNul) == (0, 0)
 
 
 def test_execute_undo_move(cpp_board):
