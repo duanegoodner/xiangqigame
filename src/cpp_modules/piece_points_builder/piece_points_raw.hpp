@@ -11,8 +11,10 @@ typedef int Points_t;
 typedef unordered_map<PieceType, Points_t> TeamBasePoints_t;
 typedef array<array<int, kNumFiles>, kNumRanks> PiecePositionPoints_t;
 typedef unordered_map<PieceType, PiecePositionPoints_t> TeamPositionPoints_t;
+typedef unordered_map<PieceColor, TeamPositionPoints_t> GamePositionPoints_t;
 
 const TeamBasePoints_t kBasePointsICGA2004 = {
+    {PieceType::kNnn, 0},
     {PieceType::kGen, 6000},
     {PieceType::kAdv, 120},
     {PieceType::kEle, 120},
@@ -22,6 +24,7 @@ const TeamBasePoints_t kBasePointsICGA2004 = {
     {PieceType::kSol, 30}
 };
 
+const PiecePositionPoints_t kNullOffsets {};
 const PiecePositionPoints_t kGeneralOffsetsICGA2004 {};
 const PiecePositionPoints_t kAdvisorOffsetsICGA2004 {};
 const PiecePositionPoints_t kElephantOffsetsICGA2004 {};

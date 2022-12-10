@@ -47,6 +47,7 @@
             "args": [
                 "-std=c++17",
                 "-I${workspaceFolder}/project/src/cpp_modules/game_board",
+                "-I${workspaceFolder}/project/src/cpp_modules/piece_points",
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",

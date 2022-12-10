@@ -20,10 +20,10 @@ target_link_libraries(
     move_calculator
 )
 
-add_executable(piece_points_test piece_points_test.cpp)
+add_executable(piece_points_builder_test piece_points_builder_test.cpp)
 target_link_libraries(
-    piece_points_test LINK_PUBLIC
-    piece_points
+    piece_points_builder_test LINK_PUBLIC
+    piece_points_builder
     GTest::GTest
     GTest::Main)
 

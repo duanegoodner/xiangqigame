@@ -25,6 +25,8 @@ enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
 typedef int Piece_t;
 typedef int BoardIdx_t;
 
+const int kNumPieceTypeVals = 8;
+
 const BoardIdx_t kNumRanks = 10;
 const BoardIdx_t kNumFiles = 9;
 

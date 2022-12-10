@@ -6,11 +6,8 @@ using namespace std;
 using namespace board_components;
 using namespace piece_points_raw;
 
-typedef unordered_map<
-    PieceColor, TeamPositionPoints_t>
-    GamePiecePoints_t;
 
-GamePiecePoints_t buld_game_piece_points();
+
 
 struct PiecePoints
 {
