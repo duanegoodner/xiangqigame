@@ -56,7 +56,7 @@ class MinimaxMoveSelector : public MoveSelector<MinimaxMoveSelector<E>> {
         PieceColor cur_player,
         vector<Move> cur_moves);
     void ResetNodeCounter();
-    vector<Move> GenerateRankedMoveList(
+    vector<RatedMove> GenerateRankedMoveList(
         GameBoard game_board,
         PieceColor cur_player,
         vector<Move> cur_player_moves);

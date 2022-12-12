@@ -31,7 +31,7 @@ void MinimaxMoveSelector<E>::ResetNodeCounter()
 }
 
 template <typename E>
-vector<Move> MinimaxMoveSelector<E>::GenerateRankedMoveList(
+vector<RatedMove> MinimaxMoveSelector<E>::GenerateRankedMoveList(
     GameBoard game_board,
     PieceColor cur_player,
     vector<Move> cur_player_moves)
