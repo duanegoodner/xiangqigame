@@ -1,3 +1,6 @@
+#ifndef _PIECE_POINTS_BUILDER_
+#define _PIECE_POINTS_BUILDER_
+
 #include <unordered_map>
 #include "shared_components.hpp"
 #include "piece_points_raw.hpp"
@@ -31,3 +34,8 @@ class PiecePointsBuilder {
         TeamPositionPoints_t black_position_offsets);
     
 };
+
+const auto DEFAULT_GAME_POINTS = PiecePointsBuilder()
+    .BuildGamePositionPoints(kBasePointsICGA2004, kAllOffsetsICGA2004);
+
+#endif // _PIECE_POINTS_BUILDER_

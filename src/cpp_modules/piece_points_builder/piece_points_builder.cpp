@@ -60,7 +60,7 @@ GamePositionPoints_t PiecePointsBuilder::BuildGamePositionPoints(
         TeamBasePoints_t black_base_points,
         TeamPositionPoints_t black_position_offsets) {
             auto black_position_points = ComputeBlackPositionPoints(
-                kBasePointsICGA2004, kAllOffsetsICGA2004);
+                black_base_points, black_position_offsets);
             return BuildGamePositionPoints(black_position_points);
 
         }

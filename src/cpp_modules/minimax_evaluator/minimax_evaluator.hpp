@@ -1,8 +1,11 @@
+#ifndef _MINIMAX_EVALUATOR_
+#define _MINIMAX_EVALUATOR_
+
 #include <utility>
 #include <vector>
-#include "piece_points.hpp"
+#include "game_board.hpp"
+#include "piece_points_builder.hpp"
 #include "shared_components.hpp"
-
 
 
 using namespace std;
@@ -23,20 +26,20 @@ BestMoves evaluate_winner(
     PieceColor cur_player,
     PieceColor initiating_player);
 
-template <typename D>
+template <typename E>
 class MinimaxEvaluator {
     public:
 
-    template<typename G, typename P, typename V>    
+    template<typename G, typename P, typename PM>    
     BestMoves EvaluateLeaf(
         G &&game_board,
         P &&cur_player,
-        V &&cur_player_moves,
+        PM &&cur_player_moves,
         P &&initiating_player) {
-            static_cast<D*>(this)->ImplementEvaluateLeaf(
+            return static_cast<E*>(this)->ImplementEvaluateLeaf(
                 std::forward<G>(game_board),
                 std::forward<P>(cur_player),
-                std::forward<V>(cur_player_moves),
+                std::forward<PM>(cur_player_moves),
                 std::forward<P>(initiating_player));
         };
 
@@ -45,7 +48,7 @@ class MinimaxEvaluator {
         M &&move,
         G &&game_board,
         P &&cur_player) {
-            static_cast<D*>(this)->ImplementRateMove(
+            return static_cast<E*>(this)->ImplementRateMove(
                 std::forward<M>(move), 
                 std::forward<G>(game_board),
                 std::forward<P>(cur_player));
@@ -57,7 +60,7 @@ class MinimaxEvaluator {
 
 class PiecePointsEvaluator : public MinimaxEvaluator<PiecePointsEvaluator> {
     public:
-    PiecePointsEvaluator(PiecePoints piece_points);
+    PiecePointsEvaluator(GamePositionPoints_t game_position_points);
 
     BestMoves ImplementEvaluateLeaf(
         GameBoard game_board,
@@ -65,7 +68,7 @@ class PiecePointsEvaluator : public MinimaxEvaluator<PiecePointsEvaluator> {
         vector<Move> cur_player_moves,
         PieceColor initiating_player);
     
-    RatedMove ImplementRatedMove(
+    RatedMove ImplementRateMove(
         Move move,
         GameBoard game_board,
         PieceColor cur_player);
@@ -78,8 +81,8 @@ class PiecePointsEvaluator : public MinimaxEvaluator<PiecePointsEvaluator> {
     int GetPlayerTotal(PieceColor color, GameBoard game_board);
 
     private:
-    PiecePoints piece_points_;
-
-
+    GamePositionPoints_t game_position_points_;
 };
+
+#endif // _MINIMAX_EVALUATOR_
 

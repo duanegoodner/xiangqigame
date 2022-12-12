@@ -1,3 +1,6 @@
+#ifndef _PIECE_POINTS_RAW_
+#define _PIECE_POINTS_RAW_
+
 #include <unordered_map>
 #include <vector>
 #include "shared_components.hpp"
@@ -89,6 +92,5 @@ const TeamPositionPoints_t kAllOffsetsICGA2004 = {
 
 }  // namespace piece_points_raw
 
-
-
+#endif  // _PIECE_POINTS_RAW_
 

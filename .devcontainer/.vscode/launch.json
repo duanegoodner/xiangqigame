@@ -27,6 +27,30 @@
             ],
             "preLaunchTask": "C/C++: g++ build active file"
         },
+        {
+            "name": "debug move_selector_test",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/project/src/cpp_modules/build/tests/move_selector_test",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/project/src/cpp_modules/",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description":  "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
 
         {
             "name": "Python: Current File",

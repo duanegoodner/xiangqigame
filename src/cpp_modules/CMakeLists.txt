@@ -18,6 +18,8 @@ find_package(pybind11 CONFIG REQUIRED)
 add_subdirectory(game_board)
 add_subdirectory(move_calculator)
 add_subdirectory(piece_points_builder)
+add_subdirectory(minimax_evaluator)
+add_subdirectory(move_selector)
 add_subdirectory(tests)
 add_subdirectory(game_board_py)
 
