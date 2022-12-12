@@ -36,16 +36,16 @@ target_link_libraries(
     GTest::GTest
     GTest::Main)
 
-# add_executable(move_selector_test move_selector_test.cpp)
-# target_link_libraries(
-#     move_selector_test LINK_PUBLIC
-#     move_selector
-#     game_board
-#     minimax_evaluator
-#     move_calculator
-#     piece_points_builder
-#     GTest::GTest
-#     GTest::Main)
+add_executable(move_selector_test move_selector_test.cpp)
+target_link_libraries(
+    move_selector_test LINK_PUBLIC
+    move_selector
+    game_board
+    minimax_evaluator
+    move_calculator
+    piece_points_builder
+    GTest::GTest
+    GTest::Main)
 
 
 

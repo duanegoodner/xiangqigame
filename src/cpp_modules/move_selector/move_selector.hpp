@@ -19,8 +19,8 @@ public:
     template<typename G, typename P, typename PM>
     Move SelectMove(
         G &&game_board,
-        P (&&cur_player),
-        PM (&&cur_moves)) {
+        P &&cur_player,
+        PM &&cur_moves) {
             return static_cast<S*>(this)->ImplementSelectMove(
                 std::forward<G>(game_board),
                 std::forward<P>(cur_player),

@@ -17,6 +17,7 @@ Move RandomMoveSelector::ImplementSelectMove(
 {
     uniform_int_distribution<int> dist(0, cur_moves.size() - 1);
     return cur_moves[dist(engine)];
+    // return cur_moves[0];
 }
 
 template<typename E>
