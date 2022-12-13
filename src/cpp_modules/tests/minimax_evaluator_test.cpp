@@ -23,6 +23,12 @@ TEST_F(PiecePointsEvaluatorTest, EvaluateMove) {
         PieceColor::kBlk, game_board_);
     auto red_points_total = piece_points_evaluator.GetPlayerTotal(
         PieceColor::kRed, game_board_);
+    
+    auto red_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
+    auto executed_move = game_board_.ExecuteMove(red_moves[0]);
+    
+    auto red_new_points_total = piece_points_evaluator.GetPlayerTotal(
+        PieceColor::kRed, game_board_);
 }
 
 int main(int argc, char **argv) {

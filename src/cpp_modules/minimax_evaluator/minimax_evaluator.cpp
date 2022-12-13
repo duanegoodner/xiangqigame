@@ -29,18 +29,19 @@ int PiecePointsEvaluator::GetValueOfPieceAtPosition(
         return  game_position_points_[color][piece_type][space.rank][space.file];
     }
 
-int PiecePointsEvaluator::GetPlayerTotal(PieceColor color, GameBoard game_board) {
+int PiecePointsEvaluator::GetPlayerTotal(PieceColor color, GameBoard &game_board) {
     int pre_attack_total = 0;
-    for (auto space : game_board.GetAllSpacesOccupiedBy(color)) {
+    auto occ_spaces = game_board.GetAllSpacesOccupiedBy(color);
+    for (auto space : occ_spaces) {
         auto piece_type = game_board.GetType(space);
-        pre_attack_total += GetValueOfPieceAtPosition(
-            color, piece_type, space);
+        auto cur_piece_points = GetValueOfPieceAtPosition(color, piece_type, space);
+        pre_attack_total += cur_piece_points;
     }
     return pre_attack_total;
 }
 
 BestMoves PiecePointsEvaluator::ImplementEvaluateLeaf(
-    GameBoard game_board,
+    GameBoard &game_board,
     PieceColor cur_player,
     vector<Move> cur_player_moves,
     PieceColor initiating_player) {
@@ -62,7 +63,7 @@ BestMoves PiecePointsEvaluator::ImplementEvaluateLeaf(
     }
 
 RatedMove PiecePointsEvaluator::ImplementRateMove(
-    Move move, GameBoard game_board, PieceColor cur_player) {
+    Move move, GameBoard &game_board, PieceColor cur_player) {
         auto piece_type = game_board.GetType(move.start);
         auto cur_player_position_array = game_position_points_[cur_player][piece_type];
         auto position_value_delta = (

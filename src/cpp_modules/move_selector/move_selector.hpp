@@ -35,33 +35,31 @@ class RandomMoveSelector : public MoveSelector<RandomMoveSelector> {
     RandomMoveSelector();   
     
     Move ImplementSelectMove(
-        GameBoard game_board,
+        GameBoard &game_board,
         PieceColor cur_player,
         vector<Move> cur_moves);
 };
 
-template<typename E>
-class MinimaxMoveSelector : public MoveSelector<MinimaxMoveSelector<E>> {
+class MinimaxMoveSelector : public MoveSelector<MinimaxMoveSelector> {
     public:
-    E evaluator_;
+    PiecePointsEvaluator evaluator_;
     int search_depth_;
     int node_counter_;
     mt19937 engine;
 
-    
     MinimaxMoveSelector(
-        E evaluator, int search_depth);
+        PiecePointsEvaluator evaluator, int search_depth);
     Move ImplementSelectMove(
-        GameBoard game_board,
+        GameBoard &game_board,
         PieceColor cur_player,
         vector<Move> cur_moves);
     void ResetNodeCounter();
     vector<RatedMove> GenerateRankedMoveList(
-        GameBoard game_board,
+        GameBoard &game_board,
         PieceColor cur_player,
         vector<Move> cur_player_moves);
     BestMoves MinimaxRec(
-        GameBoard game_board,
+        GameBoard &game_board,
         int search_depth,
         int alpha,
         int beta,

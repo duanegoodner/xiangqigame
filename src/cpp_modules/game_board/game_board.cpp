@@ -28,6 +28,7 @@ void GameBoard::UndoMove(ExecutedMove executed_move) {
 }
 
 vector<BoardSpace> GameBoard::GetAllSpacesOccupiedBy(PieceColor color) {
+    auto all_occ_spaces = move_calculator_.utils_.GetAllSpacesOccupiedBy(color);
     return move_calculator_.utils_.GetAllSpacesOccupiedBy(color);
 }
 

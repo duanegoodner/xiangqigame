@@ -63,14 +63,14 @@ class PiecePointsEvaluator : public MinimaxEvaluator<PiecePointsEvaluator> {
     PiecePointsEvaluator(GamePositionPoints_t game_position_points);
 
     BestMoves ImplementEvaluateLeaf(
-        GameBoard game_board,
+        GameBoard &game_board,
         PieceColor cur_player,
         vector<Move> cur_player_moves,
         PieceColor initiating_player);
     
     RatedMove ImplementRateMove(
         Move move,
-        GameBoard game_board,
+        GameBoard &game_board,
         PieceColor cur_player);
     
     int GetValueOfPieceAtPosition(
@@ -78,7 +78,7 @@ class PiecePointsEvaluator : public MinimaxEvaluator<PiecePointsEvaluator> {
         PieceType piece_type,
         BoardSpace space);
     
-    int GetPlayerTotal(PieceColor color, GameBoard game_board);
+    int GetPlayerTotal(PieceColor color, GameBoard &game_board);
 
     private:
     GamePositionPoints_t game_position_points_;

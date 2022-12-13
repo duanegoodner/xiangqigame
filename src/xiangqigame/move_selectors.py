@@ -110,11 +110,11 @@ class MinimaxMoveSelector(MoveSelector):
                     initiating_player=initiating_player,
                 ).best_eval
                 if cur_eval == min_eval:
-                    best_moves.append(rated_move)
+                    best_moves.append(rated_move.move)
                 elif cur_eval < min_eval:
                     min_eval = cur_eval
                     best_moves.clear()
-                    best_moves.append(rated_move)
+                    best_moves.append(rated_move.move)
                 game_board.UndoMove(executed_move)
                 beta = min(beta, cur_eval)
                 if beta <= alpha:
