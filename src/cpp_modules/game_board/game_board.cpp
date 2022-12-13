@@ -43,12 +43,12 @@ bool GameBoard::IsInCheck(PieceColor color) {
         gen_position, opponent_moves);
 }
 
-vector<Move> GameBoard::CalcFinalMovesOf(PieceColor color) {
+MoveCollection GameBoard::CalcFinalMovesOf(PieceColor color) {
     auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color);
-    vector<Move> validated_moves;
-    validated_moves.reserve(un_tested_moves.size());
+    MoveCollection validated_moves;
+    validated_moves.moves.reserve(un_tested_moves.moves.size());
 
-    for (auto move : un_tested_moves) {
+    for (auto move : un_tested_moves.moves) {
         auto executed_move = ExecuteMove(move);
         auto resulting_opponent_moves =
             move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color));
@@ -57,7 +57,7 @@ vector<Move> GameBoard::CalcFinalMovesOf(PieceColor color) {
 
         if (not move_calculator_.utils_.IsSpaceAnyDestinationOfMoves(
                 resulting_gen_position, resulting_opponent_moves)) {
-            validated_moves.emplace_back(move);
+            validated_moves.Append(move);
         }
 
         UndoMove(executed_move);

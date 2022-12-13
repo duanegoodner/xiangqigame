@@ -4,7 +4,7 @@
 
 using namespace std;
 
-typedef vector<Move> (PieceMoves::*MethodPtr_t)(PieceColor, BoardSpace);
+typedef MoveCollection (PieceMoves::*MethodPtr_t)(PieceColor, BoardSpace);
 
 MoveCalculator::MoveCalculator(const BoardMap_t& board_map)
     : board_map_{board_map},
@@ -23,7 +23,7 @@ MoveCalculator::MoveCalculator(const BoardMap_t& board_map)
 // https://stackoverflow.com/questions/6265851
 // https://stackoverflow.com/questions/55520876/
 // https://en.cppreference.com/w/cpp/utility/any/any_cast
-vector<Move> MoveCalculator::CalcMovesFrom(BoardSpace space) {
+MoveCollection MoveCalculator::CalcMovesFrom(BoardSpace space) {
     auto piece_type = utils_.GetType(space);
     auto color = utils_.GetColor(space);
     auto move_func = piece_dispatch_.find(piece_type)->second;
@@ -31,13 +31,13 @@ vector<Move> MoveCalculator::CalcMovesFrom(BoardSpace space) {
     return (piece_moves_.*move_func_ptr)(color, space);
 }
 
-vector<Move> MoveCalculator::CalcAllMovesNoCheckTest(PieceColor color) {
-    vector<Move> untested_moves;
-    untested_moves.reserve(120);
+MoveCollection MoveCalculator::CalcAllMovesNoCheckTest(PieceColor color) {
+    MoveCollection untested_moves;
+    untested_moves.moves.reserve(120);
     for (auto space : utils_.GetAllSpacesOccupiedBy(color)) {
         auto moves_from_space = CalcMovesFrom(space);
-        untested_moves.insert(untested_moves.end(), moves_from_space.begin(),
-                              moves_from_space.end());
+        untested_moves.moves.insert(untested_moves.moves.end(), moves_from_space.moves.begin(),
+                              moves_from_space.moves.end());
     }
     return untested_moves;
 }
@@ -45,21 +45,21 @@ vector<Move> MoveCalculator::CalcAllMovesNoCheckTest(PieceColor color) {
 
 PieceMoves::PieceMoves(MoveCalculator & p) : parent_{p} {};
 
-vector<Move> PieceMoves::SoldierMoves(PieceColor color, BoardSpace space) {
-    vector<Move> soldier_moves;
-    soldier_moves.reserve(3);
+MoveCollection PieceMoves::SoldierMoves(PieceColor color, BoardSpace space) {
+    MoveCollection soldier_moves;
+    soldier_moves.moves.reserve(3);
 
     auto fwd_space = space + parent_.utils_.FwdDirection(color);
 
     if (parent_.utils_.ExistsAndPassesColorTest(fwd_space, color)) {
-        soldier_moves.emplace_back(Move{space, fwd_space});
+        soldier_moves.Append(Move{space, fwd_space});
     }
 
     if (not space.IsInHomelandOf(color)) {
         for (auto side_vector : kSideDirections) {
             auto side_space = space + side_vector;
             if (parent_.utils_.ExistsAndPassesColorTest(side_space, color)) {
-                soldier_moves.emplace_back(Move{space, side_space});
+                soldier_moves.Append(Move{space, side_space});
             }
         }
     }
@@ -67,14 +67,14 @@ vector<Move> PieceMoves::SoldierMoves(PieceColor color, BoardSpace space) {
     return soldier_moves;
 }
 
-vector<Move> PieceMoves::CannonMoves(PieceColor color, BoardSpace space) {
-    vector<Move> cannon_moves;
-    cannon_moves.reserve(17);
+MoveCollection PieceMoves::CannonMoves(PieceColor color, BoardSpace space) {
+    MoveCollection cannon_moves;
+    cannon_moves.moves.reserve(17);
     for (auto direction : kAllOrthogonalDirections) {
         auto search_result = parent_.utils_.SearchSpaces(space, direction);
 
         for (auto empty_space : search_result.empty_spaces) {
-            cannon_moves.emplace_back(Move{space, empty_space});
+            cannon_moves.Append(Move{space, empty_space});
         }
 
         if (search_result.first_occupied_space.size()) {
@@ -84,7 +84,7 @@ vector<Move> PieceMoves::CannonMoves(PieceColor color, BoardSpace space) {
             if (second_search.first_occupied_space.size() &&
                 parent_.utils_.GetColor(second_search.first_occupied_space[0]) ==
                     opponent_of(color)) {
-                cannon_moves.emplace_back(
+                cannon_moves.Append(
                     Move{space, second_search.first_occupied_space[0]});
             }
         }
@@ -93,27 +93,27 @@ vector<Move> PieceMoves::CannonMoves(PieceColor color, BoardSpace space) {
     return cannon_moves;
 }
 
-vector<Move> PieceMoves::ChariotMoves(PieceColor color, BoardSpace space) {
-    vector<Move> chariot_moves;
-    chariot_moves.reserve(17);
+MoveCollection PieceMoves::ChariotMoves(PieceColor color, BoardSpace space) {
+    MoveCollection chariot_moves;
+    chariot_moves.moves.reserve(17);
     for (auto direction : kAllOrthogonalDirections) {
         auto search_result = parent_.utils_.SearchSpaces(space, direction);
         for (auto empty_space : search_result.empty_spaces) {
-            chariot_moves.emplace_back(Move{space, empty_space});
+            chariot_moves.Append(Move{space, empty_space});
         }
         if (search_result.first_occupied_space.size() &&
             parent_.utils_.GetColor(search_result.first_occupied_space[0]) ==
                 opponent_of(color)) {
-            chariot_moves.emplace_back(
+            chariot_moves.Append(
                 Move{space, search_result.first_occupied_space[0]});
         }
     }
     return chariot_moves;
 }
 
-vector<Move> PieceMoves::HorseMoves(PieceColor color, BoardSpace space) {
-    vector<Move> horse_moves;
-    horse_moves.reserve(8);
+MoveCollection PieceMoves::HorseMoves(PieceColor color, BoardSpace space) {
+    MoveCollection horse_moves;
+    horse_moves.moves.reserve(8);
 
     for (auto direction : kHorsePaths) {
         auto first_step = space + direction.first;
@@ -121,7 +121,7 @@ vector<Move> PieceMoves::HorseMoves(PieceColor color, BoardSpace space) {
             for (auto direction : direction.second) {
                 auto second_step = first_step + direction;
                 if (parent_.utils_.ExistsAndPassesColorTest(second_step, color)) {
-                    horse_moves.emplace_back(Move{space, second_step});
+                    horse_moves.Append(Move{space, second_step});
                 }
             }
         }
@@ -129,40 +129,39 @@ vector<Move> PieceMoves::HorseMoves(PieceColor color, BoardSpace space) {
     return horse_moves;
 }
 
-vector<Move> PieceMoves::ElephantMoves(PieceColor color,
-                                           BoardSpace space) {
-    vector<Move> elephant_moves;
-    elephant_moves.reserve(4);
+MoveCollection PieceMoves::ElephantMoves(PieceColor color, BoardSpace space) {
+    MoveCollection elephant_moves;
+    elephant_moves.moves.reserve(4);
     for (auto direction : kAllDiagonalDirections) {
         auto first_step = space + direction;
         if (first_step.IsOnBoard() && (not parent_.utils_.IsOccupied(first_step)) &&
             (first_step.IsInHomelandOf(color))) {
             auto second_step = first_step + direction;
             if (parent_.utils_.ExistsAndPassesColorTest(second_step, color)) {
-                elephant_moves.emplace_back(Move{space, second_step});
+                elephant_moves.Append(Move{space, second_step});
             }
         }
     }
     return elephant_moves;
 }
 
-vector<Move> PieceMoves::AdvisorMoves(PieceColor color, BoardSpace space) {
-    vector<Move> advisor_moves;
-    advisor_moves.reserve(4);
+MoveCollection PieceMoves::AdvisorMoves(PieceColor color, BoardSpace space) {
+    MoveCollection advisor_moves;
+    advisor_moves.moves.reserve(4);
     for (auto direction : kAllDiagonalDirections) {
         auto destination = space + direction;
         if (destination.IsInCastleOf(color) &&
             (parent_.utils_.GetColor(destination) != color)) {
-            advisor_moves.emplace_back(Move{space, destination});
+            advisor_moves.Append(Move{space, destination});
         }
     }
     return advisor_moves;
 }
 
-vector<Move> PieceMoves::FlyingGeneralMove(PieceColor color,
+MoveCollection PieceMoves::FlyingGeneralMove(PieceColor color,
                                                BoardSpace space) {
-    vector<Move> flying_move;
-    flying_move.reserve(1);
+    MoveCollection flying_move;
+    flying_move.moves.reserve(1);
 
     auto has_flying_move = true;
     auto opponent_color = opponent_of(color);
@@ -180,35 +179,35 @@ vector<Move> PieceMoves::FlyingGeneralMove(PieceColor color,
     }
 
     if (has_flying_move) {
-        flying_move.emplace_back(Move{space, other_gen_position});
+        flying_move.Append(Move{space, other_gen_position});
     }
 
     return flying_move;
 }
 
-vector<Move> PieceMoves::StandardGeneralMoves(PieceColor color,
+MoveCollection PieceMoves::StandardGeneralMoves(PieceColor color,
                                                   BoardSpace space) {
-    vector<Move> standard_general_moves;
-    standard_general_moves.reserve(4);
+    MoveCollection standard_general_moves;
+    standard_general_moves.moves.reserve(4);
     for (auto direction : kAllOrthogonalDirections) {
         auto destination = space + direction;
         if (destination.IsInCastleOf(color) &&
             (parent_.utils_.GetColor(destination) != color)) {
-            standard_general_moves.emplace_back(Move{space, destination});
+            standard_general_moves.Append(Move{space, destination});
         }
     }
     return standard_general_moves;
 }
 
-vector<Move> PieceMoves::GeneralMoves(PieceColor color, BoardSpace space) {
+MoveCollection PieceMoves::GeneralMoves(PieceColor color, BoardSpace space) {
     auto flying_move = FlyingGeneralMove(color, space);
     auto standard_moves = StandardGeneralMoves(color, space);
-    vector<Move> general_moves;
-    general_moves.reserve(flying_move.size() + standard_moves.size());
-    general_moves.insert(general_moves.end(), flying_move.begin(),
-                         flying_move.end());
-    general_moves.insert(general_moves.end(), standard_moves.begin(),
-                         standard_moves.end());
+    MoveCollection general_moves;
+    general_moves.moves.reserve(flying_move.moves.size() + standard_moves.moves.size());
+    general_moves.moves.insert(general_moves.moves.end(), flying_move.moves.begin(),
+                         flying_move.moves.end());
+    general_moves.moves.insert(general_moves.moves.end(), standard_moves.moves.begin(),
+                         standard_moves.moves.end());
 
     return general_moves;
 }

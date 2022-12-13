@@ -34,7 +34,7 @@ class GameBoard {
     ExecutedMove ExecuteMove(Move move);
     void UndoMove(ExecutedMove executed_move);
     vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color);
-    vector<Move> CalcFinalMovesOf(PieceColor color);
+    MoveCollection CalcFinalMovesOf(PieceColor color);
     bool IsInCheck(PieceColor color);
     bool IsOccupied(BoardSpace space);
     PieceColor GetColor(BoardSpace space);

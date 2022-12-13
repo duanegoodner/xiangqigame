@@ -14,7 +14,7 @@ using namespace board_components;
 
 struct BestMoves {
     int best_eval;
-    vector<Move> best_moves;
+    MoveCollection &best_moves;
 };
 
 struct RatedMove {
@@ -65,7 +65,7 @@ class PiecePointsEvaluator : public MinimaxEvaluator<PiecePointsEvaluator> {
     BestMoves ImplementEvaluateLeaf(
         GameBoard &game_board,
         PieceColor cur_player,
-        vector<Move> cur_player_moves,
+        MoveCollection &cur_player_moves,
         PieceColor initiating_player);
     
     RatedMove ImplementRateMove(

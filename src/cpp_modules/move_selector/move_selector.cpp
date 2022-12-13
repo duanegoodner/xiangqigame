@@ -14,11 +14,10 @@ RandomMoveSelector::RandomMoveSelector()
 Move RandomMoveSelector::ImplementSelectMove(
     GameBoard &game_board,
     PieceColor cur_player,
-    vector<Move> cur_moves)
+    MoveCollection &cur_moves)
 {
-    uniform_int_distribution<int> dist(0, cur_moves.size() - 1);
-    return cur_moves[dist(engine)];
-    // return cur_moves[0];
+    uniform_int_distribution<int> dist(0, cur_moves.moves.size() - 1);
+    return cur_moves.moves[dist(engine)];
 }
 
 MinimaxMoveSelector::MinimaxMoveSelector(
@@ -33,10 +32,10 @@ void MinimaxMoveSelector::ResetNodeCounter()
 vector<RatedMove> MinimaxMoveSelector::GenerateRankedMoveList(
     GameBoard &game_board,
     PieceColor cur_player,
-    vector<Move> cur_player_moves)
+    MoveCollection &cur_player_moves)
 {
     vector<RatedMove> rated_moves;
-    for (auto cur_move : cur_player_moves)
+    for (auto cur_move : cur_player_moves.moves)
     {
         auto cur_rated_move = evaluator_.ImplementRateMove(
             cur_move, game_board, cur_player);
@@ -60,7 +59,7 @@ BestMoves MinimaxMoveSelector::MinimaxRec(
 {
     node_counter_ += 1;
     auto cur_moves = game_board.CalcFinalMovesOf(cur_player);
-    if (cur_moves.size() == 0)
+    if (cur_moves.moves.size() == 0)
     {
         return evaluate_winner(cur_player, initiating_player);
     }
@@ -72,7 +71,7 @@ BestMoves MinimaxMoveSelector::MinimaxRec(
     if (cur_player == initiating_player)
     {
         auto max_eval = numeric_limits<int>::min();
-        vector<Move> best_moves;
+        MoveCollection best_moves;
         auto ranked_moves = GenerateRankedMoveList(
             game_board, cur_player, cur_moves);
         for (auto rated_move : ranked_moves)
@@ -88,13 +87,13 @@ BestMoves MinimaxMoveSelector::MinimaxRec(
                                 .best_eval;
             if (cur_eval == max_eval)
             {
-                best_moves.emplace_back(rated_move.move);
+                best_moves.Append(rated_move.move);
             }
             else if (cur_eval > max_eval)
             {
                 max_eval = cur_eval;
-                best_moves.clear();
-                best_moves.emplace_back(rated_move.move);
+                best_moves.moves.clear();
+                best_moves.Append(rated_move.move);
             }
             game_board.UndoMove(executed_move);
             alpha = max(alpha, cur_eval);
@@ -108,7 +107,7 @@ BestMoves MinimaxMoveSelector::MinimaxRec(
     else
     {
         auto min_eval = numeric_limits<int>::max();
-        vector<Move> best_moves;
+        MoveCollection best_moves;
         auto ranked_moves = GenerateRankedMoveList(
             game_board, cur_player, cur_moves);
         for (auto rated_move : ranked_moves)
@@ -124,14 +123,14 @@ BestMoves MinimaxMoveSelector::MinimaxRec(
                                 .best_eval;
             if (cur_eval == min_eval)
             {
-                best_moves.emplace_back(rated_move.move);
+                best_moves.Append(rated_move.move);
             }
             else if (cur_eval < min_eval)
             {
                 {
                     min_eval = cur_eval;
-                    best_moves.clear();
-                    best_moves.emplace_back(rated_move.move);
+                    best_moves.moves.clear();
+                    best_moves.Append(rated_move.move);
                 }
             }
             game_board.UndoMove(executed_move);
@@ -146,7 +145,7 @@ BestMoves MinimaxMoveSelector::MinimaxRec(
 }
 
 Move MinimaxMoveSelector::ImplementSelectMove(
-    GameBoard &game_board, PieceColor cur_player, vector<Move> cur_moves) {
+    GameBoard &game_board, PieceColor cur_player, MoveCollection &cur_moves) {
         ResetNodeCounter();
         auto minimax_result = MinimaxRec(
             game_board,
@@ -156,20 +155,6 @@ Move MinimaxMoveSelector::ImplementSelectMove(
             cur_player,
             cur_player);
         
-        uniform_int_distribution<int> dist(0, minimax_result.best_moves.size() - 1);
-        return minimax_result.best_moves[dist(engine)];
+        uniform_int_distribution<int> dist(0, minimax_result.best_moves.moves.size() - 1);
+        return minimax_result.best_moves.moves[dist(engine)];
     }
-
-// int main() {
-//     GameBoard game_board_;
-//     auto evaluator_ = PiecePointsEvaluator(DEFAULT_GAME_POINTS);
-//     auto move_selector_ = MinimaxMoveSelector(evaluator_, 4);
-//     auto cur_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
-//     auto selected_move = move_selector_.ImplementSelectMove(
-//         game_board_, PieceColor::kRed, cur_moves);
-//     cout << "done" << endl;
-
-
-//     return 0;
-// }
-

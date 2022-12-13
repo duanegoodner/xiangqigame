@@ -37,7 +37,7 @@ class RandomMoveSelector : public MoveSelector<RandomMoveSelector> {
     Move ImplementSelectMove(
         GameBoard &game_board,
         PieceColor cur_player,
-        vector<Move> cur_moves);
+        MoveCollection &cur_moves);
 };
 
 class MinimaxMoveSelector : public MoveSelector<MinimaxMoveSelector> {
@@ -52,12 +52,12 @@ class MinimaxMoveSelector : public MoveSelector<MinimaxMoveSelector> {
     Move ImplementSelectMove(
         GameBoard &game_board,
         PieceColor cur_player,
-        vector<Move> cur_moves);
+        MoveCollection &cur_moves);
     void ResetNodeCounter();
     vector<RatedMove> GenerateRankedMoveList(
         GameBoard &game_board,
         PieceColor cur_player,
-        vector<Move> cur_player_moves);
+        MoveCollection &cur_player_moves);
     BestMoves MinimaxRec(
         GameBoard &game_board,
         int search_depth,

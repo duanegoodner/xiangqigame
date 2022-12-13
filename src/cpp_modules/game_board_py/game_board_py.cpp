@@ -18,6 +18,10 @@ PYBIND11_MODULE(GameBoardPy, m) {
         .def(py::init<BoardSpace, BoardSpace>(), "start"_a, "end"_a)
         .def_readonly("start", &Move::start)
         .def_readonly("end", &Move::end);
+    
+    py::class_<MoveCollection>(m, "MoveCollection")
+        .def_readonly("moves", &MoveCollection::moves)
+        .def("Contains", &MoveCollection::Contains);
 
     py::class_<ExecutedMove>(m, "ExecutedMove")
         .def(py::init<Move, int, int>(), "spaces"_a, "moving_piece"_a,

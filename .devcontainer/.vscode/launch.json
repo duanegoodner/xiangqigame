@@ -76,10 +76,10 @@
             ]
         },
         {
-            "name": "debug try_move_selector",
+            "name": "debug game_board_test",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/project/src/cpp_modules/build/move_selector/try_move_selector",
+            "program": "${workspaceFolder}/project/src/cpp_modules/build/tests/game_board_test",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/project/src/cpp_modules/build/",

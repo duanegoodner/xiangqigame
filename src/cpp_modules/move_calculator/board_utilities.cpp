@@ -84,8 +84,8 @@ vector<BoardSpace> BoardUtilities::GetAllSpacesOccupiedBy(PieceColor color) {
     return occupied_spaces;
 }
 
-bool BoardUtilities::IsSpaceAnyDestinationOfMoves(BoardSpace space, vector<Move> moves) {
-        for (auto move : moves) {
+bool BoardUtilities::IsSpaceAnyDestinationOfMoves(BoardSpace space, MoveCollection &moves) {
+        for (auto move : moves.moves) {
             if (move.end == space) {
                 return true;
             }

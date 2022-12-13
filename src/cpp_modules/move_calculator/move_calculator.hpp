@@ -22,15 +22,15 @@ class MoveCalculator;
 class PieceMoves {
     public:
     PieceMoves(MoveCalculator & p);    
-    vector<Move> SoldierMoves(PieceColor color, BoardSpace space);
-    vector<Move> CannonMoves(PieceColor color, BoardSpace space);
-    vector<Move> ChariotMoves(PieceColor color, BoardSpace space);
-    vector<Move> HorseMoves(PieceColor color, BoardSpace space);
-    vector<Move> ElephantMoves(PieceColor color, BoardSpace space);
-    vector<Move> AdvisorMoves(PieceColor color, BoardSpace space);
-    vector<Move> FlyingGeneralMove(PieceColor color, BoardSpace space);    
-    vector<Move> StandardGeneralMoves(PieceColor color, BoardSpace space);
-    vector<Move> GeneralMoves(PieceColor color, BoardSpace space);
+    MoveCollection SoldierMoves(PieceColor color, BoardSpace space);
+    MoveCollection CannonMoves(PieceColor color, BoardSpace space);
+    MoveCollection ChariotMoves(PieceColor color, BoardSpace space);
+    MoveCollection HorseMoves(PieceColor color, BoardSpace space);
+    MoveCollection ElephantMoves(PieceColor color, BoardSpace space);
+    MoveCollection AdvisorMoves(PieceColor color, BoardSpace space);
+    MoveCollection FlyingGeneralMove(PieceColor color, BoardSpace space);    
+    MoveCollection StandardGeneralMoves(PieceColor color, BoardSpace space);
+    MoveCollection GeneralMoves(PieceColor color, BoardSpace space);
 
     private:
     MoveCalculator & parent_;
@@ -42,8 +42,8 @@ class MoveCalculator {
    public:
     MoveCalculator(const BoardMap_t& board_map);
     BoardUtilities utils_;
-    vector<Move> CalcMovesFrom(BoardSpace space);
-    vector<Move> CalcAllMovesNoCheckTest(PieceColor color);
+    MoveCollection CalcMovesFrom(BoardSpace space);
+    MoveCollection CalcAllMovesNoCheckTest(PieceColor color);
 
     private:
     const BoardMap_t& board_map_;

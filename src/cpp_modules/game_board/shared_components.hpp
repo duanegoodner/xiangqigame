@@ -96,6 +96,25 @@ struct Move {
     }
 };
 
+// TODO add more methods for data manip and comparison
+struct MoveCollection {
+    vector<Move> moves;
+    MoveCollection(vector<Move> my_moves)
+        : moves{my_moves} {};
+    MoveCollection() : moves{} {};
+    bool Contains(Move move) {
+        for (auto entry : moves) {
+            if ((move.start == entry.start) && (move.end == entry.end)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    void Append(Move move) {
+        moves.emplace_back(move);
+    }
+};
+
 struct ExecutedMove {
     Move spaces;
     Piece_t moving_piece;

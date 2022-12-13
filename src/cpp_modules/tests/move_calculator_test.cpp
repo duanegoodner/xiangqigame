@@ -31,48 +31,48 @@ class MoveCalculatorTest : public ::testing::Test {
 
 TEST_F(MoveCalculatorTest, RedSoldier) {
     auto soldier_moves = mc_standard_.CalcMovesFrom(BoardSpace{6, 0});
-    EXPECT_EQ(soldier_moves.size(), 1);
+    EXPECT_EQ(soldier_moves.moves.size(), 1);
     
 }
 
 TEST_F(MoveCalculatorTest, BlackCannon) {
     auto cannon_moves = mc_standard_.CalcMovesFrom(BoardSpace{2, 1});
-    EXPECT_EQ(cannon_moves.size(), 12);
+    EXPECT_EQ(cannon_moves.moves.size(), 12);
 }
 
 TEST_F(MoveCalculatorTest, BlackChariot) {
     auto chariot_moves = mc_standard_.CalcMovesFrom(BoardSpace{0, 8});
-    EXPECT_EQ(chariot_moves.size(), 2);
+    EXPECT_EQ(chariot_moves.moves.size(), 2);
 }
 
 TEST_F(MoveCalculatorTest, RedHorse) {
     auto horse_moves = mc_standard_.CalcMovesFrom(BoardSpace{9, 1});
-    EXPECT_EQ(horse_moves.size(), 2);
+    EXPECT_EQ(horse_moves.moves.size(), 2);
 }
 
 TEST_F(MoveCalculatorTest, BlackElephant) {
     auto elephant_moves = mc_standard_.CalcMovesFrom({0, 2});
-    EXPECT_EQ(elephant_moves.size(), 2);
+    EXPECT_EQ(elephant_moves.moves.size(), 2);
 }
 
 TEST_F(MoveCalculatorTest, RedAdvisor) {
     auto advisor_moves = mc_standard_.CalcMovesFrom({9, 3});
-    EXPECT_EQ(advisor_moves.size(), 1);
+    EXPECT_EQ(advisor_moves.moves.size(), 1);
 }
 
 TEST_F(MoveCalculatorTest, BlackStartingGeneral) {
     auto general_moves = mc_standard_.CalcMovesFrom(BoardSpace{0, 4});
-    EXPECT_EQ(general_moves.size(), 1);
+    EXPECT_EQ(general_moves.moves.size(), 1);
 }
 
 TEST_F(MoveCalculatorTest, RedFlyingGeneral) {
     auto general_moves_with_flying = mc_flying_.CalcMovesFrom(BoardSpace{9, 4});
-    EXPECT_EQ(general_moves_with_flying.size(), 2);
+    EXPECT_EQ(general_moves_with_flying.moves.size(), 2);
 }
 
 TEST_F(MoveCalculatorTest, AllMovesNoCheckTest) {
     auto red_moves_without_check_test = mc_standard_.CalcAllMovesNoCheckTest(PieceColor::kRed);
-    EXPECT_EQ(red_moves_without_check_test.size(), 44);
+    EXPECT_EQ(red_moves_without_check_test.moves.size(), 44);
 }
 
 class BoardUtilitiesTest : public ::testing::Test {
@@ -163,7 +163,7 @@ TEST_F(BoardUtilitiesTest, GetAllSpacesOccupiedByBlack) {
 }
 
 TEST_F(BoardUtilitiesTest, IsSpaceDestinationOfAnyMovesTrue) {
-    vector<Move> some_moves = {Move{BoardSpace{2, 1}, BoardSpace{9, 1}}};
+    auto some_moves = MoveCollection({Move{BoardSpace{2, 1}, BoardSpace{9, 1}}});
     auto some_space = BoardSpace{9, 1};
     auto result = mc_standard_.utils_.IsSpaceAnyDestinationOfMoves(some_space, some_moves);
     EXPECT_EQ(result, true);

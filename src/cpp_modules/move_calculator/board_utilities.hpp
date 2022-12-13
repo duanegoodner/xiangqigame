@@ -52,7 +52,7 @@ class BoardUtilities {
     OrthogonalSpaceSearchResult SearchSpaces(
         BoardSpace start, BoardDirection direction);
     vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color);
-    bool IsSpaceAnyDestinationOfMoves(BoardSpace space, vector<Move> moves); 
+    bool IsSpaceAnyDestinationOfMoves(BoardSpace space, MoveCollection &moves); 
 
    private:
     const BoardMap_t& board_map_;

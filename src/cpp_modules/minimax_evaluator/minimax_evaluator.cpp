@@ -7,7 +7,7 @@ using namespace board_components;
 BestMoves evaluate_winner(
     PieceColor cur_player,
     PieceColor initiating_player) {
-        vector<Move> empty_best_moves;
+        auto empty_best_moves = MoveCollection();
 
         if (cur_player == initiating_player) {
             return BestMoves{
@@ -31,11 +31,9 @@ int PiecePointsEvaluator::GetValueOfPieceAtPosition(
 
 int PiecePointsEvaluator::GetPlayerTotal(PieceColor color, GameBoard &game_board) {
     int pre_attack_total = 0;
-    auto occ_spaces = game_board.GetAllSpacesOccupiedBy(color);
-    for (auto space : occ_spaces) {
+    for (auto space : game_board.GetAllSpacesOccupiedBy(color)) {
         auto piece_type = game_board.GetType(space);
-        auto cur_piece_points = GetValueOfPieceAtPosition(color, piece_type, space);
-        pre_attack_total += cur_piece_points;
+        pre_attack_total += GetValueOfPieceAtPosition(color, piece_type, space);
     }
     return pre_attack_total;
 }
@@ -43,22 +41,22 @@ int PiecePointsEvaluator::GetPlayerTotal(PieceColor color, GameBoard &game_board
 BestMoves PiecePointsEvaluator::ImplementEvaluateLeaf(
     GameBoard &game_board,
     PieceColor cur_player,
-    vector<Move> cur_player_moves,
+    MoveCollection &cur_player_moves,
     PieceColor initiating_player) {
         auto cur_player_points = GetPlayerTotal(cur_player, game_board);
         auto opponent_points = GetPlayerTotal(
             opponent_of(cur_player), game_board);
         
-        vector<Move> empty_vect;
+        auto empty_move_collection = MoveCollection();
 
         if (cur_player == initiating_player) {
             return BestMoves{
                 (cur_player_points - opponent_points),
-                empty_vect};
+                empty_move_collection};
         } else {
             return BestMoves{
                 (opponent_points - cur_player_points),
-                empty_vect};
+                empty_move_collection};
         }
     }
 
