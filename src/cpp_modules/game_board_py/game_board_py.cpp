@@ -59,6 +59,4 @@ PYBIND11_MODULE(GameBoardPy, m) {
         // .def("IsOccupied", &GameBoard::IsOccupied, "space"_a)
         .def("GetType", &GameBoard::GetType, "space"_a)
         .def("GetColor", &GameBoard::GetColor, "space"_a);
-    
-    m.def("opponent_of", &opponent_of, "color"_a);
 }

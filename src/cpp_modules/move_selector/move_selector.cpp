@@ -24,6 +24,11 @@ MinimaxMoveSelector::MinimaxMoveSelector(
     PiecePointsEvaluator evaluator, int search_depth)
     : evaluator_{evaluator}, search_depth_{search_depth}, node_counter_{0} {};
 
+MinimaxMoveSelector::MinimaxMoveSelector(int search_depth)
+    : evaluator_{PiecePointsEvaluator(DEFAULT_GAME_POINTS)}
+    , search_depth_{search_depth}
+    , node_counter_{0} {};
+
 void MinimaxMoveSelector::ResetNodeCounter()
 {
     node_counter_ = 0;

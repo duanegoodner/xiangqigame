@@ -11,4 +11,5 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/game_board
     ${PROJECT_SOURCE_DIR}/piece_points_builder
     ${PROJECT_SOURCE_DIR}/move_calculator
+    ${PROJECT_SOURCE_DIR}/minimax_evaluator
     )
