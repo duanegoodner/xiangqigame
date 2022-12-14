@@ -4,6 +4,7 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
+                "${workspaceFolder}/project/src/cpp_modules/board_components",
                 "${workspaceFolder}/project/src/cpp_modules/game_board",
                 "${workspaceFolder}/project/src/cpp_modules/move_calculator",
                 "${workspaceFolder}/project/src/cpp_modules/piece_points_builder",

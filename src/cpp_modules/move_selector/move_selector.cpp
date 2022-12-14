@@ -1,7 +1,7 @@
 #include <iostream>
 #include <limits>
 #include "move_selector.hpp"
-#include "shared_components.hpp"
+#include "board_components.hpp"
 
 using namespace board_components;
 using namespace std;

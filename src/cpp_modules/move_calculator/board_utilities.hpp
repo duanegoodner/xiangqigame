@@ -1,9 +1,13 @@
+// TODO: Revisit which methods are worth leaving in hpp file
+// for inlining performance benefit and which are best in cpp
+
+#include <cmath>
 #include <vector>
 
 #ifndef _BOARD_UTILITIES_
 #define _BOARD_UTILITIES_
 
-#include "shared_components.hpp"
+#include "board_components.hpp"
 using namespace board_components;
 
 typedef array<BoardSpace, 9> Castle_t;
@@ -41,18 +45,64 @@ const vector<BoardDirection> kAllDiagonalDirections = {
 class BoardUtilities {
    public:
     BoardUtilities(const BoardMap_t& board_map);
-    bool IsOccupied(BoardSpace space);
-    PieceColor GetColor(BoardSpace space);
-    PieceType GetType(BoardSpace space);
-    bool ExistsAndPassesColorTest(BoardSpace space,
-                                  PieceColor moving_piece_color);
-    BoardDirection FwdDirection(PieceColor color);
-    BoardDirection RevDirection(PieceColor color);
-    BoardSpace GetGeneralPosition(PieceColor color);
+    bool IsOccupied(BoardSpace space) {
+    return board_map_[space.rank][space.file] != 0;
+    };
+    PieceColor GetColor(BoardSpace space) {
+         auto piece = board_map_[space.rank][space.file];
+        return (piece == 0) ? PieceColor::kNul
+                        : static_cast<PieceColor>(copysign(1, piece));
+    };
+    PieceType GetType(BoardSpace space) {
+    return static_cast<PieceType>(abs(board_map_[space.rank][space.file]));
+    };
+    bool ExistsAndPassesColorTest(BoardSpace space, PieceColor moving_piece_color) {
+    return space.IsOnBoard() &&
+           GetColor(space) !=
+               static_cast<PieceColor>(moving_piece_color);
+    }
+    BoardDirection FwdDirection(PieceColor color) {
+    return BoardDirection{static_cast<int>(color), 0};
+    }
+    BoardDirection RevDirection(PieceColor color) {
+    return BoardDirection{-1 * static_cast<int>(color), 0};
+    }
+    BoardSpace GetGeneralPosition(PieceColor color) {
+    auto castle = (color == PieceColor::kRed) ? red_castle_ : black_castle_;
+
+    auto color_val = static_cast<int>(color);
+    BoardSpace found_space;
+
+    for (BoardSpace board_space : castle) {
+        auto piece_val = board_map_[board_space.rank][board_space.file];
+        if (piece_val == color_val) {
+            found_space = board_space;
+        }
+    }
+    return found_space;
+    }
     OrthogonalSpaceSearchResult SearchSpaces(
         BoardSpace start, BoardDirection direction);
-    vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color);
-    bool IsSpaceAnyDestinationOfMoves(BoardSpace space, MoveCollection &moves); 
+    vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color) {
+    vector<BoardSpace> occupied_spaces;
+    occupied_spaces.reserve(16);
+    for (auto rank = 0; rank < kNumRanks; rank++) {
+        for (auto file = 0; file < kNumFiles; file++) {
+            if (GetColor(BoardSpace{rank, file}) == color) {
+                occupied_spaces.emplace_back(BoardSpace{rank, file});
+            }
+        }
+    }
+    return occupied_spaces;
+    }
+    bool IsSpaceAnyDestinationOfMoves(BoardSpace space, MoveCollection &moves) {
+        for (auto move : moves.moves) {
+            if (move.end == space) {
+                return true;
+            }
+        }
+        return false;
+    }
 
    private:
     const BoardMap_t& board_map_;

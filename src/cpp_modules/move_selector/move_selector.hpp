@@ -6,7 +6,7 @@
 #include <random>
 #include <vector>
 #include "game_board.hpp"
-#include "shared_components.hpp"
+#include "board_components.hpp"
 #include "minimax_evaluator.hpp"
 
 using namespace std;

@@ -5,7 +5,7 @@
 #include <vector>
 #include "game_board.hpp"
 #include "piece_points_builder.hpp"
-#include "shared_components.hpp"
+#include "board_components.hpp"
 
 
 using namespace std;

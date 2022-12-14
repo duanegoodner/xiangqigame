@@ -3,7 +3,7 @@
 #ifndef _GAME_BOARD_
 #define _GAME_BOARD_
 
-#include "shared_components.hpp"
+#include "board_components.hpp"
 #include "move_calculator.hpp"
 
 

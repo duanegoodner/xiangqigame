@@ -6,7 +6,14 @@ add_library(
     move_calculator.cpp
     board_utilities.cpp)
 
-target_include_directories(
+target_link_libraries(
+    move_calculator PUBLIC
+    game_board
+)
+
+    target_include_directories(
     move_calculator PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${PROJECT_SOURCE_DIR}/game_board)
+    ${PROJECT_SOURCE_DIR}/board_components
+    ${PROJECT_SOURCE_DIR}/game_board
+    )

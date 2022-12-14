@@ -2,7 +2,7 @@
 #define _PIECE_POINTS_BUILDER_
 
 #include <unordered_map>
-#include "shared_components.hpp"
+#include "board_components.hpp"
 #include "piece_points_raw.hpp"
 
 using namespace std;

@@ -3,7 +3,7 @@
 
 #include <unordered_map>
 #include <vector>
-#include "shared_components.hpp"
+#include "board_components.hpp"
 
 using namespace std;
 using namespace board_components;

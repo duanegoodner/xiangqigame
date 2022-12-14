@@ -5,11 +5,19 @@ add_library(
     minimax_evaluator
     minimax_evaluator.cpp)
 
-target_include_directories(
+target_link_libraries(
+    minimax_evaluator PUBLIC
+    game_board
+    piece_points_builder
+    move_calculator
+)
+
+    target_include_directories(
     minimax_evaluator PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${PROJECT_SOURCE_DIR}/board_components
     ${PROJECT_SOURCE_DIR}/game_board
     ${PROJECT_SOURCE_DIR}/piece_points_builder
     ${PROJECT_SOURCE_DIR}/move_calculator
-    ${PROJECT_SOURCE_DIR}/minimax_evaluator
+    # ${PROJECT_SOURCE_DIR}/minimax_evaluator
     )

@@ -1,6 +1,7 @@
 #include "move_calculator.hpp"
 
 #include <iostream>
+#include <omp.h>
 
 using namespace std;
 
@@ -34,8 +35,11 @@ MoveCollection MoveCalculator::CalcMovesFrom(BoardSpace space) {
 MoveCollection MoveCalculator::CalcAllMovesNoCheckTest(PieceColor color) {
     MoveCollection untested_moves;
     untested_moves.moves.reserve(120);
-    for (auto space : utils_.GetAllSpacesOccupiedBy(color)) {
-        auto moves_from_space = CalcMovesFrom(space);
+    
+    auto occ_spaces = utils_.GetAllSpacesOccupiedBy(color);
+
+    for (auto space = 0; space < occ_spaces.size(); space++) {
+        auto moves_from_space = CalcMovesFrom(occ_spaces[space]);
         untested_moves.moves.insert(untested_moves.moves.end(), moves_from_space.moves.begin(),
                               moves_from_space.moves.end());
     }
@@ -96,6 +100,7 @@ MoveCollection PieceMoves::CannonMoves(PieceColor color, BoardSpace space) {
 MoveCollection PieceMoves::ChariotMoves(PieceColor color, BoardSpace space) {
     MoveCollection chariot_moves;
     chariot_moves.moves.reserve(17);
+    
     for (auto direction : kAllOrthogonalDirections) {
         auto search_result = parent_.utils_.SearchSpaces(space, direction);
         for (auto empty_space : search_result.empty_spaces) {

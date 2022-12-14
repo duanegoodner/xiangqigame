@@ -5,7 +5,13 @@ add_library(
     piece_points_builder
     piece_points_builder.cpp)
 
+target_link_libraries(
+    piece_points_builder PUBLIC
+    game_board
+    )
+
 target_include_directories(
     piece_points_builder PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${PROJECT_SOURCE_DIR}/board_components
     ${PROJECT_SOURCE_DIR}/game_board)

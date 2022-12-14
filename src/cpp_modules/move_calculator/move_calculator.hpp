@@ -10,7 +10,7 @@
 #define _MOVE_CALCULATOR_
 
 #include "board_utilities.hpp"
-#include "shared_components.hpp"
+#include "board_components.hpp"
 
 using namespace std;
 using namespace board_components;

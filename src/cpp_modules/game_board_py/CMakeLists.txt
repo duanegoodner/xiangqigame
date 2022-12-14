@@ -8,6 +8,7 @@ target_link_libraries(
     move_calculator)
 target_include_directories(
     GameBoardPy PUBLIC
+    ${PROJECT_SOURCE_DIR}/board_components
     ${PROJECT_SOURCE_DIR}/game_board
     ${PROJECT_SOURCE_DIR}/move_calculator
     ${CMAKE_CURRENT_SOURCE_DIR})
