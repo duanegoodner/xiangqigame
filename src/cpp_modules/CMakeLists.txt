@@ -10,7 +10,7 @@ SET(CMAKE_POSITION_INDEPENDENT_CODE ON)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
-# set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Debug)
 add_compile_options(-Wall -Wextra -O3)
 
 find_package(GTest REQUIRED)
@@ -28,6 +28,7 @@ add_subdirectory(move_selector)
 add_subdirectory(tests)
 add_subdirectory(game_board_py)
 add_subdirectory(move_selector_py)
+add_subdirectory(utility_functs)
 
 
    

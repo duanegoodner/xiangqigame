@@ -2,6 +2,7 @@
 #include <limits>
 #include "move_selector.hpp"
 #include "board_components.hpp"
+#include "utility_functs.hpp"
 
 using namespace board_components;
 using namespace std;
@@ -160,6 +161,18 @@ Move MinimaxMoveSelector::ImplementSelectMove(
             cur_player,
             cur_player);
         
+        // cout << minimax_result.best_eval << endl;
+
+        
+        
         uniform_int_distribution<int> dist(0, minimax_result.best_moves.moves.size() - 1);
         return minimax_result.best_moves.moves[dist(engine)];
+
+        // int move_index = 0;
+
+        // auto move_index = utility_functs::random((size_t) 0, minimax_result.best_moves.moves.size() - 1);
+
+        // return minimax_result.best_moves.moves[move_index];
+        
+        // return minimax_result.best_moves.SelectRandomMove();
     }

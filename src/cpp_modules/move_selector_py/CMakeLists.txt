@@ -17,6 +17,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/minimax_evaluator
     ${PROJECT_SOURCE_DIR}/move_calculator
     ${PROJECT_SOURCE_DIR}/piece_points_builder
+    ${PROJECT_SOURCE_DIR}/utility_functs
     ${CMAKE_CURRENT_SOURCE_DIR})
 
 install(TARGETS MoveSelectorPy DESTINATION .)
