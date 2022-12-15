@@ -1,5 +1,5 @@
 # set(CMAKE_BUILD_TYPE Debug)
-add_compile_options(-Wall -Wextra -O3)
+# add_compile_options(-Wall -Wextra -O3)
 
 add_executable(move_calculator_test move_calculator_test.cpp)
 target_link_libraries(
@@ -53,9 +53,9 @@ target_link_libraries(
     GTest::Main)
 # target_include_directories(
 #     minimax_evaluator_test LINK_PUBLIC
-#     ${PROJECT_SOURCE_DIR}/minimax_evaluator
-#     ${PROJECT_SOURCE_DIR}/piece_points_builder
-#     ${PROJECT_SOURCE_DIR}/game_board
+#     ${PROJECT_SOURCE_DIR}/board_components
+    # ${PROJECT_SOURCE_DIR}/piece_points_builder
+    # ${PROJECT_SOURCE_DIR}/game_board
 # )
 
 add_executable(move_selector_test move_selector_test.cpp)

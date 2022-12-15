@@ -30,10 +30,8 @@ public:
 
 
 class RandomMoveSelector : public MoveSelector<RandomMoveSelector> {
-    public:
-    mt19937 engine;
-    RandomMoveSelector();   
     
+    public:
     Move ImplementSelectMove(
         GameBoard &game_board,
         PieceColor cur_player,

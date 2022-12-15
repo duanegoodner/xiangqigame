@@ -52,24 +52,24 @@ BoardUtilities::BoardUtilities(const BoardMap_t& board_map)
 //     return found_space;
 // }
 
-OrthogonalSpaceSearchResult BoardUtilities::SearchSpaces(
-    BoardSpace start, BoardDirection direction) {
-    vector<BoardSpace> empty_spaces;
-    empty_spaces.reserve(9);
-    vector<BoardSpace> first_occupied_space;
-    first_occupied_space.reserve(1);
+// OrthogonalSpaceSearchResult BoardUtilities::SearchSpaces(
+//     BoardSpace start, BoardDirection direction) {
+//     vector<BoardSpace> empty_spaces;
+//     empty_spaces.reserve(9);
+//     vector<BoardSpace> first_occupied_space;
+//     first_occupied_space.reserve(1);
 
-    auto next_step = start + direction;
+//     auto next_step = start + direction;
 
-    while (next_step.IsOnBoard() && (not IsOccupied(next_step))) {
-        empty_spaces.emplace_back(next_step);
-        next_step = next_step + direction;
-    }
-    if (next_step.IsOnBoard()) {
-        first_occupied_space.emplace_back(next_step);
-    }
-    return OrthogonalSpaceSearchResult{empty_spaces, first_occupied_space};
-}
+//     while (next_step.IsOnBoard() && (not IsOccupied(next_step))) {
+//         empty_spaces.emplace_back(next_step);
+//         next_step = next_step + direction;
+//     }
+//     if (next_step.IsOnBoard()) {
+//         first_occupied_space.emplace_back(next_step);
+//     }
+//     return OrthogonalSpaceSearchResult{empty_spaces, first_occupied_space};
+// }
 
 // vector<BoardSpace> BoardUtilities::GetAllSpacesOccupiedBy(PieceColor color) {
 //     vector<BoardSpace> occupied_spaces;

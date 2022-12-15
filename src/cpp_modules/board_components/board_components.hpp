@@ -1,5 +1,6 @@
 #include <array>
 #include <cassert>
+#include <random>
 #include <vector>
 
 #ifndef _SHARED_COMPONENTS_
@@ -43,7 +44,7 @@ struct CastleEdges {
 const CastleEdges kRedCastleEdges = {7, 9, 3, 5};
 const CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
 
-typedef std::array<std::array<Piece_t, kNumFiles>, kNumRanks> BoardMap_t;
+typedef array<array<Piece_t, kNumFiles>, kNumRanks> BoardMap_t;
 
 struct BoardDirection {
     BoardIdx_t rank, file;
@@ -99,9 +100,11 @@ struct Move {
 // TODO add more methods for data manip and comparison
 struct MoveCollection {
     vector<Move> moves;
-    MoveCollection(vector<Move> my_moves)
-        : moves{my_moves} {};
-    MoveCollection() : moves{} {};
+    MoveCollection(): moves{} {};
+    MoveCollection(vector<Move> my_moves) : moves{my_moves} {};
+    MoveCollection(size_t reserve_size) : moves{} {
+        moves.reserve(reserve_size);
+    }
     bool Contains(Move move) {
         for (auto entry : moves) {
             if ((move.start == entry.start) && (move.end == entry.end)) {
@@ -112,6 +115,12 @@ struct MoveCollection {
     }
     void Append(Move move) {
         moves.emplace_back(move);
+    }
+    void Concat(vector<Move> other_moves) {
+        moves.insert(moves.end(), other_moves.begin(), other_moves.end());
+    }
+    void Concat(MoveCollection other) {
+        moves.insert(moves.end(), other.moves.begin(), other.moves.end());
     }
 };
 

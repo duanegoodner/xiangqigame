@@ -2,22 +2,20 @@
 #include <limits>
 #include "move_selector.hpp"
 #include "board_components.hpp"
+#include "utility_functs.hpp"
 
 using namespace board_components;
 using namespace std;
-
-RandomMoveSelector::RandomMoveSelector()
-{
-    mt19937 engine(time(nullptr));
-}
 
 Move RandomMoveSelector::ImplementSelectMove(
     GameBoard &game_board,
     PieceColor cur_player,
     MoveCollection &cur_moves)
 {
-    uniform_int_distribution<int> dist(0, cur_moves.moves.size() - 1);
-    return cur_moves.moves[dist(engine)];
+    auto selected_move_index = utility_functs::random(
+        (size_t) 0, cur_moves.moves.size() - 1);
+    // uniform_int_distribution<int> dist(0, cur_moves.moves.size() - 1);
+    return cur_moves.moves[selected_move_index];
 }
 
 MinimaxMoveSelector::MinimaxMoveSelector(
@@ -160,6 +158,14 @@ Move MinimaxMoveSelector::ImplementSelectMove(
             cur_player,
             cur_player);
         
+        auto selected_move_index = utility_functs::random(
+            (size_t) 0, minimax_result.best_moves.moves.size() - 1);
         uniform_int_distribution<int> dist(0, minimax_result.best_moves.moves.size() - 1);
-        return minimax_result.best_moves.moves[dist(engine)];
+        // return minimax_result;
+        // return minimax_result.best_moves.moves[dist(engine)];
+        return minimax_result.best_moves.moves[selected_move_index];
+
+        // auto move_index = utility_functs::random((size_t) 0, minimax_result.best_moves.moves.size() - 1);
+        
+        // return minimax_result.best_moves.SelectRandomMove();
     }

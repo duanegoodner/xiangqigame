@@ -16,12 +16,19 @@ class MoveSelectorTest : public ::testing::Test {
         {}; 
 };
 
-TEST_F(MoveSelectorTest, SelectInitialMove) {
-    // RandomMoveSelector move_selector;
+TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
+    RandomMoveSelector move_selector;
+    auto cur_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
+    auto selected_move = move_selector.ImplementSelectMove(game_board_, PieceColor::kRed, cur_moves);
+    EXPECT_EQ(cur_moves.Contains(selected_move), true);
+};
+
+TEST_F(MoveSelectorTest, MinimaxMoveSelectorSelectInitialMove) {
     auto move_selector = MinimaxMoveSelector(piece_points_evaluator_, 4);
     auto cur_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
     auto start_time = std::chrono::high_resolution_clock::now();
     auto selected_move = move_selector.ImplementSelectMove(game_board_, PieceColor::kRed, cur_moves);
+    
     auto end_time = std::chrono::high_resolution_clock::now();
     std::cout << "selected move start: "
         <<  selected_move.start.rank
@@ -36,6 +43,8 @@ TEST_F(MoveSelectorTest, SelectInitialMove) {
     std::cout << "search time: "
         << std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count()
         << std::endl;
+    
+    EXPECT_EQ(cur_moves.Contains(selected_move), true);
 
 }
 

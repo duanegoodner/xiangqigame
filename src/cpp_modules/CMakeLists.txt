@@ -28,6 +28,7 @@ add_subdirectory(move_selector)
 add_subdirectory(tests)
 add_subdirectory(game_board_py)
 add_subdirectory(move_selector_py)
+add_subdirectory(utility_functs)
 
 
    

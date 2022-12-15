@@ -11,10 +11,9 @@
 using namespace std;
 using namespace board_components;
 
-
 struct BestMoves {
     int best_eval;
-    MoveCollection &best_moves;
+    MoveCollection best_moves;
 };
 
 struct RatedMove {
