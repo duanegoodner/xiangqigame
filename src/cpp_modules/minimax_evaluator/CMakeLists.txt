@@ -7,7 +7,6 @@ add_library(
 
 target_link_libraries(
     minimax_evaluator PUBLIC
-    board_components
     game_board
     piece_points_builder
     move_calculator

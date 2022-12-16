@@ -7,7 +7,6 @@ add_library(
 
 target_link_libraries(
     move_selector
-    board_components
     game_board
     minimax_evaluator
     move_calculator

@@ -4,7 +4,6 @@
 pybind11_add_module(GameBoardPy game_board_py.cpp)
 target_link_libraries(
     GameBoardPy PUBLIC
-    board_components
     game_board
     move_calculator)
 target_include_directories(

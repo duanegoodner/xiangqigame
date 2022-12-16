@@ -10,7 +10,6 @@ find_package(OpenMP)
 
 target_link_libraries(
     move_calculator PUBLIC
-    board_components
     game_board
     OpenMP::OpenMP_CXX
 )

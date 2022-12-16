@@ -7,7 +7,6 @@ add_library(
 
 target_link_libraries(
     piece_points_builder PUBLIC
-    board_components
     game_board
     )
 
