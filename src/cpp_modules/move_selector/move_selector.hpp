@@ -30,10 +30,8 @@ public:
 
 
 class RandomMoveSelector : public MoveSelector<RandomMoveSelector> {
-    public:
-    mt19937 engine;
-    RandomMoveSelector();   
     
+    public:
     Move ImplementSelectMove(
         GameBoard &game_board,
         PieceColor cur_player,
@@ -50,7 +48,7 @@ class MinimaxMoveSelector : public MoveSelector<MinimaxMoveSelector> {
     MinimaxMoveSelector(
         PiecePointsEvaluator evaluator, int search_depth);
     MinimaxMoveSelector(int search_depth);
-    BestMoves ImplementSelectMove(
+    Move ImplementSelectMove(
         GameBoard &game_board,
         PieceColor cur_player,
         MoveCollection &cur_moves);

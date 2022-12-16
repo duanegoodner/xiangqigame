@@ -7,18 +7,15 @@
 using namespace board_components;
 using namespace std;
 
-RandomMoveSelector::RandomMoveSelector()
-{
-    mt19937 engine(time(nullptr));
-}
-
 Move RandomMoveSelector::ImplementSelectMove(
     GameBoard &game_board,
     PieceColor cur_player,
     MoveCollection &cur_moves)
 {
-    uniform_int_distribution<int> dist(0, cur_moves.moves.size() - 1);
-    return cur_moves.moves[dist(engine)];
+    auto selected_move_index = utility_functs::random(
+        (size_t) 0, cur_moves.moves.size() - 1);
+    // uniform_int_distribution<int> dist(0, cur_moves.moves.size() - 1);
+    return cur_moves.moves[selected_move_index];
 }
 
 MinimaxMoveSelector::MinimaxMoveSelector(
@@ -150,7 +147,7 @@ BestMoves MinimaxMoveSelector::MinimaxRec(
     }
 }
 
-BestMoves MinimaxMoveSelector::ImplementSelectMove(
+Move MinimaxMoveSelector::ImplementSelectMove(
     GameBoard &game_board, PieceColor cur_player, MoveCollection &cur_moves) {
         ResetNodeCounter();
         auto minimax_result = MinimaxRec(
@@ -161,19 +158,14 @@ BestMoves MinimaxMoveSelector::ImplementSelectMove(
             cur_player,
             cur_player);
         
-        // cout << minimax_result.best_eval << endl;
-
-
-        
+        auto selected_move_index = utility_functs::random(
+            (size_t) 0, minimax_result.best_moves.moves.size() - 1);
         uniform_int_distribution<int> dist(0, minimax_result.best_moves.moves.size() - 1);
-        return minimax_result;
+        // return minimax_result;
         // return minimax_result.best_moves.moves[dist(engine)];
-
-        // int move_index = 0;
+        return minimax_result.best_moves.moves[selected_move_index];
 
         // auto move_index = utility_functs::random((size_t) 0, minimax_result.best_moves.moves.size() - 1);
-
-        // return minimax_result.best_moves.moves[move_index];
         
         // return minimax_result.best_moves.SelectRandomMove();
     }

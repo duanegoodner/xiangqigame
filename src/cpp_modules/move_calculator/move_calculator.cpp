@@ -37,26 +37,11 @@ MoveCollection MoveCalculator::CalcMovesFrom(BoardSpace space)
 MoveCollection MoveCalculator::CalcAllMovesNoCheckTest(PieceColor color)
 {
     auto untested_moves = MoveCollection(120);
-    // MoveCollection untested_moves;
-    // untested_moves.moves.reserve(120);
-
     auto occ_spaces = utils_.GetAllSpacesOccupiedBy(color);
-
-    // omp_set_num_threads(16);
-// #pragma omp parallel for shared(occ_spaces, untested_moves)
     for (auto space = 0; space < occ_spaces.size(); space++)
     {
         auto moves_from_space = CalcMovesFrom(occ_spaces[space]);
-// #pragma omp critical
-//         {
             untested_moves.Concat(moves_from_space);
-            
-            // untested_moves.moves.insert(
-            //     untested_moves.moves.end(),
-            //     moves_from_space.moves.begin(),
-            //     moves_from_space.moves.end());
-
-        // }
     }
     return untested_moves;
 }
@@ -65,8 +50,6 @@ PieceMoves::PieceMoves(MoveCalculator &p) : parent_{p} {};
 
 MoveCollection PieceMoves::SoldierMoves(PieceColor color, BoardSpace space)
 {
-    // MoveCollection soldier_moves;
-    // soldier_moves.moves.reserve(3);
     auto soldier_moves = MoveCollection(3);
 
     auto fwd_space = space + parent_.utils_.FwdDirection(color);
@@ -93,8 +76,6 @@ MoveCollection PieceMoves::SoldierMoves(PieceColor color, BoardSpace space)
 
 MoveCollection PieceMoves::CannonMoves(PieceColor color, BoardSpace space)
 {
-    // MoveCollection cannon_moves;
-    // cannon_moves.moves.reserve(17);
     auto cannon_moves = MoveCollection(17);
 
     for (auto direction : kAllOrthogonalDirections)
@@ -126,11 +107,7 @@ MoveCollection PieceMoves::CannonMoves(PieceColor color, BoardSpace space)
 
 MoveCollection PieceMoves::ChariotMoves(PieceColor color, BoardSpace space)
 {
-    // MoveCollection chariot_moves;
-    // chariot_moves.moves.reserve(17);
-
     auto chariot_moves = MoveCollection(17);
-
     for (auto direction : kAllOrthogonalDirections)
     {
         auto search_result = parent_.utils_.SearchSpaces(space, direction);
@@ -151,9 +128,6 @@ MoveCollection PieceMoves::ChariotMoves(PieceColor color, BoardSpace space)
 
 MoveCollection PieceMoves::HorseMoves(PieceColor color, BoardSpace space)
 {
-    // MoveCollection horse_moves;
-    // horse_moves.moves.reserve(8);
-
     auto horse_moves = MoveCollection(8);
 
     for (auto direction : kHorsePaths)
@@ -176,8 +150,6 @@ MoveCollection PieceMoves::HorseMoves(PieceColor color, BoardSpace space)
 
 MoveCollection PieceMoves::ElephantMoves(PieceColor color, BoardSpace space)
 {
-    // MoveCollection elephant_moves;
-    // elephant_moves.moves.reserve(4);
     auto elephant_moves = MoveCollection(4);
     for (auto direction : kAllDiagonalDirections)
     {
@@ -197,8 +169,6 @@ MoveCollection PieceMoves::ElephantMoves(PieceColor color, BoardSpace space)
 
 MoveCollection PieceMoves::AdvisorMoves(PieceColor color, BoardSpace space)
 {
-    // MoveCollection advisor_moves;
-    // advisor_moves.moves.reserve(4);
     auto advisor_moves = MoveCollection(4);
     for (auto direction : kAllDiagonalDirections)
     {
@@ -215,8 +185,6 @@ MoveCollection PieceMoves::AdvisorMoves(PieceColor color, BoardSpace space)
 MoveCollection PieceMoves::FlyingGeneralMove(PieceColor color,
                                              BoardSpace space)
 {
-    // MoveCollection flying_move;
-    // flying_move.moves.reserve(1);
     auto flying_move = MoveCollection(1);
 
     auto has_flying_move = true;
@@ -250,11 +218,7 @@ MoveCollection PieceMoves::FlyingGeneralMove(PieceColor color,
 MoveCollection PieceMoves::StandardGeneralMoves(PieceColor color,
                                                 BoardSpace space)
 {
-    // MoveCollection standard_general_moves;
-    // standard_general_moves.moves.reserve(4);
-
     auto standard_general_moves = MoveCollection(4);
-
 
     for (auto direction : kAllOrthogonalDirections)
     {
@@ -272,16 +236,7 @@ MoveCollection PieceMoves::GeneralMoves(PieceColor color, BoardSpace space)
 {
     auto flying_move = FlyingGeneralMove(color, space);
     auto standard_moves = StandardGeneralMoves(color, space);
-    // MoveCollection general_moves;
-
-    // general_moves.moves.reserve(flying_move.moves.size() + standard_moves.moves.size());
     auto general_moves = MoveCollection(flying_move.moves.size() + standard_moves.moves.size());
-
-    // general_moves.moves.insert(general_moves.moves.end(), flying_move.moves.begin(),
-    //                            flying_move.moves.end());
-    // general_moves.moves.insert(general_moves.moves.end(), standard_moves.moves.begin(),
-    //                            standard_moves.moves.end());
-
     general_moves.Concat(flying_move);
     general_moves.Concat(standard_moves);
 
