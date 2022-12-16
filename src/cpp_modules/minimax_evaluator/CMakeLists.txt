@@ -1,5 +1,5 @@
-set(CMAKE_BUILD_TYPE Debug)
-add_compile_options(-Wall -Wextra -O3)
+# set(CMAKE_BUILD_TYPE Debug)
+# add_compile_options(-Wall -Wextra -O3)
 
 add_library(
     minimax_evaluator
@@ -7,6 +7,7 @@ add_library(
 
 target_link_libraries(
     minimax_evaluator PUBLIC
+    board_components
     game_board
     piece_points_builder
     move_calculator

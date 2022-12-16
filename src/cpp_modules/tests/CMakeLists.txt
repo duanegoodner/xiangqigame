@@ -1,5 +1,5 @@
-set(CMAKE_BUILD_TYPE Debug)
-add_compile_options(-Wall -Wextra -O3)
+# set(CMAKE_BUILD_TYPE Debug)
+# add_compile_options(-Wall -Wextra -O3)
 
 add_executable(move_calculator_test move_calculator_test.cpp)
 target_link_libraries(

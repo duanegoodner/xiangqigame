@@ -1,5 +1,5 @@
-set(CMAKE_BUILD_TYPE Debug)
-add_compile_options(-Wall -Wextra -O3)
+# set(CMAKE_BUILD_TYPE Debug)
+# add_compile_options(-Wall -Wextra -O3)
 
 add_library(
     move_selector
@@ -7,6 +7,7 @@ add_library(
 
 target_link_libraries(
     move_selector
+    board_components
     game_board
     minimax_evaluator
     move_calculator

@@ -150,7 +150,7 @@ BestMoves MinimaxMoveSelector::MinimaxRec(
     }
 }
 
-Move MinimaxMoveSelector::ImplementSelectMove(
+BestMoves MinimaxMoveSelector::ImplementSelectMove(
     GameBoard &game_board, PieceColor cur_player, MoveCollection &cur_moves) {
         ResetNodeCounter();
         auto minimax_result = MinimaxRec(
@@ -163,10 +163,11 @@ Move MinimaxMoveSelector::ImplementSelectMove(
         
         // cout << minimax_result.best_eval << endl;
 
-        
+
         
         uniform_int_distribution<int> dist(0, minimax_result.best_moves.moves.size() - 1);
-        return minimax_result.best_moves.moves[dist(engine)];
+        return minimax_result;
+        // return minimax_result.best_moves.moves[dist(engine)];
 
         // int move_index = 0;
 

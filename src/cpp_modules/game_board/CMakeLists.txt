@@ -1,11 +1,12 @@
-set(CMAKE_BUILD_TYPE Debug)
-add_compile_options(-Wall -Wextra -O3)
+# set(CMAKE_BUILD_TYPE Debug)
+# add_compile_options(-Wall -Wextra -O3)
 
 add_library(
     game_board game_board.cpp)
 
 target_link_libraries(
     game_board LINK_PUBLIC
+    board_components
     move_calculator)
 
 target_include_directories(

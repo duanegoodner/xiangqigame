@@ -11,7 +11,7 @@ SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
 set(CMAKE_BUILD_TYPE Debug)
-add_compile_options(-Wall -Wextra -O3)
+# add_compile_options(-Wall -Wextra -O3)
 
 find_package(GTest REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)

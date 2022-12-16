@@ -100,40 +100,13 @@ struct Move {
 // TODO add more methods for data manip and comparison
 struct MoveCollection {
     vector<Move> moves;
-    MoveCollection() : moves{} {};
-    MoveCollection(vector<Move> my_moves)
-        : moves{my_moves} {};
-    MoveCollection(size_t reserve_size) : moves{} {
-        moves.reserve(reserve_size);
-    };
-
-    bool Contains(Move move) {
-        for (auto entry : moves) {
-            if ((move.start == entry.start) && (move.end == entry.end)) {
-                return true;
-            }
-        }
-        return false;
-    }
-    void Append(Move move) {
-        moves.emplace_back(move);
-    }
-
-    void Concat(vector<Move> other_moves) {
-        moves.insert(moves.end(), other_moves.begin(), other_moves.end());
-    }
-
-    void Concat(MoveCollection other) {
-        moves.insert(moves.end(), other.moves.begin(), other.moves.end());
-    }
-
-    // Move SelectRandomMove() {
-    //     random_device rand_dev;
-    //     mt19937 generator(rand_dev());
-    //     uniform_int_distribution<int> distr(0, (int) moves.size() - 1);
-
-    //     return moves[distr(generator)];
-    // }
+    MoveCollection();
+    MoveCollection(vector<Move> my_moves);
+    MoveCollection(size_t reserve_size);
+    bool Contains(Move move); 
+    void Append(Move move);
+    void Concat(vector<Move> other_moves);
+    void Concat(MoveCollection other);
 };
 
 struct ExecutedMove {

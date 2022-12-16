@@ -1,8 +1,9 @@
-add_compile_options(-Wall -Wextra -O3)
+# add_compile_options(-Wall -Wextra -O3)
 
 pybind11_add_module(MoveSelectorPy move_selector_py.cpp)
 target_link_libraries(
     MoveSelectorPy PUBLIC
+    board_components
     move_selector
     move_calculator
     game_board

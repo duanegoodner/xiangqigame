@@ -1,9 +1,10 @@
 # set(CMAKE_BUILD_TYPE Debug)
-add_compile_options(-Wall -Wextra -O3)
+# add_compile_options(-Wall -Wextra -O3)
 
 pybind11_add_module(GameBoardPy game_board_py.cpp)
 target_link_libraries(
     GameBoardPy PUBLIC
+    board_components
     game_board
     move_calculator)
 target_include_directories(

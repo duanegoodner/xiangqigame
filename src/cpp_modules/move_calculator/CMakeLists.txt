@@ -1,5 +1,5 @@
-set(CMAKE_BUILD_TYPE Debug)
-add_compile_options(-Wall -Wextra -O3)
+# set(CMAKE_BUILD_TYPE Debug)
+# add_compile_options(-Wall -Wextra -O3)
 
 add_library(
     move_calculator
@@ -10,6 +10,7 @@ find_package(OpenMP)
 
 target_link_libraries(
     move_calculator PUBLIC
+    board_components
     game_board
     OpenMP::OpenMP_CXX
 )

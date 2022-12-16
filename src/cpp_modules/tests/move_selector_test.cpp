@@ -18,21 +18,24 @@ class MoveSelectorTest : public ::testing::Test {
 
 TEST_F(MoveSelectorTest, SelectInitialMove) {
     // RandomMoveSelector move_selector;
-    auto move_selector = MinimaxMoveSelector(piece_points_evaluator_, 4);
+    auto move_selector = MinimaxMoveSelector(piece_points_evaluator_, 2);
     auto cur_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
     auto start_time = std::chrono::high_resolution_clock::now();
-    auto selected_move = move_selector.ImplementSelectMove(game_board_, PieceColor::kRed, cur_moves);
+    auto best_moves = move_selector.ImplementSelectMove(game_board_, PieceColor::kRed, cur_moves);
     auto end_time = std::chrono::high_resolution_clock::now();
-    std::cout << "selected move start: "
-        <<  selected_move.start.rank
-        << ", "
-        << selected_move.start.file
-        << std::endl;
-    std::cout << "selected move end: "
-        << selected_move.end.rank
-        << ", "
-        << selected_move.end.file
-        << std::endl;
+
+    std::cout << best_moves.best_eval << std::endl;
+
+    // std::cout << "selected move start: "
+    //     <<  selected_move.start.rank
+    //     << ", "
+    //     << selected_move.start.file
+    //     << std::endl;
+    // std::cout << "selected move end: "
+    //     << selected_move.end.rank
+    //     << ", "
+    //     << selected_move.end.file
+    //     << std::endl;
     std::cout << "search time: "
         << std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count()
         << std::endl;

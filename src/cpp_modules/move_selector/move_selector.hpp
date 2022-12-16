@@ -50,7 +50,7 @@ class MinimaxMoveSelector : public MoveSelector<MinimaxMoveSelector> {
     MinimaxMoveSelector(
         PiecePointsEvaluator evaluator, int search_depth);
     MinimaxMoveSelector(int search_depth);
-    Move ImplementSelectMove(
+    BestMoves ImplementSelectMove(
         GameBoard &game_board,
         PieceColor cur_player,
         MoveCollection &cur_moves);
