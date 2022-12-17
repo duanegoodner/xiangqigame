@@ -1,5 +1,19 @@
 # add_compile_options(-Wall -Wextra -O3)
 
+
+pybind11_add_module(GameBoardPy game_board_py.cpp)
+target_link_libraries(
+    GameBoardPy PUBLIC
+    game_board
+    # move_calculator
+    )
+target_include_directories(
+    GameBoardPy PUBLIC
+    ${PROJECT_SOURCE_DIR}/game_board
+    ${CMAKE_CURRENT_SOURCE_DIR})
+
+install(TARGETS GameBoardPy DESTINATION .)
+
 pybind11_add_module(MoveSelectorPy move_selector_py.cpp)
 target_link_libraries(
     MoveSelectorPy PUBLIC

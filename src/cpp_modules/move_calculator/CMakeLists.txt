@@ -4,7 +4,8 @@
 add_library(
     move_calculator
     move_calculator.cpp
-    board_utilities.cpp)
+    # board_utilities.cpp
+    )
 
 find_package(OpenMP)
 

@@ -48,7 +48,11 @@ const vector<BoardDirection> kAllDiagonalDirections = {
 class BoardUtilities
 {
 public:
-    BoardUtilities(const BoardMap_t &board_map);
+    BoardUtilities(const BoardMap_t& board_map)
+    : board_map_{board_map} {
+    red_castle_ = calc_castle_spaces(kRedCastleEdges);
+    black_castle_ = calc_castle_spaces(kBlackCastleEdges);
+}
     bool IsOccupied(BoardSpace space)
     {
         return board_map_[space.rank][space.file] != 0;

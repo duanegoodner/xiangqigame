@@ -2,7 +2,7 @@
 #include <pybind11/stl.h>
 
 #include "game_board.hpp"
-#include "board_components.hpp"
+// #include "board_components.hpp"
 
 namespace py = pybind11;
 using namespace py::literals;

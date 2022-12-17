@@ -1,32 +1,35 @@
-#include <array>
-#include <cassert>
-#include <random>
-#include <vector>
 
 #ifndef _SHARED_COMPONENTS_
 #define _SHARED_COMPONENTS_
 
+#include <array>
+#include <cassert>
+#include <random>
+#include <vector>
+#include "game_piece.hpp"
+
 using namespace std;
+using namespace game_piece;
 
 namespace board_components {
 
-enum PieceType : int {
-    kNnn = 0,
-    kGen = 1,
-    kAdv = 2,
-    kEle = 3,
-    kHor = 4,
-    kCha = 5,
-    kCan = 6,
-    kSol = 7
-};
+// enum PieceType : int {
+//     kNnn = 0,
+//     kGen = 1,
+//     kAdv = 2,
+//     kEle = 3,
+//     kHor = 4,
+//     kCha = 5,
+//     kCan = 6,
+//     kSol = 7
+// };
 
-enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
+// enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
 
 typedef int Piece_t;
 typedef int BoardIdx_t;
 
-const int kNumPieceTypeVals = 8;
+// const int kNumPieceTypeVals = 8;
 
 const BoardIdx_t kNumRanks = 10;
 const BoardIdx_t kNumFiles = 9;
