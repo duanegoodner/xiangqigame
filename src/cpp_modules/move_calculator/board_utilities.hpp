@@ -13,9 +13,7 @@ namespace board_utilities
 {
 
     // using namespace board_components::data_types;
-    using namespace board_components::piece_move;
-    using namespace board_components::game_piece;
-    using namespace board_components::locations;
+    using namespace board_components;
 
     typedef array<BoardSpace, 9> Castle_t;
     inline Castle_t calc_castle_spaces(const CastleEdges edges)

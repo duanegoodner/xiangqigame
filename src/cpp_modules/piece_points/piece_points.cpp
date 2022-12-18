@@ -4,9 +4,7 @@
 
 using namespace std;
 using namespace board_components;
-using namespace piece_points::raw;
-using namespace piece_points::data_types;
-using namespace piece_points::builder;
+using namespace piece_points;
 
 
 PiecePositionPoints_t PiecePointsBuilder::ComputePieceNetPositionPoints(

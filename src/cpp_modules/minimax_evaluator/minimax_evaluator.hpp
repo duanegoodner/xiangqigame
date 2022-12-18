@@ -9,10 +9,8 @@
 
 
 using namespace std;
-using namespace board_components::locations;
-using namespace board_components::game_piece;
-using namespace board_components::piece_move;
-using namespace piece_points::data_types;
+using namespace board_components;
+using namespace piece_points;
 
 struct BestMoves {
     int best_eval;

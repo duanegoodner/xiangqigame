@@ -7,7 +7,7 @@
 
 using namespace board_components;
 using namespace std;
-using namespace piece_points::builder;
+using namespace piece_points;
 
 
 Move RandomMoveSelector::ImplementSelectMove(

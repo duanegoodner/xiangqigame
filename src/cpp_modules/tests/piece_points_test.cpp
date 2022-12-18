@@ -2,8 +2,7 @@
 
 #include <gtest/gtest.h>
 
-using namespace piece_points::data_types;
-using namespace piece_points::builder;
+using namespace piece_points;
 
 class PiecePointsBuilderTest : public ::testing::Test {
     // TeamBasePoints_t black_base_pts = kBasePointsICGA2004;

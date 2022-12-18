@@ -6,7 +6,7 @@
 #include "piece_points.hpp"
 
 
-using namespace piece_points::builder;
+using namespace piece_points;
 
 class MoveSelectorTest : public ::testing::Test {
 

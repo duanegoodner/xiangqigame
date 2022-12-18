@@ -4,9 +4,7 @@
 #include "minimax_evaluator.hpp"
 #include "piece_points.hpp"
 
-using namespace piece_points::builder;
-using namespace piece_points::raw;
-using namespace piece_points::data_types;
+using namespace piece_points;
 
 class PiecePointsEvaluatorTest : public ::testing::Test {
     
