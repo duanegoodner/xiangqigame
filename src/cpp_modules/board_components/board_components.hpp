@@ -43,7 +43,7 @@ namespace board_components
             return static_cast<PieceColor>(-1 * color);
         }
 
-    } // namespace game_piece
+    } // namespace board_components::game_piece
 
     namespace data_types
     {
@@ -57,7 +57,7 @@ namespace board_components
 
         typedef array<array<Piece_t, kNumFiles>, kNumRanks> BoardMap_t;
 
-    }
+    }  // namespace board_components::data_types
 
     namespace locations
     {
@@ -132,7 +132,7 @@ namespace board_components
             }
         };
 
-    }
+    }  // namespace board_components::locations
 
     namespace piece_move
     {
@@ -193,7 +193,7 @@ namespace board_components
             Piece_t destination_piece;
         };
 
-    } // namespace move
+    } // namespace board_components::piece_move
 
 } // namespace board_components
 

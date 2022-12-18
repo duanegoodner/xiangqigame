@@ -13,7 +13,9 @@
 #include "board_components.hpp"
 
 using namespace std;
-using namespace board_components;
+using namespace board_components::game_piece;
+using namespace board_components::locations;
+using namespace board_utilities;
 
 
 class MoveCalculator;
