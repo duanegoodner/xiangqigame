@@ -2,11 +2,13 @@
 #include <pybind11/stl.h>
 
 #include "game_board.hpp"
-// #include "board_components.hpp"
+#include "board_components.hpp"
 
 namespace py = pybind11;
 using namespace py::literals;
-using namespace board_components;
+using namespace board_components::game_piece;
+using namespace board_components::locations;
+using namespace board_components::piece_move;
 
 PYBIND11_MODULE(GameBoardPy, m) {
     py::class_<BoardSpace>(m, "BoardSpace")

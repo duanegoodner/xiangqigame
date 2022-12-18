@@ -11,7 +11,8 @@ namespace piece_points
     namespace data_types
     {
 
-        using namespace board_components::data_types;
+        using namespace board_components::game_piece;
+        using namespace board_components::locations;
         using namespace std;
 
         typedef int Points_t;

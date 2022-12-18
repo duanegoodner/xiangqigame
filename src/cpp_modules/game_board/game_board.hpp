@@ -8,13 +8,9 @@
 
 
 using namespace std;
-using namespace board_components::data_types;
 using namespace board_components::game_piece;
 using namespace board_components::locations;
 using namespace board_components::piece_move;
-
-
-
 
 const BoardMap_t kStartingBoard {{
     { 5,  4,  3,  2,  1,  2,  3,  4,  5},
@@ -28,9 +24,6 @@ const BoardMap_t kStartingBoard {{
     { 0,  0,  0,  0,  0,  0,  0,  0,  0},
     {-5, -4, -3, -2, -1, -2, -3, -4, -5},
 }};
-
-
-
 
 class GameBoard {
     
@@ -46,8 +39,6 @@ class GameBoard {
     PieceColor GetColor(BoardSpace space);
     PieceType GetType(BoardSpace space);
     const BoardMap_t& map() const { return board_map_; }
-
-    
 
     private:
     BoardMap_t board_map_;

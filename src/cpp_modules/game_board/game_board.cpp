@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-using namespace board_components;
+// using namespace board_components;
 
 GameBoard::GameBoard() : move_calculator_{MoveCalculator(board_map_)} {
     board_map_ = kStartingBoard;
