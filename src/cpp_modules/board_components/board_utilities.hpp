@@ -8,7 +8,10 @@
 #define _BOARD_UTILITIES_
 
 #include "board_components.hpp"
+#include "piece_move.hpp"
+
 using namespace board_components;
+using namespace piece_move;
 
 typedef array<BoardSpace, 9> Castle_t;
 inline Castle_t calc_castle_spaces(const CastleEdges edges)

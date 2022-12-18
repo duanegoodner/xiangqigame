@@ -1,6 +1,6 @@
 
-#ifndef _SHARED_COMPONENTS_
-#define _SHARED_COMPONENTS_
+#ifndef _BOARD_COMPONENTS_
+#define _BOARD_COMPONENTS_
 
 #include <array>
 #include <cassert>
@@ -12,19 +12,6 @@ using namespace std;
 using namespace game_piece;
 
 namespace board_components {
-
-// enum PieceType : int {
-//     kNnn = 0,
-//     kGen = 1,
-//     kAdv = 2,
-//     kEle = 3,
-//     kHor = 4,
-//     kCha = 5,
-//     kCan = 6,
-//     kSol = 7
-// };
-
-// enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
 
 typedef int Piece_t;
 typedef int BoardIdx_t;
@@ -91,47 +78,6 @@ struct BoardSpace {
     }
 };
 
-struct Move {
-    BoardSpace start;
-    BoardSpace end;
-
-    bool operator==(const Move other) {
-        return (start == other.start) && (end == other.end);
-    }
-};
-
-// TODO add more methods for data manip and comparison
-struct MoveCollection {
-    vector<Move> moves;
-    MoveCollection(): moves{} {};
-    MoveCollection(vector<Move> my_moves) : moves{my_moves} {};
-    MoveCollection(size_t reserve_size) : moves{} {
-        moves.reserve(reserve_size);
-    }
-    bool Contains(Move move) {
-        for (auto entry : moves) {
-            if ((move.start == entry.start) && (move.end == entry.end)) {
-                return true;
-            }
-        }
-        return false;
-    }
-    void Append(Move move) {
-        moves.emplace_back(move);
-    }
-    void Concat(vector<Move> other_moves) {
-        moves.insert(moves.end(), other_moves.begin(), other_moves.end());
-    }
-    void Concat(MoveCollection other) {
-        moves.insert(moves.end(), other.moves.begin(), other.moves.end());
-    }
-};
-
-struct ExecutedMove {
-    Move spaces;
-    Piece_t moving_piece;
-    Piece_t destination_piece;
-};
 
 struct OrthogonalSpaceSearchResult {
     vector<BoardSpace> empty_spaces;
