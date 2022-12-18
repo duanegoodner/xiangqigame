@@ -8,10 +8,11 @@
 #define _BOARD_UTILITIES_
 
 #include "board_components.hpp"
-#include "piece_move.hpp"
 
-using namespace board_components;
-using namespace piece_move;
+using namespace board_components::data_types;
+using namespace board_components::piece_move;
+using namespace board_components::game_piece;
+
 
 typedef array<BoardSpace, 9> Castle_t;
 inline Castle_t calc_castle_spaces(const CastleEdges edges)
@@ -30,6 +31,12 @@ inline Castle_t calc_castle_spaces(const CastleEdges edges)
     }
     return spaces;
 }
+
+ struct OrthogonalSpaceSearchResult
+    {
+        vector<BoardSpace> empty_spaces;
+        vector<BoardSpace> first_occupied_space;
+    };
 
 const array<BoardDirection, 2> kSideDirections = {BoardDirection{0, 1},
                                                   BoardDirection{0, -1}};

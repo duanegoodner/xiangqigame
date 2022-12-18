@@ -1,8 +1,12 @@
-#include "move_selector.hpp"
+
 #include <chrono>
 #include <gtest/gtest.h>
 #include <iostream>
+#include "move_selector.hpp"
+#include "piece_points.hpp"
 
+
+using namespace piece_points::builder;
 
 class MoveSelectorTest : public ::testing::Test {
 

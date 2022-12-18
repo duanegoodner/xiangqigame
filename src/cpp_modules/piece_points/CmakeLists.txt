@@ -2,16 +2,16 @@
 # add_compile_options(-Wall -Wextra -O3)
 
 add_library(
-    piece_points_builder
-    piece_points_builder.cpp)
+    piece_points
+    piece_points.cpp)
 
 target_link_libraries(
-    piece_points_builder PUBLIC
+    piece_points PUBLIC
     game_board
     )
 
 target_include_directories(
-    piece_points_builder PUBLIC
+    piece_points PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/board_components
     ${PROJECT_SOURCE_DIR}/game_board)

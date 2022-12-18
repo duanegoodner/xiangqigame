@@ -1,6 +1,12 @@
-#include "minimax_evaluator.hpp"
+
 #include <gtest/gtest.h>
 
+#include "minimax_evaluator.hpp"
+#include "piece_points.hpp"
+
+using namespace piece_points::builder;
+using namespace piece_points::raw;
+using namespace piece_points::data_types;
 
 class PiecePointsEvaluatorTest : public ::testing::Test {
     

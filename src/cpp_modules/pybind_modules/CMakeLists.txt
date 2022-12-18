@@ -21,7 +21,7 @@ target_link_libraries(
     move_calculator
     game_board
     minimax_evaluator
-    piece_points_builder)
+    piece_points)
     
 target_include_directories(
     MoveSelectorPy PUBLIC
@@ -30,7 +30,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/game_board
     ${PROJECT_SOURCE_DIR}/minimax_evaluator
     ${PROJECT_SOURCE_DIR}/move_calculator
-    ${PROJECT_SOURCE_DIR}/piece_points_builder
+    ${PROJECT_SOURCE_DIR}/piece_points
     ${PROJECT_SOURCE_DIR}/utility_functs
     ${CMAKE_CURRENT_SOURCE_DIR})
 

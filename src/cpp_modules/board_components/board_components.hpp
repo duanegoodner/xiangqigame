@@ -6,88 +6,195 @@
 #include <cassert>
 #include <random>
 #include <vector>
-#include "game_piece.hpp"
 
 using namespace std;
-using namespace game_piece;
 
-namespace board_components {
+namespace board_components
+{
 
-typedef int Piece_t;
-typedef int BoardIdx_t;
+    namespace game_piece
+    {
 
-// const int kNumPieceTypeVals = 8;
+        typedef int Piece_t;
 
-const BoardIdx_t kNumRanks = 10;
-const BoardIdx_t kNumFiles = 9;
+        enum PieceType : int
+        {
+            kNnn = 0,
+            kGen = 1,
+            kAdv = 2,
+            kEle = 3,
+            kHor = 4,
+            kCha = 5,
+            kCan = 6,
+            kSol = 7
+        };
 
-const BoardIdx_t kRedRiverEdge = 5;
-const BoardIdx_t kBlackRiverEdge = 4;
+        enum PieceColor : int
+        {
+            kRed = -1,
+            kNul = 0,
+            kBlk = 1
+        };
 
-struct CastleEdges {
-    BoardIdx_t min_rank;
-    BoardIdx_t max_rank;
-    BoardIdx_t min_file;
-    BoardIdx_t max_file;
-};
+        const int kNumPieceTypeVals = 8;
 
-const CastleEdges kRedCastleEdges = {7, 9, 3, 5};
-const CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
-
-typedef array<array<Piece_t, kNumFiles>, kNumRanks> BoardMap_t;
-
-struct BoardDirection {
-    BoardIdx_t rank, file;
-};
-
-struct BoardSpace {
-    
-    BoardIdx_t rank, file;
-    
-    bool IsOnBoard() {
-        return ((0 <= rank) && (rank < kNumRanks) && (0 <= file) && (file < kNumFiles));
-    }
-
-    bool IsInHomelandOf(PieceColor color) {
-        assert(color != PieceColor::kNul);
-        if (color == PieceColor::kRed) {
-            return rank >= kRedRiverEdge;
-        } else {
-            return rank <= kBlackRiverEdge;
+        inline PieceColor opponent_of(PieceColor color)
+        {
+            return static_cast<PieceColor>(-1 * color);
         }
+
+    } // namespace game_piece
+
+    namespace data_types
+    {
+
+        using namespace board_components::game_piece;
+
+        typedef int Piece_t;
+        typedef int BoardIdx_t;
+        const BoardIdx_t kNumRanks = 10;
+        const BoardIdx_t kNumFiles = 9;
+
+        typedef array<array<Piece_t, kNumFiles>, kNumRanks> BoardMap_t;
+
     }
 
-    bool IsInCastleOf(PieceColor color) {
-        assert(color != PieceColor::kNul);
-        auto castle_edges =
-            color == PieceColor::kRed ? kRedCastleEdges : kBlackCastleEdges;
-        return (castle_edges.min_rank <= rank) && (rank <= castle_edges.max_rank) &&
-               (castle_edges.min_file <= file) && (file <= castle_edges.max_file);
+    namespace locations
+    {
+
+        using namespace board_components::data_types;
+        using namespace board_components::game_piece;
+
+        const BoardIdx_t kRedRiverEdge = 5;
+        const BoardIdx_t kBlackRiverEdge = 4;
+
+        struct CastleEdges
+        {
+            BoardIdx_t min_rank;
+            BoardIdx_t max_rank;
+            BoardIdx_t min_file;
+            BoardIdx_t max_file;
+        };
+
+        const CastleEdges kRedCastleEdges = {7, 9, 3, 5};
+        const CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
+
+        struct BoardDirection
+        {
+            BoardIdx_t rank, file;
+        };
+
+        struct BoardSpace
+        {
+
+            BoardIdx_t rank, file;
+
+            bool IsOnBoard()
+            {
+                return ((0 <= rank) && (rank < kNumRanks) && (0 <= file) && (file < kNumFiles));
+            }
+
+            bool IsInHomelandOf(PieceColor color)
+            {
+                assert(color != PieceColor::kNul);
+                if (color == PieceColor::kRed)
+                {
+                    return rank >= kRedRiverEdge;
+                }
+                else
+                {
+                    return rank <= kBlackRiverEdge;
+                }
+            }
+
+            bool IsInCastleOf(PieceColor color)
+            {
+                assert(color != PieceColor::kNul);
+                auto castle_edges =
+                    color == PieceColor::kRed ? kRedCastleEdges : kBlackCastleEdges;
+                return (castle_edges.min_rank <= rank) && (rank <= castle_edges.max_rank) &&
+                       (castle_edges.min_file <= file) && (file <= castle_edges.max_file);
+            }
+
+            BoardSpace operator+(const BoardDirection direction)
+            {
+                return BoardSpace{rank + direction.rank, file + direction.file};
+            }
+
+            bool operator==(const BoardSpace other)
+            {
+                return (rank == other.rank) && (file == other.file);
+            }
+
+            bool operator!=(const BoardSpace other)
+            {
+                return (rank != other.rank) || (file != other.file);
+            }
+        };
+
     }
 
-    BoardSpace operator+(const BoardDirection direction) {
-        return BoardSpace{rank + direction.rank, file + direction.file};
-    }
+    namespace piece_move
+    {
 
-    bool operator==(const BoardSpace other) {
-        return (rank == other.rank) && (file == other.file);
-    }
+        using namespace board_components::data_types;
+        using namespace board_components::game_piece;
+        using namespace board_components::locations;
 
-    bool operator!=(const BoardSpace other) {
-        return (rank != other.rank) || (file != other.file);
-    }
-};
+        struct Move
+        {
+            BoardSpace start;
+            BoardSpace end;
 
+            bool operator==(const Move other)
+            {
+                return (start == other.start) && (end == other.end);
+            }
+        };
 
-struct OrthogonalSpaceSearchResult {
-    vector<BoardSpace> empty_spaces;
-    vector<BoardSpace> first_occupied_space;
-};
+        struct MoveCollection
+        {
+            vector<Move> moves;
+            MoveCollection() : moves{} {};
+            MoveCollection(vector<Move> my_moves) : moves{my_moves} {};
+            MoveCollection(size_t reserve_size) : moves{}
+            {
+                moves.reserve(reserve_size);
+            }
+            bool Contains(Move move)
+            {
+                for (auto entry : moves)
+                {
+                    if ((move.start == entry.start) && (move.end == entry.end))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            void Append(Move move)
+            {
+                moves.emplace_back(move);
+            }
+            void Concat(vector<Move> other_moves)
+            {
+                moves.insert(moves.end(), other_moves.begin(), other_moves.end());
+            }
+            void Concat(MoveCollection other)
+            {
+                moves.insert(moves.end(), other.moves.begin(), other.moves.end());
+            }
+        };
 
-inline PieceColor opponent_of(PieceColor color) {
-    return static_cast<PieceColor>(-1 * color);
-}
+        struct ExecutedMove
+        {
+            Move spaces;
+            Piece_t moving_piece;
+            Piece_t destination_piece;
+        };
 
-}  // namespace board_components
+    } // namespace move
 
-#endif  // _SHARED_COMPONENTS_
+} // namespace board_components
+
+#endif // _SHARED_COMPONENTS_

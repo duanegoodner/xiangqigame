@@ -8,7 +8,7 @@ add_library(
 target_link_libraries(
     minimax_evaluator PUBLIC
     game_board
-    piece_points_builder
+    piece_points
     move_calculator
 )
 
@@ -17,7 +17,7 @@ target_link_libraries(
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/board_components
     ${PROJECT_SOURCE_DIR}/game_board
-    ${PROJECT_SOURCE_DIR}/piece_points_builder
+    ${PROJECT_SOURCE_DIR}/piece_points
     ${PROJECT_SOURCE_DIR}/move_calculator
     # ${PROJECT_SOURCE_DIR}/minimax_evaluator
     )

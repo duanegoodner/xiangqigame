@@ -4,12 +4,13 @@
 #include <utility>
 #include <vector>
 #include "game_board.hpp"
-#include "piece_points_builder.hpp"
+#include "piece_points.hpp"
 #include "board_components.hpp"
 
 
 using namespace std;
 using namespace board_components;
+using namespace piece_points::data_types;
 
 struct BestMoves {
     int best_eval;

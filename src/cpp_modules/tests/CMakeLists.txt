@@ -33,10 +33,10 @@ target_link_libraries(
 #     ${PROJECT_SOURCE_DIR}/move_calculator
 #     ${PROJECT_SOURCE_DIR}/game_board)
 
-add_executable(piece_points_builder_test piece_points_builder_test.cpp)
+add_executable(piece_points_test piece_points_test.cpp)
 target_link_libraries(
-    piece_points_builder_test LINK_PUBLIC
-    piece_points_builder
+    piece_points_test LINK_PUBLIC
+    piece_points
     GTest::GTest
     GTest::Main)
 # target_include_directories(
@@ -47,7 +47,7 @@ add_executable(minimax_evaluator_test minimax_evaluator_test.cpp)
 target_link_libraries(
     minimax_evaluator_test LINK_PUBLIC
     minimax_evaluator
-    piece_points_builder
+    piece_points
     game_board
     GTest::GTest
     GTest::Main)
@@ -65,7 +65,7 @@ target_link_libraries(
     game_board
     minimax_evaluator
     move_calculator
-    piece_points_builder
+    piece_points
     GTest::GTest
     GTest::Main)
 # target_include_directories(

@@ -80,13 +80,3 @@ RatedMove PiecePointsEvaluator::ImplementRateMove(
 
         return RatedMove{move, (position_value_delta + capture_val)};        
     }
-
-
-// int main() {
-//     auto piece_points_builder = PiecePointsBuilder();
-//     auto game_points = piece_points_builder.BuildGamePositionPoints(
-//         kBasePointsICGA2004, kAllOffsetsICGA2004);
-//     GameBoard game_board;
-
-//     return 0;
-// }

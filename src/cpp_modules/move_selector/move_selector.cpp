@@ -1,11 +1,14 @@
 #include <iostream>
 #include <limits>
 #include "move_selector.hpp"
+#include "piece_points.hpp"
 #include "board_components.hpp"
 #include "utility_functs.hpp"
 
 using namespace board_components;
 using namespace std;
+using namespace piece_points::builder;
+
 
 Move RandomMoveSelector::ImplementSelectMove(
     GameBoard &game_board,

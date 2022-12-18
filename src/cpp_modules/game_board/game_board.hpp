@@ -8,7 +8,12 @@
 
 
 using namespace std;
-using namespace board_components;
+using namespace board_components::data_types;
+using namespace board_components::game_piece;
+using namespace board_components::locations;
+using namespace board_components::piece_move;
+
+
 
 
 const BoardMap_t kStartingBoard {{
@@ -23,6 +28,7 @@ const BoardMap_t kStartingBoard {{
     { 0,  0,  0,  0,  0,  0,  0,  0,  0},
     {-5, -4, -3, -2, -1, -2, -3, -4, -5},
 }};
+
 
 
 

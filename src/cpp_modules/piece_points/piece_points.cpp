@@ -1,10 +1,12 @@
 #include <algorithm>
 #include <iostream>
-#include "piece_points_builder.hpp"
+#include "piece_points.hpp"
 
 using namespace std;
 using namespace board_components;
-using namespace piece_points_raw;
+using namespace piece_points::raw;
+using namespace piece_points::data_types;
+using namespace piece_points::builder;
 
 
 PiecePositionPoints_t PiecePointsBuilder::ComputePieceNetPositionPoints(
@@ -64,20 +66,4 @@ GamePositionPoints_t PiecePointsBuilder::BuildGamePositionPoints(
             return BuildGamePositionPoints(black_position_points);
 
         }
-
-
-// int main() {
-
-//     auto piece_points_builder = PiecePointsBuilder();
-//     // auto black_position_points = piece_points_builder.ComputeBlackPositionPoints(
-//     //     kBasePointsICGA2004, kAllOffsetsICGA2004);
-
-//     auto game_position_points = piece_points_builder.BuildGamePositionPoints(
-//         kBasePointsICGA2004, kAllOffsetsICGA2004);
-    
-//     return 0;
-
-// }
-
-
         
