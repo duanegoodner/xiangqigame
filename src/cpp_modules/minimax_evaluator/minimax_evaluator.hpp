@@ -30,28 +30,26 @@ template <typename E>
 class MinimaxEvaluator {
     public:
 
-    template<typename G, typename P, typename PM>    
+    // template<typename G, typename P, typename PM>    
     BestMoves EvaluateLeaf(
-        G &&game_board,
-        P &&cur_player,
-        PM &&cur_player_moves,
-        P &&initiating_player) {
+        GameBoard game_board,
+        PieceColor cur_player,
+        MoveCollection cur_player_moves,
+        PieceColor initiating_player) {
             return static_cast<E*>(this)->ImplementEvaluateLeaf(
-                std::forward<G>(game_board),
-                std::forward<P>(cur_player),
-                std::forward<PM>(cur_player_moves),
-                std::forward<P>(initiating_player));
+                game_board,
+                cur_player,
+                cur_player_moves,
+                initiating_player);
         };
 
-    template<typename M, typename G, typename P>
+    // template<typename M, typename G, typename P>
     RatedMove RateMove(
-        M &&move,
-        G &&game_board,
-        P &&cur_player) {
+        Move move,
+        GameBoard game_board,
+        PieceColor cur_player) {
             return static_cast<E*>(this)->ImplementRateMove(
-                std::forward<M>(move), 
-                std::forward<G>(game_board),
-                std::forward<P>(cur_player));
+                move, game_board, cur_player);
         };
     // GenerateRankedMoveList not included. Will make it
     // a method of MinimaxMoveSelector (this way, avoid mixing

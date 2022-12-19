@@ -16,15 +16,13 @@ template <typename S>
 class MoveSelector
 {
 public:
-    template<typename G, typename P, typename PM>
+    // template<typename G, typename P, typename PM>
     Move SelectMove(
-        G &&game_board,
-        P &&cur_player,
-        PM &&cur_moves) {
+        GameBoard game_board,
+        PieceColor cur_player,
+        MoveCollection cur_moves) {
             return static_cast<S*>(this)->ImplementSelectMove(
-                std::forward<G>(game_board),
-                std::forward<P>(cur_player),
-                std::forward<PM>(cur_moves));
+                game_board, cur_player, cur_moves);
         }
 };
 
