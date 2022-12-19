@@ -28,7 +28,10 @@ TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
 };
 
 TEST_F(MoveSelectorTest, MinimaxMoveSelectorSelectInitialMove) {
+    
+    
     auto move_selector = MinimaxMoveSelector(piece_points_evaluator_, 4);
+    // MinimaxMoveSelector<PiecePointsEvaluator> move_selector = {piece_points_evaluator_, 4, 0};
     auto cur_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
     auto start_time = std::chrono::high_resolution_clock::now();
     auto selected_move = move_selector.ImplementSelectMove(game_board_, PieceColor::kRed, cur_moves);

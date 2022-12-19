@@ -9,10 +9,10 @@ using namespace py::literals;
 using namespace board_components;
 
 PYBIND11_MODULE(MoveSelectorPy, m) {
-    py::class_<MinimaxMoveSelector>(m, "MinimaxMoveSelector")
+    py::class_<MinimaxMoveSelector<PiecePointsEvaluator>>(m, "MinimaxMoveSelector")
         .def(py::init<int>(), "search_depth"_a)
         .def(
             "SelectMove",
-            &MinimaxMoveSelector::ImplementSelectMove);
+            &MinimaxMoveSelector<PiecePointsEvaluator>::ImplementSelectMove);
    
 }

@@ -12,7 +12,7 @@
 using namespace std;
 using namespace board_components;
 
-template <typename S>
+template <class S>
 class MoveSelector
 {
 public:
@@ -36,15 +36,17 @@ class RandomMoveSelector : public MoveSelector<RandomMoveSelector> {
         MoveCollection &cur_moves);
 };
 
-class MinimaxMoveSelector : public MoveSelector<MinimaxMoveSelector> {
+template <class E>
+class MinimaxMoveSelector : public MoveSelector<MinimaxMoveSelector<E>> {
     public:
-    PiecePointsEvaluator evaluator_;
+    E evaluator_;
     int search_depth_;
     int node_counter_;
-    mt19937 engine;
+    // mt19937 engine;
 
+    
     MinimaxMoveSelector(
-        PiecePointsEvaluator evaluator, int search_depth);
+        E evaluator, int search_depth);
     MinimaxMoveSelector(int search_depth);
     Move ImplementSelectMove(
         GameBoard &game_board,
@@ -62,6 +64,11 @@ class MinimaxMoveSelector : public MoveSelector<MinimaxMoveSelector> {
         int beta,
         PieceColor cur_player,
         PieceColor initiating_player);
+};
+
+class PiecePointsMinimaxMoveSelector : public MinimaxMoveSelector<PiecePointsEvaluator> {
+
+
 };
 
 #endif // _MOVE_SELECTOR_

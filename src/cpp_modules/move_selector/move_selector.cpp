@@ -21,21 +21,25 @@ Move RandomMoveSelector::ImplementSelectMove(
     return cur_moves.moves[selected_move_index];
 }
 
-MinimaxMoveSelector::MinimaxMoveSelector(
+template <>
+MinimaxMoveSelector<PiecePointsEvaluator>::MinimaxMoveSelector(
     PiecePointsEvaluator evaluator, int search_depth)
     : evaluator_{evaluator}, search_depth_{search_depth}, node_counter_{0} {};
 
-MinimaxMoveSelector::MinimaxMoveSelector(int search_depth)
+template <>
+MinimaxMoveSelector<PiecePointsEvaluator>::MinimaxMoveSelector(int search_depth)
     : evaluator_{PiecePointsEvaluator(DEFAULT_GAME_POINTS)}
     , search_depth_{search_depth}
     , node_counter_{0} {};
 
-void MinimaxMoveSelector::ResetNodeCounter()
+template <>
+void MinimaxMoveSelector<PiecePointsEvaluator>::ResetNodeCounter()
 {
     node_counter_ = 0;
 }
 
-vector<RatedMove> MinimaxMoveSelector::GenerateRankedMoveList(
+template <>
+vector<RatedMove> MinimaxMoveSelector<PiecePointsEvaluator>::GenerateRankedMoveList(
     GameBoard &game_board,
     PieceColor cur_player,
     MoveCollection &cur_player_moves)
@@ -55,7 +59,8 @@ vector<RatedMove> MinimaxMoveSelector::GenerateRankedMoveList(
     return rated_moves;
 }
 
-BestMoves MinimaxMoveSelector::MinimaxRec(
+template <>
+BestMoves MinimaxMoveSelector<PiecePointsEvaluator>::MinimaxRec(
     GameBoard &game_board,
     int search_depth,
     int alpha,
@@ -150,7 +155,8 @@ BestMoves MinimaxMoveSelector::MinimaxRec(
     }
 }
 
-Move MinimaxMoveSelector::ImplementSelectMove(
+template <>
+Move MinimaxMoveSelector<PiecePointsEvaluator>::ImplementSelectMove(
     GameBoard &game_board, PieceColor cur_player, MoveCollection &cur_moves) {
         ResetNodeCounter();
         auto minimax_result = MinimaxRec(
