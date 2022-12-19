@@ -18,9 +18,9 @@ class MoveSelector
 public:
     // template<typename G, typename P, typename PM>
     Move SelectMove(
-        GameBoard game_board,
+        GameBoard &game_board,
         PieceColor cur_player,
-        MoveCollection cur_moves) {
+        MoveCollection &cur_moves) {
             return static_cast<S*>(this)->ImplementSelectMove(
                 game_board, cur_player, cur_moves);
         }

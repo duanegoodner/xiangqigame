@@ -32,9 +32,9 @@ class MinimaxEvaluator {
 
     // template<typename G, typename P, typename PM>    
     BestMoves EvaluateLeaf(
-        GameBoard game_board,
+        GameBoard &game_board,
         PieceColor cur_player,
-        MoveCollection cur_player_moves,
+        MoveCollection &cur_player_moves,
         PieceColor initiating_player) {
             return static_cast<E*>(this)->ImplementEvaluateLeaf(
                 game_board,
@@ -46,7 +46,7 @@ class MinimaxEvaluator {
     // template<typename M, typename G, typename P>
     RatedMove RateMove(
         Move move,
-        GameBoard game_board,
+        GameBoard &game_board,
         PieceColor cur_player) {
             return static_cast<E*>(this)->ImplementRateMove(
                 move, game_board, cur_player);
