@@ -10,6 +10,9 @@ target_link_libraries(
 
 target_include_directories(
     game_board PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${PROJECT_SOURCE_DIR}/board_components
     ${PROJECT_SOURCE_DIR}/move_calculator)
+
+target_include_directories(
+    game_board PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${PROJECT_SOURCE_DIR}/board_components)

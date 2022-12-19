@@ -1,7 +1,7 @@
-#include "move_calculator.hpp"
-
 #include <gtest/gtest.h>
 
+#include "board_components.hpp"
+#include "move_calculator.hpp"
 #include "game_board.hpp"
 
 const BoardMap_t kFlyingBoard{{

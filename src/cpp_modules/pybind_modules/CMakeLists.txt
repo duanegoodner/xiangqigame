@@ -3,13 +3,13 @@
 
 pybind11_add_module(GameBoardPy game_board_py.cpp)
 target_link_libraries(
-    GameBoardPy PUBLIC
-    game_board
-    # move_calculator
-    )
+    GameBoardPy PRIVATE
+    game_board)
+
 target_include_directories(
-    GameBoardPy PUBLIC
+    GameBoardPy PRIVATE
     ${PROJECT_SOURCE_DIR}/game_board
+    ${PROJECT_SOURCE_DIR}/board_components
     ${CMAKE_CURRENT_SOURCE_DIR})
 
 install(TARGETS GameBoardPy DESTINATION .)

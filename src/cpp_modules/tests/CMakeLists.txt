@@ -1,7 +1,20 @@
 # set(CMAKE_BUILD_TYPE Debug)
 # add_compile_options(-Wall -Wextra -O3)
 
-add_executable(move_calculator_test move_calculator_test.cpp)
+include_directories(
+    ${PROJECT_SOURCE_DIR}/board_components
+    ${PROJECT_SOURCE_DIR}/move_calculator
+    ${PROJECT_SOURCE_DIR}/game_board
+    ${PROJECT_SOURCE_DIR}/piece_points
+    ${PROJECT_SOURCE_DIR}/minimax_evaluator
+    ${PROJECT_SOURCE_DIR}/move_selector
+)
+
+add_executable(
+    move_calculator_test
+    move_calculator_test.cpp
+    # ${PROJECT_SOURCE_DIR}/move_calculator/move_calculator.hpp
+    )
 target_link_libraries(
     move_calculator_test LINK_PUBLIC
     move_calculator
