@@ -13,17 +13,17 @@ class Thing {
     int val;
 };
 
-template<typename ImplementedEvaluator>
+template<typename ImplementedEvaluator, typename RatingType>
 class EvaluatorInterface {
     public:
-    int EvaluateThing(Thing thing) {
+    RatingType EvaluateThing(Thing thing) {
         return static_cast<ImplementedEvaluator*>(this)->ImplementEvaluateThing(
             thing
         );
     }
 };
 
-class AbsPlusOffsetEvaluator : public EvaluatorInterface<AbsPlusOffsetEvaluator> {
+class AbsPlusOffsetEvaluator : public EvaluatorInterface<AbsPlusOffsetEvaluator, int> {
     public:
     int offset_;
     AbsPlusOffsetEvaluator(int offset) : offset_{offset} {};
@@ -43,18 +43,19 @@ class AbstractSelector {
 };
 
 
-template <typename ConcreteEvaluator>
-class AbstractSelectorWithEvaluator : public AbstractSelector<AbstractSelectorWithEvaluator<ConcreteEvaluator>> {
+template <typename ConcreteEvaluator, typename RatingType>
+class AbstractSelectorWithEvaluator : public AbstractSelector<AbstractSelectorWithEvaluator<ConcreteEvaluator, RatingType>> {
     public:
-    EvaluatorInterface<ConcreteEvaluator> evaluator_;
+    EvaluatorInterface<ConcreteEvaluator, RatingType> evaluator_;
     Thing ImplementSelectThing(vector<Thing>  &all_things) {
         // return all_things[0];
-        Thing selected_thing;
-        int max_eval = 0;
+
+        Thing selected_thing {"nothing", 0};
+        RatingType best_eval_result{0};
         for (auto thing : all_things) {
-            auto cur_eval = evaluator_.EvaluateThing(thing);
-            if (cur_eval > max_eval) {
-                max_eval = cur_eval;
+            auto cur_eval_result = evaluator_.EvaluateThing(thing);
+            if (cur_eval_result > best_eval_result) {
+                best_eval_result = cur_eval_result;
                 selected_thing = thing;
             }
         }
@@ -63,7 +64,7 @@ class AbstractSelectorWithEvaluator : public AbstractSelector<AbstractSelectorWi
 };
 
 
-class AbsPlusOffsetSelector : public AbstractSelectorWithEvaluator<AbsPlusOffsetEvaluator> {
+class AbsPlusOffsetSelector : public AbstractSelectorWithEvaluator<AbsPlusOffsetEvaluator, int> {
     public:
     AbsPlusOffsetSelector(AbsPlusOffsetEvaluator evaluator)  {
         this->evaluator_ = evaluator;
