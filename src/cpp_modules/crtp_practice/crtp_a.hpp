@@ -1,43 +1,43 @@
 #include <cmath>
+#include <string>
 #include <vector>
 
 using namespace std;
 
 
-template <typename ValueType>
 class Thing {
     public:
     string name;
-    ValueType val;
+    int val;
 };
 
-template<typename ConcreteRater, typename RatingType, typename ValueType>
+template<typename ConcreteRater, typename RatingType, typename ItemType>
 class RaterInterface {
     public:
-    RatingType RateThing(Thing<ValueType> thing) {
+    RatingType RateThing(ItemType thing) {
         return static_cast<ConcreteRater*>(this)->ImplementRateThing(
             thing
         );
     }
 };
 
-template<typename ConcreteSelector, typename ValueType>
+template<typename ConcreteSelector, typename ItemType>
 class SelectorInterface {
     public:
-    Thing<ValueType> SelectThing(
-        vector<Thing<ValueType>> &all_things) {
+    ItemType SelectThing(
+        vector<ItemType> &all_things) {
             return static_cast<ConcreteSelector*>(this)->ImplementSelectThing(
                 all_things);
         }
 };
 
-template <typename ConcreteRater, typename RatingType, typename ValueType>
+template <typename ConcreteRater, typename RatingType, typename ItemType>
 class SelectorInterfaceWithRater : public
-    SelectorInterface< SelectorInterfaceWithRater <ConcreteRater, RatingType, ValueType>, ValueType> {
+    SelectorInterface< SelectorInterfaceWithRater <ConcreteRater, RatingType, ItemType>, ItemType> {
     public:
-    vector<Thing<ValueType>> best_things{};
-    RaterInterface<ConcreteRater, RatingType, ValueType> evaluator_;
+    vector<ItemType> best_things{};
+    RaterInterface<ConcreteRater, RatingType, ItemType> evaluator_;
     
-    Thing<ValueType> ImplementSelectThing(vector<Thing<ValueType>>  &all_things); 
+    ItemType ImplementSelectThing(vector<ItemType> &all_things); 
 
 };
