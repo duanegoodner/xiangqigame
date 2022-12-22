@@ -62,11 +62,22 @@ add_executable(move_selector_test move_selector_test.cpp)
         GTest::GTest
         GTest::Main)
 
-add_executable(minimax_evaluator_3_test minimax_evaluator_3_test.cpp)
-target_link_libraries(
-    minimax_evaluator_3_test LINK_PUBLIC
-    minimax_evaluator_3
-    piece_points
-    game_board
-    GTest::GTest
-    GTest::Main)
+# add_executable(minimax_evaluator_3_test minimax_evaluator_3_test.cpp)
+# target_link_libraries(
+#     minimax_evaluator_3_test LINK_PUBLIC
+#     minimax_evaluator_3
+#     piece_points
+#     game_board
+#     GTest::GTest
+#     GTest::Main)
+
+# add_executable(move_selector_3_test move_selector_3_test.cpp)
+# target_link_libraries(
+#     move_selector_3_test LINK_PUBLIC
+#     move_selector_3
+#     game_board
+#     minimax_evaluator
+#     move_calculator
+#     piece_points
+#     GTest::GTest
+#     GTest::Main)

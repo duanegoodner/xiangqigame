@@ -23,35 +23,37 @@ class MoveSelectorTest : public ::testing::Test {
 TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
     RandomMoveSelector move_selector;
     auto cur_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
-    auto selected_move = move_selector.ImplementSelectMove(game_board_, PieceColor::kRed, cur_moves);
+    auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed, cur_moves);
     EXPECT_EQ(cur_moves.Contains(selected_move), true);
 };
 
 TEST_F(MoveSelectorTest, MinimaxMoveSelectorSelectInitialMove) {
     
+    // MinimaxMoveSelectorInterface<PiecePointsEvaluator> move_selector = MinimaxMoveSelectorInterface<PiecePointsEvaluator>(
+    //     PiecePointsEvaluator(DEFAULT_GAME_POINTS), 4);
     
-    auto move_selector = MinimaxMoveSelector(piece_points_evaluator_, 4);
-    // MinimaxMoveSelector<PiecePointsEvaluator> move_selector = {piece_points_evaluator_, 4, 0};
+    auto move_selector = PiecePointsMoveSelector(piece_points_evaluator_, 4);
+//     // MinimaxMoveSelector<PiecePointsEvaluator> move_selector = {piece_points_evaluator_, 4, 0};
     auto cur_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
     auto start_time = std::chrono::high_resolution_clock::now();
-    auto selected_move = move_selector.ImplementSelectMove(game_board_, PieceColor::kRed, cur_moves);
-    
+    auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed, cur_moves);
+    // move_selector.ResetNodeCounter();
     auto end_time = std::chrono::high_resolution_clock::now();
-    std::cout << "selected move start: "
-        <<  selected_move.start.rank
-        << ", "
-        << selected_move.start.file
-        << std::endl;
-    std::cout << "selected move end: "
-        << selected_move.end.rank
-        << ", "
-        << selected_move.end.file
-        << std::endl;
-    std::cout << "search time: "
-        << std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count()
-        << std::endl;
+//     std::cout << "selected move start: "
+//         <<  selected_move.start.rank
+//         << ", "
+//         << selected_move.start.file
+//         << std::endl;
+//     std::cout << "selected move end: "
+//         << selected_move.end.rank
+//         << ", "
+//         << selected_move.end.file
+//         << std::endl;
+//     std::cout << "search time: "
+//         << std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count()
+//         << std::endl;
     
-    EXPECT_EQ(cur_moves.Contains(selected_move), true);
+//     EXPECT_EQ(cur_moves.Contains(selected_move), true);
 
 }
 

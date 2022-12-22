@@ -6,13 +6,13 @@
 
 namespace py = pybind11;
 using namespace py::literals;
-using namespace board_components;
+// using namespace board_components;
 
 PYBIND11_MODULE(MoveSelectorPy, m) {
-    py::class_<MinimaxMoveSelector<PiecePointsEvaluator>>(m, "MinimaxMoveSelector")
+    py::class_<PiecePointsMoveSelector>(m, "PiecePointsMoveSelector")
         .def(py::init<int>(), "search_depth"_a)
         .def(
             "SelectMove",
-            &MinimaxMoveSelector<PiecePointsEvaluator>::ImplementSelectMove);
+            &PiecePointsMoveSelector::SelectMove);
    
 }
