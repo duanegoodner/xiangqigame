@@ -58,6 +58,15 @@ class MoveCalculator {
     piece_dispatch_[PieceType::kEle] = &PieceMoves::ElephantMoves;
     piece_dispatch_[PieceType::kAdv] = &PieceMoves::AdvisorMoves;
     piece_dispatch_[PieceType::kGen] = &PieceMoves::GeneralMoves;
+
+    piece_dispatch_array_[PieceType::kNnn] ={};
+    piece_dispatch_array_[PieceType::kSol] = &PieceMoves::SoldierMoves;
+    piece_dispatch_array_[PieceType::kCan] = &PieceMoves::CannonMoves;
+    piece_dispatch_array_[PieceType::kCha] = &PieceMoves::ChariotMoves;
+    piece_dispatch_array_[PieceType::kHor] = &PieceMoves::HorseMoves;
+    piece_dispatch_array_[PieceType::kEle] = &PieceMoves::ElephantMoves;
+    piece_dispatch_array_[PieceType::kAdv] = &PieceMoves::AdvisorMoves;
+    piece_dispatch_array_[PieceType::kGen] = &PieceMoves::GeneralMoves;
 }
 
 // https://opensource.com/article/21/2/ccc-method-pointers
@@ -68,7 +77,8 @@ class MoveCalculator {
 {
     auto piece_type = get_type(board_map_, space);
     auto color = get_color(board_map_, space);
-    auto move_func = piece_dispatch_.find(piece_type)->second;
+    // auto move_func = piece_dispatch_.find(piece_type)->second;
+    auto move_func = piece_dispatch_array_[piece_type];
     auto move_func_ptr = any_cast<MethodPtr_t>(move_func);
     return (piece_moves_.*move_func_ptr)(board_map_, color, space);
 }
@@ -88,6 +98,7 @@ class MoveCalculator {
     private:
     const BoardMap_t& board_map_;
     unordered_map<PieceType, any> piece_dispatch_;
+    array<MethodPtr_t, kNumPieceTypeVals> piece_dispatch_array_;
     PieceMoves piece_moves_;
 
 };
