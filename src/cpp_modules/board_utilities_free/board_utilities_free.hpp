@@ -91,8 +91,18 @@ namespace board_utilities_free
         return occupied_spaces;
     }
 
-    bool is_space_any_destination_of_moves(
-        BoardSpace space, MoveCollection moves);
+    inline bool is_space_any_destination_of_moves(
+    BoardSpace space, MoveCollection moves)
+{
+    for (auto move : moves.moves)
+    {
+        if (move.end == space)
+        {
+            return true;
+        }
+    }
+    return false;
+}
 }
 
 #endif

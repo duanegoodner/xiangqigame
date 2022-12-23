@@ -100,15 +100,15 @@ BoardSpace board_utilities_free::get_general_position(
 //     return occupied_spaces;
 // }
 
-bool board_utilities_free::is_space_any_destination_of_moves(
-    BoardSpace space, MoveCollection moves)
-{
-    for (auto move : moves.moves)
-    {
-        if (move.end == space)
-        {
-            return true;
-        }
-    }
-    return false;
-}
+// bool board_utilities_free::is_space_any_destination_of_moves(
+//     BoardSpace space, MoveCollection moves)
+// {
+//     for (auto move : moves.moves)
+//     {
+//         if (move.end == space)
+//         {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
