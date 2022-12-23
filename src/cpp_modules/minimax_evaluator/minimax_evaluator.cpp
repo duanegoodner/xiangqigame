@@ -13,13 +13,13 @@ BestMoves evaluate_winner(
     if (cur_player == initiating_player)
     {
         return BestMoves{
-            numeric_limits<int>::max(),
+            numeric_limits<Points_t>::max(),
             empty_best_moves};
     }
     else
     {
         return BestMoves{
-            numeric_limits<int>::min(),
+            numeric_limits<Points_t>::min(),
             empty_best_moves};
     }
 }
@@ -38,7 +38,7 @@ Points_t PiecePointsEvaluator::GetValueOfPieceAtPosition(
 
 Points_t PiecePointsEvaluator::GetPlayerTotal(PieceColor color, GameBoard &game_board)
 {
-    int pre_attack_total = 0;
+    Points_t pre_attack_total = 0;
     for (auto space : game_board.GetAllSpacesOccupiedBy(color))
     {
         auto piece_type = game_board.GetType(space);
@@ -81,7 +81,7 @@ RatedMove PiecePointsEvaluator::ImplementRateMove(
     auto position_value_delta = (cur_player_position_array[move.end.rank][move.end.file] -
                                  cur_player_position_array[move.start.rank][move.start.file]);
 
-    int capture_val;
+    Points_t capture_val;
 
     if (game_board.GetColor(move.end) == opponent_of(cur_player))
     {

@@ -32,15 +32,51 @@ template <typename MinimaxEvaluator>
 class MinimaxMoveSelectorInterface : public MoveSelectorInterface<MinimaxMoveSelectorInterface<MinimaxEvaluator>>
 {
 public:
+    // These data members need to be public for CRTP to work
     MinimaxEvaluator evaluator_;
     int search_depth_;
     int node_counter_;
 
     void ResetNodeCounter()
     {
+        InternalImplementResetNodeCounter();
+    };
+    
+    vector<RatedMove> GenerateRankedMoveList(
+        GameBoard &game_board,
+        PieceColor cur_player,
+        MoveCollection &cur_player_moves)
+    {
+        return InternalImplementGenerateRankedMoveList(
+            game_board, cur_player, cur_player_moves);
+    }
+
+    BestMoves MinimaxRec(
+        GameBoard &game_board,
+        int search_depth,
+        int alpha,
+        int beta,
+        PieceColor cur_player,
+        PieceColor initiating_player)
+    {
+        return InternalImplementMinimaxRec(
+            game_board, search_depth, alpha, beta, cur_player, initiating_player);
+    }
+
+    Move ImplementSelectMove(
+        GameBoard &game_board, PieceColor cur_player, MoveCollection &cur_moves)
+    {
+        return InternalImplementSelectMove(game_board, cur_player, cur_moves);
+    }
+
+    private:
+
+    void InternalImplementResetNodeCounter()
+    {
         node_counter_ = 0;
     };
-    vector<RatedMove> GenerateRankedMoveList(
+    
+    vector<RatedMove> InternalImplementGenerateRankedMoveList(
         GameBoard &game_board,
         PieceColor cur_player,
         MoveCollection &cur_player_moves)
@@ -59,8 +95,27 @@ public:
              });
         return rated_moves;
     }
+    
+    Move InternalImplementSelectMove(
+        GameBoard &game_board,
+        PieceColor cur_player,
+        MoveCollection &cur_moves
+    ) {
+        ResetNodeCounter();
+        auto minimax_result = MinimaxRec(
+            game_board,
+            search_depth_,
+            numeric_limits<int>::min(),
+            numeric_limits<int>::max(),
+            cur_player,
+            cur_player);
+        auto selected_move_index = utility_functs::random(
+            (size_t)0, minimax_result.best_moves.moves.size() - 1);
+        uniform_int_distribution<int> dist(0, minimax_result.best_moves.moves.size() - 1);
+        return minimax_result.best_moves.moves[selected_move_index];
+    }
 
-    BestMoves MinimaxRec(
+    BestMoves InternalImplementMinimaxRec(
         GameBoard &game_board,
         int search_depth,
         int alpha,
@@ -153,26 +208,6 @@ public:
             }
             return BestMoves{min_eval, best_moves};
         }
-    }
-
-    Move ImplementSelectMove(
-        GameBoard &game_board,
-        PieceColor cur_player,
-        MoveCollection &cur_moves)
-    {
-        ResetNodeCounter();
-        auto minimax_result = MinimaxRec(
-            game_board,
-            search_depth_,
-            numeric_limits<int>::min(),
-            numeric_limits<int>::max(),
-            cur_player,
-            cur_player);
-
-        auto selected_move_index = utility_functs::random(
-            (size_t)0, minimax_result.best_moves.moves.size() - 1);
-        uniform_int_distribution<int> dist(0, minimax_result.best_moves.moves.size() - 1);
-        return minimax_result.best_moves.moves[selected_move_index];
     }
 };
 

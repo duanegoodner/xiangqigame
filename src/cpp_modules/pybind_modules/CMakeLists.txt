@@ -10,7 +10,7 @@ target_include_directories(
     GameBoardPy PRIVATE
     ${PROJECT_SOURCE_DIR}/game_board
     ${PROJECT_SOURCE_DIR}/board_components
-    ${PROJECT_SOURCE_DIR}/board_utilities_free
+    ${PROJECT_SOURCE_DIR}/board_utilities
     ${CMAKE_CURRENT_SOURCE_DIR})
 
 install(TARGETS GameBoardPy DESTINATION .)

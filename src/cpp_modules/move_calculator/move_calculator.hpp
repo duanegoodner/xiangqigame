@@ -10,16 +10,17 @@
 #define _MOVE_CALCULATOR_
 
 #include "board_components.hpp"
-#include "board_utilities_free.hpp"
+#include "board_utilities.hpp"
 
 using namespace std;
 using namespace board_components;
-using namespace board_utilities_free;
+using namespace board_utilities;
 
 class MoveCalculator;
 
-class PieceMoves {
-    public: 
+class PieceMoves
+{
+public:
     MoveCollection SoldierMoves(
         const BoardMap_t &board_map, PieceColor color, BoardSpace space);
     MoveCollection CannonMoves(
@@ -33,75 +34,68 @@ class PieceMoves {
     MoveCollection AdvisorMoves(
         const BoardMap_t &board_map, PieceColor color, BoardSpace space);
     MoveCollection FlyingGeneralMove(
-        const BoardMap_t &board_map, PieceColor color, BoardSpace space);    
+        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
     MoveCollection StandardGeneralMoves(
         const BoardMap_t &board_map, PieceColor color, BoardSpace space);
     MoveCollection GeneralMoves(
-        const BoardMap_t &board_map, PieceColor color, BoardSpace space);    
+        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
 };
 
-
 typedef MoveCollection (PieceMoves::*MethodPtr_t)(
-    const BoardMap_t&, PieceColor, BoardSpace);
+    const BoardMap_t &, PieceColor, BoardSpace);
 
-
-class MoveCalculator {
-   public:
+class MoveCalculator
+{
+public:
     MoveCalculator(const BoardMap_t &board_map)
-    : board_map_{board_map}
-    , piece_moves_{PieceMoves()}
-{
-    piece_dispatch_[PieceType::kSol] = &PieceMoves::SoldierMoves;
-    piece_dispatch_[PieceType::kCan] = &PieceMoves::CannonMoves;
-    piece_dispatch_[PieceType::kCha] = &PieceMoves::ChariotMoves;
-    piece_dispatch_[PieceType::kHor] = &PieceMoves::HorseMoves;
-    piece_dispatch_[PieceType::kEle] = &PieceMoves::ElephantMoves;
-    piece_dispatch_[PieceType::kAdv] = &PieceMoves::AdvisorMoves;
-    piece_dispatch_[PieceType::kGen] = &PieceMoves::GeneralMoves;
-
-    piece_dispatch_array_[PieceType::kNnn] ={};
-    piece_dispatch_array_[PieceType::kSol] = &PieceMoves::SoldierMoves;
-    piece_dispatch_array_[PieceType::kCan] = &PieceMoves::CannonMoves;
-    piece_dispatch_array_[PieceType::kCha] = &PieceMoves::ChariotMoves;
-    piece_dispatch_array_[PieceType::kHor] = &PieceMoves::HorseMoves;
-    piece_dispatch_array_[PieceType::kEle] = &PieceMoves::ElephantMoves;
-    piece_dispatch_array_[PieceType::kAdv] = &PieceMoves::AdvisorMoves;
-    piece_dispatch_array_[PieceType::kGen] = &PieceMoves::GeneralMoves;
-}
-
-// https://opensource.com/article/21/2/ccc-method-pointers
-// https://stackoverflow.com/questions/6265851
-// https://stackoverflow.com/questions/55520876/
-// https://en.cppreference.com/w/cpp/utility/any/any_cast
-    MoveCollection CalcMovesFrom(BoardSpace space)
-{
-    auto piece_type = get_type(board_map_, space);
-    auto color = get_color(board_map_, space);
-    // auto move_func = piece_dispatch_.find(piece_type)->second;
-    auto move_func = piece_dispatch_array_[piece_type];
-    auto move_func_ptr = any_cast<MethodPtr_t>(move_func);
-    return (piece_moves_.*move_func_ptr)(board_map_, color, space);
-}
-
-    MoveCollection CalcAllMovesNoCheckTest(PieceColor color)
-{
-    auto untested_moves = MoveCollection(120);
-    auto occ_spaces = get_all_spaces_occupied_by(board_map_, color);
-    for (auto space = 0; space < occ_spaces.size(); space++)
+        : board_map_{board_map}, piece_moves_{PieceMoves()}
     {
-        auto moves_from_space = CalcMovesFrom(occ_spaces[space]);
-            untested_moves.Concat(moves_from_space);
+        piece_dispatch_array_[PieceType::kNnn] = {};
+        piece_dispatch_array_[PieceType::kSol] = &PieceMoves::SoldierMoves;
+        piece_dispatch_array_[PieceType::kCan] = &PieceMoves::CannonMoves;
+        piece_dispatch_array_[PieceType::kCha] = &PieceMoves::ChariotMoves;
+        piece_dispatch_array_[PieceType::kHor] = &PieceMoves::HorseMoves;
+        piece_dispatch_array_[PieceType::kEle] = &PieceMoves::ElephantMoves;
+        piece_dispatch_array_[PieceType::kAdv] = &PieceMoves::AdvisorMoves;
+        piece_dispatch_array_[PieceType::kGen] = &PieceMoves::GeneralMoves;
     }
-    return untested_moves;
-}
 
-    private:
-    const BoardMap_t& board_map_;
-    unordered_map<PieceType, any> piece_dispatch_;
+    MoveCollection CalcMovesFrom(BoardSpace space) {
+        return ImplementCalcMovesFrom(space);
+        }
+    MoveCollection CalcAllMovesNoCheckTest(PieceColor color) {
+        return ImplementCalcAllMovesNoCheckTest(color);
+        }
+
+private:
+    const BoardMap_t &board_map_;
     array<MethodPtr_t, kNumPieceTypeVals> piece_dispatch_array_;
     PieceMoves piece_moves_;
 
+    // https://opensource.com/article/21/2/ccc-method-pointers
+    // https://stackoverflow.com/questions/6265851
+    // https://stackoverflow.com/questions/55520876/
+    // https://en.cppreference.com/w/cpp/utility/any/any_cast
+    MoveCollection ImplementCalcMovesFrom(BoardSpace space)
+    {
+        auto piece_type = get_type(board_map_, space);
+        auto color = get_color(board_map_, space);
+        auto move_func = piece_dispatch_array_[piece_type];
+        auto move_func_ptr = any_cast<MethodPtr_t>(move_func);
+        return (piece_moves_.*move_func_ptr)(board_map_, color, space);
+    }
+
+    MoveCollection ImplementCalcAllMovesNoCheckTest(PieceColor color)
+    {
+        auto untested_moves = MoveCollection(120);
+        auto occ_spaces = get_all_spaces_occupied_by(board_map_, color);
+        for (auto space = 0; space < occ_spaces.size(); space++)
+        {
+            auto moves_from_space = CalcMovesFrom(occ_spaces[space]);
+            untested_moves.Concat(moves_from_space);
+        }
+        return untested_moves;
+    }
 };
 
-
-#endif  // _MOVE_CALCULATOR_
+#endif // _MOVE_CALCULATOR_

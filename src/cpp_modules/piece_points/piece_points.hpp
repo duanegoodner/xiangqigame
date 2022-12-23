@@ -19,7 +19,6 @@ namespace piece_points
 
     // TODO move raw data vals to json file and import instead of
     // hard-coding here
-
     const TeamBasePoints_t kBasePointsICGA2004 = {
         {PieceType::kNnn, 0},
         {PieceType::kGen, 6000},
@@ -91,6 +90,14 @@ namespace piece_points
     class PiecePointsBuilder
     {
     public:
+        GamePositionPoints_t BuildGamePositionPoints(
+            TeamPositionPoints_t black_points);
+
+        GamePositionPoints_t BuildGamePositionPoints(
+            TeamBasePoints_t black_base_points,
+            TeamPositionPoints_t black_position_offsets);
+
+    private:
         PiecePositionPoints_t ComputePieceNetPositionPoints(
             int base_val,
             PiecePositionPoints_t position_offsets);
@@ -104,13 +111,6 @@ namespace piece_points
 
         TeamPositionPoints_t ComputeRedPositionPoints(
             TeamPositionPoints_t black_position_points);
-
-        GamePositionPoints_t BuildGamePositionPoints(
-            TeamPositionPoints_t black_points);
-
-        GamePositionPoints_t BuildGamePositionPoints(
-            TeamBasePoints_t black_base_points,
-            TeamPositionPoints_t black_position_offsets);
     };
 
     const auto DEFAULT_GAME_POINTS = PiecePointsBuilder().BuildGamePositionPoints(kBasePointsICGA2004, kAllOffsetsICGA2004);

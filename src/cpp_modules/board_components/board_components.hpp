@@ -11,7 +11,9 @@ using namespace std;
 
 namespace board_components
 {
-
+    // ///////
+    // Pieces
+    // //////
     typedef int Piece_t;
 
     enum PieceType : int
@@ -40,10 +42,17 @@ namespace board_components
         return static_cast<PieceColor>(-1 * color);
     }
 
+    // /////////////////////////
+    // Board Datatypes
+    // ////////////////////////
     typedef int BoardIdx_t;
     const BoardIdx_t kNumRanks = 10;
     const BoardIdx_t kNumFiles = 9;
     typedef array<array<Piece_t, kNumFiles>, kNumRanks> BoardMap_t;
+
+    // /////////////////////////
+    // Specific locations on board
+    // ////////////////////////
     const BoardIdx_t kRedRiverEdge = 5;
     const BoardIdx_t kBlackRiverEdge = 4;
 
@@ -58,6 +67,9 @@ namespace board_components
     constexpr CastleEdges kRedCastleEdges = {7, 9, 3, 5};
     constexpr CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
 
+    // /////////////////////////
+    // Board location tracking
+    // ////////////////////////
     struct BoardDirection
     {
         BoardIdx_t rank, file;
@@ -111,32 +123,6 @@ namespace board_components
         }
     };
 
-    typedef array<BoardSpace, 9> Castle_t;
-    inline constexpr Castle_t calc_castle_spaces(const CastleEdges edges)
-    {
-        std::array<BoardSpace, 9> spaces{};
-
-        for (auto rank = edges.min_rank; rank <= edges.max_rank; rank++)
-        {
-            for (auto file = edges.min_file; file <= edges.max_file; file++)
-            {
-                spaces[3 * (rank - edges.min_rank) + file - edges.min_file].rank =
-                    rank;
-                spaces[3 * (rank - edges.min_rank) + file - edges.min_file].file =
-                    file;
-            }
-        }
-        return spaces;
-    }
-
-    constexpr Castle_t red_castle_spaces() {
-        return calc_castle_spaces(kRedCastleEdges);
-    }
-
-    constexpr Castle_t black_castle_spaces() {
-        return calc_castle_spaces(kBlackCastleEdges);
-    }
-
     struct Move
     {
         BoardSpace start;
@@ -188,6 +174,37 @@ namespace board_components
         Piece_t moving_piece;
         Piece_t destination_piece;
     };
+
+    // ////////////////////////    
+    // Convenience dataype and functions for generating array of castle spaces
+    // ////////////////////////
+    typedef array<BoardSpace, 9> Castle_t;
+    inline constexpr Castle_t calc_castle_spaces(const CastleEdges edges)
+    {
+        std::array<BoardSpace, 9> spaces{};
+
+        for (auto rank = edges.min_rank; rank <= edges.max_rank; rank++)
+        {
+            for (auto file = edges.min_file; file <= edges.max_file; file++)
+            {
+                spaces[3 * (rank - edges.min_rank) + file - edges.min_file].rank =
+                    rank;
+                spaces[3 * (rank - edges.min_rank) + file - edges.min_file].file =
+                    file;
+            }
+        }
+        return spaces;
+    }
+
+    constexpr Castle_t red_castle_spaces()
+    {
+        return calc_castle_spaces(kRedCastleEdges);
+    }
+
+    constexpr Castle_t black_castle_spaces()
+    {
+        return calc_castle_spaces(kBlackCastleEdges);
+    }
 }
 
 #endif // _SHARED_COMPONENTS_

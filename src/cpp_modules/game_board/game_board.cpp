@@ -1,10 +1,10 @@
 
 #include "game_board.hpp"
-#include "board_utilities_free.hpp"
+#include "board_utilities.hpp"
 
 #include <iostream>
 
-using namespace board_utilities_free;
+using namespace board_utilities;
 
 GameBoard::GameBoard() : move_calculator_{MoveCalculator(board_map_)}
 {

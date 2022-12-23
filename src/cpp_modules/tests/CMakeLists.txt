@@ -1,7 +1,7 @@
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/board_components
-    ${PROJECT_SOURCE_DIR}/board_utilities_free
+    ${PROJECT_SOURCE_DIR}/board_utilities
     ${PROJECT_SOURCE_DIR}/move_calculator
     ${PROJECT_SOURCE_DIR}/game_board
     ${PROJECT_SOURCE_DIR}/piece_points

@@ -7,25 +7,22 @@
 
 using namespace board_components;
 using namespace piece_points;
-
-
+    
     struct BestMoves
     {
-        int best_eval;
+        Points_t best_eval;
         MoveCollection best_moves;
     };
 
     struct RatedMove
     {
         Move move;
-        int rating;
+        Points_t rating;
     };
 
     BestMoves evaluate_winner(
         PieceColor cur_player,
         PieceColor initiating_player);
-
-    typedef int MoveRating_t;
 
     template <typename ImplementedEvaluator>
     class EvaluatorInterface
@@ -54,22 +51,6 @@ using namespace piece_points;
         }
     };
 
-    class NullEvaluator : public EvaluatorInterface<NullEvaluator> {
-        public:
-        BestMoves ImplementEvaluateLeaf(GameBoard &game_board,
-            PieceColor cur_player,
-            MoveCollection &cur_player_moves,
-            PieceColor initiating_player) {
-                return BestMoves{};
-            }
-        RatedMove ImplementRateMove(
-            Move move,
-            GameBoard &game_board,
-            PieceColor cur_player) {
-                return RatedMove{};
-            }
-
-    };
 
     class PiecePointsEvaluator : public EvaluatorInterface<PiecePointsEvaluator>
     {
@@ -89,12 +70,12 @@ using namespace piece_points;
             GameBoard &game_board,
             PieceColor cur_player);
 
-        MoveRating_t GetValueOfPieceAtPosition(
+        Points_t GetValueOfPieceAtPosition(
             PieceColor color,
             PieceType piece_type,
             BoardSpace space);
 
-        MoveRating_t GetPlayerTotal(PieceColor color, GameBoard &game_board);
+        Points_t GetPlayerTotal(PieceColor color, GameBoard &game_board);
 
     private:
         GamePositionPoints_t game_position_points_;

@@ -1,11 +1,11 @@
 #include <gtest/gtest.h>
 
 #include "board_components.hpp"
-#include "board_utilities_free.hpp"
+#include "board_utilities.hpp"
 #include "move_calculator.hpp"
 #include "game_board.hpp"
 
-using namespace board_utilities_free;
+using namespace board_utilities;
 
 const BoardMap_t kFlyingBoard{{
     {5, 4, 3, 2, 1, 2, 3, 4, 5},

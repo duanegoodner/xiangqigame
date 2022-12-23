@@ -1,11 +1,11 @@
 #include "move_calculator.hpp"
-#include "board_utilities_free.hpp"
+#include "board_utilities.hpp"
 
 #include <iostream>
 #include <omp.h>
 
 using namespace std;
-using namespace board_utilities_free;
+using namespace board_utilities;
 
 
 MoveCollection PieceMoves::SoldierMoves(
@@ -22,7 +22,7 @@ MoveCollection PieceMoves::SoldierMoves(
 
     if (not space.IsInHomelandOf(color))
     {
-        for (auto side_vector : board_utilities_free::kSideDirections)
+        for (auto side_vector : board_utilities::kSideDirections)
         {
             auto side_space = space + side_vector;
             if (exists_and_passes_color_test(board_map, fwd_space, color))
@@ -40,7 +40,7 @@ MoveCollection PieceMoves::CannonMoves(
 {
     auto cannon_moves = MoveCollection(17);
 
-    for (auto direction : board_utilities_free::kAllOrthogonalDirections)
+    for (auto direction : board_utilities::kAllOrthogonalDirections)
     {
         auto search_result = search_spaces(board_map, space, direction);
 
@@ -71,7 +71,7 @@ MoveCollection PieceMoves::ChariotMoves(
     const BoardMap_t &board_map, PieceColor color, BoardSpace space)
 {
     auto chariot_moves = MoveCollection(17);
-    for (auto direction : board_utilities_free::kAllOrthogonalDirections)
+    for (auto direction : board_utilities::kAllOrthogonalDirections)
     {
         auto search_result = search_spaces(board_map, space, direction);
         for (auto empty_space : search_result.empty_spaces)
@@ -94,7 +94,7 @@ MoveCollection PieceMoves::HorseMoves(
 {
     auto horse_moves = MoveCollection(8);
 
-    for (auto direction : board_utilities_free::kHorsePaths)
+    for (auto direction : board_utilities::kHorsePaths)
     {
         auto first_step = space + direction.first;
         if (first_step.IsOnBoard() && (not is_occupied(board_map, first_step)))
@@ -117,7 +117,7 @@ MoveCollection PieceMoves::ElephantMoves(
     const BoardMap_t &board_map, PieceColor color, BoardSpace space)
 {
     auto elephant_moves = MoveCollection(4);
-    for (auto direction : board_utilities_free::kAllDiagonalDirections)
+    for (auto direction : board_utilities::kAllDiagonalDirections)
     {
         auto first_step = space + direction;
         if (first_step.IsOnBoard() && (not is_occupied(board_map, first_step)) &&
@@ -137,7 +137,7 @@ MoveCollection PieceMoves::AdvisorMoves(
     const BoardMap_t &board_map, PieceColor color, BoardSpace space)
 {
     auto advisor_moves = MoveCollection(4);
-    for (auto direction : board_utilities_free::kAllDiagonalDirections)
+    for (auto direction : board_utilities::kAllDiagonalDirections)
     {
         auto destination = space + direction;
         if (destination.IsInCastleOf(color) &&
@@ -188,7 +188,7 @@ MoveCollection PieceMoves::StandardGeneralMoves(
 {
     auto standard_general_moves = MoveCollection(4);
 
-    for (auto direction :board_utilities_free::kAllOrthogonalDirections)
+    for (auto direction :board_utilities::kAllOrthogonalDirections)
     {
         auto destination = space + direction;
          if (destination.IsInCastleOf(color) &&
