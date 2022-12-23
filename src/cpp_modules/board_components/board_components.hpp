@@ -55,8 +55,8 @@ namespace board_components
         BoardIdx_t max_file;
     };
 
-    const CastleEdges kRedCastleEdges = {7, 9, 3, 5};
-    const CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
+    constexpr CastleEdges kRedCastleEdges = {7, 9, 3, 5};
+    constexpr CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
 
     struct BoardDirection
     {
@@ -110,6 +110,32 @@ namespace board_components
             return (rank != other.rank) || (file != other.file);
         }
     };
+
+    typedef array<BoardSpace, 9> Castle_t;
+    inline constexpr Castle_t calc_castle_spaces(const CastleEdges edges)
+    {
+        std::array<BoardSpace, 9> spaces{};
+
+        for (auto rank = edges.min_rank; rank <= edges.max_rank; rank++)
+        {
+            for (auto file = edges.min_file; file <= edges.max_file; file++)
+            {
+                spaces[3 * (rank - edges.min_rank) + file - edges.min_file].rank =
+                    rank;
+                spaces[3 * (rank - edges.min_rank) + file - edges.min_file].file =
+                    file;
+            }
+        }
+        return spaces;
+    }
+
+    constexpr Castle_t red_castle_spaces() {
+        return calc_castle_spaces(kRedCastleEdges);
+    }
+
+    constexpr Castle_t black_castle_spaces() {
+        return calc_castle_spaces(kBlackCastleEdges);
+    }
 
     struct Move
     {

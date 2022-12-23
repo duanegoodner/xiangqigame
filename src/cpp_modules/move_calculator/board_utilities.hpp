@@ -15,23 +15,23 @@ namespace board_utilities
     // using namespace board_components::data_types;
     using namespace board_components;
 
-    typedef array<BoardSpace, 9> Castle_t;
-    inline Castle_t calc_castle_spaces(const CastleEdges edges)
-    {
-        std::array<BoardSpace, 9> spaces;
+    // typedef array<BoardSpace, 9> Castle_t;
+    // inline Castle_t calc_castle_spaces(const CastleEdges edges)
+    // {
+    //     std::array<BoardSpace, 9> spaces;
 
-        for (auto rank = edges.min_rank; rank <= edges.max_rank; rank++)
-        {
-            for (auto file = edges.min_file; file <= edges.max_file; file++)
-            {
-                spaces[3 * (rank - edges.min_rank) + file - edges.min_file].rank =
-                    rank;
-                spaces[3 * (rank - edges.min_rank) + file - edges.min_file].file =
-                    file;
-            }
-        }
-        return spaces;
-    }
+    //     for (auto rank = edges.min_rank; rank <= edges.max_rank; rank++)
+    //     {
+    //         for (auto file = edges.min_file; file <= edges.max_file; file++)
+    //         {
+    //             spaces[3 * (rank - edges.min_rank) + file - edges.min_file].rank =
+    //                 rank;
+    //             spaces[3 * (rank - edges.min_rank) + file - edges.min_file].file =
+    //                 file;
+    //         }
+    //     }
+    //     return spaces;
+    // }
 
     struct OrthogonalSpaceSearchResult
     {
