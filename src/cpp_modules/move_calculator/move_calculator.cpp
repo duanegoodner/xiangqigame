@@ -1,9 +1,11 @@
 #include "move_calculator.hpp"
+#include "board_utilities_free.hpp"
 
 #include <iostream>
 #include <omp.h>
 
 using namespace std;
+using namespace board_utilities_free;
 
 typedef MoveCollection (PieceMoves::*MethodPtr_t)(PieceColor, BoardSpace);
 
@@ -27,8 +29,10 @@ MoveCalculator::MoveCalculator(const BoardMap_t &board_map)
 // https://en.cppreference.com/w/cpp/utility/any/any_cast
 MoveCollection MoveCalculator::CalcMovesFrom(BoardSpace space)
 {
-    auto piece_type = utils_.GetType(space);
-    auto color = utils_.GetColor(space);
+    // auto piece_type = utils_.GetType(space);
+    auto piece_type = get_type(board_map_, space);
+    // auto color = utils_.GetColor(space);
+    auto color = get_color(board_map_, space);
     auto move_func = piece_dispatch_.find(piece_type)->second;
     auto move_func_ptr = any_cast<MethodPtr_t>(move_func);
     return (piece_moves_.*move_func_ptr)(color, space);
@@ -37,7 +41,8 @@ MoveCollection MoveCalculator::CalcMovesFrom(BoardSpace space)
 MoveCollection MoveCalculator::CalcAllMovesNoCheckTest(PieceColor color)
 {
     auto untested_moves = MoveCollection(120);
-    auto occ_spaces = utils_.GetAllSpacesOccupiedBy(color);
+    // auto occ_spaces = utils_.GetAllSpacesOccupiedBy(color);
+    auto occ_spaces = get_all_spaces_occupied_by(board_map_, color);
     for (auto space = 0; space < occ_spaces.size(); space++)
     {
         auto moves_from_space = CalcMovesFrom(occ_spaces[space]);
@@ -52,7 +57,8 @@ MoveCollection PieceMoves::SoldierMoves(PieceColor color, BoardSpace space)
 {
     auto soldier_moves = MoveCollection(3);
 
-    auto fwd_space = space + parent_.utils_.FwdDirection(color);
+    // auto fwd_space = space + parent_.utils_.FwdDirection(color);
+    auto fwd_space = space + fwd_direction(color);
 
     if (parent_.utils_.ExistsAndPassesColorTest(fwd_space, color))
     {
@@ -61,7 +67,7 @@ MoveCollection PieceMoves::SoldierMoves(PieceColor color, BoardSpace space)
 
     if (not space.IsInHomelandOf(color))
     {
-        for (auto side_vector : kSideDirections)
+        for (auto side_vector : board_utilities_free::kSideDirections)
         {
             auto side_space = space + side_vector;
             if (parent_.utils_.ExistsAndPassesColorTest(side_space, color))
@@ -78,7 +84,7 @@ MoveCollection PieceMoves::CannonMoves(PieceColor color, BoardSpace space)
 {
     auto cannon_moves = MoveCollection(17);
 
-    for (auto direction : kAllOrthogonalDirections)
+    for (auto direction : board_utilities_free::kAllOrthogonalDirections)
     {
         auto search_result = parent_.utils_.SearchSpaces(space, direction);
 
@@ -108,7 +114,7 @@ MoveCollection PieceMoves::CannonMoves(PieceColor color, BoardSpace space)
 MoveCollection PieceMoves::ChariotMoves(PieceColor color, BoardSpace space)
 {
     auto chariot_moves = MoveCollection(17);
-    for (auto direction : kAllOrthogonalDirections)
+    for (auto direction : board_utilities_free::kAllOrthogonalDirections)
     {
         auto search_result = parent_.utils_.SearchSpaces(space, direction);
         for (auto empty_space : search_result.empty_spaces)
@@ -130,7 +136,7 @@ MoveCollection PieceMoves::HorseMoves(PieceColor color, BoardSpace space)
 {
     auto horse_moves = MoveCollection(8);
 
-    for (auto direction : kHorsePaths)
+    for (auto direction : board_utilities_free::kHorsePaths)
     {
         auto first_step = space + direction.first;
         if (first_step.IsOnBoard() && (not parent_.utils_.IsOccupied(first_step)))
@@ -151,7 +157,7 @@ MoveCollection PieceMoves::HorseMoves(PieceColor color, BoardSpace space)
 MoveCollection PieceMoves::ElephantMoves(PieceColor color, BoardSpace space)
 {
     auto elephant_moves = MoveCollection(4);
-    for (auto direction : kAllDiagonalDirections)
+    for (auto direction : board_utilities_free::kAllDiagonalDirections)
     {
         auto first_step = space + direction;
         if (first_step.IsOnBoard() && (not parent_.utils_.IsOccupied(first_step)) &&
@@ -170,7 +176,7 @@ MoveCollection PieceMoves::ElephantMoves(PieceColor color, BoardSpace space)
 MoveCollection PieceMoves::AdvisorMoves(PieceColor color, BoardSpace space)
 {
     auto advisor_moves = MoveCollection(4);
-    for (auto direction : kAllDiagonalDirections)
+    for (auto direction : board_utilities_free::kAllDiagonalDirections)
     {
         auto destination = space + direction;
         if (destination.IsInCastleOf(color) &&
@@ -220,7 +226,7 @@ MoveCollection PieceMoves::StandardGeneralMoves(PieceColor color,
 {
     auto standard_general_moves = MoveCollection(4);
 
-    for (auto direction : kAllOrthogonalDirections)
+    for (auto direction :board_utilities_free::kAllOrthogonalDirections)
     {
         auto destination = space + direction;
         if (destination.IsInCastleOf(color) &&

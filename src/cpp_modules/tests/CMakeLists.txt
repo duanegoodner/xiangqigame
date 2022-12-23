@@ -3,6 +3,7 @@
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/board_components
+    ${PROJECT_SOURCE_DIR}/board_utilities_free
     ${PROJECT_SOURCE_DIR}/move_calculator
     ${PROJECT_SOURCE_DIR}/game_board
     ${PROJECT_SOURCE_DIR}/piece_points
@@ -12,9 +13,7 @@ include_directories(
 
 add_executable(
     move_calculator_test
-    move_calculator_test.cpp
-    # ${PROJECT_SOURCE_DIR}/move_calculator/move_calculator.hpp
-    )
+    move_calculator_test.cpp)
 target_link_libraries(
     move_calculator_test LINK_PUBLIC
     move_calculator

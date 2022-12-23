@@ -4,25 +4,25 @@
 using namespace board_utilities_free;
 using namespace board_components;
 
-bool board_utilities_free::is_occupied(BoardMap_t &board_map, BoardSpace space)
+bool board_utilities_free::is_occupied(const BoardMap_t &board_map, BoardSpace space)
 {
     return board_map[space.rank][space.file] != 0;
 }
 
-PieceColor board_utilities_free::get_color(BoardMap_t &board_map, BoardSpace space)
+PieceColor board_utilities_free::get_color(const BoardMap_t &board_map, BoardSpace space)
 {
     auto piece = board_map[space.rank][space.file];
     return (piece == 0) ? PieceColor::kNul
                         : static_cast<PieceColor>(copysign(1, piece));
 }
 
-PieceType board_utilities_free::get_type(BoardMap_t &board_map, BoardSpace space)
+PieceType board_utilities_free::get_type(const BoardMap_t &board_map, BoardSpace space)
 {
     return static_cast<PieceType>(abs(board_map[space.rank][space.file]));
 }
 
 bool board_utilities_free::exists_and_passes_color_test(
-    BoardMap_t &board_map, BoardSpace space, PieceColor moving_piece_color)
+    const BoardMap_t &board_map, BoardSpace space, PieceColor moving_piece_color)
 {
     return space.IsOnBoard() &&
            get_color(board_map, space) !=
@@ -39,7 +39,8 @@ BoardDirection board_utilities_free::rev_direction(PieceColor color)
     return BoardDirection{-1 * static_cast<int>(color), 0};
 }
 
-BoardSpace board_utilities_free::get_general_position(BoardMap_t &board_map, PieceColor color)
+BoardSpace board_utilities_free::get_general_position(
+    const BoardMap_t &board_map, PieceColor color)
 {
     auto castle = (color == PieceColor::kRed) ? red_castle_spaces() : black_castle_spaces();
 
@@ -58,7 +59,7 @@ BoardSpace board_utilities_free::get_general_position(BoardMap_t &board_map, Pie
 }
 
 OrthogonalSpaceSearchResult board_utilities_free::search_spaces(
-    BoardMap_t &board_map,
+    const BoardMap_t &board_map,
     BoardSpace start,
     BoardDirection direction)
 {
@@ -82,7 +83,7 @@ OrthogonalSpaceSearchResult board_utilities_free::search_spaces(
 }
 
 vector<BoardSpace> board_utilities_free::get_all_spaces_occupied_by(
-    BoardMap_t &board_map, PieceColor color)
+    const BoardMap_t &board_map, PieceColor color)
 {
     vector<BoardSpace> occupied_spaces;
     occupied_spaces.reserve(16);
@@ -100,7 +101,7 @@ vector<BoardSpace> board_utilities_free::get_all_spaces_occupied_by(
 }
 
 bool board_utilities_free::is_space_any_destination_of_moves(
-    BoardMap_t &board_map, BoardSpace space, MoveCollection moves)
+    const BoardMap_t &board_map, BoardSpace space, MoveCollection moves)
 {
     for (auto move : moves.moves)
     {
