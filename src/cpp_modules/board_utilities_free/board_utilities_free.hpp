@@ -42,12 +42,47 @@ namespace board_utilities_free
                             : static_cast<PieceColor>(copysign(1, piece));
     }
 
-    PieceType get_type(const BoardMap_t &board_map, BoardSpace space);
-    bool exists_and_passes_color_test(
-        const BoardMap_t &board_map, BoardSpace space, PieceColor moving_piece_color);
-    BoardDirection fwd_direction(PieceColor color);
-    BoardDirection rev_direction(PieceColor color);
-    BoardSpace get_general_position(const BoardMap_t &board_map, PieceColor color);
+    inline PieceType get_type(const BoardMap_t &board_map, BoardSpace space)
+{
+    return static_cast<PieceType>(abs(board_map[space.rank][space.file]));
+}
+
+    inline bool exists_and_passes_color_test(
+    const BoardMap_t &board_map, BoardSpace space, PieceColor moving_piece_color)
+{
+    return space.IsOnBoard() &&
+           get_color(board_map, space) !=
+               static_cast<PieceColor>(moving_piece_color);
+}
+
+    inline BoardDirection fwd_direction(PieceColor color)
+{
+    return BoardDirection{static_cast<int>(color), 0};
+}
+
+    inline BoardDirection rev_direction(PieceColor color)
+{
+    return BoardDirection{-1 * static_cast<int>(color), 0};
+}
+
+    inline BoardSpace get_general_position(
+    const BoardMap_t &board_map, PieceColor color)
+{
+    auto castle = (color == PieceColor::kRed) ? red_castle_spaces() : black_castle_spaces();
+
+    auto color_val = static_cast<int>(color);
+    BoardSpace found_space;
+
+    for (BoardSpace board_space : castle)
+    {
+        auto piece_val = board_map[board_space.rank][board_space.file];
+        if (piece_val == color_val)
+        {
+            found_space = board_space;
+        }
+    }
+    return found_space;
+}
 
     inline OrthogonalSpaceSearchResult search_spaces(
         const BoardMap_t &board_map,

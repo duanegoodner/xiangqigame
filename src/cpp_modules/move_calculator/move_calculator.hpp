@@ -59,7 +59,11 @@ class MoveCalculator {
     piece_dispatch_[PieceType::kAdv] = &PieceMoves::AdvisorMoves;
     piece_dispatch_[PieceType::kGen] = &PieceMoves::GeneralMoves;
 }
-    // BoardUtilities utils_;
+
+// https://opensource.com/article/21/2/ccc-method-pointers
+// https://stackoverflow.com/questions/6265851
+// https://stackoverflow.com/questions/55520876/
+// https://en.cppreference.com/w/cpp/utility/any/any_cast
     MoveCollection CalcMovesFrom(BoardSpace space)
 {
     auto piece_type = get_type(board_map_, space);

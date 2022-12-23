@@ -6,7 +6,7 @@ add_library(
 
 target_link_libraries(
     game_board LINK_PUBLIC
-    board_utilities_free
+    # board_utilities_free
     move_calculator)
 
 target_include_directories(

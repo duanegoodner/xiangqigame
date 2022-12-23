@@ -4,7 +4,8 @@ add_library(
 
 target_link_libraries(
     move_calculator PRIVATE
-    board_utilities_free)
+    # board_utilities_free
+    )
 
 target_include_directories(
     move_calculator PUBLIC
