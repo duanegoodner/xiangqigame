@@ -4,17 +4,17 @@
 using namespace board_utilities_free;
 using namespace board_components;
 
-bool board_utilities_free::is_occupied(const BoardMap_t &board_map, BoardSpace space)
-{
-    return board_map[space.rank][space.file] != 0;
-}
+// bool board_utilities_free::is_occupied(const BoardMap_t &board_map, BoardSpace space)
+// {
+//     return board_map[space.rank][space.file] != 0;
+// }
 
-PieceColor board_utilities_free::get_color(const BoardMap_t &board_map, BoardSpace space)
-{
-    auto piece = board_map[space.rank][space.file];
-    return (piece == 0) ? PieceColor::kNul
-                        : static_cast<PieceColor>(copysign(1, piece));
-}
+// PieceColor board_utilities_free::get_color(const BoardMap_t &board_map, BoardSpace space)
+// {
+//     auto piece = board_map[space.rank][space.file];
+//     return (piece == 0) ? PieceColor::kNul
+//                         : static_cast<PieceColor>(copysign(1, piece));
+// }
 
 PieceType board_utilities_free::get_type(const BoardMap_t &board_map, BoardSpace space)
 {
@@ -58,47 +58,47 @@ BoardSpace board_utilities_free::get_general_position(
     return found_space;
 }
 
-OrthogonalSpaceSearchResult board_utilities_free::search_spaces(
-    const BoardMap_t &board_map,
-    BoardSpace start,
-    BoardDirection direction)
-{
-    vector<BoardSpace> empty_spaces;
-    empty_spaces.reserve(9);
-    vector<BoardSpace> first_occupied_space;
-    first_occupied_space.reserve(1);
+// OrthogonalSpaceSearchResult board_utilities_free::search_spaces(
+//     const BoardMap_t &board_map,
+//     BoardSpace start,
+//     BoardDirection direction)
+// {
+//     vector<BoardSpace> empty_spaces;
+//     empty_spaces.reserve(9);
+//     vector<BoardSpace> first_occupied_space;
+//     first_occupied_space.reserve(1);
 
-    auto next_step = start + direction;
+//     auto next_step = start + direction;
 
-    while (next_step.IsOnBoard() && (not is_occupied(board_map, next_step)))
-    {
-        empty_spaces.emplace_back(next_step);
-        next_step = next_step + direction;
-    }
-    if (next_step.IsOnBoard())
-    {
-        first_occupied_space.emplace_back(next_step);
-    }
-    return OrthogonalSpaceSearchResult{empty_spaces, first_occupied_space};
-}
+//     while (next_step.IsOnBoard() && (not is_occupied(board_map, next_step)))
+//     {
+//         empty_spaces.emplace_back(next_step);
+//         next_step = next_step + direction;
+//     }
+//     if (next_step.IsOnBoard())
+//     {
+//         first_occupied_space.emplace_back(next_step);
+//     }
+//     return OrthogonalSpaceSearchResult{empty_spaces, first_occupied_space};
+// }
 
-vector<BoardSpace> board_utilities_free::get_all_spaces_occupied_by(
-    const BoardMap_t &board_map, PieceColor color)
-{
-    vector<BoardSpace> occupied_spaces;
-    occupied_spaces.reserve(16);
-    for (auto rank = 0; rank < kNumRanks; rank++)
-    {
-        for (auto file = 0; file < kNumFiles; file++)
-        {
-            if (get_color(board_map, BoardSpace{rank, file}) == color)
-            {
-                occupied_spaces.emplace_back(BoardSpace{rank, file});
-            }
-        }
-    }
-    return occupied_spaces;
-}
+// vector<BoardSpace> board_utilities_free::get_all_spaces_occupied_by(
+//     const BoardMap_t &board_map, PieceColor color)
+// {
+//     vector<BoardSpace> occupied_spaces;
+//     occupied_spaces.reserve(16);
+//     for (auto rank = 0; rank < kNumRanks; rank++)
+//     {
+//         for (auto file = 0; file < kNumFiles; file++)
+//         {
+//             if (get_color(board_map, BoardSpace{rank, file}) == color)
+//             {
+//                 occupied_spaces.emplace_back(BoardSpace{rank, file});
+//             }
+//         }
+//     }
+//     return occupied_spaces;
+// }
 
 bool board_utilities_free::is_space_any_destination_of_moves(
     BoardSpace space, MoveCollection moves)

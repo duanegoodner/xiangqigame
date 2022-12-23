@@ -1,5 +1,4 @@
 #include "game_board.hpp"
-#include "board_utilities.hpp"
 #include "move_calculator.hpp"
 
 #include <gtest/gtest.h>
@@ -52,17 +51,8 @@ TEST_F(GameBoardTest, CorrecNumSpacesOccupiedByRed) {
 
 TEST_F(GameBoardTest, CorrectNumberAvailableMoves) {
     auto black_moves = gb_.CalcFinalMovesOf(PieceColor::kBlk);
-    // EXPECT_EQ(black_moves.moves.size(), 44);
     auto red_moves = gb_.CalcFinalMovesOf(PieceColor::kRed);
-    // EXPECT_EQ(red_moves.moves.size(), 44);
 }
-
-// TEST_F(GameBoardTest, MoveCollectionInit) {
-//     auto black_moves = gb_.CalcFinalMovesOf(PieceColor::kBlk);
-//     auto black_move_collection = MoveCollection{black_moves};
-//     auto sample_move = black_moves[0];
-//     EXPECT_EQ(black_move_collection.Contains(sample_move), true);
-// }
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

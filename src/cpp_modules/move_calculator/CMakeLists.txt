@@ -1,6 +1,3 @@
-# set(CMAKE_BUILD_TYPE Debug)
-# add_compile_options(-Wall -Wextra -O3)
-
 add_library(
     move_calculator
     move_calculator.cpp)

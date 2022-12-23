@@ -36,25 +36,6 @@ public:
     int search_depth_;
     int node_counter_;
 
-    // MinimaxMoveSelectorInterface()
-    //     : evaluator_{PiecePointsEvaluator(DEFAULT_GAME_POINTS)}
-    //     , search_depth_{3}
-    //     , node_counter_{0} {};
-
-    // MinimaxMoveSelectorInterface<MinimaxEvaluator>(
-    //     MinimaxEvaluator evaluator, int search_depth)
-    //     : evaluator_{evaluator}, search_depth_{search_depth}, node_counter_{0} {};
-    // MinimaxMoveSelectorInterface<MinimaxEvaluator>(int search_depth)
-    //     : evaluator_{PiecePointsEvaluator(DEFAULT_GAME_POINTS)}
-    //     , search_depth_{3}
-    //     , node_counter_{0} {};
-
-    // TODO find a way to move implementation code out of header
-    // (if not possble, then need to move all implementation code for
-    // this template class into header). When try to implement in cpp,
-    // can only work if implement for all concrete derived classes instead of
-    // just template.
-
     void ResetNodeCounter()
     {
         node_counter_ = 0;
@@ -214,17 +195,4 @@ class PiecePointsMoveSelector : public MinimaxMoveSelectorInterface<PiecePointsE
             this->search_depth_ = search_depth;
             this->node_counter_ = 0;
         }
-
-    // void ResetNodeCounter() {
-    //     std::cout << "resetting node counter" << endl;
-    //     this->ResetNodeCounter();
-    // }
-    // Move ImplementSelectMove(
-    //     GameBoard &game_board,
-    //     PieceColor cur_player,
-    //     MoveCollection &cur_moves
-    // ) {
-    //     this->ImplementSelectMove(game_board, cur_player, cur_moves);
-    // }
-
 };

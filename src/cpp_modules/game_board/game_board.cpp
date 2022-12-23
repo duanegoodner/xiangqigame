@@ -4,7 +4,6 @@
 
 #include <iostream>
 
-// using namespace board_components;
 using namespace board_utilities_free;
 
 GameBoard::GameBoard() : move_calculator_{MoveCalculator(board_map_)}
@@ -35,9 +34,7 @@ void GameBoard::UndoMove(ExecutedMove executed_move)
 
 vector<BoardSpace> GameBoard::GetAllSpacesOccupiedBy(PieceColor color)
 {
-    // auto all_occ_spaces = move_calculator_.utils_.GetAllSpacesOccupiedBy(color);
     auto all_occ_spaces = get_all_spaces_occupied_by(board_map_, color);
-    // return move_calculator_.utils_.GetAllSpacesOccupiedBy(color);
     return get_all_spaces_occupied_by(board_map_, color);
 }
 
@@ -48,11 +45,8 @@ void GameBoard::SetOccupant(BoardSpace space, Piece_t piece)
 
 bool GameBoard::IsInCheck(PieceColor color)
 {
-    // auto gen_position = move_calculator_.utils_.GetGeneralPosition(color);
     auto gen_position = get_general_position(board_map_, color);
     auto opponent_moves = move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color));
-    // return move_calculator_.utils_.IsSpaceAnyDestinationOfMoves(
-    //     gen_position, opponent_moves);
     return is_space_any_destination_of_moves(gen_position, opponent_moves);
 }
 
@@ -67,12 +61,8 @@ MoveCollection GameBoard::CalcFinalMovesOf(PieceColor color)
         auto executed_move = ExecuteMove(move);
         auto resulting_opponent_moves =
             move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color));
-        // auto resulting_gen_position =
-        // move_calculator_.utils_.GetGeneralPosition(color);
         auto resulting_gen_position = get_general_position(board_map_, color);
 
-        // if (not move_calculator_.utils_.IsSpaceAnyDestinationOfMoves(
-        //         resulting_gen_position, resulting_opponent_moves))
         if (not is_space_any_destination_of_moves(
             resulting_gen_position, resulting_opponent_moves))
         {
@@ -86,12 +76,10 @@ MoveCollection GameBoard::CalcFinalMovesOf(PieceColor color)
 
 PieceColor GameBoard::GetColor(BoardSpace space)
 {
-    // return move_calculator_.utils_.GetColor(space);
     return get_color(board_map_, space);
 }
 
 PieceType GameBoard::GetType(BoardSpace space)
 {
-    // return move_calculator_.utils_.GetType(space);
     return get_type(board_map_, space);
 }

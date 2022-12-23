@@ -12,8 +12,7 @@ typedef MoveCollection (PieceMoves::*MethodPtr_t)(
 
 MoveCalculator::MoveCalculator(const BoardMap_t &board_map)
     : board_map_{board_map}
-    , piece_moves_{PieceMoves(*this)}
-    //  , utils_{BoardUtilities(board_map)}
+    , piece_moves_{PieceMoves()}
 {
     piece_dispatch_[PieceType::kSol] = &PieceMoves::SoldierMoves;
     piece_dispatch_[PieceType::kCan] = &PieceMoves::CannonMoves;
@@ -30,39 +29,34 @@ MoveCalculator::MoveCalculator(const BoardMap_t &board_map)
 // https://en.cppreference.com/w/cpp/utility/any/any_cast
 MoveCollection MoveCalculator::CalcMovesFrom(BoardSpace space)
 {
-    // auto piece_type = utils_.GetType(space);
     auto piece_type = get_type(board_map_, space);
-    // auto color = utils_.GetColor(space);
     auto color = get_color(board_map_, space);
     auto move_func = piece_dispatch_.find(piece_type)->second;
     auto move_func_ptr = any_cast<MethodPtr_t>(move_func);
     return (piece_moves_.*move_func_ptr)(board_map_, color, space);
 }
 
-MoveCollection MoveCalculator::CalcAllMovesNoCheckTest(PieceColor color)
-{
-    auto untested_moves = MoveCollection(120);
-    // auto occ_spaces = utils_.GetAllSpacesOccupiedBy(color);
-    auto occ_spaces = get_all_spaces_occupied_by(board_map_, color);
-    for (auto space = 0; space < occ_spaces.size(); space++)
-    {
-        auto moves_from_space = CalcMovesFrom(occ_spaces[space]);
-            untested_moves.Concat(moves_from_space);
-    }
-    return untested_moves;
-}
+// MoveCollection MoveCalculator::CalcAllMovesNoCheckTest(PieceColor color)
+// {
+//     auto untested_moves = MoveCollection(120);
+//     auto occ_spaces = get_all_spaces_occupied_by(board_map_, color);
+//     for (auto space = 0; space < occ_spaces.size(); space++)
+//     {
+//         auto moves_from_space = CalcMovesFrom(occ_spaces[space]);
+//             untested_moves.Concat(moves_from_space);
+//     }
+//     return untested_moves;
+// }
 
-PieceMoves::PieceMoves(MoveCalculator &p) : parent_{p} {};
+// PieceMoves::PieceMoves(MoveCalculator &p) : parent_{p} {};
 
 MoveCollection PieceMoves::SoldierMoves(
     const BoardMap_t &board_map, PieceColor color, BoardSpace space)
 {
     auto soldier_moves = MoveCollection(3);
 
-    // auto fwd_space = space + parent_.utils_.FwdDirection(color);
     auto fwd_space = space + fwd_direction(color);
 
-    // if (parent_.utils_.ExistsAndPassesColorTest(fwd_space, color))
     if (exists_and_passes_color_test(board_map, fwd_space, color))
     {
         soldier_moves.Append(Move{space, fwd_space});
@@ -73,7 +67,6 @@ MoveCollection PieceMoves::SoldierMoves(
         for (auto side_vector : board_utilities_free::kSideDirections)
         {
             auto side_space = space + side_vector;
-            // if (parent_.utils_.ExistsAndPassesColorTest(side_space, color))
             if (exists_and_passes_color_test(board_map, fwd_space, color))
             {
                 soldier_moves.Append(Move{space, side_space});
@@ -91,7 +84,6 @@ MoveCollection PieceMoves::CannonMoves(
 
     for (auto direction : board_utilities_free::kAllOrthogonalDirections)
     {
-        // auto search_result = parent_.utils_.SearchSpaces(space, direction);
         auto search_result = search_spaces(board_map, space, direction);
 
         for (auto empty_space : search_result.empty_spaces)
@@ -101,14 +93,9 @@ MoveCollection PieceMoves::CannonMoves(
 
         if (search_result.first_occupied_space.size())
         {
-            // auto second_search = parent_.utils_.SearchSpaces(
-            //     search_result.first_occupied_space[0], direction);
             auto second_search = search_spaces(
                 board_map, search_result.first_occupied_space[0], direction);
 
-            // if (second_search.first_occupied_space.size() &&
-            //     parent_.utils_.GetColor(second_search.first_occupied_space[0]) ==
-            //         opponent_of(color))
             if (second_search.first_occupied_space.size() &&
                 get_color(board_map, second_search.first_occupied_space[0]) ==
                     opponent_of(color))
@@ -128,15 +115,11 @@ MoveCollection PieceMoves::ChariotMoves(
     auto chariot_moves = MoveCollection(17);
     for (auto direction : board_utilities_free::kAllOrthogonalDirections)
     {
-        // auto search_result = parent_.utils_.SearchSpaces(space, direction);
         auto search_result = search_spaces(board_map, space, direction);
         for (auto empty_space : search_result.empty_spaces)
         {
             chariot_moves.Append(Move{space, empty_space});
         }
-        // if (search_result.first_occupied_space.size() &&
-        //     parent_.utils_.GetColor(search_result.first_occupied_space[0]) ==
-        //         opponent_of(color))
         if (search_result.first_occupied_space.size() &&
             get_color(board_map, search_result.first_occupied_space[0]) ==
                 opponent_of(color))
@@ -156,13 +139,11 @@ MoveCollection PieceMoves::HorseMoves(
     for (auto direction : board_utilities_free::kHorsePaths)
     {
         auto first_step = space + direction.first;
-        // if (first_step.IsOnBoard() && (not parent_.utils_.IsOccupied(first_step)))
         if (first_step.IsOnBoard() && (not is_occupied(board_map, first_step)))
         {
             for (auto direction : direction.second)
             {
                 auto second_step = first_step + direction;
-                // if (parent_.utils_.ExistsAndPassesColorTest(second_step, color))
                 if (exists_and_passes_color_test(board_map, second_step, color))
 
                 {
@@ -181,13 +162,10 @@ MoveCollection PieceMoves::ElephantMoves(
     for (auto direction : board_utilities_free::kAllDiagonalDirections)
     {
         auto first_step = space + direction;
-        // if (first_step.IsOnBoard() && (not parent_.utils_.IsOccupied(first_step)) &&
-        //     (first_step.IsInHomelandOf(color)))
         if (first_step.IsOnBoard() && (not is_occupied(board_map, first_step)) &&
             (first_step.IsInHomelandOf(color)))
         {
             auto second_step = first_step + direction;
-            // if (parent_.utils_.ExistsAndPassesColorTest(second_step, color))
             if (exists_and_passes_color_test(board_map, second_step, color))
             {
                 elephant_moves.Append(Move{space, second_step});
@@ -204,8 +182,6 @@ MoveCollection PieceMoves::AdvisorMoves(
     for (auto direction : board_utilities_free::kAllDiagonalDirections)
     {
         auto destination = space + direction;
-        // if (destination.IsInCastleOf(color) &&
-        //     (parent_.utils_.GetColor(destination) != color))
         if (destination.IsInCastleOf(color) &&
             (get_color(board_map, destination) != color))
 
@@ -223,7 +199,6 @@ MoveCollection PieceMoves::FlyingGeneralMove(
 
     auto has_flying_move = true;
     auto opponent_color = opponent_of(color);
-    // auto other_gen_position = parent_.utils_.GetGeneralPosition(opponent_color);
     auto other_gen_position = get_general_position(board_map, opponent_color);
     if (space.file != other_gen_position.file)
     {
@@ -235,7 +210,6 @@ MoveCollection PieceMoves::FlyingGeneralMove(
         auto search_end = max(space.rank, other_gen_position.rank) - 1;
         for (auto rank = search_start; rank <= search_end; rank++)
         {
-            // if (parent_.utils_.IsOccupied(BoardSpace{rank, space.file}))
             if (is_occupied(board_map, BoardSpace{rank, space.file}))
             {
                 has_flying_move = false;
@@ -259,8 +233,6 @@ MoveCollection PieceMoves::StandardGeneralMoves(
     for (auto direction :board_utilities_free::kAllOrthogonalDirections)
     {
         auto destination = space + direction;
-        // if (destination.IsInCastleOf(color) &&
-        //     (parent_.utils_.GetColor(destination) != color))
          if (destination.IsInCastleOf(color) &&
             (get_color(board_map, destination) != color))
         {

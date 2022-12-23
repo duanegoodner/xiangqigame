@@ -1,6 +1,4 @@
-
 #include <gtest/gtest.h>
-
 #include "minimax_evaluator.hpp"
 #include "piece_points.hpp"
 
