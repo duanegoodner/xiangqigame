@@ -53,7 +53,7 @@ bool GameBoard::IsInCheck(PieceColor color)
     auto opponent_moves = move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color));
     // return move_calculator_.utils_.IsSpaceAnyDestinationOfMoves(
     //     gen_position, opponent_moves);
-    return is_space_any_destination_of_moves(board_map_, gen_position, opponent_moves);
+    return is_space_any_destination_of_moves(gen_position, opponent_moves);
 }
 
 MoveCollection GameBoard::CalcFinalMovesOf(PieceColor color)
@@ -74,7 +74,7 @@ MoveCollection GameBoard::CalcFinalMovesOf(PieceColor color)
         // if (not move_calculator_.utils_.IsSpaceAnyDestinationOfMoves(
         //         resulting_gen_position, resulting_opponent_moves))
         if (not is_space_any_destination_of_moves(
-            board_map_, resulting_gen_position, resulting_opponent_moves))
+            resulting_gen_position, resulting_opponent_moves))
         {
             validated_moves.Append(move);
         }

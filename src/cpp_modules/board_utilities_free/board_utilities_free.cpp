@@ -101,7 +101,7 @@ vector<BoardSpace> board_utilities_free::get_all_spaces_occupied_by(
 }
 
 bool board_utilities_free::is_space_any_destination_of_moves(
-    const BoardMap_t &board_map, BoardSpace space, MoveCollection moves)
+    BoardSpace space, MoveCollection moves)
 {
     for (auto move : moves.moves)
     {

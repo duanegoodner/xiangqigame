@@ -44,7 +44,7 @@ namespace board_utilities_free {
     vector<BoardSpace> get_all_spaces_occupied_by(
         const BoardMap_t &board_map, PieceColor color);
     bool is_space_any_destination_of_moves(
-        const BoardMap_t &board_map, BoardSpace space, MoveCollection moves);
+        BoardSpace space, MoveCollection moves);
 }
 
 #endif

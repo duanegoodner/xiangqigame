@@ -1,8 +1,11 @@
 #include <gtest/gtest.h>
 
 #include "board_components.hpp"
+#include "board_utilities_free.hpp"
 #include "move_calculator.hpp"
 #include "game_board.hpp"
+
+using namespace board_utilities_free;
 
 const BoardMap_t kFlyingBoard{{
     {5, 4, 3, 2, 1, 2, 3, 4, 5},
@@ -18,10 +21,11 @@ const BoardMap_t kFlyingBoard{{
 }};
 
 class MoveCalculatorTest : public ::testing::Test {
-    BoardMap_t starting_board = kStartingBoard;
-    BoardMap_t flying_board = kFlyingBoard;
+    
 
    protected:
+    BoardMap_t starting_board = kStartingBoard;
+    BoardMap_t flying_board = kFlyingBoard;
     MoveCalculator mc_standard_;
     MoveCalculator mc_flying_;
     MoveCalculatorTest()
@@ -76,96 +80,97 @@ TEST_F(MoveCalculatorTest, AllMovesNoCheckTest) {
 }
 
 class BoardUtilitiesTest : public ::testing::Test {
-    BoardMap_t starting_board = kStartingBoard;
+    
 
    protected:
+    BoardMap_t starting_board = kStartingBoard;
     MoveCalculator mc_standard_;
     BoardUtilitiesTest()
         : mc_standard_{MoveCalculator(starting_board)} {}
 };
 
 TEST_F(BoardUtilitiesTest, IsOccupiedTrue) {
-    auto result = mc_standard_.utils_.IsOccupied(BoardSpace{0, 0});
+    auto result = is_occupied(starting_board, BoardSpace{0, 0});
     EXPECT_EQ(result, true);
 }
 
 TEST_F(BoardUtilitiesTest, IsOccupiedFalse) {
-    auto result = mc_standard_.utils_.IsOccupied(BoardSpace{1, 1});
+    auto result = is_occupied(starting_board, BoardSpace{1, 1});
     EXPECT_EQ(result, false);
 }
 
 TEST_F(BoardUtilitiesTest, GetColorBlack) {
-    auto result = mc_standard_.utils_.GetColor(BoardSpace{0, 0});
+    auto result = get_color(starting_board, BoardSpace{0, 0});
     EXPECT_EQ(result, PieceColor::kBlk);
 }
 
 TEST_F(BoardUtilitiesTest, GetColorEmpty) {
-    auto result = mc_standard_.utils_.GetColor({1, 0});
+    auto result = get_color(starting_board, BoardSpace{1, 0});
     EXPECT_EQ(result, PieceColor::kNul);
 }
 
 TEST_F(BoardUtilitiesTest, GetTypeElephant) {
-    auto result = mc_standard_.utils_.GetType(BoardSpace{9, 2});
+    auto result = get_type(starting_board, BoardSpace{9, 2});
     EXPECT_EQ(result, PieceType::kEle);
 }
 
 TEST_F(BoardUtilitiesTest, GetTypeEmpty) {
-    auto result = mc_standard_.utils_.GetType({5, 1});
+    auto result = get_type(starting_board, BoardSpace{5, 1});
     EXPECT_EQ(result, PieceType::kNnn);
 }
 
 TEST_F(BoardUtilitiesTest, ExistsAndPassesColorTestTrue) {
-    auto result = mc_standard_.utils_.ExistsAndPassesColorTest(
-        BoardSpace{3, 2}, PieceColor::kRed);
+    auto result = exists_and_passes_color_test(
+        starting_board, BoardSpace{3, 2}, PieceColor::kRed);
     EXPECT_EQ(result, true);
 }
 
 TEST_F(BoardUtilitiesTest, ExistsAndPassesColorTestFalseOffBoard) {
-    auto result = mc_standard_.utils_.ExistsAndPassesColorTest(
-        BoardSpace{100, 1}, PieceColor::kRed);
+    auto result = exists_and_passes_color_test(
+        starting_board, BoardSpace{100, 1}, PieceColor::kRed);
     EXPECT_EQ(result, false);
 }
 
 TEST_F(BoardUtilitiesTest, ExistsAndPassesColorTestFalseSameColor) {
-    auto result = mc_standard_.utils_.ExistsAndPassesColorTest(
-        BoardSpace{6, 0}, PieceColor::kRed);
+    auto result = exists_and_passes_color_test(
+        starting_board, BoardSpace{6, 0}, PieceColor::kRed);
     EXPECT_EQ(result, false);
 }
 
 TEST_F(BoardUtilitiesTest, FwdDirectionRed) {
-    auto result = mc_standard_.utils_.FwdDirection(PieceColor::kRed);
+    auto result =fwd_direction(PieceColor::kRed);
     EXPECT_EQ(result.rank, -1);
     EXPECT_EQ(result.file, 0);
 }
 
 TEST_F(BoardUtilitiesTest, RevDirectionRed) {
-    auto result = mc_standard_.utils_.RevDirection(PieceColor::kRed);
+    auto result = rev_direction(PieceColor::kRed);
     EXPECT_EQ(result.rank, 1);
     EXPECT_EQ(result.file, 0);
 }
 
 TEST_F(BoardUtilitiesTest, GetGeneralPositionBlack) {
-    auto result = mc_standard_.utils_.GetGeneralPosition(PieceColor::kBlk);
+    auto result = get_general_position(starting_board, PieceColor::kBlk);
     EXPECT_EQ(result.rank, 0);
     EXPECT_EQ(result.file, 4);
 }
 
 TEST_F(BoardUtilitiesTest, SearchSpacesRedChariot) {
-    auto result = mc_standard_.utils_.SearchSpaces(BoardSpace{9, 8}, BoardDirection{-1, 0});
+    auto result = search_spaces(starting_board, BoardSpace{9, 8}, BoardDirection{-1, 0});
     EXPECT_EQ(result.empty_spaces.size(), 2);
     EXPECT_EQ(result.first_occupied_space[0].rank, 6);
     EXPECT_EQ(result.first_occupied_space[0].file, 8);
 }
 
 TEST_F(BoardUtilitiesTest, GetAllSpacesOccupiedByBlack) {
-    auto result = mc_standard_.utils_.GetAllSpacesOccupiedBy(PieceColor::kBlk);
+    auto result = get_all_spaces_occupied_by(starting_board, PieceColor::kBlk);
     EXPECT_EQ(result.size(), 16);
 }
 
 TEST_F(BoardUtilitiesTest, IsSpaceDestinationOfAnyMovesTrue) {
     auto some_moves = MoveCollection({Move{BoardSpace{2, 1}, BoardSpace{9, 1}}});
     auto some_space = BoardSpace{9, 1};
-    auto result = mc_standard_.utils_.IsSpaceAnyDestinationOfMoves(some_space, some_moves);
+    auto result = is_space_any_destination_of_moves(some_space, some_moves);
     EXPECT_EQ(result, true);
 }
 
