@@ -9,12 +9,12 @@
 #ifndef _MOVE_CALCULATOR_
 #define _MOVE_CALCULATOR_
 
-#include "board_utilities.hpp"
+// #include "board_utilities.hpp"
 #include "board_components.hpp"
 
 using namespace std;
 using namespace board_components;
-using namespace board_utilities;
+// using namespace board_utilities;
 
 
 class MoveCalculator;
@@ -23,15 +23,24 @@ class MoveCalculator;
 class PieceMoves {
     public:
     PieceMoves(MoveCalculator & p);    
-    MoveCollection SoldierMoves(PieceColor color, BoardSpace space);
-    MoveCollection CannonMoves(PieceColor color, BoardSpace space);
-    MoveCollection ChariotMoves(PieceColor color, BoardSpace space);
-    MoveCollection HorseMoves(PieceColor color, BoardSpace space);
-    MoveCollection ElephantMoves(PieceColor color, BoardSpace space);
-    MoveCollection AdvisorMoves(PieceColor color, BoardSpace space);
-    MoveCollection FlyingGeneralMove(PieceColor color, BoardSpace space);    
-    MoveCollection StandardGeneralMoves(PieceColor color, BoardSpace space);
-    MoveCollection GeneralMoves(PieceColor color, BoardSpace space);
+    MoveCollection SoldierMoves(
+        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
+    MoveCollection CannonMoves(
+        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
+    MoveCollection ChariotMoves(
+        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
+    MoveCollection HorseMoves(
+        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
+    MoveCollection ElephantMoves(
+        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
+    MoveCollection AdvisorMoves(
+        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
+    MoveCollection FlyingGeneralMove(
+        const BoardMap_t &board_map, PieceColor color, BoardSpace space);    
+    MoveCollection StandardGeneralMoves(
+        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
+    MoveCollection GeneralMoves(
+        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
 
     private:
     MoveCalculator & parent_;
@@ -42,7 +51,7 @@ class PieceMoves {
 class MoveCalculator {
    public:
     MoveCalculator(const BoardMap_t& board_map);
-    BoardUtilities utils_;
+    // BoardUtilities utils_;
     MoveCollection CalcMovesFrom(BoardSpace space);
     MoveCollection CalcAllMovesNoCheckTest(PieceColor color);
 
