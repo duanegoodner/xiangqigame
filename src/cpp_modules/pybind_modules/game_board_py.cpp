@@ -1,8 +1,8 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include "game_board.hpp"
-#include "board_components.hpp"
+#include <game_board.hpp>
+#include <board_components.hpp>
 
 namespace py = pybind11;
 using namespace py::literals;

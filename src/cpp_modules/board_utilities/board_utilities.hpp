@@ -1,7 +1,7 @@
 #ifndef _BOARD_UTILITIES_FREE_
 #define _BOARD_UTILITIES_FREE_
 
-#include "board_components.hpp"
+#include <board_components.hpp>
 
 // ///////////////////////////////////////////////////////////////////////////////////////
 // All board_utilities functions defined in header to allow inlining (perfomance improvement)

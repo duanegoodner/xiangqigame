@@ -1,9 +1,8 @@
 #include <gtest/gtest.h>
-
-#include "board_components.hpp"
-#include "board_utilities.hpp"
-#include "move_calculator.hpp"
-#include "game_board.hpp"
+#include <board_components.hpp>
+#include <board_utilities.hpp>
+#include <move_calculator.hpp>
+#include <game_board.hpp>
 
 using namespace board_utilities;
 

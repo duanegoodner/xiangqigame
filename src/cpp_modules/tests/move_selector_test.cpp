@@ -2,8 +2,8 @@
 #include <chrono>
 #include <gtest/gtest.h>
 #include <iostream>
-#include "move_selector.hpp"
-#include "piece_points.hpp"
+#include <move_selector.hpp>
+#include <piece_points.hpp>
 
 
 using namespace piece_points;

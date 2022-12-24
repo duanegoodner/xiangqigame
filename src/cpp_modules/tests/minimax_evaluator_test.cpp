@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "minimax_evaluator.hpp"
-#include "piece_points.hpp"
+#include <minimax_evaluator.hpp>
+#include <piece_points.hpp>
 
 using namespace piece_points;
 

@@ -1,8 +1,8 @@
 #include <iostream>
 #include <limits>
-#include "move_selector.hpp"
-#include "piece_points.hpp"
-#include "board_components.hpp"
+#include <move_selector.hpp>
+#include <piece_points.hpp>
+#include <board_components.hpp>
 
 
 using namespace board_components;

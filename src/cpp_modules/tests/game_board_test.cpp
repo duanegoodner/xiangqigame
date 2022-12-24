@@ -1,5 +1,5 @@
-#include "game_board.hpp"
-#include "move_calculator.hpp"
+#include <game_board.hpp>
+#include <move_calculator.hpp>
 
 #include <gtest/gtest.h>
 

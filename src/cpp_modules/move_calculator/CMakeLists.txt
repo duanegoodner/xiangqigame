@@ -4,7 +4,8 @@ add_library(
 
 target_link_libraries(
     move_calculator PRIVATE
-    # board_utilities
+    board_utilities
+    board_components
     )
 
 target_include_directories(
@@ -15,4 +16,4 @@ target_include_directories(
 move_calculator PRIVATE
 ${PROJECT_SOURCE_DIR}/board_components
 ${PROJECT_SOURCE_DIR}/board_utilities
-${PROJECT_SOURCE_DIR}/game_board)
+)

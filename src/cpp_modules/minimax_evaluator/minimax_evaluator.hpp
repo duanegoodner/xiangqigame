@@ -1,9 +1,9 @@
 #ifndef _MINIMAX_EVALUATOR_3_
 #define _MINIMAX_EVAULATOR_3_
 
-#include "board_components.hpp"
-#include "game_board.hpp"
-#include "piece_points.hpp"
+#include <board_components.hpp>
+#include <game_board.hpp>
+#include <piece_points.hpp>
 
 using namespace board_components;
 using namespace piece_points;

@@ -1,10 +1,10 @@
-#include <vector>
 
 #ifndef _GAME_BOARD_
 #define _GAME_BOARD_
 
-#include "board_components.hpp"
-#include "move_calculator.hpp"
+#include <vector>
+#include <board_components.hpp>
+#include <move_calculator.hpp>
 
 
 using namespace std;

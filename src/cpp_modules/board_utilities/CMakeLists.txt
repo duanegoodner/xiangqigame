@@ -1,11 +1,11 @@
-# add_library(
-#     board_utilities board_utilities.cpp)
+add_library(
+    board_utilities INTERFACE board_utilities.hpp)
 
-# target_include_directories(
-#     board_utilities PUBLIC
-#     ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(
+    board_utilities INTERFACE
+    board_components)
 
-# target_include_directories(
-#     board_utilities PRIVATE
-#     ${PROJECT_SOURCE_DIR}/board_components
-# )
+target_include_directories(
+    board_utilities INTERFACE
+    ${CMAKE_CURRENT_SOURCE_DIR})
+

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.19)
 
 project(xiangqi_cpp VERSION 0.1)
 
@@ -19,7 +19,7 @@ find_package(pybind11 CONFIG REQUIRED)
 # add_subdirectory(pybind11)
 
 
-# add_subdirectory(board_components)
+add_subdirectory(board_components)
 add_subdirectory(board_utilities)
 add_subdirectory(piece_points)
 add_subdirectory(game_board)

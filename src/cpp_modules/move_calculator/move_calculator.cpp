@@ -1,8 +1,7 @@
-#include "move_calculator.hpp"
-#include "board_utilities.hpp"
-
 #include <iostream>
-#include <omp.h>
+#include <move_calculator.hpp>
+#include <board_utilities.hpp>
+
 
 using namespace std;
 using namespace board_utilities;

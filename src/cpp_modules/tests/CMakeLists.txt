@@ -56,5 +56,6 @@ add_executable(move_selector_test move_selector_test.cpp)
         minimax_evaluator
         move_calculator
         piece_points
+        utility_functs
         GTest::GTest
         GTest::Main)

@@ -3,7 +3,7 @@
 
 #include <unordered_map>
 #include <vector>
-#include "board_components.hpp"
+#include <board_components.hpp>
 
 namespace piece_points
 {

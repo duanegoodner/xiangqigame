@@ -1,6 +1,6 @@
 #include <chrono>
 #include <iostream>
-#include "game_board.hpp"
+#include <game_board.hpp>
 
 using namespace std::chrono;
 

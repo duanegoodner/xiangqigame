@@ -1,9 +1,12 @@
+#ifndef _MOVE_SELECTOR_
+#define _MOVE_SELECTOR_
+
 #include <vector>
-#include "board_components.hpp"
-#include "game_board.hpp"
-#include "minimax_evaluator.hpp"
-#include "piece_points.hpp"
-#include "utility_functs.hpp"
+#include <board_components.hpp>
+#include <game_board.hpp>
+#include <minimax_evaluator.hpp>
+#include <piece_points.hpp>
+#include <utility_functs.hpp>
 
 template <typename ImplementedMoveSelector>
 class MoveSelectorInterface
@@ -231,3 +234,5 @@ class PiecePointsMoveSelector : public MinimaxMoveSelectorInterface<PiecePointsE
             this->node_counter_ = 0;
         }
 };
+
+#endif
