@@ -54,6 +54,7 @@
                 "-fdiagnostics-color=always",
                 "-fopenmp",
                 "-g",
+                // "-O3",
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"

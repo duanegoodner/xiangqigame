@@ -11,7 +11,8 @@
                 "${workspaceFolder}/project/src/cpp_modules/piece_points",
                 "${workspaceFolder}/project/src/cpp_modules/minimax_evaluator",
                 "${workspaceFolder}/project/src/cpp_modules/move_selector",
-                "${workspaceFolder}/project/src/cpp_modules/utility_functs"
+                "${workspaceFolder}/project/src/cpp_modules/utility_functs",
+                "${workspaceFolder}/project/src/cpp_modules/nlohmann_json"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

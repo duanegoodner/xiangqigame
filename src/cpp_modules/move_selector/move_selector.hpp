@@ -114,7 +114,7 @@ public:
             cur_player);
         auto selected_move_index = utility_functs::random(
             (size_t)0, minimax_result.best_moves.moves.size() - 1);
-        uniform_int_distribution<int> dist(0, minimax_result.best_moves.moves.size() - 1);
+        // uniform_int_distribution<int> dist(0, minimax_result.best_moves.moves.size() - 1);
         return minimax_result.best_moves.moves[selected_move_index];
     }
 
