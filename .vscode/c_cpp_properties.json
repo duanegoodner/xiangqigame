@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/src/cpp_modules/board_components",
+                "${workspaceFolder}/src/cpp_modules/board_utilities",
+                "${workspaceFolder}/src/cpp_modules/game_board",
+                "${workspaceFolder}/src/cpp_modules/move_calculator",
+                "${workspaceFolder}/src/cpp_modules/piece_points",
+                "${workspaceFolder}/src/cpp_modules/minimax_evaluator",
+                "${workspaceFolder}/src/cpp_modules/move_selector",
+                "${workspaceFolder}/src/cpp_modules/utility_functs",
+                "${workspaceFolder}/src/cpp_modules/nlohmann_json"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

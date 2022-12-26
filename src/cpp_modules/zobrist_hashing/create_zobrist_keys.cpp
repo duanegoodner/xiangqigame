@@ -1,8 +1,10 @@
 
 #include <array>
+#include <bits/stdc++.h>
 #include <cstddef>
 #include <fstream>
 #include <iostream>
+#include <string>
 #include "../nlohmann_json/json.hpp"
 #include "../utility_functs/utility_functs.hpp"
 #include "../board_components/board_components.hpp"
@@ -29,15 +31,44 @@ void fill_std_piece_vals(game_zarray_t& game_zarray) {
     }
 }
 
+game_zarray_t create_zkeys_array() {
+    game_zarray_t zarray{0};
+    fill_std_piece_vals(zarray);
+    return zarray;
+}
+
+void write_zkeys_json(game_zarray_t zarray, string filename) {
+//    if (not utility_functs::ends_with(".json", filename)) {
+//        filename.append(".json");
+//    }
+
+    json zjson(zarray);
+    ofstream fout(filename);
+    fout << setw(4) << zjson << endl;
+}
+
+void write_zkeys_json(game_zarray_t zarray) {
+    write_zkeys_json(zarray, "default_zkeys_filename.json");
+}
+
+game_zarray_t import_zkeys_json(string filename) {
+    ifstream input(filename);
+    json zjson = json::parse(input);
+
+    return zjson;
+}
+
 
 int main(int argc, char* argv[]) {
 
-    game_zarray_t zarray{0};
-    fill_std_piece_vals(zarray);
+//    auto zarray = create_zkeys_array();
+//    write_zkeys_json(zarray, "sample_out.json");
 
-    json zobrist_keys(zarray);
-    ofstream output("zobrist_keys.json");
-    output << setw(4) << zobrist_keys << endl;
+    // json zobrist_keys(zarray);
+    // ofstream output("zobrist_keys.json");
+    // output << setw(4) << zobrist_keys << endl;
+
+    auto my_keys = import_zkeys_json("sample_out.json");
 
     return 0;    
     
