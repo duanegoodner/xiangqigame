@@ -30,12 +30,14 @@ RUN sudo apt-get update --fix-missing && \
     ca-certificates \
     cmake \
     curl \
+    gdb \
     g++ \
     git \
     libzip-dev \
     nano \
     make \
     fonts-powerline \
+    rsync \
     unzip \
     zsh \
     && sudo apt-get clean && \
@@ -75,10 +77,11 @@ WORKDIR $HOME/workspace
 ENV MINICONDA_VERSION latest
 ENV CONDA_DIR $HOME/miniconda3
 ENV PATH=$CONDA_DIR/bin:$PATH
-COPY ./.devcontainer/initial_conda_env.yml /tmp/
-RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-$MINICONDA_VERSION-Linux-x86_64.sh -O ~/miniconda.sh && \
+COPY ./.devcontainer/initial_conda_env.yml /tmp/ 
+RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-$MINICONDA_VERSION-Linux-x86_64.sh -O $HOME/miniconda.sh && \
     chmod +x $HOME/miniconda.sh && \
-    $HOME/miniconda.sh -b -p $CONDA_DIR && \
+    # Need to use bash on next line due to issue at: https://github.com/conda/conda/issues/10431
+    bash $HOME/miniconda.sh -b -p $CONDA_DIR && \
     rm $HOME/miniconda.sh && \
     echo ". $HOME/miniconda3/etc/profile.d/conda.sh" >> $HOME/.bashrc && \
     echo ". $HOME/miniconda3/etc/profile.d/conda.sh" >> $HOME/.zshrc && \

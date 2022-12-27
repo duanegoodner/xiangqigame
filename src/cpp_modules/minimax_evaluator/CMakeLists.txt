@@ -6,7 +6,7 @@ add_library(
     minimax_evaluator.cpp)
 
 target_link_libraries(
-    minimax_evaluator PRIVATE
+    minimax_evaluator PUBLIC
     board_components
     board_utilities)
 

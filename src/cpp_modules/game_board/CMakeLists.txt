@@ -7,7 +7,7 @@ target_link_libraries(
     move_calculator)
 
 target_link_libraries(
-    game_board PRIVATE
+    game_board PUBLIC
     board_components
     board_utilities)
 
