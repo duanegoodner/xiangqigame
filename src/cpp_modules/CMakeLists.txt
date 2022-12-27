@@ -16,8 +16,6 @@ add_compile_options(-Wall -Wextra -O3)
 find_package(GTest REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 
-# add_subdirectory(pybind11)
-
 
 add_subdirectory(board_components)
 add_subdirectory(board_utilities)
@@ -29,6 +27,8 @@ add_subdirectory(move_selector)
 add_subdirectory(tests)
 add_subdirectory(pybind_modules)
 add_subdirectory(utility_functs)
+add_subdirectory(zobrist_hash)
+add_subdirectory(nlohmann_json)
 
 include_directories(
         ${PROJECT_SOURCE_DIR}/board_components

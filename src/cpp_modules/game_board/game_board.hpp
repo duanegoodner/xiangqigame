@@ -27,6 +27,7 @@ class GameBoard {
     
     public:
     GameBoard();
+    bool IsOccupied(BoardSpace space);
     Piece_t GetOccupant(BoardSpace space);
     ExecutedMove ExecuteMove(Move move);
     void UndoMove(ExecutedMove executed_move);

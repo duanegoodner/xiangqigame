@@ -16,6 +16,10 @@ Piece_t GameBoard::GetOccupant(BoardSpace space)
     return board_map_[space.rank][space.file];
 }
 
+bool GameBoard::IsOccupied(BoardSpace space) {
+    return is_occupied(board_map_, space);
+}
+
 ExecutedMove GameBoard::ExecuteMove(Move move)
 {
     auto moving_piece = GetOccupant(move.start);

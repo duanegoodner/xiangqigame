@@ -18,7 +18,7 @@ target_link_libraries(
     GTest::GTest
     GTest::Main)
 
-add_executable(game_board_test game_board_test.cpp)
+add_executable(game_board_test game_board_test.cpp ../zobrist_hash/zobrist_hash.hpp)
 target_link_libraries(
     game_board_test PUBLIC
     game_board

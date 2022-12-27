@@ -22,28 +22,3 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/piece_points
     # ${PROJECT_SOURCE_DIR}/utility_functs
 )
-
-#add_executable(
-#        move_selector_test move_selector_test.cpp)
-
-#target_link_libraries(
-#        move_selector_test PUBLIC
-#        move_selector
-#        game_board
-#        minimax_evaluator
-#        move_calculator
-#        piece_points
-#        utility_functs
-#        GTest::GTest
-#        GTest::Main
-#)
-#
-#target_include_directories(
-#        move_selector_test PUBLIC
-#        ${CMAKE_CURRENT_SOURCE_DIR}
-#        ${PROJECT_SOURCE_DIR}/game_board
-#        ${PROJECT_SOURCE_DIR}/minimax_evaluator
-#        ${PROJECT_SOURCE_DIR}/move_calculator
-#        ${PROJECT_SOURCE_DIR}/piece_points
-#        # ${PROJECT_SOURCE_DIR}/utility_functs
-#)

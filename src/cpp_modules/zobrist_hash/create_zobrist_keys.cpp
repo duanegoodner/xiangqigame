@@ -1,13 +1,12 @@
 
 #include <array>
 #include <bits/stdc++.h>
-#include <cstddef>
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "../nlohmann_json/json.hpp"
-#include "../utility_functs/utility_functs.hpp"
-#include "../board_components/board_components.hpp"
+#include <json.hpp>
+#include <utility_functs.hpp>
+#include <board_components.hpp>
 
 
 using namespace board_components;

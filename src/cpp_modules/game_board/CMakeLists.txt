@@ -1,6 +1,6 @@
 
 add_library(
-    game_board game_board.cpp)
+    game_board game_board.cpp ../zobrist_hash/zobrist_hash.hpp)
 
 target_link_libraries(
     game_board PUBLIC
