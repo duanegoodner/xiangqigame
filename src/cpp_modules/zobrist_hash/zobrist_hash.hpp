@@ -33,7 +33,7 @@ public:
     ZobristHash(GameBoard& game_board);
     const unsigned long long get_board_state();
     void UpdateBoardState(ExecutedMove move) {
-        
+
     }
 
 private:

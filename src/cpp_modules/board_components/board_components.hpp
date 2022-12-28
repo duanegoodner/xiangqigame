@@ -35,6 +35,30 @@ namespace board_components
         kBlk = 1
     };
 
+    struct GamePiece {
+        PieceType piece_type;
+        PieceColor piece_color;
+
+        GamePiece() {
+            piece_type = PieceType::kNnn;
+            piece_color = PieceColor::kNul;
+
+        }
+        
+        GamePiece(int int_piece) {
+            piece_type = static_cast<PieceType>(abs(int_piece));
+            piece_color = (int_piece == 0) ? PieceColor::kNul
+                                            : static_cast<PieceColor>(copysign(1, int_piece));
+        }
+
+        bool operator==(const GamePiece& other) const {
+            return (piece_type == other.piece_type) &&
+            (piece_color == other.piece_color);
+        }
+
+
+    };
+
     const int kNumPieceTypeVals = 8;
 
     inline PieceColor opponent_of(PieceColor color)
@@ -48,7 +72,8 @@ namespace board_components
     typedef int BoardIdx_t;
     const BoardIdx_t kNumRanks = 10;
     const BoardIdx_t kNumFiles = 9;
-    typedef array<array<Piece_t, kNumFiles>, kNumRanks> BoardMap_t;
+    typedef array<array<GamePiece, kNumFiles>, kNumRanks> BoardMap_t;
+    typedef array<array<int, kNumFiles>, kNumRanks> BoardMapInt_t;
 
     // /////////////////////////
     // Specific locations on board
@@ -171,8 +196,8 @@ namespace board_components
     struct ExecutedMove
     {
         Move spaces;
-        Piece_t moving_piece;
-        Piece_t destination_piece;
+        GamePiece moving_piece;
+        GamePiece destination_piece;
     };
 
     // ////////////////////////    

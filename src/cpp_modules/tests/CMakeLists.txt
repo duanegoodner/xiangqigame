@@ -14,6 +14,7 @@ add_executable(
     move_calculator_test.cpp)
 target_link_libraries(
     move_calculator_test PUBLIC
+    game_board
     move_calculator
     GTest::GTest
     GTest::Main)

@@ -6,7 +6,7 @@
 
 using namespace board_utilities;
 
-const BoardMap_t kFlyingBoard{{
+const BoardMapInt_t kFlyingBoard{{
     {5, 4, 3, 2, 1, 2, 3, 4, 5},
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 6, 0, 0, 0, 0, 0, 6, 0},
@@ -23,8 +23,8 @@ class MoveCalculatorTest : public ::testing::Test {
     
 
    protected:
-    BoardMap_t starting_board = kStartingBoard;
-    BoardMap_t flying_board = kFlyingBoard;
+    BoardMap_t starting_board = int_board_to_game_pieces(kStartingBoard);
+    BoardMap_t flying_board = int_board_to_game_pieces(kFlyingBoard);
     MoveCalculator mc_standard_;
     MoveCalculator mc_flying_;
     MoveCalculatorTest()
@@ -82,7 +82,7 @@ class BoardUtilitiesTest : public ::testing::Test {
     
 
    protected:
-    BoardMap_t starting_board = kStartingBoard;
+    BoardMap_t starting_board = int_board_to_game_pieces(kStartingBoard);
     MoveCalculator mc_standard_;
     BoardUtilitiesTest()
         : mc_standard_{MoveCalculator(starting_board)} {}

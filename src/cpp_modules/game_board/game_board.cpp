@@ -6,12 +6,22 @@
 
 using namespace board_utilities;
 
-GameBoard::GameBoard() : move_calculator_{MoveCalculator(board_map_)}
-{
-    board_map_ = kStartingBoard;
+
+BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
+    BoardMap_t game_piece_board;
+    for (auto rank = 0; rank < kNumRanks; rank++) {
+        for (auto file = 0; file < kNumFiles; file++) {
+            game_piece_board[rank][file] = GamePiece(int_board[rank][file]);
+        }
+    }
+    return game_piece_board;
 }
 
-Piece_t GameBoard::GetOccupant(BoardSpace space)
+GameBoard::GameBoard()
+    : board_map_{int_board_to_game_pieces(kStartingBoard)}
+    , move_calculator_{MoveCalculator(board_map_)} {}
+
+GamePiece GameBoard::GetOccupant(BoardSpace space)
 {
     return board_map_[space.rank][space.file];
 }
@@ -38,11 +48,11 @@ void GameBoard::UndoMove(ExecutedMove executed_move)
 
 vector<BoardSpace> GameBoard::GetAllSpacesOccupiedBy(PieceColor color)
 {
-    auto all_occ_spaces = get_all_spaces_occupied_by(board_map_, color);
+    // auto all_occ_spaces = get_all_spaces_occupied_by(board_map_, color);
     return get_all_spaces_occupied_by(board_map_, color);
 }
 
-void GameBoard::SetOccupant(BoardSpace space, Piece_t piece)
+void GameBoard::SetOccupant(BoardSpace space, GamePiece piece)
 {
     board_map_[space.rank][space.file] = piece;
 }

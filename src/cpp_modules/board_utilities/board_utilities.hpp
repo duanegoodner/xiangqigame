@@ -36,19 +36,22 @@ namespace board_utilities
 
     inline bool is_occupied(const BoardMap_t &board_map, BoardSpace space)
     {
-        return board_map[space.rank][space.file] != 0;
+        return board_map[space.rank][space.file].piece_color != PieceColor::kNul;
     }
 
     inline PieceColor get_color(const BoardMap_t &board_map, BoardSpace space)
     {
-        auto piece = board_map[space.rank][space.file];
-        return (piece == 0) ? PieceColor::kNul
-                            : static_cast<PieceColor>(copysign(1, piece));
+        return board_map[space.rank][space.file].piece_color;
+//        auto piece = board_map[space.rank][space.file];
+//        return (piece.piece_color == PieceColor::kNul) ? PieceColor::kNul
+//                            : static_cast<PieceColor>(copysign(1, piece));
     }
 
     inline PieceType get_type(const BoardMap_t &board_map, BoardSpace space)
 {
-    return static_cast<PieceType>(abs(board_map[space.rank][space.file]));
+        return board_map[space.rank][space.file].piece_type;
+
+//        return static_cast<PieceType>(abs(board_map[space.rank][space.file]));
 }
 
     inline bool exists_and_passes_color_test(
@@ -79,8 +82,8 @@ namespace board_utilities
 
     for (BoardSpace board_space : castle)
     {
-        auto piece_val = board_map[board_space.rank][board_space.file];
-        if (piece_val == color_val)
+        auto piece = board_map[board_space.rank][board_space.file];
+        if (piece.piece_color == color_val)
         {
             found_space = board_space;
         }
@@ -121,6 +124,7 @@ namespace board_utilities
         {
             for (auto file = 0; file < kNumFiles; file++)
             {
+                // auto cur_color = get_color(board_map, BoardSpace{rank, file});
                 if (get_color(board_map, BoardSpace{rank, file}) == color)
                 {
                     occupied_spaces.emplace_back(BoardSpace{rank, file});
