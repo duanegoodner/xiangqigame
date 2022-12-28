@@ -35,28 +35,29 @@ namespace board_components
         kBlk = 1
     };
 
-    struct GamePiece {
+    struct GamePiece
+    {
         PieceType piece_type;
         PieceColor piece_color;
 
-        GamePiece() {
+        GamePiece()
+        {
             piece_type = PieceType::kNnn;
             piece_color = PieceColor::kNul;
-
         }
-        
-        GamePiece(int int_piece) {
+
+        GamePiece(int int_piece)
+        {
             piece_type = static_cast<PieceType>(abs(int_piece));
             piece_color = (int_piece == 0) ? PieceColor::kNul
-                                            : static_cast<PieceColor>(copysign(1, int_piece));
+                                           : static_cast<PieceColor>(copysign(1, int_piece));
         }
 
-        bool operator==(const GamePiece& other) const {
+        bool operator==(const GamePiece &other) const
+        {
             return (piece_type == other.piece_type) &&
-            (piece_color == other.piece_color);
+                   (piece_color == other.piece_color);
         }
-
-
     };
 
     const int kNumPieceTypeVals = 8;
@@ -104,6 +105,9 @@ namespace board_components
     {
 
         BoardIdx_t rank, file;
+        // BoardSpace() : rank{-1}, file{-1} {};
+        // BoardSpace(const int my_rank, const int my_file)
+        // : rank{my_rank}, file{my_file} {};
 
         bool IsOnBoard()
         {
@@ -147,6 +151,11 @@ namespace board_components
             return (rank != other.rank) || (file != other.file);
         }
     };
+
+    constexpr BoardSpace NullBoardSpace()
+    {
+        return BoardSpace{-1, -1};
+    }
 
     struct Move
     {
@@ -200,7 +209,7 @@ namespace board_components
         GamePiece destination_piece;
     };
 
-    // ////////////////////////    
+    // ////////////////////////
     // Convenience dataype and functions for generating array of castle spaces
     // ////////////////////////
     typedef array<BoardSpace, 9> Castle_t;

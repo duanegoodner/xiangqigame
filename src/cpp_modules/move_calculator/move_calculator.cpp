@@ -7,16 +7,16 @@ using namespace std;
 using namespace board_utilities;
 
 
-MoveCollection PieceMoves::SoldierMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space)
+void PieceMoves::SoldierMoves(
+    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
 {
-    auto soldier_moves = MoveCollection(3);
+    // auto soldier_moves = MoveCollection(3);
 
     auto fwd_space = space + fwd_direction(color);
 
     if (exists_and_passes_color_test(board_map, fwd_space, color))
     {
-        soldier_moves.Append(Move{space, fwd_space});
+        team_moves.Append(Move{space, fwd_space});
     }
 
     if (not space.IsInHomelandOf(color))
@@ -26,72 +26,77 @@ MoveCollection PieceMoves::SoldierMoves(
             auto side_space = space + side_vector;
             if (exists_and_passes_color_test(board_map, fwd_space, color))
             {
-                soldier_moves.Append(Move{space, side_space});
+                team_moves.Append(Move{space, side_space});
             }
         }
     }
 
-    return soldier_moves;
+    // return soldier_moves;
 }
 
-MoveCollection PieceMoves::CannonMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space)
+void PieceMoves::CannonMoves(
+    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
 {
-    auto cannon_moves = MoveCollection(17);
+    // auto cannon_moves = MoveCollection(17);
 
     for (auto direction : board_utilities::kAllOrthogonalDirections)
     {
-        auto search_result = search_spaces(board_map, space, direction);
+        OrthogonalSpaceSearchResult first_search_result;
+        first_search_result.empty_spaces.reserve(9);
+        search_spaces(board_map, space, direction, first_search_result);
 
-        for (auto empty_space : search_result.empty_spaces)
+        for (auto empty_space : first_search_result.empty_spaces)
         {
-            cannon_moves.Append(Move{space, empty_space});
+            team_moves.Append(Move{space, empty_space});
         }
-
-        if (search_result.first_occupied_space.size())
+        if (first_search_result.first_occupied_space != NullBoardSpace())
         {
-            auto second_search = search_spaces(
-                board_map, search_result.first_occupied_space[0], direction);
+            OrthogonalSpaceSearchResult second_search_result;
+            second_search_result.empty_spaces.reserve(8);
+            search_spaces(
+                board_map, first_search_result.first_occupied_space, direction, second_search_result);
 
-            if (second_search.first_occupied_space.size() &&
-                get_color(board_map, second_search.first_occupied_space[0]) ==
+            if (second_search_result.first_occupied_space != NullBoardSpace() &&
+                get_color(board_map, second_search_result.first_occupied_space) ==
                     opponent_of(color))
             {
-                cannon_moves.Append(
-                    Move{space, second_search.first_occupied_space[0]});
+                team_moves.Append(
+                    Move{space, second_search_result.first_occupied_space});
             }
         }
     }
 
-    return cannon_moves;
+    // return cannon_moves;
 }
 
-MoveCollection PieceMoves::ChariotMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space)
+void PieceMoves::ChariotMoves(
+    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
 {
-    auto chariot_moves = MoveCollection(17);
+    // auto chariot_moves = MoveCollection(17);
     for (auto direction : board_utilities::kAllOrthogonalDirections)
     {
-        auto search_result = search_spaces(board_map, space, direction);
+        OrthogonalSpaceSearchResult search_result;
+        search_result.empty_spaces.reserve(9);
+        search_spaces(board_map, space, direction, search_result);
         for (auto empty_space : search_result.empty_spaces)
         {
-            chariot_moves.Append(Move{space, empty_space});
+            team_moves.Append(Move{space, empty_space});
         }
-        if (search_result.first_occupied_space.size() &&
-            get_color(board_map, search_result.first_occupied_space[0]) ==
+        if ((search_result.first_occupied_space != NullBoardSpace()) &&
+            get_color(board_map, search_result.first_occupied_space) ==
                 opponent_of(color))
         {
-            chariot_moves.Append(
-                Move{space, search_result.first_occupied_space[0]});
+            team_moves.Append(
+                Move{space, search_result.first_occupied_space});
         }
     }
-    return chariot_moves;
+    // return chariot_moves;
 }
 
-MoveCollection PieceMoves::HorseMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space)
+void PieceMoves::HorseMoves(
+    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
 {
-    auto horse_moves = MoveCollection(8);
+    // auto horse_moves = MoveCollection(8);
 
     for (auto direction : board_utilities::kHorsePaths)
     {
@@ -104,18 +109,18 @@ MoveCollection PieceMoves::HorseMoves(
                 if (exists_and_passes_color_test(board_map, second_step, color))
 
                 {
-                    horse_moves.Append(Move{space, second_step});
+                    team_moves.Append(Move{space, second_step});
                 }
             }
         }
     }
-    return horse_moves;
+    // return horse_moves;
 }
 
-MoveCollection PieceMoves::ElephantMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space)
+void PieceMoves::ElephantMoves(
+    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
 {
-    auto elephant_moves = MoveCollection(4);
+    // auto elephant_moves = MoveCollection(4);
     for (auto direction : board_utilities::kAllDiagonalDirections)
     {
         auto first_step = space + direction;
@@ -125,17 +130,17 @@ MoveCollection PieceMoves::ElephantMoves(
             auto second_step = first_step + direction;
             if (exists_and_passes_color_test(board_map, second_step, color))
             {
-                elephant_moves.Append(Move{space, second_step});
+                team_moves.Append(Move{space, second_step});
             }
         }
     }
-    return elephant_moves;
+    // return elephant_moves;
 }
 
-MoveCollection PieceMoves::AdvisorMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space)
+void PieceMoves::AdvisorMoves(
+    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
 {
-    auto advisor_moves = MoveCollection(4);
+    // auto advisor_moves = MoveCollection(4);
     for (auto direction : board_utilities::kAllDiagonalDirections)
     {
         auto destination = space + direction;
@@ -143,16 +148,16 @@ MoveCollection PieceMoves::AdvisorMoves(
             (get_color(board_map, destination) != color))
 
         {
-            advisor_moves.Append(Move{space, destination});
+            team_moves.Append(Move{space, destination});
         }
     }
-    return advisor_moves;
+    // return advisor_moves;
 }
 
-MoveCollection PieceMoves::FlyingGeneralMove(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space)
+void PieceMoves::FlyingGeneralMove(
+    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
 {
-    auto flying_move = MoveCollection(1);
+    // auto flying_move = MoveCollection(1);
 
     auto has_flying_move = true;
     auto opponent_color = opponent_of(color);
@@ -176,16 +181,16 @@ MoveCollection PieceMoves::FlyingGeneralMove(
 
     if (has_flying_move)
     {
-        flying_move.Append(Move{space, other_gen_position});
+        team_moves.Append(Move{space, other_gen_position});
     }
 
-    return flying_move;
+    // return flying_move;
 }
 
-MoveCollection PieceMoves::StandardGeneralMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space)
+void PieceMoves::StandardGeneralMoves(
+    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
 {
-    auto standard_general_moves = MoveCollection(4);
+    // auto standard_general_moves = MoveCollection(4);
 
     for (auto direction :board_utilities::kAllOrthogonalDirections)
     {
@@ -193,21 +198,24 @@ MoveCollection PieceMoves::StandardGeneralMoves(
          if (destination.IsInCastleOf(color) &&
             (get_color(board_map, destination) != color))
         {
-            standard_general_moves.Append(Move{space, destination});
+            team_moves.Append(Move{space, destination});
         }
     }
-    return standard_general_moves;
+    // return standard_general_moves;
 }
 
-MoveCollection PieceMoves::GeneralMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space
+void PieceMoves::GeneralMoves(
+    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves
 )
 {
-    auto flying_move = FlyingGeneralMove(board_map, color, space);
-    auto standard_moves = StandardGeneralMoves(board_map, color, space);
-    auto general_moves = MoveCollection(flying_move.moves.size() + standard_moves.moves.size());
-    general_moves.Concat(flying_move);
-    general_moves.Concat(standard_moves);
+    FlyingGeneralMove(board_map, color, space, team_moves);
+    StandardGeneralMoves(board_map, color, space, team_moves);
+    
+    // auto flying_move = FlyingGeneralMove(board_map, color, space);
+    // auto standard_moves = StandardGeneralMoves(board_map, color, space);
+    // auto general_moves = MoveCollection(flying_move.moves.size() + standard_moves.moves.size());
+    // general_moves.Concat(flying_move);
+    // general_moves.Concat(standard_moves);
 
-    return general_moves;
+    // return general_moves;
 }

@@ -14,7 +14,7 @@ namespace board_utilities
     struct OrthogonalSpaceSearchResult
     {
         vector<BoardSpace> empty_spaces;
-        vector<BoardSpace> first_occupied_space;
+        BoardSpace first_occupied_space;
     };
 
     const array<BoardDirection, 2> kSideDirections = {BoardDirection{0, 1},
@@ -91,28 +91,25 @@ namespace board_utilities
     return found_space;
 }
 
-    inline OrthogonalSpaceSearchResult search_spaces(
+    inline void search_spaces(
         const BoardMap_t &board_map,
         BoardSpace start,
-        BoardDirection direction)
+        BoardDirection direction,
+        OrthogonalSpaceSearchResult& result
+        )
     {
-        vector<BoardSpace> empty_spaces;
-        empty_spaces.reserve(9);
-        vector<BoardSpace> first_occupied_space;
-        first_occupied_space.reserve(1);
-
+        auto first_occupied_space = NullBoardSpace();
         auto next_step = start + direction;
 
         while (next_step.IsOnBoard() && (not is_occupied(board_map, next_step)))
         {
-            empty_spaces.emplace_back(next_step);
+            result.empty_spaces.emplace_back(next_step);
             next_step = next_step + direction;
         }
         if (next_step.IsOnBoard())
         {
-            first_occupied_space.emplace_back(next_step);
+            result.first_occupied_space = next_step;
         }
-        return OrthogonalSpaceSearchResult{empty_spaces, first_occupied_space};
     }
 
     inline vector<BoardSpace> get_all_spaces_occupied_by(

@@ -33,43 +33,51 @@ class MoveCalculatorTest : public ::testing::Test {
 };
 
 TEST_F(MoveCalculatorTest, RedSoldier) {
-    auto soldier_moves = mc_standard_.CalcMovesFrom(BoardSpace{6, 0});
+    MoveCollection soldier_moves;
+    mc_standard_.CalcMovesFrom(BoardSpace{6, 0}, soldier_moves);
     EXPECT_EQ(soldier_moves.moves.size(), 1);
     
 }
 
 TEST_F(MoveCalculatorTest, BlackCannon) {
-    auto cannon_moves = mc_standard_.CalcMovesFrom(BoardSpace{2, 1});
+    MoveCollection cannon_moves;
+    mc_standard_.CalcMovesFrom(BoardSpace{2, 1}, cannon_moves);
     EXPECT_EQ(cannon_moves.moves.size(), 12);
 }
 
 TEST_F(MoveCalculatorTest, BlackChariot) {
-    auto chariot_moves = mc_standard_.CalcMovesFrom(BoardSpace{0, 8});
+    MoveCollection chariot_moves;
+    mc_standard_.CalcMovesFrom(BoardSpace{0, 8}, chariot_moves);
     EXPECT_EQ(chariot_moves.moves.size(), 2);
 }
 
 TEST_F(MoveCalculatorTest, RedHorse) {
-    auto horse_moves = mc_standard_.CalcMovesFrom(BoardSpace{9, 1});
+    MoveCollection horse_moves;
+    mc_standard_.CalcMovesFrom(BoardSpace{9, 1}, horse_moves);
     EXPECT_EQ(horse_moves.moves.size(), 2);
 }
 
 TEST_F(MoveCalculatorTest, BlackElephant) {
-    auto elephant_moves = mc_standard_.CalcMovesFrom({0, 2});
+    MoveCollection elephant_moves;
+    mc_standard_.CalcMovesFrom({0, 2}, elephant_moves);
     EXPECT_EQ(elephant_moves.moves.size(), 2);
 }
 
 TEST_F(MoveCalculatorTest, RedAdvisor) {
-    auto advisor_moves = mc_standard_.CalcMovesFrom({9, 3});
+    MoveCollection advisor_moves;
+    mc_standard_.CalcMovesFrom({9, 3}, advisor_moves);
     EXPECT_EQ(advisor_moves.moves.size(), 1);
 }
 
 TEST_F(MoveCalculatorTest, BlackStartingGeneral) {
-    auto general_moves = mc_standard_.CalcMovesFrom(BoardSpace{0, 4});
+    MoveCollection general_moves;
+    mc_standard_.CalcMovesFrom(BoardSpace{0, 4}, general_moves);
     EXPECT_EQ(general_moves.moves.size(), 1);
 }
 
 TEST_F(MoveCalculatorTest, RedFlyingGeneral) {
-    auto general_moves_with_flying = mc_flying_.CalcMovesFrom(BoardSpace{9, 4});
+    MoveCollection general_moves_with_flying;
+    mc_flying_.CalcMovesFrom(BoardSpace{9, 4}, general_moves_with_flying);
     EXPECT_EQ(general_moves_with_flying.moves.size(), 2);
 }
 
@@ -155,10 +163,11 @@ TEST_F(BoardUtilitiesTest, GetGeneralPositionBlack) {
 }
 
 TEST_F(BoardUtilitiesTest, SearchSpacesRedChariot) {
-    auto result = search_spaces(starting_board, BoardSpace{9, 8}, BoardDirection{-1, 0});
-    EXPECT_EQ(result.empty_spaces.size(), 2);
-    EXPECT_EQ(result.first_occupied_space[0].rank, 6);
-    EXPECT_EQ(result.first_occupied_space[0].file, 8);
+    OrthogonalSpaceSearchResult search_result;
+    search_spaces(starting_board, BoardSpace{9, 8}, BoardDirection{-1, 0}, search_result);
+    EXPECT_EQ(search_result.empty_spaces.size(), 2);
+    EXPECT_EQ(search_result.first_occupied_space.rank, 6);
+    EXPECT_EQ(search_result.first_occupied_space.file, 8);
 }
 
 TEST_F(BoardUtilitiesTest, GetAllSpacesOccupiedByBlack) {

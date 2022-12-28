@@ -20,28 +20,55 @@ class MoveCalculator;
 class PieceMoves
 {
 public:
-    MoveCollection SoldierMoves(
-        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
-    MoveCollection CannonMoves(
-        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
-    MoveCollection ChariotMoves(
-        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
-    MoveCollection HorseMoves(
-        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
-    MoveCollection ElephantMoves(
-        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
-    MoveCollection AdvisorMoves(
-        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
-    MoveCollection FlyingGeneralMove(
-        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
-    MoveCollection StandardGeneralMoves(
-        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
-    MoveCollection GeneralMoves(
-        const BoardMap_t &board_map, PieceColor color, BoardSpace space);
+    void SoldierMoves(
+        const BoardMap_t &board_map,
+        PieceColor color,
+        BoardSpace space,
+        MoveCollection& team_moves);
+    void CannonMoves(
+        const BoardMap_t &board_map,
+        PieceColor color,
+        BoardSpace space,
+        MoveCollection& team_moves);
+    void ChariotMoves(
+        const BoardMap_t &board_map,
+        PieceColor color,
+        BoardSpace space,
+        MoveCollection& team_moves);
+    void HorseMoves(
+        const BoardMap_t &board_map,
+        PieceColor color,
+        BoardSpace space,
+        MoveCollection& team_moves);
+    void ElephantMoves(
+        const BoardMap_t &board_map,
+        PieceColor color,
+        BoardSpace space,
+        MoveCollection& team_moves);
+    void AdvisorMoves(
+        const BoardMap_t &board_map,
+        PieceColor color,
+        BoardSpace space,
+        MoveCollection& team_moves);
+    void FlyingGeneralMove(
+        const BoardMap_t &board_map,
+        PieceColor color,
+        BoardSpace space,
+        MoveCollection& team_moves);
+    void StandardGeneralMoves(
+        const BoardMap_t &board_map,
+        PieceColor color,
+        BoardSpace space,
+        MoveCollection& team_moves);
+    void GeneralMoves(
+        const BoardMap_t &board_map,
+        PieceColor color,
+        BoardSpace space,
+        MoveCollection& team_moves);
 };
 
-typedef MoveCollection (PieceMoves::*MethodPtr_t)(
-    const BoardMap_t &, PieceColor, BoardSpace);
+typedef void (PieceMoves::*MethodPtr_t)(
+    const BoardMap_t &, PieceColor, BoardSpace, MoveCollection &);
 
 class MoveCalculator
 {
@@ -59,8 +86,8 @@ public:
         piece_dispatch_array_[PieceType::kGen] = &PieceMoves::GeneralMoves;
     }
 
-    MoveCollection CalcMovesFrom(BoardSpace space) {
-        return ImplementCalcMovesFrom(space);
+    void CalcMovesFrom(BoardSpace space, MoveCollection& team_moves) {
+        ImplementCalcMovesFrom(space, team_moves);
         }
     MoveCollection CalcAllMovesNoCheckTest(PieceColor color) {
         return ImplementCalcAllMovesNoCheckTest(color);
@@ -75,13 +102,13 @@ private:
     // https://stackoverflow.com/questions/6265851
     // https://stackoverflow.com/questions/55520876/
     // https://en.cppreference.com/w/cpp/utility/any/any_cast
-    MoveCollection ImplementCalcMovesFrom(BoardSpace space)
+    void ImplementCalcMovesFrom(BoardSpace space, MoveCollection& team_moves)
     {
         auto piece_type = get_type(board_map_, space);
         auto color = get_color(board_map_, space);
         auto move_func = piece_dispatch_array_[piece_type];
         auto move_func_ptr = any_cast<MethodPtr_t>(move_func);
-        return (piece_moves_.*move_func_ptr)(board_map_, color, space);
+        (piece_moves_.*move_func_ptr)(board_map_, color, space, team_moves);
     }
 
     MoveCollection ImplementCalcAllMovesNoCheckTest(PieceColor color)
@@ -90,8 +117,9 @@ private:
         auto occ_spaces = get_all_spaces_occupied_by(board_map_, color);
         for (auto space = 0; space < occ_spaces.size(); space++)
         {
-            auto moves_from_space = CalcMovesFrom(occ_spaces[space]);
-            untested_moves.Concat(moves_from_space);
+            CalcMovesFrom(occ_spaces[space], untested_moves);
+            // auto moves_from_space = CalcMovesFrom(occ_spaces[space]);
+            // untested_moves.Concat(moves_from_space);
         }
         return untested_moves;
     }
