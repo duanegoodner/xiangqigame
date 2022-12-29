@@ -74,7 +74,8 @@ class MoveCalculator
 {
 public:
     MoveCalculator(const BoardMap_t &board_map)
-        : board_map_{board_map}, piece_moves_{PieceMoves()}
+        : piece_moves_{PieceMoves()}
+        //, board_map_{board_map}
     {
         piece_dispatch_array_[PieceType::kNnn] = {};
         piece_dispatch_array_[PieceType::kSol] = &PieceMoves::SoldierMoves;
@@ -86,15 +87,15 @@ public:
         piece_dispatch_array_[PieceType::kGen] = &PieceMoves::GeneralMoves;
     }
 
-    void CalcMovesFrom(BoardSpace space, MoveCollection& team_moves) {
-        ImplementCalcMovesFrom(space, team_moves);
+    void CalcMovesFrom(BoardSpace space, MoveCollection& team_moves, BoardMap_t& board_map) {
+        ImplementCalcMovesFrom(space, team_moves, board_map);
         }
-    MoveCollection CalcAllMovesNoCheckTest(PieceColor color) {
-        return ImplementCalcAllMovesNoCheckTest(color);
+    MoveCollection CalcAllMovesNoCheckTest(PieceColor color, BoardMap_t board_map) {
+        return ImplementCalcAllMovesNoCheckTest(color, board_map);
         }
 
 private:
-    const BoardMap_t &board_map_;
+    // const BoardMap_t &board_map_;
     array<MethodPtr_t, kNumPieceTypeVals> piece_dispatch_array_;
     PieceMoves piece_moves_;
 
@@ -102,22 +103,22 @@ private:
     // https://stackoverflow.com/questions/6265851
     // https://stackoverflow.com/questions/55520876/
     // https://en.cppreference.com/w/cpp/utility/any/any_cast
-    void ImplementCalcMovesFrom(BoardSpace space, MoveCollection& team_moves)
+    void ImplementCalcMovesFrom(BoardSpace space, MoveCollection& team_moves, BoardMap_t& board_map)
     {
-        auto piece_type = get_type(board_map_, space);
-        auto color = get_color(board_map_, space);
+        auto piece_type = get_type(board_map, space);
+        auto color = get_color(board_map, space);
         auto move_func = piece_dispatch_array_[piece_type];
         auto move_func_ptr = any_cast<MethodPtr_t>(move_func);
-        (piece_moves_.*move_func_ptr)(board_map_, color, space, team_moves);
+        (piece_moves_.*move_func_ptr)(board_map, color, space, team_moves);
     }
 
-    MoveCollection ImplementCalcAllMovesNoCheckTest(PieceColor color)
+    MoveCollection ImplementCalcAllMovesNoCheckTest(PieceColor color, BoardMap_t& board_map)
     {
         auto untested_moves = MoveCollection(120);
-        auto occ_spaces = get_all_spaces_occupied_by(board_map_, color);
+        auto occ_spaces = get_all_spaces_occupied_by(board_map, color);
         for (auto space = 0; space < occ_spaces.size(); space++)
         {
-            CalcMovesFrom(occ_spaces[space], untested_moves);
+            CalcMovesFrom(occ_spaces[space], untested_moves, board_map);
             // auto moves_from_space = CalcMovesFrom(occ_spaces[space]);
             // untested_moves.Concat(moves_from_space);
         }

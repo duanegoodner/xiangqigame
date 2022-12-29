@@ -60,13 +60,13 @@ void GameBoard::SetOccupant(BoardSpace space, GamePiece piece)
 bool GameBoard::IsInCheck(PieceColor color)
 {
     auto gen_position = get_general_position(board_map_, color);
-    auto opponent_moves = move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color));
+    auto opponent_moves = move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
     return is_space_any_destination_of_moves(gen_position, opponent_moves);
 }
 
 MoveCollection GameBoard::CalcFinalMovesOf(PieceColor color)
 {
-    auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color);
+    auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
     MoveCollection validated_moves;
     validated_moves.moves.reserve(un_tested_moves.moves.size());
 
@@ -74,7 +74,7 @@ MoveCollection GameBoard::CalcFinalMovesOf(PieceColor color)
     {
         auto executed_move = ExecuteMove(move);
         auto resulting_opponent_moves =
-            move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color));
+            move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
         auto resulting_gen_position = get_general_position(board_map_, color);
 
         if (not is_space_any_destination_of_moves(

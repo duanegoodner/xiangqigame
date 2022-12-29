@@ -15,6 +15,10 @@ namespace board_utilities
     {
         vector<BoardSpace> empty_spaces;
         BoardSpace first_occupied_space;
+
+        OrthogonalSpaceSearchResult() 
+        : empty_spaces{}
+        , first_occupied_space{NullBoardSpace()} {}
     };
 
     const array<BoardDirection, 2> kSideDirections = {BoardDirection{0, 1},
@@ -83,7 +87,7 @@ namespace board_utilities
     for (BoardSpace board_space : castle)
     {
         auto piece = board_map[board_space.rank][board_space.file];
-        if (piece.piece_color == color_val)
+        if (piece.piece_type == PieceType::kGen)
         {
             found_space = board_space;
         }

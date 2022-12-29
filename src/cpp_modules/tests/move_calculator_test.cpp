@@ -34,55 +34,55 @@ class MoveCalculatorTest : public ::testing::Test {
 
 TEST_F(MoveCalculatorTest, RedSoldier) {
     MoveCollection soldier_moves;
-    mc_standard_.CalcMovesFrom(BoardSpace{6, 0}, soldier_moves);
+    mc_standard_.CalcMovesFrom(BoardSpace{6, 0}, soldier_moves, starting_board);
     EXPECT_EQ(soldier_moves.moves.size(), 1);
     
 }
 
 TEST_F(MoveCalculatorTest, BlackCannon) {
     MoveCollection cannon_moves;
-    mc_standard_.CalcMovesFrom(BoardSpace{2, 1}, cannon_moves);
+    mc_standard_.CalcMovesFrom(BoardSpace{2, 1}, cannon_moves, starting_board);
     EXPECT_EQ(cannon_moves.moves.size(), 12);
 }
 
 TEST_F(MoveCalculatorTest, BlackChariot) {
     MoveCollection chariot_moves;
-    mc_standard_.CalcMovesFrom(BoardSpace{0, 8}, chariot_moves);
+    mc_standard_.CalcMovesFrom(BoardSpace{0, 8}, chariot_moves, starting_board);
     EXPECT_EQ(chariot_moves.moves.size(), 2);
 }
 
 TEST_F(MoveCalculatorTest, RedHorse) {
     MoveCollection horse_moves;
-    mc_standard_.CalcMovesFrom(BoardSpace{9, 1}, horse_moves);
+    mc_standard_.CalcMovesFrom(BoardSpace{9, 1}, horse_moves, starting_board);
     EXPECT_EQ(horse_moves.moves.size(), 2);
 }
 
 TEST_F(MoveCalculatorTest, BlackElephant) {
     MoveCollection elephant_moves;
-    mc_standard_.CalcMovesFrom({0, 2}, elephant_moves);
+    mc_standard_.CalcMovesFrom({0, 2}, elephant_moves, starting_board);
     EXPECT_EQ(elephant_moves.moves.size(), 2);
 }
 
 TEST_F(MoveCalculatorTest, RedAdvisor) {
     MoveCollection advisor_moves;
-    mc_standard_.CalcMovesFrom({9, 3}, advisor_moves);
+    mc_standard_.CalcMovesFrom({9, 3}, advisor_moves, starting_board);
     EXPECT_EQ(advisor_moves.moves.size(), 1);
 }
 
 TEST_F(MoveCalculatorTest, BlackStartingGeneral) {
     MoveCollection general_moves;
-    mc_standard_.CalcMovesFrom(BoardSpace{0, 4}, general_moves);
+    mc_standard_.CalcMovesFrom(BoardSpace{0, 4}, general_moves, starting_board);
     EXPECT_EQ(general_moves.moves.size(), 1);
 }
 
 TEST_F(MoveCalculatorTest, RedFlyingGeneral) {
     MoveCollection general_moves_with_flying;
-    mc_flying_.CalcMovesFrom(BoardSpace{9, 4}, general_moves_with_flying);
+    mc_flying_.CalcMovesFrom(BoardSpace{9, 4}, general_moves_with_flying, flying_board);
     EXPECT_EQ(general_moves_with_flying.moves.size(), 2);
 }
 
 TEST_F(MoveCalculatorTest, AllMovesNoCheckTest) {
-    auto red_moves_without_check_test = mc_standard_.CalcAllMovesNoCheckTest(PieceColor::kRed);
+    auto red_moves_without_check_test = mc_standard_.CalcAllMovesNoCheckTest(PieceColor::kRed, starting_board);
     EXPECT_EQ(red_moves_without_check_test.moves.size(), 44);
 }
 
