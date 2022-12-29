@@ -21,54 +21,54 @@ class PieceMoves
 {
 public:
     void SoldierMoves(
-        const BoardMap_t &board_map,
+        const BoardMap_t& board_map,
         PieceColor color,
-        BoardSpace space,
+        const BoardSpace& space,
         MoveCollection& team_moves);
     void CannonMoves(
         const BoardMap_t &board_map,
         PieceColor color,
-        BoardSpace space,
+        const BoardSpace& space,
         MoveCollection& team_moves);
     void ChariotMoves(
         const BoardMap_t &board_map,
         PieceColor color,
-        BoardSpace space,
+        const BoardSpace& space,
         MoveCollection& team_moves);
     void HorseMoves(
         const BoardMap_t &board_map,
         PieceColor color,
-        BoardSpace space,
+        const BoardSpace& space,
         MoveCollection& team_moves);
     void ElephantMoves(
         const BoardMap_t &board_map,
         PieceColor color,
-        BoardSpace space,
+        const BoardSpace& space,
         MoveCollection& team_moves);
     void AdvisorMoves(
         const BoardMap_t &board_map,
         PieceColor color,
-        BoardSpace space,
+        const BoardSpace& space,
         MoveCollection& team_moves);
     void FlyingGeneralMove(
         const BoardMap_t &board_map,
         PieceColor color,
-        BoardSpace space,
+        const BoardSpace& space,
         MoveCollection& team_moves);
     void StandardGeneralMoves(
         const BoardMap_t &board_map,
         PieceColor color,
-        BoardSpace space,
+        const BoardSpace& space,
         MoveCollection& team_moves);
     void GeneralMoves(
         const BoardMap_t &board_map,
         PieceColor color,
-        BoardSpace space,
+        const BoardSpace& space,
         MoveCollection& team_moves);
 };
 
 typedef void (PieceMoves::*MethodPtr_t)(
-    const BoardMap_t &, PieceColor, BoardSpace, MoveCollection &);
+    const BoardMap_t &, PieceColor, const BoardSpace&, MoveCollection &);
 
 class MoveCalculator
 {
@@ -87,10 +87,10 @@ public:
         piece_dispatch_array_[PieceType::kGen] = &PieceMoves::GeneralMoves;
     }
 
-    void CalcMovesFrom(BoardSpace space, MoveCollection& team_moves, BoardMap_t& board_map) {
+    void CalcMovesFrom(const BoardSpace space, MoveCollection& team_moves, const BoardMap_t& board_map) {
         ImplementCalcMovesFrom(space, team_moves, board_map);
         }
-    MoveCollection CalcAllMovesNoCheckTest(PieceColor color, BoardMap_t board_map) {
+    MoveCollection CalcAllMovesNoCheckTest(PieceColor color, const BoardMap_t& board_map) {
         return ImplementCalcAllMovesNoCheckTest(color, board_map);
         }
 
@@ -103,7 +103,7 @@ private:
     // https://stackoverflow.com/questions/6265851
     // https://stackoverflow.com/questions/55520876/
     // https://en.cppreference.com/w/cpp/utility/any/any_cast
-    void ImplementCalcMovesFrom(BoardSpace space, MoveCollection& team_moves, BoardMap_t& board_map)
+    void ImplementCalcMovesFrom(const BoardSpace space, MoveCollection& team_moves, const BoardMap_t& board_map)
     {
         auto piece_type = get_type(board_map, space);
         auto color = get_color(board_map, space);
@@ -112,7 +112,7 @@ private:
         (piece_moves_.*move_func_ptr)(board_map, color, space, team_moves);
     }
 
-    MoveCollection ImplementCalcAllMovesNoCheckTest(PieceColor color, BoardMap_t& board_map)
+    MoveCollection ImplementCalcAllMovesNoCheckTest(PieceColor color, const BoardMap_t& board_map)
     {
         auto untested_moves = MoveCollection(120);
         auto occ_spaces = get_all_spaces_occupied_by(board_map, color);

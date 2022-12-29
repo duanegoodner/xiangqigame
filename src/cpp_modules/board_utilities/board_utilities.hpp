@@ -11,16 +11,6 @@ namespace board_utilities
 {
     using namespace board_components;
 
-    struct OrthogonalSpaceSearchResult
-    {
-        vector<BoardSpace> empty_spaces;
-        BoardSpace first_occupied_space;
-
-        OrthogonalSpaceSearchResult() 
-        : empty_spaces{}
-        , first_occupied_space{NullBoardSpace()} {}
-    };
-
     const array<BoardDirection, 2> kSideDirections = {BoardDirection{0, 1},
                                                       BoardDirection{0, -1}};
 
@@ -38,20 +28,17 @@ namespace board_utilities
         BoardDirection{1, 1}, BoardDirection{1, -1}, BoardDirection{-1, 1},
         BoardDirection{-1, -1}};
 
-    inline bool is_occupied(const BoardMap_t &board_map, BoardSpace space)
+    inline bool is_occupied(const BoardMap_t &board_map, const BoardSpace& space)
     {
         return board_map[space.rank][space.file].piece_color != PieceColor::kNul;
     }
 
-    inline PieceColor get_color(const BoardMap_t &board_map, BoardSpace space)
+    inline PieceColor get_color(const BoardMap_t &board_map, const BoardSpace& space)
     {
         return board_map[space.rank][space.file].piece_color;
-//        auto piece = board_map[space.rank][space.file];
-//        return (piece.piece_color == PieceColor::kNul) ? PieceColor::kNul
-//                            : static_cast<PieceColor>(copysign(1, piece));
     }
 
-    inline PieceType get_type(const BoardMap_t &board_map, BoardSpace space)
+    inline PieceType get_type(const BoardMap_t &board_map, const BoardSpace& space)
 {
         return board_map[space.rank][space.file].piece_type;
 
@@ -59,7 +46,7 @@ namespace board_utilities
 }
 
     inline bool exists_and_passes_color_test(
-    const BoardMap_t &board_map, BoardSpace space, PieceColor moving_piece_color)
+    const BoardMap_t &board_map, const BoardSpace &space, PieceColor moving_piece_color)
 {
     return space.IsOnBoard() &&
            get_color(board_map, space) !=
@@ -77,7 +64,7 @@ namespace board_utilities
 }
 
     inline BoardSpace get_general_position(
-    const BoardMap_t &board_map, PieceColor color)
+    const BoardMap_t &board_map, const PieceColor color)
 {
     auto castle = (color == PieceColor::kRed) ? red_castle_spaces() : black_castle_spaces();
 
@@ -95,29 +82,8 @@ namespace board_utilities
     return found_space;
 }
 
-    inline void search_spaces(
-        const BoardMap_t &board_map,
-        BoardSpace start,
-        BoardDirection direction,
-        OrthogonalSpaceSearchResult& result
-        )
-    {
-        auto first_occupied_space = NullBoardSpace();
-        auto next_step = start + direction;
-
-        while (next_step.IsOnBoard() && (not is_occupied(board_map, next_step)))
-        {
-            result.empty_spaces.emplace_back(next_step);
-            next_step = next_step + direction;
-        }
-        if (next_step.IsOnBoard())
-        {
-            result.first_occupied_space = next_step;
-        }
-    }
-
     inline vector<BoardSpace> get_all_spaces_occupied_by(
-        const BoardMap_t &board_map, PieceColor color)
+        const BoardMap_t &board_map, const PieceColor color)
     {
         vector<BoardSpace> occupied_spaces;
         occupied_spaces.reserve(16);
@@ -136,7 +102,7 @@ namespace board_utilities
     }
 
     inline bool is_space_any_destination_of_moves(
-    BoardSpace space, MoveCollection moves)
+    const BoardSpace &space, const MoveCollection &moves)
 {
     for (auto move : moves.moves)
     {

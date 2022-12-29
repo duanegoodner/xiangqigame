@@ -162,14 +162,6 @@ TEST_F(BoardUtilitiesTest, GetGeneralPositionBlack) {
     EXPECT_EQ(result.file, 4);
 }
 
-TEST_F(BoardUtilitiesTest, SearchSpacesRedChariot) {
-    OrthogonalSpaceSearchResult search_result;
-    search_spaces(starting_board, BoardSpace{9, 8}, BoardDirection{-1, 0}, search_result);
-    EXPECT_EQ(search_result.empty_spaces.size(), 2);
-    EXPECT_EQ(search_result.first_occupied_space.rank, 6);
-    EXPECT_EQ(search_result.first_occupied_space.file, 8);
-}
-
 TEST_F(BoardUtilitiesTest, GetAllSpacesOccupiedByBlack) {
     auto result = get_all_spaces_occupied_by(starting_board, PieceColor::kBlk);
     EXPECT_EQ(result.size(), 16);

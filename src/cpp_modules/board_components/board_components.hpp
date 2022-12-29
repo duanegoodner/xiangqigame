@@ -109,12 +109,12 @@ namespace board_components
         // BoardSpace(const int my_rank, const int my_file)
         // : rank{my_rank}, file{my_file} {};
 
-        bool IsOnBoard()
+        bool IsOnBoard() const
         {
             return ((0 <= rank) && (rank < kNumRanks) && (0 <= file) && (file < kNumFiles));
         }
 
-        bool IsInHomelandOf(PieceColor color)
+        bool IsInHomelandOf(const PieceColor color) const
         {
             assert(color != PieceColor::kNul);
             if (color == PieceColor::kRed)
@@ -127,7 +127,7 @@ namespace board_components
             }
         }
 
-        bool IsInCastleOf(PieceColor color)
+        bool IsInCastleOf(const PieceColor color) const
         {
             assert(color != PieceColor::kNul);
             auto castle_edges =
@@ -136,26 +136,26 @@ namespace board_components
                    (castle_edges.min_file <= file) && (file <= castle_edges.max_file);
         }
 
-        BoardSpace operator+(const BoardDirection direction)
+        BoardSpace operator+(const BoardDirection direction) const
         {
             return BoardSpace{rank + direction.rank, file + direction.file};
         }
 
-        bool operator==(const BoardSpace other)
+        bool operator==(const BoardSpace other) const
         {
             return (rank == other.rank) && (file == other.file);
         }
 
-        bool operator!=(const BoardSpace other)
+        bool operator!=(const BoardSpace other) const
         {
             return (rank != other.rank) || (file != other.file);
         }
     };
 
-    constexpr BoardSpace NullBoardSpace()
-    {
-        return BoardSpace{-1, -1};
-    }
+    // constexpr BoardSpace NullBoardSpace()
+    // {
+    //     return BoardSpace{-1, -1};
+    // }
 
     struct Move
     {
@@ -177,7 +177,7 @@ namespace board_components
         {
             moves.reserve(reserve_size);
         }
-        bool Contains(Move move)
+        bool Contains(const Move& move) const
         {
             for (auto entry : moves)
             {
@@ -213,7 +213,7 @@ namespace board_components
     // Convenience dataype and functions for generating array of castle spaces
     // ////////////////////////
     typedef array<BoardSpace, 9> Castle_t;
-    inline constexpr Castle_t calc_castle_spaces(const CastleEdges edges)
+    inline constexpr Castle_t calc_castle_spaces(const CastleEdges& edges)
     {
         std::array<BoardSpace, 9> spaces{};
 

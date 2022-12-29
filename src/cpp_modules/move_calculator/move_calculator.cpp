@@ -8,7 +8,7 @@ using namespace board_utilities;
 
 
 void PieceMoves::SoldierMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
+    const BoardMap_t &board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves)
 {
     // auto soldier_moves = MoveCollection(3);
 
@@ -35,33 +35,25 @@ void PieceMoves::SoldierMoves(
 }
 
 void PieceMoves::CannonMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
+    const BoardMap_t &board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves)
 {
     // auto cannon_moves = MoveCollection(17);
 
     for (auto direction : board_utilities::kAllOrthogonalDirections)
     {
-        OrthogonalSpaceSearchResult first_search_result;
-        first_search_result.empty_spaces.reserve(9);
-        search_spaces(board_map, space, direction, first_search_result);
-
-        for (auto empty_space : first_search_result.empty_spaces)
-        {
-            team_moves.Append(Move{space, empty_space});
+        auto next_step = space + direction;
+        while (next_step.IsOnBoard() && (not is_occupied(board_map, next_step))) {
+            team_moves.Append(Move{space, next_step});
+            next_step = next_step + direction;
         }
-        if (first_search_result.first_occupied_space != NullBoardSpace())
-        {
-            OrthogonalSpaceSearchResult second_search_result;
-            second_search_result.empty_spaces.reserve(8);
-            search_spaces(
-                board_map, first_search_result.first_occupied_space, direction, second_search_result);
 
-            if (second_search_result.first_occupied_space != NullBoardSpace() &&
-                get_color(board_map, second_search_result.first_occupied_space) ==
-                    opponent_of(color))
-            {
-                team_moves.Append(
-                    Move{space, second_search_result.first_occupied_space});
+        if (next_step.IsOnBoard()) {
+            next_step = next_step + direction;
+            while (next_step.IsOnBoard() && (not is_occupied(board_map, next_step))) {
+                next_step = next_step + direction;
+            }
+            if (next_step.IsOnBoard() && get_color(board_map, next_step) == opponent_of(color)) {
+                team_moves.Append(Move{space, next_step});
             }
         }
     }
@@ -70,31 +62,23 @@ void PieceMoves::CannonMoves(
 }
 
 void PieceMoves::ChariotMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
+    const BoardMap_t &board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves)
 {
-    // auto chariot_moves = MoveCollection(17);
     for (auto direction : board_utilities::kAllOrthogonalDirections)
     {
-        OrthogonalSpaceSearchResult search_result;
-        search_result.empty_spaces.reserve(9);
-        search_spaces(board_map, space, direction, search_result);
-        for (auto empty_space : search_result.empty_spaces)
-        {
-            team_moves.Append(Move{space, empty_space});
+        auto next_step = space + direction;
+        while (next_step.IsOnBoard() && (not is_occupied(board_map, next_step))) {
+            team_moves.Append(Move{space, next_step});
+            next_step = next_step + direction;
         }
-        if ((search_result.first_occupied_space != NullBoardSpace()) &&
-            get_color(board_map, search_result.first_occupied_space) ==
-                opponent_of(color))
-        {
-            team_moves.Append(
-                Move{space, search_result.first_occupied_space});
+        if (next_step.IsOnBoard() && (get_color(board_map, next_step) == opponent_of(color))) {
+            team_moves.Append(Move{space, next_step});
         }
     }
-    // return chariot_moves;
 }
 
 void PieceMoves::HorseMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
+    const BoardMap_t &board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves)
 {
     // auto horse_moves = MoveCollection(8);
 
@@ -118,7 +102,7 @@ void PieceMoves::HorseMoves(
 }
 
 void PieceMoves::ElephantMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
+    const BoardMap_t &board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves)
 {
     // auto elephant_moves = MoveCollection(4);
     for (auto direction : board_utilities::kAllDiagonalDirections)
@@ -138,7 +122,7 @@ void PieceMoves::ElephantMoves(
 }
 
 void PieceMoves::AdvisorMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
+    const BoardMap_t &board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves)
 {
     // auto advisor_moves = MoveCollection(4);
     for (auto direction : board_utilities::kAllDiagonalDirections)
@@ -155,7 +139,7 @@ void PieceMoves::AdvisorMoves(
 }
 
 void PieceMoves::FlyingGeneralMove(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
+    const BoardMap_t &board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves)
 {
     // auto flying_move = MoveCollection(1);
 
@@ -188,7 +172,7 @@ void PieceMoves::FlyingGeneralMove(
 }
 
 void PieceMoves::StandardGeneralMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves)
+    const BoardMap_t &board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves)
 {
     // auto standard_general_moves = MoveCollection(4);
 
@@ -205,7 +189,7 @@ void PieceMoves::StandardGeneralMoves(
 }
 
 void PieceMoves::GeneralMoves(
-    const BoardMap_t &board_map, PieceColor color, BoardSpace space, MoveCollection& team_moves
+    const BoardMap_t &board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves
 )
 {
     FlyingGeneralMove(board_map, color, space, team_moves);
