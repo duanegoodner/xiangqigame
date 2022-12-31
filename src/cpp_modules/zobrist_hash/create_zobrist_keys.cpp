@@ -4,9 +4,9 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <json.hpp>
-#include <utility_functs.hpp>
-#include <board_components.hpp>
+#include "../nlohmann_json/json.hpp"
+#include "../utility_functs/utility_functs.hpp"
+#include "../board_components/board_components.hpp"
 
 
 using namespace board_components;
@@ -37,10 +37,6 @@ game_zarray_t create_zkeys_array() {
 }
 
 void write_zkeys_json(game_zarray_t zarray, string filename) {
-//    if (not utility_functs::ends_with(".json", filename)) {
-//        filename.append(".json");
-//    }
-
     json zjson(zarray);
     ofstream fout(filename);
     fout << setw(4) << zjson << endl;
@@ -60,14 +56,8 @@ game_zarray_t import_zkeys_json(string filename) {
 
 int main(int argc, char* argv[]) {
 
-//    auto zarray = create_zkeys_array();
-//    write_zkeys_json(zarray, "sample_out.json");
-
-    // json zobrist_keys(zarray);
-    // ofstream output("zobrist_keys.json");
-    // output << setw(4) << zobrist_keys << endl;
-
-    auto my_keys = import_zkeys_json("sample_out.json");
+   auto zarray = create_zkeys_array();
+   write_zkeys_json(zarray, argv[1]);
 
     return 0;    
     

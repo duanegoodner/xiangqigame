@@ -28,8 +28,8 @@ class MoveCalculatorTest : public ::testing::Test {
     MoveCalculator mc_standard_;
     MoveCalculator mc_flying_;
     MoveCalculatorTest()
-        : mc_standard_{MoveCalculator(starting_board)},
-          mc_flying_{MoveCalculator{flying_board}} {}
+        : mc_standard_{MoveCalculator()},
+          mc_flying_{MoveCalculator()} {}
 };
 
 TEST_F(MoveCalculatorTest, RedSoldier) {
@@ -93,7 +93,7 @@ class BoardUtilitiesTest : public ::testing::Test {
     BoardMap_t starting_board = int_board_to_game_pieces(kStartingBoard);
     MoveCalculator mc_standard_;
     BoardUtilitiesTest()
-        : mc_standard_{MoveCalculator(starting_board)} {}
+        : mc_standard_{MoveCalculator()} {}
 };
 
 TEST_F(BoardUtilitiesTest, IsOccupiedTrue) {

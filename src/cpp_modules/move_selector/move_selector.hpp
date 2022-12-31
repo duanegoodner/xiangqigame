@@ -14,11 +14,10 @@ class MoveSelectorInterface
 public:
     Move SelectMove(
         GameBoard &game_board,
-        PieceColor cur_player,
-        MoveCollection &cur_moves)
+        PieceColor cur_player)
     {
         return static_cast<ImplementedMoveSelector *>(this)->ImplementSelectMove(
-            game_board, cur_player, cur_moves);
+            game_board, cur_player);
     }
 };
 
@@ -27,8 +26,7 @@ class RandomMoveSelector : public MoveSelectorInterface<RandomMoveSelector>
 public:
     Move ImplementSelectMove(
         GameBoard &game_board,
-        PieceColor cur_player,
-        MoveCollection &cur_moves);
+        PieceColor cur_player);
 };
 
 template <typename MinimaxEvaluator>
@@ -67,9 +65,9 @@ public:
     }
 
     Move ImplementSelectMove(
-        GameBoard &game_board, PieceColor cur_player, MoveCollection &cur_moves)
+        GameBoard &game_board, PieceColor cur_player)
     {
-        return InternalImplementSelectMove(game_board, cur_player, cur_moves);
+        return InternalImplementSelectMove(game_board, cur_player);
     }
 
     private:
@@ -101,9 +99,7 @@ public:
     
     Move InternalImplementSelectMove(
         GameBoard &game_board,
-        PieceColor cur_player,
-        MoveCollection &cur_moves
-    ) {
+        PieceColor cur_player) {
         ResetNodeCounter();
         auto minimax_result = MinimaxRec(
             game_board,
@@ -130,12 +126,12 @@ public:
         auto cur_moves = game_board.CalcFinalMovesOf(cur_player);
         if (cur_moves.moves.size() == 0)
         {
-            return evaluate_winner(cur_player, initiating_player);
+            return evaluate_win_leaf(cur_player, initiating_player);
         }
         if (search_depth == 0)
         {
-            return evaluator_.ImplementEvaluateLeaf(
-                game_board, cur_player, cur_moves, initiating_player);
+            return evaluator_.ImplementEvaluateNonWinLeaf(
+                game_board, cur_player, initiating_player);
         }
         if (cur_player == initiating_player)
         {

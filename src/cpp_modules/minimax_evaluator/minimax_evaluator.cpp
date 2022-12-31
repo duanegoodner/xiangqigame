@@ -4,7 +4,9 @@
 using namespace board_components;
 using namespace piece_points;
 
-BestMoves evaluate_winner(
+
+
+BestMoves evaluate_win_leaf(
     PieceColor cur_player,
     PieceColor initiating_player)
 {
@@ -47,10 +49,10 @@ Points_t PiecePointsEvaluator::GetPlayerTotal(PieceColor color, GameBoard &game_
     return pre_attack_total;
 }
 
-BestMoves PiecePointsEvaluator::ImplementEvaluateLeaf(
+BestMoves PiecePointsEvaluator::ImplementEvaluateNonWinLeaf(
     GameBoard &game_board,
     PieceColor cur_player,
-    MoveCollection &cur_player_moves,
+    // MoveCollection &cur_player_moves,
     PieceColor initiating_player)
 {
     auto cur_player_points = GetPlayerTotal(cur_player, game_board);

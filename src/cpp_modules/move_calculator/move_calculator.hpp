@@ -73,7 +73,7 @@ typedef void (PieceMoves::*MethodPtr_t)(
 class MoveCalculator
 {
 public:
-    MoveCalculator(const BoardMap_t &board_map)
+    MoveCalculator()
         : piece_moves_{PieceMoves()}
         //, board_map_{board_map}
     {
@@ -116,7 +116,7 @@ private:
     {
         auto untested_moves = MoveCollection(120);
         auto occ_spaces = get_all_spaces_occupied_by(board_map, color);
-        for (auto space = 0; space < occ_spaces.size(); space++)
+        for (size_t space = 0; space < occ_spaces.size(); space++)
         {
             CalcMovesFrom(occ_spaces[space], untested_moves, board_map);
             // auto moves_from_space = CalcMovesFrom(occ_spaces[space]);

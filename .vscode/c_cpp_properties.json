@@ -12,7 +12,10 @@
                 "${workspaceFolder}/src/cpp_modules/minimax_evaluator",
                 "${workspaceFolder}/src/cpp_modules/move_selector",
                 "${workspaceFolder}/src/cpp_modules/utility_functs",
+                "${workspaceFolder}/src/cpp_modules/nlohmann_json",
+                "${workspaceFolder}/src/cpp_modules/zobrist_hash",
                 "${workspaceFolder}/src/cpp_modules/nlohmann_json"
+
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

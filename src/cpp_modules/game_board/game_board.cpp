@@ -19,7 +19,8 @@ BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
 
 GameBoard::GameBoard()
     : board_map_{int_board_to_game_pieces(kStartingBoard)}
-    , move_calculator_{MoveCalculator(board_map_)} {}
+    , move_calculator_{MoveCalculator()}
+    , zobrist_hash_{ZobristHash(board_map_)} {}
 
 GamePiece GameBoard::GetOccupant(BoardSpace space)
 {

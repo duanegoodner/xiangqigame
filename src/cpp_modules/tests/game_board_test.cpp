@@ -16,7 +16,8 @@ TEST_F(GameBoardTest, GetsCorrectOccupants) {
 
 TEST_F(GameBoardTest, SimpleMove) {
     auto simple_move = Move{BoardSpace{0, 0}, BoardSpace{1, 0}};
-    auto executed_move = gb_.ExecuteMove(simple_move);
+    // auto executed_move = gb_.ExecuteMove(simple_move);
+    gb_.ExecuteMove(simple_move);
     EXPECT_EQ(gb_.GetOccupant(BoardSpace{0, 0}), 0);
     EXPECT_EQ(gb_.GetOccupant(BoardSpace{1, 0}), 5);
 }

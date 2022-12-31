@@ -68,7 +68,7 @@ namespace board_utilities
 {
     auto castle = (color == PieceColor::kRed) ? red_castle_spaces() : black_castle_spaces();
 
-    auto color_val = static_cast<int>(color);
+    // auto color_val = static_cast<int>(color);
     BoardSpace found_space;
 
     for (BoardSpace board_space : castle)

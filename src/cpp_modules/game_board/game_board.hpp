@@ -5,6 +5,7 @@
 #include <vector>
 #include <board_components.hpp>
 #include <move_calculator.hpp>
+#include <zobrist_hash.hpp>
 
 
 using namespace std;
@@ -43,6 +44,7 @@ class GameBoard {
     private:
     BoardMap_t board_map_;
     MoveCalculator move_calculator_;
+    ZobristHash zobrist_hash_;
     void SetOccupant(BoardSpace space, GamePiece piece);
 };
 

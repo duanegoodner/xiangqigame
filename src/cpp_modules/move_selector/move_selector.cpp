@@ -11,9 +11,11 @@ using namespace piece_points;
 
 Move RandomMoveSelector::ImplementSelectMove(
     GameBoard &game_board,
-    PieceColor cur_player,
-    MoveCollection &cur_moves)
+    PieceColor cur_player
+    // MoveCollection &cur_moves
+    )
 {
+    auto cur_moves = game_board.CalcFinalMovesOf(cur_player);
     auto selected_move_index = utility_functs::random(
         (size_t)0, cur_moves.moves.size() - 1);
     return cur_moves.moves[selected_move_index];

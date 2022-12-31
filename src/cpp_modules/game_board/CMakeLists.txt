@@ -9,9 +9,11 @@ target_link_libraries(
 target_link_libraries(
     game_board PUBLIC
     board_components
-    board_utilities)
+    board_utilities
+    zobrist_hash)
 
 target_include_directories(
     game_board PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
+    ${PROJECT_SOURCE_DIR}/move_calculator
     ${PROJECT_SOURCE_DIR}/move_calculator)

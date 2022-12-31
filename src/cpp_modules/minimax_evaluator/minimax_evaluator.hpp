@@ -20,7 +20,7 @@ using namespace piece_points;
         Points_t rating;
     };
 
-    BestMoves evaluate_winner(
+    BestMoves evaluate_win_leaf(
         PieceColor cur_player,
         PieceColor initiating_player);
 
@@ -37,16 +37,16 @@ using namespace piece_points;
                 move, game_board, cur_player);
         }
 
-        BestMoves EvaluateLeaf(
+        BestMoves EvaluateNonWinLeaf(
             GameBoard &game_board,
             PieceColor cur_player,
-            MoveCollection &cur_player_moves,
+            // MoveCollection &cur_player_moves,
             PieceColor initiating_player)
         {
-            return static_cast<EvaluatorInterface *>(this)->ImplementEvaluateLeaf(
+            return static_cast<EvaluatorInterface *>(this)->ImplementEvaluateNonWinLeaf(
                 game_board,
                 cur_player,
-                cur_player_moves,
+                // cur_player_moves,
                 initiating_player);
         }
     };
@@ -59,10 +59,10 @@ using namespace piece_points;
         PiecePointsEvaluator();
 
 
-        BestMoves ImplementEvaluateLeaf(
+        BestMoves ImplementEvaluateNonWinLeaf(
             GameBoard &game_board,
             PieceColor cur_player,
-            MoveCollection &cur_player_moves,
+            // MoveCollection &cur_player_moves,
             PieceColor initiating_player);
 
         RatedMove ImplementRateMove(

@@ -124,6 +124,30 @@
             ]
         },
         {
+            "name": "debug zobrist_hashing_test",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/cpp_modules/build/zobrist_hash/zobrist_hash_test",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/src/cpp_modules/build/",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description":  "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
