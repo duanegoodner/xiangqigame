@@ -53,6 +53,11 @@ namespace board_components
                                            : static_cast<PieceColor>(copysign(1, int_piece));
         }
 
+        GamePiece(PieceType type, PieceColor color) {
+            piece_type = type;
+            piece_color = color;
+        }
+
         bool operator==(const GamePiece &other) const
         {
             return (piece_type == other.piece_type) &&

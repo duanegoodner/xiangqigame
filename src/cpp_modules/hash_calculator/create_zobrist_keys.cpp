@@ -42,18 +42,6 @@ void write_zkeys_json(game_zarray_t zarray, string filename) {
     fout << setw(4) << zjson << endl;
 }
 
-void write_zkeys_json(game_zarray_t zarray) {
-    write_zkeys_json(zarray, "default_zkeys_filename.json");
-}
-
-game_zarray_t import_zkeys_json(string filename) {
-    ifstream input(filename);
-    json zjson = json::parse(input);
-
-    return zjson;
-}
-
-
 int main(int argc, char* argv[]) {
 
    auto zarray = create_zkeys_array();

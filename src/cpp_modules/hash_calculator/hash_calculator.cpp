@@ -1,7 +1,7 @@
 #include <filesystem>
 #include <fstream>
 #include <source_location>
-#include <zobrist_hash.hpp>
+#include <hash_calculator.hpp>
 #include <json.hpp>
 
 using namespace board_components;
@@ -26,12 +26,12 @@ game_zarray_t zkeys_from_json(string zkeys_json_filename) {
     return zkeys;
 }
 
-void ZobristHash::InitializeBoardState(BoardMap_t& board_map) {
-    board_state_ = (unsigned long long) 0;
+unsigned long long HashCalculator::CalcInitialBoardState(BoardMap_t& board_map) {
+    unsigned long long board_state{} ;
     for (size_t rank = 0; rank < kNumRanks; rank++) {
             for (size_t file = 0; file < kNumFiles; file++) {
                 if (board_map[rank][file].piece_color != 0) {
-                    board_state_ = board_state_ ^ GetHashValue(
+                    board_state = board_state ^ GetHashValue(
                         board_map[rank][file].piece_color,
                         board_map[rank][file].piece_type,
                         BoardSpace{(int) rank, (int) file}
@@ -39,14 +39,11 @@ void ZobristHash::InitializeBoardState(BoardMap_t& board_map) {
                 }
             }
         }
+    return board_state;
 }
 
-ZobristHash::ZobristHash(BoardMap_t& board_map)
-    : zkeys_{zkeys_from_json(kDefaultKeysFile)}, board_state_{} {
-        InitializeBoardState(board_map);
-    }
+HashCalculator::HashCalculator()
+    : zkeys_{zkeys_from_json(kDefaultKeysFile)} {}
 
-ZobristHash::ZobristHash(game_zarray_t zkeys, BoardMap_t& board_map)
-    : zkeys_{zkeys}, board_state_{} {
-        InitializeBoardState(board_map);
-    }
+HashCalculator::HashCalculator(game_zarray_t zkeys)
+    : zkeys_{zkeys} {}

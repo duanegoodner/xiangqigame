@@ -124,10 +124,10 @@
             ]
         },
         {
-            "name": "debug zobrist_hashing_test",
+            "name": "debug hash_calculator_test",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/src/cpp_modules/build/zobrist_hash/zobrist_hash_test",
+            "program": "${workspaceFolder}/src/cpp_modules/build/hash_calculator/hash_calculator_test",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/src/cpp_modules/build/",

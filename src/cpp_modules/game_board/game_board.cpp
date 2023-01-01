@@ -5,6 +5,7 @@
 #include <iostream>
 
 using namespace board_utilities;
+using namespace std;
 
 
 BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
@@ -20,7 +21,11 @@ BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
 GameBoard::GameBoard()
     : board_map_{int_board_to_game_pieces(kStartingBoard)}
     , move_calculator_{MoveCalculator()}
-    , zobrist_hash_{ZobristHash(board_map_)} {}
+    , hash_calculator_{HashCalculator()} 
+    , board_state_{}
+    {
+       board_state_ = hash_calculator_.CalcInitialBoardState(board_map_);
+    }
 
 GamePiece GameBoard::GetOccupant(BoardSpace space)
 {
@@ -38,6 +43,10 @@ ExecutedMove GameBoard::ExecuteMove(Move move)
     SetOccupant(move.end, moving_piece);
     SetOccupant(move.start, static_cast<Piece_t>(PieceType::kNnn));
 
+    auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
+
+    board_state_ = hash_calculator_.CalcNewBoardState(executed_move, board_state_);
+
     return ExecutedMove{move, moving_piece, destination_piece};
 }
 
@@ -45,6 +54,7 @@ void GameBoard::UndoMove(ExecutedMove executed_move)
 {
     SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
     SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
+    board_state_ = hash_calculator_.CalcNewBoardState(executed_move, board_state_);
 }
 
 vector<BoardSpace> GameBoard::GetAllSpacesOccupiedBy(PieceColor color)
@@ -97,4 +107,8 @@ PieceColor GameBoard::GetColor(BoardSpace space)
 PieceType GameBoard::GetType(BoardSpace space)
 {
     return get_type(board_map_, space);
+}
+
+unsigned long long GameBoard::board_state() {
+    return board_state_;
 }

@@ -13,7 +13,7 @@
                 "${workspaceFolder}/src/cpp_modules/move_selector",
                 "${workspaceFolder}/src/cpp_modules/utility_functs",
                 "${workspaceFolder}/src/cpp_modules/nlohmann_json",
-                "${workspaceFolder}/src/cpp_modules/zobrist_hash",
+                "${workspaceFolder}/src/cpp_modules/hash_calculator",
                 "${workspaceFolder}/src/cpp_modules/nlohmann_json"
 
             ],

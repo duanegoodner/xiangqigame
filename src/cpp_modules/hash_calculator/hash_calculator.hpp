@@ -2,8 +2,8 @@
 // Created by duane on 12/27/22.
 //
 
-#ifndef XIANGQI_CPP_ZOBRIST_HASH_HPP
-#define XIANGQI_CPP_ZOBRIST_HASH_HPP
+#ifndef XIANGQI_CPP_hash_calculator_HPP
+#define XIANGQI_CPP_hash_calculator_HPP
 
 #include <array>
 #include <bits/stdc++.h>
@@ -24,26 +24,20 @@ typedef array <team_zarray_t, 2> game_zarray_t;
 const string kDefaultKeysFile = "zkeys_v01.json";
 
 string get_sibling_path(string sibling_filename);
-game_zarray_t import_zkeys_json(string zkeys_json_path);
+game_zarray_t zkeys_from_json(string zkeys_json_filename);
 
 
-class ZobristHash {
+class HashCalculator {
 public:
-    // ZobristHash(string keys_file, BoardMap_t& board_map);
-    ZobristHash(game_zarray_t zkeys, BoardMap_t& board_map);
-    ZobristHash(BoardMap_t& board_map);
-    void UpdateBoardState(const ExecutedMove& move) {
-        UpdateBoardStatePrivate(move);      
+    HashCalculator(game_zarray_t zkeys);
+    HashCalculator();
+    unsigned long long CalcNewBoardState(const ExecutedMove& move, unsigned long long board_state) {
+        return CalcNewBoardStatePrivate(move, board_state);      
     }
-    unsigned long long board_state() {
-        return board_state_;
-    }
+    unsigned long long CalcInitialBoardState(BoardMap_t& board_map);
 
 private:
-    game_zarray_t zkeys_;
-    unsigned long long board_state_;
-
-    void InitializeBoardState(BoardMap_t& board_map);
+    game_zarray_t zkeys_;   
     
     size_t get_zcolor_index(PieceColor color) {
         return (size_t) (color + (int) (color < 0));
@@ -53,27 +47,29 @@ private:
         return zkeys_[get_zcolor_index(color)][piece_type][space.rank][space.file];
     }
 
-    void UpdateBoardStatePrivate(const ExecutedMove& move) {
+    unsigned long long CalcNewBoardStatePrivate(const ExecutedMove& move, unsigned long long board_state) {
             // moving piece moves away from space
-            board_state_ = board_state_ ^ GetHashValue(
+            board_state = board_state ^ GetHashValue(
                 move.moving_piece.piece_color,
                 move.moving_piece.piece_type,
                 move.spaces.start);
             
             // if capture piece, remove from board
             if (move.destination_piece.piece_color != PieceColor::kNul) {
-                board_state_ = board_state_ ^ GetHashValue(
+                board_state = board_state ^ GetHashValue(
                     move.destination_piece.piece_color,
                     move.destination_piece.piece_type,
                     move.spaces.end);
             }
 
             // moving piece to new space
-            board_state_ = board_state_ ^ GetHashValue(
+            board_state = board_state ^ GetHashValue(
                 move.moving_piece.piece_color,
                 move.moving_piece.piece_type,
                 move.spaces.end
             );
+
+            return board_state;
         }
 
 
@@ -84,4 +80,4 @@ private:
 };
 
 
-#endif //XIANGQI_CPP_ZOBRIST_HASH_HPP
+#endif //XIANGQI_CPP_hash_calculator_HPP

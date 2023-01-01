@@ -1,5 +1,5 @@
 add_executable(
-        create_zobrist_keys create_zobrist_keys.cpp zobrist_hash.hpp)
+        create_zobrist_keys create_zobrist_keys.cpp hash_calculator.hpp)
 
 target_link_libraries(
         create_zobrist_keys PUBLIC
@@ -15,31 +15,31 @@ target_include_directories(
         ${PROJECT_SOURCE_DIR}/board_components/
 )
 
-add_library(zobrist_hash zobrist_hash.cpp)
+add_library(hash_calculator hash_calculator.cpp)
 target_link_libraries(
-        zobrist_hash PUBLIC
+        hash_calculator PUBLIC
         board_components
         utility_functs)
 target_include_directories(
-        zobrist_hash PUBLIC
+        hash_calculator PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${PROJECT_SOURCE_DIR}/nlohmann_json/
         ${PROJECT_SOURCE_DIR}/utility_functs/
         ${PROJECT_SOURCE_DIR}/board_components/)
 
 add_executable(
-        zobrist_hash_test
-        zobrist_hash_test.cpp)
+        hash_calculator_test
+        hash_calculator_test.cpp)
 target_link_libraries(
-        zobrist_hash_test PUBLIC
-        zobrist_hash
+        hash_calculator_test PUBLIC
+        hash_calculator
         board_components
         utility_functs
         game_board
         GTest::GTest
         GTest::Main)
 target_include_directories(
-        zobrist_hash_test PUBLIC
+        hash_calculator_test PUBLIC
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${PROJECT_SOURCE_DIR}/utility_functs/
         ${PROJECT_SOURCE_DIR}/board_components/

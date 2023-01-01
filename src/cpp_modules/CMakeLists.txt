@@ -27,7 +27,7 @@ add_subdirectory(move_selector)
 add_subdirectory(tests)
 add_subdirectory(pybind_modules)
 add_subdirectory(utility_functs)
-add_subdirectory(zobrist_hash)
+add_subdirectory(hash_calculator)
 add_subdirectory(nlohmann_json)
 
 include_directories(
