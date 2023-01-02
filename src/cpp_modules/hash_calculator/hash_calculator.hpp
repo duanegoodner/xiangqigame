@@ -44,16 +44,19 @@ private:
     }
 
     unsigned long long GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) {
+        auto color_index = get_zcolor_index(color);
         return zkeys_[get_zcolor_index(color)][piece_type][space.rank][space.file];
     }
 
     unsigned long long CalcNewBoardStatePrivate(const ExecutedMove& move, unsigned long long board_state) {
             // moving piece moves away from space
+    
             board_state = board_state ^ GetHashValue(
                 move.moving_piece.piece_color,
                 move.moving_piece.piece_type,
                 move.spaces.start);
-            
+
+                       
             // if capture piece, remove from board
             if (move.destination_piece.piece_color != PieceColor::kNul) {
                 board_state = board_state ^ GetHashValue(

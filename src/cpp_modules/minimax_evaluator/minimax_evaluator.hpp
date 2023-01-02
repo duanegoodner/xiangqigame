@@ -40,13 +40,11 @@ using namespace piece_points;
         BestMoves EvaluateNonWinLeaf(
             GameBoard &game_board,
             PieceColor cur_player,
-            // MoveCollection &cur_player_moves,
             PieceColor initiating_player)
         {
             return static_cast<EvaluatorInterface *>(this)->ImplementEvaluateNonWinLeaf(
                 game_board,
                 cur_player,
-                // cur_player_moves,
                 initiating_player);
         }
     };
@@ -62,7 +60,6 @@ using namespace piece_points;
         BestMoves ImplementEvaluateNonWinLeaf(
             GameBoard &game_board,
             PieceColor cur_player,
-            // MoveCollection &cur_player_moves,
             PieceColor initiating_player);
 
         RatedMove ImplementRateMove(

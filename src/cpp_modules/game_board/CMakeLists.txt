@@ -4,13 +4,13 @@ add_library(
 
 target_link_libraries(
     game_board PUBLIC
-    move_calculator)
+    move_calculator
+    hash_calculator)
 
 target_link_libraries(
     game_board PUBLIC
     board_components
-    board_utilities
-    hash_calculator)
+    board_utilities)
 
 target_include_directories(
     game_board PUBLIC
