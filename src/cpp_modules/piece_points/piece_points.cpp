@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <iostream>
-#include "piece_points.hpp"
+#include <piece_points.hpp>
 
 using namespace std;
 using namespace board_components;

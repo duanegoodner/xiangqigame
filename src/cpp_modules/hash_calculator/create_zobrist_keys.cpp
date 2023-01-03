@@ -4,9 +4,9 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "../nlohmann_json/json.hpp"
-#include "../utility_functs/utility_functs.hpp"
-#include "../board_components/board_components.hpp"
+#include <json.hpp>
+#include <utility_functs.hpp>
+#include <board_components.hpp>
 
 using namespace board_components;
 using namespace nlohmann::json_abi_v3_11_2;

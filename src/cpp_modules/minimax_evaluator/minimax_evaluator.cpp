@@ -1,5 +1,5 @@
 #include <limits>
-#include "minimax_evaluator.hpp"
+#include <minimax_evaluator.hpp>
 
 using namespace board_components;
 using namespace piece_points;

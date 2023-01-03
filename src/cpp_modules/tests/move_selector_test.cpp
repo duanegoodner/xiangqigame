@@ -28,7 +28,7 @@ class MoveSelectorTest : public ::testing::Test {
 
 TEST_F(MoveSelectorTest, MinimaxMoveSelectorSelectInitialMove) {
     
-    auto move_selector = PiecePointsMoveSelector(piece_points_evaluator_, 5);
+    auto move_selector = PiecePointsMoveSelector(piece_points_evaluator_, 4);
     // auto start_time = std::chrono::high_resolution_clock::now();
     // auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);
     // auto end_time = std::chrono::high_resolution_clock::now();

@@ -15,7 +15,7 @@ target_include_directories(
         ${PROJECT_SOURCE_DIR}/board_components/
 )
 
-add_library(hash_calculator hash_calculator.cpp)
+add_library(hash_calculator hash_calculator.cpp hash_calculator.hpp)
 target_link_libraries(
         hash_calculator PUBLIC
         board_components

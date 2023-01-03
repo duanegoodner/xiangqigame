@@ -1,7 +1,6 @@
 
-#include "game_board.hpp"
-#include "board_utilities.hpp"
-
+#include <game_board.hpp>
+#include <board_utilities.hpp>
 #include <iostream>
 
 using namespace board_utilities;
