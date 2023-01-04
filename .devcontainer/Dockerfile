@@ -28,6 +28,7 @@ RUN sudo apt-get update --fix-missing && \
     sudo apt-get install -y \
     bzip2 \
     ca-certificates \
+    clang-format \
     cmake \
     curl \
     gdb \

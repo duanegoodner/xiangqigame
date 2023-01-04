@@ -4,97 +4,91 @@
 using namespace board_components;
 using namespace piece_points;
 
-
-
 BestMoves evaluate_win_leaf(
     PieceColor cur_player,
-    PieceColor initiating_player)
-{
-    auto empty_best_moves = MoveCollection();
+    PieceColor initiating_player
+) {
+  auto empty_best_moves = MoveCollection();
 
-    if (cur_player == initiating_player)
-    {
-        return BestMoves{
-            numeric_limits<Points_t>::max(),
-            empty_best_moves};
-    }
-    else
-    {
-        return BestMoves{
-            numeric_limits<Points_t>::min(),
-            empty_best_moves};
-    }
+  if (cur_player == initiating_player) {
+    return BestMoves{numeric_limits<Points_t>::max(), empty_best_moves};
+  } else {
+    return BestMoves{numeric_limits<Points_t>::min(), empty_best_moves};
+  }
 }
 
-PiecePointsEvaluator::PiecePointsEvaluator(GamePositionPoints_t game_position_points)
+PiecePointsEvaluator::PiecePointsEvaluator(
+    GamePositionPoints_t game_position_points
+)
     : game_position_points_{game_position_points} {};
 
 PiecePointsEvaluator::PiecePointsEvaluator()
     : game_position_points_{DEFAULT_GAME_POINTS} {};
 
 Points_t PiecePointsEvaluator::GetValueOfPieceAtPosition(
-    PieceColor color, PieceType piece_type, BoardSpace space)
-{
-    return game_position_points_[color][piece_type][space.rank][space.file];
+    PieceColor color,
+    PieceType piece_type,
+    BoardSpace space
+) {
+  return game_position_points_[color][piece_type][space.rank][space.file];
 }
 
-Points_t PiecePointsEvaluator::GetPlayerTotal(PieceColor color, GameBoard &game_board)
-{
-    Points_t pre_attack_total = 0;
-    for (auto space : game_board.GetAllSpacesOccupiedBy(color))
-    {
-        auto piece_type = game_board.GetType(space);
-        pre_attack_total += GetValueOfPieceAtPosition(color, piece_type, space);
-    }
-    return pre_attack_total;
+Points_t PiecePointsEvaluator::GetPlayerTotal(
+    PieceColor color,
+    GameBoard &game_board
+) {
+  Points_t pre_attack_total = 0;
+  for (auto space : game_board.GetAllSpacesOccupiedBy(color)) {
+    auto piece_type = game_board.GetType(space);
+    pre_attack_total += GetValueOfPieceAtPosition(color, piece_type, space);
+  }
+  return pre_attack_total;
 }
 
 BestMoves PiecePointsEvaluator::ImplementEvaluateNonWinLeaf(
     GameBoard &game_board,
     PieceColor cur_player,
     // MoveCollection &cur_player_moves,
-    PieceColor initiating_player)
-{
-    auto cur_player_points = GetPlayerTotal(cur_player, game_board);
-    auto opponent_points = GetPlayerTotal(
-        opponent_of(cur_player), game_board);
+    PieceColor initiating_player
+) {
+  auto cur_player_points = GetPlayerTotal(cur_player, game_board);
+  auto opponent_points = GetPlayerTotal(opponent_of(cur_player), game_board);
 
-    auto empty_move_collection = MoveCollection();
+  auto empty_move_collection = MoveCollection();
 
-    if (cur_player == initiating_player)
-    {
-        return BestMoves{
-            (cur_player_points - opponent_points),
-            empty_move_collection};
-    }
-    else
-    {
-        return BestMoves{
-            (opponent_points - cur_player_points),
-            empty_move_collection};
-    }
+  if (cur_player == initiating_player) {
+    return BestMoves{
+        (cur_player_points - opponent_points),
+        empty_move_collection};
+  } else {
+    return BestMoves{
+        (opponent_points - cur_player_points),
+        empty_move_collection};
+  }
 }
 
 RatedMove PiecePointsEvaluator::ImplementRateMove(
-    Move move, GameBoard &game_board, PieceColor cur_player)
-{
-    auto piece_type = game_board.GetType(move.start);
-    auto cur_player_position_array = game_position_points_[cur_player][piece_type];
-    auto position_value_delta = (cur_player_position_array[move.end.rank][move.end.file] -
-                                 cur_player_position_array[move.start.rank][move.start.file]);
+    Move move,
+    GameBoard &game_board,
+    PieceColor cur_player
+) {
+  auto piece_type = game_board.GetType(move.start);
+  auto cur_player_position_array =
+      game_position_points_[cur_player][piece_type];
+  auto position_value_delta =
+      (cur_player_position_array[move.end.rank][move.end.file] -
+       cur_player_position_array[move.start.rank][move.start.file]);
 
-    Points_t capture_val;
+  Points_t capture_val;
 
-    if (game_board.GetColor(move.end) == opponent_of(cur_player))
-    {
-        auto captured_piece_type = game_board.GetType(move.end);
-        auto opponent_position_array = game_position_points_[opponent_of(cur_player)][captured_piece_type];
-        capture_val = opponent_position_array[move.end.rank][move.end.file];
-    }
-    else
-    {
-        capture_val = 0;
-    }
+  if (game_board.GetColor(move.end) == opponent_of(cur_player)) {
+    auto captured_piece_type = game_board.GetType(move.end);
+    auto opponent_position_array =
+        game_position_points_[opponent_of(cur_player)][captured_piece_type];
+    capture_val = opponent_position_array[move.end.rank][move.end.file];
+  } else {
+    capture_val = 0;
+  }
 
-    return RatedMove{move, (position_value_delta + capture_val)};
+  return RatedMove{move, (position_value_delta + capture_val)};
 }
