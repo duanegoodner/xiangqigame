@@ -76,5 +76,8 @@
         "variant": "cpp",
         "future": "cpp"
     },
-    "cmake.sourceDirectory": "${workspaceFolder}/src/cpp_modules"
+    "cmake.sourceDirectory": "${workspaceFolder}/src/cpp_modules",
+    "window.zoomLevel": 0.6,
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 13
 }

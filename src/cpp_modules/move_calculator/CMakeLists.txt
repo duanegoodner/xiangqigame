@@ -3,17 +3,14 @@ add_library(
     move_calculator.cpp)
 
 target_link_libraries(
-    move_calculator PUBLIC
+    move_calculator PRIVATE
     board_utilities
     board_components
-    )
+    common)
 
 target_include_directories(
-    move_calculator PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR})
+    move_calculator PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${PROJECT_SOURCE_DIR}/board_components
+    ${PROJECT_SOURCE_DIR}/board_utilities)
 
-target_include_directories(
-move_calculator PUBLIC
-${PROJECT_SOURCE_DIR}/board_components
-${PROJECT_SOURCE_DIR}/board_utilities
-)

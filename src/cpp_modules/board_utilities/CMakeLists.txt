@@ -3,6 +3,7 @@ add_library(
 
 target_link_libraries(
     board_utilities INTERFACE
+    common
     board_components)
 
 target_include_directories(

@@ -2,6 +2,7 @@
 #define _BOARD_UTILITIES_FREE_
 
 #include <board_components.hpp>
+#include <common.hpp>
 
 // ///////////////////////////////////////////////////////////////////////////////////////
 // All board_utilities functions defined in header to allow inlining

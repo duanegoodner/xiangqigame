@@ -6,12 +6,13 @@ add_library(
     piece_points.cpp)
 
 target_link_libraries(
-    piece_points PUBLIC
-    game_board
+    piece_points PRIVATE
+    # game_board
     )
 
 target_include_directories(
-    piece_points PUBLIC
+    piece_points PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/board_components
-    ${PROJECT_SOURCE_DIR}/game_board)
+    # ${PROJECT_SOURCE_DIR}/game_board
+    )
