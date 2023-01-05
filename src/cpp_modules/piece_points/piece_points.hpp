@@ -10,6 +10,7 @@ namespace piece_points {
 using namespace board_components;
 using namespace std;
 
+// TODO move typedefs to single file (where possible)
 typedef int Points_t;
 typedef unordered_map<PieceType, Points_t> TeamBasePoints_t;
 typedef array<array<int, kNumFiles>, kNumRanks> PiecePositionPoints_t;

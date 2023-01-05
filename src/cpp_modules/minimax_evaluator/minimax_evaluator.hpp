@@ -1,27 +1,14 @@
 #ifndef _MINIMAX_EVALUATOR_3_
-#define _MINIMAX_EVAULATOR_3_
+#define _MINIMAX_EVALUATOR_3_
 
 #include <board_components.hpp>
 #include <game_board.hpp>
-#include <piece_points.hpp>
+#include <move_selector.hpp>
+// #include <piece_points.hpp>
 
 using namespace board_components;
 using namespace piece_points;
 
-struct BestMoves {
-  Points_t best_eval;
-  MoveCollection best_moves;
-};
-
-struct RatedMove {
-  Move move;
-  Points_t rating;
-};
-
-BestMoves evaluate_win_leaf(
-    PieceColor cur_player,
-    PieceColor initiating_player
-);
 
 template <typename ImplementedEvaluator> class EvaluatorInterface {
 public:

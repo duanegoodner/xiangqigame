@@ -11,6 +11,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/game_board
     ${PROJECT_SOURCE_DIR}/board_components
     ${PROJECT_SOURCE_DIR}/board_utilities
+    ${PROJECT_SOURCE_DIR}/minimax_evaluator
     ${CMAKE_CURRENT_SOURCE_DIR})
 
 install(TARGETS GameBoardPy DESTINATION .)

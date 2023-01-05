@@ -3,10 +3,34 @@
 
 #include <board_components.hpp>
 #include <game_board.hpp>
-#include <minimax_evaluator.hpp>
 #include <piece_points.hpp>
 #include <utility_functs.hpp>
 #include <vector>
+
+using namespace piece_points;
+
+struct BestMoves {
+  Points_t best_eval;
+  MoveCollection best_moves;
+};
+
+struct RatedMove {
+  Move move;
+  Points_t rating;
+};
+
+inline BestMoves evaluate_win_leaf(
+    PieceColor cur_player,
+    PieceColor initiating_player
+) {
+  auto empty_best_moves = MoveCollection();
+
+  if (cur_player == initiating_player) {
+    return BestMoves{numeric_limits<Points_t>::max(), empty_best_moves};
+  } else {
+    return BestMoves{numeric_limits<Points_t>::min(), empty_best_moves};
+  }
+}
 
 template <typename ImplementedMoveSelector> class MoveSelectorInterface {
 public:
@@ -33,6 +57,21 @@ public:
   int search_depth_;
   int node_counter_;
 
+  MinimaxMoveSelectorInterface()
+    : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS)}
+    , search_depth_{3}
+    , node_counter_{0} {}
+  
+  MinimaxMoveSelectorInterface(int search_depth)
+    : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS)}
+    , search_depth_{search_depth}
+    , node_counter_{0} {}
+  
+  MinimaxMoveSelectorInterface(MinimaxEvaluator evaluator, int search_depth)
+    : evaluator_{evaluator}
+    , search_depth_{search_depth}
+    , node_counter_{0} {}
+  
   void ResetNodeCounter() { InternalImplementResetNodeCounter(); };
 
   vector<RatedMove> GenerateRankedMoveList(
@@ -196,26 +235,6 @@ private:
       }
       return BestMoves{min_eval, best_moves};
     }
-  }
-};
-
-class PiecePointsMoveSelector
-    : public MinimaxMoveSelectorInterface<PiecePointsEvaluator> {
-public:
-  PiecePointsMoveSelector() {
-    this->evaluator_ = PiecePointsEvaluator(DEFAULT_GAME_POINTS);
-    this->search_depth_ = 3;
-    this->node_counter_ = 0;
-  }
-  PiecePointsMoveSelector(int search_depth) {
-    this->evaluator_ = PiecePointsEvaluator(DEFAULT_GAME_POINTS);
-    this->search_depth_ = search_depth;
-    this->node_counter_ = 0;
-  }
-  PiecePointsMoveSelector(PiecePointsEvaluator evaluator, int search_depth) {
-    this->evaluator_ = evaluator;
-    this->search_depth_ = search_depth;
-    this->node_counter_ = 0;
   }
 };
 

@@ -4,19 +4,6 @@
 using namespace board_components;
 using namespace piece_points;
 
-BestMoves evaluate_win_leaf(
-    PieceColor cur_player,
-    PieceColor initiating_player
-) {
-  auto empty_best_moves = MoveCollection();
-
-  if (cur_player == initiating_player) {
-    return BestMoves{numeric_limits<Points_t>::max(), empty_best_moves};
-  } else {
-    return BestMoves{numeric_limits<Points_t>::min(), empty_best_moves};
-  }
-}
-
 PiecePointsEvaluator::PiecePointsEvaluator(
     GamePositionPoints_t game_position_points
 )
