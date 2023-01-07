@@ -11,6 +11,7 @@ target_link_libraries(
     board_utilities
     common
     game_board
+    move_selector
     piece_points
     move_calculator
     nlohmann_json
@@ -23,7 +24,8 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/game_board
     ${PROJECT_SOURCE_DIR}/piece_points
     ${PROJECT_SOURCE_DIR}/move_calculator
-    ${PROJECT_SOURCE_DIR}/move_selector)
+    ${PROJECT_SOURCE_DIR}/move_selector
+    )
 
 
     

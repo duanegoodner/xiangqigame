@@ -32,6 +32,27 @@ inline BestMoves evaluate_win_leaf(
   }
 }
 
+template <typename ImplementedEvaluator> class EvaluatorInterface {
+public:
+  RatedMove RateMove(Move move, GameBoard &game_board, PieceColor cur_player) {
+    return static_cast<ImplementedEvaluator *>(this)
+        ->ImplementRateMove(move, game_board, cur_player);
+  }
+
+  BestMoves EvaluateNonWinLeaf(
+      GameBoard &game_board,
+      PieceColor cur_player,
+      PieceColor initiating_player
+  ) {
+    return static_cast<EvaluatorInterface *>(this)
+        ->ImplementEvaluateNonWinLeaf(
+            game_board,
+            cur_player,
+            initiating_player
+        );
+  }
+};
+
 template <typename ImplementedMoveSelector> class MoveSelectorInterface {
 public:
   Move SelectMove(GameBoard &game_board, PieceColor cur_player) {

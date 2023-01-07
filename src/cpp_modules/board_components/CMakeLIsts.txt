@@ -2,7 +2,8 @@ add_library(board_components INTERFACE board_components.hpp)
 
 target_include_directories(
     board_components INTERFACE
-    ${CMAKE_CURRENT_SOURCE_DIR})
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    )
 
 target_link_libraries(
     board_components INTERFACE

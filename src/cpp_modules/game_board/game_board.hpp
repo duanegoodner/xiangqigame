@@ -2,10 +2,12 @@
 #ifndef _GAME_BOARD_
 #define _GAME_BOARD_
 
+#include <vector>
 #include <board_components.hpp>
+#include <common.hpp>
 #include <hash_calculator.hpp>
 #include <move_calculator.hpp>
-#include <vector>
+
 
 using namespace std;
 using namespace board_components;

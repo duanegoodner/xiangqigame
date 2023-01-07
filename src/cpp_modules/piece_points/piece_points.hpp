@@ -2,6 +2,7 @@
 #define _PIECE_POINTS_
 
 #include <board_components.hpp>
+#include <common.hpp>
 #include <unordered_map>
 #include <vector>
 
@@ -10,12 +11,6 @@ namespace piece_points {
 using namespace board_components;
 using namespace std;
 
-// TODO move typedefs to single file (where possible)
-typedef int Points_t;
-typedef unordered_map<PieceType, Points_t> TeamBasePoints_t;
-typedef array<array<int, kNumFiles>, kNumRanks> PiecePositionPoints_t;
-typedef unordered_map<PieceType, PiecePositionPoints_t> TeamPositionPoints_t;
-typedef unordered_map<PieceColor, TeamPositionPoints_t> GamePositionPoints_t;
 
 // TODO move raw data vals to json file and import instead of
 // hard-coding here

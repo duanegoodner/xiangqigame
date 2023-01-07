@@ -33,7 +33,7 @@ target_link_libraries(
     nlohmann_json
     piece_points
     game_board
-    minimax_evaluator
+    # minimax_evaluator
     piece_points
     utility_functs
     )

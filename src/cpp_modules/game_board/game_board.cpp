@@ -1,4 +1,5 @@
 
+#include "board_components.hpp"
 #include <board_utilities.hpp>
 #include <game_board.hpp>
 #include <iostream>
@@ -36,7 +37,7 @@ ExecutedMove GameBoard::ExecuteMove(Move move) {
   auto moving_piece = GetOccupant(move.start);
   auto destination_piece = GetOccupant(move.end);
   SetOccupant(move.end, moving_piece);
-  SetOccupant(move.start, static_cast<Piece_t>(PieceType::kNnn));
+  SetOccupant(move.start, GamePiece(PieceType::kNnn, PieceColor::kNul));
 
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
 
