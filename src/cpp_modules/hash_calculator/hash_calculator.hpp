@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string>
 #include <board_components.hpp>
+#include <common.hpp>
 #include <json.hpp>
 #include <utility_functs.hpp>
 
@@ -23,19 +24,12 @@ using json = nlohmann::json;
 const string kDefaultKeysFile = "zkeys_v01.json";
 
 
-typedef unsigned long long zkey_t;
-typedef array<array<zkey_t, kNumFiles>, kNumRanks> piece_zarray_t;
-typedef array<piece_zarray_t, kNumPieceTypeVals> team_zarray_t;
-typedef array<team_zarray_t, 2> game_zarray_t;
-
 zkey_t random_zkey();
 game_zarray_t create_zarray();
 json import_json(string file_path);
 void export_json(const json &j, string filename);
 string get_sibling_path(string sibling_filename);
 string default_keys_filepath();
-
-
 
 struct ZobristKeys {
   game_zarray_t zarray;

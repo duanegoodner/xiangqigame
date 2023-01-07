@@ -1,18 +1,23 @@
+
 #include <limits>
+#include <game_board.hpp>
 #include <minimax_evaluator.hpp>
 
 using namespace board_components;
 using namespace piece_points;
 
-PiecePointsEvaluator::PiecePointsEvaluator(
+template <typename ConcreteGameBoard>
+PiecePointsEvaluator<ConcreteGameBoard>::PiecePointsEvaluator(
     GamePositionPoints_t game_position_points
 )
     : game_position_points_{game_position_points} {};
 
-PiecePointsEvaluator::PiecePointsEvaluator()
+template <typename ConcreteGameBoard>
+PiecePointsEvaluator<ConcreteGameBoard>::PiecePointsEvaluator()
     : game_position_points_{DEFAULT_GAME_POINTS} {};
 
-Points_t PiecePointsEvaluator::GetValueOfPieceAtPosition(
+template <typename ConcreteGameBoard>
+Points_t PiecePointsEvaluator<ConcreteGameBoard>::GetValueOfPieceAtPosition(
     PieceColor color,
     PieceType piece_type,
     BoardSpace space
@@ -20,9 +25,10 @@ Points_t PiecePointsEvaluator::GetValueOfPieceAtPosition(
   return game_position_points_[color][piece_type][space.rank][space.file];
 }
 
-Points_t PiecePointsEvaluator::GetPlayerTotal(
+template <typename ConcreteGameBoard>
+Points_t PiecePointsEvaluator<ConcreteGameBoard>::GetPlayerTotal(
     PieceColor color,
-    GameBoard &game_board
+    ConcreteGameBoard &game_board
 ) {
   Points_t pre_attack_total = 0;
   for (auto space : game_board.GetAllSpacesOccupiedBy(color)) {
@@ -32,8 +38,9 @@ Points_t PiecePointsEvaluator::GetPlayerTotal(
   return pre_attack_total;
 }
 
-BestMoves PiecePointsEvaluator::ImplementEvaluateNonWinLeaf(
-    GameBoard &game_board,
+template <typename ConcreteGameBoard>
+BestMoves PiecePointsEvaluator<ConcreteGameBoard>::ImplementEvaluateNonWinLeaf(
+    ConcreteGameBoard &game_board,
     PieceColor cur_player,
     // MoveCollection &cur_player_moves,
     PieceColor initiating_player
@@ -54,9 +61,10 @@ BestMoves PiecePointsEvaluator::ImplementEvaluateNonWinLeaf(
   }
 }
 
-RatedMove PiecePointsEvaluator::ImplementRateMove(
+template <typename ConcreteGameBoard>
+RatedMove PiecePointsEvaluator<ConcreteGameBoard>::ImplementRateMove(
     Move move,
-    GameBoard &game_board,
+    ConcreteGameBoard &game_board,
     PieceColor cur_player
 ) {
   auto piece_type = game_board.GetType(move.start);
@@ -79,3 +87,5 @@ RatedMove PiecePointsEvaluator::ImplementRateMove(
 
   return RatedMove{move, (position_value_delta + capture_val)};
 }
+
+template class PiecePointsEvaluator<GameBoard>;

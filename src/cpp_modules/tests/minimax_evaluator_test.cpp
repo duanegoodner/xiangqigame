@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <minimax_evaluator.hpp>
 #include <piece_points.hpp>
+#include <game_board.hpp>
 
 using namespace piece_points;
 
@@ -19,7 +20,7 @@ TEST_F(PiecePointsEvaluatorTest, EvaluateMove) {
       kBasePointsICGA2004,
       kAllOffsetsICGA2004
   );
-  auto piece_points_evaluator = PiecePointsEvaluator(game_position_points);
+  auto piece_points_evaluator = PiecePointsEvaluator<GameBoard>(game_position_points);
   auto black_points_total =
       piece_points_evaluator.GetPlayerTotal(PieceColor::kBlk, game_board_);
   auto red_points_total =

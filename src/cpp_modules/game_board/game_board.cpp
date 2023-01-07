@@ -1,4 +1,5 @@
 
+#include "board_components.hpp"
 #include <board_utilities.hpp>
 #include <game_board.hpp>
 #include <iostream>
@@ -32,11 +33,11 @@ bool GameBoard::IsOccupied(BoardSpace space) {
   return is_occupied(board_map_, space);
 }
 
-ExecutedMove GameBoard::ExecuteMove(Move move) {
+ExecutedMove GameBoard::ImplementExecuteMove(Move move) {
   auto moving_piece = GetOccupant(move.start);
   auto destination_piece = GetOccupant(move.end);
   SetOccupant(move.end, moving_piece);
-  SetOccupant(move.start, static_cast<Piece_t>(PieceType::kNnn));
+  SetOccupant(move.start, GamePiece(PieceType::kNnn, PieceColor::kNul));
 
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
 
@@ -46,14 +47,14 @@ ExecutedMove GameBoard::ExecuteMove(Move move) {
   return ExecutedMove{move, moving_piece, destination_piece};
 }
 
-void GameBoard::UndoMove(ExecutedMove executed_move) {
+void GameBoard::ImplementUndoMove(ExecutedMove executed_move) {
   SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
   board_state_ =
       hash_calculator_.CalcNewBoardState(executed_move, board_state_);
 }
 
-vector<BoardSpace> GameBoard::GetAllSpacesOccupiedBy(PieceColor color) {
+vector<BoardSpace> GameBoard::ImplementGetAllSpacesOccupiedBy(PieceColor color) {
   // auto all_occ_spaces = get_all_spaces_occupied_by(board_map_,
   // color);
   return get_all_spaces_occupied_by(board_map_, color);
@@ -70,7 +71,7 @@ bool GameBoard::IsInCheck(PieceColor color) {
   return is_space_any_destination_of_moves(gen_position, opponent_moves);
 }
 
-MoveCollection GameBoard::CalcFinalMovesOf(PieceColor color) {
+MoveCollection GameBoard::ImplementCalcFinalMovesOf(PieceColor color) {
   auto un_tested_moves =
       move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
   MoveCollection validated_moves;
@@ -96,11 +97,11 @@ MoveCollection GameBoard::CalcFinalMovesOf(PieceColor color) {
   return validated_moves;
 }
 
-PieceColor GameBoard::GetColor(BoardSpace space) {
+PieceColor GameBoard::ImplementGetColor(BoardSpace space) {
   return get_color(board_map_, space);
 }
 
-PieceType GameBoard::GetType(BoardSpace space) {
+PieceType GameBoard::ImplementGetType(BoardSpace space) {
   return get_type(board_map_, space);
 }
 

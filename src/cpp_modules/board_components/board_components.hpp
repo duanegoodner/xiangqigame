@@ -6,7 +6,7 @@
 #include <cassert>
 #include <random>
 #include <vector>
-// #include <common.hpp>
+#include <common.hpp>
 
 using namespace std;
 
@@ -14,20 +14,6 @@ namespace board_components {
 // ///////
 // Pieces
 // //////
-typedef int Piece_t;
-
-enum PieceType : int {
-  kNnn = 0,
-  kGen = 1,
-  kAdv = 2,
-  kEle = 3,
-  kHor = 4,
-  kCha = 5,
-  kCan = 6,
-  kSol = 7
-};
-
-enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
 
 struct GamePiece {
   PieceType piece_type;
@@ -56,7 +42,7 @@ struct GamePiece {
   }
 };
 
-const int kNumPieceTypeVals = 8;
+// const int kNumPieceTypeVals = 8;
 
 inline PieceColor opponent_of(PieceColor color) {
   return static_cast<PieceColor>(-1 * color);
@@ -65,34 +51,34 @@ inline PieceColor opponent_of(PieceColor color) {
 // /////////////////////////
 // Board Datatypes
 // ////////////////////////
-typedef int BoardIdx_t;
-const BoardIdx_t kNumRanks = 10;
-const BoardIdx_t kNumFiles = 9;
+// typedef int BoardIdx_t;
+// const BoardIdx_t kNumRanks = 10;
+// const BoardIdx_t kNumFiles = 9;
 typedef array<array<GamePiece, kNumFiles>, kNumRanks> BoardMap_t;
 typedef array<array<int, kNumFiles>, kNumRanks> BoardMapInt_t;
 
 // /////////////////////////
 // Specific locations on board
 // ////////////////////////
-const BoardIdx_t kRedRiverEdge = 5;
-const BoardIdx_t kBlackRiverEdge = 4;
+// const BoardIdx_t kRedRiverEdge = 5;
+// const BoardIdx_t kBlackRiverEdge = 4;
 
-struct CastleEdges {
-  BoardIdx_t min_rank;
-  BoardIdx_t max_rank;
-  BoardIdx_t min_file;
-  BoardIdx_t max_file;
-};
+// struct CastleEdges {
+//   BoardIdx_t min_rank;
+//   BoardIdx_t max_rank;
+//   BoardIdx_t min_file;
+//   BoardIdx_t max_file;
+// };
 
-constexpr CastleEdges kRedCastleEdges = {7, 9, 3, 5};
-constexpr CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
+// constexpr CastleEdges kRedCastleEdges = {7, 9, 3, 5};
+// constexpr CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
 
 // /////////////////////////
 // Board location tracking
 // ////////////////////////
-struct BoardDirection {
-  BoardIdx_t rank, file;
-};
+// struct BoardDirection {
+//   BoardIdx_t rank, file;
+// };
 
 struct BoardSpace {
 

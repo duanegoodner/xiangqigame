@@ -5,6 +5,7 @@
 #include <move_selector.hpp>
 #include <piece_points.hpp>
 #include <minimax_evaluator.hpp>
+#include <game_board.hpp>
 
 using namespace piece_points;
 using namespace std;
@@ -13,15 +14,16 @@ class MoveSelectorTest : public ::testing::Test {
 
 protected:
   GameBoard game_board_;
-  PiecePointsEvaluator piece_points_evaluator_;
+  // PiecePointsEvaluator<GameBoard> piece_points_evaluator_(DEFAULT_GAME_POINTS);
+  PiecePointsEvaluator<GameBoard> piece_points_evaluator_;
 
-  MoveSelectorTest()
-      : game_board_{GameBoard()}
-      , piece_points_evaluator_{PiecePointsEvaluator(DEFAULT_GAME_POINTS)} {};
+  // MoveSelectorTest()
+  //     : game_board_{GameBoard()}
+  //     , piece_points_evaluator_{PiecePointsEvaluator(DEFAULT_GAME_POINTS)} {};
 };
 
 TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
-  RandomMoveSelector move_selector;
+  RandomMoveSelector<GameBoard> move_selector;
   auto cur_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
   auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);
   EXPECT_EQ(cur_moves.Contains(selected_move), true);
@@ -29,7 +31,7 @@ TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
 
 TEST_F(MoveSelectorTest, InitializeConcreteMinimaxSelector) {
   int test_search_depth{4};
-  MinimaxMoveSelectorInterface<PiecePointsEvaluator> move_selector(
+  MinimaxMoveSelectorInterface<PiecePointsEvaluator<GameBoard>, GameBoard> move_selector(
       piece_points_evaluator_,
       test_search_depth
   );

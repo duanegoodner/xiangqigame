@@ -2,10 +2,14 @@
 #ifndef _GAME_BOARD_
 #define _GAME_BOARD_
 
-#include <board_components.hpp>
-#include <hash_calculator.hpp>
-#include <move_calculator.hpp>
 #include <vector>
+#include <board_components.hpp>
+#include <common.hpp>
+#include <hash_calculator.hpp>
+#include <minimax_evaluator.hpp>
+#include <move_calculator.hpp>
+#include <move_selector.hpp>
+
 
 using namespace std;
 using namespace board_components;
@@ -25,19 +29,19 @@ const BoardMapInt_t kStartingBoard{{
 
 BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board);
 
-class GameBoard {
+class GameBoard : public MoveTracker<GameBoard>, public SpaceInfoProvider<GameBoard>{
 
 public:
   GameBoard();
   bool IsOccupied(BoardSpace space);
   GamePiece GetOccupant(BoardSpace space);
-  ExecutedMove ExecuteMove(Move move);
-  void UndoMove(ExecutedMove executed_move);
-  vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color);
-  MoveCollection CalcFinalMovesOf(PieceColor color);
+  ExecutedMove ImplementExecuteMove(Move move);
+  void ImplementUndoMove(ExecutedMove executed_move);
+  vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color);
+  MoveCollection ImplementCalcFinalMovesOf(PieceColor color);
   bool IsInCheck(PieceColor color);
-  PieceColor GetColor(BoardSpace space);
-  PieceType GetType(BoardSpace space);
+  PieceColor ImplementGetColor(BoardSpace space);
+  PieceType ImplementGetType(BoardSpace space);
   const BoardMap_t &map() const { return board_map_; }
   zkey_t board_state();
 

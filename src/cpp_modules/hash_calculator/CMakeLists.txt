@@ -3,6 +3,7 @@ add_library(hash_calculator hash_calculator.cpp hash_calculator.hpp)
 target_link_libraries(
         hash_calculator PRIVATE
         board_components
+        common
         utility_functs)
 target_include_directories(
         hash_calculator PRIVATE

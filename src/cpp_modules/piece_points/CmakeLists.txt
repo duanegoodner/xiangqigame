@@ -7,7 +7,7 @@ add_library(
 
 target_link_libraries(
     piece_points PRIVATE
-    # game_board
+    common
     )
 
 target_include_directories(

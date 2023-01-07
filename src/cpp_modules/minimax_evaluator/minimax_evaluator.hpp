@@ -2,49 +2,44 @@
 #define _MINIMAX_EVALUATOR_3_
 
 #include <board_components.hpp>
-#include <game_board.hpp>
+#include <common.hpp>
 #include <move_selector.hpp>
-// #include <piece_points.hpp>
 
 using namespace board_components;
-using namespace piece_points;
 
-
-template <typename ImplementedEvaluator> class EvaluatorInterface {
+template <typename ConcreteGameBoard> class SpaceInfoProvider {
 public:
-  RatedMove RateMove(Move move, GameBoard &game_board, PieceColor cur_player) {
-    return static_cast<ImplementedEvaluator *>(this)
-        ->ImplementRateMove(move, game_board, cur_player);
+  vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color) {
+    return static_cast<ConcreteGameBoard *>(this)
+        ->ImplementGetAllSpacesOccupiedBy(color);
   }
 
-  BestMoves EvaluateNonWinLeaf(
-      GameBoard &game_board,
-      PieceColor cur_player,
-      PieceColor initiating_player
-  ) {
-    return static_cast<EvaluatorInterface *>(this)
-        ->ImplementEvaluateNonWinLeaf(
-            game_board,
-            cur_player,
-            initiating_player
-        );
+  PieceColor GetColor(BoardSpace space) {
+    return static_cast<ConcreteGameBoard *>(this)->ImplementGetColor(space);
+  }
+
+  PieceType GetType(BoardSpace space) {
+    return static_cast<ConcreteGameBoard *>(this)->ImplementGetType(space); 
   }
 };
 
-class PiecePointsEvaluator : public EvaluatorInterface<PiecePointsEvaluator> {
+template <typename ConcreteGameBoard>
+class PiecePointsEvaluator : public EvaluatorInterface<
+                                 PiecePointsEvaluator<ConcreteGameBoard>,
+                                 ConcreteGameBoard> {
 public:
   PiecePointsEvaluator(GamePositionPoints_t game_position_points_);
   PiecePointsEvaluator();
 
   BestMoves ImplementEvaluateNonWinLeaf(
-      GameBoard &game_board,
+      ConcreteGameBoard &game_board,
       PieceColor cur_player,
       PieceColor initiating_player
   );
 
   RatedMove ImplementRateMove(
       Move move,
-      GameBoard &game_board,
+      ConcreteGameBoard &game_board,
       PieceColor cur_player
   );
 
@@ -54,7 +49,7 @@ public:
       BoardSpace space
   );
 
-  Points_t GetPlayerTotal(PieceColor color, GameBoard &game_board);
+  Points_t GetPlayerTotal(PieceColor color, ConcreteGameBoard &game_board);
 
 private:
   GamePositionPoints_t game_position_points_;
