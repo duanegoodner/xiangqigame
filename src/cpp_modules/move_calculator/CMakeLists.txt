@@ -6,11 +6,15 @@ target_link_libraries(
     move_calculator PRIVATE
     board_utilities
     board_components
-    common)
+    common
+    game_board
+    nlohmann_json
+    utility_functs)
 
 target_include_directories(
     move_calculator PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/board_components
-    ${PROJECT_SOURCE_DIR}/board_utilities)
+    ${PROJECT_SOURCE_DIR}/board_utilities
+    ${PROJECT_SOURCE_DIR}/game_board)
 

@@ -1,7 +1,8 @@
 
-#include "board_components.hpp"
+#include <board_components.hpp>
 #include <board_utilities.hpp>
 #include <game_board.hpp>
+#include <move_calculator.hpp>
 #include <iostream>
 
 using namespace board_utilities;
@@ -17,23 +18,27 @@ BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
   return game_piece_board;
 }
 
-GameBoard::GameBoard()
+template <class ImplementedMoveCalculator>
+GameBoard<ImplementedMoveCalculator>::GameBoard()
     : board_map_{int_board_to_game_pieces(kStartingBoard)}
-    , move_calculator_{MoveCalculator()}
+    , move_calculator_{ImplementedMoveCalculator()}
     , hash_calculator_{HashCalculator(default_keys_filepath())}
     , board_state_{} {
   board_state_ = hash_calculator_.CalcInitialBoardState(board_map_);
 }
 
-GamePiece GameBoard::GetOccupant(BoardSpace space) {
+template <class ImplementedMoveCalculator>
+GamePiece GameBoard<ImplementedMoveCalculator>::GetOccupant(BoardSpace space) {
   return board_map_[space.rank][space.file];
 }
 
-bool GameBoard::IsOccupied(BoardSpace space) {
+template <class ImplementedMoveCalculator>
+bool GameBoard<ImplementedMoveCalculator>::IsOccupied(BoardSpace space) {
   return is_occupied(board_map_, space);
 }
 
-ExecutedMove GameBoard::ExecuteMove(Move move) {
+template <class ImplementedMoveCalculator>
+ExecutedMove GameBoard<ImplementedMoveCalculator>::ExecuteMove(Move move) {
   auto moving_piece = GetOccupant(move.start);
   auto destination_piece = GetOccupant(move.end);
   SetOccupant(move.end, moving_piece);
@@ -47,31 +52,36 @@ ExecutedMove GameBoard::ExecuteMove(Move move) {
   return ExecutedMove{move, moving_piece, destination_piece};
 }
 
-void GameBoard::UndoMove(ExecutedMove executed_move) {
+template <class ImplementedMoveCalculator>
+void GameBoard<ImplementedMoveCalculator>::UndoMove(ExecutedMove executed_move) {
   SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
   board_state_ =
       hash_calculator_.CalcNewBoardState(executed_move, board_state_);
 }
 
-vector<BoardSpace> GameBoard::GetAllSpacesOccupiedBy(PieceColor color) {
+template <class ImplementedMoveCalculator>
+vector<BoardSpace> GameBoard<ImplementedMoveCalculator>::GetAllSpacesOccupiedBy(PieceColor color) {
   // auto all_occ_spaces = get_all_spaces_occupied_by(board_map_,
   // color);
   return get_all_spaces_occupied_by(board_map_, color);
 }
 
-void GameBoard::SetOccupant(BoardSpace space, GamePiece piece) {
+template <class ImplementedMoveCalculator>
+void GameBoard<ImplementedMoveCalculator>::SetOccupant(BoardSpace space, GamePiece piece) {
   board_map_[space.rank][space.file] = piece;
 }
 
-bool GameBoard::IsInCheck(PieceColor color) {
+template <class ImplementedMoveCalculator>
+bool GameBoard<ImplementedMoveCalculator>::IsInCheck(PieceColor color) {
   auto gen_position = get_general_position(board_map_, color);
   auto opponent_moves =
       move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
   return is_space_any_destination_of_moves(gen_position, opponent_moves);
 }
 
-MoveCollection GameBoard::CalcFinalMovesOf(PieceColor color) {
+template <class ImplementedMoveCalculator>
+MoveCollection GameBoard<ImplementedMoveCalculator>::CalcFinalMovesOf(PieceColor color) {
   auto un_tested_moves =
       move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
   MoveCollection validated_moves;
@@ -97,12 +107,17 @@ MoveCollection GameBoard::CalcFinalMovesOf(PieceColor color) {
   return validated_moves;
 }
 
-PieceColor GameBoard::GetColor(BoardSpace space) {
+template <class ImplementedMoveCalculator>
+PieceColor GameBoard<ImplementedMoveCalculator>::GetColor(BoardSpace space) {
   return get_color(board_map_, space);
 }
 
-PieceType GameBoard::GetType(BoardSpace space) {
+template <class ImplementedMoveCalculator>
+PieceType GameBoard<ImplementedMoveCalculator>::GetType(BoardSpace space) {
   return get_type(board_map_, space);
 }
 
-zkey_t GameBoard::board_state() { return board_state_; }
+template <class ImplementedMoveCalculator>
+zkey_t GameBoard<ImplementedMoveCalculator>::board_state() { return board_state_; }
+
+template class GameBoard<StandardMoveCalculator>;

@@ -79,20 +79,20 @@ public:
   int node_counter_;
 
   MinimaxMoveSelectorInterface()
-    : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS)}
-    , search_depth_{3}
-    , node_counter_{0} {}
-  
+      : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS)}
+      , search_depth_{3}
+      , node_counter_{0} {}
+
   MinimaxMoveSelectorInterface(int search_depth)
-    : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS)}
-    , search_depth_{search_depth}
-    , node_counter_{0} {}
-  
+      : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS)}
+      , search_depth_{search_depth}
+      , node_counter_{0} {}
+
   MinimaxMoveSelectorInterface(MinimaxEvaluator evaluator, int search_depth)
-    : evaluator_{evaluator}
-    , search_depth_{search_depth}
-    , node_counter_{0} {}
-  
+      : evaluator_{evaluator}
+      , search_depth_{search_depth}
+      , node_counter_{0} {}
+
   void ResetNodeCounter() { InternalImplementResetNodeCounter(); };
 
   vector<RatedMove> GenerateRankedMoveList(

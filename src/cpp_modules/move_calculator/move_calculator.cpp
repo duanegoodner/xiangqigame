@@ -5,7 +5,7 @@
 using namespace std;
 using namespace board_utilities;
 
-void PieceMoves::SoldierMoves(
+void StandardPieceMoves::ImplementSoldierMoves(
     const BoardMap_t &board_map,
     PieceColor color,
     const BoardSpace &space,
@@ -31,7 +31,7 @@ void PieceMoves::SoldierMoves(
   // return soldier_moves;
 }
 
-void PieceMoves::CannonMoves(
+void StandardPieceMoves::ImplementCannonMoves(
     const BoardMap_t &board_map,
     PieceColor color,
     const BoardSpace &space,
@@ -62,7 +62,7 @@ void PieceMoves::CannonMoves(
   // return cannon_moves;
 }
 
-void PieceMoves::ChariotMoves(
+void StandardPieceMoves::ImplementChariotMoves(
     const BoardMap_t &board_map,
     PieceColor color,
     const BoardSpace &space,
@@ -81,7 +81,7 @@ void PieceMoves::ChariotMoves(
   }
 }
 
-void PieceMoves::HorseMoves(
+void StandardPieceMoves::ImplementHorseMoves(
     const BoardMap_t &board_map,
     PieceColor color,
     const BoardSpace &space,
@@ -105,7 +105,7 @@ void PieceMoves::HorseMoves(
   // return horse_moves;
 }
 
-void PieceMoves::ElephantMoves(
+void StandardPieceMoves::ImplementElephantMoves(
     const BoardMap_t &board_map,
     PieceColor color,
     const BoardSpace &space,
@@ -125,7 +125,7 @@ void PieceMoves::ElephantMoves(
   // return elephant_moves;
 }
 
-void PieceMoves::AdvisorMoves(
+void StandardPieceMoves::ImplementAdvisorMoves(
     const BoardMap_t &board_map,
     PieceColor color,
     const BoardSpace &space,
@@ -144,7 +144,7 @@ void PieceMoves::AdvisorMoves(
   // return advisor_moves;
 }
 
-void PieceMoves::FlyingGeneralMove(
+void StandardPieceMoves::ImplementFlyingGeneralMove(
     const BoardMap_t &board_map,
     PieceColor color,
     const BoardSpace &space,
@@ -174,7 +174,7 @@ void PieceMoves::FlyingGeneralMove(
   // return flying_move;
 }
 
-void PieceMoves::StandardGeneralMoves(
+void StandardPieceMoves::ImplementStandardGeneralMoves(
     const BoardMap_t &board_map,
     PieceColor color,
     const BoardSpace &space,
@@ -192,14 +192,14 @@ void PieceMoves::StandardGeneralMoves(
   // return standard_general_moves;
 }
 
-void PieceMoves::GeneralMoves(
+void StandardPieceMoves::ImplementGeneralMoves(
     const BoardMap_t &board_map,
     PieceColor color,
     const BoardSpace &space,
     MoveCollection &team_moves
 ) {
-  FlyingGeneralMove(board_map, color, space, team_moves);
-  StandardGeneralMoves(board_map, color, space, team_moves);
+  ImplementFlyingGeneralMove(board_map, color, space, team_moves);
+  ImplementStandardGeneralMoves(board_map, color, space, team_moves);
 
   // auto flying_move = FlyingGeneralMove(board_map, color, space);
   // auto standard_moves = StandardGeneralMoves(board_map, color, space);

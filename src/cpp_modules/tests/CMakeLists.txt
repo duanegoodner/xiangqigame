@@ -9,6 +9,8 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/minimax_evaluator
     ${PROJECT_SOURCE_DIR}/move_selector
     ${PROJECT_SOURCE_DIR}/nlohmann_json
+    ${PROJECT_SOURCE_DIR}/hash_calculator
+    ${PROJECT_SOURCE_DIR}/tests
 )
 
 add_executable(
@@ -69,3 +71,11 @@ target_link_libraries(
     utility_functs
     GTest::GTest
     GTest::Main)
+
+add_executable(create_game_board create_game_board.cpp)
+target_link_libraries(
+    create_game_board PRIVATE
+    move_calculator
+    utility_functs
+    nlohmann_json
+)
