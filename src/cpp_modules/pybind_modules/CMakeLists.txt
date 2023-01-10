@@ -25,6 +25,7 @@ target_link_libraries(
     board_components
     board_utilities
     common
+    game_board
     move_selector
     piece_points
     utility_functs

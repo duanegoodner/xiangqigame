@@ -55,4 +55,6 @@ private:
   GamePositionPoints_t game_position_points_;
 };
 
+#include <minimax_evaluator.tpp>
+
 #endif
