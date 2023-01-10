@@ -17,45 +17,45 @@ Move RandomMoveSelector<ConcreteGameBoard>::ImplementSelectMove(
   return cur_moves.moves[selected_move_index];
 }
 
-template <typename MinimaxEvaluator, typename ConcreteGameBoard>
-MinimaxMoveSelectorInterface<MinimaxEvaluator, ConcreteGameBoard>::
-    MinimaxMoveSelectorInterface()
+template <typename MinimaxEvaluator>
+MinimaxMoveSelector<MinimaxEvaluator>::
+    MinimaxMoveSelector()
     : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS)}
     , search_depth_{3}
     , node_counter_{0} {}
 
-template <typename MinimaxEvaluator, typename ConcreteGameBoard>
-MinimaxMoveSelectorInterface<MinimaxEvaluator, ConcreteGameBoard>::
-    MinimaxMoveSelectorInterface(int search_depth)
+template <typename MinimaxEvaluator>
+MinimaxMoveSelector<MinimaxEvaluator>::
+    MinimaxMoveSelector(int search_depth)
     : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS)}
     , search_depth_{search_depth}
     , node_counter_{0} {}
 
-template <typename MinimaxEvaluator, typename ConcreteGameBoard>
-MinimaxMoveSelectorInterface<MinimaxEvaluator, ConcreteGameBoard>::
-    MinimaxMoveSelectorInterface(MinimaxEvaluator evaluator, int search_depth)
+template <typename MinimaxEvaluator>
+MinimaxMoveSelector<MinimaxEvaluator>::
+    MinimaxMoveSelector(MinimaxEvaluator evaluator, int search_depth)
     : evaluator_{evaluator}
     , search_depth_{search_depth}
     , node_counter_{0} {}
 
-template <typename MinimaxEvaluator, typename ConcreteGameBoard>
-void MinimaxMoveSelectorInterface<MinimaxEvaluator, ConcreteGameBoard>::
+template <typename MinimaxEvaluator>
+void MinimaxMoveSelector<MinimaxEvaluator>::
     ResetNodeCounter() {
   node_counter_ = 0;
 }
 
-template <typename MinimaxEvaluator, typename ConcreteGameBoard>
+template <typename MinimaxEvaluator>
 vector<RatedMove>
-MinimaxMoveSelectorInterface<MinimaxEvaluator, ConcreteGameBoard>::
+MinimaxMoveSelector<MinimaxEvaluator>::
     GenerateRankedMoveList(
-        ConcreteGameBoard &game_board,
+        MinimaxEvaluator::game_board_type &game_board,
         PieceColor cur_player,
         MoveCollection &cur_player_moves
     ) {
   vector<RatedMove> rated_moves;
   for (auto cur_move : cur_player_moves.moves) {
     auto cur_rated_move =
-        evaluator_.ImplementRateMove(cur_move, game_board, cur_player);
+        evaluator_.RateMove(cur_move, game_board, cur_player);
     rated_moves.emplace_back(cur_rated_move);
   }
   sort(
@@ -68,10 +68,10 @@ MinimaxMoveSelectorInterface<MinimaxEvaluator, ConcreteGameBoard>::
   return rated_moves;
 }
 
-template <typename MinimaxEvaluator, typename ConcreteGameBoard>
+template <typename MinimaxEvaluator>
 BestMoves
-MinimaxMoveSelectorInterface<MinimaxEvaluator, ConcreteGameBoard>::MinimaxRec(
-    ConcreteGameBoard &game_board,
+MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
+    MinimaxEvaluator::game_board_type &game_board,
     int search_depth,
     int alpha,
     int beta,
@@ -84,7 +84,7 @@ MinimaxMoveSelectorInterface<MinimaxEvaluator, ConcreteGameBoard>::MinimaxRec(
     return evaluate_win_leaf(cur_player, initiating_player);
   }
   if (search_depth == 0) {
-    return evaluator_.ImplementEvaluateNonWinLeaf(
+    return evaluator_.EvaluateNonWinLeaf(
         game_board,
         cur_player,
         initiating_player
@@ -155,9 +155,9 @@ MinimaxMoveSelectorInterface<MinimaxEvaluator, ConcreteGameBoard>::MinimaxRec(
   }
 }
 
-template <typename MinimaxEvaluator, typename ConcreteGameBoard>
-Move MinimaxMoveSelectorInterface<MinimaxEvaluator, ConcreteGameBoard>::
-    ImplementSelectMove(ConcreteGameBoard &game_board, PieceColor cur_player) {
+template <typename MinimaxEvaluator>
+Move MinimaxMoveSelector<MinimaxEvaluator>::
+    ImplementSelectMove(MinimaxEvaluator::game_board_type &game_board, PieceColor cur_player) {
   ResetNodeCounter();
     auto minimax_result = MinimaxRec(
         game_board,

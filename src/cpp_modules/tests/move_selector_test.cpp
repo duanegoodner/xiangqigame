@@ -31,7 +31,7 @@ TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
 
 TEST_F(MoveSelectorTest, InitializeConcreteMinimaxSelector) {
   int test_search_depth{4};
-  MinimaxMoveSelectorInterface<PiecePointsEvaluator<GameBoard>, GameBoard> move_selector(
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard>> move_selector(
       piece_points_evaluator_,
       test_search_depth
   );

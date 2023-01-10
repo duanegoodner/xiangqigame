@@ -7,8 +7,10 @@
 
 using namespace board_components;
 
-template <typename ConcreteGameBoard> class SpaceInfoProvider {
+template <typename ConcreteGameBoard>
+class SpaceInfoProvider {
 public:
+  
   vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color) {
     return static_cast<ConcreteGameBoard *>(this)
         ->ImplementGetAllSpacesOccupiedBy(color);
@@ -19,12 +21,12 @@ public:
   }
 
   PieceType GetType(BoardSpace space) {
-    return static_cast<ConcreteGameBoard *>(this)->ImplementGetType(space); 
+    return static_cast<ConcreteGameBoard *>(this)->ImplementGetType(space);
   }
 };
 
 template <typename ConcreteGameBoard>
-class PiecePointsEvaluator : public EvaluatorInterface<
+class PiecePointsEvaluator : public Evaluator<
                                  PiecePointsEvaluator<ConcreteGameBoard>,
                                  ConcreteGameBoard> {
 public:

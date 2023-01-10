@@ -11,7 +11,7 @@ using namespace py::literals;
 // using namespace board_components;
 
 class PiecePointsMoveSelector
-    : public MinimaxMoveSelectorInterface<PiecePointsEvaluator<GameBoard>, GameBoard> {};
+    : public MinimaxMoveSelector<PiecePointsEvaluator<GameBoard>> {};
 
 PYBIND11_MODULE(MoveSelectorPy, m) {
   py::class_<PiecePointsMoveSelector>(m, "PiecePointsMoveSelector")

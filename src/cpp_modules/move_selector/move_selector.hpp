@@ -7,15 +7,17 @@
 #include <vector>
 
 // CRTP interface that MoveSelector requires of (Minimax)Evaluator
-template <typename ImplementedEvaluator, typename ConcreteGameBoard>
-class EvaluatorInterface {
+template <typename ConcreteEvaluator, typename ConcreteGameBoard>
+class Evaluator {
 public:
+  typedef ConcreteGameBoard game_board_type;
+
   RatedMove RateMove(
       Move move,
       ConcreteGameBoard &game_board,
       PieceColor cur_player
   ) {
-    return static_cast<ImplementedEvaluator *>(this)
+    return static_cast<ConcreteEvaluator *>(this)
         ->ImplementRateMove(move, game_board, cur_player);
   }
 
@@ -24,12 +26,11 @@ public:
       PieceColor cur_player,
       PieceColor initiating_player
   ) {
-    return static_cast<EvaluatorInterface *>(this)
-        ->ImplementEvaluateNonWinLeaf(
-            game_board,
-            cur_player,
-            initiating_player
-        );
+    return static_cast<ConcreteEvaluator *>(this)->ImplementEvaluateNonWinLeaf(
+        game_board,
+        cur_player,
+        initiating_player
+    );
   }
 };
 
@@ -52,11 +53,18 @@ public:
   }
 };
 
-template <typename ImplementedMoveSelector, typename ConcreteGameBoard>
-class MoveSelectorInterface {
+/*
+CRTP interface that any move selector must comply with. Required by AI Player
+which is currently in Python. If/when implement AI Player in C++, will move this
+interface definition to C++ Player header file.
+ */
+template <typename ConcreteMoveSelector, typename ConcreteGameBoard>
+class MoveSelector {
 public:
+  typedef ConcreteGameBoard game_board_type;
+
   Move SelectMove(ConcreteGameBoard &game_board, PieceColor cur_player) {
-    return static_cast<ImplementedMoveSelector *>(this)->ImplementSelectMove(
+    return static_cast<ConcreteMoveSelector *>(this)->ImplementSelectMove(
         game_board,
         cur_player
     );
@@ -64,7 +72,7 @@ public:
 };
 
 template <typename ConcreteGameBoard>
-class RandomMoveSelector : public MoveSelectorInterface<
+class RandomMoveSelector : public MoveSelector<
                                RandomMoveSelector<ConcreteGameBoard>,
                                ConcreteGameBoard> {
 public:
@@ -74,29 +82,28 @@ public:
   );
 };
 
-template <typename MinimaxEvaluator, typename ConcreteGameBoard>
-class MinimaxMoveSelectorInterface
-    : public MoveSelectorInterface<
-          MinimaxMoveSelectorInterface<MinimaxEvaluator, ConcreteGameBoard>,
-          ConcreteGameBoard> {
+template <typename ConcreteEvaluator>
+class MinimaxMoveSelector : public MoveSelector<
+                                MinimaxMoveSelector<ConcreteEvaluator>,
+                                typename ConcreteEvaluator::game_board_type> {
 public:
   // These data members need to be public for CRTP to work
-  MinimaxEvaluator evaluator_;
+  ConcreteEvaluator evaluator_;
   int search_depth_;
   int node_counter_;
 
-  MinimaxMoveSelectorInterface();
-  MinimaxMoveSelectorInterface(int search_depth);
-  MinimaxMoveSelectorInterface(MinimaxEvaluator evaluator, int search_depth);
+  MinimaxMoveSelector();
+  MinimaxMoveSelector(int search_depth);
+  MinimaxMoveSelector(ConcreteEvaluator evaluator, int search_depth);
   void ResetNodeCounter();
   vector<RatedMove> GenerateRankedMoveList(
-      ConcreteGameBoard &game_board,
+      typename ConcreteEvaluator::game_board_type &game_board,
       PieceColor cur_player,
       MoveCollection &cur_player_moves
   );
 
   BestMoves MinimaxRec(
-      ConcreteGameBoard &game_board,
+      typename ConcreteEvaluator::game_board_type &game_board,
       int search_depth,
       int alpha,
       int beta,
@@ -105,7 +112,7 @@ public:
   );
 
   Move ImplementSelectMove(
-      ConcreteGameBoard &game_board,
+      typename ConcreteEvaluator::game_board_type &game_board,
       PieceColor cur_player
   );
 };
