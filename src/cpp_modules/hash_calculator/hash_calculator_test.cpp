@@ -75,10 +75,12 @@ class HashCalculatorTest : public ::testing::Test {
     ZobristKeys zobrist_keys = ZobristKeys(key_file_path);
 };
 
-TEST_F(HashCalculatorTest, InitializeHashCalculator) {   
-    // auto zkeys_json = import_json(key_file_path);
-    // auto zkeys = ZobristKeys(zkeys_json);
+TEST_F(HashCalculatorTest, InitializeFromKeysAndMap) {   
     auto my_zobrist = HashCalculator(zobrist_keys, board_map);
+}
+
+TEST_F(HashCalculatorTest, InitializeFromMap) {   
+    auto my_zobrist = HashCalculator(board_map);
 }
 
 // TEST_F(HashCalculatorTest, InitializeBoardState) {

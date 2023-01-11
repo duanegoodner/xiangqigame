@@ -8,13 +8,14 @@
 #include <bits/stdc++.h>
 
 #include <array>
-#include <fstream>
-#include <iostream>
-#include <string>
 #include <board_components.hpp>
 #include <common.hpp>
+#include <fstream>
 #include <game_board.hpp>
+#include <iostream>
 #include <json.hpp>
+#include <move_selector.hpp>
+#include <string>
 #include <utility_functs.hpp>
 
 using namespace board_components;
@@ -24,7 +25,6 @@ using json = nlohmann::json;
 // TODO: move this and other config items to settings file
 const string kDefaultKeysFile = "zkeys_v01.json";
 
-
 zkey_t random_zkey();
 game_zarray_t create_zarray();
 json import_json(string file_path);
@@ -32,72 +32,68 @@ void export_json(const json &j, string filename);
 string get_sibling_path(string sibling_filename);
 string default_keys_filepath();
 inline size_t get_zcolor_index(PieceColor color) {
-    return (size_t)(color + (int)(color < 0));
-  }
+  return (size_t)(color + (int)(color < 0));
+}
 
 struct ZobristKeys {
   game_zarray_t zarray;
   zkey_t turn_key;
   ZobristKeys();
-  ZobristKeys(zkey_t new_turn_key, game_zarray_t& new_zarray);
+  ZobristKeys(zkey_t new_turn_key, game_zarray_t &new_zarray);
   ZobristKeys(const json &json_object);
   ZobristKeys(string json_file_path);
   json ToJson();
 
-  zkey_t CalcInitialBoardState(BoardMap_t& board_map);
-  
-  zkey_t
-  GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) {
+  zkey_t CalcInitialBoardState(const BoardMap_t &board_map);
+
+  zkey_t GetHashValue(
+      PieceColor color,
+      PieceType piece_type,
+      BoardSpace space
+  ) {
     return zarray[get_zcolor_index(color)][piece_type][space.rank][space.file];
   }
-
-  // private:
-  // size_t get_zcolor_index(PieceColor color) {
-  //   return (size_t)(color + (int)(color < 0));
-  // }  
 };
 
-class HashCalculator : public BoardStateTracker<HashCalculator>{
+class HashCalculator : public BoardStateTracker<HashCalculator>,
+                       public BoardStateProvider<HashCalculator> {
 public:
-  HashCalculator(ZobristKeys zkeys, BoardMap_t &board_map);
-  HashCalculator(BoardMap_t &board_map);
+  HashCalculator(ZobristKeys zkeys, const BoardMap_t &board_map);
+  HashCalculator(const BoardMap_t &board_map);
   void CalcNewBoardState(const ExecutedMove &move) {
     CalcNewBoardStatePrivate(move);
   }
-  // zkey_t CalcInitialBoardState(BoardMap_t &board_map);
+  zkey_t ImplementGetBoardState() {return board_state_;}
 
 private:
   ZobristKeys zkeys_;
   zkey_t board_state_;
- 
 
-  void CalcNewBoardStatePrivate(
-      const ExecutedMove &move
-  ) {
+  void CalcNewBoardStatePrivate(const ExecutedMove &move) {
     // moving piece moves away from space
 
     board_state_ = board_state_ ^ zkeys_.GetHashValue(
-                                    move.moving_piece.piece_color,
-                                    move.moving_piece.piece_type,
-                                    move.spaces.start
-                                );
+                                      move.moving_piece.piece_color,
+                                      move.moving_piece.piece_type,
+                                      move.spaces.start
+                                  );
 
     // if capture piece, remove from board
     if (move.destination_piece.piece_color != PieceColor::kNul) {
       board_state_ = board_state_ ^ zkeys_.GetHashValue(
-                                      move.destination_piece.piece_color,
-                                      move.destination_piece.piece_type,
-                                      move.spaces.end
-                                  );
+                                        move.destination_piece.piece_color,
+                                        move.destination_piece.piece_type,
+                                        move.spaces.end
+                                    );
     }
 
     // moving piece to new space
     board_state_ = board_state_ ^ zkeys_.GetHashValue(
-                                    move.moving_piece.piece_color,
-                                    move.moving_piece.piece_type,
-                                    move.spaces.end
-                                );
-    
+                                      move.moving_piece.piece_color,
+                                      move.moving_piece.piece_type,
+                                      move.spaces.end
+                                  );
+
     // change state now that its other player's turn
     board_state_ = board_state_ ^ zkeys_.turn_key;
 

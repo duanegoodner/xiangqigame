@@ -23,7 +23,14 @@ template <typename ConcreteHashCalculator>
 GameBoard<ConcreteHashCalculator>::GameBoard()
     : board_map_{int_board_to_game_pieces(kStartingBoard)}
     , move_calculator_{MoveCalculator()}
+    , num_hash_calculators_{}
     , hash_calculators_{} {}
+
+// template <typename ConcreteHashCalculator>
+// void ImplementAttachHashCalculator(ConcreteHashCalculator& hash_calculator)
+// {
+//   hash_calculators_.emplace
+// }
 
 template <typename ConcreteHashCalculator>
 GamePiece GameBoard<ConcreteHashCalculator>::GetOccupant(BoardSpace space) {
@@ -36,6 +43,16 @@ bool GameBoard<ConcreteHashCalculator>::IsOccupied(BoardSpace space) {
 }
 
 template <typename ConcreteHashCalculator>
+void GameBoard<ConcreteHashCalculator>::UpdateHashCalculators(
+    ExecutedMove executed_move
+) {
+  for (auto calculator_idx = 0; calculator_idx < num_hash_calculators_;
+       calculator_idx++) {
+    hash_calculators_[calculator_idx]->CalcNewBoardState(executed_move);
+  }
+}
+
+template <typename ConcreteHashCalculator>
 ExecutedMove GameBoard<ConcreteHashCalculator>::ImplementExecuteMove(Move move
 ) {
   auto moving_piece = GetOccupant(move.start);
@@ -44,10 +61,11 @@ ExecutedMove GameBoard<ConcreteHashCalculator>::ImplementExecuteMove(Move move
   SetOccupant(move.start, GamePiece(PieceType::kNnn, PieceColor::kNul));
 
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
+  UpdateHashCalculators(executed_move);
 
-  for (auto calculator : hash_calculators_) {
-    calculator.CalcNewBoardState(executed_move);
-  }
+  // for (auto calculator : hash_calculators_) {
+  //   calculator.CalcNewBoardState(executed_move);
+  // }
 
   return ExecutedMove{move, moving_piece, destination_piece};
 }
@@ -58,9 +76,10 @@ void GameBoard<ConcreteHashCalculator>::ImplementUndoMove(
 ) {
   SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
-  for (auto calculator : hash_calculators_) {
-    calculator.CalcNewBoardState(executed_move);
-  }
+  UpdateHashCalculators(executed_move);
+  // for (auto calculator : hash_calculators_) {
+  //   calculator.CalcNewBoardState(executed_move);
+  // }
 }
 
 template <typename ConcreteHashCalculator>

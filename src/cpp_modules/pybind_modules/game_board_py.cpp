@@ -53,7 +53,6 @@ PYBIND11_MODULE(GameBoardPy, m) {
       .export_values();
 
   py::class_<GameBoard<HashCalculator>>(m, "GameBoard")
-      // .def(py::init<void>())
       .def(py::init<>())
       .def("map", &GameBoard<HashCalculator>::map)
       .def("ExecuteMove", &GameBoard<HashCalculator>::ExecuteMove, "move"_a)

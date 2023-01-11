@@ -4,11 +4,10 @@
 
 #include <board_components.hpp>
 #include <common.hpp>
-#include <vector>
-// #include <hash_calculator.hpp>
 #include <minimax_evaluator.hpp>
 #include <move_calculator.hpp>
 #include <move_selector.hpp>
+#include <vector>
 
 using namespace std;
 using namespace board_components;
@@ -38,11 +37,20 @@ class BoardStateTracker {
 };
 
 template <typename ConcreteHashCalculator>
-class GameBoard : public MoveTracker<GameBoard<ConcreteHashCalculator>>,
+class GameBoard : public MoveTracker<
+                      GameBoard<ConcreteHashCalculator>,
+                      ConcreteHashCalculator>,
                   public SpaceInfoProvider<GameBoard<ConcreteHashCalculator>> {
 
 public:
   GameBoard();
+  void ImplementAttachHashCalculator(
+      ConcreteHashCalculator *hash_calculator,
+      size_t zcolor_idx
+  ) {
+    hash_calculators_[zcolor_idx] = hash_calculator;
+    num_hash_calculators_++;
+  }
   bool IsOccupied(BoardSpace space);
   GamePiece GetOccupant(BoardSpace space);
   ExecutedMove ImplementExecuteMove(Move move);
@@ -57,7 +65,10 @@ public:
 private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
-  vector<ConcreteHashCalculator> hash_calculators_;
+  ConcreteHashCalculator *hash_calculators_[2];
+  size_t num_hash_calculators_;
+  void UpdateHashCalculators(ExecutedMove executed_move);
+  // vector<ConcreteHashCalculator> hash_calculators_;
   void SetOccupant(BoardSpace space, GamePiece piece);
 };
 

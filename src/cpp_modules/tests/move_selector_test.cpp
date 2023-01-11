@@ -17,12 +17,7 @@ class MoveSelectorTest : public ::testing::Test {
 
 protected:
   GameBoard<HashCalculator> game_board_;
-  // PiecePointsEvaluator<GameBoard> piece_points_evaluator_(DEFAULT_GAME_POINTS);
   PiecePointsEvaluator<GameBoard<HashCalculator>> piece_points_evaluator_;
-
-  // MoveSelectorTest()
-  //     : game_board_{GameBoard()}
-  //     , piece_points_evaluator_{PiecePointsEvaluator(DEFAULT_GAME_POINTS)} {};
 };
 
 TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
@@ -32,7 +27,28 @@ TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
   EXPECT_EQ(cur_moves.Contains(selected_move), true);
 };
 
-TEST_F(MoveSelectorTest, InitializeConcreteMinimaxSelector) {
+TEST_F(MoveSelectorTest, InitializeMinimaxSelector) {
+  int test_search_depth{4};
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>>> move_selector(
+      piece_points_evaluator_,
+      test_search_depth
+  );
+}
+
+TEST_F(MoveSelectorTest, AttachHashCalculators) {
+  int test_search_depth{4};
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>>> move_selector(
+      piece_points_evaluator_,
+      test_search_depth
+  );
+  auto red_hash_calculator = HashCalculator(game_board_.map());
+  auto black_hash_calculator = HashCalculator(game_board_.map());
+  game_board_.AttachHashCalculator(&red_hash_calculator, 0);
+  game_board_.AttachHashCalculator(&red_hash_calculator, 1);
+
+}
+
+TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {
   int test_search_depth{4};
   MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>>> move_selector(
       piece_points_evaluator_,
