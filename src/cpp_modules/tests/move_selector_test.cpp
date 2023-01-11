@@ -1,11 +1,14 @@
 
+#include "hash_calculator.hpp"
 #include <chrono>
+#include <functional>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <move_selector.hpp>
 #include <piece_points.hpp>
 #include <minimax_evaluator.hpp>
 #include <game_board.hpp>
+#include <hash_calculator.hpp>
 
 using namespace piece_points;
 using namespace std;
@@ -13,9 +16,9 @@ using namespace std;
 class MoveSelectorTest : public ::testing::Test {
 
 protected:
-  GameBoard game_board_;
+  GameBoard<HashCalculator> game_board_;
   // PiecePointsEvaluator<GameBoard> piece_points_evaluator_(DEFAULT_GAME_POINTS);
-  PiecePointsEvaluator<GameBoard> piece_points_evaluator_;
+  PiecePointsEvaluator<GameBoard<HashCalculator>> piece_points_evaluator_;
 
   // MoveSelectorTest()
   //     : game_board_{GameBoard()}
@@ -23,7 +26,7 @@ protected:
 };
 
 TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
-  RandomMoveSelector<GameBoard> move_selector;
+  RandomMoveSelector<GameBoard<HashCalculator>> move_selector;
   auto cur_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
   auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);
   EXPECT_EQ(cur_moves.Contains(selected_move), true);
@@ -31,7 +34,7 @@ TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
 
 TEST_F(MoveSelectorTest, InitializeConcreteMinimaxSelector) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard>> move_selector(
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>>> move_selector(
       piece_points_evaluator_,
       test_search_depth
   );

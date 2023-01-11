@@ -2,14 +2,13 @@
 #ifndef _GAME_BOARD_
 #define _GAME_BOARD_
 
-#include <vector>
 #include <board_components.hpp>
 #include <common.hpp>
-#include <hash_calculator.hpp>
+#include <vector>
+// #include <hash_calculator.hpp>
 #include <minimax_evaluator.hpp>
 #include <move_calculator.hpp>
 #include <move_selector.hpp>
-
 
 using namespace std;
 using namespace board_components;
@@ -27,9 +26,20 @@ const BoardMapInt_t kStartingBoard{{
     {-5, -4, -3, -2, -1, -2, -3, -4, -5},
 }};
 
-BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board);
+inline BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board);
 
-class GameBoard : public MoveTracker<GameBoard>, public SpaceInfoProvider<GameBoard>{
+// CRTP Interface: GameBoard <- HashCalculator
+template <typename ConcreteHashCalculator>
+class BoardStateTracker {
+  void CalcNewBoardState(const ExecutedMove &move) {
+    return static_cast<ConcreteHashCalculator *>(this)
+        ->ImplementCalcNewBoardState(move);
+  }
+};
+
+template <typename ConcreteHashCalculator>
+class GameBoard : public MoveTracker<GameBoard<ConcreteHashCalculator>>,
+                  public SpaceInfoProvider<GameBoard<ConcreteHashCalculator>> {
 
 public:
   GameBoard();
@@ -43,14 +53,14 @@ public:
   PieceColor ImplementGetColor(BoardSpace space);
   PieceType ImplementGetType(BoardSpace space);
   const BoardMap_t &map() const { return board_map_; }
-  zkey_t board_state();
 
 private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
-  HashCalculator hash_calculator_;
-  zkey_t board_state_;
+  vector<ConcreteHashCalculator> hash_calculators_;
   void SetOccupant(BoardSpace space, GamePiece piece);
 };
+
+#include <game_board.tpp>
 
 #endif // _GAME_BOARD_

@@ -3,14 +3,18 @@ add_library(hash_calculator hash_calculator.cpp hash_calculator.hpp)
 target_link_libraries(
         hash_calculator PRIVATE
         board_components
+        board_utilities
         common
-        utility_functs)
+        utility_functs
+        game_board)
 target_include_directories(
         hash_calculator PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${PROJECT_SOURCE_DIR}/nlohmann_json/
         ${PROJECT_SOURCE_DIR}/utility_functs/
-        ${PROJECT_SOURCE_DIR}/board_components/)
+        ${PROJECT_SOURCE_DIR}/board_utilities/
+        ${PROJECT_SOURCE_DIR}/board_components/
+        ${PROJECT_SOURCE_DIR}/game_board/)
 
 
 add_executable(
@@ -20,6 +24,7 @@ target_link_libraries(
         board_components
         board_utilities
         hash_calculator
+        game_board
         )
 target_include_directories(
         create_zobrist_keys PRIVATE
@@ -27,6 +32,7 @@ target_include_directories(
         ${PROJECT_SOURCE_DIR}/nlohmann_json/
         ${PROJECT_SOURCE_DIR}/utility_functs/
         ${PROJECT_SOURCE_DIR}/board_components/
+        ${PROJECT_SOURCE_DIR}/game_board/
 )
 
 add_executable(

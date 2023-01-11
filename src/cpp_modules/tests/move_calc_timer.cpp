@@ -1,11 +1,12 @@
 #include <chrono>
 #include <game_board.hpp>
+#include <hash_calculator.hpp>
 #include <iostream>
 
 using namespace std::chrono;
 
 int main() {
-  auto my_game_board = GameBoard();
+  auto my_game_board = GameBoard<HashCalculator>();
 
   auto start = high_resolution_clock::now();
 

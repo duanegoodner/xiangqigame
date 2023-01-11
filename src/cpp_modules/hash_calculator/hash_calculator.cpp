@@ -1,3 +1,4 @@
+#include "common.hpp"
 #include <board_components.hpp>
 #include <experimental/source_location>
 #include <filesystem>
@@ -47,9 +48,7 @@ string get_sibling_path(string sibling_filename) {
   return sibling_path;
 }
 
-string default_keys_filepath() {
-  return get_sibling_path(kDefaultKeysFile);
-}
+string default_keys_filepath() { return get_sibling_path(kDefaultKeysFile); }
 
 json import_json(string file_path) {
   ifstream input(file_path);
@@ -77,9 +76,9 @@ ZobristKeys::ZobristKeys(const json &json_object) {
 ZobristKeys::ZobristKeys(string json_file_path)
     : ZobristKeys(import_json(json_file_path)) {
 
-//   auto json_object = import_json(json_file_path);
-//   json_object.at("turn_key").get_to(turn_key);
-//   json_object.at("zarray").get_to(zarray);
+  //   auto json_object = import_json(json_file_path);
+  //   json_object.at("turn_key").get_to(turn_key);
+  //   json_object.at("zarray").get_to(zarray);
 }
 
 json ZobristKeys::ToJson() {
@@ -89,13 +88,12 @@ json ZobristKeys::ToJson() {
   return j;
 }
 
-unsigned long long HashCalculator::CalcInitialBoardState(BoardMap_t &board_map
-) {
-  unsigned long long board_state{};
+zkey_t ZobristKeys::CalcInitialBoardState(BoardMap_t &board_map) {
+  zkey_t board_state{};
   for (size_t rank = 0; rank < kNumRanks; rank++) {
     for (size_t file = 0; file < kNumFiles; file++) {
       if (board_map[rank][file].piece_color != 0) {
-        board_state = board_state ^ zkeys_.GetHashValue(
+        board_state = board_state ^ GetHashValue(
                                         board_map[rank][file].piece_color,
                                         board_map[rank][file].piece_type,
                                         BoardSpace{(int)rank, (int)file}
@@ -106,8 +104,9 @@ unsigned long long HashCalculator::CalcInitialBoardState(BoardMap_t &board_map
   return board_state;
 }
 
-HashCalculator::HashCalculator()
-    : zkeys_{ZobristKeys(kDefaultKeysFile)} {}
+HashCalculator::HashCalculator(ZobristKeys zkeys, BoardMap_t &board_map)
+    : zkeys_{zkeys}
+    , board_state_{zkeys_.CalcInitialBoardState(board_map)} {}
 
-HashCalculator::HashCalculator(ZobristKeys zkeys)
-    : zkeys_{zkeys} {}
+HashCalculator::HashCalculator(BoardMap_t &board_map)
+    : HashCalculator(ZobristKeys(kDefaultKeysFile), board_map) {}

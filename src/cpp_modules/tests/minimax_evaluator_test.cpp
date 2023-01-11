@@ -2,6 +2,7 @@
 #include <minimax_evaluator.hpp>
 #include <piece_points.hpp>
 #include <game_board.hpp>
+#include <hash_calculator.hpp>
 
 using namespace piece_points;
 
@@ -9,10 +10,10 @@ class PiecePointsEvaluatorTest : public ::testing::Test {
 
 protected:
   PiecePointsBuilder piece_points_buider_;
-  GameBoard game_board_;
+  GameBoard<HashCalculator> game_board_;
   PiecePointsEvaluatorTest()
       : piece_points_buider_{PiecePointsBuilder()}
-      , game_board_{GameBoard()} {};
+      , game_board_{GameBoard<HashCalculator>()} {};
 };
 
 TEST_F(PiecePointsEvaluatorTest, EvaluateMove) {
@@ -20,7 +21,7 @@ TEST_F(PiecePointsEvaluatorTest, EvaluateMove) {
       kBasePointsICGA2004,
       kAllOffsetsICGA2004
   );
-  auto piece_points_evaluator = PiecePointsEvaluator<GameBoard>(game_position_points);
+  auto piece_points_evaluator = PiecePointsEvaluator<GameBoard<HashCalculator>>(game_position_points);
   auto black_points_total =
       piece_points_evaluator.GetPlayerTotal(PieceColor::kBlk, game_board_);
   auto red_points_total =

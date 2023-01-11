@@ -3,6 +3,7 @@
 
 #include <board_components.hpp>
 #include <game_board.hpp>
+#include <hash_calculator.hpp>
 
 namespace py = pybind11;
 using namespace py::literals;
@@ -51,20 +52,19 @@ PYBIND11_MODULE(GameBoardPy, m) {
       .value("kSol", kSol)
       .export_values();
 
-  py::class_<GameBoard>(m, "GameBoard")
+  py::class_<GameBoard<HashCalculator>>(m, "GameBoard")
       // .def(py::init<void>())
       .def(py::init<>())
-      .def("map", &GameBoard::map)
-      .def("ExecuteMove", &GameBoard::ExecuteMove, "move"_a)
-      .def("UndoMove", &GameBoard::UndoMove, "executed_move"_a)
+      .def("map", &GameBoard<HashCalculator>::map)
+      .def("ExecuteMove", &GameBoard<HashCalculator>::ExecuteMove, "move"_a)
+      .def("UndoMove", &GameBoard<HashCalculator>::UndoMove, "executed_move"_a)
       .def(
           "GetAllSpacesOccupiedBy",
-          &GameBoard::GetAllSpacesOccupiedBy,
+          &GameBoard<HashCalculator>::GetAllSpacesOccupiedBy,
           "color"_a
       )
-      .def("CalcFinalMovesOf", &GameBoard::CalcFinalMovesOf, "color"_a)
-      .def("IsInCheck", &GameBoard::IsInCheck, "color"_a)
-      // .def("IsOccupied", &GameBoard::IsOccupied, "space"_a)
-      .def("GetType", &GameBoard::GetType, "space"_a)
-      .def("GetColor", &GameBoard::GetColor, "space"_a);
+      .def("CalcFinalMovesOf", &GameBoard<HashCalculator>::CalcFinalMovesOf, "color"_a)
+      .def("IsInCheck", &GameBoard<HashCalculator>::IsInCheck, "color"_a)
+      .def("GetType", &GameBoard<HashCalculator>::GetType, "space"_a)
+      .def("GetColor", &GameBoard<HashCalculator>::GetColor, "space"_a);
 }

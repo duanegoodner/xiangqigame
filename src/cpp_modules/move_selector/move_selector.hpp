@@ -1,12 +1,17 @@
 #ifndef _MOVE_SELECTOR_
 #define _MOVE_SELECTOR_
 
+#include "common.hpp"
 #include <board_components.hpp>
 #include <move_selector_helpers.hpp>
 #include <utility_functs.hpp>
 #include <vector>
 
-// CRTP interface that MoveSelector requires of (Minimax)Evaluator
+/*
+CRTP Interface: MoveSelector <- (Minimax)Evaluator
+Note: Some implementations of MoveSelector (e.g. RandomMoveSelector) do not
+have an Evaluator.
+ */
 template <typename ConcreteEvaluator, typename ConcreteGameBoard>
 class Evaluator {
 public:
@@ -34,7 +39,7 @@ public:
   }
 };
 
-// CRTP interface that MoveSelector requires of GameBoard
+// CRTP Interface: MoveSelector <- GameBoard
 template <typename ConcreteGameBoard>
 class MoveTracker {
 public:
@@ -54,9 +59,9 @@ public:
 };
 
 /*
-CRTP interface that any move selector must comply with. Required by AI Player
-which is currently in Python. If/when implement AI Player in C++, will move this
-interface definition to C++ Player header file.
+CRTP Interface: AIPlayer <- MoveSelector
+AI Player is currently in Python. If/when implement AI Player in C++, will move
+this interface definition to C++ Player header file.
  */
 template <typename ConcreteMoveSelector, typename ConcreteGameBoard>
 class MoveSelector {
@@ -71,6 +76,17 @@ public:
   }
 };
 
+// CRTP Interface: MoveSelector <- HashCalculator
+template <typename ConcreteHashCalculator>
+class HashStateProvider {
+public:
+  zkey_t GetBoardState() {
+    return static_cast<ConcreteHashCalculator *>(this)->ImplementGetBoardState(
+    );
+  }
+};
+
+// Implementation: MoveSelector that selects a random (legal) move
 template <typename ConcreteGameBoard>
 class RandomMoveSelector : public MoveSelector<
                                RandomMoveSelector<ConcreteGameBoard>,
@@ -82,6 +98,7 @@ public:
   );
 };
 
+// Implementation: MoveSelector that uses Minimax to select move.
 template <typename ConcreteEvaluator>
 class MinimaxMoveSelector : public MoveSelector<
                                 MinimaxMoveSelector<ConcreteEvaluator>,

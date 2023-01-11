@@ -13,6 +13,7 @@
 #include <string>
 #include <board_components.hpp>
 #include <common.hpp>
+#include <game_board.hpp>
 #include <json.hpp>
 #include <utility_functs.hpp>
 
@@ -30,6 +31,9 @@ json import_json(string file_path);
 void export_json(const json &j, string filename);
 string get_sibling_path(string sibling_filename);
 string default_keys_filepath();
+inline size_t get_zcolor_index(PieceColor color) {
+    return (size_t)(color + (int)(color < 0));
+  }
 
 struct ZobristKeys {
   game_zarray_t zarray;
@@ -40,37 +44,39 @@ struct ZobristKeys {
   ZobristKeys(string json_file_path);
   json ToJson();
 
+  zkey_t CalcInitialBoardState(BoardMap_t& board_map);
+  
   zkey_t
   GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) {
     return zarray[get_zcolor_index(color)][piece_type][space.rank][space.file];
   }
 
-  private:
-  size_t get_zcolor_index(PieceColor color) {
-    return (size_t)(color + (int)(color < 0));
-  }  
+  // private:
+  // size_t get_zcolor_index(PieceColor color) {
+  //   return (size_t)(color + (int)(color < 0));
+  // }  
 };
 
-class HashCalculator {
+class HashCalculator : public BoardStateTracker<HashCalculator>{
 public:
-  HashCalculator(ZobristKeys zkeys);
-  HashCalculator();
-  zkey_t CalcNewBoardState(const ExecutedMove &move, zkey_t board_state) {
-    return CalcNewBoardStatePrivate(move, board_state);
+  HashCalculator(ZobristKeys zkeys, BoardMap_t &board_map);
+  HashCalculator(BoardMap_t &board_map);
+  void CalcNewBoardState(const ExecutedMove &move) {
+    CalcNewBoardStatePrivate(move);
   }
-  zkey_t CalcInitialBoardState(BoardMap_t &board_map);
+  // zkey_t CalcInitialBoardState(BoardMap_t &board_map);
 
 private:
   ZobristKeys zkeys_;
+  zkey_t board_state_;
  
 
-  zkey_t CalcNewBoardStatePrivate(
-      const ExecutedMove &move,
-      zkey_t board_state
+  void CalcNewBoardStatePrivate(
+      const ExecutedMove &move
   ) {
     // moving piece moves away from space
 
-    board_state = board_state ^ zkeys_.GetHashValue(
+    board_state_ = board_state_ ^ zkeys_.GetHashValue(
                                     move.moving_piece.piece_color,
                                     move.moving_piece.piece_type,
                                     move.spaces.start
@@ -78,7 +84,7 @@ private:
 
     // if capture piece, remove from board
     if (move.destination_piece.piece_color != PieceColor::kNul) {
-      board_state = board_state ^ zkeys_.GetHashValue(
+      board_state_ = board_state_ ^ zkeys_.GetHashValue(
                                       move.destination_piece.piece_color,
                                       move.destination_piece.piece_type,
                                       move.spaces.end
@@ -86,16 +92,16 @@ private:
     }
 
     // moving piece to new space
-    board_state = board_state ^ zkeys_.GetHashValue(
+    board_state_ = board_state_ ^ zkeys_.GetHashValue(
                                     move.moving_piece.piece_color,
                                     move.moving_piece.piece_type,
                                     move.spaces.end
                                 );
     
     // change state now that its other player's turn
-    board_state = board_state ^ zkeys_.turn_key;
+    board_state_ = board_state_ ^ zkeys_.turn_key;
 
-    return board_state;
+    // return board_state;
   }
 };
 
