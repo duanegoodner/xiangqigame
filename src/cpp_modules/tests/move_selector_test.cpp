@@ -41,11 +41,28 @@ TEST_F(MoveSelectorTest, AttachHashCalculators) {
       piece_points_evaluator_,
       test_search_depth
   );
-  auto red_hash_calculator = HashCalculator(game_board_.map());
-  auto black_hash_calculator = HashCalculator(game_board_.map());
+  auto red_hash_calculator = HashCalculator();
+  auto black_hash_calculator = HashCalculator();
   game_board_.AttachHashCalculator(&red_hash_calculator, 0);
   game_board_.AttachHashCalculator(&red_hash_calculator, 1);
+}
 
+TEST_F(MoveSelectorTest, GetBoardState) {
+  int test_search_depth{4};
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>>> move_selector(
+      piece_points_evaluator_,
+      test_search_depth
+  );
+  auto red_hash_calculator = HashCalculator();
+  auto black_hash_calculator = HashCalculator();
+  EXPECT_EQ(red_hash_calculator.GetBoardState(), 0);
+  EXPECT_EQ(black_hash_calculator.GetBoardState(), 0);
+  game_board_.AttachHashCalculator(&red_hash_calculator, 0);
+  game_board_.AttachHashCalculator(&black_hash_calculator, 1);
+  auto red_board_state = red_hash_calculator.GetBoardState();
+  auto black_board_state = black_hash_calculator.GetBoardState();
+  EXPECT_NE(red_board_state, 0);
+  EXPECT_EQ(red_board_state, black_board_state);
 }
 
 TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {

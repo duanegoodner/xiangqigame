@@ -88,12 +88,12 @@ json ZobristKeys::ToJson() {
   return j;
 }
 
-zkey_t ZobristKeys::CalcInitialBoardState(const BoardMap_t &board_map) {
-  zkey_t board_state{};
+void HashCalculator::ImplementCalcInitialBoardState(const BoardMap_t &board_map) {
+  board_state_ = 0;
   for (size_t rank = 0; rank < kNumRanks; rank++) {
     for (size_t file = 0; file < kNumFiles; file++) {
       if (board_map[rank][file].piece_color != 0) {
-        board_state = board_state ^ GetHashValue(
+        board_state_ = board_state_ ^ zkeys_.GetHashValue(
                                         board_map[rank][file].piece_color,
                                         board_map[rank][file].piece_type,
                                         BoardSpace{(int)rank, (int)file}
@@ -101,12 +101,11 @@ zkey_t ZobristKeys::CalcInitialBoardState(const BoardMap_t &board_map) {
       }
     }
   }
-  return board_state;
 }
 
-HashCalculator::HashCalculator(ZobristKeys zkeys, const BoardMap_t &board_map)
+HashCalculator::HashCalculator(ZobristKeys zkeys)
     : zkeys_{zkeys}
-    , board_state_{zkeys_.CalcInitialBoardState(board_map)} {}
+    , board_state_{} {}
 
-HashCalculator::HashCalculator(const BoardMap_t &board_map)
-    : HashCalculator(ZobristKeys(default_keys_filepath()), board_map) {}
+HashCalculator::HashCalculator()
+    : HashCalculator(ZobristKeys(default_keys_filepath())) {}

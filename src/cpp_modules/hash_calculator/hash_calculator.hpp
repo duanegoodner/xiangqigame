@@ -44,7 +44,7 @@ struct ZobristKeys {
   ZobristKeys(string json_file_path);
   json ToJson();
 
-  zkey_t CalcInitialBoardState(const BoardMap_t &board_map);
+  
 
   zkey_t GetHashValue(
       PieceColor color,
@@ -58,20 +58,20 @@ struct ZobristKeys {
 class HashCalculator : public BoardStateTracker<HashCalculator>,
                        public BoardStateProvider<HashCalculator> {
 public:
-  HashCalculator(ZobristKeys zkeys, const BoardMap_t &board_map);
-  HashCalculator(const BoardMap_t &board_map);
-  void CalcNewBoardState(const ExecutedMove &move) {
-    CalcNewBoardStatePrivate(move);
-  }
+  HashCalculator(ZobristKeys zkeys);
+  HashCalculator();
   zkey_t ImplementGetBoardState() {return board_state_;}
+  void ImplementCalcNewBoardState(const ExecutedMove &move) {
+    PrivateImplementCalcNewBoardState(move);   
+  }
+  void ImplementCalcInitialBoardState(const BoardMap_t &board_map);
 
 private:
   ZobristKeys zkeys_;
   zkey_t board_state_;
 
-  void CalcNewBoardStatePrivate(const ExecutedMove &move) {
+  void PrivateImplementCalcNewBoardState(ExecutedMove move) {
     // moving piece moves away from space
-
     board_state_ = board_state_ ^ zkeys_.GetHashValue(
                                       move.moving_piece.piece_color,
                                       move.moving_piece.piece_type,
@@ -95,9 +95,7 @@ private:
                                   );
 
     // change state now that its other player's turn
-    board_state_ = board_state_ ^ zkeys_.turn_key;
-
-    // return board_state;
+    board_state_ = board_state_ ^ zkeys_.turn_key;    
   }
 };
 

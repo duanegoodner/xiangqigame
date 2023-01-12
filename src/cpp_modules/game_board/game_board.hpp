@@ -30,6 +30,11 @@ inline BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board);
 // CRTP Interface: GameBoard <- HashCalculator
 template <typename ConcreteHashCalculator>
 class BoardStateTracker {
+public:
+  void CalcInitialBoardState(BoardMap_t& board_map) {
+    static_cast<ConcreteHashCalculator *>(this)->ImplementCalcInitialBoardState(
+      board_map);
+  }
   void CalcNewBoardState(const ExecutedMove &move) {
     return static_cast<ConcreteHashCalculator *>(this)
         ->ImplementCalcNewBoardState(move);
@@ -48,6 +53,7 @@ public:
       ConcreteHashCalculator *hash_calculator,
       size_t zcolor_idx
   ) {
+    hash_calculator->CalcInitialBoardState(board_map_);
     hash_calculators_[zcolor_idx] = hash_calculator;
     num_hash_calculators_++;
   }
