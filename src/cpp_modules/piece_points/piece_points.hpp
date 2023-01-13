@@ -13,12 +13,37 @@ using namespace board_components;
 using namespace std;
 using json = nlohmann::json;
 
-struct PointsSpec {
+struct PointsSpecExternal {
+  PointsSpecExternal(
+      base_points_map_t black_base_input,
+      base_points_map_t red_base_offsets_input,
+      position_points_map_t black_position_input,
+      position_points_map_t red_position_offsets_input
+  );
+  PointsSpecExternal(const json &json_object);
+  PointsSpecExternal(string json_file_path);
+  //   PointsSpecExternal(string json_file_path);
   base_points_map_t black_base;
   base_points_map_t red_base_offsets;
   position_points_map_t black_position;
   position_points_map_t red_position_offsets;
   json ToJson();
+};
+
+struct PointsSpecInternal {
+    PointsSpecInternal(
+        TeamBasePoints_t black_base_input,
+        TeamBasePoints_t red_base_offsets_input,
+        TeamPositionPoints_t black_position_input,
+        TeamPositionPoints_t red_position_offsets_input
+        );
+    PointsSpecInternal(PointsSpecExternal external_spec);
+    
+    TeamBasePoints_t black_base;
+    TeamBasePoints_t red_base_offsets;
+    TeamPositionPoints_t black_position;
+    TeamPositionPoints_t red_position_offsets;
+
 };
 
 // TODO move raw data vals to json file and import instead of
@@ -121,8 +146,6 @@ const position_points_map_t kNullPositionPointsOffsetMap = {
     {"horse", kNullOffsets},
     {"cannon", kNullOffsets},
     {"soldier", kNullOffsets}};
-    
-
 
 const TeamPositionPoints_t kAllOffsetsICGA2004 = {
     {PieceType::kGen, kGeneralOffsetsICGA2004},
@@ -143,6 +166,8 @@ public:
       TeamBasePoints_t black_base_points,
       TeamPositionPoints_t black_position_offsets
   );
+
+  GamePositionPoints_t BuildGamePositionPoints(PointsSpecInternal points_spec);
 
 private:
   PiecePositionPoints_t ComputePieceNetPositionPoints(

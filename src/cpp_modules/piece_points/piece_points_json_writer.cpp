@@ -1,5 +1,5 @@
 #include "common.hpp"
-#include <piece_points_json_writer.hpp>
+#include <piece_points.hpp>
 #include <utility_functs.hpp>
 
 using namespace std;
@@ -8,7 +8,7 @@ using json = nlohmann::json;
 
 int main() {
 
-  PointsSpec ICGA2004{
+  PointsSpecExternal ICGA2004{
       kBasePointsMapICGA2004,
       kNullBasePointsOffsetMap,
       kPositionPointsMapICGA2004,
