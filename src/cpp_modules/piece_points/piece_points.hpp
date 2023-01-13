@@ -3,6 +3,8 @@
 
 #include <board_components.hpp>
 #include <common.hpp>
+#include <json.hpp>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
@@ -10,7 +12,39 @@ namespace piece_points {
 
 using namespace board_components;
 using namespace std;
+using json = nlohmann::json;
 
+struct PointsSpecExternal {
+  PointsSpecExternal(
+      base_points_map_t black_base_input,
+      base_points_map_t red_base_offsets_input,
+      position_points_map_t black_position_input,
+      position_points_map_t red_position_offsets_input
+  );
+  PointsSpecExternal(const json &json_object);
+  PointsSpecExternal(string json_file_path);
+  //   PointsSpecExternal(string json_file_path);
+  base_points_map_t black_base;
+  base_points_map_t red_base_offsets;
+  position_points_map_t black_position;
+  position_points_map_t red_position_offsets;
+  json ToJson();
+};
+
+struct PointsSpecInternal {
+  PointsSpecInternal(
+      TeamBasePoints_t black_base_input,
+      TeamBasePoints_t red_base_offsets_input,
+      TeamPositionPoints_t black_position_input,
+      TeamPositionPoints_t red_position_offsets_input
+  );
+  PointsSpecInternal(PointsSpecExternal external_spec);
+
+  TeamBasePoints_t black_base;
+  TeamBasePoints_t red_base_offsets;
+  TeamPositionPoints_t black_position;
+  TeamPositionPoints_t red_position_offsets;
+};
 
 // TODO move raw data vals to json file and import instead of
 // hard-coding here
@@ -23,6 +57,26 @@ const TeamBasePoints_t kBasePointsICGA2004 = {
     {PieceType::kHor, 270},
     {PieceType::kCan, 285},
     {PieceType::kSol, 30}};
+
+const base_points_map_t kBasePointsMapICGA2004 = {
+    {"null", 0},
+    {"general", 6000},
+    {"advisor", 120},
+    {"elephant", 120},
+    {"chariot", 600},
+    {"horse", 270},
+    {"cannon", 285},
+    {"soldier", 30}};
+
+const base_points_map_t kNullBasePointsOffsetMap = {
+    {"null", 0},
+    {"general", 0},
+    {"advisor", 0},
+    {"elephant", 0},
+    {"chariot", 0},
+    {"horse", 0},
+    {"cannon", 0},
+    {"soldier", 0}};
 
 const PiecePositionPoints_t kNullOffsets{};
 const PiecePositionPoints_t kGeneralOffsetsICGA2004{};
@@ -73,6 +127,26 @@ const PiecePositionPoints_t kSoldierOffsetsICGA2004 = {
      {18, 36, 56, 80, 120, 80, 56, 36, 18},
      {0, 3, 6, 9, 12, 9, 6, 3, 0}}};
 
+const position_points_map_t kPositionPointsMapICGA2004 = {
+    {"null", kNullOffsets},
+    {"general", kGeneralOffsetsICGA2004},
+    {"advisor", kAdvisorOffsetsICGA2004},
+    {"elephant", kElephantOffsetsICGA2004},
+    {"chariot", piece_points::kChariotOffsetsICGA2004},
+    {"horse", kHorseOffsetsICGA2004},
+    {"cannon", kCannonOffsetsICGA2004},
+    {"soldier", kSoldierOffsetsICGA2004}};
+
+const position_points_map_t kNullPositionPointsOffsetMap = {
+    {"null", kNullOffsets},
+    {"general", kNullOffsets},
+    {"advisor", kNullOffsets},
+    {"elephant", kNullOffsets},
+    {"chariot", kNullOffsets},
+    {"horse", kNullOffsets},
+    {"cannon", kNullOffsets},
+    {"soldier", kNullOffsets}};
+
 const TeamPositionPoints_t kAllOffsetsICGA2004 = {
     {PieceType::kGen, kGeneralOffsetsICGA2004},
     {PieceType::kAdv, kAdvisorOffsetsICGA2004},
@@ -84,38 +158,35 @@ const TeamPositionPoints_t kAllOffsetsICGA2004 = {
 
 class PiecePointsBuilder {
 public:
-  GamePositionPoints_t BuildGamePositionPoints(
-      TeamPositionPoints_t black_points
-  );
-
-  GamePositionPoints_t BuildGamePositionPoints(
-      TeamBasePoints_t black_base_points,
-      TeamPositionPoints_t black_position_offsets
-  );
+  PiecePointsBuilder(PointsSpecInternal points_spec);
+  GamePositionPoints_t BuildGamePositionPoints();
 
 private:
-  PiecePositionPoints_t ComputePieceNetPositionPoints(
-      int base_val,
-      PiecePositionPoints_t position_offsets
-  );
-
-  TeamPositionPoints_t ComputeBlackPositionPoints(
-      TeamBasePoints_t black_base_pts,
-      TeamPositionPoints_t black_position_offsets
-  );
-
+  PointsSpecInternal points_spec_;
   PiecePositionPoints_t FlipBoardDirection(PiecePositionPoints_t orig_piece_pts
   );
-
-  TeamPositionPoints_t ComputeRedPositionPoints(
-      TeamPositionPoints_t black_position_points
+  PiecePositionPoints_t PiecePointsArraySum(
+      PiecePositionPoints_t a,
+      PiecePositionPoints_t b
+  );
+  TeamPositionPoints_t ComputeBlackNetPoints();
+  TeamPositionPoints_t ComputeRedNetPoints();
+  PiecePositionPoints_t ComputePieceNetPoints(
+      Points_t base,
+      PiecePositionPoints_t position_points
   );
 };
 
-const auto DEFAULT_GAME_POINTS = PiecePointsBuilder().BuildGamePositionPoints(
-    kBasePointsICGA2004,
-    kAllOffsetsICGA2004
-);
+
+const string kICGAPath = "/home/duane/workspace/project/src/cpp_modules/piece_points/"
+                 "ICGA_2004.json";
+const PointsSpecExternal DEFAULT_EXTERNAL_POINTS_SPEC =
+    PointsSpecExternal(kICGAPath);
+const PointsSpecInternal DEFAULT_INTERNAL_POINTS_SPEC =
+    PointsSpecInternal(DEFAULT_EXTERNAL_POINTS_SPEC);
+const auto DEFAULT_GAME_POINTS =
+    PiecePointsBuilder(DEFAULT_INTERNAL_POINTS_SPEC).BuildGamePositionPoints();
+
 
 } // namespace piece_points
 

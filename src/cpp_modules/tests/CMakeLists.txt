@@ -9,6 +9,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/minimax_evaluator
     ${PROJECT_SOURCE_DIR}/move_selector
     ${PROJECT_SOURCE_DIR}/nlohmann_json
+    ${PROJECT_SOURCE_DIR}/utility_functs
 )
 
 add_executable(
@@ -45,6 +46,7 @@ add_executable(piece_points_test piece_points_test.cpp)
 target_link_libraries(
     piece_points_test PRIVATE
     piece_points
+    utility_functs
     GTest::GTest
     GTest::Main)
 

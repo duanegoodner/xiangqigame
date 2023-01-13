@@ -21,7 +21,7 @@ protected:
 };
 
 TEST_F(ZobristKeysTest, ImportJson) {
-  auto zkeys_json = import_json(key_file_path);
+  auto zkeys_json = utility_functs::import_json(key_file_path);
   auto turn_key = zkeys_json.at("turn_key");
   auto zarray = zkeys_json.at("zarray");
   EXPECT_NE(0, turn_key);
@@ -33,7 +33,7 @@ TEST_F(ZobristKeysTest, ImportJson) {
 }
 
 TEST_F(ZobristKeysTest, InitFromJsonObject) {
-  auto zkeys_json = import_json(key_file_path);
+  auto zkeys_json = utility_functs::import_json(key_file_path);
   auto zobrist_keys = ZobristKeys(zkeys_json);
   EXPECT_NE(0, zobrist_keys.turn_key);
   EXPECT_EQ(2, zobrist_keys.zarray.size());
@@ -58,7 +58,7 @@ TEST_F(ZobristKeysTest, InitFromJsonFile) {
 // }
 
 TEST_F(ZobristKeysTest, GetHashValue) {
-  auto zkeys_json = import_json(key_file_path);
+  auto zkeys_json = utility_functs::import_json(key_file_path);
   auto zobrist_keys = ZobristKeys(zkeys_json);
   EXPECT_EQ(
       zkeys_json.at("zarray"

@@ -22,4 +22,5 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/move_selector
     ${PROJECT_SOURCE_DIR}/piece_points
     ${PROJECT_SOURCE_DIR}/minimax_evaluator
+    ${PROJECT_SOURCE_DIR}/utility_functs
     )

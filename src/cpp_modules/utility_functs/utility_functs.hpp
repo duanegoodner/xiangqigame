@@ -1,12 +1,18 @@
 #ifndef _UTILITY_FUNCTS_
 #define _UTILITY_FUNCTS_
 
+#include <json.hpp>
 #include <random>
 #include <string>
+#include <unordered_map>
+#include <vector>
 
 namespace utility_functs {
 
-template <typename T> T random(T range_from, T range_to) {
+using json = nlohmann::json;
+
+template <typename T>
+T random(T range_from, T range_to) {
   std::random_device rand_dev;
   std::mt19937 generator(rand_dev());
   std::uniform_int_distribution<T> distr(range_from, range_to);
@@ -18,6 +24,21 @@ inline bool ends_with(std::string const &value, std::string const &ending) {
     return false;
   return std::equal(ending.rbegin(), ending.rend(), value.rbegin());
 }
+
+template <typename FromKey, typename ToKey, typename Value>
+std::unordered_map<ToKey, Value> replace_keys(
+    std::unordered_map<FromKey, Value> orig_map, std
+    ::unordered_map<FromKey, ToKey> key_substitutions
+) {
+  std::unordered_map<ToKey, Value> new_map;
+  for (auto entry : key_substitutions) {
+    new_map[entry.second] = orig_map[entry.first];
+  }
+  return new_map;
+}
+
+json import_json(std::string file_path);
+void export_json(const json &j, std::string filename);
 
 } // namespace utility_functs
 

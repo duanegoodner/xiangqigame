@@ -9,6 +9,7 @@ target_link_libraries(
     move_selector
     piece_points
     utility_functs
+    nlohmann_json
     )
 
 target_include_directories(
@@ -16,6 +17,9 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/piece_points
     ${PROJECT_SOURCE_DIR}/move_selector
+    ${PROJECT_SOURCE_DIR}/utility_functs
+    ${PROJECT_SOURCE_DIR}/nlohmann_json
+    
     )
 
 

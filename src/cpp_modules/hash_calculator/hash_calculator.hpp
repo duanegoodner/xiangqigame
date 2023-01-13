@@ -27,13 +27,11 @@ const string kDefaultKeysFile = "zkeys_v01.json";
 
 zkey_t random_zkey();
 game_zarray_t create_zarray();
-json import_json(string file_path);
-void export_json(const json &j, string filename);
+// json import_json(string file_path);
+// void export_json(const json &j, string filename);
 string get_sibling_path(string sibling_filename);
 string default_keys_filepath();
-inline size_t get_zcolor_index(PieceColor color) {
-  return (size_t)(color + (int)(color < 0));
-}
+
 
 struct ZobristKeys {
   game_zarray_t zarray;

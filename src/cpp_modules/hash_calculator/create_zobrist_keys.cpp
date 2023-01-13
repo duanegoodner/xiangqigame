@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
     auto new_zarray = create_zarray();
     auto new_zorbist_keys = ZobristKeys(new_turn_key, new_zarray);
     json json_object = new_zorbist_keys.ToJson();
-    export_json(json_object, argv[1]);
+    utility_functs::export_json(json_object, argv[1]);
 
     return 0;
 }

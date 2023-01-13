@@ -9,17 +9,23 @@ using namespace piece_points;
 class PiecePointsEvaluatorTest : public ::testing::Test {
 
 protected:
-  PiecePointsBuilder piece_points_buider_;
+  // PiecePointsBuilder piece_points_buider_;
+  const string points_spec_path = "/home/duane/workspace/project/src/cpp_modules/piece_points/"
+                 "ICGA_2004.json";
+
+  const PointsSpecExternal external_pts_spec = PointsSpecExternal(points_spec_path);
+  const PointsSpecInternal internal_pts_spec = PointsSpecInternal(external_pts_spec);
+  PiecePointsBuilder piece_points_builder_ = PiecePointsBuilder(internal_pts_spec);
   GameBoard<HashCalculator> game_board_;
-  PiecePointsEvaluatorTest()
-      : piece_points_buider_{PiecePointsBuilder()}
-      , game_board_{GameBoard<HashCalculator>()} {};
+  // PiecePointsEvaluatorTest()
+  //     : piece_points_buider_{PiecePointsBuilder()}
+  //     , game_board_{GameBoard<HashCalculator>()} {};
 };
 
 TEST_F(PiecePointsEvaluatorTest, EvaluateMove) {
-  auto game_position_points = piece_points_buider_.BuildGamePositionPoints(
-      kBasePointsICGA2004,
-      kAllOffsetsICGA2004
+  auto game_position_points = piece_points_builder_.BuildGamePositionPoints(
+      // kBasePointsICGA2004,
+      // kAllOffsetsICGA2004
   );
   auto piece_points_evaluator = PiecePointsEvaluator<GameBoard<HashCalculator>>(game_position_points);
   auto black_points_total =
