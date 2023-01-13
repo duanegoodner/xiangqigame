@@ -3,8 +3,12 @@
 
 #include <random>
 #include <string>
+#include <json.hpp>
 
 namespace utility_functs {
+
+using json = nlohmann::json;
+
 
 template <typename T> T random(T range_from, T range_to) {
   std::random_device rand_dev;
@@ -18,6 +22,9 @@ inline bool ends_with(std::string const &value, std::string const &ending) {
     return false;
   return std::equal(ending.rbegin(), ending.rend(), value.rbegin());
 }
+
+json import_json(std::string file_path);
+void export_json(const json &j, std::string filename);
 
 } // namespace utility_functs
 

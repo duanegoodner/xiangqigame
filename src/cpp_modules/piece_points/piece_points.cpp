@@ -5,6 +5,16 @@
 using namespace std;
 using namespace board_components;
 using namespace piece_points;
+using json = nlohmann::json;
+
+json PointsSpec::ToJson() {
+  json j;
+  j["black_base"] = black_base;
+  j["red_base_offsets"] = red_base_offsets;
+  j["black_position"] = black_position;
+  j["red_position_offsets"] = red_position_offsets;
+  return j;
+}
 
 PiecePositionPoints_t PiecePointsBuilder::ComputePieceNetPositionPoints(
     int base_val,

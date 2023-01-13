@@ -50,15 +50,7 @@ string get_sibling_path(string sibling_filename) {
 
 string default_keys_filepath() { return get_sibling_path(kDefaultKeysFile); }
 
-json import_json(string file_path) {
-  ifstream input(file_path);
-  return json::parse(input);
-}
 
-void export_json(const json &j, string filename) {
-  ofstream fout(filename);
-  fout << setw(4) << j << endl;
-}
 
 ZobristKeys::ZobristKeys()
     : zarray{0}
@@ -74,7 +66,7 @@ ZobristKeys::ZobristKeys(const json &json_object) {
 }
 
 ZobristKeys::ZobristKeys(string json_file_path)
-    : ZobristKeys(import_json(json_file_path)) {
+    : ZobristKeys(utility_functs::import_json(json_file_path)) {
 
   //   auto json_object = import_json(json_file_path);
   //   json_object.at("turn_key").get_to(turn_key);

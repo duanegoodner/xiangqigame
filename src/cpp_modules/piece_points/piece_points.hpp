@@ -3,6 +3,7 @@
 
 #include <board_components.hpp>
 #include <common.hpp>
+#include <json.hpp>
 #include <unordered_map>
 #include <vector>
 
@@ -10,7 +11,15 @@ namespace piece_points {
 
 using namespace board_components;
 using namespace std;
+using json = nlohmann::json;
 
+struct PointsSpec {
+  base_points_map_t black_base;
+  base_points_map_t red_base_offsets;
+  position_points_map_t black_position;
+  position_points_map_t red_position_offsets;
+  json ToJson();
+};
 
 // TODO move raw data vals to json file and import instead of
 // hard-coding here
@@ -23,6 +32,26 @@ const TeamBasePoints_t kBasePointsICGA2004 = {
     {PieceType::kHor, 270},
     {PieceType::kCan, 285},
     {PieceType::kSol, 30}};
+
+const base_points_map_t kBasePointsMapICGA2004 = {
+    {"null", 0},
+    {"general", 6000},
+    {"advisor", 120},
+    {"elephant", 120},
+    {"chariot", 600},
+    {"horse", 270},
+    {"cannon", 285},
+    {"soldier", 30}};
+
+const base_points_map_t kNullBasePointsOffsetMap = {
+    {"null", 0},
+    {"general", 0},
+    {"advisor", 0},
+    {"elephant", 0},
+    {"chariot", 0},
+    {"horse", 0},
+    {"cannon", 0},
+    {"soldier", 0}};
 
 const PiecePositionPoints_t kNullOffsets{};
 const PiecePositionPoints_t kGeneralOffsetsICGA2004{};
@@ -72,6 +101,28 @@ const PiecePositionPoints_t kSoldierOffsetsICGA2004 = {
      {14, 26, 42, 60, 80, 60, 42, 26, 14},
      {18, 36, 56, 80, 120, 80, 56, 36, 18},
      {0, 3, 6, 9, 12, 9, 6, 3, 0}}};
+
+const position_points_map_t kPositionPointsMapICGA2004 = {
+    {"null", kNullOffsets},
+    {"general", kGeneralOffsetsICGA2004},
+    {"advisor", kAdvisorOffsetsICGA2004},
+    {"elephant", kElephantOffsetsICGA2004},
+    {"chariot", piece_points::kChariotOffsetsICGA2004},
+    {"horse", kHorseOffsetsICGA2004},
+    {"cannon", kCannonOffsetsICGA2004},
+    {"soldier", kSoldierOffsetsICGA2004}};
+
+const position_points_map_t kNullPositionPointsOffsetMap = {
+    {"null", kNullOffsets},
+    {"general", kNullOffsets},
+    {"advisor", kNullOffsets},
+    {"elephant", kNullOffsets},
+    {"chariot", kNullOffsets},
+    {"horse", kNullOffsets},
+    {"cannon", kNullOffsets},
+    {"soldier", kNullOffsets}};
+    
+
 
 const TeamPositionPoints_t kAllOffsetsICGA2004 = {
     {PieceType::kGen, kGeneralOffsetsICGA2004},
