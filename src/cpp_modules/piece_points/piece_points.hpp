@@ -20,19 +20,18 @@ struct PointsSpecBPOExternal {
   PointsSpecBPOExternal(
       base_points_map_t black_base_input,
       base_points_map_t red_base_offsets_input,
-      position_points_map_t black_position_input,
-      position_points_map_t red_position_offsets_input
+      TeamPointsSMap_t black_position_input,
+      TeamPointsSMap_t red_position_offsets_input
   );
   PointsSpecBPOExternal(const json &json_object);
   PointsSpecBPOExternal(string json_file_path);
   base_points_map_t black_base;
   base_points_map_t red_base_offsets;
-  position_points_map_t black_position;
-  position_points_map_t red_position_offsets;
+  TeamPointsSMap_t black_position;
+  TeamPointsSMap_t red_position_offsets;
   json ToJson();
   void ToFile(string output_path);
 };
-
 
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for
 // use in internal data structs
@@ -40,15 +39,15 @@ struct PointsSpecBPOInternal {
   PointsSpecBPOInternal(
       TeamBasePoints_t black_base_input,
       TeamBasePoints_t red_base_offsets_input,
-      TeamPositionPoints_t black_position_input,
-      TeamPositionPoints_t red_position_offsets_input
+      TeamPointsEMap_t black_position_input,
+      TeamPointsEMap_t red_position_offsets_input
   );
   PointsSpecBPOInternal(PointsSpecBPOExternal external_spec);
 
   TeamBasePoints_t black_base;
   TeamBasePoints_t red_base_offsets;
-  TeamPositionPoints_t black_position;
-  TeamPositionPoints_t red_position_offsets;
+  TeamPointsEMap_t black_position;
+  TeamPointsEMap_t red_position_offsets;
 };
 
 class PiecePointsBuilder {
@@ -57,7 +56,7 @@ public:
   PiecePointsBuilder(PointsSpecBPOExternal external_points_spec);
   PiecePointsBuilder(string spec_file_path);
 
-  GamePositionPoints_t BuildGamePositionPoints();
+  GamePointsEMap_t BuildGamePositionPoints();
 
 private:
   PointsSpecBPOInternal points_spec_;
@@ -67,12 +66,35 @@ private:
       PiecePositionPoints_t a,
       PiecePositionPoints_t b
   );
-  TeamPositionPoints_t ComputeBlackNetPoints();
-  TeamPositionPoints_t ComputeRedNetPoints();
+  TeamPointsEMap_t ComputeBlackNetPoints();
+  TeamPointsEMap_t ComputeRedNetPoints();
   PiecePositionPoints_t ComputePieceNetPoints(
       Points_t base,
       PiecePositionPoints_t position_points
   );
+};
+
+class GamePointsArrayBuilder {
+public:
+  GamePointsArrayBuilder(PointsSpecBPOInternal internal_points_spec);
+  GamePointsArrayBuilder(PointsSpecBPOExternal external_points_spec);
+  GamePointsArrayBuilder(string spec_file_path);
+  GamePointsArray_t BuildGamePointsArray();
+
+private:
+  PointsSpecBPOInternal points_spec_;
+  PiecePositionPoints_t FlipBoardDirection(PiecePositionPoints_t orig_piece_pts
+  );
+  PiecePositionPoints_t PiecePointsArraySum(
+      PiecePositionPoints_t a,
+      PiecePositionPoints_t b
+  );
+  PiecePositionPoints_t ComputePieceNetPoints(
+      Points_t base,
+      PiecePositionPoints_t position_points
+  );
+  TeamPointsArray_t ComputeBlackNetPoints();
+  TeamPointsArray_t ComputeRedNetPoints();
 };
 
 const string kICGAPath =
@@ -80,6 +102,44 @@ const string kICGAPath =
     "ICGA_2004_bpo.json";
 const auto DEFAULT_GAME_POINTS =
     PiecePointsBuilder(kICGAPath).BuildGamePositionPoints();
+
+const auto DEFAULT_GAME_POINTS_ARRAY =
+    GamePointsArrayBuilder(kICGAPath).BuildGamePointsArray();
+
+struct GamePositionPoints {
+  GamePositionPoints();
+  GamePositionPoints(GamePointsArray_t game_points_array);
+  GamePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
+  GamePositionPoints(PointsSpecBPOExternal external_bpo_spec);
+  GamePositionPoints(string raw_points_json);
+  Points_t GetValueOfPieceAtPosition(
+      PieceColor color,
+      PieceType piece_type,
+      BoardSpace space
+  ) {
+    return points_array[get_zcolor_index(color)][piece_type][space.rank]
+                       [space.file];
+  }
+  PiecePositionPoints_t GetSinglePieceArray(
+      PieceColor color,
+      PieceType piece_type
+  ) {
+    return points_array[get_zcolor_index(color)][piece_type];
+  }
+  GamePointsArray_t points_array;
+  void ToJson();
+  void ToFile();
+};
+
+// Primary conversion functions
+GamePointsArray_t game_points_smap_to_array(GamePointsSMap_t s_map);
+GamePointsSMap_t game_points_array_to_smap(GamePointsArray_t game_array);
+
+// Intermediate conversion helpers
+GamePointsEMap_t game_points_array_to_map(GamePointsArray_t game_array);
+TeamPointsEMap_t team_array_to_map(TeamPointsArray_t team_array);
+GamePointsSMap_t game_points_emap_to_smap(GamePointsEMap_t e_map);
+TeamPointsSMap_t team_array_to_smap(TeamPointsArray_t team_array);
 
 } // namespace piece_points
 

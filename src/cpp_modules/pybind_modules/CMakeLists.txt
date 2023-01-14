@@ -9,6 +9,7 @@ target_link_libraries(
     common
     game_board
     nlohmann_json
+    piece_points
     utility_functs
     )
 

@@ -1,8 +1,8 @@
+#include <game_board.hpp>
 #include <gtest/gtest.h>
+#include <hash_calculator.hpp>
 #include <minimax_evaluator.hpp>
 #include <piece_points.hpp>
-#include <game_board.hpp>
-#include <hash_calculator.hpp>
 
 using namespace piece_points;
 
@@ -10,12 +10,18 @@ class PiecePointsEvaluatorTest : public ::testing::Test {
 
 protected:
   // PiecePointsBuilder piece_points_buider_;
-  const string points_spec_path = "/home/duane/workspace/project/src/cpp_modules/piece_points/"
-                 "ICGA_2004_bpo.json";
+  const string points_spec_path =
+      "/home/duane/workspace/project/src/cpp_modules/piece_points/"
+      "ICGA_2004_bpo.json";
 
-  const PointsSpecBPOExternal external_pts_spec = PointsSpecBPOExternal(points_spec_path);
-  const PointsSpecBPOInternal internal_pts_spec = PointsSpecBPOInternal(external_pts_spec);
-  PiecePointsBuilder piece_points_builder_ = PiecePointsBuilder(internal_pts_spec);
+  const PointsSpecBPOExternal external_pts_spec =
+      PointsSpecBPOExternal(points_spec_path);
+  const PointsSpecBPOInternal internal_pts_spec =
+      PointsSpecBPOInternal(external_pts_spec);
+  PiecePointsBuilder piece_points_builder_ =
+      PiecePointsBuilder(internal_pts_spec);
+  GamePointsArrayBuilder game_points_array_builder_ =
+      GamePointsArrayBuilder(internal_pts_spec);
   GameBoard<HashCalculator> game_board_;
   // PiecePointsEvaluatorTest()
   //     : piece_points_buider_{PiecePointsBuilder()}
@@ -23,11 +29,13 @@ protected:
 };
 
 TEST_F(PiecePointsEvaluatorTest, EvaluateMove) {
-  auto game_position_points = piece_points_builder_.BuildGamePositionPoints(
-      // kBasePointsICGA2004,
-      // kAllOffsetsICGA2004
-  );
-  auto piece_points_evaluator = PiecePointsEvaluator<GameBoard<HashCalculator>>(game_position_points);
+  // auto game_position_points =
+  // piece_points_builder_.BuildGamePositionPoints();
+  auto game_position_points =
+      GamePositionPoints(game_points_array_builder_.BuildGamePointsArray());
+
+  auto piece_points_evaluator =
+      PiecePointsEvaluator<GameBoard<HashCalculator>>(game_position_points);
   auto black_points_total =
       piece_points_evaluator.GetPlayerTotal(PieceColor::kBlk, game_board_);
   auto red_points_total =
