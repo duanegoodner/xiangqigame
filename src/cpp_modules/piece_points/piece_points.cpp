@@ -148,3 +148,76 @@ GamePositionPoints_t PiecePointsBuilder::BuildGamePositionPoints(
       ComputeBlackPositionPoints(black_base_points, black_position_offsets);
   return BuildGamePositionPoints(black_position_points);
 }
+
+PiecePointsBuilder_2::PiecePointsBuilder_2(PointsSpecInternal points_spec)
+    : points_spec_{points_spec} {}
+
+PiecePositionPoints_t PiecePointsBuilder_2::ComputePieceNetPoints(
+    Points_t base,
+    PiecePositionPoints_t position_points
+) {
+  PiecePositionPoints_t net_points;
+  for (auto rank = 0; rank < kNumRanks; rank++) {
+    for (auto file = 0; file < kNumFiles; file++) {
+      net_points[rank][file] = base + position_points[rank][file];
+    }
+  }
+  return net_points;
+}
+
+PiecePositionPoints_t PiecePointsBuilder_2::FlipBoardDirection(
+    PiecePositionPoints_t orig_piece_pts
+) {
+  auto flipped_pts_array = orig_piece_pts;
+  reverse(flipped_pts_array.begin(), flipped_pts_array.end());
+  return flipped_pts_array;
+}
+
+TeamPositionPoints_t PiecePointsBuilder_2::ComputeBlackNetPoints() {
+  TeamPositionPoints_t black_net_points{};
+  for (auto piece : points_spec_.black_base) {
+    black_net_points[piece.first] = ComputePieceNetPoints(
+        points_spec_.black_base[piece.first],
+        points_spec_.black_position[piece.first]
+    );
+  }
+
+  return black_net_points;
+}
+
+PiecePositionPoints_t PiecePointsBuilder_2::PiecePointsArraySum(
+    PiecePositionPoints_t a,
+    PiecePositionPoints_t b
+) {
+  PiecePositionPoints_t result{};
+  for (auto rank = 0; rank < kNumRanks; rank++) {
+    for (auto file = 0; file < kNumFiles; file++) {
+      result[rank][file] = a[rank][file] + b[rank][file];
+    }
+  }
+  return result;
+}
+
+TeamPositionPoints_t PiecePointsBuilder_2::ComputeRedNetPoints() {
+  TeamPositionPoints_t red_net_points{};
+  for (auto piece : points_spec_.red_base_offsets) {
+    auto base_points = points_spec_.black_base[piece.first] +
+                       points_spec_.red_base_offsets[piece.first];
+    auto unflipped_position_points = PiecePointsArraySum(
+        points_spec_.black_position[piece.first],
+        points_spec_.red_position_offsets[piece.first]
+    );
+    auto flipped_position_points =
+        FlipBoardDirection(unflipped_position_points);
+    red_net_points[piece.first] =
+        ComputePieceNetPoints(base_points, flipped_position_points);
+  }
+  return red_net_points;
+}
+
+GamePositionPoints_t PiecePointsBuilder_2::BuildGamePositionPoints() {
+  GamePositionPoints_t game_position_points{};
+  game_position_points[PieceColor::kBlk] = ComputeBlackNetPoints();
+  game_position_points[PieceColor::kRed] = ComputeRedNetPoints();
+  return game_position_points;
+}

@@ -31,19 +31,18 @@ struct PointsSpecExternal {
 };
 
 struct PointsSpecInternal {
-    PointsSpecInternal(
-        TeamBasePoints_t black_base_input,
-        TeamBasePoints_t red_base_offsets_input,
-        TeamPositionPoints_t black_position_input,
-        TeamPositionPoints_t red_position_offsets_input
-        );
-    PointsSpecInternal(PointsSpecExternal external_spec);
-    
-    TeamBasePoints_t black_base;
-    TeamBasePoints_t red_base_offsets;
-    TeamPositionPoints_t black_position;
-    TeamPositionPoints_t red_position_offsets;
+  PointsSpecInternal(
+      TeamBasePoints_t black_base_input,
+      TeamBasePoints_t red_base_offsets_input,
+      TeamPositionPoints_t black_position_input,
+      TeamPositionPoints_t red_position_offsets_input
+  );
+  PointsSpecInternal(PointsSpecExternal external_spec);
 
+  TeamBasePoints_t black_base;
+  TeamBasePoints_t red_base_offsets;
+  TeamPositionPoints_t black_position;
+  TeamPositionPoints_t red_position_offsets;
 };
 
 // TODO move raw data vals to json file and import instead of
@@ -155,6 +154,27 @@ const TeamPositionPoints_t kAllOffsetsICGA2004 = {
     {PieceType::kHor, kHorseOffsetsICGA2004},
     {PieceType::kCan, kCannonOffsetsICGA2004},
     {PieceType::kSol, kSoldierOffsetsICGA2004}};
+
+class PiecePointsBuilder_2 {
+public:
+  PiecePointsBuilder_2(PointsSpecInternal points_spec);
+  GamePositionPoints_t BuildGamePositionPoints();
+
+private:
+  PointsSpecInternal points_spec_;
+  PiecePositionPoints_t FlipBoardDirection(PiecePositionPoints_t orig_piece_pts
+  );
+  PiecePositionPoints_t PiecePointsArraySum(
+      PiecePositionPoints_t a,
+      PiecePositionPoints_t b
+  );
+  TeamPositionPoints_t ComputeBlackNetPoints();
+  TeamPositionPoints_t ComputeRedNetPoints();
+  PiecePositionPoints_t ComputePieceNetPoints(
+      Points_t base,
+      PiecePositionPoints_t position_points
+  );
+};
 
 class PiecePointsBuilder {
 public:
