@@ -2,6 +2,7 @@
 #define _MINIMAX_EVALUATOR_TEMPLATES_
 
 
+#include "common.hpp"
 #include <limits>
 #include <board_components.hpp>
 #include <piece_points.hpp>
@@ -12,13 +13,13 @@ using namespace piece_points;
 
 template <typename ConcreteGameBoard>
 PiecePointsEvaluator<ConcreteGameBoard>::PiecePointsEvaluator(
-    GamePositionPoints_t game_position_points
+    GamePointsArray_t game_position_points
 )
     : game_position_points_{game_position_points} {};
 
 template <typename ConcreteGameBoard>
 PiecePointsEvaluator<ConcreteGameBoard>::PiecePointsEvaluator()
-    : game_position_points_{DEFAULT_GAME_POINTS} {};
+    : game_position_points_{DEFAULT_GAME_POINTS_ARRAY} {};
 
 template <typename ConcreteGameBoard>
 Points_t PiecePointsEvaluator<ConcreteGameBoard>::GetValueOfPieceAtPosition(
@@ -46,7 +47,6 @@ template <typename ConcreteGameBoard>
 BestMoves PiecePointsEvaluator<ConcreteGameBoard>::ImplementEvaluateNonWinLeaf(
     ConcreteGameBoard &game_board,
     PieceColor cur_player,
-    // MoveCollection &cur_player_moves,
     PieceColor initiating_player
 ) {
   auto cur_player_points = GetPlayerTotal(cur_player, game_board);

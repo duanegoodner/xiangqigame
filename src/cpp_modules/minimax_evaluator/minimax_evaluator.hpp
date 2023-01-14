@@ -10,7 +10,6 @@ using namespace board_components;
 template <typename ConcreteGameBoard>
 class SpaceInfoProvider {
 public:
-  
   vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color) {
     return static_cast<ConcreteGameBoard *>(this)
         ->ImplementGetAllSpacesOccupiedBy(color);
@@ -30,7 +29,7 @@ class PiecePointsEvaluator : public Evaluator<
                                  PiecePointsEvaluator<ConcreteGameBoard>,
                                  ConcreteGameBoard> {
 public:
-  PiecePointsEvaluator(GamePositionPoints_t game_position_points_);
+  PiecePointsEvaluator(GamePointsArray_t game_position_points_);
   PiecePointsEvaluator();
 
   BestMoves ImplementEvaluateNonWinLeaf(
@@ -54,7 +53,7 @@ public:
   Points_t GetPlayerTotal(PieceColor color, ConcreteGameBoard &game_board);
 
 private:
-  GamePositionPoints_t game_position_points_;
+  GamePointsArray_t game_position_points_;
 };
 
 #include <minimax_evaluator.tpp>

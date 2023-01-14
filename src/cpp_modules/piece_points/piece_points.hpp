@@ -50,30 +50,6 @@ struct PointsSpecBPOInternal {
   TeamPositionPoints_t red_position_offsets;
 };
 
-class PiecePointsBuilder {
-public:
-  PiecePointsBuilder(PointsSpecBPOInternal internal_points_spec);
-  PiecePointsBuilder(PointsSpecBPOExternal external_points_spec);
-  PiecePointsBuilder(string spec_file_path);
-
-  GamePositionPoints_t BuildGamePositionPoints();
-
-private:
-  PointsSpecBPOInternal points_spec_;
-  PiecePositionPoints_t FlipBoardDirection(PiecePositionPoints_t orig_piece_pts
-  );
-  PiecePositionPoints_t PiecePointsArraySum(
-      PiecePositionPoints_t a,
-      PiecePositionPoints_t b
-  );
-  TeamPositionPoints_t ComputeBlackNetPoints();
-  TeamPositionPoints_t ComputeRedNetPoints();
-  PiecePositionPoints_t ComputePieceNetPoints(
-      Points_t base,
-      PiecePositionPoints_t position_points
-  );
-};
-
 class GamePointsArrayBuilder {
 public:
   GamePointsArrayBuilder(PointsSpecBPOInternal internal_points_spec);
@@ -90,21 +66,21 @@ private:
       PiecePositionPoints_t b
   );
   PiecePositionPoints_t ComputePieceNetPoints(
-    Points_t base,
-    PiecePositionPoints_t position_points
+      Points_t base,
+      PiecePositionPoints_t position_points
   );
   TeamPointsArray_t ComputeBlackNetPoints();
   TeamPointsArray_t ComputeRedNetPoints();
-
 };
 
 const string kICGAPath =
     "/home/duane/workspace/project/src/cpp_modules/piece_points/"
     "ICGA_2004_bpo.json";
-const auto DEFAULT_GAME_POINTS =
-    PiecePointsBuilder(kICGAPath).BuildGamePositionPoints();
 
-struct GamePositionPoints {
+const auto DEFAULT_GAME_POINTS_ARRAY =
+    GamePointsArrayBuilder(kICGAPath).BuildGamePointsArray();
+
+        struct GamePositionPoints {
   GamePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
   GamePositionPoints(PointsSpecBPOExternal external_bpo_spec);
   GamePositionPoints(string raw_points_json);

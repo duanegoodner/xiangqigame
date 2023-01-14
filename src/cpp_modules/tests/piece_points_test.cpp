@@ -15,17 +15,13 @@ protected:
       PointsSpecBPOExternal(points_spec_path);
   const PointsSpecBPOInternal internal_pts_spec =
       PointsSpecBPOInternal(external_pts_spec);
-  PiecePointsBuilder piece_points_builder_ =
-      PiecePointsBuilder(internal_pts_spec);
 
   GamePointsArrayBuilder game_points_array_builder_ =
       GamePointsArrayBuilder(points_spec_path);
 };
 
 TEST_F(PiecePointsBuilderTest, BuildGamePoints) {
-  auto game_points = piece_points_builder_.BuildGamePositionPoints();
   auto game_points_array = game_points_array_builder_.BuildGamePointsArray();
-  std::cout << "done" << std::endl;
 
 }
 
