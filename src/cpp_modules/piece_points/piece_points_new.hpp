@@ -32,11 +32,11 @@ team_base_points_t build_team_base_points(
   return team_base_points;
 }
 
-piece_position_points_t build_net_piece_points(
+PiecePositionPoints_t build_net_piece_points(
     Points_t piece_base,
-    piece_position_points_t piece_position_points
+    PiecePositionPoints_t piece_position_points
 ) {
-  piece_position_points_t net_piece_points{};
+  PiecePositionPoints_t net_piece_points{};
   for (auto rank = 0; rank < kNumRanks; rank++) {
     for (auto file = 0; file < kNumFiles; file++) {
       net_piece_points[rank][file] =
@@ -47,18 +47,18 @@ piece_position_points_t build_net_piece_points(
   return piece_position_points;
 }
 
-team_points_array_t build_team_points_array(
+TeamPointsArray_t build_team_points_array(
     team_base_points_t base_points,
-    piece_position_points_t null_position,
-    piece_position_points_t general_position,
-    piece_position_points_t advisor_position,
-    piece_position_points_t elephant_position,
-    piece_position_points_t chariot_position,
-    piece_position_points_t horse_position,
-    piece_position_points_t cannon_position,
-    piece_position_points_t soldier_position
+    PiecePositionPoints_t null_position,
+    PiecePositionPoints_t general_position,
+    PiecePositionPoints_t advisor_position,
+    PiecePositionPoints_t elephant_position,
+    PiecePositionPoints_t chariot_position,
+    PiecePositionPoints_t horse_position,
+    PiecePositionPoints_t cannon_position,
+    PiecePositionPoints_t soldier_position
 ) {
-  team_points_array_t team_points_array{};
+  TeamPointsArray_t team_points_array{};
 
   team_points_array[PieceType::kNnn] =
       build_net_piece_points(base_points[PieceType::kNnn], null_position);
@@ -80,11 +80,11 @@ team_points_array_t build_team_points_array(
   return team_points_array;
 }
 
-game_points_array_t build_game_points_array(
-    team_points_array_t red_net_points,
+GamePointsArray_t build_game_points_array(
+    TeamPointsArray_t red_net_points,
     team_base_points_t black_net_points
     ) {
-        game_points_array_t game_points_array{};
+        GamePointsArray_t game_points_array{};
         game_points_array[get_zcolor_index(PieceColor::kRed)] = red_net_points;
         game_points_array[get_zcolor_index(PieceColor::kBlk)] = black_net_points;
         return game_points_array;
@@ -115,11 +115,11 @@ team_base_points_t build_ICGA2004_base_points() {
     //     {PieceType::kCan, 285},
     //     {PieceType::kSol, 30}};
 
-const piece_position_points_t kNullOffsets{};
-const piece_position_points_t kGeneralOffsetsICGA2004{};
-const piece_position_points_t kAdvisorOffsetsICGA2004{};
-const piece_position_points_t kElephantOffsetsICGA2004{};
-const piece_position_points_t kChariotOffsetsICGA2004 = {
+const PiecePositionPoints_t kNullOffsets{};
+const PiecePositionPoints_t kGeneralOffsetsICGA2004{};
+const PiecePositionPoints_t kAdvisorOffsetsICGA2004{};
+const PiecePositionPoints_t kElephantOffsetsICGA2004{};
+const PiecePositionPoints_t kChariotOffsetsICGA2004 = {
     {{-2, 10, 6, 14, 12, 14, 6, 10, -2},
      {8, 4, 8, 16, 8, 16, 8, 4, 8},
      {4, 8, 6, 14, 12, 14, 6, 8, 4},
@@ -130,7 +130,7 @@ const piece_position_points_t kChariotOffsetsICGA2004 = {
      {12, 12, 12, 18, 18, 18, 12, 12, 12},
      {16, 20, 18, 24, 26, 24, 18, 20, 16},
      {14, 14, 12, 18, 16, 18, 12, 14, 14}}};
-const piece_position_points_t kHorseOffsetsICGA2004 = {
+const PiecePositionPoints_t kHorseOffsetsICGA2004 = {
     {{0, -4, 0, 0, 0, 0, 0, -4, 0},
      {0, 2, 4, 4, -2, 4, 4, 2, 0},
      {4, 2, 8, 8, 4, 8, 8, 2, 4},
@@ -141,7 +141,7 @@ const piece_position_points_t kHorseOffsetsICGA2004 = {
      {12, 14, 16, 20, 18, 20, 16, 14, 12},
      {4, 10, 28, 16, 8, 16, 28, 10, 4},
      {4, 8, 16, 12, 4, 12, 16, 8, 4}}};
-const piece_position_points_t kCannonOffsetsICGA2004 = {
+const PiecePositionPoints_t kCannonOffsetsICGA2004 = {
     {{0, 0, 2, 6, 6, 6, 2, 0, 0},
      {0, 2, 4, 6, 6, 6, 4, 2, 0},
      {4, 0, 8, 6, 10, 6, 8, 0, 4},
@@ -152,7 +152,7 @@ const piece_position_points_t kCannonOffsetsICGA2004 = {
      {2, 2, 0, -10, -8, -10, 0, 2, 2},
      {2, 2, 0, -4, -14, -4, 0, 2, 2},
      {6, 4, 0, -10, -12, -10, 0, 4, 6}}};
-const piece_position_points_t kSoldierOffsetsICGA2004 = {
+const PiecePositionPoints_t kSoldierOffsetsICGA2004 = {
     {{0, 0, 0, 0, 0, 0, 0, 0, 0},
      {0, 0, 0, 0, 0, 0, 0, 0, 0},
      {0, 0, 0, 0, 0, 0, 0, 0, 0},

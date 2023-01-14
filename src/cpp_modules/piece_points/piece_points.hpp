@@ -33,7 +33,6 @@ struct PointsSpecBPOExternal {
   void ToFile(string output_path);
 };
 
-
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for
 // use in internal data structs
 struct PointsSpecBPOInternal {
@@ -75,11 +74,44 @@ private:
   );
 };
 
+class GamePointsArrayBuilder {
+public:
+  GamePointsArrayBuilder(PointsSpecBPOInternal internal_points_spec);
+  GamePointsArrayBuilder(PointsSpecBPOExternal external_points_spec);
+  GamePointsArrayBuilder(string spec_file_path);
+  GamePointsArray_t BuildGamePointsArray();
+
+private:
+  PointsSpecBPOInternal points_spec_;
+  PiecePositionPoints_t FlipBoardDirection(PiecePositionPoints_t orig_piece_pts
+  );
+  PiecePositionPoints_t PiecePointsArraySum(
+      PiecePositionPoints_t a,
+      PiecePositionPoints_t b
+  );
+  PiecePositionPoints_t ComputePieceNetPoints(
+    Points_t base,
+    PiecePositionPoints_t position_points
+  );
+  TeamPointsArray_t ComputeBlackNetPoints();
+  TeamPointsArray_t ComputeRedNetPoints();
+
+};
+
 const string kICGAPath =
     "/home/duane/workspace/project/src/cpp_modules/piece_points/"
     "ICGA_2004_bpo.json";
 const auto DEFAULT_GAME_POINTS =
     PiecePointsBuilder(kICGAPath).BuildGamePositionPoints();
+
+struct GamePositionPoints {
+  GamePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
+  GamePositionPoints(PointsSpecBPOExternal external_bpo_spec);
+  GamePositionPoints(string raw_points_json);
+  GamePointsArray_t points_array;
+  void ToJson();
+  void ToFile();
+};
 
 } // namespace piece_points
 

@@ -28,9 +28,8 @@ inline size_t get_zcolor_index(PieceColor color) {
   return (size_t)(color + (int)(color < 0));
 }
 
-
 // //////
-// Board 
+// Board
 // //////
 typedef int BoardIdx_t;
 const BoardIdx_t kNumRanks = 10;
@@ -50,7 +49,7 @@ struct BoardDirection {
 };
 
 // //////////////
-// HashCalculator 
+// HashCalculator
 // /////////////
 typedef unsigned long long zkey_t;
 typedef array<array<zkey_t, kNumFiles>, kNumRanks> piece_zarray_t;
@@ -62,32 +61,24 @@ typedef array<team_zarray_t, 2> game_zarray_t;
 // /////////////
 typedef int Points_t;
 
+typedef array<array<int, kNumFiles>, kNumRanks> PiecePositionPoints_t;
+typedef array<PiecePositionPoints_t, kNumPieceTypeVals> TeamPointsArray_t;
+typedef array<TeamPointsArray_t, 2> GamePointsArray_t;
+
 typedef unordered_map<PieceType, Points_t> TeamBasePoints_t;
 // array version
 typedef array<Points_t, kNumPieceTypeVals> base_points_array_t;
 typedef unordered_map<string, Points_t> base_points_map_t;
 
-typedef array<array<int, kNumFiles>, kNumRanks> PiecePositionPoints_t;
-// same struct, different name
-typedef array<array<int, kNumFiles>, kNumRanks> piece_position_points_t;
-
 typedef unordered_map<PieceType, PiecePositionPoints_t> TeamPositionPoints_t;
 // new naming convention with string key
-typedef unordered_map<string, piece_position_points_t> position_points_map_t;
-// array version
-typedef array<PiecePositionPoints_t, kNumPieceTypeVals> team_points_array_t;
-
+typedef unordered_map<string, PiecePositionPoints_t> position_points_map_t;
 
 typedef unordered_map<PieceColor, TeamPositionPoints_t> GamePositionPoints_t;
 // array version
-typedef array<team_points_array_t, 2> game_points_array_t;
-
 
 // json piece points
 
 // Piece Points all arrays
-
-
-
 
 #endif
