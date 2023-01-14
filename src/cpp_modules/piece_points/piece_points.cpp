@@ -83,76 +83,10 @@ PointsSpecInternal::PointsSpecInternal(PointsSpecExternal external_spec) {
   );
 }
 
-PiecePositionPoints_t PiecePointsBuilder::ComputePieceNetPositionPoints(
-    int base_val,
-    PiecePositionPoints_t position_offsets
-) {
-  PiecePositionPoints_t net_points;
-  for (auto rank = 0; rank < kNumRanks; rank++) {
-    for (auto file = 0; file < kNumFiles; file++) {
-      net_points[rank][file] = base_val + position_offsets[rank][file];
-    }
-  }
-  return net_points;
-}
-
-TeamPositionPoints_t PiecePointsBuilder::ComputeBlackPositionPoints(
-    TeamBasePoints_t black_base_points,
-    TeamPositionPoints_t black_position_offsets
-) {
-  TeamPositionPoints_t black_team_points;
-
-  for (auto piece : black_base_points) {
-    black_team_points[piece.first] = ComputePieceNetPositionPoints(
-        black_base_points[piece.first],
-        black_position_offsets[piece.first]
-    );
-  }
-  return black_team_points;
-}
-
-PiecePositionPoints_t PiecePointsBuilder::FlipBoardDirection(
-    PiecePositionPoints_t orig_piece_pts
-) {
-  auto flipped_pts_array = orig_piece_pts;
-  reverse(flipped_pts_array.begin(), flipped_pts_array.end());
-  return flipped_pts_array;
-}
-
-TeamPositionPoints_t PiecePointsBuilder::ComputeRedPositionPoints(
-    TeamPositionPoints_t black_team_points
-) {
-  TeamPositionPoints_t red_team_points = black_team_points;
-  for (auto array : red_team_points) {
-    red_team_points[array.first] =
-        FlipBoardDirection(red_team_points[array.first]);
-  }
-  return red_team_points;
-}
-
-GamePositionPoints_t PiecePointsBuilder::BuildGamePositionPoints(
-    TeamPositionPoints_t black_points
-) {
-  GamePositionPoints_t game_position_points;
-  game_position_points[PieceColor::kBlk] = black_points;
-  game_position_points[PieceColor::kRed] =
-      ComputeRedPositionPoints(black_points);
-  return game_position_points;
-}
-
-GamePositionPoints_t PiecePointsBuilder::BuildGamePositionPoints(
-    TeamBasePoints_t black_base_points,
-    TeamPositionPoints_t black_position_offsets
-) {
-  auto black_position_points =
-      ComputeBlackPositionPoints(black_base_points, black_position_offsets);
-  return BuildGamePositionPoints(black_position_points);
-}
-
-PiecePointsBuilder_2::PiecePointsBuilder_2(PointsSpecInternal points_spec)
+PiecePointsBuilder::PiecePointsBuilder(PointsSpecInternal points_spec)
     : points_spec_{points_spec} {}
 
-PiecePositionPoints_t PiecePointsBuilder_2::ComputePieceNetPoints(
+PiecePositionPoints_t PiecePointsBuilder::ComputePieceNetPoints(
     Points_t base,
     PiecePositionPoints_t position_points
 ) {
@@ -165,7 +99,7 @@ PiecePositionPoints_t PiecePointsBuilder_2::ComputePieceNetPoints(
   return net_points;
 }
 
-PiecePositionPoints_t PiecePointsBuilder_2::FlipBoardDirection(
+PiecePositionPoints_t PiecePointsBuilder::FlipBoardDirection(
     PiecePositionPoints_t orig_piece_pts
 ) {
   auto flipped_pts_array = orig_piece_pts;
@@ -173,7 +107,7 @@ PiecePositionPoints_t PiecePointsBuilder_2::FlipBoardDirection(
   return flipped_pts_array;
 }
 
-TeamPositionPoints_t PiecePointsBuilder_2::ComputeBlackNetPoints() {
+TeamPositionPoints_t PiecePointsBuilder::ComputeBlackNetPoints() {
   TeamPositionPoints_t black_net_points{};
   for (auto piece : points_spec_.black_base) {
     black_net_points[piece.first] = ComputePieceNetPoints(
@@ -185,7 +119,7 @@ TeamPositionPoints_t PiecePointsBuilder_2::ComputeBlackNetPoints() {
   return black_net_points;
 }
 
-PiecePositionPoints_t PiecePointsBuilder_2::PiecePointsArraySum(
+PiecePositionPoints_t PiecePointsBuilder::PiecePointsArraySum(
     PiecePositionPoints_t a,
     PiecePositionPoints_t b
 ) {
@@ -198,7 +132,7 @@ PiecePositionPoints_t PiecePointsBuilder_2::PiecePointsArraySum(
   return result;
 }
 
-TeamPositionPoints_t PiecePointsBuilder_2::ComputeRedNetPoints() {
+TeamPositionPoints_t PiecePointsBuilder::ComputeRedNetPoints() {
   TeamPositionPoints_t red_net_points{};
   for (auto piece : points_spec_.red_base_offsets) {
     auto base_points = points_spec_.black_base[piece.first] +
@@ -215,7 +149,7 @@ TeamPositionPoints_t PiecePointsBuilder_2::ComputeRedNetPoints() {
   return red_net_points;
 }
 
-GamePositionPoints_t PiecePointsBuilder_2::BuildGamePositionPoints() {
+GamePositionPoints_t PiecePointsBuilder::BuildGamePositionPoints() {
   GamePositionPoints_t game_position_points{};
   game_position_points[PieceColor::kBlk] = ComputeBlackNetPoints();
   game_position_points[PieceColor::kRed] = ComputeRedNetPoints();

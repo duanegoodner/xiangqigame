@@ -15,7 +15,7 @@ protected:
 
   const PointsSpecExternal external_pts_spec = PointsSpecExternal(points_spec_path);
   const PointsSpecInternal internal_pts_spec = PointsSpecInternal(external_pts_spec);
-  PiecePointsBuilder_2 piece_points_builder_ = PiecePointsBuilder_2(internal_pts_spec);
+  PiecePointsBuilder piece_points_builder_ = PiecePointsBuilder(internal_pts_spec);
   GameBoard<HashCalculator> game_board_;
   // PiecePointsEvaluatorTest()
   //     : piece_points_buider_{PiecePointsBuilder()}

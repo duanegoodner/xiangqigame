@@ -11,7 +11,7 @@ const string points_spec_path = "/home/duane/workspace/project/src/cpp_modules/p
 
   const PointsSpecExternal external_pts_spec = PointsSpecExternal(points_spec_path);
   const PointsSpecInternal internal_pts_spec = PointsSpecInternal(external_pts_spec);
-  PiecePointsBuilder_2 piece_points_builder_ = PiecePointsBuilder_2(internal_pts_spec);
+  PiecePointsBuilder piece_points_builder_ = PiecePointsBuilder(internal_pts_spec);
   // PiecePointsBuilderTest()
   //     : piece_points_builder_{PiecePointsBuilder()} {};
 };

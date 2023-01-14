@@ -17,7 +17,7 @@ int main() {
 
     auto internal_points_spec = PointsSpecInternal(external_points_spec);
 
-    auto new_builder = PiecePointsBuilder_2(internal_points_spec);
+    auto new_builder = PiecePointsBuilder(internal_points_spec);
 
     auto new_game_points = new_builder.BuildGamePositionPoints();
 

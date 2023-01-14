@@ -156,9 +156,9 @@ const TeamPositionPoints_t kAllOffsetsICGA2004 = {
     {PieceType::kCan, kCannonOffsetsICGA2004},
     {PieceType::kSol, kSoldierOffsetsICGA2004}};
 
-class PiecePointsBuilder_2 {
+class PiecePointsBuilder {
 public:
-  PiecePointsBuilder_2(PointsSpecInternal points_spec);
+  PiecePointsBuilder(PointsSpecInternal points_spec);
   GamePositionPoints_t BuildGamePositionPoints();
 
 private:
@@ -177,43 +177,6 @@ private:
   );
 };
 
-class PiecePointsBuilder {
-public:
-  GamePositionPoints_t BuildGamePositionPoints(
-      TeamPositionPoints_t black_points
-  );
-
-  GamePositionPoints_t BuildGamePositionPoints(
-      TeamBasePoints_t black_base_points,
-      TeamPositionPoints_t black_position_offsets
-  );
-
-  GamePositionPoints_t BuildGamePositionPoints(PointsSpecInternal points_spec);
-
-private:
-  PiecePositionPoints_t ComputePieceNetPositionPoints(
-      int base_val,
-      PiecePositionPoints_t position_offsets
-  );
-
-  TeamPositionPoints_t ComputeBlackPositionPoints(
-      TeamBasePoints_t black_base_pts,
-      TeamPositionPoints_t black_position_offsets
-  );
-
-  PiecePositionPoints_t FlipBoardDirection(PiecePositionPoints_t orig_piece_pts
-  );
-
-  TeamPositionPoints_t ComputeRedPositionPoints(
-      TeamPositionPoints_t black_position_points
-  );
-};
-
-// const auto DEFAULT_GAME_POINTS =
-// PiecePointsBuilder().BuildGamePositionPoints(
-//     kBasePointsICGA2004,
-//     kAllOffsetsICGA2004
-// );
 
 const string kICGAPath = "/home/duane/workspace/project/src/cpp_modules/piece_points/"
                  "ICGA_2004.json";
@@ -222,7 +185,7 @@ const PointsSpecExternal DEFAULT_EXTERNAL_POINTS_SPEC =
 const PointsSpecInternal DEFAULT_INTERNAL_POINTS_SPEC =
     PointsSpecInternal(DEFAULT_EXTERNAL_POINTS_SPEC);
 const auto DEFAULT_GAME_POINTS =
-    PiecePointsBuilder_2(DEFAULT_INTERNAL_POINTS_SPEC).BuildGamePositionPoints();
+    PiecePointsBuilder(DEFAULT_INTERNAL_POINTS_SPEC).BuildGamePositionPoints();
 
 
 } // namespace piece_points
