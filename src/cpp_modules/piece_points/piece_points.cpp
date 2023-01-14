@@ -10,7 +10,7 @@ using namespace board_components;
 using namespace piece_points;
 using json = nlohmann::json;
 
-PointsSpecExternal::PointsSpecExternal(
+PointsSpecBPOExternal::PointsSpecBPOExternal(
     base_points_map_t black_base_input,
     base_points_map_t red_base_offsets_input,
     position_points_map_t black_position_input,
@@ -21,17 +21,17 @@ PointsSpecExternal::PointsSpecExternal(
     , black_position{black_position_input}
     , red_position_offsets{red_position_offsets_input} {}
 
-PointsSpecExternal::PointsSpecExternal(const json &json_object) {
+PointsSpecBPOExternal::PointsSpecBPOExternal(const json &json_object) {
   json_object.at("black_base").get_to(black_base);
   json_object.at("red_base_offsets").get_to(red_base_offsets);
   json_object.at("black_position").get_to(black_position);
   json_object.at("red_position_offsets").get_to(red_position_offsets);
 }
 
-PointsSpecExternal::PointsSpecExternal(string json_file_path)
-    : PointsSpecExternal(utility_functs::import_json(json_file_path)){};
+PointsSpecBPOExternal::PointsSpecBPOExternal(string json_file_path)
+    : PointsSpecBPOExternal(utility_functs::import_json(json_file_path)){};
 
-json PointsSpecExternal::ToJson() {
+json PointsSpecBPOExternal::ToJson() {
   json j;
   j["black_base"] = black_base;
   j["red_base_offsets"] = red_base_offsets;
@@ -40,7 +40,12 @@ json PointsSpecExternal::ToJson() {
   return j;
 }
 
-PointsSpecInternal::PointsSpecInternal(
+void PointsSpecBPOExternal::ToFile(string output_path) {
+  auto json_object = ToJson();
+  utility_functs::export_json(json_object, output_path);
+}
+
+PointsSpecBPOInternal::PointsSpecBPOInternal(
     TeamBasePoints_t black_base_input,
     TeamBasePoints_t red_base_offsets_input,
     TeamPositionPoints_t black_position_input,
@@ -51,7 +56,7 @@ PointsSpecInternal::PointsSpecInternal(
     , black_position{black_position_input}
     , red_position_offsets{red_position_offsets_input} {}
 
-PointsSpecInternal::PointsSpecInternal(PointsSpecExternal external_spec) {
+PointsSpecBPOInternal::PointsSpecBPOInternal(PointsSpecBPOExternal external_spec) {
   unordered_map<string, PieceType> key_substitutions = {
       {"null", PieceType::kNnn},
       {"general", PieceType::kGen},
@@ -83,8 +88,14 @@ PointsSpecInternal::PointsSpecInternal(PointsSpecExternal external_spec) {
   );
 }
 
-PiecePointsBuilder::PiecePointsBuilder(PointsSpecInternal points_spec)
-    : points_spec_{points_spec} {}
+PiecePointsBuilder::PiecePointsBuilder(PointsSpecBPOInternal internal_points_spec)
+    : points_spec_{internal_points_spec} {}
+
+PiecePointsBuilder::PiecePointsBuilder(PointsSpecBPOExternal external_points_spec)
+    : PiecePointsBuilder(PointsSpecBPOInternal(external_points_spec)) {}
+
+PiecePointsBuilder::PiecePointsBuilder(string spec_file_path)
+    : PiecePointsBuilder(PointsSpecBPOExternal(spec_file_path)) {}
 
 PiecePositionPoints_t PiecePointsBuilder::ComputePieceNetPoints(
     Points_t base,

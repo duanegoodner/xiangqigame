@@ -7,10 +7,10 @@ class PiecePointsBuilderTest : public ::testing::Test {
 
 protected:
 const string points_spec_path = "/home/duane/workspace/project/src/cpp_modules/piece_points/"
-                 "ICGA_2004.json";
+                 "ICGA_2004_bpo.json";
 
-  const PointsSpecExternal external_pts_spec = PointsSpecExternal(points_spec_path);
-  const PointsSpecInternal internal_pts_spec = PointsSpecInternal(external_pts_spec);
+  const PointsSpecBPOExternal external_pts_spec = PointsSpecBPOExternal(points_spec_path);
+  const PointsSpecBPOInternal internal_pts_spec = PointsSpecBPOInternal(external_pts_spec);
   PiecePointsBuilder piece_points_builder_ = PiecePointsBuilder(internal_pts_spec);
   // PiecePointsBuilderTest()
   //     : piece_points_builder_{PiecePointsBuilder()} {};
