@@ -4,6 +4,7 @@
 #include <board_components.hpp>
 #include <common.hpp>
 #include <json.hpp>
+#include <string>
 #include <unordered_map>
 #include <vector>
 
@@ -208,10 +209,21 @@ private:
   );
 };
 
-const auto DEFAULT_GAME_POINTS = PiecePointsBuilder().BuildGamePositionPoints(
-    kBasePointsICGA2004,
-    kAllOffsetsICGA2004
-);
+// const auto DEFAULT_GAME_POINTS =
+// PiecePointsBuilder().BuildGamePositionPoints(
+//     kBasePointsICGA2004,
+//     kAllOffsetsICGA2004
+// );
+
+const string kICGAPath = "/home/duane/workspace/project/src/cpp_modules/piece_points/"
+                 "ICGA_2004.json";
+const PointsSpecExternal DEFAULT_EXTERNAL_POINTS_SPEC =
+    PointsSpecExternal(kICGAPath);
+const PointsSpecInternal DEFAULT_INTERNAL_POINTS_SPEC =
+    PointsSpecInternal(DEFAULT_EXTERNAL_POINTS_SPEC);
+const auto DEFAULT_GAME_POINTS =
+    PiecePointsBuilder_2(DEFAULT_INTERNAL_POINTS_SPEC).BuildGamePositionPoints();
+
 
 } // namespace piece_points
 
