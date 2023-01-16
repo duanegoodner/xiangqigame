@@ -48,8 +48,8 @@ void PointsSpecBPOExternal::ToFile(string output_path) {
 PointsSpecBPOInternal::PointsSpecBPOInternal(
     TeamBasePoints_t black_base_input,
     TeamBasePoints_t red_base_offsets_input,
-    TeamPositionPoints_t black_position_input,
-    TeamPositionPoints_t red_position_offsets_input
+    TeamPositionPointsMap_t black_position_input,
+    TeamPositionPointsMap_t red_position_offsets_input
 )
     : black_base{black_base_input}
     , red_base_offsets{red_base_offsets_input}
@@ -59,34 +59,34 @@ PointsSpecBPOInternal::PointsSpecBPOInternal(
 PointsSpecBPOInternal::PointsSpecBPOInternal(
     PointsSpecBPOExternal external_spec
 ) {
-  unordered_map<string, PieceType> key_substitutions = {
-      {"null", PieceType::kNnn},
-      {"general", PieceType::kGen},
-      {"advisor", PieceType::kAdv},
-      {"elephant", PieceType::kEle},
-      {"chariot", PieceType::kCha},
-      {"horse", PieceType::kHor},
-      {"cannon", PieceType::kCan},
-      {"soldier", PieceType::kSol}};
+  // unordered_map<string, PieceType> key_substitutions = {
+  //     {"null", PieceType::kNnn},
+  //     {"general", PieceType::kGen},
+  //     {"advisor", PieceType::kAdv},
+  //     {"elephant", PieceType::kEle},
+  //     {"chariot", PieceType::kCha},
+  //     {"horse", PieceType::kHor},
+  //     {"cannon", PieceType::kCan},
+  //     {"soldier", PieceType::kSol}};
 
-  black_base = utility_functs::replace_keys(
+  black_base = utility_functs::replace_keys_forward(
       external_spec.black_base,
-      key_substitutions
+      kPieceTypeStringToEnum
   );
 
-  red_base_offsets = utility_functs::replace_keys(
+  red_base_offsets = utility_functs::replace_keys_forward(
       external_spec.red_base_offsets,
-      key_substitutions
+      kPieceTypeStringToEnum
   );
 
-  black_position = utility_functs::replace_keys(
+  black_position = utility_functs::replace_keys_forward(
       external_spec.black_position,
-      key_substitutions
+      kPieceTypeStringToEnum
   );
 
-  red_position_offsets = utility_functs::replace_keys(
+  red_position_offsets = utility_functs::replace_keys_forward(
       external_spec.red_position_offsets,
-      key_substitutions
+      kPieceTypeStringToEnum
   );
 }
 
@@ -167,10 +167,54 @@ TeamPointsArray_t GamePointsArrayBuilder::ComputeRedNetPoints() {
 
 GamePointsArray_t GamePointsArrayBuilder::BuildGamePointsArray() {
   GamePointsArray_t game_points_array{};
-  game_points_array[get_zcolor_index(PieceColor::kBlk)] = ComputeBlackNetPoints();
-  game_points_array[get_zcolor_index(PieceColor::kRed)] = ComputeRedNetPoints();
+  game_points_array[get_zcolor_index(PieceColor::kBlk)] =
+      ComputeBlackNetPoints();
+  game_points_array[get_zcolor_index(PieceColor::kRed)] =
+      ComputeRedNetPoints();
 
   return game_points_array;
 }
 
+GamePositionPoints::GamePositionPoints(PointsSpecBPOInternal internal_bpo_spec)
+    : points_array{
+          GamePointsArrayBuilder(internal_bpo_spec).BuildGamePointsArray()} {}
 
+GamePositionPoints::GamePositionPoints(PointsSpecBPOExternal external_bpo_spec)
+    : GamePositionPoints(PointsSpecBPOInternal(external_bpo_spec)) {}
+
+TeamPositionPointsMap_t piece_points::team_array_to_map(
+    TeamPointsArray_t team_array
+) {
+  TeamPositionPointsMap_t team_map;
+  for (auto piece_idx = 0; piece_idx < kNumPieceTypeVals; piece_idx++) {
+    team_map[static_cast<PieceType>(piece_idx)] = team_array[piece_idx];
+  }
+  return team_map;
+}
+
+GamePointsMap_t piece_points::game_points_array_to_map(
+    GamePointsArray_t game_array
+) {
+  GamePointsMap_t pts_map;
+  for (auto zcolor_idx = 0; zcolor_idx < game_array.size(); zcolor_idx++) {
+    pts_map[get_piece_color(zcolor_idx)] =
+        team_array_to_map(game_array[zcolor_idx]);
+  }
+  return pts_map;
+}
+
+GamePointsSMap_t piece_points::game_points_emap_to_smap(GamePointsMap_t e_map) {
+  GamePointsSMap_t game_string_map;
+
+  auto red_string_map = utility_functs::replace_keys_reverse(
+      e_map[PieceColor::kRed],
+      kPieceTypeStringToEnum);
+
+  auto black_string_map = utility_functs::replace_keys_reverse(
+    e_map[PieceColor::kBlk], kPieceTypeStringToEnum);
+  
+  game_string_map["red"] = red_string_map;
+  game_string_map["black"] = black_string_map;
+
+  return game_string_map;
+}

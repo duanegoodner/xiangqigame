@@ -39,15 +39,14 @@ struct PointsSpecBPOInternal {
   PointsSpecBPOInternal(
       TeamBasePoints_t black_base_input,
       TeamBasePoints_t red_base_offsets_input,
-      TeamPositionPoints_t black_position_input,
-      TeamPositionPoints_t red_position_offsets_input
+      TeamPositionPointsMap_t black_position_input,
+      TeamPositionPointsMap_t red_position_offsets_input
   );
   PointsSpecBPOInternal(PointsSpecBPOExternal external_spec);
-
   TeamBasePoints_t black_base;
   TeamBasePoints_t red_base_offsets;
-  TeamPositionPoints_t black_position;
-  TeamPositionPoints_t red_position_offsets;
+  TeamPositionPointsMap_t black_position;
+  TeamPositionPointsMap_t red_position_offsets;
 };
 
 class GamePointsArrayBuilder {
@@ -80,12 +79,21 @@ const string kICGAPath =
 const auto DEFAULT_GAME_POINTS_ARRAY =
     GamePointsArrayBuilder(kICGAPath).BuildGamePointsArray();
 
-        struct GamePositionPoints {
+TeamPositionPointsMap_t team_array_to_map(TeamPointsArray_t team_array);
+GamePointsMap_t game_points_array_to_map(GamePointsArray_t game_array);
+GamePointsSMap_t game_points_emap_to_smap(GamePointsMap_t e_map);
+
+TeamPointsSMap_t team_array_to_smap(TeamPointsArray_t team_array);
+GamePointsSMap_t game_points_array_to_smap(GamePointsArray_t game_array);
+struct GamePositionPoints {
   GamePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
   GamePositionPoints(PointsSpecBPOExternal external_bpo_spec);
-  GamePositionPoints(string raw_points_json);
+//   GamePositionPoints(string raw_points_json);
+  
+//   
+  
   GamePointsArray_t points_array;
-  void ToJson();
+  json ToJson();
   void ToFile();
 };
 
