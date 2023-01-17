@@ -1,6 +1,7 @@
 #ifndef MINIMAX_EVALUATOR
 #define MINIMAX_EVALUATOR
 
+#include "piece_points.hpp"
 #include <board_components.hpp>
 #include <common.hpp>
 #include <move_selector.hpp>
@@ -10,7 +11,6 @@ using namespace board_components;
 template <typename ConcreteGameBoard>
 class SpaceInfoProvider {
 public:
-  
   vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color) {
     return static_cast<ConcreteGameBoard *>(this)
         ->ImplementGetAllSpacesOccupiedBy(color);
@@ -31,7 +31,8 @@ class PiecePointsEvaluator : public Evaluator<
                                  ConcreteGameBoard> {
 public:
   // PiecePointsEvaluator(GamePointsEMap_t game_position_points_);
-  PiecePointsEvaluator(GamePointsArray_t game_position_points_);
+  // PiecePointsEvaluator(GamePointsArray_t game_position_points_);
+  PiecePointsEvaluator(GamePositionPoints game_position_points_);
   PiecePointsEvaluator();
 
   BestMoves ImplementEvaluateNonWinLeaf(
@@ -55,8 +56,8 @@ public:
   Points_t GetPlayerTotal(PieceColor color, ConcreteGameBoard &game_board);
 
 private:
-  // GamePointsEMap_t game_position_points_;
-  GamePointsArray_t game_position_points_;
+  // GamePointsArray_t game_position_points_;
+  GamePositionPoints game_position_points_;
 };
 
 #include <minimax_evaluator.tpp>

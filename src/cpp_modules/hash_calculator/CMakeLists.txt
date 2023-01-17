@@ -6,7 +6,8 @@ target_link_libraries(
         board_utilities
         common
         utility_functs
-        game_board)
+        game_board
+        piece_points)
 target_include_directories(
         hash_calculator PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}

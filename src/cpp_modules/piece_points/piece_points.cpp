@@ -256,6 +256,8 @@ GamePointsArray_t GamePointsArrayBuilder::BuildGamePointsArray() {
   return game_points_array;
 }
 
+GamePositionPoints::GamePositionPoints()
+: points_array{DEFAULT_GAME_POINTS_ARRAY} {}
 GamePositionPoints::GamePositionPoints(GamePointsArray_t game_points_array) 
 : points_array{game_points_array} {}
 

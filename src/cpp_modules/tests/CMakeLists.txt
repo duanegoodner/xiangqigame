@@ -22,6 +22,7 @@ target_link_libraries(
     move_calculator
     nlohmann_json
     utility_functs
+    piece_points
     GTest::GTest
     GTest::Main)
 
