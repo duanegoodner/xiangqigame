@@ -18,8 +18,8 @@ protected:
       PointsSpecBPOExternal(points_spec_path);
   const PointsSpecBPOInternal internal_pts_spec =
       PointsSpecBPOInternal(external_pts_spec);
-  PiecePointsBuilder piece_points_builder_ =
-      PiecePointsBuilder(internal_pts_spec);
+//   PiecePointsBuilder piece_points_builder_ =
+//       PiecePointsBuilder(internal_pts_spec);
   GamePointsArrayBuilder game_points_array_builder_ =
       GamePointsArrayBuilder(internal_pts_spec);
   GameBoard<HashCalculator> game_board_;
@@ -32,10 +32,10 @@ TEST_F(PiecePointsEvaluatorTest, EvaluateMove) {
   // auto game_position_points =
   // piece_points_builder_.BuildGamePoints();
   auto game_position_points =
-      GamePoints(game_points_array_builder_.BuildGamePointsArray());
+      PiecePoints(game_points_array_builder_.BuildGamePointsArray());
 
   auto piece_points_evaluator =
-      PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints>(game_position_points);
+      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>(game_position_points);
   auto black_points_total =
       piece_points_evaluator.GetPlayerTotal(PieceColor::kBlk, game_board_);
   auto red_points_total =

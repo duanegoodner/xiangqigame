@@ -1,6 +1,6 @@
 #include "common.hpp"
 #include <gtest/gtest.h>
-#include <piece_points.hpp>
+#include <game_points.hpp>
 #include <iostream>
 
 using namespace piece_points;
@@ -16,29 +16,29 @@ protected:
       PointsSpecBPOExternal(points_spec_path);
   const PointsSpecBPOInternal internal_pts_spec =
       PointsSpecBPOInternal(external_pts_spec);
-  // PiecePointsBuilder piece_points_builder_ =
-  //     PiecePointsBuilder(internal_pts_spec);
+  PiecePointsBuilder piece_points_builder_ =
+      PiecePointsBuilder(internal_pts_spec);
 
   GamePointsArrayBuilder game_points_array_builder_ =
       GamePointsArrayBuilder(points_spec_path);
 };
 
 TEST_F(PiecePointsBuilderTest, BuildGamePoints) {
-  // auto game_points = piece_points_builder_.BuildGamePoints();
+  auto game_points = piece_points_builder_.BuildGamePoints();
   auto game_points_array = game_points_array_builder_.BuildGamePointsArray();
-  // for (auto color : game_points) {
-  //   for (auto piece : color.second) {
-  //     for (auto rank = 0; rank < kNumRanks; rank++) {
-  //       for (auto file = 0; file < kNumFiles; file++) {
-  //         std::cout << color.first << ", " << piece.first << ", " << rank << ", " << file << std::endl;
-  //         EXPECT_EQ(
-  //           game_points[color.first][piece.first][rank][file],
-  //           game_points_array[get_zcolor_index(color.first)][piece.first][rank][file]);
-  //       }
-  //     }
-  //   }
-  // }
-  // std::cout << "done" << std::endl;
+  for (auto color : game_points) {
+    for (auto piece : color.second) {
+      for (auto rank = 0; rank < kNumRanks; rank++) {
+        for (auto file = 0; file < kNumFiles; file++) {
+          std::cout << color.first << ", " << piece.first << ", " << rank << ", " << file << std::endl;
+          EXPECT_EQ(
+            game_points[color.first][piece.first][rank][file],
+            game_points_array[get_zcolor_index(color.first)][piece.first][rank][file]);
+        }
+      }
+    }
+  }
+  std::cout << "done" << std::endl;
 
 }
 

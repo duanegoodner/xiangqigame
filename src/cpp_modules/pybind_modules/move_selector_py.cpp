@@ -15,7 +15,7 @@ using namespace piece_points;
 // using namespace board_components;
 
 class PiecePointsMoveSelector
-    : public MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints>> {};
+    : public MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>> {};
 
 PYBIND11_MODULE(MoveSelectorPy, m) {
   py::class_<PiecePointsMoveSelector>(m, "PiecePointsMoveSelector")

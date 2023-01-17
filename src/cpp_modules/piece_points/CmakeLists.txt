@@ -1,6 +1,3 @@
-# set(CMAKE_BUILD_TYPE Debug)
-# add_compile_options(-Wall -Wextra -O3)
-
 add_library(
     piece_points
     piece_points.cpp)
@@ -12,6 +9,7 @@ target_link_libraries(
     utility_functs
     minimax_evaluator
     move_selector
+    piece_points_spec
     )
 
 target_include_directories(
@@ -21,6 +19,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/utility_functs
     ${PROJECT_SOURCE_DIR}/minimax_evaluator
     ${PROJECT_SOURCE_DIR}/move_selector
+    ${PROJECT_SOURCE_DIR}/piece_points_spec
     )
 
 # add_executable(

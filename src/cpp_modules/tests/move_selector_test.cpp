@@ -18,7 +18,7 @@ class MoveSelectorTest : public ::testing::Test {
 
 protected:
   GameBoard<HashCalculator> game_board_;
-  PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints> piece_points_evaluator_;
+  PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints> piece_points_evaluator_;
 };
 
 TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
@@ -30,13 +30,13 @@ TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
 
 TEST_F(MoveSelectorTest, InitializeMinimaxSelector) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints>>
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
       move_selector(piece_points_evaluator_, test_search_depth);
 }
 
 TEST_F(MoveSelectorTest, AttachHashCalculators) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints>>
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
       move_selector(piece_points_evaluator_, test_search_depth);
   auto red_hash_calculator = HashCalculator();
   auto black_hash_calculator = HashCalculator();
@@ -46,7 +46,7 @@ TEST_F(MoveSelectorTest, AttachHashCalculators) {
 
 TEST_F(MoveSelectorTest, GetBoardState) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints>>
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
       move_selector(piece_points_evaluator_, test_search_depth);
   auto red_hash_calculator = HashCalculator();
   auto black_hash_calculator = HashCalculator();
@@ -62,7 +62,7 @@ TEST_F(MoveSelectorTest, GetBoardState) {
 
 TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints>>
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
       move_selector(piece_points_evaluator_, test_search_depth);
   auto start_time = chrono::high_resolution_clock::now();
   auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);
