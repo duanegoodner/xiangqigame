@@ -1,7 +1,7 @@
 #ifndef _MOVE_SELECTOR_
 #define _MOVE_SELECTOR_
 
-#include "common.hpp"
+#include <common.hpp>
 #include <board_components.hpp>
 #include <move_selector_helpers.hpp>
 #include <utility_functs.hpp>

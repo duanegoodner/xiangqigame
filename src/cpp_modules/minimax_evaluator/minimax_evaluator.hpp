@@ -1,13 +1,14 @@
-#ifndef MINIMAX_EVALUATOR
-#define MINIMAX_EVALUATOR
+#ifndef _MINIMAX_EVALUATOR_
+#define _MINIMAX_EVALUATOR_
 
-#include "piece_points.hpp"
+// #include "piece_points.hpp"
 #include <board_components.hpp>
 #include <common.hpp>
 #include <move_selector.hpp>
 
 using namespace board_components;
 
+// CRTP Interface: Evaluator <- GameBoard
 template <typename ConcreteGameBoard>
 class SpaceInfoProvider {
 public:
@@ -25,14 +26,27 @@ public:
   }
 };
 
-template <typename ConcreteGameBoard>
+// CRTP Interface: Evaluator <- GamePoints
+template <typename ConcreteGamePoints>
+class PieceValueProvider {
+  public:
+  
+  Points_t GetValueOfPieceAtPosition(
+      PieceColor color,
+      PieceType piece_type,
+      BoardSpace space
+  ) {
+    return static_cast<ConcreteGamePoints *>(this)
+        ->ImplementGetValueOfPieceAtPosition(color, piece_type, space);
+  }
+};
+
+template <typename ConcreteGameBoard, typename ConcreteGamePoints>
 class PiecePointsEvaluator : public Evaluator<
-                                 PiecePointsEvaluator<ConcreteGameBoard>,
+                                 PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>,
                                  ConcreteGameBoard> {
 public:
-  // PiecePointsEvaluator(GamePointsEMap_t game_position_points_);
-  // PiecePointsEvaluator(GamePointsArray_t game_position_points_);
-  PiecePointsEvaluator(GamePositionPoints game_position_points_);
+  PiecePointsEvaluator(ConcreteGamePoints game_position_points_);
   PiecePointsEvaluator();
 
   BestMoves ImplementEvaluateNonWinLeaf(
@@ -56,8 +70,7 @@ public:
   Points_t GetPlayerTotal(PieceColor color, ConcreteGameBoard &game_board);
 
 private:
-  // GamePointsArray_t game_position_points_;
-  GamePositionPoints game_position_points_;
+  ConcreteGamePoints game_position_points_;
 };
 
 #include <minimax_evaluator.tpp>

@@ -4,6 +4,7 @@
 #include <board_components.hpp>
 #include <game_board.hpp>
 #include <hash_calculator.hpp>
+#include <piece_points.hpp>
 
 namespace py = pybind11;
 using namespace py::literals;

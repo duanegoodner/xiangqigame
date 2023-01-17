@@ -1,14 +1,15 @@
 
+#include "board_components.hpp"
 #include "hash_calculator.hpp"
 #include <chrono>
 #include <functional>
+#include <game_board.hpp>
 #include <gtest/gtest.h>
+#include <hash_calculator.hpp>
 #include <iostream>
+#include <minimax_evaluator.hpp>
 #include <move_selector.hpp>
 #include <piece_points.hpp>
-#include <minimax_evaluator.hpp>
-#include <game_board.hpp>
-#include <hash_calculator.hpp>
 
 using namespace piece_points;
 using namespace std;
@@ -17,7 +18,7 @@ class MoveSelectorTest : public ::testing::Test {
 
 protected:
   GameBoard<HashCalculator> game_board_;
-  PiecePointsEvaluator<GameBoard<HashCalculator>> piece_points_evaluator_;
+  PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints> piece_points_evaluator_;
 };
 
 TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
@@ -29,18 +30,14 @@ TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
 
 TEST_F(MoveSelectorTest, InitializeMinimaxSelector) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>>> move_selector(
-      piece_points_evaluator_,
-      test_search_depth
-  );
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints>>
+      move_selector(piece_points_evaluator_, test_search_depth);
 }
 
 TEST_F(MoveSelectorTest, AttachHashCalculators) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>>> move_selector(
-      piece_points_evaluator_,
-      test_search_depth
-  );
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints>>
+      move_selector(piece_points_evaluator_, test_search_depth);
   auto red_hash_calculator = HashCalculator();
   auto black_hash_calculator = HashCalculator();
   game_board_.AttachHashCalculator(&red_hash_calculator, 0);
@@ -49,10 +46,8 @@ TEST_F(MoveSelectorTest, AttachHashCalculators) {
 
 TEST_F(MoveSelectorTest, GetBoardState) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>>> move_selector(
-      piece_points_evaluator_,
-      test_search_depth
-  );
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints>>
+      move_selector(piece_points_evaluator_, test_search_depth);
   auto red_hash_calculator = HashCalculator();
   auto black_hash_calculator = HashCalculator();
   EXPECT_EQ(red_hash_calculator.GetBoardState(), 0);
@@ -67,18 +62,31 @@ TEST_F(MoveSelectorTest, GetBoardState) {
 
 TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>>> move_selector(
-      piece_points_evaluator_,
-      test_search_depth
-  );
+  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints>>
+      move_selector(piece_points_evaluator_, test_search_depth);
   auto start_time = chrono::high_resolution_clock::now();
   auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);
+
+  /*
+  Found move depends on search depth. If test_search_depth, need to modify
+  both assertions. (having this pair reduces likelihood of confusion if/when
+  test_test_search depth gets changed).
+   */
+  EXPECT_TRUE(test_search_depth == 4);
+  EXPECT_TRUE(
+      (selected_move.start == BoardSpace{9, 1} &&
+       selected_move.end == BoardSpace{7, 2}) ||
+      (selected_move.start == BoardSpace{9, 7} &&
+       selected_move.end == BoardSpace{7, 6})
+  );
+
   auto end_time = std::chrono::high_resolution_clock::now();
   auto search_duration =
       std::chrono::duration_cast<chrono::milliseconds>(end_time - start_time);
-  cout << "Selected Move from: "
-    << selected_move.start.rank << ", " << selected_move.start.file << endl;
-  cout << "To: " << selected_move.end.rank << ", " << selected_move.end.file << endl;
+  cout << "Selected Move from: " << selected_move.start.rank << ", "
+       << selected_move.start.file << endl;
+  cout << "To: " << selected_move.end.rank << ", " << selected_move.end.file
+       << endl;
   cout << "Search time: " << search_duration.count() << "ms" << endl;
   cout << "Search depth: " << test_search_depth << endl;
 }

@@ -1,9 +1,11 @@
 #ifndef _PIECE_POINTS_
 #define _PIECE_POINTS_
 
+// #include <minimax_evaluator.hpp>
 #include <board_components.hpp>
 #include <common.hpp>
 #include <json.hpp>
+#include <minimax_evaluator.hpp>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -56,7 +58,7 @@ public:
   PiecePointsBuilder(PointsSpecBPOExternal external_points_spec);
   PiecePointsBuilder(string spec_file_path);
 
-  GamePointsEMap_t BuildGamePositionPoints();
+  GamePointsEMap_t BuildGamePoints();
 
 private:
   PointsSpecBPOInternal points_spec_;
@@ -101,18 +103,20 @@ const string kICGAPath =
     "/home/duane/workspace/project/src/cpp_modules/piece_points/"
     "ICGA_2004_bpo.json";
 const auto DEFAULT_GAME_POINTS =
-    PiecePointsBuilder(kICGAPath).BuildGamePositionPoints();
+    PiecePointsBuilder(kICGAPath).BuildGamePoints();
 
 const auto DEFAULT_GAME_POINTS_ARRAY =
     GamePointsArrayBuilder(kICGAPath).BuildGamePointsArray();
 
-struct GamePositionPoints {
-  GamePositionPoints();
-  GamePositionPoints(GamePointsArray_t game_points_array);
-  GamePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
-  GamePositionPoints(PointsSpecBPOExternal external_bpo_spec);
-  GamePositionPoints(string raw_points_json);
-  Points_t GetValueOfPieceAtPosition(
+struct GamePoints : public PieceValueProvider<GamePoints>{
+  GamePoints();
+  GamePoints(GamePointsArray_t game_points_array);
+  GamePoints(PointsSpecBPOInternal internal_bpo_spec);
+  GamePoints(PointsSpecBPOExternal external_bpo_spec);
+  GamePoints(string raw_points_json);
+  
+  // define in header to force inlining
+  Points_t ImplementGetValueOfPieceAtPosition(
       PieceColor color,
       PieceType piece_type,
       BoardSpace space
@@ -120,12 +124,7 @@ struct GamePositionPoints {
     return points_array[get_zcolor_index(color)][piece_type][space.rank]
                        [space.file];
   }
-  PiecePositionPoints_t GetSinglePieceArray(
-      PieceColor color,
-      PieceType piece_type
-  ) {
-    return points_array[get_zcolor_index(color)][piece_type];
-  }
+
   GamePointsArray_t points_array;
   void ToJson();
   void ToFile();

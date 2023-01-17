@@ -30,12 +30,12 @@ protected:
 
 TEST_F(PiecePointsEvaluatorTest, EvaluateMove) {
   // auto game_position_points =
-  // piece_points_builder_.BuildGamePositionPoints();
+  // piece_points_builder_.BuildGamePoints();
   auto game_position_points =
-      GamePositionPoints(game_points_array_builder_.BuildGamePointsArray());
+      GamePoints(game_points_array_builder_.BuildGamePointsArray());
 
   auto piece_points_evaluator =
-      PiecePointsEvaluator<GameBoard<HashCalculator>>(game_position_points);
+      PiecePointsEvaluator<GameBoard<HashCalculator>, GamePoints>(game_position_points);
   auto black_points_total =
       piece_points_evaluator.GetPlayerTotal(PieceColor::kBlk, game_board_);
   auto red_points_total =

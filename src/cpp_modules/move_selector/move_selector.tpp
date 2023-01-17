@@ -2,9 +2,7 @@
 #define _MOVE_SELECTOR_TEMPLATES_
 
 #include <move_selector_helpers.hpp>
-#include <piece_points.hpp>
 
-using namespace piece_points;
 
 template <typename ConcreteGameBoard>
 Move RandomMoveSelector<ConcreteGameBoard>::ImplementSelectMove(
@@ -20,14 +18,16 @@ Move RandomMoveSelector<ConcreteGameBoard>::ImplementSelectMove(
 template <typename MinimaxEvaluator>
 MinimaxMoveSelector<MinimaxEvaluator>::
     MinimaxMoveSelector()
-    : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS_ARRAY)}
+    // : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS_ARRAY)}
+    : evaluator_{MinimaxEvaluator()}
     , search_depth_{3}
     , node_counter_{0} {}
 
 template <typename MinimaxEvaluator>
 MinimaxMoveSelector<MinimaxEvaluator>::
     MinimaxMoveSelector(int search_depth)
-    : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS_ARRAY)}
+    // : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS_ARRAY)}
+    : evaluator_{MinimaxEvaluator()}
     , search_depth_{search_depth}
     , node_counter_{0} {}
 

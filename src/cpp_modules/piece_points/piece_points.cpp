@@ -166,7 +166,7 @@ TeamPointsEMap_t PiecePointsBuilder::ComputeRedNetPoints() {
   return red_net_points;
 }
 
-GamePointsEMap_t PiecePointsBuilder::BuildGamePositionPoints() {
+GamePointsEMap_t PiecePointsBuilder::BuildGamePoints() {
   GamePointsEMap_t game_position_points{};
   game_position_points[PieceColor::kBlk] = ComputeBlackNetPoints();
   game_position_points[PieceColor::kRed] = ComputeRedNetPoints();
@@ -256,9 +256,9 @@ GamePointsArray_t GamePointsArrayBuilder::BuildGamePointsArray() {
   return game_points_array;
 }
 
-GamePositionPoints::GamePositionPoints()
+GamePoints::GamePoints()
 : points_array{DEFAULT_GAME_POINTS_ARRAY} {}
-GamePositionPoints::GamePositionPoints(GamePointsArray_t game_points_array) 
+GamePoints::GamePoints(GamePointsArray_t game_points_array) 
 : points_array{game_points_array} {}
 
 

@@ -24,7 +24,7 @@ protected:
 };
 
 TEST_F(PiecePointsBuilderTest, BuildGamePoints) {
-  auto game_points = piece_points_builder_.BuildGamePositionPoints();
+  auto game_points = piece_points_builder_.BuildGamePoints();
   auto game_points_array = game_points_array_builder_.BuildGamePointsArray();
   for (auto color : game_points) {
     for (auto piece : color.second) {

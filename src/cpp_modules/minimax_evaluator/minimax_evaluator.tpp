@@ -4,53 +4,56 @@
 #include "common.hpp"
 #include <board_components.hpp>
 #include <limits>
-#include <piece_points.hpp>
+// #include <piece_points.hpp>
 
 using namespace board_components;
-using namespace piece_points;
 
-template <typename ConcreteGameBoard>
-PiecePointsEvaluator<ConcreteGameBoard>::PiecePointsEvaluator(
-    GamePositionPoints game_position_points)
+template <typename ConcreteGameBoard, typename ConcreteGamePoints>
+PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
+    PiecePointsEvaluator(ConcreteGamePoints game_position_points)
     : game_position_points_{game_position_points} {};
 
-template <typename ConcreteGameBoard>
-PiecePointsEvaluator<ConcreteGameBoard>::PiecePointsEvaluator()
-    : // game_position_points_{DEFAULT_GAME_POINTS_ARRAY}
-    game_position_points_{GamePositionPoints(DEFAULT_GAME_POINTS_ARRAY)} {};
+// TODO fix code smell. Constructor used for game_position_points_ currently
+// not part of interface,
+template <typename ConcreteGameBoard, typename ConcreteGamePoints>
+PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
+    PiecePointsEvaluator()
+    // : game_position_points_{ConcreteGamePoints(DEFAULT_GAME_POINTS_ARRAY)} {};
+    : game_position_points_{ConcreteGamePoints()} {};
 
-template <typename ConcreteGameBoard>
-Points_t PiecePointsEvaluator<ConcreteGameBoard>::GetValueOfPieceAtPosition(
-    PieceColor color,
-    PieceType piece_type,
-    BoardSpace space
-) {
-  // return game_position_points_[get_zcolor_index(color)][piece_type][space.rank]
-  //                             [space.file];
-
-  return game_position_points_.GetValueOfPieceAtPosition(color, piece_type, space);
+template <typename ConcreteGameBoard, typename ConcreteGamePoints>
+Points_t PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
+    GetValueOfPieceAtPosition(
+        PieceColor color,
+        PieceType piece_type,
+        BoardSpace space
+    ) {
+  return game_position_points_
+      .GetValueOfPieceAtPosition(color, piece_type, space);
 }
 
-template <typename ConcreteGameBoard>
-Points_t PiecePointsEvaluator<ConcreteGameBoard>::GetPlayerTotal(
-    PieceColor color,
-    ConcreteGameBoard &game_board
-) {
+template <typename ConcreteGameBoard, typename ConcreteGamePoints>
+Points_t PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
+    GetPlayerTotal(PieceColor color, ConcreteGameBoard &game_board) {
   Points_t pre_attack_total = 0;
   for (auto space : game_board.GetAllSpacesOccupiedBy(color)) {
     auto piece_type = game_board.GetType(space);
-    pre_attack_total += game_position_points_.GetValueOfPieceAtPosition(color, piece_type, space);
+    pre_attack_total += game_position_points_.GetValueOfPieceAtPosition(
+        color,
+        piece_type,
+        space
+    );
   }
   return pre_attack_total;
 }
 
-template <typename ConcreteGameBoard>
-BestMoves PiecePointsEvaluator<ConcreteGameBoard>::ImplementEvaluateNonWinLeaf(
-    ConcreteGameBoard &game_board,
-    PieceColor cur_player,
-    // MoveCollection &cur_player_moves,
-    PieceColor initiating_player
-) {
+template <typename ConcreteGameBoard, typename ConcreteGamePoints>
+BestMoves PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
+    ImplementEvaluateNonWinLeaf(
+        ConcreteGameBoard &game_board,
+        PieceColor cur_player,
+        PieceColor initiating_player
+    ) {
   auto cur_player_points = GetPlayerTotal(cur_player, game_board);
   auto opponent_points = GetPlayerTotal(opponent_of(cur_player), game_board);
 
@@ -67,28 +70,36 @@ BestMoves PiecePointsEvaluator<ConcreteGameBoard>::ImplementEvaluateNonWinLeaf(
   }
 }
 
-template <typename ConcreteGameBoard>
-RatedMove PiecePointsEvaluator<ConcreteGameBoard>::ImplementRateMove(
+template <typename ConcreteGameBoard, typename ConcreteGamePoints>
+RatedMove
+PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::ImplementRateMove(
     Move move,
     ConcreteGameBoard &game_board,
     PieceColor cur_player
 ) {
   auto piece_type = game_board.GetType(move.start);
-  auto cur_player_position_array =
-      game_position_points_.GetSinglePieceArray(cur_player, piece_type);
-  auto position_value_delta =
-      (cur_player_position_array[move.end.rank][move.end.file] -
-       cur_player_position_array[move.start.rank][move.start.file]);
+
+  auto end_points = game_position_points_.GetValueOfPieceAtPosition(
+      cur_player,
+      piece_type,
+      move.end
+  );
+  auto start_points = game_position_points_.GetValueOfPieceAtPosition(
+      cur_player,
+      piece_type,
+      move.start
+  );
+  auto position_value_delta = end_points - start_points;
 
   Points_t capture_val;
 
   if (game_board.GetColor(move.end) == opponent_of(cur_player)) {
     auto captured_piece_type = game_board.GetType(move.end);
-    auto opponent_position_array = game_position_points_.GetSinglePieceArray(opponent_of(cur_player), captured_piece_type);
-    // auto opponent_position_array =
-    //     game_position_points_[get_zcolor_index(opponent_of(cur_player))]
-    //                          [captured_piece_type];
-    capture_val = opponent_position_array[move.end.rank][move.end.file];
+    capture_val = GetValueOfPieceAtPosition(
+        opponent_of(cur_player),
+        captured_piece_type,
+        move.end
+    );
   } else {
     capture_val = 0;
   }
