@@ -20,14 +20,14 @@ Move RandomMoveSelector<ConcreteGameBoard>::ImplementSelectMove(
 template <typename MinimaxEvaluator>
 MinimaxMoveSelector<MinimaxEvaluator>::
     MinimaxMoveSelector()
-    : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS)}
+    : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS_ARRAY)}
     , search_depth_{3}
     , node_counter_{0} {}
 
 template <typename MinimaxEvaluator>
 MinimaxMoveSelector<MinimaxEvaluator>::
     MinimaxMoveSelector(int search_depth)
-    : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS)}
+    : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS_ARRAY)}
     , search_depth_{search_depth}
     , node_counter_{0} {}
 

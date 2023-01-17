@@ -1,5 +1,5 @@
-#ifndef _MINIMAX_EVALUATOR_3_
-#define _MINIMAX_EVALUATOR_3_
+#ifndef MINIMAX_EVALUATOR
+#define MINIMAX_EVALUATOR
 
 #include <board_components.hpp>
 #include <common.hpp>
@@ -30,7 +30,8 @@ class PiecePointsEvaluator : public Evaluator<
                                  PiecePointsEvaluator<ConcreteGameBoard>,
                                  ConcreteGameBoard> {
 public:
-  PiecePointsEvaluator(GamePositionPoints_t game_position_points_);
+  // PiecePointsEvaluator(GamePositionPoints_t game_position_points_);
+  PiecePointsEvaluator(GamePointsArray_t game_position_points_);
   PiecePointsEvaluator();
 
   BestMoves ImplementEvaluateNonWinLeaf(
@@ -54,9 +55,10 @@ public:
   Points_t GetPlayerTotal(PieceColor color, ConcreteGameBoard &game_board);
 
 private:
-  GamePositionPoints_t game_position_points_;
+  // GamePositionPoints_t game_position_points_;
+  GamePointsArray_t game_position_points_;
 };
 
 #include <minimax_evaluator.tpp>
 
-#endif
+#endif /* MINIMAX_EVALUATOR */

@@ -90,12 +90,11 @@ private:
       PiecePositionPoints_t b
   );
   PiecePositionPoints_t ComputePieceNetPoints(
-    Points_t base,
-    PiecePositionPoints_t position_points
+      Points_t base,
+      PiecePositionPoints_t position_points
   );
   TeamPointsArray_t ComputeBlackNetPoints();
   TeamPointsArray_t ComputeRedNetPoints();
-
 };
 
 const string kICGAPath =
@@ -103,6 +102,9 @@ const string kICGAPath =
     "ICGA_2004_bpo.json";
 const auto DEFAULT_GAME_POINTS =
     PiecePointsBuilder(kICGAPath).BuildGamePositionPoints();
+
+const auto DEFAULT_GAME_POINTS_ARRAY =
+    GamePointsArrayBuilder(kICGAPath).BuildGamePointsArray();
 
 struct GamePositionPoints {
   GamePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
