@@ -10,35 +10,60 @@
 namespace utility_functs {
 
 using json = nlohmann::json;
+using namespace std;
 
 template <typename T>
 T random(T range_from, T range_to) {
-  std::random_device rand_dev;
-  std::mt19937 generator(rand_dev());
-  std::uniform_int_distribution<T> distr(range_from, range_to);
+  random_device rand_dev;
+  mt19937 generator(rand_dev());
+  uniform_int_distribution<T> distr(range_from, range_to);
   return distr(generator);
 }
 
-inline bool ends_with(std::string const &value, std::string const &ending) {
+inline bool ends_with(string const &value, string const &ending) {
   if (ending.size() > value.size())
     return false;
-  return std::equal(ending.rbegin(), ending.rend(), value.rbegin());
+  return equal(ending.rbegin(), ending.rend(), value.rbegin());
 }
 
 template <typename FromKey, typename ToKey, typename Value>
-std::unordered_map<ToKey, Value> replace_keys(
-    std::unordered_map<FromKey, Value> orig_map, std
+unordered_map<ToKey, Value> replace_keys(
+    unordered_map<FromKey, Value> orig_map, std
     ::unordered_map<FromKey, ToKey> key_substitutions
 ) {
-  std::unordered_map<ToKey, Value> new_map;
+  unordered_map<ToKey, Value> new_map;
   for (auto entry : key_substitutions) {
     new_map[entry.second] = orig_map[entry.first];
   }
   return new_map;
 }
 
-json import_json(std::string file_path);
-void export_json(const json &j, std::string filename);
+// replaces KEYS in original map with VALUES of matching KEYS in key_substitutions
+template <typename FromKey, typename ToKey, typename Value>
+unordered_map<ToKey, Value> replace_keys_forward(
+    unordered_map<FromKey, Value> orig_map, unordered_map<FromKey, ToKey> key_substitutions
+) {
+  unordered_map<ToKey, Value> new_map;
+  for (auto entry : key_substitutions) {
+    new_map[entry.second] = orig_map[entry.first];
+  }
+  return new_map;
+}
+
+// replaces KEYS in original map with KEYS of matching VALUES in key_substitutions
+template <typename FromKey, typename ToKey, typename Value>
+unordered_map<ToKey, Value> replace_keys_reverse(
+  unordered_map<FromKey, Value> orig_map, unordered_map<ToKey, FromKey> key_substitutions
+) {
+  unordered_map<ToKey, Value> new_map;
+  for (auto entry : key_substitutions) {
+    new_map[entry.first] = orig_map[entry.second];
+  }
+  return new_map;
+}
+
+json import_json(string file_path);
+void export_json(const json &j, string filename);
 
 } // namespace utility_functs
 

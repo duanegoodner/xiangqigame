@@ -107,8 +107,9 @@ const auto DEFAULT_GAME_POINTS_ARRAY =
     GamePointsArrayBuilder(kICGAPath).BuildGamePointsArray();
 
 struct GamePositionPoints {
-  GamePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
-  GamePositionPoints(PointsSpecBPOExternal external_bpo_spec);
+  GamePositionPoints(GamePointsArray_t game_points_array); 
+  // GamePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
+  // GamePositionPoints(PointsSpecBPOExternal external_bpo_spec);
   GamePositionPoints(string raw_points_json);
   GamePointsArray_t points_array;
   void ToJson();

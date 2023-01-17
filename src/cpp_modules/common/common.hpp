@@ -21,11 +21,33 @@ enum PieceType : int {
   kSol = 7
 };
 const int kNumPieceTypeVals = 8;
+const unordered_map<string, PieceType> kPieceTypeStringToEnum = {
+    {"null", PieceType::kNnn},
+    {"general", PieceType::kGen},
+    {"advisor", PieceType::kAdv},
+    {"elephant", PieceType::kEle},
+    {"chariot", PieceType::kCha},
+    {"horse", PieceType::kHor},
+    {"cannon", PieceType::kCan},
+    {"soldier", PieceType::kSol}
+};
+
 enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
+const int kNumPieceColorVals = 3;
+const unordered_map<string, PieceColor> kPieceColorStringToEnum = {
+  {"red", PieceColor::kRed},
+  {"null", PieceColor::kNul},
+  {"black", PieceColor::kBlk}
+};
 
 // converts red/black: -1/1 of PieceColor enum to 0/1 used in some arrays
 inline size_t get_zcolor_index(PieceColor color) {
   return (size_t)(color + (int)(color < 0));
+}
+// converts red/black: 0/1 to -1/1
+inline PieceColor get_piece_color(size_t zcolor_index) {
+  int piece_color_val = (int)(zcolor_index - (size_t)(zcolor_index == 0));
+  return static_cast<PieceColor>(piece_color_val);
 }
 
 // //////
