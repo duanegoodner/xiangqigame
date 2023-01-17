@@ -107,10 +107,24 @@ const auto DEFAULT_GAME_POINTS_ARRAY =
     GamePointsArrayBuilder(kICGAPath).BuildGamePointsArray();
 
 struct GamePositionPoints {
-  GamePositionPoints(GamePointsArray_t game_points_array); 
-  // GamePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
-  // GamePositionPoints(PointsSpecBPOExternal external_bpo_spec);
+  GamePositionPoints(GamePointsArray_t game_points_array);
+  GamePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
+  GamePositionPoints(PointsSpecBPOExternal external_bpo_spec);
   GamePositionPoints(string raw_points_json);
+  Points_t GetValueOfPieceAtPosition(
+      PieceColor color,
+      PieceType piece_type,
+      BoardSpace space
+  ) {
+    return points_array[get_zcolor_index(color)][piece_type][space.rank]
+                       [space.file];
+  }
+  PiecePositionPoints_t GetSinglePieceArray(
+      PieceColor color,
+      PieceType piece_type
+  ) {
+    return points_array[get_zcolor_index(color)][piece_type];
+  }
   GamePointsArray_t points_array;
   void ToJson();
   void ToFile();

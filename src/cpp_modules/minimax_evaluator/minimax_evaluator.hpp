@@ -52,8 +52,6 @@ public:
       BoardSpace space
   );
 
-  void ExportPostionPoints();
-
   Points_t GetPlayerTotal(PieceColor color, ConcreteGameBoard &game_board);
 
 private:
