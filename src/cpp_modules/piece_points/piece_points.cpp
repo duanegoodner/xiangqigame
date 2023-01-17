@@ -13,8 +13,8 @@ using json = nlohmann::json;
 PointsSpecBPOExternal::PointsSpecBPOExternal(
     base_points_map_t black_base_input,
     base_points_map_t red_base_offsets_input,
-    position_points_map_t black_position_input,
-    position_points_map_t red_position_offsets_input
+    TeamPointsSMap_t black_position_input,
+    TeamPointsSMap_t red_position_offsets_input
 )
     : black_base{black_base_input}
     , red_base_offsets{red_base_offsets_input}
@@ -48,8 +48,8 @@ void PointsSpecBPOExternal::ToFile(string output_path) {
 PointsSpecBPOInternal::PointsSpecBPOInternal(
     TeamBasePoints_t black_base_input,
     TeamBasePoints_t red_base_offsets_input,
-    TeamPositionPoints_t black_position_input,
-    TeamPositionPoints_t red_position_offsets_input
+    TeamPointsEMap_t black_position_input,
+    TeamPointsEMap_t red_position_offsets_input
 )
     : black_base{black_base_input}
     , red_base_offsets{red_base_offsets_input}
@@ -124,8 +124,8 @@ PiecePositionPoints_t PiecePointsBuilder::FlipBoardDirection(
   return flipped_pts_array;
 }
 
-TeamPositionPoints_t PiecePointsBuilder::ComputeBlackNetPoints() {
-  TeamPositionPoints_t black_net_points{};
+TeamPointsEMap_t PiecePointsBuilder::ComputeBlackNetPoints() {
+  TeamPointsEMap_t black_net_points{};
   for (auto piece : points_spec_.black_base) {
     black_net_points[piece.first] = ComputePieceNetPoints(
         points_spec_.black_base[piece.first],
@@ -149,8 +149,8 @@ PiecePositionPoints_t PiecePointsBuilder::PiecePointsArraySum(
   return result;
 }
 
-TeamPositionPoints_t PiecePointsBuilder::ComputeRedNetPoints() {
-  TeamPositionPoints_t red_net_points{};
+TeamPointsEMap_t PiecePointsBuilder::ComputeRedNetPoints() {
+  TeamPointsEMap_t red_net_points{};
   for (auto piece : points_spec_.red_base_offsets) {
     auto base_points = points_spec_.black_base[piece.first] +
                        points_spec_.red_base_offsets[piece.first];
@@ -166,8 +166,8 @@ TeamPositionPoints_t PiecePointsBuilder::ComputeRedNetPoints() {
   return red_net_points;
 }
 
-GamePositionPoints_t PiecePointsBuilder::BuildGamePositionPoints() {
-  GamePositionPoints_t game_position_points{};
+GamePointsEMap_t PiecePointsBuilder::BuildGamePositionPoints() {
+  GamePointsEMap_t game_position_points{};
   game_position_points[PieceColor::kBlk] = ComputeBlackNetPoints();
   game_position_points[PieceColor::kRed] = ComputeRedNetPoints();
   return game_position_points;

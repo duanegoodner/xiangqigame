@@ -13,7 +13,7 @@ using namespace piece_points;
 
 template <typename ConcreteGameBoard>
 PiecePointsEvaluator<ConcreteGameBoard>::PiecePointsEvaluator(
-    // GamePositionPoints_t game_position_points
+    // GamePointsEMap_t game_position_points
     GamePointsArray_t game_position_points
 )
     : game_position_points_{game_position_points} {};

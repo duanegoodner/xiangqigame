@@ -30,7 +30,7 @@ class PiecePointsEvaluator : public Evaluator<
                                  PiecePointsEvaluator<ConcreteGameBoard>,
                                  ConcreteGameBoard> {
 public:
-  // PiecePointsEvaluator(GamePositionPoints_t game_position_points_);
+  // PiecePointsEvaluator(GamePointsEMap_t game_position_points_);
   PiecePointsEvaluator(GamePointsArray_t game_position_points_);
   PiecePointsEvaluator();
 
@@ -57,7 +57,7 @@ public:
   Points_t GetPlayerTotal(PieceColor color, ConcreteGameBoard &game_board);
 
 private:
-  // GamePositionPoints_t game_position_points_;
+  // GamePointsEMap_t game_position_points_;
   GamePointsArray_t game_position_points_;
 };
 

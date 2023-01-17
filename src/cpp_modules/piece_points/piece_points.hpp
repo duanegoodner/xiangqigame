@@ -20,15 +20,15 @@ struct PointsSpecBPOExternal {
   PointsSpecBPOExternal(
       base_points_map_t black_base_input,
       base_points_map_t red_base_offsets_input,
-      position_points_map_t black_position_input,
-      position_points_map_t red_position_offsets_input
+      TeamPointsSMap_t black_position_input,
+      TeamPointsSMap_t red_position_offsets_input
   );
   PointsSpecBPOExternal(const json &json_object);
   PointsSpecBPOExternal(string json_file_path);
   base_points_map_t black_base;
   base_points_map_t red_base_offsets;
-  position_points_map_t black_position;
-  position_points_map_t red_position_offsets;
+  TeamPointsSMap_t black_position;
+  TeamPointsSMap_t red_position_offsets;
   json ToJson();
   void ToFile(string output_path);
 };
@@ -39,15 +39,15 @@ struct PointsSpecBPOInternal {
   PointsSpecBPOInternal(
       TeamBasePoints_t black_base_input,
       TeamBasePoints_t red_base_offsets_input,
-      TeamPositionPoints_t black_position_input,
-      TeamPositionPoints_t red_position_offsets_input
+      TeamPointsEMap_t black_position_input,
+      TeamPointsEMap_t red_position_offsets_input
   );
   PointsSpecBPOInternal(PointsSpecBPOExternal external_spec);
 
   TeamBasePoints_t black_base;
   TeamBasePoints_t red_base_offsets;
-  TeamPositionPoints_t black_position;
-  TeamPositionPoints_t red_position_offsets;
+  TeamPointsEMap_t black_position;
+  TeamPointsEMap_t red_position_offsets;
 };
 
 class PiecePointsBuilder {
@@ -56,7 +56,7 @@ public:
   PiecePointsBuilder(PointsSpecBPOExternal external_points_spec);
   PiecePointsBuilder(string spec_file_path);
 
-  GamePositionPoints_t BuildGamePositionPoints();
+  GamePointsEMap_t BuildGamePositionPoints();
 
 private:
   PointsSpecBPOInternal points_spec_;
@@ -66,8 +66,8 @@ private:
       PiecePositionPoints_t a,
       PiecePositionPoints_t b
   );
-  TeamPositionPoints_t ComputeBlackNetPoints();
-  TeamPositionPoints_t ComputeRedNetPoints();
+  TeamPointsEMap_t ComputeBlackNetPoints();
+  TeamPointsEMap_t ComputeRedNetPoints();
   PiecePositionPoints_t ComputePieceNetPoints(
       Points_t base,
       PiecePositionPoints_t position_points

@@ -83,20 +83,21 @@ typedef array<team_zarray_t, 2> game_zarray_t;
 // /////////////
 typedef int Points_t;
 
+// GamePointsArray_t and its sub-array types
 typedef array<array<int, kNumFiles>, kNumRanks> PiecePositionPoints_t;
 typedef array<PiecePositionPoints_t, kNumPieceTypeVals> TeamPointsArray_t;
 typedef array<TeamPointsArray_t, 2> GamePointsArray_t;
 
+// types for bpo spec
 typedef unordered_map<PieceType, Points_t> TeamBasePoints_t;
-// array version
 typedef array<Points_t, kNumPieceTypeVals> base_points_array_t;
 typedef unordered_map<string, Points_t> base_points_map_t;
 
-typedef unordered_map<PieceType, PiecePositionPoints_t> TeamPositionPoints_t;
-// new naming convention with string key
-typedef unordered_map<string, PiecePositionPoints_t> position_points_map_t;
+typedef unordered_map<PieceType, PiecePositionPoints_t> TeamPointsEMap_t;
+typedef unordered_map<string, PiecePositionPoints_t> TeamPointsSMap_t;
 
-typedef unordered_map<PieceColor, TeamPositionPoints_t> GamePositionPoints_t;
+typedef unordered_map<PieceColor, TeamPointsEMap_t> GamePointsEMap_t;
+typedef unordered_map<string, TeamPointsSMap_t> GamePointsSMap_t;
 // array version
 
 // json piece points
