@@ -52,6 +52,14 @@ target_link_libraries(
     GTest::GTest
     GTest::Main)
 
+add_executable(piece_points_spec_test piece_points_spec_test.cpp)
+target_link_libraries(
+    piece_points_spec_test PRIVATE
+    piece_points_spec
+    utility_functs
+    GTest::GTest
+    GTest::Main)
+
 add_executable(minimax_evaluator_test minimax_evaluator_test.cpp)
 target_link_libraries(
     minimax_evaluator_test PRIVATE

@@ -1,6 +1,7 @@
 #ifndef _UTILITY_FUNCTS_
 #define _UTILITY_FUNCTS_
 
+#include <array>
 #include <json.hpp>
 #include <random>
 #include <string>
@@ -60,6 +61,37 @@ unordered_map<ToKey, Value> replace_keys_reverse(
     new_map[entry.first] = orig_map[entry.second];
   }
   return new_map;
+}
+
+template <typename two_d_array_t>
+two_d_array_t vertical_flip_array(
+  two_d_array_t orig_array
+) {
+  auto flipped_array = orig_array;
+  reverse(flipped_array.begin(), flipped_array.end());
+  return flipped_array;
+}
+
+template <typename two_d_array_t>
+two_d_array_t two_array_sum(two_d_array_t a, two_d_array_t b) {
+  two_d_array_t result{};
+  for (auto row = 0; row < a.size(); row++) {
+    for (auto col = 0; col < a[0].size(); col++) {
+      result[row][col] = a[row][col] + b[row][col];
+    }
+  }
+  return result;
+}
+
+template <typename two_d_array_t, typename array_element_t>
+two_d_array_t array_plus_const(two_d_array_t array, array_element_t offset) {
+  two_d_array_t result{};
+  for (auto row = 0; row < array.size(); row++) {
+    for (auto col = 0; col < array[0].size(); col++) {
+      result[row][col] = array[row][col] + offset;
+    }
+  }
+  return result;
 }
 
 json import_json(string file_path);

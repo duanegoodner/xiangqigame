@@ -24,46 +24,13 @@ GamePointsArrayBuilder::GamePointsArrayBuilder(
 GamePointsArrayBuilder::GamePointsArrayBuilder(string spec_file_path)
     : GamePointsArrayBuilder(PointsSpecBPOExternal(spec_file_path)) {}
 
-PiecePositionPoints_t GamePointsArrayBuilder::FlipBoardDirection(
-    PiecePositionPoints_t orig_piece_pts
-) {
-  auto flipped_pts_array = orig_piece_pts;
-  reverse(flipped_pts_array.begin(), flipped_pts_array.end());
-  return flipped_pts_array;
-}
-
-PiecePositionPoints_t GamePointsArrayBuilder::PiecePointsArraySum(
-    PiecePositionPoints_t a,
-    PiecePositionPoints_t b
-) {
-  PiecePositionPoints_t result{};
-  for (auto rank = 0; rank < kNumRanks; rank++) {
-    for (auto file = 0; file < kNumFiles; file++) {
-      result[rank][file] = a[rank][file] + b[rank][file];
-    }
-  }
-  return result;
-}
-
-PiecePositionPoints_t GamePointsArrayBuilder::ComputePieceNetPoints(
-    Points_t base,
-    PiecePositionPoints_t position_points
-) {
-  PiecePositionPoints_t net_points;
-  for (auto rank = 0; rank < kNumRanks; rank++) {
-    for (auto file = 0; file < kNumFiles; file++) {
-      net_points[rank][file] = base + position_points[rank][file];
-    }
-  }
-  return net_points;
-}
-
 TeamPointsArray_t GamePointsArrayBuilder::ComputeBlackNetPoints() {
   TeamPointsArray_t black_net_points{};
   for (auto piece : points_spec_.black_base) {
-    black_net_points[piece.first] = ComputePieceNetPoints(
-        points_spec_.black_base[piece.first],
-        points_spec_.black_position[piece.first]
+
+    black_net_points[piece.first] = utility_functs::array_plus_const(
+        points_spec_.black_position[piece.first],
+        points_spec_.black_base[piece.first]
     );
   }
   return black_net_points;
@@ -74,34 +41,37 @@ TeamPointsArray_t GamePointsArrayBuilder::ComputeRedNetPoints() {
   for (auto piece : points_spec_.red_base_offsets) {
     auto base_points = points_spec_.black_base[piece.first] +
                        points_spec_.red_base_offsets[piece.first];
-    auto unflipped_position_points = PiecePointsArraySum(
+
+    auto unflipped_position_points = utility_functs::two_array_sum(
         points_spec_.black_position[piece.first],
         points_spec_.red_position_offsets[piece.first]
     );
+
     auto flipped_position_points =
-        FlipBoardDirection(unflipped_position_points);
+        utility_functs::vertical_flip_array(unflipped_position_points);
+
     red_net_points[piece.first] =
-        ComputePieceNetPoints(base_points, flipped_position_points);
+        utility_functs::array_plus_const(flipped_position_points, base_points);
   }
   return red_net_points;
 }
 
 GamePointsArray_t GamePointsArrayBuilder::BuildGamePointsArray() {
   GamePointsArray_t game_points_array{};
-  game_points_array[get_zcolor_index(PieceColor::kBlk)] = ComputeBlackNetPoints();
-  game_points_array[get_zcolor_index(PieceColor::kRed)] = ComputeRedNetPoints();
+  game_points_array[get_zcolor_index(PieceColor::kBlk)] =
+      ComputeBlackNetPoints();
+  game_points_array[get_zcolor_index(PieceColor::kRed)] =
+      ComputeRedNetPoints();
 
   return game_points_array;
 }
 
 PiecePoints::PiecePoints()
-: points_array{DEFAULT_GAME_POINTS_ARRAY} {}
-PiecePoints::PiecePoints(GamePointsArray_t game_points_array) 
-: points_array{game_points_array} {}
+    : points_array{DEFAULT_GAME_POINTS_ARRAY} {}
+PiecePoints::PiecePoints(GamePointsArray_t game_points_array)
+    : points_array{game_points_array} {}
 
-
-TeamPointsEMap_t piece_points::team_array_to_map(
-    TeamPointsArray_t team_array
+TeamPointsEMap_t piece_points::team_array_to_map(TeamPointsArray_t team_array
 ) {
   TeamPointsEMap_t team_map;
   for (auto piece_idx = 0; piece_idx < kNumPieceTypeVals; piece_idx++) {
@@ -151,5 +121,3 @@ GamePointsArray_t piece_points::game_points_smap_to_array(
   }
   return game_points_array;
 }
-
-

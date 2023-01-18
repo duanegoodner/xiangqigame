@@ -27,16 +27,6 @@ public:
 
 private:
   PointsSpecBPOInternal points_spec_;
-  PiecePositionPoints_t FlipBoardDirection(PiecePositionPoints_t orig_piece_pts
-  );
-  PiecePositionPoints_t PiecePointsArraySum(
-      PiecePositionPoints_t a,
-      PiecePositionPoints_t b
-  );
-  PiecePositionPoints_t ComputePieceNetPoints(
-      Points_t base,
-      PiecePositionPoints_t position_points
-  );
   TeamPointsArray_t ComputeBlackNetPoints();
   TeamPointsArray_t ComputeRedNetPoints();
 };
@@ -44,19 +34,17 @@ private:
 const string kICGAPath =
     "/home/duane/workspace/project/src/cpp_modules/piece_points/"
     "ICGA_2004_bpo.json";
-// const auto DEFAULT_GAME_POINTS =
-//     PiecePointsBuilder(kICGAPath).BuildGamePoints();
 
 const auto DEFAULT_GAME_POINTS_ARRAY =
     GamePointsArrayBuilder(kICGAPath).BuildGamePointsArray();
 
-struct PiecePoints : public PieceValueProvider<PiecePoints>{
+struct PiecePoints : public PieceValueProvider<PiecePoints> {
   PiecePoints();
   PiecePoints(GamePointsArray_t game_points_array);
   PiecePoints(PointsSpecBPOInternal internal_bpo_spec);
   PiecePoints(PointsSpecBPOExternal external_bpo_spec);
   PiecePoints(string raw_points_json);
-  
+
   // define in header to force inlining
   Points_t ImplementGetValueOfPieceAtPosition(
       PieceColor color,
