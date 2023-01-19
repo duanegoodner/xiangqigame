@@ -11,6 +11,7 @@ using json = nlohmann::json;
 // Piece Points spec in "Base Points Offset" form with string keys to easily
 // read/write external json
 struct PointsSpecBPOExternal {
+  PointsSpecBPOExternal() = default;
   PointsSpecBPOExternal(
       base_points_map_t black_base_input,
       base_points_map_t red_base_offsets_input,
