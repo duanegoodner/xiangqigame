@@ -5,7 +5,7 @@
 #include <game_board.hpp>
 #include <gtest/gtest.h>
 #include <hash_calculator.hpp>
-#include <json.hpp>
+#include <nlohmann/json.hpp>
 #include <source_location>
 #include <string>
 

@@ -2,7 +2,7 @@
 #define E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 
 #include <common.hpp>
-#include <json.hpp>
+#include <nlohmann/json.hpp>
 
 namespace piece_points_spec {
 using namespace std;

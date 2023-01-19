@@ -2,7 +2,7 @@
 #define _UTILITY_FUNCTS_
 
 #include <array>
-#include <json.hpp>
+#include <nlohmann/json.hpp>
 #include <random>
 #include <string>
 #include <unordered_map>

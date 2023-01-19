@@ -1,7 +1,7 @@
 #include <fstream>
 #include <string>
 #include <utility_functs.hpp>
-#include <json.hpp>
+#include <nlohmann/json.hpp>
 
 
 using namespace std;

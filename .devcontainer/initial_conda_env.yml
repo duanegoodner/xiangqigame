@@ -7,6 +7,7 @@ channels:
 dependencies:
   - colorama
   - cython
+  - nlohmann_json
   - pandas
   - pip
   - pybind11

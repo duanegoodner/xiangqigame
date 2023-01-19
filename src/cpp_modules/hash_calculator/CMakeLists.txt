@@ -7,11 +7,12 @@ target_link_libraries(
         common
         utility_functs
         game_board
-        piece_points)
+        piece_points
+        nlohmann_json::nlohmann_json)
 target_include_directories(
         hash_calculator PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
-        ${PROJECT_SOURCE_DIR}/nlohmann_json/
+        # ${PROJECT_SOURCE_DIR}/nlohmann_json/
         ${PROJECT_SOURCE_DIR}/utility_functs/
         ${PROJECT_SOURCE_DIR}/board_utilities/
         ${PROJECT_SOURCE_DIR}/board_components/
@@ -26,11 +27,12 @@ target_link_libraries(
         board_utilities
         hash_calculator
         game_board
+        nlohmann_json::nlohmann_json
         )
 target_include_directories(
         create_zobrist_keys PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}
-        ${PROJECT_SOURCE_DIR}/nlohmann_json/
+        # ${PROJECT_SOURCE_DIR}/nlohmann_json/
         ${PROJECT_SOURCE_DIR}/utility_functs/
         ${PROJECT_SOURCE_DIR}/board_components/
         ${PROJECT_SOURCE_DIR}/game_board/
@@ -42,7 +44,7 @@ add_executable(
 target_link_libraries(
         hash_calculator_test PRIVATE
         hash_calculator
-        nlohmann_json
+        nlohmann_json::nlohmann_json
         board_components
         board_utilities
         utility_functs

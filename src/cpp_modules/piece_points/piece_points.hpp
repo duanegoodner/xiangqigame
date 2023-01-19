@@ -5,7 +5,7 @@
 #include <any>
 #include <board_components.hpp>
 #include <common.hpp>
-#include <json.hpp>
+#include <nlohmann/json.hpp>
 #include <minimax_evaluator.hpp>
 #include <piece_points_spec.hpp>
 #include <string>

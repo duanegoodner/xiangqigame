@@ -5,7 +5,7 @@
 #include <fstream>
 #include <hash_calculator.hpp>
 #include <iostream>
-#include <json.hpp>
+#include <nlohmann/json.hpp>
 #include <string>
 #include <utility_functs.hpp>
 

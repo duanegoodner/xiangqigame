@@ -9,7 +9,7 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/piece_points_spec
     ${PROJECT_SOURCE_DIR}/minimax_evaluator
     ${PROJECT_SOURCE_DIR}/move_selector
-    ${PROJECT_SOURCE_DIR}/nlohmann_json
+    # ${PROJECT_SOURCE_DIR}/nlohmann_json
     ${PROJECT_SOURCE_DIR}/utility_functs
 )
 
@@ -21,7 +21,7 @@ target_link_libraries(
     common
     game_board
     move_calculator
-    nlohmann_json
+    nlohmann_json::nlohmann_json
     utility_functs
     piece_points
     GTest::GTest
@@ -33,7 +33,7 @@ target_link_libraries(
     game_board
     move_calculator
     utility_functs
-    nlohmann_json
+    nlohmann_json::nlohmann_json
     GTest::GTest
     GTest::Main)
 
@@ -42,13 +42,15 @@ target_link_libraries(
     move_calc_time PRIVATE
     game_board
     move_calculator
-    utility_functs)
+    utility_functs
+    nlohmann_json::nlohmann_json)
 
 add_executable(piece_points_test piece_points_test.cpp)
 target_link_libraries(
     piece_points_test PRIVATE
     piece_points
     utility_functs
+    nlohmann_json::nlohmann_json
     GTest::GTest
     GTest::Main)
 
@@ -57,6 +59,7 @@ target_link_libraries(
     piece_points_spec_test PRIVATE
     piece_points_spec
     utility_functs
+    nlohmann_json::nlohmann_json
     GTest::GTest
     GTest::Main)
 
@@ -67,6 +70,7 @@ target_link_libraries(
     piece_points
     game_board
     utility_functs
+    nlohmann_json::nlohmann_json
     GTest::GTest
     GTest::Main)
 
@@ -79,6 +83,7 @@ target_link_libraries(
     move_calculator
     piece_points
     utility_functs
+    nlohmann_json::nlohmann_json
     GTest::GTest
     GTest::Main)
 

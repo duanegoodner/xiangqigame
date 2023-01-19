@@ -8,7 +8,7 @@ target_link_libraries(
     board_utilities
     common
     game_board
-    nlohmann_json
+    nlohmann_json::nlohmann_json
     piece_points
     piece_points_spec
     utility_functs
@@ -34,6 +34,7 @@ target_link_libraries(
     piece_points
     piece_points_spec
     utility_functs
+    nlohmann_json::nlohmann_json
     )
     
 target_include_directories(
@@ -45,7 +46,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/game_board
     ${PROJECT_SOURCE_DIR}/hash_calculator
     ${PROJECT_SOURCE_DIR}/move_calculator
-    ${PROJECT_SOURCE_DIR}/nlohmann_json
+    # ${PROJECT_SOURCE_DIR}/nlohmann_json
     )
 
 install(TARGETS MoveSelectorPy DESTINATION .)

@@ -10,7 +10,7 @@ target_link_libraries(
     move_calculator
     minimax_evaluator
     move_selector
-    nlohmann_json
+    nlohmann_json::nlohmann_json
     hash_calculator
     utility_functs)
 

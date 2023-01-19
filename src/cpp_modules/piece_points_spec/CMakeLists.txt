@@ -7,6 +7,7 @@ add_library(
         common
         nlohmann_json
         utility_functs
+        nlohmann_json::nlohmann_json
     )
 
 target_include_directories(

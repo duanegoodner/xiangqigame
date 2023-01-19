@@ -176,7 +176,7 @@ GamePointsArray_t raw_file_to_array(string raw_points_file) {
   return game_points_smap_to_array(s_map);
 }
 
-GamePointsArray_t bpo_file_to_array(string bpo_spec_file) {
-  auto json_object = utility_functs::import_json(bpo_spec_file);
+// GamePointsArray_t bpo_file_to_array(string bpo_spec_file) {
+//   auto json_object = utility_functs::import_json(bpo_spec_file);
   
-}
+// }

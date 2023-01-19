@@ -13,7 +13,7 @@
 #include <fstream>
 #include <game_board.hpp>
 #include <iostream>
-#include <json.hpp>
+#include <nlohmann/json.hpp>
 #include <move_selector.hpp>
 #include <string>
 #include <utility_functs.hpp>
