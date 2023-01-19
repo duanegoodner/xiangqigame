@@ -1,3 +1,4 @@
+#include "utility_functs.hpp"
 #include <common.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
@@ -17,32 +18,141 @@ protected:
       PointsSpecBPOExternal(points_spec_path);
   const PointsSpecBPOInternal internal_pts_spec =
       PointsSpecBPOInternal(external_pts_spec);
-
-  GamePointsArrayBuilder game_points_array_builder_ =
-      GamePointsArrayBuilder(points_spec_path);
+  GamePointsArray_t game_points_array =
+      GamePointsArrayBuilder(points_spec_path).BuildGamePointsArray();
 };
 
-TEST_F(GamePointsArrayBuilderTest, BuildGamePoints) {
-  auto game_points_array = game_points_array_builder_.BuildGamePointsArray();
+TEST_F(GamePointsArrayBuilderTest, CorrectArraySize) {
+  EXPECT_EQ(
+      game_points_array.size(),
+      kNumPieceColorVals - 1
+  ); // no sub-array for null color
+  EXPECT_EQ(game_points_array[0].size(), kNumPieceTypeVals);
+  EXPECT_EQ(game_points_array[0][0].size(), kNumRanks);
+  EXPECT_EQ(game_points_array[0][0][0].size(), kNumFiles);
+}
+
+TEST_F(GamePointsArrayBuilderTest, SpotCheckCorrectValues) {
+  auto black_cannon_9_4 = game_points_array[get_zcolor_index(PieceColor::kBlk)]
+                                           [PieceType::kCan][9][4];
+  auto black_advisor_0_0 =
+      game_points_array[get_zcolor_index(PieceColor::kBlk)][PieceType::kAdv][0]
+                       [0];
+
+  auto black_horse_0_1 = game_points_array[get_zcolor_index(PieceColor::kBlk)]
+                                          [PieceType::kHor][0][1];
+
+  EXPECT_EQ(black_cannon_9_4, 285 - 12);
+  EXPECT_EQ(black_advisor_0_0, 120 + 0);
+  EXPECT_EQ(black_horse_0_1, 270 - 4);
+}
+
+TEST_F(GamePointsArrayBuilderTest, RedPointsArraysProperlyFlipped) {
   for (auto piece_index = 0; piece_index < kNumPieceTypeVals; piece_index++) {
     auto black_piece_array =
-        game_points_array[get_zcolor_index(PieceColor::kBlk)];
-    // auto flipped
+        game_points_array[get_zcolor_index(PieceColor::kBlk)][piece_index];
+    auto flipped_black_piece_array =
+        utility_functs::vertical_flip_array(black_piece_array);
+    auto red_piece_array =
+        game_points_array[get_zcolor_index(PieceColor::kRed)][piece_index];
+    EXPECT_TRUE(flipped_black_piece_array == red_piece_array);
   }
+}
 
-  // for (auto color : game_points) {
-  //   for (auto piece : color.second) {
-  //     for (auto rank = 0; rank < kNumRanks; rank++) {
-  //       for (auto file = 0; file < kNumFiles; file++) {
-  //         std::cout << color.first << ", " << piece.first << ", " << rank <<
-  //         ", " << file << std::endl; EXPECT_EQ(
-  //           game_points[color.first][piece.first][rank][file],
-  //           game_points_array[get_zcolor_index(color.first)][piece.first][rank][file]);
-  //       }
-  //     }
-  //   }
-  // }
-  // std::cout << "done" << std::endl;
+class PiecePointsTest : public ::testing::Test {
+
+protected:
+  const string points_spec_path =
+      "/home/duane/workspace/project/src/cpp_modules/piece_points/"
+      "ICGA_2004_bpo.json";
+  const string raw_points_json_path = "/home/duane/workspace/project/src/cpp_modules/piece_points/"
+      "ICGA_2004_raw.json";
+  const PointsSpecBPOExternal external_pts_spec =
+      PointsSpecBPOExternal(points_spec_path);
+  const PointsSpecBPOInternal internal_pts_spec =
+      PointsSpecBPOInternal(external_pts_spec);
+  GamePointsArray_t game_points_array =
+      GamePointsArrayBuilder(points_spec_path).BuildGamePointsArray();
+};
+
+TEST_F(PiecePointsTest, InitFromGamePointsArray) {
+  PiecePoints piece_points = PiecePoints(game_points_array);
+}
+
+TEST_F(PiecePointsTest, InitFromBPOExternal) {
+  PiecePoints piece_points = PiecePoints(external_pts_spec);
+}
+
+TEST_F(PiecePointsTest, InitFromBPOInternal) {
+  PiecePoints piece_points = PiecePoints(internal_pts_spec);
+}
+
+TEST_F(PiecePointsTest, SpotCheckBlackValues) {
+  PiecePoints piece_points = PiecePoints(game_points_array);
+  auto black_cannon_9_4 = piece_points.ImplementGetValueOfPieceAtPosition(
+      PieceColor::kBlk,
+      PieceType::kCan,
+      BoardSpace{9, 4}
+  );
+  auto black_advisor_0_0 = piece_points.ImplementGetValueOfPieceAtPosition(
+      PieceColor::kBlk,
+      PieceType::kAdv,
+      BoardSpace{0, 0}
+  );
+  auto black_horse_0_1 = piece_points.ImplementGetValueOfPieceAtPosition(
+      PieceColor::kBlk,
+      PieceType::kHor,
+      BoardSpace{0, 1}
+  );
+
+  EXPECT_EQ(black_cannon_9_4, 285 - 12);
+  EXPECT_EQ(black_advisor_0_0, 120 + 0);
+  EXPECT_EQ(black_horse_0_1, 270 - 4);
+}
+
+TEST_F(PiecePointsTest, RedPointsFlippedWRTBlack) {
+  for (auto piece_type_index = 0; piece_type_index < kNumPieceTypeVals;
+       piece_type_index++) {
+    for (auto rank = 0; rank < kNumRanks; rank++) {
+      for (auto file = 0; file < kNumFiles; file++) {
+      }
+    }
+  }
+}
+
+TEST_F(PiecePointsTest, game_points_array_to_smap) {
+  auto s_map = game_points_array_to_smap(game_points_array);
+
+  // confirm corresponding PiecePositionPoints_t arrays in s_map and
+  // game_points_array are equal
+  for (auto color : s_map) {
+    for (auto piece_type : color.second) {
+      EXPECT_EQ(
+          piece_type.second,
+          game_points_array[get_zcolor_index(
+              kPieceColorStringToEnum.at(color.first)
+          )][kPieceTypeStringToEnum.at(piece_type.first)]
+      );
+    }
+  }
+}
+
+
+TEST_F(PiecePointsTest, PiecePointsToJson) {
+  PiecePoints piece_points = PiecePoints(game_points_array);
+  auto json_object = piece_points.ToJson();
+  
+}
+
+TEST_F(PiecePointsTest, import_json) {
+  auto imported_raw_json = utility_functs::import_json(raw_points_json_path);
+  auto s_map = json_to_smap(imported_raw_json);
+  auto piece_ponts = PiecePoints(s_map);
+  std::cout << "done" << std::endl;
+}
+
+TEST_F(PiecePointsTest, InitFromFile) {
+  auto piece_points = PiecePoints(raw_points_json_path);
 }
 
 int main(int argc, char **argv) {

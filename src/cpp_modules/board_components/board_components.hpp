@@ -124,11 +124,6 @@ struct BoardSpace {
   }
 };
 
-// constexpr BoardSpace NullBoardSpace()
-// {
-//     return BoardSpace{-1, -1};
-// }
-
 struct Move {
   BoardSpace start;
   BoardSpace end;

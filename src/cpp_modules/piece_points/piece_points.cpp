@@ -1,4 +1,5 @@
 #include "common.hpp"
+#include "piece_points_spec.hpp"
 #include <algorithm>
 #include <iostream>
 #include <piece_points.hpp>
@@ -70,8 +71,25 @@ PiecePoints::PiecePoints()
     : points_array{DEFAULT_GAME_POINTS_ARRAY} {}
 PiecePoints::PiecePoints(GamePointsArray_t game_points_array)
     : points_array{game_points_array} {}
+PiecePoints::PiecePoints(PointsSpecBPOInternal internal_bpo_spec)
+    : PiecePoints(
+          GamePointsArrayBuilder(internal_bpo_spec).BuildGamePointsArray()
+      ) {}
+PiecePoints::PiecePoints(PointsSpecBPOExternal external_bpo_spec)
+    : PiecePoints(
+          GamePointsArrayBuilder(external_bpo_spec).BuildGamePointsArray()
+      ) {}
+PiecePoints::PiecePoints(GamePointsSMap_t s_map)
+    : PiecePoints(game_points_smap_to_array(s_map)) {}
+PiecePoints::PiecePoints(json& j) : PiecePoints(json_to_smap(j)) {}
+PiecePoints::PiecePoints(string json_file) {
+  auto json_object = utility_functs::import_json(json_file);
+  auto points_smap = json_to_smap(json_object);
+  points_array = game_points_smap_to_array(points_smap);
 
-TeamPointsEMap_t piece_points::team_array_to_map(TeamPointsArray_t team_array
+}
+
+TeamPointsEMap_t piece_points::team_array_to_emap(TeamPointsArray_t team_array
 ) {
   TeamPointsEMap_t team_map;
   for (auto piece_idx = 0; piece_idx < kNumPieceTypeVals; piece_idx++) {
@@ -80,15 +98,22 @@ TeamPointsEMap_t piece_points::team_array_to_map(TeamPointsArray_t team_array
   return team_map;
 }
 
-GamePointsEMap_t piece_points::game_points_array_to_map(
+GamePointsEMap_t piece_points::game_points_array_to_emap(
     GamePointsArray_t game_array
 ) {
   GamePointsEMap_t pts_map;
   for (auto zcolor_idx = 0; zcolor_idx < game_array.size(); zcolor_idx++) {
     pts_map[get_piece_color(zcolor_idx)] =
-        team_array_to_map(game_array[zcolor_idx]);
+        team_array_to_emap(game_array[zcolor_idx]);
   }
   return pts_map;
+}
+
+GamePointsSMap_t piece_points::game_points_array_to_smap(
+    GamePointsArray_t game_array
+) {
+  auto e_map = game_points_array_to_emap(game_array);
+  return game_points_emap_to_smap(e_map);
 }
 
 GamePointsSMap_t piece_points::game_points_emap_to_smap(GamePointsEMap_t e_map
@@ -96,10 +121,12 @@ GamePointsSMap_t piece_points::game_points_emap_to_smap(GamePointsEMap_t e_map
   GamePointsSMap_t game_string_map;
 
   for (auto color : kPieceColorStringToEnum) {
-    game_string_map[color.first] = utility_functs::replace_keys_reverse(
-        e_map[color.second],
-        kPieceTypeStringToEnum
-    );
+    if (e_map.contains(color.second)) {
+      game_string_map[color.first] = utility_functs::replace_keys_reverse(
+          e_map[color.second],
+          kPieceTypeStringToEnum
+      );
+    }
   }
   return game_string_map;
 }
@@ -120,4 +147,25 @@ GamePointsArray_t piece_points::game_points_smap_to_array(
     }
   }
   return game_points_array;
+}
+
+GamePointsSMap_t piece_points::json_to_smap(const json &j) {
+  GamePointsSMap_t s_map;
+  for (auto& item : j.items()) {
+    s_map[item.key()] = item.value();
+  }
+  return s_map;
+}
+
+json PiecePoints::ToJson() {
+  json j;
+  auto game_points_smap = game_points_array_to_smap(points_array);
+  j = game_points_smap;
+
+  return j;
+}
+
+void PiecePoints::ToFile(string output_file) {
+  json j = game_points_array_to_smap(points_array);
+  utility_functs::export_json(j, output_file);
 }

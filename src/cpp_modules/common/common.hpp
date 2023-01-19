@@ -29,16 +29,14 @@ const unordered_map<string, PieceType> kPieceTypeStringToEnum = {
     {"chariot", PieceType::kCha},
     {"horse", PieceType::kHor},
     {"cannon", PieceType::kCan},
-    {"soldier", PieceType::kSol}
-};
+    {"soldier", PieceType::kSol}};
 
 enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
 const int kNumPieceColorVals = 3;
 const unordered_map<string, PieceColor> kPieceColorStringToEnum = {
-  {"red", PieceColor::kRed},
-  {"null", PieceColor::kNul},
-  {"black", PieceColor::kBlk}
-};
+    {"red", PieceColor::kRed},
+    {"null", PieceColor::kNul},
+    {"black", PieceColor::kBlk}};
 
 // converts red/black: -1/1 of PieceColor enum to 0/1 used in some arrays
 inline size_t get_zcolor_index(PieceColor color) {
@@ -87,6 +85,24 @@ typedef int Points_t;
 typedef array<array<int, kNumFiles>, kNumRanks> PiecePositionPoints_t;
 typedef array<PiecePositionPoints_t, kNumPieceTypeVals> TeamPointsArray_t;
 typedef array<TeamPointsArray_t, 2> GamePointsArray_t;
+
+inline bool operator==(
+    const PiecePositionPoints_t a,
+    const PiecePositionPoints_t b
+) {
+  bool are_equal = true;
+
+  for (auto rank = 0; rank < kNumRanks; rank++) {
+    for (auto file = 0; file < kNumFiles; file++) {
+      if (a[rank][file] != b[rank][file]) {
+        are_equal = false;
+        return are_equal;
+      }
+    }
+  }
+
+  return are_equal;
+}
 
 // types for bpo spec
 typedef unordered_map<PieceType, Points_t> TeamBasePoints_t;
