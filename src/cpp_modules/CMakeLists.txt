@@ -15,6 +15,7 @@ SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
 
 find_package(GTest REQUIRED)
 find_package(nlohmann_json REQUIRED)
+find_package(nlohmann_json_schema_validator REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 
 
@@ -31,6 +32,7 @@ add_subdirectory(tests)
 add_subdirectory(pybind_modules)
 add_subdirectory(utility_functs)
 add_subdirectory(hash_calculator)
+add_subdirectory(json_validation)
 # add_subdirectory(nlohmann_json)
 
 include_directories(
