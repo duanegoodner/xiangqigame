@@ -48,6 +48,9 @@ RUN sudo apt-get update --fix-missing && \
     && cd /googletest/build \
     && sudo cmake .. && sudo make && sudo make install \
     && cd / && sudo rm -rf /googletest
+    # TODO install https://github.com/pboettch/json-schema-validator
+    # For compatibility with pybind11 NEED: cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..
+
 
 # Customize zsh shell
 ADD ./.devcontainer/fonts ./fonts

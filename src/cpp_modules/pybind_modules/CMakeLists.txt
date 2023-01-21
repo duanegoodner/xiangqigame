@@ -9,6 +9,7 @@ target_link_libraries(
     common
     game_board
     nlohmann_json::nlohmann_json
+    nlohmann_json_schema_validator
     piece_points
     piece_points_spec
     utility_functs
@@ -35,6 +36,7 @@ target_link_libraries(
     piece_points_spec
     utility_functs
     nlohmann_json::nlohmann_json
+    nlohmann_json_schema_validator
     )
     
 target_include_directories(

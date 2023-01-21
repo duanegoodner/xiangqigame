@@ -87,8 +87,8 @@ typedef array<PiecePositionPoints_t, kNumPieceTypeVals> TeamPointsArray_t;
 typedef array<TeamPointsArray_t, 2> GamePointsArray_t;
 
 inline bool operator==(
-    const PiecePositionPoints_t a,
-    const PiecePositionPoints_t b
+    const PiecePositionPoints_t& a,
+    const PiecePositionPoints_t& b
 ) {
   bool are_equal = true;
 
@@ -100,7 +100,6 @@ inline bool operator==(
       }
     }
   }
-
   return are_equal;
 }
 
@@ -112,8 +111,31 @@ typedef unordered_map<string, Points_t> base_points_map_t;
 typedef unordered_map<PieceType, PiecePositionPoints_t> TeamPointsEMap_t;
 typedef unordered_map<string, PiecePositionPoints_t> TeamPointsSMap_t;
 
+inline bool operator==(TeamPointsSMap_t& a, TeamPointsSMap_t& b) {
+  bool are_equal = true;
+
+  for (auto piece : a) {
+    if (a[piece.first] != b[piece.first]) {
+      are_equal = false;
+      return are_equal;
+    }
+  }
+  return are_equal;
+}
+
 typedef unordered_map<PieceColor, TeamPointsEMap_t> GamePointsEMap_t;
 typedef unordered_map<string, TeamPointsSMap_t> GamePointsSMap_t;
+
+inline bool operator==(GamePointsSMap_t& a, GamePointsSMap_t& b) {
+  bool are_equal = true;
+  for (auto color : a) {
+    if (a[color.first] != b[color.first]) {
+      are_equal = false;
+      return are_equal;
+    }
+  }
+  return are_equal;
+}
 // array version
 
 // json piece points

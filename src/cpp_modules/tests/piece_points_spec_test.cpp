@@ -1,5 +1,6 @@
 #include <common.hpp>
 #include <gtest/gtest.h>
+#include <iostream>
 #include <piece_points_spec.hpp>
 
 
@@ -39,11 +40,9 @@ TEST_F(PiecePointsSpecTest, InitPointsSpecBPOExternal) {
             }
         }
     }
-
-
 }
 
-TEST_F(PiecePointsSpecTest, PointsSpecBPOInternalToJson) {
+TEST_F(PiecePointsSpecTest, PointsSpecBPOExternalToJson) {
     auto external_pts_spec = PointsSpecBPOExternal(points_spec_path);
     auto json_object = external_pts_spec.ToJson();
 }
@@ -51,6 +50,12 @@ TEST_F(PiecePointsSpecTest, PointsSpecBPOInternalToJson) {
 TEST_F(PiecePointsSpecTest, InitPointsSpecBPOInternal) {
     auto internal_pts_spec = PointsSpecBPOExternal(points_spec_path);
 }
+
+TEST_F(PiecePointsSpecTest, PointsSpecBOPExternalToGamePointsSMap) {
+    auto external_pts_spec = PointsSpecBPOExternal(points_spec_path);
+    auto game_points_smap = external_pts_spec.ToGamePointsSmap();
+}
+
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

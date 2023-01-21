@@ -8,7 +8,6 @@
 
 
 using namespace std;
-// using namespace board_components;
 using namespace piece_points_spec;
 using json = nlohmann::json;
 
@@ -45,6 +44,25 @@ json PointsSpecBPOExternal::ToJson() {
 void PointsSpecBPOExternal::ToFile(string output_path) {
   auto json_object = ToJson();
   utility_functs::export_json(json_object, output_path);
+}
+
+GamePointsSMap_t PointsSpecBPOExternal::ToGamePointsSmap() {
+    GamePointsSMap_t s_map{};
+
+    for (auto piece : black_base) {
+        s_map["black"][piece.first] = utility_functs::array_plus_const(
+            black_position[piece.first], black_base[piece.first]);
+    }
+
+    for (auto piece : red_base_offsets) {
+        auto red_base = black_base[piece.first] + red_base_offsets[piece.first];
+        auto red_position = utility_functs::two_array_sum(
+            black_position[piece.first], red_position_offsets[piece.first]);
+        s_map["red"][piece.first] = utility_functs::array_plus_const(
+            red_position, red_base);
+    }
+
+    return s_map;
 }
 
 PointsSpecBPOInternal::PointsSpecBPOInternal(
@@ -91,86 +109,3 @@ PointsSpecBPOInternal::PointsSpecBPOInternal(
       key_substitutions
   );
 }
-
-// PiecePointsBuilder::PiecePointsBuilder(
-//     PointsSpecBPOInternal internal_points_spec
-// )
-//     : points_spec_{internal_points_spec} {}
-
-// PiecePointsBuilder::PiecePointsBuilder(
-//     PointsSpecBPOExternal external_points_spec
-// )
-//     : PiecePointsBuilder(PointsSpecBPOInternal(external_points_spec)) {}
-
-// PiecePointsBuilder::PiecePointsBuilder(string spec_file_path)
-//     : PiecePointsBuilder(PointsSpecBPOExternal(spec_file_path)) {}
-
-// PiecePositionPoints_t PiecePointsBuilder::ComputePieceNetPoints(
-//     Points_t base,
-//     PiecePositionPoints_t position_points
-// ) {
-//   PiecePositionPoints_t net_points;
-//   for (auto rank = 0; rank < kNumRanks; rank++) {
-//     for (auto file = 0; file < kNumFiles; file++) {
-//       net_points[rank][file] = base + position_points[rank][file];
-//     }
-//   }
-//   return net_points;
-// }
-
-// PiecePositionPoints_t PiecePointsBuilder::FlipBoardDirection(
-//     PiecePositionPoints_t orig_piece_pts
-// ) {
-//   auto flipped_pts_array = orig_piece_pts;
-//   reverse(flipped_pts_array.begin(), flipped_pts_array.end());
-//   return flipped_pts_array;
-// }
-
-// TeamPointsEMap_t PiecePointsBuilder::ComputeBlackNetPoints() {
-//   TeamPointsEMap_t black_net_points{};
-//   for (auto piece : points_spec_.black_base) {
-//     black_net_points[piece.first] = ComputePieceNetPoints(
-//         points_spec_.black_base[piece.first],
-//         points_spec_.black_position[piece.first]
-//     );
-//   }
-
-//   return black_net_points;
-// }
-
-// PiecePositionPoints_t PiecePointsBuilder::PiecePointsArraySum(
-//     PiecePositionPoints_t a,
-//     PiecePositionPoints_t b
-// ) {
-//   PiecePositionPoints_t result{};
-//   for (auto rank = 0; rank < kNumRanks; rank++) {
-//     for (auto file = 0; file < kNumFiles; file++) {
-//       result[rank][file] = a[rank][file] + b[rank][file];
-//     }
-//   }
-//   return result;
-// }
-
-// TeamPointsEMap_t PiecePointsBuilder::ComputeRedNetPoints() {
-//   TeamPointsEMap_t red_net_points{};
-//   for (auto piece : points_spec_.red_base_offsets) {
-//     auto base_points = points_spec_.black_base[piece.first] +
-//                        points_spec_.red_base_offsets[piece.first];
-//     auto unflipped_position_points = PiecePointsArraySum(
-//         points_spec_.black_position[piece.first],
-//         points_spec_.red_position_offsets[piece.first]
-//     );
-//     auto flipped_position_points =
-//         FlipBoardDirection(unflipped_position_points);
-//     red_net_points[piece.first] =
-//         ComputePieceNetPoints(base_points, flipped_position_points);
-//   }
-//   return red_net_points;
-// }
-
-// GamePointsEMap_t PiecePointsBuilder::BuildGamePoints() {
-//   GamePointsEMap_t game_position_points{};
-//   game_position_points[PieceColor::kBlk] = ComputeBlackNetPoints();
-//   game_position_points[PieceColor::kRed] = ComputeRedNetPoints();
-//   return game_position_points;
-// }

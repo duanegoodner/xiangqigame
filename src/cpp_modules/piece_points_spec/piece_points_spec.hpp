@@ -26,6 +26,7 @@ struct PointsSpecBPOExternal {
   TeamPointsSMap_t red_position_offsets;
   json ToJson();
   void ToFile(string output_path);
+  GamePointsSMap_t ToGamePointsSmap();
 };
 
 
