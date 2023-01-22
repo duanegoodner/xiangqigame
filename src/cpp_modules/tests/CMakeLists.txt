@@ -1,16 +1,15 @@
 
 include_directories(
-    ${PROJECT_SOURCE_DIR}/board_components
-    ${PROJECT_SOURCE_DIR}/board_utilities
-    ${PROJECT_SOURCE_DIR}/common
-    ${PROJECT_SOURCE_DIR}/move_calculator
-    ${PROJECT_SOURCE_DIR}/game_board
-    ${PROJECT_SOURCE_DIR}/piece_points
-    ${PROJECT_SOURCE_DIR}/piece_points_spec
-    ${PROJECT_SOURCE_DIR}/minimax_evaluator
-    ${PROJECT_SOURCE_DIR}/move_selector
-    # ${PROJECT_SOURCE_DIR}/nlohmann_json
-    ${PROJECT_SOURCE_DIR}/utility_functs
+    ${PROJECT_SOURCE_DIR}/src/board_components
+    ${PROJECT_SOURCE_DIR}/src/board_utilities
+    ${PROJECT_SOURCE_DIR}/src/common
+    ${PROJECT_SOURCE_DIR}/src/move_calculator
+    ${PROJECT_SOURCE_DIR}/src/game_board
+    ${PROJECT_SOURCE_DIR}/src/piece_points
+    ${PROJECT_SOURCE_DIR}/src/piece_points_spec
+    ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
+    ${PROJECT_SOURCE_DIR}/src/move_selector
+    ${PROJECT_SOURCE_DIR}/src/utility_functs
 )
 
 add_executable(

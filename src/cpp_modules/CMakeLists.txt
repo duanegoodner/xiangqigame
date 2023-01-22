@@ -19,30 +19,30 @@ find_package(nlohmann_json_schema_validator CONFIG REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 
 
-add_subdirectory(board_components)
-add_subdirectory(board_utilities)
-add_subdirectory(common)
-add_subdirectory(piece_points)
-add_subdirectory(piece_points_spec)
-add_subdirectory(game_board)
-add_subdirectory(move_calculator)
-add_subdirectory(minimax_evaluator)
-add_subdirectory(move_selector)
+add_subdirectory(src/board_components)
+add_subdirectory(src/board_utilities)
+add_subdirectory(src/common)
+add_subdirectory(src/piece_points)
+add_subdirectory(src/piece_points_spec)
+add_subdirectory(src/game_board)
+add_subdirectory(src/move_calculator)
+add_subdirectory(src/minimax_evaluator)
+add_subdirectory(src/move_selector)
 add_subdirectory(tests)
-add_subdirectory(pybind_modules)
-add_subdirectory(utility_functs)
-add_subdirectory(hash_calculator)
-add_subdirectory(json_validation)
+add_subdirectory(src/pybind_modules)
+add_subdirectory(src/utility_functs)
+add_subdirectory(src/hash_calculator)
+add_subdirectory(src/json_validation)
 # add_subdirectory(nlohmann_json)
 
 include_directories(
-        ${PROJECT_SOURCE_DIR}/board_components
-        ${PROJECT_SOURCE_DIR}/board_utilities
-        ${PROJECT_SOURCE_DIR}/move_calculator
-        ${PROJECT_SOURCE_DIR}/game_board
-        ${PROJECT_SOURCE_DIR}/piece_points
-        ${PROJECT_SOURCE_DIR}/minimax_evaluator
-        ${PROJECT_SOURCE_DIR}/move_selector
+        ${PROJECT_SOURCE_DIR}/src/board_components
+        ${PROJECT_SOURCE_DIR}/src/board_utilities
+        ${PROJECT_SOURCE_DIR}/src/move_calculator
+        ${PROJECT_SOURCE_DIR}/src/game_board
+        ${PROJECT_SOURCE_DIR}/src/piece_points
+        ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
+        ${PROJECT_SOURCE_DIR}/src/move_selector
 )
 
 

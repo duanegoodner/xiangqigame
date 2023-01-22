@@ -11,7 +11,7 @@ class GamePointsArrayBuilderTest : public ::testing::Test {
 
 protected:
   const string points_spec_path =
-      "/home/duane/workspace/project/src/cpp_modules/piece_points/"
+      "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
       "ICGA_2004_bpo.json";
 
   const PointsSpecBPOExternal external_pts_spec =
@@ -63,10 +63,10 @@ class PiecePointsTest : public ::testing::Test {
 
 protected:
   const string points_spec_path =
-      "/home/duane/workspace/project/src/cpp_modules/piece_points/"
+      "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
       "ICGA_2004_bpo.json";
   const string raw_points_json_path =
-      "/home/duane/workspace/project/src/cpp_modules/piece_points/"
+      "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
       "ICGA_2004_raw.json";
   const PointsSpecBPOExternal external_pts_spec =
       PointsSpecBPOExternal(points_spec_path);

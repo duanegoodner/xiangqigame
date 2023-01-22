@@ -10,7 +10,7 @@ using namespace piece_points_spec;
 class PiecePointsSpecTest : public ::testing::Test {
     protected:
     const string points_spec_path =
-      "/home/duane/workspace/project/src/cpp_modules/piece_points/"
+      "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
       "ICGA_2004_bpo.json";
 };
 
