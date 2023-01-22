@@ -1,11 +1,18 @@
 code --install-extension Extensions installed on Container cpyenv (cpyenv):
+code --install-extension akiramiyakoda.cppincludeguard
 code --install-extension batisteo.vscode-django
 code --install-extension benjamin-simmonds.pythoncpp-debug
 code --install-extension bungcip.better-toml
 code --install-extension donjayamanne.python-environment-manager
 code --install-extension donjayamanne.python-extension-pack
+code --install-extension eamodio.gitlens
+code --install-extension esbenp.prettier-vscode
 code --install-extension franneck94.vscode-cpython-extension-pack
+code --install-extension josetr.cmake-language-support-vscode
 code --install-extension KevinRose.vsc-python-indent
+code --install-extension llvm-vs-code-extensions.vscode-clangd
+code --install-extension matepek.vscode-catch2-test-adapter
+code --install-extension ms-dotnettools.vscode-dotnet-runtime
 code --install-extension ms-python.isort
 code --install-extension ms-python.python
 code --install-extension ms-python.vscode-pylance
@@ -21,6 +28,7 @@ code --install-extension ms-vscode.cpptools-themes
 code --install-extension ms-vscode.test-adapter-converter
 code --install-extension njpwerner.autodocstring
 code --install-extension tcwalther.cython
+code --install-extension tintinweb.graphviz-interactive-preview
 code --install-extension twxs.cmake
 code --install-extension vadimcn.vscode-lldb
 code --install-extension VisualStudioExptTeam.intellicode-api-usage-examples

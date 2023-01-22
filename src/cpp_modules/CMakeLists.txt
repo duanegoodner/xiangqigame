@@ -13,7 +13,17 @@ SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
 # set(CMAKE_BUILD_TYPE Debug)
 # add_compile_options(-Wall -Wextra -O3)
         
-find_package(GTest REQUIRED)
+# find_package(GTest REQUIRED)
+
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/ec25eea8f8237cf86c30703f59747e42f34b6f75.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
 find_package(nlohmann_json REQUIRED)
 find_package(nlohmann_json_schema_validator CONFIG REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
