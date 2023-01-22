@@ -10,14 +10,35 @@ SET(CMAKE_POSITION_INDEPENDENT_CODE ON)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
+
 # set(CMAKE_BUILD_TYPE Debug)
 # add_compile_options(-Wall -Wextra -O3)
-        
-find_package(GTest REQUIRED)
-find_package(nlohmann_json REQUIRED)
-find_package(nlohmann_json_schema_validator CONFIG REQUIRED)
-find_package(pybind11 CONFIG REQUIRED)
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/ec25eea8f8237cf86c30703f59747e42f34b6f75.zip
+)
 
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
+
+FetchContent_Declare(
+        nlohmann_json URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
+)
+
+include(CMakeFindDependencyMacro)
+find_dependency(nlohmann_json)
+
+FetchContent_Declare(
+        json_schema_validator URL https://github.com/pboettch/json-schema-validator/archive/refs/tags/2.2.0.tar.gz
+)
+FetchContent_MakeAvailable(json_schema_validator)
+
+FetchContent_Declare(
+        pybind11 URL https://github.com/pybind/pybind11/archive/refs/tags/v2.10.3.tar.gz
+)
+FetchContent_MakeAvailable(pybind11)
 
 add_subdirectory(src/board_components)
 add_subdirectory(src/board_utilities)
@@ -33,8 +54,8 @@ add_subdirectory(src/pybind_modules)
 add_subdirectory(src/utility_functs)
 add_subdirectory(src/hash_calculator)
 add_subdirectory(src/json_validation)
-# add_subdirectory(nlohmann_json)
 
+# add_subdirectory(nlohmann_json)
 include_directories(
         ${PROJECT_SOURCE_DIR}/src/board_components
         ${PROJECT_SOURCE_DIR}/src/board_utilities
@@ -44,13 +65,3 @@ include_directories(
         ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
         ${PROJECT_SOURCE_DIR}/src/move_selector
 )
-
-
-   
-
-
-
-
-
-
-
