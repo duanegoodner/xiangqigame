@@ -10,19 +10,19 @@ using nlohmann::json;
 using nlohmann::json_schema::json_validator;
 
 static std::string points_spec_ICGA_2004_path =
-    "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
+    "/home/duane/workspace/project/src/cpp_modules/data/"
     "ICGA_2004_bpo.json";
 
 static std::string raw_points_ICGA_2004_path =
-    "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
+    "/home/duane/workspace/project/src/cpp_modules/data/"
     "ICGA_2004_raw.json";
 
 static std::string points_spec_schema_path =
-    "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
+    "/home/duane/workspace/project/src/cpp_modules/data/"
     "bpo_schema.json";
 
 static std::string raw_points_schema_path =
-    "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
+    "/home/duane/workspace/project/src/cpp_modules/data/"
     "raw_points_schema.json";
 
 int main() {

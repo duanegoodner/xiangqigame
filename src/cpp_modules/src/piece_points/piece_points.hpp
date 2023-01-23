@@ -35,19 +35,19 @@ private:
 };
 
 const string kICGABPOPath =
-    "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
+    "/home/duane/workspace/project/src/cpp_modules/data/"
     "ICGA_2004_bpo.json";
 
 const string kICGARawPath =
-    "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
+    "/home/duane/workspace/project/src/cpp_modules/data/"
     "ICGA_2004_raw.json";
 
 const string kRawSchemaPath =
-    "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
+    "/home/duane/workspace/project/src/cpp_modules/data/"
     "raw_points_schema.json";
 
 const string kBPOSchemaPath =
-    "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
+    "/home/duane/workspace/project/src/cpp_modules/data/"
     "bpo_schema.json";
 
 const auto DEFAULT_GAME_POINTS_ARRAY =

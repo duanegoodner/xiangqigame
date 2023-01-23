@@ -11,8 +11,7 @@ class GamePointsArrayBuilderTest : public ::testing::Test {
 
 protected:
   const string points_spec_path =
-      "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
-      "ICGA_2004_bpo.json";
+      "/home/duane/workspace/project/src/cpp_modules/data/ICGA_2004_bpo.json";
 
   const PointsSpecBPOExternal external_pts_spec =
       PointsSpecBPOExternal(points_spec_path);
@@ -63,11 +62,9 @@ class PiecePointsTest : public ::testing::Test {
 
 protected:
   const string points_spec_path =
-      "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
-      "ICGA_2004_bpo.json";
+      "/home/duane/workspace/project/src/cpp_modules/data/ICGA_2004_bpo.json";
   const string raw_points_json_path =
-      "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
-      "ICGA_2004_raw.json";
+      "/home/duane/workspace/project/src/cpp_modules/data/ICGA_2004_raw.json";
   const PointsSpecBPOExternal external_pts_spec =
       PointsSpecBPOExternal(points_spec_path);
   const PointsSpecBPOInternal internal_pts_spec =
@@ -162,14 +159,12 @@ TEST(CompareAgainstSchemaTest, ValidRawPoints) {
 
 TEST(ArrayBuilder_2Test, InitWithPath) {
   json json_object = utility_functs::import_json(kICGARawPath);
-  auto array_builder_from_raw =
-      GamePointsArrayBuilder_2(json_object);
+  auto array_builder_from_raw = GamePointsArrayBuilder_2(json_object);
 }
 
 TEST(FormatIdentifierTest, InitWithJsonObject) {
   json json_object = utility_functs::import_json(kICGARawPath);
   auto format_identifier = FormatIdentifier(json_object);
-  
 }
 
 TEST(ImportSchemasTest, ImportDefaultSchemaPaths) {

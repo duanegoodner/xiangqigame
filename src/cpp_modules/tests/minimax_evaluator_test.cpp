@@ -11,7 +11,7 @@ class PiecePointsEvaluatorTest : public ::testing::Test {
 protected:
   // PiecePointsBuilder piece_points_buider_;
   const string points_spec_path =
-      "/home/duane/workspace/project/src/cpp_modules/src/piece_points/"
+      "/home/duane/workspace/project/src/cpp_modules/data/"
       "ICGA_2004_bpo.json";
 
   const PointsSpecBPOExternal external_pts_spec =
