@@ -1,67 +1,26 @@
 cmake_minimum_required(VERSION 3.19)
 
-project(xiangqi_cpp VERSION 0.1)
+project(
+        xiangqi_cpp
+        VERSION 0.2
+        DESCRIPTION "GameBoard and MoveSelector for xiangqigame"
+        LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 SET(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
+# enable gprof
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
 
+# normally control these via IDE (so comment out for now)
 # set(CMAKE_BUILD_TYPE Debug)
 # add_compile_options(-Wall -Wextra -O3)
-include(FetchContent)
-FetchContent_Declare(
-        googletest
-        URL https://github.com/google/googletest/archive/ec25eea8f8237cf86c30703f59747e42f34b6f75.zip
-)
+SET(CMAKE_UTIL_DIR ${PROJECT_SOURCE_DIR}/cmake)
+SET(SOURCE_CODE_DIR ${PROJECT_SOURCE_DIR}/src)
 
-# For Windows: Prevent overriding the parent project's compiler/linker settings
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
-
-FetchContent_Declare(
-        nlohmann_json URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
-)
-
-include(CMakeFindDependencyMacro)
-find_dependency(nlohmann_json)
-
-FetchContent_Declare(
-        json_schema_validator URL https://github.com/pboettch/json-schema-validator/archive/refs/tags/2.2.0.tar.gz
-)
-FetchContent_MakeAvailable(json_schema_validator)
-
-FetchContent_Declare(
-        pybind11 URL https://github.com/pybind/pybind11/archive/refs/tags/v2.10.3.tar.gz
-)
-FetchContent_MakeAvailable(pybind11)
-
-add_subdirectory(src/board_components)
-add_subdirectory(src/board_utilities)
-add_subdirectory(src/common)
-add_subdirectory(src/piece_points)
-add_subdirectory(src/piece_points_spec)
-add_subdirectory(src/game_board)
-add_subdirectory(src/move_calculator)
-add_subdirectory(src/minimax_evaluator)
-add_subdirectory(src/move_selector)
-add_subdirectory(tests)
-add_subdirectory(src/pybind_modules)
-add_subdirectory(src/utility_functs)
-add_subdirectory(src/hash_calculator)
-add_subdirectory(src/json_validation)
-
-# add_subdirectory(nlohmann_json)
-include_directories(
-        ${PROJECT_SOURCE_DIR}/src/board_components
-        ${PROJECT_SOURCE_DIR}/src/board_utilities
-        ${PROJECT_SOURCE_DIR}/src/move_calculator
-        ${PROJECT_SOURCE_DIR}/src/game_board
-        ${PROJECT_SOURCE_DIR}/src/piece_points
-        ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
-        ${PROJECT_SOURCE_DIR}/src/move_selector
-)
+include("${CMAKE_UTIL_DIR}/fetch_packages.cmake")
+include("${CMAKE_UTIL_DIR}/add_subdirectories.cmake")
