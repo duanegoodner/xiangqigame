@@ -11,9 +11,6 @@
 using namespace std;
 
 namespace board_components {
-// ///////
-// Pieces
-// //////
 
 struct GamePiece {
   PieceType piece_type;
@@ -42,8 +39,6 @@ struct GamePiece {
   }
 };
 
-// const int kNumPieceTypeVals = 8;
-
 inline PieceColor opponent_of(PieceColor color) {
   return static_cast<PieceColor>(-1 * color);
 }
@@ -51,41 +46,17 @@ inline PieceColor opponent_of(PieceColor color) {
 // /////////////////////////
 // Board Datatypes
 // ////////////////////////
-// typedef int BoardIdx_t;
-// const BoardIdx_t kNumRanks = 10;
-// const BoardIdx_t kNumFiles = 9;
 typedef array<array<GamePiece, kNumFiles>, kNumRanks> BoardMap_t;
 typedef array<array<int, kNumFiles>, kNumRanks> BoardMapInt_t;
 
-// /////////////////////////
-// Specific locations on board
-// ////////////////////////
-// const BoardIdx_t kRedRiverEdge = 5;
-// const BoardIdx_t kBlackRiverEdge = 4;
-
-// struct CastleEdges {
-//   BoardIdx_t min_rank;
-//   BoardIdx_t max_rank;
-//   BoardIdx_t min_file;
-//   BoardIdx_t max_file;
-// };
-
-// constexpr CastleEdges kRedCastleEdges = {7, 9, 3, 5};
-// constexpr CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
 
 // /////////////////////////
 // Board location tracking
 // ////////////////////////
-// struct BoardDirection {
-//   BoardIdx_t rank, file;
-// };
 
 struct BoardSpace {
 
   BoardIdx_t rank, file;
-  // BoardSpace() : rank{-1}, file{-1} {};
-  // BoardSpace(const int my_rank, const int my_file)
-  // : rank{my_rank}, file{my_file} {};
 
   bool IsOnBoard() const {
     return (
@@ -143,7 +114,8 @@ struct MoveCollection {
       : moves{} {
     moves.reserve(reserve_size);
   }
-  bool Contains(const Move &move) const {
+
+  bool ContainsMove(const Move &move) const {
     for (auto entry : moves) {
       if ((move.start == entry.start) && (move.end == entry.end)) {
         return true;
@@ -151,6 +123,16 @@ struct MoveCollection {
     }
     return false;
   }
+
+  bool ContainsDestination(const BoardSpace& space) {
+    for (auto move : moves) {
+      if (move.end == space) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
   void Append(Move move) { moves.emplace_back(move); }
   void Concat(vector<Move> other_moves) {
     moves.insert(moves.end(), other_moves.begin(), other_moves.end());

@@ -25,7 +25,7 @@ TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
   RandomMoveSelector<GameBoard<HashCalculator>> move_selector;
   auto cur_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
   auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);
-  EXPECT_EQ(cur_moves.Contains(selected_move), true);
+  EXPECT_EQ(cur_moves.ContainsMove(selected_move), true);
 };
 
 TEST_F(MoveSelectorTest, InitializeMinimaxSelector) {

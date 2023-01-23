@@ -8,14 +8,13 @@
 #include <cassert>
 #include <cmath>
 #include <functional>
+// #include <move_calculator_details.hpp>
 #include <unordered_map>
 #include <vector>
 
 using namespace std;
 using namespace board_components;
 using namespace board_utilities;
-
-class MoveCalculator;
 
 class PieceMoves {
 public:
@@ -93,6 +92,13 @@ public:
     piece_dispatch_array_[PieceType::kGen] = &PieceMoves::GeneralMoves;
   }
 
+  bool IsOccupied(
+      const BoardMap_t &board_map,
+      const BoardSpace &space
+  ) {
+    return board_map[space.rank][space.file].piece_color != PieceColor::kNul;
+  }
+
   void CalcMovesFrom(
       const BoardSpace space,
       MoveCollection &team_moves,
@@ -136,8 +142,6 @@ private:
     auto occ_spaces = get_all_spaces_occupied_by(board_map, color);
     for (size_t space = 0; space < occ_spaces.size(); space++) {
       CalcMovesFrom(occ_spaces[space], untested_moves, board_map);
-      // auto moves_from_space = CalcMovesFrom(occ_spaces[space]);
-      // untested_moves.Concat(moves_from_space);
     }
     return untested_moves;
   }

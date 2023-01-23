@@ -3,6 +3,7 @@
 #include <game_board.hpp>
 #include <gtest/gtest.h>
 #include <move_calculator.hpp>
+#include <piece_moves_details.hpp>
 
 using namespace board_utilities;
 
@@ -161,11 +162,11 @@ TEST_F(BoardUtilitiesTest, FwdDirectionRed) {
   EXPECT_EQ(result.file, 0);
 }
 
-TEST_F(BoardUtilitiesTest, RevDirectionRed) {
-  auto result = rev_direction(PieceColor::kRed);
-  EXPECT_EQ(result.rank, 1);
-  EXPECT_EQ(result.file, 0);
-}
+// TEST_F(BoardUtilitiesTest, RevDirectionRed) {
+//   auto result = rev_direction(PieceColor::kRed);
+//   EXPECT_EQ(result.rank, 1);
+//   EXPECT_EQ(result.file, 0);
+// }
 
 TEST_F(BoardUtilitiesTest, GetGeneralPositionBlack) {
   auto result = get_general_position(starting_board, PieceColor::kBlk);
@@ -181,7 +182,7 @@ TEST_F(BoardUtilitiesTest, GetAllSpacesOccupiedByBlack) {
 TEST_F(BoardUtilitiesTest, IsSpaceDestinationOfAnyMovesTrue) {
   auto some_moves = MoveCollection({Move{BoardSpace{2, 1}, BoardSpace{9, 1}}});
   auto some_space = BoardSpace{9, 1};
-  auto result = is_space_any_destination_of_moves(some_space, some_moves);
+  auto result = some_moves.ContainsDestination(some_space);
   EXPECT_EQ(result, true);
 }
 

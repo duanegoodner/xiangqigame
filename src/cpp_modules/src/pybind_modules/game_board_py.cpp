@@ -23,7 +23,7 @@ PYBIND11_MODULE(GameBoardPy, m) {
 
   py::class_<MoveCollection>(m, "MoveCollection")
       .def_readonly("moves", &MoveCollection::moves)
-      .def("Contains", &MoveCollection::Contains);
+      .def("ContainsMove", &MoveCollection::ContainsMove);
 
   py::class_<ExecutedMove>(m, "ExecutedMove")
       .def(

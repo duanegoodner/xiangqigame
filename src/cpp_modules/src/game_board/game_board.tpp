@@ -39,6 +39,7 @@ GamePiece GameBoard<ConcreteHashCalculator>::GetOccupant(BoardSpace space) {
 
 template <typename ConcreteHashCalculator>
 bool GameBoard<ConcreteHashCalculator>::IsOccupied(BoardSpace space) {
+  // return move_calculator_.IsOccupied(board_map_, space);
   return is_occupied(board_map_, space);
 }
 
@@ -104,7 +105,7 @@ bool GameBoard<ConcreteHashCalculator>::IsInCheck(PieceColor color) {
   auto gen_position = get_general_position(board_map_, color);
   auto opponent_moves =
       move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
-  return is_space_any_destination_of_moves(gen_position, opponent_moves);
+  return opponent_moves.ContainsDestination(gen_position);
 }
 
 template <typename ConcreteHashCalculator>
@@ -124,10 +125,8 @@ MoveCollection GameBoard<ConcreteHashCalculator>::ImplementCalcFinalMovesOf(
     );
     auto resulting_gen_position = get_general_position(board_map_, color);
 
-    if (not is_space_any_destination_of_moves(
-            resulting_gen_position,
-            resulting_opponent_moves
-        )) {
+    
+    if (not resulting_opponent_moves.ContainsDestination(resulting_gen_position)) {
       validated_moves.Append(move);
     }
 
