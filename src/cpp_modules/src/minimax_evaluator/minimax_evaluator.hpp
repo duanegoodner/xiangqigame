@@ -29,8 +29,7 @@ public:
 // CRTP Interface: Evaluator <- GamePoints
 template <typename ConcreteGamePoints>
 class PieceValueProvider {
-  public:
-  
+public:
   Points_t GetValueOfPieceAtPosition(
       PieceColor color,
       PieceType piece_type,
@@ -41,10 +40,17 @@ class PieceValueProvider {
   }
 };
 
+/*
+Template for a class that has ConcreteGameBoard, is constructed using
+ConcreteGamePoints, and implements the Evaluator interface specified by
+MoveSelector
+ */
+
 template <typename ConcreteGameBoard, typename ConcreteGamePoints>
-class PiecePointsEvaluator : public Evaluator<
-                                 PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>,
-                                 ConcreteGameBoard> {
+class PiecePointsEvaluator
+    : public Evaluator<
+          PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>,
+          ConcreteGameBoard> {
 public:
   PiecePointsEvaluator(ConcreteGamePoints game_position_points_);
   PiecePointsEvaluator();

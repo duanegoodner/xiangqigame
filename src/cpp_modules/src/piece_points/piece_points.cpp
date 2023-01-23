@@ -94,7 +94,7 @@ PiecePoints::PiecePoints(string json_file) {
   points_array = game_points_smap_to_array(points_smap);
 }
 
-TeamPointsEMap_t piece_points::team_array_to_emap(TeamPointsArray_t team_array
+TeamPointsEMap_t team_array_to_emap(TeamPointsArray_t team_array
 ) {
   TeamPointsEMap_t team_map;
   for (auto piece_idx = 0; piece_idx < kNumPieceTypeVals; piece_idx++) {
@@ -103,7 +103,7 @@ TeamPointsEMap_t piece_points::team_array_to_emap(TeamPointsArray_t team_array
   return team_map;
 }
 
-GamePointsEMap_t piece_points::game_points_array_to_emap(
+GamePointsEMap_t game_points_array_to_emap(
     GamePointsArray_t game_array
 ) {
   GamePointsEMap_t pts_map;
@@ -114,14 +114,14 @@ GamePointsEMap_t piece_points::game_points_array_to_emap(
   return pts_map;
 }
 
-GamePointsSMap_t piece_points::game_points_array_to_smap(
+GamePointsSMap_t game_points_array_to_smap(
     GamePointsArray_t game_array
 ) {
   auto e_map = game_points_array_to_emap(game_array);
   return game_points_emap_to_smap(e_map);
 }
 
-GamePointsSMap_t piece_points::game_points_emap_to_smap(GamePointsEMap_t e_map
+GamePointsSMap_t game_points_emap_to_smap(GamePointsEMap_t e_map
 ) {
   GamePointsSMap_t game_string_map;
 
@@ -136,7 +136,7 @@ GamePointsSMap_t piece_points::game_points_emap_to_smap(GamePointsEMap_t e_map
   return game_string_map;
 }
 
-GamePointsArray_t piece_points::game_points_smap_to_array(
+GamePointsArray_t game_points_smap_to_array(
     const GamePointsSMap_t s_map
 ) {
   GamePointsArray_t game_points_array{};
@@ -154,7 +154,7 @@ GamePointsArray_t piece_points::game_points_smap_to_array(
   return game_points_array;
 }
 
-GamePointsSMap_t piece_points::raw_points_to_smap(const json &j) {
+GamePointsSMap_t raw_points_to_smap(const json &j) {
   GamePointsSMap_t s_map;
   for (auto &item : j.items()) {
     s_map[item.key()] = item.value();
@@ -162,7 +162,7 @@ GamePointsSMap_t piece_points::raw_points_to_smap(const json &j) {
   return s_map;
 }
 
-GamePointsSMap_t piece_points::points_spec_to_smap(const json &points_spec) {
+GamePointsSMap_t points_spec_to_smap(const json &points_spec) {
   return PointsSpecBPOExternal(points_spec).ToGamePointsSmap();
 }
 

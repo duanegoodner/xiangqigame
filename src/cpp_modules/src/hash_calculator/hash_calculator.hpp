@@ -5,25 +5,15 @@
 #ifndef XIANGQI_CPP_hash_calculator_HPP
 #define XIANGQI_CPP_hash_calculator_HPP
 
-#include <bits/stdc++.h>
-
-#include <array>
 #include <board_components.hpp>
 #include <common.hpp>
-#include <fstream>
 #include <game_board.hpp>
-#include <iostream>
-#include <nlohmann/json.hpp>
 #include <move_selector.hpp>
-#include <string>
 #include <utility_functs.hpp>
 
 using namespace board_components;
 using namespace std;
 using json = nlohmann::json;
-
-// TODO: move this and other config items to settings file
-// const string kDefaultKeysFile = "zkeys_v01.json";
 
 struct ZobristKeys {
   game_zarray_t zarray;
@@ -33,8 +23,6 @@ struct ZobristKeys {
   ZobristKeys(const json &json_object);
   ZobristKeys(string json_file_path);
   json ToJson();
-
-  
 
   zkey_t GetHashValue(
       PieceColor color,

@@ -47,30 +47,6 @@ struct PointsSpecBPOInternal {
   TeamPointsEMap_t red_position_offsets;
 };
 
-// class PiecePointsBuilder {
-// public:
-//   PiecePointsBuilder(PointsSpecBPOInternal internal_points_spec);
-//   PiecePointsBuilder(PointsSpecBPOExternal external_points_spec);
-//   PiecePointsBuilder(string spec_file_path);
-
-//   GamePointsEMap_t BuildGamePoints();
-
-// private:
-//   PointsSpecBPOInternal points_spec_;
-//   PiecePositionPoints_t FlipBoardDirection(PiecePositionPoints_t orig_piece_pts
-//   );
-//   PiecePositionPoints_t PiecePointsArraySum(
-//       PiecePositionPoints_t a,
-//       PiecePositionPoints_t b
-//   );
-//   TeamPointsEMap_t ComputeBlackNetPoints();
-//   TeamPointsEMap_t ComputeRedNetPoints();
-//   PiecePositionPoints_t ComputePieceNetPoints(
-//       Points_t base,
-//       PiecePositionPoints_t position_points
-//   );
-// };
-
 }
 
 #endif /* E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802 */

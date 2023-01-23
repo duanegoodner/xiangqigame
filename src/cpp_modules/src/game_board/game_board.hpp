@@ -4,6 +4,7 @@
 
 #include <board_components.hpp>
 #include <common.hpp>
+#include <game_board_details.hpp>
 #include <minimax_evaluator.hpp>
 #include <move_calculator.hpp>
 #include <move_selector.hpp>
@@ -12,28 +13,13 @@
 using namespace std;
 using namespace board_components;
 
-const BoardMapInt_t kStartingBoard{{
-    {5, 4, 3, 2, 1, 2, 3, 4, 5},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 6, 0, 0, 0, 0, 0, 6, 0},
-    {7, 0, 7, 0, 7, 0, 7, 0, 7},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {-7, 0, -7, 0, -7, 0, -7, 0, -7},
-    {0, -6, 0, 0, 0, 0, 0, -6, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {-5, -4, -3, -2, -1, -2, -3, -4, -5},
-}};
-
-inline BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board);
-
 // CRTP Interface: GameBoard <- HashCalculator
 template <typename ConcreteHashCalculator>
 class BoardStateTracker {
 public:
-  void CalcInitialBoardState(BoardMap_t& board_map) {
-    static_cast<ConcreteHashCalculator *>(this)->ImplementCalcInitialBoardState(
-      board_map);
+  void CalcInitialBoardState(BoardMap_t &board_map) {
+    static_cast<ConcreteHashCalculator *>(this)
+        ->ImplementCalcInitialBoardState(board_map);
   }
   void CalcNewBoardState(const ExecutedMove &move) {
     return static_cast<ConcreteHashCalculator *>(this)
@@ -41,6 +27,12 @@ public:
   }
 };
 
+/*
+Templat class for a GameBoard that has a ConcreteHashCalculator, and implements
+the following interfaces:
+MoveTracker (specified by MoveSelector)
+SpaceInfoProvider (specified by MinimaxEvaluator)
+ */
 template <typename ConcreteHashCalculator>
 class GameBoard : public MoveTracker<
                       GameBoard<ConcreteHashCalculator>,
@@ -74,7 +66,6 @@ private:
   ConcreteHashCalculator *hash_calculators_[2];
   size_t num_hash_calculators_;
   void UpdateHashCalculators(ExecutedMove executed_move);
-  // vector<ConcreteHashCalculator> hash_calculators_;
   void SetOccupant(BoardSpace space, GamePiece piece);
 };
 

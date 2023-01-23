@@ -2,100 +2,22 @@
 #define _MOVE_CALCULATOR_
 
 #include <any>
-#include <array>
 #include <board_components.hpp>
 #include <board_utilities.hpp>
-#include <cassert>
-#include <cmath>
-#include <functional>
-// #include <move_calculator_details.hpp>
-#include <unordered_map>
-#include <vector>
+#include <move_calculator_details.hpp>
+#include <piece_moves.hpp>
 
 using namespace std;
 using namespace board_components;
 using namespace board_utilities;
 
-class PieceMoves {
-public:
-  void SoldierMoves(
-      const BoardMap_t &board_map,
-      PieceColor color,
-      const BoardSpace &space,
-      MoveCollection &team_moves
-  );
-  void CannonMoves(
-      const BoardMap_t &board_map,
-      PieceColor color,
-      const BoardSpace &space,
-      MoveCollection &team_moves
-  );
-  void ChariotMoves(
-      const BoardMap_t &board_map,
-      PieceColor color,
-      const BoardSpace &space,
-      MoveCollection &team_moves
-  );
-  void HorseMoves(
-      const BoardMap_t &board_map,
-      PieceColor color,
-      const BoardSpace &space,
-      MoveCollection &team_moves
-  );
-  void ElephantMoves(
-      const BoardMap_t &board_map,
-      PieceColor color,
-      const BoardSpace &space,
-      MoveCollection &team_moves
-  );
-  void AdvisorMoves(
-      const BoardMap_t &board_map,
-      PieceColor color,
-      const BoardSpace &space,
-      MoveCollection &team_moves
-  );
-  void FlyingGeneralMove(
-      const BoardMap_t &board_map,
-      PieceColor color,
-      const BoardSpace &space,
-      MoveCollection &team_moves
-  );
-  void StandardGeneralMoves(
-      const BoardMap_t &board_map,
-      PieceColor color,
-      const BoardSpace &space,
-      MoveCollection &team_moves
-  );
-  void GeneralMoves(
-      const BoardMap_t &board_map,
-      PieceColor color,
-      const BoardSpace &space,
-      MoveCollection &team_moves
-  );
-};
-
-typedef void (PieceMoves::*MethodPtr_t
-)(const BoardMap_t &, PieceColor, const BoardSpace &, MoveCollection &);
-
 class MoveCalculator {
 public:
   MoveCalculator()
-      : piece_moves_{PieceMoves()} //, board_map_{board_map}
-  {
-    piece_dispatch_array_[PieceType::kNnn] = {};
-    piece_dispatch_array_[PieceType::kSol] = &PieceMoves::SoldierMoves;
-    piece_dispatch_array_[PieceType::kCan] = &PieceMoves::CannonMoves;
-    piece_dispatch_array_[PieceType::kCha] = &PieceMoves::ChariotMoves;
-    piece_dispatch_array_[PieceType::kHor] = &PieceMoves::HorseMoves;
-    piece_dispatch_array_[PieceType::kEle] = &PieceMoves::ElephantMoves;
-    piece_dispatch_array_[PieceType::kAdv] = &PieceMoves::AdvisorMoves;
-    piece_dispatch_array_[PieceType::kGen] = &PieceMoves::GeneralMoves;
-  }
+      : piece_moves_{PieceMoves()}
+      , piece_dispatch_array_(build_piece_dispatch_array()) {}
 
-  bool IsOccupied(
-      const BoardMap_t &board_map,
-      const BoardSpace &space
-  ) {
+  bool IsOccupied(const BoardMap_t &board_map, const BoardSpace &space) {
     return board_map[space.rank][space.file].piece_color != PieceColor::kNul;
   }
 
@@ -114,14 +36,17 @@ public:
   }
 
 private:
-  // const BoardMap_t &board_map_;
-  array<MethodPtr_t, kNumPieceTypeVals> piece_dispatch_array_;
+  PieceDispatchArray_t piece_dispatch_array_;
   PieceMoves piece_moves_;
 
-  // https://opensource.com/article/21/2/ccc-method-pointers
-  // https://stackoverflow.com/questions/6265851
-  // https://stackoverflow.com/questions/55520876/
-  // https://en.cppreference.com/w/cpp/utility/any/any_cast
+  /*
+  Helpful links for using pointers to class methods  and any_cast:
+  https://opensource.com/article/21/2/ccc-method-pointers
+  https://stackoverflow.com/questions/6265851
+  https://stackoverflow.com/questions/55520876/
+  https://en.cppreference.com/w/cpp/utility/any/any_cast
+   */
+
   void ImplementCalcMovesFrom(
       const BoardSpace space,
       MoveCollection &team_moves,

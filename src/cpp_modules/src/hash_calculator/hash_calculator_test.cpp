@@ -1,22 +1,17 @@
-#include "common.hpp"
-#include <bits/stdc++.h>
-#include <filesystem>
-#include <fstream>
+#include <common.hpp>
 #include <game_board.hpp>
 #include <gtest/gtest.h>
 #include <hash_calculator.hpp>
 #include <hash_calculator_details.hpp>
 #include <nlohmann/json.hpp>
-#include <source_location>
 #include <string>
 
-using namespace board_components;
+// using namespace board_components;
 using namespace nlohmann::json_abi_v3_11_2;
 using namespace std;
 
 class ZobristKeysTest : public ::testing::Test {
 protected:
-  // string keyfile = "zkeys_v01.json";
   string key_file_path = DEFAULT_ZKEYS_FILEPATH;
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
 };
@@ -30,7 +25,6 @@ TEST_F(ZobristKeysTest, ImportJson) {
   EXPECT_EQ(kNumPieceTypeVals, zarray[0].size());
   EXPECT_EQ(kNumRanks, zarray[0][0].size());
   EXPECT_EQ(kNumFiles, zarray[0][0][0].size());
-  // auto Zobrist_keys = ZobristKeys(zkeys_json);
 }
 
 TEST_F(ZobristKeysTest, InitFromJsonObject) {
@@ -52,12 +46,6 @@ TEST_F(ZobristKeysTest, InitFromJsonFile) {
   EXPECT_EQ(kNumFiles, zobrist_keys.zarray[0][0][0].size());
 }
 
-// TEST_F(ZobristKeysTest, CalcInitialBoardState) {
-//     auto zobrist_keys = ZobristKeys(key_file_path);
-// auto initial_board_state = zobrist_keys.CalcInitialBoardState(board_map);
-// EXPECT_NE(initial_board_state, 0);
-// }
-
 TEST_F(ZobristKeysTest, GetHashValue) {
   auto zkeys_json = utility_functs::import_json(key_file_path);
   auto zobrist_keys = ZobristKeys(zkeys_json);
@@ -72,7 +60,6 @@ TEST_F(ZobristKeysTest, GetHashValue) {
 class HashCalculatorTest : public ::testing::Test {
 
 protected:
-  // string keyfile = "zkeys_v01.json";
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
   string key_file_path = DEFAULT_ZKEYS_FILEPATH;
   ZobristKeys zobrist_keys = ZobristKeys(key_file_path);
@@ -85,10 +72,7 @@ TEST_F(HashCalculatorTest, InitializeFromKeysAndMap) {
 TEST_F(HashCalculatorTest, DefaultInit) { auto my_zobrist = HashCalculator(); }
 
 TEST_F(HashCalculatorTest, InitializeBoardState) {
-  // ifstream input(key_file_path);
-  // json zsjon = json::parse(input);
   auto my_zobrist = HashCalculator();
-
   zkey_t board_state{0};
   EXPECT_EQ(my_zobrist.ImplementGetBoardState(), 0);
   my_zobrist.ImplementCalcInitialBoardState(board_map);

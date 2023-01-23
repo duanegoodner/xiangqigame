@@ -6,11 +6,14 @@ target_link_libraries(
     move_calculator PRIVATE
     board_utilities
     board_components
-    common)
+    common
+    piece_moves)
 
 target_include_directories(
     move_calculator PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src/board_components
-    ${PROJECT_SOURCE_DIR}/src/board_utilities)
+    ${PROJECT_SOURCE_DIR}/src/board_utilities
+    ${PROJECT_SOURCE_DIR}/src/piece_moves
+    )
 

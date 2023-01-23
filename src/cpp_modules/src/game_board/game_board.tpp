@@ -3,7 +3,6 @@
 
 #include <board_components.hpp>
 #include <board_utilities.hpp>
-// #include <game_board.hpp>
 #include <iostream>
 
 using namespace board_utilities;
@@ -26,11 +25,6 @@ GameBoard<ConcreteHashCalculator>::GameBoard()
     , num_hash_calculators_{}
     , hash_calculators_{} {}
 
-// template <typename ConcreteHashCalculator>
-// void ImplementAttachHashCalculator(ConcreteHashCalculator& hash_calculator)
-// {
-//   hash_calculators_.emplace
-// }
 
 template <typename ConcreteHashCalculator>
 GamePiece GameBoard<ConcreteHashCalculator>::GetOccupant(BoardSpace space) {
@@ -78,17 +72,12 @@ void GameBoard<ConcreteHashCalculator>::ImplementUndoMove(
   SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
   UpdateHashCalculators(executed_move);
-  // for (auto calculator : hash_calculators_) {
-  //   calculator.CalcNewBoardState(executed_move);
-  // }
 }
 
 template <typename ConcreteHashCalculator>
 vector<BoardSpace> GameBoard<
     ConcreteHashCalculator>::ImplementGetAllSpacesOccupiedBy(PieceColor color
 ) {
-  // auto all_occ_spaces = get_all_spaces_occupied_by(board_map_,
-  // color);
   return get_all_spaces_occupied_by(board_map_, color);
 }
 

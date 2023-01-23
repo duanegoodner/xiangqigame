@@ -1,10 +1,9 @@
 #ifndef _MINIMAX_EVALUATOR_TEMPLATE_
 #define _MINIMAX_EVALUATOR_TEMPLATE_
 
-#include "common.hpp"
+#include <common.hpp>
 #include <board_components.hpp>
 #include <limits>
-// #include <piece_points.hpp>
 
 using namespace board_components;
 

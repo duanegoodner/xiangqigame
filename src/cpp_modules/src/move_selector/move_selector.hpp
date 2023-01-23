@@ -1,8 +1,8 @@
 #ifndef _MOVE_SELECTOR_
 #define _MOVE_SELECTOR_
 
-#include <common.hpp>
 #include <board_components.hpp>
+#include <common.hpp>
 #include <move_selector_details.hpp>
 #include <utility_functs.hpp>
 #include <vector>
@@ -80,8 +80,8 @@ public:
 
 /*
 CRTP Interface: AIPlayer <- MoveSelector
-AI Player is currently in Python. If/when implement AI Player in C++, will move
-this interface definition to C++ Player header file.
+AI Player is currently in Python side of app. If/when implement AI Player in
+C++, will move this interface definition to C++ Player header file.
  */
 template <typename ConcreteMoveSelector, typename ConcreteGameBoard>
 class MoveSelector {
