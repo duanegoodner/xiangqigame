@@ -20,13 +20,28 @@ struct PointsSpecBPOExternal {
   );
   PointsSpecBPOExternal(const json &json_object);
   PointsSpecBPOExternal(string json_file_path);
+  
   base_points_map_t black_base;
   base_points_map_t red_base_offsets;
   TeamPointsSMap_t black_position;
   TeamPointsSMap_t red_position_offsets;
+  
   json ToJson();
   void ToFile(string output_path);
   GamePointsSMap_t ToGamePointsSmap();
+  GamePointsArray_t ToGamePointsArray();
+};
+
+struct RawPoints {
+    RawPoints(const json &json_object);
+    RawPoints(string json_file);
+    
+    TeamPointsSMap_t black_points;
+    TeamPointsSMap_t red_points;
+
+    json ToJson();
+    void ToFile();
+    GamePointsArray_t ToGamePointsArray();
 };
 
 
