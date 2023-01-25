@@ -24,6 +24,8 @@ ENV HOME /home/$USERNAME
 ENV WORKSPACE $HOME/workspace
 
 # install some essential packages
+# TODO install zip, unzip, build-essential and pkg-config
+# TODO install vpkg: https://lindevs.com/install-vcpkg-on-ubuntu
 RUN sudo apt-get update --fix-missing && \
     sudo apt-get install -y \
     bzip2 \

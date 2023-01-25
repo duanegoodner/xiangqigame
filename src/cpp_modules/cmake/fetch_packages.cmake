@@ -1,5 +1,6 @@
 include(FetchContent)
 include(CMakeFindDependencyMacro)
+
 FetchContent_Declare(
         googletest
         URL
@@ -13,13 +14,7 @@ FetchContent_Declare(
         nlohmann_json
         URL
         https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz)
-find_dependency(nlohmann_json) # need this so json_schema_validator can find nlohmann
-
-FetchContent_Declare(
-        json_schema_validator
-        URL
-        https://github.com/pboettch/json-schema-validator/archive/refs/tags/2.2.0.tar.gz)
-FetchContent_MakeAvailable(json_schema_validator)
+FetchContent_MakeAvailable(nlohmann_json)
 
 FetchContent_Declare(
         pybind11
@@ -28,16 +23,15 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(pybind11)
 
 FetchContent_Declare(
-        rapidjson
-        URL
-        https://github.com/Tencent/rapidjson/archive/012be8528783cdbf4b7a9e64f78bd8f056b97e24.zip 
-        )
+rapidjson
+URL
+https://github.com/Tencent/rapidjson/archive/012be8528783cdbf4b7a9e64f78bd8f056b97e24.zip
+)
 set(RAPIDJSON_BUILD_TESTS OFF)
 set(RAPIDJSON_BUILD_DOC OFF)
 set(RAPIDJSON_BUILD_EXAMPLES OFF)
-message(STATUS ${rapidjson_SOURCE_DIR})
 FetchContent_Populate(rapidjson)
-message(STATUS ${rapidjson_SOURCE_DIR})
 FetchContent_MakeAvailable(rapidjson)
-# find_dependency(rapidjson)
-# set(RAPIDJSON_INCLUDE_DIR ${rapidjson_SOURCE_DIR}/include)
+
+
+
