@@ -1,9 +1,13 @@
 #ifndef E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 #define E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 
+#include <rapidjson/document.h>
 #include <common.hpp>
 #include <nlohmann/json.hpp>
+#include <string>
+#include <typeinfo>
 #include <unordered_map>
+
 
 namespace piece_points_spec {
 using namespace std;
@@ -28,21 +32,39 @@ private:
   PiecePointsArray_t soldier;
 };
 
+struct PieceBasePoints {
+  int advisor;
+  int cannon;
+  int chariot;
+  int elephant;
+  int general;
+  int horse;
+  int null;
+  int soldier;
+};
+
+template <typename JsonType>
+struct BaseOffsetPointSpec {
+  BaseOffsetPointSpec() = default;
+  BaseOffsetPointSpec(JsonType &j);
+  BaseOffsetPointSpec(string file_path);
+
+  PieceBasePoints black_base;
+  TeamPoints<JsonType> black_position;
+  PieceBasePoints red_base_offsets;
+  TeamPoints<JsonType> red_position_offsets;
+};
+
 template <typename JsonType>
 struct GamePoints {
   GamePoints() = default;
-  // GamePoints(
-  //     TeamPoints<JsonType> black_team_points,
-  //     TeamPoints<JsonType> red_team_points
-  // );
   GamePoints(JsonType &j);
-
-
+  GamePoints(string file_path);
 
   unordered_map<string, TeamPoints<JsonType>> TeamPointsJsons();
   JsonType ToJson();
-  void FromJson();
   GamePointsArray_t ToArray();
+  void ToFile(string file_path);
 
 private:
   TeamPoints<JsonType> red;
@@ -73,18 +95,6 @@ struct PointsSpecBPOExternal {
   GamePointsArray_t ToGamePointsArray();
 };
 
-struct RawPoints {
-  RawPoints(const nloh_json &json_object);
-  RawPoints(string json_file);
-
-  TeamPointsSMap_t black_points;
-  TeamPointsSMap_t red_points;
-
-  nloh_json ToJson();
-  void ToFile();
-  GamePointsArray_t ToGamePointsArray();
-};
-
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for
 // use in internal data structs
 struct PointsSpecBPOInternal {
@@ -103,11 +113,40 @@ struct PointsSpecBPOInternal {
 };
 
 
+const string kICGABPOPath_x =
+    "/home/duane/workspace/project/src/cpp_modules/data/"
+    "ICGA_2004_bpo.json";
+
+const string kICGARawPath_x =
+    "/home/duane/workspace/project/src/cpp_modules/data/"
+    "ICGA_2004_raw.json";
+
+const string kRawSchemaPath_x =
+    "/home/duane/workspace/project/src/cpp_modules/data/"
+    "raw_points_schema.json";
+
+const string kBPOSchemaPath_x =
+    "/home/duane/workspace/project/src/cpp_modules/data/"
+    "bpo_schema.json";
 
 
+inline const size_t kGamePointsNlohmannJson =
+    typeid(GamePoints<nloh_json>).hash_code();
+inline const size_t kGamePointsRapidJson =
+    typeid(GamePoints<rapidjson::Document>).hash_code();
+inline const size_t kBPOSpecNlohmannJson =
+    typeid(BaseOffsetPointSpec<nloh_json>).hash_code();
+inline const size_t kBPOSpecRapidJson =
+    typeid(BaseOffsetPointSpec<rapidjson::Document>).hash_code();
+
+
+template <typename ImportJsonType>
+bool game_points_struct_match_json(
+    GamePoints<ImportJsonType>& game_points,
+    ImportJsonType &j
+);
 } // namespace piece_points_spec
 
 #include <piece_points_spec.tpp>
-
 
 #endif /* E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802 */

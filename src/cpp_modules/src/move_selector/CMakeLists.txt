@@ -14,4 +14,5 @@ target_include_directories(
     move_selector PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src/utility_functs
+    ${rapidjson_SOURCE_DIR}/include
 )

@@ -1,3 +1,4 @@
+#include "rapidjson/document.h"
 #include <bits/stdc++.h>
 #include <chrono>
 #include <ctime>
@@ -53,16 +54,22 @@ TEST_F(JsonInternalTest, NlohmannExport) {
   auto file_removed = filesystem::remove(temp_path);
 }
 
-TEST_F(JsonInternalTest, RapdJsonValidateGood) {
+TEST_F(JsonInternalTest, RapidJsonValidateStringGood) {
   auto matches_schema =
       validate_json_schema<rapidjson::Document>(kICGABPOPath, kBPOSchemaPath);
   EXPECT_TRUE(matches_schema);
 }
 
-TEST_F(JsonInternalTest, RapidJsonValidateBad) {
+TEST_F(JsonInternalTest, RapidJsonValidateStringBad) {
   auto matches_schema =
       validate_json_schema<rapidjson::Document>(kICGABPOPath, kRawSchemaPath);
   EXPECT_FALSE(matches_schema);
+}
+
+TEST_F(JsonInternalTest, RapidJsonValidateObjectGood) {
+  auto data_json = import_json<rapidjson::Document>(kICGARawPath);
+  auto result = validate_json_schema<rapidjson::Document>(data_json, kRawSchemaPath);
+  cout << "done" << endl;
 }
 
 int main(int argc, char **argv) {

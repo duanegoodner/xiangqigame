@@ -15,6 +15,9 @@ template <typename JsonType>
 void export_json(const JsonType& j, string file_path);
 
 template <typename JsonType>
+bool validate_json_schema(JsonType & data_json, string schema_file);
+
+template <typename JsonType>
 bool validate_json_schema(string json_file, string schema_file);
 
 template <typename IOType, typename SchemaType>

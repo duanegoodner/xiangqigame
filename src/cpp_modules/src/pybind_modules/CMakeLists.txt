@@ -8,6 +8,7 @@ target_link_libraries(
     board_utilities
     common
     game_board
+    json_internal
     nlohmann_json::nlohmann_json
     nlohmann_json_schema_validator
     piece_points
@@ -19,7 +20,14 @@ target_include_directories(
     GameBoardPy PRIVATE
     ${PROJECT_SOURCE_DIR}/src/game_board
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
+    ${PROJECT_SOURCE_DIR}/src/json_internal
+<<<<<<< HEAD
     ${CMAKE_CURRENT_SOURCE_DIR})
+=======
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${rapidjson_SOURCE_DIR}/include
+    )
+>>>>>>> 4c22ec1 (stop all new work using TeamPoints & GamePoints template classes (based on JsonType). begin changing to virtual method Json base class.)
 
 install(TARGETS GameBoardPy DESTINATION .)
 
@@ -35,6 +43,7 @@ target_link_libraries(
     piece_points
     piece_points_spec
     utility_functs
+    json_internal
     nlohmann_json::nlohmann_json
     nlohmann_json_schema_validator
     )
@@ -48,6 +57,8 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/game_board
     ${PROJECT_SOURCE_DIR}/src/hash_calculator
     ${PROJECT_SOURCE_DIR}/src/move_calculator
+    ${PROJECT_SOURCE_DIR}/src/json_internal
+    ${rapidjson_SOURCE_DIR}/include
     )
 
 install(TARGETS MoveSelectorPy DESTINATION .)
