@@ -15,13 +15,13 @@ using nloh_json = nlohmann::json;
 namespace json_internal {
 
 template <>
-nloh_json import_json<nloh_json>(string file_path) {
+inline nloh_json import_json<nloh_json>(string file_path) {
   ifstream input(file_path);
   return nloh_json::parse(input);
 }
 
 template <>
-rapidjson::Document import_json<rapidjson::Document>(string file_path) {
+inline rapidjson::Document import_json<rapidjson::Document>(string file_path) {
   ifstream is(file_path);
   rapidjson::IStreamWrapper is_wrapper(is);
   rapidjson::Document d;
@@ -30,13 +30,13 @@ rapidjson::Document import_json<rapidjson::Document>(string file_path) {
 }
 
 template <>
-void export_json<nloh_json>(const nloh_json &j, string file_path) {
+inline void export_json<nloh_json>(const nloh_json &j, string file_path) {
   ofstream fout(file_path);
   fout << setw(4) << j << endl;
 }
 
 template <>
-bool validate_json_schema<rapidjson::Document>(
+inline bool validate_json_schema<rapidjson::Document>(
     string json_file,
     string schema_file
 ) {

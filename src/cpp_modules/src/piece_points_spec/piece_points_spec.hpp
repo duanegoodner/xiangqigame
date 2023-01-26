@@ -37,12 +37,10 @@ struct GamePoints {
   // );
   GamePoints(JsonType &j);
 
-
-
   unordered_map<string, TeamPoints<JsonType>> TeamPointsJsons();
   JsonType ToJson();
-  void FromJson();
   GamePointsArray_t ToArray();
+  void ToFile(string file_path);
 
 private:
   TeamPoints<JsonType> red;

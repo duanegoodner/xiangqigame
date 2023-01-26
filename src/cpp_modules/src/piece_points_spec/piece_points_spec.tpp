@@ -2,11 +2,13 @@
 #define B3123E8C_B936_4802_A0CD_13BABD26E0A8
 
 // #include <piece_points_spec.hpp>
-#include "piece_points_spec.hpp"
+#include <piece_points_spec.hpp>
 #include <common.hpp>
+#include <filesystem>
 #include <iostream>
 #include <nlohmann/json.hpp>
 #include <unordered_map>
+#include <json_internal.hpp>
 
 namespace piece_points_spec {
 
@@ -62,15 +64,6 @@ GamePoints<JsonType>::TeamPointsJsons() {
   return name_map;
 }
 
-
-// template <>
-// inline GamePoints<nloh_json>::GamePoints(
-//     TeamPoints<nloh_json> black_team_points,
-//      TeamPoints<nloh_json> red_team_points
-// ) 
-// : black{black_team_points}
-// , red{red_team_points} {}
-
 template <>
 inline GamePoints<nloh_json>::GamePoints(nloh_json& j)
     : black{TeamPoints<nloh_json>(j.at("black"))}
@@ -104,6 +97,11 @@ inline nloh_json GamePoints<nloh_json>::ToJson() {
     return j;
 }
 
+template <typename JsonType>
+inline void GamePoints<JsonType>::ToFile(string file_path) {
+    auto json_object = ToJson();
+    json_internal::export_json<JsonType>(json_object, file_path);
+}
 } // namespace piece_points_spec
 
 #endif /* B3123E8C_B936_4802_A0CD_13BABD26E0A8 */

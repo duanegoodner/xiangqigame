@@ -18,9 +18,11 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src/board_components
     ${PROJECT_SOURCE_DIR}/src/utility_functs
+    ${PROJECT_SOURCE_DIR}/src/json_internal
     ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
     ${PROJECT_SOURCE_DIR}/src/move_selector
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
+    ${rapidjson_SOURCE_DIR}/include
 )
 
 add_executable(
@@ -41,10 +43,12 @@ target_include_directories(
     bpo_json_to_raw_json PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src/board_components
+    ${PROJECT_SOURCE_DIR}/src/json_internal
     ${PROJECT_SOURCE_DIR}/src/utility_functs
     ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
     ${PROJECT_SOURCE_DIR}/src/move_selector
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
+    ${rapidjson_SOURCE_DIR}/include
 )
 
 # add_executable(
