@@ -94,6 +94,21 @@ two_d_array_t array_plus_const(two_d_array_t array, array_element_t offset) {
   return result;
 }
 
+template <typename two_d_array_t, typename array_element_t>
+bool operator==(two_d_array_t& a, two_d_array_t& b) {
+  bool are_equal = true;
+
+  for (auto rank = 0; rank < a.size(); rank++) {
+    for (auto file = 0; file < a[0].size(); file++) {
+      if (a[rank][file] != b[rank][file]) {
+        are_equal = false;
+        return are_equal;
+      }
+    }
+  }
+  return are_equal;
+}
+
 json import_json(string file_path);
 void export_json(const json &j, string filename);
 

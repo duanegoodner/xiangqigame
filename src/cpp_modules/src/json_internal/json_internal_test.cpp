@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <chrono>
 #include <ctime>
+#include <filesystem>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <json_internal.hpp>
@@ -30,7 +31,6 @@ protected:
 
 TEST_F(JsonInternalTest, NlohmannImport) {
   auto nloh_bpo_data = import_json<nloh_json>(kICGABPOPath);
-  cout << "done" << endl;
 }
 
 TEST_F(JsonInternalTest, RapidJsonImport) {
@@ -48,8 +48,21 @@ TEST_F(JsonInternalTest, NlohmannExport) {
       utility_functs::random((size_t)0, (size_t)numeric_limits<size_t>::max);
   temp_path.append(to_string(random_int));
   temp_path.append(".json");
-  cout << temp_path << endl;
   export_json<nloh_json>(nloh_bpo_data, temp_path);
+  EXPECT_TRUE(filesystem::exists(temp_path));
+  auto file_removed = filesystem::remove(temp_path);
+}
+
+TEST_F(JsonInternalTest, RapdJsonValidateGood) {
+  auto matches_schema =
+      validate_json_schema<rapidjson::Document>(kICGABPOPath, kBPOSchemaPath);
+  EXPECT_TRUE(matches_schema);
+}
+
+TEST_F(JsonInternalTest, RapidJsonValidateBad) {
+  auto matches_schema =
+      validate_json_schema<rapidjson::Document>(kICGABPOPath, kRawSchemaPath);
+  EXPECT_FALSE(matches_schema);
 }
 
 int main(int argc, char **argv) {

@@ -82,13 +82,13 @@ typedef array<team_zarray_t, 2> game_zarray_t;
 typedef int Points_t;
 
 // GamePointsArray_t and its sub-array types
-typedef array<array<int, kNumFiles>, kNumRanks> PiecePositionPoints_t;
-typedef array<PiecePositionPoints_t, kNumPieceTypeVals> TeamPointsArray_t;
+typedef array<array<int, kNumFiles>, kNumRanks> PiecePointsArray_t;
+typedef array<PiecePointsArray_t, kNumPieceTypeVals> TeamPointsArray_t;
 typedef array<TeamPointsArray_t, 2> GamePointsArray_t;
 
 inline bool operator==(
-    const PiecePositionPoints_t& a,
-    const PiecePositionPoints_t& b
+    const PiecePointsArray_t& a,
+    const PiecePointsArray_t& b
 ) {
   bool are_equal = true;
 
@@ -108,8 +108,8 @@ typedef unordered_map<PieceType, Points_t> TeamBasePoints_t;
 typedef array<Points_t, kNumPieceTypeVals> base_points_array_t;
 typedef unordered_map<string, Points_t> base_points_map_t;
 
-typedef unordered_map<PieceType, PiecePositionPoints_t> TeamPointsEMap_t;
-typedef unordered_map<string, PiecePositionPoints_t> TeamPointsSMap_t;
+typedef unordered_map<PieceType, PiecePointsArray_t> TeamPointsEMap_t;
+typedef unordered_map<string, PiecePointsArray_t> TeamPointsSMap_t;
 
 inline bool operator==(TeamPointsSMap_t& a, TeamPointsSMap_t& b) {
   bool are_equal = true;

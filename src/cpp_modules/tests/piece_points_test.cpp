@@ -121,7 +121,7 @@ TEST_F(PiecePointsTest, RedPointsFlippedWRTBlack) {
 TEST_F(PiecePointsTest, game_points_array_to_smap) {
   auto s_map = game_points_array_to_smap(game_points_array);
 
-  // confirm corresponding PiecePositionPoints_t arrays in s_map and
+  // confirm corresponding PiecePointsArray_t arrays in s_map and
   // game_points_array are equal
   for (auto color : s_map) {
     for (auto piece_type : color.second) {
