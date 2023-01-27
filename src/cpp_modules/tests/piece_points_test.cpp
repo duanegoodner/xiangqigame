@@ -151,12 +151,6 @@ TEST_F(PiecePointsTest, InitFromFile) {
   auto piece_points = PiecePoints(raw_points_json_path);
 }
 
-TEST(CompareAgainstSchemaTest, ValidRawPoints) {
-  auto json_object = utility_functs::import_json(kICGARawPath);
-  auto schema = utility_functs::import_json(kRawSchemaPath);
-  auto points_format = json_matches_schema(json_object, schema);
-}
-
 TEST(ArrayBuilder_2Test, InitWithPath) {
   json json_object = utility_functs::import_json(kICGARawPath);
   auto array_builder_from_raw = GamePointsArrayBuilder_2(json_object);

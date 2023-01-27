@@ -82,6 +82,10 @@ TEST_F(GamePointsTestNlohmann, PiecePointsArraysMatchJsonSource) {
   }
 }
 
+TEST_F(GamePointsTestNlohmann, InitFromString) {
+  auto game_points = GamePoints<nloh_json>(kICGARawPath);
+}
+
 TEST_F(GamePointsTestNlohmann, ToJson) {
   auto game_points = GamePoints<nloh_json>(nloh_raw_json_game);
   auto json_output = game_points.ToJson();
@@ -128,3 +132,4 @@ TEST_F(GamePointsTestNlohmann, ToFileOutputHasCorrectFormat) {
     validate_json_schema<rapidjson::Document>(output_path, kRawSchemaPath)
   );
 }
+
