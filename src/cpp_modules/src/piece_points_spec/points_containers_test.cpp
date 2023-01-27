@@ -136,7 +136,7 @@ TEST_F(GamePointsTestNlohmann, ToFileOutputHasCorrectFormat) {
 
 TEST_F(GamePointsTestNlohmann, StructDataMatchesJsonData) {
   auto game_points_struct = GamePoints<nloh_json>(nloh_raw_json_game);
-  auto result = game_points_struct_match_json<nloh_json, rapidjson::Document>(
+  auto result = game_points_struct_match_json<nloh_json>(
       game_points_struct,
       nloh_raw_json_game
   );

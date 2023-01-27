@@ -1,7 +1,7 @@
 #ifndef E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 #define E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 
-#include "rapidjson/document.h"
+#include <rapidjson/document.h>
 #include <common.hpp>
 #include <nlohmann/json.hpp>
 #include <string>
@@ -140,7 +140,7 @@ inline const size_t kBPOSpecRapidJson =
     typeid(BaseOffsetPointSpec<rapidjson::Document>).hash_code();
 
 
-template <typename ImportJsonType, typename SchemaJsonType>
+template <typename ImportJsonType>
 bool game_points_struct_match_json(
     GamePoints<ImportJsonType>& game_points,
     ImportJsonType &j

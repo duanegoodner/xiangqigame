@@ -131,23 +131,12 @@ inline void GamePoints<JsonType>::ToFile(string file_path) {
 }
 
 template <>
-inline bool game_points_struct_match_json<nloh_json, rapidjson::Document>(
+inline bool game_points_struct_match_json<nloh_json>(
     GamePoints<nloh_json> &game_points,
     nloh_json &j
 ) {
 
-  string schema_path{"/home/duane/workspace/project/src/cpp_modules/data/"
-                     "raw_points_schema.json"};
-
-  // auto is_valid =
-  //     json_internal::validate_json_schema<rapidjson::Document>(j, schema_path);
-
-  // if (!json_internal::validate_json_schema<rapidjson::Document>(
-  //         j,
-  //         schema_path
-  //     )) {
-  //   return false;
-  // }
+  // TODO: Validate json format (but need validator for nloh_json)
 
   for (auto &[color_key, color_value] : j.items()) {
     for (auto &[piece_type_key, piece_type_value] : color_value.items()) {

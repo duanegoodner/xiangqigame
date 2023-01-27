@@ -59,7 +59,8 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/piece_points
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
-    ${PROJECT_SOURCE_DIR}/src/move_selector)
+    ${PROJECT_SOURCE_DIR}/src/move_selector
+    ${rapidjson_SOURCE_DIR}/include)
 
 add_executable(piece_points_spec_test piece_points_spec_test.cpp)
 target_link_libraries(
@@ -87,11 +88,13 @@ target_link_libraries(
     piece_points
     game_board
     utility_functs
+    json_internal
     nlohmann_json::nlohmann_json
     GTest::gtest_main)
-    target_include_directories(
-        minimax_evaluator_test PRIVATE
-        ${PROJECT_SOURCE_DIR}/src/piece_points_spec)
+target_include_directories(
+    minimax_evaluator_test PRIVATE
+    ${PROJECT_SOURCE_DIR}/src/piece_points_spec
+    ${rapidjson_SOURCE_DIR}/include)
 
 add_executable(move_selector_test move_selector_test.cpp)
 target_link_libraries(

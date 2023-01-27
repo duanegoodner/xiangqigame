@@ -19,7 +19,10 @@ target_include_directories(
     GameBoardPy PRIVATE
     ${PROJECT_SOURCE_DIR}/src/game_board
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
-    ${CMAKE_CURRENT_SOURCE_DIR})
+    ${PROJECT_SOURCE_DIR}/src/json_internal
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${rapidjson_SOURCE_DIR}/include
+    )
 
 install(TARGETS GameBoardPy DESTINATION .)
 
@@ -48,6 +51,8 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/game_board
     ${PROJECT_SOURCE_DIR}/src/hash_calculator
     ${PROJECT_SOURCE_DIR}/src/move_calculator
+    ${PROJECT_SOURCE_DIR}/src/json_internal
+    ${rapidjson_SOURCE_DIR}/include
     )
 
 install(TARGETS MoveSelectorPy DESTINATION .)
