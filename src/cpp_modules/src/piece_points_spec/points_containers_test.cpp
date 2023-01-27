@@ -60,7 +60,7 @@ protected:
   string kICGARawPath = "/home/duane/workspace/project/src/cpp_modules/data/"
                         "ICGA_2004_raw.json";
   string kRawSchemaPath = "/home/duane/workspace/project/src/cpp_modules/data/"
-                        "raw_points_schema.json";
+                          "raw_points_schema.json";
   nloh_json nloh_raw_json_game = import_json<nloh_json>(kICGARawPath);
 };
 
@@ -126,10 +126,18 @@ TEST_F(GamePointsTestNlohmann, ToFileOutputHasCorrectFormat) {
       utility_functs::random((size_t)0, (size_t)numeric_limits<size_t>::max);
   auto output_path = testing::TempDir() + "GTEST-" + to_string(random_int);
 
-  // auto result = validate_json_schema<rapidjson::Document>(output_path, kRawSchemaPath);
+  // auto result = validate_json_schema<rapidjson::Document>(output_path,
+  // kRawSchemaPath);
   GamePoints<nloh_json>(nloh_raw_json_game).ToFile(output_path);
   EXPECT_TRUE(
-    validate_json_schema<rapidjson::Document>(output_path, kRawSchemaPath)
+      validate_json_schema<rapidjson::Document>(output_path, kRawSchemaPath)
   );
 }
 
+TEST_F(GamePointsTestNlohmann, StructDataMatchesJsonData) {
+  auto game_points_struct = GamePoints<nloh_json>(nloh_raw_json_game);
+  auto result = game_points_struct_match_json<nloh_json, rapidjson::Document>(
+      game_points_struct,
+      nloh_raw_json_game
+  );
+}
