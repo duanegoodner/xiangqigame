@@ -35,16 +35,16 @@ inline void export_json<nloh_json>(const nloh_json &j, string file_path) {
   fout << setw(4) << j << endl;
 }
 
-// template<>
-// inline bool validate_json_schema<rapidjson::Document>(
-//   rapidjson::Document& data_json,
-//   string schema_file
-// ) {
-//   auto schema_json = import_json<rapidjson::Document>(schema_file);
-//   rapidjson::SchemaDocument schema(schema_json);
-//   rapidjson::SchemaValidator validator(schema);
-//   return data_json.Accept(validator);
-// }
+template<>
+inline bool validate_json_schema<rapidjson::Document>(
+  rapidjson::Document& data_json,
+  string schema_file
+) {
+  auto schema_json = import_json<rapidjson::Document>(schema_file);
+  rapidjson::SchemaDocument schema(schema_json);
+  rapidjson::SchemaValidator validator(schema);
+  return data_json.Accept(validator);
+}
 
 template <>
 inline bool validate_json_schema<rapidjson::Document>(

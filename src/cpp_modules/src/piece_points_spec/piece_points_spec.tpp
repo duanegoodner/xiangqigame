@@ -3,13 +3,13 @@
 
 // #include <piece_points_spec.hpp>
 // #include "json_internal.tpp"
-#include "rapidjson/document.h"
 #include <common.hpp>
 #include <filesystem>
 #include <iostream>
 #include <json_internal.hpp>
 #include <nlohmann/json.hpp>
 #include <piece_points_spec.hpp>
+#include <rapidjson/document.h>
 #include <unordered_map>
 
 namespace piece_points_spec {
@@ -135,25 +135,30 @@ inline bool game_points_struct_match_json<nloh_json, rapidjson::Document>(
     GamePoints<nloh_json> &game_points,
     nloh_json &j
 ) {
-  if (!json_internal::validate_json_schema<rapidjson::Document>(
-          j,
-          kRawSchemaPath_x
-      )) {
-    return false;
-  }
+
+  string schema_path{"/home/duane/workspace/project/src/cpp_modules/data/"
+                     "raw_points_schema.json"};
+
+  // auto is_valid =
+  //     json_internal::validate_json_schema<rapidjson::Document>(j, schema_path);
+
+  // if (!json_internal::validate_json_schema<rapidjson::Document>(
+  //         j,
+  //         schema_path
+  //     )) {
+  //   return false;
+  // }
 
   for (auto &[color_key, color_value] : j.items()) {
     for (auto &[piece_type_key, piece_type_value] : color_value.items()) {
-      auto json_array = j.at(color_key).at(piece_type_key);
-      auto game_points_struct_array = game_points.TeamPointsJsons().at(color_key).PiecePointsArrays().at(
+      PiecePointsArray_t array_from_json = j.at(color_key).at(piece_type_key);
+      
+      if (!(array_from_json ==
+          game_points.TeamPointsJsons().at(color_key).PiecePointsArrays().at(
               piece_type_key
-          );
-      // if (!(j.at(color_key).at(piece_type_key) ==
-      //     game_points.TeamPointsJsons().at(color_key).PiecePointsArrays().at(
-      //         piece_type_key
-      //     ))) {
-      //   return false;
-      // }
+          ))) {
+        return false;
+      }
     }
   }
   return true;
