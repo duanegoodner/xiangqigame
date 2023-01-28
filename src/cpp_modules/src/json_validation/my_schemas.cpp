@@ -39,7 +39,7 @@ int main() {
   json_validator spec_validator;
 
   try {
-    spec_validator.set_root_schema(points_spec_schema);
+    spec_validator.set_root_schema(raw_points_schema);
   } catch (const std::exception &e) {
     std::cerr << "Points Spec schema validation failed: " << e.what()
               << std::endl;

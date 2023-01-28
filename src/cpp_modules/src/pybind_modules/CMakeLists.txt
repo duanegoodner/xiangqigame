@@ -21,13 +21,9 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/game_board
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/json_internal
-<<<<<<< HEAD
-    ${CMAKE_CURRENT_SOURCE_DIR})
-=======
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${rapidjson_SOURCE_DIR}/include
     )
->>>>>>> 4c22ec1 (stop all new work using TeamPoints & GamePoints template classes (based on JsonType). begin changing to virtual method Json base class.)
 
 install(TARGETS GameBoardPy DESTINATION .)
 

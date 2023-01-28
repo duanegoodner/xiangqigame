@@ -11,16 +11,25 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 FetchContent_Declare(
-        nlohmann_json
+        json
         URL
         https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz)
-FetchContent_MakeAvailable(nlohmann_json)
+set(JSON_Install ON)
+FetchContent_MakeAvailable(json)
+
+FetchContent_Declare(
+        nlohmann_json_schema_validator
+        URL
+        https://github.com/pboettch/json-schema-validator/archive/refs/tags/2.2.0.tar.gz)
+FetchContent_MakeAvailable(nlohmann_json_schema_validator)
 
 FetchContent_Declare(
         pybind11
         URL
         https://github.com/pybind/pybind11/archive/refs/tags/v2.10.3.tar.gz)
 FetchContent_MakeAvailable(pybind11)
+
+
 
 FetchContent_Declare(
 rapidjson
