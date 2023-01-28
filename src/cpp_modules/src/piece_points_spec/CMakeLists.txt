@@ -36,6 +36,4 @@ target_include_directories(
     points_containers_test PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src/utility_functs
-    ${PROJECT_SOURCE_DIR}/src/json_internal
-    ${rapidjson_SOURCE_DIR}/include
-)
+    ${PROJECT_SOURCE_DIR}/src/json_internal)

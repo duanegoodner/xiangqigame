@@ -1,7 +1,6 @@
 #ifndef E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 #define E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 
-#include <rapidjson/document.h>
 #include <common.hpp>
 #include <nlohmann/json.hpp>
 #include <string>
@@ -93,11 +92,9 @@ private:
 struct GamePointsNonTemp {
   GamePointsNonTemp() = default;
   GamePointsNonTemp(GamePointsSMap_t points_input);
-  // GamePoints(JsonType &j);
   GamePointsNonTemp(string file_path);
 
   unordered_map<string, TeamPointsNonTemp> TeamPointsStructs();
-  // JsonType ToJson();
   GamePointsArray_t ToArray();
   void ToFile(string file_path);
 
@@ -167,12 +164,8 @@ const string kBPOSchemaPath_x =
 
 inline const size_t kGamePointsNlohmannJson =
     typeid(GamePoints<nloh_json>).hash_code();
-inline const size_t kGamePointsRapidJson =
-    typeid(GamePoints<rapidjson::Document>).hash_code();
 inline const size_t kBPOSpecNlohmannJson =
     typeid(BaseOffsetPointSpec<nloh_json>).hash_code();
-inline const size_t kBPOSpecRapidJson =
-    typeid(BaseOffsetPointSpec<rapidjson::Document>).hash_code();
 
 
 template <typename ImportJsonType>

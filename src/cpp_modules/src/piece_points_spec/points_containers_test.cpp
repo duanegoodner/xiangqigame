@@ -4,10 +4,6 @@
 #include <json_internal.hpp>
 #include <nlohmann/json.hpp>
 #include <piece_points_spec.hpp>
-#include <rapidjson/document.h>
-#include <rapidjson/filereadstream.h>
-#include <rapidjson/istreamwrapper.h>
-#include <rapidjson/schema.h>
 #include <string>
 #include <typeinfo>
 #include <utility_functs.hpp>
@@ -121,18 +117,12 @@ TEST_F(GamePointsTestNlohmann, ToFileOutputExists) {
   EXPECT_TRUE(file_removed);
 }
 
-TEST_F(GamePointsTestNlohmann, ToFileOutputHasCorrectFormat) {
-  size_t random_int =
-      utility_functs::random((size_t)0, (size_t)numeric_limits<size_t>::max);
-  auto output_path = testing::TempDir() + "GTEST-" + to_string(random_int);
+// TEST_F(GamePointsTestNlohmann, ToFileOutputHasCorrectFormat) {
+//   size_t random_int =
+//       utility_functs::random((size_t)0, (size_t)numeric_limits<size_t>::max);
+//   auto output_path = testing::TempDir() + "GTEST-" + to_string(random_int);
 
-  // auto result = validate_json_schema<rapidjson::Document>(output_path,
-  // kRawSchemaPath);
-  GamePoints<nloh_json>(nloh_raw_json_game).ToFile(output_path);
-  EXPECT_TRUE(
-      validate_json_schema<rapidjson::Document>(output_path, kRawSchemaPath)
-  );
-}
+// }
 
 TEST_F(GamePointsTestNlohmann, StructDataMatchesJsonData) {
   auto game_points_struct = GamePoints<nloh_json>(nloh_raw_json_game);
