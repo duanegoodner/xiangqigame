@@ -79,103 +79,26 @@ public:
 };
 
 class NlohmannJsonIO : JsonIO {
-public:
-  void Import(GamePointsNonTemp &data, string file_path) override {
-    PrivateImport(data, file_path);
-  }
-  void Export(GamePointsNonTemp &data, string file_path) override {
-    PrivateExport(data, file_path);
-  }
-  bool Validate(string data_file, string schema_file) override {
-    return PrivateValidate(data_file, schema_file);
-  }
+
+  void Import(GamePointsNonTemp &data, string file_path) override;
+  void Export(GamePointsNonTemp &data, string file_path) override;
+  bool Validate(string data_file, string schema_file) override;
 
 private:
   template <typename T>
-  void PrivateImport(T &object, string file_path) {
+  void ImportWithTemplate(T &object, string file_path) {
     ifstream input(file_path);
     nlohmann::json j = nlohmann::json::parse(input);
     object = j.get<T>();
   }
 
   template <typename T>
-  void PrivateExport(T &object, string file_path) {
+  void ExportWithTemplate(T &object, string file_path) {
     nlohmann::json j;
     j = object;
     ofstream fout(file_path);
     fout << setw(4) << j << endl;
   }
-
-  bool PrivateValidate(string data_file, string schema_file) {
-
-    nlohmann::json_schema::json_validator validator;
-    
-    try {
-      ifstream schema_input(schema_file);
-      nlohmann::json schema_json = nlohmann::json::parse(schema_input);
-      validator.set_root_schema(schema_json);
-    } catch (const exception &e) {
-      cerr << "Unable to generate schema validator from provided schema path: "
-           << e.what() << endl;
-      exit(1);
-    }
-
-    nlohmann::json data_json;
-    try {
-      ifstream data_input(data_file);
-      data_json = nlohmann::json::parse(data_input);
-    } catch (const exception &e) {
-      cerr << "Unable to import JSON from data file path." << endl
-           << "No comparison of data against schema performed." << endl
-           << "Current validation function will return 'false'." << endl
-           << "Note that the provided data file path would not yield 'true' "
-              "with any schema "
-              "since data file cannot be imported."
-           << endl
-           << e.what() << endl;
-      return false;
-    }
-
-    try {
-      validator.validate(data_json);
-    } catch (const exception &e) {
-      return false;
-    }
-
-    return true;
-  }
-  //   unordered_map<string, any> Import(string file_path) override {
-  //     unordered_map<string, any> imported_map;
-  //     try {
-  //       ifstream input(file_path);
-  //       auto json_object = nlohmann::json::parse(input);
-  //       imported_map = json_object;
-  //     } catch (const exception &e) {
-  //       cerr << "JSON import failed: " << e.what() << endl;
-  //       exit(1);
-  //     }
-  //     return imported_map;
-  // }
-
-  //   template <typename Convertible>
-  //   void Export(Convertible object, string file_path) {
-  //     nlohmann::json output;
-  //     try {
-  //       output = object;
-  //       ofstream fout(file_path);
-  //       fout << setw(4) << output << endl;
-  //     } catch (const exception &e) {
-  //       cerr << "Unable to export object" << endl << e.what()
-  //            << endl;
-  //       exit(1);
-  //     }
-  //   }
-
-  // private:
-  //   void ExportJson(nlohmann::json j, string file_path) {
-  //     ofstream fout(file_path);
-  //     fout << setw(4) << j << endl;
-  //   }
 };
 
 } // namespace json_io
