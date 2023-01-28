@@ -40,7 +40,7 @@ struct TeamPointsNonTemp {
   // JsonType ToJson();
   TeamPointsArray_t ToArray();
 
-private:
+// private:
   PiecePointsArray_t null;
   PiecePointsArray_t general;
   PiecePointsArray_t advisor;
@@ -101,7 +101,7 @@ struct GamePointsNonTemp {
   GamePointsArray_t ToArray();
   void ToFile(string file_path);
 
-private:
+
   TeamPointsNonTemp red;
   TeamPointsNonTemp black;
 };

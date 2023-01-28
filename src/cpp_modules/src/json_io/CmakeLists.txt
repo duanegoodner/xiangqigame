@@ -12,4 +12,6 @@ target_include_directories(
     json_io PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
+    ${PROJECT_SOURCE_DIR}/src/json_internal
+    ${rapidjson_SOURCE_DIR}/include
     )
