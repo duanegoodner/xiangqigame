@@ -5,8 +5,7 @@ target_link_libraries(
     nlohmann_json_schema_validator)
 target_include_directories(
     json_internal PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${rapidjson_SOURCE_DIR}/include)
+    ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_executable(
     json_internal_test

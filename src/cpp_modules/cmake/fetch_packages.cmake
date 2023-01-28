@@ -28,19 +28,3 @@ FetchContent_Declare(
         URL
         https://github.com/pybind/pybind11/archive/refs/tags/v2.10.3.tar.gz)
 FetchContent_MakeAvailable(pybind11)
-
-
-
-FetchContent_Declare(
-rapidjson
-URL
-https://github.com/Tencent/rapidjson/archive/012be8528783cdbf4b7a9e64f78bd8f056b97e24.zip
-)
-set(RAPIDJSON_BUILD_TESTS OFF)
-set(RAPIDJSON_BUILD_DOC OFF)
-set(RAPIDJSON_BUILD_EXAMPLES OFF)
-FetchContent_Populate(rapidjson)
-FetchContent_MakeAvailable(rapidjson)
-
-
-

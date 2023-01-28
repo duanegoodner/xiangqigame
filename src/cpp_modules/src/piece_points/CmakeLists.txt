@@ -23,9 +23,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
     ${PROJECT_SOURCE_DIR}/src/move_selector
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
-    ${PROJECT_SOURCE_DIR}/src/json_internal
-    ${rapidjson_SOURCE_DIR}/include
-)
+    ${PROJECT_SOURCE_DIR}/src/json_internal)
 
 add_executable(
     bpo_json_to_raw_json bpo_json_to_raw_json.cpp
@@ -49,9 +47,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/utility_functs
     ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
     ${PROJECT_SOURCE_DIR}/src/move_selector
-    ${PROJECT_SOURCE_DIR}/src/piece_points_spec
-    ${rapidjson_SOURCE_DIR}/include
-)
+    ${PROJECT_SOURCE_DIR}/src/piece_points_spec)
 
 # add_executable(
 # piece_points_raw_json_writer piece_points_raw_json_writer.cpp

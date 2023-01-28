@@ -9,7 +9,6 @@
 #include <json_internal.hpp>
 #include <nlohmann/json.hpp>
 #include <piece_points_spec.hpp>
-#include <rapidjson/document.h>
 #include <unordered_map>
 
 namespace piece_points_spec {

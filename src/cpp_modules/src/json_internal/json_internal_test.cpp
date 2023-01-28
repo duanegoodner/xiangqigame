@@ -1,4 +1,3 @@
-#include "rapidjson/document.h"
 #include <bits/stdc++.h>
 #include <chrono>
 #include <ctime>
@@ -34,10 +33,6 @@ TEST_F(JsonInternalTest, NlohmannImport) {
   auto nloh_bpo_data = import_json<nloh_json>(kICGABPOPath);
 }
 
-TEST_F(JsonInternalTest, RapidJsonImport) {
-  auto rapidjson_bpo_data = import_json<rapidjson::Document>(kICGABPOPath);
-}
-
 TEST_F(JsonInternalTest, NlohmannExport) {
   auto nloh_bpo_data = import_json<nloh_json>(kICGABPOPath);
   auto timenow = chrono::system_clock::to_time_t(chrono::system_clock::now());
@@ -52,24 +47,6 @@ TEST_F(JsonInternalTest, NlohmannExport) {
   export_json<nloh_json>(nloh_bpo_data, temp_path);
   EXPECT_TRUE(filesystem::exists(temp_path));
   auto file_removed = filesystem::remove(temp_path);
-}
-
-TEST_F(JsonInternalTest, RapidJsonValidateStringGood) {
-  auto matches_schema =
-      validate_json_schema<rapidjson::Document>(kICGABPOPath, kBPOSchemaPath);
-  EXPECT_TRUE(matches_schema);
-}
-
-TEST_F(JsonInternalTest, RapidJsonValidateStringBad) {
-  auto matches_schema =
-      validate_json_schema<rapidjson::Document>(kICGABPOPath, kRawSchemaPath);
-  EXPECT_FALSE(matches_schema);
-}
-
-TEST_F(JsonInternalTest, RapidJsonValidateObjectGood) {
-  auto data_json = import_json<rapidjson::Document>(kICGARawPath);
-  auto result = validate_json_schema<rapidjson::Document>(data_json, kRawSchemaPath);
-  cout << "done" << endl;
 }
 
 int main(int argc, char **argv) {
