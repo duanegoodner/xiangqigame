@@ -2,11 +2,11 @@
 
 using namespace json_io;
 
-void NlohmannJsonIO::Import(GamePointsNonTemp &data, string file_path) {
-  ImportWithTemplate(data, file_path);
+GamePointsSMap_t NlohmannJsonIO::Import(string file_path) {
+  return ImportWithTemplate<nlohmann::json>(file_path);
 }
 
-void NlohmannJsonIO::Export(GamePointsNonTemp &data, string file_path) {
+void NlohmannJsonIO::Export(GamePointsSMap_t &data, string file_path) {
   ExportWithTemplate(data, file_path);
 }
 
@@ -19,6 +19,7 @@ bool NlohmannJsonIO::Validate(string data_file, string schema_file) {
     validator.set_root_schema(schema_json);
   } catch (const exception &e) {
     cerr << "Unable to generate schema validator from provided schema path: "
+            "blah blah blah"
          << e.what() << endl;
     exit(1);
   }

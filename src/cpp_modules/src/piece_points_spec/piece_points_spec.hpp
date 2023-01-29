@@ -34,9 +34,7 @@ private:
 struct TeamPointsNonTemp {
   TeamPointsNonTemp() = default;
   TeamPointsNonTemp(TeamPointsSMap_t team_points_data);
-  // TeamPoints(JsonType &j);
   unordered_map<string, PiecePointsArray_t> PiecePointsArrays();
-  // JsonType ToJson();
   TeamPointsArray_t ToArray();
 
 // private:
@@ -62,10 +60,10 @@ struct PieceBasePoints {
 };
 
 template <typename JsonType>
-struct BaseOffsetPointSpec {
-  BaseOffsetPointSpec() = default;
-  BaseOffsetPointSpec(JsonType &j);
-  BaseOffsetPointSpec(string file_path);
+struct BasePointOffsetSpec {
+  BasePointOffsetSpec() = default;
+  BasePointOffsetSpec(JsonType &j);
+  BasePointOffsetSpec(string file_path);
 
   PieceBasePoints black_base;
   TeamPoints<JsonType> black_position;
@@ -73,31 +71,14 @@ struct BaseOffsetPointSpec {
   TeamPoints<JsonType> red_position_offsets;
 };
 
-template <typename JsonType>
-struct GamePoints {
-  GamePoints() = default;
-  GamePoints(JsonType &j);
-  GamePoints(string file_path);
-
-  unordered_map<string, TeamPoints<JsonType>> TeamPointsJsons();
-  JsonType ToJson();
-  GamePointsArray_t ToArray();
-  void ToFile(string file_path);
-
-private:
-  TeamPoints<JsonType> red;
-  TeamPoints<JsonType> black;
-};
 
 struct GamePointsNonTemp {
   GamePointsNonTemp() = default;
-  GamePointsNonTemp(GamePointsSMap_t points_input);
   GamePointsNonTemp(string file_path);
 
   unordered_map<string, TeamPointsNonTemp> TeamPointsStructs();
   GamePointsArray_t ToArray();
   void ToFile(string file_path);
-
 
   TeamPointsNonTemp red;
   TeamPointsNonTemp black;
@@ -162,19 +143,9 @@ const string kBPOSchemaPath_x =
     "bpo_schema.json";
 
 
-inline const size_t kGamePointsNlohmannJson =
-    typeid(GamePoints<nloh_json>).hash_code();
-inline const size_t kBPOSpecNlohmannJson =
-    typeid(BaseOffsetPointSpec<nloh_json>).hash_code();
 
-
-template <typename ImportJsonType>
-bool game_points_struct_match_json(
-    GamePoints<ImportJsonType>& game_points,
-    ImportJsonType &j
-);
 } // namespace piece_points_spec
 
-#include <piece_points_spec.tpp>
+// #include <piece_points_spec.tpp>
 
 #endif /* E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802 */

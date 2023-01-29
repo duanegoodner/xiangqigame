@@ -44,8 +44,7 @@ TeamPoints<JsonType>::PiecePointsArrays() {
   return name_map;
 }
 
-template <>
-inline TeamPointsArray_t TeamPoints<nloh_json>::ToArray() {
+inline TeamPointsArray_t TeamPointsNonTemp::ToArray() {
   TeamPointsArray_t team_array{};
   auto name_map = PiecePointsArrays();
   for (auto piece : name_map) {
@@ -55,40 +54,12 @@ inline TeamPointsArray_t TeamPoints<nloh_json>::ToArray() {
   return team_array;
 }
 
-template <>
-inline GamePoints<nloh_json>::GamePoints(nloh_json &j)
-    : black{TeamPoints<nloh_json>(j.at("black"))}
-    , red{TeamPoints<nloh_json>(j.at("red"))} {}
-
-template <typename JsonType>
-inline GamePoints<JsonType>::GamePoints(string file_path)
-    : black{TeamPoints<JsonType>(
-          json_internal::import_json<JsonType>(file_path).at("black")
-      )}
-    , red{TeamPoints<JsonType>(
-          json_internal::import_json<JsonType>(file_path).at("red")
-      )} {}
-
-// template <typename JsonType>
-// inline GamePoints<JsonType>::GamePoints(string file_path)
-//     : GamePoints(json_internal::import_json<JsonType>(file_path)) {}
-
-template <typename JsonType>
-inline unordered_map<string, TeamPoints<JsonType>>
-GamePoints<JsonType>::TeamPointsJsons() {
-  unordered_map<string, TeamPoints<JsonType>> name_map{
+inline unordered_map<string, TeamPointsNonTemp>
+GamePointsNonTemp::TeamPointsStructs() {
+  unordered_map<string, TeamPointsNonTemp> name_map{
       {"red", red},
       {"black", black}};
-
   return name_map;
-}
-
-template <typename JsonType>
-inline BaseOffsetPointSpec<JsonType>::BaseOffsetPointSpec(JsonType &j) {
-  j.at("black_base").get_to(black_base);
-  j.at("black_position").get_to(black_position);
-  j.at("red_base_offsets").get_to(red_base_offsets);
-  j.at("red_position_offsets").get_to(red_position_offsets);
 }
 
 template <typename JsonType>

@@ -13,6 +13,8 @@ using namespace json_internal;
 using nloh_json = nlohmann::json;
 using namespace piece_points_spec;
 
+
+
 class TeamPointsTestNlohmann : public ::testing::Test {
 protected:
   string kICGARawPath = "/home/duane/workspace/project/src/cpp_modules/data/"
@@ -60,9 +62,9 @@ protected:
   nloh_json nloh_raw_json_game = import_json<nloh_json>(kICGARawPath);
 };
 
-TEST_F(GamePointsTestNlohmann, InitFromJson) {
-  auto game_points = GamePoints<nloh_json>(nloh_raw_json_game);
-}
+// TEST_F(GamePointsTestNlohmann, InitFromJson) {
+//   auto game_points = GamePoints<nloh_json>(nloh_raw_json_game);
+// }
 
 TEST_F(GamePointsTestNlohmann, PiecePointsArraysMatchJsonSource) {
   auto game_points = GamePoints<nloh_json>(nloh_raw_json_game);

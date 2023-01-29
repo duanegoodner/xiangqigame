@@ -32,6 +32,8 @@ RUN sudo apt-get update --fix-missing && \
     ca-certificates \
     clang-format \
     cmake \
+    clang-tidy \
+    cppcheck \
     curl \
     gdb \
     g++ \
@@ -113,10 +115,10 @@ RUN sudo chown $USER_UID:$USER_GID /usr/local/bin/ && \
 
 COPY ./.devcontainer/xiangqigame_docker.pub ${HOME}/.ssh/authorized_keys
 RUN sudo apt-get update
+
 RUN sudo apt-get install openssh-server -y
 RUN sudo chown $USER_UID:$USER_GID ${HOME}/.ssh
 RUN sudo chown $USER_UID:$USER_GID ${HOME}/.ssh/authorized_keys
 RUN sudo chmod 600 ${HOME}/.ssh/authorized_keys
 RUN sudo chmod 700 ${HOME}/.ssh
-
 
