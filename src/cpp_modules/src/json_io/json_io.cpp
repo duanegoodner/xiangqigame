@@ -2,11 +2,11 @@
 
 using namespace json_io;
 
-void NlohmannJsonIO::Import(GamePointsNonTemp &data, string file_path) {
+void NlohmannJsonIO::Import(GamePoints &data, string file_path) {
   ImportWithTemplate(data, file_path);
 }
 
-void NlohmannJsonIO::Export(GamePointsNonTemp &data, string file_path) {
+void NlohmannJsonIO::Export(GamePoints &data, string file_path) {
   ExportWithTemplate(data, file_path);
 }
 

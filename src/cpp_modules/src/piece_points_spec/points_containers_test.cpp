@@ -13,6 +13,8 @@ using namespace json_internal;
 using nloh_json = nlohmann::json;
 using namespace piece_points_spec;
 
+
+
 class TeamPointsTestNlohmann : public ::testing::Test {
 protected:
   string kICGARawPath = "/home/duane/workspace/project/src/cpp_modules/data/"

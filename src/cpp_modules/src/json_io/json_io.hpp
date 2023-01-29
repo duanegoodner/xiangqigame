@@ -9,15 +9,15 @@
 #include <iostream>
 #include <nlohmann/json-schema.hpp>
 #include <nlohmann/json.hpp>
-#include <piece_points_spec.hpp>
+#include <points_containers.hpp>
 #include <string>
 #include <typeinfo>
 #include <unordered_map>
 
 using namespace std;
 
-namespace piece_points_spec {
-void to_json(nlohmann::json &j, const TeamPointsNonTemp &t) {
+namespace points_containers {
+void to_json(nlohmann::json &j, const TeamPoints &t) {
   j = nlohmann::json{
       {"null", t.null},
       {"general", t.general},
@@ -29,7 +29,7 @@ void to_json(nlohmann::json &j, const TeamPointsNonTemp &t) {
       {"soldier", t.soldier}};
 }
 
-void from_json(const nlohmann::json &j, TeamPointsNonTemp &t) {
+void from_json(const nlohmann::json &j, TeamPoints &t) {
   j.at("null").get_to(t.null);
   j.at("general").get_to(t.general);
   j.at("advisor").get_to(t.advisor);
@@ -40,11 +40,11 @@ void from_json(const nlohmann::json &j, TeamPointsNonTemp &t) {
   j.at("soldier").get_to(t.soldier);
 }
 
-void to_json(nlohmann::json &j, const GamePointsNonTemp &g) {
+void to_json(nlohmann::json &j, const GamePoints &g) {
   j = nlohmann::json{{"black", g.black}, {"red", g.red}};
 }
 
-void from_json(const nlohmann::json &j, GamePointsNonTemp &g) {
+void from_json(const nlohmann::json &j, GamePoints &g) {
   j.at("black").get_to(g.black);
   j.at("red").get_to(g.red);
 }
@@ -52,7 +52,7 @@ void from_json(const nlohmann::json &j, GamePointsNonTemp &g) {
 
 namespace json_io {
 
-using namespace piece_points_spec;
+using namespace points_containers;
 
 template <typename T>
 void NlohmannExport(T object, string file_path) {
@@ -69,19 +69,10 @@ T NlohmannImport(string file_path) {
   T imported_object = j.get<T>();
 }
 
-class JsonIO {
-public:
-  virtual ~JsonIO() = default;
-
-  virtual void Import(GamePointsNonTemp &data, string file_path) = 0;
-  virtual void Export(GamePointsNonTemp &data, string file_path) = 0;
-  virtual bool Validate(string data_file, string schema_file) = 0;
-};
-
 class NlohmannJsonIO : JsonIO {
 
-  void Import(GamePointsNonTemp &data, string file_path) override;
-  void Export(GamePointsNonTemp &data, string file_path) override;
+  void Import(GamePoints &data, string file_path) override;
+  void Export(GamePoints &data, string file_path) override;
   bool Validate(string data_file, string schema_file) override;
 
 private:
