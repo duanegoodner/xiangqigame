@@ -62,9 +62,9 @@ protected:
   nloh_json nloh_raw_json_game = import_json<nloh_json>(kICGARawPath);
 };
 
-TEST_F(GamePointsTestNlohmann, InitFromJson) {
-  auto game_points = GamePoints<nloh_json>(nloh_raw_json_game);
-}
+// TEST_F(GamePointsTestNlohmann, InitFromJson) {
+//   auto game_points = GamePoints<nloh_json>(nloh_raw_json_game);
+// }
 
 TEST_F(GamePointsTestNlohmann, PiecePointsArraysMatchJsonSource) {
   auto game_points = GamePoints<nloh_json>(nloh_raw_json_game);

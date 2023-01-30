@@ -6,6 +6,16 @@ using namespace std;
 
 namespace points_containers {
 
+TeamPoints::TeamPoints(TeamPointsSMap_t s_map)
+    : null{s_map.at("null")}
+    , general{s_map.at("general")}
+    , advisor{s_map.at("advisor")}
+    , elephant{s_map.at("elephant")}
+    , horse{s_map.at("horse")}
+    , chariot{s_map.at("chariot")}
+    , cannon{s_map.at("cannon")}
+    , soldier{s_map.at("soldier")} {}
+
 unordered_map<string, PiecePointsArray_t> TeamPoints::PiecePointsArrays() {
   unordered_map<string, PiecePointsArray_t> name_map{
       {"null", null},
@@ -28,6 +38,14 @@ TeamPointsArray_t TeamPoints::ToArray() {
     team_array[piece_index] = name_map.at(piece.first);
   }
   return team_array;
+}
+
+GamePoints::GamePoints(GamePointsSMap_t s_map) 
+: black{TeamPoints(s_map.at("black"))}
+, red{TeamPoints(s_map.at("red"))} {}
+
+GamePoints::GamePoints(string file_path) {
+  
 }
 
 unordered_map<string, TeamPoints> GamePoints::TeamPointsStructs() {

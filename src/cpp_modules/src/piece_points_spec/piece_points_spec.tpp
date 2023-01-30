@@ -54,10 +54,6 @@ inline TeamPointsArray_t TeamPointsNonTemp::ToArray() {
   return team_array;
 }
 
-
-
-
-
 inline unordered_map<string, TeamPointsNonTemp>
 GamePointsNonTemp::TeamPointsStructs() {
   unordered_map<string, TeamPointsNonTemp> name_map{

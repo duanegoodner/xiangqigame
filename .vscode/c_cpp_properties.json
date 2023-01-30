@@ -15,13 +15,13 @@
                 "${workspaceFolder}/src/cpp_modules/nlohmann_json",
                 "${workspaceFolder}/src/cpp_modules/hash_calculator",
                 "${workspaceFolder}/src/cpp_modules/nlohmann_json"
-
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "gnu17",
             "cppStandard": "gnu++17",
-            "intelliSenseMode": "linux-gcc-x64"
+            "intelliSenseMode": "linux-gcc-x64",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
         }
     ],
     "version": 4

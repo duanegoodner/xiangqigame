@@ -146,6 +146,6 @@ const string kBPOSchemaPath_x =
 
 } // namespace piece_points_spec
 
-#include <piece_points_spec.tpp>
+// #include <piece_points_spec.tpp>
 
 #endif /* E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802 */

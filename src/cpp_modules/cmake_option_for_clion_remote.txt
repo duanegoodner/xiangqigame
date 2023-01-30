@@ -1,0 +1,1 @@
+-Dpybind11_DIR=/home/duane/workspace/env/share/cmake/pybind11 -DPYTHON_EXECUTABLE=~/workspace/env/bin/python3.10

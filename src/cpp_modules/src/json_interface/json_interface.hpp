@@ -5,7 +5,7 @@
 #include <common.hpp>
 
 
-namespace json_io {
+namespace json_interface {
 
     class JsonIO {
 public:

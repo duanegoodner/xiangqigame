@@ -8,6 +8,7 @@ namespace points_containers {
 
 struct TeamPoints {
   TeamPoints() = default;
+  TeamPoints(TeamPointsSMap_t s_map);
   unordered_map<string, PiecePointsArray_t> PiecePointsArrays();
   TeamPointsArray_t ToArray();
 
@@ -23,6 +24,7 @@ struct TeamPoints {
 
 struct GamePoints {
   GamePoints() = default;
+  GamePoints(GamePointsSMap_t s_map);
   GamePoints(string file_path);
 
   unordered_map<string, TeamPoints> TeamPointsStructs();
