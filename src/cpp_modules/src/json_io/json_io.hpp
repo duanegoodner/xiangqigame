@@ -28,11 +28,11 @@ class NlohmannJsonIO : public JsonIO {
 
 private:
   template <typename T>
-  T ImportWithTemplate(string file_path) {
+  void ImportWithTemplate(string file_path, T& object) {
     ifstream input(file_path);
     nlohmann::json j = nlohmann::json::parse(input);
-    auto object = j.get<T>();
-    return object;
+    object = j.get<T>();
+    // return object;
   }
 
   template <typename T>

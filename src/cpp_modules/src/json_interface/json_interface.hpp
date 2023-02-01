@@ -11,7 +11,7 @@ namespace json_interface {
 public:
   virtual ~JsonIO() = default;
 
-  virtual GamePointsSMap_t Import(string file_path) = 0;
+  virtual GamePointsSMap_t Import(string file_path) = 0; 
   virtual void Export(GamePointsSMap_t &data, string file_path) = 0;
   virtual bool Validate(string data_file, string schema_file) = 0;
 };

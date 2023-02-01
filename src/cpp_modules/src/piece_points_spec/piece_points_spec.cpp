@@ -12,8 +12,8 @@ using namespace piece_points_spec;
 using json = nlohmann::json;
 
 PointsSpecBPOExternal::PointsSpecBPOExternal(
-    base_points_map_t black_base_input,
-    base_points_map_t red_base_offsets_input,
+    BasePointsSMap_t black_base_input,
+    BasePointsSMap_t red_base_offsets_input,
     TeamPointsSMap_t black_position_input,
     TeamPointsSMap_t red_position_offsets_input
 )

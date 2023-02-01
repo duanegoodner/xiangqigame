@@ -89,16 +89,16 @@ struct GamePointsNonTemp {
 struct PointsSpecBPOExternal {
   PointsSpecBPOExternal() = default;
   PointsSpecBPOExternal(
-      base_points_map_t black_base_input,
-      base_points_map_t red_base_offsets_input,
+      BasePointsSMap_t black_base_input,
+      BasePointsSMap_t red_base_offsets_input,
       TeamPointsSMap_t black_position_input,
       TeamPointsSMap_t red_position_offsets_input
   );
   PointsSpecBPOExternal(const nloh_json &json_object);
   PointsSpecBPOExternal(string json_file_path);
 
-  base_points_map_t black_base;
-  base_points_map_t red_base_offsets;
+  BasePointsSMap_t black_base;
+  BasePointsSMap_t red_base_offsets;
   TeamPointsSMap_t black_position;
   TeamPointsSMap_t red_position_offsets;
 

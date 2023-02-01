@@ -106,7 +106,7 @@ inline bool operator==(
 // types for bpo spec
 typedef unordered_map<PieceType, Points_t> TeamBasePoints_t;
 typedef array<Points_t, kNumPieceTypeVals> base_points_array_t;
-typedef unordered_map<string, Points_t> base_points_map_t;
+typedef unordered_map<string, Points_t> BasePointsSMap_t;
 
 typedef unordered_map<PieceType, PiecePointsArray_t> TeamPointsEMap_t;
 typedef unordered_map<string, PiecePointsArray_t> TeamPointsSMap_t;

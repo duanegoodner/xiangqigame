@@ -3,7 +3,9 @@
 using namespace json_io;
 
 GamePointsSMap_t NlohmannJsonIO::Import(string file_path) {
-  return ImportWithTemplate<nlohmann::json>(file_path);
+  GamePointsSMap_t game_points{};
+  ImportWithTemplate<GamePointsSMap_t>(file_path, game_points);
+  return game_points;
 }
 
 void NlohmannJsonIO::Export(GamePointsSMap_t &data, string file_path) {
