@@ -30,7 +30,7 @@ TEST_F(NlohmannJsonIOTest, ImportRawPoints) {
   json_io::NlohmannJsonIO json;
   json_interface::JsonIO &json_interface = json;
   GamePointsSMap_t game_points_map{};
-  auto result = json_interface.Import(kICGARawPath);
+  json_interface.Import(game_points_map, kICGARawPath);
 }
 
 TEST_F(NlohmannJsonIOTest, ValidateDataThatSatisfiesSchema) {

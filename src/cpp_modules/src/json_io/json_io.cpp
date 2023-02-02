@@ -1,15 +1,39 @@
 #include <json_io.hpp>
+#include <vector>
 
 using namespace json_io;
 
-GamePointsSMap_t NlohmannJsonIO::Import(string file_path) {
-  GamePointsSMap_t game_points{};
-  ImportWithTemplate<GamePointsSMap_t>(file_path, game_points);
-  return game_points;
+void NlohmannJsonIO::Import(GamePointsSMap_t &s_map, string file_path) {
+  ImportWithTemplate<GamePointsSMap_t>(file_path, s_map);
 }
 
 void NlohmannJsonIO::Export(GamePointsSMap_t &data, string file_path) {
   ExportWithTemplate(data, file_path);
+}
+
+void NlohmannJsonIO::Import(BPOSpecSMap_t &s_map, string file_path) {
+  auto bpo_spec_json = ImportToJson(file_path);
+
+  BasePointsSMap_t black_base = bpo_spec_json.at("black_base");
+  TeamPointsSMap_t black_position = bpo_spec_json.at("black_position");
+  BasePointsSMap_t red_base_offsets = bpo_spec_json.at("red_base_offsets");
+  TeamPointsSMap_t red_position_offsets =
+      bpo_spec_json.at("red_position_offsets");
+
+  BasePositionSMapPair_t black = {black_base, black_position};
+  BasePositionSMapPair_t red = {red_base_offsets, red_position_offsets};
+
+  s_map["black"] = black;
+  s_map["red"] = red;
+}
+
+void NlohmannJsonIO::Export(BPOSpecSMap_t& data, string file_path) {
+  nlohmann::json j{};
+  j["black_base"] = data.at("black").first;
+  j["black_position"] = data.at("black").second;
+  j["red_base_offsets"] = data.at("red").first;
+  j["red_position_offsets"] = data.at("red").second;
+  ExportFromJson(j, file_path);
 }
 
 bool NlohmannJsonIO::Validate(string data_file, string schema_file) {
@@ -21,7 +45,6 @@ bool NlohmannJsonIO::Validate(string data_file, string schema_file) {
     validator.set_root_schema(schema_json);
   } catch (const exception &e) {
     cerr << "Unable to generate schema validator from provided schema path: "
-            "blah blah blah"
          << e.what() << endl;
     exit(1);
   }

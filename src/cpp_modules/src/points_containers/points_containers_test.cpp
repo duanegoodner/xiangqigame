@@ -7,6 +7,18 @@
 using namespace std;
 using namespace points_containers;
 
+namespace points_containers_test {
+
+// 
+GamePointsSMap_t import_game_points_smap(string file_path) {
+  json_io::NlohmannJsonIO json;
+  json_interface::JsonIO & json_interface = json;
+  GamePointsSMap_t game_points{};
+  json_interface.Import(game_points, file_path);
+  return game_points;
+}
+
+
 class PieceContainersTest : public ::testing::Test {
 protected:
   string kICGARawPath = "/home/duane/workspace/project/src/cpp_modules/data/"
@@ -15,7 +27,7 @@ protected:
                         "ICGA_2004_bpo.json";
   json_io::NlohmannJsonIO json;
   json_interface::JsonIO &json_interface = json;
-  GamePointsSMap_t game_points_smap = json_interface.Import(kICGARawPath);
+  GamePointsSMap_t game_points_smap = import_game_points_smap(kICGARawPath);
   TeamPointsSMap_t black_points_smap = game_points_smap.at("black");
   TeamPointsSMap_t red_points_smap = game_points_smap.at("red");
 };
@@ -33,9 +45,7 @@ TEST_F(PieceContainersTest, TeamPointsToArray) {
 }
 
 TEST_F(PieceContainersTest, GamePointsInitFromSmap) {
-
-  auto game_points_map = json_interface.Import(kICGARawPath);
-  auto game_points_struct = points_containers::GamePoints(game_points_map);
+  auto game_points_struct = points_containers::GamePoints(game_points_smap);
 }
 
 TEST_F(PieceContainersTest, GamePointsInitFromTeamPoints) {
@@ -45,8 +55,8 @@ TEST_F(PieceContainersTest, GamePointsInitFromTeamPoints) {
 }
 
 TEST_F(PieceContainersTest, GamePointsToArray) {
-  auto game_points_map = json_interface.Import(kICGARawPath);
-  auto game_points_struct = points_containers::GamePoints(game_points_map);
+  // auto game_points_map = json_interface.Import(kICGARawPath);
+  auto game_points_struct = points_containers::GamePoints(game_points_smap);
   auto result = game_points_struct.ToArray();
 }
 
@@ -62,3 +72,5 @@ TEST_F(PieceContainersTest, GamePointsToArray) {
 //   auto bpo_spec_map = json_interface.Import(kICGABPOPath);
 //   TeamPoints black_position = TeamPoints()
 // }
+
+} // end NAMESPACE points_containers_test

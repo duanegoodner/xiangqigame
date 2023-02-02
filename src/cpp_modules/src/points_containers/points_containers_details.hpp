@@ -10,7 +10,8 @@ namespace points_containers {
 struct w/ piece data members to map with piece name strings as keys
  */
 template <typename ContainerType, typename PieceDataType>
-unordered_map<string, PieceDataType> team_level_struct_to_map(ContainerType &container
+unordered_map<string, PieceDataType> team_level_struct_to_map(
+    ContainerType &container
 ) {
   unordered_map<string, PieceDataType> piece_values = {
       {"null", container.null},
@@ -48,7 +49,8 @@ void set_piece_attributes(
 struct w/ color data members to map with color name strings as keys
  */
 template <typename ContainerType, typename ColorDataType>
-unordered_map<string, ColorDataType> color_member_map(ContainerType &container
+unordered_map<string, ColorDataType> game_level_struct_to_map(
+    ContainerType &container
 ) {
   unordered_map<string, ColorDataType> color_values = {
       {"red", container.red},
@@ -62,22 +64,59 @@ template <
     typename PieceDataType>
 void set_color_attributes(
     GameContainerType &game_level_struct,
-    unordered_map<string, unordered_map<string, PieceDataType>> color_member_map
+    unordered_map<string, unordered_map<string, PieceDataType>>
+        game_level_struct_to_map
 ) {
   TeamContainerType red{};
   set_piece_attributes<TeamContainerType, PieceDataType>(
-    red, color_member_map.at("red"));
-  
+      red,
+      game_level_struct_to_map.at("red")
+  );
+
   TeamContainerType black{};
   set_piece_attributes<TeamContainerType, PieceDataType>(
-    black, color_member_map.at("black"));
+      black,
+      game_level_struct_to_map.at("black")
+  );
 
   game_level_struct.red = red;
   game_level_struct.black = black;
 }
 
+struct TeamPoints {
+  TeamPoints() = default;
+  TeamPoints(TeamPointsSMap_t s_map);
+  TeamPoints(TeamPointsArray_t team_points_array);
+  TeamPointsArray_t ToArray();
+  TeamPointsSMap_t ToMap();
 
-}
+  PiecePointsArray_t null;
+  PiecePointsArray_t general;
+  PiecePointsArray_t advisor;
+  PiecePointsArray_t elephant;
+  PiecePointsArray_t horse;
+  PiecePointsArray_t chariot;
+  PiecePointsArray_t cannon;
+  PiecePointsArray_t soldier;
+};
 
+struct PieceBasePoints {
+  PieceBasePoints() = default;
+  PieceBasePoints(BasePointsSMap_t base_points);
+  BasePointsSMap_t ToMap();
+  
+  int advisor;
+  int cannon;
+  int chariot;
+  int elephant;
+  int general;
+  int horse;
+  int null;
+  int soldier;
+};
+
+
+
+} // namespace points_containers
 
 #endif /* C3B667BB_CCB8_4FB0_9563_B0F1A298F387 */

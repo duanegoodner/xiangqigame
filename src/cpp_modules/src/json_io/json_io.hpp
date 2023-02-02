@@ -22,15 +22,28 @@ namespace json_io {
 class NlohmannJsonIO : public JsonIO {
 
   public:
-  GamePointsSMap_t Import(string file_path) override;
+  void Import(GamePointsSMap_t& s_map, string file_path) override;
   void Export(GamePointsSMap_t &data, string file_path) override;
+  void Import(BPOSpecSMap_t& s_map, string file_path) override;
+  void Export(BPOSpecSMap_t& data, string file_path) override;
+  
   bool Validate(string data_file, string schema_file) override;
 
 private:
+  nlohmann::json ImportToJson(string file_path) {
+    ifstream input(file_path);
+    return nlohmann::json::parse(input);
+  }
+
+  void ExportFromJson(nlohmann::json j, string file_path) {
+    ofstream fout(file_path);
+    fout << setw(4) << j << endl;
+  }
+  
   template <typename T>
   void ImportWithTemplate(string file_path, T& object) {
-    ifstream input(file_path);
-    nlohmann::json j = nlohmann::json::parse(input);
+    // ifstream input(file_path);
+    nlohmann::json j = ImportToJson(file_path);
     object = j.get<T>();
     // return object;
   }
@@ -39,8 +52,9 @@ private:
   void ExportWithTemplate(T &object, string file_path) {
     nlohmann::json j;
     j = object;
-    ofstream fout(file_path);
-    fout << setw(4) << j << endl;
+    ExportFromJson(j, file_path);
+    // ofstream fout(file_path);
+    // fout << setw(4) << j << endl;
   }
 };
 } // namespace json_io

@@ -4,6 +4,7 @@
 #include <array>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 using namespace std;
 
@@ -106,9 +107,11 @@ inline bool operator==(
 // types for bpo spec
 typedef unordered_map<PieceType, Points_t> TeamBasePoints_t;
 typedef array<Points_t, kNumPieceTypeVals> base_points_array_t;
+
 typedef unordered_map<string, Points_t> BasePointsSMap_t;
 
 typedef unordered_map<PieceType, PiecePointsArray_t> TeamPointsEMap_t;
+
 typedef unordered_map<string, PiecePointsArray_t> TeamPointsSMap_t;
 
 inline bool operator==(TeamPointsSMap_t& a, TeamPointsSMap_t& b) {
@@ -122,6 +125,9 @@ inline bool operator==(TeamPointsSMap_t& a, TeamPointsSMap_t& b) {
   }
   return are_equal;
 }
+
+typedef pair<BasePointsSMap_t, TeamPointsSMap_t> BasePositionSMapPair_t;
+typedef unordered_map<string, BasePositionSMapPair_t> BPOSpecSMap_t;
 
 typedef unordered_map<PieceColor, TeamPointsEMap_t> GamePointsEMap_t;
 typedef unordered_map<string, TeamPointsSMap_t> GamePointsSMap_t;
