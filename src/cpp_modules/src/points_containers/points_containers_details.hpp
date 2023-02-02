@@ -104,7 +104,7 @@ struct PieceBasePoints {
   PieceBasePoints() = default;
   PieceBasePoints(BasePointsSMap_t base_points);
   BasePointsSMap_t ToMap();
-  
+
   int advisor;
   int cannon;
   int chariot;
@@ -115,7 +115,20 @@ struct PieceBasePoints {
   int soldier;
 };
 
+struct TeamBasePositionPair {
+  TeamBasePositionPair() = default;
+  TeamBasePositionPair(
+      BasePointsSMap_t base_points_map,
+      TeamPointsSMap_t team_points_map
+  );
+  TeamBasePositionPair(PieceBasePoints base, TeamPoints position);
 
+  PieceBasePoints piece_base_points;
+  TeamPoints position_points;
+
+  BasePositionSMapPair_t ToPairOfMaps();
+  TeamPoints NetPoints();
+};
 
 } // namespace points_containers
 

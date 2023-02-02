@@ -24,10 +24,13 @@ struct BasePointsOffsetSpec {
   BasePointsOffsetSpec() = default;
   BasePointsOffsetSpec(BPOSpecSMap_t s_map);
 
-  PieceBasePoints black_base;
-  TeamPoints black_position;
-  PieceBasePoints red_base_offsets;
-  TeamPoints red_position_offsets;
+  TeamBasePositionPair black;
+  TeamBasePositionPair red;
+
+  // PieceBasePoints black_base;
+  // TeamPoints black_position;
+  // PieceBasePoints red_base_offsets;
+  // TeamPoints red_position_offsets;
 
   GamePoints ToGamePoints();
   BPOSpecSMap_t ToMap();

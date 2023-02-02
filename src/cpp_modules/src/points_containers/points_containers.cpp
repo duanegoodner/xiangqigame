@@ -74,6 +74,43 @@ GamePointsSMap_t GamePoints::ToMap() {
   return game_points_map;
 }
 
+TeamBasePositionPair::TeamBasePositionPair(
+    BasePointsSMap_t base_points_map,
+    TeamPointsSMap_t team_points_map
+)
+    : piece_base_points(PieceBasePoints(base_points_map))
+    , position_points{TeamPoints(team_points_map)} {}
+
+TeamBasePositionPair::TeamBasePositionPair(
+    PieceBasePoints base,
+    TeamPoints position
+)
+    : piece_base_points{base}
+    , position_points{position} {}
+
+BasePositionSMapPair_t TeamBasePositionPair::ToPairOfMaps() {
+  BasePositionSMapPair_t map_pair{};
+  map_pair.first = piece_base_points.ToMap();
+  map_pair.second = position_points.ToMap();
+  return map_pair;
+}
+
+TeamPoints TeamBasePositionPair::NetPoints() {
+  BasePointsSMap_t base_points_map =
+      team_level_struct_to_map<PieceBasePoints, int>(piece_base_points);
+  TeamPointsSMap_t team_points_map =
+      team_level_struct_to_map<TeamPoints, PiecePointsArray_t>(position_points
+      );
+  TeamPointsSMap_t net_points_map{};
+  for (auto piece : base_points_map) {
+    net_points_map[piece.first] = utility_functs::array_plus_const(
+      team_points_map[piece.first],
+      base_points_map[piece.first]
+    );
+  }
+  return TeamPoints(net_points_map);
+}
+
 PieceBasePoints::PieceBasePoints(BasePointsSMap_t base_points_map) {
   set_piece_attributes<PieceBasePoints, int>(*this, base_points_map);
 }
@@ -83,52 +120,54 @@ BasePointsSMap_t PieceBasePoints::ToMap() {
 }
 
 BasePointsOffsetSpec::BasePointsOffsetSpec(BPOSpecSMap_t s_map)
-    : black_base{PieceBasePoints(s_map["black"].first)}
-    , black_position{TeamPoints(s_map["black"].second)}
-    , red_base_offsets{PieceBasePoints(s_map["red"].first)}
-    , red_position_offsets{TeamPoints(s_map["red"].second)} {}
+    : black{TeamBasePositionPair(s_map["black"].first, s_map["black"].second)}
+    , red{TeamBasePositionPair(s_map["red"].first, s_map["black"].second)} {}
 
 BPOSpecSMap_t BasePointsOffsetSpec::ToMap() {
   BPOSpecSMap_t bpo_spec_map{};
-  bpo_spec_map["black"] = {black_base.ToMap(), black_position.ToMap()};
-  bpo_spec_map["red"] = {
-      red_base_offsets.ToMap(),
-      red_position_offsets.ToMap()};
+  bpo_spec_map["black"] = black.ToPairOfMaps();
+  bpo_spec_map["red"] = red.ToPairOfMaps();
+  // bpo_spec_map["black"] = {black_base.ToMap(), black_position.ToMap()};
+  // bpo_spec_map["red"] = {
+  //     red_base_offsets.ToMap(),
+  //     red_position_offsets.ToMap()};
+
   return bpo_spec_map;
 }
 
 TeamPoints BasePointsOffsetSpec::BlackNetPoints() {
-  auto black_base_points_map =
-      team_level_struct_to_map<PieceBasePoints, int>(black_base);
-  auto black_position_points_map =
-      team_level_struct_to_map<TeamPoints, PiecePointsArray_t>(black_position);
-  TeamPointsSMap_t black_net_points{};
-  for (auto piece : black_position_points_map) {
-    black_net_points[piece.first] = utility_functs::array_plus_const(
-        piece.second,
-        black_base_points_map[piece.first]
-    );
-  }
+  return black.NetPoints();
 
-  return TeamPoints(black_net_points);
+  // BasePositionSMapPair_t black_base_offset = black.ToPairOfMaps();
+  // auto black_base_points_map = black_base_offset.first;
+  // auto black_position_points_map = black_base_offset.second;
+  // TeamPointsSMap_t black_net_points{};
+  // for (auto piece : black_position_points_map) {
+  //   black_net_points[piece.first] = utility_functs::array_plus_const(
+  //       piece.second,
+  //       black_base_points_map[piece.first]
+  //   );
+  // }
+  // return TeamPoints(black_net_points);
 }
 
 TeamPoints BasePointsOffsetSpec::RedNetPoints() {
+  // BasePositionSMapPair_t red_base_offset = red.ToPairOfMaps();
   auto black_net_map = BlackNetPoints().ToMap();
-  auto red_base_offsets_map =
-      team_level_struct_to_map<PieceBasePoints, int>(red_base_offsets);
-  auto red_position_offsets_map =
-      team_level_struct_to_map<TeamPoints, PiecePointsArray_t>(
-          red_position_offsets
-      );
+  // auto red_base_map = red_base_offset.first;
+  // auto red_position_map = red_base_offset.second;
+
+  auto red_net_offset_map = red.NetPoints().ToMap();
+
   TeamPointsSMap_t red_net_points{};
-  for (auto piece : red_position_offsets_map) {
-    auto red_net_offset = utility_functs::array_plus_const(
-        red_position_offsets_map[piece.first],
-        red_base_offsets_map[piece.first]
-    );
+  for (auto piece : red_net_offset_map) {
+    // auto red_net_offset = utility_functs::array_plus_const(
+    //     red_position_map[piece.first],
+    //     red_base_map[piece.first]
+    // );
+
     auto red_net_points_pre_flip = utility_functs::two_array_sum(
-        red_net_offset,
+        red_net_offset_map[piece.first],
         black_net_map[piece.first]
     );
     red_net_points[piece.first] =
@@ -136,7 +175,6 @@ TeamPoints BasePointsOffsetSpec::RedNetPoints() {
   }
 
   return TeamPoints(red_net_points);
-  
 }
 
 GamePoints BasePointsOffsetSpec::ToGamePoints() {
