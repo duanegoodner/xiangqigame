@@ -7,70 +7,102 @@
 using namespace std;
 using namespace points_containers;
 
-namespace points_containers_test {
-
-// 
-GamePointsSMap_t import_game_points_smap(string file_path) {
-  json_io::NlohmannJsonIO json;
-  json_interface::JsonIO & json_interface = json;
-  GamePointsSMap_t game_points{};
-  json_interface.Import(game_points, file_path);
-  return game_points;
-}
-
-
-class PieceContainersTest : public ::testing::Test {
+class GamePointsTest : public ::testing::Test {
 protected:
   string kICGARawPath = "/home/duane/workspace/project/src/cpp_modules/data/"
                         "ICGA_2004_raw.json";
-  string kICGABPOPath = "/home/duane/workspace/project/src/cpp_modules/data/"
-                        "ICGA_2004_bpo.json";
+
   json_io::NlohmannJsonIO json;
   json_interface::JsonIO &json_interface = json;
-  GamePointsSMap_t game_points_smap = import_game_points_smap(kICGARawPath);
+
+  GamePointsSMap_t ImportGamePointsSMap() {
+    GamePointsSMap_t game_points{};
+    json_interface.Import(game_points, kICGARawPath);
+    return game_points;
+  }
+
+  GamePointsSMap_t game_points_smap = ImportGamePointsSMap();
   TeamPointsSMap_t black_points_smap = game_points_smap.at("black");
   TeamPointsSMap_t red_points_smap = game_points_smap.at("red");
 };
 
-TEST_F(PieceContainersTest, TeamPointsInitFromSmap) {
-  auto black_team_points = TeamPoints(black_points_smap);
-  auto red_team_points = TeamPoints(red_points_smap);
-}
-
-TEST_F(PieceContainersTest, TeamPointsToArray) {
-  auto black_team_points = TeamPoints(black_points_smap);
-  auto black_array = black_team_points.ToArray();
-  auto red_team_points = TeamPoints(red_points_smap);
-  auto red_array = red_team_points.ToArray();
-}
-
-TEST_F(PieceContainersTest, GamePointsInitFromSmap) {
+TEST_F(GamePointsTest, GamePointsInitFromSmap) {
   auto game_points_struct = points_containers::GamePoints(game_points_smap);
 }
 
-TEST_F(PieceContainersTest, GamePointsInitFromTeamPoints) {
+TEST_F(GamePointsTest, GamePointsInitFromTeamPoints) {
   auto black_team_points = TeamPoints(black_points_smap);
   auto red_team_points = TeamPoints(red_points_smap);
   auto game_points = GamePoints(black_team_points, red_team_points);
 }
 
-TEST_F(PieceContainersTest, GamePointsToArray) {
+TEST_F(GamePointsTest, GamePointsToArray) {
   // auto game_points_map = json_interface.Import(kICGARawPath);
   auto game_points_struct = points_containers::GamePoints(game_points_smap);
   auto result = game_points_struct.ToArray();
 }
 
-// TEST_F(PieceContainersTest, PieceBasePointsInitFromSmap) {
-//   auto bpo_spec_map = json_interface.Import(kICGABPOPath);
-//   BasePointsSMap_t black_base = bpo_spec_map.at("black_base");
-//   auto black_base_points_struct = PieceBasePoints(black_base);
-//   BasePointsSMap_t red_base_offsets = bpo_spec_map.at("red_base_offsets");
-//   auto red_base_offsets_struct = PieceBasePoints(red_base_offsets);
+TEST_F(GamePointsTest, GamePointsInitFromArray) {
+  auto game_points_struct = points_containers::GamePoints(game_points_smap);
+  auto game_points_array = game_points_struct.ToArray();
+  auto reconstructed_game_points = GamePoints(game_points_array);
+}
+
+class BasePointsOffsetSpecTest : public ::testing::Test {
+protected:
+  string kICGABPOPath = "/home/duane/workspace/project/src/cpp_modules/data/"
+                        "ICGA_2004_bpo.json";
+
+  json_io::NlohmannJsonIO json;
+  json_interface::JsonIO &json_interface = json;
+
+  BPOSpecSMap_t ImportBPOSpecSMap() {
+    BPOSpecSMap_t bpo_spec{};
+    json_interface.Import(bpo_spec, kICGABPOPath);
+    return bpo_spec;
+  }
+
+  BPOSpecSMap_t bpo_spec_map = ImportBPOSpecSMap();
+};
+
+TEST_F(BasePointsOffsetSpecTest, BPOSpecInitFromSmap) {
+  auto bpo_spec = BasePointsOffsetSpec(bpo_spec_map);
+}
+
+TEST_F(BasePointsOffsetSpecTest, BPOToGamePoints) {
+  auto bpo_spec = BasePointsOffsetSpec(bpo_spec_map);
+  auto result = bpo_spec.ToGamePoints();
+}
+
+TEST_F(BasePointsOffsetSpecTest, BPOToMap) {
+  auto bpo_spec = BasePointsOffsetSpec(bpo_spec_map);
+  auto result = bpo_spec.ToMap();
+}
+
+// TEST_F(GamePointsTest, TeamPointsInitFromSmap) {
+//   auto black_team_points = TeamPoints(black_points_smap);
+//   auto red_team_points = TeamPoints(red_points_smap);
 // }
 
-// TEST_F(PieceContainersTest, TeamPointsFromBPOPositionVals) {
-//   auto bpo_spec_map = json_interface.Import(kICGABPOPath);
-//   TeamPoints black_position = TeamPoints()
+// TEST_F(GamePointsTest, TeamPointsToArray) {
+//   auto black_team_points = TeamPoints(black_points_smap);
+//   auto black_array = black_team_points.ToArray();
+//   auto red_team_points = TeamPoints(red_points_smap);
+//   auto red_array = red_team_points.ToArray();
 // }
 
-} // end NAMESPACE points_containers_test
+// TEST_F(GamePointsTest, TeamPointsToMap) {
+//   auto black_team_points = TeamPoints(black_points_smap);
+//   auto black_map = black_team_points.ToMap();
+//   auto red_team_points = TeamPoints(red_points_smap);
+//   auto red_map = red_team_points.ToMap();
+// }
+
+// TEST_F(GamePointsTest, TeamPointsFromArray) {
+//   auto black_team_points = TeamPoints(black_points_smap);
+//   auto black_array = black_team_points.ToArray();
+//   auto red_team_points = TeamPoints(red_points_smap);
+//   auto red_array = red_team_points.ToArray();
+//   auto black_team_points_reconstructed = TeamPoints(black_array);
+//   auto red_team_points_reconstructed = TeamPoints(red_array);
+// }
