@@ -27,7 +27,7 @@ void NlohmannJsonIO::Import(BPOSpecSMap_t &s_map, string file_path) {
   s_map["red"] = red;
 }
 
-void NlohmannJsonIO::Export(BPOSpecSMap_t& data, string file_path) {
+void NlohmannJsonIO::Export(BPOSpecSMap_t &data, string file_path) {
   nlohmann::json j{};
   j["black_base"] = data.at("black").first;
   j["black_position"] = data.at("black").second;

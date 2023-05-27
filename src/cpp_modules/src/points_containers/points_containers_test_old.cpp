@@ -7,8 +7,6 @@
 using namespace std;
 using namespace points_containers;
 
-// TODO: Add assertions
-
 class GamePointsTest : public ::testing::Test {
 protected:
   string kICGARawPath = "/home/duane/workspace/project/src/cpp_modules/data/"
