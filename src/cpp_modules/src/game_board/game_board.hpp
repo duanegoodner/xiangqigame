@@ -28,7 +28,7 @@ public:
 };
 
 /*
-Templat class for a GameBoard that has a ConcreteHashCalculator, and implements
+Template class for a GameBoard that has a ConcreteHashCalculator, and implements
 the following interfaces:
 MoveTracker (specified by MoveSelector)
 SpaceInfoProvider (specified by MinimaxEvaluator)

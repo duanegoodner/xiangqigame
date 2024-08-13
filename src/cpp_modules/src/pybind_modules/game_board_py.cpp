@@ -16,6 +16,13 @@ PYBIND11_MODULE(GameBoardPy, m) {
       .def_readonly("rank", &BoardSpace::rank)
       .def_readonly("file", &BoardSpace::file);
 
+  py::class_<GamePiece>(m, "GamePiece")
+      .def(py::init<>())
+      .def(py::init<int>(), "int_piece"_a)
+      .def(py::init<PieceType, PieceColor>(), "piece_type"_a, "piece_color"_a)
+      .def_readonly("piece_type", &GamePiece::piece_type)
+      .def_readonly("piece_color", &GamePiece::piece_color);
+
   py::class_<Move>(m, "Move")
       .def(py::init<BoardSpace, BoardSpace>(), "start"_a, "end"_a)
       .def_readonly("start", &Move::start)
@@ -23,6 +30,7 @@ PYBIND11_MODULE(GameBoardPy, m) {
 
   py::class_<MoveCollection>(m, "MoveCollection")
       .def_readonly("moves", &MoveCollection::moves)
+      .def("size", &MoveCollection::Size)
       .def("ContainsMove", &MoveCollection::ContainsMove);
 
   py::class_<ExecutedMove>(m, "ExecutedMove")
@@ -63,8 +71,14 @@ PYBIND11_MODULE(GameBoardPy, m) {
           &GameBoard<HashCalculator>::GetAllSpacesOccupiedBy,
           "color"_a
       )
-      .def("CalcFinalMovesOf", &GameBoard<HashCalculator>::CalcFinalMovesOf, "color"_a)
+      .def(
+          "CalcFinalMovesOf",
+          &GameBoard<HashCalculator>::CalcFinalMovesOf,
+          "color"_a
+      )
       .def("IsInCheck", &GameBoard<HashCalculator>::IsInCheck, "color"_a)
       .def("GetType", &GameBoard<HashCalculator>::GetType, "space"_a)
       .def("GetColor", &GameBoard<HashCalculator>::GetColor, "space"_a);
+
+  m.def("opponent_of", &opponent_of);
 }

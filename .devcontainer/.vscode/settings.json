@@ -73,7 +73,12 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "valarray": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "*.tpp": "cpp",
+        "bitset": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "regex": "cpp"
     },
     "cmake.sourceDirectory": "${workspaceFolder}/project/src/cpp_modules"
 }

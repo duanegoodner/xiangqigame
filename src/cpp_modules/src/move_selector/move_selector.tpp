@@ -1,6 +1,7 @@
 #ifndef _MOVE_SELECTOR_TEMPLATES_
 #define _MOVE_SELECTOR_TEMPLATES_
 
+#include <iostream>
 #include <move_selector_details.hpp>
 
 
@@ -16,42 +17,40 @@ Move RandomMoveSelector<ConcreteGameBoard>::ImplementSelectMove(
 }
 
 template <typename MinimaxEvaluator>
-MinimaxMoveSelector<MinimaxEvaluator>::
-    MinimaxMoveSelector()
+MinimaxMoveSelector<MinimaxEvaluator>::MinimaxMoveSelector()
     // : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS_ARRAY)}
     : evaluator_{MinimaxEvaluator()}
     , search_depth_{3}
     , node_counter_{0} {}
 
 template <typename MinimaxEvaluator>
-MinimaxMoveSelector<MinimaxEvaluator>::
-    MinimaxMoveSelector(int search_depth)
+MinimaxMoveSelector<MinimaxEvaluator>::MinimaxMoveSelector(int search_depth)
     // : evaluator_{MinimaxEvaluator(DEFAULT_GAME_POINTS_ARRAY)}
     : evaluator_{MinimaxEvaluator()}
     , search_depth_{search_depth}
     , node_counter_{0} {}
 
 template <typename MinimaxEvaluator>
-MinimaxMoveSelector<MinimaxEvaluator>::
-    MinimaxMoveSelector(MinimaxEvaluator evaluator, int search_depth)
+MinimaxMoveSelector<MinimaxEvaluator>::MinimaxMoveSelector(
+    MinimaxEvaluator evaluator,
+    int search_depth
+)
     : evaluator_{evaluator}
     , search_depth_{search_depth}
     , node_counter_{0} {}
 
 template <typename MinimaxEvaluator>
-void MinimaxMoveSelector<MinimaxEvaluator>::
-    ResetNodeCounter() {
+void MinimaxMoveSelector<MinimaxEvaluator>::ResetNodeCounter() {
   node_counter_ = 0;
 }
 
 template <typename MinimaxEvaluator>
 vector<RatedMove>
-MinimaxMoveSelector<MinimaxEvaluator>::
-    GenerateRankedMoveList(
-        MinimaxEvaluator::game_board_type &game_board,
-        PieceColor cur_player,
-        MoveCollection &cur_player_moves
-    ) {
+MinimaxMoveSelector<MinimaxEvaluator>::GenerateRankedMoveList(
+    MinimaxEvaluator::game_board_type &game_board,
+    PieceColor cur_player,
+    MoveCollection &cur_player_moves
+) {
   vector<RatedMove> rated_moves;
   for (auto cur_move : cur_player_moves.moves) {
     auto cur_rated_move =
@@ -69,8 +68,7 @@ MinimaxMoveSelector<MinimaxEvaluator>::
 }
 
 template <typename MinimaxEvaluator>
-BestMoves
-MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
+BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
     MinimaxEvaluator::game_board_type &game_board,
     int search_depth,
     int alpha,
@@ -84,11 +82,8 @@ MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
     return evaluate_win_leaf(cur_player, initiating_player);
   }
   if (search_depth == 0) {
-    return evaluator_.EvaluateNonWinLeaf(
-        game_board,
-        cur_player,
-        initiating_player
-    );
+    return evaluator_
+        .EvaluateNonWinLeaf(game_board, cur_player, initiating_player);
   }
   if (cur_player == initiating_player) {
     auto max_eval = numeric_limits<int>::min();
@@ -156,22 +151,24 @@ MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
 }
 
 template <typename MinimaxEvaluator>
-Move MinimaxMoveSelector<MinimaxEvaluator>::
-    ImplementSelectMove(MinimaxEvaluator::game_board_type &game_board, PieceColor cur_player) {
+Move MinimaxMoveSelector<MinimaxEvaluator>::ImplementSelectMove(
+    MinimaxEvaluator::game_board_type &game_board,
+    PieceColor cur_player
+) {
   ResetNodeCounter();
-    auto minimax_result = MinimaxRec(
-        game_board,
-        search_depth_,
-        numeric_limits<int>::min(),
-        numeric_limits<int>::max(),
-        cur_player,
-        cur_player
-    );
-    auto selected_move_index = utility_functs::random(
-        (size_t)0,
-        minimax_result.best_moves.moves.size() - 1
-    );
-    return minimax_result.best_moves.moves[selected_move_index];
+  auto minimax_result = MinimaxRec(
+      game_board,
+      search_depth_,
+      numeric_limits<int>::min(),
+      numeric_limits<int>::max(),
+      cur_player,
+      cur_player
+  );
+  auto selected_move_index = utility_functs::random(
+      (size_t)0,
+      minimax_result.best_moves.moves.size() - 1
+  );
+  return minimax_result.best_moves.moves[selected_move_index];
 }
 
 #endif

@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import Dict
 
 import xiangqigame.move_translator as mt
-from GameBoardPy import GameBoard, Move, opponent_of, PieceColor, PieceType
+from cpp_modules.src.pybind_modules.GameBoardPy import GameBoard, GamePiece, Move, opponent_of, PieceColor, PieceType
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.enums import GameState
 from xiangqigame.piece_info_extractor import PIECE_READER
@@ -58,11 +58,11 @@ class TerminalStatusReporter(GameStatusReporter):
     def clear_screen():
         _ = subprocess.call('clear' if os.name == 'posix' else 'cls')
 
-    def encode_piece(self, piece_info: Dict):
+    def encode_piece(self, piece: GamePiece):
         return (
-            f"{self._disp_format[piece_info['color']]}"
-            f"{self._type_to_code[piece_info['piece_type']]}"
-            f"{self._color_to_code[piece_info['color']]}"
+            f"{self._disp_format[piece.piece_color]}"
+            f"{self._type_to_code[piece.piece_type]}"
+            f"{self._color_to_code[piece.piece_color]}"
             f"{cr.Style.RESET_ALL}"
         )
 
@@ -74,7 +74,7 @@ class TerminalStatusReporter(GameStatusReporter):
         file_labels.insert(len(file_labels), '\n')
 
         board_list = [
-            [f" {self.encode_piece(PIECE_READER.get_piece_info(board.map()[row][col]))} "
+            [f" {self.encode_piece(board.map()[row][col])} "
              for col in range(len(board.map()[0]))]
             for row in range(len(board.map()))
         ]

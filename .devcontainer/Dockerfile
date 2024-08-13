@@ -102,7 +102,7 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-$MINICONDA_VERSI
 RUN sudo mkdir $WORKSPACE/env && sudo chown ${USERNAME}:${USERNAME} ${WORKSPACE}/env
 
 RUN chmod +rwx $WORKSPACE/env && \
-    mamba env create --prefix $WORKSPACE/env --file /tmp/initial_conda_env.yml --force && \
+    mamba env create --prefix $WORKSPACE/env --file /tmp/initial_conda_env.yml && \
     mamba clean --all --yes --force-pkgs-dirs && \
     find ${CONDA_DIR} -follow -type f -name '*.a' -delete && \
     find ${CONDA_DIR} -follow -type f -name '*.pyc' -delete && \

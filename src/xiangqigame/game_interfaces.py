@@ -1,5 +1,5 @@
 import abc
-from GameBoardPy import GameBoard, Move, PieceColor
+from cpp_modules.src.pybind_modules.GameBoardPy import GameBoard, Move, PieceColor
 from typing import List
 from xiangqigame.enums import GameState
 

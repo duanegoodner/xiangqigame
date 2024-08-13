@@ -1,6 +1,6 @@
 from typing import Dict, List
 import xiangqigame.terminal_output as msg
-from GameBoardPy import GameBoard, Move, opponent_of, PieceColor
+from cpp_modules.src.pybind_modules.GameBoardPy import GameBoard, Move, MoveCollection, opponent_of, PieceColor
 from xiangqigame.enums import GameState
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.players import Player
@@ -36,7 +36,7 @@ class Game:
     def is_valid_move(proposed_move: Move, avail_moves: List[Move]):
         return proposed_move in avail_moves
 
-    def get_valid_move(self, avail_moves: List[Move]):
+    def get_valid_move(self, avail_moves: MoveCollection):
         valid_move = None
         while not valid_move:
             proposed_move = self._players[self._whose_turn].propose_move(
@@ -47,7 +47,7 @@ class Game:
                     proposed_move.start.file == move.start.file and
                     proposed_move.end.rank == move.end.rank and
                     proposed_move.end.file == move.end.file
-            ) for move in avail_moves]):
+            ) for move in avail_moves.moves]):
                 valid_move = proposed_move
             else:
                 self._players[self._whose_turn].illegal_move_notice_response(
@@ -56,7 +56,7 @@ class Game:
                     cur_moves=avail_moves)
         return valid_move
 
-    def player_turn(self, avail_moves: List[Move]):
+    def player_turn(self, avail_moves: MoveCollection):
         try:
             valid_move = self.get_valid_move(avail_moves=avail_moves)
         except EOFError:
@@ -91,7 +91,7 @@ class Game:
         while self._game_state == GameState.UNFINISHED:
             self.send_game_info_to_status_reporter()
             avail_moves = self._board.CalcFinalMovesOf(self._whose_turn)
-            if not avail_moves:
+            if avail_moves.size() == 0:
                 self.set_winner(opponent_of(self._whose_turn))
                 break
             self.player_turn(avail_moves=avail_moves)

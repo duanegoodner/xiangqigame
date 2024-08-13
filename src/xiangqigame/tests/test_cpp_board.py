@@ -1,6 +1,6 @@
 import pytest
 # from xiangqigame.board_utilities_new import BoardUtilities as bu
-from GameBoardPy import BoardSpace, GameBoard, Move, PieceColor, PieceType
+from cpp_modules.src.pybind_modules.GameBoardPy import BoardSpace, GameBoard, Move, PieceColor, PieceType
 
 
 @pytest.fixture
