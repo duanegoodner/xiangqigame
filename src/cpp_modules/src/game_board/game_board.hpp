@@ -1,3 +1,11 @@
+// Filename: game_board.hpp
+// Author: Duane Goodner
+// Created: 2022-11-14
+// Last Modified: 2024-08-16
+
+// Description:
+// Definition of GameBoard class, and the BoardStateTracker CRTP interface that
+// a GameBoard requires a HashCalculator to comply with.
 
 #ifndef _GAME_BOARD_
 #define _GAME_BOARD_
@@ -27,12 +35,9 @@ public:
   }
 };
 
-/*
-Template class for a GameBoard that has a ConcreteHashCalculator, and implements
-the following interfaces:
-MoveTracker (specified by MoveSelector)
-SpaceInfoProvider (specified by MinimaxEvaluator)
- */
+// Template class for a GameBoard that has a ConcreteHashCalculator, and
+// implements the following interfaces: MoveTracker (specified by MoveSelector)
+// SpaceInfoProvider (specified by MinimaxEvaluator)
 template <typename ConcreteHashCalculator>
 class GameBoard : public MoveTracker<
                       GameBoard<ConcreteHashCalculator>,

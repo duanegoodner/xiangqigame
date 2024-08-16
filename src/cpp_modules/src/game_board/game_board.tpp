@@ -1,3 +1,11 @@
+// Filename: game_board.tpp
+// Author: Duane Goodner
+// Created: 2022-12-10
+// Last Modified: 2024-08-16
+
+// Description:
+// Contains method implementations for a GameBoard class with a ConcreteHashCalculator
+
 #ifndef _GAME_BOARD_TEMPLATE_
 #define _GAME_BOARD_TEMPLATE_
 
@@ -28,10 +36,6 @@ GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
 template <typename ConcreteHashCalculator>
 GameBoard<ConcreteHashCalculator>::GameBoard()
     : GameBoard(kStartingBoard) {}
-// : board_map_{int_board_to_game_pieces(kStartingBoard)}
-// , move_calculator_{MoveCalculator()}
-// , num_hash_calculators_{}
-// , hash_calculators_{} {}
 
 template <typename ConcreteHashCalculator>
 GamePiece GameBoard<ConcreteHashCalculator>::GetOccupant(BoardSpace space) {

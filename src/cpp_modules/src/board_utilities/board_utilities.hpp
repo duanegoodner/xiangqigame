@@ -1,3 +1,12 @@
+// Filename: board_components.hpp
+// Author: Duane Goodner
+// Created: 2022-12-02
+// Last Modified: 2024-08-16
+
+// Description:
+// Contains functions for obtaining info about the state of a board map.
+// Functions are inlined to improve speed.
+
 #ifndef _BOARD_UTILITIES_FREE_
 #define _BOARD_UTILITIES_FREE_
 

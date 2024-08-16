@@ -7,11 +7,9 @@
 #include <utility_functs.hpp>
 #include <vector>
 
-/*
-CRTP Interface: MoveSelector <- (Minimax)Evaluator
-Note: Some implementations of MoveSelector (e.g. RandomMoveSelector) do not
-have an Evaluator.
- */
+// CRTP Interface: MoveSelector <- (Minimax)Evaluator
+// Note: Some implementations of MoveSelector (e.g. RandomMoveSelector) do not
+// have an Evaluator.
 template <typename ConcreteEvaluator, typename ConcreteGameBoard>
 class Evaluator {
 public:
@@ -78,11 +76,9 @@ public:
   }
 };
 
-/*
-CRTP Interface: AIPlayer <- MoveSelector
-AI Player is currently in Python side of app. If/when implement AI Player in
-C++, will move this interface definition to C++ Player header file.
- */
+// CRTP Interface: AIPlayer <- MoveSelector
+// AI Player is currently in Python side of app. If/when implement AI Player in
+// C++, will move this interface definition to C++ Player header file.
 template <typename ConcreteMoveSelector, typename ConcreteGameBoard>
 class MoveSelector {
 public:
