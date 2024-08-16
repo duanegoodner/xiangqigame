@@ -23,9 +23,9 @@ inline BestMoves evaluate_win_leaf(
   auto empty_best_moves = MoveCollection();
 
   if (cur_player == initiating_player) {
-    return BestMoves{numeric_limits<Points_t>::max(), empty_best_moves};
-  } else {
     return BestMoves{numeric_limits<Points_t>::min(), empty_best_moves};
+  } else {
+    return BestMoves{numeric_limits<Points_t>::max(), empty_best_moves};
   }
 }
 

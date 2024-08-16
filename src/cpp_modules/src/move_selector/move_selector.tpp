@@ -79,7 +79,8 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
   node_counter_ += 1;
   auto cur_moves = game_board.CalcFinalMovesOf(cur_player);
   if (cur_moves.moves.size() == 0) {
-    return evaluate_win_leaf(cur_player, initiating_player);
+    auto result = evaluate_win_leaf(cur_player, initiating_player);
+    return result;
   }
   if (search_depth == 0) {
     return evaluator_

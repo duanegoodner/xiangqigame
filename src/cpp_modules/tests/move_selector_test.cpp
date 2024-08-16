@@ -10,6 +10,7 @@
 #include <minimax_evaluator.hpp>
 #include <move_selector.hpp>
 #include <piece_points.hpp>
+#include <test_boards.hpp>
 
 using namespace piece_points;
 using namespace std;
@@ -18,7 +19,9 @@ class MoveSelectorTest : public ::testing::Test {
 
 protected:
   GameBoard<HashCalculator> game_board_;
-  PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints> piece_points_evaluator_;
+  // GameBoard<HashCalculator> end_of_game_board_(ktestBoardA);
+  PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>
+      piece_points_evaluator_;
 };
 
 TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
@@ -30,13 +33,15 @@ TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
 
 TEST_F(MoveSelectorTest, InitializeMinimaxSelector) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+  MinimaxMoveSelector<
+      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
       move_selector(piece_points_evaluator_, test_search_depth);
 }
 
 TEST_F(MoveSelectorTest, AttachHashCalculators) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+  MinimaxMoveSelector<
+      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
       move_selector(piece_points_evaluator_, test_search_depth);
   auto red_hash_calculator = HashCalculator();
   auto black_hash_calculator = HashCalculator();
@@ -46,7 +51,8 @@ TEST_F(MoveSelectorTest, AttachHashCalculators) {
 
 TEST_F(MoveSelectorTest, GetBoardState) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+  MinimaxMoveSelector<
+      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
       move_selector(piece_points_evaluator_, test_search_depth);
   auto red_hash_calculator = HashCalculator();
   auto black_hash_calculator = HashCalculator();
@@ -60,9 +66,20 @@ TEST_F(MoveSelectorTest, GetBoardState) {
   EXPECT_EQ(red_board_state, black_board_state);
 }
 
+TEST_F(MoveSelectorTest, EndOfGameSelectorTest) {
+  int test_search_depth{1};
+  GameBoard<HashCalculator> end_of_game_board(ktestBoardA);
+  MinimaxMoveSelector<
+      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+      move_selector(piece_points_evaluator_, test_search_depth);
+  auto selected_move = move_selector.SelectMove(end_of_game_board, PieceColor::kBlk);
+  cout << "Pause debug" << endl;
+}
+
 TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {
   int test_search_depth{4};
-  MinimaxMoveSelector<PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+  MinimaxMoveSelector<
+      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
       move_selector(piece_points_evaluator_, test_search_depth);
   auto start_time = chrono::high_resolution_clock::now();
   auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);

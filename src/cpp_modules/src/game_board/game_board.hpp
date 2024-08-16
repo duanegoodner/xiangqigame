@@ -41,6 +41,7 @@ class GameBoard : public MoveTracker<
 
 public:
   GameBoard();
+  GameBoard(const BoardMapInt_t starting_board);
   void ImplementAttachHashCalculator(
       ConcreteHashCalculator *hash_calculator,
       size_t zcolor_idx

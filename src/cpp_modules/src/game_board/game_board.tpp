@@ -19,12 +19,19 @@ BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
 }
 
 template <typename ConcreteHashCalculator>
-GameBoard<ConcreteHashCalculator>::GameBoard()
-    : board_map_{int_board_to_game_pieces(kStartingBoard)}
+GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
+    : board_map_{int_board_to_game_pieces(board_array)}
     , move_calculator_{MoveCalculator()}
     , num_hash_calculators_{}
     , hash_calculators_{} {}
 
+template <typename ConcreteHashCalculator>
+GameBoard<ConcreteHashCalculator>::GameBoard()
+    : GameBoard(kStartingBoard) {}
+// : board_map_{int_board_to_game_pieces(kStartingBoard)}
+// , move_calculator_{MoveCalculator()}
+// , num_hash_calculators_{}
+// , hash_calculators_{} {}
 
 template <typename ConcreteHashCalculator>
 GamePiece GameBoard<ConcreteHashCalculator>::GetOccupant(BoardSpace space) {
@@ -114,8 +121,8 @@ MoveCollection GameBoard<ConcreteHashCalculator>::ImplementCalcFinalMovesOf(
     );
     auto resulting_gen_position = get_general_position(board_map_, color);
 
-    
-    if (not resulting_opponent_moves.ContainsDestination(resulting_gen_position)) {
+    if (not resulting_opponent_moves.ContainsDestination(resulting_gen_position
+        )) {
       validated_moves.Append(move);
     }
 
