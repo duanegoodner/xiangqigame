@@ -1,5 +1,12 @@
-#include <piece_moves.hpp>
+// Filename: piece_moves.cpp
+// Author: Duane Goodner
+// Created: 2022-11-10
+// Last Modified: 2024-08-16
 
+// Description:
+// Implements PieceMoves class.
+
+#include <piece_moves.hpp>
 
 void PieceMoves::SoldierMoves(
     const BoardMap_t &board_map,

@@ -1,3 +1,11 @@
+// Filename: game_board.tpp
+// Author: Duane Goodner
+// Created: 2022-12-27
+// Last Modified: 2024-08-16
+
+// Description:
+// Implements PiecePointsEvaluator template class.
+
 #ifndef _MINIMAX_EVALUATOR_TEMPLATE_
 #define _MINIMAX_EVALUATOR_TEMPLATE_
 

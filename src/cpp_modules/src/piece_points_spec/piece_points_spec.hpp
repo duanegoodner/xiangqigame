@@ -1,3 +1,11 @@
+// Filename: piece_points_spec.hpp
+// Author: Duane Goodner
+// Created: 2022-12-15
+// Last Modified: 2024-08-16
+
+// Description:
+// Defines classes that enforce specs that external json files with piece points info must comply with.
+
 #ifndef E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 #define E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 

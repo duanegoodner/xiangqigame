@@ -1,3 +1,13 @@
+// Filename: move_selector.hpp
+// Author: Duane Goodner
+// Created: 2022-12-10
+// Last Modified: 2024-08-16
+
+// Description:
+// Defines MoveSelector Interface and concrete template classes, as well as
+// interfaces that MoveSelector expects compliance with. AIPlayer that de-facto
+// defines MoveSelector is currently on Python side of app.
+
 #ifndef _MOVE_SELECTOR_
 #define _MOVE_SELECTOR_
 
@@ -77,8 +87,9 @@ public:
 };
 
 // CRTP Interface: AIPlayer <- MoveSelector
-// AI Player is currently in Python side of app. If/when implement AI Player in
-// C++, will move this interface definition to C++ Player header file.
+// Currently not using since AI Player is currently in Python side of app.
+// If/when implement AI Player in C++, will move this interface definition to
+// C++ Player header file.
 template <typename ConcreteMoveSelector, typename ConcreteGameBoard>
 class MoveSelector {
 public:

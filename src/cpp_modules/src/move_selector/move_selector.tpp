@@ -1,9 +1,18 @@
+// Filename: move_selector.tpp
+// Author: Duane Goodner
+// Created: 2022-12-10
+// Last Modified: 2024-08-16
+
+// Description:
+// Implements methods of Concrete MoveSelector classes. These are still
+// template methods because MoveSelector can have any valid implementation of
+// GameBoard and Evaluator classes.
+
 #ifndef _MOVE_SELECTOR_TEMPLATES_
 #define _MOVE_SELECTOR_TEMPLATES_
 
 #include <iostream>
 #include <move_selector_details.hpp>
-
 
 template <typename ConcreteGameBoard>
 Move RandomMoveSelector<ConcreteGameBoard>::ImplementSelectMove(

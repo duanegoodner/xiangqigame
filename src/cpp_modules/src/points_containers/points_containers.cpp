@@ -1,3 +1,11 @@
+// Filename: points_containers.cpp
+// Author: Duane Goodner
+// Created: 2022-12-15
+// Last Modified: 2024-08-16
+
+// Description:
+// Implementations of structs that hold piece points data.
+
 #include <common.hpp>
 #include <points_containers.hpp>
 #include <unordered_map>

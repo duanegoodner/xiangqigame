@@ -1,3 +1,11 @@
+// Filename: move_selector_py.cpp
+// Author: Duane Goodner
+// Created: 2022-12-07
+// Last Modified: 2024-08-16
+
+// Description:
+// Implements pybind module that exposes concrete MoveSelector classes to Python.
+
 #include <game_board.hpp>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>

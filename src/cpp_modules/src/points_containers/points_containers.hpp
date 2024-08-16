@@ -1,3 +1,11 @@
+// Filename: points_containers.hpp
+// Author: Duane Goodner
+// Created: 2022-12-15
+// Last Modified: 2024-08-16
+
+// Description:
+// Definitions of structs that hold piece points data.
+
 #ifndef ABF79E5F_F2D2_421C_80C6_8D1E0141EEC7
 #define ABF79E5F_F2D2_421C_80C6_8D1E0141EEC7
 

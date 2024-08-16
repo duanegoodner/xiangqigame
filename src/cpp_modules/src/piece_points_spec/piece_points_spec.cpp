@@ -1,11 +1,17 @@
+// Filename: piece_points_spec.cpp
+// Author: Duane Goodner
+// Created: 2022-12-15
+// Last Modified: 2024-08-16
 
-#include <common.hpp>
+// Description:
+// Implementation of PiecePointsSpec
+
 #include <algorithm>
+#include <common.hpp>
 #include <iostream>
 #include <piece_points_spec.hpp>
 #include <unordered_map>
 #include <utility_functs.hpp>
-
 
 using namespace std;
 using namespace piece_points_spec;
@@ -30,7 +36,7 @@ PointsSpecBPOExternal::PointsSpecBPOExternal(const json &json_object) {
 }
 
 PointsSpecBPOExternal::PointsSpecBPOExternal(string json_file_path)
-    : PointsSpecBPOExternal(utility_functs::import_json(json_file_path)){};
+    : PointsSpecBPOExternal(utility_functs::import_json(json_file_path)) {};
 
 json PointsSpecBPOExternal::ToJson() {
   json j;
@@ -47,22 +53,26 @@ void PointsSpecBPOExternal::ToFile(string output_path) {
 }
 
 GamePointsSMap_t PointsSpecBPOExternal::ToGamePointsSmap() {
-    GamePointsSMap_t s_map{};
+  GamePointsSMap_t s_map{};
 
-    for (auto piece : black_base) {
-        s_map["black"][piece.first] = utility_functs::array_plus_const(
-            black_position[piece.first], black_base[piece.first]);
-    }
+  for (auto piece : black_base) {
+    s_map["black"][piece.first] = utility_functs::array_plus_const(
+        black_position[piece.first],
+        black_base[piece.first]
+    );
+  }
 
-    for (auto piece : red_base_offsets) {
-        auto red_base = black_base[piece.first] + red_base_offsets[piece.first];
-        auto red_position = utility_functs::two_array_sum(
-            black_position[piece.first], red_position_offsets[piece.first]);
-        s_map["red"][piece.first] = utility_functs::array_plus_const(
-            red_position, red_base);
-    }
+  for (auto piece : red_base_offsets) {
+    auto red_base = black_base[piece.first] + red_base_offsets[piece.first];
+    auto red_position = utility_functs::two_array_sum(
+        black_position[piece.first],
+        red_position_offsets[piece.first]
+    );
+    s_map["red"][piece.first] =
+        utility_functs::array_plus_const(red_position, red_base);
+  }
 
-    return s_map;
+  return s_map;
 }
 
 PointsSpecBPOInternal::PointsSpecBPOInternal(
@@ -87,7 +97,8 @@ PointsSpecBPOInternal::PointsSpecBPOInternal(
       {"chariot", PieceType::kCha},
       {"horse", PieceType::kHor},
       {"cannon", PieceType::kCan},
-      {"soldier", PieceType::kSol}};
+      {"soldier", PieceType::kSol}
+  };
 
   black_base = utility_functs::replace_keys(
       external_spec.black_base,

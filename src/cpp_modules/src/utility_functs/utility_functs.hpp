@@ -1,3 +1,11 @@
+// Filename: utility_functs.hpp
+// Author: Duane Goodner
+// Created: 2022-12-07
+// Last Modified: 2024-08-16
+
+// Description:
+// Contains definitions and many inline implementations (for speed) of utility functions.
+
 #ifndef _UTILITY_FUNCTS_
 #define _UTILITY_FUNCTS_
 

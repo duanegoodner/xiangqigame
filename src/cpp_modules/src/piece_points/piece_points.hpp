@@ -1,3 +1,12 @@
+// Filename: piece_points.hpp
+// Author: Duane Goodner
+// Created: 2022-11-10
+// Last Modified: 2024-08-16
+
+// Description:
+// Defines PiecePoints class and other classes that PiecePoints is composed of
+// or help build PiecePoints.
+
 #ifndef _PIECE_POINTS_
 #define _PIECE_POINTS_
 
@@ -31,7 +40,6 @@ private:
 
 const auto DEFAULT_GAME_POINTS_ARRAY =
     GamePointsArrayBuilder(kICGABPOPath).BuildGamePointsArray();
-
 
 class FormatIdentifier {
 public:
@@ -78,9 +86,7 @@ struct PiecePoints : public PieceValueProvider<PiecePoints> {
   void ToFile(string output_file);
 };
 
-bool json_matches_schema(
-    const json &json_object,
-    const json &schema);
+bool json_matches_schema(const json &json_object, const json &schema);
 
 } // namespace piece_points
 

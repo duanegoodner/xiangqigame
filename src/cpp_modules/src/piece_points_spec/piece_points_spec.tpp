@@ -1,3 +1,11 @@
+// Filename: piece_points_spec.tpp
+// Author: Duane Goodner
+// Created: 2022-12-15
+// Last Modified: 2024-08-16
+
+// Description:
+// Implementations of template classes that support PiecePointsSpec
+
 #ifndef B3123E8C_B936_4802_A0CD_13BABD26E0A8
 #define B3123E8C_B936_4802_A0CD_13BABD26E0A8
 

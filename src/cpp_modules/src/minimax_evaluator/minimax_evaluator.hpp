@@ -1,3 +1,13 @@
+// Filename: minimax_evaluator.hpp
+// Author: Duane Goodner
+// Created: 2022-12-17
+// Last Modified: 2024-08-16
+
+// Description:
+// Defines PiecePointsEvaluator template class and interfaces that
+// PiecePointsEvaluator requires GameBoard and GamePoints classes to comply
+// with.
+
 #ifndef _MINIMAX_EVALUATOR_
 #define _MINIMAX_EVALUATOR_
 

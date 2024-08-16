@@ -1,3 +1,11 @@
+// Filename: piece_moves.hpp
+// Author: Duane Goodner
+// Created: 2022-11-10
+// Last Modified: 2024-08-16
+
+// Description:
+// Defines PieceMoves class.
+
 #ifndef AB6A1802_337A_4767_8288_AD0E610AC2F5
 #define AB6A1802_337A_4767_8288_AD0E610AC2F5
 

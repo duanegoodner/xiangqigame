@@ -4,7 +4,7 @@
 // Last Modified: 2024-08-16
 
 // Description:
-// Defines classes for json IO with specific json libraries (As of 2024-0-16,
+// Defines classes for json IO with specific json libraries (As of 2024-08-16,
 // only using nlohmann library).
 
 #ifndef A64329FA_6D6E_4026_A7C1_FF253B8769B6

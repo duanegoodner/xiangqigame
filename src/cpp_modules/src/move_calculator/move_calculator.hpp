@@ -1,3 +1,12 @@
+// Filename: move_calculator.hpp
+// Author: Duane Goodner
+// Created: 2022-11-23
+// Last Modified: 2024-08-16
+
+// Description:
+// Defines and implements MoveCalculator class.
+
+
 #ifndef _MOVE_CALCULATOR_
 #define _MOVE_CALCULATOR_
 
@@ -39,13 +48,11 @@ private:
   PieceDispatchArray_t piece_dispatch_array_;
   PieceMoves piece_moves_;
 
-  /*
-  Helpful links for using pointers to class methods  and any_cast:
-  https://opensource.com/article/21/2/ccc-method-pointers
-  https://stackoverflow.com/questions/6265851
-  https://stackoverflow.com/questions/55520876/
-  https://en.cppreference.com/w/cpp/utility/any/any_cast
-   */
+  // Helpful links for using pointers to class methods  and any_cast:
+  // https://opensource.com/article/21/2/ccc-method-pointers
+  // https://stackoverflow.com/questions/6265851
+  // https://stackoverflow.com/questions/55520876/
+  // https://en.cppreference.com/w/cpp/utility/any/any_cast
 
   void ImplementCalcMovesFrom(
       const BoardSpace space,
