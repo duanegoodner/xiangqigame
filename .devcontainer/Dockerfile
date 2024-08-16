@@ -44,21 +44,12 @@ RUN sudo apt-get update --fix-missing && \
     fonts-powerline \
     rsync \
     unzip \
-    zsh \
-    && sudo apt-get clean && \
-    sudo rm -rf /var/lib/apt/lists/* \
-    && sudo git clone -q https://github.com/google/googletest.git /googletest \
-    && sudo mkdir -p /googletest/build \
-    && cd /googletest/build \
-    && sudo cmake .. && sudo make && sudo make install \
-    && cd / && sudo rm -rf /googletest
-    # TODO install https://github.com/pboettch/json-schema-validator
-    # For compatibility with pybind11 NEED: cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON ..
+    zsh 
 
 
 # Customize zsh shell
 ADD ./.devcontainer/fonts ./fonts
-COPY ./.devcontainer/shell_configs/.p10k.zsh ./.devcontainer/shell_configs/.zshrc ./
+# COPY ./.devcontainer/shell_configs/.p10k.zsh ./.devcontainer/shell_configs/.zshrc ./
 RUN sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
     && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
     && git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions \
@@ -113,12 +104,16 @@ COPY ./.devcontainer/entrypoint.sh /usr/local/bin/
 RUN sudo chown $USER_UID:$USER_GID /usr/local/bin/ && \
     sudo chmod u+x /usr/local/bin/entrypoint.sh
 
-COPY ./.devcontainer/xiangqigame_docker.pub ${HOME}/.ssh/authorized_keys
-RUN sudo apt-get update
+# To enable ssh connection to container (e.g. for using PyCharm in container) uncomment
+# the remaining lines, generate ssh key pair named xiangqigame_docker, and add save the .pub key
+# to ./devcontainer/xiangqigame_docker.pub.
 
-RUN sudo apt-get install openssh-server -y
-RUN sudo chown $USER_UID:$USER_GID ${HOME}/.ssh
-RUN sudo chown $USER_UID:$USER_GID ${HOME}/.ssh/authorized_keys
-RUN sudo chmod 600 ${HOME}/.ssh/authorized_keys
-RUN sudo chmod 700 ${HOME}/.ssh
+# COPY ./.devcontainer/xiangqigame_docker.pub ${HOME}/.ssh/authorized_keys
+# RUN sudo apt-get update
+
+# RUN sudo apt-get install openssh-server -y
+# RUN sudo chown $USER_UID:$USER_GID ${HOME}/.ssh
+# RUN sudo chown $USER_UID:$USER_GID ${HOME}/.ssh/authorized_keys
+# RUN sudo chmod 600 ${HOME}/.ssh/authorized_keys
+# RUN sudo chmod 700 ${HOME}/.ssh
 

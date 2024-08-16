@@ -1,3 +1,13 @@
+[build-system]
+requires = [
+    "setuptools>=42",
+    "scikit-build>=0.13",
+    "cmake",
+    "ninja",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "xiangqigame"
 version = "0.1.0"
@@ -34,14 +44,6 @@ test = [
 [project.urls]
 repository = "https://github.com/duanegoodner/xiangqigame"
 
-[build-system]
-requires = [
-    "setuptools>=42",
-    "scikit-build>=0.13",
-    "cmake",
-    "ninja",
-    "wheel",
-    "Cython",
-    # "pybind11>=2.10.0"
-]
-build-backend = "setuptools.build_meta"
+[project.scripts]
+play_xiangqi = "xiangqigame.__main__:main"
+
