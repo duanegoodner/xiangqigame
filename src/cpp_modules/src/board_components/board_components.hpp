@@ -114,7 +114,11 @@ struct MoveCollection {
       : moves{} {
     moves.reserve(reserve_size);
   }
-
+  
+  size_t Size() const {
+    return moves.size();
+  }
+  
   bool ContainsMove(const Move &move) const {
     for (auto entry : moves) {
       if ((move.start == entry.start) && (move.end == entry.end)) {

@@ -2,13 +2,14 @@ import argparse
 from dataclasses import dataclass
 from typing import NamedTuple, Callable
 from xiangqigame.players import AIPlayer, HumanPlayer, Player
-from xiangqigame.move_selectors import MinimaxMoveSelector, MoveSelector, RandomMoveSelector
+# from xiangqigame.move_selectors import MinimaxMoveSelector, MoveSelector, RandomMoveSelector
+from cpp_modules.src.pybind_modules.MoveSelectorPy import PiecePointsMinimaxMoveSelector, RandomMoveSelector
 
 
 @dataclass
 class PlayerInput:
     player_type: Callable[..., Player]
-    algo: Callable[..., MoveSelector]
+    algo: Callable[..., RandomMoveSelector | PiecePointsMinimaxMoveSelector]
     strength: int
 
 
@@ -27,7 +28,7 @@ class XiangqiGameCommandInterpreter:
 
     _move_selector_dispatch = {
         "random": RandomMoveSelector,
-        "minimax": MinimaxMoveSelector,
+        "minimax": PiecePointsMinimaxMoveSelector,
         None: None
     }
 
@@ -75,7 +76,7 @@ class XiangqiGameCommandLine:
         )
 
         self._parser.add_argument(
-            "-rst", "--red_strength", type=int, choices=range(1, 5),
+            "-rst", "--red_strength", type=int, choices=range(1, 10),
             required=False,
             help="Search depth to user for red player when red is 'ai' with "
                  "'minimax.' Default is 1."
@@ -94,7 +95,7 @@ class XiangqiGameCommandLine:
         )
 
         self._parser.add_argument(
-            "-bst", "--black_strength", type=int, choices=range(1, 5),
+            "-bst", "--black_strength", type=int, choices=range(1, 10),
             required=False,
             help="Search depth to user for red player when red is 'ai' with "
                  "'minimax.' Default is 2."

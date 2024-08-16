@@ -1,4 +1,4 @@
-from GameBoardPy import PieceColor
+from cpp_modules.src.pybind_modules.GameBoardPy import PieceColor
 from xiangqigame.enums import GameState
 # from xiangqigame.piece_definitions import PColor
 from xiangqigame.game import Game

@@ -1,6 +1,6 @@
 import abc
 import numpy as np
-from GameBoardPy import BoardSpace, GameBoard, Move, opponent_of, PieceColor, PieceType
+from cpp_modules.src.pybind_modules.GameBoardPy import BoardSpace, GameBoard, Move, opponent_of, PieceColor, PieceType
 from typing import NamedTuple, List
 import xiangqigame.piece_points as pts
 

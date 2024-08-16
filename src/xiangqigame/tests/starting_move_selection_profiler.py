@@ -2,7 +2,7 @@ import cProfile
 import time
 from typing import Dict
 
-from GameBoardPy import GameBoard, PieceColor
+from cpp_modules.src.pybind_modules.GameBoardPy import GameBoard, PieceColor
 # from xiangqigame.piece_definitions import PColor
 
 # from xiangqigame.game_board_new import GameBoard

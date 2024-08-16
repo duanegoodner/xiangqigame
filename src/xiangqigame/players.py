@@ -1,10 +1,11 @@
 import numpy as np
 import xiangqigame.move_translator as mt
 from typing import List, Tuple
-from GameBoardPy import GameBoard, PieceColor, Move
+from cpp_modules.src.pybind_modules.GameBoardPy import GameBoard, PieceColor, Move, MoveCollection
 from xiangqigame.game_interfaces import Player
 import xiangqigame.terminal_output as msg
-from xiangqigame.move_selectors import MoveSelector
+# from xiangqigame.move_selectors import MoveSelector
+from cpp_modules.src.pybind_modules.MoveSelectorPy import PiecePointsMinimaxMoveSelector, RandomMoveSelector
 
 
 class HumanPlayer(Player):
@@ -70,14 +71,14 @@ class AIPlayer(Player):
     def __init__(
             self,
             color: PieceColor,
-            move_selector: MoveSelector):
+            move_selector: PiecePointsMinimaxMoveSelector | RandomMoveSelector):
         super().__init__(color)
         self._move_selector = move_selector
 
     def propose_move(
-            self, game_board: GameBoard, cur_moves: List[Move]) -> Move:
+            self, game_board: GameBoard, cur_moves: MoveCollection) -> Move:
         proposed_move = self._move_selector.select_move(
-            game_board=game_board, cur_player=self._color, cur_moves=cur_moves)
+            game_board=game_board, piece_color=self._color)
         return proposed_move
 
     def illegal_move_notice_response(
