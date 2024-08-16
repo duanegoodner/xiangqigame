@@ -10,7 +10,6 @@
 #include <minimax_evaluator.hpp>
 #include <move_selector.hpp>
 #include <piece_points.hpp>
-#include <test_boards.hpp>
 
 using namespace piece_points;
 using namespace std;
@@ -19,9 +18,20 @@ class MoveSelectorTest : public ::testing::Test {
 
 protected:
   GameBoard<HashCalculator> game_board_;
-  // GameBoard<HashCalculator> end_of_game_board_(ktestBoardA);
   PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>
       piece_points_evaluator_;
+  const BoardMapInt_t kLateGameTestBoard{{
+      {0, 0, 0, 1, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 5},
+      {5, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, -1, 0, 0, 0, 0},
+  }};
 };
 
 TEST_F(MoveSelectorTest, RandomMoveSelectorInitialMove) {
@@ -67,13 +77,19 @@ TEST_F(MoveSelectorTest, GetBoardState) {
 }
 
 TEST_F(MoveSelectorTest, EndOfGameSelectorTest) {
-  int test_search_depth{1};
-  GameBoard<HashCalculator> end_of_game_board(ktestBoardA);
+  int test_search_depth{2};
+  GameBoard<HashCalculator> end_of_game_board(kLateGameTestBoard);
   MinimaxMoveSelector<
       PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
       move_selector(piece_points_evaluator_, test_search_depth);
-  auto selected_move = move_selector.SelectMove(end_of_game_board, PieceColor::kBlk);
-  cout << "Pause debug" << endl;
+  auto selected_move =
+      move_selector.SelectMove(end_of_game_board, PieceColor::kBlk);
+
+  auto executed_move = end_of_game_board.ExecuteMove(selected_move);
+  auto red_possible_moves =
+      end_of_game_board.CalcFinalMovesOf(PieceColor::kRed);
+  auto red_num_possible_moves = red_possible_moves.Size();
+  EXPECT_TRUE(red_num_possible_moves == 0);
 }
 
 TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {
@@ -84,11 +100,9 @@ TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {
   auto start_time = chrono::high_resolution_clock::now();
   auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);
 
-  /*
-  Found move depends on search depth. If test_search_depth, need to modify
-  both assertions. (having this pair reduces likelihood of confusion if/when
-  test_test_search depth gets changed).
-   */
+  // Found move depends on search depth. If test_search_depth, need to modify
+  // both assertions. (having this pair reduces likelihood of confusion if/when
+  // test_test_search depth gets changed).
   EXPECT_TRUE(test_search_depth == 4);
   EXPECT_TRUE(
       (selected_move.start == BoardSpace{9, 1} &&

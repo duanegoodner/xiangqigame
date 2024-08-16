@@ -1,3 +1,13 @@
+// Filename: common.hpp
+// Author: Duane Goodner
+// Created: 2022-11-15
+// Last Modified: 2024-08-16
+
+// Description:
+// Contains typedefs, enums, structs and constants for game piece definitions,
+// and points specs. Also contains typedefs and simple operators for points
+// calcs and zobrish hashmaps with minimax algo.
+
 #ifndef _COMMON_
 #define _COMMON_
 
@@ -30,14 +40,16 @@ const unordered_map<string, PieceType> kPieceTypeStringToEnum = {
     {"chariot", PieceType::kCha},
     {"horse", PieceType::kHor},
     {"cannon", PieceType::kCan},
-    {"soldier", PieceType::kSol}};
+    {"soldier", PieceType::kSol}
+};
 
 enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
 const int kNumPieceColorVals = 3;
 const unordered_map<string, PieceColor> kPieceColorStringToEnum = {
     {"red", PieceColor::kRed},
     {"null", PieceColor::kNul},
-    {"black", PieceColor::kBlk}};
+    {"black", PieceColor::kBlk}
+};
 
 // converts red/black: -1/1 of PieceColor enum to 0/1 used in some arrays
 inline size_t get_zcolor_index(PieceColor color) {
@@ -82,14 +94,18 @@ typedef array<team_zarray_t, 2> game_zarray_t;
 // /////////////
 typedef int Points_t;
 
-// GamePointsArray_t and its sub-array types
+// 2-D array of points values for single piece
 typedef array<array<int, kNumFiles>, kNumRanks> PiecePointsArray_t;
+
+// 3-D array of all piece points values for a team
 typedef array<PiecePointsArray_t, kNumPieceTypeVals> TeamPointsArray_t;
+
+// 4-D array of both teams points values for a game
 typedef array<TeamPointsArray_t, 2> GamePointsArray_t;
 
 inline bool operator==(
-    const PiecePointsArray_t& a,
-    const PiecePointsArray_t& b
+    const PiecePointsArray_t &a,
+    const PiecePointsArray_t &b
 ) {
   bool are_equal = true;
 
@@ -104,17 +120,14 @@ inline bool operator==(
   return are_equal;
 }
 
-// types for bpo spec
+// types for base-points offset (BPO) spec
 typedef unordered_map<PieceType, Points_t> TeamBasePoints_t;
 typedef array<Points_t, kNumPieceTypeVals> base_points_array_t;
-
 typedef unordered_map<string, Points_t> BasePointsSMap_t;
-
 typedef unordered_map<PieceType, PiecePointsArray_t> TeamPointsEMap_t;
-
 typedef unordered_map<string, PiecePointsArray_t> TeamPointsSMap_t;
 
-inline bool operator==(TeamPointsSMap_t& a, TeamPointsSMap_t& b) {
+inline bool operator==(TeamPointsSMap_t &a, TeamPointsSMap_t &b) {
   bool are_equal = true;
 
   for (auto piece : a) {
@@ -128,11 +141,10 @@ inline bool operator==(TeamPointsSMap_t& a, TeamPointsSMap_t& b) {
 
 typedef pair<BasePointsSMap_t, TeamPointsSMap_t> BasePositionSMapPair_t;
 typedef unordered_map<string, BasePositionSMapPair_t> BPOSpecSMap_t;
-
 typedef unordered_map<PieceColor, TeamPointsEMap_t> GamePointsEMap_t;
 typedef unordered_map<string, TeamPointsSMap_t> GamePointsSMap_t;
 
-inline bool operator==(GamePointsSMap_t& a, GamePointsSMap_t& b) {
+inline bool operator==(GamePointsSMap_t &a, GamePointsSMap_t &b) {
   bool are_equal = true;
   for (auto color : a) {
     if (a[color.first] != b[color.first]) {
@@ -142,10 +154,5 @@ inline bool operator==(GamePointsSMap_t& a, GamePointsSMap_t& b) {
   }
   return are_equal;
 }
-// //////////////
-// Move Rating
-// /////////////
-
-
 
 #endif

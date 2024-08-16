@@ -1,12 +1,20 @@
+// Filename: board_components.hpp
+// Author: Duane Goodner
+// Created: 2022-11-15
+// Last Modified: 2024-08-16
+
+// Description:
+// Contains simple structs and typedefs of board components, container structs
+// for grouping components, and simple functions using these components.
 
 #ifndef _BOARD_COMPONENTS_
 #define _BOARD_COMPONENTS_
 
 #include <array>
 #include <cassert>
+#include <common.hpp>
 #include <random>
 #include <vector>
-#include <common.hpp>
 
 using namespace std;
 
@@ -43,16 +51,11 @@ inline PieceColor opponent_of(PieceColor color) {
   return static_cast<PieceColor>(-1 * color);
 }
 
-// /////////////////////////
-// Board Datatypes
-// ////////////////////////
+// We have two wayts to represent a board map:
+// 1. As an array of GamePiece objects
 typedef array<array<GamePiece, kNumFiles>, kNumRanks> BoardMap_t;
+// 2. As an array of integers
 typedef array<array<int, kNumFiles>, kNumRanks> BoardMapInt_t;
-
-
-// /////////////////////////
-// Board location tracking
-// ////////////////////////
 
 struct BoardSpace {
 
@@ -114,11 +117,9 @@ struct MoveCollection {
       : moves{} {
     moves.reserve(reserve_size);
   }
-  
-  size_t Size() const {
-    return moves.size();
-  }
-  
+
+  size_t Size() const { return moves.size(); }
+
   bool ContainsMove(const Move &move) const {
     for (auto entry : moves) {
       if ((move.start == entry.start) && (move.end == entry.end)) {
@@ -128,7 +129,7 @@ struct MoveCollection {
     return false;
   }
 
-  bool ContainsDestination(const BoardSpace& space) {
+  bool ContainsDestination(const BoardSpace &space) {
     for (auto move : moves) {
       if (move.end == space) {
         return true;
@@ -136,7 +137,7 @@ struct MoveCollection {
     }
     return false;
   }
-  
+
   void Append(Move move) { moves.emplace_back(move); }
   void Concat(vector<Move> other_moves) {
     moves.insert(moves.end(), other_moves.begin(), other_moves.end());
@@ -152,12 +153,13 @@ struct ExecutedMove {
   GamePiece destination_piece;
 };
 
-// ////////////////////////
-// Convenience dataype and functions for generating array of castle spaces
-// ////////////////////////
+// Data struct for internal tracking of team's castle spaces as 1-D array, and
+// then
 typedef array<BoardSpace, 9> Castle_t;
+
+// Generates 1-D array of castle spaces from castle edge definitions
 inline constexpr Castle_t calc_castle_spaces(const CastleEdges &edges) {
-  std::array<BoardSpace, 9> spaces{};
+  Castle_t spaces{};
 
   for (auto rank = edges.min_rank; rank <= edges.max_rank; rank++) {
     for (auto file = edges.min_file; file <= edges.max_file; file++) {
