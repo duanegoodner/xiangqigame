@@ -1,3 +1,11 @@
+// Filename: json_internal.tpp
+// Author: Duane Goodner
+// Created: 2022-12-22
+// Last Modified: 2024-08-16
+
+// Description:
+// Implementations of methods for JsonInternal template class.
+
 #ifndef F976D623_CC94_4D09_9AE1_B4340502DC80
 #define F976D623_CC94_4D09_9AE1_B4340502DC80
 

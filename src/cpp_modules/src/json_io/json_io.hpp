@@ -1,3 +1,12 @@
+// Filename: json_io.hpp
+// Author: Duane Goodner
+// Created: 2022-12-27
+// Last Modified: 2024-08-16
+
+// Description:
+// Defines classes for json IO with specific json libraries (As of 2024-0-16,
+// only using nlohmann library).
+
 #ifndef A64329FA_6D6E_4026_A7C1_FF253B8769B6
 #define A64329FA_6D6E_4026_A7C1_FF253B8769B6
 
@@ -21,12 +30,12 @@ namespace json_io {
 
 class NlohmannJsonIO : public JsonIO {
 
-  public:
-  void Import(GamePointsSMap_t& s_map, string file_path) override;
+public:
+  void Import(GamePointsSMap_t &s_map, string file_path) override;
   void Export(GamePointsSMap_t &data, string file_path) override;
-  void Import(BPOSpecSMap_t& s_map, string file_path) override;
-  void Export(BPOSpecSMap_t& data, string file_path) override;
-  
+  void Import(BPOSpecSMap_t &s_map, string file_path) override;
+  void Export(BPOSpecSMap_t &data, string file_path) override;
+
   bool Validate(string data_file, string schema_file) override;
 
 private:
@@ -39,9 +48,9 @@ private:
     ofstream fout(file_path);
     fout << setw(4) << j << endl;
   }
-  
+
   template <typename T>
-  void ImportWithTemplate(string file_path, T& object) {
+  void ImportWithTemplate(string file_path, T &object) {
     // ifstream input(file_path);
     nlohmann::json j = ImportToJson(file_path);
     object = j.get<T>();

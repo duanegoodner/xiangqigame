@@ -1,6 +1,10 @@
-//
-// Created by duane on 12/27/22.
-//
+// Filename: game_board.tpp
+// Author: Duane Goodner
+// Created: 2022-12-27
+// Last Modified: 2024-08-16
+
+// Description:
+// Defines struct and class used for Zobrist Hash tracking of board state.
 
 #ifndef XIANGQI_CPP_hash_calculator_HPP
 #define XIANGQI_CPP_hash_calculator_HPP

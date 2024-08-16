@@ -1,3 +1,11 @@
+// Filename: game_board.tpp
+// Author: Duane Goodner
+// Created: 2022-12-28
+// Last Modified: 2024-08-16
+
+// Description:
+// Dev code for quick check / test of Zobrist key creation and storage.
+
 
 // #include <array>
 // #include <bits/stdc++.h>

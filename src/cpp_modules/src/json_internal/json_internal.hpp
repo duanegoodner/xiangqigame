@@ -1,3 +1,11 @@
+// Filename: json_internal.hpp
+// Author: Duane Goodner
+// Created: 2022-12-27
+// Last Modified: 2024-08-16
+
+// Description:
+// Defines template class used for json imports and exports. 
+
 #ifndef B849AC13_4E45_4022_A67D_F98FD91B83A8
 #define B849AC13_4E45_4022_A67D_F98FD91B83A8
 
@@ -20,6 +28,7 @@ bool validate_json_schema(JsonType & data_json, string schema_file);
 template <typename JsonType>
 bool validate_json_schema(string json_file, string schema_file);
 
+// Class for Json IO with definition independent of json library.
 template <typename IOType, typename SchemaType>
 class JsonInternal {
   IOType Import(string file_path);

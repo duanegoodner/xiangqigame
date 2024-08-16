@@ -1,3 +1,11 @@
+// Filename: json_io.cpp
+// Author: Duane Goodner
+// Created: 2022-12-27
+// Last Modified: 2024-08-16
+
+// Description:
+// Implementations of json library-specific JsonIO classes.
+
 #include <json_io.hpp>
 #include <vector>
 

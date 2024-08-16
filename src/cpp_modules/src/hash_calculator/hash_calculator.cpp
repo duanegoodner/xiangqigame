@@ -1,3 +1,11 @@
+// Filename: game_board.tpp
+// Author: Duane Goodner
+// Created: 2022-12-27
+// Last Modified: 2024-08-16
+
+// Description:
+// Implementation of ZobristKeys and HashCalculator.
+
 #include <board_components.hpp>
 #include <common.hpp>
 #include <experimental/source_location>
