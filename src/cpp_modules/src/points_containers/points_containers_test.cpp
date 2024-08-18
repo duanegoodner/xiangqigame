@@ -3,6 +3,7 @@
 #include <json_interface.hpp>
 #include <json_io.hpp>
 #include <points_containers.hpp>
+#include <utility_functs.hpp>
 
 using namespace std;
 using namespace points_containers;
@@ -11,8 +12,7 @@ using namespace points_containers;
 
 class GamePointsTest : public ::testing::Test {
 protected:
-  string kICGARawPath = "/home/duane/workspace/project/src/cpp_modules/data/"
-                        "ICGA_2004_raw.json";
+  const string kICGARawPath = utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
 
   json_io::NlohmannJsonIO json;
   json_interface::JsonIO &json_interface = json;
@@ -52,8 +52,7 @@ TEST_F(GamePointsTest, GamePointsInitFromArray) {
 
 class BasePointsOffsetSpecTest : public ::testing::Test {
 protected:
-  string kICGABPOPath = "/home/duane/workspace/project/src/cpp_modules/data/"
-                        "ICGA_2004_bpo.json";
+  const string kICGABPOPath = utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
 
   json_io::NlohmannJsonIO json;
   json_interface::JsonIO &json_interface = json;

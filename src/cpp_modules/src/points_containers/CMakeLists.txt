@@ -18,10 +18,13 @@ target_link_libraries(
     common
     json_interface
     json_io
-    points_containers)
+    points_containers
+    utility_functs
+    )
 target_include_directories(
     points_containers_test PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src/json_interface
     ${PROJECT_SOURCE_DIR}/src/json_io
+    ${PROJECT_SOURCE_DIR}/src/utility_functs
 )

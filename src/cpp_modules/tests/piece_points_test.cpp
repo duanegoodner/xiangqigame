@@ -4,6 +4,7 @@
 #include <iostream>
 #include <piece_points.hpp>
 #include <piece_points_spec.hpp>
+#include <utility_functs.hpp>
 
 using namespace piece_points;
 
@@ -11,7 +12,7 @@ class GamePointsArrayBuilderTest : public ::testing::Test {
 
 protected:
   const string points_spec_path =
-      "/home/duane/workspace/project/src/cpp_modules/data/ICGA_2004_bpo.json";
+      utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
 
   const PointsSpecBPOExternal external_pts_spec =
       PointsSpecBPOExternal(points_spec_path);
@@ -62,9 +63,9 @@ class PiecePointsTest : public ::testing::Test {
 
 protected:
   const string points_spec_path =
-      "/home/duane/workspace/project/src/cpp_modules/data/ICGA_2004_bpo.json";
+      utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
   const string raw_points_json_path =
-      "/home/duane/workspace/project/src/cpp_modules/data/ICGA_2004_raw.json";
+      utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
   const PointsSpecBPOExternal external_pts_spec =
       PointsSpecBPOExternal(points_spec_path);
   const PointsSpecBPOInternal internal_pts_spec =

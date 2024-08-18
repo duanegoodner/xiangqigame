@@ -4,7 +4,8 @@
 // Last Modified: 2024-08-16
 
 // Description:
-// Defines classes that enforce specs that external json files with piece points info must comply with.
+// Defines classes that enforce specs that external json files with piece
+// points info must comply with.
 
 #ifndef E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 #define E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
@@ -14,7 +15,7 @@
 #include <string>
 #include <typeinfo>
 #include <unordered_map>
-
+#include <utility_functs.hpp>
 
 namespace piece_points_spec {
 using namespace std;
@@ -45,7 +46,7 @@ struct TeamPointsNonTemp {
   unordered_map<string, PiecePointsArray_t> PiecePointsArrays();
   TeamPointsArray_t ToArray();
 
-// private:
+  // private:
   PiecePointsArray_t null;
   PiecePointsArray_t general;
   PiecePointsArray_t advisor;
@@ -78,7 +79,6 @@ struct BasePointOffsetSpec {
   PieceBasePoints red_base_offsets;
   TeamPoints<JsonType> red_position_offsets;
 };
-
 
 struct GamePointsNonTemp {
   GamePointsNonTemp() = default;
@@ -133,25 +133,14 @@ struct PointsSpecBPOInternal {
   TeamPointsEMap_t red_position_offsets;
 };
 
-
 const string kICGABPOPath_x =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "ICGA_2004_bpo.json";
-
+    utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
 const string kICGARawPath_x =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "ICGA_2004_raw.json";
-
+    utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
 const string kRawSchemaPath_x =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "raw_points_schema.json";
-
+    utility_functs::get_data_file_abs_path("raw_points_schema.json");
 const string kBPOSchemaPath_x =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "bpo_schema.json";
-
-
-
+    utility_functs::get_data_file_abs_path("bpo_schema.json");
 } // namespace piece_points_spec
 
 // #include <piece_points_spec.tpp>

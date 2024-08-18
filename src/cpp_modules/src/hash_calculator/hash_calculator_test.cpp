@@ -7,7 +7,7 @@
 #include <string>
 
 // using namespace board_components;
-using namespace nlohmann::json_abi_v3_11_2;
+using namespace nlohmann::json_abi_v3_11_3;
 using namespace std;
 
 class ZobristKeysTest : public ::testing::Test {

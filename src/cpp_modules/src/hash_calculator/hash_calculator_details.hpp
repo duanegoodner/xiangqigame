@@ -3,9 +3,11 @@
 
 #include <hash_calculator.hpp>
 #include <string>
+#include <utility_functs.hpp>
 
-const string DEFAULT_ZKEYS_FILEPATH =
-    "/home/duane/workspace/project/src/cpp_modules/data/zkeys_v01.json";
+using namespace utility_functs;
+
+const string DEFAULT_ZKEYS_FILEPATH = get_data_file_abs_path("zkeys_v01.json");
 zkey_t random_zkey();
 game_zarray_t create_zarray();
 

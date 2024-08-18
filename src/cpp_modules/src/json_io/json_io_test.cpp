@@ -2,21 +2,20 @@
 #include <gtest/gtest.h>
 #include <json_interface.hpp>
 #include <json_io.hpp>
+#include <utility_functs.hpp>
 
 using namespace std;
 class NlohmannJsonIOTest : public ::testing::Test {
 protected:
-  string kICGARawPath = "/home/duane/workspace/project/src/cpp_modules/data/"
-                        "ICGA_2004_raw.json";
+  const string kICGARawPath =
+      utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
 
-  string kRawSchemaPath = "/home/duane/workspace/project/src/cpp_modules/data/"
-                          "raw_points_schema.json";
-
-  string kICGABPOPath = "/home/duane/workspace/project/src/cpp_modules/data/"
-                        "bpo_schema.json";
-
-  string kBPOSchemaPath = "/home/duane/workspace/project/src/cpp_modules/data/"
-                          "bpo_schema.json";
+  const string kRawSchemaPath =
+      utility_functs::get_data_file_abs_path("raw_points_schema.json");
+  const string kICGABPOPath =
+      utility_functs::get_data_file_abs_path("bpo_schema.json");
+  const string kBPOSchemaPath =
+      utility_functs::get_data_file_abs_path("bpo_schema.json");
 };
 
 TEST_F(NlohmannJsonIOTest, Init) { json_io::NlohmannJsonIO json; }

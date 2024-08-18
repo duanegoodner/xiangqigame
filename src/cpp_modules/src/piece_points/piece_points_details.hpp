@@ -1,33 +1,24 @@
 #ifndef AA3D35D0_D202_4308_AFB7_5E99E3F7DF89
 #define AA3D35D0_D202_4308_AFB7_5E99E3F7DF89
 
-#include <string>
 #include <common.hpp>
 #include <nlohmann/json.hpp>
+#include <string>
 #include <utility_functs.hpp>
 
 using namespace std;
 using json = nlohmann::json;
 
 const string kICGABPOPath =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "ICGA_2004_bpo.json";
-
+    utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
 const string kICGARawPath =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "ICGA_2004_raw.json";
-
+    utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
 const string kRawSchemaPath =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "raw_points_schema.json";
-
+    utility_functs::get_data_file_abs_path("raw_points_schema.json");
 const string kBPOSchemaPath =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "bpo_schema.json";
-
+    utility_functs::get_data_file_abs_path("bpo_schema.json");
 
 enum PointsImportFormat { raw, bpo, invalid };
-
 
 // Primary conversion functions
 GamePointsArray_t game_points_smap_to_array(GamePointsSMap_t s_map);
@@ -45,7 +36,8 @@ TeamPointsSMap_t team_array_to_smap(TeamPointsArray_t team_array);
 
 typedef unordered_map<PointsImportFormat, json> pts_format_to_schema_t;
 typedef unordered_map<PointsImportFormat, string> pts_format_to_schema_path_t;
-inline pts_format_to_schema_t import_schemas(pts_format_to_schema_path_t schema_paths
+inline pts_format_to_schema_t import_schemas(
+    pts_format_to_schema_path_t schema_paths
 ) {
   pts_format_to_schema_t schemas;
   for (auto schema_path : schema_paths) {
@@ -57,16 +49,15 @@ inline pts_format_to_schema_t import_schemas(pts_format_to_schema_path_t schema_
 
 const pts_format_to_schema_path_t DEFAULT_POINTS_SCHEMA_PATHS = {
     {PointsImportFormat::raw, kRawSchemaPath},
-    {PointsImportFormat::bpo, kBPOSchemaPath}};
+    {PointsImportFormat::bpo, kBPOSchemaPath}
+};
 
 const unordered_map<
     PointsImportFormat,
     function<GamePointsSMap_t(const json &)>>
     raw_points_to_smap_dispatch = {
         {PointsImportFormat::raw, raw_points_to_smap},
-        {PointsImportFormat::bpo, points_spec_to_smap}};
-
-
-
+        {PointsImportFormat::bpo, points_spec_to_smap}
+};
 
 #endif /* AA3D35D0_D202_4308_AFB7_5E99E3F7DF89 */

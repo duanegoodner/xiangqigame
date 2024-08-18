@@ -20,8 +20,11 @@ target_link_libraries(
     GTest::gtest_main
     common
     json_interface
-    json_io)
+    json_io
+    utility_functs)
 target_include_directories(
     json_io_test PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${PROJECT_SOURCE_DIR}/src/json_interface)
+    ${PROJECT_SOURCE_DIR}/src/json_interface
+    ${PROJECT_SOURCE_DIR}/src/utility_functs
+    )

@@ -17,9 +17,10 @@ using namespace piece_points_spec;
 
 class TeamPointsTestNlohmann : public ::testing::Test {
 protected:
-  string kICGARawPath = "/home/duane/workspace/project/src/cpp_modules/data/"
-                        "ICGA_2004_raw.json";
-  nloh_json nloh_raw_json_game = import_json<nloh_json>(kICGARawPath);
+
+  const string kICGARawPath = utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
+                        
+  const nloh_json nloh_raw_json_game = import_json<nloh_json>(kICGARawPath);
   nloh_json nloh_raw_json_red = nloh_raw_json_game.at("red");
 };
 
@@ -55,10 +56,8 @@ TEST_F(TeamPointsTestNlohmann, ToArray) {
 
 class GamePointsTestNlohmann : public ::testing::Test {
 protected:
-  string kICGARawPath = "/home/duane/workspace/project/src/cpp_modules/data/"
-                        "ICGA_2004_raw.json";
-  string kRawSchemaPath = "/home/duane/workspace/project/src/cpp_modules/data/"
-                          "raw_points_schema.json";
+  const string kICGARawPath = utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
+  const string kRawSchemaPath = utility_functs::get_data_file_abs_path("raw_points_schema.json");
   nloh_json nloh_raw_json_game = import_json<nloh_json>(kICGARawPath);
 };
 

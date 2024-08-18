@@ -13,7 +13,7 @@ FetchContent_MakeAvailable(googletest)
 FetchContent_Declare(
         json
         URL
-        https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz)
+        https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
 set(JSON_Install ON)
 FetchContent_MakeAvailable(json)
 

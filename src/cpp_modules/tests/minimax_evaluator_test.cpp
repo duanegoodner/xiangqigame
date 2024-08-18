@@ -3,6 +3,7 @@
 #include <hash_calculator.hpp>
 #include <minimax_evaluator.hpp>
 #include <piece_points.hpp>
+#include <utility_functs.hpp>
 
 using namespace piece_points;
 
@@ -10,9 +11,7 @@ class PiecePointsEvaluatorTest : public ::testing::Test {
 
 protected:
   // PiecePointsBuilder piece_points_buider_;
-  const string points_spec_path =
-      "/home/duane/workspace/project/src/cpp_modules/data/"
-      "ICGA_2004_bpo.json";
+  const string points_spec_path = utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
 
   const PointsSpecBPOExternal external_pts_spec =
       PointsSpecBPOExternal(points_spec_path);

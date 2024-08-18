@@ -15,6 +15,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <config.hpp>
 
 namespace utility_functs {
 
@@ -119,6 +120,8 @@ bool operator==(two_d_array_t& a, two_d_array_t& b) {
 
 json import_json(string file_path);
 void export_json(const json &j, string filename);
+const string get_data_file_abs_path(const std::string data_file);
+
 
 } // namespace utility_functs
 

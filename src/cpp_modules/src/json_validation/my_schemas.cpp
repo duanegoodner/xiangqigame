@@ -17,21 +17,14 @@
 using nlohmann::json;
 using nlohmann::json_schema::json_validator;
 
-static std::string points_spec_ICGA_2004_path =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "ICGA_2004_bpo.json";
-
-static std::string raw_points_ICGA_2004_path =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "ICGA_2004_raw.json";
-
-static std::string points_spec_schema_path =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "bpo_schema.json";
-
-static std::string raw_points_schema_path =
-    "/home/duane/workspace/project/src/cpp_modules/data/"
-    "raw_points_schema.json";
+static const std::string points_spec_ICGA_2004_path = utility_functs::get_data_file_abs_path(
+  "ICGA_2004_bpo.json");
+static const std::string raw_points_ICGA_2004_path = utility_functs::get_data_file_abs_path(
+  "ICGA_2004_raw.json");
+static const std::string points_spec_schema_path = utility_functs::get_data_file_abs_path(
+  "bpo_schema.json");
+static const std::string raw_points_schema_path = utility_functs::get_data_file_abs_path(
+  "raw_points_schema.json");
 
 int main() {
 
