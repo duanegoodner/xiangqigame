@@ -49,7 +49,7 @@ RUN sudo apt-get update --fix-missing && \
 
 # Customize zsh shell
 ADD ./.devcontainer/fonts ./fonts
-# COPY ./.devcontainer/shell_configs/.p10k.zsh ./.devcontainer/shell_configs/.zshrc ./
+COPY ./.devcontainer/shell_configs/.p10k.zsh ./.devcontainer/shell_configs/.zshrc ./
 RUN sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
     && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
     && git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions \
@@ -76,7 +76,7 @@ WORKDIR $HOME/workspace
 ENV MINICONDA_VERSION latest
 ENV CONDA_DIR $HOME/miniconda3
 ENV PATH=$CONDA_DIR/bin:$PATH
-COPY ./.devcontainer/initial_conda_env.yml /tmp/ 
+COPY ./.devcontainer/env.yml /tmp/ 
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-$MINICONDA_VERSION-Linux-x86_64.sh -O $HOME/miniconda.sh && \
     chmod +x $HOME/miniconda.sh && \
     # Need to use bash on next line due to issue at: https://github.com/conda/conda/issues/10431
@@ -87,13 +87,13 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-$MINICONDA_VERSI
     conda init bash && \
     conda init zsh && \
     conda install mamba -n base -c conda-forge && \
-    sudo chown $USER_UID:$USER_GID /tmp/initial_conda_env.yml && \
+    sudo chown $USER_UID:$USER_GID /tmp/env.yml && \
     mamba update --name base --channel defaults conda
 
 RUN sudo mkdir $WORKSPACE/env && sudo chown ${USERNAME}:${USERNAME} ${WORKSPACE}/env
 
 RUN chmod +rwx $WORKSPACE/env && \
-    mamba env create --prefix $WORKSPACE/env --file /tmp/initial_conda_env.yml && \
+    mamba env create --prefix $WORKSPACE/env --file /tmp/env.yml && \
     mamba clean --all --yes --force-pkgs-dirs && \
     find ${CONDA_DIR} -follow -type f -name '*.a' -delete && \
     find ${CONDA_DIR} -follow -type f -name '*.pyc' -delete && \
@@ -103,6 +103,8 @@ RUN chmod +rwx $WORKSPACE/env && \
 COPY ./.devcontainer/entrypoint.sh /usr/local/bin/
 RUN sudo chown $USER_UID:$USER_GID /usr/local/bin/ && \
     sudo chmod u+x /usr/local/bin/entrypoint.sh
+
+WORKDIR $HOME/workspace/project
 
 # To enable ssh connection to container (e.g. for using PyCharm in container) uncomment
 # the remaining lines, generate ssh key pair named xiangqigame_docker, and add save the .pub key

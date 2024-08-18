@@ -10,7 +10,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "xiangqigame"
-version = "0.1.0"
+version = "1.0.0"
 description = "Xiangqi (a.k.a Chinese Chess) for human and/or AI players"
 readme = "README.md"
 requires-python = ">=3.8"
