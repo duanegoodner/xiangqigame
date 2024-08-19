@@ -76,6 +76,7 @@ private:
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
   void AddToMoveLog(ExecutedMove move);
   void RemoveFromMoveLog(ExecutedMove move);
+  bool ViolatesRepeatRule(PieceColor color);
 };
 
 #include <game_board.tpp>

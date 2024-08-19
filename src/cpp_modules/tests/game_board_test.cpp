@@ -1,12 +1,24 @@
 #include <game_board.hpp>
-#include <move_calculator.hpp>
 #include <hash_calculator.hpp>
+#include <move_calculator.hpp>
 
 #include <gtest/gtest.h>
 
 class GameBoardTest : public ::testing::Test {
 protected:
   GameBoard<HashCalculator> gb_;
+  const BoardMapInt_t kRepeatMoveTestBoard{{
+      {0, 0, 0, 1, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 7, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 5},
+      {5, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, -1, 0, 0, 0, 0},
+  }};
 };
 
 // TEST_F(GameBoardTest, InitializesBoardState) {
@@ -88,7 +100,56 @@ TEST_F(GameBoardTest, ExecuteMoveWithAttachedHashCalculators) {
   gb_.UndoMove(actual_executed_move);
 }
 
+TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_02) {
+  GameBoard<HashCalculator> late_game_board(kRepeatMoveTestBoard);
+  auto red_king_position_a = BoardSpace{9, 4};
+  auto red_king_position_b = BoardSpace{9, 3};
 
+  Move move_x = Move{red_king_position_a, red_king_position_b};
+  Move move_y = Move{red_king_position_b, red_king_position_a};
+
+  for (int round_trips = 0; round_trips < 2; round_trips++) {
+    late_game_board.ExecuteMove(move_x);
+    EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() > 0);
+    late_game_board.ExecuteMove(move_y);
+    EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() > 0);
+  }
+  late_game_board.ExecuteMove(move_x);
+  EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() == 0);
+}
+
+TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_03) {
+  GameBoard<HashCalculator> late_game_board(kRepeatMoveTestBoard);
+  auto red_king_position_a = BoardSpace{9, 4};
+  auto red_king_position_b = BoardSpace{9, 3};
+  auto red_king_position_c = BoardSpace{9, 5};
+
+  Move move_w = Move{red_king_position_a, red_king_position_b};
+  Move move_x = Move{red_king_position_b, red_king_position_a};
+  Move move_y = Move{red_king_position_a, red_king_position_c};
+  Move move_z = Move{red_king_position_c, red_king_position_a};
+
+  for (int cycles = 0; cycles < 3; cycles++) {
+    late_game_board.ExecuteMove(move_w);
+    EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() > 0);
+    late_game_board.ExecuteMove(move_x);
+    EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() > 0);
+
+    if (cycles < 2) {
+      late_game_board.ExecuteMove(move_y);
+      EXPECT_TRUE(
+          late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() > 0
+      );
+      late_game_board.ExecuteMove(move_z);
+      EXPECT_TRUE(
+          late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() > 0
+      );
+    }
+  }
+
+  late_game_board.ExecuteMove(move_y);
+  EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() == 0);
+}
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

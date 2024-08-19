@@ -20,4 +20,7 @@ const BoardMapInt_t kStartingBoard{{
 
 inline BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board);
 
+const int kRepeatPeriodsToCheck[3] = {2, 3, 4};
+const int kMaxAllowedRepeatPeriods = 2;
+
 #endif /* C34222C4_BE2D_44FE_AFD0_CDFAFD25E156 */

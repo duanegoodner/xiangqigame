@@ -12,7 +12,9 @@
 
 #include <board_components.hpp>
 #include <board_utilities.hpp>
+#include <game_board_details.hpp>
 #include <iostream>
+#include <utility_functs.hpp>
 
 using namespace board_utilities;
 using namespace std;
@@ -33,9 +35,9 @@ GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
     , move_calculator_{MoveCalculator()}
     , num_hash_calculators_{}
     , hash_calculators_{} {
-      move_log_[PieceColor::kRed] = vector<ExecutedMove>();
-      move_log_[PieceColor::kBlk] = vector<ExecutedMove>();
-    }
+  move_log_[PieceColor::kRed] = vector<ExecutedMove>();
+  move_log_[PieceColor::kBlk] = vector<ExecutedMove>();
+}
 
 template <typename ConcreteHashCalculator>
 GameBoard<ConcreteHashCalculator>::GameBoard()
@@ -151,7 +153,8 @@ MoveCollection GameBoard<ConcreteHashCalculator>::ImplementCalcFinalMovesOf(
     auto resulting_gen_position = get_general_position(board_map_, color);
 
     if (not resulting_opponent_moves.ContainsDestination(resulting_gen_position
-        )) {
+        ) and
+        not ViolatesRepeatRule(color)) {
       validated_moves.Append(move);
     }
 
@@ -171,6 +174,21 @@ template <typename ConcreteHashCalculator>
 PieceType GameBoard<ConcreteHashCalculator>::ImplementGetType(BoardSpace space
 ) {
   return get_type(board_map_, space);
+}
+
+template <typename ConcreteHashCalculator>
+bool GameBoard<ConcreteHashCalculator>::ViolatesRepeatRule(PieceColor color) {
+  for (auto period_length : kRepeatPeriodsToCheck) {
+    auto lookback_length = (kMaxAllowedRepeatPeriods + 1) * period_length;
+    if (utility_functs::hasRepeatingPattern(
+            move_log_[color],
+            lookback_length,
+            period_length
+        )) {
+      return true;
+    }
+  }
+  return false;
 }
 
 #endif
