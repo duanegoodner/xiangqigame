@@ -118,6 +118,29 @@ bool operator==(two_d_array_t& a, two_d_array_t& b) {
   return are_equal;
 }
 
+template<typename T>
+bool hasRepeatingPattern(const std::vector<T>& vec, int lookback_length, int period) {
+    // Ensure lookback_length is a multiple of period and the vector has at least lookback_length elements
+    if (lookback_length % period != 0 || vec.size() < lookback_length) {
+        return false;
+    }
+
+    // Get the number of repetitions
+    int repetitions = lookback_length / period;
+
+    // Check if the pattern with period repeats for the last lookback_length elements
+    for (int i = 0; i < period; ++i) {
+        T patternElement = vec[vec.size() - lookback_length + i];
+        for (int j = 1; j < repetitions; ++j) {
+            if (vec[vec.size() - lookback_length + i + j * period] != patternElement) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+} 
+
 json import_json(string file_path);
 void export_json(const json &j, string filename);
 const string get_data_file_abs_path(const std::string data_file);
