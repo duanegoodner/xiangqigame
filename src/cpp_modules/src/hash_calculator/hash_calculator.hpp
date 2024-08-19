@@ -51,6 +51,7 @@ public:
 private:
   ZobristKeys zkeys_;
   zkey_t board_state_;
+  map<zkey_t, Points_t> transposition_table_; 
 
   void PrivateImplementCalcNewBoardState(ExecutedMove move) {
     // moving piece moves away from space
