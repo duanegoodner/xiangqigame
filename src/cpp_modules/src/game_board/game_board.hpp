@@ -73,6 +73,9 @@ private:
   size_t num_hash_calculators_;
   void UpdateHashCalculators(ExecutedMove executed_move);
   void SetOccupant(BoardSpace space, GamePiece piece);
+  std::map<PieceColor, vector<ExecutedMove>> move_log_;
+  void AddToMoveLog(ExecutedMove move);
+  void RemoveFromMoveLog(ExecutedMove move);
 };
 
 #include <game_board.tpp>

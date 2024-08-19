@@ -4,7 +4,8 @@
 // Last Modified: 2024-08-16
 
 // Description:
-// Contains method implementations for a GameBoard class with a ConcreteHashCalculator
+// Contains method implementations for a GameBoard class with a
+// ConcreteHashCalculator
 
 #ifndef _GAME_BOARD_TEMPLATE_
 #define _GAME_BOARD_TEMPLATE_
@@ -31,7 +32,10 @@ GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
     : board_map_{int_board_to_game_pieces(board_array)}
     , move_calculator_{MoveCalculator()}
     , num_hash_calculators_{}
-    , hash_calculators_{} {}
+    , hash_calculators_{} {
+      move_log_[PieceColor::kRed] = vector<ExecutedMove>();
+      move_log_[PieceColor::kBlk] = vector<ExecutedMove>();
+    }
 
 template <typename ConcreteHashCalculator>
 GameBoard<ConcreteHashCalculator>::GameBoard()
@@ -59,6 +63,25 @@ void GameBoard<ConcreteHashCalculator>::UpdateHashCalculators(
 }
 
 template <typename ConcreteHashCalculator>
+void GameBoard<ConcreteHashCalculator>::AddToMoveLog(ExecutedMove executed_move
+) {
+  auto piece_color = executed_move.moving_piece.piece_color;
+  move_log_[piece_color].push_back(executed_move);
+}
+
+template <typename ConcreteHashCalculator>
+void GameBoard<ConcreteHashCalculator>::RemoveFromMoveLog(
+    ExecutedMove executed_move
+) {
+  auto piece_color = executed_move.moving_piece.piece_color;
+  auto last_move_by_color = move_log_[piece_color].back();
+  if (!(executed_move == last_move_by_color)) {
+    throw runtime_error("Last move in log does not match move to be removed");
+  }
+  move_log_[piece_color].pop_back();
+}
+
+template <typename ConcreteHashCalculator>
 ExecutedMove GameBoard<ConcreteHashCalculator>::ImplementExecuteMove(Move move
 ) {
   auto moving_piece = GetOccupant(move.start);
@@ -68,6 +91,7 @@ ExecutedMove GameBoard<ConcreteHashCalculator>::ImplementExecuteMove(Move move
 
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
   UpdateHashCalculators(executed_move);
+  AddToMoveLog(executed_move);
 
   // for (auto calculator : hash_calculators_) {
   //   calculator.CalcNewBoardState(executed_move);
@@ -83,6 +107,7 @@ void GameBoard<ConcreteHashCalculator>::ImplementUndoMove(
   SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
   UpdateHashCalculators(executed_move);
+  RemoveFromMoveLog(executed_move);
 }
 
 template <typename ConcreteHashCalculator>

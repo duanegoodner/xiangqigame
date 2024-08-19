@@ -30,13 +30,15 @@ TEST_F(GameBoardTest, GetsCorrectOccupants) {
 //   EXPECT_EQ(gb_.GetOccupant(BoardSpace{1, 0}), 5);
 // }
 
-TEST_F(GameBoardTest, UndoPretendMove) {
-  auto pretend_executed_move =
-      ExecutedMove{Move{BoardSpace{8, 0}, BoardSpace{9, 0}}, -5, 0};
-  gb_.UndoMove(pretend_executed_move);
-  EXPECT_EQ(gb_.GetOccupant(BoardSpace{8, 0}), -5);
-  EXPECT_EQ(gb_.GetOccupant(BoardSpace{9, 0}), 0);
-}
+// After adding move_log_ to GameBoard, cannot undo a move
+// that is not present in move_log_
+// TEST_F(GameBoardTest, UndoPretendMove) {
+//   auto pretend_executed_move =
+//       ExecutedMove{Move{BoardSpace{8, 0}, BoardSpace{9, 0}}, -5, 0};
+//   gb_.UndoMove(pretend_executed_move);
+//   EXPECT_EQ(gb_.GetOccupant(BoardSpace{8, 0}), -5);
+//   EXPECT_EQ(gb_.GetOccupant(BoardSpace{9, 0}), 0);
+// }
 
 TEST_F(GameBoardTest, ExecuteAndUndoActualMove) {
   // auto start_state = gb_.board_state();

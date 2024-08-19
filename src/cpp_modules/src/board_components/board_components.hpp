@@ -151,6 +151,11 @@ struct ExecutedMove {
   Move spaces;
   GamePiece moving_piece;
   GamePiece destination_piece;
+
+  bool operator==(const ExecutedMove other) {
+    return (other.spaces == spaces) && (other.moving_piece == moving_piece) &&
+           (other.destination_piece == destination_piece);
+  }
 };
 
 // Data struct for internal tracking of team's castle spaces as 1-D array, and
