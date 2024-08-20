@@ -33,15 +33,8 @@ template <typename ConcreteHashCalculator>
 GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
     : board_map_{int_board_to_game_pieces(board_array)}
     , move_calculator_{MoveCalculator()}
-    , num_hash_calculators_{}
-    , red_hash_calculator_{ConcreteHashCalculator()}
-    , black_hash_calculator_{ConcreteHashCalculator()}
-    , hash_calculators_{} {
-  red_hash_calculator_.CalcInitialBoardState(board_map_);
-  hash_calculators_[0] = &red_hash_calculator_;
-  black_hash_calculator_.CalcInitialBoardState(board_map_);
-  hash_calculators_[1] = &black_hash_calculator_;
-  num_hash_calculators_ = 2;
+    , hash_calculator_{} {
+  hash_calculator_.CalcInitialBoardState(board_map_);
 }
 
 template <typename ConcreteHashCalculator>
@@ -60,13 +53,14 @@ bool GameBoard<ConcreteHashCalculator>::IsOccupied(BoardSpace space) {
 }
 
 template <typename ConcreteHashCalculator>
-void GameBoard<ConcreteHashCalculator>::UpdateHashCalculators(
+void GameBoard<ConcreteHashCalculator>::UpdateHashCalculator(
     ExecutedMove executed_move
 ) {
-  for (auto calculator_idx = 0; calculator_idx < num_hash_calculators_;
-       calculator_idx++) {
-    hash_calculators_[calculator_idx]->CalcNewBoardState(executed_move);
-  }
+  // for (auto calculator_idx = 0; calculator_idx < num_hash_calculators_;
+  //      calculator_idx++) {
+  //   hash_calculators_[calculator_idx]->CalcNewBoardState(executed_move);
+  // }
+  hash_calculator_.CalcNewBoardState(executed_move);
 }
 
 template <typename ConcreteHashCalculator>
@@ -97,7 +91,7 @@ ExecutedMove GameBoard<ConcreteHashCalculator>::ImplementExecuteMove(Move move
   SetOccupant(move.start, GamePiece(PieceType::kNnn, PieceColor::kNul));
 
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
-  UpdateHashCalculators(executed_move);
+  UpdateHashCalculator(executed_move);
   AddToMoveLog(executed_move);
 
   // for (auto calculator : hash_calculators_) {
@@ -113,7 +107,7 @@ void GameBoard<ConcreteHashCalculator>::ImplementUndoMove(
 ) {
   SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
-  UpdateHashCalculators(executed_move);
+  UpdateHashCalculator(executed_move);
   RemoveFromMoveLog(executed_move);
 }
 

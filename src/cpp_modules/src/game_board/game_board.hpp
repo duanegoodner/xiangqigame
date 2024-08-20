@@ -47,14 +47,6 @@ class GameBoard : public MoveTracker<
 public:
   GameBoard();
   GameBoard(const BoardMapInt_t starting_board);
-  // void ImplementAttachHashCalculator(
-  //     ConcreteHashCalculator *hash_calculator,
-  //     size_t zcolor_idx
-  // ) {
-  //   hash_calculator->CalcInitialBoardState(board_map_);
-  //   hash_calculators_[zcolor_idx] = hash_calculator;
-  //   num_hash_calculators_++;
-  // }
   bool IsOccupied(BoardSpace space);
   GamePiece GetOccupant(BoardSpace space);
   ExecutedMove ImplementExecuteMove(Move move);
@@ -69,11 +61,12 @@ public:
 private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
-  ConcreteHashCalculator red_hash_calculator_;
-  ConcreteHashCalculator black_hash_calculator_;
-  ConcreteHashCalculator *hash_calculators_[2];
-  size_t num_hash_calculators_;
-  void UpdateHashCalculators(ExecutedMove executed_move);
+  ConcreteHashCalculator hash_calculator_;
+  // ConcreteHashCalculator red_hash_calculator_;
+  // ConcreteHashCalculator black_hash_calculator_;
+  // ConcreteHashCalculator *hash_calculators_[2];
+  // size_t num_hash_calculators_;
+  void UpdateHashCalculator(ExecutedMove executed_move);
   void SetOccupant(BoardSpace space, GamePiece piece);
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
   void AddToMoveLog(ExecutedMove move);
