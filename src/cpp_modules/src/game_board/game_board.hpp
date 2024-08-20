@@ -59,13 +59,18 @@ public:
   bool IsInCheck(PieceColor color);
   PieceColor ImplementGetColor(BoardSpace space);
   PieceType ImplementGetType(BoardSpace space);
-  zkey_t ImplementGetState() { return hash_calculator_.GetState(); }
+  // zkey_t ImplementGetState() { return hash_calculator_.GetState(); }
+  StateScoreSearchResult ImplementFindCurrentStateScore();
+  void ImplementRecordCurrentStateScore(Points_t score);
   const BoardMap_t &map() const { return board_map_; }
+
+
 
 private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
   ConcreteHashCalculator hash_calculator_;
+  std::map<zkey_t, Points_t> transposition_table_;
   void UpdateHashCalculator(ExecutedMove executed_move);
   void SetOccupant(BoardSpace space, GamePiece piece);
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
