@@ -61,7 +61,7 @@ public:
   PieceType ImplementGetType(BoardSpace space);
   // zkey_t ImplementGetState() { return hash_calculator_.GetState(); }
   StateScoreSearchResult ImplementFindCurrentStateScore();
-  void ImplementRecordCurrentStateScore(Points_t score);
+  void ImplementRecordCurrentStateScore(Points_t& score);
   const BoardMap_t &map() const { return board_map_; }
 
 

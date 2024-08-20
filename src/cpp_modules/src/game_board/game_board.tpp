@@ -192,7 +192,7 @@ GameBoard<ConcreteHashCalculator>::ImplementFindCurrentStateScore() {
 
 template <typename ConcreteHashCalculator>
 void GameBoard<ConcreteHashCalculator>::ImplementRecordCurrentStateScore(
-    Points_t score
+    Points_t& score
 ) {
   auto cur_state = hash_calculator_.GetState();
   transposition_table_[cur_state] = score;

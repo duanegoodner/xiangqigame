@@ -62,12 +62,12 @@ public:
   //   return static_cast<ConcreteGameBoard *>(this)->ImplementGetState();
   // }
 
-  StateScoreSearchResult FindCurrentStateScore(Points_t score) {
-    return static_cast<ConcreteGameBoard *>(this)->ImplementFindCurrentStateScore(score);
+  StateScoreSearchResult FindCurrentStateScore() {
+    return static_cast<ConcreteGameBoard *>(this)->ImplementFindCurrentStateScore();
   }
 
-  void RecordCurrentStateScore() {
-    return static_cast<ConcreteGameBoard *>(this)->ImplementRecordCurrentStateScore();
+  void RecordCurrentStateScore(Points_t& score) {
+    return static_cast<ConcreteGameBoard *>(this)->ImplementRecordCurrentStateScore(score);
   }
   
   MoveCollection CalcFinalMovesOf(PieceColor color) {

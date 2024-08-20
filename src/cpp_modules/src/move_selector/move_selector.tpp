@@ -89,11 +89,14 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
   auto cur_moves = game_board.CalcFinalMovesOf(cur_player);
   if (cur_moves.moves.size() == 0) {
     auto result = evaluate_win_leaf(cur_player, initiating_player);
+    game_board.RecordCurrentStateScore(result.best_eval);
     return result;
   }
   if (search_depth == 0) {
-    return evaluator_
+    auto result = evaluator_
         .EvaluateNonWinLeaf(game_board, cur_player, initiating_player);
+    game_board.RecordCurrentStateScore(result.best_eval);
+    return result;
   }
   if (cur_player == initiating_player) {
     auto max_eval = numeric_limits<int>::min();
@@ -124,6 +127,8 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
         break;
       }
     }
+    auto result = BestMoves{max_eval, best_moves};
+    game_board.RecordCurrentStateScore(result.best_eval);
     return BestMoves{max_eval, best_moves};
   } else {
     auto min_eval = numeric_limits<int>::max();
@@ -156,7 +161,9 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
         break;
       }
     }
-    return BestMoves{min_eval, best_moves};
+    auto result = BestMoves{min_eval, best_moves};
+    game_board.RecordCurrentStateScore(result.best_eval);
+    return result;
   }
 }
 
