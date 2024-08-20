@@ -56,10 +56,6 @@ template <typename ConcreteHashCalculator>
 void GameBoard<ConcreteHashCalculator>::UpdateHashCalculator(
     ExecutedMove executed_move
 ) {
-  // for (auto calculator_idx = 0; calculator_idx < num_hash_calculators_;
-  //      calculator_idx++) {
-  //   hash_calculators_[calculator_idx]->CalcNewBoardState(executed_move);
-  // }
   hash_calculator_.CalcNewBoardState(executed_move);
 }
 

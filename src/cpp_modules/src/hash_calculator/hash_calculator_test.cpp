@@ -74,9 +74,9 @@ TEST_F(HashCalculatorTest, DefaultInit) { auto my_zobrist = HashCalculator(); }
 TEST_F(HashCalculatorTest, InitializeBoardState) {
   auto my_zobrist = HashCalculator();
   zkey_t board_state{0};
-  EXPECT_EQ(my_zobrist.ImplementGetBoardState(), 0);
+  EXPECT_EQ(my_zobrist.ImplementGetState(), 0);
   my_zobrist.ImplementCalcInitialBoardState(board_map);
-  EXPECT_NE(my_zobrist.ImplementGetBoardState(), 0);
+  EXPECT_NE(my_zobrist.ImplementGetState(), 0);
 }
 
 TEST_F(HashCalculatorTest, ExecuteAndUndoMove) {
@@ -91,11 +91,11 @@ TEST_F(HashCalculatorTest, ExecuteAndUndoMove) {
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
 
   my_zobrist.ImplementCalcInitialBoardState(board_map);
-  auto initial_state = my_zobrist.ImplementGetBoardState();
+  auto initial_state = my_zobrist.ImplementGetState();
   my_zobrist.ImplementCalcNewBoardState(executed_move);
-  auto post_move_state = my_zobrist.ImplementGetBoardState();
+  auto post_move_state = my_zobrist.ImplementGetState();
   my_zobrist.ImplementCalcNewBoardState(executed_move);
-  auto final_state = my_zobrist.ImplementGetBoardState();
+  auto final_state = my_zobrist.ImplementGetState();
 
   EXPECT_NE(initial_state, post_move_state);
   EXPECT_EQ(initial_state, final_state);

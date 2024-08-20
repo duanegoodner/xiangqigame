@@ -48,29 +48,24 @@ public:
 };
 
 // CRTP Interface: MoveSelector <- HashCalculator
-template <typename ConcreteHashCalculator>
-class BoardStateProvider {
-public:
-  zkey_t GetBoardState() {
-    return static_cast<ConcreteHashCalculator *>(this)->ImplementGetBoardState(
-    );
-  }
-};
+// template <typename ConcreteHashCalculator>
+// class BoardStateProvider {
+// public:
+//   zkey_t GetState() {
+//     return static_cast<ConcreteHashCalculator *>(this)->ImplementGetState(
+//     );
+//   }
+// };
 
 // CRTP Interface: MoveSelector <- GameBoard
 template <typename ConcreteGameBoard, typename ConcreteHashCalculator>
 class MoveTracker {
 public:
-  // void AttachHashCalculator(
-  //     ConcreteHashCalculator *hash_calculator,
-  //     size_t zcolor_idx
-  // ) {
-  //   static_cast<ConcreteGameBoard *>(this)->ImplementAttachHashCalculator(
-  //       hash_calculator,
-  //       zcolor_idx
-  //   );
-  // }
 
+  zkey_t GetState() {
+    return static_cast<ConcreteGameBoard *>(this)->ImplementGetState();
+  }
+  
   MoveCollection CalcFinalMovesOf(PieceColor color) {
     return static_cast<ConcreteGameBoard *>(this)->ImplementCalcFinalMovesOf(
         color

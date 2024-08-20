@@ -37,12 +37,11 @@ struct ZobristKeys {
   }
 };
 
-class HashCalculator : public BoardStateTracker<HashCalculator>,
-                       public BoardStateProvider<HashCalculator> {
+class HashCalculator : public BoardStateTracker<HashCalculator> {
 public:
   HashCalculator(ZobristKeys zkeys);
   HashCalculator();
-  zkey_t ImplementGetBoardState() {return board_state_;}
+  zkey_t ImplementGetState() {return board_state_;}
   void ImplementCalcNewBoardState(const ExecutedMove &move) {
     PrivateImplementCalcNewBoardState(move);   
   }

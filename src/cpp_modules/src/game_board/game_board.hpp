@@ -33,6 +33,9 @@ public:
     return static_cast<ConcreteHashCalculator *>(this)
         ->ImplementCalcNewBoardState(move);
   }
+  zkey_t GetState() {
+    return static_cast<ConcreteHashCalculator *>(this)->ImplementGetState();
+  }
 };
 
 // Template class for a GameBoard that has a ConcreteHashCalculator, and
@@ -56,16 +59,13 @@ public:
   bool IsInCheck(PieceColor color);
   PieceColor ImplementGetColor(BoardSpace space);
   PieceType ImplementGetType(BoardSpace space);
+  zkey_t ImplementGetState() { return hash_calculator_.GetState(); }
   const BoardMap_t &map() const { return board_map_; }
 
 private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
   ConcreteHashCalculator hash_calculator_;
-  // ConcreteHashCalculator red_hash_calculator_;
-  // ConcreteHashCalculator black_hash_calculator_;
-  // ConcreteHashCalculator *hash_calculators_[2];
-  // size_t num_hash_calculators_;
   void UpdateHashCalculator(ExecutedMove executed_move);
   void SetOccupant(BoardSpace space, GamePiece piece);
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
