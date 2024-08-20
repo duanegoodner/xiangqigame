@@ -34,9 +34,14 @@ GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
     : board_map_{int_board_to_game_pieces(board_array)}
     , move_calculator_{MoveCalculator()}
     , num_hash_calculators_{}
+    , red_hash_calculator_{ConcreteHashCalculator()}
+    , black_hash_calculator_{ConcreteHashCalculator()}
     , hash_calculators_{} {
-  move_log_[PieceColor::kRed] = vector<ExecutedMove>();
-  move_log_[PieceColor::kBlk] = vector<ExecutedMove>();
+  red_hash_calculator_.CalcInitialBoardState(board_map_);
+  hash_calculators_[0] = &red_hash_calculator_;
+  black_hash_calculator_.CalcInitialBoardState(board_map_);
+  hash_calculators_[1] = &black_hash_calculator_;
+  num_hash_calculators_ = 2;
 }
 
 template <typename ConcreteHashCalculator>

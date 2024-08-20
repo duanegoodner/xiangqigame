@@ -61,15 +61,15 @@ public:
 template <typename ConcreteGameBoard, typename ConcreteHashCalculator>
 class MoveTracker {
 public:
-  void AttachHashCalculator(
-      ConcreteHashCalculator *hash_calculator,
-      size_t zcolor_idx
-  ) {
-    static_cast<ConcreteGameBoard *>(this)->ImplementAttachHashCalculator(
-        hash_calculator,
-        zcolor_idx
-    );
-  }
+  // void AttachHashCalculator(
+  //     ConcreteHashCalculator *hash_calculator,
+  //     size_t zcolor_idx
+  // ) {
+  //   static_cast<ConcreteGameBoard *>(this)->ImplementAttachHashCalculator(
+  //       hash_calculator,
+  //       zcolor_idx
+  //   );
+  // }
 
   MoveCollection CalcFinalMovesOf(PieceColor color) {
     return static_cast<ConcreteGameBoard *>(this)->ImplementCalcFinalMovesOf(
