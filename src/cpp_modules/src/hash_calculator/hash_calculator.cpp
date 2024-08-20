@@ -87,7 +87,7 @@ void HashCalculator::ImplementCalcInitialBoardState(const BoardMap_t &board_map
 HashCalculator::HashCalculator(ZobristKeys zkeys)
     : zkeys_{zkeys}
     , board_state_{}
-    , transposition_table_ {}
+    , transposition_table_{} {}
 
 HashCalculator::HashCalculator()
     : HashCalculator(ZobristKeys(DEFAULT_ZKEYS_FILEPATH)) {}
