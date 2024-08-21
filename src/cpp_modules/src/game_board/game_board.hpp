@@ -61,7 +61,7 @@ public:
   PieceType ImplementGetType(BoardSpace space);
   // zkey_t ImplementGetState() { return hash_calculator_.GetState(); }
   StateScoreSearchResult ImplementFindCurrentStateScore(PieceColor color);
-  void ImplementRecordCurrentStateScore(PieceColor color, Points_t& score);
+  void ImplementRecordCurrentStateScore(PieceColor color, BestMoves& best_moves);
   const BoardMap_t &map() const { return board_map_; }
 
 
@@ -71,7 +71,7 @@ private:
   MoveCalculator move_calculator_;
   ConcreteHashCalculator hash_calculator_;
   // std::map<zkey_t, Points_t> transposition_table_;
-  std::map<PieceColor, std::map<zkey_t, Points_t>> transposition_tables_;
+  std::map<PieceColor, std::map<zkey_t, BestMoves>> transposition_tables_;
   void UpdateHashCalculator(ExecutedMove executed_move);
   void SetOccupant(BoardSpace space, GamePiece piece);
   std::map<PieceColor, vector<ExecutedMove>> move_log_;

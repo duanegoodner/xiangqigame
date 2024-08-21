@@ -88,18 +88,18 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
   node_counter_ += 1;
   auto state_score_search_result = game_board.FindCurrentStateScore(initiating_player);
   if (state_score_search_result.found) {
-    std::cout << "state found" << endl;
+    return state_score_search_result.best_moves;
   }
   auto cur_moves = game_board.CalcFinalMovesOf(cur_player);
   if (cur_moves.moves.size() == 0) {
     auto result = evaluate_win_leaf(cur_player, initiating_player);
-    game_board.RecordCurrentStateScore(initiating_player, result.best_eval);
+    game_board.RecordCurrentStateScore(initiating_player, result);
     return result;
   }
   if (search_depth == 0) {
     auto result = evaluator_
         .EvaluateNonWinLeaf(game_board, cur_player, initiating_player);
-    game_board.RecordCurrentStateScore(initiating_player, result.best_eval);
+    game_board.RecordCurrentStateScore(initiating_player, result);
     return result;
   }
   if (cur_player == initiating_player) {
@@ -132,7 +132,7 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
       }
     }
     auto result = BestMoves{max_eval, best_moves};
-    game_board.RecordCurrentStateScore(initiating_player, result.best_eval);
+    game_board.RecordCurrentStateScore(initiating_player, result);
     return BestMoves{max_eval, best_moves};
   } else {
     auto min_eval = numeric_limits<int>::max();
@@ -166,7 +166,7 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
       }
     }
     auto result = BestMoves{min_eval, best_moves};
-    game_board.RecordCurrentStateScore(initiating_player, result.best_eval);
+    game_board.RecordCurrentStateScore(initiating_player, result);
     return result;
   }
 }

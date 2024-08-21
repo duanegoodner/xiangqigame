@@ -50,7 +50,7 @@ public:
 struct StateScoreSearchResult {
   zkey_t state;
   bool found;
-  Points_t score;
+  BestMoves best_moves;
 };
 
 // CRTP Interface: MoveSelector <- GameBoard
@@ -66,8 +66,8 @@ public:
     return static_cast<ConcreteGameBoard *>(this)->ImplementFindCurrentStateScore(color);
   }
 
-  void RecordCurrentStateScore(PieceColor color, Points_t& score) {
-    return static_cast<ConcreteGameBoard *>(this)->ImplementRecordCurrentStateScore(color, score);
+  void RecordCurrentStateScore(PieceColor color, BestMoves& best_moves) {
+    return static_cast<ConcreteGameBoard *>(this)->ImplementRecordCurrentStateScore(color, best_moves);
   }
   
   MoveCollection CalcFinalMovesOf(PieceColor color) {

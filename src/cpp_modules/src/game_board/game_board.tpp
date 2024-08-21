@@ -36,8 +36,8 @@ GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
     , hash_calculator_{}
     , transposition_tables_{} {
   hash_calculator_.CalcInitialBoardState(board_map_);
-  transposition_tables_[PieceColor::kBlk] = std::map<zkey_t, Points_t>();
-  transposition_tables_[PieceColor::kRed] = std::map<zkey_t, Points_t>();
+  transposition_tables_[PieceColor::kBlk] = std::map<zkey_t, BestMoves>();
+  transposition_tables_[PieceColor::kRed] = std::map<zkey_t, BestMoves>();
 }
 
 template <typename ConcreteHashCalculator>
@@ -186,7 +186,7 @@ GameBoard<ConcreteHashCalculator>::ImplementFindCurrentStateScore(PieceColor col
 
   if (map_search_result != transposition_tables_[color].end()) {
     result.found = true;
-    result.score = map_search_result->second;
+    result.best_moves = map_search_result->second;
   }
 
   return result;
@@ -195,10 +195,10 @@ GameBoard<ConcreteHashCalculator>::ImplementFindCurrentStateScore(PieceColor col
 template <typename ConcreteHashCalculator>
 void GameBoard<ConcreteHashCalculator>::ImplementRecordCurrentStateScore(
     PieceColor color,
-    Points_t& score
+    BestMoves& best_moves
 ) {
   auto cur_state = hash_calculator_.GetState();
-  transposition_tables_[color][cur_state] = score;
+  transposition_tables_[color][cur_state] = best_moves;
 }
 
 template <typename ConcreteHashCalculator>
