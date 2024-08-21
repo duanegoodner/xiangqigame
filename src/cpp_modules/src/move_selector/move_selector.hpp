@@ -47,29 +47,52 @@ public:
   }
 };
 
-struct StateScoreSearchResult {
+enum MinimaxResultType : int {
+  kUnknown = 0,
+  kFullyEvaluatedNode = 1,
+  kStandardLeaf = 2,
+  kEndGameLeaf = 3,
+  kAlphaPrune = 4,
+  kBetaPrune = 5
+};
+
+struct TranspositionTableEntry {
   zkey_t state;
-  bool found;
+  int search_depth;
+  MinimaxResultType result_type;
   BestMoves best_moves;
+
+  Points_t Score() { return best_moves.best_eval; }
+};
+
+struct TranspositionTableSearchResult {
+  TranspositionTableEntry table_entry;
+  bool found;
 };
 
 // CRTP Interface: MoveSelector <- GameBoard
 template <typename ConcreteGameBoard, typename ConcreteHashCalculator>
 class MoveTracker {
 public:
-
   // zkey_t GetState() {
   //   return static_cast<ConcreteGameBoard *>(this)->ImplementGetState();
   // }
 
-  StateScoreSearchResult FindCurrentStateScore(PieceColor color) {
-    return static_cast<ConcreteGameBoard *>(this)->ImplementFindCurrentStateScore(color);
+  TranspositionTableSearchResult FindCurrentStateScore(PieceColor color) {
+    return static_cast<ConcreteGameBoard *>(this)
+        ->ImplementFindCurrentStateScore(color);
   }
 
-  void RecordCurrentStateScore(PieceColor color, BestMoves& best_moves) {
-    return static_cast<ConcreteGameBoard *>(this)->ImplementRecordCurrentStateScore(color, best_moves);
+  void RecordCurrentStateScore(
+      PieceColor color,
+      int search_depth,
+      MinimaxResultType result_type,
+      BestMoves &best_moves
+  ) {
+    return static_cast<ConcreteGameBoard *>(this)
+        ->ImplementRecordCurrentStateScore(color, search_depth, result_type, best_moves);
   }
-  
+
   MoveCollection CalcFinalMovesOf(PieceColor color) {
     return static_cast<ConcreteGameBoard *>(this)->ImplementCalcFinalMovesOf(
         color

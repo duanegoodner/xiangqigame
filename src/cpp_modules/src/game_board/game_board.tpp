@@ -36,8 +36,8 @@ GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
     , hash_calculator_{}
     , transposition_tables_{} {
   hash_calculator_.CalcInitialBoardState(board_map_);
-  transposition_tables_[PieceColor::kBlk] = std::map<zkey_t, BestMoves>();
-  transposition_tables_[PieceColor::kRed] = std::map<zkey_t, BestMoves>();
+  transposition_tables_[PieceColor::kBlk] = std::map<zkey_t, TranspositionTableEntry>();
+  transposition_tables_[PieceColor::kRed] = std::map<zkey_t, TranspositionTableEntry>();
 }
 
 template <typename ConcreteHashCalculator>
@@ -175,18 +175,18 @@ PieceType GameBoard<ConcreteHashCalculator>::ImplementGetType(BoardSpace space
 }
 
 template <typename ConcreteHashCalculator>
-StateScoreSearchResult
+TranspositionTableSearchResult
 GameBoard<ConcreteHashCalculator>::ImplementFindCurrentStateScore(PieceColor color) {
 
   auto cur_state = hash_calculator_.GetState();
   auto map_search_result = transposition_tables_[color].find(cur_state);
 
-  StateScoreSearchResult result{};
-  result.state = cur_state;
+  TranspositionTableSearchResult result{};
+  // result.state = cur_state;
 
   if (map_search_result != transposition_tables_[color].end()) {
     result.found = true;
-    result.best_moves = map_search_result->second;
+    result.table_entry = map_search_result->second;
   }
 
   return result;
@@ -195,10 +195,16 @@ GameBoard<ConcreteHashCalculator>::ImplementFindCurrentStateScore(PieceColor col
 template <typename ConcreteHashCalculator>
 void GameBoard<ConcreteHashCalculator>::ImplementRecordCurrentStateScore(
     PieceColor color,
+    int search_depth,
+    MinimaxResultType result_type,
     BestMoves& best_moves
 ) {
   auto cur_state = hash_calculator_.GetState();
-  transposition_tables_[color][cur_state] = best_moves;
+
+  TranspositionTableEntry transposition_table_entry{cur_state, search_depth, result_type, best_moves};
+
+
+  transposition_tables_[color][cur_state] = transposition_table_entry;
 }
 
 template <typename ConcreteHashCalculator>

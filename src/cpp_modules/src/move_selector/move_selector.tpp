@@ -86,20 +86,24 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
     PieceColor initiating_player
 ) {
   node_counter_ += 1;
+  MinimaxResultType result_type{};
   auto state_score_search_result = game_board.FindCurrentStateScore(initiating_player);
+  // Leave commented out for now so only write to transposition table, don't read / use
   if (state_score_search_result.found) {
-    return state_score_search_result.best_moves;
+    std::cout << "state found in transposition table" << std::endl;
   }
   auto cur_moves = game_board.CalcFinalMovesOf(cur_player);
   if (cur_moves.moves.size() == 0) {
+    result_type = MinimaxResultType::kEndGameLeaf;
     auto result = evaluate_win_leaf(cur_player, initiating_player);
-    game_board.RecordCurrentStateScore(initiating_player, result);
+    game_board.RecordCurrentStateScore(initiating_player, search_depth, result_type, result);
     return result;
   }
   if (search_depth == 0) {
+    result_type = MinimaxResultType::kStandardLeaf;
     auto result = evaluator_
         .EvaluateNonWinLeaf(game_board, cur_player, initiating_player);
-    game_board.RecordCurrentStateScore(initiating_player, result);
+    game_board.RecordCurrentStateScore(initiating_player, search_depth, result_type, result);
     return result;
   }
   if (cur_player == initiating_player) {
@@ -128,11 +132,12 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
       game_board.UndoMove(executed_move);
       alpha = max(alpha, cur_eval);
       if (beta <= alpha) {
+        result_type = MinimaxResultType::kAlphaPrune;
         break;
       }
     }
     auto result = BestMoves{max_eval, best_moves};
-    game_board.RecordCurrentStateScore(initiating_player, result);
+    game_board.RecordCurrentStateScore(initiating_player, search_depth, result_type, result);
     return BestMoves{max_eval, best_moves};
   } else {
     auto min_eval = numeric_limits<int>::max();
@@ -162,11 +167,13 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
       game_board.UndoMove(executed_move);
       beta = min(beta, cur_eval);
       if (beta <= alpha) {
+        result_type = MinimaxResultType::kBetaPrune;
         break;
       }
     }
+    result_type = MinimaxResultType::kFullyEvaluatedNode;
     auto result = BestMoves{min_eval, best_moves};
-    game_board.RecordCurrentStateScore(initiating_player, result);
+    game_board.RecordCurrentStateScore(initiating_player, search_depth, result_type, result);
     return result;
   }
 }
