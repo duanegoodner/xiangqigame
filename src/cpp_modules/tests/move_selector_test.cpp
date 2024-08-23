@@ -92,35 +92,35 @@ TEST_F(MoveSelectorTest, EndOfGameSelectorTest) {
   EXPECT_TRUE(red_num_possible_moves == 0);
 }
 
-// TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {
-//   int test_search_depth{4};
-//   MinimaxMoveSelector<
-//       PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
-//       move_selector(piece_points_evaluator_, test_search_depth);
-//   auto start_time = chrono::high_resolution_clock::now();
-//   auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);
+TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {
+  int test_search_depth{4};
+  MinimaxMoveSelector<
+      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+      move_selector(piece_points_evaluator_, test_search_depth);
+  auto start_time = chrono::high_resolution_clock::now();
+  auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);
 
-//   // Found move depends on search depth. If test_search_depth, need to modify
-//   // both assertions. (having this pair reduces likelihood of confusion if/when
-//   // test_test_search depth gets changed).
-//   EXPECT_TRUE(test_search_depth == 4);
-//   EXPECT_TRUE(
-//       (selected_move.start == BoardSpace{9, 1} &&
-//        selected_move.end == BoardSpace{7, 2}) ||
-//       (selected_move.start == BoardSpace{9, 7} &&
-//        selected_move.end == BoardSpace{7, 6})
-//   );
+  // Found move depends on search depth. If test_search_depth, need to modify
+  // both assertions. (having this pair reduces likelihood of confusion if/when
+  // test_test_search depth gets changed).
+  EXPECT_TRUE(test_search_depth == 4);
+  EXPECT_TRUE(
+      (selected_move.start == BoardSpace{9, 1} &&
+       selected_move.end == BoardSpace{7, 2}) ||
+      (selected_move.start == BoardSpace{9, 7} &&
+       selected_move.end == BoardSpace{7, 6})
+  );
 
-//   auto end_time = std::chrono::high_resolution_clock::now();
-//   auto search_duration =
-//       std::chrono::duration_cast<chrono::milliseconds>(end_time - start_time);
-//   cout << "Selected Move from: " << selected_move.start.rank << ", "
-//        << selected_move.start.file << endl;
-//   cout << "To: " << selected_move.end.rank << ", " << selected_move.end.file
-//        << endl;
-//   cout << "Search time: " << search_duration.count() << "ms" << endl;
-//   cout << "Search depth: " << test_search_depth << endl;
-// }
+  auto end_time = std::chrono::high_resolution_clock::now();
+  auto search_duration =
+      std::chrono::duration_cast<chrono::milliseconds>(end_time - start_time);
+  cout << "Selected Move from: " << selected_move.start.rank << ", "
+       << selected_move.start.file << endl;
+  cout << "To: " << selected_move.end.rank << ", " << selected_move.end.file
+       << endl;
+  cout << "Search time: " << search_duration.count() << "ms" << endl;
+  cout << "Search depth: " << test_search_depth << endl;
+}
 
 TEST_F(MoveSelectorTest, PlayGame) {
   int red_search_depth{2};

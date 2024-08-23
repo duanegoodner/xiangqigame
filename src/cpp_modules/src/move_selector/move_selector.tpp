@@ -89,13 +89,11 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
   node_counter_ += 1;
   MinimaxResultType result_type{};
 
-  if (use_transposition_table) {
-    auto state_score_search_result =
+  auto state_score_search_result =
         game_board.SearchTranspositionTable(initiating_player, search_depth);
-    if (state_score_search_result.found && use_transposition_table) {
+  if (state_score_search_result.found && use_transposition_table) {
       return state_score_search_result.table_entry.best_moves;
     }
-  }
 
   auto cur_moves = game_board.CalcFinalMovesOf(cur_player);
   if (cur_moves.moves.size() == 0) {
