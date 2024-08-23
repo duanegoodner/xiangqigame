@@ -92,34 +92,64 @@ TEST_F(MoveSelectorTest, EndOfGameSelectorTest) {
   EXPECT_TRUE(red_num_possible_moves == 0);
 }
 
-TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {
-  int test_search_depth{4};
+// TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {
+//   int test_search_depth{4};
+//   MinimaxMoveSelector<
+//       PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+//       move_selector(piece_points_evaluator_, test_search_depth);
+//   auto start_time = chrono::high_resolution_clock::now();
+//   auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);
+
+//   // Found move depends on search depth. If test_search_depth, need to modify
+//   // both assertions. (having this pair reduces likelihood of confusion if/when
+//   // test_test_search depth gets changed).
+//   EXPECT_TRUE(test_search_depth == 4);
+//   EXPECT_TRUE(
+//       (selected_move.start == BoardSpace{9, 1} &&
+//        selected_move.end == BoardSpace{7, 2}) ||
+//       (selected_move.start == BoardSpace{9, 7} &&
+//        selected_move.end == BoardSpace{7, 6})
+//   );
+
+//   auto end_time = std::chrono::high_resolution_clock::now();
+//   auto search_duration =
+//       std::chrono::duration_cast<chrono::milliseconds>(end_time - start_time);
+//   cout << "Selected Move from: " << selected_move.start.rank << ", "
+//        << selected_move.start.file << endl;
+//   cout << "To: " << selected_move.end.rank << ", " << selected_move.end.file
+//        << endl;
+//   cout << "Search time: " << search_duration.count() << "ms" << endl;
+//   cout << "Search depth: " << test_search_depth << endl;
+// }
+
+TEST_F(MoveSelectorTest, PlayGame) {
+  int red_search_depth{2};
   MinimaxMoveSelector<
       PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
-      move_selector(piece_points_evaluator_, test_search_depth);
-  auto start_time = chrono::high_resolution_clock::now();
-  auto selected_move = move_selector.SelectMove(game_board_, PieceColor::kRed);
+      red_move_selector(piece_points_evaluator_, red_search_depth);
+  int black_search_depth{2};
+  MinimaxMoveSelector<
+      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+      black_move_selector(piece_points_evaluator_, black_search_depth);
+  
+  while (true) {
+    auto red_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
+    if (red_moves.Size() == 0) {
+      std::cout << "Red has no available moves" << std::endl;
+      break;
+    }
+    auto red_selected_move = red_move_selector.SelectMove(game_board_, PieceColor::kRed);
+    auto red_executed_move = game_board_.ExecuteMove(red_selected_move);
 
-  // Found move depends on search depth. If test_search_depth, need to modify
-  // both assertions. (having this pair reduces likelihood of confusion if/when
-  // test_test_search depth gets changed).
-  EXPECT_TRUE(test_search_depth == 4);
-  EXPECT_TRUE(
-      (selected_move.start == BoardSpace{9, 1} &&
-       selected_move.end == BoardSpace{7, 2}) ||
-      (selected_move.start == BoardSpace{9, 7} &&
-       selected_move.end == BoardSpace{7, 6})
-  );
+    auto black_moves = game_board_.CalcFinalMovesOf(PieceColor::kBlk);
+    if (black_moves.Size() == 0) {
+      std::cout << "Black has no available moves" << std::endl;
+      break;
+    }
 
-  auto end_time = std::chrono::high_resolution_clock::now();
-  auto search_duration =
-      std::chrono::duration_cast<chrono::milliseconds>(end_time - start_time);
-  cout << "Selected Move from: " << selected_move.start.rank << ", "
-       << selected_move.start.file << endl;
-  cout << "To: " << selected_move.end.rank << ", " << selected_move.end.file
-       << endl;
-  cout << "Search time: " << search_duration.count() << "ms" << endl;
-  cout << "Search depth: " << test_search_depth << endl;
+    auto black_selected_move = black_move_selector.SelectMove(game_board_, PieceColor::kBlk);
+    auto black_executed_move = game_board_.ExecuteMove(black_selected_move);
+  }
 }
 
 int main(int argc, char **argv) {

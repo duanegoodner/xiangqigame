@@ -78,9 +78,12 @@ public:
   //   return static_cast<ConcreteGameBoard *>(this)->ImplementGetState();
   // }
 
-  TranspositionTableSearchResult FindCurrentStateScore(PieceColor color) {
+  TranspositionTableSearchResult SearchTranspositionTable(
+      PieceColor color,
+      int search_depth
+  ) {
     return static_cast<ConcreteGameBoard *>(this)
-        ->ImplementFindCurrentStateScore(color);
+        ->ImplementSearchTranspositionTable(color, search_depth);
   }
 
   void RecordCurrentStateScore(
@@ -90,7 +93,12 @@ public:
       BestMoves &best_moves
   ) {
     return static_cast<ConcreteGameBoard *>(this)
-        ->ImplementRecordCurrentStateScore(color, search_depth, result_type, best_moves);
+        ->ImplementRecordCurrentStateScore(
+            color,
+            search_depth,
+            result_type,
+            best_moves
+        );
   }
 
   MoveCollection CalcFinalMovesOf(PieceColor color) {
@@ -157,21 +165,30 @@ public:
       PieceColor cur_player,
       MoveCollection &cur_player_moves
   );
-
-  BestMoves MinimaxRec(
-      typename ConcreteEvaluator::game_board_type &game_board,
-      int search_depth,
-      int alpha,
-      int beta,
-      PieceColor cur_player,
-      PieceColor initiating_player
-  );
-
   Move ImplementSelectMove(
       typename ConcreteEvaluator::game_board_type &game_board,
       PieceColor cur_player
   );
+
+private:
+  BestMoves MinimaxRec(typename ConcreteEvaluator::game_board_type &game_board,
+                       int search_depth,
+                       int alpha,
+                       int beta,
+                       PieceColor cur_player,
+                       PieceColor initiating_player,
+                       bool use_transposition_table = true);
+  
+  Move RunMinimax(typename ConcreteEvaluator::game_board_type &game_board,
+                       int search_depth,
+                       int alpha,
+                       int beta,
+                       PieceColor cur_player,
+                       PieceColor initiating_player,
+                       bool use_transposition_table = true);
 };
+
+
 
 #include <move_selector.tpp>
 

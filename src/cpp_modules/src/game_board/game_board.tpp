@@ -14,6 +14,7 @@
 #include <board_utilities.hpp>
 #include <game_board_details.hpp>
 #include <iostream>
+#include <typeinfo>
 #include <utility_functs.hpp>
 
 using namespace board_utilities;
@@ -36,8 +37,10 @@ GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
     , hash_calculator_{}
     , transposition_tables_{} {
   hash_calculator_.CalcInitialBoardState(board_map_);
-  transposition_tables_[PieceColor::kBlk] = std::map<zkey_t, TranspositionTableEntry>();
-  transposition_tables_[PieceColor::kRed] = std::map<zkey_t, TranspositionTableEntry>();
+  transposition_tables_[PieceColor::kBlk] =
+      std::map<zkey_t, vector<TranspositionTableEntry>>();
+  transposition_tables_[PieceColor::kRed] =
+      std::map<zkey_t, vector<TranspositionTableEntry>>();
 }
 
 template <typename ConcreteHashCalculator>
@@ -175,18 +178,31 @@ PieceType GameBoard<ConcreteHashCalculator>::ImplementGetType(BoardSpace space
 }
 
 template <typename ConcreteHashCalculator>
-TranspositionTableSearchResult
-GameBoard<ConcreteHashCalculator>::ImplementFindCurrentStateScore(PieceColor color) {
+TranspositionTableSearchResult GameBoard<ConcreteHashCalculator>::
+    ImplementSearchTranspositionTable(PieceColor color, int search_depth) {
 
   auto cur_state = hash_calculator_.GetState();
-  auto map_search_result = transposition_tables_[color].find(cur_state);
+
+  // Check if color's transposition table has an entry for cur_state.
+  auto entry_vector_it = transposition_tables_[color].find(cur_state);
 
   TranspositionTableSearchResult result{};
-  // result.state = cur_state;
 
-  if (map_search_result != transposition_tables_[color].end()) {
-    result.found = true;
-    result.table_entry = map_search_result->second;
+  // If table does have an entry for cur_state, entry_vector_it->second will be
+  // a vector containing all TranspositionTableEntry objects that have been
+  // stored for that state. Note that a single board state can have entries for
+  // different search depths.
+  if (entry_vector_it != transposition_tables_[color].end()) {
+    auto entry_vector = entry_vector_it->second;
+    for (auto entry : entry_vector) {
+      // If we find an entry for search_depth of interest, then in our
+      // TranspositionTableSearch result data container, we set found to true
+      // and set .table_entry to the found entry.
+      if (entry.search_depth == search_depth) {
+        result.found = true;
+        result.table_entry = entry;
+      }
+    }
   }
 
   return result;
@@ -197,14 +213,21 @@ void GameBoard<ConcreteHashCalculator>::ImplementRecordCurrentStateScore(
     PieceColor color,
     int search_depth,
     MinimaxResultType result_type,
-    BestMoves& best_moves
+    BestMoves &best_moves
 ) {
   auto cur_state = hash_calculator_.GetState();
 
-  TranspositionTableEntry transposition_table_entry{cur_state, search_depth, result_type, best_moves};
-
-
-  transposition_tables_[color][cur_state] = transposition_table_entry;
+  // TODO: Before we add entry to our vector of entries, we should search
+  // existing entries in vector to make sure we don't already have one for
+  // search_depth
+  
+  TranspositionTableEntry transposition_table_entry{
+      cur_state,
+      search_depth,
+      result_type,
+      best_moves
+  };
+  transposition_tables_[color][cur_state].push_back(transposition_table_entry);
 }
 
 template <typename ConcreteHashCalculator>

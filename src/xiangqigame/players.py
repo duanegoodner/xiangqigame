@@ -124,4 +124,5 @@ class IllegalAIMove(Exception):
         self._msg = message
 
     def __str__(self):
-        return f"{self._move} -> {self._msg}"
+        return f"From: {self._move.start.rank}, {self._move.end.file}; To: {self._move.end.rank}, {self._move.end.file}"
+

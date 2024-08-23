@@ -83,27 +83,45 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
     int alpha,
     int beta,
     PieceColor cur_player,
-    PieceColor initiating_player
+    PieceColor initiating_player,
+    bool use_transposition_table
 ) {
   node_counter_ += 1;
   MinimaxResultType result_type{};
-  auto state_score_search_result = game_board.FindCurrentStateScore(initiating_player);
-  // Leave commented out for now so only write to transposition table, don't read / use
-  if (state_score_search_result.found) {
-    std::cout << "state found in transposition table" << std::endl;
+
+  if (use_transposition_table) {
+    auto state_score_search_result =
+        game_board.SearchTranspositionTable(initiating_player, search_depth);
+    if (state_score_search_result.found && use_transposition_table) {
+      return state_score_search_result.table_entry.best_moves;
+    }
   }
+
   auto cur_moves = game_board.CalcFinalMovesOf(cur_player);
   if (cur_moves.moves.size() == 0) {
     result_type = MinimaxResultType::kEndGameLeaf;
     auto result = evaluate_win_leaf(cur_player, initiating_player);
-    game_board.RecordCurrentStateScore(initiating_player, search_depth, result_type, result);
+    game_board.RecordCurrentStateScore(
+        initiating_player,
+        search_depth,
+        result_type,
+        result
+    );
     return result;
   }
   if (search_depth == 0) {
     result_type = MinimaxResultType::kStandardLeaf;
-    auto result = evaluator_
-        .EvaluateNonWinLeaf(game_board, cur_player, initiating_player);
-    game_board.RecordCurrentStateScore(initiating_player, search_depth, result_type, result);
+    auto result = evaluator_.EvaluateNonWinLeaf(
+        game_board,
+        cur_player,
+        initiating_player
+    );
+    game_board.RecordCurrentStateScore(
+        initiating_player,
+        search_depth,
+        result_type,
+        result
+    );
     return result;
   }
   if (cur_player == initiating_player) {
@@ -119,7 +137,8 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
                           alpha,
                           beta,
                           opponent_of(initiating_player),
-                          initiating_player
+                          initiating_player,
+                          use_transposition_table
       )
                           .best_eval;
       if (cur_eval == max_eval) {
@@ -137,7 +156,12 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
       }
     }
     auto result = BestMoves{max_eval, best_moves};
-    game_board.RecordCurrentStateScore(initiating_player, search_depth, result_type, result);
+    game_board.RecordCurrentStateScore(
+        initiating_player,
+        search_depth,
+        result_type,
+        result
+    );
     return BestMoves{max_eval, best_moves};
   } else {
     auto min_eval = numeric_limits<int>::max();
@@ -152,7 +176,8 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
                           alpha,
                           beta,
                           initiating_player,
-                          initiating_player
+                          initiating_player,
+                          use_transposition_table
       )
                           .best_eval;
       if (cur_eval == min_eval) {
@@ -173,15 +198,25 @@ BestMoves MinimaxMoveSelector<MinimaxEvaluator>::MinimaxRec(
     }
     result_type = MinimaxResultType::kFullyEvaluatedNode;
     auto result = BestMoves{min_eval, best_moves};
-    game_board.RecordCurrentStateScore(initiating_player, search_depth, result_type, result);
+    game_board.RecordCurrentStateScore(
+        initiating_player,
+        search_depth,
+        result_type,
+        result
+    );
     return result;
   }
 }
 
 template <typename MinimaxEvaluator>
-Move MinimaxMoveSelector<MinimaxEvaluator>::ImplementSelectMove(
+Move MinimaxMoveSelector<MinimaxEvaluator>::RunMinimax(
     MinimaxEvaluator::game_board_type &game_board,
-    PieceColor cur_player
+    int search_depth,
+    int alpha,
+    int beta,
+    PieceColor cur_player,
+    PieceColor initiating_player,
+    bool use_transposition_table
 ) {
   ResetNodeCounter();
   auto minimax_result = MinimaxRec(
@@ -190,13 +225,58 @@ Move MinimaxMoveSelector<MinimaxEvaluator>::ImplementSelectMove(
       numeric_limits<int>::min(),
       numeric_limits<int>::max(),
       cur_player,
-      cur_player
+      cur_player,
+      use_transposition_table
   );
   auto selected_move_index = utility_functs::random(
       (size_t)0,
       minimax_result.best_moves.moves.size() - 1
   );
+
   return minimax_result.best_moves.moves[selected_move_index];
+}
+
+template <typename MinimaxEvaluator>
+Move MinimaxMoveSelector<MinimaxEvaluator>::ImplementSelectMove(
+    MinimaxEvaluator::game_board_type &game_board,
+    PieceColor cur_player
+) {
+
+  auto first_selected_move = RunMinimax(
+      game_board,
+      search_depth_,
+      numeric_limits<int>::min(),
+      numeric_limits<int>::max(),
+      cur_player,
+      cur_player
+  );
+
+  auto allowed_moves = game_board.CalcFinalMovesOf(cur_player);
+  if (allowed_moves.ContainsMove(first_selected_move)) {
+    return first_selected_move;
+  } else {
+    auto second_selected_move = RunMinimax(
+        game_board,
+        search_depth_,
+        numeric_limits<int>::min(),
+        numeric_limits<int>::max(),
+        cur_player,
+        cur_player,
+        false
+    );
+
+    auto second_allowed_moves = game_board.CalcFinalMovesOf(cur_player);
+    if (not second_allowed_moves.ContainsMove(second_selected_move)) {
+      std::cout << "Returned bad move\nstart = "
+                << second_selected_move.start.rank << ", "
+                << second_selected_move.start.file
+                << "\nend = " << second_selected_move.end.rank << ", "
+                << second_selected_move.end.file << std::endl;
+      exit(1);
+    }
+
+    return second_selected_move;
+  }
 }
 
 #endif
