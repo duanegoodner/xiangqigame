@@ -33,6 +33,9 @@ public:
     return static_cast<ConcreteHashCalculator *>(this)
         ->ImplementCalcNewBoardState(move);
   }
+  zkey_t GetState() {
+    return static_cast<ConcreteHashCalculator *>(this)->ImplementGetState();
+  }
 };
 
 // Template class for a GameBoard that has a ConcreteHashCalculator, and
@@ -47,14 +50,6 @@ class GameBoard : public MoveTracker<
 public:
   GameBoard();
   GameBoard(const BoardMapInt_t starting_board);
-  void ImplementAttachHashCalculator(
-      ConcreteHashCalculator *hash_calculator,
-      size_t zcolor_idx
-  ) {
-    hash_calculator->CalcInitialBoardState(board_map_);
-    hash_calculators_[zcolor_idx] = hash_calculator;
-    num_hash_calculators_++;
-  }
   bool IsOccupied(BoardSpace space);
   GamePiece GetOccupant(BoardSpace space);
   ExecutedMove ImplementExecuteMove(Move move);
@@ -64,14 +59,25 @@ public:
   bool IsInCheck(PieceColor color);
   PieceColor ImplementGetColor(BoardSpace space);
   PieceType ImplementGetType(BoardSpace space);
+  TranspositionTableSearchResult ImplementSearchTranspositionTable(
+      PieceColor color,
+      int search_depth
+  );
+  void ImplementRecordCurrentStateScore(
+      PieceColor color,
+      int search_depth,
+      MinimaxResultType result_type,
+      BestMoves &best_moves
+  );
   const BoardMap_t &map() const { return board_map_; }
 
 private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
-  ConcreteHashCalculator *hash_calculators_[2];
-  size_t num_hash_calculators_;
-  void UpdateHashCalculators(ExecutedMove executed_move);
+  ConcreteHashCalculator hash_calculator_;
+  std::map<PieceColor, std::map<zkey_t, vector<TranspositionTableEntry>>>
+      transposition_tables_;
+  void UpdateHashCalculator(ExecutedMove executed_move);
   void SetOccupant(BoardSpace space, GamePiece piece);
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
   void AddToMoveLog(ExecutedMove move);

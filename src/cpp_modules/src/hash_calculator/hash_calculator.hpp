@@ -37,12 +37,11 @@ struct ZobristKeys {
   }
 };
 
-class HashCalculator : public BoardStateTracker<HashCalculator>,
-                       public BoardStateProvider<HashCalculator> {
+class HashCalculator : public BoardStateTracker<HashCalculator> {
 public:
   HashCalculator(ZobristKeys zkeys);
   HashCalculator();
-  zkey_t ImplementGetBoardState() {return board_state_;}
+  zkey_t ImplementGetState() {return board_state_;}
   void ImplementCalcNewBoardState(const ExecutedMove &move) {
     PrivateImplementCalcNewBoardState(move);   
   }
@@ -51,6 +50,7 @@ public:
 private:
   ZobristKeys zkeys_;
   zkey_t board_state_;
+  // map<zkey_t, Points_t> transposition_table_; 
 
   void PrivateImplementCalcNewBoardState(ExecutedMove move) {
     // moving piece moves away from space

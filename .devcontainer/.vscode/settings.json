@@ -1,4 +1,8 @@
 {
+    "[python]": {
+        "editor.defaultFormatter": "mikoz.black-py",
+    },
+    "editor.guides.indentation": false,
     "python.testing.pytestArgs": [
         "project"
     ],

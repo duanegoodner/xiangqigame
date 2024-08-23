@@ -83,18 +83,18 @@ TEST_F(GameBoardTest, CorrectNumberAvailableMoves) {
   auto red_moves = gb_.CalcFinalMovesOf(PieceColor::kRed);
 }
 
-TEST_F(GameBoardTest, AttachHashCalculators) {
-  auto red_hash_calculator = HashCalculator();
-  auto black_hash_calculator = HashCalculator();
-  gb_.ImplementAttachHashCalculator(&red_hash_calculator, 0);
-  gb_.ImplementAttachHashCalculator(&black_hash_calculator, 1);
-}
+// TEST_F(GameBoardTest, AttachHashCalculators) {
+//   auto red_hash_calculator = HashCalculator();
+//   auto black_hash_calculator = HashCalculator();
+//   gb_.ImplementAttachHashCalculator(&red_hash_calculator, 0);
+//   gb_.ImplementAttachHashCalculator(&black_hash_calculator, 1);
+// }
 
 TEST_F(GameBoardTest, ExecuteMoveWithAttachedHashCalculators) {
   auto red_hash_calculator = HashCalculator();
   auto black_hash_calculator = HashCalculator();
-  gb_.ImplementAttachHashCalculator(&red_hash_calculator, 0);
-  gb_.ImplementAttachHashCalculator(&black_hash_calculator, 1);
+  // gb_.ImplementAttachHashCalculator(&red_hash_calculator, 0);
+  // gb_.ImplementAttachHashCalculator(&black_hash_calculator, 1);
   auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};
   auto actual_executed_move = gb_.ExecuteMove(actual_move);
   gb_.UndoMove(actual_executed_move);

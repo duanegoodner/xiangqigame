@@ -47,28 +47,58 @@ public:
   }
 };
 
-// CRTP Interface: MoveSelector <- HashCalculator
-template <typename ConcreteHashCalculator>
-class BoardStateProvider {
-public:
-  zkey_t GetBoardState() {
-    return static_cast<ConcreteHashCalculator *>(this)->ImplementGetBoardState(
-    );
-  }
+enum MinimaxResultType : int {
+  kUnknown = 0,
+  kFullyEvaluatedNode = 1,
+  kStandardLeaf = 2,
+  kEndGameLeaf = 3,
+  kAlphaPrune = 4,
+  kBetaPrune = 5
+};
+
+struct TranspositionTableEntry {
+  zkey_t state;
+  int search_depth;
+  MinimaxResultType result_type;
+  BestMoves best_moves;
+
+  Points_t Score() { return best_moves.best_eval; }
+};
+
+struct TranspositionTableSearchResult {
+  TranspositionTableEntry table_entry;
+  bool found;
 };
 
 // CRTP Interface: MoveSelector <- GameBoard
 template <typename ConcreteGameBoard, typename ConcreteHashCalculator>
 class MoveTracker {
 public:
-  void AttachHashCalculator(
-      ConcreteHashCalculator *hash_calculator,
-      size_t zcolor_idx
+  // zkey_t GetState() {
+  //   return static_cast<ConcreteGameBoard *>(this)->ImplementGetState();
+  // }
+
+  TranspositionTableSearchResult SearchTranspositionTable(
+      PieceColor color,
+      int search_depth
   ) {
-    static_cast<ConcreteGameBoard *>(this)->ImplementAttachHashCalculator(
-        hash_calculator,
-        zcolor_idx
-    );
+    return static_cast<ConcreteGameBoard *>(this)
+        ->ImplementSearchTranspositionTable(color, search_depth);
+  }
+
+  void RecordCurrentStateScore(
+      PieceColor color,
+      int search_depth,
+      MinimaxResultType result_type,
+      BestMoves &best_moves
+  ) {
+    return static_cast<ConcreteGameBoard *>(this)
+        ->ImplementRecordCurrentStateScore(
+            color,
+            search_depth,
+            result_type,
+            best_moves
+        );
   }
 
   MoveCollection CalcFinalMovesOf(PieceColor color) {
@@ -135,21 +165,30 @@ public:
       PieceColor cur_player,
       MoveCollection &cur_player_moves
   );
-
-  BestMoves MinimaxRec(
-      typename ConcreteEvaluator::game_board_type &game_board,
-      int search_depth,
-      int alpha,
-      int beta,
-      PieceColor cur_player,
-      PieceColor initiating_player
-  );
-
   Move ImplementSelectMove(
       typename ConcreteEvaluator::game_board_type &game_board,
       PieceColor cur_player
   );
+
+private:
+  BestMoves MinimaxRec(typename ConcreteEvaluator::game_board_type &game_board,
+                       int search_depth,
+                       int alpha,
+                       int beta,
+                       PieceColor cur_player,
+                       PieceColor initiating_player,
+                       bool use_transposition_table = true);
+  
+  Move RunMinimax(typename ConcreteEvaluator::game_board_type &game_board,
+                       int search_depth,
+                       int alpha,
+                       int beta,
+                       PieceColor cur_player,
+                       PieceColor initiating_player,
+                       bool use_transposition_table = true);
 };
+
+
 
 #include <move_selector.tpp>
 

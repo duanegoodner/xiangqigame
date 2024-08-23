@@ -14,6 +14,7 @@
 #include <board_utilities.hpp>
 #include <game_board_details.hpp>
 #include <iostream>
+#include <typeinfo>
 #include <utility_functs.hpp>
 
 using namespace board_utilities;
@@ -33,10 +34,13 @@ template <typename ConcreteHashCalculator>
 GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
     : board_map_{int_board_to_game_pieces(board_array)}
     , move_calculator_{MoveCalculator()}
-    , num_hash_calculators_{}
-    , hash_calculators_{} {
-  move_log_[PieceColor::kRed] = vector<ExecutedMove>();
-  move_log_[PieceColor::kBlk] = vector<ExecutedMove>();
+    , hash_calculator_{}
+    , transposition_tables_{} {
+  hash_calculator_.CalcInitialBoardState(board_map_);
+  transposition_tables_[PieceColor::kBlk] =
+      std::map<zkey_t, vector<TranspositionTableEntry>>();
+  transposition_tables_[PieceColor::kRed] =
+      std::map<zkey_t, vector<TranspositionTableEntry>>();
 }
 
 template <typename ConcreteHashCalculator>
@@ -55,13 +59,10 @@ bool GameBoard<ConcreteHashCalculator>::IsOccupied(BoardSpace space) {
 }
 
 template <typename ConcreteHashCalculator>
-void GameBoard<ConcreteHashCalculator>::UpdateHashCalculators(
+void GameBoard<ConcreteHashCalculator>::UpdateHashCalculator(
     ExecutedMove executed_move
 ) {
-  for (auto calculator_idx = 0; calculator_idx < num_hash_calculators_;
-       calculator_idx++) {
-    hash_calculators_[calculator_idx]->CalcNewBoardState(executed_move);
-  }
+  hash_calculator_.CalcNewBoardState(executed_move);
 }
 
 template <typename ConcreteHashCalculator>
@@ -92,7 +93,7 @@ ExecutedMove GameBoard<ConcreteHashCalculator>::ImplementExecuteMove(Move move
   SetOccupant(move.start, GamePiece(PieceType::kNnn, PieceColor::kNul));
 
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
-  UpdateHashCalculators(executed_move);
+  UpdateHashCalculator(executed_move);
   AddToMoveLog(executed_move);
 
   // for (auto calculator : hash_calculators_) {
@@ -108,7 +109,7 @@ void GameBoard<ConcreteHashCalculator>::ImplementUndoMove(
 ) {
   SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
-  UpdateHashCalculators(executed_move);
+  UpdateHashCalculator(executed_move);
   RemoveFromMoveLog(executed_move);
 }
 
@@ -174,6 +175,59 @@ template <typename ConcreteHashCalculator>
 PieceType GameBoard<ConcreteHashCalculator>::ImplementGetType(BoardSpace space
 ) {
   return get_type(board_map_, space);
+}
+
+template <typename ConcreteHashCalculator>
+TranspositionTableSearchResult GameBoard<ConcreteHashCalculator>::
+    ImplementSearchTranspositionTable(PieceColor color, int search_depth) {
+
+  auto cur_state = hash_calculator_.GetState();
+
+  // Check if color's transposition table has an entry for cur_state.
+  auto entry_vector_it = transposition_tables_[color].find(cur_state);
+
+  TranspositionTableSearchResult result{};
+
+  // If table does have an entry for cur_state, entry_vector_it->second will be
+  // a vector containing all TranspositionTableEntry objects that have been
+  // stored for that state. Note that a single board state can have entries for
+  // different search depths.
+  if (entry_vector_it != transposition_tables_[color].end()) {
+    auto entry_vector = entry_vector_it->second;
+    for (auto entry : entry_vector) {
+      // If we find an entry for search_depth of interest, then in our
+      // TranspositionTableSearch result data container, we set found to true
+      // and set .table_entry to the found entry.
+      if (entry.search_depth == search_depth) {
+        result.found = true;
+        result.table_entry = entry;
+      }
+    }
+  }
+
+  return result;
+}
+
+template <typename ConcreteHashCalculator>
+void GameBoard<ConcreteHashCalculator>::ImplementRecordCurrentStateScore(
+    PieceColor color,
+    int search_depth,
+    MinimaxResultType result_type,
+    BestMoves &best_moves
+) {
+  auto cur_state = hash_calculator_.GetState();
+
+  // TODO: Before we add entry to our vector of entries, we should search
+  // existing entries in vector to make sure we don't already have one for
+  // search_depth
+  
+  TranspositionTableEntry transposition_table_entry{
+      cur_state,
+      search_depth,
+      result_type,
+      best_moves
+  };
+  transposition_tables_[color][cur_state].push_back(transposition_table_entry);
 }
 
 template <typename ConcreteHashCalculator>

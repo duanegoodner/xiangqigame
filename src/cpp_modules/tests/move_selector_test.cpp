@@ -48,33 +48,33 @@ TEST_F(MoveSelectorTest, InitializeMinimaxSelector) {
       move_selector(piece_points_evaluator_, test_search_depth);
 }
 
-TEST_F(MoveSelectorTest, AttachHashCalculators) {
-  int test_search_depth{4};
-  MinimaxMoveSelector<
-      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
-      move_selector(piece_points_evaluator_, test_search_depth);
-  auto red_hash_calculator = HashCalculator();
-  auto black_hash_calculator = HashCalculator();
-  game_board_.AttachHashCalculator(&red_hash_calculator, 0);
-  game_board_.AttachHashCalculator(&red_hash_calculator, 1);
-}
+// TEST_F(MoveSelectorTest, AttachHashCalculators) {
+//   int test_search_depth{4};
+//   MinimaxMoveSelector<
+//       PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+//       move_selector(piece_points_evaluator_, test_search_depth);
+//   auto red_hash_calculator = HashCalculator();
+//   auto black_hash_calculator = HashCalculator();
+//   game_board_.AttachHashCalculator(&red_hash_calculator, 0);
+//   game_board_.AttachHashCalculator(&red_hash_calculator, 1);
+// }
 
-TEST_F(MoveSelectorTest, GetBoardState) {
-  int test_search_depth{4};
-  MinimaxMoveSelector<
-      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
-      move_selector(piece_points_evaluator_, test_search_depth);
-  auto red_hash_calculator = HashCalculator();
-  auto black_hash_calculator = HashCalculator();
-  EXPECT_EQ(red_hash_calculator.GetBoardState(), 0);
-  EXPECT_EQ(black_hash_calculator.GetBoardState(), 0);
-  game_board_.AttachHashCalculator(&red_hash_calculator, 0);
-  game_board_.AttachHashCalculator(&black_hash_calculator, 1);
-  auto red_board_state = red_hash_calculator.GetBoardState();
-  auto black_board_state = black_hash_calculator.GetBoardState();
-  EXPECT_NE(red_board_state, 0);
-  EXPECT_EQ(red_board_state, black_board_state);
-}
+// TEST_F(MoveSelectorTest, GetBoardState) {
+//   int test_search_depth{4};
+//   MinimaxMoveSelector<
+//       PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+//       move_selector(piece_points_evaluator_, test_search_depth);
+  // auto red_hash_calculator = HashCalculator();
+  // auto black_hash_calculator = HashCalculator();
+  // EXPECT_EQ(red_hash_calculator.GetBoardState(), 0);
+  // EXPECT_EQ(black_hash_calculator.GetBoardState(), 0);
+  // game_board_.AttachHashCalculator(&red_hash_calculator, 0);
+  // game_board_.AttachHashCalculator(&black_hash_calculator, 1);
+  // auto red_board_state = red_hash_calculator.GetBoardState();
+  // auto black_board_state = black_hash_calculator.GetBoardState();
+  // EXPECT_NE(red_board_state, 0);
+  // EXPECT_EQ(red_board_state, black_board_state);
+// }
 
 TEST_F(MoveSelectorTest, EndOfGameSelectorTest) {
   int test_search_depth{2};
@@ -120,6 +120,36 @@ TEST_F(MoveSelectorTest, MinimaxSelectorPerformance) {
        << endl;
   cout << "Search time: " << search_duration.count() << "ms" << endl;
   cout << "Search depth: " << test_search_depth << endl;
+}
+
+TEST_F(MoveSelectorTest, PlayGame) {
+  int red_search_depth{2};
+  MinimaxMoveSelector<
+      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+      red_move_selector(piece_points_evaluator_, red_search_depth);
+  int black_search_depth{2};
+  MinimaxMoveSelector<
+      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>>
+      black_move_selector(piece_points_evaluator_, black_search_depth);
+  
+  while (true) {
+    auto red_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
+    if (red_moves.Size() == 0) {
+      std::cout << "Red has no available moves" << std::endl;
+      break;
+    }
+    auto red_selected_move = red_move_selector.SelectMove(game_board_, PieceColor::kRed);
+    auto red_executed_move = game_board_.ExecuteMove(red_selected_move);
+
+    auto black_moves = game_board_.CalcFinalMovesOf(PieceColor::kBlk);
+    if (black_moves.Size() == 0) {
+      std::cout << "Black has no available moves" << std::endl;
+      break;
+    }
+
+    auto black_selected_move = black_move_selector.SelectMove(game_board_, PieceColor::kBlk);
+    auto black_executed_move = game_board_.ExecuteMove(black_selected_move);
+  }
 }
 
 int main(int argc, char **argv) {
