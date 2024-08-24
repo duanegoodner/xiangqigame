@@ -71,7 +71,7 @@ struct TranspositionTableSearchResult {
 };
 
 // CRTP Interface: MoveSelector <- GameBoard
-template <typename ConcreteGameBoard, typename ConcreteHashCalculator>
+template <typename ConcreteGameBoard, typename ConcreteBoardStateSummarizer>
 class MoveTracker {
 public:
   // zkey_t GetState() {

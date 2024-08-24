@@ -37,7 +37,7 @@ struct ZobristKeys {
   }
 };
 
-class HashCalculator : public BoardStateTracker<HashCalculator> {
+class HashCalculator : public BoardStateSummarizer<HashCalculator> {
 public:
   HashCalculator(ZobristKeys zkeys);
   HashCalculator();

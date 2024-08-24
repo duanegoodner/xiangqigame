@@ -18,7 +18,7 @@
 
 using namespace board_components;
 
-// CRTP Interface: Evaluator <- GameBoard
+// CRTP INTERFACE: Evaluator <- SpaceInfoProvider (concrete example = GameBoard)
 template <typename ConcreteGameBoard>
 class SpaceInfoProvider {
 public:
