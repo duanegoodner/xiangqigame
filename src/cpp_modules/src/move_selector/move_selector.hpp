@@ -20,14 +20,14 @@
 // CRTP Interface: MoveSelector <- (Minimax)Evaluator
 // Note: Some implementations of MoveSelector (e.g. RandomMoveSelector) do not
 // have an Evaluator.
-template <typename ConcreteEvaluator, typename ConcreteGameBoard>
+template <typename ConcreteEvaluator, typename ConcreteSpaceInfoProvider>
 class Evaluator {
 public:
-  typedef ConcreteGameBoard game_board_type;
+  typedef ConcreteSpaceInfoProvider game_board_type;
 
   RatedMove RateMove(
       Move move,
-      ConcreteGameBoard &game_board,
+      ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player
   ) {
     return static_cast<ConcreteEvaluator *>(this)
@@ -35,7 +35,7 @@ public:
   }
 
   BestMoves EvaluateNonWinLeaf(
-      ConcreteGameBoard &game_board,
+      ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player,
       PieceColor initiating_player
   ) {
@@ -71,18 +71,18 @@ struct TranspositionTableSearchResult {
 };
 
 // CRTP Interface: MoveSelector <- GameBoard
-template <typename ConcreteGameBoard, typename ConcreteBoardStateSummarizer>
+template <typename ConcreteSpaceInfoProvider, typename ConcreteBoardStateSummarizer>
 class MoveTracker {
 public:
   // zkey_t GetState() {
-  //   return static_cast<ConcreteGameBoard *>(this)->ImplementGetState();
+  //   return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetState();
   // }
 
   TranspositionTableSearchResult SearchTranspositionTable(
       PieceColor color,
       int search_depth
   ) {
-    return static_cast<ConcreteGameBoard *>(this)
+    return static_cast<ConcreteSpaceInfoProvider *>(this)
         ->ImplementSearchTranspositionTable(color, search_depth);
   }
 
@@ -92,7 +92,7 @@ public:
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
-    return static_cast<ConcreteGameBoard *>(this)
+    return static_cast<ConcreteSpaceInfoProvider *>(this)
         ->ImplementRecordCurrentStateScore(
             color,
             search_depth,
@@ -102,17 +102,17 @@ public:
   }
 
   MoveCollection CalcFinalMovesOf(PieceColor color) {
-    return static_cast<ConcreteGameBoard *>(this)->ImplementCalcFinalMovesOf(
+    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementCalcFinalMovesOf(
         color
     );
   };
 
   ExecutedMove ExecuteMove(Move move) {
-    return static_cast<ConcreteGameBoard *>(this)->ImplementExecuteMove(move);
+    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementExecuteMove(move);
   }
 
   void UndoMove(ExecutedMove executed_move) {
-    static_cast<ConcreteGameBoard *>(this)->ImplementUndoMove(executed_move);
+    static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementUndoMove(executed_move);
   }
 };
 
@@ -120,12 +120,12 @@ public:
 // Currently not using since AI Player is currently in Python side of app.
 // If/when implement AI Player in C++, will move this interface definition to
 // C++ Player header file.
-template <typename ConcreteMoveSelector, typename ConcreteGameBoard>
+template <typename ConcreteMoveSelector, typename ConcreteSpaceInfoProvider>
 class MoveSelector {
 public:
-  typedef ConcreteGameBoard game_board_type;
+  typedef ConcreteSpaceInfoProvider game_board_type;
 
-  Move SelectMove(ConcreteGameBoard &game_board, PieceColor cur_player) {
+  Move SelectMove(ConcreteSpaceInfoProvider &game_board, PieceColor cur_player) {
     return static_cast<ConcreteMoveSelector *>(this)->ImplementSelectMove(
         game_board,
         cur_player
@@ -134,13 +134,13 @@ public:
 };
 
 // Implementation: MoveSelector that selects a random (legal) move
-template <typename ConcreteGameBoard>
+template <typename ConcreteSpaceInfoProvider>
 class RandomMoveSelector : public MoveSelector<
-                               RandomMoveSelector<ConcreteGameBoard>,
-                               ConcreteGameBoard> {
+                               RandomMoveSelector<ConcreteSpaceInfoProvider>,
+                               ConcreteSpaceInfoProvider> {
 public:
   Move ImplementSelectMove(
-      ConcreteGameBoard &game_board,
+      ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player
   );
 };

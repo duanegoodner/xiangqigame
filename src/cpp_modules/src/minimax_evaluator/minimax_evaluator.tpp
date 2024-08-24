@@ -15,21 +15,21 @@
 
 using namespace board_components;
 
-template <typename ConcreteGameBoard, typename ConcreteGamePoints>
-PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
-    PiecePointsEvaluator(ConcreteGamePoints game_position_points)
+template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
+PiecePointsEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
+    PiecePointsEvaluator(ConcretePieceValueProvider game_position_points)
     : game_position_points_{game_position_points} {};
 
 // TODO fix code smell. Constructor used for game_position_points_ currently
 // not part of interface,
-template <typename ConcreteGameBoard, typename ConcreteGamePoints>
-PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
+template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
+PiecePointsEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     PiecePointsEvaluator()
-    // : game_position_points_{ConcreteGamePoints(DEFAULT_GAME_POINTS_ARRAY)} {};
-    : game_position_points_{ConcreteGamePoints()} {};
+    // : game_position_points_{ConcretePieceValueProvider(DEFAULT_GAME_POINTS_ARRAY)} {};
+    : game_position_points_{ConcretePieceValueProvider()} {};
 
-template <typename ConcreteGameBoard, typename ConcreteGamePoints>
-Points_t PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
+template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
+Points_t PiecePointsEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     GetValueOfPieceAtPosition(
         PieceColor color,
         PieceType piece_type,
@@ -39,9 +39,9 @@ Points_t PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
       .GetValueOfPieceAtPosition(color, piece_type, space);
 }
 
-template <typename ConcreteGameBoard, typename ConcreteGamePoints>
-Points_t PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
-    GetPlayerTotal(PieceColor color, ConcreteGameBoard &game_board) {
+template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
+Points_t PiecePointsEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
+    GetPlayerTotal(PieceColor color, ConcreteSpaceInfoProvider &game_board) {
   Points_t pre_attack_total = 0;
   for (auto space : game_board.GetAllSpacesOccupiedBy(color)) {
     auto piece_type = game_board.GetType(space);
@@ -54,10 +54,10 @@ Points_t PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
   return pre_attack_total;
 }
 
-template <typename ConcreteGameBoard, typename ConcreteGamePoints>
-BestMoves PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
+template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
+BestMoves PiecePointsEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     ImplementEvaluateNonWinLeaf(
-        ConcreteGameBoard &game_board,
+        ConcreteSpaceInfoProvider &game_board,
         PieceColor cur_player,
         PieceColor initiating_player
     ) {
@@ -77,11 +77,11 @@ BestMoves PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::
   }
 }
 
-template <typename ConcreteGameBoard, typename ConcreteGamePoints>
+template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
 RatedMove
-PiecePointsEvaluator<ConcreteGameBoard, ConcreteGamePoints>::ImplementRateMove(
+PiecePointsEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::ImplementRateMove(
     Move move,
-    ConcreteGameBoard &game_board,
+    ConcreteSpaceInfoProvider &game_board,
     PieceColor cur_player
 ) {
   auto piece_type = game_board.GetType(move.start);
