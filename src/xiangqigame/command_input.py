@@ -2,14 +2,13 @@ import argparse
 from dataclasses import dataclass
 from typing import NamedTuple, Callable
 from xiangqigame.players import AIPlayer, HumanPlayer, Player
-# from xiangqigame.move_selectors import MinimaxMoveSelector, MoveSelector, RandomMoveSelector
-from cpp_modules.src.pybind_modules.MoveSelectorPy import PiecePointsMinimaxMoveSelector, RandomMoveSelector
+from cpp_modules.src.pybind_modules.MoveSelectorPy import MinimaxMoveSelectorPy, RandomMoveSelector
 
 
 @dataclass
 class PlayerInput:
     player_type: Callable[..., Player]
-    algo: Callable[..., RandomMoveSelector | PiecePointsMinimaxMoveSelector]
+    algo: Callable[..., RandomMoveSelector | MinimaxMoveSelectorPy]
     strength: int
 
 
@@ -28,7 +27,7 @@ class XiangqiGameCommandInterpreter:
 
     _move_selector_dispatch = {
         "random": RandomMoveSelector,
-        "minimax": PiecePointsMinimaxMoveSelector,
+        "minimax": MinimaxMoveSelectorPy,
         None: None
     }
 

@@ -5,7 +5,7 @@ from cpp_modules.src.pybind_modules.GameBoardPy import GameBoard, PieceColor, Mo
 from xiangqigame.game_interfaces import Player
 import xiangqigame.terminal_output as msg
 # from xiangqigame.move_selectors import MoveSelector
-from cpp_modules.src.pybind_modules.MoveSelectorPy import PiecePointsMinimaxMoveSelector, RandomMoveSelector
+from cpp_modules.src.pybind_modules.MoveSelectorPy import MinimaxMoveSelectorPy, RandomMoveSelector
 
 
 class HumanPlayer(Player):
@@ -71,7 +71,7 @@ class AIPlayer(Player):
     def __init__(
             self,
             color: PieceColor,
-            move_selector: PiecePointsMinimaxMoveSelector | RandomMoveSelector):
+            move_selector: MinimaxMoveSelectorPy | RandomMoveSelector):
         super().__init__(color)
         self._move_selector = move_selector
 
