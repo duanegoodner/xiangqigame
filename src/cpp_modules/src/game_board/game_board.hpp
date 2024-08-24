@@ -4,8 +4,8 @@
 // Last Modified: 2024-08-16
 
 // Description:
-// Definition of GameBoard class, and the BoardStateSummarizer CRTP interface that
-// a GameBoard requires a HashCalculator to comply with.
+// Definition of GameBoard class, and the BoardStateSummarizer CRTP interface
+// that a GameBoard requires a HashCalculator to comply with.
 
 #ifndef _GAME_BOARD_
 #define _GAME_BOARD_
@@ -21,7 +21,8 @@
 using namespace std;
 using namespace board_components;
 
-// CRTP INTERFACE: GameBoard <- BoardStateSummarizer (concrete example = HashCalculator)
+// CRTP INTERFACE: GameBoard <- BoardStateSummarizer (concrete example =
+// HashCalculator)
 template <typename ConcreteBoardStateSummarizer>
 class BoardStateSummarizer {
 public:
@@ -29,29 +30,72 @@ public:
     static_cast<ConcreteBoardStateSummarizer *>(this)
         ->ImplementCalcInitialBoardState(board_map);
   }
+
   void CalcNewBoardState(const ExecutedMove &move) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)
         ->ImplementCalcNewBoardState(move);
   }
+
   zkey_t GetState() {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetState();
+    return static_cast<ConcreteBoardStateSummarizer *>(this)
+        ->ImplementGetState();
   }
+};
+
+// Template for class NewGameBoard which implements interface
+// SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
+template <typename ConcreteBoardStateSummarizer>
+class NewGameBoard
+    : public SpaceInfoProvider<NewGameBoard<ConcreteBoardStateSummarizer>> {
+public:
+  NewGameBoard();
+  NewGameBoard(const BoardMapInt_t starting_board);
+  vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color);
+  PieceColor ImplementGetColor(BoardSpace space);
+  PieceType ImplementGetType(BoardSpace space);
+  TranspositionTableSearchResult ImplementSearchTranspositionTable(
+      PieceColor color,
+      int search_depth
+  );
+  void ImplementRecordCurrentStateScore(
+      PieceColor color,
+      int search_depth,
+      MinimaxResultType result_type,
+      BestMoves &best_moves
+  );
+  MoveCollection ImplementCalcFinalMovesOf(PieceColor color);
+  ExecutedMove ImplementExecuteMove(Move move);
+  void ImplementUndoMove(ExecutedMove executed_move);
+
+private:
+  BoardMap_t board_map_;
+  MoveCalculator move_calculator_;
+  ConcreteBoardStateSummarizer hash_calculator_;
+  std::map<PieceColor, std::map<zkey_t, vector<TranspositionTableEntry>>>
+      transposition_tables_;
+  std::map<PieceColor, vector<ExecutedMove>> move_log_;
+  void UpdateHashCalculator(ExecutedMove executed_move);
+  GamePiece GetOccupant(BoardSpace space);
+  void SetOccupant(BoardSpace space, GamePiece piece);
+  void AddToMoveLog(ExecutedMove move);
+  void RemoveFromMoveLog(ExecutedMove move);
+  bool ViolatesRepeatRule(PieceColor color);
 };
 
 // Template class for a GameBoard that has a ConcreteBoardStateSummarizer, and
 // implements the following interfaces: MoveTracker (specified by MoveSelector)
 // SpaceInfoProvider (specified by MinimaxEvaluator)
 template <typename ConcreteBoardStateSummarizer>
-class GameBoard : public MoveTracker<
-                      GameBoard<ConcreteBoardStateSummarizer>,
-                      ConcreteBoardStateSummarizer>,
-                  public SpaceInfoProvider<GameBoard<ConcreteBoardStateSummarizer>> {
+class GameBoard
+    : public MoveTracker<
+          GameBoard<ConcreteBoardStateSummarizer>,
+          ConcreteBoardStateSummarizer>,
+      public SpaceInfoProvider<GameBoard<ConcreteBoardStateSummarizer>> {
 
 public:
   GameBoard();
   GameBoard(const BoardMapInt_t starting_board);
-  bool IsOccupied(BoardSpace space);
-  GamePiece GetOccupant(BoardSpace space);
+  // bool IsOccupied(BoardSpace space);
   ExecutedMove ImplementExecuteMove(Move move);
   void ImplementUndoMove(ExecutedMove executed_move);
   vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color);
@@ -70,6 +114,8 @@ public:
       BestMoves &best_moves
   );
   const BoardMap_t &map() const { return board_map_; }
+
+  GamePiece GetOccupant(BoardSpace space);
 
 private:
   BoardMap_t board_map_;

@@ -34,6 +34,43 @@ public:
   PieceType GetType(BoardSpace space) {
     return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetType(space);
   }
+
+  TranspositionTableSearchResult SearchTranspositionTable(
+      PieceColor color,
+      int search_depth
+  ) {
+    return static_cast<ConcreteSpaceInfoProvider *>(this)
+        ->ImplementSearchTranspositionTable(color, search_depth);
+  }
+
+  void RecordCurrentStateScore(
+      PieceColor color,
+      int search_depth,
+      MinimaxResultType result_type,
+      BestMoves &best_moves
+  ) {
+    return static_cast<ConcreteSpaceInfoProvider *>(this)
+        ->ImplementRecordCurrentStateScore(
+            color,
+            search_depth,
+            result_type,
+            best_moves
+        );
+  }
+
+  MoveCollection CalcFinalMovesOf(PieceColor color) {
+    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementCalcFinalMovesOf(
+        color
+    );
+  };
+
+  ExecutedMove ExecuteMove(Move move) {
+    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementExecuteMove(move);
+  }
+
+  void UndoMove(ExecutedMove executed_move) {
+    static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementUndoMove(executed_move);
+  }
 };
 
 // CRTP Interface: Evaluator <- GamePoints

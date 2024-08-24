@@ -30,8 +30,23 @@ BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
   return game_piece_board;
 }
 
+// ************ Constructors for GameBoard and NewGameBoard ************
+
 template <typename ConcreteBoardStateSummarizer>
 GameBoard<ConcreteBoardStateSummarizer>::GameBoard(const BoardMapInt_t board_array)
+    : board_map_{int_board_to_game_pieces(board_array)}
+    , move_calculator_{MoveCalculator()}
+    , hash_calculator_{}
+    , transposition_tables_{} {
+  hash_calculator_.CalcInitialBoardState(board_map_);
+  transposition_tables_[PieceColor::kBlk] =
+      std::map<zkey_t, vector<TranspositionTableEntry>>();
+  transposition_tables_[PieceColor::kRed] =
+      std::map<zkey_t, vector<TranspositionTableEntry>>();
+}
+
+template <typename ConcreteBoardStateSummarizer>
+NewGameBoard<ConcreteBoardStateSummarizer>::NewGameBoard(const BoardMapInt_t board_array)
     : board_map_{int_board_to_game_pieces(board_array)}
     , move_calculator_{MoveCalculator()}
     , hash_calculator_{}
@@ -48,15 +63,40 @@ GameBoard<ConcreteBoardStateSummarizer>::GameBoard()
     : GameBoard(kStartingBoard) {}
 
 template <typename ConcreteBoardStateSummarizer>
+NewGameBoard<ConcreteBoardStateSummarizer>::NewGameBoard()
+    : NewGameBoard(kStartingBoard) {}
+
+
+
+// ************ GetOccupant for GameBoard and NewGameBoard ************
+
+template <typename ConcreteBoardStateSummarizer>
 GamePiece GameBoard<ConcreteBoardStateSummarizer>::GetOccupant(BoardSpace space) {
   return board_map_[space.rank][space.file];
 }
 
 template <typename ConcreteBoardStateSummarizer>
-bool GameBoard<ConcreteBoardStateSummarizer>::IsOccupied(BoardSpace space) {
-  // return move_calculator_.IsOccupied(board_map_, space);
-  return is_occupied(board_map_, space);
+GamePiece NewGameBoard<ConcreteBoardStateSummarizer>::GetOccupant(BoardSpace space) {
+  return board_map_[space.rank][space.file];
 }
+
+
+
+// ************ IsOcccupied for GameBoard and NewGameBoard ************
+
+// template <typename ConcreteBoardStateSummarizer>
+// bool GameBoard<ConcreteBoardStateSummarizer>::IsOccupied(BoardSpace space) {
+//   // return move_calculator_.IsOccupied(board_map_, space);
+//   return is_occupied(board_map_, space);
+// }
+
+// template <typename ConcreteBoardStateSummarizer>
+// bool NewGameBoard<ConcreteBoardStateSummarizer>::IsOccupied(BoardSpace space) {
+//   // return move_calculator_.IsOccupied(board_map_, space);
+//   return is_occupied(board_map_, space);
+
+
+
 
 template <typename ConcreteBoardStateSummarizer>
 void GameBoard<ConcreteBoardStateSummarizer>::UpdateHashCalculator(
@@ -95,10 +135,6 @@ ExecutedMove GameBoard<ConcreteBoardStateSummarizer>::ImplementExecuteMove(Move 
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
   UpdateHashCalculator(executed_move);
   AddToMoveLog(executed_move);
-
-  // for (auto calculator : hash_calculators_) {
-  //   calculator.CalcNewBoardState(executed_move);
-  // }
 
   return ExecutedMove{move, moving_piece, destination_piece};
 }

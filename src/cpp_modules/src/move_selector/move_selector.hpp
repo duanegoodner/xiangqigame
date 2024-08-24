@@ -74,9 +74,6 @@ struct TranspositionTableSearchResult {
 template <typename ConcreteSpaceInfoProvider, typename ConcreteBoardStateSummarizer>
 class MoveTracker {
 public:
-  // zkey_t GetState() {
-  //   return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetState();
-  // }
 
   TranspositionTableSearchResult SearchTranspositionTable(
       PieceColor color,
