@@ -64,8 +64,11 @@ public:
       BestMoves &best_moves
   );
   MoveCollection ImplementCalcFinalMovesOf(PieceColor color);
+  bool IsInCheck(PieceColor color);
   ExecutedMove ImplementExecuteMove(Move move);
   void ImplementUndoMove(ExecutedMove executed_move);
+  GamePiece GetOccupant(BoardSpace space);
+  const BoardMap_t &map() const { return board_map_; }
 
 private:
   BoardMap_t board_map_;
@@ -75,7 +78,6 @@ private:
       transposition_tables_;
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
   void UpdateHashCalculator(ExecutedMove executed_move);
-  GamePiece GetOccupant(BoardSpace space);
   void SetOccupant(BoardSpace space, GamePiece piece);
   void AddToMoveLog(ExecutedMove move);
   void RemoveFromMoveLog(ExecutedMove move);
@@ -95,7 +97,6 @@ class GameBoard
 public:
   GameBoard();
   GameBoard(const BoardMapInt_t starting_board);
-  // bool IsOccupied(BoardSpace space);
   ExecutedMove ImplementExecuteMove(Move move);
   void ImplementUndoMove(ExecutedMove executed_move);
   vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color);
