@@ -14,9 +14,9 @@
 #include <iostream>
 #include <move_selector_details.hpp>
 
-template <typename ConcreteGameBoard>
-Move RandomMoveSelector<ConcreteGameBoard>::ImplementSelectMove(
-    ConcreteGameBoard &game_board,
+template <typename ConcreteSpaceInfoProvider>
+Move RandomMoveSelector<ConcreteSpaceInfoProvider>::ImplementSelectMove(
+    ConcreteSpaceInfoProvider &game_board,
     PieceColor cur_player
 ) {
   auto cur_moves = game_board.CalcFinalMovesOf(cur_player);

@@ -21,19 +21,19 @@ using namespace py::literals;
 using namespace piece_points;
 // using namespace board_components;
 
-class PiecePointsMinimaxMoveSelector
+class MinimaxMoveSelectorPy
     : public MinimaxMoveSelector<
           PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>> {};
 
 PYBIND11_MODULE(MoveSelectorPy, m) {
-  py::class_<PiecePointsMinimaxMoveSelector>(
+  py::class_<MinimaxMoveSelectorPy>(
       m,
-      "PiecePointsMinimaxMoveSelector"
+      "MinimaxMoveSelectorPy"
   )
       .def(py::init<int>(), "search_depth"_a)
       .def(
           "select_move",
-          &PiecePointsMinimaxMoveSelector::SelectMove,
+          &MinimaxMoveSelectorPy::SelectMove,
           "game_board"_a,
           "piece_color"_a
       );

@@ -5,7 +5,7 @@
 
 // Description:
 // Contains method implementations for a GameBoard class with a
-// ConcreteHashCalculator
+// ConcreteBoardStateSummarizer
 
 #ifndef _GAME_BOARD_TEMPLATE_
 #define _GAME_BOARD_TEMPLATE_
@@ -30,8 +30,8 @@ BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
   return game_piece_board;
 }
 
-template <typename ConcreteHashCalculator>
-GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
+template <typename ConcreteBoardStateSummarizer>
+GameBoard<ConcreteBoardStateSummarizer>::GameBoard(const BoardMapInt_t board_array)
     : board_map_{int_board_to_game_pieces(board_array)}
     , move_calculator_{MoveCalculator()}
     , hash_calculator_{}
@@ -43,37 +43,37 @@ GameBoard<ConcreteHashCalculator>::GameBoard(const BoardMapInt_t board_array)
       std::map<zkey_t, vector<TranspositionTableEntry>>();
 }
 
-template <typename ConcreteHashCalculator>
-GameBoard<ConcreteHashCalculator>::GameBoard()
+template <typename ConcreteBoardStateSummarizer>
+GameBoard<ConcreteBoardStateSummarizer>::GameBoard()
     : GameBoard(kStartingBoard) {}
 
-template <typename ConcreteHashCalculator>
-GamePiece GameBoard<ConcreteHashCalculator>::GetOccupant(BoardSpace space) {
+template <typename ConcreteBoardStateSummarizer>
+GamePiece GameBoard<ConcreteBoardStateSummarizer>::GetOccupant(BoardSpace space) {
   return board_map_[space.rank][space.file];
 }
 
-template <typename ConcreteHashCalculator>
-bool GameBoard<ConcreteHashCalculator>::IsOccupied(BoardSpace space) {
+template <typename ConcreteBoardStateSummarizer>
+bool GameBoard<ConcreteBoardStateSummarizer>::IsOccupied(BoardSpace space) {
   // return move_calculator_.IsOccupied(board_map_, space);
   return is_occupied(board_map_, space);
 }
 
-template <typename ConcreteHashCalculator>
-void GameBoard<ConcreteHashCalculator>::UpdateHashCalculator(
+template <typename ConcreteBoardStateSummarizer>
+void GameBoard<ConcreteBoardStateSummarizer>::UpdateHashCalculator(
     ExecutedMove executed_move
 ) {
   hash_calculator_.CalcNewBoardState(executed_move);
 }
 
-template <typename ConcreteHashCalculator>
-void GameBoard<ConcreteHashCalculator>::AddToMoveLog(ExecutedMove executed_move
+template <typename ConcreteBoardStateSummarizer>
+void GameBoard<ConcreteBoardStateSummarizer>::AddToMoveLog(ExecutedMove executed_move
 ) {
   auto piece_color = executed_move.moving_piece.piece_color;
   move_log_[piece_color].push_back(executed_move);
 }
 
-template <typename ConcreteHashCalculator>
-void GameBoard<ConcreteHashCalculator>::RemoveFromMoveLog(
+template <typename ConcreteBoardStateSummarizer>
+void GameBoard<ConcreteBoardStateSummarizer>::RemoveFromMoveLog(
     ExecutedMove executed_move
 ) {
   auto piece_color = executed_move.moving_piece.piece_color;
@@ -84,8 +84,8 @@ void GameBoard<ConcreteHashCalculator>::RemoveFromMoveLog(
   move_log_[piece_color].pop_back();
 }
 
-template <typename ConcreteHashCalculator>
-ExecutedMove GameBoard<ConcreteHashCalculator>::ImplementExecuteMove(Move move
+template <typename ConcreteBoardStateSummarizer>
+ExecutedMove GameBoard<ConcreteBoardStateSummarizer>::ImplementExecuteMove(Move move
 ) {
   auto moving_piece = GetOccupant(move.start);
   auto destination_piece = GetOccupant(move.end);
@@ -103,8 +103,8 @@ ExecutedMove GameBoard<ConcreteHashCalculator>::ImplementExecuteMove(Move move
   return ExecutedMove{move, moving_piece, destination_piece};
 }
 
-template <typename ConcreteHashCalculator>
-void GameBoard<ConcreteHashCalculator>::ImplementUndoMove(
+template <typename ConcreteBoardStateSummarizer>
+void GameBoard<ConcreteBoardStateSummarizer>::ImplementUndoMove(
     ExecutedMove executed_move
 ) {
   SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
@@ -113,31 +113,31 @@ void GameBoard<ConcreteHashCalculator>::ImplementUndoMove(
   RemoveFromMoveLog(executed_move);
 }
 
-template <typename ConcreteHashCalculator>
+template <typename ConcreteBoardStateSummarizer>
 vector<BoardSpace> GameBoard<
-    ConcreteHashCalculator>::ImplementGetAllSpacesOccupiedBy(PieceColor color
+    ConcreteBoardStateSummarizer>::ImplementGetAllSpacesOccupiedBy(PieceColor color
 ) {
   return get_all_spaces_occupied_by(board_map_, color);
 }
 
-template <typename ConcreteHashCalculator>
-void GameBoard<ConcreteHashCalculator>::SetOccupant(
+template <typename ConcreteBoardStateSummarizer>
+void GameBoard<ConcreteBoardStateSummarizer>::SetOccupant(
     BoardSpace space,
     GamePiece piece
 ) {
   board_map_[space.rank][space.file] = piece;
 }
 
-template <typename ConcreteHashCalculator>
-bool GameBoard<ConcreteHashCalculator>::IsInCheck(PieceColor color) {
+template <typename ConcreteBoardStateSummarizer>
+bool GameBoard<ConcreteBoardStateSummarizer>::IsInCheck(PieceColor color) {
   auto gen_position = get_general_position(board_map_, color);
   auto opponent_moves =
       move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
   return opponent_moves.ContainsDestination(gen_position);
 }
 
-template <typename ConcreteHashCalculator>
-MoveCollection GameBoard<ConcreteHashCalculator>::ImplementCalcFinalMovesOf(
+template <typename ConcreteBoardStateSummarizer>
+MoveCollection GameBoard<ConcreteBoardStateSummarizer>::ImplementCalcFinalMovesOf(
     PieceColor color
 ) {
   auto un_tested_moves =
@@ -164,21 +164,21 @@ MoveCollection GameBoard<ConcreteHashCalculator>::ImplementCalcFinalMovesOf(
   return validated_moves;
 }
 
-template <typename ConcreteHashCalculator>
-PieceColor GameBoard<ConcreteHashCalculator>::ImplementGetColor(
+template <typename ConcreteBoardStateSummarizer>
+PieceColor GameBoard<ConcreteBoardStateSummarizer>::ImplementGetColor(
     BoardSpace space
 ) {
   return get_color(board_map_, space);
 }
 
-template <typename ConcreteHashCalculator>
-PieceType GameBoard<ConcreteHashCalculator>::ImplementGetType(BoardSpace space
+template <typename ConcreteBoardStateSummarizer>
+PieceType GameBoard<ConcreteBoardStateSummarizer>::ImplementGetType(BoardSpace space
 ) {
   return get_type(board_map_, space);
 }
 
-template <typename ConcreteHashCalculator>
-TranspositionTableSearchResult GameBoard<ConcreteHashCalculator>::
+template <typename ConcreteBoardStateSummarizer>
+TranspositionTableSearchResult GameBoard<ConcreteBoardStateSummarizer>::
     ImplementSearchTranspositionTable(PieceColor color, int search_depth) {
 
   auto cur_state = hash_calculator_.GetState();
@@ -208,8 +208,8 @@ TranspositionTableSearchResult GameBoard<ConcreteHashCalculator>::
   return result;
 }
 
-template <typename ConcreteHashCalculator>
-void GameBoard<ConcreteHashCalculator>::ImplementRecordCurrentStateScore(
+template <typename ConcreteBoardStateSummarizer>
+void GameBoard<ConcreteBoardStateSummarizer>::ImplementRecordCurrentStateScore(
     PieceColor color,
     int search_depth,
     MinimaxResultType result_type,
@@ -230,8 +230,8 @@ void GameBoard<ConcreteHashCalculator>::ImplementRecordCurrentStateScore(
   transposition_tables_[color][cur_state].push_back(transposition_table_entry);
 }
 
-template <typename ConcreteHashCalculator>
-bool GameBoard<ConcreteHashCalculator>::ViolatesRepeatRule(PieceColor color) {
+template <typename ConcreteBoardStateSummarizer>
+bool GameBoard<ConcreteBoardStateSummarizer>::ViolatesRepeatRule(PieceColor color) {
   for (auto period_length : kRepeatPeriodsToCheck) {
     auto lookback_length = (kMaxAllowedRepeatPeriods + 1) * period_length;
     if (utility_functs::hasRepeatingPattern(

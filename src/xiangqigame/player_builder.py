@@ -1,7 +1,7 @@
 from cpp_modules.src.pybind_modules.GameBoardPy import PieceColor
 from xiangqigame.command_input import XiangqiGameCommand, XiangqiGameCommandLine, PlayerInput
 # from xiangqigame.move_selectors import MinimaxMoveSelector, RandomMoveSelector
-from cpp_modules.src.pybind_modules.MoveSelectorPy import PiecePointsMinimaxMoveSelector, RandomMoveSelector
+from cpp_modules.src.pybind_modules.MoveSelectorPy import MinimaxMoveSelectorPy, RandomMoveSelector
 from xiangqigame.players import AIPlayer, HumanPlayer
 from xiangqigame.minimax_evaluators import DEFAULT_MINIMAX_EVALUATOR
 
@@ -30,7 +30,7 @@ class SinglePlayerBuilder:
     def _move_selector_args(self):
         return {
             RandomMoveSelector: {},
-            PiecePointsMinimaxMoveSelector: {
+            MinimaxMoveSelectorPy: {
                 # "evaluator": DEFAULT_MINIMAX_EVALUATOR,
                 "search_depth": self._player_strength
             }
@@ -41,9 +41,9 @@ class SinglePlayerBuilder:
 
     def _build_ai_player(self):
         if self._move_selector_constructor is None:
-            self._move_selector_constructor = PiecePointsMinimaxMoveSelector
+            self._move_selector_constructor = MinimaxMoveSelectorPy
 
-        if (self._move_selector_constructor == PiecePointsMinimaxMoveSelector and
+        if (self._move_selector_constructor == MinimaxMoveSelectorPy and
                 self._player_strength is None):
             self._player_strength = self._default_player_strengths[self._color]
         constructor_kwargs = self._move_selector_args[self._move_selector_constructor]

@@ -4,7 +4,7 @@
 // Last Modified: 2024-08-16
 
 // Description:
-// Definition of GameBoard class, and the BoardStateTracker CRTP interface that
+// Definition of GameBoard class, and the BoardStateSummarizer CRTP interface that
 // a GameBoard requires a HashCalculator to comply with.
 
 #ifndef _GAME_BOARD_
@@ -21,31 +21,31 @@
 using namespace std;
 using namespace board_components;
 
-// CRTP Interface: GameBoard <- HashCalculator
-template <typename ConcreteHashCalculator>
-class BoardStateTracker {
+// CRTP INTERFACE: GameBoard <- BoardStateSummarizer (concrete example = HashCalculator)
+template <typename ConcreteBoardStateSummarizer>
+class BoardStateSummarizer {
 public:
   void CalcInitialBoardState(BoardMap_t &board_map) {
-    static_cast<ConcreteHashCalculator *>(this)
+    static_cast<ConcreteBoardStateSummarizer *>(this)
         ->ImplementCalcInitialBoardState(board_map);
   }
   void CalcNewBoardState(const ExecutedMove &move) {
-    return static_cast<ConcreteHashCalculator *>(this)
+    return static_cast<ConcreteBoardStateSummarizer *>(this)
         ->ImplementCalcNewBoardState(move);
   }
   zkey_t GetState() {
-    return static_cast<ConcreteHashCalculator *>(this)->ImplementGetState();
+    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetState();
   }
 };
 
-// Template class for a GameBoard that has a ConcreteHashCalculator, and
+// Template class for a GameBoard that has a ConcreteBoardStateSummarizer, and
 // implements the following interfaces: MoveTracker (specified by MoveSelector)
 // SpaceInfoProvider (specified by MinimaxEvaluator)
-template <typename ConcreteHashCalculator>
+template <typename ConcreteBoardStateSummarizer>
 class GameBoard : public MoveTracker<
-                      GameBoard<ConcreteHashCalculator>,
-                      ConcreteHashCalculator>,
-                  public SpaceInfoProvider<GameBoard<ConcreteHashCalculator>> {
+                      GameBoard<ConcreteBoardStateSummarizer>,
+                      ConcreteBoardStateSummarizer>,
+                  public SpaceInfoProvider<GameBoard<ConcreteBoardStateSummarizer>> {
 
 public:
   GameBoard();
@@ -74,7 +74,7 @@ public:
 private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
-  ConcreteHashCalculator hash_calculator_;
+  ConcreteBoardStateSummarizer hash_calculator_;
   std::map<PieceColor, std::map<zkey_t, vector<TranspositionTableEntry>>>
       transposition_tables_;
   void UpdateHashCalculator(ExecutedMove executed_move);
