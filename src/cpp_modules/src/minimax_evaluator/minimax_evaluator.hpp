@@ -133,12 +133,10 @@ public:
   MinimaxMoveEvaluator(ConcretePieceValueProvider game_position_points);
   MinimaxMoveEvaluator();
   Move ImplementSelectMove(
-      // ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player
   );
   Points_t GetPlayerTotal(
       PieceColor color
-      // ConcreteSpaceInfoProvider &game_board
   );
 
 private:
@@ -146,13 +144,11 @@ private:
   ConcretePieceValueProvider game_position_points_;
   ConcreteSpaceInfoProvider game_board_;
   BestMoves EvaluateNonWinLeaf(
-      // ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player,
       PieceColor initiating_player
   );
   RatedMove RateMove(
       Move move,
-      // ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player
   );
   Points_t GetValueOfPieceAtPosition(
@@ -166,12 +162,10 @@ private:
   int node_counter_;
   void ResetNodeCounter() { node_counter_ = 0; }
   std::vector<RatedMove> GenerateRandkedMoveList(
-      // ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player,
       MoveCollection &cur_player_moves
   );
   BestMoves MinimaxRec(
-      // ConcreteSpaceInfoProvider &game_board,
       int search_depth,
       int alpha,
       int beta,
@@ -180,7 +174,7 @@ private:
       bool use_transposition_table = true
   );
   Move RunMinimax(
-      ConcreteSpaceInfoProvider &game_board,
+      // ConcreteSpaceInfoProvider &game_board,
       int search_depth,
       int alpha,
       int beta,

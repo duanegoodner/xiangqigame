@@ -38,12 +38,11 @@ Move MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcretePieceValueProvider>::
     ImplementSelectMove(
-        // ConcreteSpaceInfoProvider &game_board,
         PieceColor cur_player
     ) {
 
   auto first_selected_move = RunMinimax(
-      game_board_,
+      // game_board_,
       search_depth_,
       numeric_limits<int>::min(),
       numeric_limits<int>::max(),
@@ -56,7 +55,7 @@ Move MinimaxMoveEvaluator<
     return first_selected_move;
   } else {
     auto second_selected_move = RunMinimax(
-        game_board_,
+        // game_board_,
         search_depth_,
         numeric_limits<int>::min(),
         numeric_limits<int>::max(),
@@ -84,7 +83,6 @@ template <
     typename ConcretePieceValueProvider>
 std::vector<RatedMove> MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     GenerateRandkedMoveList(
-      // ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player,
       MoveCollection &cur_player_moves
   ) {
@@ -110,7 +108,6 @@ template <
 BestMoves
 MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     EvaluateNonWinLeaf(
-        // ConcreteSpaceInfoProvider &game_board,
         PieceColor cur_player,
         PieceColor initiating_player
     ) {
@@ -139,7 +136,6 @@ RatedMove
 MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     RateMove(
         Move move,
-        // ConcreteSpaceInfoProvider &game_board,
         PieceColor cur_player
     ) {
   auto piece_type = game_board_.GetType(move.start);
@@ -210,7 +206,6 @@ template <
 BestMoves
 MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     MinimaxRec(
-        // ConcreteSpaceInfoProvider &game_board,
         int search_depth,
         int alpha,
         int beta,
@@ -259,7 +254,6 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     for (auto rated_move : ranked_moves) {
       auto executed_move = game_board_.ExecuteMove(rated_move.move);
       auto cur_eval = MinimaxRec(
-                          // game_board,
                           search_depth - 1,
                           alpha,
                           beta,
@@ -298,7 +292,6 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     for (auto rated_move : ranked_moves) {
       auto executed_move = game_board_.ExecuteMove(rated_move.move);
       auto cur_eval = MinimaxRec(
-                          // game_board,
                           search_depth - 1,
                           alpha,
                           beta,
@@ -341,7 +334,7 @@ template <
 Move
 MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     RunMinimax(
-        ConcreteSpaceInfoProvider &game_board,
+        // ConcreteSpaceInfoProvider &game_board,
         int search_depth,
         int alpha,
         int beta,
@@ -351,7 +344,7 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     ) {
   ResetNodeCounter();
   auto minimax_result = MinimaxRec(
-      game_board,
+      // game_board,
       search_depth_,
       numeric_limits<int>::min(),
       numeric_limits<int>::max(),
