@@ -32,7 +32,7 @@ protected:
   }};
   NewGameBoard<HashCalculator> late_game_board_{kLateGameBoardMap};
 
-  const int standard_search_depth = 3;
+  const int standard_search_depth = 4;
 };
 
 TEST_F(MinimaxEvaluatorTest, TestConstructorsWithDefaultPiecePoints) {
@@ -61,9 +61,27 @@ TEST_F(MinimaxEvaluatorTest, TestConstructorsWithImportedPiecePoints) {
       };
 }
 
+TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelection) {
+  NewGameBoard<HashCalculator> starting_board;
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>
+      red_evaluator{
+          PieceColor::kRed,
+          standard_search_depth,
+          starting_board,
+          imported_piece_points
+      };
+
+  auto red_selected_move = red_evaluator.SelectMove();
+  EXPECT_TRUE(
+      (red_selected_move.start == BoardSpace{9, 1} &&
+       red_selected_move.end == BoardSpace{7, 2}) ||
+      (red_selected_move.start == BoardSpace{9, 7} &&
+       red_selected_move.end == BoardSpace{7, 6})
+  );
+}
+
 TEST_F(MinimaxEvaluatorTest, EndOfGameSelectorTest) {
 
-  NewGameBoard<HashCalculator> starting_board;
   MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>
       black_evaluator{
           PieceColor::kBlk,
@@ -73,17 +91,11 @@ TEST_F(MinimaxEvaluatorTest, EndOfGameSelectorTest) {
       };
 
   auto black_selected_move = black_evaluator.SelectMove();
-  auto black_executed_move = late_game_board_.ExecuteMove(black_selected_move);   
-  auto red_possible_moves = late_game_board_.CalcFinalMovesOf(PieceColor::kRed);
+  auto black_executed_move = late_game_board_.ExecuteMove(black_selected_move);
+  auto red_possible_moves =
+      late_game_board_.CalcFinalMovesOf(PieceColor::kRed);
   auto red_num_possible_moves = red_possible_moves.Size();
   EXPECT_TRUE(red_num_possible_moves == 0);
-
-
-  //   auto executed_move = end_of_game_board.ExecuteMove(selected_move);
-  //   auto red_possible_moves =
-  //       end_of_game_board.CalcFinalMovesOf(PieceColor::kRed);
-  //   auto red_num_possible_moves = red_possible_moves.Size();
-  //   EXPECT_TRUE(red_num_possible_moves == 0);
 }
 
 // TEST_F(MinimaxEvaluatorTest, EvaluateMove) {
