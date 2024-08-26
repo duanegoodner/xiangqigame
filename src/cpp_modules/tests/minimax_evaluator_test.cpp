@@ -21,7 +21,7 @@ protected:
 //       PiecePointsBuilder(internal_pts_spec);
   GamePointsArrayBuilder game_points_array_builder_ =
       GamePointsArrayBuilder(internal_pts_spec);
-  GameBoard<HashCalculator> game_board_;
+  NewGameBoard<HashCalculator> game_board_;
   // PiecePointsEvaluatorTest()
   //     : piece_points_buider_{PiecePointsBuilder()}
   //     , game_board_{GameBoard<HashCalculator>()} {};
@@ -34,7 +34,7 @@ TEST_F(PiecePointsEvaluatorTest, EvaluateMove) {
       PiecePoints(game_points_array_builder_.BuildGamePointsArray());
 
   auto piece_points_evaluator =
-      PiecePointsEvaluator<GameBoard<HashCalculator>, PiecePoints>(game_position_points);
+      MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>(game_position_points);
   auto black_points_total =
       piece_points_evaluator.GetPlayerTotal(PieceColor::kBlk, game_board_);
   auto red_points_total =

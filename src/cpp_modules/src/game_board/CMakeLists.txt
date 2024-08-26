@@ -9,7 +9,7 @@ target_link_libraries(
     common
     move_calculator
     minimax_evaluator
-    move_selector
+    # move_selector
     piece_moves
     nlohmann_json::nlohmann_json
     hash_calculator
@@ -20,7 +20,7 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${PROJECT_SOURCE_DIR}/src/move_calculator
     ${PROJECT_SOURCE_DIR}/src/hash_calculator
-    ${PROJECT_SOURCE_DIR}/src/move_selector
+    # ${PROJECT_SOURCE_DIR}/src/move_selector
     ${PROJECT_SOURCE_DIR}/src/piece_points
     ${PROJECT_SOURCE_DIR}/src/piece_moves
     ${PROJECT_SOURCE_DIR}/src/minimax_evaluator

@@ -100,11 +100,14 @@ public:
 // Currently not using since AI Player is currently in Python side of app.
 // If/when implement AI Player in C++, will move this interface definition to
 // C++ Player header file.
-template <typename ConcreteMoveEvaluator>
+template <
+    typename ConcreteMoveEvaluator,
+    typename ConcreteSpaceInfoProvider,
+    typename ConcretePieceValueProvider>
 class MoveEvaluatorInterface {
 public:
   Move SelectMove(
-      ConcreteMoveEvaluator::SpaceInfoProvider_t &game_board,
+      ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player
   ) {
     return static_cast<ConcreteMoveEvaluator::SpaceInfoProvider_t *>(this)
@@ -122,10 +125,12 @@ public:
 template <
     typename ConcreteSpaceInfoProvider,
     typename ConcretePieceValueProvider>
-class MinimaxMoveEvaluator
-    : public MoveEvaluatorInterface<MinimaxMoveEvaluator<
-          ConcreteSpaceInfoProvider,
-          ConcretePieceValueProvider>> {
+class MinimaxMoveEvaluator : public MoveEvaluatorInterface<
+                                 MinimaxMoveEvaluator<
+                                     ConcreteSpaceInfoProvider,
+                                     ConcretePieceValueProvider>,
+                                 ConcreteSpaceInfoProvider,
+                                 ConcretePieceValueProvider> {
 
 public:
   typedef ConcreteSpaceInfoProvider SpaceInfoProvider_t;
@@ -135,6 +140,10 @@ public:
   Move ImplementSelectMove(
       ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player
+  );
+  Points_t GetPlayerTotal(
+      PieceColor color,
+      ConcreteSpaceInfoProvider &game_board
   );
 
 private:
@@ -155,34 +164,34 @@ private:
       PieceType piece_type,
       BoardSpace space
   );
-  Points_t GetPlayerTotal(
-      PieceColor color,
-      ConcreteSpaceInfoProvider &game_board
-  );
 
   // Attributes moved from original MoveSelector
   int search_depth_;
   int node_counter_;
-  void ResetNodeCounter() {node_counter_ = 0; }
+  void ResetNodeCounter() { node_counter_ = 0; }
   std::vector<RatedMove> GenerateRandkedMoveList(
       ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player,
       MoveCollection &cur_player_moves
   );
-  BestMoves MinimaxRec(ConcreteSpaceInfoProvider &game_board,
-                       int search_depth,
-                       int alpha,
-                       int beta,
-                       PieceColor cur_player,
-                       PieceColor initiating_player,
-                       bool use_transposition_table = true);
-  Move RunMinimax(ConcreteSpaceInfoProvider &game_board,
-                       int search_depth,
-                       int alpha,
-                       int beta,
-                       PieceColor cur_player,
-                       PieceColor initiating_player,
-                       bool use_transposition_table = true);
+  BestMoves MinimaxRec(
+      ConcreteSpaceInfoProvider &game_board,
+      int search_depth,
+      int alpha,
+      int beta,
+      PieceColor cur_player,
+      PieceColor initiating_player,
+      bool use_transposition_table = true
+  );
+  Move RunMinimax(
+      ConcreteSpaceInfoProvider &game_board,
+      int search_depth,
+      int alpha,
+      int beta,
+      PieceColor cur_player,
+      PieceColor initiating_player,
+      bool use_transposition_table = true
+  );
 };
 
 /*
