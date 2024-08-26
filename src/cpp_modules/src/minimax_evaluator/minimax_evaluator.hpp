@@ -14,11 +14,14 @@
 // #include "piece_points.hpp"
 #include <board_components.hpp>
 #include <common.hpp>
-#include <move_selector.hpp>
+#include <evaluator_details.hpp>
+#include <utility_functs.hpp>
+// #include <move_selector.hpp>
 
 using namespace board_components;
 
-// CRTP INTERFACE: Evaluator <- SpaceInfoProvider (concrete example = GameBoard)
+// CRTP INTERFACE: Evaluator <- SpaceInfoProvider (concrete example =
+// GameBoard)
 template <typename ConcreteSpaceInfoProvider>
 class SpaceInfoProvider {
 public:
@@ -28,11 +31,15 @@ public:
   }
 
   PieceColor GetColor(BoardSpace space) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetColor(space);
+    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetColor(
+        space
+    );
   }
 
   PieceType GetType(BoardSpace space) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetType(space);
+    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetType(
+        space
+    );
   }
 
   TranspositionTableSearchResult SearchTranspositionTable(
@@ -59,17 +66,19 @@ public:
   }
 
   MoveCollection CalcFinalMovesOf(PieceColor color) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementCalcFinalMovesOf(
-        color
-    );
+    return static_cast<ConcreteSpaceInfoProvider *>(this)
+        ->ImplementCalcFinalMovesOf(color);
   };
 
   ExecutedMove ExecuteMove(Move move) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementExecuteMove(move);
+    return static_cast<ConcreteSpaceInfoProvider *>(this)
+        ->ImplementExecuteMove(move);
   }
 
   void UndoMove(ExecutedMove executed_move) {
-    static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementUndoMove(executed_move);
+    static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementUndoMove(
+        executed_move
+    );
   }
 };
 
@@ -87,44 +96,138 @@ public:
   }
 };
 
-/*
-Template for a class that has ConcreteSpaceInfoProvider, is constructed using
-ConcretePieceValueProvider, and implements the Evaluator interface specified by
-MoveSelector
- */
-
-template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
-class PiecePointsEvaluator
-    : public Evaluator<
-          PiecePointsEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>,
-          ConcreteSpaceInfoProvider> {
+// CRTP Interface: AIPlayer <- MoveEvaluatorInterface
+// Currently not using since AI Player is currently in Python side of app.
+// If/when implement AI Player in C++, will move this interface definition to
+// C++ Player header file.
+template <typename ConcreteMoveEvaluator>
+class MoveEvaluatorInterface {
 public:
-  PiecePointsEvaluator(ConcretePieceValueProvider game_position_points_);
-  PiecePointsEvaluator();
+  Move SelectMove(
+      ConcreteMoveEvaluator::SpaceInfoProvider_t &game_board,
+      PieceColor cur_player
+  ) {
+    return static_cast<ConcreteMoveEvaluator::SpaceInfoProvider_t *>(this)
+        ->ImplementSelectMove(game_board, cur_player);
+  }
+};
 
-  BestMoves ImplementEvaluateNonWinLeaf(
-      ConcreteSpaceInfoProvider &game_board,
-      PieceColor cur_player,
-      PieceColor initiating_player
-  );
+// CLASS TEMPLATE: MinimaxMoveEvaluator
+// IMPLEMENTS:
+//    MoveEvaluatorInterface
+// USES:
+//    ConcreteSpaceInfoProvider (e.g. a GameBoard) that implements
+//    SpaceInfoProvider ConcretePieceValueProvider (e.g. PiecePoints) that
+//    implements PieceValueProvider
+template <
+    typename ConcreteSpaceInfoProvider,
+    typename ConcretePieceValueProvider>
+class MinimaxMoveEvaluator
+    : public MoveEvaluatorInterface<MinimaxMoveEvaluator<
+          ConcreteSpaceInfoProvider,
+          ConcretePieceValueProvider>> {
 
-  RatedMove ImplementRateMove(
-      Move move,
+public:
+  typedef ConcreteSpaceInfoProvider SpaceInfoProvider_t;
+
+  MinimaxMoveEvaluator(ConcretePieceValueProvider game_position_points);
+  MinimaxMoveEvaluator();
+  Move ImplementSelectMove(
       ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player
   );
 
+private:
+  // Attributes that were part of original Minimax/PiecePonintsEvaluator
+  ConcretePieceValueProvider game_position_points_;
+  BestMoves EvaluateNonWinLeaf(
+      ConcreteSpaceInfoProvider &game_board,
+      PieceColor cur_player,
+      PieceColor initiating_player
+  );
+  RatedMove RateMove(
+      Move move,
+      ConcreteSpaceInfoProvider &game_board,
+      PieceColor cur_player
+  );
   Points_t GetValueOfPieceAtPosition(
       PieceColor color,
       PieceType piece_type,
       BoardSpace space
   );
+  Points_t GetPlayerTotal(
+      PieceColor color,
+      ConcreteSpaceInfoProvider &game_board
+  );
 
-  Points_t GetPlayerTotal(PieceColor color, ConcreteSpaceInfoProvider &game_board);
-
-private:
-  ConcretePieceValueProvider game_position_points_;
+  // Attributes moved from original MoveSelector
+  int search_depth_;
+  int node_counter_;
+  void ResetNodeCounter() {node_counter_ = 0; }
+  std::vector<RatedMove> GenerateRandkedMoveList(
+      ConcreteSpaceInfoProvider &game_board,
+      PieceColor cur_player,
+      MoveCollection &cur_player_moves
+  );
+  BestMoves MinimaxRec(ConcreteSpaceInfoProvider &game_board,
+                       int search_depth,
+                       int alpha,
+                       int beta,
+                       PieceColor cur_player,
+                       PieceColor initiating_player,
+                       bool use_transposition_table = true);
+  Move RunMinimax(ConcreteSpaceInfoProvider &game_board,
+                       int search_depth,
+                       int alpha,
+                       int beta,
+                       PieceColor cur_player,
+                       PieceColor initiating_player,
+                       bool use_transposition_table = true);
 };
+
+/*
+Template for a class that has ConcreteSpaceInfoProvider, is constructed using
+ConcretePieceValueProvider, and implements the Evaluator interface specified by
+MoveSelector
+ */
+// template <
+//     typename ConcreteSpaceInfoProvider,
+//     typename ConcretePieceValueProvider>
+// class PiecePointsEvaluator : public Evaluator<
+//                                  PiecePointsEvaluator<
+//                                      ConcreteSpaceInfoProvider,
+//                                      ConcretePieceValueProvider>,
+//                                  ConcreteSpaceInfoProvider> {
+// public:
+//   PiecePointsEvaluator(ConcretePieceValueProvider game_position_points_);
+//   PiecePointsEvaluator();
+
+//   BestMoves ImplementEvaluateNonWinLeaf(
+//       ConcreteSpaceInfoProvider &game_board,
+//       PieceColor cur_player,
+//       PieceColor initiating_player
+//   );
+
+//   RatedMove ImplementRateMove(
+//       Move move,
+//       ConcreteSpaceInfoProvider &game_board,
+//       PieceColor cur_player
+//   );
+
+//   Points_t GetValueOfPieceAtPosition(
+//       PieceColor color,
+//       PieceType piece_type,
+//       BoardSpace space
+//   );
+
+//   Points_t GetPlayerTotal(
+//       PieceColor color,
+//       ConcreteSpaceInfoProvider &game_board
+//   );
+
+// private:
+//   ConcretePieceValueProvider game_position_points_;
+// };
 
 #include <minimax_evaluator.tpp>
 
