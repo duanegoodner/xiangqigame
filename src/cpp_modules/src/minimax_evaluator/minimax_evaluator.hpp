@@ -100,15 +100,13 @@ public:
 // Currently not using since AI Player is currently in Python side of app.
 // If/when implement AI Player in C++, will move this interface definition to
 // C++ Player header file.
-template <
-    typename ConcreteMoveEvaluator>
+template <typename ConcreteMoveEvaluator>
 class MoveEvaluatorInterface {
 public:
-  Move SelectMove(
-      PieceColor cur_player
-  ) {
-    return static_cast<ConcreteMoveEvaluator *>(this)
-        ->ImplementSelectMove(cur_player);
+  Move SelectMove() {
+    return static_cast<ConcreteMoveEvaluator *>(this)->ImplementSelectMove(
+        // cur_player
+    );
   }
 };
 
@@ -122,35 +120,36 @@ public:
 template <
     typename ConcreteSpaceInfoProvider,
     typename ConcretePieceValueProvider>
-class MinimaxMoveEvaluator : public MoveEvaluatorInterface<
-                                 MinimaxMoveEvaluator<
-                                     ConcreteSpaceInfoProvider,
-                                     ConcretePieceValueProvider>> {
+class MinimaxMoveEvaluator
+    : public MoveEvaluatorInterface<MinimaxMoveEvaluator<
+          ConcreteSpaceInfoProvider,
+          ConcretePieceValueProvider>> {
 
 public:
-  // typedef ConcreteSpaceInfoProvider SpaceInfoProvider_t;
+  MinimaxMoveEvaluator(
+      PieceColor evaluating_player,
+      int starting_search_depth,
+      ConcreteSpaceInfoProvider &game_board,
+      ConcretePieceValueProvider game_position_points
+  );
 
-  MinimaxMoveEvaluator(ConcretePieceValueProvider game_position_points);
-  MinimaxMoveEvaluator();
-  Move ImplementSelectMove(
-      PieceColor cur_player
+  MinimaxMoveEvaluator(
+      PieceColor evaluating_player,
+      int starting_search_depth,
+      ConcreteSpaceInfoProvider &game_board
   );
-  Points_t GetPlayerTotal(
-      PieceColor color
-  );
+
+  Move ImplementSelectMove();
+  Points_t GetPlayerTotal(PieceColor color);
 
 private:
   // Attributes that were part of original Minimax/PiecePonintsEvaluator
+  PieceColor evaluating_player_;
   ConcretePieceValueProvider game_position_points_;
-  ConcreteSpaceInfoProvider game_board_;
-  BestMoves EvaluateNonWinLeaf(
-      PieceColor cur_player,
-      PieceColor initiating_player
-  );
-  RatedMove RateMove(
-      Move move,
-      PieceColor cur_player
-  );
+  ConcreteSpaceInfoProvider &game_board_;
+  BestMoves EvaluateNonWinLeaf(PieceColor cur_player);
+  BestMoves EvaluateEndOfGameLeaf(PieceColor cur_player);
+  RatedMove RateMove(Move move, PieceColor cur_player);
   Points_t GetValueOfPieceAtPosition(
       PieceColor color,
       PieceType piece_type,
@@ -158,32 +157,22 @@ private:
   );
 
   // Attributes moved from original MoveSelector
-  int search_depth_;
+  int starting_search_depth_;
   int node_counter_;
   void ResetNodeCounter() { node_counter_ = 0; }
-  std::vector<RatedMove> GenerateRandkedMoveList(
+  std::vector<RatedMove> GenerateRankedMoveList(
       PieceColor cur_player,
       MoveCollection &cur_player_moves
   );
   BestMoves MinimaxRec(
-      int search_depth,
+      int cur_search_depth,
       int alpha,
       int beta,
       PieceColor cur_player,
-      PieceColor initiating_player,
       bool use_transposition_table = true
   );
-  Move RunMinimax(
-      // ConcreteSpaceInfoProvider &game_board,
-      int search_depth,
-      int alpha,
-      int beta,
-      PieceColor cur_player,
-      PieceColor initiating_player,
-      bool use_transposition_table = true
-  );
+  Move RunMinimax(bool use_transposition_table = true);
 };
-
 
 #include <minimax_evaluator.tpp>
 
