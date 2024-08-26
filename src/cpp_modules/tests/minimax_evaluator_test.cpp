@@ -36,15 +36,15 @@ TEST_F(PiecePointsEvaluatorTest, EvaluateMove) {
   auto piece_points_evaluator =
       MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>(game_position_points);
   auto black_points_total =
-      piece_points_evaluator.GetPlayerTotal(PieceColor::kBlk, game_board_);
+      piece_points_evaluator.GetPlayerTotal(PieceColor::kBlk);
   auto red_points_total =
-      piece_points_evaluator.GetPlayerTotal(PieceColor::kRed, game_board_);
+      piece_points_evaluator.GetPlayerTotal(PieceColor::kRed);
 
   auto red_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
   auto executed_move = game_board_.ExecuteMove(red_moves.moves[0]);
 
   auto red_new_points_total =
-      piece_points_evaluator.GetPlayerTotal(PieceColor::kRed, game_board_);
+      piece_points_evaluator.GetPlayerTotal(PieceColor::kRed);
 }
 
 int main(int argc, char **argv) {

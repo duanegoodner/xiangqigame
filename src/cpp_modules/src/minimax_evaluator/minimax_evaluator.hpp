@@ -101,17 +101,14 @@ public:
 // If/when implement AI Player in C++, will move this interface definition to
 // C++ Player header file.
 template <
-    typename ConcreteMoveEvaluator,
-    typename ConcreteSpaceInfoProvider,
-    typename ConcretePieceValueProvider>
+    typename ConcreteMoveEvaluator>
 class MoveEvaluatorInterface {
 public:
   Move SelectMove(
-      ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player
   ) {
-    return static_cast<ConcreteMoveEvaluator::SpaceInfoProvider_t *>(this)
-        ->ImplementSelectMove(game_board, cur_player);
+    return static_cast<ConcreteMoveEvaluator *>(this)
+        ->ImplementSelectMove(cur_player);
   }
 };
 
@@ -128,35 +125,34 @@ template <
 class MinimaxMoveEvaluator : public MoveEvaluatorInterface<
                                  MinimaxMoveEvaluator<
                                      ConcreteSpaceInfoProvider,
-                                     ConcretePieceValueProvider>,
-                                 ConcreteSpaceInfoProvider,
-                                 ConcretePieceValueProvider> {
+                                     ConcretePieceValueProvider>> {
 
 public:
-  typedef ConcreteSpaceInfoProvider SpaceInfoProvider_t;
+  // typedef ConcreteSpaceInfoProvider SpaceInfoProvider_t;
 
   MinimaxMoveEvaluator(ConcretePieceValueProvider game_position_points);
   MinimaxMoveEvaluator();
   Move ImplementSelectMove(
-      ConcreteSpaceInfoProvider &game_board,
+      // ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player
   );
   Points_t GetPlayerTotal(
-      PieceColor color,
-      ConcreteSpaceInfoProvider &game_board
+      PieceColor color
+      // ConcreteSpaceInfoProvider &game_board
   );
 
 private:
   // Attributes that were part of original Minimax/PiecePonintsEvaluator
   ConcretePieceValueProvider game_position_points_;
+  ConcreteSpaceInfoProvider game_board_;
   BestMoves EvaluateNonWinLeaf(
-      ConcreteSpaceInfoProvider &game_board,
+      // ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player,
       PieceColor initiating_player
   );
   RatedMove RateMove(
       Move move,
-      ConcreteSpaceInfoProvider &game_board,
+      // ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player
   );
   Points_t GetValueOfPieceAtPosition(
@@ -170,12 +166,12 @@ private:
   int node_counter_;
   void ResetNodeCounter() { node_counter_ = 0; }
   std::vector<RatedMove> GenerateRandkedMoveList(
-      ConcreteSpaceInfoProvider &game_board,
+      // ConcreteSpaceInfoProvider &game_board,
       PieceColor cur_player,
       MoveCollection &cur_player_moves
   );
   BestMoves MinimaxRec(
-      ConcreteSpaceInfoProvider &game_board,
+      // ConcreteSpaceInfoProvider &game_board,
       int search_depth,
       int alpha,
       int beta,
@@ -194,49 +190,6 @@ private:
   );
 };
 
-/*
-Template for a class that has ConcreteSpaceInfoProvider, is constructed using
-ConcretePieceValueProvider, and implements the Evaluator interface specified by
-MoveSelector
- */
-// template <
-//     typename ConcreteSpaceInfoProvider,
-//     typename ConcretePieceValueProvider>
-// class PiecePointsEvaluator : public Evaluator<
-//                                  PiecePointsEvaluator<
-//                                      ConcreteSpaceInfoProvider,
-//                                      ConcretePieceValueProvider>,
-//                                  ConcreteSpaceInfoProvider> {
-// public:
-//   PiecePointsEvaluator(ConcretePieceValueProvider game_position_points_);
-//   PiecePointsEvaluator();
-
-//   BestMoves ImplementEvaluateNonWinLeaf(
-//       ConcreteSpaceInfoProvider &game_board,
-//       PieceColor cur_player,
-//       PieceColor initiating_player
-//   );
-
-//   RatedMove ImplementRateMove(
-//       Move move,
-//       ConcreteSpaceInfoProvider &game_board,
-//       PieceColor cur_player
-//   );
-
-//   Points_t GetValueOfPieceAtPosition(
-//       PieceColor color,
-//       PieceType piece_type,
-//       BoardSpace space
-//   );
-
-//   Points_t GetPlayerTotal(
-//       PieceColor color,
-//       ConcreteSpaceInfoProvider &game_board
-//   );
-
-// private:
-//   ConcretePieceValueProvider game_position_points_;
-// };
 
 #include <minimax_evaluator.tpp>
 
