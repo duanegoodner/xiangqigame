@@ -4,7 +4,8 @@
 // Last Modified: 2024-08-16
 
 // Description:
-// Implements pybind module that exposes GameBoard and related classes / functions to Python.
+// Implements pybind module that exposes GameBoard and related classes /
+// functions to Python.
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -12,13 +13,23 @@
 #include <board_components.hpp>
 #include <game_board.hpp>
 #include <hash_calculator.hpp>
+#include <minimax_evaluator.hpp>
 #include <piece_points.hpp>
 
 namespace py = pybind11;
 using namespace py::literals;
 using namespace board_components;
+using namespace piece_points;
 
-PYBIND11_MODULE(GameBoardPy, m) {
+// class MinimaxMoveEvaluatorPy
+//     : public MoveEvaluatorInterface<
+//           MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>>
+//           {};
+
+// class GameBoardPy : public SpaceInfoProvider<HashCalculator> {};
+
+PYBIND11_MODULE(XiangqigamePy, m) {
+
   py::class_<BoardSpace>(m, "BoardSpace")
       .def(py::init<int, int>(), "rank"_a, "file"_a)
       .def_readonly("rank", &BoardSpace::rank)
@@ -73,7 +84,11 @@ PYBIND11_MODULE(GameBoardPy, m) {
       .def(py::init<>())
       .def("map", &NewGameBoard<HashCalculator>::map)
       .def("ExecuteMove", &NewGameBoard<HashCalculator>::ExecuteMove, "move"_a)
-      .def("UndoMove", &NewGameBoard<HashCalculator>::UndoMove, "executed_move"_a)
+      .def(
+          "UndoMove",
+          &NewGameBoard<HashCalculator>::UndoMove,
+          "executed_move"_a
+      )
       .def(
           "GetAllSpacesOccupiedBy",
           &NewGameBoard<HashCalculator>::GetAllSpacesOccupiedBy,
@@ -89,4 +104,13 @@ PYBIND11_MODULE(GameBoardPy, m) {
       .def("GetColor", &NewGameBoard<HashCalculator>::GetColor, "space"_a);
 
   m.def("opponent_of", &opponent_of);
+
+  py::class_<MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>>(m, "MinimaxMoveSelectorPy")
+      .def(
+          py::init<PieceColor, int, NewGameBoard<HashCalculator>&>(),
+          "evaluating_player"_a,
+          "search_depth"_a,
+          "game_board"_a
+      )
+      .def("select_move", &MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>::SelectMove);
 }
