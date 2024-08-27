@@ -1,7 +1,7 @@
 #include <game_board.hpp>
 #include <gtest/gtest.h>
 #include <hash_calculator.hpp>
-#include <minimax_evaluator.hpp>
+#include <move_evaluators.hpp>
 #include <piece_points.hpp>
 #include <utility_functs.hpp>
 

@@ -20,7 +20,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/board_components
     ${PROJECT_SOURCE_DIR}/src/utility_functs
     ${PROJECT_SOURCE_DIR}/src/json_internal
-    ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
+    ${PROJECT_SOURCE_DIR}/src/move_evaluators
     # ${PROJECT_SOURCE_DIR}/src/move_selector
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/json_internal)
@@ -45,7 +45,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/board_components
     ${PROJECT_SOURCE_DIR}/src/json_internal
     ${PROJECT_SOURCE_DIR}/src/utility_functs
-    ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
+    ${PROJECT_SOURCE_DIR}/src/move_evaluators
     # ${PROJECT_SOURCE_DIR}/src/move_selector
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec)
 

@@ -1,4 +1,4 @@
-// Filename: minimax_evaluator.hpp
+// Filename: move_evaluators.hpp
 // Author: Duane Goodner
 // Created: 2022-12-17
 // Last Modified: 2024-08-16
@@ -11,12 +11,10 @@
 #ifndef _MINIMAX_EVALUATOR_
 #define _MINIMAX_EVALUATOR_
 
-// #include "piece_points.hpp"
 #include <board_components.hpp>
 #include <common.hpp>
 #include <evaluator_details.hpp>
 #include <utility_functs.hpp>
-// #include <move_selector.hpp>
 
 using namespace board_components;
 
@@ -155,8 +153,6 @@ private:
       PieceType piece_type,
       BoardSpace space
   );
-
-  // Attributes moved from original MoveSelector
   int starting_search_depth_;
   int node_counter_;
   void ResetNodeCounter() { node_counter_ = 0; }

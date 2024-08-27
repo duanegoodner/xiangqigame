@@ -13,7 +13,7 @@
 #include <board_components.hpp>
 #include <common.hpp>
 #include <game_board_details.hpp>
-#include <minimax_evaluator.hpp>
+#include <move_evaluators.hpp>
 #include <move_calculator.hpp>
 #include <vector>
 

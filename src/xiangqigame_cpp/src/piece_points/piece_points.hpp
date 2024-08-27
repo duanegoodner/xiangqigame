@@ -12,7 +12,7 @@
 
 #include <board_components.hpp>
 #include <common.hpp>
-#include <minimax_evaluator.hpp>
+#include <move_evaluators.hpp>
 #include <nlohmann/json.hpp>
 #include <piece_points_details.hpp>
 #include <piece_points_spec.hpp>

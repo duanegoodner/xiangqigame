@@ -13,7 +13,7 @@
 
 #include <board_components.hpp>
 #include <hash_calculator.hpp>
-#include <minimax_evaluator.hpp>
+#include <move_evaluators.hpp>
 // #include <move_selector.hpp>
 #include <piece_points.hpp>
 

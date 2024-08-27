@@ -7,7 +7,7 @@
 #include <gtest/gtest.h>
 #include <hash_calculator.hpp>
 #include <iostream>
-#include <minimax_evaluator.hpp>
+#include <move_evaluators.hpp>
 #include <move_selector.hpp>
 #include <piece_points.hpp>
 

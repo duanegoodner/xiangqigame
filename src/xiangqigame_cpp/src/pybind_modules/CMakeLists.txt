@@ -24,7 +24,7 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/json_internal
     ${PROJECT_SOURCE_DIR}/src/hash_calculator
     ${PROJECT_SOURCE_DIR}/src/move_calculator
-    ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
+    ${PROJECT_SOURCE_DIR}/src/move_evaluators
     ${PROJECT_SOURCE_DIR}/src/piece_points
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
     ${CMAKE_CURRENT_SOURCE_DIR})
