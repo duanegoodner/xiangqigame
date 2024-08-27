@@ -69,24 +69,24 @@ PYBIND11_MODULE(GameBoardPy, m) {
       .value("kSol", kSol)
       .export_values();
 
-  py::class_<GameBoard<HashCalculator>>(m, "GameBoard")
+  py::class_<NewGameBoard<HashCalculator>>(m, "GameBoard")
       .def(py::init<>())
-      .def("map", &GameBoard<HashCalculator>::map)
-      .def("ExecuteMove", &GameBoard<HashCalculator>::ExecuteMove, "move"_a)
-      .def("UndoMove", &GameBoard<HashCalculator>::UndoMove, "executed_move"_a)
+      .def("map", &NewGameBoard<HashCalculator>::map)
+      .def("ExecuteMove", &NewGameBoard<HashCalculator>::ExecuteMove, "move"_a)
+      .def("UndoMove", &NewGameBoard<HashCalculator>::UndoMove, "executed_move"_a)
       .def(
           "GetAllSpacesOccupiedBy",
-          &GameBoard<HashCalculator>::GetAllSpacesOccupiedBy,
+          &NewGameBoard<HashCalculator>::GetAllSpacesOccupiedBy,
           "color"_a
       )
       .def(
           "CalcFinalMovesOf",
-          &GameBoard<HashCalculator>::CalcFinalMovesOf,
+          &NewGameBoard<HashCalculator>::CalcFinalMovesOf,
           "color"_a
       )
-      .def("IsInCheck", &GameBoard<HashCalculator>::IsInCheck, "color"_a)
-      .def("GetType", &GameBoard<HashCalculator>::GetType, "space"_a)
-      .def("GetColor", &GameBoard<HashCalculator>::GetColor, "space"_a);
+      .def("IsInCheck", &NewGameBoard<HashCalculator>::IsInCheck, "color"_a)
+      .def("GetType", &NewGameBoard<HashCalculator>::GetType, "space"_a)
+      .def("GetColor", &NewGameBoard<HashCalculator>::GetColor, "space"_a);
 
   m.def("opponent_of", &opponent_of);
 }

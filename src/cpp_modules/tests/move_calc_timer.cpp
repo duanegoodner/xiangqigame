@@ -6,7 +6,7 @@
 using namespace std::chrono;
 
 int main() {
-  auto my_game_board = GameBoard<HashCalculator>();
+  auto my_game_board = NewGameBoard<HashCalculator>();
 
   auto start = high_resolution_clock::now();
 

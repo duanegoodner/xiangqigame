@@ -98,27 +98,52 @@ TEST_F(MinimaxEvaluatorTest, EndOfGameSelectorTest) {
   EXPECT_TRUE(red_num_possible_moves == 0);
 }
 
-// TEST_F(MinimaxEvaluatorTest, EvaluateMove) {
+TEST_F(MinimaxEvaluatorTest, PlayGame) {
+  NewGameBoard<HashCalculator> game_board;
 
-//   auto game_position_points =
-//       PiecePoints(game_points_array_builder_.BuildGamePointsArray());
+  int red_search_depth{2};
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>
+      red_evaluator{
+          PieceColor::kRed,
+          red_search_depth,
+          game_board,
+          imported_piece_points
+      };
 
-//   auto move_evaluator_red =
-//       MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>(
-//           PieceColor::kRed,
-//           game_position_points
-//       );
-//   auto black_points_total =
-//       piece_points_evaluator.GetPlayerTotal(PieceColor::kBlk);
-//   auto red_points_total =
-//       piece_points_evaluator.GetPlayerTotal(PieceColor::kRed);
+  int black_search_depth{3};
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>
+      black_evaluator{
+          PieceColor::kBlk,
+          black_search_depth,
+          game_board,
+          imported_piece_points
+      };
 
-//   auto red_moves = game_board_.CalcFinalMovesOf(PieceColor::kRed);
-//   auto executed_move = game_board_.ExecuteMove(red_moves.moves[0]);
+  PieceColor losing_player{};
+  
+  while (true) {
+    auto red_moves = game_board.CalcFinalMovesOf(PieceColor::kRed);
+    if (red_moves.Size() == 0) {
+        std::cout << "Red has no available moves" << std::endl;
+        losing_player = PieceColor::kRed;
+        break;
+    }
+    auto red_selected_move = red_evaluator.SelectMove();
+    auto red_executed_move = game_board.ExecuteMove(red_selected_move);
 
-//   auto red_new_points_total =
-//       piece_points_evaluator.GetPlayerTotal(PieceColor::kRed);
-// }
+    auto black_moves = game_board.CalcFinalMovesOf(PieceColor::kBlk);
+    if (black_moves.Size() == 0) {
+        std::cout << "Black has no available moves" << std::endl;
+        losing_player = PieceColor::kBlk;
+        break;
+    }
+
+    auto black_selected_move = black_evaluator.SelectMove();
+    auto black_executed_move = game_board.ExecuteMove(black_selected_move);
+  }
+
+  EXPECT_TRUE(losing_player == PieceColor::kRed);
+}
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

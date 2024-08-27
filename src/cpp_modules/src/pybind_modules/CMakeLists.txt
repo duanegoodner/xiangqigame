@@ -33,7 +33,7 @@ target_link_libraries(
     common
     hash_calculator
     game_board
-    move_selector
+    # move_selector
     piece_points
     piece_points_spec
     utility_functs
@@ -44,7 +44,7 @@ target_link_libraries(
     
 target_include_directories(
     MoveSelectorPy PUBLIC
-    ${PROJECT_SOURCE_DIR}/src/move_selector
+    # ${PROJECT_SOURCE_DIR}/src/move_selector
     ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
     ${PROJECT_SOURCE_DIR}/src/piece_points
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
