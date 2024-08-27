@@ -36,3 +36,9 @@ include_directories("${CMAKE_BINARY_DIR}")
 
 include("${CMAKE_UTIL_DIR}/fetch_packages.cmake")
 include("${CMAKE_UTIL_DIR}/add_subdirectories.cmake")
+
+# Find Python 3 interpreter
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+
+# Display the path to the Python interpreter
+message(STATUS "Python 3 interpreter: ${Python3_EXECUTABLE}")

@@ -30,31 +30,3 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR})
 
 install(TARGETS XiangqigamePy DESTINATION .)
-
-# pybind11_add_module(MoveSelectorPy move_selector_py.cpp)
-# target_link_libraries(
-#     MoveSelectorPy PRIVATE
-#     board_components
-#     board_utilities
-#     common
-#     hash_calculator
-#     game_board
-#     piece_points
-#     piece_points_spec
-#     utility_functs
-#     json_internal
-#     nlohmann_json::nlohmann_json
-#     nlohmann_json_schema_validator
-#     )
-    
-# target_include_directories(
-#     MoveSelectorPy PUBLIC
-#     ${PROJECT_SOURCE_DIR}/src/minimax_evaluator
-#     ${PROJECT_SOURCE_DIR}/src/piece_points
-#     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
-#     ${PROJECT_SOURCE_DIR}/src/game_board
-#     ${PROJECT_SOURCE_DIR}/src/hash_calculator
-#     ${PROJECT_SOURCE_DIR}/src/move_calculator
-#     ${PROJECT_SOURCE_DIR}/src/json_internal)
-
-# install(TARGETS MoveSelectorPy DESTINATION .)

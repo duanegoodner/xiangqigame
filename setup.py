@@ -13,6 +13,6 @@ setup(
         ]
     },
     zip_safe=False,
-    cmake_install_dir="./src/cpp_modules/src/pybind_modules",
-    cmake_source_dir="./src/cpp_modules"
+    cmake_install_dir="./src/xiangqigame_cpp",
+    cmake_source_dir="./src/xiangqigame_cpp"
 )

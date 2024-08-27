@@ -97,5 +97,5 @@
         "shared_mutex": "cpp",
         "syncstream": "cpp"
     },
-    "cmake.sourceDirectory": "${workspaceFolder}/project/src/cpp_modules"
+    "cmake.sourceDirectory": "/home/duane/workspace/project/src/xiangqigame_cpp"
 }
