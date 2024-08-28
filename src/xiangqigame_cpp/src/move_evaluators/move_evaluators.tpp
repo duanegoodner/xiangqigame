@@ -223,8 +223,10 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
   node_counter_ += 1;
   MinimaxResultType result_type{};
 
-  auto state_score_search_result =
-      game_board_.SearchTranspositionTable(evaluating_player_, cur_search_depth);
+  auto state_score_search_result = game_board_.SearchTranspositionTable(
+      evaluating_player_,
+      cur_search_depth
+  );
   if (state_score_search_result.found && use_transposition_table) {
     return state_score_search_result.table_entry.best_moves;
   }
@@ -233,13 +235,23 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
   if (cur_moves.moves.size() == 0) {
     result_type = MinimaxResultType::kEndGameLeaf;
     auto result = EvaluateEndOfGameLeaf(cur_player);
-    game_board_.RecordCurrentStateScore(evaluating_player_, cur_search_depth, result_type, result);
+    game_board_.RecordCurrentStateScore(
+        evaluating_player_,
+        cur_search_depth,
+        result_type,
+        result
+    );
     return result;
   }
   if (cur_search_depth == 0) {
     result_type = MinimaxResultType::kStandardLeaf;
     auto result = EvaluateNonWinLeaf(cur_player);
-    game_board_.RecordCurrentStateScore(evaluating_player_, cur_search_depth, result_type, result);
+    game_board_.RecordCurrentStateScore(
+        evaluating_player_,
+        cur_search_depth,
+        result_type,
+        result
+    );
     return result;
   }
   if (cur_player == evaluating_player_) {

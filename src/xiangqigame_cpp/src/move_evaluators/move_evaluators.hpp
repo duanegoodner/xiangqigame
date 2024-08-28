@@ -109,12 +109,15 @@ public:
 };
 
 // CLASS TEMPLATE: MinimaxMoveEvaluator
-// IMPLEMENTS:
+// IMPLEMENTS INTERFACE:
 //    MoveEvaluatorInterface
 // USES:
-//    ConcreteSpaceInfoProvider (e.g. a GameBoard) that implements
-//    SpaceInfoProvider ConcretePieceValueProvider (e.g. PiecePoints) that
+//    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
+//    SpaceInfoProvider.
+//    ConcretePieceValueProvider (e.g. PiecePoints) that
 //    implements PieceValueProvider
+// Uses minimax algorithm with alpha-beta pruning to select a move for
+// evaluating_player_.
 template <
     typename ConcreteSpaceInfoProvider,
     typename ConcretePieceValueProvider>
@@ -141,7 +144,6 @@ public:
   Points_t GetPlayerTotal(PieceColor color);
 
 private:
-  // Attributes that were part of original Minimax/PiecePonintsEvaluator
   PieceColor evaluating_player_;
   ConcretePieceValueProvider game_position_points_;
   ConcreteSpaceInfoProvider &game_board_;
@@ -170,6 +172,36 @@ private:
   Move RunMinimax(bool use_transposition_table = true);
 };
 
-#include <minimax_evaluator.tpp>
+// CLASS TEMPLATE: RandomMoveEvaluator
+// IMPLEMENTS INTERFACE:
+//    MoveEvaluatorInterface
+// USES:
+//    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
+//    SpaceInfoProvider.
+// Randomly chooses one of the legal moves available to evaluating_player_.
+template <typename ConcreteSpaceInfoProvider>
+class RandomMoveEvaluator
+    : public MoveEvaluatorInterface<
+          RandomMoveEvaluator<ConcreteSpaceInfoProvider>> {
+public:
+  RandomMoveEvaluator(
+      PieceColor evaluating_player,
+      ConcreteSpaceInfoProvider &game_board
+  )
+      : evaluating_player_{evaluating_player}
+      , game_board_{game_board} {};
+  Move ImplementSelectMove() {
+    auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
+    auto selected_move_index =
+        utility_functs::random((size_t)0, allowed_moves.moves.size() - 1);
+    return allowed_moves.moves[selected_move_index];
+  };
+
+private:
+  PieceColor evaluating_player_;
+  ConcreteSpaceInfoProvider &game_board_;
+};
+
+#include <move_evaluators.tpp>
 
 #endif /* MINIMAX_EVALUATOR */

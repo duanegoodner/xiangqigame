@@ -2,7 +2,8 @@ import argparse
 from dataclasses import dataclass
 from typing import NamedTuple, Callable
 from xiangqigame.players import AIPlayer, HumanPlayer, Player
-from cpp_modules.src.pybind_modules.MoveSelectorPy import MinimaxMoveSelectorPy, RandomMoveSelector
+from xiangqigame_cpp.XiangqigamePy import MinimaxMoveSelectorPy, RandomMoveSelectorPy
+# from cpp_modules.src.pybind_modules.MoveSelectorPy import MinimaxMoveSelectorPy, RandomMoveSelector
 
 
 @dataclass
@@ -26,7 +27,7 @@ class XiangqiGameCommandInterpreter:
     }
 
     _move_selector_dispatch = {
-        "random": RandomMoveSelector,
+        "random": RandomMoveSelectorPy,
         "minimax": MinimaxMoveSelectorPy,
         None: None
     }

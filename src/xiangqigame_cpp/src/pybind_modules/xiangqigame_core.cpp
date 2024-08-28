@@ -21,14 +21,7 @@ using namespace py::literals;
 using namespace board_components;
 using namespace piece_points;
 
-// class MinimaxMoveEvaluatorPy
-//     : public MoveEvaluatorInterface<
-//           MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>>
-//           {};
-
-// class GameBoardPy : public SpaceInfoProvider<HashCalculator> {};
-
-PYBIND11_MODULE(XiangqigamePy, m) {
+PYBIND11_MODULE(xiangqigame_core, m) {
 
   py::class_<BoardSpace>(m, "BoardSpace")
       .def(py::init<int, int>(), "rank"_a, "file"_a)
@@ -105,12 +98,32 @@ PYBIND11_MODULE(XiangqigamePy, m) {
 
   m.def("opponent_of", &opponent_of);
 
-  py::class_<MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>>(m, "MinimaxMoveSelectorPy")
+  py::class_<MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>>(
+      m,
+      "MinimaxMoveEvaluator"
+  )
       .def(
-          py::init<PieceColor, int, NewGameBoard<HashCalculator>&>(),
+          py::init<PieceColor, int, NewGameBoard<HashCalculator> &>(),
           "evaluating_player"_a,
           "search_depth"_a,
           "game_board"_a
       )
-      .def("select_move", &MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>::SelectMove);
+      .def(
+          "select_move",
+          &MinimaxMoveEvaluator<NewGameBoard<HashCalculator>, PiecePoints>::
+              SelectMove
+      );
+  py::class_<RandomMoveEvaluator<NewGameBoard<HashCalculator>>>(
+      m,
+      "RandomMoveEvaluator"
+  )
+      .def(
+          py::init<PieceColor, NewGameBoard<HashCalculator> &>(),
+          "evaluating_player"_a,
+          "game_board"_a
+      )
+      .def(
+          "select_move",
+          &RandomMoveEvaluator<NewGameBoard<HashCalculator>>::SelectMove
+      );
 }

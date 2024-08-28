@@ -1,9 +1,9 @@
 # add_compile_options(-Wall -Wextra -O3)
 
 
-pybind11_add_module(XiangqigamePy game_board_py.cpp)
+pybind11_add_module(xiangqigame_core xiangqigame_core.cpp)
 target_link_libraries(
-    XiangqigamePy PRIVATE
+    xiangqigame_core PRIVATE
     board_components
     board_utilities
     common
@@ -18,7 +18,7 @@ target_link_libraries(
     )
 
 target_include_directories(
-    XiangqigamePy PRIVATE
+    xiangqigame_core PRIVATE
     ${PROJECT_SOURCE_DIR}/src/game_board
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/json_internal
@@ -29,4 +29,4 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
     ${CMAKE_CURRENT_SOURCE_DIR})
 
-install(TARGETS XiangqigamePy DESTINATION .)
+install(TARGETS xiangqigame_core DESTINATION .)

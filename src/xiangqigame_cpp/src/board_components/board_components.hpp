@@ -96,6 +96,7 @@ struct BoardSpace {
   bool operator!=(const BoardSpace other) const {
     return (rank != other.rank) || (file != other.file);
   }
+
 };
 
 struct Move {
