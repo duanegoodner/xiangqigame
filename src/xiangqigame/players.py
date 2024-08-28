@@ -12,8 +12,8 @@ from xiangqigame_cpp.xiangqigame_core import (
     PieceColor,
     Move,
     MoveCollection,
-    MinimaxMoveSelectorPy,
-    RandomMoveSelector,
+    MinimaxMoveEvaluator,
+    RandomMoveEvaluator,
 )
 
 
@@ -71,14 +71,14 @@ class AIPlayer(Player):
     def __init__(
         self,
         color: PieceColor,
-        move_selector: MinimaxMoveSelectorPy | RandomMoveSelector,
+        move_evaluator: MinimaxMoveEvaluator | RandomMoveEvaluator,
     ):
         super().__init__(color)
-        self._move_selector = move_selector
+        self._move_evaluator = move_evaluator
 
     def propose_move(self, game_board: GameBoard, cur_moves: MoveCollection) -> Move:
-        proposed_move = self._move_selector.select_move(
-            game_board=game_board, piece_color=self._color
+        proposed_move = self._move_evaluator.select_move(
+            # game_board=game_board, piece_color=self._color
         )
         return proposed_move
 

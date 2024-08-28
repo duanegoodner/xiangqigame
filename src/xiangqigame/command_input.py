@@ -9,8 +9,8 @@ from xiangqigame_cpp.xiangqigame_core import MinimaxMoveEvaluator, RandomMoveEva
 @dataclass
 class PlayerInput:
     player_type: Callable[..., Player]
-    algo: Callable[..., RandomMoveSelector | MinimaxMoveSelectorPy]
-    strength: int
+    algo: Callable[..., RandomMoveEvaluator | MinimaxMoveEvaluator]
+    strength: int   
 
 
 @dataclass
@@ -27,8 +27,8 @@ class XiangqiGameCommandInterpreter:
     }
 
     _move_selector_dispatch = {
-        "random": RandomMoveSelectorPy,
-        "minimax": MinimaxMoveSelectorPy,
+        "random": RandomMoveEvaluator,
+        "minimax": MinimaxMoveEvaluator,
         None: None
     }
 

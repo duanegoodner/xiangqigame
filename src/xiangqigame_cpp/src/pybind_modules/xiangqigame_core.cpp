@@ -105,7 +105,7 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .def(
           py::init<PieceColor, int, NewGameBoard<HashCalculator> &>(),
           "evaluating_player"_a,
-          "search_depth"_a,
+          "starting_search_depth"_a,
           "game_board"_a
       )
       .def(
