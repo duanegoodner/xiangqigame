@@ -82,7 +82,20 @@
         "bitset": "cpp",
         "ranges": "cpp",
         "span": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "future": "cpp",
+        "barrier": "cpp",
+        "cfenv": "cpp",
+        "charconv": "cpp",
+        "coroutine": "cpp",
+        "csetjmp": "cpp",
+        "csignal": "cpp",
+        "cuchar": "cpp",
+        "source_location": "cpp",
+        "latch": "cpp",
+        "scoped_allocator": "cpp",
+        "shared_mutex": "cpp",
+        "syncstream": "cpp"
     },
-    "cmake.sourceDirectory": "${workspaceFolder}/project/src/cpp_modules"
+    "cmake.sourceDirectory": "/home/duane/workspace/project/src/xiangqigame_cpp"
 }

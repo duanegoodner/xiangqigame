@@ -1,6 +1,6 @@
 from typing import Dict, List
 import xiangqigame.terminal_output as msg
-from cpp_modules.src.pybind_modules.GameBoardPy import (
+from xiangqigame_cpp.xiangqigame_core import (
     GameBoard,
     Move,
     MoveCollection,
@@ -18,6 +18,7 @@ class Game:
     def __init__(
         self,
         players: Dict[PieceColor, Player],
+        game_board: GameBoard,
         # red_player: Player,
         # black_player: Player,
         status_reporter: GameStatusReporter = msg.TerminalStatusReporter(),
@@ -25,7 +26,7 @@ class Game:
     ):
         self._game_state = GameState.UNFINISHED
         self._whose_turn = PieceColor.kRed
-        self._board = GameBoard()
+        self._board = game_board
         self._players = players
         self._status_reporter = status_reporter
         if move_log is None:
