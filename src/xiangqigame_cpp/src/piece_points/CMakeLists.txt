@@ -10,7 +10,6 @@ target_link_libraries(
     nlohmann_json_schema_validator
     utility_functs
     minimax_evaluator
-    # move_selector
     piece_points_spec
 )
 
@@ -21,7 +20,6 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/utility_functs
     ${PROJECT_SOURCE_DIR}/src/json_internal
     ${PROJECT_SOURCE_DIR}/src/move_evaluators
-    # ${PROJECT_SOURCE_DIR}/src/move_selector
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/json_internal)
 
@@ -34,7 +32,6 @@ target_link_libraries(
     piece_points
     piece_points_spec
     minimax_evaluator
-    # move_selector
     nlohmann_json::nlohmann_json
     nlohmann_json_schema_validator
     utility_functs
@@ -46,7 +43,6 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/json_internal
     ${PROJECT_SOURCE_DIR}/src/utility_functs
     ${PROJECT_SOURCE_DIR}/src/move_evaluators
-    # ${PROJECT_SOURCE_DIR}/src/move_selector
     ${PROJECT_SOURCE_DIR}/src/piece_points_spec)
 
 # add_executable(
