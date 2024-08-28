@@ -26,7 +26,7 @@ class XiangqiGameCommandInterpreter:
         None: None
     }
 
-    _move_selector_dispatch = {
+    _move_evaluator_dispatch = {
         "random": RandomMoveEvaluator,
         "minimax": MinimaxMoveEvaluator,
         None: None
@@ -38,12 +38,12 @@ class XiangqiGameCommandInterpreter:
     def interpret_command(self):
         red_player_input = PlayerInput(
             player_type=self._player_type_dispatch[self._command_input.red_player_type],
-            algo=self._move_selector_dispatch[self._command_input.red_algo],
+            algo=self._move_evaluator_dispatch[self._command_input.red_algo],
             strength=self._command_input.red_strength)
 
         black_player_input = PlayerInput(
             player_type=self._player_type_dispatch[self._command_input.black_player_type],
-            algo=self._move_selector_dispatch[self._command_input.black_algo],
+            algo=self._move_evaluator_dispatch[self._command_input.black_algo],
             strength=self._command_input.black_strength
         )
 
