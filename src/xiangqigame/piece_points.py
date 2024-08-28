@@ -1,7 +1,7 @@
 from typing import Dict
 
 import numpy as np
-from cpp_modules.src.pybind_modules.GameBoardPy import PieceColor, PieceType
+from xiangqigame_cpp.xiangqigame_core import PieceColor, PieceType
 
 base_pts_icga_2004 = {
     PieceType.kGen: 6000,

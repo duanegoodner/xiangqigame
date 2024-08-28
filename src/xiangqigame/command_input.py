@@ -2,7 +2,7 @@ import argparse
 from dataclasses import dataclass
 from typing import NamedTuple, Callable
 from xiangqigame.players import AIPlayer, HumanPlayer, Player
-from xiangqigame_cpp.XiangqigamePy import MinimaxMoveSelectorPy, RandomMoveSelectorPy
+from xiangqigame_cpp.xiangqigame_core import MinimaxMoveEvaluator, RandomMoveEvaluator
 # from cpp_modules.src.pybind_modules.MoveSelectorPy import MinimaxMoveSelectorPy, RandomMoveSelector
 
 

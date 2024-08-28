@@ -1,6 +1,6 @@
 import abc
 import numpy as np
-from cpp_modules.src.pybind_modules.GameBoardPy import (
+from xiangqigame_cpp.xiangqigame_core import (
     BoardSpace,
     GameBoard,
     Move,

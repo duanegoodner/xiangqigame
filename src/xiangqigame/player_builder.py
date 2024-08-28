@@ -1,7 +1,7 @@
-from cpp_modules.src.pybind_modules.GameBoardPy import PieceColor
+# from cpp_modules.src.pybind_modules.GameBoardPy import PieceColor
 from xiangqigame.command_input import XiangqiGameCommand, XiangqiGameCommandLine, PlayerInput
 # from xiangqigame.move_selectors import MinimaxMoveSelector, RandomMoveSelector
-from cpp_modules.src.pybind_modules.MoveSelectorPy import MinimaxMoveSelectorPy, RandomMoveSelector
+from xiangqigame_cpp.xiangqigame_core import MinimaxMoveSelectorPy, PieceColor, RandomMoveSelector
 from xiangqigame.players import AIPlayer, HumanPlayer
 from xiangqigame.minimax_evaluators import DEFAULT_MINIMAX_EVALUATOR
 
