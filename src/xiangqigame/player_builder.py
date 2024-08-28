@@ -1,11 +1,9 @@
-# from cpp_modules.src.pybind_modules.GameBoardPy import PieceColor
 from xiangqigame.command_input import (
     XiangqiGameCommand,
     XiangqiGameCommandLine,
     PlayerInput,
 )
 
-# from xiangqigame.move_selectors import MinimaxMoveSelector, RandomMoveSelector
 from xiangqigame_cpp.xiangqigame_core import (
     GameBoard,
     MinimaxMoveEvaluator,
@@ -13,7 +11,6 @@ from xiangqigame_cpp.xiangqigame_core import (
     RandomMoveEvaluator,
 )
 from xiangqigame.players import AIPlayer, HumanPlayer
-from xiangqigame.minimax_evaluators import DEFAULT_MINIMAX_EVALUATOR
 
 
 class SinglePlayerBuilder:

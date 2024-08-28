@@ -1,12 +1,14 @@
+"""Dev script for profiling. No longer works after migration from MoveSelector
+to MoveEvaluator, but keep here to use as reference for other profiling work."""
+
+
+
 import cProfile
 import time
 from typing import Dict
 
 from cpp_modules.src.pybind_modules.GameBoardPy import GameBoard, PieceColor
-# from xiangqigame.piece_definitions import PColor
-
-# from xiangqigame.game_board_new import GameBoard
-from xiangqigame.move_selectors import PiecePoints, MinimaxMoveSelector
+# from xiangqigame.move_selectors import PiecePoints, MinimaxMoveSelector
 import xiangqigame.piece_points as pts
 
 
