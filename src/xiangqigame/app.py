@@ -3,7 +3,7 @@ from xiangqigame.command_input import XiangqiGameCommandLine
 from xiangqigame.player_builder import RedAndBlackPlayersBuilder
 from xiangqigame.game import Game
 from xiangqigame.handlers.signals import set_signal_handlers
-from xiangqigame_cpp.xiangqigame_core import GameBoard
+from xiangqigame_core import GameBoard
 
 
 def run(*args):

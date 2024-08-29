@@ -38,7 +38,15 @@ include("${CMAKE_UTIL_DIR}/fetch_packages.cmake")
 include("${CMAKE_UTIL_DIR}/add_subdirectories.cmake")
 
 # Find Python 3 interpreter
-find_package(Python3 REQUIRED COMPONENTS Interpreter)
+find_package(Python REQUIRED COMPONENTS Interpreter)
 
-# Display the path to the Python interpreter
-message(STATUS "Python 3 interpreter: ${Python3_EXECUTABLE}")
+# Display the path to the Python site-packages dir
+message(STATUS "Python site-packages dir: ${Python_SITELIB}")
+
+if(SKBUILD EQUAL 1)
+  message(STATUS "CMake is being run by scikit-build")
+elseif(SKBUILD EQUAL 2)
+  message(STATUS "CMake is being run by scikit-build-core")
+  else()
+message(STATUS "CMake is not being run by scikit-build nor by scikt-build-core")
+  endif()

@@ -4,7 +4,7 @@ from xiangqigame.command_input import (
     PlayerInput,
 )
 
-from xiangqigame_cpp.xiangqigame_core import (
+from xiangqigame_core import (
     GameBoard,
     MinimaxMoveEvaluator,
     PieceColor,

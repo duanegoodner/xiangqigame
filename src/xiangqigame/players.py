@@ -6,7 +6,7 @@ from typing import List, Tuple
 from xiangqigame.game_interfaces import Player
 import xiangqigame.terminal_output as msg
 
-from xiangqigame_cpp.xiangqigame_core import (
+from xiangqigame_core import (
     GameBoard,
     PieceColor,
     Move,

@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import Dict
 
 import xiangqigame.move_translator as mt
-from xiangqigame_cpp.xiangqigame_core import (
+from xiangqigame_core import (
     GameBoard,
     GamePiece,
     Move,

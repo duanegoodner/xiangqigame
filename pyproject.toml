@@ -5,7 +5,7 @@ build-backend = "scikit_build_core.build"
 [project]
 name = "xiangqigame"
 version = "1.0.0"
-description = "Xiangqi (a.k.a Chinese Chess) for human and/or AI players"
+description = "Xiangqi (Chinese Chess) for human and/or AI players"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {file = "LICENSE.txt"}
@@ -41,13 +41,13 @@ repository = "https://github.com/duanegoodner/xiangqigame"
 [project.scripts]
 play_xiangqi = "xiangqigame.__main__:main"
 
-[tool.setuptools]
+# [tool.setuptools]
 # packages = ["find:src"]
 # include_package_data = true
 
 # [tool.setuptools.package-data]
-# "" = ["*.json"]
+# xiangqigame = ["data/*"]
 
-[tool.setuptools.packages.find]
-where = ["src"]
+# [tool.setuptools.packages.find]
+# where = ["src"]
 
