@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.21)
-project(name_tbd LANGUAGES CXX)
 message(STATUS "Using CMake version ${CMAKE_VERSION}")
+
+project(xiangqigame LANGUAGES CXX VERSION 1.0.0)
+message(STATUS "Project name: ${PROJECT_NAME}")
+message(STATUS "Project version: ${PROJECT_VERSION}")
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -23,18 +26,11 @@ find_package(Python REQUIRED COMPONENTS Interpreter)
 message(STATUS "Python executable: ${Python_EXECUTABLE}")
 message(STATUS "Python site-packages dir: ${Python_SITELIB}")
 
+# Eead project name/version/description from pyproject.toml.
+# For now, just informational to compare with values set in CMAKE
+include("${CMAKE_UTIL_DIR}/read_pyproject_toml.cmake")
 
-if(SKBUILD)
-  set(PROJECT_NAME ${SKBUILD_PROJECT_NAME})
-  set(PROJECT_VERSION ${SKBUILD_PROJECT_VERSION})
-else()
-  include("${CMAKE_UTIL_DIR}/read_pyproject_toml.cmake")
-  set(PROJECT_NAME ${PROJECT_NAME_FROM_TOML})
-  set(PROJECT_VERSION ${PROJECT_VERSION_FROM_TOML})
-endif()
 
-message(STATUS "Project name: ${PROJECT_NAME}")
-message(STATUS "Project version: ${PROJECT_VERSION}")
 
 # Create a configuration header file
 if (SKBUILD)

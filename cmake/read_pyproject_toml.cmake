@@ -15,6 +15,6 @@ string(REGEX MATCH "description=([^\n]+)" _match_description "${PYPROJECT_OUTPUT
 set(PROJECT_DESCRIPTION_FROM_TOML "${CMAKE_MATCH_1}")
 
 # Use these variables as needed
-message(STATUS "Project Name from pyproject.toml: ${PROJECT_NAME_FROM_TOML}")
-message(STATUS "Project Version from pyproject.toml: ${PROJECT_VERSION_FROM_TOML}")
-message(STATUS "Project Description from pyproject.toml: ${PROJECT_DESCRIPTION_FROM_TOML}")
+message(STATUS "Project name from pyproject.toml: ${PROJECT_NAME_FROM_TOML}")
+message(STATUS "Project version from pyproject.toml: ${PROJECT_VERSION_FROM_TOML}")
+message(STATUS "Project description from pyproject.toml: ${PROJECT_DESCRIPTION_FROM_TOML}")
