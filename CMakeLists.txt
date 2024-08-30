@@ -5,6 +5,13 @@ project(xiangqigame LANGUAGES CXX VERSION 1.0.0)
 message(STATUS "Project name: ${PROJECT_NAME}")
 message(STATUS "Project version: ${PROJECT_VERSION}")
 
+if (NOT SKBUILD)
+  set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME})
+endif()  
+
+message(STATUS "The Cmake binary dir is ${CMAKE_BINARY_DIR}")
+message(STATUS "The Cmake install dir is ${CMAKE_INSTALL_PREFIX}")
+
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 SET(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -29,8 +36,6 @@ message(STATUS "Python site-packages dir: ${Python_SITELIB}")
 # Eead project name/version/description from pyproject.toml.
 # For now, just informational to compare with values set in CMAKE
 include("${CMAKE_UTIL_DIR}/read_pyproject_toml.cmake")
-
-
 
 # Create a configuration header file
 if (SKBUILD)

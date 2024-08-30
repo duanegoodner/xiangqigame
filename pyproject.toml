@@ -41,6 +41,9 @@ repository = "https://github.com/duanegoodner/xiangqigame"
 [project.scripts]
 play_xiangqi = "xiangqigame.__main__:main"
 
+[tool.scikit-build.wheel.packages]
+"data" = "data"
+
 # [tool.setuptools]
 # packages = ["find:src"]
 # include_package_data = true
