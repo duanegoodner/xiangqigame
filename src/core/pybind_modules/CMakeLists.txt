@@ -29,4 +29,6 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
     ${CMAKE_CURRENT_SOURCE_DIR})
 
-install(TARGETS xiangqigame_core LIBRARY DESTINATION .)
+if(SKBUILD)
+    install(TARGETS xiangqigame_core LIBRARY DESTINATION .)
+endif()

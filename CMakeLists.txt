@@ -33,9 +33,9 @@ message(STATUS "Python site-packages dir: ${Python_SITELIB}")
 # For now, just informational to compare with values set in CMAKE
 include("${CMAKE_UTIL_DIR}/read_pyproject_toml.cmake")
 
-if (NOT SKBUILD)
-  set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME})
-endif()  
+# if (NOT SKBUILD)
+#   set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME})
+# endif()  
 
 
 if (SKBUILD)
@@ -47,6 +47,7 @@ message(STATUS "DATA_DESTINATION_DIR = ${DATA_DESTINATION_DIR}")
 
 message(STATUS "CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
 message(STATUS "CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "DATA_SOURCE_DIR = ${DATA_SOURCE_DIR}")
 
 # Create a configuration header file
 configure_file(

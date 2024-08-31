@@ -42,17 +42,8 @@ repository = "https://github.com/duanegoodner/xiangqigame"
 play_xiangqi = "xiangqigame.__main__:main"
 
 [tool.scikit-build.wheel.packages]
-"data" = "data"
-
-# [tool.setuptools]
-# packages = ["find:src"]
-# include_package_data = true
-
-# [tool.setuptools.package-data]
-# xiangqigame = ["data/*"]
-
-# [tool.setuptools.packages.find]
-# where = ["src"]
+"xiangqigame" = "src/xiangqigame"
+"xiangqigame/data" = "data"
 
 # [tool.scikit-build]
 # build-dir = "./skbuild"
