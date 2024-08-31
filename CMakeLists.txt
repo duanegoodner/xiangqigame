@@ -5,12 +5,8 @@ project(xiangqigame LANGUAGES CXX VERSION 1.0.0)
 message(STATUS "Project name: ${PROJECT_NAME}")
 message(STATUS "Project version: ${PROJECT_VERSION}")
 
-if (NOT SKBUILD)
-  set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME})
-endif()  
-
-message(STATUS "The Cmake binary dir is ${CMAKE_BINARY_DIR}")
-message(STATUS "The Cmake install dir is ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "SKBUILD = ${SKBUILD}")
+message(STATUS "SKBUILD_STATE = ${SKBUILD_STATE}")
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -37,7 +33,11 @@ message(STATUS "Python site-packages dir: ${Python_SITELIB}")
 # For now, just informational to compare with values set in CMAKE
 include("${CMAKE_UTIL_DIR}/read_pyproject_toml.cmake")
 
-# Create a configuration header file
+if (NOT SKBUILD)
+  set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME})
+endif()  
+
+
 if (SKBUILD)
   set(DATA_DESTINATION_DIR "${Python_SITELIB}/${PROJECT_NAME}/data")
 else()
@@ -45,7 +45,10 @@ else()
 endif()
 message(STATUS "DATA_DESTINATION_DIR = ${DATA_DESTINATION_DIR}")
 
+message(STATUS "CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
+message(STATUS "CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}")
 
+# Create a configuration header file
 configure_file(
     "${CMAKE_CURRENT_SOURCE_DIR}/config.hpp.in"
     "${CMAKE_BINARY_DIR}/config.hpp"
@@ -56,14 +59,3 @@ message(STATUS "config.hpp path: ${CMAKE_BINARY_DIR}/config.hpp")
 
 
 include("${CMAKE_UTIL_DIR}/add_subdirectories.cmake")
-
-
-if(SKBUILD EQUAL 1)
-  message(STATUS "CMake is being run by scikit-build")
-elseif(SKBUILD EQUAL 2)
-  message(STATUS "CMake is being run by scikit-build-core")
-  else()
-message(STATUS "CMake is not being run by scikit-build nor by scikt-build-core")
-  endif()
-
-message(STATUS "The cmake binary dir is: ${CMAKE_BINARY_DIR}")

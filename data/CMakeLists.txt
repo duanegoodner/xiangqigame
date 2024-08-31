@@ -1,15 +1,6 @@
 # Define the source and destination directories
 set(DATA_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 
-
-
-if(SKBUILD)
-    set(DATA_DESTINATION_DIR "${Python_SITELIB}/${SKBUILD_PROJECT_NAME}/data")
-else()
-    set(DATA_DESTINATION_DIR "${CMAKE_BINARY_DIR}/data")
-endif()
-message(STATUS "data destination dir set to ${DATA_DESTINATION_DIR}")
-
 # Get a list of all files in the data directory
 file(GLOB DATA_FILES "${DATA_SOURCE_DIR}/*")
 
