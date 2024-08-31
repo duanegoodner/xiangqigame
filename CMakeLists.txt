@@ -18,7 +18,7 @@ SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
 SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
 
 SET(SOURCE_CODE_DIR ${PROJECT_SOURCE_DIR}/src/core)
-SET(DATA_SOURCE_DIR ${PROJECT_SOURCE_DIR}/data)
+SET(DATA_SOURCE_DIR ${PROJECT_SOURCE_DIR}/src/data)
 SET(CMAKE_UTIL_DIR ${PROJECT_SOURCE_DIR}/cmake)
 
 # fetch packages early b/c have problems if find python after fetching pybind11
@@ -39,7 +39,11 @@ include("${CMAKE_UTIL_DIR}/read_pyproject_toml.cmake")
 
 
 if (SKBUILD)
-  set(DATA_DESTINATION_DIR "${Python_SITELIB}/${PROJECT_NAME}/data")
+  if(SKBUILD_STATE STREQUAL "editable")
+    set(DATA_DESTINATION_DIR ${DATA_SOURCE_DIR})
+  else()
+    set(DATA_DESTINATION_DIR "${Python_SITELIB}/${PROJECT_NAME}/data")
+  endif()
 else()
   SET(DATA_DESTINATION_DIR ${CMAKE_BINARY_DIR}/data)
 endif()
