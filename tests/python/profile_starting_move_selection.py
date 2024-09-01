@@ -25,7 +25,6 @@ def select_red_starting_move(search_depth: int):
 
 if __name__ == "__main__":
     depth = 2
-    # select_red_starting_move(depth)
     cProfile.run(
         statement=f"select_red_starting_move({depth})",
         filename=f"red_starting_move_depth_{depth}",

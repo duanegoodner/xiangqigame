@@ -1,14 +1,6 @@
-from xiangqigame_core import GameBoard, BoardSpace, Move, PieceColor
-
-
-# def test_game_board_init():
-#     my_game_board = gbp.GameBoard()
-
-
-# test_game_board_init()
-
-
 import time
+
+from xiangqigame_core import BoardSpace, GameBoard, Move, PieceColor
 
 my_game_board = GameBoard()
 my_start_space = BoardSpace(5, 5)
@@ -27,7 +19,7 @@ print(all_spaces_occ_by_red)
 
 moves_of_red = my_game_board.CalcFinalMovesOf(PieceColor.kRed)
 print(moves_of_red)
-print(len(moves_of_red))
+print(moves_of_red.size())
 
 start_time = time.time()
 for i in range(100):
