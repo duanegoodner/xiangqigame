@@ -53,9 +53,9 @@ NewGameBoard<ConcreteBoardStateSummarizer>::NewGameBoard(const BoardMapInt_t boa
     , transposition_tables_{} {
   hash_calculator_.CalcInitialBoardState(board_map_);
   transposition_tables_[PieceColor::kBlk] =
-      std::map<zkey_t, vector<TranspositionTableEntry>>();
+      std::unordered_map<zkey_t, vector<TranspositionTableEntry>>();
   transposition_tables_[PieceColor::kRed] =
-      std::map<zkey_t, vector<TranspositionTableEntry>>();
+      std::unordered_map<zkey_t, vector<TranspositionTableEntry>>();
 }
 
 // template <typename ConcreteBoardStateSummarizer>

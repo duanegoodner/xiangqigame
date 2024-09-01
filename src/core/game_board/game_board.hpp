@@ -73,7 +73,7 @@ private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
   ConcreteBoardStateSummarizer hash_calculator_;
-  std::map<PieceColor, std::map<zkey_t, vector<TranspositionTableEntry>>>
+  std::unordered_map<PieceColor, std::unordered_map<zkey_t, vector<TranspositionTableEntry>>>
       transposition_tables_;
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
   void UpdateHashCalculator(ExecutedMove executed_move);
