@@ -1,17 +1,11 @@
 [build-system]
-requires = [
-    "setuptools>=42",
-    "scikit-build>=0.13",
-    "cmake",
-    "ninja",
-    "wheel",
-]
-build-backend = "setuptools.build_meta"
+requires = ["scikit-build-core>=0.3.3", "pybind11", "toml"]
+build-backend = "scikit_build_core.build"
 
 [project]
 name = "xiangqigame"
 version = "1.0.0"
-description = "Xiangqi (a.k.a Chinese Chess) for human and/or AI players"
+description = "Xiangqi (Chinese Chess) for human and/or AI players"
 readme = "README.md"
 requires-python = ">=3.8"
 license = {file = "LICENSE.txt"}
@@ -47,3 +41,9 @@ repository = "https://github.com/duanegoodner/xiangqigame"
 [project.scripts]
 play_xiangqi = "xiangqigame.__main__:main"
 
+[tool.scikit-build.wheel.packages]
+"xiangqigame" = "src/xiangqigame"
+"xiangqigame/data" = "src/data"
+
+# [tool.scikit-build]
+# build-dir = "./skbuild"

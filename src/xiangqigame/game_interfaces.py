@@ -1,5 +1,5 @@
 import abc
-from xiangqigame_cpp.xiangqigame_core import GameBoard, Move, PieceColor
+from xiangqigame_core import GameBoard, Move, PieceColor
 from typing import List
 from xiangqigame.enums import GameState
 

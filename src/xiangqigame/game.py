@@ -1,6 +1,6 @@
 from typing import Dict, List
 import xiangqigame.terminal_output as msg
-from xiangqigame_cpp.xiangqigame_core import (
+from xiangqigame_core import (
     GameBoard,
     Move,
     MoveCollection,
