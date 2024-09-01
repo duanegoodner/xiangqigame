@@ -1,6 +1,6 @@
 from unittest import mock
 # import xiangqigame.move_selectors as ms
-from cpp_modules.src.pybind_modules.GameBoardPy import BoardSpace, PieceColor, Move
+from xiangqigame_core import BoardSpace, PieceColor, Move, RandomMoveEvaluator
 from xiangqigame.players import AIPlayer, HumanPlayer
 from xiangqigame_fixtures import starting_game_board
 
@@ -28,9 +28,10 @@ class TestAIPlayer:
     def test_ai_game(
             self,
             starting_game_board):
+        move_evaluator = RandomMoveEvaluator(evaluating_player=PieceColor.kRed, game_board=starting_game_board)
         player = AIPlayer(
             color=PieceColor.kRed,
-            move_selector=ms.RandomMoveSelector())
+            move_evaluator=move_evaluator)
         move = player.propose_move(
             game_board=starting_game_board,
             cur_moves=starting_game_board.CalcFinalMovesOf(

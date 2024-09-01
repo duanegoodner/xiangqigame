@@ -1,7 +1,7 @@
 from typing import Dict
 
 import pytest
-from cpp_modules.src.pybind_modules.GameBoardPy import GameBoard
+from xiangqigame_core import GameBoard
 
 
 @pytest.fixture
