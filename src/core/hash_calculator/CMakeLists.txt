@@ -49,3 +49,5 @@ target_include_directories(
         ${PROJECT_SOURCE_DIR}/src/core/utility_functs/
         ${PROJECT_SOURCE_DIR}/src/core/board_components/
         ${PROJECT_SOURCE_DIR}/src/core/game_board/)
+
+add_executable(gist_random_64_128 gist_random_64_128.cpp)
