@@ -1,4 +1,3 @@
-
 add_library(hash_calculator hash_calculator.cpp hash_calculator.hpp)
 target_link_libraries(
         hash_calculator PRIVATE
@@ -50,4 +49,15 @@ target_include_directories(
         ${PROJECT_SOURCE_DIR}/src/core/board_components/
         ${PROJECT_SOURCE_DIR}/src/core/game_board/)
 
-add_executable(gist_random_64_128 gist_random_64_128.cpp)
+add_library(key_generator INTERFACE key_generator.hpp)
+target_link_libraries(key_generator INTERFACE common)
+target_include_directories(key_generator INTERFACE ${PROJECT_SOURCE_DIR}/src/core/common/)
+
+add_executable(key_generator_test key_generator_test.cpp)
+target_link_libraries(key_generator_test PRIVATE key_generator common GTest::gtest_main)
+target_include_directories(key_generator_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/src/core/common)
+
+
+
+
+

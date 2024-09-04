@@ -3,12 +3,22 @@
 #include <gtest/gtest.h>
 #include <hash_calculator.hpp>
 #include <hash_calculator_details.hpp>
+// #include <key_generator.hpp>
 #include <nlohmann/json.hpp>
+// #include <random>
 #include <string>
 
 // using namespace board_components;
 using namespace nlohmann::json_abi_v3_11_3;
 using namespace std;
+
+// class KeyGeneratorTest : public ::testing::Test {};
+
+// TEST_F(KeyGeneratorTest, GenerateKey) {
+//   std::random_device rd;
+//   std::mt19937_64 gen_64(rd());
+//   zkey_t result = KeyGenerator::generate_key<zkey_t>(gen_64);
+// }
 
 class ZobristKeysTest : public ::testing::Test {
 protected:

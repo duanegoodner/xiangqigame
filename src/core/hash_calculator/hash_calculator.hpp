@@ -6,8 +6,7 @@
 // Description:
 // Defines struct and class used for Zobrist Hash tracking of board state.
 
-#ifndef XIANGQI_CPP_hash_calculator_HPP
-#define XIANGQI_CPP_hash_calculator_HPP
+#pragma once
 
 #include <board_components.hpp>
 #include <common.hpp>
@@ -79,5 +78,3 @@ private:
     board_state_ = board_state_ ^ zkeys_.turn_key;    
   }
 };
-
-#endif // XIANGQI_CPP_hash_calculator_HPP
