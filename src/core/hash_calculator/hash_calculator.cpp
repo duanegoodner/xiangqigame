@@ -13,6 +13,7 @@
 #include <fstream>
 #include <hash_calculator.hpp>
 #include <hash_calculator_details.hpp>
+#include <key_generator.hpp>
 #include <nlohmann/json.hpp>
 #include <utility_functs.hpp>
 
@@ -20,34 +21,37 @@ using namespace board_components;
 using json = nlohmann::json;
 using namespace std;
 
-zkey_t random_zkey() {
-  return utility_functs::random(
-      (zkey_t)0,
-      (zkey_t)numeric_limits<zkey_t>::max
-  );
-}
-
-game_zarray_t create_zarray() {
-  game_zarray_t zarray{};
-
+const game_zarray_t create_game_zarray(std::mt19937_64 &gen_64) {
+  game_zarray_t game_zarray{};
   for (auto color_idx = 0; color_idx < 2; color_idx++) {
     for (auto piece_id = 1; piece_id < kNumPieceTypeVals; piece_id++) {
       for (auto rank = 0; rank < kNumRanks; rank++) {
         for (auto file = 0; file < kNumFiles; file++) {
-          zarray[color_idx][piece_id][rank][file] = utility_functs::random(
-              (unsigned long long)0,
-              (unsigned long long)numeric_limits<unsigned long long>::max
-          );
+          game_zarray[color_idx][piece_id][rank][file] =
+              KeyGenerator::generate_zkey(gen_64);
         }
       }
     }
   }
-  return zarray;
+  return game_zarray;
 }
 
 ZobristKeys::ZobristKeys()
-    : zarray{0}
-    , turn_key{0} {}
+    : zarray{}
+    , turn_key{} {
+  std::random_device rd;
+  std::mt19937_64 gen_64{rd()};
+  turn_key = KeyGenerator::generate_zkey(gen_64);
+  zarray = create_game_zarray(gen_64);
+}
+
+ZobristKeys::ZobristKeys(uint32_t seed)
+    : zarray{}
+    , turn_key{} {
+      std::mt19937_64 gen_64(seed);
+      turn_key = KeyGenerator::generate_zkey(gen_64);
+      zarray = create_game_zarray(gen_64);
+    }
 
 ZobristKeys::ZobristKeys(zkey_t new_turn_key, game_zarray_t &new_zarray)
     : turn_key{new_turn_key}
@@ -89,4 +93,4 @@ HashCalculator::HashCalculator(ZobristKeys zkeys)
     , board_state_{} {}
 
 HashCalculator::HashCalculator()
-    : HashCalculator(ZobristKeys(DEFAULT_ZKEYS_FILEPATH)) {}
+    : HashCalculator(ZobristKeys()) {}

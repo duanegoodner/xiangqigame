@@ -3,18 +3,46 @@
 #include <gtest/gtest.h>
 #include <hash_calculator.hpp>
 #include <hash_calculator_details.hpp>
+// #include <key_generator.hpp>
 #include <nlohmann/json.hpp>
+// #include <random>
 #include <string>
 
 // using namespace board_components;
 using namespace nlohmann::json_abi_v3_11_3;
 using namespace std;
 
+// class KeyGeneratorTest : public ::testing::Test {};
+
+// TEST_F(KeyGeneratorTest, GenerateKey) {
+//   std::random_device rd;
+//   std::mt19937_64 gen_64(rd());
+//   zkey_t result = KeyGenerator::generate_key<zkey_t>(gen_64);
+// }
+
 class ZobristKeysTest : public ::testing::Test {
 protected:
   string key_file_path = DEFAULT_ZKEYS_FILEPATH;
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
 };
+
+TEST_F(ZobristKeysTest, DefaultInit) {
+  auto zobrist_keys = ZobristKeys();
+  EXPECT_NE(0, zobrist_keys.turn_key);
+  EXPECT_EQ(2, zobrist_keys.zarray.size());
+  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray[0].size());
+  EXPECT_EQ(kNumRanks, zobrist_keys.zarray[0][0].size());
+  EXPECT_EQ(kNumFiles, zobrist_keys.zarray[0][0][0].size());
+}
+
+TEST_F(ZobristKeysTest, InitFromSeed) {
+  auto zobrist_keys = ZobristKeys(123456);
+  EXPECT_NE(0, zobrist_keys.turn_key);
+  EXPECT_EQ(2, zobrist_keys.zarray.size());
+  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray[0].size());
+  EXPECT_EQ(kNumRanks, zobrist_keys.zarray[0][0].size());
+  EXPECT_EQ(kNumFiles, zobrist_keys.zarray[0][0][0].size());
+}
 
 TEST_F(ZobristKeysTest, ImportJson) {
   auto zkeys_json = utility_functs::import_json(key_file_path);
