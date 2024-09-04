@@ -17,10 +17,18 @@ using namespace board_components;
 using namespace std;
 using json = nlohmann::json;
 
+const game_zarray_t create_game_zarray(std::mt19937_64 &gen_64);
+
 struct ZobristKeys {
   game_zarray_t zarray;
   zkey_t turn_key;
+  
+  // TODO: Make this use mt19937_64 created from new, randomly generated seed
   ZobristKeys();
+
+  // TODO: Make this use mt19937_64 created from seed arg
+  ZobristKeys(uint32_t seed);
+
   ZobristKeys(zkey_t new_turn_key, game_zarray_t &new_zarray);
   ZobristKeys(const json &json_object);
   ZobristKeys(string json_file_path);

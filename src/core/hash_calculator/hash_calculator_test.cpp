@@ -26,6 +26,24 @@ protected:
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
 };
 
+TEST_F(ZobristKeysTest, DefaultInit) {
+  auto zobrist_keys = ZobristKeys();
+  EXPECT_NE(0, zobrist_keys.turn_key);
+  EXPECT_EQ(2, zobrist_keys.zarray.size());
+  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray[0].size());
+  EXPECT_EQ(kNumRanks, zobrist_keys.zarray[0][0].size());
+  EXPECT_EQ(kNumFiles, zobrist_keys.zarray[0][0][0].size());
+}
+
+TEST_F(ZobristKeysTest, InitFromSeed) {
+  auto zobrist_keys = ZobristKeys(123456);
+  EXPECT_NE(0, zobrist_keys.turn_key);
+  EXPECT_EQ(2, zobrist_keys.zarray.size());
+  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray[0].size());
+  EXPECT_EQ(kNumRanks, zobrist_keys.zarray[0][0].size());
+  EXPECT_EQ(kNumFiles, zobrist_keys.zarray[0][0][0].size());
+}
+
 TEST_F(ZobristKeysTest, ImportJson) {
   auto zkeys_json = utility_functs::import_json(key_file_path);
   auto turn_key = zkeys_json.at("turn_key");
