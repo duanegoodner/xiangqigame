@@ -13,8 +13,8 @@
 #include <board_components.hpp>
 #include <common.hpp>
 #include <game_board_details.hpp>
-#include <move_evaluators.hpp>
 #include <move_calculator.hpp>
+#include <move_evaluators.hpp>
 #include <vector>
 
 using namespace std;
@@ -25,6 +25,7 @@ using namespace board_components;
 template <typename ConcreteBoardStateSummarizer, typename KeyType>
 class BoardStateSummarizer {
 public:
+  typedef KeyType ZobristKey_t;
   void CalcInitialBoardState(BoardMap_t &board_map) {
     static_cast<ConcreteBoardStateSummarizer *>(this)
         ->ImplementCalcInitialBoardState(board_map);
@@ -35,7 +36,7 @@ public:
         ->ImplementCalcNewBoardState(move);
   }
 
-  KeyType GetState() {
+  ZobristKey_t GetState() {
     return static_cast<ConcreteBoardStateSummarizer *>(this)
         ->ImplementGetState();
   }
@@ -44,8 +45,8 @@ public:
 // Template for class NewGameBoard which implements interface
 // SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
 template <typename ConcreteBoardStateSummarizer, typename KeyType>
-class NewGameBoard
-    : public SpaceInfoProvider<NewGameBoard<ConcreteBoardStateSummarizer, KeyType>> {
+class NewGameBoard : public SpaceInfoProvider<
+                         NewGameBoard<ConcreteBoardStateSummarizer, KeyType>> {
 public:
   NewGameBoard();
   NewGameBoard(const BoardMapInt_t starting_board);
@@ -73,7 +74,11 @@ private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
   ConcreteBoardStateSummarizer hash_calculator_;
-  std::unordered_map<PieceColor, std::unordered_map<KeyType, vector<TranspositionTableEntry>>>
+  std::unordered_map<
+      PieceColor,
+      std::unordered_map<
+          typename ConcreteBoardStateSummarizer::ZobristKey_t,
+          vector<TranspositionTableEntry>>>
       transposition_tables_;
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
   void UpdateHashCalculator(ExecutedMove executed_move);
