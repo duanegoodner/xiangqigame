@@ -36,6 +36,7 @@ struct ZobristKeys {
   ) {
     return zarray[get_zcolor_index(color)][piece_type][space.rank][space.file];
   }
+  static const game_zarray_t  create_game_zarray(std::mt19937_64 &gen_64);
 };
 
 class HashCalculator : public BoardStateSummarizer<HashCalculator> {

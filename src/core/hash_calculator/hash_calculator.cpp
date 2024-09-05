@@ -21,20 +21,7 @@ using namespace board_components;
 using json = nlohmann::json;
 using namespace std;
 
-const game_zarray_t create_game_zarray(std::mt19937_64 &gen_64) {
-  game_zarray_t game_zarray{};
-  for (auto color_idx = 0; color_idx < 2; color_idx++) {
-    for (auto piece_id = 1; piece_id < kNumPieceTypeVals; piece_id++) {
-      for (auto rank = 0; rank < kNumRanks; rank++) {
-        for (auto file = 0; file < kNumFiles; file++) {
-          game_zarray[color_idx][piece_id][rank][file] =
-              KeyGenerator::generate_zkey(gen_64);
-        }
-      }
-    }
-  }
-  return game_zarray;
-}
+
 
 ZobristKeys::ZobristKeys()
     : zarray{}
@@ -60,6 +47,21 @@ ZobristKeys::ZobristKeys(zkey_t new_turn_key, game_zarray_t &new_zarray)
 ZobristKeys::ZobristKeys(const json &json_object) {
   json_object.at("turn_key").get_to(turn_key);
   json_object.at("zarray").get_to(zarray);
+}
+
+const game_zarray_t ZobristKeys::create_game_zarray(std::mt19937_64 &gen_64) {
+  game_zarray_t game_zarray{};
+  for (auto color_idx = 0; color_idx < 2; color_idx++) {
+    for (auto piece_id = 1; piece_id < kNumPieceTypeVals; piece_id++) {
+      for (auto rank = 0; rank < kNumRanks; rank++) {
+        for (auto file = 0; file < kNumFiles; file++) {
+          game_zarray[color_idx][piece_id][rank][file] =
+              KeyGenerator::generate_zkey(gen_64);
+        }
+      }
+    }
+  }
+  return game_zarray;
 }
 
 ZobristKeys::ZobristKeys(string json_file_path)
