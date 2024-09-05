@@ -32,7 +32,7 @@ struct ZobristKeys {
       , turn_key{} {
     std::random_device rd;
     std::mt19937_64 gen_64{rd()};    
-    turn_key = KeyGenerator::generate_zkey(gen_64);
+    turn_key = KeyGenerator::generate_key<KeyType>(gen_64);
     zarray = create_game_zarray(gen_64);
   };
 
@@ -40,7 +40,7 @@ struct ZobristKeys {
       : zarray{}
       , turn_key{} {
     std::mt19937_64 gen_64(seed);
-    turn_key = KeyGenerator::generate_zkey(gen_64);
+    turn_key = KeyGenerator::generate_key<KeyType>(gen_64);
     zarray = create_game_zarray(gen_64);
   };
 
@@ -77,7 +77,7 @@ struct ZobristKeys {
         for (auto rank = 0; rank < kNumRanks; rank++) {
           for (auto file = 0; file < kNumFiles; file++) {
             game_zarray[color_idx][piece_id][rank][file] =
-                KeyGenerator::generate_zkey(gen_64);
+                KeyGenerator::generate_key<KeyType>(gen_64);
           }
         }
       }

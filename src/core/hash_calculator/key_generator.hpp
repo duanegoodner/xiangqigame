@@ -9,7 +9,6 @@
 #pragma once
 
 #include <bitset>
-#include <common.hpp>
 #include <iostream>
 #include <random>
 #include <type_traits>
@@ -64,12 +63,4 @@ inline void display_key(__uint128_t key) {
   std::cout << "lo bits = " << std::bitset<64>(lo_bits) << std::endl;
 }
 
-// Generates key type determined by zkey_t typedef (currently defined in
-// common.hpp)
-inline zkey_t generate_zkey(std::mt19937_64 &gen_64) {
-  return generate_key<zkey_t>(gen_64);
-}
-
-// Displays key value as binary bits.
-inline void display_zkey(zkey_t key) { display_key<zkey_t>(key); }
 } // namespace KeyGenerator
