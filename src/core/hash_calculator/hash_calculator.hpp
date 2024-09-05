@@ -87,7 +87,7 @@ struct ZobristKeys {
 };
 
 template <typename KeyType>
-class HashCalculator : public BoardStateSummarizer<HashCalculator<KeyType>> {
+class HashCalculator : public BoardStateSummarizer<HashCalculator<KeyType>, KeyType> {
 public:
   HashCalculator(ZobristKeys<KeyType> zkeys)
       : zkeys_{zkeys}

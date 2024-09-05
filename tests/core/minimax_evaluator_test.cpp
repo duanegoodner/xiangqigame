@@ -25,8 +25,8 @@ protected:
 TEST_F(RandomEvaluatorTest, TestStartingMoveSelection) {
   int num_first_move_selections = 10;
 
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  RandomMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>> red_evaluator{
+  NewGameBoard<HashCalculator<uint64_t>, uint64_t> starting_board;
+  RandomMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, uint64_t>> red_evaluator{
       PieceColor::kRed,
       starting_board
   };
@@ -63,29 +63,29 @@ protected:
       {5, 0, 0, 0, 0, 0, 0, 0, 0},
       {0, 0, 0, 0, -1, 0, 0, 0, 0},
   }};
-  NewGameBoard<HashCalculator<uint64_t>> late_game_board_{kLateGameBoardMap};
+  NewGameBoard<HashCalculator<uint64_t>, uint64_t> late_game_board_{kLateGameBoardMap};
 
   const int standard_search_depth = 4;
 };
 
 TEST_F(MinimaxEvaluatorTest, TestConstructorsWithDefaultPiecePoints) {
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  NewGameBoard<HashCalculator<uint64_t>, uint64_t> starting_board;
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, uint64_t>, PiecePoints>
       red_evaluator{PieceColor::kRed, standard_search_depth, starting_board};
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, uint64_t>, PiecePoints>
       black_evaluator{PieceColor::kBlk, standard_search_depth, starting_board};
 }
 
 TEST_F(MinimaxEvaluatorTest, TestConstructorsWithImportedPiecePoints) {
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  NewGameBoard<HashCalculator<uint64_t>, uint64_t> starting_board;
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, uint64_t>, PiecePoints>
       red_evaluator{
           PieceColor::kRed,
           standard_search_depth,
           starting_board,
           imported_piece_points
       };
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, uint64_t>, PiecePoints>
       black_evaluator{
           PieceColor::kBlk,
           standard_search_depth,
@@ -95,8 +95,8 @@ TEST_F(MinimaxEvaluatorTest, TestConstructorsWithImportedPiecePoints) {
 }
 
 TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelection) {
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  NewGameBoard<HashCalculator<uint64_t>, uint64_t> starting_board;
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, uint64_t>, PiecePoints>
       red_evaluator{
           PieceColor::kRed,
           standard_search_depth,
@@ -115,7 +115,7 @@ TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelection) {
 
 TEST_F(MinimaxEvaluatorTest, EndOfGameSelectorTest) {
 
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, uint64_t>, PiecePoints>
       black_evaluator{
           PieceColor::kBlk,
           standard_search_depth,
@@ -132,10 +132,10 @@ TEST_F(MinimaxEvaluatorTest, EndOfGameSelectorTest) {
 }
 
 TEST_F(MinimaxEvaluatorTest, PlayGame) {
-  NewGameBoard<HashCalculator<uint64_t>> game_board;
+  NewGameBoard<HashCalculator<uint64_t>, uint64_t> game_board;
 
   int red_search_depth{2};
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, uint64_t>, PiecePoints>
       red_evaluator{
           PieceColor::kRed,
           red_search_depth,
@@ -144,7 +144,7 @@ TEST_F(MinimaxEvaluatorTest, PlayGame) {
       };
 
   int black_search_depth{3};
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, uint64_t>, PiecePoints>
       black_evaluator{
           PieceColor::kBlk,
           black_search_depth,

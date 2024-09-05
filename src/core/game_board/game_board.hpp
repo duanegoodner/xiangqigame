@@ -22,7 +22,7 @@ using namespace board_components;
 
 // CRTP INTERFACE: GameBoard <- BoardStateSummarizer (concrete example =
 // HashCalculator)
-template <typename ConcreteBoardStateSummarizer>
+template <typename ConcreteBoardStateSummarizer, typename KeyType>
 class BoardStateSummarizer {
 public:
   void CalcInitialBoardState(BoardMap_t &board_map) {
@@ -35,7 +35,7 @@ public:
         ->ImplementCalcNewBoardState(move);
   }
 
-  zkey_t GetState() {
+  KeyType GetState() {
     return static_cast<ConcreteBoardStateSummarizer *>(this)
         ->ImplementGetState();
   }
@@ -43,9 +43,9 @@ public:
 
 // Template for class NewGameBoard which implements interface
 // SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
-template <typename ConcreteBoardStateSummarizer>
+template <typename ConcreteBoardStateSummarizer, typename KeyType>
 class NewGameBoard
-    : public SpaceInfoProvider<NewGameBoard<ConcreteBoardStateSummarizer>> {
+    : public SpaceInfoProvider<NewGameBoard<ConcreteBoardStateSummarizer, KeyType>> {
 public:
   NewGameBoard();
   NewGameBoard(const BoardMapInt_t starting_board);
@@ -73,7 +73,7 @@ private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
   ConcreteBoardStateSummarizer hash_calculator_;
-  std::unordered_map<PieceColor, std::unordered_map<zkey_t, vector<TranspositionTableEntry>>>
+  std::unordered_map<PieceColor, std::unordered_map<KeyType, vector<TranspositionTableEntry>>>
       transposition_tables_;
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
   void UpdateHashCalculator(ExecutedMove executed_move);
