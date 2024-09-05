@@ -25,7 +25,6 @@ enum MinimaxResultType : int {
 };
 
 struct TranspositionTableEntry {
-  zkey_t state;
   int search_depth;
   MinimaxResultType result_type;
   BestMoves best_moves;

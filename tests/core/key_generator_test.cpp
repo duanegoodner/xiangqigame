@@ -19,7 +19,3 @@ TEST_F(KeyGeneratorTest, Generate128BitKey) {
     KeyGenerator::display_key<__uint128_t>(result);
 }
 
-TEST_F(KeyGeneratorTest, GenerateZKeyTypeKey) {
-  zkey_t result = KeyGenerator::generate_zkey(gen_64_);
-  KeyGenerator::display_zkey(result);
-}

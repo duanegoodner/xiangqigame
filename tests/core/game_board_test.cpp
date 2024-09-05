@@ -6,7 +6,7 @@
 
 class GameBoardTest : public ::testing::Test {
 protected:
-  NewGameBoard<HashCalculator> gb_;
+  NewGameBoard<HashCalculator<uint64_t>, uint64_t> gb_;
   const BoardMapInt_t kRepeatMoveTestBoard{{
       {0, 0, 0, 1, 0, 0, 0, 0, 0},
       {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -91,8 +91,8 @@ TEST_F(GameBoardTest, CorrectNumberAvailableMoves) {
 // }
 
 TEST_F(GameBoardTest, ExecuteMoveWithAttachedHashCalculators) {
-  auto red_hash_calculator = HashCalculator();
-  auto black_hash_calculator = HashCalculator();
+  auto red_hash_calculator = HashCalculator<uint64_t>();
+  auto black_hash_calculator = HashCalculator<uint64_t>();
   // gb_.ImplementAttachHashCalculator(&red_hash_calculator, 0);
   // gb_.ImplementAttachHashCalculator(&black_hash_calculator, 1);
   auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};
@@ -101,7 +101,7 @@ TEST_F(GameBoardTest, ExecuteMoveWithAttachedHashCalculators) {
 }
 
 TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_02) {
-  NewGameBoard<HashCalculator> late_game_board(kRepeatMoveTestBoard);
+  NewGameBoard<HashCalculator<uint64_t>, uint64_t> late_game_board(kRepeatMoveTestBoard);
   auto red_king_position_a = BoardSpace{9, 4};
   auto red_king_position_b = BoardSpace{9, 3};
 
@@ -119,7 +119,7 @@ TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_02) {
 }
 
 TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_03) {
-  NewGameBoard<HashCalculator> late_game_board(kRepeatMoveTestBoard);
+  NewGameBoard<HashCalculator<uint64_t>, uint64_t> late_game_board(kRepeatMoveTestBoard);
   auto red_king_position_a = BoardSpace{9, 4};
   auto red_king_position_b = BoardSpace{9, 3};
   auto red_king_position_c = BoardSpace{9, 5};
