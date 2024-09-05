@@ -82,14 +82,6 @@ struct BoardDirection {
   BoardIdx_t rank, file;
 };
 
-// //////////////
-// HashCalculator
-// /////////////
-
-typedef __uint128_t zkey_t;
-typedef array<array<zkey_t, kNumFiles>, kNumRanks> piece_zarray_t;
-typedef array<piece_zarray_t, kNumPieceTypeVals> team_zarray_t;
-typedef array<team_zarray_t, 2> game_zarray_t;
 
 // //////////////
 // Piece Points

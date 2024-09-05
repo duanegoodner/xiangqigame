@@ -119,7 +119,7 @@ TEST_F(HashCalculatorTest, DefaultInit) {
 
 TEST_F(HashCalculatorTest, InitializeBoardState) {
   auto my_hash_calculator = HashCalculator<uint64_t>();
-  zkey_t board_state{0};
+  uint64_t board_state{0};
   EXPECT_EQ(my_hash_calculator.ImplementGetState(), 0);
   my_hash_calculator.ImplementCalcInitialBoardState(board_map);
   EXPECT_NE(my_hash_calculator.ImplementGetState(), 0);
