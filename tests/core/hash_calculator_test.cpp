@@ -27,7 +27,7 @@ protected:
 };
 
 TEST_F(ZobristKeysTest, DefaultInit) {
-  auto zobrist_keys = ZobristKeys();
+  auto zobrist_keys = ZobristKeys<uint64_t>();
   EXPECT_NE(0, zobrist_keys.turn_key);
   EXPECT_EQ(2, zobrist_keys.zarray.size());
   EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray[0].size());
@@ -36,7 +36,7 @@ TEST_F(ZobristKeysTest, DefaultInit) {
 }
 
 TEST_F(ZobristKeysTest, InitFromSeed) {
-  auto zobrist_keys = ZobristKeys(123456);
+  auto zobrist_keys = ZobristKeys<uint64_t>(123456);
   EXPECT_NE(0, zobrist_keys.turn_key);
   EXPECT_EQ(2, zobrist_keys.zarray.size());
   EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray[0].size());
@@ -86,7 +86,7 @@ TEST_F(ZobristKeysTest, InitFromSeed) {
 
 TEST_F(ZobristKeysTest, GetHashValue) {
   // auto zkeys_json = utility_functs::import_json(key_file_path);
-  auto zobrist_keys = ZobristKeys();
+  auto zobrist_keys = ZobristKeys<uint64_t>();
   auto sample_key_value = zobrist_keys.GetHashValue(
       PieceColor::kBlk,
       PieceType::kAdv,
@@ -106,19 +106,19 @@ class HashCalculatorTest : public ::testing::Test {
 protected:
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
   // string key_file_path = DEFAULT_ZKEYS_FILEPATH;
-  ZobristKeys zobrist_keys = ZobristKeys();
+  ZobristKeys<uint64_t> zobrist_keys{};
 };
 
 TEST_F(HashCalculatorTest, InitializeFromKeysAndMap) {
-  auto my_hash_calculator = HashCalculator(zobrist_keys);
+  auto my_hash_calculator = HashCalculator<uint64_t>(zobrist_keys);
 }
 
 TEST_F(HashCalculatorTest, DefaultInit) {
-  auto my_hash_calculator = HashCalculator();
+  auto my_hash_calculator = HashCalculator<uint64_t>();
 }
 
 TEST_F(HashCalculatorTest, InitializeBoardState) {
-  auto my_hash_calculator = HashCalculator();
+  auto my_hash_calculator = HashCalculator<uint64_t>();
   zkey_t board_state{0};
   EXPECT_EQ(my_hash_calculator.ImplementGetState(), 0);
   my_hash_calculator.ImplementCalcInitialBoardState(board_map);
@@ -127,7 +127,7 @@ TEST_F(HashCalculatorTest, InitializeBoardState) {
 
 TEST_F(HashCalculatorTest, ExecuteAndUndoMove) {
 
-  auto my_hash_calculator = HashCalculator(zobrist_keys);
+  auto my_hash_calculator = HashCalculator<uint64_t>(zobrist_keys);
 
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};
