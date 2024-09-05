@@ -1,3 +1,11 @@
+// Filename: game_board.tpp
+// Author: Duane Goodner
+// Created: 2024-09-03
+// Last Modified: 2024-09-04
+
+// Description:
+// Header only library for creating and displaying ints used as Zobrist keys.
+
 #pragma once
 
 #include <bitset>
@@ -6,9 +14,11 @@
 #include <random>
 #include <type_traits>
 
-// typedef uint64_t zkey_t;
-
 namespace KeyGenerator {
+
+// Generic template for key generation. Supported int types will have
+// specialization. If control flow calls generic, we are NOT using supported
+// type, and static_assert will cause compiler error.
 template <typename T>
 T generate_key(std::mt19937_64 &gen_64) {
   static_assert(sizeof(T) == 0, "Type  not supported.");
@@ -16,21 +26,25 @@ T generate_key(std::mt19937_64 &gen_64) {
   return dummy_result;
 }
 
+// Generic template for displaying a key.
 template <typename T>
 void display_key(T key) {
-   static_assert(sizeof(T) == 0, "Type  not supported."); 
+  static_assert(sizeof(T) == 0, "Type  not supported.");
 }
 
+// Specialization for generating 64 bit key
 template <>
 inline uint64_t generate_key(std::mt19937_64 &gen_64) {
   return gen_64();
 }
 
+// Specialization for displaying 64 bit key
 template <>
 inline void display_key(uint64_t key) {
-    std::cout << "all bits = " << std::bitset<64>(key) << std::endl;
+  std::cout << "all bits = " << std::bitset<64>(key) << std::endl;
 }
 
+// Specialization for generating 128 bit key
 template <>
 inline __uint128_t generate_key(std::mt19937_64 &gen_64) {
   uint64_t high_bits = gen_64();
@@ -41,20 +55,21 @@ inline __uint128_t generate_key(std::mt19937_64 &gen_64) {
   return all_bits;
 }
 
+// Specialization for generating 64 bit key
 template <>
 inline void display_key(__uint128_t key) {
-    uint64_t hi_bits = static_cast<uint64_t>(key >> 64);
-    uint64_t lo_bits = static_cast<uint64_t>(key);    
-    std::cout << "hi bits = " << std::bitset<64>(hi_bits) << std::endl;
-    std::cout << "lo bits = " << std::bitset<64>(lo_bits) << std::endl;
+  uint64_t hi_bits = static_cast<uint64_t>(key >> 64);
+  uint64_t lo_bits = static_cast<uint64_t>(key);
+  std::cout << "hi bits = " << std::bitset<64>(hi_bits) << std::endl;
+  std::cout << "lo bits = " << std::bitset<64>(lo_bits) << std::endl;
 }
 
+// Generates key type determined by zkey_t typedef (currently defined in
+// common.hpp)
 inline zkey_t generate_zkey(std::mt19937_64 &gen_64) {
   return generate_key<zkey_t>(gen_64);
 }
 
-inline void display_zkey(zkey_t key) {
-    display_key<zkey_t>(key);
-}
+// Displays key value as binary bits.
+inline void display_zkey(zkey_t key) { display_key<zkey_t>(key); }
 } // namespace KeyGenerator
-

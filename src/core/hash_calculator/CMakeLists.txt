@@ -39,28 +39,9 @@ target_include_directories(
         ${PROJECT_SOURCE_DIR}/src/core/game_board/
 )
 
-add_executable(
-        hash_calculator_test
-        hash_calculator_test.cpp)
-target_link_libraries(
-        hash_calculator_test PRIVATE
-        hash_calculator
-        nlohmann_json::nlohmann_json
-        board_components
-        board_utilities
-        utility_functs
-        game_board
-        GTest::gtest_main)
-target_include_directories(
-        hash_calculator_test PRIVATE
-        ${CMAKE_CURRENT_SOURCE_DIR}
-        ${PROJECT_SOURCE_DIR}/src/core/utility_functs/
-        ${PROJECT_SOURCE_DIR}/src/core/board_components/
-        ${PROJECT_SOURCE_DIR}/src/core/game_board/)
 
-add_executable(key_generator_test key_generator_test.cpp)
-target_link_libraries(key_generator_test PRIVATE key_generator common GTest::gtest_main)
-target_include_directories(key_generator_test PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/src/core/common)
+
+
 
 
 

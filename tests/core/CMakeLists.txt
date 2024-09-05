@@ -98,3 +98,83 @@ target_include_directories(
     minimax_evaluator_test PRIVATE
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
     ${rapidjson_SOURCE_DIR}/include)
+
+add_executable(
+    key_generator_test
+    key_generator_test.cpp)
+target_link_libraries(
+    key_generator_test PRIVATE
+    key_generator
+    common
+    GTest::gtest_main)
+target_include_directories(key_generator_test PRIVATE
+    ${PROJECT_SOURCE_DIR}/src/core/common
+    ${PROJECT_SOURCE_DIR}/src/core/hash_calculator)
+
+add_executable(
+        hash_calculator_test
+        hash_calculator_test.cpp)
+target_link_libraries(
+        hash_calculator_test PRIVATE
+        hash_calculator
+        nlohmann_json::nlohmann_json
+        board_components
+        board_utilities
+        utility_functs
+        game_board
+        GTest::gtest_main)
+target_include_directories(
+        hash_calculator_test PRIVATE
+        ${PROJECT_SOURCE_DIR}/src/core/hash_calculator
+        ${PROJECT_SOURCE_DIR}/src/core/utility_functs/
+        ${PROJECT_SOURCE_DIR}/src/core/board_components/
+        ${PROJECT_SOURCE_DIR}/src/core/game_board/)
+
+add_executable(
+        points_containers_test
+        points_containers_test.cpp)
+target_link_libraries(
+        points_containers_test PRIVATE
+        GTest::gtest_main
+        common
+        json_interface
+        json_io
+        points_containers
+        utility_functs
+        )
+    target_include_directories(
+        points_containers_test PRIVATE
+        ${PROJECT_SOURCE_DIR}/src/core/points_containers
+        ${PROJECT_SOURCE_DIR}/src/core/json_interface
+        ${PROJECT_SOURCE_DIR}/src/core/json_io
+        ${PROJECT_SOURCE_DIR}/src/core/utility_functs
+        )
+
+add_executable(
+    json_internal_test
+    json_internal_test.cpp)
+target_link_libraries(
+    json_internal_test PRIVATE
+    json_internal
+    utility_functs
+    GTest::gtest_main)
+target_include_directories(
+    json_internal_test PRIVATE
+    ${PROJECT_SOURCE_DIR}/src/core/utility_functs
+    ${PROJECT_SOURCE_DIR}/src/core/json_internal
+)
+
+add_executable(json_io_test json_io_test.cpp)
+target_link_libraries(
+    json_io_test PRIVATE
+    GTest::gtest_main
+    common
+    json_interface
+    json_io
+    utility_functs)
+target_include_directories(
+    json_io_test PRIVATE
+    ${PROJECT_SOURCE_DIR}/src/core/json_io
+    ${PROJECT_SOURCE_DIR}/src/core/json_interface
+    ${PROJECT_SOURCE_DIR}/src/core/utility_functs
+    )

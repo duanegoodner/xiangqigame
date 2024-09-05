@@ -16,7 +16,6 @@ add_subdirectory(src/core/piece_points_spec)
 add_subdirectory(src/core/utility_functs)
 add_subdirectory(src/bindings)
 add_subdirectory(tests/core)
-# add_subdirectory(src/core/gists)
 
 if(NOT SKBUILD)
     add_subdirectory(src/data)

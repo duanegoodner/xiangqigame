@@ -22,13 +22,8 @@ const game_zarray_t create_game_zarray(std::mt19937_64 &gen_64);
 struct ZobristKeys {
   game_zarray_t zarray;
   zkey_t turn_key;
-  
-  // TODO: Make this use mt19937_64 created from new, randomly generated seed
   ZobristKeys();
-
-  // TODO: Make this use mt19937_64 created from seed arg
   ZobristKeys(uint32_t seed);
-
   ZobristKeys(zkey_t new_turn_key, game_zarray_t &new_zarray);
   ZobristKeys(const json &json_object);
   ZobristKeys(string json_file_path);
@@ -56,8 +51,7 @@ public:
 private:
   ZobristKeys zkeys_;
   zkey_t board_state_;
-  // map<zkey_t, Points_t> transposition_table_; 
-
+  
   void PrivateImplementCalcNewBoardState(ExecutedMove move) {
     // moving piece moves away from space
     board_state_ = board_state_ ^ zkeys_.GetHashValue(

@@ -86,55 +86,6 @@ struct BoardDirection {
 // HashCalculator
 // /////////////
 
-// struct ZobristKey64 {
-//   uint64_t value;
-
-//   bool operator==(const ZobristKey64 & other) const {
-//     return value == other.value;
-//   }
-
-//   ZobristKey64 operator^(const ZobristKey64 &other) const {
-//     return ZobristKey64{value ^ other.value};
-//   }
-
-//   static const ZobristKey64 pseudorandom_from_existing_64bit_gen(
-//     std::mt19937_64 &gen_64
-//   ) {
-//     return ZobristKey64{gen_64()};
-//   }
-
-//   static const ZobristKey64 pseudorandom_from_new_64bit_gen() {
-//     std::random_device rd;
-//     uint32_t seed = rd();
-//     std::mt19937_64 gen_64{seed};
-//     return pseudorandom_from_existing_64bit_gen(gen_64);
-//   }
-// };
-
-// struct ZobristKey128 {
-//   uint64_t value_high;
-//   uint64_t value_low;
-
-//   bool operator==(const ZobristKey128 &other) const {
-//     return value_high == other.value_high && value_low == other.value_low;
-//   }
-
-//   ZobristKey128 operator^(const ZobristKey128 &other) const {
-//     return ZobristKey128{value_high ^ other.value_high, value_low ^ other.value_low};
-//   }
-
-//   static const ZobristKey128 pseudorandom_from_existing_64bit_gen(std::mt19937_64 &gen_64) {
-//     return ZobristKey128{gen_64(), gen_64()};
-//   }
-
-//   static const ZobristKey128 pseudo_random_from_new_64bit_gen() {
-//     std::random_device rd{};
-//     uint32_t seed = rd();
-//     std::mt19937_64 gen_64{seed};
-//     return pseudorandom_from_existing_64bit_gen(gen_64);
-//   }
-// };
-
 typedef __uint128_t zkey_t;
 typedef array<array<zkey_t, kNumFiles>, kNumRanks> piece_zarray_t;
 typedef array<piece_zarray_t, kNumPieceTypeVals> team_zarray_t;
