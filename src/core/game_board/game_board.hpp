@@ -44,9 +44,9 @@ public:
 
 // Template for class NewGameBoard which implements interface
 // SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
-template <typename ConcreteBoardStateSummarizer, typename KeyType>
+template <typename ConcreteBoardStateSummarizer>
 class NewGameBoard : public SpaceInfoProvider<
-                         NewGameBoard<ConcreteBoardStateSummarizer, KeyType>> {
+                         NewGameBoard<ConcreteBoardStateSummarizer>> {
 public:
   NewGameBoard();
   NewGameBoard(const BoardMapInt_t starting_board);
