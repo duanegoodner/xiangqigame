@@ -224,7 +224,7 @@ void NewGameBoard<ConcreteBoardStateSummarizer, KeyType>::
   // move) For now, we are not worrying about correcting collisons)
 
   TranspositionTableEntry transposition_table_entry{
-      cur_state,
+      // cur_state,
       search_depth,
       result_type,
       best_moves
