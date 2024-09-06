@@ -30,51 +30,84 @@ BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
   return game_piece_board;
 }
 
-template <typename ConcreteBoardStateSummarizer>
-NewGameBoard<ConcreteBoardStateSummarizer>::NewGameBoard(
-    const BoardMapInt_t board_array
-)
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::NewGameBoard(const BoardMapInt_t
+                                                         board_array)
     : board_map_{int_board_to_game_pieces(board_array)}
     , move_calculator_{MoveCalculator()}
     , hash_calculator_{}
     , transposition_tables_{} {
   hash_calculator_.CalcInitialBoardState(board_map_);
-  transposition_tables_[PieceColor::kBlk] =
-      std::unordered_map<typename ConcreteBoardStateSummarizer::ZobristKey_t, vector<TranspositionTableEntry>>();
-  transposition_tables_[PieceColor::kRed] =
-      std::unordered_map<typename ConcreteBoardStateSummarizer::ZobristKey_t, vector<TranspositionTableEntry>>();
+  transposition_tables_[PieceColor::kBlk] = std::unordered_map<
+      typename ConcreteBoardStateSummarizer::ZobristKey_t,
+      vector<TranspositionTableEntry>>();
+  transposition_tables_[PieceColor::kRed] = std::unordered_map<
+      typename ConcreteBoardStateSummarizer::ZobristKey_t,
+      vector<TranspositionTableEntry>>();
 }
 
-template <typename ConcreteBoardStateSummarizer>
-NewGameBoard<ConcreteBoardStateSummarizer>::NewGameBoard()
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::NewGameBoard()
     : NewGameBoard(kStartingBoard) {}
 
-template <typename ConcreteBoardStateSummarizer>
-GamePiece NewGameBoard<ConcreteBoardStateSummarizer>::GetOccupant(
-    BoardSpace space
-) {
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+GamePiece NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::GetOccupant(BoardSpace space) {
   return board_map_[space.rank][space.file];
 }
 
-template <typename ConcreteBoardStateSummarizer>
-void NewGameBoard<ConcreteBoardStateSummarizer>::UpdateHashCalculator(
-    ExecutedMove executed_move
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+void NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::UpdateHashCalculator(ExecutedMove
+                                                                 executed_move
 ) {
   hash_calculator_.CalcNewBoardState(executed_move);
 }
 
-template <typename ConcreteBoardStateSummarizer>
-void NewGameBoard<ConcreteBoardStateSummarizer>::AddToMoveLog(
-    ExecutedMove executed_move
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+void NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::AddToMoveLog(ExecutedMove executed_move
 ) {
   auto piece_color = executed_move.moving_piece.piece_color;
   move_log_[piece_color].push_back(executed_move);
 }
 
-template <typename ConcreteBoardStateSummarizer>
-void NewGameBoard<ConcreteBoardStateSummarizer>::RemoveFromMoveLog(
-    ExecutedMove executed_move
-) {
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+void NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::RemoveFromMoveLog(ExecutedMove
+                                                              executed_move) {
   auto piece_color = executed_move.moving_piece.piece_color;
   auto last_move_by_color = move_log_[piece_color].back();
   if (!(executed_move == last_move_by_color)) {
@@ -83,10 +116,14 @@ void NewGameBoard<ConcreteBoardStateSummarizer>::RemoveFromMoveLog(
   move_log_[piece_color].pop_back();
 }
 
-template <typename ConcreteBoardStateSummarizer>
-ExecutedMove NewGameBoard<ConcreteBoardStateSummarizer>::ImplementExecuteMove(
-    Move move
-) {
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+ExecutedMove NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::ImplementExecuteMove(Move move) {
   auto moving_piece = GetOccupant(move.start);
   auto destination_piece = GetOccupant(move.end);
   SetOccupant(move.end, moving_piece);
@@ -99,44 +136,68 @@ ExecutedMove NewGameBoard<ConcreteBoardStateSummarizer>::ImplementExecuteMove(
   return ExecutedMove{move, moving_piece, destination_piece};
 }
 
-template <typename ConcreteBoardStateSummarizer>
-void NewGameBoard<ConcreteBoardStateSummarizer>::ImplementUndoMove(
-    ExecutedMove executed_move
-) {
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+void NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::ImplementUndoMove(ExecutedMove
+                                                              executed_move) {
   SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
   UpdateHashCalculator(executed_move);
   RemoveFromMoveLog(executed_move);
 }
 
-template <typename ConcreteBoardStateSummarizer>
-vector<BoardSpace>
-NewGameBoard<ConcreteBoardStateSummarizer>::ImplementGetAllSpacesOccupiedBy(
-    PieceColor color
-) {
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+vector<BoardSpace> NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::
+    ImplementGetAllSpacesOccupiedBy(PieceColor color) {
   return get_all_spaces_occupied_by(board_map_, color);
 }
 
-template <typename ConcreteBoardStateSummarizer>
-void NewGameBoard<ConcreteBoardStateSummarizer>::SetOccupant(
-    BoardSpace space,
-    GamePiece piece
-) {
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+void NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::
+    SetOccupant(BoardSpace space, GamePiece piece) {
   board_map_[space.rank][space.file] = piece;
 }
 
-template <typename ConcreteBoardStateSummarizer>
-bool NewGameBoard<ConcreteBoardStateSummarizer>::IsInCheck(PieceColor color) {
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+bool NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::IsInCheck(PieceColor color) {
   auto gen_position = get_general_position(board_map_, color);
   auto opponent_moves =
       move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
   return opponent_moves.ContainsDestination(gen_position);
 }
 
-template <typename ConcreteBoardStateSummarizer>
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
 MoveCollection NewGameBoard<
-    ConcreteBoardStateSummarizer>::ImplementCalcFinalMovesOf(PieceColor color
-) {
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::ImplementCalcFinalMovesOf(PieceColor
+                                                                      color) {
   auto un_tested_moves =
       move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
   MoveCollection validated_moves;
@@ -161,22 +222,36 @@ MoveCollection NewGameBoard<
   return validated_moves;
 }
 
-template <typename ConcreteBoardStateSummarizer>
-PieceColor NewGameBoard<ConcreteBoardStateSummarizer>::ImplementGetColor(
-    BoardSpace space
-) {
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+PieceColor NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::ImplementGetColor(BoardSpace space) {
   return get_color(board_map_, space);
 }
 
-template <typename ConcreteBoardStateSummarizer>
-PieceType NewGameBoard<ConcreteBoardStateSummarizer>::ImplementGetType(
-    BoardSpace space
-) {
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+PieceType NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::ImplementGetType(BoardSpace space) {
   return get_type(board_map_, space);
 }
 
-template <typename ConcreteBoardStateSummarizer>
-TranspositionTableSearchResult NewGameBoard<ConcreteBoardStateSummarizer>::
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+TranspositionTableSearchResult NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::
     ImplementSearchTranspositionTable(PieceColor color, int search_depth) {
 
   auto cur_state = hash_calculator_.GetState();
@@ -206,8 +281,14 @@ TranspositionTableSearchResult NewGameBoard<ConcreteBoardStateSummarizer>::
   return result;
 }
 
-template <typename ConcreteBoardStateSummarizer>
-void NewGameBoard<ConcreteBoardStateSummarizer>::
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+void NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::
     ImplementRecordCurrentStateScore(
         PieceColor color,
         int search_depth,
@@ -231,10 +312,14 @@ void NewGameBoard<ConcreteBoardStateSummarizer>::
   transposition_tables_[color][cur_state].push_back(transposition_table_entry);
 }
 
-template <typename ConcreteBoardStateSummarizer>
-bool NewGameBoard<ConcreteBoardStateSummarizer>::ViolatesRepeatRule(
-    PieceColor color
-) {
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+bool NewGameBoard<
+    ConcreteBoardStateSummarizer,
+    ConcreteBoardStateSummarizerRed,
+    ConcreteBoardStateSummarizerBlack>::ViolatesRepeatRule(PieceColor color) {
   for (auto period_length : kRepeatPeriodsToCheck) {
     auto lookback_length = (kMaxAllowedRepeatPeriods + 1) * period_length;
     if (utility_functs::hasRepeatingPattern(

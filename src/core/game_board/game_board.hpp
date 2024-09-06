@@ -63,9 +63,14 @@ public:
 
 // Template for class NewGameBoard which implements interface
 // SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
-template <typename ConcreteBoardStateSummarizer>
-class NewGameBoard
-    : public SpaceInfoProvider<NewGameBoard<ConcreteBoardStateSummarizer>> {
+template <
+    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateSummarizerRed,
+    typename ConcreteBoardStateSummarizerBlack>
+class NewGameBoard : public SpaceInfoProvider<NewGameBoard<
+                         ConcreteBoardStateSummarizer,
+                         ConcreteBoardStateSummarizerRed,
+                         ConcreteBoardStateSummarizerBlack>> {
 public:
   NewGameBoard();
   NewGameBoard(const BoardMapInt_t starting_board);
@@ -93,6 +98,8 @@ private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
   ConcreteBoardStateSummarizer hash_calculator_;
+  ConcreteBoardStateSummarizerRed hash_calculator_red_;
+  ConcreteBoardStateSummarizerBlack hash_calculator_black_;
   std::unordered_map<
       PieceColor,
       std::unordered_map<
