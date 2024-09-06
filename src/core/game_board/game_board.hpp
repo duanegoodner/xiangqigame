@@ -40,13 +40,32 @@ public:
     return static_cast<ConcreteBoardStateSummarizer *>(this)
         ->ImplementGetState();
   }
+
+  void RecordCurrentStateMinimaxResult(
+      int search_depth,
+      MinimaxResultType result_type,
+      BestMoves &best_moves
+  ) {
+    return static_cast<ConcreteBoardStateSummarizer *>(this)
+        ->ImplementRecordCurrentStateMinimaxResult(
+            search_depth,
+            result_type,
+            best_moves
+        );
+  }
+
+  TranspositionTableSearchResult GetCurrentStateMinimaxResult(int search_depth
+  ) {
+    return static_cast<ConcreteBoardStateSummarizer *>(this)
+        ->ImplementGetCurrentStateMinimaxResult(search_depth);
+  }
 };
 
 // Template for class NewGameBoard which implements interface
 // SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
 template <typename ConcreteBoardStateSummarizer>
-class NewGameBoard : public SpaceInfoProvider<
-                         NewGameBoard<ConcreteBoardStateSummarizer>> {
+class NewGameBoard
+    : public SpaceInfoProvider<NewGameBoard<ConcreteBoardStateSummarizer>> {
 public:
   NewGameBoard();
   NewGameBoard(const BoardMapInt_t starting_board);
