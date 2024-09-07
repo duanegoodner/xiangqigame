@@ -77,16 +77,21 @@ public:
   vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color);
   PieceColor ImplementGetColor(BoardSpace space);
   PieceType ImplementGetType(BoardSpace space);
+
+  // Transposition table search old & new
   TranspositionTableSearchResult ImplementSearchTranspositionTable(
       PieceColor color,
       int search_depth
   );
+
+  // Transposition table write
   void ImplementRecordCurrentStateScore(
       PieceColor color,
       int search_depth,
       MinimaxResultType result_type,
       BestMoves &best_moves
   );
+
   MoveCollection ImplementCalcFinalMovesOf(PieceColor color);
   bool IsInCheck(PieceColor color);
   ExecutedMove ImplementExecuteMove(Move move);
@@ -97,17 +102,61 @@ public:
 private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
-  ConcreteBoardStateSummarizer hash_calculator_;
+
+  // ConcreteBoardStateSummarizer hash_calculator_;
   ConcreteBoardStateSummarizerRed hash_calculator_red_;
   ConcreteBoardStateSummarizerBlack hash_calculator_black_;
-  std::unordered_map<
+
+  // Retrieve info for current state //////////////////////////////////////////
+  TranspositionTableSearchResult GetCurrentStateDetailsRed(int search_depth) {
+    return hash_calculator_red_.GetCurrentStateMinimaxResult(search_depth);
+  };
+  TranspositionTableSearchResult GetCurrentStateDetailsBlack(int search_depth
+  ) {
+    return hash_calculator_black_.GetCurrentStateMinimaxResult(search_depth);
+  }
+  unordered_map<
       PieceColor,
-      std::unordered_map<
-          typename ConcreteBoardStateSummarizer::ZobristKey_t,
-          vector<TranspositionTableEntry>>>
-      transposition_tables_;
+      TranspositionTableSearchResult (NewGameBoard::*)(int)>
+      state_details_dispatch_table_;
+  //////////////////////////////////////////////////////////////////////////////
+
+  // Record info for current state/////////////////////////////////////////////
+  void RecordCurrentStateDetailsRed(
+      int search_depth,
+      MinimaxResultType result_type,
+      BestMoves &best_moves
+  ) {
+    hash_calculator_red_.RecordCurrentStateMinimaxResult(
+        search_depth,
+        result_type,
+        best_moves
+    );
+  };
+  void RecordCurrentStateDetailsBlack(
+      int search_depth,
+      MinimaxResultType result_type,
+      BestMoves &best_moves
+  ) {
+    hash_calculator_black_.RecordCurrentStateMinimaxResult(
+        search_depth,
+        result_type,
+        best_moves
+    );
+  };
+
+  unordered_map<
+      PieceColor,
+      void (NewGameBoard::*)(int, MinimaxResultType, BestMoves &)>
+      write_state_details_dispatch_table_;
+/////////////////////////////////////////////////////////////////////////////////
+
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
-  void UpdateHashCalculator(ExecutedMove executed_move);
+  void UpdateHashCalculator(ExecutedMove executed_move) {
+    // hash_calculator_.CalcNewBoardState(executed_move);
+    hash_calculator_red_.CalcNewBoardState(executed_move);
+    hash_calculator_black_.CalcNewBoardState(executed_move);
+  };
   void SetOccupant(BoardSpace space, GamePiece piece);
   void AddToMoveLog(ExecutedMove move);
   void RemoveFromMoveLog(ExecutedMove move);

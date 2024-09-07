@@ -63,11 +63,7 @@ struct ZobristKeys {
     return j;
   };
 
-  KeyType GetHashValue(
-      PieceColor color,
-      PieceType piece_type,
-      BoardSpace space
-  ) {
+  KeyType GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) {
     return zarray[get_zcolor_index(color)][piece_type][space.rank][space.file];
   }
   static const GameZarray_t create_game_zarray(std::mt19937_64 &gen_64) {
@@ -89,10 +85,7 @@ struct ZobristKeys {
 template <typename KeyType>
 struct TranspositionTable {
 
-  TranspositionTableSearchResult GetStateDetails(
-      KeyType board_state,
-      int minimax_search_depth
-  ) {
+  TranspositionTableSearchResult GetStateDetails(KeyType board_state, int minimax_search_depth) {
     TranspositionTableSearchResult result{};
 
     auto entry_vector_it = data_.find(board_state);
@@ -114,11 +107,7 @@ struct TranspositionTable {
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
-    TranspositionTableEntry transposition_table_entry{
-        search_depth,
-        result_type,
-        best_moves
-    };
+    TranspositionTableEntry transposition_table_entry{search_depth, result_type, best_moves};
     data_[state].push_back(transposition_table_entry);
   };
 
@@ -127,8 +116,7 @@ private:
 };
 
 template <typename KeyType>
-class HashCalculator
-    : public BoardStateSummarizer<HashCalculator<KeyType>, KeyType> {
+class HashCalculator : public BoardStateSummarizer<HashCalculator<KeyType>, KeyType> {
 public:
   HashCalculator(ZobristKeys<KeyType> zkeys)
       : zkeys_{zkeys}
@@ -159,17 +147,10 @@ public:
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
-    transposition_table_.RecordStateDetails(
-        board_state_,
-        search_depth,
-        result_type,
-        best_moves
-    );
+    transposition_table_.RecordStateDetails(board_state_, search_depth, result_type, best_moves);
   }
 
-  TranspositionTableSearchResult ImplementGetCurrentStateMinimaxResult(
-      int search_depth
-  ) {
+  TranspositionTableSearchResult ImplementGetCurrentStateMinimaxResult(int search_depth) {
     return transposition_table_.GetStateDetails(board_state_, search_depth);
   }
 

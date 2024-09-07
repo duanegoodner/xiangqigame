@@ -40,16 +40,20 @@ NewGameBoard<
     ConcreteBoardStateSummarizerBlack>::NewGameBoard(const BoardMapInt_t
                                                          board_array)
     : board_map_{int_board_to_game_pieces(board_array)}
-    , move_calculator_{MoveCalculator()}
-    , hash_calculator_{}
-    , transposition_tables_{} {
-  hash_calculator_.CalcInitialBoardState(board_map_);
-  transposition_tables_[PieceColor::kBlk] = std::unordered_map<
-      typename ConcreteBoardStateSummarizer::ZobristKey_t,
-      vector<TranspositionTableEntry>>();
-  transposition_tables_[PieceColor::kRed] = std::unordered_map<
-      typename ConcreteBoardStateSummarizer::ZobristKey_t,
-      vector<TranspositionTableEntry>>();
+    , move_calculator_{MoveCalculator()} {
+
+  hash_calculator_red_.CalcInitialBoardState(board_map_);
+  hash_calculator_black_.CalcInitialBoardState(board_map_);
+
+  state_details_dispatch_table_[PieceColor::kBlk] =
+      &NewGameBoard::GetCurrentStateDetailsBlack;
+  state_details_dispatch_table_[PieceColor::kRed] =
+      &NewGameBoard::GetCurrentStateDetailsRed;
+
+  write_state_details_dispatch_table_[PieceColor::kBlk] =
+      &NewGameBoard::RecordCurrentStateDetailsBlack;
+  write_state_details_dispatch_table_[PieceColor::kRed] =
+      &NewGameBoard::RecordCurrentStateDetailsRed;
 }
 
 template <
@@ -73,18 +77,19 @@ GamePiece NewGameBoard<
   return board_map_[space.rank][space.file];
 }
 
-template <
-    typename ConcreteBoardStateSummarizer,
-    typename ConcreteBoardStateSummarizerRed,
-    typename ConcreteBoardStateSummarizerBlack>
-void NewGameBoard<
-    ConcreteBoardStateSummarizer,
-    ConcreteBoardStateSummarizerRed,
-    ConcreteBoardStateSummarizerBlack>::UpdateHashCalculator(ExecutedMove
-                                                                 executed_move
-) {
-  hash_calculator_.CalcNewBoardState(executed_move);
-}
+//  Implement in header for now
+// template <
+//     typename ConcreteBoardStateSummarizer,
+//     typename ConcreteBoardStateSummarizerRed,
+//     typename ConcreteBoardStateSummarizerBlack>
+// void NewGameBoard<
+//     ConcreteBoardStateSummarizer,
+//     ConcreteBoardStateSummarizerRed,
+//     ConcreteBoardStateSummarizerBlack>::UpdateHashCalculator(ExecutedMove
+//                                                                  executed_move
+// ) {
+//   hash_calculator_.CalcNewBoardState(executed_move);
+// }
 
 template <
     typename ConcreteBoardStateSummarizer,
@@ -253,32 +258,8 @@ TranspositionTableSearchResult NewGameBoard<
     ConcreteBoardStateSummarizerRed,
     ConcreteBoardStateSummarizerBlack>::
     ImplementSearchTranspositionTable(PieceColor color, int search_depth) {
-
-  auto cur_state = hash_calculator_.GetState();
-
-  // Check if color's transposition table has an entry for cur_state.
-  auto entry_vector_it = transposition_tables_[color].find(cur_state);
-
-  TranspositionTableSearchResult result{};
-
-  // If table does have an entry for cur_state, entry_vector_it->second will be
-  // a vector containing all TranspositionTableEntry objects that have been
-  // stored for that state. Note that a single board state can have entries for
-  // different search depths.
-  if (entry_vector_it != transposition_tables_[color].end()) {
-    auto entry_vector = entry_vector_it->second;
-    for (auto entry : entry_vector) {
-      // If we find an entry for search_depth of interest, then in our
-      // TranspositionTableSearch result data container, we set found to true
-      // and set .table_entry to the found entry.
-      if (entry.search_depth == search_depth) {
-        result.found = true;
-        result.table_entry = entry;
-      }
-    }
-  }
-
-  return result;
+  auto search_function = state_details_dispatch_table_.at(color);
+  return (this->*search_function(search_depth));
 }
 
 template <
@@ -295,21 +276,8 @@ void NewGameBoard<
         MinimaxResultType result_type,
         BestMoves &best_moves
     ) {
-  auto cur_state = hash_calculator_.GetState();
-
-  // TODO: Before we add entry to our vector of entries, we should search
-  // existing entries in vector to make sure we don't already have one for
-  // search_depth. UPDATE: Only time we would be running this when entry for
-  // search_depth is already in the vector is if we are re-running Minimax
-  // after obvious hash collision (i.e. after minimax result gave us an illegal
-  // move) For now, we are not worrying about correcting collisons)
-
-  TranspositionTableEntry transposition_table_entry{
-      search_depth,
-      result_type,
-      best_moves
-  };
-  transposition_tables_[color][cur_state].push_back(transposition_table_entry);
+  auto record_function = write_state_details_dispatch_table_.at(color);
+  (this->*record_function(search_depth, result_type, best_moves));
 }
 
 template <
