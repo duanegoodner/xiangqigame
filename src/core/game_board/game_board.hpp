@@ -97,22 +97,10 @@ public:
     return _ImplementCalcFinalMovesOf(color);
   }
   bool IsInCheck(PieceColor color) {
-    auto gen_position = get_general_position(board_map_, color);
-    auto opponent_moves =
-        move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
-    return opponent_moves.ContainsDestination(gen_position);
+    return _IsInCheck(color);
   }
   ExecutedMove ImplementExecuteMove(Move move) {
-    auto moving_piece = GetOccupant(move.start);
-    auto destination_piece = GetOccupant(move.end);
-    SetOccupant(move.end, moving_piece);
-    SetOccupant(move.start, GamePiece(PieceType::kNnn, PieceColor::kNul));
-
-    auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
-    UpdateHashCalculator(executed_move);
-    AddToMoveLog(executed_move);
-
-    return ExecutedMove{move, moving_piece, destination_piece};
+    return _ImplementExecuteMove(move);
   };
   void ImplementUndoMove(ExecutedMove executed_move) {
     return _ImplementUndoMove(executed_move);
@@ -126,6 +114,19 @@ private:
   ConcreteBoardStateSummarizerRed hash_calculator_red_;
   ConcreteBoardStateSummarizerBlack hash_calculator_black_;
 
+  ExecutedMove _ImplementExecuteMove(Move move) {
+    auto moving_piece = GetOccupant(move.start);
+    auto destination_piece = GetOccupant(move.end);
+    SetOccupant(move.end, moving_piece);
+    SetOccupant(move.start, GamePiece(PieceType::kNnn, PieceColor::kNul));
+
+    auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
+    UpdateHashCalculator(executed_move);
+    AddToMoveLog(executed_move);
+
+    return ExecutedMove{move, moving_piece, destination_piece};
+  };
+  
   void _ImplementUndoMove(ExecutedMove executed_move) {
     SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
     SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
@@ -215,6 +216,12 @@ private:
       }
     }
     return false;
+  }
+  bool _IsInCheck(PieceColor color) {
+    auto gen_position = get_general_position(board_map_, color);
+    auto opponent_moves =
+        move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
+    return opponent_moves.ContainsDestination(gen_position);
   }
   MoveCollection _ImplementCalcFinalMovesOf(PieceColor color) {
     auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
