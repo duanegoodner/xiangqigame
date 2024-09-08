@@ -27,11 +27,15 @@ class BoardStateSummarizer {
 public:
   typedef KeyType ZobristKey_t;
   void CalcInitialBoardState(BoardMap_t &board_map) {
-    static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementCalcInitialBoardState(board_map);
+    static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementCalcInitialBoardState(
+        board_map
+    );
   }
 
   void CalcNewBoardState(const ExecutedMove &move) {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementCalcNewBoardState(move);
+    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementCalcNewBoardState(
+        move
+    );
   }
 
   ZobristKey_t GetState() {
@@ -44,7 +48,11 @@ public:
       BestMoves &best_moves
   ) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)
-        ->ImplementRecordCurrentStateMinimaxResult(search_depth, result_type, best_moves);
+        ->ImplementRecordCurrentStateMinimaxResult(
+            search_depth,
+            result_type,
+            best_moves
+        );
   }
 
   TranspositionTableSearchResult GetCurrentStateMinimaxResult(int search_depth) {
@@ -56,11 +64,9 @@ public:
 // Template for class NewGameBoard which implements interface
 // SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
 template <
-    typename ConcreteBoardStateSummarizer,
     typename ConcreteBoardStateSummarizerRed,
     typename ConcreteBoardStateSummarizerBlack>
 class NewGameBoard : public SpaceInfoProvider<NewGameBoard<
-                         ConcreteBoardStateSummarizer,
                          ConcreteBoardStateSummarizerRed,
                          ConcreteBoardStateSummarizerBlack>> {
 public:
@@ -92,7 +98,8 @@ public:
   }
   bool IsInCheck(PieceColor color) {
     auto gen_position = get_general_position(board_map_, color);
-    auto opponent_moves = move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
+    auto opponent_moves =
+        move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
     return opponent_moves.ContainsDestination(gen_position);
   }
   ExecutedMove ImplementExecuteMove(Move move) {
@@ -140,7 +147,7 @@ private:
       int search_depth
   ) {
     auto search_function = state_details_dispatch_table_.at(color);
-    return (this->*search_function(search_depth));
+    return (this->*search_function)(search_depth);
   }
   //////////////////////////////////////////////////////////////////////////////
 
@@ -150,14 +157,16 @@ private:
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
-    hash_calculator_red_.RecordCurrentStateMinimaxResult(search_depth, result_type, best_moves);
+    hash_calculator_red_
+        .RecordCurrentStateMinimaxResult(search_depth, result_type, best_moves);
   };
   void RecordCurrentStateDetailsBlack(
       int search_depth,
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
-    hash_calculator_black_.RecordCurrentStateMinimaxResult(search_depth, result_type, best_moves);
+    hash_calculator_black_
+        .RecordCurrentStateMinimaxResult(search_depth, result_type, best_moves);
   };
 
   unordered_map<PieceColor, void (NewGameBoard::*)(int, MinimaxResultType, BestMoves &)>
@@ -170,7 +179,7 @@ private:
       BestMoves &best_moves
   ) {
     auto record_function = write_state_details_dispatch_table_.at(color);
-    (this->*record_function(search_depth, result_type, best_moves));
+    (this->*record_function)(search_depth, result_type, best_moves);
   }
   /////////////////////////////////////////////////////////////////////////////////
 
@@ -197,7 +206,11 @@ private:
   bool ViolatesRepeatRule(PieceColor color) {
     for (auto period_length : kRepeatPeriodsToCheck) {
       auto lookback_length = (kMaxAllowedRepeatPeriods + 1) * period_length;
-      if (utility_functs::hasRepeatingPattern(move_log_[color], lookback_length, period_length)) {
+      if (utility_functs::hasRepeatingPattern(
+              move_log_[color],
+              lookback_length,
+              period_length
+          )) {
         return true;
       }
     }

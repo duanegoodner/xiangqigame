@@ -31,11 +31,9 @@ BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
 }
 
 template <
-    typename ConcreteBoardStateSummarizer,
     typename ConcreteBoardStateSummarizerRed,
     typename ConcreteBoardStateSummarizerBlack>
 NewGameBoard<
-    ConcreteBoardStateSummarizer,
     ConcreteBoardStateSummarizerRed,
     ConcreteBoardStateSummarizerBlack>::NewGameBoard(const BoardMapInt_t
                                                          board_array)
@@ -57,11 +55,9 @@ NewGameBoard<
 }
 
 template <
-    typename ConcreteBoardStateSummarizer,
     typename ConcreteBoardStateSummarizerRed,
     typename ConcreteBoardStateSummarizerBlack>
 NewGameBoard<
-    ConcreteBoardStateSummarizer,
     ConcreteBoardStateSummarizerRed,
     ConcreteBoardStateSummarizerBlack>::NewGameBoard()
     : NewGameBoard(kStartingBoard) {}

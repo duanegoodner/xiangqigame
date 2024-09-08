@@ -25,11 +25,9 @@ protected:
 TEST_F(RandomEvaluatorTest, TestStartingMoveSelection) {
   int num_first_move_selections = 10;
 
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  RandomMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>> red_evaluator{
-      PieceColor::kRed,
-      starting_board
-  };
+  NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> starting_board;
+  RandomMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>>
+      red_evaluator{PieceColor::kRed, starting_board};
 
   std::set<Move, bool (*)(const Move &, const Move &)> move_set(moveComparator);
 
@@ -43,9 +41,11 @@ TEST_F(RandomEvaluatorTest, TestStartingMoveSelection) {
 class MinimaxEvaluatorTest : public ::testing::Test {
 
 protected:
-  const string points_spec_path = utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
+  const string points_spec_path =
+      utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
 
-  const PointsSpecBPOExternal external_pts_spec = PointsSpecBPOExternal(points_spec_path);
+  const PointsSpecBPOExternal external_pts_spec =
+      PointsSpecBPOExternal(points_spec_path);
   const PiecePoints imported_piece_points{external_pts_spec};
 
   const BoardMapInt_t kLateGameBoardMap{{
@@ -60,65 +60,71 @@ protected:
       {5, 0, 0, 0, 0, 0, 0, 0, 0},
       {0, 0, 0, 0, -1, 0, 0, 0, 0},
   }};
-  NewGameBoard<HashCalculator<uint64_t>> late_game_board_{kLateGameBoardMap};
+  NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> late_game_board_{
+      kLateGameBoardMap
+  };
 
   const int standard_search_depth = 4;
 };
 
 TEST_F(MinimaxEvaluatorTest, TestConstructorsWithDefaultPiecePoints) {
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints> red_evaluator{
-      PieceColor::kRed,
-      standard_search_depth,
-      starting_board
-  };
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints> black_evaluator{
-      PieceColor::kBlk,
-      standard_search_depth,
-      starting_board
-  };
+  NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> starting_board;
+  MinimaxMoveEvaluator<
+      NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>,
+      PiecePoints>
+      red_evaluator{PieceColor::kRed, standard_search_depth, starting_board};
+  MinimaxMoveEvaluator<
+      NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>,
+      PiecePoints>
+      black_evaluator{PieceColor::kBlk, standard_search_depth, starting_board};
 }
 
 TEST_F(MinimaxEvaluatorTest, TestConstructorsWithImportedPiecePoints) {
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints> red_evaluator{
-      PieceColor::kRed,
-      standard_search_depth,
-      starting_board,
-      imported_piece_points
-  };
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints> black_evaluator{
-      PieceColor::kBlk,
-      standard_search_depth,
-      starting_board,
-      imported_piece_points
-  };
+  NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> starting_board;
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
+      red_evaluator{
+          PieceColor::kRed,
+          standard_search_depth,
+          starting_board,
+          imported_piece_points
+      };
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
+      black_evaluator{
+          PieceColor::kBlk,
+          standard_search_depth,
+          starting_board,
+          imported_piece_points
+      };
 }
 
 TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelection) {
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints> red_evaluator{
-      PieceColor::kRed,
-      standard_search_depth,
-      starting_board,
-      imported_piece_points
-  };
+  NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> starting_board;
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
+      red_evaluator{
+          PieceColor::kRed,
+          standard_search_depth,
+          starting_board,
+          imported_piece_points
+      };
 
   auto red_selected_move = red_evaluator.SelectMove();
   EXPECT_TRUE(
-      (red_selected_move.start == BoardSpace{9, 1} && red_selected_move.end == BoardSpace{7, 2}) ||
-      (red_selected_move.start == BoardSpace{9, 7} && red_selected_move.end == BoardSpace{7, 6})
+      (red_selected_move.start == BoardSpace{9, 1} &&
+       red_selected_move.end == BoardSpace{7, 2}) ||
+      (red_selected_move.start == BoardSpace{9, 7} &&
+       red_selected_move.end == BoardSpace{7, 6})
   );
 }
 
 TEST_F(MinimaxEvaluatorTest, EndOfGameSelectorTest) {
 
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints> black_evaluator{
-      PieceColor::kBlk,
-      standard_search_depth,
-      late_game_board_,
-      imported_piece_points
-  };
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
+      black_evaluator{
+          PieceColor::kBlk,
+          standard_search_depth,
+          late_game_board_,
+          imported_piece_points
+      };
 
   auto black_selected_move = black_evaluator.SelectMove();
   auto black_executed_move = late_game_board_.ExecuteMove(black_selected_move);
@@ -128,15 +134,25 @@ TEST_F(MinimaxEvaluatorTest, EndOfGameSelectorTest) {
 }
 
 TEST_F(MinimaxEvaluatorTest, PlayGame) {
-  NewGameBoard<HashCalculator<uint64_t>> game_board;
+  NewGameBoard<HashCalculator<uint64_t>,HashCalculator<uint64_t>> game_board;
 
   int red_search_depth{2};
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
-      red_evaluator{PieceColor::kRed, red_search_depth, game_board, imported_piece_points};
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
+      red_evaluator{
+          PieceColor::kRed,
+          red_search_depth,
+          game_board,
+          imported_piece_points
+      };
 
   int black_search_depth{3};
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
-      black_evaluator{PieceColor::kBlk, black_search_depth, game_board, imported_piece_points};
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
+      black_evaluator{
+          PieceColor::kBlk,
+          black_search_depth,
+          game_board,
+          imported_piece_points
+      };
 
   PieceColor losing_player{};
 
