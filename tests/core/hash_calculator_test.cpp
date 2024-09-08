@@ -121,7 +121,7 @@ TEST_F(HashCalculatorTest, InitializeBoardState) {
   auto my_hash_calculator = HashCalculator<uint64_t>();
   uint64_t board_state{0};
   EXPECT_EQ(my_hash_calculator.ImplementGetState(), 0);
-  my_hash_calculator.ImplementCalcInitialBoardState(board_map);
+  my_hash_calculator.ImplementFullBoardStateCalc(board_map);
   EXPECT_NE(my_hash_calculator.ImplementGetState(), 0);
 }
 
@@ -136,11 +136,11 @@ TEST_F(HashCalculatorTest, ExecuteAndUndoMove) {
   auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
 
-  my_hash_calculator.ImplementCalcInitialBoardState(board_map);
+  my_hash_calculator.ImplementFullBoardStateCalc(board_map);
   auto initial_state = my_hash_calculator.ImplementGetState();
-  my_hash_calculator.ImplementCalcNewBoardState(executed_move);
+  my_hash_calculator.ImplementUpdateBoardState(executed_move);
   auto post_move_state = my_hash_calculator.ImplementGetState();
-  my_hash_calculator.ImplementCalcNewBoardState(executed_move);
+  my_hash_calculator.ImplementUpdateBoardState(executed_move);
   auto final_state = my_hash_calculator.ImplementGetState();
 
   EXPECT_NE(initial_state, post_move_state);

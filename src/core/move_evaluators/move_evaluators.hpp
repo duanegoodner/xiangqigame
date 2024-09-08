@@ -40,22 +40,22 @@ public:
     );
   }
 
-  TranspositionTableSearchResult SearchTranspositionTable(
+  TranspositionTableSearchResult GetEvalResult(
       PieceColor color,
       int search_depth
   ) {
     return static_cast<ConcreteSpaceInfoProvider *>(this)
-        ->ImplementSearchTranspositionTable(color, search_depth);
+        ->ImplementGetEvalResult(color, search_depth);
   }
 
-  void RecordCurrentStateScore(
+  void RecordEvalResult(
       PieceColor color,
       int search_depth,
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
     return static_cast<ConcreteSpaceInfoProvider *>(this)
-        ->ImplementRecordCurrentStateScore(
+        ->ImplementRecordEvalResult(
             color,
             search_depth,
             result_type,

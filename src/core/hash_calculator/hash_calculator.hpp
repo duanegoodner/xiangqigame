@@ -85,7 +85,7 @@ struct ZobristKeys {
 template <typename KeyType>
 struct TranspositionTable {
 
-  TranspositionTableSearchResult GetStateDetails(KeyType board_state, int minimax_search_depth) {
+  TranspositionTableSearchResult GetData(KeyType board_state, int minimax_search_depth) {
     TranspositionTableSearchResult result{};
 
     auto entry_vector_it = data_.find(board_state);
@@ -101,7 +101,7 @@ struct TranspositionTable {
     return result;
   }
 
-  void RecordStateDetails(
+  void RecordData(
       KeyType state,
       int search_depth,
       MinimaxResultType result_type,
@@ -125,10 +125,10 @@ public:
   HashCalculator()
       : HashCalculator(ZobristKeys<KeyType>()) {};
   KeyType ImplementGetState() { return board_state_; }
-  void ImplementCalcNewBoardState(const ExecutedMove &move) {
-    PrivateImplementCalcNewBoardState(move);
+  void ImplementUpdateBoardState(const ExecutedMove &move) {
+    _ImplementUpdateBoardState(move);
   }
-  void ImplementCalcInitialBoardState(const BoardMap_t &board_map) {
+  void ImplementFullBoardStateCalc(const BoardMap_t &board_map) {
     board_state_ = 0;
     for (size_t rank = 0; rank < kNumRanks; rank++) {
       for (size_t file = 0; file < kNumFiles; file++) {
@@ -142,16 +142,16 @@ public:
       }
     }
   };
-  void ImplementRecordCurrentStateMinimaxResult(
+  void ImplementRecordTrData(
       int search_depth,
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
-    transposition_table_.RecordStateDetails(board_state_, search_depth, result_type, best_moves);
+    transposition_table_.RecordData(board_state_, search_depth, result_type, best_moves);
   }
 
-  TranspositionTableSearchResult ImplementGetCurrentStateMinimaxResult(int search_depth) {
-    return transposition_table_.GetStateDetails(board_state_, search_depth);
+  TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
+    return transposition_table_.GetData(board_state_, search_depth);
   }
 
 private:
@@ -159,7 +159,7 @@ private:
   KeyType board_state_;
   TranspositionTable<KeyType> transposition_table_;
 
-  void PrivateImplementCalcNewBoardState(ExecutedMove move) {
+  void _ImplementUpdateBoardState(ExecutedMove move) {
     // moving piece moves away from space
     board_state_ = board_state_ ^ zkeys_.GetHashValue(
                                       move.moving_piece.piece_color,

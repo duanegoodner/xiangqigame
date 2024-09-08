@@ -40,8 +40,8 @@ NewGameBoard<
     : board_map_{int_board_to_game_pieces(board_array)}
     , move_calculator_{MoveCalculator()} {
 
-  hash_calculator_red_.CalcInitialBoardState(board_map_);
-  hash_calculator_black_.CalcInitialBoardState(board_map_);
+  hash_calculator_red_.FullBoardStateCalc(board_map_);
+  hash_calculator_black_.FullBoardStateCalc(board_map_);
 
   state_details_dispatch_table_[PieceColor::kBlk] =
       &NewGameBoard::GetCurrentStateDetailsBlack;
@@ -49,9 +49,9 @@ NewGameBoard<
       &NewGameBoard::GetCurrentStateDetailsRed;
 
   write_state_details_dispatch_table_[PieceColor::kBlk] =
-      &NewGameBoard::RecordCurrentStateDetailsBlack;
+      &NewGameBoard::RecordEvalResultBlack;
   write_state_details_dispatch_table_[PieceColor::kRed] =
-      &NewGameBoard::RecordCurrentStateDetailsRed;
+      &NewGameBoard::RecordEvalResultRed;
 }
 
 template <

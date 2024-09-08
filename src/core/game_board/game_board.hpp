@@ -26,14 +26,14 @@ template <typename ConcreteBoardStateSummarizer, typename KeyType>
 class BoardStateSummarizer {
 public:
   typedef KeyType ZobristKey_t;
-  void CalcInitialBoardState(BoardMap_t &board_map) {
-    static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementCalcInitialBoardState(
+  void FullBoardStateCalc(BoardMap_t &board_map) {
+    static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementFullBoardStateCalc(
         board_map
     );
   }
 
-  void CalcNewBoardState(const ExecutedMove &move) {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementCalcNewBoardState(
+  void UpdateBoardState(const ExecutedMove &move) {
+    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementUpdateBoardState(
         move
     );
   }
@@ -42,22 +42,22 @@ public:
     return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetState();
   }
 
-  void RecordCurrentStateMinimaxResult(
+  void RecordTrData(
       int search_depth,
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)
-        ->ImplementRecordCurrentStateMinimaxResult(
+        ->ImplementRecordTrData(
             search_depth,
             result_type,
             best_moves
         );
   }
 
-  TranspositionTableSearchResult GetCurrentStateMinimaxResult(int search_depth) {
+  TranspositionTableSearchResult GetTrData(int search_depth) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)
-        ->ImplementGetCurrentStateMinimaxResult(search_depth);
+        ->ImplementGetTrData(search_depth);
   }
 };
 
@@ -77,20 +77,20 @@ public:
   }
   PieceColor ImplementGetColor(BoardSpace space) { return get_color(board_map_, space); }
   PieceType ImplementGetType(BoardSpace space) { return get_type(board_map_, space); }
-  TranspositionTableSearchResult ImplementSearchTranspositionTable(
+  TranspositionTableSearchResult ImplementGetEvalResult(
       PieceColor color,
       int search_depth
   ) {
-    return _ImplementSearchTranspositionTable(color, search_depth);
+    return _ImplementGetEvalResult(color, search_depth);
   }
 
-  void ImplementRecordCurrentStateScore(
+  void ImplementRecordEvalResult(
       PieceColor color,
       int search_depth,
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
-    _ImplementRecordCurrentStateScore(color, search_depth, result_type, best_moves);
+    _ImplementRecordEvalResult(color, search_depth, result_type, best_moves);
   };
 
   MoveCollection ImplementCalcFinalMovesOf(PieceColor color) {
@@ -115,7 +115,7 @@ public:
     return ExecutedMove{move, moving_piece, destination_piece};
   };
   void ImplementUndoMove(ExecutedMove executed_move) {
-    return PrivateImplementUndoMove(executed_move);
+    return _ImplementUndoMove(executed_move);
   };
   GamePiece GetOccupant(BoardSpace space) { return board_map_[space.rank][space.file]; };
   const BoardMap_t &map() const { return board_map_; }
@@ -126,7 +126,7 @@ private:
   ConcreteBoardStateSummarizerRed hash_calculator_red_;
   ConcreteBoardStateSummarizerBlack hash_calculator_black_;
 
-  void PrivateImplementUndoMove(ExecutedMove executed_move) {
+  void _ImplementUndoMove(ExecutedMove executed_move) {
     SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
     SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
     UpdateHashCalculator(executed_move);
@@ -135,14 +135,14 @@ private:
 
   // Retrieve info for current state //////////////////////////////////////////
   TranspositionTableSearchResult GetCurrentStateDetailsRed(int search_depth) {
-    return hash_calculator_red_.GetCurrentStateMinimaxResult(search_depth);
+    return hash_calculator_red_.GetTrData(search_depth);
   };
   TranspositionTableSearchResult GetCurrentStateDetailsBlack(int search_depth) {
-    return hash_calculator_black_.GetCurrentStateMinimaxResult(search_depth);
+    return hash_calculator_black_.GetTrData(search_depth);
   }
   unordered_map<PieceColor, TranspositionTableSearchResult (NewGameBoard::*)(int)>
       state_details_dispatch_table_;
-  TranspositionTableSearchResult _ImplementSearchTranspositionTable(
+  TranspositionTableSearchResult _ImplementGetEvalResult(
       PieceColor color,
       int search_depth
   ) {
@@ -152,27 +152,27 @@ private:
   //////////////////////////////////////////////////////////////////////////////
 
   // Record info for current state/////////////////////////////////////////////
-  void RecordCurrentStateDetailsRed(
+  void RecordEvalResultRed(
       int search_depth,
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
     hash_calculator_red_
-        .RecordCurrentStateMinimaxResult(search_depth, result_type, best_moves);
+        .RecordTrData(search_depth, result_type, best_moves);
   };
-  void RecordCurrentStateDetailsBlack(
+  void RecordEvalResultBlack(
       int search_depth,
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
     hash_calculator_black_
-        .RecordCurrentStateMinimaxResult(search_depth, result_type, best_moves);
+        .RecordTrData(search_depth, result_type, best_moves);
   };
 
   unordered_map<PieceColor, void (NewGameBoard::*)(int, MinimaxResultType, BestMoves &)>
       write_state_details_dispatch_table_;
 
-  void _ImplementRecordCurrentStateScore(
+  void _ImplementRecordEvalResult(
       PieceColor color,
       int search_depth,
       MinimaxResultType result_type,
@@ -185,8 +185,8 @@ private:
 
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
   void UpdateHashCalculator(ExecutedMove executed_move) {
-    hash_calculator_red_.CalcNewBoardState(executed_move);
-    hash_calculator_black_.CalcNewBoardState(executed_move);
+    hash_calculator_red_.UpdateBoardState(executed_move);
+    hash_calculator_black_.UpdateBoardState(executed_move);
   };
   void SetOccupant(BoardSpace space, GamePiece piece) {
     board_map_[space.rank][space.file] = piece;

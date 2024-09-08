@@ -223,7 +223,7 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
   node_counter_ += 1;
   MinimaxResultType result_type{};
 
-  auto state_score_search_result = game_board_.SearchTranspositionTable(
+  auto state_score_search_result = game_board_.GetEvalResult(
       evaluating_player_,
       cur_search_depth
   );
@@ -235,7 +235,7 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
   if (cur_moves.moves.size() == 0) {
     result_type = MinimaxResultType::kEndGameLeaf;
     auto result = EvaluateEndOfGameLeaf(cur_player);
-    game_board_.RecordCurrentStateScore(
+    game_board_.RecordEvalResult(
         evaluating_player_,
         cur_search_depth,
         result_type,
@@ -246,7 +246,7 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
   if (cur_search_depth == 0) {
     result_type = MinimaxResultType::kStandardLeaf;
     auto result = EvaluateNonWinLeaf(cur_player);
-    game_board_.RecordCurrentStateScore(
+    game_board_.RecordEvalResult(
         evaluating_player_,
         cur_search_depth,
         result_type,
@@ -283,7 +283,7 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
       }
     }
     auto result = BestMoves{max_eval, best_moves};
-    game_board_.RecordCurrentStateScore(
+    game_board_.RecordEvalResult(
         evaluating_player_,
         cur_search_depth,
         result_type,
@@ -322,7 +322,7 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     }
     result_type = MinimaxResultType::kFullyEvaluatedNode;
     auto result = BestMoves{min_eval, best_moves};
-    game_board_.RecordCurrentStateScore(
+    game_board_.RecordEvalResult(
         evaluating_player_,
         cur_search_depth,
         result_type,
