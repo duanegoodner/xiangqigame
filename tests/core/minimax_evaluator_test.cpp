@@ -20,19 +20,16 @@ protected:
   }
 };
 
-// Red selects starting move 10 times. If choice is random, we can be 
+// Red selects starting move 10 times. If choice is random, we can be
 // almost certain that the number of unique selected Moves will be > 5.
 TEST_F(RandomEvaluatorTest, TestStartingMoveSelection) {
   int num_first_move_selections = 10;
 
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  RandomMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>> red_evaluator{
-      PieceColor::kRed,
-      starting_board
-  };
+  NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> starting_board;
+  RandomMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>>
+      red_evaluator{PieceColor::kRed, starting_board};
 
-  std::set<Move, bool (*)(const Move &, const Move &)> move_set(moveComparator
-  );
+  std::set<Move, bool (*)(const Move &, const Move &)> move_set(moveComparator);
 
   for (auto idx = 0; idx < num_first_move_selections; idx++) {
     auto red_selected_move = red_evaluator.SelectMove();
@@ -63,29 +60,35 @@ protected:
       {5, 0, 0, 0, 0, 0, 0, 0, 0},
       {0, 0, 0, 0, -1, 0, 0, 0, 0},
   }};
-  NewGameBoard<HashCalculator<uint64_t>> late_game_board_{kLateGameBoardMap};
+  NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> late_game_board_{
+      kLateGameBoardMap
+  };
 
   const int standard_search_depth = 4;
 };
 
 TEST_F(MinimaxEvaluatorTest, TestConstructorsWithDefaultPiecePoints) {
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> starting_board;
+  MinimaxMoveEvaluator<
+      NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>,
+      PiecePoints>
       red_evaluator{PieceColor::kRed, standard_search_depth, starting_board};
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  MinimaxMoveEvaluator<
+      NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>,
+      PiecePoints>
       black_evaluator{PieceColor::kBlk, standard_search_depth, starting_board};
 }
 
 TEST_F(MinimaxEvaluatorTest, TestConstructorsWithImportedPiecePoints) {
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> starting_board;
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
       red_evaluator{
           PieceColor::kRed,
           standard_search_depth,
           starting_board,
           imported_piece_points
       };
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
       black_evaluator{
           PieceColor::kBlk,
           standard_search_depth,
@@ -95,8 +98,8 @@ TEST_F(MinimaxEvaluatorTest, TestConstructorsWithImportedPiecePoints) {
 }
 
 TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelection) {
-  NewGameBoard<HashCalculator<uint64_t>> starting_board;
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> starting_board;
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
       red_evaluator{
           PieceColor::kRed,
           standard_search_depth,
@@ -115,7 +118,7 @@ TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelection) {
 
 TEST_F(MinimaxEvaluatorTest, EndOfGameSelectorTest) {
 
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
       black_evaluator{
           PieceColor::kBlk,
           standard_search_depth,
@@ -125,17 +128,16 @@ TEST_F(MinimaxEvaluatorTest, EndOfGameSelectorTest) {
 
   auto black_selected_move = black_evaluator.SelectMove();
   auto black_executed_move = late_game_board_.ExecuteMove(black_selected_move);
-  auto red_possible_moves =
-      late_game_board_.CalcFinalMovesOf(PieceColor::kRed);
+  auto red_possible_moves = late_game_board_.CalcFinalMovesOf(PieceColor::kRed);
   auto red_num_possible_moves = red_possible_moves.Size();
   EXPECT_TRUE(red_num_possible_moves == 0);
 }
 
 TEST_F(MinimaxEvaluatorTest, PlayGame) {
-  NewGameBoard<HashCalculator<uint64_t>> game_board;
+  NewGameBoard<HashCalculator<uint64_t>,HashCalculator<uint64_t>> game_board;
 
   int red_search_depth{2};
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
       red_evaluator{
           PieceColor::kRed,
           red_search_depth,
@@ -144,7 +146,7 @@ TEST_F(MinimaxEvaluatorTest, PlayGame) {
       };
 
   int black_search_depth{3};
-  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>>, PiecePoints>
+  MinimaxMoveEvaluator<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>, PiecePoints>
       black_evaluator{
           PieceColor::kBlk,
           black_search_depth,

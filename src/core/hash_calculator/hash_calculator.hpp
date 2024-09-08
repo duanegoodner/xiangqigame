@@ -31,7 +31,7 @@ struct ZobristKeys {
       : zarray{}
       , turn_key{} {
     std::random_device rd;
-    std::mt19937_64 gen_64{rd()};    
+    std::mt19937_64 gen_64{rd()};
     turn_key = KeyGenerator::generate_key<KeyType>(gen_64);
     zarray = create_game_zarray(gen_64);
   };
@@ -63,11 +63,7 @@ struct ZobristKeys {
     return j;
   };
 
-  KeyType GetHashValue(
-      PieceColor color,
-      PieceType piece_type,
-      BoardSpace space
-  ) {
+  KeyType GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) {
     return zarray[get_zcolor_index(color)][piece_type][space.rank][space.file];
   }
   static const GameZarray_t create_game_zarray(std::mt19937_64 &gen_64) {
@@ -87,11 +83,45 @@ struct ZobristKeys {
 };
 
 template <typename KeyType>
+struct TranspositionTable {
+
+  TranspositionTableSearchResult GetStateDetails(KeyType board_state, int minimax_search_depth) {
+    TranspositionTableSearchResult result{};
+
+    auto entry_vector_it = data_.find(board_state);
+    if (entry_vector_it != data_.end()) {
+      auto entry_vector = entry_vector_it->second;
+      for (auto entry : entry_vector) {
+        if (entry.search_depth == minimax_search_depth) {
+          result.found = true;
+          result.table_entry = entry;
+        }
+      }
+    }
+    return result;
+  }
+
+  void RecordStateDetails(
+      KeyType state,
+      int search_depth,
+      MinimaxResultType result_type,
+      BestMoves &best_moves
+  ) {
+    TranspositionTableEntry transposition_table_entry{search_depth, result_type, best_moves};
+    data_[state].push_back(transposition_table_entry);
+  };
+
+private:
+  unordered_map<KeyType, vector<TranspositionTableEntry>> data_;
+};
+
+template <typename KeyType>
 class HashCalculator : public BoardStateSummarizer<HashCalculator<KeyType>, KeyType> {
 public:
   HashCalculator(ZobristKeys<KeyType> zkeys)
       : zkeys_{zkeys}
-      , board_state_{} {};
+      , board_state_{}
+      , transposition_table_{} {};
   HashCalculator()
       : HashCalculator(ZobristKeys<KeyType>()) {};
   KeyType ImplementGetState() { return board_state_; }
@@ -112,10 +142,22 @@ public:
       }
     }
   };
+  void ImplementRecordCurrentStateMinimaxResult(
+      int search_depth,
+      MinimaxResultType result_type,
+      BestMoves &best_moves
+  ) {
+    transposition_table_.RecordStateDetails(board_state_, search_depth, result_type, best_moves);
+  }
+
+  TranspositionTableSearchResult ImplementGetCurrentStateMinimaxResult(int search_depth) {
+    return transposition_table_.GetStateDetails(board_state_, search_depth);
+  }
 
 private:
   ZobristKeys<KeyType> zkeys_;
   KeyType board_state_;
+  TranspositionTable<KeyType> transposition_table_;
 
   void PrivateImplementCalcNewBoardState(ExecutedMove move) {
     // moving piece moves away from space
