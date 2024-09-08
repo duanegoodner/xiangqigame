@@ -14,6 +14,7 @@
 #include <board_components.hpp>
 #include <common.hpp>
 #include <evaluator_details.hpp>
+#include <functional>
 #include <utility_functs.hpp>
 
 using namespace board_components;
@@ -29,56 +30,87 @@ public:
   }
 
   PieceColor GetColor(BoardSpace space) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetColor(
-        space
-    );
+    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetColor(space);
   }
 
   PieceType GetType(BoardSpace space) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetType(
-        space
+    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetType(space);
+  }
+
+  // TranspositionTableSearchResult GetEvalResult(PieceColor color, int search_depth) {
+  //   return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetEvalResult(
+  //       color,
+  //       search_depth
+  //   );
+  // }
+
+  // void RecordEvalResult(
+  //     PieceColor color,
+  //     int search_depth,
+  //     MinimaxResultType result_type,
+  //     BestMoves &best_moves
+  // ) {
+  //   return static_cast<ConcreteSpaceInfoProvider *>(this)
+  //       ->ImplementRecordEvalResult(color, search_depth, result_type, best_moves);
+  // }
+
+  MoveCollection CalcFinalMovesOf(PieceColor color) {
+    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementCalcFinalMovesOf(
+        color
+    );
+  };
+
+  ExecutedMove ExecuteMove(Move move) {
+    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementExecuteMove(move);
+  }
+
+  void UndoMove(ExecutedMove executed_move) {
+    static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementUndoMove(executed_move);
+  }
+
+  void AttachMoveCallback(function<void(ExecutedMove)> callback) {
+    static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementAttachMoveCallback(callback
+    );
+  }
+};
+
+// CRTP Interface: Evaluator <- BoardStateSummarizer
+template <typename ConcreteBoardStateSummarizer, typename KeyType>
+class BoardStateSummarizer {
+  typedef KeyType ZobristKey_t;
+  void FullBoardStateCalc(BoardMap_t &board_map) {
+    static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementFullBoardStateCalc(
+        board_map
     );
   }
 
-  TranspositionTableSearchResult GetEvalResult(
-      PieceColor color,
-      int search_depth
-  ) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)
-        ->ImplementGetEvalResult(color, search_depth);
+  void UpdateBoardState(const ExecutedMove &move) {
+    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementUpdateBoardState(
+        move
+    );
   }
 
-  void RecordEvalResult(
-      PieceColor color,
+  ZobristKey_t GetState() {
+    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetState();
+  }
+
+  void RecordTrData(
       int search_depth,
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)
-        ->ImplementRecordEvalResult(
-            color,
-            search_depth,
-            result_type,
-            best_moves
-        );
+    return static_cast<ConcreteBoardStateSummarizer *>(this)
+        ->ImplementRecordTrData(search_depth, result_type, best_moves);
   }
 
-  MoveCollection CalcFinalMovesOf(PieceColor color) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)
-        ->ImplementCalcFinalMovesOf(color);
-  };
-
-  ExecutedMove ExecuteMove(Move move) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)
-        ->ImplementExecuteMove(move);
-  }
-
-  void UndoMove(ExecutedMove executed_move) {
-    static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementUndoMove(
-        executed_move
+  TranspositionTableSearchResult GetTrData(int search_depth) {
+    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetTrData(
+        search_depth
     );
   }
 };
+
+
 
 // CRTP Interface: Evaluator <- GamePoints
 template <typename ConcretePieceValueProvider>
@@ -118,13 +150,10 @@ public:
 //    implements PieceValueProvider
 // Uses minimax algorithm with alpha-beta pruning to select a move for
 // evaluating_player_.
-template <
-    typename ConcreteSpaceInfoProvider,
-    typename ConcretePieceValueProvider>
+template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
 class MinimaxMoveEvaluator
-    : public MoveEvaluatorInterface<MinimaxMoveEvaluator<
-          ConcreteSpaceInfoProvider,
-          ConcretePieceValueProvider>> {
+    : public MoveEvaluatorInterface<
+          MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>> {
 
 public:
   MinimaxMoveEvaluator(
@@ -181,8 +210,7 @@ private:
 // Randomly chooses one of the legal moves available to evaluating_player_.
 template <typename ConcreteSpaceInfoProvider>
 class RandomMoveEvaluator
-    : public MoveEvaluatorInterface<
-          RandomMoveEvaluator<ConcreteSpaceInfoProvider>> {
+    : public MoveEvaluatorInterface<RandomMoveEvaluator<ConcreteSpaceInfoProvider>> {
 public:
   RandomMoveEvaluator(
       PieceColor evaluating_player,
