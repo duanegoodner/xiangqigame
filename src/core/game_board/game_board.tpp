@@ -30,36 +30,27 @@ BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
   return game_piece_board;
 }
 
-template <
-    typename ConcreteBoardStateSummarizerRed,
-    typename ConcreteBoardStateSummarizerBlack>
-NewGameBoard<
-    ConcreteBoardStateSummarizerRed,
-    ConcreteBoardStateSummarizerBlack>::NewGameBoard(const BoardMapInt_t
+NewGameBoard::NewGameBoard(const BoardMapInt_t
                                                          board_array)
     : board_map_{int_board_to_game_pieces(board_array)}
     , move_calculator_{MoveCalculator()} {
 
-  hash_calculator_red_.FullBoardStateCalc(board_map_);
-  hash_calculator_black_.FullBoardStateCalc(board_map_);
+  // hash_calculator_red_.FullBoardStateCalc(board_map_);
+  // hash_calculator_black_.FullBoardStateCalc(board_map_);
 
-  state_details_dispatch_table_[PieceColor::kBlk] =
-      &NewGameBoard::GetCurrentStateDetailsBlack;
-  state_details_dispatch_table_[PieceColor::kRed] =
-      &NewGameBoard::GetCurrentStateDetailsRed;
+  // state_details_dispatch_table_[PieceColor::kBlk] =
+  //     &NewGameBoard::GetCurrentStateDetailsBlack;
+  // state_details_dispatch_table_[PieceColor::kRed] =
+  //     &NewGameBoard::GetCurrentStateDetailsRed;
 
-  write_state_details_dispatch_table_[PieceColor::kBlk] =
-      &NewGameBoard::RecordEvalResultBlack;
-  write_state_details_dispatch_table_[PieceColor::kRed] =
-      &NewGameBoard::RecordEvalResultRed;
+  // write_state_details_dispatch_table_[PieceColor::kBlk] =
+  //     &NewGameBoard::RecordEvalResultBlack;
+  // write_state_details_dispatch_table_[PieceColor::kRed] =
+  //     &NewGameBoard::RecordEvalResultRed;
 }
 
-template <
-    typename ConcreteBoardStateSummarizerRed,
-    typename ConcreteBoardStateSummarizerBlack>
-NewGameBoard<
-    ConcreteBoardStateSummarizerRed,
-    ConcreteBoardStateSummarizerBlack>::NewGameBoard()
+
+NewGameBoard::NewGameBoard()
     : NewGameBoard(kStartingBoard) {}
 
 #endif
