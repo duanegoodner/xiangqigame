@@ -1,15 +1,83 @@
 import argparse
 from dataclasses import dataclass
-from typing import Callable
+from typing import Callable, Any
 from xiangqigame.players import AIPlayer, HumanPlayer, Player
-from xiangqigame_core import MinimaxMoveEvaluator64, MinimaxMoveEvaluator128, RandomMoveEvaluator
+from xiangqigame_core import (
+    MinimaxMoveEvaluator64,
+    MinimaxMoveEvaluator128,
+    RandomMoveEvaluator,
+)
 
 
 @dataclass
 class PlayerInput:
     player_type: Callable[..., Player]
-    algo: Callable[..., RandomMoveEvaluator | MinimaxMoveEvaluator64 | MinimaxMoveEvaluator128]
+    algo: Callable[
+        ...,
+        RandomMoveEvaluator | MinimaxMoveEvaluator64 | MinimaxMoveEvaluator128,
+    ]
     strength: int
+    key_size: int
+
+
+class PlayerCommandInterpreter:
+    _player_input_dispatch = {
+        "ai": AIPlayer,
+        "person": HumanPlayer,
+        None: AIPlayer,
+    }
+
+    _minimax_key_size_dispatch = {
+        64: MinimaxMoveEvaluator64,
+        128: MinimaxMoveEvaluator128,
+    }
+
+    _default_key_size = 64
+
+    _default_strength = 4
+
+    def __init__(
+        self,
+        player_input: str,
+        algo_input: str,
+        strength_input: int,
+        key_size_input: int,
+    ):
+        self.player_input = player_input
+        self.algo_input = algo_input
+        self.strength_input = strength_input
+        self.key_size_input = key_size_input
+
+    def _get_key_size(self) -> int:
+        if self.key_size_input is None:
+            return self._default_key_size
+        else:
+            return self.key_size_input
+
+    def _get_strength(self) -> int:
+        if self.strength_input is None:
+            return self._default_strength
+        else:
+            return self.strength_input
+
+    def interpret_command(self) -> PlayerInput:
+        player_type = self._player_input_dispatch[self.player_input]
+        if player_type == HumanPlayer:
+            algo = strength = key_size = None
+        else:
+            if self.algo_input == "random":
+                algo = RandomMoveEvaluator
+                strength = key_size = None
+            else:
+                key_size = self._get_key_size()
+                algo = self._minimax_key_size_dispatch[key_size]
+                strength = self._get_strength()
+        return PlayerInput(
+            player_type=player_type,
+            algo=algo,
+            strength=strength,
+            key_size=key_size,
+        )
 
 
 @dataclass
@@ -18,8 +86,35 @@ class XiangqiGameCommand:
     black_player_input: PlayerInput
 
 
+@dataclass
+class CommandLineInterpreter:
+    command_line_args: dict[str, Any]
+
+    def interpret_command(self) -> XiangqiGameCommand:
+        red_interpreter = PlayerCommandInterpreter(
+            player_input=self.command_line_args["red_player_type"],
+            algo_input=self.command_line_args["red_algo"],
+            strength_input=self.command_line_args["red_strength"],
+            key_size_input=self.command_line_args["red_key_size"],
+        )
+        black_interpreter = PlayerCommandInterpreter(
+            player_input=self.command_line_args["black_player_type"],
+            algo_input=self.command_line_args["black_algo"],
+            strength_input=self.command_line_args["black_strength"],
+            key_size_input=self.command_line_args["black_key_size"],
+        )
+
+        return XiangqiGameCommand(
+            red_player_input=red_interpreter.interpret_command(),
+            black_player_input=black_interpreter.interpret_command(),
+        )
+
 class XiangqiGameCommandInterpreter:
-    _player_type_dispatch = {"ai": AIPlayer, "person": HumanPlayer, None: None}
+    _player_type_dispatch = {
+        "ai": AIPlayer,
+        "person": HumanPlayer,
+        None: AIPlayer,
+    }
 
     _move_evaluator_dispatch = {
         "random": RandomMoveEvaluator,
@@ -37,6 +132,7 @@ class XiangqiGameCommandInterpreter:
             ],
             algo=self._move_evaluator_dispatch[self._command_input.red_algo],
             strength=self._command_input.red_strength,
+            key_size=self._command_input.red_key_size,
         )
 
         black_player_input = PlayerInput(
@@ -45,6 +141,7 @@ class XiangqiGameCommandInterpreter:
             ],
             algo=self._move_evaluator_dispatch[self._command_input.black_algo],
             strength=self._command_input.black_strength,
+            key_size=self._command_input.black_key_size,
         )
 
         return XiangqiGameCommand(
@@ -89,8 +186,17 @@ class XiangqiGameCommandLine:
             type=int,
             choices=range(1, 10),
             required=False,
-            help="Search depth to user for red player when red is 'ai' with "
-            "'minimax.' Default is 1.",
+            help="Search depth to user for red AI player with minimax algo"
+                 "Default is 4.",
+        )
+
+        self._parser.add_argument(
+            "-rk",
+            "--red_key_size",
+            type=int,
+            choices=[64, 128],
+            required=False,
+            help="Key size (in bits) used for red AI player Zobrist hashing",
         )
 
         self._parser.add_argument(
@@ -105,8 +211,8 @@ class XiangqiGameCommandLine:
             "--black_algo",
             choices=["random", "minimax"],
             required=False,
-            help="Search algorithm to use for black player (if player type is "
-            "'ai'). Can be 'random' or 'minimax'. Default is minimax.",
+            help="Search depth to user for black AI player with minimax algo"
+                 "Default is 4.",
         )
 
         self._parser.add_argument(
@@ -119,17 +225,21 @@ class XiangqiGameCommandLine:
             "'minimax.' Default is 2.",
         )
 
-    def get_args(self, *args) -> XiangqiGameCommand:
+        self._parser.add_argument(
+            "-bk",
+            "--black_key_size",
+            type=int,
+            choices=[64, 128],
+            required=False,
+            help="Key size (in bits) used for black AI player Zobrist hashing",
+        )
+
+    def get_args(self) -> dict[str, Any]:
         self._attach_args()
-        args_namespace = self._parser.parse_args(*args)
-        interpreted_command = XiangqiGameCommandInterpreter(
-            args_namespace
-        ).interpret_command()
+        args_namespace = self._parser.parse_args()
+        return vars(args_namespace)
 
-        return interpreted_command
-
-
-def main() ->XiangqiGameCommand:
+def main() -> XiangqiGameCommand:
     command_retriever = XiangqiGameCommandLine()
     my_command = command_retriever.get_args()
     return my_command
