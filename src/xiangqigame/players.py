@@ -11,7 +11,8 @@ from xiangqigame_core import (
     PieceColor,
     Move,
     MoveCollection,
-    MinimaxMoveEvaluator,
+    MinimaxMoveEvaluator64,
+    MinimaxMoveEvaluator128,
     RandomMoveEvaluator,
 )
 
@@ -70,7 +71,9 @@ class AIPlayer(Player):
     def __init__(
         self,
         color: PieceColor,
-        move_evaluator: MinimaxMoveEvaluator | RandomMoveEvaluator,
+        move_evaluator: (
+            MinimaxMoveEvaluator64 | MinimaxMoveEvaluator128 | RandomMoveEvaluator
+        ),
     ):
         super().__init__(color)
         self._move_evaluator = move_evaluator

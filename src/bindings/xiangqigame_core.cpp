@@ -1,7 +1,7 @@
-// Filename: game_board_py.cpp
+// Filename: xiangqigame_core.cpp
 // Author: Duane Goodner
 // Created: 2022-12-07
-// Last Modified: 2024-08-16
+// Last Modified: 2024-09-08
 
 // Description:
 // Implements pybind module that exposes GameBoard and related classes /
@@ -15,11 +15,31 @@
 #include <hash_calculator.hpp>
 #include <move_evaluators.hpp>
 #include <piece_points.hpp>
+#include <string>
 
 namespace py = pybind11;
 using namespace py::literals;
 using namespace board_components;
 using namespace piece_points;
+
+template <typename KeyType>
+void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
+  py::class_<MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>>(
+      m,
+      class_name.c_str()
+  )
+      .def(
+          py::init<PieceColor, int, NewGameBoard &>(),
+          "evaluating_player"_a,
+          "starting_search_depth"_a,
+          "game_board"_a
+      )
+      .def(
+          "select_move",
+          &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
+              SelectMove
+      );
+}
 
 PYBIND11_MODULE(xiangqigame_core, m) {
 
@@ -87,22 +107,10 @@ PYBIND11_MODULE(xiangqigame_core, m) {
 
   m.def("opponent_of", &opponent_of);
 
-  py::class_<MinimaxMoveEvaluator<NewGameBoard, HashCalculator<uint64_t>, PiecePoints>>(
-      m,
-      "MinimaxMoveEvaluator"
-  )
-      .def(
-          py::init<PieceColor, int, NewGameBoard &>(),
-          "evaluating_player"_a,
-          "starting_search_depth"_a,
-          "game_board"_a
-      )
-      .def(
-          "select_move",
-          &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<uint64_t>, PiecePoints>::
-              SelectMove
-      );
   py::class_<RandomMoveEvaluator<NewGameBoard>>(m, "RandomMoveEvaluator")
       .def(py::init<PieceColor, NewGameBoard &>(), "evaluating_player"_a, "game_board"_a)
       .def("select_move", &RandomMoveEvaluator<NewGameBoard>::SelectMove);
+
+  bind_minimax_move_evaluator<uint64_t>(m, "MinimaxMoveEvaluator64");
+  bind_minimax_move_evaluator<__uint128_t>(m, "MinimaxMoveEvaluator128");
 }
