@@ -37,23 +37,6 @@ public:
     return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetType(space);
   }
 
-  // TranspositionTableSearchResult GetEvalResult(PieceColor color, int search_depth) {
-  //   return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetEvalResult(
-  //       color,
-  //       search_depth
-  //   );
-  // }
-
-  // void RecordEvalResult(
-  //     PieceColor color,
-  //     int search_depth,
-  //     MinimaxResultType result_type,
-  //     BestMoves &best_moves
-  // ) {
-  //   return static_cast<ConcreteSpaceInfoProvider *>(this)
-  //       ->ImplementRecordEvalResult(color, search_depth, result_type, best_moves);
-  // }
-
   MoveCollection CalcFinalMovesOf(PieceColor color) {
     return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementCalcFinalMovesOf(
         color
@@ -74,9 +57,10 @@ public:
   }
 };
 
-// CRTP Interface: Evaluator <- BoardStateSummarizer
+// CRTP Interface: Evaluator <- BoardStateSummarizer (e.g. HashCalculator)
 template <typename ConcreteBoardStateSummarizer, typename KeyType>
 class BoardStateSummarizer {
+public:
   typedef KeyType ZobristKey_t;
   void FullBoardStateCalc(BoardMap_t &board_map) {
     static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementFullBoardStateCalc(
@@ -109,8 +93,6 @@ class BoardStateSummarizer {
     );
   }
 };
-
-
 
 // CRTP Interface: Evaluator <- GamePoints
 template <typename ConcretePieceValueProvider>
@@ -150,10 +132,14 @@ public:
 //    implements PieceValueProvider
 // Uses minimax algorithm with alpha-beta pruning to select a move for
 // evaluating_player_.
-template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
-class MinimaxMoveEvaluator
-    : public MoveEvaluatorInterface<
-          MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>> {
+template <
+    typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
+    typename ConcretePieceValueProvider>
+class MinimaxMoveEvaluator : public MoveEvaluatorInterface<MinimaxMoveEvaluator<
+                                 ConcreteSpaceInfoProvider,
+                                 ConcreteBoardStateSummarizer,
+                                 ConcretePieceValueProvider>> {
 
 public:
   MinimaxMoveEvaluator(
@@ -175,6 +161,7 @@ public:
 private:
   PieceColor evaluating_player_;
   ConcretePieceValueProvider game_position_points_;
+  ConcreteBoardStateSummarizer hash_calculator_;
   ConcreteSpaceInfoProvider &game_board_;
   BestMoves EvaluateNonWinLeaf(PieceColor cur_player);
   BestMoves EvaluateEndOfGameLeaf(PieceColor cur_player);

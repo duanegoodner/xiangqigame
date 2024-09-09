@@ -18,8 +18,12 @@ using namespace board_components;
 
 template <
     typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
+MinimaxMoveEvaluator<
+    ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
+    ConcretePieceValueProvider>::
     MinimaxMoveEvaluator(
         PieceColor evaluating_player,
         int starting_search_depth,
@@ -29,12 +33,23 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     : evaluating_player_{evaluating_player}
     , starting_search_depth_{starting_search_depth}
     , game_board_{game_board}
-    , game_position_points_{game_position_points} {}
+    , game_position_points_{game_position_points}
+    , hash_calculator_{ConcreteBoardStateSummarizer{}} {
+  game_board_.AttachMoveCallback(std::bind(
+      &ConcreteBoardStateSummarizer::UpdateBoardState,
+      &hash_calculator_,
+      std::placeholders::_1
+  ));
+}
 
 template <
     typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
+MinimaxMoveEvaluator<
+    ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
+    ConcretePieceValueProvider>::
     MinimaxMoveEvaluator(
         PieceColor evaluating_player,
         int starting_search_depth,
@@ -49,9 +64,11 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
 
 template <
     typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
 Move MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::ImplementSelectMove() {
 
   auto first_selected_move = RunMinimax();
@@ -62,12 +79,10 @@ Move MinimaxMoveEvaluator<
   } else {
     auto second_selected_move = RunMinimax(false);
 
-    auto second_allowed_moves =
-        game_board_.CalcFinalMovesOf(evaluating_player_);
+    auto second_allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
     if (not second_allowed_moves.ContainsMove(second_selected_move)) {
-      std::cout << "Returned bad move\nstart = "
-                << second_selected_move.start.rank << ", "
-                << second_selected_move.start.file
+      std::cout << "Returned bad move\nstart = " << second_selected_move.start.rank
+                << ", " << second_selected_move.start.file
                 << "\nend = " << second_selected_move.end.rank << ", "
                 << second_selected_move.end.file << std::endl;
       exit(1);
@@ -79,13 +94,13 @@ Move MinimaxMoveEvaluator<
 
 template <
     typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-std::vector<RatedMove>
-MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
-    GenerateRankedMoveList(
-        PieceColor cur_player,
-        MoveCollection &cur_player_moves
-    ) {
+std::vector<RatedMove> MinimaxMoveEvaluator<
+    ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
+    ConcretePieceValueProvider>::
+    GenerateRankedMoveList(PieceColor cur_player, MoveCollection &cur_player_moves) {
   vector<RatedMove> rated_moves;
   for (auto cur_move : cur_player_moves.moves) {
     auto cur_rated_move = RateMove(cur_move, cur_player);
@@ -103,9 +118,11 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
 
 template <
     typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
 BestMoves MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::EvaluateNonWinLeaf(PieceColor cur_player) {
   auto cur_player_points = GetPlayerTotal(cur_player);
   auto opponent_points = GetPlayerTotal(opponent_of(cur_player));
@@ -113,23 +130,19 @@ BestMoves MinimaxMoveEvaluator<
   auto empty_move_collection = MoveCollection();
 
   if (cur_player == evaluating_player_) {
-    return BestMoves{
-        (cur_player_points - opponent_points),
-        empty_move_collection
-    };
+    return BestMoves{(cur_player_points - opponent_points), empty_move_collection};
   } else {
-    return BestMoves{
-        (opponent_points - cur_player_points),
-        empty_move_collection
-    };
+    return BestMoves{(opponent_points - cur_player_points), empty_move_collection};
   }
 }
 
 template <
     typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
 BestMoves MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::EvaluateEndOfGameLeaf(PieceColor cur_player) {
   auto empty_best_moves = MoveCollection();
 
@@ -142,22 +155,18 @@ BestMoves MinimaxMoveEvaluator<
 
 template <
     typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
 RatedMove MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::RateMove(Move move, PieceColor cur_player) {
   auto piece_type = game_board_.GetType(move.start);
 
-  auto end_points = game_position_points_.GetValueOfPieceAtPosition(
-      cur_player,
-      piece_type,
-      move.end
-  );
-  auto start_points = game_position_points_.GetValueOfPieceAtPosition(
-      cur_player,
-      piece_type,
-      move.start
-  );
+  auto end_points =
+      game_position_points_.GetValueOfPieceAtPosition(cur_player, piece_type, move.end);
+  auto start_points = game_position_points_
+                          .GetValueOfPieceAtPosition(cur_player, piece_type, move.start);
   auto position_value_delta = end_points - start_points;
 
   Points_t capture_val;
@@ -178,41 +187,41 @@ RatedMove MinimaxMoveEvaluator<
 
 template <
     typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-Points_t
-MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
-    GetValueOfPieceAtPosition(
-        PieceColor color,
-        PieceType piece_type,
-        BoardSpace space
-    ) {
-  return game_position_points_
-      .GetValueOfPieceAtPosition(color, piece_type, space);
+Points_t MinimaxMoveEvaluator<
+    ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
+    ConcretePieceValueProvider>::
+    GetValueOfPieceAtPosition(PieceColor color, PieceType piece_type, BoardSpace space) {
+  return game_position_points_.GetValueOfPieceAtPosition(color, piece_type, space);
 }
 
 template <
     typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
 Points_t MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::GetPlayerTotal(PieceColor color) {
   Points_t pre_attack_total = 0;
   for (auto space : game_board_.GetAllSpacesOccupiedBy(color)) {
     auto piece_type = game_board_.GetType(space);
-    pre_attack_total += game_position_points_.GetValueOfPieceAtPosition(
-        color,
-        piece_type,
-        space
-    );
+    pre_attack_total +=
+        game_position_points_.GetValueOfPieceAtPosition(color, piece_type, space);
   }
   return pre_attack_total;
 }
 
 template <
     typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-BestMoves
-MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
+BestMoves MinimaxMoveEvaluator<
+    ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
+    ConcretePieceValueProvider>::
     MinimaxRec(
         int cur_search_depth,
         int alpha,
@@ -223,10 +232,8 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
   node_counter_ += 1;
   MinimaxResultType result_type{};
 
-  auto state_score_search_result = game_board_.GetEvalResult(
-      evaluating_player_,
-      cur_search_depth
-  );
+  auto state_score_search_result =
+      hash_calculator_.GetTrData(cur_search_depth);
   if (state_score_search_result.found && use_transposition_table) {
     return state_score_search_result.table_entry.best_moves;
   }
@@ -235,23 +242,15 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
   if (cur_moves.moves.size() == 0) {
     result_type = MinimaxResultType::kEndGameLeaf;
     auto result = EvaluateEndOfGameLeaf(cur_player);
-    game_board_.RecordEvalResult(
-        evaluating_player_,
-        cur_search_depth,
-        result_type,
-        result
-    );
+    hash_calculator_
+        .RecordTrData(cur_search_depth, result_type, result);
     return result;
   }
   if (cur_search_depth == 0) {
     result_type = MinimaxResultType::kStandardLeaf;
     auto result = EvaluateNonWinLeaf(cur_player);
-    game_board_.RecordEvalResult(
-        evaluating_player_,
-        cur_search_depth,
-        result_type,
-        result
-    );
+    hash_calculator_
+        .RecordTrData(cur_search_depth, result_type, result);
     return result;
   }
   if (cur_player == evaluating_player_) {
@@ -283,12 +282,8 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
       }
     }
     auto result = BestMoves{max_eval, best_moves};
-    game_board_.RecordEvalResult(
-        evaluating_player_,
-        cur_search_depth,
-        result_type,
-        result
-    );
+    hash_calculator_
+        .RecordTrData(cur_search_depth, result_type, result);
     return BestMoves{max_eval, best_moves};
   } else {
     auto min_eval = numeric_limits<int>::max();
@@ -322,21 +317,19 @@ MinimaxMoveEvaluator<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>::
     }
     result_type = MinimaxResultType::kFullyEvaluatedNode;
     auto result = BestMoves{min_eval, best_moves};
-    game_board_.RecordEvalResult(
-        evaluating_player_,
-        cur_search_depth,
-        result_type,
-        result
-    );
+    hash_calculator_
+        .RecordTrData(cur_search_depth, result_type, result);
     return result;
   }
 }
 
 template <
     typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
 Move MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::
     RunMinimax(
         // int search_depth,
@@ -352,10 +345,8 @@ Move MinimaxMoveEvaluator<
       evaluating_player_,
       use_transposition_table
   );
-  auto selected_move_index = utility_functs::random(
-      (size_t)0,
-      minimax_result.best_moves.moves.size() - 1
-  );
+  auto selected_move_index =
+      utility_functs::random((size_t)0, minimax_result.best_moves.moves.size() - 1);
 
   return minimax_result.best_moves.moves[selected_move_index];
 }

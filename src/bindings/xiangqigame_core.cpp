@@ -74,86 +74,35 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .export_values();
 
   //   TODO consider bindings for each allowed key bit size???
-  py::class_<NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>>(
-      m,
-      "GameBoard"
-  )
+  py::class_<NewGameBoard>(m, "GameBoard")
       .def(py::init<>())
-      .def("map", &NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>::map)
-      .def(
-          "ExecuteMove",
-          &NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>::ExecuteMove,
-          "move"_a
-      )
-      .def(
-          "UndoMove",
-          &NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>::UndoMove,
-          "executed_move"_a
-      )
-      .def(
-          "GetAllSpacesOccupiedBy",
-          &NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>::
-              GetAllSpacesOccupiedBy,
-          "color"_a
-      )
-      .def(
-          "CalcFinalMovesOf",
-          &NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>::
-              CalcFinalMovesOf,
-          "color"_a
-      )
-      .def(
-          "IsInCheck",
-          &NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>::IsInCheck,
-          "color"_a
-      )
-      .def(
-          "GetType",
-          &NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>::GetType,
-          "space"_a
-      )
-      .def(
-          "GetColor",
-          &NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>::GetColor,
-          "space"_a
-      );
+      .def("map", &NewGameBoard::map)
+      .def("ExecuteMove", &NewGameBoard::ExecuteMove, "move"_a)
+      .def("UndoMove", &NewGameBoard::UndoMove, "executed_move"_a)
+      .def("GetAllSpacesOccupiedBy", &NewGameBoard::GetAllSpacesOccupiedBy, "color"_a)
+      .def("CalcFinalMovesOf", &NewGameBoard::CalcFinalMovesOf, "color"_a)
+      .def("IsInCheck", &NewGameBoard::IsInCheck, "color"_a)
+      .def("GetType", &NewGameBoard::GetType, "space"_a)
+      .def("GetColor", &NewGameBoard::GetColor, "space"_a);
 
   m.def("opponent_of", &opponent_of);
 
-  py::class_<MinimaxMoveEvaluator<
-      NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>,
-      PiecePoints>>(m, "MinimaxMoveEvaluator")
+  py::class_<MinimaxMoveEvaluator<NewGameBoard, HashCalculator<uint64_t>, PiecePoints>>(
+      m,
+      "MinimaxMoveEvaluator"
+  )
       .def(
-          py::init<
-              PieceColor,
-              int,
-              NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> &>(),
+          py::init<PieceColor, int, NewGameBoard &>(),
           "evaluating_player"_a,
           "starting_search_depth"_a,
           "game_board"_a
       )
       .def(
           "select_move",
-          &MinimaxMoveEvaluator<
-              NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>,
-              PiecePoints>::SelectMove
-      );
-  py::class_<RandomMoveEvaluator<
-      NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>>>(
-      m,
-      "RandomMoveEvaluator"
-  )
-      .def(
-          py::init<
-              PieceColor,
-              NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>> &>(),
-          "evaluating_player"_a,
-          "game_board"_a
-      )
-      .def(
-          "select_move",
-          &RandomMoveEvaluator<
-              NewGameBoard<HashCalculator<uint64_t>, HashCalculator<uint64_t>>>::
+          &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<uint64_t>, PiecePoints>::
               SelectMove
       );
+  py::class_<RandomMoveEvaluator<NewGameBoard>>(m, "RandomMoveEvaluator")
+      .def(py::init<PieceColor, NewGameBoard &>(), "evaluating_player"_a, "game_board"_a)
+      .def("select_move", &RandomMoveEvaluator<NewGameBoard>::SelectMove);
 }
