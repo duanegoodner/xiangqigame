@@ -1,5 +1,5 @@
 execute_process(
-    COMMAND ${Python_EXECUTABLE} ${PROJECT_SOURCE_DIR}/pyproject_toml_reader.py
+    COMMAND ${Python_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/pyproject_toml_reader.py
     OUTPUT_VARIABLE PYPROJECT_OUTPUT
     OUTPUT_STRIP_TRAILING_WHITESPACE
 )
