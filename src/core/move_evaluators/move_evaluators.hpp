@@ -157,12 +157,16 @@ public:
 
   Move ImplementSelectMove();
   Points_t GetPlayerTotal(PieceColor color);
+  vector<SearchSummary> first_search_summaries_;
+  map<int, SearchSummary> second_search_summaries_;
 
 private:
   PieceColor evaluating_player_;
   ConcretePieceValueProvider game_position_points_;
   ConcreteBoardStateSummarizer hash_calculator_;
   ConcreteSpaceInfoProvider &game_board_;
+  int num_move_selections_;
+
   BestMoves EvaluateNonWinLeaf(PieceColor cur_player);
   BestMoves EvaluateEndOfGameLeaf(PieceColor cur_player);
   RatedMove RateMove(Move move, PieceColor cur_player);
@@ -172,8 +176,8 @@ private:
       BoardSpace space
   );
   int starting_search_depth_;
-  int node_counter_;
-  void ResetNodeCounter() { node_counter_ = 0; }
+  // int node_counter_;
+  // void ResetNodeCounter() { node_counter_ = 0; }
   std::vector<RatedMove> GenerateRankedMoveList(
       PieceColor cur_player,
       MoveCollection &cur_player_moves
@@ -183,9 +187,13 @@ private:
       int alpha,
       int beta,
       PieceColor cur_player,
+      SearchSummary& single_search_summary,
       bool use_transposition_table = true
   );
-  Move RunMinimax(bool use_transposition_table = true);
+  Move RunMinimax(
+      SearchSummary &single_search_summary,
+      bool use_transposition_table = true
+  );
 };
 
 // CLASS TEMPLATE: RandomMoveEvaluator

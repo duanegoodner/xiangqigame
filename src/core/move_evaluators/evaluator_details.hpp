@@ -1,6 +1,7 @@
 #pragma once
 
 #include <board_components.hpp>
+#include <chrono>
 #include <common.hpp>
 
 using namespace board_components;
@@ -15,13 +16,14 @@ struct RatedMove {
   Points_t rating;
 };
 
-enum MinimaxResultType : int {
+enum MinimaxResultType : uint8_t {
   kUnknown = 0,
   kFullyEvaluatedNode = 1,
   kStandardLeaf = 2,
   kEndGameLeaf = 3,
   kAlphaPrune = 4,
-  kBetaPrune = 5
+  kBetaPrune = 5,
+  kTrTableHit = 6
 };
 
 struct TranspositionTableEntry {
@@ -37,10 +39,7 @@ struct TranspositionTableSearchResult {
   bool found;
 };
 
-inline BestMoves evaluate_win_leaf(
-    PieceColor cur_player,
-    PieceColor initiating_player
-) {
+inline BestMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_player) {
   auto empty_best_moves = MoveCollection();
 
   if (cur_player == initiating_player) {
@@ -49,3 +48,14 @@ inline BestMoves evaluate_win_leaf(
     return BestMoves{numeric_limits<Points_t>::max(), empty_best_moves};
   }
 }
+
+struct SearchSummary {
+  int num_nodes;
+  int result_counts[7];
+  std::chrono::duration<double, std::nano> time;
+};
+
+// struct FullSearchSummary {
+//   SingleSearchSummary first_search;
+//   SingleSearchSummary second_search;
+// };

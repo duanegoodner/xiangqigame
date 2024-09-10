@@ -10,6 +10,7 @@
 #define _MINIMAX_EVALUATOR_TEMPLATE_
 
 #include <board_components.hpp>
+#include <chrono>
 #include <common.hpp>
 #include <evaluator_details.hpp>
 #include <iostream>
@@ -34,7 +35,8 @@ MinimaxMoveEvaluator<
     , starting_search_depth_{starting_search_depth}
     , game_board_{game_board}
     , game_position_points_{game_position_points}
-    , hash_calculator_{ConcreteBoardStateSummarizer{}} {
+    , hash_calculator_{ConcreteBoardStateSummarizer{}}
+    , num_move_selections_{0} {
   game_board_.AttachMoveCallback(std::bind(
       &ConcreteBoardStateSummarizer::UpdateBoardState,
       &hash_calculator_,
@@ -71,15 +73,33 @@ Move MinimaxMoveEvaluator<
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::ImplementSelectMove() {
 
-  auto first_selected_move = RunMinimax();
+  SearchSummary first_search_summary{};
+  SearchSummary second_search_summary{};
 
+  auto first_search_start = std::chrono::high_resolution_clock::now();
+  auto first_selected_move = RunMinimax(first_search_summary);
+  auto first_search_end = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double, std::nano> first_search_elapsed = first_search_end - first_search_start;
+  first_search_summary.time = first_search_elapsed;
+  
+  first_search_summaries_.emplace_back(first_search_summary);
+  
   auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
+  Move final_selected_move;
+  
   if (allowed_moves.ContainsMove(first_selected_move)) {
-    return first_selected_move;
+    final_selected_move = first_selected_move;
   } else {
-    auto second_selected_move = RunMinimax(false);
+    
+    auto second_search_start = std::chrono::high_resolution_clock::now();
+    auto second_selected_move = RunMinimax(second_search_summary, false);
+    auto second_search_end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::nano> second_search_elapsed = second_search_end - second_search_start;
+    second_search_summary.time = second_search_elapsed;
 
     auto second_allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
+    second_search_summaries_[num_move_selections_] = second_search_summary;
+    
     if (not second_allowed_moves.ContainsMove(second_selected_move)) {
       std::cout << "Returned bad move\nstart = " << second_selected_move.start.rank
                 << ", " << second_selected_move.start.file
@@ -87,9 +107,10 @@ Move MinimaxMoveEvaluator<
                 << second_selected_move.end.file << std::endl;
       exit(1);
     }
-
-    return second_selected_move;
+    final_selected_move = second_selected_move;
   }
+  num_move_selections_++;
+  return final_selected_move;
 }
 
 template <
@@ -227,14 +248,16 @@ BestMoves MinimaxMoveEvaluator<
         int alpha,
         int beta,
         PieceColor cur_player,
+        SearchSummary &search_summary,
         bool use_transposition_table
     ) {
-  node_counter_ += 1;
+  // node_counter_ += 1;
+  search_summary.num_nodes++;
   MinimaxResultType result_type{};
 
-  auto state_score_search_result =
-      hash_calculator_.GetTrData(cur_search_depth);
+  auto state_score_search_result = hash_calculator_.GetTrData(cur_search_depth);
   if (state_score_search_result.found && use_transposition_table) {
+    search_summary.result_counts[MinimaxResultType::kTrTableHit]++;
     return state_score_search_result.table_entry.best_moves;
   }
 
@@ -242,15 +265,15 @@ BestMoves MinimaxMoveEvaluator<
   if (cur_moves.moves.size() == 0) {
     result_type = MinimaxResultType::kEndGameLeaf;
     auto result = EvaluateEndOfGameLeaf(cur_player);
-    hash_calculator_
-        .RecordTrData(cur_search_depth, result_type, result);
+    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
+    search_summary.result_counts[result_type]++;
     return result;
   }
   if (cur_search_depth == 0) {
     result_type = MinimaxResultType::kStandardLeaf;
     auto result = EvaluateNonWinLeaf(cur_player);
-    hash_calculator_
-        .RecordTrData(cur_search_depth, result_type, result);
+    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
+    search_summary.result_counts[result_type]++;
     return result;
   }
   if (cur_player == evaluating_player_) {
@@ -264,6 +287,7 @@ BestMoves MinimaxMoveEvaluator<
                           alpha,
                           beta,
                           opponent_of(evaluating_player_),
+                          search_summary,
                           use_transposition_table
       )
                           .best_eval;
@@ -281,9 +305,13 @@ BestMoves MinimaxMoveEvaluator<
         break;
       }
     }
+
+    if (result_type == MinimaxResultType::kUnknown) {
+      result_type = MinimaxResultType::kFullyEvaluatedNode;
+    }
     auto result = BestMoves{max_eval, best_moves};
-    hash_calculator_
-        .RecordTrData(cur_search_depth, result_type, result);
+    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
+    search_summary.result_counts[result_type]++;
     return BestMoves{max_eval, best_moves};
   } else {
     auto min_eval = numeric_limits<int>::max();
@@ -296,6 +324,7 @@ BestMoves MinimaxMoveEvaluator<
                           alpha,
                           beta,
                           evaluating_player_,
+                          search_summary,
                           use_transposition_table
       )
                           .best_eval;
@@ -315,10 +344,12 @@ BestMoves MinimaxMoveEvaluator<
         break;
       }
     }
-    result_type = MinimaxResultType::kFullyEvaluatedNode;
+    if (result_type == MinimaxResultType::kUnknown) {
+      result_type = MinimaxResultType::kFullyEvaluatedNode;
+    }
     auto result = BestMoves{min_eval, best_moves};
-    hash_calculator_
-        .RecordTrData(cur_search_depth, result_type, result);
+    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
+    search_summary.result_counts[result_type]++;
     return result;
   }
 }
@@ -332,17 +363,16 @@ Move MinimaxMoveEvaluator<
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::
     RunMinimax(
-        // int search_depth,
-        // int alpha,
-        // int beta,
+        SearchSummary &search_summary,
         bool use_transposition_table
     ) {
-  ResetNodeCounter();
+  // ResetNodeCounter();
   auto minimax_result = MinimaxRec(
       starting_search_depth_,
       numeric_limits<int>::min(),
       numeric_limits<int>::max(),
       evaluating_player_,
+      search_summary,
       use_transposition_table
   );
   auto selected_move_index =
