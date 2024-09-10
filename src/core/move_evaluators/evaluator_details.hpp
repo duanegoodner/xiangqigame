@@ -53,7 +53,7 @@ inline BestMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_
 
 struct NewSearchSummary {
   NewSearchSummary(int max_search_depth)
-      : result_depth_counts{} {
+      : num_nodes{}, result_depth_counts{} {
     // reserve a "row" for each result type
     result_depth_counts.reserve(kNumResultTypes);
     for (auto idx = 0; idx <= kNumResultTypes; idx++) {

@@ -157,8 +157,9 @@ public:
 
   Move ImplementSelectMove();
   Points_t GetPlayerTotal(PieceColor color);
-  vector<SearchSummary> first_search_summaries_;
-  map<int, SearchSummary> second_search_summaries_;
+  SearchSummaries GetSearchSummaries() {
+    return search_summaries_;
+  }
 
 private:
   PieceColor evaluating_player_;
@@ -186,11 +187,11 @@ private:
       int alpha,
       int beta,
       PieceColor cur_player,
-      SearchSummary& single_search_summary,
+      NewSearchSummary& single_search_summary,
       bool use_transposition_table = true
   );
   Move RunMinimax(
-      SearchSummary &single_search_summary,
+      NewSearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
 

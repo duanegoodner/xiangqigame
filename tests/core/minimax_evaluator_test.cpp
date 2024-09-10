@@ -101,12 +101,29 @@ TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelection) {
       };
 
   auto red_selected_move = red_evaluator.SelectMove();
+
   EXPECT_TRUE(
       (red_selected_move.start == BoardSpace{9, 1} &&
        red_selected_move.end == BoardSpace{7, 2}) ||
       (red_selected_move.start == BoardSpace{9, 7} &&
        red_selected_move.end == BoardSpace{7, 6})
   );
+}
+
+TEST_F(MinimaxEvaluatorTest, GetSearchSummaries) {
+  int shallow_search_depth{2};
+  NewGameBoard starting_board;
+  MinimaxMoveEvaluator<NewGameBoard, HashCalculator<uint64_t>, PiecePoints>
+      red_evaluator{
+          PieceColor::kRed,
+          shallow_search_depth,
+          starting_board,
+          imported_piece_points
+      };
+  auto red_selected_move = red_evaluator.SelectMove();
+  auto search_summaries = red_evaluator.GetSearchSummaries();
+  auto num_nodes_visited = search_summaries.first_searches[0].num_nodes;
+  EXPECT_TRUE(num_nodes_visited > 0);
 }
 
 TEST_F(MinimaxEvaluatorTest, EndOfGameSelectorTest) {

@@ -74,12 +74,14 @@ Move MinimaxMoveEvaluator<
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::ImplementSelectMove() {
 
-  SearchSummary first_search_summary{};
-  SearchSummary second_search_summary{};
+  
+  auto& first_search_summary = search_summaries_.NewFirstSearch(starting_search_depth_);
+  // SearchSummary first_search_summary{};
+  // SearchSummary second_search_summary{};
   Move final_selected_move;
 
   auto first_selected_move = RunMinimax(first_search_summary);
-  first_search_summaries_.emplace_back(first_search_summary);
+  // first_search_summaries_.emplace_back(first_search_summary);
 
   // check if move selected by first search is allowed
   // (if we had a hash collision, we might select an illegal move)
@@ -87,9 +89,9 @@ Move MinimaxMoveEvaluator<
   if (allowed_moves.ContainsMove(first_selected_move)) {
     final_selected_move = first_selected_move;
   } else {
-
+    auto& second_search_summary = search_summaries_.NewExtraSearch(starting_search_depth_, num_move_selections_);
     auto second_selected_move = RunMinimax(second_search_summary, false);
-    second_search_summaries_[num_move_selections_] = second_search_summary;
+    // second_search_summaries_[num_move_selections_] = second_search_summary;
     final_selected_move = second_selected_move;
   }
   num_move_selections_++;
@@ -231,7 +233,7 @@ BestMoves MinimaxMoveEvaluator<
         int alpha,
         int beta,
         PieceColor cur_player,
-        SearchSummary &search_summary,
+        NewSearchSummary &search_summary,
         bool use_transposition_table
     ) {
   search_summary.num_nodes++;
@@ -242,7 +244,8 @@ BestMoves MinimaxMoveEvaluator<
   if (use_transposition_table) {
     auto state_score_search_result = hash_calculator_.GetTrData(cur_search_depth);
     if (state_score_search_result.found) {
-      search_summary.result_counts[MinimaxResultType::kTrTableHit]++;
+      search_summary.Update(MinimaxResultType::kTrTableHit, cur_search_depth);
+      // search_summary.result_counts[MinimaxResultType::kTrTableHit]++;
       return state_score_search_result.table_entry.best_moves;
     }
   }
@@ -255,7 +258,8 @@ BestMoves MinimaxMoveEvaluator<
     result_type = MinimaxResultType::kEndGameLeaf;
     auto result = EvaluateEndOfGameLeaf(cur_player);
     hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.result_counts[result_type]++;
+    search_summary.Update(result_type, cur_search_depth);
+    // search_summary.result_counts[result_type]++;
     return result;
   }
   // If search depth is zero, node is a normal leaf (end of our search depth)
@@ -263,7 +267,8 @@ BestMoves MinimaxMoveEvaluator<
     result_type = MinimaxResultType::kStandardLeaf;
     auto result = EvaluateNonWinLeaf(cur_player);
     hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.result_counts[result_type]++;
+    search_summary.Update(result_type, cur_search_depth);
+    // search_summary.result_counts[result_type]++;
     return result;
   }
 
@@ -306,7 +311,8 @@ BestMoves MinimaxMoveEvaluator<
     }
     auto result = BestMoves{max_eval, best_moves};
     hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.result_counts[result_type]++;
+    search_summary.Update(result_type, cur_search_depth);
+    // search_summary.result_counts[result_type]++;
     return BestMoves{max_eval, best_moves};
 
   } else {
@@ -346,7 +352,8 @@ BestMoves MinimaxMoveEvaluator<
     }
     auto result = BestMoves{min_eval, best_moves};
     hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.result_counts[result_type]++;
+    search_summary.Update(result_type, cur_search_depth);
+    // search_summary.result_counts[result_type]++;
     return result;
   }
 }
@@ -359,7 +366,7 @@ Move MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::
-    RunMinimax(SearchSummary &search_summary, bool use_transposition_table) {
+    RunMinimax(NewSearchSummary &search_summary, bool use_transposition_table) {
 
   auto search_start = std::chrono::high_resolution_clock::now();
   auto minimax_result = MinimaxRec(
@@ -372,7 +379,8 @@ Move MinimaxMoveEvaluator<
   );
   auto search_end = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double, std::nano> search_time = search_end - search_start;
-  search_summary.time = search_time;
+  search_summary.SetTime(search_time);
+  // search_summary.time = search_time;
   auto selected_move_index =
       utility_functs::random((size_t)0, minimax_result.best_moves.moves.size() - 1);
 

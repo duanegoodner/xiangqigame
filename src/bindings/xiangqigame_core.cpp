@@ -38,6 +38,11 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           "select_move",
           &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
               SelectMove
+      )
+      .def(
+          "get_search_summaries",
+          &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
+              GetSearchSummaries
       );
 }
 
