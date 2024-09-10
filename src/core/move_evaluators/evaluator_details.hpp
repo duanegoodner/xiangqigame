@@ -80,19 +80,22 @@ struct NewSearchSummary {
 
 struct SearchSummaries {
   std::vector<NewSearchSummary> first_searches;
-  std::map<int, NewSearchSummary> second_searches;
+  std::map<int, NewSearchSummary> extra_searches;
 
-  NewSearchSummary& NewFirstSearch(int search_depth) {
+  NewSearchSummary &NewFirstSearch(int search_depth) {
     first_searches.emplace_back(NewSearchSummary(search_depth));
     return first_searches.back();
   }
 
-
-
+  NewSearchSummary &NewExtraSearch(int search_depth, int search_number) {
+    auto new_search_entry =
+        extra_searches.emplace(search_number, NewSearchSummary(search_depth));
+    return new_search_entry.first->second;
+  }
 };
 
 struct SearchSummary {
   int num_nodes;
-  int result_counts[7];
+  int result_counts[kNumResultTypes];
   std::chrono::duration<double, std::nano> time;
 };
