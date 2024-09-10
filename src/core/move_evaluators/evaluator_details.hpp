@@ -3,6 +3,7 @@
 #include <board_components.hpp>
 #include <chrono>
 #include <common.hpp>
+#include <map>
 
 using namespace board_components;
 
@@ -16,7 +17,7 @@ struct RatedMove {
   Points_t rating;
 };
 
-enum MinimaxResultType : uint8_t {
+enum MinimaxResultType : unsigned int {
   kUnknown = 0,
   kFullyEvaluatedNode = 1,
   kStandardLeaf = 2,
@@ -25,6 +26,7 @@ enum MinimaxResultType : uint8_t {
   kBetaPrune = 5,
   kTrTableHit = 6
 };
+const size_t kNumResultTypes{7};
 
 struct TranspositionTableEntry {
   int search_depth;
@@ -49,13 +51,48 @@ inline BestMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_
   }
 }
 
+struct NewSearchSummary {
+  NewSearchSummary(int max_search_depth)
+      : result_depth_counts{} {
+    // reserve a "row" for each result type
+    result_depth_counts.reserve(kNumResultTypes);
+    for (auto idx = 0; idx <= kNumResultTypes; idx++) {
+      // for each "row", create vector long enough to hold each possible search depth
+      result_depth_counts.emplace_back(max_search_depth + 1, 0);
+    }
+  }
+
+  void Update(MinimaxResultType result_type, int search_depth) {
+    result_depth_counts[result_type][search_depth]++;
+    num_nodes++;
+  }
+
+  void SetTime(std::chrono::duration<double, std::nano> search_time) {
+    time = search_time;
+  }
+
+  int num_nodes;
+  std::chrono::duration<double, std::nano> time;
+  // use 2-D vector so we don't have to manage dynamic memory
+  // row -> node result_type; col -> node depth
+  std::vector<std::vector<int>> result_depth_counts;
+};
+
+struct SearchSummaries {
+  std::vector<NewSearchSummary> first_searches;
+  std::map<int, NewSearchSummary> second_searches;
+
+  NewSearchSummary& NewFirstSearch(int search_depth) {
+    first_searches.emplace_back(NewSearchSummary(search_depth));
+    return first_searches.back();
+  }
+
+
+
+};
+
 struct SearchSummary {
   int num_nodes;
   int result_counts[7];
   std::chrono::duration<double, std::nano> time;
 };
-
-// struct FullSearchSummary {
-//   SingleSearchSummary first_search;
-//   SingleSearchSummary second_search;
-// };

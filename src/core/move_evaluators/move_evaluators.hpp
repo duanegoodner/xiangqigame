@@ -166,6 +166,8 @@ private:
   ConcreteBoardStateSummarizer hash_calculator_;
   ConcreteSpaceInfoProvider &game_board_;
   int num_move_selections_;
+  int starting_search_depth_;
+  SearchSummaries search_summaries_;
 
   BestMoves EvaluateNonWinLeaf(PieceColor cur_player);
   BestMoves EvaluateEndOfGameLeaf(PieceColor cur_player);
@@ -175,9 +177,6 @@ private:
       PieceType piece_type,
       BoardSpace space
   );
-  int starting_search_depth_;
-  // int node_counter_;
-  // void ResetNodeCounter() { node_counter_ = 0; }
   std::vector<RatedMove> GenerateRankedMoveList(
       PieceColor cur_player,
       MoveCollection &cur_player_moves
@@ -194,6 +193,7 @@ private:
       SearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
+
 };
 
 // CLASS TEMPLATE: RandomMoveEvaluator
