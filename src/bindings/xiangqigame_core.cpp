@@ -47,6 +47,11 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           py::return_value_policy::copy
       )
       .def(
+          "starting_search_depth",
+          &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
+              StartingSearchDepth
+      )
+      .def(
           "zobrist_key_size_bits",
           &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
               KeySizeBits

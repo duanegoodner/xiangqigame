@@ -160,7 +160,7 @@ public:
   SearchSummaries GetSearchSummaries() {
     return search_summaries_;
   }
-  int SearchDepth() {
+  int StartingSearchDepth() {
     return starting_search_depth_;
   }
 
