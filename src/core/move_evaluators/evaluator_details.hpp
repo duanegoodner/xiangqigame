@@ -17,7 +17,7 @@ struct RatedMove {
   Points_t rating;
 };
 
-enum MinimaxResultType : unsigned int {
+enum MinimaxResultType : int {
   kUnknown = 0,
   kFullyEvaluatedNode = 1,
   kStandardLeaf = 2,
@@ -56,7 +56,7 @@ struct SearchSummary {
       : num_nodes{}, result_depth_counts{} {
     // reserve a "row" for each result type
     result_depth_counts.reserve(kNumResultTypes);
-    for (auto idx = 0; idx <= kNumResultTypes; idx++) {
+    for (auto idx = 0; idx < kNumResultTypes; idx++) {
       // for each "row", create vector long enough to hold each possible search depth
       result_depth_counts.emplace_back(max_search_depth + 1, 0);
     }

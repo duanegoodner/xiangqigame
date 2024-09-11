@@ -23,6 +23,7 @@ classifiers = [
 ]
 dependencies = [
     "colorama",
+    "msgspec",
     "numpy",
 ]
 

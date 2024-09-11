@@ -244,7 +244,8 @@ BestMoves MinimaxMoveEvaluator<
   if (use_transposition_table) {
     auto state_score_search_result = hash_calculator_.GetTrData(cur_search_depth);
     if (state_score_search_result.found) {
-      search_summary.Update(MinimaxResultType::kTrTableHit, cur_search_depth);
+      result_type = MinimaxResultType::kTrTableHit;
+      search_summary.Update(result_type, cur_search_depth);
       // search_summary.result_counts[MinimaxResultType::kTrTableHit]++;
       return state_score_search_result.table_entry.best_moves;
     }

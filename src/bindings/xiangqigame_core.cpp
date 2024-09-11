@@ -119,6 +119,7 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .def("CalcFinalMovesOf", &NewGameBoard::CalcFinalMovesOf, "color"_a)
       .def("IsInCheck", &NewGameBoard::IsInCheck, "color"_a)
       .def("GetType", &NewGameBoard::GetType, "space"_a)
+      .def("GetMoveLog", &NewGameBoard::GetMoveLog)
       .def("GetColor", &NewGameBoard::GetColor, "space"_a);
 
   m.def("opponent_of", &opponent_of);
@@ -127,7 +128,7 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .def(py::init<PieceColor, NewGameBoard &>(), "evaluating_player"_a, "game_board"_a)
       .def("select_move", &RandomMoveEvaluator<NewGameBoard>::SelectMove);
 
-  py::class_<SearchSummary>(m, "NewSearchSummary")
+  py::class_<SearchSummary>(m, "SearchSummary")
       .def(py::init<int>()) // Constructor, as needed for initialization
       .def_readonly(
           "num_nodes",

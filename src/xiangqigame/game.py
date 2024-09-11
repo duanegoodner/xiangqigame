@@ -1,16 +1,36 @@
+from dataclasses import dataclass
 from typing import Dict, List
+
+import msgspec
 import xiangqigame.terminal_output as msg
+from xiangqigame.enums import GameState
+from xiangqigame.game_interfaces import (
+    GameStatusReporter,
+    Player,
+    PlayerSummary,
+)
+
+# from xiangqigame.players import Player
+from xiangqigame.handlers.errors import handle_interactive_eof
 from xiangqigame_core import (
+    ExecutedMove,
     GameBoard,
     Move,
     MoveCollection,
-    opponent_of,
     PieceColor,
+    opponent_of,
 )
-from xiangqigame.enums import GameState
-from xiangqigame.game_interfaces import GameStatusReporter
-from xiangqigame.players import Player
-from xiangqigame.handlers.errors import handle_interactive_eof
+
+
+class GameSummary(msgspec.Struct):
+    game_state: GameState
+    whose_turn: PieceColor
+    move_log: List[ExecutedMove]
+    player_summaries: dict[PieceColor, PlayerSummary]
+
+    @property
+    def move_counts(self) -> int:
+        return len(self.move_log)
 
 
 class Game:
@@ -19,8 +39,6 @@ class Game:
         self,
         players: Dict[PieceColor, Player],
         game_board: GameBoard,
-        # red_player: Player,
-        # black_player: Player,
         status_reporter: GameStatusReporter = msg.TerminalStatusReporter(),
         move_log: List[Move] = None,
     ):
@@ -32,6 +50,18 @@ class Game:
         if move_log is None:
             move_log = []
         self._move_log = move_log
+
+    @property
+    def summary(self) -> GameSummary:
+        return GameSummary(
+            game_state=self._game_state,
+            whose_turn=self._whose_turn,
+            move_log=self._move_log,
+            player_summaries={
+                PieceColor.kRed: self._players[PieceColor.kRed].summary,
+                PieceColor.kBlk: self._players[PieceColor.kBlk].summary,
+            },
+        )
 
     @property
     def _move_count(self):
@@ -76,8 +106,8 @@ class Game:
             valid_move = self.get_valid_move(avail_moves=avail_moves)
         except EOFError:
             handle_interactive_eof()
-        self._board.ExecuteMove(valid_move)
-        self._move_log.append(valid_move)
+        executed_move = self._board.ExecuteMove(valid_move)
+        self._move_log.append(executed_move)
 
     def set_game_state(self, game_state: GameState):
         self._game_state = game_state
@@ -90,7 +120,7 @@ class Game:
 
     def send_game_info_to_status_reporter(self):
         if self._move_log:
-            prev_move = self._move_log[-1]
+            prev_move = self._move_log[-1].spaces
         else:
             prev_move = None
         self._status_reporter.report_game_info(
@@ -102,7 +132,7 @@ class Game:
             prev_move=prev_move,
         )
 
-    def play(self):
+    def play(self) -> GameSummary:
         while self._game_state == GameState.UNFINISHED:
             self.send_game_info_to_status_reporter()
             avail_moves = self._board.CalcFinalMovesOf(self._whose_turn)
@@ -113,3 +143,4 @@ class Game:
             self.change_whose_turn()
 
         self.send_game_info_to_status_reporter()
+        return self.summary

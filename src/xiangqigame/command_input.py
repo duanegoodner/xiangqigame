@@ -222,7 +222,7 @@ class XiangqiGameCommandLine:
             choices=range(1, 10),
             required=False,
             help="Search depth to user for red player when red is 'ai' with "
-            "'minimax.' Default is 2.",
+            "'minimax.' Default is 4.",
         )
 
         self._parser.add_argument(

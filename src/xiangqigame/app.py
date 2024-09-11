@@ -1,13 +1,12 @@
-import colorama
-from xiangqigame_core import GameBoard
+import json
 
-from xiangqigame.command_input import (
-    CommandLineInterpreter,
-    XiangqiGameCommandLine,
-)
+import colorama
+from xiangqigame.command_input import (CommandLineInterpreter,
+                                       XiangqiGameCommandLine)
 from xiangqigame.game import Game
 from xiangqigame.handlers.signals import set_signal_handlers
 from xiangqigame.player_builder import RedAndBlackPlayersBuilder
+from xiangqigame_core import GameBoard
 
 
 def run(*args):
@@ -23,7 +22,9 @@ def run(*args):
         xiangqi_command=xiangqi_command, game_board=game_board
     ).build()
     my_game = Game(players=players, game_board=game_board)
-    my_game.play()
+    game_summary = my_game.play()
+    # game_summary_string = json.dumps(game_summary)
+    print("pause")
 
 
 if __name__ == "__main__":

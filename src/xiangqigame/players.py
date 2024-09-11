@@ -14,6 +14,7 @@ from xiangqigame_core import (
     MinimaxMoveEvaluator64,
     MinimaxMoveEvaluator128,
     RandomMoveEvaluator,
+    SearchSummaries,
 )
 
 
@@ -23,7 +24,9 @@ class HumanPlayer(Player):
         super().__init__(color)
         self._input_req = msg.InputRetrievalMessages()
 
-    def propose_move(self, game_board: GameBoard, cur_moves: List[Move]) -> Move:
+    def propose_move(
+        self, game_board: GameBoard, cur_moves: List[Move]
+    ) -> Move:
         valid_input = None
 
         while not valid_input:
@@ -34,7 +37,9 @@ class HumanPlayer(Player):
             else:
                 self._input_req.notify_invalid_input()
 
-        proposed_move = mt.convert_parsed_input_to_move(parsed_input=valid_input)
+        proposed_move = mt.convert_parsed_input_to_move(
+            parsed_input=valid_input
+        )
         return proposed_move
 
     def illegal_move_notice_response(
@@ -51,7 +56,9 @@ class ScriptedPlayer(Player):
         self._move_list = move_list
         self._move_index = 0
 
-    def propose_move(self, game_board: GameBoard, cur_moves: List[Move]) -> Move:
+    def propose_move(
+        self, game_board: GameBoard, cur_moves: List[Move]
+    ) -> Move:
         # time.sleep(0.2)
         parsed_input = mt.parse_input(self._move_list[self._move_index])
         if not mt.is_valid_algebraic_pair(parsed_input):
@@ -61,7 +68,10 @@ class ScriptedPlayer(Player):
         return move
 
     def illegal_move_notice_response(
-        self, illegal_move: Tuple[str], game_board: GameBoard, cur_moves: List[Move]
+        self,
+        illegal_move: Tuple[str],
+        game_board: GameBoard,
+        cur_moves: List[Move],
     ):
         raise IllegalMoveInMoveList(illegal_move, game_board.map)
 
@@ -72,13 +82,25 @@ class AIPlayer(Player):
         self,
         color: PieceColor,
         move_evaluator: (
-            MinimaxMoveEvaluator64 | MinimaxMoveEvaluator128 | RandomMoveEvaluator
+            MinimaxMoveEvaluator64
+            | MinimaxMoveEvaluator128
+            | RandomMoveEvaluator
         ),
     ):
         super().__init__(color)
         self._move_evaluator = move_evaluator
 
-    def propose_move(self, game_board: GameBoard, cur_moves: MoveCollection) -> Move:
+    @property
+    def move_selection_summary(self) -> SearchSummaries | None:
+        if type(self._move_evaluator).__name__ in [
+            "MinimaxMoveEvaluator64",
+            "MinimaxMoveEvaluator128",
+        ]:
+            return self._move_evaluator.get_search_summaries()
+
+    def propose_move(
+        self, game_board: GameBoard, cur_moves: MoveCollection
+    ) -> Move:
         proposed_move = self._move_evaluator.select_move(
             # game_board=game_board, piece_color=self._color
         )
@@ -92,7 +114,9 @@ class AIPlayer(Player):
 
 class InvalidEntryInMoveList(Exception):
     def __init__(
-        self, algebraic_move_input: str, message="Invalid value for proposed move "
+        self,
+        algebraic_move_input: str,
+        message="Invalid value for proposed move ",
     ):
         self._algebraic_move_input = algebraic_move_input
         self._msg = message
@@ -117,7 +141,9 @@ class IllegalMoveInMoveList(Exception):
 
 
 class IllegalAIMove(Exception):
-    def __init__(self, move: Move, message="AI player proposed an illegal move"):
+    def __init__(
+        self, move: Move, message="AI player proposed an illegal move"
+    ):
         self._move = move
         self._msg = message
 
