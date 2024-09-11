@@ -7,9 +7,9 @@
 // Implements pybind module that exposes GameBoard and related classes /
 // functions to Python.
 
+#include <pybind11/chrono.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
-#include <pybind11/chrono.h>
 
 #include <board_components.hpp>
 #include <game_board.hpp>
@@ -45,6 +45,11 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
               GetSearchSummaries,
           py::return_value_policy::copy
+      )
+      .def(
+          "zobrist_key_size_bits",
+          &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
+              KeySizeBits
       );
 }
 

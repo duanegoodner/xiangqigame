@@ -160,6 +160,13 @@ public:
   SearchSummaries GetSearchSummaries() {
     return search_summaries_;
   }
+  int SearchDepth() {
+    return starting_search_depth_;
+  }
+
+  size_t KeySizeBits() {
+    return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
+  }
 
 private:
   PieceColor evaluating_player_;
