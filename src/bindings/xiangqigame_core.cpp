@@ -9,6 +9,7 @@
 
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
+#include <pybind11/chrono.h>
 
 #include <board_components.hpp>
 #include <game_board.hpp>
@@ -42,7 +43,8 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
       .def(
           "get_search_summaries",
           &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
-              GetSearchSummaries
+              GetSearchSummaries,
+          py::return_value_policy::copy
       );
 }
 
@@ -98,7 +100,6 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .value("kSol", kSol)
       .export_values();
 
-  //   TODO consider bindings for each allowed key bit size???
   py::class_<NewGameBoard>(m, "GameBoard")
       .def(py::init<>())
       .def("map", &NewGameBoard::map)
@@ -115,6 +116,23 @@ PYBIND11_MODULE(xiangqigame_core, m) {
   py::class_<RandomMoveEvaluator<NewGameBoard>>(m, "RandomMoveEvaluator")
       .def(py::init<PieceColor, NewGameBoard &>(), "evaluating_player"_a, "game_board"_a)
       .def("select_move", &RandomMoveEvaluator<NewGameBoard>::SelectMove);
+
+  py::class_<SearchSummary>(m, "NewSearchSummary")
+      .def(py::init<int>()) // Constructor, as needed for initialization
+      .def_readonly(
+          "num_nodes",
+          &SearchSummary::num_nodes
+      ) // Read-only access to fields
+      .def_readonly("time", &SearchSummary::time)
+      .def_readonly("result_depth_counts", &SearchSummary::result_depth_counts);
+
+  py::class_<SearchSummaries>(m, "SearchSummaries")
+      .def(py::init<>()) // Constructor, as needed for initialization
+      .def_readonly(
+          "first_searches",
+          &SearchSummaries::first_searches
+      ) // Read-only vectors and maps
+      .def_readonly("extra_searches", &SearchSummaries::extra_searches);
 
   bind_minimax_move_evaluator<uint64_t>(m, "MinimaxMoveEvaluator64");
   bind_minimax_move_evaluator<__uint128_t>(m, "MinimaxMoveEvaluator128");

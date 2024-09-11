@@ -233,7 +233,7 @@ BestMoves MinimaxMoveEvaluator<
         int alpha,
         int beta,
         PieceColor cur_player,
-        NewSearchSummary &search_summary,
+        SearchSummary &search_summary,
         bool use_transposition_table
     ) {
   search_summary.num_nodes++;
@@ -366,7 +366,7 @@ Move MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::
-    RunMinimax(NewSearchSummary &search_summary, bool use_transposition_table) {
+    RunMinimax(SearchSummary &search_summary, bool use_transposition_table) {
 
   auto search_start = std::chrono::high_resolution_clock::now();
   auto minimax_result = MinimaxRec(

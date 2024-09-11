@@ -187,11 +187,11 @@ private:
       int alpha,
       int beta,
       PieceColor cur_player,
-      NewSearchSummary& single_search_summary,
+      SearchSummary& single_search_summary,
       bool use_transposition_table = true
   );
   Move RunMinimax(
-      NewSearchSummary &single_search_summary,
+      SearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
 

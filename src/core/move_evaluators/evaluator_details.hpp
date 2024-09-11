@@ -51,8 +51,8 @@ inline BestMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_
   }
 }
 
-struct NewSearchSummary {
-  NewSearchSummary(int max_search_depth)
+struct SearchSummary {
+  SearchSummary(int max_search_depth)
       : num_nodes{}, result_depth_counts{} {
     // reserve a "row" for each result type
     result_depth_counts.reserve(kNumResultTypes);
@@ -73,29 +73,24 @@ struct NewSearchSummary {
 
   int num_nodes;
   std::chrono::duration<double, std::nano> time;
-  // use 2-D vector so we don't have to manage dynamic memory
+  
   // row -> node result_type; col -> node depth
   std::vector<std::vector<int>> result_depth_counts;
 };
 
 struct SearchSummaries {
-  std::vector<NewSearchSummary> first_searches;
-  std::map<int, NewSearchSummary> extra_searches;
+  std::vector<SearchSummary> first_searches;
+  std::map<int, SearchSummary> extra_searches;
 
-  NewSearchSummary &NewFirstSearch(int search_depth) {
-    first_searches.emplace_back(NewSearchSummary(search_depth));
+  SearchSummary &NewFirstSearch(int search_depth) {
+    first_searches.emplace_back(SearchSummary(search_depth));
     return first_searches.back();
   }
 
-  NewSearchSummary &NewExtraSearch(int search_depth, int search_number) {
+  SearchSummary &NewExtraSearch(int search_depth, int search_number) {
     auto new_search_entry =
-        extra_searches.emplace(search_number, NewSearchSummary(search_depth));
+        extra_searches.emplace(search_number, SearchSummary(search_depth));
     return new_search_entry.first->second;
   }
 };
 
-struct SearchSummary {
-  int num_nodes;
-  int result_counts[kNumResultTypes];
-  std::chrono::duration<double, std::nano> time;
-};
