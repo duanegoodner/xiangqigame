@@ -50,7 +50,7 @@ class MoveD:
 
 
 @dataclass
-class ExecutedMoveD:
+class ExecutedMove:
     moving_piece: GamePieceD
     destination_piece: GamePieceD
     spaces: MoveD
@@ -101,23 +101,3 @@ class SearchSummariesD:
             },
         )
 
-
-if __name__ == "__main__":
-    core_game_piece = GamePiece(
-        piece_type=PieceType.kSol, piece_color=PieceColor.kRed
-    )
-    game_piece_d = GamePieceD.from_core_game_piece(
-        core_game_piece=core_game_piece
-    )
-
-    core_move_start = BoardSpace(rank=0, file=0)
-    core_move_end = BoardSpace(rank=1, file=0)
-    core_move = Move(start=core_move_start, end=core_move_end)
-
-    move_start_d = BoardSpaceD.from_core_board_space(
-        core_board_space=core_move_start
-    )
-    move_end_d = BoardSpaceD.from_core_board_space(
-        core_board_space=core_move_end
-    )
-    move_d = MoveD.from_core_move(core_move=core_move)

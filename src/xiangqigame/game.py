@@ -7,41 +7,25 @@ from xiangqigame.enums import GameState
 from xiangqigame.game_interfaces import (
     GameStatusReporter,
     Player,
-    PlayerSummaryD,
+    PlayerSummary,
 )
 
 from xiangqigame.handlers.errors import handle_interactive_eof
-from xiangqigame_core import (
-    ExecutedMove,
-    GameBoard,
-    Move,
-    MoveCollection,
-    PieceColor,
-    opponent_of,
-)
-
-
-from xiangqigame.binding_dataclasses import (
-    BoardSpaceD,
-    ExecutedMoveD,
-    GamePieceD,
-    MoveD,
-    SearchSummaryD,
-    SearchSummariesD,
-)
+import xiangqigame_core as core
+import xiangqigame.core_dataclass_mirrors as cdm
 
 
 @dataclass
-class PlayerSummariesD:
-    red: PlayerSummaryD
-    black: PlayerSummaryD
+class PlayerSummaries:
+    red: PlayerSummary
+    black: PlayerSummary
 
 
 class GameSummary(msgspec.Struct):
     game_state: GameState
-    whose_turn: PieceColor
-    move_log: List[ExecutedMoveD]
-    player_summaries: PlayerSummariesD
+    whose_turn: core.PieceColor
+    move_log: List[cdm.ExecutedMove]
+    player_summaries: PlayerSummaries
 
     @property
     def move_counts(self) -> int:
@@ -52,13 +36,13 @@ class Game:
 
     def __init__(
         self,
-        players: Dict[PieceColor, Player],
-        game_board: GameBoard,
+        players: Dict[core.PieceColor, Player],
+        game_board: core.GameBoard,
         status_reporter: GameStatusReporter = msg.TerminalStatusReporter(),
-        move_log: List[Move] = None,
+        move_log: List[core.Move] = None,
     ):
         self._game_state = GameState.UNFINISHED
-        self._whose_turn = PieceColor.kRed
+        self._whose_turn = core.PieceColor.kRed
         self._board = game_board
         self._players = players
         self._status_reporter = status_reporter
@@ -72,12 +56,12 @@ class Game:
             game_state=self._game_state,
             whose_turn=self._whose_turn,
             move_log=[
-                ExecutedMoveD.from_core_executed_move(core_executed_move=item)
+                cdm.ExecutedMove.from_core_executed_move(core_executed_move=item)
                 for item in self._move_log
             ],
-            player_summaries=PlayerSummariesD(
-                red=self._players[PieceColor.kRed].summary,
-                black=self._players[PieceColor.kBlk].summary
+            player_summaries=PlayerSummaries(
+                red=self._players[core.PieceColor.kRed].summary,
+                black=self._players[core.PieceColor.kBlk].summary,
             ),
         )
 
@@ -86,13 +70,13 @@ class Game:
         return len(self._move_log)
 
     def change_whose_turn(self):
-        self._whose_turn = opponent_of(self._whose_turn)
+        self._whose_turn = core.opponent_of(self._whose_turn)
 
     @staticmethod
-    def is_valid_move(proposed_move: Move, avail_moves: List[Move]):
+    def is_valid_move(proposed_move: core.Move, avail_moves: List[core.Move]):
         return proposed_move in avail_moves
 
-    def get_valid_move(self, avail_moves: MoveCollection):
+    def get_valid_move(self, avail_moves: core.MoveCollection):
         valid_move = None
         while not valid_move:
             proposed_move = self._players[self._whose_turn].propose_move(
@@ -119,7 +103,7 @@ class Game:
                 )
         return valid_move
 
-    def player_turn(self, avail_moves: MoveCollection):
+    def player_turn(self, avail_moves: core.MoveCollection):
         try:
             valid_move = self.get_valid_move(avail_moves=avail_moves)
         except EOFError:
@@ -131,7 +115,7 @@ class Game:
         self._game_state = game_state
 
     def set_winner(self, color: int):
-        if color == PieceColor.kRed:
+        if color == core.PieceColor.kRed:
             self.set_game_state(GameState.RED_WON)
         else:
             self.set_game_state(GameState.BLACK_WON)
@@ -155,7 +139,7 @@ class Game:
             self.send_game_info_to_status_reporter()
             avail_moves = self._board.CalcFinalMovesOf(self._whose_turn)
             if avail_moves.size() == 0:
-                self.set_winner(opponent_of(self._whose_turn))
+                self.set_winner(core.opponent_of(self._whose_turn))
                 break
             self.player_turn(avail_moves=avail_moves)
             self.change_whose_turn()

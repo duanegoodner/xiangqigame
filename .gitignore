@@ -13,3 +13,6 @@ CmakeCache.txt
 .DS_Store
 **/_skbuild/
 **/cmake-build-debug/
+
+data/*
+!data/.gitkeep

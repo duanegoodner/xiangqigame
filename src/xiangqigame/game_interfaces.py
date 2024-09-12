@@ -1,34 +1,34 @@
 import abc
 from dataclasses import dataclass
-from xiangqigame_core import GameBoard, Move, PieceColor, SearchSummaries
-from xiangqigame.binding_dataclasses import SearchSummariesD
+import xiangqigame_core as core
+import xiangqigame.core_dataclass_mirrors as cdm
 from typing import List
 from xiangqigame.enums import GameState
 
 
 @dataclass
-class PlayerSummaryD:
+class PlayerSummary:
     player_type: str
     move_evaluator_type: str = None
     max_search_depth: int = None
     zobrist_key_size: int = None
-    search_summaries: SearchSummariesD = None
+    search_summaries: cdm.SearchSummariesD = None
 
 
 class Player(abc.ABC):
 
-    def __init__(self, color: PieceColor):
+    def __init__(self, color: core.PieceColor):
         self._color = color
 
     @abc.abstractmethod
     def propose_move(
-        self, game_board: GameBoard, cur_moves: List[Move]
-    ) -> Move:
+        self, game_board: core.GameBoard, cur_moves: List[core.Move]
+    ) -> core.Move:
         pass
 
     @abc.abstractmethod
     def illegal_move_notice_response(
-        self, illegal_move: Move, game_board: GameBoard, cur_moves: List[Move]
+        self, illegal_move: core.Move, game_board: core.GameBoard, cur_moves: List[core.Move]
     ):
         pass
 
@@ -58,18 +58,18 @@ class Player(abc.ABC):
             return self._move_evaluator.zobrist_key_size_bits()
 
     @property
-    def search_summaries(self) -> SearchSummariesD | None:
+    def search_summaries(self) -> cdm.SearchSummariesD | None:
         if self.move_evaluator_type in [
             "MinimaxMoveEvaluator64",
             "MinimaxMoveEvaluator128",
         ]:
-            return SearchSummariesD.from_core_search_summaries(
+            return cdm.SearchSummariesD.from_core_search_summaries(
                 core_search_summaries=self._move_evaluator.get_search_summaries()
             )
 
     @property
-    def summary(self) -> PlayerSummaryD:
-        return PlayerSummaryD(
+    def summary(self) -> PlayerSummary:
+        return PlayerSummary(
             player_type=self.player_type,
             move_evaluator_type=self.move_evaluator_type,
             max_search_depth=self.max_search_depth,
@@ -84,10 +84,10 @@ class GameStatusReporter(abc.ABC):
     def report_game_info(
         self,
         game_state: GameState,
-        game_board: GameBoard,
-        whose_turn: PieceColor,
+        game_board: core.GameBoard,
+        whose_turn: core.PieceColor,
         is_in_check: bool,
         move_count: int,
-        prev_move: Move = None,
+        prev_move: core.Move = None,
     ):
         pass
