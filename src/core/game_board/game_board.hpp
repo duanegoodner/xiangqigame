@@ -21,47 +21,6 @@
 using namespace std;
 using namespace board_components;
 
-// CRTP INTERFACE: GameBoard <- BoardStateSummarizer (concrete example =
-// HashCalculator)
-// template <typename ConcreteBoardStateSummarizer, typename KeyType>
-// class BoardStateSummarizer {
-// public:
-//   typedef KeyType ZobristKey_t;
-//   void FullBoardStateCalc(BoardMap_t &board_map) {
-//     static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementFullBoardStateCalc(
-//         board_map
-//     );
-//   }
-
-//   void UpdateBoardState(const ExecutedMove &move) {
-//     return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementUpdateBoardState(
-//         move
-//     );
-//   }
-
-//   ZobristKey_t GetState() {
-//     return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetState();
-//   }
-
-//   void RecordTrData(
-//       int search_depth,
-//       MinimaxResultType result_type,
-//       BestMoves &best_moves
-//   ) {
-//     return static_cast<ConcreteBoardStateSummarizer *>(this)
-//         ->ImplementRecordTrData(
-//             search_depth,
-//             result_type,
-//             best_moves
-//         );
-//   }
-
-//   TranspositionTableSearchResult GetTrData(int search_depth) {
-//     return static_cast<ConcreteBoardStateSummarizer *>(this)
-//         ->ImplementGetTrData(search_depth);
-//   }
-// };
-
 // Template for class NewGameBoard which implements interface
 // SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
 
@@ -74,21 +33,6 @@ public:
   }
   PieceColor ImplementGetColor(BoardSpace space) { return get_color(board_map_, space); }
   PieceType ImplementGetType(BoardSpace space) { return get_type(board_map_, space); }
-  // TranspositionTableSearchResult ImplementGetEvalResult(
-  //     PieceColor color,
-  //     int search_depth
-  // ) {
-  //   return _ImplementGetEvalResult(color, search_depth);
-  // }
-
-  // void ImplementRecordEvalResult(
-  //     PieceColor color,
-  //     int search_depth,
-  //     MinimaxResultType result_type,
-  //     BestMoves &best_moves
-  // ) {
-  //   _ImplementRecordEvalResult(color, search_depth, result_type, best_moves);
-  // };
 
   MoveCollection ImplementCalcFinalMovesOf(PieceColor color) {
     return _ImplementCalcFinalMovesOf(color);
@@ -107,13 +51,15 @@ public:
   void ImplementAttachMoveCallback(function<void(ExecutedMove)> callback) {
     move_callbacks_.emplace_back(callback);
   }
+  std::map<PieceColor, vector<ExecutedMove>> GetMoveLog() {
+    return move_log_;
+  }
 
 private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
-  // ConcreteBoardStateSummarizerRed hash_calculator_red_;
-  // ConcreteBoardStateSummarizerBlack hash_calculator_black_;
   vector<function<void(ExecutedMove)>> move_callbacks_;
+  std::map<PieceColor, vector<ExecutedMove>> move_log_;
 
   ExecutedMove _ImplementExecuteMove(Move move) {
     auto moving_piece = GetOccupant(move.start);
@@ -135,60 +81,8 @@ private:
     RemoveFromMoveLog(executed_move);
   }
 
-  // Retrieve info for current state //////////////////////////////////////////
-  // TranspositionTableSearchResult GetCurrentStateDetailsRed(int search_depth) {
-  //   return hash_calculator_red_.GetTrData(search_depth);
-  // };
-  // TranspositionTableSearchResult GetCurrentStateDetailsBlack(int search_depth) {
-  //   return hash_calculator_black_.GetTrData(search_depth);
-  // }
-  // unordered_map<PieceColor, TranspositionTableSearchResult (NewGameBoard::*)(int)>
-  //     state_details_dispatch_table_;
-  // TranspositionTableSearchResult _ImplementGetEvalResult(
-  //     PieceColor color,
-  //     int search_depth
-  // ) {
-  //   auto search_function = state_details_dispatch_table_.at(color);
-  //   return (this->*search_function)(search_depth);
-  // }
-  //////////////////////////////////////////////////////////////////////////////
-
-  // Record info for current state/////////////////////////////////////////////
-  // void RecordEvalResultRed(
-  //     int search_depth,
-  //     MinimaxResultType result_type,
-  //     BestMoves &best_moves
-  // ) {
-  //   hash_calculator_red_
-  //       .RecordTrData(search_depth, result_type, best_moves);
-  // };
-  // void RecordEvalResultBlack(
-  //     int search_depth,
-  //     MinimaxResultType result_type,
-  //     BestMoves &best_moves
-  // ) {
-  //   hash_calculator_black_
-  //       .RecordTrData(search_depth, result_type, best_moves);
-  // };
-
-  // unordered_map<PieceColor, void (NewGameBoard::*)(int, MinimaxResultType, BestMoves &)>
-  //     write_state_details_dispatch_table_;
-
-  // void _ImplementRecordEvalResult(
-  //     PieceColor color,
-  //     int search_depth,
-  //     MinimaxResultType result_type,
-  //     BestMoves &best_moves
-  // ) {
-  //   auto record_function = write_state_details_dispatch_table_.at(color);
-  //   (this->*record_function)(search_depth, result_type, best_moves);
-  // }
-  /////////////////////////////////////////////////////////////////////////////////
-
-  std::map<PieceColor, vector<ExecutedMove>> move_log_;
+  
   void UpdateHashCalculator(ExecutedMove executed_move) {
-    // hash_calculator_red_.UpdateBoardState(executed_move);
-    // hash_calculator_black_.UpdateBoardState(executed_move);
     for (const auto &callback : move_callbacks_) {
       callback(executed_move);
     }

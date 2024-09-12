@@ -7,12 +7,20 @@ import time
 from pstats import SortKey
 
 import xiangqigame.piece_points as pts
-from xiangqigame_core import GameBoard, MinimaxMoveEvaluator, PieceColor
+from xiangqigame_core import (
+    GameBoard,
+    MinimaxMoveEvaluator64,
+    MinimaxMoveEvaluator128,
+    PieceColor,
+)
 
 
-def select_red_starting_move(search_depth: int):
+def select_red_starting_move(
+    search_depth: int,
+    move_evaluator: MinimaxMoveEvaluator64 | MinimaxMoveEvaluator128,
+):
     game_board = GameBoard()
-    move_evaluator = MinimaxMoveEvaluator(
+    move_evaluator = move_evaluator(
         evaluating_player=PieceColor.kRed,
         starting_search_depth=search_depth,
         game_board=game_board,
@@ -24,10 +32,21 @@ def select_red_starting_move(search_depth: int):
 
 
 if __name__ == "__main__":
-    depth = 2
+    depth = 4
     cProfile.run(
-        statement=f"select_red_starting_move({depth})",
-        filename=f"red_starting_move_depth_{depth}",
+        statement=f"select_red_starting_move({depth}, MinimaxMoveEvaluator64)",
+        filename=f"red_starting_move_64bit_depth_{depth}",
     )
-    p = pstats.Stats(f"red_starting_move_depth_{depth}")
+    p = pstats.Stats(f"red_starting_move_64bit_depth_{depth}")
     p.sort_stats(SortKey.CUMULATIVE).print_stats()
+    
+    cProfile.run(
+        statement=f"select_red_starting_move({depth}, MinimaxMoveEvaluator128)",
+        filename=f"red_starting_move_128bit_depth_{depth}",
+    )
+    p = pstats.Stats(f"red_starting_move_128bit_depth_{depth}")
+    p.sort_stats(SortKey.CUMULATIVE).print_stats()
+    
+    
+    
+    

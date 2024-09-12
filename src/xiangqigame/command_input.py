@@ -84,29 +84,31 @@ class PlayerCommandInterpreter:
 class XiangqiGameCommand:
     red_player_input: PlayerInput
     black_player_input: PlayerInput
+    save_summary: bool = False
 
 
 @dataclass
-class CommandLineInterpreter:
-    command_line_args: dict[str, Any]
+class RunKwargsInterpreter:
+    run_kwargs: dict[str, Any]
 
     def interpret_command(self) -> XiangqiGameCommand:
         red_interpreter = PlayerCommandInterpreter(
-            player_input=self.command_line_args["red_player_type"],
-            algo_input=self.command_line_args["red_algo"],
-            strength_input=self.command_line_args["red_strength"],
-            key_size_input=self.command_line_args["red_key_size"],
+            player_input=self.run_kwargs["red_player_type"],
+            algo_input=self.run_kwargs["red_algo"],
+            strength_input=self.run_kwargs["red_strength"],
+            key_size_input=self.run_kwargs["red_key_size"],
         )
         black_interpreter = PlayerCommandInterpreter(
-            player_input=self.command_line_args["black_player_type"],
-            algo_input=self.command_line_args["black_algo"],
-            strength_input=self.command_line_args["black_strength"],
-            key_size_input=self.command_line_args["black_key_size"],
+            player_input=self.run_kwargs["black_player_type"],
+            algo_input=self.run_kwargs["black_algo"],
+            strength_input=self.run_kwargs["black_strength"],
+            key_size_input=self.run_kwargs["black_key_size"],
         )
 
         return XiangqiGameCommand(
             red_player_input=red_interpreter.interpret_command(),
             black_player_input=black_interpreter.interpret_command(),
+            save_summary=self.run_kwargs["save_summary"]
         )
 
 class XiangqiGameCommandInterpreter:
@@ -222,7 +224,7 @@ class XiangqiGameCommandLine:
             choices=range(1, 10),
             required=False,
             help="Search depth to user for red player when red is 'ai' with "
-            "'minimax.' Default is 2.",
+            "'minimax.' Default is 4.",
         )
 
         self._parser.add_argument(
@@ -232,6 +234,10 @@ class XiangqiGameCommandLine:
             choices=[64, 128],
             required=False,
             help="Key size (in bits) used for black AI player Zobrist hashing",
+        )
+        
+        self._parser.add_argument(
+            "--save_summary", "-s", action="store_true", help="Save GameSummary as .json"
         )
 
     def get_args(self) -> dict[str, Any]:

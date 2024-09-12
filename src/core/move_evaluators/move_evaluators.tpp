@@ -10,6 +10,7 @@
 #define _MINIMAX_EVALUATOR_TEMPLATE_
 
 #include <board_components.hpp>
+#include <chrono>
 #include <common.hpp>
 #include <evaluator_details.hpp>
 #include <iostream>
@@ -34,7 +35,9 @@ MinimaxMoveEvaluator<
     , starting_search_depth_{starting_search_depth}
     , game_board_{game_board}
     , game_position_points_{game_position_points}
-    , hash_calculator_{ConcreteBoardStateSummarizer{}} {
+    , hash_calculator_{ConcreteBoardStateSummarizer{}}
+    , num_move_selections_{0}
+    , search_summaries_{} {
   game_board_.AttachMoveCallback(std::bind(
       &ConcreteBoardStateSummarizer::UpdateBoardState,
       &hash_calculator_,
@@ -71,25 +74,28 @@ Move MinimaxMoveEvaluator<
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::ImplementSelectMove() {
 
-  auto first_selected_move = RunMinimax();
+  
+  auto& first_search_summary = search_summaries_.NewFirstSearch(starting_search_depth_);
+  // SearchSummary first_search_summary{};
+  // SearchSummary second_search_summary{};
+  Move final_selected_move;
 
+  auto first_selected_move = RunMinimax(first_search_summary);
+  // first_search_summaries_.emplace_back(first_search_summary);
+
+  // check if move selected by first search is allowed
+  // (if we had a hash collision, we might select an illegal move)
   auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
   if (allowed_moves.ContainsMove(first_selected_move)) {
-    return first_selected_move;
+    final_selected_move = first_selected_move;
   } else {
-    auto second_selected_move = RunMinimax(false);
-
-    auto second_allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
-    if (not second_allowed_moves.ContainsMove(second_selected_move)) {
-      std::cout << "Returned bad move\nstart = " << second_selected_move.start.rank
-                << ", " << second_selected_move.start.file
-                << "\nend = " << second_selected_move.end.rank << ", "
-                << second_selected_move.end.file << std::endl;
-      exit(1);
-    }
-
-    return second_selected_move;
+    auto& second_search_summary = search_summaries_.NewExtraSearch(starting_search_depth_, num_move_selections_);
+    auto second_selected_move = RunMinimax(second_search_summary, false);
+    // second_search_summaries_[num_move_selections_] = second_search_summary;
+    final_selected_move = second_selected_move;
   }
+  num_move_selections_++;
+  return final_selected_move;
 }
 
 template <
@@ -227,33 +233,48 @@ BestMoves MinimaxMoveEvaluator<
         int alpha,
         int beta,
         PieceColor cur_player,
+        SearchSummary &search_summary,
         bool use_transposition_table
     ) {
-  node_counter_ += 1;
+  search_summary.num_nodes++;
   MinimaxResultType result_type{};
 
-  auto state_score_search_result =
-      hash_calculator_.GetTrData(cur_search_depth);
-  if (state_score_search_result.found && use_transposition_table) {
-    return state_score_search_result.table_entry.best_moves;
+  // First we check if result for current board state is in transposition table (unless
+  // this is a second search in which case we don't use transposition table)
+  if (use_transposition_table) {
+    auto state_score_search_result = hash_calculator_.GetTrData(cur_search_depth);
+    if (state_score_search_result.found) {
+      result_type = MinimaxResultType::kTrTableHit;
+      search_summary.Update(result_type, cur_search_depth);
+      // search_summary.result_counts[MinimaxResultType::kTrTableHit]++;
+      return state_score_search_result.table_entry.best_moves;
+    }
   }
 
+  // Get all legal moves
   auto cur_moves = game_board_.CalcFinalMovesOf(cur_player);
+
+  // If no legal moves, node is an end-of-game leaf
   if (cur_moves.moves.size() == 0) {
     result_type = MinimaxResultType::kEndGameLeaf;
     auto result = EvaluateEndOfGameLeaf(cur_player);
-    hash_calculator_
-        .RecordTrData(cur_search_depth, result_type, result);
+    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
+    search_summary.Update(result_type, cur_search_depth);
+    // search_summary.result_counts[result_type]++;
     return result;
   }
+  // If search depth is zero, node is a normal leaf (end of our search depth)
   if (cur_search_depth == 0) {
     result_type = MinimaxResultType::kStandardLeaf;
     auto result = EvaluateNonWinLeaf(cur_player);
-    hash_calculator_
-        .RecordTrData(cur_search_depth, result_type, result);
+    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
+    search_summary.Update(result_type, cur_search_depth);
+    // search_summary.result_counts[result_type]++;
     return result;
   }
+
   if (cur_player == evaluating_player_) {
+    // evaluation of each legal move when it's evaluating player's turn
     auto max_eval = numeric_limits<int>::min();
     MoveCollection best_moves;
     auto ranked_moves = GenerateRankedMoveList(cur_player, cur_moves);
@@ -264,6 +285,7 @@ BestMoves MinimaxMoveEvaluator<
                           alpha,
                           beta,
                           opponent_of(evaluating_player_),
+                          search_summary,
                           use_transposition_table
       )
                           .best_eval;
@@ -281,11 +303,21 @@ BestMoves MinimaxMoveEvaluator<
         break;
       }
     }
+    //  if we get here and result type is still unknown, then we fully evaluated the
+    //  node. Note that "full evaluation" just means not end of search. Could be the
+    // root node or could be interior node. Recommend finding a way to store search depth
+    // in SearchResult
+    if (result_type == MinimaxResultType::kUnknown) {
+      result_type = MinimaxResultType::kFullyEvaluatedNode;
+    }
     auto result = BestMoves{max_eval, best_moves};
-    hash_calculator_
-        .RecordTrData(cur_search_depth, result_type, result);
+    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
+    search_summary.Update(result_type, cur_search_depth);
+    // search_summary.result_counts[result_type]++;
     return BestMoves{max_eval, best_moves};
+
   } else {
+    // evaluation of each legal move when it's evaluating player's opponent's turn
     auto min_eval = numeric_limits<int>::max();
     MoveCollection best_moves;
     auto ranked_moves = GenerateRankedMoveList(cur_player, cur_moves);
@@ -296,6 +328,7 @@ BestMoves MinimaxMoveEvaluator<
                           alpha,
                           beta,
                           evaluating_player_,
+                          search_summary,
                           use_transposition_table
       )
                           .best_eval;
@@ -315,10 +348,13 @@ BestMoves MinimaxMoveEvaluator<
         break;
       }
     }
-    result_type = MinimaxResultType::kFullyEvaluatedNode;
+    if (result_type == MinimaxResultType::kUnknown) {
+      result_type = MinimaxResultType::kFullyEvaluatedNode;
+    }
     auto result = BestMoves{min_eval, best_moves};
-    hash_calculator_
-        .RecordTrData(cur_search_depth, result_type, result);
+    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
+    search_summary.Update(result_type, cur_search_depth);
+    // search_summary.result_counts[result_type]++;
     return result;
   }
 }
@@ -331,20 +367,21 @@ Move MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::
-    RunMinimax(
-        // int search_depth,
-        // int alpha,
-        // int beta,
-        bool use_transposition_table
-    ) {
-  ResetNodeCounter();
+    RunMinimax(SearchSummary &search_summary, bool use_transposition_table) {
+
+  auto search_start = std::chrono::high_resolution_clock::now();
   auto minimax_result = MinimaxRec(
       starting_search_depth_,
       numeric_limits<int>::min(),
       numeric_limits<int>::max(),
       evaluating_player_,
+      search_summary,
       use_transposition_table
   );
+  auto search_end = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double, std::nano> search_time = search_end - search_start;
+  search_summary.SetTime(search_time);
+  // search_summary.time = search_time;
   auto selected_move_index =
       utility_functs::random((size_t)0, minimax_result.best_moves.moves.size() - 1);
 

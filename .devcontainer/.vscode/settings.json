@@ -3,6 +3,7 @@
         "editor.defaultFormatter": "ms-python.black-formatter",
     },
     "editor.guides.indentation": false,
+    "black-formatter.args": ["--line-length", "79"],
     "python.testing.pytestArgs": [
         "project"
     ],
