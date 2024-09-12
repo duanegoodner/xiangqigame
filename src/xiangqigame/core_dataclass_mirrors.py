@@ -15,7 +15,7 @@ from xiangqigame_core import (
 
 
 @dataclass
-class GamePieceD:
+class GamePiece:
     piece_color: PieceColor
     piece_type: PieceType
 
@@ -28,7 +28,7 @@ class GamePieceD:
 
 
 @dataclass
-class BoardSpaceD:
+class BoardSpace:
     rank: int
     file: int
 
@@ -38,38 +38,38 @@ class BoardSpaceD:
 
 
 @dataclass
-class MoveD:
-    start: BoardSpaceD
-    end: BoardSpaceD
+class Move:
+    start: BoardSpace
+    end: BoardSpace
 
     @classmethod
     def from_core_move(cls, core_move: Move):
-        start = BoardSpaceD.from_core_board_space(core_move.start)
-        end = BoardSpaceD.from_core_board_space(core_move.end)
+        start = BoardSpace.from_core_board_space(core_move.start)
+        end = BoardSpace.from_core_board_space(core_move.end)
         return cls(start=start, end=end)
 
 
 @dataclass
 class ExecutedMove:
-    moving_piece: GamePieceD
-    destination_piece: GamePieceD
-    spaces: MoveD
+    moving_piece: GamePiece
+    destination_piece: GamePiece
+    spaces: Move
 
     @classmethod
     def from_core_executed_move(cls, core_executed_move: ExecutedMove):
         return cls(
-            moving_piece=GamePieceD.from_core_game_piece(
+            moving_piece=GamePiece.from_core_game_piece(
                 core_game_piece=core_executed_move.moving_piece
             ),
-            destination_piece=GamePieceD.from_core_game_piece(
+            destination_piece=GamePiece.from_core_game_piece(
                 core_game_piece=core_executed_move.destination_piece
             ),
-            spaces=MoveD.from_core_move(core_move=core_executed_move.spaces),
+            spaces=Move.from_core_move(core_move=core_executed_move.spaces),
         )
 
 
 @dataclass
-class SearchSummaryD:
+class SearchSummary:
     num_nodes: int
     time: datetime.timedelta
     result_depth_counts: List[List[int]]
@@ -84,19 +84,19 @@ class SearchSummaryD:
 
 
 @dataclass
-class SearchSummariesD:
-    first_searches: List[SearchSummaryD]
-    extra_searches: Dict[int, SearchSummaryD]
+class SearchSummaries:
+    first_searches: List[SearchSummary]
+    extra_searches: Dict[int, SearchSummary]
 
     @classmethod
     def from_core_search_summaries(cls, core_search_summaries: SearchSummaries):
         return cls(
             first_searches=[
-                SearchSummaryD.from_core_search_summary(item)
+                SearchSummary.from_core_search_summary(item)
                 for item in core_search_summaries.first_searches
             ],
             extra_searches={
-                key: SearchSummaryD.from_core_search_summary(val)
+                key: SearchSummary.from_core_search_summary(val)
                 for key, val in core_search_summaries.extra_searches.items()
             },
         )

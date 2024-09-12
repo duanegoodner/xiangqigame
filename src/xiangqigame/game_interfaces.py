@@ -12,7 +12,7 @@ class PlayerSummary:
     move_evaluator_type: str = None
     max_search_depth: int = None
     zobrist_key_size: int = None
-    search_summaries: cdm.SearchSummariesD = None
+    search_summaries: cdm.SearchSummaries = None
 
 
 class Player(abc.ABC):
@@ -58,12 +58,12 @@ class Player(abc.ABC):
             return self._move_evaluator.zobrist_key_size_bits()
 
     @property
-    def search_summaries(self) -> cdm.SearchSummariesD | None:
+    def search_summaries(self) -> cdm.SearchSummaries | None:
         if self.move_evaluator_type in [
             "MinimaxMoveEvaluator64",
             "MinimaxMoveEvaluator128",
         ]:
-            return cdm.SearchSummariesD.from_core_search_summaries(
+            return cdm.SearchSummaries.from_core_search_summaries(
                 core_search_summaries=self._move_evaluator.get_search_summaries()
             )
 
