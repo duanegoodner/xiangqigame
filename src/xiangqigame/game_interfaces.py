@@ -1,17 +1,18 @@
 import abc
 from dataclasses import dataclass
 from xiangqigame_core import GameBoard, Move, PieceColor, SearchSummaries
+from xiangqigame.binding_dataclasses import SearchSummariesD
 from typing import List
 from xiangqigame.enums import GameState
 
 
 @dataclass
-class PlayerSummary:
+class PlayerSummaryD:
     player_type: str
     move_evaluator_type: str = None
     max_search_depth: int = None
     zobrist_key_size: int = None
-    search_summaries: SearchSummaries = None
+    search_summaries: SearchSummariesD = None
 
 
 class Player(abc.ABC):
@@ -57,16 +58,18 @@ class Player(abc.ABC):
             return self._move_evaluator.zobrist_key_size_bits()
 
     @property
-    def search_summaries(self) -> SearchSummaries | None:
+    def search_summaries(self) -> SearchSummariesD | None:
         if self.move_evaluator_type in [
             "MinimaxMoveEvaluator64",
             "MinimaxMoveEvaluator128",
         ]:
-            return self._move_evaluator.get_search_summaries()
+            return SearchSummariesD.from_core_search_summaries(
+                core_search_summaries=self._move_evaluator.get_search_summaries()
+            )
 
     @property
-    def summary(self) -> PlayerSummary:
-        return PlayerSummary(
+    def summary(self) -> PlayerSummaryD:
+        return PlayerSummaryD(
             player_type=self.player_type,
             move_evaluator_type=self.move_evaluator_type,
             max_search_depth=self.max_search_depth,

@@ -1,6 +1,7 @@
-import json
+import msgspec
 
 import colorama
+from xiangqigame.game_summary_exporter import enc, dec
 from xiangqigame.command_input import (CommandLineInterpreter,
                                        XiangqiGameCommandLine)
 from xiangqigame.game import Game
@@ -23,9 +24,10 @@ def run(*args):
     ).build()
     my_game = Game(players=players, game_board=game_board)
     game_summary = my_game.play()
-    # game_summary_string = json.dumps(game_summary)
+    
+    encoded_summary = enc.encode(game_summary)
+    decoded_summary = dec.decode(encoded_summary)
     print("pause")
-
 
 if __name__ == "__main__":
     run()

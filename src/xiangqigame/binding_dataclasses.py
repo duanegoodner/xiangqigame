@@ -46,6 +46,7 @@ class MoveD:
     def from_core_move(cls, core_move: Move):
         start = BoardSpaceD.from_core_board_space(core_move.start)
         end = BoardSpaceD.from_core_board_space(core_move.end)
+        return cls(start=start, end=end)
 
 
 @dataclass
@@ -96,7 +97,7 @@ class SearchSummariesD:
             ],
             extra_searches={
                 key: SearchSummaryD.from_core_search_summary(val)
-                for key, val in core_search_summaries.items()
+                for key, val in core_search_summaries.extra_searches.items()
             },
         )
 

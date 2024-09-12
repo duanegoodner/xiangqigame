@@ -7,10 +7,9 @@ from xiangqigame.enums import GameState
 from xiangqigame.game_interfaces import (
     GameStatusReporter,
     Player,
-    PlayerSummary,
+    PlayerSummaryD,
 )
 
-# from xiangqigame.players import Player
 from xiangqigame.handlers.errors import handle_interactive_eof
 from xiangqigame_core import (
     ExecutedMove,
@@ -22,11 +21,27 @@ from xiangqigame_core import (
 )
 
 
+from xiangqigame.binding_dataclasses import (
+    BoardSpaceD,
+    ExecutedMoveD,
+    GamePieceD,
+    MoveD,
+    SearchSummaryD,
+    SearchSummariesD,
+)
+
+
+@dataclass
+class PlayerSummariesD:
+    red: PlayerSummaryD
+    black: PlayerSummaryD
+
+
 class GameSummary(msgspec.Struct):
     game_state: GameState
     whose_turn: PieceColor
-    move_log: List[ExecutedMove]
-    player_summaries: dict[PieceColor, PlayerSummary]
+    move_log: List[ExecutedMoveD]
+    player_summaries: PlayerSummariesD
 
     @property
     def move_counts(self) -> int:
@@ -56,11 +71,14 @@ class Game:
         return GameSummary(
             game_state=self._game_state,
             whose_turn=self._whose_turn,
-            move_log=self._move_log,
-            player_summaries={
-                PieceColor.kRed: self._players[PieceColor.kRed].summary,
-                PieceColor.kBlk: self._players[PieceColor.kBlk].summary,
-            },
+            move_log=[
+                ExecutedMoveD.from_core_executed_move(core_executed_move=item)
+                for item in self._move_log
+            ],
+            player_summaries=PlayerSummariesD(
+                red=self._players[PieceColor.kRed].summary,
+                black=self._players[PieceColor.kBlk].summary
+            ),
         )
 
     @property
