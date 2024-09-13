@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM debian:12
 
 ARG username=duane
 ARG user_uid=1000
@@ -72,39 +72,48 @@ ENV TERM xterm-256color
 
 WORKDIR $HOME/workspace
 
-# install miniconda and create project env
+
+# Set up the environment variables for Miniconda
 ENV MINICONDA_VERSION latest
 ENV CONDA_DIR $HOME/miniconda3
 ENV PATH=$CONDA_DIR/bin:$PATH
-COPY ./.devcontainer/env.yml /tmp/ 
+
+# Create directory that will hold our project's conda env
+RUN sudo mkdir $WORKSPACE/env && sudo chown ${USERNAME}:${USERNAME} ${WORKSPACE}/env && \
+    chmod +rwx $WORKSPACE/env
+
+# Copy env.yml into the container so it is available during env creation
+COPY ./.devcontainer/env.yml /tmp/
+
+# Download and install Miniconda, install mamba, and use mamba to create the conda environment
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-$MINICONDA_VERSION-Linux-x86_64.sh -O $HOME/miniconda.sh && \
     chmod +x $HOME/miniconda.sh && \
-    # Need to use bash on next line due to issue at: https://github.com/conda/conda/issues/10431
     bash $HOME/miniconda.sh -b -p $CONDA_DIR && \
     rm $HOME/miniconda.sh && \
-    echo ". $HOME/miniconda3/etc/profile.d/conda.sh" >> $HOME/.bashrc && \
-    echo ". $HOME/miniconda3/etc/profile.d/conda.sh" >> $HOME/.zshrc && \
+    sudo chown $USER_UID:$USER_GID /tmp/env.yml && \
+    /bin/bash -c "source $CONDA_DIR/etc/profile.d/conda.sh && \
     conda init bash && \
     conda init zsh && \
     conda install mamba -n base -c conda-forge && \
-    sudo chown $USER_UID:$USER_GID /tmp/env.yml && \
-    mamba update --name base --channel defaults conda
-
-RUN sudo mkdir $WORKSPACE/env && sudo chown ${USERNAME}:${USERNAME} ${WORKSPACE}/env
-
-RUN chmod +rwx $WORKSPACE/env && \
+    mamba update --name base --channel defaults conda && \
     mamba env create --prefix $WORKSPACE/env --file /tmp/env.yml && \
-    mamba clean --all --yes --force-pkgs-dirs && \
+    mamba clean --all --yes --force-pkgs-dirs" && \
     find ${CONDA_DIR} -follow -type f -name '*.a' -delete && \
     find ${CONDA_DIR} -follow -type f -name '*.pyc' -delete && \
+    # Persist the sourcing of conda.sh in .bashrc and .zshrc
+    echo "source $CONDA_DIR/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "source $CONDA_DIR/etc/profile.d/conda.sh" >> ~/.zshrc && \
+    # Ensure that conda is activated in both bash and zsh
     echo "conda activate ${WORKSPACE}/env" >> ~/.bashrc && \
     echo "conda activate ${WORKSPACE}/env" >> ~/.zshrc
 
+# Set the entrypoint script
 COPY ./.devcontainer/entrypoint.sh /usr/local/bin/
 RUN sudo chown $USER_UID:$USER_GID /usr/local/bin/ && \
     sudo chmod u+x /usr/local/bin/entrypoint.sh
 
 WORKDIR $HOME/workspace/project
+
 
 # To enable ssh connection to container (e.g. for using PyCharm in container) uncomment
 # the remaining lines, generate ssh key pair named xiangqigame_docker, and add save the .pub key
