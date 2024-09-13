@@ -76,7 +76,7 @@
     "*.tpp": "cpp",
     "regex": "cpp"
   },
-  "cmake.sourceDirectory": "${workspaceFolder}/src/xiangqigame_cpp",
+  "cmake.sourceDirectory": "/home/duane/dproj/xiangqigame",
   
   "window.zoomLevel": 0.3,
   "editor.tabSize": 2,
