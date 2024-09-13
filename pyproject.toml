@@ -25,6 +25,7 @@ dependencies = [
     "colorama",
     "msgspec",
     "numpy",
+    "pandas"
 ]
 
 [project.optional-dependencies]

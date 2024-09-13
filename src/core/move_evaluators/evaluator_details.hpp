@@ -17,14 +17,16 @@ struct RatedMove {
   Points_t rating;
 };
 
-enum MinimaxResultType : int {
+enum MinimaxResultType : size_t {
   kUnknown = 0,
   kFullyEvaluatedNode = 1,
   kStandardLeaf = 2,
   kEndGameLeaf = 3,
   kAlphaPrune = 4,
   kBetaPrune = 5,
-  kTrTableHit = 6
+  kTrTableHit = 6,
+  kMin = kUnknown,
+  kMax = kTrTableHit
 };
 const size_t kNumResultTypes{7};
 
@@ -53,10 +55,11 @@ inline BestMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_
 
 struct SearchSummary {
   SearchSummary(int max_search_depth)
-      : num_nodes{}, result_depth_counts{} {
+      : num_nodes{}
+      , result_depth_counts{} {
     // reserve a "row" for each result type
-    result_depth_counts.reserve(kNumResultTypes);
-    for (auto idx = 0; idx < kNumResultTypes; idx++) {
+    result_depth_counts.reserve(MinimaxResultType::kMax);
+    for (auto idx = 0; idx <= MinimaxResultType::kMax; idx++) {
       // for each "row", create vector long enough to hold each possible search depth
       result_depth_counts.emplace_back(max_search_depth + 1, 0);
     }
@@ -73,7 +76,7 @@ struct SearchSummary {
 
   int num_nodes;
   std::chrono::duration<double, std::nano> time;
-  
+
   // row -> node result_type; col -> node depth
   std::vector<std::vector<int>> result_depth_counts;
 };
@@ -93,4 +96,3 @@ struct SearchSummaries {
     return new_search_entry.first->second;
   }
 };
-
