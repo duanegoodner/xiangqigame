@@ -17,7 +17,7 @@ struct RatedMove {
   Points_t rating;
 };
 
-enum MinimaxResultType : int {
+enum MinimaxResultType : size_t {
   kUnknown = 0,
   kFullyEvaluatedNode = 1,
   kStandardLeaf = 2,
@@ -26,7 +26,17 @@ enum MinimaxResultType : int {
   kBetaPrune = 5,
   kTrTableHit = 6
 };
-const size_t kNumResultTypes{7};
+
+const size_t kNumResultTypes = 1 + std::max(
+    {MinimaxResultType::kUnknown,
+     MinimaxResultType::kFullyEvaluatedNode,
+     MinimaxResultType::kStandardLeaf,
+     MinimaxResultType::kEndGameLeaf,
+     MinimaxResultType::kAlphaPrune,
+     MinimaxResultType::kBetaPrune,
+     MinimaxResultType::kTrTableHit
+     }
+);
 
 struct TranspositionTableEntry {
   int search_depth;
@@ -53,7 +63,8 @@ inline BestMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_
 
 struct SearchSummary {
   SearchSummary(int max_search_depth)
-      : num_nodes{}, result_depth_counts{} {
+      : num_nodes{}
+      , result_depth_counts{} {
     // reserve a "row" for each result type
     result_depth_counts.reserve(kNumResultTypes);
     for (auto idx = 0; idx < kNumResultTypes; idx++) {
@@ -73,7 +84,7 @@ struct SearchSummary {
 
   int num_nodes;
   std::chrono::duration<double, std::nano> time;
-  
+
   // row -> node result_type; col -> node depth
   std::vector<std::vector<int>> result_depth_counts;
 };
@@ -93,4 +104,3 @@ struct SearchSummaries {
     return new_search_entry.first->second;
   }
 };
-

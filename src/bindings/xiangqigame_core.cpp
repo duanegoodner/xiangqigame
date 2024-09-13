@@ -110,6 +110,16 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .value("kSol", kSol)
       .export_values();
 
+  py::enum_<MinimaxResultType>(m, "MinimaxResultType")
+      .value("KUnknown", kUnknown)
+      .value("kFullyEvaluatedNode", kFullyEvaluatedNode)
+      .value("kStandardLeaf", kStandardLeaf)
+      .value("kEndGameLeaf", kEndGameLeaf)
+      .value("kAlphaPrune", kAlphaPrune)
+      .value("kBetaPrune", kBetaPrune)
+      .value("kTrTableHit", kTrTableHit)
+      .export_values();
+
   py::class_<NewGameBoard>(m, "GameBoard")
       .def(py::init<>())
       .def("map", &NewGameBoard::map)
