@@ -1,4 +1,6 @@
 import datetime
+import numpy as np
+import pandas as pd
 
 from dataclasses import dataclass
 from typing import Dict, List
@@ -81,6 +83,11 @@ class SearchSummary:
             time=core_search_summary.time,
             result_depth_counts=core_search_summary.result_depth_counts,
         )
+    
+    @property
+    def flattened_rd_counts(self) -> pd.Series:
+        flattened_array = np.array(self.result_depth_counts).ravel()
+        return pd.Series(flattened_array)
 
 
 @dataclass

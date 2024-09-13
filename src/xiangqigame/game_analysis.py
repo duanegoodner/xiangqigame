@@ -17,5 +17,5 @@ if __name__ == "__main__":
     #     member: member.name for member in core.MinimaxResultType
     # }
 
-    game_summary = app.run(red_strength=5, black_strength=5)
+    game_summary = app.run(red_strength=3, black_strength=3)
     print(game_summary)

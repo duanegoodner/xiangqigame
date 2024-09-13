@@ -24,19 +24,11 @@ enum MinimaxResultType : size_t {
   kEndGameLeaf = 3,
   kAlphaPrune = 4,
   kBetaPrune = 5,
-  kTrTableHit = 6
+  kTrTableHit = 6,
+  kMin = kUnknown,
+  kMax = kTrTableHit
 };
 
-const size_t kNumResultTypes = 1 + std::max(
-    {MinimaxResultType::kUnknown,
-     MinimaxResultType::kFullyEvaluatedNode,
-     MinimaxResultType::kStandardLeaf,
-     MinimaxResultType::kEndGameLeaf,
-     MinimaxResultType::kAlphaPrune,
-     MinimaxResultType::kBetaPrune,
-     MinimaxResultType::kTrTableHit
-     }
-);
 
 struct TranspositionTableEntry {
   int search_depth;
@@ -66,8 +58,8 @@ struct SearchSummary {
       : num_nodes{}
       , result_depth_counts{} {
     // reserve a "row" for each result type
-    result_depth_counts.reserve(kNumResultTypes);
-    for (auto idx = 0; idx < kNumResultTypes; idx++) {
+    result_depth_counts.reserve((size_t) MinimaxResultType::kMax);
+    for (auto idx = 0; idx < MinimaxResultType::kMax; idx++) {
       // for each "row", create vector long enough to hold each possible search depth
       result_depth_counts.emplace_back(max_search_depth + 1, 0);
     }
