@@ -43,6 +43,40 @@ class Move:
 
 
 @dataclass
+class MoveCollection:
+    moves: List[Move]
+
+    @classmethod
+    def from_core_move_collection(
+        cls, core_move_collection: core.MoveCollection
+    ):
+        moves = [
+            Move.from_core_move(core_move=core_move)
+            for core_move in core_move_collection.moves
+        ]
+        return cls(moves=moves)
+
+    @property
+    def size(self) -> int:
+        return len(self.moves)
+
+
+@dataclass
+class BestMoves:
+    best_eval: int
+    best_moves: MoveCollection
+
+    @classmethod
+    def from_core_best_moves(cls, core_best_moves: core.BestMoves):
+        return cls(
+            best_eval=core_best_moves.best_eval,
+            best_moves=MoveCollection.from_core_move_collection(
+                core_move_collection=core_best_moves.best_moves
+            ),
+        )
+
+
+@dataclass
 class ExecutedMove:
     moving_piece: GamePiece
     destination_piece: GamePiece
@@ -66,6 +100,8 @@ class SearchSummary:
     num_nodes: int
     time: datetime.timedelta
     result_depth_counts: List[List[int]]
+    best_moves: BestMoves
+    selected_move: Move
 
     @classmethod
     def from_core_search_summary(cls, core_search_summary: core.SearchSummary):
@@ -73,6 +109,12 @@ class SearchSummary:
             num_nodes=core_search_summary.num_nodes,
             time=core_search_summary.time,
             result_depth_counts=core_search_summary.result_depth_counts,
+            best_moves=BestMoves.from_core_best_moves(
+                core_best_moves=core_search_summary.best_moves
+            ),
+            selected_move=Move.from_core_move(
+                core_move=core_search_summary.selected_move
+            ),
         )
 
     @property
@@ -141,4 +183,14 @@ class SearchSummaries:
 
     @property
     def first_searches_time_s(self) -> List[float]:
-        return [search_summary.time.total_seconds() for search_summary in self.first_searches]
+        return [
+            search_summary.time.total_seconds()
+            for search_summary in self.first_searches
+        ]
+
+    @property
+    def first_searches_eval_scores(self) -> List[int]:
+        return [
+            search_summary.best_moves.best_eval
+            for search_summary in self.first_searches
+        ]

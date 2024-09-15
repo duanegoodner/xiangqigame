@@ -68,20 +68,32 @@ struct SearchSummary {
     }
   }
 
-  void Update(MinimaxResultType result_type, int search_depth) {
+  void Update(
+      MinimaxResultType result_type,
+      int search_depth,
+      BestMoves best_moves
+  ) {
     result_depth_counts[result_type][search_depth]++;
     num_nodes++;
+    SetBestMoves(best_moves);
   }
 
   void SetTime(std::chrono::duration<double, std::nano> search_time) {
     time = search_time;
   }
+  void SetBestMoves(BestMoves best_moves) {
+    this->best_moves = best_moves;
+  }
+  void SetSelectedMove(Move selected_move) {
+    this->selected_move = selected_move;
+  }
 
   int num_nodes;
   std::chrono::duration<double, std::nano> time;
-
   // row -> node result_type; col -> node depth
   std::vector<std::vector<int>> result_depth_counts;
+  BestMoves best_moves;
+  Move selected_move;
 };
 
 struct SearchSummaries {
