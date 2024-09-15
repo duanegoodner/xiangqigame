@@ -149,12 +149,14 @@ template <
 BestMoves MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
-    ConcretePieceValueProvider>::EvaluateEndOfGameLeaf(PieceColor cur_player) {
+    ConcretePieceValueProvider>::EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &result_type) {
   auto empty_best_moves = MoveCollection();
 
   if (cur_player == evaluating_player_) {
+    result_type = MinimaxResultType::kEvaluatorLoses;
     return BestMoves{numeric_limits<Points_t>::min(), empty_best_moves};
   } else {
+    result_type = MinimaxResultType::kEvaluatorWins;
     return BestMoves{numeric_limits<Points_t>::max(), empty_best_moves};
   }
 }
@@ -244,9 +246,9 @@ BestMoves MinimaxMoveEvaluator<
   if (use_transposition_table) {
     auto state_score_search_result = hash_calculator_.GetTrData(cur_search_depth);
     if (state_score_search_result.found) {
-      result_type = MinimaxResultType::kTrTableHit;
+      result_type = MinimaxResultType::kTrTableHitStandard;
       search_summary.Update(result_type, cur_search_depth);
-      // search_summary.result_counts[MinimaxResultType::kTrTableHit]++;
+      // search_summary.result_counts[MinimaxResultType::kTrTableHitStandard]++;
       return state_score_search_result.table_entry.best_moves;
     }
   }
@@ -256,8 +258,7 @@ BestMoves MinimaxMoveEvaluator<
 
   // If no legal moves, node is an end-of-game leaf
   if (cur_moves.moves.size() == 0) {
-    result_type = MinimaxResultType::kEndGameLeaf;
-    auto result = EvaluateEndOfGameLeaf(cur_player);
+    auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
     hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
     search_summary.Update(result_type, cur_search_depth);
     // search_summary.result_counts[result_type]++;
