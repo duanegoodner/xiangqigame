@@ -20,12 +20,14 @@ struct RatedMove {
 enum MinimaxResultType : size_t {
   kUnknown = 0,
   kTrTableHitStandard = 1,
-  kEvaluatorLoses = 2,
-  kEvaluatorWins = 3,
-  kFullyEvaluatedNode = 4,
-  kStandardLeaf = 5,
-  kAlphaPrune = 6,
-  kBetaPrune = 7,
+  kTrTableHitEvaluatorLoses = 2,
+  kTrTableHitEvaluatorWins = 3,
+  kEvaluatorLoses = 4,
+  kEvaluatorWins = 5,
+  kFullyEvaluatedNode = 6,
+  kStandardLeaf = 7,
+  kAlphaPrune = 8,
+  kBetaPrune = 9,
   kMin = kUnknown,
   kMax = kBetaPrune
 };
