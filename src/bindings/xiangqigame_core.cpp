@@ -82,6 +82,10 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .def("size", &MoveCollection::Size)
       .def("ContainsMove", &MoveCollection::ContainsMove);
 
+  py::class_<BestMoves>(m, "BestMoves")
+      .def_readonly("best_eval", &BestMoves::best_eval)
+      .def_readonly("best_moves", &BestMoves::best_moves);
+
   py::class_<ExecutedMove>(m, "ExecutedMove")
       .def(
           py::init<Move, int, int>(),
@@ -148,7 +152,9 @@ PYBIND11_MODULE(xiangqigame_core, m) {
           &SearchSummary::num_nodes
       ) // Read-only access to fields
       .def_readonly("time", &SearchSummary::time)
-      .def_readonly("result_depth_counts", &SearchSummary::result_depth_counts);
+      .def_readonly("result_depth_counts", &SearchSummary::result_depth_counts)
+      .def_readonly("best_moves", &SearchSummary::best_moves)
+      .def_readonly("selected_move", &SearchSummary::selected_move);
 
   py::class_<SearchSummaries>(m, "SearchSummaries")
       .def(py::init<>()) // Constructor, as needed for initialization
