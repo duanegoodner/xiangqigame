@@ -23,6 +23,7 @@ classifiers = [
 ]
 dependencies = [
     "colorama",
+    "matplotlib",
     "msgspec",
     "numpy",
     "pandas"
