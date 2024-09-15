@@ -111,13 +111,16 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .export_values();
 
   py::enum_<MinimaxResultType>(m, "MinimaxResultType")
-      .value("KUnknown", kUnknown)
-      .value("kFullyEvaluatedNode", kFullyEvaluatedNode)
-      .value("kStandardLeaf", kStandardLeaf)
-      .value("kEndGameLeaf", kEndGameLeaf)
-      .value("kAlphaPrune", kAlphaPrune)
-      .value("kBetaPrune", kBetaPrune)
-      .value("kTrTableHit", kTrTableHit)
+      .value("Unknown", kUnknown)
+      .value("TrTableHitStandard", kTrTableHitStandard)
+      .value("TrTableHitEvaluatorLoses", kTrTableHitEvaluatorLoses)
+      .value("TrTableHitEvaluatorWins", kTrTableHitEvaluatorWins)
+      .value("EvaluatorLoses", kEvaluatorLoses)
+      .value("EvaluatorWins", kEvaluatorWins)
+      .value("FullyEvaluatedNode", kFullyEvaluatedNode)
+      .value("StandardLeaf", kStandardLeaf)
+      .value("AlphaPrune", kAlphaPrune)
+      .value("BetaPrune", kBetaPrune)
       .export_values();
 
   py::class_<NewGameBoard>(m, "GameBoard")

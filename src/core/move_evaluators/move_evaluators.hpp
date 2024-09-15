@@ -178,7 +178,7 @@ private:
   SearchSummaries search_summaries_;
 
   BestMoves EvaluateNonWinLeaf(PieceColor cur_player);
-  BestMoves EvaluateEndOfGameLeaf(PieceColor cur_player);
+  BestMoves EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &result_type);
   RatedMove RateMove(Move move, PieceColor cur_player);
   Points_t GetValueOfPieceAtPosition(
       PieceColor color,
