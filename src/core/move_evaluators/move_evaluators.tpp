@@ -258,8 +258,9 @@ BestMoves MinimaxMoveEvaluator<
       } else {
         result_type = MinimaxResultType::kTrTableHitStandard;
       }
-      search_summary.Update(result_type, cur_search_depth);
-      return state_score_search_result.table_entry.best_moves;
+      auto result = state_score_search_result.table_entry.best_moves;
+      search_summary.Update(result_type, cur_search_depth, result);
+      return result;
     }
   }
 
@@ -270,7 +271,7 @@ BestMoves MinimaxMoveEvaluator<
   if (cur_moves.moves.size() == 0) {
     auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
     hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.Update(result_type, cur_search_depth);
+    search_summary.Update(result_type, cur_search_depth, result);
     // search_summary.result_counts[result_type]++;
     return result;
   }
@@ -279,7 +280,7 @@ BestMoves MinimaxMoveEvaluator<
     result_type = MinimaxResultType::kStandardLeaf;
     auto result = EvaluateNonWinLeaf(cur_player);
     hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.Update(result_type, cur_search_depth);
+    search_summary.Update(result_type, cur_search_depth, result);
     // search_summary.result_counts[result_type]++;
     return result;
   }
@@ -323,7 +324,7 @@ BestMoves MinimaxMoveEvaluator<
     }
     auto result = BestMoves{max_eval, best_moves};
     hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.Update(result_type, cur_search_depth);
+    search_summary.Update(result_type, cur_search_depth, result);
     // search_summary.result_counts[result_type]++;
     return BestMoves{max_eval, best_moves};
 
@@ -364,7 +365,7 @@ BestMoves MinimaxMoveEvaluator<
     }
     auto result = BestMoves{min_eval, best_moves};
     hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.Update(result_type, cur_search_depth);
+    search_summary.Update(result_type, cur_search_depth, result);
     // search_summary.result_counts[result_type]++;
     return result;
   }
@@ -395,8 +396,10 @@ Move MinimaxMoveEvaluator<
   // search_summary.time = search_time;
   auto selected_move_index =
       utility_functs::random((size_t)0, minimax_result.best_moves.moves.size() - 1);
+  auto selected_move = minimax_result.best_moves.moves[selected_move_index];
+  search_summary.SetSelectedMove(selected_move);
 
-  return minimax_result.best_moves.moves[selected_move_index];
+  return selected_move;
 }
 
 #endif /* MINIMAX_EVALUATOR */
