@@ -12,6 +12,7 @@
 #define _COMMON_
 
 #include <array>
+#include <limits>
 #include <random>
 #include <string>
 #include <unordered_map>
@@ -87,6 +88,14 @@ struct BoardDirection {
 // Piece Points
 // /////////////
 typedef int Points_t;
+
+inline size_t size_of_points_type() {
+  return sizeof(Points_t);
+}
+
+inline bool is_signed_points_type() {
+  return numeric_limits<Points_t>::is_signed;
+}
 
 // 2-D array of points values for single piece
 typedef array<array<int, kNumFiles>, kNumRanks> PiecePointsArray_t;

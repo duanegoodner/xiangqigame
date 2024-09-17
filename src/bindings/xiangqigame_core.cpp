@@ -56,6 +56,16 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
               KeySizeBits
       );
+  //   .def(
+  //       "is_signed_piece_value_type",
+  //       &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
+  //           IsSignedPieceValueType
+  //   )
+  //   .def(
+  //       "size_of_piece_value_type_bits",
+  //       &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
+  //           SizeOfPieceValueTypeBits
+  //   );
 }
 
 PYBIND11_MODULE(xiangqigame_core, m) {
@@ -113,6 +123,9 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .value("kCan", kCan)
       .value("kSol", kSol)
       .export_values();
+
+  m.def("size_of_points_type", &size_of_points_type);
+  m.def("is_signed_points_type", &is_signed_points_type);
 
   py::enum_<MinimaxResultType>(m, "MinimaxResultType")
       .value("Unknown", kUnknown)

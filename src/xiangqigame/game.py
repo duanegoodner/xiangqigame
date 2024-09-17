@@ -7,6 +7,7 @@ from xiangqigame.enums import GameState
 from xiangqigame.game_interfaces import (
     GameStatusReporter,
     Player,
+    PlayerBasicInfo,
     PlayerSummary,
 )
 
@@ -56,7 +57,9 @@ class Game:
             game_state=self._game_state,
             whose_turn=self._whose_turn,
             move_log=[
-                cdm.ExecutedMove.from_core_executed_move(core_executed_move=item)
+                cdm.ExecutedMove.from_core_executed_move(
+                    core_executed_move=item
+                )
                 for item in self._move_log
             ],
             player_summaries=PlayerSummaries(

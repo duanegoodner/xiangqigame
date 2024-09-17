@@ -1,10 +1,29 @@
 import datetime
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Dict, List, TypeAlias
 
 import numpy as np
 import pandas as pd
 import xiangqigame_core as core
+
+
+class PointsTypeDeterminer:
+    _dtype_map = {
+        (True, 1): np.int8,
+        (True, 2): np.int16,
+        (True, 4): np.int32,
+        (True, 8): np.int64,
+        (False, 1): np.uint8,
+        (False, 2): np.uint16,
+        (False, 4): np.uint32,
+        (False, 8): np.uint64,
+    }
+
+    def get_points_type(self) -> type:
+        dtype_key = (core.is_signed_points_type(), core.size_of_points_type())
+        return self._dtype_map[dtype_key]
+
+PointsT: TypeAlias = PointsTypeDeterminer().get_points_type()
 
 
 @dataclass
@@ -63,7 +82,7 @@ class MoveCollection:
 
 @dataclass
 class BestMoves:
-    best_eval: int
+    best_eval: PointsT
     best_moves: MoveCollection
 
     @classmethod
@@ -189,8 +208,10 @@ class SearchSummaries:
         ]
 
     @property
-    def first_searches_eval_scores(self) -> List[int]:
-        return [
+    def first_searches_eval_scores(
+        self,
+    ) -> np.array:
+        return np.array([
             search_summary.best_moves.best_eval
             for search_summary in self.first_searches
-        ]
+        ], dtype=PointsT)

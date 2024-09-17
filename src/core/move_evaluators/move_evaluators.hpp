@@ -15,6 +15,7 @@
 #include <common.hpp>
 #include <evaluator_details.hpp>
 #include <functional>
+#include <limits>
 #include <utility_functs.hpp>
 
 using namespace board_components;
@@ -98,6 +99,7 @@ public:
 template <typename ConcretePieceValueProvider>
 class PieceValueProvider {
 public:
+  // typedef Points_t PieceValue_t;
   Points_t GetValueOfPieceAtPosition(
       PieceColor color,
       PieceType piece_type,
@@ -157,16 +159,23 @@ public:
 
   Move ImplementSelectMove();
   Points_t GetPlayerTotal(PieceColor color);
-  SearchSummaries GetSearchSummaries() {
+  inline SearchSummaries GetSearchSummaries() {
     return search_summaries_;
   }
-  int StartingSearchDepth() {
+  inline int StartingSearchDepth() {
     return starting_search_depth_;
   }
 
-  size_t KeySizeBits() {
+  inline size_t KeySizeBits() {
     return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
   }
+
+  // inline bool IsSignedPieceValueType() {
+  //   return numeric_limits<typename ConcretePieceValueProvider::PieceValue_t>::is_signed;
+  // }
+  // inline size_t SizeOfPieceValueTypeBits() {
+  //   return 8 * sizeof(typename ConcretePieceValueProvider::PieceValue_t);
+  // };
 
 private:
   PieceColor evaluating_player_;
@@ -176,6 +185,7 @@ private:
   int num_move_selections_;
   int starting_search_depth_;
   SearchSummaries search_summaries_;
+  
 
   BestMoves EvaluateNonWinLeaf(PieceColor cur_player);
   BestMoves EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &result_type);
