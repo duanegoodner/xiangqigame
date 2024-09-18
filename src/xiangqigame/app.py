@@ -5,13 +5,13 @@ from xiangqigame.command_input import (
     RunKwargsInterpreter,
     XiangqiGameCommandLine,
 )
-from xiangqigame.game import Game
+from xiangqigame.game import Game, GameSummary
 from xiangqigame.game_summary_io import export_game_summary
 from xiangqigame.handlers.signals import set_signal_handlers
 from xiangqigame.player_builder import RedAndBlackPlayersBuilder
 
 
-def run(**kwargs) -> Path | None:
+def run(**kwargs) -> GameSummary:
     set_signal_handlers()
     colorama.init()
     

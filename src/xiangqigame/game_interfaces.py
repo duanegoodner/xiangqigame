@@ -1,8 +1,12 @@
 import abc
 from dataclasses import dataclass
+from typing import Dict, List
+
+import numpy as np
+import pandas as pd
 import xiangqigame_core as core
+
 import xiangqigame.core_dataclass_mirrors as cdm
-from typing import List
 from xiangqigame.enums import GameState
 
 
@@ -13,6 +17,65 @@ class PlayerSummary:
     max_search_depth: int = None
     zobrist_key_size: int = None
     search_summaries: cdm.SearchSummaries = None
+
+    @property
+    def first_searches(self) -> List[cdm.SearchSummary]:
+        if self.search_summaries is not None:
+            return self.search_summaries.first_searches
+
+    @property
+    def extra_searches(self) -> Dict[int, cdm.SearchSummary]:
+        if self.search_summaries is not None:
+            return self.search_summaries.extra_searches
+
+    @property
+    def first_searches_by_type_and_depth(
+        self,
+    ) -> Dict[str, pd.DataFrame]:
+        if self.search_summaries is not None:
+            return self.search_summaries.first_searches_by_type_and_depth
+
+    @property
+    def first_searches_by_type(self) -> Dict[str, np.ndarray]:
+        if self.search_summaries is not None:
+            return self.search_summaries.first_searches_by_type
+
+    @property
+    def first_searches_mean_time_per_node_ns(self) -> np.ndarray:
+        if self.search_summaries is not None:
+            return self.search_summaries.first_searches_mean_time_per_node_ns
+
+    @property
+    def first_searches_total_nodes(self) -> np.ndarray:
+        if self.search_summaries is not None:
+            return self.search_summaries.first_searches_total_nodes
+
+    @property
+    def first_searches_time_s(self) -> np.ndarray:
+        if self.search_summaries is not None:
+            return self.search_summaries.first_searches_time_s
+
+    @property
+    def first_searches_eval_scores(self) -> np.array:
+        if self.search_summaries is not None:
+            return self.search_summaries.first_searches_eval_scores
+
+
+@dataclass
+class PlayerBasicInfo:
+    player_type: str
+    move_evaluator_type: str = None
+    max_search_depth: int = None
+    zobrist_key_size: int = None
+
+    @classmethod
+    def from_player_summary(cls, player_summary: PlayerSummary):
+        return cls(
+            player_type=player_summary.player_type,
+            move_evaluator_type=player_summary.move_evaluator_type,
+            max_search_depth=player_summary.max_search_depth,
+            zobrist_key_size=player_summary.zobrist_key_size,
+        )
 
 
 class Player(abc.ABC):
@@ -28,7 +91,10 @@ class Player(abc.ABC):
 
     @abc.abstractmethod
     def illegal_move_notice_response(
-        self, illegal_move: core.Move, game_board: core.GameBoard, cur_moves: List[core.Move]
+        self,
+        illegal_move: core.Move,
+        game_board: core.GameBoard,
+        cur_moves: List[core.Move],
     ):
         pass
 

@@ -1,10 +1,48 @@
 import datetime
+from enum import Enum
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Dict, List, TypeAlias
 
 import numpy as np
 import pandas as pd
 import xiangqigame_core as core
+
+
+class PointsTypeDeterminer:
+    _dtype_map = {
+        (True, 1): np.int8,
+        (True, 2): np.int16,
+        (True, 4): np.int32,
+        (True, 8): np.int64,
+        (False, 1): np.uint8,
+        (False, 2): np.uint16,
+        (False, 4): np.uint32,
+        (False, 8): np.uint64,
+    }
+
+    def get_points_type(self) -> type:
+        dtype_key = (core.is_signed_points_type(), core.size_of_points_type())
+        return self._dtype_map[dtype_key]
+
+
+PointsT: TypeAlias = PointsTypeDeterminer().get_points_type()
+
+
+class MinimaxResultTypePy(Enum):
+    Unknown = int(core.MinimaxResultType.Unknown)
+    TrTableHitStandard = int(core.MinimaxResultType.TrTableHitStandard)
+    TrTableHitEvaluatorLoses = int(
+        core.MinimaxResultType.TrTableHitEvaluatorLoses
+    )
+    TrTableHitEvaluatorWins = int(
+        core.MinimaxResultType.TrTableHitEvaluatorWins
+    )
+    EvaluatorLoses = int(core.MinimaxResultType.EvaluatorLoses)
+    EvaluatorWins = int(core.MinimaxResultType.EvaluatorWins)
+    FullyEvaluatedNode = int(core.MinimaxResultType.FullyEvaluatedNode)
+    StandardLeaf = int(core.MinimaxResultType.StandardLeaf)
+    AlphaPrune = int(core.MinimaxResultType.AlphaPrune)
+    BetaPrune = int(core.MinimaxResultType.BetaPrune)
 
 
 @dataclass
@@ -63,7 +101,7 @@ class MoveCollection:
 
 @dataclass
 class BestMoves:
-    best_eval: int
+    best_eval: PointsT
     best_moves: MoveCollection
 
     @classmethod
@@ -99,7 +137,7 @@ class ExecutedMove:
 class SearchSummary:
     num_nodes: int
     time: datetime.timedelta
-    result_depth_counts: List[List[int]]
+    result_depth_counts: np.ndarray
     best_moves: BestMoves
     selected_move: Move
 
@@ -108,7 +146,9 @@ class SearchSummary:
         return cls(
             num_nodes=core_search_summary.num_nodes,
             time=core_search_summary.time,
-            result_depth_counts=core_search_summary.result_depth_counts,
+            result_depth_counts=np.array(
+                core_search_summary.result_depth_counts
+            ),
             best_moves=BestMoves.from_core_best_moves(
                 core_best_moves=core_search_summary.best_moves
             ),
@@ -145,13 +185,19 @@ class SearchSummaries:
     @property
     def first_searches_by_type_and_depth(
         self,
-    ) -> Dict[core.MinimaxResultType, List[List[int]]]:
+    ) -> Dict[str, pd.DataFrame]:
         result = {}
 
-        for enum_val in core.MinimaxResultType.__members__.values():
-            result[enum_val] = [
-                search_summary.result_depth_counts[int(enum_val)]
-                for search_summary in self.first_searches
+        for name, value in core.MinimaxResultType.__members__.items():
+            result[name] = pd.DataFrame(
+                [
+                    search_summary.result_depth_counts[value, :]
+                    for search_summary in self.first_searches
+                ]
+            )
+            result[name].index.name = "player_move_index"
+            result[name].columns = [
+                f"Depth={col_idx}" for col_idx in range(result[name].shape[1])
             ]
 
         return result
@@ -159,38 +205,52 @@ class SearchSummaries:
     @property
     def first_searches_by_type(
         self,
-    ) -> Dict[core.MinimaxResultType, List[int]]:
+    ) -> Dict[str, np.ndarray]:
         result = {}
-        for enum_val in core.MinimaxResultType.__members__.values():
-            result[enum_val] = [
-                sum(search_summary.result_depth_counts[int(enum_val)])
-                for search_summary in self.first_searches
-            ]
+        for name, value in core.MinimaxResultType.__members__.items():
+            result[name] = np.array(
+                [
+                    sum(search_summary.result_depth_counts[value, :])
+                    for search_summary in self.first_searches
+                ]
+            )
         return result
 
     @property
-    def first_searches_mean_time_per_node_ns(self) -> List[float]:
-        return [
-            search_summary.mean_time_per_node_ns
-            for search_summary in self.first_searches
-        ]
+    def first_searches_mean_time_per_node_ns(self) -> np.ndarray:
+        return np.array(
+            [
+                search_summary.mean_time_per_node_ns
+                for search_summary in self.first_searches
+            ]
+        )
 
     @property
-    def first_searches_total_nodes(self) -> List[int]:
-        return [
-            search_summary.num_nodes for search_summary in self.first_searches
-        ]
+    def first_searches_total_nodes(self) -> np.ndarray:
+        return np.array(
+            [
+                search_summary.num_nodes
+                for search_summary in self.first_searches
+            ]
+        )
 
     @property
-    def first_searches_time_s(self) -> List[float]:
-        return [
-            search_summary.time.total_seconds()
-            for search_summary in self.first_searches
-        ]
+    def first_searches_time_s(self) -> np.ndarray:
+        return np.array(
+            [
+                search_summary.time.total_seconds()
+                for search_summary in self.first_searches
+            ]
+        )
 
     @property
-    def first_searches_eval_scores(self) -> List[int]:
-        return [
-            search_summary.best_moves.best_eval
-            for search_summary in self.first_searches
-        ]
+    def first_searches_eval_scores(
+        self,
+    ) -> np.array:
+        return np.array(
+            [
+                search_summary.best_moves.best_eval
+                for search_summary in self.first_searches
+            ],
+            dtype=PointsT,
+        )
