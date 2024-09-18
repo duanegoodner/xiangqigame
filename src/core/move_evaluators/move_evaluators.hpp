@@ -200,7 +200,7 @@ private:
       MoveCollection &cur_player_moves
   );
   BestMoves MinimaxRec(
-      int cur_search_depth,
+      int remaining_search_depth,
       int alpha,
       int beta,
       PieceColor cur_player,
