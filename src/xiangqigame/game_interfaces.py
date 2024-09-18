@@ -1,9 +1,12 @@
 import abc
-import numpy as np
 from dataclasses import dataclass
+from typing import Dict, List
+
+import numpy as np
+import pandas as pd
 import xiangqigame_core as core
+
 import xiangqigame.core_dataclass_mirrors as cdm
-from typing import List, Dict
 from xiangqigame.enums import GameState
 
 
@@ -28,27 +31,27 @@ class PlayerSummary:
     @property
     def first_searches_by_type_and_depth(
         self,
-    ) -> Dict[core.MinimaxResultType, List[List[int]]]:
+    ) -> Dict[str, pd.DataFrame]:
         if self.search_summaries is not None:
             return self.search_summaries.first_searches_by_type_and_depth
 
     @property
-    def first_searches_by_type(self) -> Dict[core.MinimaxResultType, List[int]]:
+    def first_searches_by_type(self) -> Dict[str, np.ndarray]:
         if self.search_summaries is not None:
             return self.search_summaries.first_searches_by_type
 
     @property
-    def first_searches_mean_time_per_node_ns(self) -> List[float]:
+    def first_searches_mean_time_per_node_ns(self) -> np.ndarray:
         if self.search_summaries is not None:
             return self.search_summaries.first_searches_mean_time_per_node_ns
 
     @property
-    def first_searches_total_nodes(self) -> List[int]:
+    def first_searches_total_nodes(self) -> np.ndarray:
         if self.search_summaries is not None:
             return self.search_summaries.first_searches_total_nodes
 
     @property
-    def first_searches_time_s(self) -> List[float]:
+    def first_searches_time_s(self) -> np.ndarray:
         if self.search_summaries is not None:
             return self.search_summaries.first_searches_time_s
 

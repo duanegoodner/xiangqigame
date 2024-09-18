@@ -1,16 +1,13 @@
 from dataclasses import dataclass
-from typing import Any, Dict, List, Iterable
+from typing import Any, Dict, List
 
-from xiangqigame_core import MinimaxResultType
-
-import core_dataclass_mirrors as cdm
 import matplotlib.pyplot as plt
 import numpy as np
 import xiangqigame_core as core
-from game import GameSummary
-from game_interfaces import PlayerSummary
 
-from xiangqigame import core_dataclass_mirrors
+from xiangqigame.core_dataclass_mirrors import PointsT
+from xiangqigame.game import GameSummary
+from xiangqigame.game_interfaces import PlayerSummary
 
 
 class MinimaxPlayerInfoPlotter:
@@ -41,7 +38,7 @@ class MinimaxPlayerInfoPlotter:
     def plot_vs_move_numbers(self, data: List[Any], ax: plt.Axes):
         ax.plot(self.move_numbers, data)
 
-    def get_winsorized_eval_scores(self, cutoff: cdm.PointsT) -> np.array:
+    def get_winsorized_eval_scores(self, cutoff: PointsT) -> np.array:
         assert cutoff >= 0
         result = (
             self.player_summary.search_summaries.first_searches_eval_scores.copy()
@@ -56,7 +53,7 @@ class MinimaxPlayerInfoPlotter:
     def plot_eval_scores(
         self,
         ax: plt.Axes,
-        winsorize_magnitude: cdm.PointsT,
+        winsorize_magnitude: PointsT,
     ):
         data = self.get_winsorized_eval_scores(winsorize_magnitude)
         self.plot_vs_move_numbers(data=data, ax=ax)
@@ -70,7 +67,7 @@ class EvalScoreDataCleaner:
 
     def get_winsorize_points_cutoff(self, score_data: np.array) -> int:
         if score_data is not None:
-            assert score_data.dtype == cdm.PointsT
+            assert score_data.dtype == PointsT
             assert np.issubdtype(score_data.dtype, np.signedinteger)
             non_extreme_vals = score_data[
                 (score_data != np.iinfo(score_data.dtype).min)
@@ -164,16 +161,13 @@ class GameSummaryPlotter:
             player
         ).first_searches_by_type
         search_type_keys = [
-            MinimaxResultType.EvaluatorLoses,
-            MinimaxResultType.EvaluatorWins,
-            MinimaxResultType.TrTableHitEvaluatorLoses,
-            MinimaxResultType.TrTableHitEvaluatorWins,
+            core.MinimaxResultType.EvaluatorLoses.name,
+            core.MinimaxResultType.EvaluatorWins.name,
+            core.MinimaxResultType.TrTableHitEvaluatorLoses.name,
+            core.MinimaxResultType.TrTableHitEvaluatorWins.name,
         ]
-        data = {
-            player: [
-                search_type_info[key] for key in search_type_keys
-            ]
-        }
+
+        data = {player: [search_type_info[key] for key in search_type_keys]}
         self.plot_data(player_data=data, ax=ax)
 
     def plot_eval_scores(self, ax: plt.Axes):
@@ -186,8 +180,8 @@ class GameSummaryPlotter:
 
     def plot_endgame_leaf_counts(self, ax: plt.Axes):
         endgame_keys = [
-            core.MinimaxResultType.EvaluatorLoses,
-            core.MinimaxResultType.EvaluatorWins,
+            core.MinimaxResultType.EvaluatorLoses.name,
+            core.MinimaxResultType.EvaluatorWins.name,
         ]
 
         red_series = [
@@ -212,19 +206,19 @@ class GameSummaryPlotter:
         data_to_plot = {
             core.PieceColor.kRed: [
                 self.red_summary.first_searches_by_type[
-                    MinimaxResultType.TrTableHitStandard
+                    core.MinimaxResultType.TrTableHitStandard
                 ]
             ],
             core.PieceColor.kBlk: [
                 self.black_summary.first_searches_by_type[
-                    MinimaxResultType.TrTableHitStandard
+                    core.MinimaxResultType.TrTableHitStandard
                 ]
             ],
         }
         self.plot_data(player_data=data_to_plot, ax=ax)
 
     def plot_pruning_counts(self, ax: plt.Axes):
-        keys = [MinimaxResultType.AlphaPrune, MinimaxResultType.BetaPrune]
+        keys = [core.MinimaxResultType.AlphaPrune.name, core.MinimaxResultType.BetaPrune.name]
 
         data_to_plot = {
             core.PieceColor.kRed: [
