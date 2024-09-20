@@ -12,6 +12,7 @@ from xiangqigame.enums import GameState
 
 @dataclass
 class PlayerSummary:
+    color: core.PieceColor
     player_type: str
     move_evaluator_type: str = None
     max_search_depth: int = None
@@ -19,45 +20,60 @@ class PlayerSummary:
     search_summaries: cdm.SearchSummaries = None
 
     @property
+    def has_search_summaries(self) -> bool:
+        return self.search_summaries is not None
+
+    @property
     def first_searches(self) -> List[cdm.SearchSummary]:
-        if self.search_summaries is not None:
+        if self.has_search_summaries:
             return self.search_summaries.first_searches
 
     @property
     def extra_searches(self) -> Dict[int, cdm.SearchSummary]:
-        if self.search_summaries is not None:
+        if self.has_search_summaries:
             return self.search_summaries.extra_searches
 
     @property
     def first_searches_by_type_and_depth(
         self,
     ) -> Dict[str, pd.DataFrame]:
-        if self.search_summaries is not None:
+        if self.has_search_summaries:
             return self.search_summaries.first_searches_by_type_and_depth
 
     @property
     def first_searches_by_type(self) -> Dict[str, np.ndarray]:
-        if self.search_summaries is not None:
+        if self.has_search_summaries:
             return self.search_summaries.first_searches_by_type
 
     @property
+    def first_searches_by_type_df(self) -> pd.DataFrame:
+        if self.first_searches_by_type is not None:
+            df = pd.DataFrame(self.first_searches_by_type)
+            if self.color == core.PieceColor.kRed:
+                df.index = list(range(1, 2 * len(df), 2))
+            if self.color == core.PieceColor.kBlk:
+                df.index = list(range(2, 2 * len(df) + 1, 2))
+            df.index.name = "game_move_number"
+            return df
+
+    @property
     def first_searches_mean_time_per_node_ns(self) -> np.ndarray:
-        if self.search_summaries is not None:
+        if self.has_search_summaries:
             return self.search_summaries.first_searches_mean_time_per_node_ns
 
     @property
     def first_searches_total_nodes(self) -> np.ndarray:
-        if self.search_summaries is not None:
+        if self.has_search_summaries:
             return self.search_summaries.first_searches_total_nodes
 
     @property
     def first_searches_time_s(self) -> np.ndarray:
-        if self.search_summaries is not None:
+        if self.has_search_summaries:
             return self.search_summaries.first_searches_time_s
 
     @property
     def first_searches_eval_scores(self) -> np.array:
-        if self.search_summaries is not None:
+        if self.has_search_summaries:
             return self.search_summaries.first_searches_eval_scores
 
 
@@ -136,6 +152,7 @@ class Player(abc.ABC):
     @property
     def summary(self) -> PlayerSummary:
         return PlayerSummary(
+            color=self._color,
             player_type=self.player_type,
             move_evaluator_type=self.move_evaluator_type,
             max_search_depth=self.max_search_depth,

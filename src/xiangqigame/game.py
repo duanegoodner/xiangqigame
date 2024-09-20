@@ -18,8 +18,14 @@ import xiangqigame.core_dataclass_mirrors as cdm
 
 @dataclass
 class PlayerSummaries:
-    red: PlayerSummary
-    black: PlayerSummary
+    kRed: PlayerSummary
+    kBlk: PlayerSummary
+
+
+@dataclass
+class HasMinimaxData:
+    kRed: bool
+    kBlk: bool
 
 
 class GameSummary(msgspec.Struct):
@@ -28,9 +34,40 @@ class GameSummary(msgspec.Struct):
     move_log: List[cdm.ExecutedMove]
     player_summaries: PlayerSummaries
 
+
     @property
     def move_counts(self) -> int:
         return len(self.move_log)
+
+    @property
+    def move_numbers(self) -> Dict[core.PieceColor, List[int]]:
+        return {
+            core.PieceColor.kBlk: [
+                val
+                for val in range(1, self.move_counts + 1)
+                if (val % 2) == 0
+            ],
+            core.PieceColor.kRed: [
+                val
+                for val in range(self.move_counts + 1)
+                if (val % 2) == 1
+            ],
+        }
+
+    def get_player_summary(self, player: core.PieceColor) -> PlayerSummary:
+        return self.player_summaries.__dict__[player.name]
+
+    @property
+    def has_minimax_data(self) -> HasMinimaxData:
+        return HasMinimaxData(
+            kBlk=self.get_player_summary(player=core.PieceColor.kBlk).has_search_summaries,
+            kRed=self.get_player_summary(player=core.PieceColor.kRed).has_search_summaries,
+        )
+
+
+
+
+
 
 
 class Game:
@@ -63,8 +100,8 @@ class Game:
                 for item in self._move_log
             ],
             player_summaries=PlayerSummaries(
-                red=self._players[core.PieceColor.kRed].summary,
-                black=self._players[core.PieceColor.kBlk].summary,
+                kRed=self._players[core.PieceColor.kRed].summary,
+                kBlk=self._players[core.PieceColor.kBlk].summary,
             ),
         )
 
