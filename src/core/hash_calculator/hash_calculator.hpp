@@ -85,14 +85,14 @@ struct ZobristKeys {
 template <typename KeyType>
 struct TranspositionTable {
 
-  TranspositionTableSearchResult GetData(KeyType board_state, int minimax_search_depth) {
+  TranspositionTableSearchResult GetData(KeyType board_state, int remaining_search_depth) {
     TranspositionTableSearchResult result{};
 
     auto entry_vector_it = data_.find(board_state);
     if (entry_vector_it != data_.end()) {
       auto entry_vector = entry_vector_it->second;
       for (auto entry : entry_vector) {
-        if (entry.search_depth == minimax_search_depth) {
+        if (entry.remaining_search_depth == remaining_search_depth) {
           result.found = true;
           result.table_entry = entry;
         }

@@ -232,7 +232,7 @@ BestMoves MinimaxMoveEvaluator<
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::
     MinimaxRec(
-        int cur_search_depth,
+        int remaining_search_depth,
         int alpha,
         int beta,
         PieceColor cur_player,
@@ -245,7 +245,7 @@ BestMoves MinimaxMoveEvaluator<
   // First we check if result for current board state is in transposition table (unless
   // this is a second search in which case we don't use transposition table)
   if (use_transposition_table) {
-    auto state_score_search_result = hash_calculator_.GetTrData(cur_search_depth);
+    auto state_score_search_result = hash_calculator_.GetTrData(remaining_search_depth);
     if (state_score_search_result.found) {
       
       // TODO split into 3 cases: standard, evaluator loses, and evaluator wins
@@ -259,7 +259,7 @@ BestMoves MinimaxMoveEvaluator<
         result_type = MinimaxResultType::kTrTableHitStandard;
       }
       auto result = state_score_search_result.table_entry.best_moves;
-      search_summary.Update(result_type, cur_search_depth, result);
+      search_summary.Update(result_type, remaining_search_depth, result);
       return result;
     }
   }
@@ -270,17 +270,17 @@ BestMoves MinimaxMoveEvaluator<
   // If no legal moves, node is an end-of-game leaf
   if (cur_moves.moves.size() == 0) {
     auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
-    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.Update(result_type, cur_search_depth, result);
+    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    search_summary.Update(result_type, remaining_search_depth, result);
     // search_summary.result_counts[result_type]++;
     return result;
   }
   // If search depth is zero, node is a normal leaf (end of our search depth)
-  if (cur_search_depth == 0) {
+  if (remaining_search_depth == 0) {
     result_type = MinimaxResultType::kStandardLeaf;
     auto result = EvaluateNonWinLeaf(cur_player);
-    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.Update(result_type, cur_search_depth, result);
+    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    search_summary.Update(result_type, remaining_search_depth, result);
     // search_summary.result_counts[result_type]++;
     return result;
   }
@@ -293,7 +293,7 @@ BestMoves MinimaxMoveEvaluator<
     for (auto rated_move : ranked_moves) {
       auto executed_move = game_board_.ExecuteMove(rated_move.move);
       auto cur_eval = MinimaxRec(
-                          cur_search_depth - 1,
+                          remaining_search_depth - 1,
                           alpha,
                           beta,
                           opponent_of(evaluating_player_),
@@ -323,8 +323,8 @@ BestMoves MinimaxMoveEvaluator<
       result_type = MinimaxResultType::kFullyEvaluatedNode;
     }
     auto result = BestMoves{max_eval, best_moves};
-    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.Update(result_type, cur_search_depth, result);
+    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    search_summary.Update(result_type, remaining_search_depth, result);
     // search_summary.result_counts[result_type]++;
     return BestMoves{max_eval, best_moves};
 
@@ -336,7 +336,7 @@ BestMoves MinimaxMoveEvaluator<
     for (auto rated_move : ranked_moves) {
       auto executed_move = game_board_.ExecuteMove(rated_move.move);
       auto cur_eval = MinimaxRec(
-                          cur_search_depth - 1,
+                          remaining_search_depth - 1,
                           alpha,
                           beta,
                           evaluating_player_,
@@ -364,8 +364,8 @@ BestMoves MinimaxMoveEvaluator<
       result_type = MinimaxResultType::kFullyEvaluatedNode;
     }
     auto result = BestMoves{min_eval, best_moves};
-    hash_calculator_.RecordTrData(cur_search_depth, result_type, result);
-    search_summary.Update(result_type, cur_search_depth, result);
+    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    search_summary.Update(result_type, remaining_search_depth, result);
     // search_summary.result_counts[result_type]++;
     return result;
   }

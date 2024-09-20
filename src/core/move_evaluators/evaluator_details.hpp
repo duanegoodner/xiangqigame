@@ -34,7 +34,7 @@ enum MinimaxResultType : size_t {
 const size_t kNumResultTypes{7};
 
 struct TranspositionTableEntry {
-  int search_depth;
+  int remaining_search_depth;
   MinimaxResultType result_type;
   BestMoves best_moves;
 

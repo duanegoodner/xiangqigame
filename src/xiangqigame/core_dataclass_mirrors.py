@@ -197,7 +197,8 @@ class SearchSummaries:
             )
             result[name].index.name = "player_move_index"
             result[name].columns = [
-                f"Depth={col_idx}" for col_idx in range(result[name].shape[1])
+                f"remaining_depth={col_idx}"
+                for col_idx in range(result[name].shape[1])
             ]
 
         return result
