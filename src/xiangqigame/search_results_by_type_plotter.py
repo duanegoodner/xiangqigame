@@ -22,6 +22,7 @@ class SearchResultByTypePlotterSettings:
     subplot_adj_bottom: float = 0.1
     subplot_adj_hspace: float = 0.05
     legend_bbox_to_anchor: Tuple[float, float] = (1.05, 0.40)
+    y_lim_to_max_ratio: str = 1.2
 
 
 class SearchResultByTypePlotter:
@@ -55,10 +56,10 @@ class SearchResultByTypePlotter:
         return {
             core.PieceColor.kRed: self.game_summary.get_player_summary(
                 player=core.PieceColor.kRed
-            ).first_searches_by_type_df,
+            ).first_searches_by_type,
             core.PieceColor.kBlk: self.game_summary.get_player_summary(
                 player=core.PieceColor.kBlk
-            ).first_searches_by_type_df,
+            ).first_searches_by_type,
         }
 
     def validate_dfs(self):
@@ -170,7 +171,7 @@ class SearchResultByTypePlotter:
     def _plot_player_data(self, player: core.PieceColor, axes: np.ndarray):
         df = self.game_summary.get_player_summary(
             player=player
-        ).first_searches_by_type_df
+        ).first_searches_by_type
         for plot_row in range(2):
             # inform linter of the actual type of axes element
             plot_col = self.player_plot_col[player]
@@ -218,4 +219,16 @@ class SearchResultByTypePlotter:
         for player in [core.PieceColor.kRed, core.PieceColor.kBlk]:
             if self.has_data(player=player):
                 self._plot_player_data(player=player, axes=axes)
+
+        y_limits_high = []
+        for plot_row in range(axes.shape[0]):
+            for plot_col in range(axes.shape[1]):
+                y_limits_high.append(axes[plot_row, plot_col].get_ylim()[1])
+        max_y_limit = max(y_limits_high)
+        for plot_row in range(axes.shape[0]):
+            for plot_col in range(axes.shape[1]):
+                y_min = axes[plot_row, plot_col].get_ylim()[0]
+                axes[plot_row, plot_col].set_ylim((y_min, max_y_limit))
+
+
         plt.show()

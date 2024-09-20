@@ -9,7 +9,9 @@ import xiangqigame_core as core
 
 if __name__ == "__main__":
 
-    game_summary = app.run(red_strength=4, black_strength=4)
+    game_summary = app.run(red_strength=3, black_strength=3)
+
+    test_val = game_summary.get_player_summary(player=core.PieceColor.kRed).first_searches_by_type_and_depth
 
     results_by_type_plotter = stp.SearchResultByTypePlotter(
         game_summary=game_summary
