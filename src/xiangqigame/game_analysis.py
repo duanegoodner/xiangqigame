@@ -3,15 +3,18 @@ from xiangqigame_core import PieceColor
 import xiangqigame.app as app
 import xiangqigame.game_summary_plotter as gsp
 import xiangqigame.search_results_by_type_plotter as stp
+import xiangqigame.search_stats_plotter as ssp
 import matplotlib.pyplot as plt
 import xiangqigame_core as core
 
 
 if __name__ == "__main__":
 
-    game_summary = app.run(red_strength=3, black_strength=3)
+    game_summary = app.run(red_strength=5, black_strength=5, save_summary=True)
+    print("pause")
 
-    test_val = game_summary.get_player_summary(player=core.PieceColor.kRed).first_searches_by_type_and_depth
+    stats_plotter = ssp.SearchStatsPlotter(game_summary=game_summary)
+    stats_plotter.plot()
 
     results_by_type_plotter = stp.SearchResultByTypePlotter(
         game_summary=game_summary
@@ -52,7 +55,7 @@ if __name__ == "__main__":
 
 
     # plt.show()
-    print("pause")
+    # print("pause")
 
     # game_plotter = gsp.GameSummaryPlotter(game_summary=game_summary)
     #

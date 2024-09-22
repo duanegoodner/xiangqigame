@@ -6,6 +6,7 @@ import pandas as pd
 import xiangqigame_core as core
 
 import xiangqigame.core_dataclass_mirrors as cdm
+from xiangqigame.core_dataclass_mirrors import PointsT
 
 
 @dataclass
@@ -84,7 +85,7 @@ class PlayerSummary:
             ):
                 # Sum the result_depth_counts and set the value in the DataFrame
                 df.iloc[search_idx, idx] = sum(
-                    search_summary.result_depth_counts[value, :]
+                    search_summary.result_depth_counts[value][:]
                 )
 
         return df
@@ -94,25 +95,25 @@ class PlayerSummary:
         if not self.has_search_summaries:
             return None
 
-        num_nodes = [
+        num_nodes = np.array([
             search_summary.num_nodes
             for search_summary in self.search_summaries.first_searches
-        ]
+        ])
 
-        search_time_s = [
+        search_time_s = np.array([
             search_summary.time.total_seconds()
             for search_summary in self.search_summaries.first_searches
-        ]
+        ])
 
-        mean_time_per_node_ns = [
+        mean_time_per_node_ns = np.array([
             search_summary.mean_time_per_node_ns
             for search_summary in self.search_summaries.first_searches
-        ]
+        ])
 
-        eval_score = [
+        eval_score = np.array([
             search_summary.best_moves.best_eval
             for search_summary in self.search_summaries.first_searches
-        ]
+        ], dtype=PointsT)
 
         assert (
             len(num_nodes)
