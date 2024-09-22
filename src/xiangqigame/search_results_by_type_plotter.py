@@ -42,7 +42,6 @@ class SearchResultByTypePlotter:
 
     def __init__(self, game_summary: GameSummary):
         self.game_summary = game_summary
-        # self.cmap = plt.get_cmap(cmap)
         self.validate_dfs()
         self.settings = SearchResultByTypePlotterSettings(
             **self.settings_for_num_players_with_data[
@@ -168,13 +167,35 @@ class SearchResultByTypePlotter:
             colors=sorted_colors,
         )
 
+    def plot_player_new(self, color: core.PieceColor, ax: plt.Axes):
+        player_df = self.dfs[color]
+        for col_idx, col_name in enumerate(self.data_columns):
+            ax.plot(player_df.index, player_df[col_name], label=col_name)
+
+    def plot_player_data_new(self, player: core.PieceColor, axes: np.ndarray):
+        for plot_row in range(2):
+            ax = cast(plt.Axes, axes[plot_row])
+            self.plot_player_new(color=player, ax=ax)
+
+
+    @staticmethod
+    def match_y_limits(axes_row: np.ndarray):
+        y_limits_high = []
+        for col_idx in range(axes_row.shape[0]):
+            cur_ax = cast(plt.Axes, axes_row[col_idx])
+            y_limits_high.append(cur_ax.get_ylim()[1])
+        for col_idx in range(axes_row.shape[0]):
+            cur_ax = cast(plt.Axes, axes_row[col_idx])
+            cur_ax.set_ylim((cur_ax.get_ylim()[0], max(y_limits_high)))
+
+
     def _plot_player_data(self, player: core.PieceColor, axes: np.ndarray):
         df = self.game_summary.get_player_summary(
             player=player
         ).first_searches_by_type
         for plot_row in range(2):
-            # inform linter of the actual type of axes element
             plot_col = self.player_plot_col[player]
+            # inform linter of the actual type of axes element
             ax = cast(plt.Axes, axes[plot_row, plot_col])
             self.plot_df(
                 df=df,
@@ -213,22 +234,16 @@ class SearchResultByTypePlotter:
                     fontsize=12,
                 )  # Legend in the same order as original DataFrame
 
+
     def plot(self):
         plt.style.use(self.settings.plot_style)
         fig, axes = self._set_figure_layout()
         for player in [core.PieceColor.kRed, core.PieceColor.kBlk]:
             if self.has_data(player=player):
                 self._plot_player_data(player=player, axes=axes)
+                # self.plot_player_new(color=player, ax=axes)
 
-        y_limits_high = []
-        for plot_row in range(axes.shape[0]):
-            for plot_col in range(axes.shape[1]):
-                y_limits_high.append(axes[plot_row, plot_col].get_ylim()[1])
-        max_y_limit = max(y_limits_high)
-        for plot_row in range(axes.shape[0]):
-            for plot_col in range(axes.shape[1]):
-                y_min = axes[plot_row, plot_col].get_ylim()[0]
-                axes[plot_row, plot_col].set_ylim((y_min, max_y_limit))
-
+        for row_idx in range(axes.shape[0]):
+            self.match_y_limits(axes_row=axes[row_idx, :])
 
         plt.show()
