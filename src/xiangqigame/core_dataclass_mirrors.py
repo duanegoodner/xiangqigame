@@ -138,6 +138,7 @@ class SearchSummary:
     num_nodes: int
     time: datetime.timedelta
     result_depth_counts: List[List[int]]
+    transposition_table_hits: List[List[int]]
     best_moves: BestMoves
     selected_move: Move
 
@@ -146,7 +147,8 @@ class SearchSummary:
         return cls(
             num_nodes=core_search_summary.num_nodes,
             time=core_search_summary.time,
-            result_depth_counts=core_search_summary.result_depth_counts,
+            result_depth_counts=core_search_summary.get_result_depth_counts(),
+            transposition_table_hits=core_search_summary.get_transposition_table_hits(),
             best_moves=BestMoves.from_core_best_moves(
                 core_best_moves=core_search_summary.best_moves
             ),

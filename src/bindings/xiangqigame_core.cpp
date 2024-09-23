@@ -56,16 +56,6 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
               KeySizeBits
       );
-  //   .def(
-  //       "is_signed_piece_value_type",
-  //       &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
-  //           IsSignedPieceValueType
-  //   )
-  //   .def(
-  //       "size_of_piece_value_type_bits",
-  //       &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
-  //           SizeOfPieceValueTypeBits
-  //   );
 }
 
 PYBIND11_MODULE(xiangqigame_core, m) {
@@ -165,7 +155,8 @@ PYBIND11_MODULE(xiangqigame_core, m) {
           &SearchSummary::num_nodes
       ) // Read-only access to fields
       .def_readonly("time", &SearchSummary::time)
-      .def_readonly("result_depth_counts", &SearchSummary::result_depth_counts)
+      .def("get_result_depth_counts", &SearchSummary::GetResultDepthCounts)
+      .def("get_transposition_table_hits", &SearchSummary::GetTranspositionTableHits)
       .def_readonly("best_moves", &SearchSummary::best_moves)
       .def_readonly("selected_move", &SearchSummary::selected_move);
 

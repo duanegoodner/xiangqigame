@@ -1,4 +1,5 @@
 import msgspec
+import numpy as np
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Type
@@ -22,6 +23,9 @@ def dec_hook(type: Type, obj: Any) -> Any:
         return PieceColor(obj)
     if type is PieceType:
         return PieceType(obj)
+    if type is np.int32:
+        return np.int32(obj)
+
     else:
         raise NotImplementedError(f"Objects of type {type} are not supported")
 

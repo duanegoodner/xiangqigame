@@ -56,42 +56,63 @@ inline BestMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_
   }
 }
 
-struct SearchSummary {
-  SearchSummary(int max_search_depth)
-      : num_nodes{}
-      , result_depth_counts{} {
-    // reserve a "row" for each result type
-    result_depth_counts.reserve(MinimaxResultType::kMax);
+// TODO: consider changing data from 2-D std::vector to 2-D std::array
+struct ResultDepthCounts {
+
+  ResultDepthCounts(int max_search_depth) {
+    data.reserve(MinimaxResultType::kMax);
     for (auto idx = 0; idx <= MinimaxResultType::kMax; idx++) {
-      // for each "row", create vector long enough to hold each possible search depth
-      result_depth_counts.emplace_back(max_search_depth + 1, 0);
+      data.emplace_back(max_search_depth + 1, 0);
     }
   }
 
-  void Update(
-      MinimaxResultType result_type,
-      int search_depth,
-      BestMoves best_moves
-  ) {
-    result_depth_counts[result_type][search_depth]++;
+  void Update(MinimaxResultType result_type, int search_depth) {
+    data[result_type][search_depth]++;
+  }
+
+  std::vector<std::vector<int>> data;
+};
+
+struct SearchSummary {
+  SearchSummary(int max_search_depth)
+      : num_nodes{}
+      , result_depth_counts{ResultDepthCounts(max_search_depth)}
+      , transposition_table_hits(ResultDepthCounts(max_search_depth)) {
+    // reserve a "row" for each result type
+    // result_depth_counts.reserve(MinimaxResultType::kMax);
+    // for (auto idx = 0; idx <= MinimaxResultType::kMax; idx++) {
+    // for each "row", create vector long enough to hold each possible search depth
+    // result_depth_counts.emplace_back(max_search_depth + 1, 0);
+  }
+
+  void Update(MinimaxResultType result_type, int search_depth, BestMoves best_moves) {
+    // result_depth_counts[result_type][search_depth]++;
+    result_depth_counts.Update(result_type, search_depth);
     num_nodes++;
     SetBestMoves(best_moves);
+  }
+
+  void UpdateTranspositionTableHits(MinimaxResultType result_type, int search_depth) {
+    transposition_table_hits.Update(result_type, search_depth);
   }
 
   void SetTime(std::chrono::duration<double, std::nano> search_time) {
     time = search_time;
   }
-  void SetBestMoves(BestMoves best_moves) {
-    this->best_moves = best_moves;
+  void SetBestMoves(BestMoves best_moves) { this->best_moves = best_moves; }
+  void SetSelectedMove(Move selected_move) { this->selected_move = selected_move; }
+  std::vector<std::vector<int>> GetResultDepthCounts() {
+    return result_depth_counts.data;
   }
-  void SetSelectedMove(Move selected_move) {
-    this->selected_move = selected_move;
+  std::vector<std::vector<int>> GetTranspositionTableHits() {
+    return transposition_table_hits.data;
   }
 
   int num_nodes;
   std::chrono::duration<double, std::nano> time;
   // row -> node result_type; col -> node depth
-  std::vector<std::vector<int>> result_depth_counts;
+  ResultDepthCounts result_depth_counts;
+  ResultDepthCounts transposition_table_hits;
   BestMoves best_moves;
   Move selected_move;
 };

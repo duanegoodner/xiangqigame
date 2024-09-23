@@ -75,12 +75,9 @@ Move MinimaxMoveEvaluator<
     ConcretePieceValueProvider>::ImplementSelectMove() {
 
   auto &first_search_summary = search_summaries_.NewFirstSearch(starting_search_depth_);
-  // SearchSummary first_search_summary{};
-  // SearchSummary second_search_summary{};
   Move final_selected_move;
 
   auto first_selected_move = RunMinimax(first_search_summary);
-  // first_search_summaries_.emplace_back(first_search_summary);
 
   // check if move selected by first search is allowed
   // (if we had a hash collision, we might select an illegal move)
@@ -91,7 +88,6 @@ Move MinimaxMoveEvaluator<
     auto &second_search_summary =
         search_summaries_.NewExtraSearch(starting_search_depth_, num_move_selections_);
     auto second_selected_move = RunMinimax(second_search_summary, false);
-    // second_search_summaries_[num_move_selections_] = second_search_summary;
     final_selected_move = second_selected_move;
   }
   num_move_selections_++;
@@ -247,19 +243,18 @@ BestMoves MinimaxMoveEvaluator<
   if (use_transposition_table) {
     auto state_score_search_result = hash_calculator_.GetTrData(remaining_search_depth);
     if (state_score_search_result.found) {
-      
-      // TODO split into 3 cases: standard, evaluator loses, and evaluator wins
-      // Can just look at result type of table entry
+      result_type = MinimaxResultType::kTrTableHitStandard;
       auto existing_result_type = state_score_search_result.table_entry.result_type;
-      if (existing_result_type == MinimaxResultType::kEvaluatorLoses) {
-        result_type = MinimaxResultType::kTrTableHitEvaluatorLoses;
-      } else if (existing_result_type == MinimaxResultType::kTrTableHitEvaluatorWins) {
-        result_type = MinimaxResultType::kTrTableHitEvaluatorWins;
-      } else {
-        result_type = MinimaxResultType::kTrTableHitStandard;
-      }
+      // if (existing_result_type == MinimaxResultType::kEvaluatorLoses) {
+      //   result_type = MinimaxResultType::kTrTableHitEvaluatorLoses;
+      // } else if (existing_result_type == MinimaxResultType::kTrTableHitEvaluatorWins) {
+      //   result_type = MinimaxResultType::kTrTableHitEvaluatorWins;
+      // } else {
+      //   result_type = MinimaxResultType::kTrTableHitStandard;
+      // }
       auto result = state_score_search_result.table_entry.best_moves;
       search_summary.Update(result_type, remaining_search_depth, result);
+      search_summary.UpdateTranspositionTableHits(existing_result_type, remaining_search_depth);
       return result;
     }
   }
