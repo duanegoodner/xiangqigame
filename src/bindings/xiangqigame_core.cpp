@@ -119,9 +119,9 @@ PYBIND11_MODULE(xiangqigame_core, m) {
 
   py::enum_<MinimaxResultType>(m, "MinimaxResultType")
       .value("Unknown", kUnknown)
-      .value("TrTableHitStandard", kTrTableHitStandard)
-      .value("TrTableHitEvaluatorLoses", kTrTableHitEvaluatorLoses)
-      .value("TrTableHitEvaluatorWins", kTrTableHitEvaluatorWins)
+      .value("TrTableHit", kTrTableHit)
+    //   .value("TrTableHitEvaluatorLoses", kTrTableHitEvaluatorLoses)
+    //   .value("TrTableHitEvaluatorWins", kTrTableHitEvaluatorWins)
       .value("EvaluatorLoses", kEvaluatorLoses)
       .value("EvaluatorWins", kEvaluatorWins)
       .value("FullyEvaluatedNode", kFullyEvaluatedNode)

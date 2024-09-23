@@ -19,9 +19,9 @@ struct RatedMove {
 
 enum MinimaxResultType : size_t {
   kUnknown = 0,
-  kTrTableHitStandard = 1,
-  kTrTableHitEvaluatorLoses = 2,
-  kTrTableHitEvaluatorWins = 3,
+  kTrTableHit = 1,
+  // kTrTableHitEvaluatorLoses = 2,
+  // kTrTableHitEvaluatorWins = 3,
   kEvaluatorLoses = 4,
   kEvaluatorWins = 5,
   kFullyEvaluatedNode = 6,
@@ -57,7 +57,7 @@ inline BestMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_
 }
 
 // TODO: consider changing data from 2-D std::vector to 2-D std::array
-struct ResultDepthCounts {
+struct  ResultDepthCounts {
 
   ResultDepthCounts(int max_search_depth) {
     data.reserve(MinimaxResultType::kMax);

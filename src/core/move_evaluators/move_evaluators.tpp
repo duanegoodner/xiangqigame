@@ -243,15 +243,8 @@ BestMoves MinimaxMoveEvaluator<
   if (use_transposition_table) {
     auto state_score_search_result = hash_calculator_.GetTrData(remaining_search_depth);
     if (state_score_search_result.found) {
-      result_type = MinimaxResultType::kTrTableHitStandard;
+      result_type = MinimaxResultType::kTrTableHit;
       auto existing_result_type = state_score_search_result.table_entry.result_type;
-      // if (existing_result_type == MinimaxResultType::kEvaluatorLoses) {
-      //   result_type = MinimaxResultType::kTrTableHitEvaluatorLoses;
-      // } else if (existing_result_type == MinimaxResultType::kTrTableHitEvaluatorWins) {
-      //   result_type = MinimaxResultType::kTrTableHitEvaluatorWins;
-      // } else {
-      //   result_type = MinimaxResultType::kTrTableHitStandard;
-      // }
       auto result = state_score_search_result.table_entry.best_moves;
       search_summary.Update(result_type, remaining_search_depth, result);
       search_summary.UpdateTranspositionTableHits(existing_result_type, remaining_search_depth);

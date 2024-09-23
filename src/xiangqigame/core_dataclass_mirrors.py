@@ -30,13 +30,7 @@ PointsT: TypeAlias = PointsTypeDeterminer().get_points_type()
 
 class MinimaxResultTypePy(Enum):
     Unknown = int(core.MinimaxResultType.Unknown)
-    TrTableHitStandard = int(core.MinimaxResultType.TrTableHitStandard)
-    TrTableHitEvaluatorLoses = int(
-        core.MinimaxResultType.TrTableHitEvaluatorLoses
-    )
-    TrTableHitEvaluatorWins = int(
-        core.MinimaxResultType.TrTableHitEvaluatorWins
-    )
+    TrTableHit = int(core.MinimaxResultType.TrTableHit)
     EvaluatorLoses = int(core.MinimaxResultType.EvaluatorLoses)
     EvaluatorWins = int(core.MinimaxResultType.EvaluatorWins)
     FullyEvaluatedNode = int(core.MinimaxResultType.FullyEvaluatedNode)
