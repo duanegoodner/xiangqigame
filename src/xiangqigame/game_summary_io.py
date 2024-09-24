@@ -12,6 +12,8 @@ def enc_hook(obj: Any) -> Any:
         return int(obj)
     if isinstance(obj, PieceType):
         return int(obj)
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
     else:
         raise NotImplementedError(
             f"Objects of type {type(obj)} are not supported"
@@ -23,6 +25,8 @@ def dec_hook(type: Type, obj: Any) -> Any:
         return PieceColor(obj)
     if type is PieceType:
         return PieceType(obj)
+    if type is np.ndarray:
+        return np.array(obj)
     if type is np.int32:
         return np.int32(obj)
 

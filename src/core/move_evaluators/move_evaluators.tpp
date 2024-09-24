@@ -235,7 +235,7 @@ BestMoves MinimaxMoveEvaluator<
         SearchSummary &search_summary,
         bool use_transposition_table
     ) {
-  search_summary.num_nodes++;
+  // search_summary.num_nodes++;
   MinimaxResultType result_type{};
 
   // First we check if result for current board state is in transposition table (unless
