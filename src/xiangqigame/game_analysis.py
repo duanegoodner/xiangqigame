@@ -10,7 +10,7 @@ import xiangqigame_core as core
 
 if __name__ == "__main__":
 
-    game_summary = app.run(red_strength=5, black_strength=5, save_summary=True)
+    game_summary = app.run(red_strength=6, black_strength=6, save_summary=True)
     print("pause")
 
     stats_plotter = ssp.SearchStatsPlotter(game_summary=game_summary)
