@@ -305,20 +305,6 @@ class NewGameSummaryPlotter:
         print("setting legend")
         ax.legend(loc="upper left")
 
-            # if self.has_minimax_data(player=player):
-            #     df = self.search_stats_dfs[player.name]
-            #     plot_grid_col = self.player_plot_col[player]
-            #     ax = cast(plt.Axes, axes[plot_grid_col])
-            #     ax.plot(
-            #         df.index,
-            #         self.symmetric_winsorize(
-            #             data=df["eval_score"],
-            #             magnitude=1.5
-            #             * self.largest_magnitude_noninf_eval_score,
-            #         ),
-            #         color=self.evaluating_player_line_colors[player],
-            #     )
-
     @staticmethod
     def match_y_limits(axes_row: np.ndarray):
         y_limits_low = []
