@@ -83,6 +83,7 @@ class GameSummaryPlotter(ABC):
         for grid_row_idx, ax in enumerate(self.axes[:, 0]):
             ax = cast(plt.Axes, ax)
             ax.set_ylabel(self.y_labels[grid_row_idx], fontsize=14)
+            ax.yaxis.set_label_coords(-0.15, 0.5)
 
     def set_x_axes(self):
         for grid_row_idx, grid_row in enumerate(self.axes[0:-1, :]):

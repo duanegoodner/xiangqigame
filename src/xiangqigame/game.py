@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Dict, List
 
 import xiangqigame_core as core
@@ -27,10 +28,14 @@ class Game:
         if move_log is None:
             move_log = []
         self._move_log = move_log
+        self._game_id = "".join(
+            char for char in str(datetime.now()) if char.isdigit()
+        )
 
     @property
     def summary(self) -> GameSummary:
         return GameSummary(
+            game_id=self._game_id,
             game_state=self._game_state,
             whose_turn=self._whose_turn,
             move_log=[
