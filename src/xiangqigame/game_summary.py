@@ -16,6 +16,7 @@ class PlayerSummaries:
 
 
 class GameSummary(msgspec.Struct):
+    game_id: str
     game_state: GameState
     whose_turn: core.PieceColor
     move_log: List[cdm.ExecutedMove]

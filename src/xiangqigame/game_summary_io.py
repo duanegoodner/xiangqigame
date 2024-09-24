@@ -46,19 +46,18 @@ def import_game_summary(path: Path) -> GameSummary:
 
 def export_game_summary(game_summary: GameSummary, path: Path = None) -> Path:
     if path is None:
-        time_stamp = "".join(
-            char for char in str(datetime.now()) if char.isdigit()
-        )
         path = (
-            Path(__file__).parent.parent.parent / "data" / f"{time_stamp}.json"
+            Path(__file__).parent.parent.parent
+            / "data"
+            / f"{game_summary.game_id}.json"
         )
 
     encoded_summary = encoder.encode(game_summary)
     with path.open(mode="wb") as output_file:
         output_file.write(encoded_summary)
-    
+
     print(f"GameSummary has been saved as {str(path)}")
-    
+
     return path
 
 

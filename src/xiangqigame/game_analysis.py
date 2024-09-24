@@ -11,15 +11,15 @@ import xiangqigame_core as core
 if __name__ == "__main__":
 
     game_summary = app.run(red_strength=6, black_strength=6, save_summary=True)
-    print("pause")
-
-    stats_plotter = ssp.SearchStatsPlotter(game_summary=game_summary)
-    stats_plotter.plot()
-
-    results_by_type_plotter = stp.SearchResultByTypePlotter(
-        game_summary=game_summary
-    )
-    results_by_type_plotter.plot()
+    # print("pause")
+    #
+    # stats_plotter = ssp.SearchStatsPlotter(game_summary=game_summary)
+    # stats_plotter.plot()
+    #
+    # results_by_type_plotter = stp.SearchResultByTypePlotter(
+    #     game_summary=game_summary
+    # )
+    # results_by_type_plotter.plot()
     #
     # game_plotter = gsp.GameSummaryPlotter(game_summary=game_summary)
     #
