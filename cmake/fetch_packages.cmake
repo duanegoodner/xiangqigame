@@ -1,6 +1,8 @@
 include(FetchContent)
 include(CMakeFindDependencyMacro)
 
+cmake_policy(SET CMP0135 NEW)
+
 FetchContent_Declare(
         googletest
         URL
