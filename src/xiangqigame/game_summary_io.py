@@ -48,10 +48,11 @@ def export_game_summary(game_summary: GameSummary, path: Path = None) -> Path:
     if path is None:
         path = (
             Path(__file__).parent.parent.parent
-            / "data"
+            / "data" / f"{game_summary.game_id}"
             / f"{game_summary.game_id}.json"
         )
 
+    path.parent.mkdir(parents=True, exist_ok=True)
     encoded_summary = encoder.encode(game_summary)
     with path.open(mode="wb") as output_file:
         output_file.write(encoded_summary)

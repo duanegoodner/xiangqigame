@@ -15,10 +15,11 @@ from xiangqigame.game_summary_plotters import (
 
 
 class GameSummaryPlotManger:
-    def __init__(self, game_summary: GameSummary):
+    def __init__(self, game_summary: GameSummary, save_fig: bool = False):
         plt.style.use("bmh")
         self.game_summary = game_summary
-        self.fig = plt.figure(figsize=(12, 19))
+        self.save_fig = save_fig
+        self.fig = plt.figure(figsize=(12, 19), dpi=150)
         self.search_type_plots = np.empty(
             shape=(2, self.num_players_with_minimax_data), dtype=object
         )
@@ -152,7 +153,24 @@ class GameSummaryPlotManger:
             fontsize=18,
         )
 
-    def plot(self):
+    def save_figure(self, path: Path = None):
+        if path is None:
+            path = (
+                Path(__file__).parent.parent.parent
+                / "data"
+                / f"{self.game_summary.game_id}"
+                / f"{self.game_summary.game_id}.png"
+            )
+        path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(str(path), dpi=self.fig.dpi)
+        print(f"Saved figure with plots of GameSummary data to {str(path)}")
+
+    def plot(
+        self,
+        show_plot: bool = True,
+        save_figure: bool = False,
+        save_path: Path = None,
+    ):
         search_results_by_type_plotter = SearchResultsByTypePlotter(
             axes=self.search_type_plots,
             red_data=self.game_summary.get_player_summary(
@@ -187,22 +205,28 @@ class GameSummaryPlotManger:
         )
         eval_score_plotter.plot()
 
-        plt.show()
+        if save_figure:
+            self.save_figure(path=save_path)
+
+        if show_plot:
+            plt.show()
 
 
 if __name__ == "__main__":
     game_summary_path_depth_6 = (
         Path(__file__).parent.parent.parent
         / "data"
+        / "20240924144506337600"
         / "20240924144506337600.json"
     )
 
     game_summary_path_depth_3 = (
         Path(__file__).parent.parent.parent
         / "data"
+        / "20240924144452286119"
         / "20240924144452286119.json"
     )
 
     my_game_summary = import_game_summary(path=game_summary_path_depth_6)
     plot_manager = GameSummaryPlotManger(game_summary=my_game_summary)
-    plot_manager.plot()
+    plot_manager.plot(save_figure=False)

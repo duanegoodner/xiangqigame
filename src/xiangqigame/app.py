@@ -7,6 +7,7 @@ from xiangqigame.command_input import (
 )
 from xiangqigame.game import Game, GameSummary
 from xiangqigame.game_summary_io import export_game_summary
+from xiangqigame.game_summary_plot_manger import GameSummaryPlotManger
 from xiangqigame.handlers.signals import set_signal_handlers
 from xiangqigame.player_builder import RedAndBlackPlayersBuilder
 
@@ -14,27 +15,31 @@ from xiangqigame.player_builder import RedAndBlackPlayersBuilder
 def run(**kwargs) -> GameSummary:
     set_signal_handlers()
     colorama.init()
-    
+
     command_line_kwargs = XiangqiGameCommandLine().get_args()
     run_kwargs = {**command_line_kwargs, **kwargs}
-        
-    run_kwargs_interpreter = RunKwargsInterpreter(
-        run_kwargs=run_kwargs
-    )
+
+    run_kwargs_interpreter = RunKwargsInterpreter(run_kwargs=run_kwargs)
     xiangqi_command = run_kwargs_interpreter.interpret_command()
-    
+
     game_board = core.GameBoard()
     players = RedAndBlackPlayersBuilder(
         xiangqi_command=xiangqi_command, game_board=game_board
     ).build()
     my_game = Game(players=players, game_board=game_board)
+
     game_summary = my_game.play()
-    
+
+    # Optionally saves GameSummary and plots under /data/<game-ID>
     if xiangqi_command.save_summary:
         export_game_summary(game_summary=game_summary)
-    
+        game_summary_plot_manager = GameSummaryPlotManger(
+            game_summary=game_summary
+        )
+        game_summary_plot_manager.plot(show_plot=False, save_figure=True)
+
     return game_summary
-    
-    
+
+
 if __name__ == "__main__":
     run()

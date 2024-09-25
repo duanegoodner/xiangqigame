@@ -88,6 +88,9 @@ class PlayerSummary:
                     search_summary.result_depth_counts[value][:]
                 )
 
+        assert df["Unknown"].sum() == 0
+        df.drop(columns=["Unknown"], inplace=True)
+
         return df
 
     @property
