@@ -14,7 +14,7 @@ from xiangqigame_core import (
     PieceType,
 )
 from xiangqigame.game_interfaces import GameStatusReporter
-from xiangqigame.enums import GameState
+from xiangqigame.enums import GameState, EvaluatorType
 from xiangqigame.piece_info_extractor import PIECE_READER
 from xiangqigame.player_summary import PlayerSummary
 
@@ -106,17 +106,42 @@ class TerminalStatusReporter(GameStatusReporter):
         return display_dispatch
 
     def display_player_info(self, player_summary: PlayerSummary):
-        print(
-            f"\n{self._display_team_name[player_summary.color]} Player Info:\n"
-            f"----------------\n"
-            f"Player type: {player_summary.player_type.name}"
+
+        player_type_string = f"Player Type = {player_summary.player_type.name}"
+        move_evaluator_string = (
+            f", Move Evaluator = {player_summary.move_evaluator_type.name}"
+            if player_summary.move_evaluator_type != EvaluatorType.NULL
+            else ""
         )
-        if player_summary.move_evaluator_type is not None:
-            print(f"Move evaluator: {player_summary.move_evaluator_type.name}")
-        if player_summary.max_search_depth is not None:
-            print(f"Max search depth: {player_summary.max_search_depth}")
-        if player_summary.zobrist_key_size is not None:
-            print(f"Zobrist key size: {player_summary.zobrist_key_size} bits")
+        search_depth_string = (
+            f", Max Search Depth = {player_summary.max_search_depth}"
+            if player_summary.max_search_depth
+            else ""
+        )
+
+        zobrist_key_size_string = (
+            f", Zobrist Key Size = {player_summary.zobrist_key_size}"
+            if player_summary.zobrist_key_size
+            else ""
+        )
+
+        print(
+            f"\n{self._display_team_name[player_summary.color]} Player:\n"
+            f"{player_type_string}{move_evaluator_string}{search_depth_string}{zobrist_key_size_string}"
+        )
+
+    # def display_player_info(self, player_summary: PlayerSummary):
+    #     print(
+    #         f"\n{self._display_team_name[player_summary.color]} Player Info:\n"
+    #         f"----------------\n"
+    #         f"Player type: {player_summary.player_type.name}"
+    #     )
+    #     if player_summary.move_evaluator_type is not None:
+    #         print(f"Move evaluator: {player_summary.move_evaluator_type.name}")
+    #     if player_summary.max_search_depth is not None:
+    #         print(f"Max search depth: {player_summary.max_search_depth}")
+    #     if player_summary.zobrist_key_size is not None:
+    #         print(f"Zobrist key size: {player_summary.zobrist_key_size} bits")
 
     def display_prev_move(self, color: PieceColor, prev_move: Move = None):
         if prev_move:
