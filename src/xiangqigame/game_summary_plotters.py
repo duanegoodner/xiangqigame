@@ -247,7 +247,7 @@ class SearchTimePlotter(GameSummaryPlotter):
             axes=axes,
             y_labels=(
                 "Search Time (s)",
-                "Search Time per Node (ns)",
+                "Time per Node (ns)",
             ),
             log_scale_rows=log_scale_rows,
             red_data=red_data,
