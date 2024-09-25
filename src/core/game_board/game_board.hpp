@@ -58,7 +58,7 @@ public:
 private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
-  vector<function<void(ExecutedMove)>> move_callbacks_;
+  vector<function<void(ExecutedMove)>> move_callbacks_;  // hash calc functs go here
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
 
   ExecutedMove _ImplementExecuteMove(Move move) {

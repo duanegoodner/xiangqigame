@@ -19,14 +19,14 @@ def algebraic_space_to_boardspace(algebraic_space: str) -> BoardSpace:
     alg_column = algebraic_space[0]
     file = ord(alg_column) - ord('a')
     alg_row = algebraic_space[1:]
-    rank = int(alg_row) - 1
+    rank = 10 - int(alg_row)
 
     return BoardSpace(rank=rank, file=file)
 
 
 def boardspace_to_algebraic_space(board_space: BoardSpace) -> str:
     alg_column = chr(board_space.file + ord('a'))
-    alg_row = str(board_space.rank + 1)
+    alg_row = str(10 - board_space.rank)
     return f"{alg_column}{alg_row}"
 
 

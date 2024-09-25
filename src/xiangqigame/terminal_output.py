@@ -79,7 +79,7 @@ class TerminalStatusReporter(GameStatusReporter):
             for row in range(len(board.map()))
         ]
         for row_index in range(len(board_list)):
-            board_list[row_index].insert(0, f" {str(row_index + 1)}\t")
+            board_list[row_index].insert(0, f" {str(10 - row_index)}\t")
         board_list.insert(0, file_labels)
         board_list = ["".join(row) for row in board_list]
 
