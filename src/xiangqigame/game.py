@@ -111,6 +111,8 @@ class Game:
         else:
             prev_move = None
         self._status_reporter.report_game_info(
+            red_player_summary=self._players[core.PieceColor.kRed].summary,
+            black_player_summary=self._players[core.PieceColor.kBlk].summary,
             game_state=self._game_state,
             game_board=self._board,
             whose_turn=self._whose_turn,

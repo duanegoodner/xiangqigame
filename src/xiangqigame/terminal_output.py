@@ -16,6 +16,7 @@ from xiangqigame_core import (
 from xiangqigame.game_interfaces import GameStatusReporter
 from xiangqigame.enums import GameState
 from xiangqigame.piece_info_extractor import PIECE_READER
+from xiangqigame.player_summary import PlayerSummary
 
 
 @dataclass
@@ -41,7 +42,11 @@ class TerminalStatusReporter(GameStatusReporter):
 
     _display_team_name = {PieceColor.kRed: "Red", PieceColor.kBlk: "Black"}
 
-    _color_to_code = {PieceColor.kRed: "r", PieceColor.kBlk: "b", PieceColor.kNul: "-"}
+    _color_to_code = {
+        PieceColor.kRed: "r",
+        PieceColor.kBlk: "b",
+        PieceColor.kNul: "-",
+    }
 
     _type_to_code = {
         PieceType.kCha: "R",
@@ -67,7 +72,9 @@ class TerminalStatusReporter(GameStatusReporter):
         )
 
     def format_board_output(self, board: GameBoard):
-        file_labels = [f" {chr(char_num)}  " for char_num in range(ord("a"), ord("j"))]
+        file_labels = [
+            f" {chr(char_num)}  " for char_num in range(ord("a"), ord("j"))
+        ]
         file_labels.insert(0, "\t")
         file_labels.insert(len(file_labels), "\n")
 
@@ -84,6 +91,32 @@ class TerminalStatusReporter(GameStatusReporter):
         board_list = ["".join(row) for row in board_list]
 
         return str("\n\n".join([str(rank) for rank in board_list]))
+
+    @staticmethod
+    def move_evaluator_translator(
+        player_summary: PlayerSummary,
+    ) -> Dict[str, str]:
+        display_dispatch = {
+            "Minimax": f"Minimax, max search depth = "
+            f"{player_summary.max_search_depth}, zobrist hash key size = "
+            f"{player_summary.zobrist_key_size} bits",
+            "Random": "Random",
+        }
+
+        return display_dispatch
+
+    def display_player_info(self, player_summary: PlayerSummary):
+        print(
+            f"\n{self._display_team_name[player_summary.color]} Player Info:\n"
+            f"----------------\n"
+            f"Player type: {player_summary.player_type.name}"
+        )
+        if player_summary.move_evaluator_type is not None:
+            print(f"Move evaluator: {player_summary.move_evaluator_type.name}")
+        if player_summary.max_search_depth is not None:
+            print(f"Max search depth: {player_summary.max_search_depth}")
+        if player_summary.zobrist_key_size is not None:
+            print(f"Zobrist key size: {player_summary.zobrist_key_size} bits")
 
     def display_prev_move(self, color: PieceColor, prev_move: Move = None):
         if prev_move:
@@ -118,6 +151,8 @@ class TerminalStatusReporter(GameStatusReporter):
 
     def report_game_info(
         self,
+        red_player_summary: PlayerSummary,
+        black_player_summary: PlayerSummary,
         game_state: GameState,
         game_board: GameBoard,
         whose_turn: PieceColor,
@@ -127,13 +162,21 @@ class TerminalStatusReporter(GameStatusReporter):
     ):
         self.clear_screen()
         print(f"{self.format_board_output(game_board)}\n")
-        print(f"Move count: {move_count}\n")
+        self.display_player_info(player_summary=red_player_summary)
+        self.display_player_info(player_summary=black_player_summary)
+        print(f"\nMove count: {move_count}\n")
 
         if game_state == GameState.UNFINISHED:
-            self.display_prev_move(color=opponent_of(whose_turn), prev_move=prev_move)
+            self.display_prev_move(
+                color=opponent_of(whose_turn), prev_move=prev_move
+            )
             self.display_whose_turn(whose_turn)
-            self.display_if_is_in_check(color=whose_turn, is_in_check=is_in_check)
+            self.display_if_is_in_check(
+                color=whose_turn, is_in_check=is_in_check
+            )
 
         else:
-            self.display_final_move(color=opponent_of(whose_turn), final_move=prev_move)
+            self.display_final_move(
+                color=opponent_of(whose_turn), final_move=prev_move
+            )
             self.display_winner(game_state)

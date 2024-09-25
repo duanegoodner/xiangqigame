@@ -1,6 +1,8 @@
 import argparse
 from dataclasses import dataclass
+from enum import Enum, auto
 from typing import Callable, Any
+from xiangqigame.enums import EvaluatorType, PlayerType
 from xiangqigame.players import AIPlayer, HumanPlayer, Player
 from xiangqigame_core import (
     MinimaxMoveEvaluator64,
@@ -8,23 +10,19 @@ from xiangqigame_core import (
     RandomMoveEvaluator,
 )
 
-
 @dataclass
 class PlayerInput:
-    player_type: Callable[..., Player]
-    algo: Callable[
-        ...,
-        RandomMoveEvaluator | MinimaxMoveEvaluator64 | MinimaxMoveEvaluator128,
-    ]
+    player_type: PlayerType
+    algo: EvaluatorType
     strength: int
     key_size: int
 
 
 class PlayerCommandInterpreter:
     _player_input_dispatch = {
-        "ai": AIPlayer,
-        "person": HumanPlayer,
-        None: AIPlayer,
+        "ai": PlayerType.AI,
+        "person": PlayerType.HUMAN,
+        None: PlayerType.AI,
     }
 
     _minimax_key_size_dispatch = {
@@ -62,15 +60,15 @@ class PlayerCommandInterpreter:
 
     def interpret_command(self) -> PlayerInput:
         player_type = self._player_input_dispatch[self.player_input]
-        if player_type == HumanPlayer:
+        if player_type == PlayerType.HUMAN:
             algo = strength = key_size = None
         else:
             if self.algo_input == "random":
-                algo = RandomMoveEvaluator
+                algo = EvaluatorType.RANDOM
                 strength = key_size = None
             else:
                 key_size = self._get_key_size()
-                algo = self._minimax_key_size_dispatch[key_size]
+                algo = EvaluatorType.MINIMAX
                 strength = self._get_strength()
         return PlayerInput(
             player_type=player_type,
@@ -113,14 +111,14 @@ class RunKwargsInterpreter:
 
 class XiangqiGameCommandInterpreter:
     _player_type_dispatch = {
-        "ai": AIPlayer,
-        "person": HumanPlayer,
-        None: AIPlayer,
+        "ai": PlayerType.AI,
+        "person": PlayerType.HUMAN,
+        None: PlayerType.AI,
     }
 
     _move_evaluator_dispatch = {
-        "random": RandomMoveEvaluator,
-        "minimax": MinimaxMoveEvaluator64,
+        "random": EvaluatorType.RANDOM,
+        "minimax": EvaluatorType.MINIMAX,
         None: None,
     }
 
