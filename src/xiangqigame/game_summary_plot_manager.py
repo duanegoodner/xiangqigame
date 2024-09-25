@@ -14,7 +14,7 @@ from xiangqigame.game_summary_plotters import (
 )
 
 
-class GameSummaryPlotManger:
+class GameSummaryPlotManager:
     def __init__(self, game_summary: GameSummary, save_fig: bool = False):
         plt.style.use("bmh")
         self.game_summary = game_summary
@@ -228,5 +228,5 @@ if __name__ == "__main__":
     )
 
     my_game_summary = import_game_summary(path=game_summary_path_depth_6)
-    plot_manager = GameSummaryPlotManger(game_summary=my_game_summary)
+    plot_manager = GameSummaryPlotManager(game_summary=my_game_summary)
     plot_manager.plot(save_figure=False)

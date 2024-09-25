@@ -7,7 +7,7 @@ from xiangqigame.command_input import (
 )
 from xiangqigame.game import Game, GameSummary
 from xiangqigame.game_summary_io import export_game_summary
-from xiangqigame.game_summary_plot_manger import GameSummaryPlotManger
+from xiangqigame.game_summary_plot_manager import GameSummaryPlotManager
 from xiangqigame.handlers.signals import set_signal_handlers
 from xiangqigame.player_builder import RedAndBlackPlayersBuilder
 
@@ -33,7 +33,7 @@ def run(**kwargs) -> GameSummary:
     # Optionally saves GameSummary and plots under /data/<game-ID>
     if xiangqi_command.save_summary:
         export_game_summary(game_summary=game_summary)
-        game_summary_plot_manager = GameSummaryPlotManger(
+        game_summary_plot_manager = GameSummaryPlotManager(
             game_summary=game_summary
         )
         game_summary_plot_manager.plot(show_plot=False, save_figure=True)
