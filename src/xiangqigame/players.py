@@ -2,6 +2,8 @@ import numpy as np
 import xiangqigame.move_translator as mt
 from typing import List, Tuple
 
+from xiangqigame.enums import PlayerType, EvaluatorType
+
 # from cpp_modules.src.pybind_modules.GameBoardPy import GameBoard, PieceColor, Move, MoveCollection
 from xiangqigame.game_interfaces import Player
 import xiangqigame.terminal_output as msg
@@ -20,8 +22,8 @@ from xiangqigame_core import (
 
 class HumanPlayer(Player):
 
-    def __init__(self, color: PieceColor, *args):
-        super().__init__(color)
+    def __init__(self, color: PieceColor, player_type: PlayerType) -> None:
+        super().__init__(color=color, player_type=player_type)
         self._input_req = msg.InputRetrievalMessages()
 
     def propose_move(
@@ -81,13 +83,17 @@ class AIPlayer(Player):
     def __init__(
         self,
         color: PieceColor,
+        player_type: PlayerType,
+        evaluator_type: EvaluatorType,
         move_evaluator: (
             MinimaxMoveEvaluator64
             | MinimaxMoveEvaluator128
             | RandomMoveEvaluator
         ),
     ):
-        super().__init__(color)
+        super().__init__(
+            color=color, player_type=player_type, evaluator_type=evaluator_type
+        )
         self._move_evaluator = move_evaluator
 
     @property

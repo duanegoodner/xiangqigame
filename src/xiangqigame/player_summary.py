@@ -7,14 +7,15 @@ import pandas as pd
 import xiangqigame_core as core
 
 import xiangqigame.core_dataclass_mirrors as cdm
+from xiangqigame.command_input import PlayerType, EvaluatorType
 from xiangqigame.core_dataclass_mirrors import PointsT
 
 
 @dataclass
 class PlayerSummary:
     color: core.PieceColor
-    player_type: str
-    move_evaluator_type: str = None
+    player_type: PlayerType
+    move_evaluator_type: EvaluatorType = EvaluatorType.NULL
     max_search_depth: int = None
     zobrist_key_size: int = None
     search_summaries: cdm.SearchSummaries = None

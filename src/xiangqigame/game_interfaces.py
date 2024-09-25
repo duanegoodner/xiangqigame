@@ -7,14 +7,21 @@ import pandas as pd
 import xiangqigame_core as core
 
 import xiangqigame.core_dataclass_mirrors as cdm
-from xiangqigame.enums import GameState
+from xiangqigame.enums import GameState, PlayerType, EvaluatorType
 from xiangqigame.player_summary import PlayerSummary
 
 
 class Player(abc.ABC):
 
-    def __init__(self, color: core.PieceColor):
+    def __init__(
+        self,
+        color: core.PieceColor,
+        player_type: PlayerType,
+        evaluator_type: EvaluatorType = EvaluatorType.NULL,
+    ) -> None:
         self._color = color
+        self._player_type = player_type
+        self._evaluator_type = evaluator_type
 
     @abc.abstractmethod
     def propose_move(
@@ -32,36 +39,26 @@ class Player(abc.ABC):
         pass
 
     @property
-    def player_type(self) -> str:
-        return type(self).__name__
+    def player_type(self) -> PlayerType:
+        return self._player_type
 
     @property
-    def move_evaluator_type(self) -> str | None:
-        if hasattr(self, "_move_evaluator"):
-            return type(self._move_evaluator).__name__
+    def move_evaluator_type(self) -> EvaluatorType:
+        return self._evaluator_type
 
     @property
     def max_search_depth(self) -> int | None:
-        if self.move_evaluator_type in [
-            "MinimaxMoveEvaluator64",
-            "MinimaxMoveEvaluator128",
-        ]:
+        if self._evaluator_type == EvaluatorType.MINIMAX:
             return self._move_evaluator.starting_search_depth()
 
     @property
     def zobrist_key_size(self) -> int | None:
-        if self.move_evaluator_type in [
-            "MinimaxMoveEvaluator64",
-            "MinimaxMoveEvaluator128",
-        ]:
+        if self._evaluator_type == EvaluatorType.MINIMAX:
             return self._move_evaluator.zobrist_key_size_bits()
 
     @property
     def search_summaries(self) -> cdm.SearchSummaries | None:
-        if self.move_evaluator_type in [
-            "MinimaxMoveEvaluator64",
-            "MinimaxMoveEvaluator128",
-        ]:
+        if self._evaluator_type == EvaluatorType.MINIMAX:
             return cdm.SearchSummaries.from_core_search_summaries(
                 core_search_summaries=self._move_evaluator.get_search_summaries()
             )

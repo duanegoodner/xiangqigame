@@ -2,24 +2,13 @@ import argparse
 from dataclasses import dataclass
 from enum import Enum, auto
 from typing import Callable, Any
+from xiangqigame.enums import EvaluatorType, PlayerType
 from xiangqigame.players import AIPlayer, HumanPlayer, Player
 from xiangqigame_core import (
     MinimaxMoveEvaluator64,
     MinimaxMoveEvaluator128,
     RandomMoveEvaluator,
 )
-
-
-class PlayerType(Enum):
-    HUMAN = auto()
-    AI = auto()
-
-
-class EvaluatorType(Enum):
-    NULL = auto()
-    MINIMAX = auto()
-    RANDOM = auto()
-
 
 @dataclass
 class PlayerInput:

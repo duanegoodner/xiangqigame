@@ -58,7 +58,9 @@ class SinglePlayerBuilder:
         }
 
     def _build_human_player(self):
-        return HumanPlayer(color=self._color)
+        return HumanPlayer(
+            color=self._color, player_type=self.player_input.player_type
+        )
         # return self.player_input.player_type(color=self._color)
 
     def _build_ai_player(self):
@@ -69,7 +71,12 @@ class SinglePlayerBuilder:
         constructor_kwargs = self._move_evaluator_args[player_constructor]
         move_evaluator = player_constructor(**constructor_kwargs)
 
-        return AIPlayer(color=self._color, move_evaluator=move_evaluator)
+        return AIPlayer(
+            color=self._color,
+            player_type=self.player_input.player_type,
+            evaluator_type=self.player_input.algo,
+            move_evaluator=move_evaluator,
+        )
 
     @property
     def _player_dispatch(self) -> dict[PlayerType, Any]:

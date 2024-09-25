@@ -105,24 +105,18 @@ class TerminalStatusReporter(GameStatusReporter):
 
         return display_dispatch
 
-    def display_move_evaluator_info(self, player_summary: PlayerSummary):
-        if player_summary.move_evaluator_type is not None:
-            print(
-                f"Minimax with max search depth = "
-                f"{player_summary.max_search_depth}, and "
-                f"{player_summary.zobrist_key_size} bit Zobrist hash keys."
-            )
-
     def display_player_info(self, player_summary: PlayerSummary):
         print(
             f"\n{self._display_team_name[player_summary.color]} Player Info:\n"
-            f"-------------------\n"
-            f"Player type: {player_summary.player_type}"
+            f"----------------\n"
+            f"Player type: {player_summary.player_type.name}"
         )
         if player_summary.move_evaluator_type is not None:
-            print(f"Move evaluator: {player_summary.move_evaluator_type}")
+            print(f"Move evaluator: {player_summary.move_evaluator_type.name}")
         if player_summary.max_search_depth is not None:
             print(f"Max search depth: {player_summary.max_search_depth}")
+        if player_summary.zobrist_key_size is not None:
+            print(f"Zobrist key size: {player_summary.zobrist_key_size} bits")
 
     def display_prev_move(self, color: PieceColor, prev_move: Move = None):
         if prev_move:

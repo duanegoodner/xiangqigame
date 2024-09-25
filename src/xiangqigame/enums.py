@@ -5,3 +5,14 @@ class GameState(Enum):
     UNFINISHED = auto()
     RED_WON = auto()
     BLACK_WON = auto()
+
+
+class PlayerType(Enum):
+    HUMAN = auto()
+    AI = auto()
+
+
+class EvaluatorType(Enum):
+    NULL = auto()
+    MINIMAX = auto()
+    RANDOM = auto()
