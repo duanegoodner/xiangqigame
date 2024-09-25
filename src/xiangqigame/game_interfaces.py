@@ -83,6 +83,8 @@ class GameStatusReporter(abc.ABC):
     @abc.abstractmethod
     def report_game_info(
         self,
+        red_player_summary: PlayerSummary,
+        black_player_summary: PlayerSummary,
         game_state: GameState,
         game_board: core.GameBoard,
         whose_turn: core.PieceColor,

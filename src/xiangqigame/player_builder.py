@@ -1,4 +1,4 @@
-from typing import Callable, Any
+from typing import Callable, Any, Dict, Tuple
 
 from xiangqigame_core import (
     GameBoard,
@@ -11,6 +11,8 @@ from xiangqigame_core import (
 from xiangqigame.command_input import (
     PlayerInput,
     XiangqiGameCommand,
+    PlayerType,
+    EvaluatorType,
 )
 from xiangqigame.players import AIPlayer, HumanPlayer
 
@@ -44,25 +46,36 @@ class SinglePlayerBuilder:
                 "evaluating_player": self._color,
                 "starting_search_depth": self.player_input.strength,
                 "game_board": self._game_board,
-            }
+            },
+        }
+
+    @property
+    def evaluator_constructor_dispatch(self) -> Dict[Tuple, Callable]:
+        return {
+            (EvaluatorType.RANDOM, None): RandomMoveEvaluator,
+            (EvaluatorType.MINIMAX, 64): MinimaxMoveEvaluator64,
+            (EvaluatorType.MINIMAX, 128): MinimaxMoveEvaluator128,
         }
 
     def _build_human_player(self):
-        return self.player_input.player_type()
+        return HumanPlayer(color=self._color)
+        # return self.player_input.player_type(color=self._color)
 
     def _build_ai_player(self):
-        constructor_kwargs = self._move_evaluator_args[
-            self.player_input.algo
+        player_constructor = self.evaluator_constructor_dispatch[
+            (self.player_input.algo, self.player_input.key_size)
         ]
-        move_evaluator = self.player_input.algo(**constructor_kwargs)
+
+        constructor_kwargs = self._move_evaluator_args[player_constructor]
+        move_evaluator = player_constructor(**constructor_kwargs)
 
         return AIPlayer(color=self._color, move_evaluator=move_evaluator)
 
     @property
-    def _player_dispatch(self) -> dict[Callable, Any]:
+    def _player_dispatch(self) -> dict[PlayerType, Any]:
         return {
-            HumanPlayer: self._build_human_player,
-            AIPlayer: self._build_ai_player,
+            PlayerType.HUMAN: self._build_human_player,
+            PlayerType.AI: self._build_ai_player,
         }
 
     def build(self):

@@ -57,7 +57,7 @@ def export_game_summary(game_summary: GameSummary, path: Path = None) -> Path:
     with path.open(mode="wb") as output_file:
         output_file.write(encoded_summary)
 
-    print(f"GameSummary has been saved as {str(path)}")
+    print(f"\nSummary data saved :\n{str(path)}")
 
     return path
 

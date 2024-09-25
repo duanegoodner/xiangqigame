@@ -163,7 +163,7 @@ class GameSummaryPlotManager:
             )
         path.parent.mkdir(parents=True, exist_ok=True)
         plt.savefig(str(path), dpi=self.fig.dpi)
-        print(f"Saved figure with plots of GameSummary data to {str(path)}")
+        print(f"\nPlots of summary data saved to:\n{str(path)}\n")
 
     def plot(
         self,
