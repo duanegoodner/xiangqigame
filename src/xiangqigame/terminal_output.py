@@ -36,7 +36,7 @@ class TerminalStatusReporter(GameStatusReporter):
 
     _disp_format = {
         PieceColor.kRed: cr.Style.BRIGHT + cr.Fore.WHITE + cr.Back.RED,
-        PieceColor.kBlk: cr.Style.BRIGHT + cr.Fore.BLACK + cr.Back.WHITE,
+        PieceColor.kBlk: cr.Fore.BLACK + cr.Back.WHITE,
         PieceColor.kNul: cr.Fore.RESET + cr.Back.RESET,
     }
 
