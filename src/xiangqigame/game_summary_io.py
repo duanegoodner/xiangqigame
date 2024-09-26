@@ -52,7 +52,7 @@ def export_game_summary(game_summary: GameSummary, path: Path):
     with path.open(mode="wb") as output_file:
         output_file.write(encoded_summary)
 
-    print(f"\nSummary data saved :\n{str(path.resolve())}")
+    print(f"\nSummary data saved to:\n{str(path.resolve())}")
 
     return path
 

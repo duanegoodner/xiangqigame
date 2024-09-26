@@ -158,7 +158,7 @@ class GameSummaryPlotManager:
             raise FileExistsError(f"{path} already exists")
         path.parent.mkdir(parents=True, exist_ok=True)
         plt.savefig(str(path), dpi=self.fig.dpi)
-        print(f"\nPlots of summary data saved to:\n{str(path.resolve())}\n")
+        print(f"Plots of summary data saved to:\n{str(path.resolve())}")
 
     def plot(
         self,
