@@ -109,7 +109,7 @@ class RunKwargsInterpreter:
             red_player_input=red_interpreter.interpret_command(),
             black_player_input=black_interpreter.interpret_command(),
             save_summary=self.run_kwargs["save_summary"],
-            output_dir_suffix=self.run_kwargs["save_dir_suffix"],
+            output_dir_suffix=self.run_kwargs["output_dir_suffix"],
         )
 
 
@@ -239,20 +239,20 @@ class XiangqiGameCommandLine:
         )
 
         self._parser.add_argument(
-            "--save_summary",
             "-s",
+            "--save_summary",
             action="store_true",
             help="Save GameSummary as .json",
         )
 
         self._parser.add_argument(
-            "--save_dir_suffix",
             "-d",
+            "--output_dir_suffix",
             type=str,
             required=False,
             help="String to append to end of output directory name. Output dir "
-                 "relative to cwd will be "
-                 "./data/game_summaries/<timestamp><optional-suffix>",
+            "relative to cwd will be "
+            "./data/game_summaries/<timestamp><optional-suffix>",
         )
 
     def get_args(self) -> dict[str, Any]:
