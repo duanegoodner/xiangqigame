@@ -2,7 +2,7 @@ from typing import List
 from xiangqigame_core import GameBoard, PieceColor
 from xiangqigame.enums import GameState
 from xiangqigame.game import Game
-from xiangqigame.players import ScriptedPlayer
+from xiangqigame.players import ScriptedPlayer, ScriptedPlayerWithRetries
 
 import unittest
 
@@ -17,8 +17,10 @@ class ScriptedGameTests(unittest.TestCase):
     def play_game(red_moves: List[str], black_moves: List[str]) -> Game:
         # red_moves, black_moves = move_list[::2], move_list[1::2]
         game_board = GameBoard()
-        red_player = ScriptedPlayer(color=PieceColor.kRed, move_list=red_moves)
-        black_player = ScriptedPlayer(
+        red_player = ScriptedPlayerWithRetries(
+            color=PieceColor.kRed, move_list=red_moves
+        )
+        black_player = ScriptedPlayerWithRetries(
             color=PieceColor.kBlk, move_list=black_moves
         )
         game = Game(

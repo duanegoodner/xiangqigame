@@ -7,7 +7,7 @@ import pandas as pd
 import xiangqigame_core as core
 
 import xiangqigame.core_dataclass_mirrors as cdm
-from xiangqigame.command_input import PlayerType, EvaluatorType
+from xiangqigame.enums import PlayerType, EvaluatorType
 from xiangqigame.core_dataclass_mirrors import PointsT
 
 

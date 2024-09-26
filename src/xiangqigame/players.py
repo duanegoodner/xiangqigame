@@ -54,7 +54,7 @@ class HumanPlayer(Player):
 class ScriptedPlayer(Player):
 
     def __init__(self, color: PieceColor, move_list: List[str]):
-        super().__init__(color)
+        super().__init__(color=color, player_type=PlayerType.SCRIPTED)
         self._move_list = move_list
         self._move_index = 0
 
@@ -76,6 +76,32 @@ class ScriptedPlayer(Player):
         cur_moves: List[Move],
     ):
         raise IllegalMoveInMoveList(illegal_move, game_board.map)
+
+
+class ScriptedPlayerWithRetries(Player):
+
+    def __init__(self, color: PieceColor, move_list: List[str]):
+        super().__init__(color=color, player_type=PlayerType.SCRIPTED)
+        self._move_list = move_list
+        self._move_index = 0
+        self._input_req = msg.InputRetrievalMessages()
+
+    def propose_move(
+        self, game_board: GameBoard, cur_moves: List[Move]
+    ) -> Move:
+        # time.sleep(0.2)
+        parsed_input = mt.parse_input(self._move_list[self._move_index])
+        if not mt.is_valid_algebraic_pair(parsed_input):
+            raise InvalidEntryInMoveList(self._move_list[self._move_index])
+        self._move_index += 1
+        move = mt.convert_parsed_input_to_move(parsed_input=parsed_input)
+        return move
+
+    def illegal_move_notice_response(
+        self, illegal_move: Move, game_board: GameBoard, cur_moves: List[Move]
+    ):
+        self._input_req.notify_illegal_move()
+        self.propose_move(game_board, cur_moves)
 
 
 class AIPlayer(Player):
