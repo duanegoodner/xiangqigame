@@ -44,20 +44,15 @@ def import_game_summary(path: Path) -> GameSummary:
     return decoder.decode(encoded_summary)
 
 
-def export_game_summary(game_summary: GameSummary, path: Path = None) -> Path:
-    if path is None:
-        path = (
-            Path(__file__).parent.parent.parent
-            / "data" / f"{game_summary.game_id}"
-            / f"{game_summary.game_id}.json"
-        )
-
+def export_game_summary(game_summary: GameSummary, path: Path):
+    if path.exists():
+        raise FileExistsError(f"{path} already exists")
     path.parent.mkdir(parents=True, exist_ok=True)
     encoded_summary = encoder.encode(game_summary)
     with path.open(mode="wb") as output_file:
         output_file.write(encoded_summary)
 
-    print(f"\nSummary data saved :\n{str(path)}")
+    print(f"\nSummary data saved :\n{str(path.resolve())}")
 
     return path
 

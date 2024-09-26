@@ -153,23 +153,16 @@ class GameSummaryPlotManager:
             fontsize=18,
         )
 
-    def save_figure(self, path: Path = None):
-        if path is None:
-            path = (
-                Path(__file__).parent.parent.parent
-                / "data"
-                / f"{self.game_summary.game_id}"
-                / f"{self.game_summary.game_id}.png"
-            )
+    def save_figure(self, path: Path):
+        if path.exists():
+            raise FileExistsError(f"{path} already exists")
         path.parent.mkdir(parents=True, exist_ok=True)
         plt.savefig(str(path), dpi=self.fig.dpi)
-        print(f"\nPlots of summary data saved to:\n{str(path)}\n")
+        print(f"\nPlots of summary data saved to:\n{str(path.resolve())}\n")
 
     def plot(
         self,
-        show_plot: bool = True,
-        save_figure: bool = False,
-        save_path: Path = None,
+        show_plot: bool = True
     ):
         search_results_by_type_plotter = SearchResultsByTypePlotter(
             axes=self.search_type_plots,
@@ -204,9 +197,6 @@ class GameSummaryPlotManager:
             add_plot_column_titles=False,
         )
         eval_score_plotter.plot()
-
-        if save_figure:
-            self.save_figure(path=save_path)
 
         if show_plot:
             plt.show()

@@ -16,3 +16,5 @@ CmakeCache.txt
 
 data/*
 !data/.gitkeep
+
+xiangqigame_data/
