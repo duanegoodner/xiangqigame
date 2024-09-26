@@ -10,6 +10,7 @@ from xiangqigame_core import (
     RandomMoveEvaluator,
 )
 
+
 @dataclass
 class PlayerInput:
     player_type: PlayerType
@@ -83,6 +84,7 @@ class XiangqiGameCommand:
     red_player_input: PlayerInput
     black_player_input: PlayerInput
     save_summary: bool = False
+    output_dir_suffix: str = ""
 
 
 @dataclass
@@ -106,8 +108,10 @@ class RunKwargsInterpreter:
         return XiangqiGameCommand(
             red_player_input=red_interpreter.interpret_command(),
             black_player_input=black_interpreter.interpret_command(),
-            save_summary=self.run_kwargs["save_summary"]
+            save_summary=self.run_kwargs["save_summary"],
+            output_dir_suffix=self.run_kwargs["save_dir_suffix"],
         )
+
 
 class XiangqiGameCommandInterpreter:
     _player_type_dispatch = {
@@ -187,7 +191,7 @@ class XiangqiGameCommandLine:
             choices=range(1, 10),
             required=False,
             help="Search depth to user for red AI player with minimax algo"
-                 "Default is 4.",
+            "Default is 4.",
         )
 
         self._parser.add_argument(
@@ -212,7 +216,7 @@ class XiangqiGameCommandLine:
             choices=["random", "minimax"],
             required=False,
             help="Search depth to user for black AI player with minimax algo"
-                 "Default is 4.",
+            "Default is 4.",
         )
 
         self._parser.add_argument(
@@ -233,15 +237,29 @@ class XiangqiGameCommandLine:
             required=False,
             help="Key size (in bits) used for black AI player Zobrist hashing",
         )
-        
+
         self._parser.add_argument(
-            "--save_summary", "-s", action="store_true", help="Save GameSummary as .json"
+            "--save_summary",
+            "-s",
+            action="store_true",
+            help="Save GameSummary as .json",
+        )
+
+        self._parser.add_argument(
+            "--save_dir_suffix",
+            "-d",
+            type=str,
+            required=False,
+            help="String to append to end of output directory name. Output dir "
+                 "relative to cwd will be "
+                 "./data/game_summaries/<timestamp><optional-suffix>",
         )
 
     def get_args(self) -> dict[str, Any]:
         self._attach_args()
         args_namespace = self._parser.parse_args()
         return vars(args_namespace)
+
 
 def main() -> XiangqiGameCommand:
     command_retriever = XiangqiGameCommandLine()
