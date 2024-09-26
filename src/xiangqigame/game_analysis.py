@@ -4,6 +4,6 @@ import xiangqigame.app as app
 
 if __name__ == "__main__":
 
-    game_summary = app.run(red_strength=3, black_player_type="person")
+    game_summary = app.run(black_algo="random", save_summary=True)
 
 

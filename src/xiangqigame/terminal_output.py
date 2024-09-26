@@ -35,8 +35,8 @@ class InputRetrievalMessages:
 class TerminalStatusReporter(GameStatusReporter):
 
     _disp_format = {
-        PieceColor.kRed: cr.Fore.RED + cr.Back.WHITE,
-        PieceColor.kBlk: cr.Fore.BLACK + cr.Back.WHITE,
+        PieceColor.kRed: cr.Style.BRIGHT + cr.Fore.WHITE + cr.Back.RED,
+        PieceColor.kBlk: cr.Style.BRIGHT + cr.Fore.WHITE + cr.Back.BLACK,
         PieceColor.kNul: cr.Fore.RESET + cr.Back.RESET,
     }
 
@@ -129,19 +129,6 @@ class TerminalStatusReporter(GameStatusReporter):
             f"\n{self._display_team_name[player_summary.color]} Player:\n"
             f"{player_type_string}{move_evaluator_string}{search_depth_string}{zobrist_key_size_string}"
         )
-
-    # def display_player_info(self, player_summary: PlayerSummary):
-    #     print(
-    #         f"\n{self._display_team_name[player_summary.color]} Player Info:\n"
-    #         f"----------------\n"
-    #         f"Player type: {player_summary.player_type.name}"
-    #     )
-    #     if player_summary.move_evaluator_type is not None:
-    #         print(f"Move evaluator: {player_summary.move_evaluator_type.name}")
-    #     if player_summary.max_search_depth is not None:
-    #         print(f"Max search depth: {player_summary.max_search_depth}")
-    #     if player_summary.zobrist_key_size is not None:
-    #         print(f"Zobrist key size: {player_summary.zobrist_key_size} bits")
 
     def display_prev_move(self, color: PieceColor, prev_move: Move = None):
         if prev_move:

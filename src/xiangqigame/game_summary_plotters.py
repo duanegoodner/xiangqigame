@@ -102,7 +102,7 @@ class GameSummaryPlotter(ABC):
         elif self.has_data(player=core.PieceColor.kRed):
             return {core.PieceColor.kRed: 0, core.PieceColor.kBlk: None}
         elif self.has_data(player=core.PieceColor.kBlk):
-            return {core.PieceColor.kRed: None, core.PieceColor.kBlk: 1}
+            return {core.PieceColor.kRed: None, core.PieceColor.kBlk: 0}
 
     @property
     def data_columns(self) -> pd.Index:
@@ -268,7 +268,8 @@ class SearchTimePlotter(GameSummaryPlotter):
 
     def plot_data(self):
         for player in [core.PieceColor.kRed, core.PieceColor.kBlk]:
-            self.plot_player_search_times(player=player)
+            if self.has_data(player=player):
+                self.plot_player_search_times(player=player)
 
 
 class EvalScorePlotter(GameSummaryPlotter):
