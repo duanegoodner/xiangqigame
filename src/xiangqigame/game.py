@@ -68,18 +68,6 @@ class Game:
                 self._board, cur_moves=avail_moves
             )
             if avail_moves.ContainsMove(proposed_move):
-            # # TODO move this comparison to a move_calculator.cpp function
-            # if any(
-            #     [
-            #         (
-            #             proposed_move.start.rank == move.start.rank
-            #             and proposed_move.start.file == move.start.file
-            #             and proposed_move.end.rank == move.end.rank
-            #             and proposed_move.end.file == move.end.file
-            #         )
-            #         for move in avail_moves.moves
-            #     ]
-            # ):
                 valid_move = proposed_move
             else:
                 self._players[self._whose_turn].illegal_move_notice_response(

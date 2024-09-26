@@ -48,7 +48,7 @@ class HumanPlayer(Player):
         self, illegal_move: Move, game_board: GameBoard, cur_moves: List[Move]
     ):
         self._input_req.notify_illegal_move()
-        self.propose_move(game_board, cur_moves)
+        # self.propose_move(game_board, cur_moves)
 
 
 class ScriptedPlayer(Player):
@@ -101,7 +101,7 @@ class ScriptedPlayerWithRetries(Player):
         self, illegal_move: Move, game_board: GameBoard, cur_moves: List[Move]
     ):
         self._input_req.notify_illegal_move()
-        self.propose_move(game_board, cur_moves)
+        # self.propose_move(game_board, cur_moves)
 
 
 class AIPlayer(Player):
