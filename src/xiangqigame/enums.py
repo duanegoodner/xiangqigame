@@ -10,6 +10,7 @@ class GameState(Enum):
 class PlayerType(Enum):
     HUMAN = auto()
     AI = auto()
+    SCRIPTED = auto()
 
 
 class EvaluatorType(Enum):
