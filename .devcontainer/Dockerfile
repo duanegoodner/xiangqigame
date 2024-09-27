@@ -1,8 +1,8 @@
 FROM debian:12
 
-ARG username=duane
-ARG user_uid=1000
-ARG user_gid=1000
+ARG username
+ARG user_uid
+ARG user_gid
 ENV USERNAME ${username}
 ENV USER_UID ${user_uid}
 ENV USER_GID ${user_gid}

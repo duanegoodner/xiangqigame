@@ -29,7 +29,7 @@ class GameSummaryPlotter(ABC):
         self,
         axes: np.ndarray,
         y_labels: Tuple[str, ...],
-        log_scale_rows: int | Tuple[..., int] = tuple(),
+        log_scale_rows: int | Tuple[int, ...] = tuple(),
         red_data: pd.DataFrame = None,
         black_data: pd.DataFrame = None,
         add_plot_column_titles: bool = True,
@@ -238,7 +238,7 @@ class SearchTimePlotter(GameSummaryPlotter):
     def __init__(
         self,
         axes: np.ndarray,
-        log_scale_rows: int | Tuple[..., int] = tuple(),
+        log_scale_rows: int | Tuple[int, ...] = tuple(),
         red_data: pd.DataFrame = None,
         black_data: pd.DataFrame = None,
         add_plot_column_titles: bool = True,
@@ -276,7 +276,7 @@ class EvalScorePlotter(GameSummaryPlotter):
     def __init__(
         self,
         axes: np.ndarray,
-        log_scale_rows: int | Tuple[..., int] = tuple(),
+        log_scale_rows: int | Tuple[int, ...] = tuple(),
         red_data: pd.DataFrame = None,
         black_data: pd.DataFrame = None,
         add_plot_column_titles: bool = True,
