@@ -94,10 +94,10 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-$MINICONDA_VERSI
     /bin/bash -c "source $CONDA_DIR/etc/profile.d/conda.sh && \
     conda init bash && \
     conda init zsh && \
-    conda install mamba -n base -c conda-forge && \
-    mamba update --name base --channel defaults conda && \
-    mamba env create --prefix $WORKSPACE/env --file /tmp/env.yml && \
-    mamba clean --all --yes --force-pkgs-dirs" && \
+#    conda install mamba -n base -c conda-forge && \
+#    mamba update --name base --channel defaults conda && \
+    conda env create --prefix $WORKSPACE/env --file /tmp/env.yml && \
+    conda clean --all --yes --force-pkgs-dirs" && \
     find ${CONDA_DIR} -follow -type f -name '*.a' -delete && \
     find ${CONDA_DIR} -follow -type f -name '*.pyc' -delete && \
     # Persist the sourcing of conda.sh in .bashrc and .zshrc
