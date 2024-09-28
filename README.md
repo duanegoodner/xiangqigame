@@ -1,5 +1,5 @@
 
-![intro figure](doc/headline_image_coloradj.png)
+![intro figure](images/headline_image_coloradj.png)
 
 
 ## Overview
@@ -45,28 +45,24 @@ Xiangqigame can be installed natively (preferably in a virtual environment or co
     ```
 - Exiting and stopping the Docker container
 
-    When you want to stop the container (presumably after trying some of the commands described in the subsequent sections), run:
-    ```
-    exit
-    docker compose down
-    ```
+    When you want to stop the container, run `docker compose down` from the `.devcontainer/` directory (outside of the Docker container).
 
 ### Running Xiangqigame
-The command line interface is accessed using the `play_xiangqi` command. Running this command without any additional arguments will start an AI vs AI game with both players using a Minimax search depth of 4, and 64 bit keys in their Zobrist hash tables.
+The command line interface is accessed using the `play_xiangqi` command.
+
+`play_xiangqi --help` provides information of various options.
+
+Running this command without any additional arguments will start an AI vs AI game with both players using a Minimax search depth of 4, and 64 bit keys in their Zobrist hash tables.
 
 ### Demo
 The following gif recording demonstrates the procedure for native installation, and then runs several AI vs AI games using the `play_xiangqi` command. The first game uses default settings. For subsequent games, command line arguments are used to adjust players' minimax search depths, and save gaame data/plots to .json and .png files.
 
-![intro figure](doc/xiangqigame_demo.gif)
+![demo](images/xiangqigame_demo.gif)
 
 
-```
-play_xiangqi
-```
 
-### Core Engine
 
-The core of the AI engine is written in C++. 
+
 
 ### Python Integration
 
@@ -79,14 +75,6 @@ The core of the AI engine is written in C++.
 
 
 ### Game Analysis and Reporting
-
-
-## Getting Started
-
-### Installing and running natively
-
-#### Requirements
-
 
 #### Installing and running in a containerized environment
 

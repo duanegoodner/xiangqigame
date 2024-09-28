@@ -1,0 +1,10 @@
+site_name: Xiangqigame
+nav:
+- Home: index.md
+- Getting Started: getting_started.md
+- Game Rules and Notation: notation.md
+- Command Line Interface: play_xiangqi_command.md
+- Implementation Details: implementation_details.md
+- Analyzing Game Data: analyzing_game_data.md
+
+# theme: material
