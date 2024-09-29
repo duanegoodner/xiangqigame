@@ -161,10 +161,8 @@ class XiangqiGameCommandLine:
             prog="play_xiangqi",
             description="A Xiangqi (a.k.a. Chinese Chess) game that can be "
             "played as Human vs. Human, AI vs. AI, or Human vs. AI",
-            epilog="Note: If all default parameters are used, the red player "
-            "will be an AI using a Minimax algorithm with search depth "
-            "= 1, and the black player will be an AI using Minimax with "
-            "search depth = 2.",
+            epilog="Note: If all default parameters are used, both players will be AI and "
+            "use Minimax with search depth = 4, and 64 bit Zobrist keys.",
         )
 
     def _attach_args(self):

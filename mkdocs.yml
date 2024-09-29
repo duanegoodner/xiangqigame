@@ -1,9 +1,19 @@
 site_name: Xiangqigame
 nav:
 - Home: index.md
-- Getting Started: getting_started.md
+- Demos: 
+    - Native Installation: demos/native_install.md
+    - Docker Installation: demos/docker_install.md
+    - Red SD-5 K-64 vs. Black SD-5 K-64: demos/game_01.md
+    - Red SD-5 K-64 vs. Black SD-3 K-64: demos/game_02.md
+    - Red SD-3 K-64 vs. Black SD-5 K-64: demos/game_03.md
+    - Red Random vs. Black SD-5 K-64: demos/game_04.md
+    - Red SD-6 K-64 vs. Black SD-6 K-64: demos/game_05.md
+    - Red SD-5 K-64 vs. Black SD-5 K-128: demos/game_06.md
+    - Red Human vs. Black SD-4 K-64: demos/game_07.md
+- Installing: installing.md
+- Running: running.md
 - Game Rules and Notation: notation.md
-- Command Line Interface: play_xiangqi_command.md
 - Implementation Details: implementation_details.md
 - Analyzing Game Data: analyzing_game_data.md
 
