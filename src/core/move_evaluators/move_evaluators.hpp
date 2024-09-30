@@ -1,11 +1,11 @@
 // Filename: move_evaluators.hpp
 // Author: Duane Goodner
 // Created: 2022-12-17
-// Last Modified: 2024-08-16
+// Last Modified: 2024-09-30
 
 // Description:
 // Defines PiecePointsEvaluator template class and interfaces that
-// PiecePointsEvaluator requires GameBoard and GamePoints classes to comply
+// PiecePointsEvaluator requires NewGameBoard and GamePoints classes to comply
 // with.
 
 #ifndef _MINIMAX_EVALUATOR_
@@ -21,7 +21,7 @@
 using namespace board_components;
 
 // CRTP INTERFACE: Evaluator <- SpaceInfoProvider (concrete example =
-// GameBoard)
+// New GameBoard)
 template <typename ConcreteSpaceInfoProvider>
 class SpaceInfoProvider {
 public:
@@ -128,7 +128,7 @@ public:
 // IMPLEMENTS INTERFACE:
 //    MoveEvaluatorInterface
 // USES:
-//    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
+//    ConcreteSpaceInfoProvider (e.g. NewGameBoard) that implements
 //    SpaceInfoProvider.
 //    ConcretePieceValueProvider (e.g. PiecePoints) that
 //    implements PieceValueProvider
@@ -170,12 +170,6 @@ public:
     return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
   }
 
-  // inline bool IsSignedPieceValueType() {
-  //   return numeric_limits<typename ConcretePieceValueProvider::PieceValue_t>::is_signed;
-  // }
-  // inline size_t SizeOfPieceValueTypeBits() {
-  //   return 8 * sizeof(typename ConcretePieceValueProvider::PieceValue_t);
-  // };
 
 private:
   PieceColor evaluating_player_;
@@ -218,7 +212,7 @@ private:
 // IMPLEMENTS INTERFACE:
 //    MoveEvaluatorInterface
 // USES:
-//    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
+//    ConcreteSpaceInfoProvider (e.g. NewGameBoard) that implements
 //    SpaceInfoProvider.
 // Randomly chooses one of the legal moves available to evaluating_player_.
 template <typename ConcreteSpaceInfoProvider>

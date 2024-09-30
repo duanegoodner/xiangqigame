@@ -4,7 +4,7 @@
 // Last Modified: 2024-09-30
 
 // Description:
-// Definition of GameBoard class.
+// Definition of NewGameBoard class.
 
 #ifndef _GAME_BOARD_
 #define _GAME_BOARD_
