@@ -143,6 +143,6 @@ private:
   }
 };
 
-#include <game_board.tpp>
+// #include <game_board.tpp>
 
 #endif // _GAME_BOARD_
