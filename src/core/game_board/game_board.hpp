@@ -4,7 +4,7 @@
 // Last Modified: 2024-09-30
 
 // Description:
-// Definition of NewGameBoard class.
+// Definition of GameBoard class.
 
 #ifndef _GAME_BOARD_
 #define _GAME_BOARD_
@@ -20,13 +20,13 @@
 using namespace std;
 using namespace board_components;
 
-// Template for class NewGameBoard which implements interface
+// Template for class GameBoard which implements interface
 // SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
 
-class NewGameBoard : public SpaceInfoProvider<NewGameBoard> {
+class GameBoard : public SpaceInfoProvider<GameBoard> {
 public:
-  NewGameBoard();
-  NewGameBoard(const BoardMapInt_t starting_board);
+  GameBoard();
+  GameBoard(const BoardMapInt_t starting_board);
   vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color);
   PieceColor ImplementGetColor(BoardSpace space);
   PieceType ImplementGetType(BoardSpace space);

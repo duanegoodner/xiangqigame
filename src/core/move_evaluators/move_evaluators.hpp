@@ -5,7 +5,7 @@
 
 // Description:
 // Defines PiecePointsEvaluator template class and interfaces that
-// PiecePointsEvaluator requires NewGameBoard and GamePoints classes to comply
+// PiecePointsEvaluator requires GameBoard and GamePoints classes to comply
 // with.
 
 #ifndef _MINIMAX_EVALUATOR_
@@ -128,7 +128,7 @@ public:
 // IMPLEMENTS INTERFACE:
 //    MoveEvaluatorInterface
 // USES:
-//    ConcreteSpaceInfoProvider (e.g. NewGameBoard) that implements
+//    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
 //    SpaceInfoProvider.
 //    ConcretePieceValueProvider (e.g. PiecePoints) that
 //    implements PieceValueProvider
@@ -212,7 +212,7 @@ private:
 // IMPLEMENTS INTERFACE:
 //    MoveEvaluatorInterface
 // USES:
-//    ConcreteSpaceInfoProvider (e.g. NewGameBoard) that implements
+//    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
 //    SpaceInfoProvider.
 // Randomly chooses one of the legal moves available to evaluating_player_.
 template <typename ConcreteSpaceInfoProvider>
