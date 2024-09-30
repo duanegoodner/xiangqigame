@@ -1,9 +1,55 @@
 
-# Design and Implementation Details
+# Design and Implementation Highlights
+
+This document provides a high level overview of the project  structure, and the responsibilities of various components and modules. Some finer-grained details of the most critical modules and classes are also included.
+
+## Top Level Components
 
 Xiangqigame has three main components: a C++ core to enable fast computatations, a Python outer layer, and a Pybind11 module that provides an interface between the C++ and Python layers.
 
+Each of these components resides in a different sub-directory of `./src`.
+
+```
+./src
+├── bindings
+├── core
+├── data
+└── xiangqigame
+```
+Note that ./src also has a `data/` sub-directory containing .json files used for points calculations.
+
 ## C++ Core Engine
+
+### Libraries
+
+Below is the high-level file structure of `./src/core`.
+
+```
+./src/core
+├── board_components
+├── board_utilities
+├── common
+├── game_board
+├── hash_calculator
+├── json_interface
+├── json_internal
+├── json_io
+├── json_validation
+├── move_calculator
+├── move_evaluators
+├── piece_moves
+├── piece_points
+├── piece_points_spec
+├── points_containers
+└── utility_functs
+```
+
+- **board_components**, **board_utilities**, and **common** contain header-only libraries with structs, stand-alone functions, constants, and tyepdefs that are used by multiple other libraries.
+
+- **game_board** class `NewGameBoard` which complies with CRTP interface `SpaceInfoProvider` defined in `move_evaluators`. 
+
+- **hash_calculator**
+
 
 ### Internal Game Board
 
@@ -46,6 +92,39 @@ Xiangqigame has three main components: a C++ core to enable fast computatations,
 
 
 ## Python Package Responsibilities
+
+
+```
+.
+├── app.py
+├── command_input.py
+├── core_dataclass_mirrors.py
+├── enums.py
+├── game_analysis.py
+├── game_interfaces.py
+├── game_output_generator.py
+├── game.py
+├── game_summary_io.py
+├── game_summary_plot_manager.py
+├── game_summary_plotters.py
+├── game_summary.py
+├── handlers
+│   ├── errors.py
+│   ├── __init__.py
+│   └── signals.py
+├── __init__.py
+├── __main__.py
+├── move_translator.py
+├── output_path_builder.py
+├── piece_info_extractor.py
+├── piece_points.py
+├── player_builder.py
+├── players.py
+├── player_summary.py
+├── terminal_output.py
+└── terminal_output.py
+
+```
 
 ### Players
 

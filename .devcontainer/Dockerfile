@@ -41,6 +41,7 @@ RUN sudo apt-get update --fix-missing && \
     libzip-dev \
     nano \
     make \
+    plantuml \
     fonts-powerline \
     rsync \
     unzip \

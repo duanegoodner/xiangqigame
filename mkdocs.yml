@@ -5,7 +5,7 @@ nav:
 - Running: running.md
 - Game Rules and Notation: notation.md
 - Rules: implemented_rules.md
-- Design and Implementation Details: implementation_details.md
+- Design and Implementation Highlights: implementation_details.md
 # - Analyzing Game Data: analyzing_game_data.md
 
 theme:
