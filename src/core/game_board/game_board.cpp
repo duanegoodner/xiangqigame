@@ -89,14 +89,50 @@ GamePiece NewGameBoard::GetOccupant(BoardSpace space) {
   return board_map_[space.rank][space.file];
 };
 
-const BoardMap_t& NewGameBoard::map() const { return board_map_; }
+const BoardMap_t &NewGameBoard::map() const { return board_map_; }
 
 void NewGameBoard::ImplementAttachMoveCallback(function<void(ExecutedMove)> callback) {
-    move_callbacks_.emplace_back(callback);
-  }
+  move_callbacks_.emplace_back(callback);
+}
 
 std::map<PieceColor, vector<ExecutedMove>> NewGameBoard::GetMoveLog() {
-    return move_log_;
+  return move_log_;
+}
+
+void NewGameBoard::UpdateHashCalculator(ExecutedMove executed_move) {
+  for (const auto &callback : move_callbacks_) {
+    callback(executed_move);
   }
+};
 
+void NewGameBoard::SetOccupant(BoardSpace space, GamePiece piece) {
+  board_map_[space.rank][space.file] = piece;
+}
 
+void NewGameBoard::AddToMoveLog(ExecutedMove executed_move) {
+  auto piece_color = executed_move.moving_piece.piece_color;
+  move_log_[piece_color].push_back(executed_move);
+};
+
+void NewGameBoard::RemoveFromMoveLog(ExecutedMove executed_move) {
+  auto piece_color = executed_move.moving_piece.piece_color;
+  auto last_move_by_color = move_log_[piece_color].back();
+  if (!(executed_move == last_move_by_color)) {
+    throw runtime_error("Last move in log does not match move to be removed");
+  }
+  move_log_[piece_color].pop_back();
+}
+
+bool NewGameBoard::ViolatesRepeatRule(PieceColor color) {
+  for (auto period_length : kRepeatPeriodsToCheck) {
+    auto lookback_length = (kMaxAllowedRepeatPeriods + 1) * period_length;
+    if (utility_functs::hasRepeatingPattern(
+            move_log_[color],
+            lookback_length,
+            period_length
+        )) {
+      return true;
+    }
+  }
+  return false;
+}
