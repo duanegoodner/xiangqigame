@@ -18,8 +18,6 @@ const BoardMapInt_t kStartingBoard{{
     {-5, -4, -3, -2, -1, -2, -3, -4, -5},
 }};
 
-inline BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board);
-
 const int kRepeatPeriodsToCheck[3] = {2, 3, 4};
 const int kMaxAllowedRepeatPeriods = 2;
 

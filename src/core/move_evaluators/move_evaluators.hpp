@@ -1,7 +1,7 @@
 // Filename: move_evaluators.hpp
 // Author: Duane Goodner
 // Created: 2022-12-17
-// Last Modified: 2024-08-16
+// Last Modified: 2024-09-30
 
 // Description:
 // Defines PiecePointsEvaluator template class and interfaces that
@@ -21,7 +21,7 @@
 using namespace board_components;
 
 // CRTP INTERFACE: Evaluator <- SpaceInfoProvider (concrete example =
-// GameBoard)
+// New GameBoard)
 template <typename ConcreteSpaceInfoProvider>
 class SpaceInfoProvider {
 public:
@@ -170,12 +170,6 @@ public:
     return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
   }
 
-  // inline bool IsSignedPieceValueType() {
-  //   return numeric_limits<typename ConcretePieceValueProvider::PieceValue_t>::is_signed;
-  // }
-  // inline size_t SizeOfPieceValueTypeBits() {
-  //   return 8 * sizeof(typename ConcretePieceValueProvider::PieceValue_t);
-  // };
 
 private:
   PieceColor evaluating_player_;

@@ -25,35 +25,35 @@ using namespace piece_points;
 
 template <typename KeyType>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
-  py::class_<MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>>(
+  py::class_<MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePoints>>(
       m,
       class_name.c_str()
   )
       .def(
-          py::init<PieceColor, int, NewGameBoard &>(),
+          py::init<PieceColor, int, GameBoard &>(),
           "evaluating_player"_a,
           "starting_search_depth"_a,
           "game_board"_a
       )
       .def(
           "select_move",
-          &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
+          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePoints>::
               SelectMove
       )
       .def(
           "get_search_summaries",
-          &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
+          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePoints>::
               GetSearchSummaries,
           py::return_value_policy::copy
       )
       .def(
           "starting_search_depth",
-          &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
+          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePoints>::
               StartingSearchDepth
       )
       .def(
           "zobrist_key_size_bits",
-          &MinimaxMoveEvaluator<NewGameBoard, HashCalculator<KeyType>, PiecePoints>::
+          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePoints>::
               KeySizeBits
       );
 }
@@ -130,23 +130,23 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .value("BetaPrune", kBetaPrune)
       .export_values();
 
-  py::class_<NewGameBoard>(m, "GameBoard")
+  py::class_<GameBoard>(m, "GameBoard")
       .def(py::init<>())
-      .def("map", &NewGameBoard::map)
-      .def("ExecuteMove", &NewGameBoard::ExecuteMove, "move"_a)
-      .def("UndoMove", &NewGameBoard::UndoMove, "executed_move"_a)
-      .def("GetAllSpacesOccupiedBy", &NewGameBoard::GetAllSpacesOccupiedBy, "color"_a)
-      .def("CalcFinalMovesOf", &NewGameBoard::CalcFinalMovesOf, "color"_a)
-      .def("IsInCheck", &NewGameBoard::IsInCheck, "color"_a)
-      .def("GetType", &NewGameBoard::GetType, "space"_a)
-      .def("GetMoveLog", &NewGameBoard::GetMoveLog)
-      .def("GetColor", &NewGameBoard::GetColor, "space"_a);
+      .def("map", &GameBoard::map)
+      .def("ExecuteMove", &GameBoard::ExecuteMove, "move"_a)
+      .def("UndoMove", &GameBoard::UndoMove, "executed_move"_a)
+      .def("GetAllSpacesOccupiedBy", &GameBoard::GetAllSpacesOccupiedBy, "color"_a)
+      .def("CalcFinalMovesOf", &GameBoard::CalcFinalMovesOf, "color"_a)
+      .def("IsInCheck", &GameBoard::IsInCheck, "color"_a)
+      .def("GetType", &GameBoard::GetType, "space"_a)
+      .def("GetMoveLog", &GameBoard::GetMoveLog)
+      .def("GetColor", &GameBoard::GetColor, "space"_a);
 
   m.def("opponent_of", &opponent_of);
 
-  py::class_<RandomMoveEvaluator<NewGameBoard>>(m, "RandomMoveEvaluator")
-      .def(py::init<PieceColor, NewGameBoard &>(), "evaluating_player"_a, "game_board"_a)
-      .def("select_move", &RandomMoveEvaluator<NewGameBoard>::SelectMove);
+  py::class_<RandomMoveEvaluator<GameBoard>>(m, "RandomMoveEvaluator")
+      .def(py::init<PieceColor, GameBoard &>(), "evaluating_player"_a, "game_board"_a)
+      .def("select_move", &RandomMoveEvaluator<GameBoard>::SelectMove);
 
   py::class_<SearchSummary>(m, "SearchSummary")
       .def(py::init<int>()) // Constructor, as needed for initialization

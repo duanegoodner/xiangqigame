@@ -1,7 +1,7 @@
 // Filename: board_components.hpp
 // Author: Duane Goodner
 // Created: 2022-12-02
-// Last Modified: 2024-08-16
+// Last Modified: 2024-09-30
 
 // Description:
 // Contains functions for obtaining info about the state of a board map.
@@ -20,6 +20,16 @@
 
 namespace board_utilities {
 using namespace board_components;
+
+inline BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
+  BoardMap_t game_piece_board;
+  for (auto rank = 0; rank < kNumRanks; rank++) {
+    for (auto file = 0; file < kNumFiles; file++) {
+      game_piece_board[rank][file] = GamePiece(int_board[rank][file]);
+    }
+  }
+  return game_piece_board;
+}
 
 inline bool is_occupied(const BoardMap_t &board_map, const BoardSpace &space) {
   return board_map[space.rank][space.file].piece_color != PieceColor::kNul;

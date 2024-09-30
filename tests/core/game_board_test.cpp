@@ -6,7 +6,7 @@
 
 class GameBoardTest : public ::testing::Test {
 protected:
-  NewGameBoard gb_;
+  GameBoard gb_;
   const BoardMapInt_t kRepeatMoveTestBoard{{
       {0, 0, 0, 1, 0, 0, 0, 0, 0},
       {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -101,7 +101,7 @@ TEST_F(GameBoardTest, ExecuteMoveWithAttachedHashCalculators) {
 }
 
 TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_02) {
-  NewGameBoard late_game_board(kRepeatMoveTestBoard);
+  GameBoard late_game_board(kRepeatMoveTestBoard);
   auto red_king_position_a = BoardSpace{9, 4};
   auto red_king_position_b = BoardSpace{9, 3};
 
@@ -119,7 +119,7 @@ TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_02) {
 }
 
 TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_03) {
-  NewGameBoard late_game_board(
+  GameBoard late_game_board(
       kRepeatMoveTestBoard
   );
   auto red_king_position_a = BoardSpace{9, 4};

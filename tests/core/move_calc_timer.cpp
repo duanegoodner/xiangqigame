@@ -7,7 +7,7 @@ using namespace std::chrono;
 
 int main() {
   auto my_game_board =
-      NewGameBoard();
+      GameBoard();
 
   auto start = high_resolution_clock::now();
 
