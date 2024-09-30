@@ -28,59 +28,23 @@ class NewGameBoard : public SpaceInfoProvider<NewGameBoard> {
 public:
   NewGameBoard();
   NewGameBoard(const BoardMapInt_t starting_board);
-  vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color) {
-    return get_all_spaces_occupied_by(board_map_, color);
-  }
-  PieceColor ImplementGetColor(BoardSpace space) { return get_color(board_map_, space); }
-  PieceType ImplementGetType(BoardSpace space) { return get_type(board_map_, space); }
-
-  MoveCollection ImplementCalcFinalMovesOf(PieceColor color) {
-    return _ImplementCalcFinalMovesOf(color);
-  }
-  bool IsInCheck(PieceColor color) {
-    return _IsInCheck(color);
-  }
-  ExecutedMove ImplementExecuteMove(Move move) {
-    return _ImplementExecuteMove(move);
-  };
-  void ImplementUndoMove(ExecutedMove executed_move) {
-    return _ImplementUndoMove(executed_move);
-  };
-  GamePiece GetOccupant(BoardSpace space) { return board_map_[space.rank][space.file]; };
-  const BoardMap_t &map() const { return board_map_; }
-  void ImplementAttachMoveCallback(function<void(ExecutedMove)> callback) {
-    move_callbacks_.emplace_back(callback);
-  }
-  std::map<PieceColor, vector<ExecutedMove>> GetMoveLog() {
-    return move_log_;
-  }
+  vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color);
+  PieceColor ImplementGetColor(BoardSpace space);
+  PieceType ImplementGetType(BoardSpace space);
+  MoveCollection ImplementCalcFinalMovesOf(PieceColor color);
+  bool IsInCheck(PieceColor color);
+  ExecutedMove ImplementExecuteMove(Move move);
+  void ImplementUndoMove(ExecutedMove executed_move);
+  GamePiece GetOccupant(BoardSpace space);
+  const BoardMap_t &map() const;
+  void ImplementAttachMoveCallback(function<void(ExecutedMove)> callback);
+  std::map<PieceColor, vector<ExecutedMove>> GetMoveLog();
 
 private:
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
   vector<function<void(ExecutedMove)>> move_callbacks_;  // hash calc functs go here
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
-
-  ExecutedMove _ImplementExecuteMove(Move move) {
-    auto moving_piece = GetOccupant(move.start);
-    auto destination_piece = GetOccupant(move.end);
-    SetOccupant(move.end, moving_piece);
-    SetOccupant(move.start, GamePiece(PieceType::kNnn, PieceColor::kNul));
-
-    auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
-    UpdateHashCalculator(executed_move);
-    AddToMoveLog(executed_move);
-
-    return ExecutedMove{move, moving_piece, destination_piece};
-  };
-  
-  void _ImplementUndoMove(ExecutedMove executed_move) {
-    SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
-    SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
-    UpdateHashCalculator(executed_move);
-    RemoveFromMoveLog(executed_move);
-  }
-
   
   void UpdateHashCalculator(ExecutedMove executed_move) {
     for (const auto &callback : move_callbacks_) {
@@ -115,32 +79,32 @@ private:
     }
     return false;
   }
-  bool _IsInCheck(PieceColor color) {
-    auto gen_position = get_general_position(board_map_, color);
-    auto opponent_moves =
-        move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
-    return opponent_moves.ContainsDestination(gen_position);
-  }
-  MoveCollection _ImplementCalcFinalMovesOf(PieceColor color) {
-    auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
-    MoveCollection validated_moves;
-    validated_moves.moves.reserve(un_tested_moves.moves.size());
+  // bool _IsInCheck(PieceColor color) {
+  //   auto gen_position = get_general_position(board_map_, color);
+  //   auto opponent_moves =
+  //       move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
+  //   return opponent_moves.ContainsDestination(gen_position);
+  // }
+  // MoveCollection _ImplementCalcFinalMovesOf(PieceColor color) {
+  //   auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
+  //   MoveCollection validated_moves;
+  //   validated_moves.moves.reserve(un_tested_moves.moves.size());
 
-    for (auto move : un_tested_moves.moves) {
-      auto executed_move = ImplementExecuteMove(move);
-      auto resulting_opponent_moves =
-          move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
-      auto resulting_gen_position = get_general_position(board_map_, color);
+  //   for (auto move : un_tested_moves.moves) {
+  //     auto executed_move = ImplementExecuteMove(move);
+  //     auto resulting_opponent_moves =
+  //         move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
+  //     auto resulting_gen_position = get_general_position(board_map_, color);
 
-      if (not resulting_opponent_moves.ContainsDestination(resulting_gen_position) and
-          not ViolatesRepeatRule(color)) {
-        validated_moves.Append(move);
-      }
+  //     if (not resulting_opponent_moves.ContainsDestination(resulting_gen_position) and
+  //         not ViolatesRepeatRule(color)) {
+  //       validated_moves.Append(move);
+  //     }
 
-      ImplementUndoMove(executed_move);
-    }
-    return validated_moves;
-  }
+  //     ImplementUndoMove(executed_move);
+  //   }
+  //   return validated_moves;
+  // }
 };
 
 // #include <game_board.tpp>

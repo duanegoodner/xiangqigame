@@ -96,7 +96,10 @@
         "latch": "cpp",
         "scoped_allocator": "cpp",
         "shared_mutex": "cpp",
-        "syncstream": "cpp"
+        "syncstream": "cpp",
+        "expected": "cpp",
+        "spanstream": "cpp",
+        "stacktrace": "cpp"
     },
     "cmake.sourceDirectory": "/home/duane/workspace/project"
 }
