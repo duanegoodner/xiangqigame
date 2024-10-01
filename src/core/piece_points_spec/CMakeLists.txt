@@ -4,7 +4,7 @@ add_library(
 
     target_link_libraries(
         piece_points_spec PRIVATE
-        common
+        # common
         json_internal
         nlohmann_json
         utility_functs

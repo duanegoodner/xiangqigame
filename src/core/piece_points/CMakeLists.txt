@@ -4,7 +4,7 @@ add_library(
 
 target_link_libraries(
     piece_points PRIVATE
-    common
+    # common
     json_internal
     nlohmann_json::nlohmann_json
     nlohmann_json_schema_validator
@@ -16,7 +16,7 @@ target_link_libraries(
 target_include_directories(
     piece_points PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${PROJECT_SOURCE_DIR}/src/core/board_components
+    # ${PROJECT_SOURCE_DIR}/src/core/board_components
     ${PROJECT_SOURCE_DIR}/src/core/utility_functs
     ${PROJECT_SOURCE_DIR}/src/core/json_internal
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
@@ -28,7 +28,7 @@ add_executable(
 )
 target_link_libraries(
     bpo_json_to_raw_json PRIVATE
-    common
+    # common
     piece_points
     piece_points_spec
     minimax_evaluator
@@ -39,7 +39,7 @@ target_link_libraries(
 target_include_directories(
     bpo_json_to_raw_json PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${PROJECT_SOURCE_DIR}/src/core/board_components
+    # ${PROJECT_SOURCE_DIR}/src/core/board_components
     ${PROJECT_SOURCE_DIR}/src/core/json_internal
     ${PROJECT_SOURCE_DIR}/src/core/utility_functs
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators

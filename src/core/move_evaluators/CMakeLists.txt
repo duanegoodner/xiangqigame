@@ -4,8 +4,8 @@ add_library(
 
 target_link_libraries(
     minimax_evaluator PRIVATE
-    board_components
-    common
+    # board_components
+    # common
     utility_functs
     nlohmann_json::nlohmann_json
     )
