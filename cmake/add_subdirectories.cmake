@@ -1,4 +1,4 @@
-add_subdirectory(src/core/board_components)
+# add_subdirectory(src/core/board_components)
 add_subdirectory(src/core/board_utilities)
 add_subdirectory(src/core/common)
 add_subdirectory(src/core/game_board)
