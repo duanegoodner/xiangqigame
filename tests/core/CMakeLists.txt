@@ -20,6 +20,19 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/core/piece_moves
     )
 
+add_executable(piece_moves_test piece_moves_test.cpp)
+target_link_libraries(
+    piece_moves_test PRIVATE
+    piece_moves
+    board_utilities
+    GTest::gtest_main
+)
+target_include_directories(
+    piece_moves_test PRIVATE
+    ${PROJECT_SOURCE_DIR}/src/core/piece_moves
+    ${PROJECT_SOURCE_DIR}/src/core/board_utilities
+)
+
 add_executable(game_board_test game_board_test.cpp)
 target_link_libraries(
     game_board_test PRIVATE

@@ -24,7 +24,7 @@ void PieceMoves::SoldierMoves(
   if (not space.IsInHomelandOf(color)) {
     for (auto side_vector : kSideDirections) {
       auto side_space = space + side_vector;
-      if (exists_and_passes_color_test(board_map, fwd_space, color)) {
+      if (exists_and_passes_color_test(board_map, side_space, color)) {
         team_moves.Append(Move{space, side_space});
       }
     }
