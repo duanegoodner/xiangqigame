@@ -1,8 +1,6 @@
 add_library(
         key_generator INTERFACE
         key_generator.hpp)
-# target_link_libraries(key_generator INTERFACE
-#         common)
 target_include_directories(key_generator INTERFACE
         ${PROJECT_SOURCE_DIR}/src/core/common/)
 
@@ -11,9 +9,6 @@ add_library(
         hash_calculator.hpp)
 target_link_libraries(
         hash_calculator INTERFACE
-        # board_components
-        # board_utilities
-        # common
         key_generator
         utility_functs
         game_board

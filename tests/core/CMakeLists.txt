@@ -16,13 +16,9 @@ target_link_libraries(
     GTest::gtest_main)
 target_include_directories(
     piece_points_test PRIVATE
-    # ${PROJECT_SOURCE_DIR}/src/core/utility_functs
-    # ${PROJECT_SOURCE_DIR}/src/core/json_internal
-    # ${PROJECT_SOURCE_DIR}/src/core/move_calculator
     ${PROJECT_SOURCE_DIR}/src/core/piece_points
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
-    # ${PROJECT_SOURCE_DIR}/src/core/utility_functs
     ${rapidjson_SOURCE_DIR}/include)
 
 add_executable(

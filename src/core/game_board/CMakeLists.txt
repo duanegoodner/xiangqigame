@@ -4,9 +4,6 @@ add_library(
 
 target_link_libraries(
     game_board PRIVATE
-    # board_components
-    # board_utilities
-    # common
     move_calculator
     minimax_evaluator
     piece_moves
@@ -22,5 +19,4 @@ target_include_directories(
     ${PROJECT_SOURCE_DIR}/src/core/piece_points
     ${PROJECT_SOURCE_DIR}/src/core/piece_moves
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
-    # ${PROJECT_SOURCE_DIR}/src/core/utility_functs
     )
