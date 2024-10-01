@@ -13,8 +13,5 @@ target_link_libraries(
 
 target_include_directories(
     game_board PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${PROJECT_SOURCE_DIR}/src/core/hash_calculator
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
     )

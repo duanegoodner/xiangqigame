@@ -15,12 +15,7 @@ target_link_libraries(
 
 target_include_directories(
     piece_points PRIVATE
-    # ${CMAKE_CURRENT_SOURCE_DIR}
-    # ${PROJECT_SOURCE_DIR}/src/core/board_components
-    # ${PROJECT_SOURCE_DIR}/src/core/utility_functs
-    ${PROJECT_SOURCE_DIR}/src/core/json_internal
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
-    # ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/core/json_internal)
 
 add_executable(
@@ -28,7 +23,6 @@ add_executable(
 )
 target_link_libraries(
     bpo_json_to_raw_json PRIVATE
-    # common
     piece_points
     piece_points_spec
     minimax_evaluator
@@ -38,27 +32,7 @@ target_link_libraries(
 )
 target_include_directories(
     bpo_json_to_raw_json PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    # ${PROJECT_SOURCE_DIR}/src/core/board_components
     ${PROJECT_SOURCE_DIR}/src/core/json_internal
-    ${PROJECT_SOURCE_DIR}/src/core/utility_functs
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec)
 
-# add_executable(
-# piece_points_raw_json_writer piece_points_raw_json_writer.cpp
-# )
-# target_link_libraries(
-# piece_points_raw_json_writer PRIVATE
-# common
-# piece_points
-# nlohmann_json
-# utility_functs
-# )
-# target_include_directories(
-# piece_points_raw_json_writer PRIVATE
-# ${CMAKE_CURRENT_SOURCE_DIR}
-# ${PROJECT_SOURCE_DIR}/board_components
-# ${PROJECT_SOURCE_DIR}/utility_functs
-# # ${PROJECT_SOURCE_DIR}/game_board
-# )
