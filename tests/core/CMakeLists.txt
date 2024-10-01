@@ -90,7 +90,7 @@ add_executable(
     key_generator_test.cpp)
 target_link_libraries(
     key_generator_test PRIVATE
-    key_generator
+    # key_generator
     GTest::gtest_main)
 target_include_directories(key_generator_test PRIVATE
     ${PROJECT_SOURCE_DIR}/src/core/common

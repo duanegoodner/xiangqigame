@@ -6,8 +6,9 @@ target_link_libraries(
     nlohmann_json::nlohmann_json
     nlohmann_json_schema_validator)
 
-    target_include_directories(
-    json_io PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${PROJECT_SOURCE_DIR}/src/core/json_interface)
+    # target_include_directories(
+    # json_io PRIVATE
+    # ${CMAKE_CURRENT_SOURCE_DIR}
+    # ${PROJECT_SOURCE_DIR}/src/core/json_interface
+    # )
 

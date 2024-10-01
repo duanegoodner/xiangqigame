@@ -8,6 +8,7 @@ target_link_libraries(
     nlohmann_json::nlohmann_json
     )
 
+# .hpp file needs to access .tpp file CMAKE_CURRENT_SOURCE_DIR
 target_include_directories(
     minimax_evaluator PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}

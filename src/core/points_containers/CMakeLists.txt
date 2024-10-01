@@ -5,9 +5,9 @@ target_link_libraries(
     # common
     utility_functs
 )
-target_include_directories(
-    points_containers PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    ${PROJECT_SOURCE_DIR}/src/core/utility_functs
-)
+# target_include_directories(
+#     points_containers PRIVATE
+#     ${CMAKE_CURRENT_SOURCE_DIR}
+#     ${PROJECT_SOURCE_DIR}/src/core/utility_functs
+# )
 

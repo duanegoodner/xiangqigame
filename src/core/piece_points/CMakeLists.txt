@@ -15,12 +15,12 @@ target_link_libraries(
 
 target_include_directories(
     piece_points PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
+    # ${CMAKE_CURRENT_SOURCE_DIR}
     # ${PROJECT_SOURCE_DIR}/src/core/board_components
-    ${PROJECT_SOURCE_DIR}/src/core/utility_functs
+    # ${PROJECT_SOURCE_DIR}/src/core/utility_functs
     ${PROJECT_SOURCE_DIR}/src/core/json_internal
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
+    # ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/core/json_internal)
 
 add_executable(
