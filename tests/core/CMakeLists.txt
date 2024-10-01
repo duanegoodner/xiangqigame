@@ -7,7 +7,7 @@ target_link_libraries(
     move_calculator_test PRIVATE
     common
     game_board
-    move_calculator
+    # move_calculator
     nlohmann_json::nlohmann_json
     utility_functs
     piece_points
