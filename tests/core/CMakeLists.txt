@@ -10,7 +10,7 @@ target_link_libraries(
 add_executable(piece_position_points_test piece_position_points_test.cpp)
 target_link_libraries(
     piece_position_points_test PRIVATE
-    piece_points
+    piece_position_points
     utility_functs
     nlohmann_json::nlohmann_json
     GTest::gtest_main)
@@ -29,7 +29,7 @@ target_link_libraries(
     move_calculator
     nlohmann_json::nlohmann_json
     utility_functs
-    piece_points
+    piece_position_points
     piece_moves
     GTest::gtest_main)
 
@@ -70,7 +70,7 @@ target_link_libraries(
     minimax_evaluator_test PRIVATE
     minimax_evaluator
     piece_moves
-    piece_points
+    piece_position_points
     game_board
     json_internal
     utility_functs

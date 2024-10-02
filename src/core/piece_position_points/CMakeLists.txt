@@ -1,9 +1,9 @@
 add_library(
-    piece_points
+    piece_position_points
     piece_position_points.cpp)
 
 target_link_libraries(
-    piece_points PRIVATE
+    piece_position_points PRIVATE
     # common
     json_internal
     nlohmann_json::nlohmann_json
@@ -14,7 +14,7 @@ target_link_libraries(
 )
 
 target_include_directories(
-    piece_points PRIVATE
+    piece_position_points PRIVATE
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
     ${PROJECT_SOURCE_DIR}/src/core/json_internal)
 
@@ -23,7 +23,7 @@ add_executable(
 )
 target_link_libraries(
     bpo_json_to_raw_json PRIVATE
-    piece_points
+    piece_position_points
     piece_points_spec
     minimax_evaluator
     nlohmann_json::nlohmann_json
