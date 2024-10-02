@@ -5,7 +5,7 @@
 #include <exception>
 #include <iostream>
 #include <nlohmann/json-schema.hpp>
-#include <piece_points.hpp>
+#include <piece_position_points.hpp>
 #include <pthread.h>
 #include <unordered_map>
 #include <utility_functs.hpp>

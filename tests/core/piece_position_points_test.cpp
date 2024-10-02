@@ -2,7 +2,7 @@
 #include <common.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
-#include <piece_points.hpp>
+#include <piece_position_points.hpp>
 #include <piece_points_spec.hpp>
 #include <utility_functs.hpp>
 

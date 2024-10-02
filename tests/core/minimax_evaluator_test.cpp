@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <hash_calculator.hpp>
 #include <move_evaluators.hpp>
-#include <piece_points.hpp>
+#include <piece_position_points.hpp>
 #include <utility_functs.hpp>
 
 using namespace piece_points;

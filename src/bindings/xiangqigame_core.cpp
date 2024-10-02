@@ -15,7 +15,7 @@
 #include <game_board.hpp>
 #include <hash_calculator.hpp>
 #include <move_evaluators.hpp>
-#include <piece_points.hpp>
+#include <piece_position_points.hpp>
 #include <string>
 
 namespace py = pybind11;
