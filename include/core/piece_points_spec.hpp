@@ -21,25 +21,6 @@ namespace piece_points {
 using namespace std;
 using nloh_json = nlohmann::json;
 
-template <typename JsonType>
-struct TeamPoints {
-  TeamPoints() = default;
-  TeamPoints(JsonType &j);
-  unordered_map<string, PiecePointsArray_t> PiecePointsArrays();
-  JsonType ToJson();
-  TeamPointsArray_t ToArray();
-
-private:
-  PiecePointsArray_t null;
-  PiecePointsArray_t general;
-  PiecePointsArray_t advisor;
-  PiecePointsArray_t elephant;
-  PiecePointsArray_t horse;
-  PiecePointsArray_t chariot;
-  PiecePointsArray_t cannon;
-  PiecePointsArray_t soldier;
-};
-
 struct PieceBasePoints {
   int advisor;
   int cannon;
@@ -50,19 +31,6 @@ struct PieceBasePoints {
   int null;
   int soldier;
 };
-
-template <typename JsonType>
-struct BasePointOffsetSpec {
-  BasePointOffsetSpec() = default;
-  BasePointOffsetSpec(JsonType &j);
-  BasePointOffsetSpec(string file_path);
-
-  PieceBasePoints black_base;
-  TeamPoints<JsonType> black_position;
-  PieceBasePoints red_base_offsets;
-  TeamPoints<JsonType> red_position_offsets;
-};
-
 
 // Piece Points spec in "Base Points Offset" form with string keys to easily
 // read/write external json
@@ -115,6 +83,5 @@ const string kBPOSchemaPath_x =
     utility_functs::get_data_file_abs_path("bpo_schema.json");
 } // namespace piece_points
 
-// #include <piece_points_spec.tpp>
 
 #endif /* E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802 */
