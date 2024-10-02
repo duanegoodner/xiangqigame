@@ -15,7 +15,7 @@
 
 using namespace std;
 using namespace piece_points;
-using json = nlohmann::json;
+using nloh_json = nlohmann::json;
 
 PointsSpecBPOExternal::PointsSpecBPOExternal(
     BasePointsSMap_t black_base_input,
@@ -28,7 +28,7 @@ PointsSpecBPOExternal::PointsSpecBPOExternal(
     , black_position{black_position_input}
     , red_position_offsets{red_position_offsets_input} {}
 
-PointsSpecBPOExternal::PointsSpecBPOExternal(const json &json_object) {
+PointsSpecBPOExternal::PointsSpecBPOExternal(const nloh_json &json_object) {
   json_object.at("black_base").get_to(black_base);
   json_object.at("red_base_offsets").get_to(red_base_offsets);
   json_object.at("black_position").get_to(black_position);
@@ -38,8 +38,8 @@ PointsSpecBPOExternal::PointsSpecBPOExternal(const json &json_object) {
 PointsSpecBPOExternal::PointsSpecBPOExternal(string json_file_path)
     : PointsSpecBPOExternal(utility_functs::import_json(json_file_path)) {};
 
-json PointsSpecBPOExternal::ToJson() {
-  json j;
+nloh_json PointsSpecBPOExternal::ToJson() {
+  nloh_json j;
   j["black_base"] = black_base;
   j["red_base_offsets"] = red_base_offsets;
   j["black_position"] = black_position;
