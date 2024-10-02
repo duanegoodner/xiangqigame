@@ -22,19 +22,19 @@ TEST_F(NlohmannJsonIOTest, Init) { json_io::NlohmannJsonIO json; }
 
 TEST_F(NlohmannJsonIOTest, CastToInterfaceRef) {
   json_io::NlohmannJsonIO json;
-  json_interface::JsonIO &json_interface = json;
+  json_interface::JsonInterface &json_interface = json;
 }
 
 TEST_F(NlohmannJsonIOTest, ImportRawPoints) {
   json_io::NlohmannJsonIO json;
-  json_interface::JsonIO &json_interface = json;
+  json_interface::JsonInterface &json_interface = json;
   GamePointsSMap_t game_points_map{};
   json_interface.Import(game_points_map, kICGARawPath);
 }
 
 TEST_F(NlohmannJsonIOTest, ValidateDataThatSatisfiesSchema) {
   json_io::NlohmannJsonIO json;
-  json_interface::JsonIO &json_interface = json;
+  json_interface::JsonInterface &json_interface = json;
   auto validation_result =
       json_interface.Validate(kICGARawPath, kRawSchemaPath);
   EXPECT_TRUE(validation_result);
@@ -42,7 +42,7 @@ TEST_F(NlohmannJsonIOTest, ValidateDataThatSatisfiesSchema) {
 
 TEST_F(NlohmannJsonIOTest, RejectDataToSchemaMismatch) {
   json_io::NlohmannJsonIO json;
-  json_interface::JsonIO &json_interface = json;
+  json_interface::JsonInterface &json_interface = json;
   auto validation_result =
       json_interface.Validate(kICGARawPath, kBPOSchemaPath);
   EXPECT_FALSE(validation_result);
