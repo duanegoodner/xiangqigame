@@ -1,6 +1,6 @@
 add_library(
     piece_points
-    piece_points.cpp)
+    piece_position_points.cpp)
 
 target_link_libraries(
     piece_points PRIVATE
