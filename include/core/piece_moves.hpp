@@ -14,6 +14,10 @@
 
 using namespace board_components;
 
+extern const array<BoardDirection, 2> kSideDirections;
+extern const vector<pair<BoardDirection, vector<BoardDirection>>> kHorsePaths;
+extern const vector<BoardDirection> kAllOrthogonalDirections;
+extern const vector<BoardDirection> kAllDiagonalDirections;
 
 class PieceMoves {
 public:
@@ -71,6 +75,20 @@ public:
       const BoardSpace &space,
       MoveCollection &team_moves
   );
+
+private:
+  static inline BoardDirection FwdDirection(PieceColor color) {
+    return BoardDirection{static_cast<int>(color), 0};
+  }
+
+  static inline bool ExistsAndPassesColorTest(
+      const BoardMap_t &board_map,
+      const BoardSpace &space,
+      PieceColor moving_piece_color
+  ) {
+    return space.IsOnBoard() &&
+           get_color(board_map, space) != static_cast<PieceColor>(moving_piece_color);
+  }
 };
 
 #endif /* AB6A1802_337A_4767_8288_AD0E610AC2F5 */

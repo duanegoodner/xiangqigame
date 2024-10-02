@@ -12,7 +12,6 @@
 #include <board_components.hpp>
 #include <common.hpp>
 #include <functional>
-#include <game_board_details.hpp>
 #include <move_calculator.hpp>
 #include <move_evaluators.hpp>
 #include <vector>
@@ -22,6 +21,11 @@ using namespace board_components;
 
 // Template for class GameBoard which implements interface
 // SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
+
+extern const BoardMapInt_t kStartingBoard;
+
+extern const int kRepeatPeriodsToCheck[3];
+extern const int kMaxAllowedRepeatPeriods;
 
 class GameBoard : public SpaceInfoProvider<GameBoard> {
 public:

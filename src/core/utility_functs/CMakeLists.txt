@@ -7,7 +7,7 @@ target_link_libraries(
      
 )
 
-target_include_directories(
-    utility_functs PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-    )
+# target_include_directories(
+#     utility_functs PRIVATE
+#     ${CMAKE_CURRENT_SOURCE_DIR}
+#     )

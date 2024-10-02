@@ -18,6 +18,11 @@
 #include <piece_points_spec.hpp>
 #include <string>
 
+
+
+
+
+
 namespace piece_points {
 
 using namespace board_components;
@@ -41,26 +46,26 @@ private:
 const auto DEFAULT_GAME_POINTS_ARRAY =
     GamePointsArrayBuilder(kICGABPOPath).BuildGamePointsArray();
 
-class FormatIdentifier {
-public:
-  FormatIdentifier(json json_object, pts_format_to_schema_t schemas);
-  FormatIdentifier(json json_object);
-  PointsImportFormat Identify();
+// class FormatIdentifier {
+// public:
+//   FormatIdentifier(json json_object, pts_format_to_schema_t schemas);
+//   FormatIdentifier(json json_object);
+//   PointsImportFormat Identify();
 
-private:
-  json json_object_;
-  pts_format_to_schema_t schemas_;
-};
+// private:
+//   json json_object_;
+//   pts_format_to_schema_t schemas_;
+// };
 
-class GamePointsArrayBuilder_2 {
-public:
-  GamePointsArrayBuilder_2(json json_object);
-  GamePointsArrayBuilder_2(string json_file_path);
-  GamePointsArray_t Build();
+// class GamePointsArrayBuilder_2 {
+// public:
+//   GamePointsArrayBuilder_2(json json_object);
+//   GamePointsArrayBuilder_2(string json_file_path);
+//   GamePointsArray_t Build();
 
-private:
-  json json_object_;
-};
+// private:
+//   json json_object_;
+// };
 
 struct PiecePoints : public PieceValueProvider<PiecePoints> {
   PiecePoints();

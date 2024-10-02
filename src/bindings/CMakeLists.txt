@@ -4,9 +4,6 @@
 pybind11_add_module(xiangqigame_core xiangqigame_core.cpp)
 target_link_libraries(
     xiangqigame_core PRIVATE
-    board_components
-    board_utilities
-    common
     hash_calculator
     game_board
     json_internal

@@ -62,5 +62,6 @@ configure_file(
 include_directories("${CMAKE_BINARY_DIR}")
 message(STATUS "config.hpp path: ${CMAKE_BINARY_DIR}/config.hpp")
 
-
+include_directories(${PROJECT_SOURCE_DIR}/include/core)
 include("${CMAKE_UTIL_DIR}/add_subdirectories.cmake")
+

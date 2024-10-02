@@ -6,11 +6,6 @@ target_link_libraries(
     utility_functs
     )
 
-target_include_directories(
-    json_schema_validate PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/utility_functs/
-)
-
 add_executable(my_schemas my_schemas.cpp)
 target_link_libraries(
     my_schemas
@@ -19,7 +14,3 @@ target_link_libraries(
     utility_functs
     )
 
-target_include_directories(
-    my_schemas PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/utility_functs/
-)

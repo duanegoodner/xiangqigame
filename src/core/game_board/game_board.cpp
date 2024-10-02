@@ -9,13 +9,31 @@
 #include <board_components.hpp>
 #include <board_utilities.hpp>
 #include <game_board.hpp>
-#include <game_board_details.hpp>
 #include <iostream>
 #include <typeinfo>
 #include <utility_functs.hpp>
 
 using namespace board_utilities;
 using namespace std;
+
+
+const BoardMapInt_t kStartingBoard = {{
+    {5, 4, 3, 2, 1, 2, 3, 4, 5},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 6, 0, 0, 0, 0, 0, 6, 0},
+    {7, 0, 7, 0, 7, 0, 7, 0, 7},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {-7, 0, -7, 0, -7, 0, -7, 0, -7},
+    {0, -6, 0, 0, 0, 0, 0, -6, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {-5, -4, -3, -2, -1, -2, -3, -4, -5},
+}};
+
+const int kRepeatPeriodsToCheck[3] = {2, 3, 4};
+const int kMaxAllowedRepeatPeriods = 2;
+
+
 
 GameBoard::GameBoard(const BoardMapInt_t starting_board)
     : board_map_{int_board_to_game_pieces(starting_board)}
