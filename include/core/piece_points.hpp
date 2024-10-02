@@ -4,8 +4,8 @@
 // Last Modified: 2024-08-16
 
 // Description:
-// Defines PiecePoints class and other classes that PiecePoints is composed of
-// or help build PiecePoints.
+// Defines PiecePositionPoints class and other classes that PiecePositionPoints is composed of
+// or help build PiecePositionPoints.
 
 #ifndef _PIECE_POINTS_
 #define _PIECE_POINTS_
@@ -67,14 +67,14 @@ const auto DEFAULT_GAME_POINTS_ARRAY =
 //   json json_object_;
 // };
 
-struct PiecePoints : public PieceValueProvider<PiecePoints> {
-  PiecePoints();
-  PiecePoints(GamePointsArray_t game_points_array);
-  PiecePoints(GamePointsSMap_t s_map);
-  PiecePoints(json &j);
-  PiecePoints(PointsSpecBPOInternal internal_bpo_spec);
-  PiecePoints(PointsSpecBPOExternal external_bpo_spec);
-  PiecePoints(string json_file);
+struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
+  PiecePositionPoints();
+  PiecePositionPoints(GamePointsArray_t game_points_array);
+  PiecePositionPoints(GamePointsSMap_t s_map);
+  PiecePositionPoints(json &j);
+  PiecePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
+  PiecePositionPoints(PointsSpecBPOExternal external_bpo_spec);
+  PiecePositionPoints(string json_file);
 
   // define in header to force inlining
   Points_t ImplementGetValueOfPieceAtPosition(

@@ -7,15 +7,15 @@ target_link_libraries(
     GTest::gtest_main
 )
 
-add_executable(piece_points_test piece_points_test.cpp)
+add_executable(piece_position_points_test piece_position_points_test.cpp)
 target_link_libraries(
-    piece_points_test PRIVATE
+    piece_position_points_test PRIVATE
     piece_points
     utility_functs
     nlohmann_json::nlohmann_json
     GTest::gtest_main)
 target_include_directories(
-    piece_points_test PRIVATE
+    piece_position_points_test PRIVATE
     ${PROJECT_SOURCE_DIR}/src/core/piece_points
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators

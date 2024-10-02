@@ -72,23 +72,23 @@ GamePointsArray_t GamePointsArrayBuilder::BuildGamePointsArray() {
   return game_points_array;
 }
 
-PiecePoints::PiecePoints()
+PiecePositionPoints::PiecePositionPoints()
     : points_array{DEFAULT_GAME_POINTS_ARRAY} {}
-PiecePoints::PiecePoints(GamePointsArray_t game_points_array)
+PiecePositionPoints::PiecePositionPoints(GamePointsArray_t game_points_array)
     : points_array{game_points_array} {}
-PiecePoints::PiecePoints(PointsSpecBPOInternal internal_bpo_spec)
-    : PiecePoints(
+PiecePositionPoints::PiecePositionPoints(PointsSpecBPOInternal internal_bpo_spec)
+    : PiecePositionPoints(
           GamePointsArrayBuilder(internal_bpo_spec).BuildGamePointsArray()
       ) {}
-PiecePoints::PiecePoints(PointsSpecBPOExternal external_bpo_spec)
-    : PiecePoints(
+PiecePositionPoints::PiecePositionPoints(PointsSpecBPOExternal external_bpo_spec)
+    : PiecePositionPoints(
           GamePointsArrayBuilder(external_bpo_spec).BuildGamePointsArray()
       ) {}
-PiecePoints::PiecePoints(GamePointsSMap_t s_map)
-    : PiecePoints(game_points_smap_to_array(s_map)) {}
-PiecePoints::PiecePoints(json &j)
-    : PiecePoints(raw_points_to_smap(j)) {}
-PiecePoints::PiecePoints(string json_file) {
+PiecePositionPoints::PiecePositionPoints(GamePointsSMap_t s_map)
+    : PiecePositionPoints(game_points_smap_to_array(s_map)) {}
+PiecePositionPoints::PiecePositionPoints(json &j)
+    : PiecePositionPoints(raw_points_to_smap(j)) {}
+PiecePositionPoints::PiecePositionPoints(string json_file) {
   auto json_object = utility_functs::import_json(json_file);
   auto points_smap = raw_points_to_smap(json_object);
   points_array = game_points_smap_to_array(points_smap);
@@ -166,7 +166,7 @@ GamePointsSMap_t points_spec_to_smap(const json &points_spec) {
   return PointsSpecBPOExternal(points_spec).ToGamePointsSmap();
 }
 
-json PiecePoints::ToJson() {
+json PiecePositionPoints::ToJson() {
   json j;
   auto game_points_smap = game_points_array_to_smap(points_array);
   j = game_points_smap;
@@ -174,7 +174,7 @@ json PiecePoints::ToJson() {
   return j;
 }
 
-void PiecePoints::ToFile(string output_file) {
+void PiecePositionPoints::ToFile(string output_file) {
   json j = game_points_array_to_smap(points_array);
   utility_functs::export_json(j, output_file);
 }

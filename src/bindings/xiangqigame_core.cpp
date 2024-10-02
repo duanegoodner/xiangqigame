@@ -25,7 +25,7 @@ using namespace piece_points;
 
 template <typename KeyType>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
-  py::class_<MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePoints>>(
+  py::class_<MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>>(
       m,
       class_name.c_str()
   )
@@ -37,23 +37,23 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
       )
       .def(
           "select_move",
-          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePoints>::
+          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>::
               SelectMove
       )
       .def(
           "get_search_summaries",
-          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePoints>::
+          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>::
               GetSearchSummaries,
           py::return_value_policy::copy
       )
       .def(
           "starting_search_depth",
-          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePoints>::
+          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>::
               StartingSearchDepth
       )
       .def(
           "zobrist_key_size_bits",
-          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePoints>::
+          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>::
               KeySizeBits
       );
 }
