@@ -34,24 +34,47 @@ enum PieceType : int {
   kSol = 7
 };
 const int kNumPieceTypeVals = 8;
-const unordered_map<string, PieceType> kPieceTypeStringToEnum = {
-    {"null", PieceType::kNnn},
-    {"general", PieceType::kGen},
-    {"advisor", PieceType::kAdv},
-    {"elephant", PieceType::kEle},
-    {"chariot", PieceType::kCha},
-    {"horse", PieceType::kHor},
-    {"cannon", PieceType::kCan},
-    {"soldier", PieceType::kSol}
-};
+// const unordered_map<string, PieceType> kPieceTypeStringToEnum = 
+//     {{"null", PieceType::kNnn},
+//     {"general", PieceType::kGen},
+//     {"advisor", PieceType::kAdv},
+//     {"elephant", PieceType::kEle},
+//     {"chariot", PieceType::kCha},
+//     {"horse", PieceType::kHor},
+//     {"cannon", PieceType::kCan},
+//     {"soldier", PieceType::kSol}};
+
+const unordered_map<string, PieceType> kPieceTypeStringToEnum = [] {
+    unordered_map<string, PieceType> temp;
+    temp.insert(make_pair("null", PieceType::kNnn));
+    temp.insert(make_pair("general", PieceType::kGen));
+    temp.insert(make_pair("advisor", PieceType::kAdv));
+    temp.insert(make_pair("elephant", PieceType::kEle));
+    temp.insert(make_pair("chariot", PieceType::kCha));
+    temp.insert(make_pair("horse", PieceType::kHor));
+    temp.insert(make_pair("cannon", PieceType::kCan));
+    temp.insert(make_pair("soldier", PieceType::kSol));
+    return temp;
+}();
 
 enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
 const int kNumPieceColorVals = 3;
-const unordered_map<string, PieceColor> kPieceColorStringToEnum = {
-    {"red", PieceColor::kRed},
-    {"null", PieceColor::kNul},
-    {"black", PieceColor::kBlk}
-};
+// const unordered_map<string, PieceColor> kPieceColorStringToEnum = {
+//     {"red", PieceColor::kRed},
+//     {"null", PieceColor::kNul},
+//     {"black", PieceColor::kBlk}
+// };
+
+// Use lambda function because hpp2plantuml can't parse {{
+const unordered_map<string, PieceColor> kPieceColorStringToEnum = [] {
+  unordered_map<string, PieceColor> temp;
+  temp.insert(make_pair("red", PieceColor::kRed));
+  temp.insert(make_pair("null", PieceColor::kNul));
+  temp.insert(make_pair("black", PieceColor::kBlk));
+  return temp;
+}();
+
+
 
 // converts red/black: -1/1 of PieceColor enum to 0/1 used in some arrays
 inline size_t get_zcolor_index(PieceColor color) {
@@ -69,19 +92,7 @@ inline PieceColor get_piece_color(size_t zcolor_index) {
 typedef int BoardIdx_t;
 const BoardIdx_t kNumRanks = 10;
 const BoardIdx_t kNumFiles = 9;
-const BoardIdx_t kRedRiverEdge = 5;
-const BoardIdx_t kBlackRiverEdge = 4;
-struct CastleEdges {
-  BoardIdx_t min_rank;
-  BoardIdx_t max_rank;
-  BoardIdx_t min_file;
-  BoardIdx_t max_file;
-};
-constexpr CastleEdges kRedCastleEdges = {7, 9, 3, 5};
-constexpr CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
-struct BoardDirection {
-  BoardIdx_t rank, file;
-};
+
 
 
 // //////////////

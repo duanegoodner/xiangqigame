@@ -20,6 +20,20 @@ using namespace std;
 
 namespace board_components {
 
+const BoardIdx_t kRedRiverEdge = 5;
+const BoardIdx_t kBlackRiverEdge = 4;
+struct CastleEdges {
+  BoardIdx_t min_rank;
+  BoardIdx_t max_rank;
+  BoardIdx_t min_file;
+  BoardIdx_t max_file;
+};
+constexpr CastleEdges kRedCastleEdges = {7, 9, 3, 5};
+constexpr CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
+struct BoardDirection {
+  BoardIdx_t rank, file;
+};
+
 struct GamePiece {
   PieceType piece_type;
   PieceColor piece_color;
@@ -31,9 +45,8 @@ struct GamePiece {
 
   GamePiece(int int_piece) {
     piece_type = static_cast<PieceType>(abs(int_piece));
-    piece_color = (int_piece == 0)
-                      ? PieceColor::kNul
-                      : static_cast<PieceColor>(copysign(1, int_piece));
+    piece_color = (int_piece == 0) ? PieceColor::kNul
+                                   : static_cast<PieceColor>(copysign(1, int_piece));
   }
 
   GamePiece(PieceType type, PieceColor color) {
@@ -42,8 +55,7 @@ struct GamePiece {
   }
 
   bool operator==(const GamePiece &other) const {
-    return (piece_type == other.piece_type) &&
-           (piece_color == other.piece_color);
+    return (piece_type == other.piece_type) && (piece_color == other.piece_color);
   }
 };
 
@@ -62,9 +74,7 @@ struct BoardSpace {
   BoardIdx_t rank, file;
 
   bool IsOnBoard() const {
-    return (
-        (0 <= rank) && (rank < kNumRanks) && (0 <= file) && (file < kNumFiles)
-    );
+    return ((0 <= rank) && (rank < kNumRanks) && (0 <= file) && (file < kNumFiles));
   }
 
   bool IsInHomelandOf(const PieceColor color) const {
@@ -78,10 +88,8 @@ struct BoardSpace {
 
   bool IsInCastleOf(const PieceColor color) const {
     assert(color != PieceColor::kNul);
-    auto castle_edges =
-        color == PieceColor::kRed ? kRedCastleEdges : kBlackCastleEdges;
-    return (castle_edges.min_rank <= rank) &&
-           (rank <= castle_edges.max_rank) &&
+    auto castle_edges = color == PieceColor::kRed ? kRedCastleEdges : kBlackCastleEdges;
+    return (castle_edges.min_rank <= rank) && (rank <= castle_edges.max_rank) &&
            (castle_edges.min_file <= file) && (file <= castle_edges.max_file);
   }
 
@@ -96,7 +104,6 @@ struct BoardSpace {
   bool operator!=(const BoardSpace other) const {
     return (rank != other.rank) || (file != other.file);
   }
-
 };
 
 struct Move {
@@ -176,9 +183,7 @@ inline constexpr Castle_t calc_castle_spaces(const CastleEdges &edges) {
   return spaces;
 }
 
-constexpr Castle_t red_castle_spaces() {
-  return calc_castle_spaces(kRedCastleEdges);
-}
+constexpr Castle_t red_castle_spaces() { return calc_castle_spaces(kRedCastleEdges); }
 
 constexpr Castle_t black_castle_spaces() {
   return calc_castle_spaces(kBlackCastleEdges);

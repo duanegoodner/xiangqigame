@@ -152,20 +152,20 @@ TEST_F(PiecePointsTest, InitFromFile) {
   auto piece_points = PiecePoints(raw_points_json_path);
 }
 
-TEST(ArrayBuilder_2Test, InitWithPath) {
-  json json_object = utility_functs::import_json(kICGARawPath);
-  auto array_builder_from_raw = GamePointsArrayBuilder_2(json_object);
-}
+// TEST(ArrayBuilder_2Test, InitWithPath) {
+//   json json_object = utility_functs::import_json(kICGARawPath);
+//   auto array_builder_from_raw = GamePointsArrayBuilder_2(json_object);
+// }
 
-TEST(FormatIdentifierTest, InitWithJsonObject) {
-  json json_object = utility_functs::import_json(kICGARawPath);
-  auto format_identifier = FormatIdentifier(json_object);
-}
+// TEST(FormatIdentifierTest, InitWithJsonObject) {
+//   json json_object = utility_functs::import_json(kICGARawPath);
+//   auto format_identifier = FormatIdentifier(json_object);
+// }
 
-TEST(ImportSchemasTest, ImportDefaultSchemaPaths) {
-  auto schemas = import_schemas(DEFAULT_POINTS_SCHEMA_PATHS);
-  std::cout << "done" << std::endl;
-}
+// TEST(ImportSchemasTest, ImportDefaultSchemaPaths) {
+//   auto schemas = import_schemas(DEFAULT_POINTS_SCHEMA_PATHS);
+//   std::cout << "done" << std::endl;
+// }
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

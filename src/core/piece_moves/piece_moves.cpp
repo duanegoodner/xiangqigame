@@ -8,6 +8,32 @@
 
 #include <piece_moves.hpp>
 
+const array<BoardDirection, 2> kSideDirections = {
+    BoardDirection{0, 1},
+    BoardDirection{0, -1}
+};
+
+const vector<pair<BoardDirection, vector<BoardDirection>>> kHorsePaths = {
+    {BoardDirection{1, 0}, {BoardDirection{1, 1}, BoardDirection{1, -1}}},
+    {BoardDirection{-1, 0}, {BoardDirection{-1, 1}, BoardDirection{-1, -1}}},
+    {BoardDirection{0, 1}, {BoardDirection{1, 1}, BoardDirection{-1, 1}}},
+    {BoardDirection{0, -1}, {BoardDirection{1, -1}, BoardDirection{-1, -1}}}
+};
+
+const vector<BoardDirection> kAllOrthogonalDirections = {
+    BoardDirection{0, 1},
+    BoardDirection{0, -1},
+    BoardDirection{1, 0},
+    BoardDirection{-1, 0}
+};
+
+const vector<BoardDirection> kAllDiagonalDirections = {
+    BoardDirection{1, 1},
+    BoardDirection{1, -1},
+    BoardDirection{-1, 1},
+    BoardDirection{-1, -1}
+};
+
 void PieceMoves::SoldierMoves(
     const BoardMap_t &board_map,
     PieceColor color,
@@ -15,16 +41,16 @@ void PieceMoves::SoldierMoves(
     MoveCollection &team_moves
 ) {
 
-  auto fwd_space = space + fwd_direction(color);
+  auto fwd_space = space + FwdDirection(color);
 
-  if (exists_and_passes_color_test(board_map, fwd_space, color)) {
+  if (ExistsAndPassesColorTest(board_map, fwd_space, color)) {
     team_moves.Append(Move{space, fwd_space});
   }
 
   if (not space.IsInHomelandOf(color)) {
     for (auto side_vector : kSideDirections) {
       auto side_space = space + side_vector;
-      if (exists_and_passes_color_test(board_map, side_space, color)) {
+      if (ExistsAndPassesColorTest(board_map, side_space, color)) {
         team_moves.Append(Move{space, side_space});
       }
     }
@@ -46,8 +72,7 @@ void PieceMoves::CannonMoves(
 
     if (next_step.IsOnBoard()) {
       next_step = next_step + direction;
-      while (next_step.IsOnBoard() && (not is_occupied(board_map, next_step))
-      ) {
+      while (next_step.IsOnBoard() && (not is_occupied(board_map, next_step))) {
         next_step = next_step + direction;
       }
       if (next_step.IsOnBoard() &&
@@ -88,7 +113,7 @@ void PieceMoves::HorseMoves(
     if (first_step.IsOnBoard() && (not is_occupied(board_map, first_step))) {
       for (auto direction : direction.second) {
         auto second_step = first_step + direction;
-        if (exists_and_passes_color_test(board_map, second_step, color))
+        if (ExistsAndPassesColorTest(board_map, second_step, color))
 
         {
           team_moves.Append(Move{space, second_step});
@@ -109,7 +134,7 @@ void PieceMoves::ElephantMoves(
     if (first_step.IsOnBoard() && (not is_occupied(board_map, first_step)) &&
         (first_step.IsInHomelandOf(color))) {
       auto second_step = first_step + direction;
-      if (exists_and_passes_color_test(board_map, second_step, color)) {
+      if (ExistsAndPassesColorTest(board_map, second_step, color)) {
         team_moves.Append(Move{space, second_step});
       }
     }
@@ -124,8 +149,7 @@ void PieceMoves::AdvisorMoves(
 ) {
   for (auto direction : kAllDiagonalDirections) {
     auto destination = space + direction;
-    if (destination.IsInCastleOf(color) &&
-        (get_color(board_map, destination) != color))
+    if (destination.IsInCastleOf(color) && (get_color(board_map, destination) != color))
 
     {
       team_moves.Append(Move{space, destination});

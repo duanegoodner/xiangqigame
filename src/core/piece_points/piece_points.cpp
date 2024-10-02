@@ -205,44 +205,44 @@ bool piece_points::json_matches_schema(
   }
 }
 
-FormatIdentifier::FormatIdentifier(
-    json json_object,
-    pts_format_to_schema_t schemas
-)
-    : json_object_{json_object}
-    , schemas_{schemas} {}
+// FormatIdentifier::FormatIdentifier(
+//     json json_object,
+//     pts_format_to_schema_t schemas
+// )
+//     : json_object_{json_object}
+//     , schemas_{schemas} {}
 
-FormatIdentifier::FormatIdentifier(json json_object)
-    : json_object_{json_object}
-    , schemas_{import_schemas(DEFAULT_POINTS_SCHEMA_PATHS)} {}
+// FormatIdentifier::FormatIdentifier(json json_object)
+//     : json_object_{json_object}
+//     , schemas_{import_schemas(DEFAULT_POINTS_SCHEMA_PATHS)} {}
 
-PointsImportFormat FormatIdentifier::Identify() {
-  PointsImportFormat result{PointsImportFormat::invalid};
-  for (auto schema : schemas_) {
-    if (json_matches_schema(json_object_, schema.second)) {
-      result = schema.first;
-    }
-  }
-  return result;
-}
+// PointsImportFormat FormatIdentifier::Identify() {
+//   PointsImportFormat result{PointsImportFormat::invalid};
+//   for (auto schema : schemas_) {
+//     if (json_matches_schema(json_object_, schema.second)) {
+//       result = schema.first;
+//     }
+//   }
+//   return result;
+// }
 
-GamePointsArrayBuilder_2::GamePointsArrayBuilder_2(json json_object)
-    : json_object_{json_object} {}
+// GamePointsArrayBuilder_2::GamePointsArrayBuilder_2(json json_object)
+//     : json_object_{json_object} {}
 
-GamePointsArrayBuilder_2::GamePointsArrayBuilder_2(const string json_file_path)
-    : json_object_{utility_functs::import_json(json_file_path)} {}
+// GamePointsArrayBuilder_2::GamePointsArrayBuilder_2(const string json_file_path)
+//     : json_object_{utility_functs::import_json(json_file_path)} {}
 
-GamePointsArray_t GamePointsArrayBuilder_2::Build() {
-  auto points_import_format = FormatIdentifier(json_object_).Identify();
-  if (points_import_format == PointsImportFormat::invalid) {
-    cerr << "Invalid points json file" << endl;
-    exit(1);
-  } else {
-    GamePointsSMap_t s_map =
-        raw_points_to_smap_dispatch.at(points_import_format)(json_object_);
-    return game_points_smap_to_array(s_map);
-  }
-}
+// GamePointsArray_t GamePointsArrayBuilder_2::Build() {
+//   auto points_import_format = FormatIdentifier(json_object_).Identify();
+//   if (points_import_format == PointsImportFormat::invalid) {
+//     cerr << "Invalid points json file" << endl;
+//     exit(1);
+//   } else {
+//     GamePointsSMap_t s_map =
+//         raw_points_to_smap_dispatch.at(points_import_format)(json_object_);
+//     return game_points_smap_to_array(s_map);
+//   }
+// }
 // GamePointsArray_t bpo_file_to_array(string bpo_spec_file) {
 //   auto json_object = utility_functs::import_json(bpo_spec_file);
 
