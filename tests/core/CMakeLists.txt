@@ -16,7 +16,6 @@ target_link_libraries(
     GTest::gtest_main)
 target_include_directories(
     piece_position_points_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
     ${rapidjson_SOURCE_DIR}/include)
@@ -62,9 +61,7 @@ target_link_libraries(
     GTest::gtest_main)
 target_include_directories(
     piece_points_spec_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/core/json_internal
-    ${PROJECT_SOURCE_DIR}/src/core/utility_functs
     ${rapidjson_SOURCE_DIR}/include
     )
 
@@ -90,11 +87,7 @@ add_executable(
     key_generator_test.cpp)
 target_link_libraries(
     key_generator_test PRIVATE
-    # key_generator
     GTest::gtest_main)
-target_include_directories(key_generator_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/common
-    ${PROJECT_SOURCE_DIR}/src/core/hash_calculator)
 
 add_executable(
         hash_calculator_test
@@ -106,12 +99,6 @@ target_link_libraries(
         utility_functs
         game_board
         GTest::gtest_main)
-target_include_directories(
-        hash_calculator_test PRIVATE
-        ${PROJECT_SOURCE_DIR}/src/core/hash_calculator
-        ${PROJECT_SOURCE_DIR}/src/core/utility_functs/
-        ${PROJECT_SOURCE_DIR}/src/core/board_components/
-        ${PROJECT_SOURCE_DIR}/src/core/game_board/)
 
 add_executable(
     json_internal_test
@@ -123,7 +110,6 @@ target_link_libraries(
     GTest::gtest_main)
 target_include_directories(
     json_internal_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/utility_functs
     ${PROJECT_SOURCE_DIR}/src/core/json_internal
 )
 
@@ -134,9 +120,3 @@ target_link_libraries(
     json_interface
     json_io
     utility_functs)
-target_include_directories(
-    json_io_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/json_io
-    ${PROJECT_SOURCE_DIR}/src/core/json_interface
-    ${PROJECT_SOURCE_DIR}/src/core/utility_functs
-    )
