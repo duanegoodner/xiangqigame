@@ -114,25 +114,6 @@ target_include_directories(
         ${PROJECT_SOURCE_DIR}/src/core/game_board/)
 
 add_executable(
-        points_containers_test
-        points_containers_test.cpp)
-target_link_libraries(
-        points_containers_test PRIVATE
-        GTest::gtest_main
-        json_interface
-        json_io
-        points_containers
-        utility_functs
-        )
-    target_include_directories(
-        points_containers_test PRIVATE
-        ${PROJECT_SOURCE_DIR}/src/core/points_containers
-        ${PROJECT_SOURCE_DIR}/src/core/json_interface
-        ${PROJECT_SOURCE_DIR}/src/core/json_io
-        ${PROJECT_SOURCE_DIR}/src/core/utility_functs
-        )
-
-add_executable(
     json_internal_test
     json_internal_test.cpp)
 target_link_libraries(

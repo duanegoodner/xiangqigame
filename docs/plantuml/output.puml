@@ -9,6 +9,7 @@ scale 0.75
 
 
 
+
 /' Objects '/
 
 class BoardStateSummarizer <template<typename ConcreteBoardStateSummarizer, typename KeyType>> {
@@ -255,59 +256,6 @@ class ZobristKeys <template<typename KeyType>> {
 }
 
 
-namespace points_containers {
-	class BasePointsOffsetSpec {
-		+BasePointsOffsetSpec()
-		+BasePointsOffsetSpec(BPOSpecSMap_t s_map)
-		+ToMap() : BPOSpecSMap_t
-		+black : TeamBasePositionPair
-		+red : TeamBasePositionPair
-		-BlackNetPoints() : TeamPoints
-		-RedNetPoints() : TeamPoints
-	}
-
-	class PieceBasePoints {
-		+PieceBasePoints()
-		+PieceBasePoints(BasePointsSMap_t base_points)
-		+ToMap() : BasePointsSMap_t
-		+advisor : int
-		+cannon : int
-		+chariot : int
-		+elephant : int
-		+general : int
-		+horse : int
-		+null : int
-		+soldier : int
-	}
-
-	class TeamBasePositionPair {
-		+TeamBasePositionPair()
-		+TeamBasePositionPair(BasePointsSMap_t base_points_map, TeamPointsSMap_t team_points_map)
-		+TeamBasePositionPair(PieceBasePoints base, TeamPoints position)
-		+ToPairOfMaps() : BasePositionSMapPair_t
-		+piece_base_points : PieceBasePoints
-		+NetPoints() : TeamPoints
-		+position_points : TeamPoints
-	}
-
-	class TeamPoints {
-		+TeamPoints()
-		+TeamPoints(TeamPointsSMap_t s_map)
-		+TeamPoints(TeamPointsArray_t team_points_array)
-		+advisor : PiecePointsArray_t
-		+cannon : PiecePointsArray_t
-		+chariot : PiecePointsArray_t
-		+elephant : PiecePointsArray_t
-		+general : PiecePointsArray_t
-		+horse : PiecePointsArray_t
-		+null : PiecePointsArray_t
-		+soldier : PiecePointsArray_t
-		+ToArray() : TeamPointsArray_t
-		+ToMap() : TeamPointsSMap_t
-	}
-}
-
-
 namespace piece_points_spec {
 	class BasePointOffsetSpec <template<typename JsonType>> {
 		+BasePointOffsetSpec()
@@ -527,9 +475,6 @@ piece_points_spec.BasePointOffsetSpec "2" *-- piece_points_spec.PieceBasePoints
 piece_points_spec.BasePointOffsetSpec "2" *-- piece_points_spec.TeamPoints
 
 
-points_containers.BasePointsOffsetSpec "2" *-- points_containers.TeamBasePositionPair
-
-
 board_components.ExecutedMove "2" *-- board_components.GamePiece
 
 
@@ -579,12 +524,6 @@ SearchSummary *-- BestMoves
 
 
 SearchSummary "2" *-- ResultDepthCounts
-
-
-points_containers.TeamBasePositionPair *-- points_containers.PieceBasePoints
-
-
-points_containers.TeamBasePositionPair *-- points_containers.TeamPoints
 
 
 TranspositionTable *-- TranspositionTableEntry
