@@ -52,23 +52,23 @@ TeamPoints<JsonType>::PiecePointsArrays() {
   return name_map;
 }
 
-inline TeamPointsArray_t TeamPointsNonTemp::ToArray() {
-  TeamPointsArray_t team_array{};
-  auto name_map = PiecePointsArrays();
-  for (auto piece : name_map) {
-    auto piece_index = kPieceTypeStringToEnum.at(piece.first);
-    team_array[piece_index] = name_map.at(piece.first);
-  }
-  return team_array;
-}
+// inline TeamPointsArray_t TeamPointsNonTemp::ToArray() {
+//   TeamPointsArray_t team_array{};
+//   auto name_map = PiecePointsArrays();
+//   for (auto piece : name_map) {
+//     auto piece_index = kPieceTypeStringToEnum.at(piece.first);
+//     team_array[piece_index] = name_map.at(piece.first);
+//   }
+//   return team_array;
+// }
 
-inline unordered_map<string, TeamPointsNonTemp>
-GamePointsNonTemp::TeamPointsStructs() {
-  unordered_map<string, TeamPointsNonTemp> name_map{
-      {"red", red},
-      {"black", black}};
-  return name_map;
-}
+// inline unordered_map<string, TeamPointsNonTemp>
+// GamePointsNonTemp::TeamPointsStructs() {
+//   unordered_map<string, TeamPointsNonTemp> name_map{
+//       {"red", red},
+//       {"black", black}};
+//   return name_map;
+// }
 
 template <typename JsonType>
 inline BaseOffsetPointSpec<JsonType>::BaseOffsetPointSpec(string file_path)

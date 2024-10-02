@@ -40,22 +40,22 @@ private:
   PiecePointsArray_t soldier;
 };
 
-struct TeamPointsNonTemp {
-  TeamPointsNonTemp() = default;
-  TeamPointsNonTemp(TeamPointsSMap_t team_points_data);
-  unordered_map<string, PiecePointsArray_t> PiecePointsArrays();
-  TeamPointsArray_t ToArray();
+// struct TeamPointsNonTemp {
+//   TeamPointsNonTemp() = default;
+//   TeamPointsNonTemp(TeamPointsSMap_t team_points_data);
+//   unordered_map<string, PiecePointsArray_t> PiecePointsArrays();
+//   TeamPointsArray_t ToArray();
 
-  // private:
-  PiecePointsArray_t null;
-  PiecePointsArray_t general;
-  PiecePointsArray_t advisor;
-  PiecePointsArray_t elephant;
-  PiecePointsArray_t horse;
-  PiecePointsArray_t chariot;
-  PiecePointsArray_t cannon;
-  PiecePointsArray_t soldier;
-};
+//   // private:
+//   PiecePointsArray_t null;
+//   PiecePointsArray_t general;
+//   PiecePointsArray_t advisor;
+//   PiecePointsArray_t elephant;
+//   PiecePointsArray_t horse;
+//   PiecePointsArray_t chariot;
+//   PiecePointsArray_t cannon;
+//   PiecePointsArray_t soldier;
+// };
 
 struct PieceBasePoints {
   int advisor;
@@ -80,17 +80,17 @@ struct BasePointOffsetSpec {
   TeamPoints<JsonType> red_position_offsets;
 };
 
-struct GamePointsNonTemp {
-  GamePointsNonTemp() = default;
-  GamePointsNonTemp(string file_path);
+// struct GamePointsNonTemp {
+//   GamePointsNonTemp() = default;
+//   GamePointsNonTemp(string file_path);
 
-  unordered_map<string, TeamPointsNonTemp> TeamPointsStructs();
-  GamePointsArray_t ToArray();
-  void ToFile(string file_path);
+//   unordered_map<string, TeamPointsNonTemp> TeamPointsStructs();
+//   GamePointsArray_t ToArray();
+//   void ToFile(string file_path);
 
-  TeamPointsNonTemp red;
-  TeamPointsNonTemp black;
-};
+//   TeamPointsNonTemp red;
+//   TeamPointsNonTemp black;
+// };
 
 // Piece Points spec in "Base Points Offset" form with string keys to easily
 // read/write external json
