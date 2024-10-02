@@ -4,7 +4,6 @@ add_library(
 
     target_link_libraries(
         piece_points_spec PRIVATE
-        json_internal
         nlohmann_json
         utility_functs
         nlohmann_json::nlohmann_json
@@ -13,5 +12,4 @@ add_library(
 target_include_directories(
     piece_points_spec PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${PROJECT_SOURCE_DIR}/src/core/json_internal
 )

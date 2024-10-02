@@ -4,6 +4,6 @@ target_link_libraries(
         hash_calculator INTERFACE
         utility_functs
         game_board
-        piece_points
+        piece_position_points
         nlohmann_json::nlohmann_json)
 

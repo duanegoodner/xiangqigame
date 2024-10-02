@@ -2,7 +2,7 @@
 #include <common.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
-#include <piece_points.hpp>
+#include <piece_position_points.hpp>
 #include <piece_points_spec.hpp>
 #include <utility_functs.hpp>
 
@@ -59,7 +59,7 @@ TEST_F(GamePointsArrayBuilderTest, RedPointsArraysProperlyFlipped) {
   }
 }
 
-class PiecePointsTest : public ::testing::Test {
+class PiecePositionPointsTest : public ::testing::Test {
 
 protected:
   const string points_spec_path =
@@ -74,20 +74,20 @@ protected:
       GamePointsArrayBuilder(points_spec_path).BuildGamePointsArray();
 };
 
-TEST_F(PiecePointsTest, InitFromGamePointsArray) {
-  PiecePoints piece_points = PiecePoints(game_points_array);
+TEST_F(PiecePositionPointsTest, InitFromGamePointsArray) {
+  PiecePositionPoints piece_points = PiecePositionPoints(game_points_array);
 }
 
-TEST_F(PiecePointsTest, InitFromBPOExternal) {
-  PiecePoints piece_points = PiecePoints(external_pts_spec);
+TEST_F(PiecePositionPointsTest, InitFromBPOExternal) {
+  PiecePositionPoints piece_points = PiecePositionPoints(external_pts_spec);
 }
 
-TEST_F(PiecePointsTest, InitFromBPOInternal) {
-  PiecePoints piece_points = PiecePoints(internal_pts_spec);
+TEST_F(PiecePositionPointsTest, InitFromBPOInternal) {
+  PiecePositionPoints piece_points = PiecePositionPoints(internal_pts_spec);
 }
 
-TEST_F(PiecePointsTest, SpotCheckBlackValues) {
-  PiecePoints piece_points = PiecePoints(game_points_array);
+TEST_F(PiecePositionPointsTest, SpotCheckBlackValues) {
+  PiecePositionPoints piece_points = PiecePositionPoints(game_points_array);
   auto black_cannon_9_4 = piece_points.ImplementGetValueOfPieceAtPosition(
       PieceColor::kBlk,
       PieceType::kCan,
@@ -109,7 +109,7 @@ TEST_F(PiecePointsTest, SpotCheckBlackValues) {
   EXPECT_EQ(black_horse_0_1, 270 - 4);
 }
 
-TEST_F(PiecePointsTest, RedPointsFlippedWRTBlack) {
+TEST_F(PiecePositionPointsTest, RedPointsFlippedWRTBlack) {
   for (auto piece_type_index = 0; piece_type_index < kNumPieceTypeVals;
        piece_type_index++) {
     for (auto rank = 0; rank < kNumRanks; rank++) {
@@ -119,7 +119,7 @@ TEST_F(PiecePointsTest, RedPointsFlippedWRTBlack) {
   }
 }
 
-TEST_F(PiecePointsTest, game_points_array_to_smap) {
+TEST_F(PiecePositionPointsTest, game_points_array_to_smap) {
   auto s_map = game_points_array_to_smap(game_points_array);
 
   // confirm corresponding PiecePointsArray_t arrays in s_map and
@@ -136,20 +136,20 @@ TEST_F(PiecePointsTest, game_points_array_to_smap) {
   }
 }
 
-TEST_F(PiecePointsTest, PiecePointsToJson) {
-  PiecePoints piece_points = PiecePoints(game_points_array);
+TEST_F(PiecePositionPointsTest, PiecePositionPointsToJson) {
+  PiecePositionPoints piece_points = PiecePositionPoints(game_points_array);
   auto json_object = piece_points.ToJson();
 }
 
-TEST_F(PiecePointsTest, import_json) {
+TEST_F(PiecePositionPointsTest, import_json) {
   auto imported_raw_json = utility_functs::import_json(raw_points_json_path);
   auto s_map = raw_points_to_smap(imported_raw_json);
-  auto piece_ponts = PiecePoints(s_map);
+  auto piece_ponts = PiecePositionPoints(s_map);
   std::cout << "done" << std::endl;
 }
 
-TEST_F(PiecePointsTest, InitFromFile) {
-  auto piece_points = PiecePoints(raw_points_json_path);
+TEST_F(PiecePositionPointsTest, InitFromFile) {
+  auto piece_points = PiecePositionPoints(raw_points_json_path);
 }
 
 // TEST(ArrayBuilder_2Test, InitWithPath) {

@@ -1,0 +1,6 @@
+!define RECTANGLE_PACKAGE
+skinparam dpi 300
+skinparam packageStyle rect
+skinparam wrapWidth 500
+left to right direction
+scale 0.75

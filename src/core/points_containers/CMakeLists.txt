@@ -1,3 +1,0 @@
-add_library(points_containers points_containers.cpp)
-target_link_libraries(points_containers PRIVATE utility_functs)
-

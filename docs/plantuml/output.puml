@@ -8,6 +8,8 @@ scale 0.75
 
 
 
+
+
 /' Objects '/
 
 class BoardStateSummarizer <template<typename ConcreteBoardStateSummarizer, typename KeyType>> {
@@ -254,72 +256,17 @@ class ZobristKeys <template<typename KeyType>> {
 }
 
 
-namespace points_containers {
-	class BasePointsOffsetSpec {
-		+BasePointsOffsetSpec()
-		+BasePointsOffsetSpec(BPOSpecSMap_t s_map)
-		+ToMap() : BPOSpecSMap_t
-		+ToGamePoints() : GamePoints
-		+black : TeamBasePositionPair
-		+red : TeamBasePositionPair
-		-BlackNetPoints() : TeamPoints
-		-RedNetPoints() : TeamPoints
+namespace piece_points {
+	class GamePointsArrayBuilder {
+		+GamePointsArrayBuilder(PointsSpecBPOInternal internal_points_spec)
+		+GamePointsArrayBuilder(PointsSpecBPOExternal external_points_spec)
+		+GamePointsArrayBuilder(string spec_file_path)
+		+BuildGamePointsArray() : GamePointsArray_t
+		-points_spec_ : PointsSpecBPOInternal
+		-ComputeBlackNetPoints() : TeamPointsArray_t
+		-ComputeRedNetPoints() : TeamPointsArray_t
 	}
 
-	class GamePoints {
-		+GamePoints()
-		+GamePoints(TeamPoints black_points, TeamPoints red_points)
-		+GamePoints(GamePointsSMap_t s_map)
-		+GamePoints(GamePointsArray_t game_point_array)
-		+ToArray() : GamePointsArray_t
-		+ToMap() : GamePointsSMap_t
-		+black : TeamPoints
-		+red : TeamPoints
-	}
-
-	class PieceBasePoints {
-		+PieceBasePoints()
-		+PieceBasePoints(BasePointsSMap_t base_points)
-		+ToMap() : BasePointsSMap_t
-		+advisor : int
-		+cannon : int
-		+chariot : int
-		+elephant : int
-		+general : int
-		+horse : int
-		+null : int
-		+soldier : int
-	}
-
-	class TeamBasePositionPair {
-		+TeamBasePositionPair()
-		+TeamBasePositionPair(BasePointsSMap_t base_points_map, TeamPointsSMap_t team_points_map)
-		+TeamBasePositionPair(PieceBasePoints base, TeamPoints position)
-		+ToPairOfMaps() : BasePositionSMapPair_t
-		+piece_base_points : PieceBasePoints
-		+NetPoints() : TeamPoints
-		+position_points : TeamPoints
-	}
-
-	class TeamPoints {
-		+TeamPoints()
-		+TeamPoints(TeamPointsSMap_t s_map)
-		+TeamPoints(TeamPointsArray_t team_points_array)
-		+advisor : PiecePointsArray_t
-		+cannon : PiecePointsArray_t
-		+chariot : PiecePointsArray_t
-		+elephant : PiecePointsArray_t
-		+general : PiecePointsArray_t
-		+horse : PiecePointsArray_t
-		+null : PiecePointsArray_t
-		+soldier : PiecePointsArray_t
-		+ToArray() : TeamPointsArray_t
-		+ToMap() : TeamPointsSMap_t
-	}
-}
-
-
-namespace piece_points_spec {
 	class BasePointOffsetSpec <template<typename JsonType>> {
 		+BasePointOffsetSpec()
 		+BasePointOffsetSpec(JsonType& j)
@@ -330,16 +277,6 @@ namespace piece_points_spec {
 		+red_position_offsets : TeamPoints<JsonType>
 	}
 
-	class GamePointsNonTemp {
-		+GamePointsNonTemp()
-		+GamePointsNonTemp(string file_path)
-		+ToArray() : GamePointsArray_t
-		+black : TeamPointsNonTemp
-		+red : TeamPointsNonTemp
-		+TeamPointsStructs() : unordered_map<string , TeamPointsNonTemp>
-		+ToFile(string file_path) : void
-	}
-
 	class PieceBasePoints {
 		+advisor : int
 		+cannon : int
@@ -349,6 +286,20 @@ namespace piece_points_spec {
 		+horse : int
 		+null : int
 		+soldier : int
+	}
+
+	class PiecePositionPoints {
+		+PiecePositionPoints()
+		+PiecePositionPoints(GamePointsArray_t game_points_array)
+		+PiecePositionPoints(GamePointsSMap_t s_map)
+		+PiecePositionPoints(json j)
+		+PiecePositionPoints(PointsSpecBPOInternal internal_bpo_spec)
+		+PiecePositionPoints(PointsSpecBPOExternal external_bpo_spec)
+		+PiecePositionPoints(string json_file)
+		+points_array : GamePointsArray_t
+		+ImplementGetValueOfPieceAtPosition(PieceColor color, PieceType piece_type, BoardSpace space) : Points_t
+		+ToJson() : json
+		+ToFile(string output_file) : void
 	}
 
 	class PointsSpecBPOExternal {
@@ -390,48 +341,6 @@ namespace piece_points_spec {
 		+ToArray() : TeamPointsArray_t
 		+PiecePointsArrays() : unordered_map<string , PiecePointsArray_t>
 	}
-
-	class TeamPointsNonTemp {
-		+TeamPointsNonTemp()
-		+TeamPointsNonTemp(TeamPointsSMap_t team_points_data)
-		+advisor : PiecePointsArray_t
-		+cannon : PiecePointsArray_t
-		+chariot : PiecePointsArray_t
-		+elephant : PiecePointsArray_t
-		+general : PiecePointsArray_t
-		+horse : PiecePointsArray_t
-		+null : PiecePointsArray_t
-		+soldier : PiecePointsArray_t
-		+ToArray() : TeamPointsArray_t
-		+PiecePointsArrays() : unordered_map<string , PiecePointsArray_t>
-	}
-}
-
-
-namespace piece_points {
-	class GamePointsArrayBuilder {
-		+GamePointsArrayBuilder(PointsSpecBPOInternal internal_points_spec)
-		+GamePointsArrayBuilder(PointsSpecBPOExternal external_points_spec)
-		+GamePointsArrayBuilder(string spec_file_path)
-		+BuildGamePointsArray() : GamePointsArray_t
-		-points_spec_ : PointsSpecBPOInternal
-		-ComputeBlackNetPoints() : TeamPointsArray_t
-		-ComputeRedNetPoints() : TeamPointsArray_t
-	}
-
-	class PiecePoints {
-		+PiecePoints()
-		+PiecePoints(GamePointsArray_t game_points_array)
-		+PiecePoints(GamePointsSMap_t s_map)
-		+PiecePoints(json j)
-		+PiecePoints(PointsSpecBPOInternal internal_bpo_spec)
-		+PiecePoints(PointsSpecBPOExternal external_bpo_spec)
-		+PiecePoints(string json_file)
-		+points_array : GamePointsArray_t
-		+ImplementGetValueOfPieceAtPosition(PieceColor color, PieceType piece_type, BoardSpace space) : Points_t
-		+ToJson() : json
-		+ToFile(string output_file) : void
-	}
 }
 
 
@@ -446,15 +355,6 @@ namespace json_io {
 		+Import(GamePointsSMap_t& s_map, string file_path) : void
 		+Import(BPOSpecSMap_t& s_map, string file_path) : void
 		-ImportWithTemplate(string file_path, T& object) : void
-	}
-}
-
-
-namespace json_internal {
-	class JsonInternal <template<typename IOType, typename SchemaType>> {
-		-Import(string file_path) : IOType
-		-Validate(string json_file, string schema) : bool
-		-Export(IOType& j, string file_path) : void
 	}
 }
 
@@ -546,7 +446,7 @@ MoveEvaluatorInterface <|-- MinimaxMoveEvaluator
 MoveEvaluatorInterface <|-- RandomMoveEvaluator
 
 
-PieceValueProvider <|-- piece_points.PiecePoints
+PieceValueProvider <|-- piece_points.PiecePositionPoints
 
 
 SpaceInfoProvider <|-- GameBoard
@@ -557,13 +457,10 @@ SpaceInfoProvider <|-- GameBoard
 
 /' Aggregation relationships '/
 
-piece_points_spec.BasePointOffsetSpec "2" *-- piece_points_spec.PieceBasePoints
+piece_points.BasePointOffsetSpec "2" *-- piece_points.PieceBasePoints
 
 
-piece_points_spec.BasePointOffsetSpec "2" *-- piece_points_spec.TeamPoints
-
-
-points_containers.BasePointsOffsetSpec "2" *-- points_containers.TeamBasePositionPair
+piece_points.BasePointOffsetSpec "2" *-- piece_points.TeamPoints
 
 
 board_components.ExecutedMove "2" *-- board_components.GamePiece
@@ -584,10 +481,7 @@ board_components.GamePiece *-- PieceColor
 board_components.GamePiece *-- PieceType
 
 
-points_containers.GamePoints "2" *-- points_containers.TeamPoints
-
-
-piece_points_spec.GamePointsNonTemp "2" *-- piece_points_spec.TeamPointsNonTemp
+piece_points.GamePointsArrayBuilder *-- piece_points.PointsSpecBPOInternal
 
 
 HashCalculator *-- TranspositionTable
@@ -621,12 +515,6 @@ SearchSummary *-- BestMoves
 
 
 SearchSummary "2" *-- ResultDepthCounts
-
-
-points_containers.TeamBasePositionPair *-- points_containers.PieceBasePoints
-
-
-points_containers.TeamBasePositionPair *-- points_containers.TeamPoints
 
 
 TranspositionTable *-- TranspositionTableEntry

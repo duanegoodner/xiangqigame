@@ -7,16 +7,15 @@ target_link_libraries(
     GTest::gtest_main
 )
 
-add_executable(piece_points_test piece_points_test.cpp)
+add_executable(piece_position_points_test piece_position_points_test.cpp)
 target_link_libraries(
-    piece_points_test PRIVATE
-    piece_points
+    piece_position_points_test PRIVATE
+    piece_position_points
     utility_functs
     nlohmann_json::nlohmann_json
     GTest::gtest_main)
 target_include_directories(
-    piece_points_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points
+    piece_position_points_test PRIVATE
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
     ${rapidjson_SOURCE_DIR}/include)
@@ -30,7 +29,7 @@ target_link_libraries(
     move_calculator
     nlohmann_json::nlohmann_json
     utility_functs
-    piece_points
+    piece_position_points
     piece_moves
     GTest::gtest_main)
 
@@ -62,9 +61,7 @@ target_link_libraries(
     GTest::gtest_main)
 target_include_directories(
     piece_points_spec_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
-    ${PROJECT_SOURCE_DIR}/src/core/json_internal
-    ${PROJECT_SOURCE_DIR}/src/core/utility_functs
+    # ${PROJECT_SOURCE_DIR}/src/core/json_internal
     ${rapidjson_SOURCE_DIR}/include
     )
 
@@ -73,11 +70,11 @@ target_link_libraries(
     minimax_evaluator_test PRIVATE
     minimax_evaluator
     piece_moves
-    piece_points
+    piece_position_points
     game_board
-    json_internal
+    # json_internal
     utility_functs
-    json_internal
+    # json_internal
     nlohmann_json::nlohmann_json
     GTest::gtest_main)
 target_include_directories(
@@ -90,11 +87,7 @@ add_executable(
     key_generator_test.cpp)
 target_link_libraries(
     key_generator_test PRIVATE
-    # key_generator
     GTest::gtest_main)
-target_include_directories(key_generator_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/common
-    ${PROJECT_SOURCE_DIR}/src/core/hash_calculator)
 
 add_executable(
         hash_calculator_test
@@ -106,45 +99,19 @@ target_link_libraries(
         utility_functs
         game_board
         GTest::gtest_main)
-target_include_directories(
-        hash_calculator_test PRIVATE
-        ${PROJECT_SOURCE_DIR}/src/core/hash_calculator
-        ${PROJECT_SOURCE_DIR}/src/core/utility_functs/
-        ${PROJECT_SOURCE_DIR}/src/core/board_components/
-        ${PROJECT_SOURCE_DIR}/src/core/game_board/)
 
-add_executable(
-        points_containers_test
-        points_containers_test.cpp)
-target_link_libraries(
-        points_containers_test PRIVATE
-        GTest::gtest_main
-        json_interface
-        json_io
-        points_containers
-        utility_functs
-        )
-    target_include_directories(
-        points_containers_test PRIVATE
-        ${PROJECT_SOURCE_DIR}/src/core/points_containers
-        ${PROJECT_SOURCE_DIR}/src/core/json_interface
-        ${PROJECT_SOURCE_DIR}/src/core/json_io
-        ${PROJECT_SOURCE_DIR}/src/core/utility_functs
-        )
-
-add_executable(
-    json_internal_test
-    json_internal_test.cpp)
-target_link_libraries(
-    json_internal_test PRIVATE
-    json_internal
-    utility_functs
-    GTest::gtest_main)
-target_include_directories(
-    json_internal_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/utility_functs
-    ${PROJECT_SOURCE_DIR}/src/core/json_internal
-)
+# add_executable(
+#     json_internal_test
+#     json_internal_test.cpp)
+# target_link_libraries(
+#     json_internal_test PRIVATE
+#     json_internal
+#     utility_functs
+#     GTest::gtest_main)
+# target_include_directories(
+#     json_internal_test PRIVATE
+#     ${PROJECT_SOURCE_DIR}/src/core/json_internal
+# )
 
 add_executable(json_io_test json_io_test.cpp)
 target_link_libraries(
@@ -153,9 +120,3 @@ target_link_libraries(
     json_interface
     json_io
     utility_functs)
-target_include_directories(
-    json_io_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/json_io
-    ${PROJECT_SOURCE_DIR}/src/core/json_interface
-    ${PROJECT_SOURCE_DIR}/src/core/utility_functs
-    )
