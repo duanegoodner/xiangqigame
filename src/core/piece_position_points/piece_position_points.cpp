@@ -13,7 +13,7 @@
 using namespace std;
 using namespace board_components;
 using namespace piece_points;
-using namespace piece_points_spec;
+// using namespace piece_points_spec;
 using json = nlohmann::json;
 using nlohmann::json_schema::json_validator;
 

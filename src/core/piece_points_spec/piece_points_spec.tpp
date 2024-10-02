@@ -19,7 +19,7 @@
 #include <piece_points_spec.hpp>
 #include <unordered_map>
 
-namespace piece_points_spec {
+namespace piece_points {
 
 // using namespace std;
 using nloh_json = nlohmann::json;
@@ -131,6 +131,6 @@ inline bool game_points_struct_match_json<nloh_json>(
   return true;
 }
 
-} // namespace piece_points_spec
+} // namespace piece_points
 
 #endif /* B3123E8C_B936_4802_A0CD_13BABD26E0A8 */

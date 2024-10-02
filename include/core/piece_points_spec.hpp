@@ -17,7 +17,7 @@
 #include <unordered_map>
 #include <utility_functs.hpp>
 
-namespace piece_points_spec {
+namespace piece_points {
 using namespace std;
 using nloh_json = nlohmann::json;
 
@@ -141,7 +141,7 @@ const string kRawSchemaPath_x =
     utility_functs::get_data_file_abs_path("raw_points_schema.json");
 const string kBPOSchemaPath_x =
     utility_functs::get_data_file_abs_path("bpo_schema.json");
-} // namespace piece_points_spec
+} // namespace piece_points
 
 // #include <piece_points_spec.tpp>
 

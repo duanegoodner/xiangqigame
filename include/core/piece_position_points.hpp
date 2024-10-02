@@ -18,15 +18,10 @@
 #include <piece_points_spec.hpp>
 #include <string>
 
-
-
-
-
-
 namespace piece_points {
 
 using namespace board_components;
-using namespace piece_points_spec;
+// using namespace piece_points_spec;
 using namespace std;
 using json = nlohmann::json;
 

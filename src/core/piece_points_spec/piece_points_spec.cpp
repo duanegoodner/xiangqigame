@@ -14,7 +14,7 @@
 #include <utility_functs.hpp>
 
 using namespace std;
-using namespace piece_points_spec;
+using namespace piece_points;
 using json = nlohmann::json;
 
 PointsSpecBPOExternal::PointsSpecBPOExternal(

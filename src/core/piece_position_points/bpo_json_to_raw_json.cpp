@@ -2,7 +2,7 @@
 #include <piece_points_spec.hpp>
 
 using namespace piece_points;
-using namespace piece_points_spec;
+// using namespace piece_points_spec;
 
 int main(int argc, char **argv) {
 
