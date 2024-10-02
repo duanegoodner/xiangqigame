@@ -1,12 +1,10 @@
 @startuml
-@startuml
 !define RECTANGLE_PACKAGE
 skinparam dpi 300
 skinparam packageStyle rect
 skinparam wrapWidth 500
 left to right direction
 scale 0.75
-
 
 
 
@@ -262,22 +260,10 @@ namespace points_containers {
 		+BasePointsOffsetSpec()
 		+BasePointsOffsetSpec(BPOSpecSMap_t s_map)
 		+ToMap() : BPOSpecSMap_t
-		+ToGamePoints() : GamePoints
 		+black : TeamBasePositionPair
 		+red : TeamBasePositionPair
 		-BlackNetPoints() : TeamPoints
 		-RedNetPoints() : TeamPoints
-	}
-
-	class GamePoints {
-		+GamePoints()
-		+GamePoints(TeamPoints black_points, TeamPoints red_points)
-		+GamePoints(GamePointsSMap_t s_map)
-		+GamePoints(GamePointsArray_t game_point_array)
-		+ToArray() : GamePointsArray_t
-		+ToMap() : GamePointsSMap_t
-		+black : TeamPoints
-		+red : TeamPoints
 	}
 
 	class PieceBasePoints {
@@ -560,9 +546,6 @@ board_components.GamePiece *-- PieceColor
 
 
 board_components.GamePiece *-- PieceType
-
-
-points_containers.GamePoints "2" *-- points_containers.TeamPoints
 
 
 HashCalculator *-- TranspositionTable

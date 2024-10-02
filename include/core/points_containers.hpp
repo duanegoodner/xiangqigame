@@ -15,18 +15,18 @@
 
 namespace points_containers {
 
-struct GamePoints {
-  GamePoints() = default;
-  GamePoints(TeamPoints black_points, TeamPoints red_points);
-  GamePoints(GamePointsSMap_t s_map);
-  GamePoints(GamePointsArray_t game_point_array);
+// struct GamePoints {
+//   GamePoints() = default;
+//   GamePoints(TeamPoints black_points, TeamPoints red_points);
+//   GamePoints(GamePointsSMap_t s_map);
+//   GamePoints(GamePointsArray_t game_point_array);
 
-  TeamPoints red;
-  TeamPoints black;
+//   TeamPoints red;
+//   TeamPoints black;
 
-  GamePointsArray_t ToArray();
-  GamePointsSMap_t ToMap();
-};
+//   GamePointsArray_t ToArray();
+//   GamePointsSMap_t ToMap();
+// };
 
 struct BasePointsOffsetSpec {
   BasePointsOffsetSpec() = default;
@@ -40,7 +40,7 @@ struct BasePointsOffsetSpec {
   // PieceBasePoints red_base_offsets;
   // TeamPoints red_position_offsets;
 
-  GamePoints ToGamePoints();
+  // GamePoints ToGamePoints();
   BPOSpecSMap_t ToMap();
 
 private:

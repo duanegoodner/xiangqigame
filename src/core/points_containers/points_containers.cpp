@@ -44,43 +44,43 @@ TeamPointsSMap_t TeamPoints::ToMap() {
   return team_level_struct_to_map<TeamPoints, PiecePointsArray_t>(*this);
 }
 
-GamePoints::GamePoints(GamePointsSMap_t s_map) {
-  set_color_attributes<GamePoints, TeamPoints, PiecePointsArray_t>(
-      *this,
-      s_map
-  );
-}
+// GamePoints::GamePoints(GamePointsSMap_t s_map) {
+//   set_color_attributes<GamePoints, TeamPoints, PiecePointsArray_t>(
+//       *this,
+//       s_map
+//   );
+// }
 
-GamePoints::GamePoints(TeamPoints black_points, TeamPoints red_points)
-    : black{black_points}
-    , red{red_points} {}
+// GamePoints::GamePoints(TeamPoints black_points, TeamPoints red_points)
+//     : black{black_points}
+//     , red{red_points} {}
 
-GamePoints::GamePoints(GamePointsArray_t game_points_array)
-    : red{TeamPoints(game_points_array[get_zcolor_index(PieceColor::kRed)])}
-    , black{
-          TeamPoints(game_points_array[get_zcolor_index(PieceColor::kBlk)])} {}
+// GamePoints::GamePoints(GamePointsArray_t game_points_array)
+//     : red{TeamPoints(game_points_array[get_zcolor_index(PieceColor::kRed)])}
+//     , black{
+//           TeamPoints(game_points_array[get_zcolor_index(PieceColor::kBlk)])} {}
 
-GamePointsArray_t GamePoints::ToArray() {
-  GamePointsArray_t game_array{};
-  auto map_of_team_points_structs =
-      game_level_struct_to_map<GamePoints, TeamPoints>(*this);
-  for (auto color : map_of_team_points_structs) {
-    game_array[get_zcolor_index(kPieceColorStringToEnum.at(color.first))] =
-        color.second.ToArray();
-  }
-  return game_array;
-}
+// GamePointsArray_t GamePoints::ToArray() {
+//   GamePointsArray_t game_array{};
+//   auto map_of_team_points_structs =
+//       game_level_struct_to_map<GamePoints, TeamPoints>(*this);
+//   for (auto color : map_of_team_points_structs) {
+//     game_array[get_zcolor_index(kPieceColorStringToEnum.at(color.first))] =
+//         color.second.ToArray();
+//   }
+//   return game_array;
+// }
 
-GamePointsSMap_t GamePoints::ToMap() {
-  auto map_of_team_points_structs =
-      game_level_struct_to_map<GamePoints, TeamPoints>(*this);
-  GamePointsSMap_t game_points_map{};
-  for (auto color : map_of_team_points_structs) {
-    game_points_map[color.first] =
-        team_level_struct_to_map<TeamPoints, PiecePointsArray_t>(color.second);
-  }
-  return game_points_map;
-}
+// GamePointsSMap_t GamePoints::ToMap() {
+//   auto map_of_team_points_structs =
+//       game_level_struct_to_map<GamePoints, TeamPoints>(*this);
+//   GamePointsSMap_t game_points_map{};
+//   for (auto color : map_of_team_points_structs) {
+//     game_points_map[color.first] =
+//         team_level_struct_to_map<TeamPoints, PiecePointsArray_t>(color.second);
+//   }
+//   return game_points_map;
+// }
 
 TeamBasePositionPair::TeamBasePositionPair(
     BasePointsSMap_t base_points_map,
@@ -185,7 +185,7 @@ TeamPoints BasePointsOffsetSpec::RedNetPoints() {
   return TeamPoints(red_net_points);
 }
 
-GamePoints BasePointsOffsetSpec::ToGamePoints() {
-  return GamePoints(BlackNetPoints(), RedNetPoints());
-}
+// GamePoints BasePointsOffsetSpec::ToGamePoints() {
+//   return GamePoints(BlackNetPoints(), RedNetPoints());
+// }
 } // namespace points_containers

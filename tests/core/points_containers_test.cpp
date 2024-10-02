@@ -28,27 +28,27 @@ protected:
   TeamPointsSMap_t red_points_smap = game_points_smap.at("red");
 };
 
-TEST_F(GamePointsTest, GamePointsInitFromSmap) {
-  auto game_points_struct = points_containers::GamePoints(game_points_smap);
-}
+// TEST_F(GamePointsTest, GamePointsInitFromSmap) {
+//   auto game_points_struct = points_containers::GamePoints(game_points_smap);
+// }
 
-TEST_F(GamePointsTest, GamePointsInitFromTeamPoints) {
-  auto black_team_points = TeamPoints(black_points_smap);
-  auto red_team_points = TeamPoints(red_points_smap);
-  auto game_points = GamePoints(black_team_points, red_team_points);
-}
+// TEST_F(GamePointsTest, GamePointsInitFromTeamPoints) {
+//   auto black_team_points = TeamPoints(black_points_smap);
+//   auto red_team_points = TeamPoints(red_points_smap);
+//   auto game_points = GamePoints(black_team_points, red_team_points);
+// }
 
-TEST_F(GamePointsTest, GamePointsToArray) {
-  // auto game_points_map = json_interface.Import(kICGARawPath);
-  auto game_points_struct = points_containers::GamePoints(game_points_smap);
-  auto result = game_points_struct.ToArray();
-}
+// TEST_F(GamePointsTest, GamePointsToArray) {
+//   // auto game_points_map = json_interface.Import(kICGARawPath);
+//   auto game_points_struct = points_containers::GamePoints(game_points_smap);
+//   auto result = game_points_struct.ToArray();
+// }
 
-TEST_F(GamePointsTest, GamePointsInitFromArray) {
-  auto game_points_struct = points_containers::GamePoints(game_points_smap);
-  auto game_points_array = game_points_struct.ToArray();
-  auto reconstructed_game_points = GamePoints(game_points_array);
-}
+// TEST_F(GamePointsTest, GamePointsInitFromArray) {
+//   auto game_points_struct = points_containers::GamePoints(game_points_smap);
+//   auto game_points_array = game_points_struct.ToArray();
+//   auto reconstructed_game_points = GamePoints(game_points_array);
+// }
 
 class BasePointsOffsetSpecTest : public ::testing::Test {
 protected:
@@ -70,10 +70,10 @@ TEST_F(BasePointsOffsetSpecTest, BPOSpecInitFromSmap) {
   auto bpo_spec = BasePointsOffsetSpec(bpo_spec_map);
 }
 
-TEST_F(BasePointsOffsetSpecTest, BPOToGamePoints) {
-  auto bpo_spec = BasePointsOffsetSpec(bpo_spec_map);
-  auto result = bpo_spec.ToGamePoints();
-}
+// TEST_F(BasePointsOffsetSpecTest, BPOToGamePoints) {
+//   auto bpo_spec = BasePointsOffsetSpec(bpo_spec_map);
+//   auto result = bpo_spec.ToGamePoints();
+// }
 
 TEST_F(BasePointsOffsetSpecTest, BPOToMap) {
   auto bpo_spec = BasePointsOffsetSpec(bpo_spec_map);
