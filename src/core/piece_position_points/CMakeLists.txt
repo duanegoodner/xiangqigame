@@ -5,7 +5,6 @@ add_library(
 target_link_libraries(
     piece_position_points PRIVATE
     # common
-    json_internal
     nlohmann_json::nlohmann_json
     nlohmann_json_schema_validator
     utility_functs
@@ -15,8 +14,7 @@ target_link_libraries(
 
 target_include_directories(
     piece_position_points PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
-    ${PROJECT_SOURCE_DIR}/src/core/json_internal)
+    ${PROJECT_SOURCE_DIR}/src/core/move_evaluators)
 
 add_executable(
     bpo_json_to_raw_json bpo_json_to_raw_json.cpp
@@ -32,7 +30,6 @@ target_link_libraries(
 )
 target_include_directories(
     bpo_json_to_raw_json PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/json_internal
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec)
 

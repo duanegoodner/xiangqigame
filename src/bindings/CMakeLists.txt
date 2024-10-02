@@ -6,7 +6,6 @@ target_link_libraries(
     xiangqigame_core PRIVATE
     hash_calculator
     game_board
-    json_internal
     nlohmann_json::nlohmann_json
     nlohmann_json_schema_validator
     piece_position_points
@@ -17,7 +16,6 @@ target_link_libraries(
 target_include_directories(
     xiangqigame_core PRIVATE
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
-    ${PROJECT_SOURCE_DIR}/src/core/json_internal
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
     ${CMAKE_CURRENT_SOURCE_DIR})

@@ -4,7 +4,7 @@
 add_subdirectory(src/core/game_board)
 add_subdirectory(src/core/hash_calculator)
 add_subdirectory(src/core/json_interface)
-add_subdirectory(src/core/json_internal)
+# add_subdirectory(src/core/json_internal)
 add_subdirectory(src/core/json_io)
 add_subdirectory(src/core/json_validation)
 # add_subdirectory(src/core/points_containers)

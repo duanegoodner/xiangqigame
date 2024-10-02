@@ -61,7 +61,7 @@ target_link_libraries(
     GTest::gtest_main)
 target_include_directories(
     piece_points_spec_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/json_internal
+    # ${PROJECT_SOURCE_DIR}/src/core/json_internal
     ${rapidjson_SOURCE_DIR}/include
     )
 
@@ -72,9 +72,9 @@ target_link_libraries(
     piece_moves
     piece_position_points
     game_board
-    json_internal
+    # json_internal
     utility_functs
-    json_internal
+    # json_internal
     nlohmann_json::nlohmann_json
     GTest::gtest_main)
 target_include_directories(
@@ -100,18 +100,18 @@ target_link_libraries(
         game_board
         GTest::gtest_main)
 
-add_executable(
-    json_internal_test
-    json_internal_test.cpp)
-target_link_libraries(
-    json_internal_test PRIVATE
-    json_internal
-    utility_functs
-    GTest::gtest_main)
-target_include_directories(
-    json_internal_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/json_internal
-)
+# add_executable(
+#     json_internal_test
+#     json_internal_test.cpp)
+# target_link_libraries(
+#     json_internal_test PRIVATE
+#     json_internal
+#     utility_functs
+#     GTest::gtest_main)
+# target_include_directories(
+#     json_internal_test PRIVATE
+#     ${PROJECT_SOURCE_DIR}/src/core/json_internal
+# )
 
 add_executable(json_io_test json_io_test.cpp)
 target_link_libraries(
