@@ -9,7 +9,6 @@ scale 0.75
 
 
 
-
 /' Objects '/
 
 class BoardStateSummarizer <template<typename ConcreteBoardStateSummarizer, typename KeyType>> {
