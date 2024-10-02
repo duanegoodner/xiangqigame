@@ -10,9 +10,10 @@
 #define AB6A1802_337A_4767_8288_AD0E610AC2F5
 
 #include <board_components.hpp>
-#include <piece_moves_details.hpp>
+#include <board_utilities.hpp>
 
 using namespace board_components;
+using namespace board_utilities;
 
 extern const array<BoardDirection, 2> kSideDirections;
 extern const vector<pair<BoardDirection, vector<BoardDirection>>> kHorsePaths;
