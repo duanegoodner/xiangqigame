@@ -9,19 +9,15 @@
 #ifndef B3123E8C_B936_4802_A0CD_13BABD26E0A8
 #define B3123E8C_B936_4802_A0CD_13BABD26E0A8
 
-// #include <piece_points_spec.hpp>
-// #include "json_internal.tpp"
 #include <common.hpp>
 #include <filesystem>
 #include <iostream>
-// #include <json_internal.hpp>
 #include <nlohmann/json.hpp>
 #include <piece_points_spec.hpp>
 #include <unordered_map>
 
 namespace piece_points {
 
-// using namespace std;
 using nloh_json = nlohmann::json;
 
 template <>
@@ -51,28 +47,6 @@ TeamPoints<JsonType>::PiecePointsArrays() {
 
   return name_map;
 }
-
-// inline TeamPointsArray_t TeamPointsNonTemp::ToArray() {
-//   TeamPointsArray_t team_array{};
-//   auto name_map = PiecePointsArrays();
-//   for (auto piece : name_map) {
-//     auto piece_index = kPieceTypeStringToEnum.at(piece.first);
-//     team_array[piece_index] = name_map.at(piece.first);
-//   }
-//   return team_array;
-// }
-
-// inline unordered_map<string, TeamPointsNonTemp>
-// GamePointsNonTemp::TeamPointsStructs() {
-//   unordered_map<string, TeamPointsNonTemp> name_map{
-//       {"red", red},
-//       {"black", black}};
-//   return name_map;
-// }
-
-template <typename JsonType>
-inline BaseOffsetPointSpec<JsonType>::BaseOffsetPointSpec(string file_path)
-    : BaseOffsetPointSpec(json_internal::import_json<JsonType>(file_path)) {}
 
 template <>
 inline GamePointsArray_t GamePoints<nloh_json>::ToArray() {
