@@ -4,7 +4,7 @@
 // Last Modified: 2024-08-16
 
 // Description:
-// Defines JsonInterface which any class that reads/writes json must comply with.
+// Defines AbstractJsonIO which any class that reads/writes json must comply with.
 
 #ifndef DAB10F49_F5B4_46DD_963B_D40DE5483C20
 #define DAB10F49_F5B4_46DD_963B_D40DE5483C20
@@ -15,9 +15,9 @@
 
 namespace json_interface {
 
-    class JsonInterface {
+    class AbstractJsonIO {
 public:
-  virtual ~JsonInterface() = default;
+  virtual ~AbstractJsonIO() = default;
 
   virtual void Import(GamePointsSMap_t& s_map, string file_path) = 0;
   virtual void Export(GamePointsSMap_t& data, string file_path) = 0;

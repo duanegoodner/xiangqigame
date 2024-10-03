@@ -14,6 +14,7 @@
 #include <common.hpp>
 #include <move_evaluators.hpp>
 #include <nlohmann/json.hpp>
+#include <json_interface.hpp>
 #include <piece_points_details.hpp>
 #include <piece_points_spec.hpp>
 #include <string>
