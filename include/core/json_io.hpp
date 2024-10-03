@@ -24,11 +24,11 @@
 #include <unordered_map>
 
 using namespace std;
-using namespace json_interface;
+// using namespace json_interface;
 
 namespace json_io {
 
-class NlohmannJsonIO : public AbstractJsonIO {
+class NlohmannJsonIO : public JsonFileHandler {
 
 public:
   void Import(GamePointsSMap_t &s_map, string file_path) override;

@@ -16,13 +16,11 @@ using namespace piece_points;
 using json = nlohmann::json;
 using nlohmann::json_schema::json_validator;
 
-GamePointsArrayBuilder::GamePointsArrayBuilder(
-    PointsSpecBPOInternal internal_points_spec
+GamePointsArrayBuilder::GamePointsArrayBuilder(PointsSpecBPOInternal internal_points_spec
 )
     : points_spec_{internal_points_spec} {}
 
-GamePointsArrayBuilder::GamePointsArrayBuilder(
-    PointsSpecBPOExternal external_points_spec
+GamePointsArrayBuilder::GamePointsArrayBuilder(PointsSpecBPOExternal external_points_spec
 )
     : GamePointsArrayBuilder(PointsSpecBPOInternal(external_points_spec)) {}
 
@@ -63,10 +61,8 @@ TeamPointsArray_t GamePointsArrayBuilder::ComputeRedNetPoints() {
 
 GamePointsArray_t GamePointsArrayBuilder::BuildGamePointsArray() {
   GamePointsArray_t game_points_array{};
-  game_points_array[get_zcolor_index(PieceColor::kBlk)] =
-      ComputeBlackNetPoints();
-  game_points_array[get_zcolor_index(PieceColor::kRed)] =
-      ComputeRedNetPoints();
+  game_points_array[get_zcolor_index(PieceColor::kBlk)] = ComputeBlackNetPoints();
+  game_points_array[get_zcolor_index(PieceColor::kRed)] = ComputeRedNetPoints();
 
   return game_points_array;
 }
@@ -93,8 +89,7 @@ PiecePositionPoints::PiecePositionPoints(string json_file) {
   points_array = game_points_smap_to_array(points_smap);
 }
 
-TeamPointsEMap_t team_array_to_emap(TeamPointsArray_t team_array
-) {
+TeamPointsEMap_t team_array_to_emap(TeamPointsArray_t team_array) {
   TeamPointsEMap_t team_map;
   for (auto piece_idx = 0; piece_idx < kNumPieceTypeVals; piece_idx++) {
     team_map[static_cast<PieceType>(piece_idx)] = team_array[piece_idx];
@@ -102,26 +97,20 @@ TeamPointsEMap_t team_array_to_emap(TeamPointsArray_t team_array
   return team_map;
 }
 
-GamePointsEMap_t game_points_array_to_emap(
-    GamePointsArray_t game_array
-) {
+GamePointsEMap_t game_points_array_to_emap(GamePointsArray_t game_array) {
   GamePointsEMap_t pts_map;
   for (auto zcolor_idx = 0; zcolor_idx < game_array.size(); zcolor_idx++) {
-    pts_map[get_piece_color(zcolor_idx)] =
-        team_array_to_emap(game_array[zcolor_idx]);
+    pts_map[get_piece_color(zcolor_idx)] = team_array_to_emap(game_array[zcolor_idx]);
   }
   return pts_map;
 }
 
-GamePointsSMap_t game_points_array_to_smap(
-    GamePointsArray_t game_array
-) {
+GamePointsSMap_t game_points_array_to_smap(GamePointsArray_t game_array) {
   auto e_map = game_points_array_to_emap(game_array);
   return game_points_emap_to_smap(e_map);
 }
 
-GamePointsSMap_t game_points_emap_to_smap(GamePointsEMap_t e_map
-) {
+GamePointsSMap_t game_points_emap_to_smap(GamePointsEMap_t e_map) {
   GamePointsSMap_t game_string_map;
 
   for (auto color : kPieceColorStringToEnum) {
@@ -135,9 +124,7 @@ GamePointsSMap_t game_points_emap_to_smap(GamePointsEMap_t e_map
   return game_string_map;
 }
 
-GamePointsArray_t game_points_smap_to_array(
-    const GamePointsSMap_t s_map
-) {
+GamePointsArray_t game_points_smap_to_array(const GamePointsSMap_t s_map) {
   GamePointsArray_t game_points_array{};
   for (auto color : s_map) {
     auto piece_color = kPieceColorStringToEnum.at(color.first);
@@ -184,9 +171,7 @@ GamePointsArray_t raw_file_to_array(string raw_points_file) {
   return game_points_smap_to_array(s_map);
 }
 
-bool piece_points::json_matches_schema(
-    const json &imported_data,
-    const json &schema) {
+bool piece_points::json_matches_schema(const json &imported_data, const json &schema) {
   json_validator validator;
 
   try {

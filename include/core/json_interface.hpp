@@ -4,7 +4,7 @@
 // Last Modified: 2024-08-16
 
 // Description:
-// Defines AbstractJsonIO which any class that reads/writes json must comply with.
+// Defines JsonFileHandler which any class that reads/writes json must comply with.
 
 #ifndef DAB10F49_F5B4_46DD_963B_D40DE5483C20
 #define DAB10F49_F5B4_46DD_963B_D40DE5483C20
@@ -13,11 +13,11 @@
 #include <common.hpp>
 
 
-namespace json_interface {
+namespace json_io {
 
-    class AbstractJsonIO {
+    class JsonFileHandler {
 public:
-  virtual ~AbstractJsonIO() = default;
+  virtual ~JsonFileHandler() = default;
 
   virtual void Import(GamePointsSMap_t& s_map, string file_path) = 0;
   virtual void Export(GamePointsSMap_t& data, string file_path) = 0;
