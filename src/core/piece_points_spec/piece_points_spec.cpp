@@ -31,9 +31,7 @@ void NlohmannBPOFileHandler::Import(
   json_object.at("red_position_offsets").get_to(bpo_points.red_position_offsets);
 }
 
-nloh_json NlohmannBPOFileHandler::ToJsonObject(
-    PointsSpecBPOExternal &bpo_points
-) {
+nloh_json NlohmannBPOFileHandler::ToJsonObject(PointsSpecBPOExternal &bpo_points) {
   nloh_json j;
   j["black_base"] = bpo_points.black_base;
   j["red_base_offsets"] = bpo_points.red_base_offsets;
@@ -42,11 +40,21 @@ nloh_json NlohmannBPOFileHandler::ToJsonObject(
   return j;
 }
 
-void NlohmannBPOFileHandler::Export(PointsSpecBPOExternal& bpo_points, string file_path) {
-    auto json_object = ToJsonObject(bpo_points);
-    ofstream fout(file_path);
-    fout << setw(4) << json_object << endl;
+void NlohmannBPOFileHandler::Export(
+    PointsSpecBPOExternal &bpo_points,
+    string file_path
+) {
+  auto json_object = ToJsonObject(bpo_points);
+  ofstream fout(file_path);
+  fout << setw(4) << json_object << endl;
 }
+
+PointsSpecBPOExternal::PointsSpecBPOExternal()
+    : black_base{}
+    , red_base_offsets{}
+    , black_position{}
+    , red_position_offsets{}
+    , file_handler{} {};
 
 PointsSpecBPOExternal::PointsSpecBPOExternal(
     BasePointsSMap_t black_base_input,
@@ -57,20 +65,20 @@ PointsSpecBPOExternal::PointsSpecBPOExternal(
     : black_base{black_base_input}
     , red_base_offsets{red_base_offsets_input}
     , black_position{black_position_input}
-    , red_position_offsets{red_position_offsets_input} {}
+    , red_position_offsets{red_position_offsets_input}
+    , file_handler{} {}
 
 PointsSpecBPOExternal::PointsSpecBPOExternal(const string &json_file_path)
     : black_base{}
     , red_base_offsets{}
     , black_position{}
-    , red_position_offsets{} {
-  NlohmannBPOFileHandler file_handler{};
+    , red_position_offsets{}
+    , file_handler{} {
   file_handler.Import(*this, json_file_path);
 }
 
 void PointsSpecBPOExternal::ToFile(string output_path) {
-    NlohmannBPOFileHandler file_handler{};
-    file_handler.Export(*this, output_path);
+  file_handler.Export(*this, output_path);
 }
 
 GamePointsSMap_t PointsSpecBPOExternal::ToGamePointsSmap() {

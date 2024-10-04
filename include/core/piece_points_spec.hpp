@@ -35,16 +35,25 @@ struct PieceBasePoints {
 class PointsSpecBPOExternal;
 
 class BPOFileHandler {
-    public:
-    virtual ~BPOFileHandler() = default;
-    virtual void Import(PointsSpecBPOExternal& bpo_points, string file_path) = 0;
-    virtual void Export(PointsSpecBPOExternal& bpo_points, string file_path) = 0;
+public:
+  virtual ~BPOFileHandler() = default;
+  virtual void Import(PointsSpecBPOExternal &bpo_points, string file_path) = 0;
+  virtual void Export(PointsSpecBPOExternal &bpo_points, string file_path) = 0;
+};
+
+class NlohmannBPOFileHandler : public BPOFileHandler {
+public:
+  void Import(PointsSpecBPOExternal &bpo_points, string file_path);
+  void Export(PointsSpecBPOExternal &bpo_points, string file_path);
+
+private:
+  nloh_json ToJsonObject(PointsSpecBPOExternal &bpo_points);
 };
 
 // Piece Points spec in "Base Points Offset" form with string keys to easily
 // read/write external json
 struct PointsSpecBPOExternal {
-  PointsSpecBPOExternal() = default;
+  PointsSpecBPOExternal();
   PointsSpecBPOExternal(
       BasePointsSMap_t black_base_input,
       BasePointsSMap_t red_base_offsets_input,
@@ -58,21 +67,13 @@ struct PointsSpecBPOExternal {
   TeamPointsSMap_t black_position;
   TeamPointsSMap_t red_position_offsets;
 
-
   void ToFile(string output_path);
   GamePointsSMap_t ToGamePointsSmap();
   GamePointsArray_t ToGamePointsArray();
-};
 
-class NlohmannBPOFileHandler : public BPOFileHandler {
-  public:
-    void Import(PointsSpecBPOExternal& bpo_points, string file_path);
-    void Export(PointsSpecBPOExternal& bpo_points, string file_path);
-  
-  private:
-    nloh_json ToJsonObject(PointsSpecBPOExternal& bpo_points);
+private:
+  NlohmannBPOFileHandler file_handler;
 };
-
 
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for
 // use in internal data structs
@@ -100,6 +101,5 @@ const string kRawSchemaPath_x =
 const string kBPOSchemaPath_x =
     utility_functs::get_data_file_abs_path("bpo_schema.json");
 } // namespace piece_points
-
 
 #endif /* E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802 */
