@@ -9,8 +9,8 @@ int main(int argc, char **argv) {
   const string bpo_path = argv[1];
   const string output_path = argv[2];
 
-  auto game_points_array =
-      GamePointsArrayBuilder(bpo_path).BuildGamePointsArray();
+  BPOPointsSKeys bpo_points_skeys{bpo_path};
+  auto game_points_array = bpo_points_skeys.ToGamePointsArray();
   auto piece_points = PiecePositionPoints(game_points_array);
   piece_points.ToFile(output_path);
 

@@ -16,80 +16,21 @@ using namespace piece_points;
 using json = nlohmann::json;
 using nlohmann::json_schema::json_validator;
 
-GamePointsArrayBuilder::GamePointsArrayBuilder(BPOPointsEKeys internal_points_spec)
-    : points_spec_{internal_points_spec} {}
-
-GamePointsArrayBuilder::GamePointsArrayBuilder(BPOPointsSKeys external_points_spec)
-    : GamePointsArrayBuilder(BPOPointsEKeys(external_points_spec)) {}
-
-GamePointsArrayBuilder::GamePointsArrayBuilder(string spec_file_path)
-    : GamePointsArrayBuilder(BPOPointsSKeys(spec_file_path)) {}
-
-TeamPointsArray_t GamePointsArrayBuilder::ComputeBlackNetPoints() {
-  TeamPointsArray_t black_net_points{};
-  for (auto piece : points_spec_.black_base_) {
-
-    black_net_points[piece.first] = utility_functs::array_plus_const(
-        points_spec_.black_position_[piece.first],
-        points_spec_.black_base_[piece.first]
-    );
-  }
-  return black_net_points;
-}
-
-TeamPointsArray_t GamePointsArrayBuilder::ComputeRedNetPoints() {
-  TeamPointsArray_t red_net_points{};
-  for (auto piece : points_spec_.red_base_offsets_) {
-    auto base_points = points_spec_.black_base_[piece.first] +
-                       points_spec_.red_base_offsets_[piece.first];
-
-    auto unflipped_position_points = utility_functs::two_array_sum(
-        points_spec_.black_position_[piece.first],
-        points_spec_.red_position_offsets_[piece.first]
-    );
-
-    auto flipped_position_points =
-        utility_functs::vertical_flip_array(unflipped_position_points);
-
-    red_net_points[piece.first] =
-        utility_functs::array_plus_const(flipped_position_points, base_points);
-  }
-  return red_net_points;
-}
-
-GamePointsArray_t GamePointsArrayBuilder::BuildGamePointsArray() {
-  GamePointsArray_t game_points_array{};
-  game_points_array[get_zcolor_index(PieceColor::kBlk)] = ComputeBlackNetPoints();
-  game_points_array[get_zcolor_index(PieceColor::kRed)] = ComputeRedNetPoints();
-
-  return game_points_array;
-}
-
-// PiecePositionPoints::PiecePositionPoints()
-//     : points_array{DEFAULT_GAME_POINTS_ARRAY} {}
 
 PiecePositionPoints::PiecePositionPoints()
     : points_array{BPOPointsSKeys(kICGABPOPath).ToGamePointsArray()} {}
 
 PiecePositionPoints::PiecePositionPoints(GamePointsArray_t game_points_array)
     : points_array{game_points_array} {}
-PiecePositionPoints::PiecePositionPoints(BPOPointsEKeys internal_bpo_spec)
-    : PiecePositionPoints(
-          GamePointsArrayBuilder(internal_bpo_spec).BuildGamePointsArray()
-      ) {}
-PiecePositionPoints::PiecePositionPoints(BPOPointsSKeys external_bpo_spec)
-    : PiecePositionPoints(
-          GamePointsArrayBuilder(external_bpo_spec).BuildGamePointsArray()
-      ) {}
-PiecePositionPoints::PiecePositionPoints(GamePointsSMap_t s_map)
-    : PiecePositionPoints(game_points_smap_to_array(s_map)) {}
-PiecePositionPoints::PiecePositionPoints(json &j)
-    : PiecePositionPoints(raw_points_to_smap(j)) {}
-PiecePositionPoints::PiecePositionPoints(string json_file) {
-  auto json_object = utility_functs::import_json(json_file);
-  auto points_smap = raw_points_to_smap(json_object);
-  points_array = game_points_smap_to_array(points_smap);
-}
+
+PiecePositionPoints::PiecePositionPoints(BPOPointsEKeys bpo_points_ekeys)
+    : points_array{bpo_points_ekeys.ToGamePointsArray()} {}
+
+PiecePositionPoints::PiecePositionPoints(BPOPointsSKeys bpo_points_skeys)
+    : points_array{bpo_points_skeys.ToGamePointsArray()} {}
+
+PiecePositionPoints::PiecePositionPoints(string json_file)
+    : points_array{BPOPointsSKeys(json_file).ToGamePointsArray()} {}
 
 TeamPointsEMap_t team_array_to_emap(TeamPointsArray_t team_array) {
   TeamPointsEMap_t team_map;

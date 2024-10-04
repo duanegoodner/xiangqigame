@@ -24,29 +24,11 @@ using namespace board_components;
 using namespace std;
 using json = nlohmann::json;
 
-class GamePointsArrayBuilder {
-public:
-  GamePointsArrayBuilder(BPOPointsEKeys internal_points_spec);
-  GamePointsArrayBuilder(BPOPointsSKeys external_points_spec);
-  GamePointsArrayBuilder(string spec_file_path);
-  GamePointsArray_t BuildGamePointsArray();
-
-private:
-  BPOPointsEKeys points_spec_;
-  TeamPointsArray_t ComputeBlackNetPoints();
-  TeamPointsArray_t ComputeRedNetPoints();
-};
-
-const auto DEFAULT_GAME_POINTS_ARRAY =
-    GamePointsArrayBuilder(kICGABPOPath).BuildGamePointsArray();
-
 struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   PiecePositionPoints();
   PiecePositionPoints(GamePointsArray_t game_points_array);
-  PiecePositionPoints(GamePointsSMap_t s_map);
-  PiecePositionPoints(json &j);
-  PiecePositionPoints(BPOPointsEKeys internal_bpo_spec);
-  PiecePositionPoints(BPOPointsSKeys external_bpo_spec);
+  PiecePositionPoints(BPOPointsEKeys bpo_points_ekeys);
+  PiecePositionPoints(BPOPointsSKeys bpo_points_skeys);
   PiecePositionPoints(string json_file);
 
   // define in header to force inlining
