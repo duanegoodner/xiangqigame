@@ -31,9 +31,9 @@ public:
   virtual void Export(BPOPointsSKeys &bpo_points, string file_path) = 0;
 };
 
-class BPOFileHandlerFactory {
+class AbstractBPOFileHandlerFactory {
 public:
-  virtual ~BPOFileHandlerFactory() = default;
+  virtual ~AbstractBPOFileHandlerFactory() = default;
   virtual unique_ptr<BPOFileHandler> create_bpo_file_handler() const = 0;
 };
 
@@ -46,7 +46,7 @@ private:
   nloh_json ToJsonObject(BPOPointsSKeys &bpo_points);
 };
 
-class NlohmannBPOFileHandlerFactory : public BPOFileHandlerFactory {
+class NlohmannBPOFileHandlerFactory : public AbstractBPOFileHandlerFactory {
 public:
   unique_ptr<BPOFileHandler> create_bpo_file_handler() const override {
     return make_unique<NlohmannBPOFileHandler>();
@@ -61,18 +61,18 @@ public:
   BPOPointsSKeys &operator=(const BPOPointsSKeys &) = delete;
 
   explicit BPOPointsSKeys(
-      const BPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
+      const AbstractBPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
   );
   BPOPointsSKeys(
       BasePointsSMap_t black_base_input,
       BasePointsSMap_t red_base_offsets_input,
       TeamPointsSMap_t black_position_input,
       TeamPointsSMap_t red_position_offsets_input,
-      const BPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
+      const AbstractBPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
   );
   BPOPointsSKeys(
       const string &json_file_path,
-      const BPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
+      const AbstractBPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
   );
 
   BasePointsSMap_t black_base_;

@@ -43,7 +43,7 @@ void NlohmannBPOFileHandler::Export(BPOPointsSKeys &bpo_points, string file_path
   fout << setw(4) << json_object << endl;
 }
 
-BPOPointsSKeys::BPOPointsSKeys(const BPOFileHandlerFactory &file_handler_factory)
+BPOPointsSKeys::BPOPointsSKeys(const AbstractBPOFileHandlerFactory &file_handler_factory)
     : black_base_{}
     , red_base_offsets_{}
     , black_position_{}
@@ -55,7 +55,7 @@ BPOPointsSKeys::BPOPointsSKeys(
     BasePointsSMap_t red_base_offsets_input,
     TeamPointsSMap_t black_position_input,
     TeamPointsSMap_t red_position_offsets_input,
-    const BPOFileHandlerFactory &file_handler_factory
+    const AbstractBPOFileHandlerFactory &file_handler_factory
 )
     : black_base_{black_base_input}
     , red_base_offsets_{red_base_offsets_input}
@@ -65,7 +65,7 @@ BPOPointsSKeys::BPOPointsSKeys(
 
     BPOPointsSKeys::BPOPointsSKeys(
         const string &json_file_path,
-        const BPOFileHandlerFactory &file_handler_factory
+        const AbstractBPOFileHandlerFactory &file_handler_factory
     )
     : black_base_{}
     , red_base_offsets_{}

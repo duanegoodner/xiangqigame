@@ -9,6 +9,7 @@ scale 0.75
 
 
 
+
 /' Objects '/
 
 class BoardStateSummarizer <template<typename ConcreteBoardStateSummarizer, typename KeyType>> {
@@ -256,20 +257,42 @@ class ZobristKeys <template<typename KeyType>> {
 
 
 namespace piece_points {
+	abstract class AbstractBPOFileHandlerFactory {
+		+~AbstractBPOFileHandlerFactory()
+		+{abstract} create_bpo_file_handler() : unique_ptr<BPOFileHandler> {query}
+	}
+
 	abstract class BPOFileHandler {
 		+~BPOFileHandler()
 		+{abstract} Export(BPOPointsSKeys& bpo_points, string file_path) : void
 		+{abstract} Import(BPOPointsSKeys& bpo_points, string file_path) : void
 	}
 
-	class GamePointsArrayBuilder {
-		+GamePointsArrayBuilder(BPOPointsEKeys internal_points_spec)
-		+GamePointsArrayBuilder(BPOPointsSKeys external_points_spec)
-		+GamePointsArrayBuilder(string spec_file_path)
-		+BuildGamePointsArray() : GamePointsArray_t
-		-points_spec_ : BPOPointsEKeys
-		-ComputeBlackNetPoints() : TeamPointsArray_t
-		-ComputeRedNetPoints() : TeamPointsArray_t
+	class BPOPointsEKeys {
+		+BPOPointsEKeys(TeamBasePoints_t black_base_input, TeamBasePoints_t red_base_offsets_input, TeamPointsEMap_t black_position_input, TeamPointsEMap_t red_position_offsets_input)
+		+BPOPointsEKeys(BPOPointsSKeys external_spec)
+		+ToGamePointsArray() : GamePointsArray_t
+		+black_base_ : TeamBasePoints_t
+		+red_base_offsets_ : TeamBasePoints_t
+		+BlackNetPoints() : TeamPointsArray_t
+		+RedNetPoints() : TeamPointsArray_t
+		+black_position_ : TeamPointsEMap_t
+		+red_position_offsets_ : TeamPointsEMap_t
+	}
+
+	class BPOPointsSKeys {
+		+BPOPointsSKeys(const AbstractBPOFileHandlerFactory& file_handler_factory)
+		+BPOPointsSKeys(BasePointsSMap_t black_base_input, BasePointsSMap_t red_base_offsets_input, TeamPointsSMap_t black_position_input, TeamPointsSMap_t red_position_offsets_input, const AbstractBPOFileHandlerFactory& file_handler_factory)
+		+BPOPointsSKeys(const string& json_file_path, const AbstractBPOFileHandlerFactory& file_handler_factory)
+		+ToBPOPointsEKeys() : BPOPointsEKeys
+		+black_base_ : BasePointsSMap_t
+		+red_base_offsets_ : BasePointsSMap_t
+		+ToGamePointsArray() : GamePointsArray_t
+		+ToGamePointsSmap() : GamePointsSMap_t
+		+black_position_ : TeamPointsSMap_t
+		+red_position_offsets_ : TeamPointsSMap_t
+		-file_handler_ : unique_ptr<BPOFileHandler>
+		+ToFile(string output_path) : void
 	}
 
 	class NlohmannBPOFileHandler {
@@ -278,52 +301,20 @@ namespace piece_points {
 		+Import(BPOPointsSKeys& bpo_points, string file_path) : void
 	}
 
-	class PieceBasePoints {
-		+advisor : int
-		+cannon : int
-		+chariot : int
-		+elephant : int
-		+general : int
-		+horse : int
-		+null : int
-		+soldier : int
+	class NlohmannBPOFileHandlerFactory {
+		+create_bpo_file_handler() : unique_ptr<BPOFileHandler> {query}
 	}
 
 	class PiecePositionPoints {
 		+PiecePositionPoints()
 		+PiecePositionPoints(GamePointsArray_t game_points_array)
-		+PiecePositionPoints(GamePointsSMap_t s_map)
-		+PiecePositionPoints(json j)
-		+PiecePositionPoints(BPOPointsEKeys internal_bpo_spec)
-		+PiecePositionPoints(BPOPointsSKeys external_bpo_spec)
+		+PiecePositionPoints(BPOPointsEKeys& bpo_points_ekeys)
+		+PiecePositionPoints(BPOPointsSKeys& bpo_points_skeys)
 		+PiecePositionPoints(string json_file)
 		+points_array : GamePointsArray_t
 		+ImplementGetValueOfPieceAtPosition(PieceColor color, PieceType piece_type, BoardSpace space) : Points_t
 		+ToJson() : json
 		+ToFile(string output_file) : void
-	}
-
-	class BPOPointsSKeys {
-		+BPOPointsSKeys()
-		+BPOPointsSKeys(BasePointsSMap_t black_base_input, BasePointsSMap_t red_base_offsets_input, TeamPointsSMap_t black_position_input, TeamPointsSMap_t red_position_offsets_input)
-		+BPOPointsSKeys(const string& json_file_path)
-		+black_base : BasePointsSMap_t
-		+red_base_offsets : BasePointsSMap_t
-		+ToGamePointsArray() : GamePointsArray_t
-		+ToGamePointsSmap() : GamePointsSMap_t
-		-file_handler : NlohmannBPOFileHandler
-		+black_position : TeamPointsSMap_t
-		+red_position_offsets : TeamPointsSMap_t
-		+ToFile(string output_path) : void
-	}
-
-	class BPOPointsEKeys {
-		+BPOPointsEKeys(TeamBasePoints_t black_base_input, TeamBasePoints_t red_base_offsets_input, TeamPointsEMap_t black_position_input, TeamPointsEMap_t red_position_offsets_input)
-		+BPOPointsEKeys(BPOPointsSKeys external_spec)
-		+black_base : TeamBasePoints_t
-		+red_base_offsets : TeamBasePoints_t
-		+black_position : TeamPointsEMap_t
-		+red_position_offsets : TeamPointsEMap_t
 	}
 }
 
@@ -394,6 +385,9 @@ namespace board_components {
 
 /' Inheritance relationships '/
 
+piece_points.AbstractBPOFileHandlerFactory <|-- piece_points.NlohmannBPOFileHandlerFactory
+
+
 piece_points.BPOFileHandler <|-- piece_points.NlohmannBPOFileHandler
 
 
@@ -417,6 +411,9 @@ SpaceInfoProvider <|-- GameBoard
 
 /' Aggregation relationships '/
 
+piece_points.BPOPointsSKeys *-- piece_points.BPOFileHandler
+
+
 board_components.ExecutedMove "2" *-- board_components.GamePiece
 
 
@@ -433,9 +430,6 @@ board_components.GamePiece *-- PieceColor
 
 
 board_components.GamePiece *-- PieceType
-
-
-piece_points.GamePointsArrayBuilder *-- piece_points.BPOPointsEKeys
 
 
 HashCalculator *-- TranspositionTable
@@ -457,9 +451,6 @@ MoveCalculator *-- PieceMoves
 
 
 board_components.MoveCollection *-- board_components.Move
-
-
-piece_points.BPOPointsSKeys *-- piece_points.NlohmannBPOFileHandler
 
 
 RandomMoveEvaluator *-- PieceColor
