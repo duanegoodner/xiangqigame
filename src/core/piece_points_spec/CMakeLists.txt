@@ -8,8 +8,3 @@ add_library(
         utility_functs
         nlohmann_json::nlohmann_json
     )
-
-target_include_directories(
-    piece_points_spec PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
-)

@@ -1,11 +1,11 @@
 // Filename: piece_points.hpp
 // Author: Duane Goodner
 // Created: 2022-11-10
-// Last Modified: 2024-08-16
+// Last Modified: 2024-10-02
 
 // Description:
-// Defines PiecePositionPoints class and other classes that PiecePositionPoints is composed of
-// or help build PiecePositionPoints.
+// Defines PiecePositionPoints class and other classes that PiecePositionPoints is
+// composed of or help build PiecePositionPoints.
 
 #ifndef _PIECE_POINTS_
 #define _PIECE_POINTS_
@@ -21,54 +21,14 @@
 namespace piece_points {
 
 using namespace board_components;
-// using namespace piece_points_spec;
 using namespace std;
 using json = nlohmann::json;
-
-class GamePointsArrayBuilder {
-public:
-  GamePointsArrayBuilder(PointsSpecBPOInternal internal_points_spec);
-  GamePointsArrayBuilder(PointsSpecBPOExternal external_points_spec);
-  GamePointsArrayBuilder(string spec_file_path);
-  GamePointsArray_t BuildGamePointsArray();
-
-private:
-  PointsSpecBPOInternal points_spec_;
-  TeamPointsArray_t ComputeBlackNetPoints();
-  TeamPointsArray_t ComputeRedNetPoints();
-};
-
-const auto DEFAULT_GAME_POINTS_ARRAY =
-    GamePointsArrayBuilder(kICGABPOPath).BuildGamePointsArray();
-
-// class FormatIdentifier {
-// public:
-//   FormatIdentifier(json json_object, pts_format_to_schema_t schemas);
-//   FormatIdentifier(json json_object);
-//   PointsImportFormat Identify();
-
-// private:
-//   json json_object_;
-//   pts_format_to_schema_t schemas_;
-// };
-
-// class GamePointsArrayBuilder_2 {
-// public:
-//   GamePointsArrayBuilder_2(json json_object);
-//   GamePointsArrayBuilder_2(string json_file_path);
-//   GamePointsArray_t Build();
-
-// private:
-//   json json_object_;
-// };
 
 struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   PiecePositionPoints();
   PiecePositionPoints(GamePointsArray_t game_points_array);
-  PiecePositionPoints(GamePointsSMap_t s_map);
-  PiecePositionPoints(json &j);
-  PiecePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
-  PiecePositionPoints(PointsSpecBPOExternal external_bpo_spec);
+  PiecePositionPoints(BPOPointsEKeys bpo_points_ekeys);
+  PiecePositionPoints(BPOPointsSKeys bpo_points_skeys);
   PiecePositionPoints(string json_file);
 
   // define in header to force inlining
@@ -77,8 +37,7 @@ struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
       PieceType piece_type,
       BoardSpace space
   ) {
-    return points_array[get_zcolor_index(color)][piece_type][space.rank]
-                       [space.file];
+    return points_array[get_zcolor_index(color)][piece_type][space.rank][space.file];
   }
 
   GamePointsArray_t points_array;

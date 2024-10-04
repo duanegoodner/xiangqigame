@@ -21,116 +21,72 @@ namespace piece_points {
 using namespace std;
 using nloh_json = nlohmann::json;
 
-template <typename JsonType>
-struct TeamPoints {
-  TeamPoints() = default;
-  TeamPoints(JsonType &j);
-  unordered_map<string, PiecePointsArray_t> PiecePointsArrays();
-  JsonType ToJson();
-  TeamPointsArray_t ToArray();
+class BPOPointsSKeys;
+class BPOPointsEKeys;
+
+class BPOFileHandler {
+public:
+  virtual ~BPOFileHandler() = default;
+  virtual void Import(BPOPointsSKeys &bpo_points, string file_path) = 0;
+  virtual void Export(BPOPointsSKeys &bpo_points, string file_path) = 0;
+};
+
+class NlohmannBPOFileHandler : public BPOFileHandler {
+public:
+  void Import(BPOPointsSKeys &bpo_points, string file_path);
+  void Export(BPOPointsSKeys &bpo_points, string file_path);
 
 private:
-  PiecePointsArray_t null;
-  PiecePointsArray_t general;
-  PiecePointsArray_t advisor;
-  PiecePointsArray_t elephant;
-  PiecePointsArray_t horse;
-  PiecePointsArray_t chariot;
-  PiecePointsArray_t cannon;
-  PiecePointsArray_t soldier;
+  nloh_json ToJsonObject(BPOPointsSKeys &bpo_points);
 };
-
-// struct TeamPointsNonTemp {
-//   TeamPointsNonTemp() = default;
-//   TeamPointsNonTemp(TeamPointsSMap_t team_points_data);
-//   unordered_map<string, PiecePointsArray_t> PiecePointsArrays();
-//   TeamPointsArray_t ToArray();
-
-//   // private:
-//   PiecePointsArray_t null;
-//   PiecePointsArray_t general;
-//   PiecePointsArray_t advisor;
-//   PiecePointsArray_t elephant;
-//   PiecePointsArray_t horse;
-//   PiecePointsArray_t chariot;
-//   PiecePointsArray_t cannon;
-//   PiecePointsArray_t soldier;
-// };
-
-struct PieceBasePoints {
-  int advisor;
-  int cannon;
-  int chariot;
-  int elephant;
-  int general;
-  int horse;
-  int null;
-  int soldier;
-};
-
-template <typename JsonType>
-struct BasePointOffsetSpec {
-  BasePointOffsetSpec() = default;
-  BasePointOffsetSpec(JsonType &j);
-  BasePointOffsetSpec(string file_path);
-
-  PieceBasePoints black_base;
-  TeamPoints<JsonType> black_position;
-  PieceBasePoints red_base_offsets;
-  TeamPoints<JsonType> red_position_offsets;
-};
-
-// struct GamePointsNonTemp {
-//   GamePointsNonTemp() = default;
-//   GamePointsNonTemp(string file_path);
-
-//   unordered_map<string, TeamPointsNonTemp> TeamPointsStructs();
-//   GamePointsArray_t ToArray();
-//   void ToFile(string file_path);
-
-//   TeamPointsNonTemp red;
-//   TeamPointsNonTemp black;
-// };
 
 // Piece Points spec in "Base Points Offset" form with string keys to easily
 // read/write external json
-struct PointsSpecBPOExternal {
-  PointsSpecBPOExternal() = default;
-  PointsSpecBPOExternal(
+class BPOPointsSKeys {
+  public:
+  BPOPointsSKeys();
+  BPOPointsSKeys(
       BasePointsSMap_t black_base_input,
       BasePointsSMap_t red_base_offsets_input,
       TeamPointsSMap_t black_position_input,
       TeamPointsSMap_t red_position_offsets_input
   );
-  PointsSpecBPOExternal(const nloh_json &json_object);
-  PointsSpecBPOExternal(string json_file_path);
+  BPOPointsSKeys(const string &json_file_path);
 
-  BasePointsSMap_t black_base;
-  BasePointsSMap_t red_base_offsets;
-  TeamPointsSMap_t black_position;
-  TeamPointsSMap_t red_position_offsets;
+  BasePointsSMap_t black_base_;
+  BasePointsSMap_t red_base_offsets_;
+  TeamPointsSMap_t black_position_;
+  TeamPointsSMap_t red_position_offsets_;
 
-  nloh_json ToJson();
   void ToFile(string output_path);
+  BPOPointsEKeys ToBPOPointsEKeys();
   GamePointsSMap_t ToGamePointsSmap();
   GamePointsArray_t ToGamePointsArray();
+
+private:
+  NlohmannBPOFileHandler file_handler_;
 };
 
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for
 // use in internal data structs
-struct PointsSpecBPOInternal {
-  PointsSpecBPOInternal(
+class BPOPointsEKeys {
+  public:
+  BPOPointsEKeys(
       TeamBasePoints_t black_base_input,
       TeamBasePoints_t red_base_offsets_input,
       TeamPointsEMap_t black_position_input,
       TeamPointsEMap_t red_position_offsets_input
   );
-  PointsSpecBPOInternal(PointsSpecBPOExternal external_spec);
+  BPOPointsEKeys(BPOPointsSKeys external_spec);
+  TeamPointsArray_t BlackNetPoints();
+  TeamPointsArray_t RedNetPoints();
+  GamePointsArray_t ToGamePointsArray();
 
-  TeamBasePoints_t black_base;
-  TeamBasePoints_t red_base_offsets;
-  TeamPointsEMap_t black_position;
-  TeamPointsEMap_t red_position_offsets;
+
+  TeamBasePoints_t black_base_;
+  TeamBasePoints_t red_base_offsets_;
+  TeamPointsEMap_t black_position_;
+  TeamPointsEMap_t red_position_offsets_;
 };
 
 const string kICGABPOPath_x =
@@ -142,7 +98,5 @@ const string kRawSchemaPath_x =
 const string kBPOSchemaPath_x =
     utility_functs::get_data_file_abs_path("bpo_schema.json");
 } // namespace piece_points
-
-// #include <piece_points_spec.tpp>
 
 #endif /* E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802 */
