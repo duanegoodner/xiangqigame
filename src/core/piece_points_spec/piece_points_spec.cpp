@@ -131,10 +131,10 @@ BPOPointsEKeys::BPOPointsEKeys(
     TeamPointsEMap_t black_position_input,
     TeamPointsEMap_t red_position_offsets_input
 )
-    : black_base{black_base_input}
-    , red_base_offsets{red_base_offsets_input}
-    , black_position{black_position_input}
-    , red_position_offsets{red_position_offsets_input} {}
+    : black_base_{black_base_input}
+    , red_base_offsets_{red_base_offsets_input}
+    , black_position_{black_position_input}
+    , red_position_offsets_{red_position_offsets_input} {}
 
 BPOPointsEKeys::BPOPointsEKeys(BPOPointsSKeys external_spec) {
   unordered_map<string, PieceType> key_substitutions = {
@@ -148,16 +148,16 @@ BPOPointsEKeys::BPOPointsEKeys(BPOPointsSKeys external_spec) {
       {"soldier", PieceType::kSol}
   };
 
-  black_base =
+  black_base_ =
       utility_functs::replace_keys(external_spec.black_base_, key_substitutions);
 
-  red_base_offsets =
+  red_base_offsets_ =
       utility_functs::replace_keys(external_spec.red_base_offsets_, key_substitutions);
 
-  black_position =
+  black_position_ =
       utility_functs::replace_keys(external_spec.black_position_, key_substitutions);
 
-  red_position_offsets = utility_functs::replace_keys(
+  red_position_offsets_ = utility_functs::replace_keys(
       external_spec.red_position_offsets_,
       key_substitutions
   );

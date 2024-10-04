@@ -29,11 +29,11 @@ GamePointsArrayBuilder::GamePointsArrayBuilder(string spec_file_path)
 
 TeamPointsArray_t GamePointsArrayBuilder::ComputeBlackNetPoints() {
   TeamPointsArray_t black_net_points{};
-  for (auto piece : points_spec_.black_base) {
+  for (auto piece : points_spec_.black_base_) {
 
     black_net_points[piece.first] = utility_functs::array_plus_const(
-        points_spec_.black_position[piece.first],
-        points_spec_.black_base[piece.first]
+        points_spec_.black_position_[piece.first],
+        points_spec_.black_base_[piece.first]
     );
   }
   return black_net_points;
@@ -41,13 +41,13 @@ TeamPointsArray_t GamePointsArrayBuilder::ComputeBlackNetPoints() {
 
 TeamPointsArray_t GamePointsArrayBuilder::ComputeRedNetPoints() {
   TeamPointsArray_t red_net_points{};
-  for (auto piece : points_spec_.red_base_offsets) {
-    auto base_points = points_spec_.black_base[piece.first] +
-                       points_spec_.red_base_offsets[piece.first];
+  for (auto piece : points_spec_.red_base_offsets_) {
+    auto base_points = points_spec_.black_base_[piece.first] +
+                       points_spec_.red_base_offsets_[piece.first];
 
     auto unflipped_position_points = utility_functs::two_array_sum(
-        points_spec_.black_position[piece.first],
-        points_spec_.red_position_offsets[piece.first]
+        points_spec_.black_position_[piece.first],
+        points_spec_.red_position_offsets_[piece.first]
     );
 
     auto flipped_position_points =

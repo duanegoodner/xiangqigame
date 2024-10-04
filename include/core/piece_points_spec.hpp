@@ -69,7 +69,8 @@ private:
 
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for
 // use in internal data structs
-struct BPOPointsEKeys {
+class BPOPointsEKeys {
+  public:
   BPOPointsEKeys(
       TeamBasePoints_t black_base_input,
       TeamBasePoints_t red_base_offsets_input,
@@ -77,11 +78,15 @@ struct BPOPointsEKeys {
       TeamPointsEMap_t red_position_offsets_input
   );
   BPOPointsEKeys(BPOPointsSKeys external_spec);
+  TeamPointsArray_t BlackNetPoints();
+  TeamPointsArray_t RedNetPoints();
+  GamePointsArray_t ToGamePointsArray();
 
-  TeamBasePoints_t black_base;
-  TeamBasePoints_t red_base_offsets;
-  TeamPointsEMap_t black_position;
-  TeamPointsEMap_t red_position_offsets;
+
+  TeamBasePoints_t black_base_;
+  TeamBasePoints_t red_base_offsets_;
+  TeamPointsEMap_t black_position_;
+  TeamPointsEMap_t red_position_offsets_;
 };
 
 const string kICGABPOPath_x =
