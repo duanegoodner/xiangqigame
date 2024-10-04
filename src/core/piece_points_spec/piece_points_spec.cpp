@@ -19,10 +19,7 @@ using namespace std;
 using namespace piece_points;
 using nloh_json = nlohmann::json;
 
-void NlohmannBPOFileHandler::Import(
-    BPOPointsSKeys &bpo_points,
-    const string file_path
-) {
+void NlohmannBPOFileHandler::Import(BPOPointsSKeys &bpo_points, const string file_path) {
   ifstream input{file_path};
   auto json_object = nloh_json::parse(input);
   json_object.at("black_base").get_to(bpo_points.black_base_);
@@ -40,10 +37,7 @@ nloh_json NlohmannBPOFileHandler::ToJsonObject(BPOPointsSKeys &bpo_points) {
   return j;
 }
 
-void NlohmannBPOFileHandler::Export(
-    BPOPointsSKeys &bpo_points,
-    string file_path
-) {
+void NlohmannBPOFileHandler::Export(BPOPointsSKeys &bpo_points, string file_path) {
   auto json_object = ToJsonObject(bpo_points);
   ofstream fout(file_path);
   fout << setw(4) << json_object << endl;
@@ -103,6 +97,34 @@ GamePointsSMap_t BPOPointsSKeys::ToGamePointsSmap() {
   return s_map;
 }
 
+BPOPointsEKeys BPOPointsSKeys::ToBPOPointsEKeys() {
+  unordered_map<string, PieceType> key_substitutions = {
+      {"null", PieceType::kNnn},
+      {"general", PieceType::kGen},
+      {"advisor", PieceType::kAdv},
+      {"elephant", PieceType::kEle},
+      {"chariot", PieceType::kCha},
+      {"horse", PieceType::kHor},
+      {"cannon", PieceType::kCan},
+      {"soldier", PieceType::kSol}
+  };
+
+  auto ekey_black_base = utility_functs::replace_keys(black_base_, key_substitutions);
+  auto ekey_red_base_offsets =
+      utility_functs::replace_keys(red_base_offsets_, key_substitutions);
+  auto ekey_black_position =
+      utility_functs::replace_keys(black_position_, key_substitutions);
+  auto ekey_red_position_offsets =
+      utility_functs::replace_keys(red_position_offsets_, key_substitutions);
+
+  return BPOPointsEKeys(
+      ekey_black_base,
+      ekey_red_base_offsets,
+      ekey_black_position,
+      ekey_red_position_offsets
+  );
+}
+
 BPOPointsEKeys::BPOPointsEKeys(
     TeamBasePoints_t black_base_input,
     TeamBasePoints_t red_base_offsets_input,
@@ -126,7 +148,8 @@ BPOPointsEKeys::BPOPointsEKeys(BPOPointsSKeys external_spec) {
       {"soldier", PieceType::kSol}
   };
 
-  black_base = utility_functs::replace_keys(external_spec.black_base_, key_substitutions);
+  black_base =
+      utility_functs::replace_keys(external_spec.black_base_, key_substitutions);
 
   red_base_offsets =
       utility_functs::replace_keys(external_spec.red_base_offsets_, key_substitutions);

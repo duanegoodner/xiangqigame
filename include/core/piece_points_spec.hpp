@@ -22,6 +22,7 @@ using namespace std;
 using nloh_json = nlohmann::json;
 
 class BPOPointsSKeys;
+class BPOPointsEKeys;
 
 class BPOFileHandler {
 public:
@@ -58,6 +59,7 @@ class BPOPointsSKeys {
   TeamPointsSMap_t red_position_offsets_;
 
   void ToFile(string output_path);
+  BPOPointsEKeys ToBPOPointsEKeys();
   GamePointsSMap_t ToGamePointsSmap();
   GamePointsArray_t ToGamePointsArray();
 
