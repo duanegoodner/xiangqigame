@@ -14,10 +14,10 @@ protected:
   const string points_spec_path =
       utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
 
-  const PointsSpecBPOExternal external_pts_spec =
-      PointsSpecBPOExternal(points_spec_path);
-  const PointsSpecBPOInternal internal_pts_spec =
-      PointsSpecBPOInternal(external_pts_spec);
+  const BPOPointsSKeys external_pts_spec =
+      BPOPointsSKeys(points_spec_path);
+  const BPOPointsEKeys internal_pts_spec =
+      BPOPointsEKeys(external_pts_spec);
   GamePointsArray_t game_points_array =
       GamePointsArrayBuilder(points_spec_path).BuildGamePointsArray();
 };
@@ -66,10 +66,10 @@ protected:
       utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
   const string raw_points_json_path =
       utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
-  const PointsSpecBPOExternal external_pts_spec =
-      PointsSpecBPOExternal(points_spec_path);
-  const PointsSpecBPOInternal internal_pts_spec =
-      PointsSpecBPOInternal(external_pts_spec);
+  const BPOPointsSKeys external_pts_spec =
+      BPOPointsSKeys(points_spec_path);
+  const BPOPointsEKeys internal_pts_spec =
+      BPOPointsEKeys(external_pts_spec);
   GamePointsArray_t game_points_array =
       GamePointsArrayBuilder(points_spec_path).BuildGamePointsArray();
 };

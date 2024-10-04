@@ -26,13 +26,13 @@ using json = nlohmann::json;
 
 class GamePointsArrayBuilder {
 public:
-  GamePointsArrayBuilder(PointsSpecBPOInternal internal_points_spec);
-  GamePointsArrayBuilder(PointsSpecBPOExternal external_points_spec);
+  GamePointsArrayBuilder(BPOPointsEKeys internal_points_spec);
+  GamePointsArrayBuilder(BPOPointsSKeys external_points_spec);
   GamePointsArrayBuilder(string spec_file_path);
   GamePointsArray_t BuildGamePointsArray();
 
 private:
-  PointsSpecBPOInternal points_spec_;
+  BPOPointsEKeys points_spec_;
   TeamPointsArray_t ComputeBlackNetPoints();
   TeamPointsArray_t ComputeRedNetPoints();
 };
@@ -45,8 +45,8 @@ struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   PiecePositionPoints(GamePointsArray_t game_points_array);
   PiecePositionPoints(GamePointsSMap_t s_map);
   PiecePositionPoints(json &j);
-  PiecePositionPoints(PointsSpecBPOInternal internal_bpo_spec);
-  PiecePositionPoints(PointsSpecBPOExternal external_bpo_spec);
+  PiecePositionPoints(BPOPointsEKeys internal_bpo_spec);
+  PiecePositionPoints(BPOPointsSKeys external_bpo_spec);
   PiecePositionPoints(string json_file);
 
   // define in header to force inlining

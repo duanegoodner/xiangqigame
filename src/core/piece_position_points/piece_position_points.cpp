@@ -16,16 +16,16 @@ using namespace piece_points;
 using json = nlohmann::json;
 using nlohmann::json_schema::json_validator;
 
-GamePointsArrayBuilder::GamePointsArrayBuilder(PointsSpecBPOInternal internal_points_spec
+GamePointsArrayBuilder::GamePointsArrayBuilder(BPOPointsEKeys internal_points_spec
 )
     : points_spec_{internal_points_spec} {}
 
-GamePointsArrayBuilder::GamePointsArrayBuilder(PointsSpecBPOExternal external_points_spec
+GamePointsArrayBuilder::GamePointsArrayBuilder(BPOPointsSKeys external_points_spec
 )
-    : GamePointsArrayBuilder(PointsSpecBPOInternal(external_points_spec)) {}
+    : GamePointsArrayBuilder(BPOPointsEKeys(external_points_spec)) {}
 
 GamePointsArrayBuilder::GamePointsArrayBuilder(string spec_file_path)
-    : GamePointsArrayBuilder(PointsSpecBPOExternal(spec_file_path)) {}
+    : GamePointsArrayBuilder(BPOPointsSKeys(spec_file_path)) {}
 
 TeamPointsArray_t GamePointsArrayBuilder::ComputeBlackNetPoints() {
   TeamPointsArray_t black_net_points{};
@@ -71,11 +71,11 @@ PiecePositionPoints::PiecePositionPoints()
     : points_array{DEFAULT_GAME_POINTS_ARRAY} {}
 PiecePositionPoints::PiecePositionPoints(GamePointsArray_t game_points_array)
     : points_array{game_points_array} {}
-PiecePositionPoints::PiecePositionPoints(PointsSpecBPOInternal internal_bpo_spec)
+PiecePositionPoints::PiecePositionPoints(BPOPointsEKeys internal_bpo_spec)
     : PiecePositionPoints(
           GamePointsArrayBuilder(internal_bpo_spec).BuildGamePointsArray()
       ) {}
-PiecePositionPoints::PiecePositionPoints(PointsSpecBPOExternal external_bpo_spec)
+PiecePositionPoints::PiecePositionPoints(BPOPointsSKeys external_bpo_spec)
     : PiecePositionPoints(
           GamePointsArrayBuilder(external_bpo_spec).BuildGamePointsArray()
       ) {}
@@ -149,7 +149,7 @@ GamePointsSMap_t raw_points_to_smap(const json &j) {
 }
 
 GamePointsSMap_t points_spec_to_smap(const json &points_spec) {
-  return PointsSpecBPOExternal(points_spec).ToGamePointsSmap();
+  return BPOPointsSKeys(points_spec).ToGamePointsSmap();
 }
 
 json PiecePositionPoints::ToJson() {

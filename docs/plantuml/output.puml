@@ -258,24 +258,24 @@ class ZobristKeys <template<typename KeyType>> {
 namespace piece_points {
 	abstract class BPOFileHandler {
 		+~BPOFileHandler()
-		+{abstract} Export(PointsSpecBPOExternal& bpo_points, string file_path) : void
-		+{abstract} Import(PointsSpecBPOExternal& bpo_points, string file_path) : void
+		+{abstract} Export(BPOPointsSKeys& bpo_points, string file_path) : void
+		+{abstract} Import(BPOPointsSKeys& bpo_points, string file_path) : void
 	}
 
 	class GamePointsArrayBuilder {
-		+GamePointsArrayBuilder(PointsSpecBPOInternal internal_points_spec)
-		+GamePointsArrayBuilder(PointsSpecBPOExternal external_points_spec)
+		+GamePointsArrayBuilder(BPOPointsEKeys internal_points_spec)
+		+GamePointsArrayBuilder(BPOPointsSKeys external_points_spec)
 		+GamePointsArrayBuilder(string spec_file_path)
 		+BuildGamePointsArray() : GamePointsArray_t
-		-points_spec_ : PointsSpecBPOInternal
+		-points_spec_ : BPOPointsEKeys
 		-ComputeBlackNetPoints() : TeamPointsArray_t
 		-ComputeRedNetPoints() : TeamPointsArray_t
 	}
 
 	class NlohmannBPOFileHandler {
-		-ToJsonObject(PointsSpecBPOExternal& bpo_points) : nloh_json
-		+Export(PointsSpecBPOExternal& bpo_points, string file_path) : void
-		+Import(PointsSpecBPOExternal& bpo_points, string file_path) : void
+		-ToJsonObject(BPOPointsSKeys& bpo_points) : nloh_json
+		+Export(BPOPointsSKeys& bpo_points, string file_path) : void
+		+Import(BPOPointsSKeys& bpo_points, string file_path) : void
 	}
 
 	class PieceBasePoints {
@@ -294,8 +294,8 @@ namespace piece_points {
 		+PiecePositionPoints(GamePointsArray_t game_points_array)
 		+PiecePositionPoints(GamePointsSMap_t s_map)
 		+PiecePositionPoints(json j)
-		+PiecePositionPoints(PointsSpecBPOInternal internal_bpo_spec)
-		+PiecePositionPoints(PointsSpecBPOExternal external_bpo_spec)
+		+PiecePositionPoints(BPOPointsEKeys internal_bpo_spec)
+		+PiecePositionPoints(BPOPointsSKeys external_bpo_spec)
 		+PiecePositionPoints(string json_file)
 		+points_array : GamePointsArray_t
 		+ImplementGetValueOfPieceAtPosition(PieceColor color, PieceType piece_type, BoardSpace space) : Points_t
@@ -303,10 +303,10 @@ namespace piece_points {
 		+ToFile(string output_file) : void
 	}
 
-	class PointsSpecBPOExternal {
-		+PointsSpecBPOExternal()
-		+PointsSpecBPOExternal(BasePointsSMap_t black_base_input, BasePointsSMap_t red_base_offsets_input, TeamPointsSMap_t black_position_input, TeamPointsSMap_t red_position_offsets_input)
-		+PointsSpecBPOExternal(const string& json_file_path)
+	class BPOPointsSKeys {
+		+BPOPointsSKeys()
+		+BPOPointsSKeys(BasePointsSMap_t black_base_input, BasePointsSMap_t red_base_offsets_input, TeamPointsSMap_t black_position_input, TeamPointsSMap_t red_position_offsets_input)
+		+BPOPointsSKeys(const string& json_file_path)
 		+black_base : BasePointsSMap_t
 		+red_base_offsets : BasePointsSMap_t
 		+ToGamePointsArray() : GamePointsArray_t
@@ -317,9 +317,9 @@ namespace piece_points {
 		+ToFile(string output_path) : void
 	}
 
-	class PointsSpecBPOInternal {
-		+PointsSpecBPOInternal(TeamBasePoints_t black_base_input, TeamBasePoints_t red_base_offsets_input, TeamPointsEMap_t black_position_input, TeamPointsEMap_t red_position_offsets_input)
-		+PointsSpecBPOInternal(PointsSpecBPOExternal external_spec)
+	class BPOPointsEKeys {
+		+BPOPointsEKeys(TeamBasePoints_t black_base_input, TeamBasePoints_t red_base_offsets_input, TeamPointsEMap_t black_position_input, TeamPointsEMap_t red_position_offsets_input)
+		+BPOPointsEKeys(BPOPointsSKeys external_spec)
 		+black_base : TeamBasePoints_t
 		+red_base_offsets : TeamBasePoints_t
 		+black_position : TeamPointsEMap_t
@@ -435,7 +435,7 @@ board_components.GamePiece *-- PieceColor
 board_components.GamePiece *-- PieceType
 
 
-piece_points.GamePointsArrayBuilder *-- piece_points.PointsSpecBPOInternal
+piece_points.GamePointsArrayBuilder *-- piece_points.BPOPointsEKeys
 
 
 HashCalculator *-- TranspositionTable
@@ -459,7 +459,7 @@ MoveCalculator *-- PieceMoves
 board_components.MoveCollection *-- board_components.Move
 
 
-piece_points.PointsSpecBPOExternal *-- piece_points.NlohmannBPOFileHandler
+piece_points.BPOPointsSKeys *-- piece_points.NlohmannBPOFileHandler
 
 
 RandomMoveEvaluator *-- PieceColor

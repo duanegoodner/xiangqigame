@@ -12,8 +12,8 @@ protected:
       utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
 };
 
-TEST_F(PiecePointsSpecTest, InitPointsSpecBPOExternal) {
-  auto external_pts_spec = PointsSpecBPOExternal(points_spec_path);
+TEST_F(PiecePointsSpecTest, InitBPOPointsSKeys) {
+  auto external_pts_spec = BPOPointsSKeys(points_spec_path);
   EXPECT_EQ(external_pts_spec.black_base_.size(), kNumPieceTypeVals);
   EXPECT_EQ(external_pts_spec.red_base_offsets_.size(), kNumPieceTypeVals);
   EXPECT_EQ(external_pts_spec.black_position_.size(), kNumPieceTypeVals);
@@ -40,12 +40,12 @@ TEST_F(PiecePointsSpecTest, InitPointsSpecBPOExternal) {
   }
 }
 
-TEST_F(PiecePointsSpecTest, InitPointsSpecBPOInternal) {
-  auto internal_pts_spec = PointsSpecBPOExternal(points_spec_path);
+TEST_F(PiecePointsSpecTest, InitBPOPointsEKeys) {
+  auto internal_pts_spec = BPOPointsSKeys(points_spec_path);
 }
 
 TEST_F(PiecePointsSpecTest, PointsSpecBOPExternalToGamePointsSMap) {
-  auto external_pts_spec = PointsSpecBPOExternal(points_spec_path);
+  auto external_pts_spec = BPOPointsSKeys(points_spec_path);
   auto game_points_smap = external_pts_spec.ToGamePointsSmap();
 }
 

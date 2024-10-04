@@ -21,36 +21,36 @@ namespace piece_points {
 using namespace std;
 using nloh_json = nlohmann::json;
 
-class PointsSpecBPOExternal;
+class BPOPointsSKeys;
 
 class BPOFileHandler {
 public:
   virtual ~BPOFileHandler() = default;
-  virtual void Import(PointsSpecBPOExternal &bpo_points, string file_path) = 0;
-  virtual void Export(PointsSpecBPOExternal &bpo_points, string file_path) = 0;
+  virtual void Import(BPOPointsSKeys &bpo_points, string file_path) = 0;
+  virtual void Export(BPOPointsSKeys &bpo_points, string file_path) = 0;
 };
 
 class NlohmannBPOFileHandler : public BPOFileHandler {
 public:
-  void Import(PointsSpecBPOExternal &bpo_points, string file_path);
-  void Export(PointsSpecBPOExternal &bpo_points, string file_path);
+  void Import(BPOPointsSKeys &bpo_points, string file_path);
+  void Export(BPOPointsSKeys &bpo_points, string file_path);
 
 private:
-  nloh_json ToJsonObject(PointsSpecBPOExternal &bpo_points);
+  nloh_json ToJsonObject(BPOPointsSKeys &bpo_points);
 };
 
 // Piece Points spec in "Base Points Offset" form with string keys to easily
 // read/write external json
-class PointsSpecBPOExternal {
+class BPOPointsSKeys {
   public:
-  PointsSpecBPOExternal();
-  PointsSpecBPOExternal(
+  BPOPointsSKeys();
+  BPOPointsSKeys(
       BasePointsSMap_t black_base_input,
       BasePointsSMap_t red_base_offsets_input,
       TeamPointsSMap_t black_position_input,
       TeamPointsSMap_t red_position_offsets_input
   );
-  PointsSpecBPOExternal(const string &json_file_path);
+  BPOPointsSKeys(const string &json_file_path);
 
   BasePointsSMap_t black_base_;
   BasePointsSMap_t red_base_offsets_;
@@ -67,14 +67,14 @@ private:
 
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for
 // use in internal data structs
-struct PointsSpecBPOInternal {
-  PointsSpecBPOInternal(
+struct BPOPointsEKeys {
+  BPOPointsEKeys(
       TeamBasePoints_t black_base_input,
       TeamBasePoints_t red_base_offsets_input,
       TeamPointsEMap_t black_position_input,
       TeamPointsEMap_t red_position_offsets_input
   );
-  PointsSpecBPOInternal(PointsSpecBPOExternal external_spec);
+  BPOPointsEKeys(BPOPointsSKeys external_spec);
 
   TeamBasePoints_t black_base;
   TeamBasePoints_t red_base_offsets;

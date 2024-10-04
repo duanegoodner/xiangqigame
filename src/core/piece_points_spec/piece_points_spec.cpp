@@ -20,7 +20,7 @@ using namespace piece_points;
 using nloh_json = nlohmann::json;
 
 void NlohmannBPOFileHandler::Import(
-    PointsSpecBPOExternal &bpo_points,
+    BPOPointsSKeys &bpo_points,
     const string file_path
 ) {
   ifstream input{file_path};
@@ -31,7 +31,7 @@ void NlohmannBPOFileHandler::Import(
   json_object.at("red_position_offsets").get_to(bpo_points.red_position_offsets_);
 }
 
-nloh_json NlohmannBPOFileHandler::ToJsonObject(PointsSpecBPOExternal &bpo_points) {
+nloh_json NlohmannBPOFileHandler::ToJsonObject(BPOPointsSKeys &bpo_points) {
   nloh_json j;
   j["black_base"] = bpo_points.black_base_;
   j["red_base_offsets"] = bpo_points.red_base_offsets_;
@@ -41,7 +41,7 @@ nloh_json NlohmannBPOFileHandler::ToJsonObject(PointsSpecBPOExternal &bpo_points
 }
 
 void NlohmannBPOFileHandler::Export(
-    PointsSpecBPOExternal &bpo_points,
+    BPOPointsSKeys &bpo_points,
     string file_path
 ) {
   auto json_object = ToJsonObject(bpo_points);
@@ -49,14 +49,14 @@ void NlohmannBPOFileHandler::Export(
   fout << setw(4) << json_object << endl;
 }
 
-PointsSpecBPOExternal::PointsSpecBPOExternal()
+BPOPointsSKeys::BPOPointsSKeys()
     : black_base_{}
     , red_base_offsets_{}
     , black_position_{}
     , red_position_offsets_{}
     , file_handler_{} {};
 
-PointsSpecBPOExternal::PointsSpecBPOExternal(
+BPOPointsSKeys::BPOPointsSKeys(
     BasePointsSMap_t black_base_input,
     BasePointsSMap_t red_base_offsets_input,
     TeamPointsSMap_t black_position_input,
@@ -68,7 +68,7 @@ PointsSpecBPOExternal::PointsSpecBPOExternal(
     , red_position_offsets_{red_position_offsets_input}
     , file_handler_{} {}
 
-PointsSpecBPOExternal::PointsSpecBPOExternal(const string &json_file_path)
+BPOPointsSKeys::BPOPointsSKeys(const string &json_file_path)
     : black_base_{}
     , red_base_offsets_{}
     , black_position_{}
@@ -77,11 +77,11 @@ PointsSpecBPOExternal::PointsSpecBPOExternal(const string &json_file_path)
   file_handler_.Import(*this, json_file_path);
 }
 
-void PointsSpecBPOExternal::ToFile(string output_path) {
+void BPOPointsSKeys::ToFile(string output_path) {
   file_handler_.Export(*this, output_path);
 }
 
-GamePointsSMap_t PointsSpecBPOExternal::ToGamePointsSmap() {
+GamePointsSMap_t BPOPointsSKeys::ToGamePointsSmap() {
   GamePointsSMap_t s_map{};
 
   for (auto piece : black_base_) {
@@ -103,7 +103,7 @@ GamePointsSMap_t PointsSpecBPOExternal::ToGamePointsSmap() {
   return s_map;
 }
 
-PointsSpecBPOInternal::PointsSpecBPOInternal(
+BPOPointsEKeys::BPOPointsEKeys(
     TeamBasePoints_t black_base_input,
     TeamBasePoints_t red_base_offsets_input,
     TeamPointsEMap_t black_position_input,
@@ -114,7 +114,7 @@ PointsSpecBPOInternal::PointsSpecBPOInternal(
     , black_position{black_position_input}
     , red_position_offsets{red_position_offsets_input} {}
 
-PointsSpecBPOInternal::PointsSpecBPOInternal(PointsSpecBPOExternal external_spec) {
+BPOPointsEKeys::BPOPointsEKeys(BPOPointsSKeys external_spec) {
   unordered_map<string, PieceType> key_substitutions = {
       {"null", PieceType::kNnn},
       {"general", PieceType::kGen},
