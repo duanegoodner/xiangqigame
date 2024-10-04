@@ -2,12 +2,11 @@
 #include <common.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
-#include <piece_position_points.hpp>
 #include <piece_points_spec.hpp>
+#include <piece_position_points.hpp>
 #include <utility_functs.hpp>
 
 using namespace piece_points;
-
 
 class PiecePositionPointsTest : public ::testing::Test {
 
@@ -16,7 +15,8 @@ protected:
       utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
   const string raw_points_json_path =
       utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
- BPOPointsSKeys bpo_points_skeys{points_spec_path};
+  BPOPointsSKeys bpo_points_skeys{points_spec_path};
+  BPOPointsEKeys bpo_points_ekeys = bpo_points_skeys.ToBPOPointsEKeys();
   GamePointsArray_t game_points_array = bpo_points_skeys.ToGamePointsArray();
 };
 
@@ -28,9 +28,9 @@ TEST_F(PiecePositionPointsTest, InitFromBPOExternal) {
   PiecePositionPoints piece_points = PiecePositionPoints(bpo_points_skeys);
 }
 
-// TEST_F(PiecePositionPointsTest, InitFromBPOInternal) {
-//   PiecePositionPoints piece_points = PiecePositionPoints(bpo_points_ekeys);
-// }
+TEST_F(PiecePositionPointsTest, InitFromBPOEKeys) {
+  PiecePositionPoints piece_points = PiecePositionPoints(bpo_points_ekeys);
+}
 
 TEST_F(PiecePositionPointsTest, SpotCheckBlackValues) {
   PiecePositionPoints piece_points = PiecePositionPoints(game_points_array);
@@ -74,9 +74,8 @@ TEST_F(PiecePositionPointsTest, game_points_array_to_smap) {
     for (auto piece_type : color.second) {
       EXPECT_EQ(
           piece_type.second,
-          game_points_array[get_zcolor_index(
-              kPieceColorStringToEnum.at(color.first)
-          )][kPieceTypeStringToEnum.at(piece_type.first)]
+          game_points_array[get_zcolor_index(kPieceColorStringToEnum.at(color.first))]
+                           [kPieceTypeStringToEnum.at(piece_type.first)]
       );
     }
   }
@@ -87,31 +86,9 @@ TEST_F(PiecePositionPointsTest, PiecePositionPointsToJson) {
   auto json_object = piece_points.ToJson();
 }
 
-// TEST_F(PiecePositionPointsTest, import_json) {
-//   auto imported_raw_json = utility_functs::import_json(raw_points_json_path);
-//   auto s_map = raw_points_to_smap(imported_raw_json);
-//   auto piece_ponts = PiecePositionPoints(s_map);
-//   std::cout << "done" << std::endl;
-// }
-
 TEST_F(PiecePositionPointsTest, InitFromFile) {
   auto piece_points = PiecePositionPoints(points_spec_path);
 }
-
-// TEST(ArrayBuilder_2Test, InitWithPath) {
-//   json json_object = utility_functs::import_json(kICGARawPath);
-//   auto array_builder_from_raw = GamePointsArrayBuilder_2(json_object);
-// }
-
-// TEST(FormatIdentifierTest, InitWithJsonObject) {
-//   json json_object = utility_functs::import_json(kICGARawPath);
-//   auto format_identifier = FormatIdentifier(json_object);
-// }
-
-// TEST(ImportSchemasTest, ImportDefaultSchemaPaths) {
-//   auto schemas = import_schemas(DEFAULT_POINTS_SCHEMA_PATHS);
-//   std::cout << "done" << std::endl;
-// }
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
