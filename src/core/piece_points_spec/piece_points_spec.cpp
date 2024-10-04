@@ -43,36 +43,40 @@ void NlohmannBPOFileHandler::Export(BPOPointsSKeys &bpo_points, string file_path
   fout << setw(4) << json_object << endl;
 }
 
-BPOPointsSKeys::BPOPointsSKeys()
+BPOPointsSKeys::BPOPointsSKeys(const AbstractBPOFileHandlerFactory &file_handler_factory)
     : black_base_{}
     , red_base_offsets_{}
     , black_position_{}
     , red_position_offsets_{}
-    , file_handler_{} {};
+    , file_handler_{file_handler_factory.create_bpo_file_handler()} {};
 
 BPOPointsSKeys::BPOPointsSKeys(
     BasePointsSMap_t black_base_input,
     BasePointsSMap_t red_base_offsets_input,
     TeamPointsSMap_t black_position_input,
-    TeamPointsSMap_t red_position_offsets_input
+    TeamPointsSMap_t red_position_offsets_input,
+    const AbstractBPOFileHandlerFactory &file_handler_factory
 )
     : black_base_{black_base_input}
     , red_base_offsets_{red_base_offsets_input}
     , black_position_{black_position_input}
     , red_position_offsets_{red_position_offsets_input}
-    , file_handler_{} {}
+    , file_handler_{file_handler_factory.create_bpo_file_handler()} {}
 
-BPOPointsSKeys::BPOPointsSKeys(const string &json_file_path)
+    BPOPointsSKeys::BPOPointsSKeys(
+        const string &json_file_path,
+        const AbstractBPOFileHandlerFactory &file_handler_factory
+    )
     : black_base_{}
     , red_base_offsets_{}
     , black_position_{}
     , red_position_offsets_{}
-    , file_handler_{} {
-  file_handler_.Import(*this, json_file_path);
+    , file_handler_{file_handler_factory.create_bpo_file_handler()} {
+  file_handler_->Import(*this, json_file_path);
 }
 
 void BPOPointsSKeys::ToFile(string output_path) {
-  file_handler_.Export(*this, output_path);
+  file_handler_->Export(*this, output_path);
 }
 
 GamePointsSMap_t BPOPointsSKeys::ToGamePointsSmap() {
@@ -126,8 +130,8 @@ BPOPointsEKeys BPOPointsSKeys::ToBPOPointsEKeys() {
 }
 
 GamePointsArray_t BPOPointsSKeys::ToGamePointsArray() {
-    auto bpo_points_ekeys = ToBPOPointsEKeys();
-    return bpo_points_ekeys.ToGamePointsArray();
+  auto bpo_points_ekeys = ToBPOPointsEKeys();
+  return bpo_points_ekeys.ToGamePointsArray();
 }
 
 BPOPointsEKeys::BPOPointsEKeys(
