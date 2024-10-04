@@ -21,17 +21,6 @@ namespace piece_points {
 using namespace std;
 using nloh_json = nlohmann::json;
 
-struct PieceBasePoints {
-  int advisor;
-  int cannon;
-  int chariot;
-  int elephant;
-  int general;
-  int horse;
-  int null;
-  int soldier;
-};
-
 class PointsSpecBPOExternal;
 
 class BPOFileHandler {

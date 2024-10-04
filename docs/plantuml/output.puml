@@ -256,6 +256,12 @@ class ZobristKeys <template<typename KeyType>> {
 
 
 namespace piece_points {
+	abstract class BPOFileHandler {
+		+~BPOFileHandler()
+		+{abstract} Export(PointsSpecBPOExternal& bpo_points, string file_path) : void
+		+{abstract} Import(PointsSpecBPOExternal& bpo_points, string file_path) : void
+	}
+
 	class GamePointsArrayBuilder {
 		+GamePointsArrayBuilder(PointsSpecBPOInternal internal_points_spec)
 		+GamePointsArrayBuilder(PointsSpecBPOExternal external_points_spec)
@@ -264,6 +270,12 @@ namespace piece_points {
 		-points_spec_ : PointsSpecBPOInternal
 		-ComputeBlackNetPoints() : TeamPointsArray_t
 		-ComputeRedNetPoints() : TeamPointsArray_t
+	}
+
+	class NlohmannBPOFileHandler {
+		-ToJsonObject(PointsSpecBPOExternal& bpo_points) : nloh_json
+		+Export(PointsSpecBPOExternal& bpo_points, string file_path) : void
+		+Import(PointsSpecBPOExternal& bpo_points, string file_path) : void
 	}
 
 	class PieceBasePoints {
@@ -294,15 +306,14 @@ namespace piece_points {
 	class PointsSpecBPOExternal {
 		+PointsSpecBPOExternal()
 		+PointsSpecBPOExternal(BasePointsSMap_t black_base_input, BasePointsSMap_t red_base_offsets_input, TeamPointsSMap_t black_position_input, TeamPointsSMap_t red_position_offsets_input)
-		+PointsSpecBPOExternal(json json_object)
-		+PointsSpecBPOExternal(string json_file_path)
+		+PointsSpecBPOExternal(const string& json_file_path)
 		+black_base : BasePointsSMap_t
 		+red_base_offsets : BasePointsSMap_t
 		+ToGamePointsArray() : GamePointsArray_t
 		+ToGamePointsSmap() : GamePointsSMap_t
+		-file_handler : NlohmannBPOFileHandler
 		+black_position : TeamPointsSMap_t
 		+red_position_offsets : TeamPointsSMap_t
-		+ToJson() : nloh_json
 		+ToFile(string output_path) : void
 	}
 
@@ -313,30 +324,6 @@ namespace piece_points {
 		+red_base_offsets : TeamBasePoints_t
 		+black_position : TeamPointsEMap_t
 		+red_position_offsets : TeamPointsEMap_t
-	}
-}
-
-
-namespace json_io {
-	abstract class JsonFileHandler {
-		+~JsonFileHandler()
-		+{abstract} Validate(string data_file, string schema_file) : bool
-		+{abstract} Export(GamePointsSMap_t& data, string file_path) : void
-		+{abstract} Export(BPOSpecSMap_t& data, string file_path) : void
-		+{abstract} Import(GamePointsSMap_t& s_map, string file_path) : void
-		+{abstract} Import(BPOSpecSMap_t& s_map, string file_path) : void
-	}
-
-	class NlohmannJsonIO {
-		+Validate(string data_file, string schema_file) : bool
-		-ImportToJson(string file_path) : nlohmann::json
-		+Export(GamePointsSMap_t& data, string file_path) : void
-		+Export(BPOSpecSMap_t& data, string file_path) : void
-		-ExportFromJson(nlohmann::json j, string file_path) : void
-		-ExportWithTemplate(T& object, string file_path) : void
-		+Import(GamePointsSMap_t& s_map, string file_path) : void
-		+Import(BPOSpecSMap_t& s_map, string file_path) : void
-		-ImportWithTemplate(string file_path, T& object) : void
 	}
 }
 
@@ -407,7 +394,7 @@ namespace board_components {
 
 /' Inheritance relationships '/
 
-json_io.JsonFileHandler <|-- json_io.NlohmannJsonIO
+piece_points.BPOFileHandler <|-- piece_points.NlohmannBPOFileHandler
 
 
 BoardStateSummarizer <|-- HashCalculator
@@ -470,6 +457,9 @@ MoveCalculator *-- PieceMoves
 
 
 board_components.MoveCollection *-- board_components.Move
+
+
+piece_points.PointsSpecBPOExternal *-- piece_points.NlohmannBPOFileHandler
 
 
 RandomMoveEvaluator *-- PieceColor
