@@ -25,18 +25,18 @@ void NlohmannBPOFileHandler::Import(
 ) {
   ifstream input{file_path};
   auto json_object = nloh_json::parse(input);
-  json_object.at("black_base").get_to(bpo_points.black_base);
-  json_object.at("red_base_offsets").get_to(bpo_points.red_base_offsets);
-  json_object.at("black_position").get_to(bpo_points.black_position);
-  json_object.at("red_position_offsets").get_to(bpo_points.red_position_offsets);
+  json_object.at("black_base").get_to(bpo_points.black_base_);
+  json_object.at("red_base_offsets").get_to(bpo_points.red_base_offsets_);
+  json_object.at("black_position").get_to(bpo_points.black_position_);
+  json_object.at("red_position_offsets").get_to(bpo_points.red_position_offsets_);
 }
 
 nloh_json NlohmannBPOFileHandler::ToJsonObject(PointsSpecBPOExternal &bpo_points) {
   nloh_json j;
-  j["black_base"] = bpo_points.black_base;
-  j["red_base_offsets"] = bpo_points.red_base_offsets;
-  j["black_position"] = bpo_points.black_position;
-  j["red_position_offsets"] = bpo_points.red_position_offsets;
+  j["black_base"] = bpo_points.black_base_;
+  j["red_base_offsets"] = bpo_points.red_base_offsets_;
+  j["black_position"] = bpo_points.black_position_;
+  j["red_position_offsets"] = bpo_points.red_position_offsets_;
   return j;
 }
 
@@ -50,11 +50,11 @@ void NlohmannBPOFileHandler::Export(
 }
 
 PointsSpecBPOExternal::PointsSpecBPOExternal()
-    : black_base{}
-    , red_base_offsets{}
-    , black_position{}
-    , red_position_offsets{}
-    , file_handler{} {};
+    : black_base_{}
+    , red_base_offsets_{}
+    , black_position_{}
+    , red_position_offsets_{}
+    , file_handler_{} {};
 
 PointsSpecBPOExternal::PointsSpecBPOExternal(
     BasePointsSMap_t black_base_input,
@@ -62,40 +62,40 @@ PointsSpecBPOExternal::PointsSpecBPOExternal(
     TeamPointsSMap_t black_position_input,
     TeamPointsSMap_t red_position_offsets_input
 )
-    : black_base{black_base_input}
-    , red_base_offsets{red_base_offsets_input}
-    , black_position{black_position_input}
-    , red_position_offsets{red_position_offsets_input}
-    , file_handler{} {}
+    : black_base_{black_base_input}
+    , red_base_offsets_{red_base_offsets_input}
+    , black_position_{black_position_input}
+    , red_position_offsets_{red_position_offsets_input}
+    , file_handler_{} {}
 
 PointsSpecBPOExternal::PointsSpecBPOExternal(const string &json_file_path)
-    : black_base{}
-    , red_base_offsets{}
-    , black_position{}
-    , red_position_offsets{}
-    , file_handler{} {
-  file_handler.Import(*this, json_file_path);
+    : black_base_{}
+    , red_base_offsets_{}
+    , black_position_{}
+    , red_position_offsets_{}
+    , file_handler_{} {
+  file_handler_.Import(*this, json_file_path);
 }
 
 void PointsSpecBPOExternal::ToFile(string output_path) {
-  file_handler.Export(*this, output_path);
+  file_handler_.Export(*this, output_path);
 }
 
 GamePointsSMap_t PointsSpecBPOExternal::ToGamePointsSmap() {
   GamePointsSMap_t s_map{};
 
-  for (auto piece : black_base) {
+  for (auto piece : black_base_) {
     s_map["black"][piece.first] = utility_functs::array_plus_const(
-        black_position[piece.first],
-        black_base[piece.first]
+        black_position_[piece.first],
+        black_base_[piece.first]
     );
   }
 
-  for (auto piece : red_base_offsets) {
-    auto red_base = black_base[piece.first] + red_base_offsets[piece.first];
+  for (auto piece : red_base_offsets_) {
+    auto red_base = black_base_[piece.first] + red_base_offsets_[piece.first];
     auto red_position = utility_functs::two_array_sum(
-        black_position[piece.first],
-        red_position_offsets[piece.first]
+        black_position_[piece.first],
+        red_position_offsets_[piece.first]
     );
     s_map["red"][piece.first] = utility_functs::array_plus_const(red_position, red_base);
   }
@@ -126,16 +126,16 @@ PointsSpecBPOInternal::PointsSpecBPOInternal(PointsSpecBPOExternal external_spec
       {"soldier", PieceType::kSol}
   };
 
-  black_base = utility_functs::replace_keys(external_spec.black_base, key_substitutions);
+  black_base = utility_functs::replace_keys(external_spec.black_base_, key_substitutions);
 
   red_base_offsets =
-      utility_functs::replace_keys(external_spec.red_base_offsets, key_substitutions);
+      utility_functs::replace_keys(external_spec.red_base_offsets_, key_substitutions);
 
   black_position =
-      utility_functs::replace_keys(external_spec.black_position, key_substitutions);
+      utility_functs::replace_keys(external_spec.black_position_, key_substitutions);
 
   red_position_offsets = utility_functs::replace_keys(
-      external_spec.red_position_offsets,
+      external_spec.red_position_offsets_,
       key_substitutions
   );
 }

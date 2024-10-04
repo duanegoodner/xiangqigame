@@ -41,7 +41,8 @@ private:
 
 // Piece Points spec in "Base Points Offset" form with string keys to easily
 // read/write external json
-struct PointsSpecBPOExternal {
+class PointsSpecBPOExternal {
+  public:
   PointsSpecBPOExternal();
   PointsSpecBPOExternal(
       BasePointsSMap_t black_base_input,
@@ -51,17 +52,17 @@ struct PointsSpecBPOExternal {
   );
   PointsSpecBPOExternal(const string &json_file_path);
 
-  BasePointsSMap_t black_base;
-  BasePointsSMap_t red_base_offsets;
-  TeamPointsSMap_t black_position;
-  TeamPointsSMap_t red_position_offsets;
+  BasePointsSMap_t black_base_;
+  BasePointsSMap_t red_base_offsets_;
+  TeamPointsSMap_t black_position_;
+  TeamPointsSMap_t red_position_offsets_;
 
   void ToFile(string output_path);
   GamePointsSMap_t ToGamePointsSmap();
   GamePointsArray_t ToGamePointsArray();
 
 private:
-  NlohmannBPOFileHandler file_handler;
+  NlohmannBPOFileHandler file_handler_;
 };
 
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for

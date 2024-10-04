@@ -14,24 +14,24 @@ protected:
 
 TEST_F(PiecePointsSpecTest, InitPointsSpecBPOExternal) {
   auto external_pts_spec = PointsSpecBPOExternal(points_spec_path);
-  EXPECT_EQ(external_pts_spec.black_base.size(), kNumPieceTypeVals);
-  EXPECT_EQ(external_pts_spec.red_base_offsets.size(), kNumPieceTypeVals);
-  EXPECT_EQ(external_pts_spec.black_position.size(), kNumPieceTypeVals);
-  EXPECT_EQ(external_pts_spec.red_position_offsets.size(), kNumPieceTypeVals);
-  for (auto base_val : external_pts_spec.black_base) {
+  EXPECT_EQ(external_pts_spec.black_base_.size(), kNumPieceTypeVals);
+  EXPECT_EQ(external_pts_spec.red_base_offsets_.size(), kNumPieceTypeVals);
+  EXPECT_EQ(external_pts_spec.black_position_.size(), kNumPieceTypeVals);
+  EXPECT_EQ(external_pts_spec.red_position_offsets_.size(), kNumPieceTypeVals);
+  for (auto base_val : external_pts_spec.black_base_) {
     EXPECT_TRUE((base_val.second != 0) || (base_val.first == "null"));
   }
-  for (auto position_array : external_pts_spec.black_position) {
+  for (auto position_array : external_pts_spec.black_position_) {
     EXPECT_EQ(position_array.second.size(), kNumRanks);
     for (auto rank : position_array.second) {
       EXPECT_EQ(rank.size(), kNumFiles);
     }
   }
-  EXPECT_EQ(external_pts_spec.black_position["chariot"][0][0], -2);
-  for (auto base_val : external_pts_spec.red_base_offsets) {
+  EXPECT_EQ(external_pts_spec.black_position_["chariot"][0][0], -2);
+  for (auto base_val : external_pts_spec.red_base_offsets_) {
     EXPECT_EQ(base_val.second, 0);
   }
-  for (auto position_array : external_pts_spec.red_position_offsets) {
+  for (auto position_array : external_pts_spec.red_position_offsets_) {
     for (auto rank = 0; rank < kNumRanks; rank++) {
       for (auto file = 0; file < kNumFiles; file++) {
         EXPECT_EQ(position_array.second[rank][file], 0);
