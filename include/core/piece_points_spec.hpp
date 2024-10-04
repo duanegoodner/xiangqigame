@@ -32,6 +32,15 @@ struct PieceBasePoints {
   int soldier;
 };
 
+class PointsSpecBPOExternal;
+
+class BPOFileHandler {
+    public:
+    virtual ~BPOFileHandler() = default;
+    virtual void Import(PointsSpecBPOExternal& bpo_points, string file_path) = 0;
+    virtual void Export(PointsSpecBPOExternal& bpo_points, string file_path) = 0;
+};
+
 // Piece Points spec in "Base Points Offset" form with string keys to easily
 // read/write external json
 struct PointsSpecBPOExternal {
@@ -42,7 +51,6 @@ struct PointsSpecBPOExternal {
       TeamPointsSMap_t black_position_input,
       TeamPointsSMap_t red_position_offsets_input
   );
-  PointsSpecBPOExternal(const nloh_json &json_object);
   PointsSpecBPOExternal(const string &json_file_path);
 
   BasePointsSMap_t black_base;
@@ -50,17 +58,10 @@ struct PointsSpecBPOExternal {
   TeamPointsSMap_t black_position;
   TeamPointsSMap_t red_position_offsets;
 
-  nloh_json ToJson();
+
   void ToFile(string output_path);
   GamePointsSMap_t ToGamePointsSmap();
   GamePointsArray_t ToGamePointsArray();
-};
-
-class BPOFileHandler {
-    public:
-    virtual ~BPOFileHandler() = default;
-    virtual void Import(PointsSpecBPOExternal& bpo_points, string file_path) = 0;
-    virtual void Export(PointsSpecBPOExternal& bpo_points, string file_path) = 0;
 };
 
 class NlohmannBPOFileHandler : public BPOFileHandler {
@@ -71,6 +72,7 @@ class NlohmannBPOFileHandler : public BPOFileHandler {
   private:
     nloh_json ToJsonObject(PointsSpecBPOExternal& bpo_points);
 };
+
 
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for
 // use in internal data structs

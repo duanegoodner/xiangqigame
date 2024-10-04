@@ -59,16 +59,6 @@ PointsSpecBPOExternal::PointsSpecBPOExternal(
     , black_position{black_position_input}
     , red_position_offsets{red_position_offsets_input} {}
 
-PointsSpecBPOExternal::PointsSpecBPOExternal(const nloh_json &json_object) {
-  json_object.at("black_base").get_to(black_base);
-  json_object.at("red_base_offsets").get_to(red_base_offsets);
-  json_object.at("black_position").get_to(black_position);
-  json_object.at("red_position_offsets").get_to(red_position_offsets);
-}
-
-// PointsSpecBPOExternal::PointsSpecBPOExternal(string json_file_path)
-//     : PointsSpecBPOExternal(utility_functs::import_json(json_file_path)) {};
-
 PointsSpecBPOExternal::PointsSpecBPOExternal(const string &json_file_path)
     : black_base{}
     , red_base_offsets{}
@@ -77,20 +67,6 @@ PointsSpecBPOExternal::PointsSpecBPOExternal(const string &json_file_path)
   NlohmannBPOFileHandler file_handler{};
   file_handler.Import(*this, json_file_path);
 }
-
-nloh_json PointsSpecBPOExternal::ToJson() {
-  nloh_json j;
-  j["black_base"] = black_base;
-  j["red_base_offsets"] = red_base_offsets;
-  j["black_position"] = black_position;
-  j["red_position_offsets"] = red_position_offsets;
-  return j;
-}
-
-// void PointsSpecBPOExternal::ToFile(string output_path) {
-//   auto json_object = ToJson();
-//   utility_functs::export_json(json_object, output_path);
-// }
 
 void PointsSpecBPOExternal::ToFile(string output_path) {
     NlohmannBPOFileHandler file_handler{};

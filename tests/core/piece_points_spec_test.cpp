@@ -40,11 +40,6 @@ TEST_F(PiecePointsSpecTest, InitPointsSpecBPOExternal) {
   }
 }
 
-TEST_F(PiecePointsSpecTest, PointsSpecBPOExternalToJson) {
-  auto external_pts_spec = PointsSpecBPOExternal(points_spec_path);
-  auto json_object = external_pts_spec.ToJson();
-}
-
 TEST_F(PiecePointsSpecTest, InitPointsSpecBPOInternal) {
   auto internal_pts_spec = PointsSpecBPOExternal(points_spec_path);
 }
