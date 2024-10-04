@@ -31,6 +31,12 @@ public:
   virtual void Export(BPOPointsSKeys &bpo_points, string file_path) = 0;
 };
 
+class BPOFileHandlerFactory {
+public:
+  virtual ~BPOFileHandlerFactory() = default;
+  virtual unique_ptr<BPOFileHandler> create_bpo_file_handler() const = 0;
+};
+
 class NlohmannBPOFileHandler : public BPOFileHandler {
 public:
   void Import(BPOPointsSKeys &bpo_points, string file_path);
@@ -40,18 +46,34 @@ private:
   nloh_json ToJsonObject(BPOPointsSKeys &bpo_points);
 };
 
+class NlohmannBPOFileHandlerFactory : public BPOFileHandlerFactory {
+public:
+  unique_ptr<BPOFileHandler> create_bpo_file_handler() const override {
+    return make_unique<NlohmannBPOFileHandler>();
+  }
+};
+
 // Piece Points spec in "Base Points Offset" form with string keys to easily
 // read/write external json
 class BPOPointsSKeys {
-  public:
-  BPOPointsSKeys();
+public:
+  BPOPointsSKeys(const BPOPointsSKeys &) = delete;
+  BPOPointsSKeys &operator=(const BPOPointsSKeys &) = delete;
+
+  explicit BPOPointsSKeys(
+      const BPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
+  );
   BPOPointsSKeys(
       BasePointsSMap_t black_base_input,
       BasePointsSMap_t red_base_offsets_input,
       TeamPointsSMap_t black_position_input,
-      TeamPointsSMap_t red_position_offsets_input
+      TeamPointsSMap_t red_position_offsets_input,
+      const BPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
   );
-  BPOPointsSKeys(const string &json_file_path);
+  BPOPointsSKeys(
+      const string &json_file_path,
+      const BPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
+  );
 
   BasePointsSMap_t black_base_;
   BasePointsSMap_t red_base_offsets_;
@@ -64,13 +86,13 @@ class BPOPointsSKeys {
   GamePointsArray_t ToGamePointsArray();
 
 private:
-  NlohmannBPOFileHandler file_handler_;
+  unique_ptr<BPOFileHandler> file_handler_;
 };
 
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for
 // use in internal data structs
 class BPOPointsEKeys {
-  public:
+public:
   BPOPointsEKeys(
       TeamBasePoints_t black_base_input,
       TeamBasePoints_t red_base_offsets_input,
@@ -81,7 +103,6 @@ class BPOPointsEKeys {
   TeamPointsArray_t BlackNetPoints();
   TeamPointsArray_t RedNetPoints();
   GamePointsArray_t ToGamePointsArray();
-
 
   TeamBasePoints_t black_base_;
   TeamBasePoints_t red_base_offsets_;

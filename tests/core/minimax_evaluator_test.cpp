@@ -43,10 +43,11 @@ protected:
   const string points_spec_path =
       utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
 
-  const BPOPointsSKeys external_pts_spec =
+  BPOPointsSKeys external_pts_spec =
       BPOPointsSKeys(points_spec_path);
-  const PiecePositionPoints imported_piece_points{external_pts_spec};
-
+  
+  PiecePositionPoints imported_piece_points = PiecePositionPoints(external_pts_spec);
+  
   const BoardMapInt_t kLateGameBoardMap{{
       {0, 0, 0, 1, 0, 0, 0, 0, 0},
       {0, 0, 0, 0, 0, 0, 0, 0, 0},

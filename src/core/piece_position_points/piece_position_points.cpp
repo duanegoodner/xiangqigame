@@ -23,10 +23,10 @@ PiecePositionPoints::PiecePositionPoints()
 PiecePositionPoints::PiecePositionPoints(GamePointsArray_t game_points_array)
     : points_array{game_points_array} {}
 
-PiecePositionPoints::PiecePositionPoints(BPOPointsEKeys bpo_points_ekeys)
+PiecePositionPoints::PiecePositionPoints(BPOPointsEKeys& bpo_points_ekeys)
     : points_array{bpo_points_ekeys.ToGamePointsArray()} {}
 
-PiecePositionPoints::PiecePositionPoints(BPOPointsSKeys bpo_points_skeys)
+PiecePositionPoints::PiecePositionPoints(BPOPointsSKeys& bpo_points_skeys)
     : points_array{bpo_points_skeys.ToGamePointsArray()} {}
 
 PiecePositionPoints::PiecePositionPoints(string json_file)

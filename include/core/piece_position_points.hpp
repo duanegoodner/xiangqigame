@@ -27,8 +27,8 @@ using json = nlohmann::json;
 struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   PiecePositionPoints();
   PiecePositionPoints(GamePointsArray_t game_points_array);
-  PiecePositionPoints(BPOPointsEKeys bpo_points_ekeys);
-  PiecePositionPoints(BPOPointsSKeys bpo_points_skeys);
+  PiecePositionPoints(BPOPointsEKeys& bpo_points_ekeys);
+  PiecePositionPoints(BPOPointsSKeys& bpo_points_skeys);
   PiecePositionPoints(string json_file);
 
   // define in header to force inlining
