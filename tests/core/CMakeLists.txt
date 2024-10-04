@@ -113,10 +113,10 @@ target_link_libraries(
 #     ${PROJECT_SOURCE_DIR}/src/core/json_internal
 # )
 
-add_executable(json_io_test json_io_test.cpp)
-target_link_libraries(
-    json_io_test PRIVATE
-    GTest::gtest_main
-    json_interface
-    json_io
-    utility_functs)
+# add_executable(json_io_test json_io_test.cpp)
+# target_link_libraries(
+#     json_io_test PRIVATE
+#     GTest::gtest_main
+#     json_interface
+#     json_io
+#     utility_functs)

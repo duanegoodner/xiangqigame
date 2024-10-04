@@ -12,7 +12,6 @@
 
 #include <board_components.hpp>
 #include <common.hpp>
-#include <json_interface.hpp>
 #include <move_evaluators.hpp>
 #include <nlohmann/json.hpp>
 #include <piece_points_details.hpp>
