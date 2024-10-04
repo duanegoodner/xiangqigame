@@ -16,12 +16,10 @@ using namespace piece_points;
 using json = nlohmann::json;
 using nlohmann::json_schema::json_validator;
 
-GamePointsArrayBuilder::GamePointsArrayBuilder(BPOPointsEKeys internal_points_spec
-)
+GamePointsArrayBuilder::GamePointsArrayBuilder(BPOPointsEKeys internal_points_spec)
     : points_spec_{internal_points_spec} {}
 
-GamePointsArrayBuilder::GamePointsArrayBuilder(BPOPointsSKeys external_points_spec
-)
+GamePointsArrayBuilder::GamePointsArrayBuilder(BPOPointsSKeys external_points_spec)
     : GamePointsArrayBuilder(BPOPointsEKeys(external_points_spec)) {}
 
 GamePointsArrayBuilder::GamePointsArrayBuilder(string spec_file_path)
@@ -67,8 +65,12 @@ GamePointsArray_t GamePointsArrayBuilder::BuildGamePointsArray() {
   return game_points_array;
 }
 
+// PiecePositionPoints::PiecePositionPoints()
+//     : points_array{DEFAULT_GAME_POINTS_ARRAY} {}
+
 PiecePositionPoints::PiecePositionPoints()
-    : points_array{DEFAULT_GAME_POINTS_ARRAY} {}
+    : points_array{BPOPointsSKeys(kICGABPOPath).ToGamePointsArray()} {}
+
 PiecePositionPoints::PiecePositionPoints(GamePointsArray_t game_points_array)
     : points_array{game_points_array} {}
 PiecePositionPoints::PiecePositionPoints(BPOPointsEKeys internal_bpo_spec)

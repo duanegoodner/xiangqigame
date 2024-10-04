@@ -125,6 +125,11 @@ BPOPointsEKeys BPOPointsSKeys::ToBPOPointsEKeys() {
   );
 }
 
+GamePointsArray_t BPOPointsSKeys::ToGamePointsArray() {
+    auto bpo_points_ekeys = ToBPOPointsEKeys();
+    return bpo_points_ekeys.ToGamePointsArray();
+}
+
 BPOPointsEKeys::BPOPointsEKeys(
     TeamBasePoints_t black_base_input,
     TeamBasePoints_t red_base_offsets_input,
@@ -161,4 +166,42 @@ BPOPointsEKeys::BPOPointsEKeys(BPOPointsSKeys external_spec) {
       external_spec.red_position_offsets_,
       key_substitutions
   );
+}
+
+TeamPointsArray_t BPOPointsEKeys::BlackNetPoints() {
+  TeamPointsArray_t black_net_points{};
+  for (auto piece : black_base_) {
+
+    black_net_points[piece.first] = utility_functs::array_plus_const(
+        black_position_[piece.first],
+        black_base_[piece.first]
+    );
+  }
+  return black_net_points;
+}
+
+TeamPointsArray_t BPOPointsEKeys::RedNetPoints() {
+  TeamPointsArray_t red_net_points{};
+  for (auto piece : red_base_offsets_) {
+    auto base_points = black_base_[piece.first] + red_base_offsets_[piece.first];
+
+    auto unflipped_position_points = utility_functs::two_array_sum(
+        black_position_[piece.first],
+        red_position_offsets_[piece.first]
+    );
+
+    auto flipped_position_points =
+        utility_functs::vertical_flip_array(unflipped_position_points);
+
+    red_net_points[piece.first] =
+        utility_functs::array_plus_const(flipped_position_points, base_points);
+  }
+  return red_net_points;
+}
+
+GamePointsArray_t BPOPointsEKeys::ToGamePointsArray() {
+  GamePointsArray_t game_points_array{};
+  game_points_array[get_zcolor_index(PieceColor::kBlk)] = BlackNetPoints();
+  game_points_array[get_zcolor_index(PieceColor::kRed)] = RedNetPoints();
+  return game_points_array;
 }
