@@ -18,7 +18,7 @@
 // (perfomance improvement)
 // ///////////////////////////////////////////////////////////////////////////////////////
 
-namespace board_utilities {
+namespace gameboard {
 using namespace gameboard;
 
 inline BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
@@ -83,6 +83,6 @@ inline vector<BoardSpace> get_all_spaces_occupied_by(
   return occupied_spaces;
 }
 
-} // namespace board_utilities
+} // namespace gameboard
 
 #endif

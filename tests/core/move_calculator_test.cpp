@@ -5,7 +5,7 @@
 #include <move_calculator.hpp>
 // #include <piece_moves.hpp>
 
-using namespace board_utilities;
+using namespace gameboard;
 
 const BoardMapInt_t kFlyingBoard{{
     {5, 4, 3, 2, 1, 2, 3, 4, 5},

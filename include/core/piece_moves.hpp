@@ -13,7 +13,7 @@
 #include <board_utilities.hpp>
 
 using namespace gameboard;
-using namespace board_utilities;
+using namespace gameboard;
 
 namespace moves {
 

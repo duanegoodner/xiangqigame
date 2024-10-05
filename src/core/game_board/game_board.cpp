@@ -13,7 +13,7 @@
 #include <typeinfo>
 #include <utility_functs.hpp>
 
-using namespace board_utilities;
+using namespace gameboard;
 using namespace std;
 
 
