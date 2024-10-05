@@ -14,7 +14,7 @@ using namespace std;
 using namespace gameboard;
 using namespace piece_points;
 using json = nlohmann::json;
-using nlohmann::json_schema::json_validator;
+
 
 
 PiecePositionPoints::PiecePositionPoints()
@@ -78,24 +78,6 @@ json PiecePositionPoints::ToJson() {
 void PiecePositionPoints::ToFile(string output_file) {
   json j = game_points_array_to_smap(points_array);
   utility_functs::export_json(j, output_file);
-}
-
-bool piece_points::json_matches_schema(const json &imported_data, const json &schema) {
-  json_validator validator;
-
-  try {
-    validator.set_root_schema(schema);
-  } catch (const exception &e) {
-    cerr << "Schema validation failed: " << e.what() << endl;
-    exit(1);
-  }
-
-  try {
-    auto data_validation_result = validator.validate(imported_data);
-    return true;
-  } catch (const exception &e) {
-    return false;
-  }
 }
 
 // }

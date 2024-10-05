@@ -45,8 +45,6 @@ struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   void ToFile(string output_file);
 };
 
-bool json_matches_schema(const json &json_object, const json &schema);
-
 } // namespace piece_points
 
 #endif // _PIECE_POINTS

@@ -164,7 +164,9 @@ typename std::vector<T>::const_iterator find_by_member(
 
 json import_json(string file_path);
 void export_json(const json &j, string filename);
+bool json_matches_schema(const json &json_object, const json &schema);
 const string get_data_file_abs_path(const std::string data_file);
+
 
 } // namespace utility_functs
 
