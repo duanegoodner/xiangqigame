@@ -41,8 +41,11 @@ struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   }
 
   GamePointsArray_t points_array;
-  json ToJson();
-  void ToFile(string output_file);
+  static TeamPointsEMap_t TeamPointsArrayToEMap(TeamPointsArray_t team_array);
+  GamePointsEMap_t PointsArraytoEMap();
+  GamePointsSMap_t PointsArrayToSmap();
+  // json ToJson();
+  // void ToFile(string output_file);
 };
 
 } // namespace piece_points

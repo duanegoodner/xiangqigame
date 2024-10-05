@@ -65,8 +65,9 @@ TEST_F(PiecePositionPointsTest, RedPointsFlippedWRTBlack) {
   }
 }
 
-TEST_F(PiecePositionPointsTest, game_points_array_to_smap) {
-  auto s_map = game_points_array_to_smap(game_points_array);
+TEST_F(PiecePositionPointsTest, ConvertGamePointsArrayToSMap) {
+  PiecePositionPoints piece_position_points = PiecePositionPoints(game_points_array);
+  auto s_map = piece_position_points.PointsArrayToSmap();
 
   // confirm corresponding PiecePointsArray_t arrays in s_map and
   // game_points_array are equal
@@ -79,11 +80,6 @@ TEST_F(PiecePositionPointsTest, game_points_array_to_smap) {
       );
     }
   }
-}
-
-TEST_F(PiecePositionPointsTest, PiecePositionPointsToJson) {
-  PiecePositionPoints piece_points = PiecePositionPoints(game_points_array);
-  auto json_object = piece_points.ToJson();
 }
 
 TEST_F(PiecePositionPointsTest, InitFromFile) {
