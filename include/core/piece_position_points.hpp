@@ -12,14 +12,18 @@
 #include <board_components.hpp>
 #include <common.hpp>
 #include <move_evaluators.hpp>
-#include <piece_points_details.hpp>
 #include <piece_points_spec.hpp>
-
-namespace piece_points {
 
 using namespace gameboard;
 using namespace std;
-using json = nlohmann::json;
+
+namespace piece_points {
+
+const string kICGABPOPath = utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
+const string kICGARawPath = utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
+const string kRawSchemaPath =
+    utility_functs::get_data_file_abs_path("raw_points_schema.json");
+const string kBPOSchemaPath = utility_functs::get_data_file_abs_path("bpo_schema.json");
 
 struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   PiecePositionPoints();
