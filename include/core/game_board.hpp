@@ -1,13 +1,7 @@
-// Filename: game_board.hpp
-// Author: Duane Goodner
-// Created: 2022-11-14
-// Last Modified: 2024-09-30
+//! @file game_board.hpp
+//! Declaration of GameBoard and related constants.
 
-// Description:
-// Definition of GameBoard class.
-
-#ifndef _GAME_BOARD_
-#define _GAME_BOARD_
+#pragma once
 
 #include <board_components.hpp>
 #include <common.hpp>
@@ -19,15 +13,15 @@
 using namespace std;
 using namespace gameboard;
 
-// Template for class GameBoard which implements interface
-// SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
-
+//! Classes, structs and constants related to GameBoard
 namespace gameboard {
+
 extern const BoardMapInt_t kStartingBoard;
-
 extern const int kRepeatPeriodsToCheck[3];
-extern const int kMaxAllowedRepeatPeriods;
+extern const int kRepeatPeriodsMaxAllowed;
 
+//! Stores piece positions, and exposes methods for calculating, executing, an un-doing
+//! moves. Implements CRTP Interface SpaceInfoProvider.
 class GameBoard : public SpaceInfoProvider<GameBoard> {
 public:
   GameBoard();
@@ -45,19 +39,24 @@ public:
   std::map<PieceColor, vector<ExecutedMove>> GetMoveLog();
 
 private:
+  //! 2-D array of GamePiece objects.
   BoardMap_t board_map_;
-  MoveCalculator move_calculator_;
-  vector<function<void(ExecutedMove)>> move_callbacks_;  // hash calc functs go here
-  std::map<PieceColor, vector<ExecutedMove>> move_log_;
   
+  //! Encapsulates all calculations of allowed moves.
+  MoveCalculator move_calculator_;
+  
+  //! Stores functions that are called after any change in board config to keep
+  //! boardstate::HashCalculator objects updated.
+  vector<function<void(ExecutedMove)>> move_callbacks_;
+  
+  //! Vectors of all moves that have been executed (and not un-done) by each player.
+  std::map<PieceColor, vector<ExecutedMove>> move_log_;
+
   void UpdateHashCalculator(ExecutedMove executed_move);
   void SetOccupant(BoardSpace space, GamePiece piece);
   void AddToMoveLog(ExecutedMove executed_move);
   void RemoveFromMoveLog(ExecutedMove executed_move);
   bool ViolatesRepeatRule(PieceColor color);
-
 };
 
-}
-
-#endif // _GAME_BOARD_
+} // namespace gameboard

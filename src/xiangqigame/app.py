@@ -15,6 +15,11 @@ from xiangqigame.player_builder import RedAndBlackPlayersBuilder
 
 
 def run(**kwargs) -> GameSummary:
+    """
+
+    :param **kwargs:
+
+    """
     set_signal_handlers()
     colorama.init()
 

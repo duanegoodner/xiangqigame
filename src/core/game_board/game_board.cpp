@@ -13,11 +13,16 @@
 #include <typeinfo>
 #include <utility_functs.hpp>
 
-using namespace board_utilities;
+using namespace gameboard;
 using namespace std;
 
 
 namespace gameboard {
+
+
+//! Starting board represented as 2-D array of integers.
+//! Can be converted to array of GamePiece objects by
+//! board_utilities::int_board_to_game_pieces.
 const BoardMapInt_t kStartingBoard = {{
     {5, 4, 3, 2, 1, 2, 3, 4, 5},
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -31,8 +36,14 @@ const BoardMapInt_t kStartingBoard = {{
     {-5, -4, -3, -2, -1, -2, -3, -4, -5},
 }};
 
+//! Max allowed repetitions of prohibited move sequence lengths.
 const int kRepeatPeriodsToCheck[3] = {2, 3, 4};
-const int kMaxAllowedRepeatPeriods = 2;
+
+//! Repeated move sequence lengths forbidden under move repetition rules.
+//! If kRepeatPeriodsToCheck = {2, 3, 4} and kRepeatPeriodsMaxAllowed = 2, then the
+//! following sequences are probibited:
+//! ABABAB, ABCABCABC, ABCDABCDABCD
+const int kRepeatPeriodsMaxAllowed = 2;
 
 
 
@@ -143,7 +154,7 @@ void GameBoard::RemoveFromMoveLog(ExecutedMove executed_move) {
 
 bool GameBoard::ViolatesRepeatRule(PieceColor color) {
   for (auto period_length : kRepeatPeriodsToCheck) {
-    auto lookback_length = (kMaxAllowedRepeatPeriods + 1) * period_length;
+    auto lookback_length = (kRepeatPeriodsMaxAllowed + 1) * period_length;
     if (utility_functs::hasRepeatingPattern(
             move_log_[color],
             lookback_length,

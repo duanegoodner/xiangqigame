@@ -8,7 +8,7 @@
 
 using namespace std;
 using namespace gameboard;
-using namespace board_utilities;
+using namespace gameboard;
 
 namespace moves {
 typedef void (PieceMoves::*MethodPtr_t
