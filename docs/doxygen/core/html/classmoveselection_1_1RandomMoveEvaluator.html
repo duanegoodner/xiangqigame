@@ -68,6 +68,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classmoveselection_1_1RandomMoveEvaluator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -79,7 +80,7 @@ Inheritance diagram for moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfo
 <div class="dyncontent">
 <div class="center"><img src="classmoveselection_1_1RandomMoveEvaluator__inherit__graph.png" border="0" usemap="#amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_inherit__map" id="amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,331,296,437"/>
+<area shape="rect" title=" " alt="" coords="5,331,296,452"/>
 <area shape="rect" href="classMoveEvaluatorInterface.html" title=" " alt="" coords="29,175,272,281"/>
 <area shape="rect" href="classMoveEvaluatorInterface.html" title=" " alt="" coords="47,5,255,97"/>
 </map>
@@ -89,9 +90,11 @@ Collaboration diagram for moveselection::RandomMoveEvaluator&lt; ConcreteSpaceIn
 <div class="dyncontent">
 <div class="center"><img src="classmoveselection_1_1RandomMoveEvaluator__coll__graph.png" border="0" usemap="#amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_coll__map" id="amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="5,331,296,437"/>
-<area shape="rect" href="classMoveEvaluatorInterface.html" title=" " alt="" coords="29,175,272,281"/>
-<area shape="rect" href="classMoveEvaluatorInterface.html" title=" " alt="" coords="47,5,255,97"/>
+<area shape="rect" title=" " alt="" coords="172,344,463,451"/>
+<area shape="rect" href="classMoveEvaluatorInterface.html" title=" " alt="" coords="5,175,248,281"/>
+<area shape="rect" href="classMoveEvaluatorInterface.html" title=" " alt="" coords="23,5,231,97"/>
+<area shape="rect" title=" " alt="" coords="272,189,363,267"/>
+<area shape="rect" title=" " alt="" coords="387,189,599,267"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -104,6 +107,13 @@ Public Member Functions</h2></td></tr>
 <tr class="inherit_header pub_methods_classMoveEvaluatorInterface"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMoveEvaluatorInterface')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMoveEvaluatorInterface.html">MoveEvaluatorInterface&lt; RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt; &gt;</a></td></tr>
 <tr class="memitem:af9efad3136277a4fae43605a49c4dacb inherit pub_methods_classMoveEvaluatorInterface"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoves_1_1Move.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMoveEvaluatorInterface.html#af9efad3136277a4fae43605a49c4dacb">SelectMove</a> ()</td></tr>
 <tr class="separator:af9efad3136277a4fae43605a49c4dacb inherit pub_methods_classMoveEvaluatorInterface"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a69fdaf3024cf61c1b3a4472c1b52d35b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html#a69fdaf3024cf61c1b3a4472c1b52d35b">evaluating_player_</a></td></tr>
+<tr class="separator:a69fdaf3024cf61c1b3a4472c1b52d35b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf9a8b780202d5d6b6052ff912d8fb39"><td class="memItemLeft" align="right" valign="top">ConcreteSpaceInfoProvider &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html#adf9a8b780202d5d6b6052ff912d8fb39">game_board_</a></td></tr>
+<tr class="separator:adf9a8b780202d5d6b6052ff912d8fb39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename ConcreteSpaceInfoProvider&gt;<br />
@@ -180,13 +190,66 @@ template&lt;typename ConcreteSpaceInfoProvider &gt; </div>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a69fdaf3024cf61c1b3a4472c1b52d35b" name="a69fdaf3024cf61c1b3a4472c1b52d35b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69fdaf3024cf61c1b3a4472c1b52d35b">&#9670;&nbsp;</a></span>evaluating_player_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteSpaceInfoProvider &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> <a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html">moveselection::RandomMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider &gt;::evaluating_player_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00232">232</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="adf9a8b780202d5d6b6052ff912d8fb39" name="adf9a8b780202d5d6b6052ff912d8fb39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf9a8b780202d5d6b6052ff912d8fb39">&#9670;&nbsp;</a></span>game_board_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteSpaceInfoProvider &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConcreteSpaceInfoProvider&amp; <a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html">moveselection::RandomMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider &gt;::game_board_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00233">233</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/core/<a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 5 2024 16:57:01 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Sat Oct 5 2024 17:57:12 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

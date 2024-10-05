@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['bind_5fminimax_5fmove_5fevaluator_0',['bind_minimax_move_evaluator',['../xiangqigame__core_8cpp.html#a2c1f32d59e5850cc5ed35b88634205ae',1,'xiangqigame_core.cpp']]],
-  ['black_5fcastle_5fspaces_1',['black_castle_spaces',['../namespacegameboard.html#a42b102cdc749ce4fcb41a3843d877d32',1,'gameboard']]],
-  ['blacknetpoints_2',['BlackNetPoints',['../classpiece__points_1_1BPOPointsEKeys.html#a634b8178977601612c247026d1cc7fbc',1,'piece_points::BPOPointsEKeys']]],
-  ['bpopointsekeys_3',['BPOPointsEKeys',['../classpiece__points_1_1BPOPointsEKeys.html#affd9efec62fe60088a7004f25842f975',1,'piece_points::BPOPointsEKeys::BPOPointsEKeys(TeamBasePoints_t black_base_input, TeamBasePoints_t red_base_offsets_input, TeamPointsEMap_t black_position_input, TeamPointsEMap_t red_position_offsets_input)'],['../classpiece__points_1_1BPOPointsEKeys.html#a5f7d3c0ed2f14678490c1693c2ede368',1,'piece_points::BPOPointsEKeys::BPOPointsEKeys(BPOPointsSKeys external_spec)']]],
-  ['bpopointsskeys_4',['BPOPointsSKeys',['../classpiece__points_1_1BPOPointsSKeys.html#a0714ef308befeea85842ec046baaa1b8',1,'piece_points::BPOPointsSKeys::BPOPointsSKeys(const BPOPointsSKeys &amp;)=delete'],['../classpiece__points_1_1BPOPointsSKeys.html#a6bea67ff3043393a56be3f6862694733',1,'piece_points::BPOPointsSKeys::BPOPointsSKeys(const AbstractBPOFileHandlerFactory &amp;file_handler_factory=NlohmannBPOFileHandlerFactory())'],['../classpiece__points_1_1BPOPointsSKeys.html#acd92f5a85d5254e257747643fc157c54',1,'piece_points::BPOPointsSKeys::BPOPointsSKeys(BasePointsSMap_t black_base_input, BasePointsSMap_t red_base_offsets_input, TeamPointsSMap_t black_position_input, TeamPointsSMap_t red_position_offsets_input, const AbstractBPOFileHandlerFactory &amp;file_handler_factory=NlohmannBPOFileHandlerFactory())'],['../classpiece__points_1_1BPOPointsSKeys.html#a06116b990286021dec9b0307e5be5bf1',1,'piece_points::BPOPointsSKeys::BPOPointsSKeys(const string &amp;json_file_path, const AbstractBPOFileHandlerFactory &amp;file_handler_factory=NlohmannBPOFileHandlerFactory())']]],
-  ['build_5fpiece_5fdispatch_5farray_5',['build_piece_dispatch_array',['../namespacemoves.html#a8156876bca15a0842b8e37c26304757f',1,'moves']]]
+  ['addtomovelog_0',['AddToMoveLog',['../classgameboard_1_1GameBoard.html#a7ad5feab5892a8aa1084bf49a3c48e18',1,'gameboard::GameBoard']]],
+  ['advisormoves_1',['AdvisorMoves',['../classmoves_1_1PieceMoves.html#a4e75a4b347b7ccfd61052daf0522dd9f',1,'moves::PieceMoves']]],
+  ['append_2',['Append',['../structmoves_1_1MoveCollection.html#a2fc6119cd16f1c2a46cc3a07dfd0986b',1,'moves::MoveCollection']]],
+  ['array_5fplus_5fconst_3',['array_plus_const',['../namespaceutility__functs.html#a991fee6c060b152f519b14b7a16e57ed',1,'utility_functs']]],
+  ['attachmovecallback_4',['AttachMoveCallback',['../classSpaceInfoProvider.html#a373a5ccd325b1f79305b2e9c826ca8af',1,'SpaceInfoProvider']]]
 ];

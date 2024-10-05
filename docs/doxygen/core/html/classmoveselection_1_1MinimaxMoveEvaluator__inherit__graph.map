@@ -1,5 +1,5 @@
 <map id="moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;" name="moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,389,284,599"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,389,284,789"/>
 <area shape="rect" id="node2" href="$classMoveEvaluatorInterface.html" title=" " alt="" coords="25,204,264,340"/>
 <area shape="rect" id="node3" href="$classMoveEvaluatorInterface.html" title=" " alt="" coords="41,5,249,97"/>
 </map>

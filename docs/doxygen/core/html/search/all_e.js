@@ -1,26 +1,8 @@
 var searchData=
 [
-  ['piece_5fcolor_0',['piece_color',['../structgameboard_1_1GamePiece.html#aafe4abdcc60240f0c2e8e31c244b95dc',1,'gameboard::GamePiece']]],
-  ['piece_5fmoves_2ecpp_1',['piece_moves.cpp',['../piece__moves_8cpp.html',1,'']]],
-  ['piece_5fmoves_2ehpp_2',['piece_moves.hpp',['../piece__moves_8hpp.html',1,'']]],
-  ['piece_5fpoints_3',['piece_points',['../namespacepiece__points.html',1,'']]],
-  ['piece_5fpoints_5fdetails_2ehpp_4',['piece_points_details.hpp',['../piece__points__details_8hpp.html',1,'']]],
-  ['piece_5fpoints_5fspec_2ecpp_5',['piece_points_spec.cpp',['../piece__points__spec_8cpp.html',1,'']]],
-  ['piece_5fpoints_5fspec_2ehpp_6',['piece_points_spec.hpp',['../piece__points__spec_8hpp.html',1,'']]],
-  ['piece_5fposition_5fpoints_2ecpp_7',['piece_position_points.cpp',['../piece__position__points_8cpp.html',1,'']]],
-  ['piece_5fposition_5fpoints_2ehpp_8',['piece_position_points.hpp',['../piece__position__points_8hpp.html',1,'']]],
-  ['piece_5ftype_9',['piece_type',['../structgameboard_1_1GamePiece.html#ab499589d3dbcc9f8acc4969fac6f25e3',1,'gameboard::GamePiece']]],
-  ['piececolor_10',['PieceColor',['../namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142',1,'gameboard']]],
-  ['piecedispatcharray_5ft_11',['PieceDispatchArray_t',['../namespacemoves.html#ab0b73293133e6838c2f0375525e5bbb9',1,'moves']]],
-  ['piecemoves_12',['PieceMoves',['../classmoves_1_1PieceMoves.html',1,'moves']]],
-  ['piecepointsarray_5ft_13',['PiecePointsArray_t',['../common_8hpp.html#a5c137f82013ccc17934a251548ac6d8b',1,'common.hpp']]],
-  ['piecepositionpoints_14',['PiecePositionPoints',['../structpiece__points_1_1PiecePositionPoints.html',1,'piece_points::PiecePositionPoints'],['../structpiece__points_1_1PiecePositionPoints.html#a6ef085efff5cd6fb5c9d6cfb98c99f2e',1,'piece_points::PiecePositionPoints::PiecePositionPoints()'],['../structpiece__points_1_1PiecePositionPoints.html#a3d611c077670b047aa1defe75696586c',1,'piece_points::PiecePositionPoints::PiecePositionPoints(string json_file)'],['../structpiece__points_1_1PiecePositionPoints.html#a7eb81a23355270d8eb9e56c3749c0477',1,'piece_points::PiecePositionPoints::PiecePositionPoints(BPOPointsSKeys &amp;bpo_points_skeys)'],['../structpiece__points_1_1PiecePositionPoints.html#a1714489dc076e5e6cda3dba1b7443c5e',1,'piece_points::PiecePositionPoints::PiecePositionPoints(BPOPointsEKeys &amp;bpo_points_ekeys)'],['../structpiece__points_1_1PiecePositionPoints.html#ae576651167c185330aefd5c9c28df897',1,'piece_points::PiecePositionPoints::PiecePositionPoints(GamePointsArray_t game_points_array)']]],
-  ['piecetype_15',['PieceType',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76',1,'gameboard']]],
-  ['piecevalueprovider_16',['PieceValueProvider',['../classPieceValueProvider.html',1,'']]],
-  ['piecevalueprovider_3c_20piecepositionpoints_20_3e_17',['PieceValueProvider&lt; PiecePositionPoints &gt;',['../classPieceValueProvider.html',1,'']]],
-  ['piecezarray_5ft_18',['PieceZarray_t',['../structboardstate_1_1ZobristKeys.html#a4710a52e0f889bc6862ffe1b285a91c8',1,'boardstate::ZobristKeys']]],
-  ['points_5farray_19',['points_array',['../structpiece__points_1_1PiecePositionPoints.html#abe9e52f9f9405b878f553ff164154fe3',1,'piece_points::PiecePositionPoints']]],
-  ['points_5fspec_5fto_5fsmap_20',['points_spec_to_smap',['../piece__points__details_8hpp.html#a43e4d3841469b2f5395becfc75f324c0',1,'points_spec_to_smap(const json &amp;points_spec):&#160;piece_position_points.cpp'],['../piece__position__points_8cpp.html#a43e4d3841469b2f5395becfc75f324c0',1,'points_spec_to_smap(const json &amp;points_spec):&#160;piece_position_points.cpp']]],
-  ['points_5ft_21',['Points_t',['../common_8hpp.html#a90dd9d31b637e0e35a476684836d93ae',1,'common.hpp']]],
-  ['pybind11_5fmodule_22',['PYBIND11_MODULE',['../xiangqigame__core_8cpp.html#a998ed464dae5d6ac8ae07738494beb65',1,'xiangqigame_core.cpp']]]
+  ['operator_21_3d_0',['operator!=',['../structgameboard_1_1BoardSpace.html#abb4288efb6f69d3b750eff7ae3953db4',1,'gameboard::BoardSpace']]],
+  ['operator_2b_1',['operator+',['../structgameboard_1_1BoardSpace.html#af6ca2c68e0ca3d0a8ab9aa2cd181ebd9',1,'gameboard::BoardSpace']]],
+  ['operator_3d_2',['operator=',['../classpiece__points_1_1BPOPointsSKeys.html#ab64f0a2fdefce53c0af479976823aed7',1,'piece_points::BPOPointsSKeys']]],
+  ['operator_3d_3d_3',['operator==',['../structgameboard_1_1GamePiece.html#af76cb7452b5a2e14a60d1a01954d7c29',1,'gameboard::GamePiece::operator==()'],['../structgameboard_1_1BoardSpace.html#a7c5d809d5c3323985e5d86f4caf9f1e4',1,'gameboard::BoardSpace::operator==()'],['../structmoves_1_1Move.html#a6582efcc8adcc3d3016b5389ad526a26',1,'moves::Move::operator==()'],['../structmoves_1_1ExecutedMove.html#ada3fae884fc06793c2c82b0f5133ae71',1,'moves::ExecutedMove::operator==()'],['../common_8hpp.html#a6d011c76023101d8ef68e24d6f51b64e',1,'operator==(const PiecePointsArray_t &amp;a, const PiecePointsArray_t &amp;b):&#160;common.hpp'],['../common_8hpp.html#a496c0aaf447922d4299c4ddc154d495c',1,'operator==(TeamPointsSMap_t &amp;a, TeamPointsSMap_t &amp;b):&#160;common.hpp'],['../common_8hpp.html#ae56bc055140b217684592c4e785d25c5',1,'operator==(GamePointsSMap_t &amp;a, GamePointsSMap_t &amp;b):&#160;common.hpp'],['../namespaceutility__functs.html#a4396865a16ca27ed743dc29ea27cf7db',1,'utility_functs::operator==()']]],
+  ['opponent_5fof_4',['opponent_of',['../namespacegameboard.html#a96f2b0bb2cc896e13f52854427e155d9',1,'gameboard']]]
 ];

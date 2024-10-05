@@ -68,6 +68,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="classpiece__points_1_1NlohmannBPOFileHandler-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">piece_points::NlohmannBPOFileHandler Class Reference</div></div>
 </div><!--header-->
@@ -79,7 +80,7 @@ Inheritance diagram for piece_points::NlohmannBPOFileHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classpiece__points_1_1NlohmannBPOFileHandler__inherit__graph.png" border="0" usemap="#apiece__points_1_1NlohmannBPOFileHandler_inherit__map" alt="Inheritance graph"/></div>
 <map name="apiece__points_1_1NlohmannBPOFileHandler_inherit__map" id="apiece__points_1_1NlohmannBPOFileHandler_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,160,235,267"/>
+<area shape="rect" title=" " alt="" coords="5,160,235,281"/>
 <area shape="rect" href="classpiece__points_1_1BPOFileHandler.html" title=" " alt="" coords="13,5,227,112"/>
 </map>
 </div>
@@ -88,7 +89,7 @@ Collaboration diagram for piece_points::NlohmannBPOFileHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classpiece__points_1_1NlohmannBPOFileHandler__coll__graph.png" border="0" usemap="#apiece__points_1_1NlohmannBPOFileHandler_coll__map" alt="Collaboration graph"/></div>
 <map name="apiece__points_1_1NlohmannBPOFileHandler_coll__map" id="apiece__points_1_1NlohmannBPOFileHandler_coll__map">
-<area shape="rect" title=" " alt="" coords="5,160,235,267"/>
+<area shape="rect" title=" " alt="" coords="5,160,235,281"/>
 <area shape="rect" href="classpiece__points_1_1BPOFileHandler.html" title=" " alt="" coords="13,5,227,112"/>
 </map>
 </div>
@@ -106,6 +107,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a11bf32d2793faed41c291f658771fa7a inherit pub_methods_classpiece__points_1_1BPOFileHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a654eddc5c34a89acec044349cb928039 inherit pub_methods_classpiece__points_1_1BPOFileHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiece__points_1_1BPOFileHandler.html#a654eddc5c34a89acec044349cb928039">Export</a> (<a class="el" href="classpiece__points_1_1BPOPointsSKeys.html">BPOPointsSKeys</a> &amp;bpo_points, string file_path)=0</td></tr>
 <tr class="separator:a654eddc5c34a89acec044349cb928039 inherit pub_methods_classpiece__points_1_1BPOFileHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a9a46cc6101505718ec149d4bbc2d5516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacepiece__points.html#a005886c88fe252ed14d37b1d32af18e8">nloh_json</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiece__points_1_1NlohmannBPOFileHandler.html#a9a46cc6101505718ec149d4bbc2d5516">ToJsonObject</a> (<a class="el" href="classpiece__points_1_1BPOPointsSKeys.html">BPOPointsSKeys</a> &amp;bpo_points)</td></tr>
+<tr class="separator:a9a46cc6101505718ec149d4bbc2d5516"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -191,6 +197,34 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a9a46cc6101505718ec149d4bbc2d5516" name="a9a46cc6101505718ec149d4bbc2d5516"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a46cc6101505718ec149d4bbc2d5516">&#9670;&nbsp;</a></span>ToJsonObject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacepiece__points.html#a005886c88fe252ed14d37b1d32af18e8">nloh_json</a> NlohmannBPOFileHandler::ToJsonObject </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classpiece__points_1_1BPOPointsSKeys.html">BPOPointsSKeys</a> &amp;&#160;</td>
+          <td class="paramname"><em>bpo_points</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__spec_8cpp_source.html#l00032">32</a> of file <a class="el" href="piece__points__spec_8cpp_source.html">piece_points_spec.cpp</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/core/<a class="el" href="piece__points__spec_8hpp_source.html">piece_points_spec.hpp</a></li>
 <li>src/core/piece_points_spec/<a class="el" href="piece__points__spec_8cpp_source.html">piece_points_spec.cpp</a></li>
@@ -198,7 +232,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 5 2024 16:57:01 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Sat Oct 5 2024 17:57:12 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

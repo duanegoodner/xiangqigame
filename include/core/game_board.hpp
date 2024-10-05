@@ -1,7 +1,5 @@
 //! @file game_board.hpp
-//! @brief Declaration of GameBoard and related constants.
-//! All declarations are in the gameboard namespace.
-
+//! Declaration of GameBoard and related constants.
 
 #pragma once
 
@@ -18,20 +16,12 @@ using namespace gameboard;
 //! Classes, structs and constants related to GameBoard
 namespace gameboard {
 
-
-//!Starting board represented as 2-D array of integers.
-//!Can be converted to array of GamePiece objects by board_utilities::int_board_to_game_pieces.
 extern const BoardMapInt_t kStartingBoard;
-
 extern const int kRepeatPeriodsToCheck[3];
-extern const int kMaxAllowedRepeatPeriods;
+extern const int kRepeatPeriodsMaxAllowed;
 
-
-
-//!Brief description of GameBoard class template.
-//!Detailed
-//!description of
-//!Gameboard
+//! Stores piece positions, and exposes methods for calculating, executing, an un-doing
+//! moves. Implements CRTP Interface SpaceInfoProvider.
 class GameBoard : public SpaceInfoProvider<GameBoard> {
 public:
   GameBoard();
@@ -49,17 +39,24 @@ public:
   std::map<PieceColor, vector<ExecutedMove>> GetMoveLog();
 
 private:
+  //! 2-D array of GamePiece objects.
   BoardMap_t board_map_;
-  MoveCalculator move_calculator_;
-  vector<function<void(ExecutedMove)>> move_callbacks_;  // hash calc functs go here
-  std::map<PieceColor, vector<ExecutedMove>> move_log_;
   
+  //! Encapsulates all calculations of allowed moves.
+  MoveCalculator move_calculator_;
+  
+  //! Stores functions that are called after any change in board config to keep
+  //! boardstate::HashCalculator objects updated.
+  vector<function<void(ExecutedMove)>> move_callbacks_;
+  
+  //! Vectors of all moves that have been executed (and not un-done) by each player.
+  std::map<PieceColor, vector<ExecutedMove>> move_log_;
+
   void UpdateHashCalculator(ExecutedMove executed_move);
   void SetOccupant(BoardSpace space, GamePiece piece);
   void AddToMoveLog(ExecutedMove executed_move);
   void RemoveFromMoveLog(ExecutedMove executed_move);
   bool ViolatesRepeatRule(PieceColor color);
-
 };
 
-}
+} // namespace gameboard

@@ -1,27 +1,6 @@
 var searchData=
 [
-  ['implementattachmovecallback_0',['ImplementAttachMoveCallback',['../classgameboard_1_1GameBoard.html#ad78f604afbbf2f6349b94ee62d66f4f4',1,'gameboard::GameBoard']]],
-  ['implementcalcfinalmovesof_1',['ImplementCalcFinalMovesOf',['../classgameboard_1_1GameBoard.html#a4a3c995065f2182eb1949d1d5c5ac880',1,'gameboard::GameBoard']]],
-  ['implementexecutemove_2',['ImplementExecuteMove',['../classgameboard_1_1GameBoard.html#a8a70ed6bfc8cae32850db2e1ad66d53d',1,'gameboard::GameBoard']]],
-  ['implementfullboardstatecalc_3',['ImplementFullBoardStateCalc',['../classboardstate_1_1HashCalculator.html#a006ac96f4afa20761f79dc567bc1df7a',1,'boardstate::HashCalculator']]],
-  ['implementgetallspacesoccupiedby_4',['ImplementGetAllSpacesOccupiedBy',['../classgameboard_1_1GameBoard.html#a6cda9fe272112652b507a93044d876b7',1,'gameboard::GameBoard']]],
-  ['implementgetcolor_5',['ImplementGetColor',['../classgameboard_1_1GameBoard.html#ab32159234d8ae34d9ad9ad5b6026a59e',1,'gameboard::GameBoard']]],
-  ['implementgetstate_6',['ImplementGetState',['../classboardstate_1_1HashCalculator.html#a9282e9d7461d21f61ba61eed069f38a3',1,'boardstate::HashCalculator']]],
-  ['implementgettrdata_7',['ImplementGetTrData',['../classboardstate_1_1HashCalculator.html#a2b62baaf801c94dbb6f3cbfdd52c32e1',1,'boardstate::HashCalculator']]],
-  ['implementgettype_8',['ImplementGetType',['../classgameboard_1_1GameBoard.html#a576e763da7be401aa913062654278d13',1,'gameboard::GameBoard']]],
-  ['implementgetvalueofpieceatposition_9',['ImplementGetValueOfPieceAtPosition',['../structpiece__points_1_1PiecePositionPoints.html#acd7bf1fe4373cd79a0453894e0489897',1,'piece_points::PiecePositionPoints']]],
-  ['implementrecordtrdata_10',['ImplementRecordTrData',['../classboardstate_1_1HashCalculator.html#a46eeae0037c4fd3ca5f81939789c7b07',1,'boardstate::HashCalculator']]],
-  ['implementselectmove_11',['ImplementSelectMove',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a73e5d0e857aa08562e4ef1251824f487',1,'moveselection::MinimaxMoveEvaluator::ImplementSelectMove()'],['../classmoveselection_1_1RandomMoveEvaluator.html#ac8aac3c4e827a19dea17d4919f3d9acc',1,'moveselection::RandomMoveEvaluator::ImplementSelectMove()']]],
-  ['implementundomove_12',['ImplementUndoMove',['../classgameboard_1_1GameBoard.html#a93eadc3eeadf4c60c565f7cdb5085203',1,'gameboard::GameBoard']]],
-  ['implementupdateboardstate_13',['ImplementUpdateBoardState',['../classboardstate_1_1HashCalculator.html#ad469b1453fe1992c44ac2d9ed2f381f4',1,'boardstate::HashCalculator']]],
-  ['import_14',['Import',['../classpiece__points_1_1BPOFileHandler.html#a11bf32d2793faed41c291f658771fa7a',1,'piece_points::BPOFileHandler::Import()'],['../classpiece__points_1_1NlohmannBPOFileHandler.html#abb3c65453d07566f7c7721df216eecc4',1,'piece_points::NlohmannBPOFileHandler::Import()']]],
-  ['import_5fjson_15',['import_json',['../namespaceutility__functs.html#aca0e7a98a98ae175c40f149c411fad38',1,'utility_functs']]],
-  ['int_5fboard_5fto_5fgame_5fpieces_16',['int_board_to_game_pieces',['../namespacegameboard.html#aa06ff448689c3fcec3968e33752e0d19',1,'gameboard']]],
-  ['is_5foccupied_17',['is_occupied',['../namespacegameboard.html#a6c941b62b18fde02113a22837e8254e5',1,'gameboard']]],
-  ['is_5fsigned_5fpoints_5ftype_18',['is_signed_points_type',['../common_8hpp.html#a60a60e301e2be83519e8a12b44462148',1,'common.hpp']]],
-  ['isincastleof_19',['IsInCastleOf',['../structgameboard_1_1BoardSpace.html#a56adc3a074cab5fae2f34f98bac61d83',1,'gameboard::BoardSpace']]],
-  ['isincheck_20',['IsInCheck',['../classgameboard_1_1GameBoard.html#a902f9949ae78be0503250b09798c9f28',1,'gameboard::GameBoard']]],
-  ['isinhomelandof_21',['IsInHomelandOf',['../structgameboard_1_1BoardSpace.html#a8b0a2d2780677d8e3b47b17f9ede60fa',1,'gameboard::BoardSpace']]],
-  ['isoccupied_22',['IsOccupied',['../classmoves_1_1MoveCalculator.html#a6599f0fae838219779e05779f1282c14',1,'moves::MoveCalculator']]],
-  ['isonboard_23',['IsOnBoard',['../structgameboard_1_1BoardSpace.html#a5b3c54a3feeb1814b5e94ad35b3b6fe6',1,'gameboard::BoardSpace']]]
+  ['hashcalculator_0',['HashCalculator',['../classboardstate_1_1HashCalculator.html#aed5661f52a328e98ba092a2c30d0d52e',1,'boardstate::HashCalculator::HashCalculator(ZobristKeys&lt; KeyType &gt; zkeys)'],['../classboardstate_1_1HashCalculator.html#a1f15679f1c0ce0fae51043dafe6495d1',1,'boardstate::HashCalculator::HashCalculator()']]],
+  ['hasrepeatingpattern_1',['hasRepeatingPattern',['../namespaceutility__functs.html#ab6b690b5028447413647af99fb320e70',1,'utility_functs']]],
+  ['horsemoves_2',['HorseMoves',['../classmoves_1_1PieceMoves.html#a490626294818928a6682bfcc7a4f446f',1,'moves::PieceMoves']]]
 ];

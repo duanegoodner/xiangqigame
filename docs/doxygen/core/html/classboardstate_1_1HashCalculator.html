@@ -68,6 +68,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classboardstate_1_1HashCalculator-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">boardstate::HashCalculator&lt; KeyType &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -79,7 +81,7 @@ Inheritance diagram for boardstate::HashCalculator&lt; KeyType &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classboardstate_1_1HashCalculator__inherit__graph.png" border="0" usemap="#aboardstate_1_1HashCalculator_3_01KeyType_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="aboardstate_1_1HashCalculator_3_01KeyType_01_4_inherit__map" id="aboardstate_1_1HashCalculator_3_01KeyType_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="10,463,251,643"/>
+<area shape="rect" title=" " alt="" coords="10,463,251,687"/>
 <area shape="rect" href="classBoardStateSummarizer.html" title=" " alt="" coords="28,248,233,413"/>
 <area shape="rect" href="classBoardStateSummarizer.html" title=" " alt="" coords="5,5,256,171"/>
 </map>
@@ -89,9 +91,12 @@ Collaboration diagram for boardstate::HashCalculator&lt; KeyType &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classboardstate_1_1HashCalculator__coll__graph.png" border="0" usemap="#aboardstate_1_1HashCalculator_3_01KeyType_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aboardstate_1_1HashCalculator_3_01KeyType_01_4_coll__map" id="aboardstate_1_1HashCalculator_3_01KeyType_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="10,463,251,643"/>
+<area shape="rect" title=" " alt="" coords="305,476,546,671"/>
 <area shape="rect" href="classBoardStateSummarizer.html" title=" " alt="" coords="28,248,233,413"/>
 <area shape="rect" href="classBoardStateSummarizer.html" title=" " alt="" coords="5,5,256,171"/>
+<area shape="rect" title=" " alt="" coords="258,292,441,369"/>
+<area shape="rect" title=" " alt="" coords="465,292,541,369"/>
+<area shape="rect" title=" " alt="" coords="565,285,707,377"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -122,6 +127,20 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af0b5dac7e68c7768ae750733bf9fe583 inherit pub_methods_classBoardStateSummarizer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c66e113ecf4cd730ab6e1ac526a49a7 inherit pub_methods_classBoardStateSummarizer"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html">moveselection::TranspositionTableSearchResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBoardStateSummarizer.html#a7c66e113ecf4cd730ab6e1ac526a49a7">GetTrData</a> (int search_depth)</td></tr>
 <tr class="separator:a7c66e113ecf4cd730ab6e1ac526a49a7 inherit pub_methods_classBoardStateSummarizer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a2be1382a74380fac5e7f682204d0e711"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1HashCalculator.html#a2be1382a74380fac5e7f682204d0e711">_ImplementUpdateBoardState</a> (<a class="el" href="structmoves_1_1ExecutedMove.html">ExecutedMove</a> move)</td></tr>
+<tr class="separator:a2be1382a74380fac5e7f682204d0e711"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ae20e6af77542b9c439c36c312e3f8535"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structboardstate_1_1ZobristKeys.html">ZobristKeys</a>&lt; KeyType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1HashCalculator.html#ae20e6af77542b9c439c36c312e3f8535">zkeys_</a></td></tr>
+<tr class="separator:ae20e6af77542b9c439c36c312e3f8535"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0b59f258c571643793ba7b88553ccaa"><td class="memItemLeft" align="right" valign="top">KeyType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1HashCalculator.html#ac0b59f258c571643793ba7b88553ccaa">board_state_</a></td></tr>
+<tr class="separator:ac0b59f258c571643793ba7b88553ccaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91c8d502c2cd0401bde7dedf553bef7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structboardstate_1_1TranspositionTable.html">TranspositionTable</a>&lt; KeyType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1HashCalculator.html#a91c8d502c2cd0401bde7dedf553bef7f">transposition_table_</a></td></tr>
+<tr class="separator:a91c8d502c2cd0401bde7dedf553bef7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -194,6 +213,36 @@ template&lt;typename KeyType &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2be1382a74380fac5e7f682204d0e711" name="a2be1382a74380fac5e7f682204d0e711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2be1382a74380fac5e7f682204d0e711">&#9670;&nbsp;</a></span>_ImplementUpdateBoardState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename KeyType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classboardstate_1_1HashCalculator.html">boardstate::HashCalculator</a>&lt; KeyType &gt;::_ImplementUpdateBoardState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmoves_1_1ExecutedMove.html">ExecutedMove</a>&#160;</td>
+          <td class="paramname"><em>move</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00172">172</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+
+</div>
+</div>
 <a id="a006ac96f4afa20761f79dc567bc1df7a" name="a006ac96f4afa20761f79dc567bc1df7a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a006ac96f4afa20761f79dc567bc1df7a">&#9670;&nbsp;</a></span>ImplementFullBoardStateCalc()</h2>
 
@@ -359,13 +408,92 @@ template&lt;typename KeyType &gt; </div>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac0b59f258c571643793ba7b88553ccaa" name="ac0b59f258c571643793ba7b88553ccaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0b59f258c571643793ba7b88553ccaa">&#9670;&nbsp;</a></span>board_state_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename KeyType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">KeyType <a class="el" href="classboardstate_1_1HashCalculator.html">boardstate::HashCalculator</a>&lt; KeyType &gt;::board_state_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00169">169</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a91c8d502c2cd0401bde7dedf553bef7f" name="a91c8d502c2cd0401bde7dedf553bef7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91c8d502c2cd0401bde7dedf553bef7f">&#9670;&nbsp;</a></span>transposition_table_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename KeyType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structboardstate_1_1TranspositionTable.html">TranspositionTable</a>&lt;KeyType&gt; <a class="el" href="classboardstate_1_1HashCalculator.html">boardstate::HashCalculator</a>&lt; KeyType &gt;::transposition_table_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00170">170</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae20e6af77542b9c439c36c312e3f8535" name="ae20e6af77542b9c439c36c312e3f8535"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae20e6af77542b9c439c36c312e3f8535">&#9670;&nbsp;</a></span>zkeys_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename KeyType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structboardstate_1_1ZobristKeys.html">ZobristKeys</a>&lt;KeyType&gt; <a class="el" href="classboardstate_1_1HashCalculator.html">boardstate::HashCalculator</a>&lt; KeyType &gt;::zkeys_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00168">168</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/core/<a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 5 2024 16:57:01 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Sat Oct 5 2024 17:57:12 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

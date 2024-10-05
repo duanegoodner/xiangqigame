@@ -1,5 +1,7 @@
 <map id="moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;" name="moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,331,296,437"/>
-<area shape="rect" id="node2" href="$classMoveEvaluatorInterface.html" title=" " alt="" coords="29,175,272,281"/>
-<area shape="rect" id="node3" href="$classMoveEvaluatorInterface.html" title=" " alt="" coords="47,5,255,97"/>
+<area shape="rect" id="node1" title=" " alt="" coords="172,344,463,451"/>
+<area shape="rect" id="node2" href="$classMoveEvaluatorInterface.html" title=" " alt="" coords="5,175,248,281"/>
+<area shape="rect" id="node3" href="$classMoveEvaluatorInterface.html" title=" " alt="" coords="23,5,231,97"/>
+<area shape="rect" id="node4" title=" " alt="" coords="272,189,363,267"/>
+<area shape="rect" id="node5" title=" " alt="" coords="387,189,599,267"/>
 </map>

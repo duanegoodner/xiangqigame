@@ -72,7 +72,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Brief description of GameBoard class template.">GameBoard</a>.  
+<p>Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Stores piece positions, and exposes methods for calculating, executing, an un-doing moves.">GameBoard</a>.  
 <a href="namespacegameboard.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -84,7 +84,7 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1CastleEdges.html">CastleEdges</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html">GameBoard</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Brief description of <a class="el" href="classgameboard_1_1GameBoard.html" title="Brief description of GameBoard class template.">GameBoard</a> class template.  <a href="classgameboard_1_1GameBoard.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores piece positions, and exposes methods for calculating, executing, an un-doing moves.  <a href="classgameboard_1_1GameBoard.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,12 +174,14 @@ Variables</h2></td></tr>
 <tr class="memdesc:a61c9cb4f6bae74d1541f537bff5a5c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starting board represented as 2-D array of integers.  <a href="namespacegameboard.html#a61c9cb4f6bae74d1541f537bff5a5c5b">More...</a><br /></td></tr>
 <tr class="separator:a61c9cb4f6bae74d1541f537bff5a5c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7f90d284c0b95bc54f4c5be7b4bce8e"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ab7f90d284c0b95bc54f4c5be7b4bce8e">kRepeatPeriodsToCheck</a> [3] = {2, 3, 4}</td></tr>
+<tr class="memdesc:ab7f90d284c0b95bc54f4c5be7b4bce8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max allowed repetitions of prohibited move sequence lengths.  <a href="namespacegameboard.html#ab7f90d284c0b95bc54f4c5be7b4bce8e">More...</a><br /></td></tr>
 <tr class="separator:ab7f90d284c0b95bc54f4c5be7b4bce8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae5f339ab7cc075742ce9eba554a1233"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aae5f339ab7cc075742ce9eba554a1233">kMaxAllowedRepeatPeriods</a> = 2</td></tr>
-<tr class="separator:aae5f339ab7cc075742ce9eba554a1233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc3c88bd024708e1e2b062c7c0df4afb"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#adc3c88bd024708e1e2b062c7c0df4afb">kRepeatPeriodsMaxAllowed</a> = 2</td></tr>
+<tr class="memdesc:adc3c88bd024708e1e2b062c7c0df4afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repeated move sequence lengths forbidden under move repetition rules.  <a href="namespacegameboard.html#adc3c88bd024708e1e2b062c7c0df4afb">More...</a><br /></td></tr>
+<tr class="separator:adc3c88bd024708e1e2b062c7c0df4afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Brief description of GameBoard class template.">GameBoard</a>. </p>
+<div class="textblock"><p >Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Stores piece positions, and exposes methods for calculating, executing, an un-doing moves.">GameBoard</a>. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a568951e681950d2439ca397e18fefbe0" name="a568951e681950d2439ca397e18fefbe0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a568951e681950d2439ca397e18fefbe0">&#9670;&nbsp;</a></span>BoardIdx_t</h2>
@@ -719,22 +721,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aae5f339ab7cc075742ce9eba554a1233" name="aae5f339ab7cc075742ce9eba554a1233"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae5f339ab7cc075742ce9eba554a1233">&#9670;&nbsp;</a></span>kMaxAllowedRepeatPeriods</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int gameboard::kMaxAllowedRepeatPeriods = 2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00035">35</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
-
-</div>
-</div>
 <a id="ad5e296086982321384dc034288cee600" name="ad5e296086982321384dc034288cee600"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad5e296086982321384dc034288cee600">&#9670;&nbsp;</a></span>kNumFiles</h2>
 
@@ -901,6 +887,25 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="adc3c88bd024708e1e2b062c7c0df4afb" name="adc3c88bd024708e1e2b062c7c0df4afb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc3c88bd024708e1e2b062c7c0df4afb">&#9670;&nbsp;</a></span>kRepeatPeriodsMaxAllowed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int gameboard::kRepeatPeriodsMaxAllowed = 2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Repeated move sequence lengths forbidden under move repetition rules. </p>
+<p >If kRepeatPeriodsToCheck = {2, 3, 4} and kRepeatPeriodsMaxAllowed = 2, then the following sequences are probibited: ABABAB, ABCABCABC, ABCDABCDABCD </p>
+
+<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00046">46</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
+
+</div>
+</div>
 <a id="ab7f90d284c0b95bc54f4c5be7b4bce8e" name="ab7f90d284c0b95bc54f4c5be7b4bce8e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab7f90d284c0b95bc54f4c5be7b4bce8e">&#9670;&nbsp;</a></span>kRepeatPeriodsToCheck</h2>
 
@@ -913,7 +918,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00034">34</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
+<p>Max allowed repetitions of prohibited move sequence lengths. </p>
+
+<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00040">40</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
 
 </div>
 </div>
@@ -944,14 +951,14 @@ Variables</h2></td></tr>
 <p>Starting board represented as 2-D array of integers. </p>
 <p >Can be converted to array of <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> objects by board_utilities::int_board_to_game_pieces. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00021">21</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00026">26</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 5 2024 16:57:01 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Sat Oct 5 2024 17:57:12 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

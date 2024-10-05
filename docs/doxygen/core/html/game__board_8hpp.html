@@ -131,13 +131,13 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html">gameboard::GameBoard</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Brief description of <a class="el" href="classgameboard_1_1GameBoard.html" title="Brief description of GameBoard class template.">GameBoard</a> class template.  <a href="classgameboard_1_1GameBoard.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores piece positions, and exposes methods for calculating, executing, an un-doing moves.  <a href="classgameboard_1_1GameBoard.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacegameboard"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html">gameboard</a></td></tr>
-<tr class="memdesc:namespacegameboard"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Brief description of GameBoard class template.">GameBoard</a>. <br /></td></tr>
+<tr class="memdesc:namespacegameboard"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Stores piece positions, and exposes methods for calculating, executing, an un-doing moves.">GameBoard</a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -146,19 +146,20 @@ Variables</h2></td></tr>
 <tr class="memdesc:a61c9cb4f6bae74d1541f537bff5a5c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starting board represented as 2-D array of integers.  <a href="namespacegameboard.html#a61c9cb4f6bae74d1541f537bff5a5c5b">More...</a><br /></td></tr>
 <tr class="separator:a61c9cb4f6bae74d1541f537bff5a5c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7f90d284c0b95bc54f4c5be7b4bce8e"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ab7f90d284c0b95bc54f4c5be7b4bce8e">gameboard::kRepeatPeriodsToCheck</a> [3] = {2, 3, 4}</td></tr>
+<tr class="memdesc:ab7f90d284c0b95bc54f4c5be7b4bce8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max allowed repetitions of prohibited move sequence lengths.  <a href="namespacegameboard.html#ab7f90d284c0b95bc54f4c5be7b4bce8e">More...</a><br /></td></tr>
 <tr class="separator:ab7f90d284c0b95bc54f4c5be7b4bce8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae5f339ab7cc075742ce9eba554a1233"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aae5f339ab7cc075742ce9eba554a1233">gameboard::kMaxAllowedRepeatPeriods</a> = 2</td></tr>
-<tr class="separator:aae5f339ab7cc075742ce9eba554a1233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc3c88bd024708e1e2b062c7c0df4afb"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#adc3c88bd024708e1e2b062c7c0df4afb">gameboard::kRepeatPeriodsMaxAllowed</a> = 2</td></tr>
+<tr class="memdesc:adc3c88bd024708e1e2b062c7c0df4afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repeated move sequence lengths forbidden under move repetition rules.  <a href="namespacegameboard.html#adc3c88bd024708e1e2b062c7c0df4afb">More...</a><br /></td></tr>
+<tr class="separator:adc3c88bd024708e1e2b062c7c0df4afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Declaration of GameBoard and related constants. </p>
-<p >All declarations are in the gameboard namespace. </p>
 
 <p class="definition">Definition in file <a class="el" href="game__board_8hpp_source.html">game_board.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 5 2024 16:57:01 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Sat Oct 5 2024 17:57:12 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>
