@@ -23,6 +23,9 @@ using namespace std;
 // ///////
 // Pieces
 // //////
+
+namespace gameboard {
+
 enum PieceType : int {
   kNnn = 0,
   kGen = 1,
@@ -34,15 +37,7 @@ enum PieceType : int {
   kSol = 7
 };
 const int kNumPieceTypeVals = 8;
-// const unordered_map<string, PieceType> kPieceTypeStringToEnum = 
-//     {{"null", PieceType::kNnn},
-//     {"general", PieceType::kGen},
-//     {"advisor", PieceType::kAdv},
-//     {"elephant", PieceType::kEle},
-//     {"chariot", PieceType::kCha},
-//     {"horse", PieceType::kHor},
-//     {"cannon", PieceType::kCan},
-//     {"soldier", PieceType::kSol}};
+
 
 const unordered_map<string, PieceType> kPieceTypeStringToEnum = [] {
     unordered_map<string, PieceType> temp;
@@ -93,7 +88,7 @@ typedef int BoardIdx_t;
 const BoardIdx_t kNumRanks = 10;
 const BoardIdx_t kNumFiles = 9;
 
-
+}
 
 // //////////////
 // Piece Points
@@ -109,10 +104,10 @@ inline bool is_signed_points_type() {
 }
 
 // 2-D array of points values for single piece
-typedef array<array<int, kNumFiles>, kNumRanks> PiecePointsArray_t;
+typedef array<array<int, gameboard::kNumFiles>, gameboard::kNumRanks> PiecePointsArray_t;
 
 // 3-D array of all piece points values for a team
-typedef array<PiecePointsArray_t, kNumPieceTypeVals> TeamPointsArray_t;
+typedef array<PiecePointsArray_t, gameboard::kNumPieceTypeVals> TeamPointsArray_t;
 
 // 4-D array of both teams points values for a game
 typedef array<TeamPointsArray_t, 2> GamePointsArray_t;
@@ -123,8 +118,8 @@ inline bool operator==(
 ) {
   bool are_equal = true;
 
-  for (auto rank = 0; rank < kNumRanks; rank++) {
-    for (auto file = 0; file < kNumFiles; file++) {
+  for (auto rank = 0; rank < gameboard::kNumRanks; rank++) {
+    for (auto file = 0; file < gameboard::kNumFiles; file++) {
       if (a[rank][file] != b[rank][file]) {
         are_equal = false;
         return are_equal;
@@ -135,10 +130,10 @@ inline bool operator==(
 }
 
 // types for base-points offset (BPO) spec
-typedef unordered_map<PieceType, Points_t> TeamBasePoints_t;
-typedef array<Points_t, kNumPieceTypeVals> base_points_array_t;
+typedef unordered_map<gameboard::PieceType, Points_t> TeamBasePoints_t;
+typedef array<Points_t, gameboard::kNumPieceTypeVals> base_points_array_t;
 typedef unordered_map<string, Points_t> BasePointsSMap_t;
-typedef unordered_map<PieceType, PiecePointsArray_t> TeamPointsEMap_t;
+typedef unordered_map<gameboard::PieceType, PiecePointsArray_t> TeamPointsEMap_t;
 typedef unordered_map<string, PiecePointsArray_t> TeamPointsSMap_t;
 
 inline bool operator==(TeamPointsSMap_t &a, TeamPointsSMap_t &b) {
@@ -155,7 +150,7 @@ inline bool operator==(TeamPointsSMap_t &a, TeamPointsSMap_t &b) {
 
 typedef pair<BasePointsSMap_t, TeamPointsSMap_t> BasePositionSMapPair_t;
 typedef unordered_map<string, BasePositionSMapPair_t> BPOSpecSMap_t;
-typedef unordered_map<PieceColor, TeamPointsEMap_t> GamePointsEMap_t;
+typedef unordered_map<gameboard::PieceColor, TeamPointsEMap_t> GamePointsEMap_t;
 typedef unordered_map<string, TeamPointsSMap_t> GamePointsSMap_t;
 
 inline bool operator==(GamePointsSMap_t &a, GamePointsSMap_t &b) {

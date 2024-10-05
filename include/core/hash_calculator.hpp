@@ -15,9 +15,12 @@
 #include <key_generator.hpp>
 #include <utility_functs.hpp>
 
-using namespace board_components;
+using namespace gameboard;
+using namespace moveselection;
 using namespace std;
 using json = nlohmann::json;
+
+namespace boardstate {
 
 template <typename KeyType>
 struct ZobristKeys {
@@ -85,7 +88,10 @@ struct ZobristKeys {
 template <typename KeyType>
 struct TranspositionTable {
 
-  TranspositionTableSearchResult GetData(KeyType board_state, int remaining_search_depth) {
+  TranspositionTableSearchResult GetData(
+      KeyType board_state,
+      int remaining_search_depth
+  ) {
     TranspositionTableSearchResult result{};
 
     auto entry_vector_it = data_.find(board_state);
@@ -107,7 +113,11 @@ struct TranspositionTable {
       MinimaxResultType result_type,
       BestMoves &best_moves
   ) {
-    TranspositionTableEntry transposition_table_entry{search_depth, result_type, best_moves};
+    TranspositionTableEntry transposition_table_entry{
+        search_depth,
+        result_type,
+        best_moves
+    };
     data_[state].push_back(transposition_table_entry);
   };
 
@@ -187,3 +197,5 @@ private:
     board_state_ = board_state_ ^ zkeys_.turn_key;
   }
 };
+
+} // namespace boardstate

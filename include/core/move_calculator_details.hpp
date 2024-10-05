@@ -7,9 +7,10 @@
 #include <piece_moves.hpp>
 
 using namespace std;
-using namespace board_components;
+using namespace gameboard;
 using namespace board_utilities;
 
+namespace moves {
 typedef void (PieceMoves::*MethodPtr_t
 )(const BoardMap_t &, PieceColor, const BoardSpace &, MoveCollection &);
 
@@ -27,6 +28,7 @@ inline constexpr PieceDispatchArray_t build_piece_dispatch_array() {
     dispatch_array[PieceType::kGen] = &PieceMoves::GeneralMoves;
 
     return dispatch_array;
+}
 }
 
 #endif /* CB52FD2C_25B0_49AA_9220_93596AFF821A */

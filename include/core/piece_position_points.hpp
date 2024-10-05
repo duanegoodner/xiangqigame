@@ -20,7 +20,7 @@
 
 namespace piece_points {
 
-using namespace board_components;
+using namespace gameboard;
 using namespace std;
 using json = nlohmann::json;
 

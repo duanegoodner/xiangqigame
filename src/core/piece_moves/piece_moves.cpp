@@ -8,6 +8,8 @@
 
 #include <piece_moves.hpp>
 
+namespace moves {
+
 const array<BoardDirection, 2> kSideDirections = {
     BoardDirection{0, 1},
     BoardDirection{0, -1}
@@ -207,4 +209,5 @@ void PieceMoves::GeneralMoves(
 ) {
   FlyingGeneralMove(board_map, color, space, team_moves);
   StandardGeneralMoves(board_map, color, space, team_moves);
+}
 }

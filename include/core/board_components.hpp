@@ -18,7 +18,7 @@
 
 using namespace std;
 
-namespace board_components {
+namespace gameboard {
 
 const BoardIdx_t kRedRiverEdge = 5;
 const BoardIdx_t kBlackRiverEdge = 4;
@@ -106,9 +106,34 @@ struct BoardSpace {
   }
 };
 
-struct Move {
-  BoardSpace start;
-  BoardSpace end;
+// Data struct for internal tracking of team's castle spaces as 1-D array, and
+// then
+typedef array<BoardSpace, 9> Castle_t;
+
+// Generates 1-D array of castle spaces from castle edge definitions
+inline constexpr Castle_t calc_castle_spaces(const CastleEdges &edges) {
+  Castle_t spaces{};
+
+  for (auto rank = edges.min_rank; rank <= edges.max_rank; rank++) {
+    for (auto file = edges.min_file; file <= edges.max_file; file++) {
+      spaces[3 * (rank - edges.min_rank) + file - edges.min_file].rank = rank;
+      spaces[3 * (rank - edges.min_rank) + file - edges.min_file].file = file;
+    }
+  }
+  return spaces;
+}
+
+constexpr Castle_t red_castle_spaces() { return calc_castle_spaces(kRedCastleEdges); }
+
+constexpr Castle_t black_castle_spaces() {
+  return calc_castle_spaces(kBlackCastleEdges);
+}
+} // namespace board_components
+
+namespace moves {
+  struct Move {
+  gameboard::BoardSpace start;
+  gameboard::BoardSpace end;
 
   bool operator==(const Move other) {
     return (start == other.start) && (end == other.end);
@@ -137,7 +162,7 @@ struct MoveCollection {
     return false;
   }
 
-  bool ContainsDestination(const BoardSpace &space) {
+  bool ContainsDestination(const gameboard::BoardSpace &space) {
     for (auto move : moves) {
       if (move.end == space) {
         return true;
@@ -157,37 +182,14 @@ struct MoveCollection {
 
 struct ExecutedMove {
   Move spaces;
-  GamePiece moving_piece;
-  GamePiece destination_piece;
+  gameboard::GamePiece moving_piece;
+  gameboard::GamePiece destination_piece;
 
   bool operator==(const ExecutedMove other) {
     return (other.spaces == spaces) && (other.moving_piece == moving_piece) &&
            (other.destination_piece == destination_piece);
   }
 };
-
-// Data struct for internal tracking of team's castle spaces as 1-D array, and
-// then
-typedef array<BoardSpace, 9> Castle_t;
-
-// Generates 1-D array of castle spaces from castle edge definitions
-inline constexpr Castle_t calc_castle_spaces(const CastleEdges &edges) {
-  Castle_t spaces{};
-
-  for (auto rank = edges.min_rank; rank <= edges.max_rank; rank++) {
-    for (auto file = edges.min_file; file <= edges.max_file; file++) {
-      spaces[3 * (rank - edges.min_rank) + file - edges.min_file].rank = rank;
-      spaces[3 * (rank - edges.min_rank) + file - edges.min_file].file = file;
-    }
-  }
-  return spaces;
 }
-
-constexpr Castle_t red_castle_spaces() { return calc_castle_spaces(kRedCastleEdges); }
-
-constexpr Castle_t black_castle_spaces() {
-  return calc_castle_spaces(kBlackCastleEdges);
-}
-} // namespace board_components
 
 #endif // _SHARED_COMPONENTS_

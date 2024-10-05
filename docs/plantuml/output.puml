@@ -2,7 +2,7 @@
 !define RECTANGLE_PACKAGE
 skinparam dpi 300
 skinparam packageStyle rect
-skinparam wrapWidth 500
+skinparam wrapWidth 400
 left to right direction
 scale 0.75
 
@@ -13,89 +13,11 @@ scale 0.75
 /' Objects '/
 
 class BoardStateSummarizer <template<typename ConcreteBoardStateSummarizer, typename KeyType>> {
-	+GetTrData(int search_depth) : TranspositionTableSearchResult
 	+GetState() : ZobristKey_t
+	+GetTrData(int search_depth) : moveselection::TranspositionTableSearchResult
 	+FullBoardStateCalc(BoardMap_t& board_map) : void
-	+RecordTrData(int search_depth, MinimaxResultType result_type, BestMoves& best_moves) : void
+	+RecordTrData(int search_depth, moveselection::MinimaxResultType result_type, moveselection::BestMoves& best_moves) : void
 	+UpdateBoardState(const ExecutedMove& move) : void
-}
-
-
-class GameBoard {
-	+GameBoard()
-	+GameBoard(const BoardMapInt_t starting_board)
-	-vector<function<void(ExecutedMove)
-	-board_map_ : BoardMap_t
-	+map() : BoardMap_t& {query}
-	+ImplementExecuteMove(Move move) : ExecutedMove
-	+GetOccupant(BoardSpace space) : GamePiece
-	-move_calculator_ : MoveCalculator
-	+ImplementCalcFinalMovesOf(PieceColor color) : MoveCollection
-	+ImplementGetColor(BoardSpace space) : PieceColor
-	+ImplementGetType(BoardSpace space) : PieceType
-	+IsInCheck(PieceColor color) : bool
-	-ViolatesRepeatRule(PieceColor color) : bool
-	+GetMoveLog() : std::map<PieceColor , vector<ExecutedMove>>
-	-move_log_ : std::map<PieceColor, vector<ExecutedMove>>
-	+ImplementGetAllSpacesOccupiedBy(PieceColor color) : vector<BoardSpace>
-	-AddToMoveLog(ExecutedMove executed_move) : void
-	+ImplementAttachMoveCallback(function<void ( ExecutedMove )> callback) : void
-	+ImplementUndoMove(ExecutedMove executed_move) : void
-	-RemoveFromMoveLog(ExecutedMove executed_move) : void
-	-SetOccupant(BoardSpace space, GamePiece piece) : void
-	-UpdateHashCalculator(ExecutedMove executed_move) : void
-}
-
-
-class HashCalculator <template<typename KeyType>> {
-	+HashCalculator(ZobristKeys<KeyType> zkeys)
-	+HashCalculator()
-	+ImplementGetState() : KeyType
-	-board_state_ : KeyType
-	-transposition_table_ : TranspositionTable<KeyType>
-	+ImplementGetTrData(int search_depth) : TranspositionTableSearchResult
-	-zkeys_ : ZobristKeys<KeyType>
-	+ImplementFullBoardStateCalc(const BoardMap_t& board_map) : void
-	+ImplementRecordTrData(int search_depth, MinimaxResultType result_type, BestMoves& best_moves) : void
-	+ImplementUpdateBoardState(const ExecutedMove& move) : void
-	-_ImplementUpdateBoardState(ExecutedMove move) : void
-}
-
-
-class MinimaxMoveEvaluator <template<typename ConcreteSpaceInfoProvider, typename ConcreteBoardStateSummarizer, typename ConcretePieceValueProvider>> {
-	+MinimaxMoveEvaluator(PieceColor evaluating_player, int starting_search_depth, ConcreteSpaceInfoProvider& game_board, ConcretePieceValueProvider game_position_points)
-	+MinimaxMoveEvaluator(PieceColor evaluating_player, int starting_search_depth, ConcreteSpaceInfoProvider& game_board)
-	-EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType& result_type) : BestMoves
-	-EvaluateNonWinLeaf(PieceColor cur_player) : BestMoves
-	-MinimaxRec(int remaining_search_depth, int alpha, int beta, PieceColor cur_player, SearchSummary& single_search_summary, bool use_transposition_table) : BestMoves
-	-hash_calculator_ : ConcreteBoardStateSummarizer
-	-game_position_points_ : ConcretePieceValueProvider
-	-game_board_ : ConcreteSpaceInfoProvider&
-	+ImplementSelectMove() : Move
-	-RunMinimax(SearchSummary& single_search_summary, bool use_transposition_table) : Move
-	-evaluating_player_ : PieceColor
-	+GetPlayerTotal(PieceColor color) : Points_t
-	-GetValueOfPieceAtPosition(PieceColor color, PieceType piece_type, BoardSpace space) : Points_t
-	-RateMove(Move move, PieceColor cur_player) : RatedMove
-	+GetSearchSummaries() : SearchSummaries
-	-search_summaries_ : SearchSummaries
-	+StartingSearchDepth() : int
-	-num_move_selections_ : int
-	-starting_search_depth_ : int
-	+KeySizeBits() : size_t
-	-GenerateRankedMoveList(PieceColor cur_player, MoveCollection& cur_player_moves) : std::vector<RatedMove>
-}
-
-
-class MoveCalculator {
-	+MoveCalculator()
-	+CalcAllMovesNoCheckTest(PieceColor color, const BoardMap_t& board_map) : MoveCollection
-	-ImplementCalcAllMovesNoCheckTest(PieceColor color, const BoardMap_t& board_map) : MoveCollection
-	-piece_dispatch_array_ : PieceDispatchArray_t
-	-piece_moves_ : PieceMoves
-	+IsOccupied(const BoardMap_t& board_map, const BoardSpace& space) : bool
-	+CalcMovesFrom(const BoardSpace space, MoveCollection& team_moves, const BoardMap_t& board_map) : void
-	-ImplementCalcMovesFrom(const BoardSpace space, MoveCollection& team_moves, const BoardMap_t& board_map) : void
 }
 
 
@@ -104,31 +26,8 @@ class MoveEvaluatorInterface <template<typename ConcreteMoveEvaluator>> {
 }
 
 
-class PieceMoves {
-	-{static} FwdDirection(PieceColor color) : BoardDirection
-	-{static} ExistsAndPassesColorTest(const BoardMap_t& board_map, const BoardSpace& space, PieceColor moving_piece_color) : bool
-	+AdvisorMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-	+CannonMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-	+ChariotMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-	+ElephantMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-	+FlyingGeneralMove(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-	+GeneralMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-	+HorseMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-	+SoldierMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-	+StandardGeneralMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-}
-
-
 class PieceValueProvider <template<typename ConcretePieceValueProvider>> {
 	+GetValueOfPieceAtPosition(PieceColor color, PieceType piece_type, BoardSpace space) : Points_t
-}
-
-
-class RandomMoveEvaluator <template<typename ConcreteSpaceInfoProvider>> {
-	+RandomMoveEvaluator(PieceColor evaluating_player, ConcreteSpaceInfoProvider& game_board)
-	-game_board_ : ConcreteSpaceInfoProvider&
-	+ImplementSelectMove() : Move
-	-evaluating_player_ : PieceColor
 }
 
 
@@ -140,119 +39,6 @@ class SpaceInfoProvider <template<typename ConcreteSpaceInfoProvider>> {
 	+GetAllSpacesOccupiedBy(PieceColor color) : vector<BoardSpace>
 	+AttachMoveCallback(function<void ( ExecutedMove )> callback) : void
 	+UndoMove(ExecutedMove executed_move) : void
-}
-
-
-enum MinimaxResultType {
-	kAlphaPrune
-	kBetaPrune
-	kEvaluatorLoses
-	kEvaluatorWins
-	kFullyEvaluatedNode
-	kMax
-	kMin
-	kStandardLeaf
-	kTrTableHit
-	kUnknown
-}
-
-
-enum PieceColor {
-	kBlk
-	kNul
-	kRed
-}
-
-
-enum PieceType {
-	kAdv
-	kCan
-	kCha
-	kEle
-	kGen
-	kHor
-	kNnn
-	kSol
-}
-
-
-class BestMoves {
-	+best_moves : MoveCollection
-	+best_eval : Points_t
-}
-
-
-class RatedMove {
-	+move : Move
-	+rating : Points_t
-}
-
-
-class ResultDepthCounts {
-	+ResultDepthCounts(int max_search_depth)
-	+data : std::vector<std::vector<int>>
-	+Update(MinimaxResultType result_type, int search_depth) : void
-}
-
-
-class SearchSummaries {
-	+NewExtraSearch(int search_depth, int search_number) : SearchSummary&
-	+NewFirstSearch(int search_depth) : SearchSummary&
-	+extra_searches : std::map<int, SearchSummary>
-	+first_searches : std::vector<SearchSummary>
-}
-
-
-class SearchSummary {
-	+SearchSummary(int max_search_depth)
-	+best_moves : BestMoves
-	+selected_move : Move
-	+result_depth_counts : ResultDepthCounts
-	+transposition_table_hits : ResultDepthCounts
-	+num_nodes : int
-	+time : std::chrono::duration<double, std::nano>
-	+GetResultDepthCounts() : std::vector<std::vector<int>>
-	+GetTranspositionTableHits() : std::vector<std::vector<int>>
-	+SetBestMoves(BestMoves best_moves) : void
-	+SetSelectedMove(Move selected_move) : void
-	+SetTime(std::chrono::duration<double, std::nano> search_time) : void
-	+Update(MinimaxResultType result_type, int search_depth, BestMoves best_moves) : void
-	+UpdateTranspositionTableHits(MinimaxResultType result_type, int search_depth) : void
-}
-
-
-class TranspositionTable <template<typename KeyType>> {
-	+GetData(KeyType board_state, int remaining_search_depth) : TranspositionTableSearchResult
-	-data_ : unordered_map<KeyType, vector<TranspositionTableEntry>>
-	+RecordData(KeyType state, int search_depth, MinimaxResultType result_type, BestMoves& best_moves) : void
-}
-
-
-class TranspositionTableEntry {
-	+best_moves : BestMoves
-	+result_type : MinimaxResultType
-	+Score() : Points_t
-	+remaining_search_depth : int
-}
-
-
-class TranspositionTableSearchResult {
-	+table_entry : TranspositionTableEntry
-	+found : bool
-}
-
-
-class ZobristKeys <template<typename KeyType>> {
-	+ZobristKeys()
-	+ZobristKeys(uint32_t seed)
-	+ZobristKeys(KeyType new_turn_key, GameZarray_t& new_zarray)
-	+ZobristKeys(json json_object)
-	+ZobristKeys(string json_file_path)
-	+{static} create_game_zarray(std::mt19937_64& gen_64) : GameZarray_t
-	+zarray : GameZarray_t
-	+GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) : KeyType
-	+turn_key : KeyType
-	+ToJson() : json
 }
 
 
@@ -319,7 +105,202 @@ namespace piece_points {
 }
 
 
-namespace board_components {
+namespace moveselection {
+	class MinimaxMoveEvaluator <template<typename ConcreteSpaceInfoProvider, typename ConcreteBoardStateSummarizer, typename ConcretePieceValueProvider>> {
+		+MinimaxMoveEvaluator(PieceColor evaluating_player, int starting_search_depth, ConcreteSpaceInfoProvider& game_board, ConcretePieceValueProvider game_position_points)
+		+MinimaxMoveEvaluator(PieceColor evaluating_player, int starting_search_depth, ConcreteSpaceInfoProvider& game_board)
+		-EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType& result_type) : BestMoves
+		-EvaluateNonWinLeaf(PieceColor cur_player) : BestMoves
+		-MinimaxRec(int remaining_search_depth, int alpha, int beta, PieceColor cur_player, SearchSummary& single_search_summary, bool use_transposition_table) : BestMoves
+		-hash_calculator_ : ConcreteBoardStateSummarizer
+		-game_position_points_ : ConcretePieceValueProvider
+		-game_board_ : ConcreteSpaceInfoProvider&
+		+ImplementSelectMove() : Move
+		-RunMinimax(SearchSummary& single_search_summary, bool use_transposition_table) : Move
+		-evaluating_player_ : PieceColor
+		+GetPlayerTotal(PieceColor color) : Points_t
+		-GetValueOfPieceAtPosition(PieceColor color, PieceType piece_type, BoardSpace space) : Points_t
+		-RateMove(Move move, PieceColor cur_player) : RatedMove
+		+StartingSearchDepth() : int
+		-num_move_selections_ : int
+		-starting_search_depth_ : int
+		+GetSearchSummaries() : moveselection::SearchSummaries
+		-search_summaries_ : moveselection::SearchSummaries
+		+KeySizeBits() : size_t
+		-GenerateRankedMoveList(PieceColor cur_player, MoveCollection& cur_player_moves) : std::vector<RatedMove>
+	}
+
+	class RandomMoveEvaluator <template<typename ConcreteSpaceInfoProvider>> {
+		+RandomMoveEvaluator(PieceColor evaluating_player, ConcreteSpaceInfoProvider& game_board)
+		-game_board_ : ConcreteSpaceInfoProvider&
+		+ImplementSelectMove() : Move
+		-evaluating_player_ : PieceColor
+	}
+
+	enum MinimaxResultType {
+		kAlphaPrune
+		kBetaPrune
+		kEvaluatorLoses
+		kEvaluatorWins
+		kFullyEvaluatedNode
+		kMax
+		kMin
+		kStandardLeaf
+		kTrTableHit
+		kUnknown
+	}
+
+	class BestMoves {
+		+best_eval : Points_t
+		+best_moves : moves::MoveCollection
+	}
+
+	class RatedMove {
+		+rating : Points_t
+		+move : moves::Move
+	}
+
+	class ResultDepthCounts {
+		+ResultDepthCounts(int max_search_depth)
+		+data : std::vector<std::vector<int>>
+		+Update(MinimaxResultType result_type, int search_depth) : void
+	}
+
+	class SearchSummaries {
+		+NewExtraSearch(int search_depth, int search_number) : SearchSummary&
+		+NewFirstSearch(int search_depth) : SearchSummary&
+		+extra_searches : std::map<int, SearchSummary>
+		+first_searches : std::vector<SearchSummary>
+	}
+
+	class SearchSummary {
+		+SearchSummary(int max_search_depth)
+		+best_moves : BestMoves
+		+result_depth_counts : ResultDepthCounts
+		+transposition_table_hits : ResultDepthCounts
+		+num_nodes : int
+		+selected_move : moves::Move
+		+time : std::chrono::duration<double, std::nano>
+		+GetResultDepthCounts() : std::vector<std::vector<int>>
+		+GetTranspositionTableHits() : std::vector<std::vector<int>>
+		+SetBestMoves(BestMoves best_moves) : void
+		+SetSelectedMove(moves::Move selected_move) : void
+		+SetTime(std::chrono::duration<double, std::nano> search_time) : void
+		+Update(MinimaxResultType result_type, int search_depth, BestMoves best_moves) : void
+		+UpdateTranspositionTableHits(MinimaxResultType result_type, int search_depth) : void
+	}
+
+	class TranspositionTableEntry {
+		+best_moves : BestMoves
+		+result_type : MinimaxResultType
+		+Score() : Points_t
+		+remaining_search_depth : int
+	}
+
+	class TranspositionTableSearchResult {
+		+table_entry : TranspositionTableEntry
+		+found : bool
+	}
+}
+
+
+namespace moves {
+	class MoveCalculator {
+		+MoveCalculator()
+		+CalcAllMovesNoCheckTest(PieceColor color, const BoardMap_t& board_map) : MoveCollection
+		-ImplementCalcAllMovesNoCheckTest(PieceColor color, const BoardMap_t& board_map) : MoveCollection
+		-piece_dispatch_array_ : PieceDispatchArray_t
+		-piece_moves_ : PieceMoves
+		+IsOccupied(const BoardMap_t& board_map, const BoardSpace& space) : bool
+		+CalcMovesFrom(const BoardSpace space, MoveCollection& team_moves, const BoardMap_t& board_map) : void
+		-ImplementCalcMovesFrom(const BoardSpace space, MoveCollection& team_moves, const BoardMap_t& board_map) : void
+	}
+
+	class PieceMoves {
+		-{static} FwdDirection(PieceColor color) : BoardDirection
+		-{static} ExistsAndPassesColorTest(const BoardMap_t& board_map, const BoardSpace& space, PieceColor moving_piece_color) : bool
+		+AdvisorMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+CannonMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+ChariotMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+ElephantMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+FlyingGeneralMove(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+GeneralMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+HorseMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+SoldierMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+StandardGeneralMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+	}
+
+	class ExecutedMove {
+		+spaces : Move
+		+operator==(const ExecutedMove other) : bool
+		+destination_piece : gameboard::GamePiece
+		+moving_piece : gameboard::GamePiece
+	}
+
+	class Move {
+		+operator==(const Move other) : bool
+		+end : gameboard::BoardSpace
+		+start : gameboard::BoardSpace
+	}
+
+	class MoveCollection {
+		+MoveCollection()
+		+MoveCollection(vector<Move> my_moves)
+		+MoveCollection(size_t reserve_size)
+		+ContainsDestination(const gameboard::BoardSpace& space) : bool
+		+ContainsMove(const Move& move) : bool {query}
+		+Size() : size_t {query}
+		+moves : vector<Move>
+		+Append(Move move) : void
+		+Concat(vector<Move> other_moves) : void
+		+Concat(MoveCollection other) : void
+	}
+}
+
+
+namespace gameboard {
+	class GameBoard {
+		+GameBoard()
+		+GameBoard(const BoardMapInt_t starting_board)
+		-vector<function<void(ExecutedMove)
+		-board_map_ : BoardMap_t
+		+map() : BoardMap_t& {query}
+		+ImplementExecuteMove(Move move) : ExecutedMove
+		+GetOccupant(BoardSpace space) : GamePiece
+		-move_calculator_ : MoveCalculator
+		+ImplementCalcFinalMovesOf(PieceColor color) : MoveCollection
+		+ImplementGetColor(BoardSpace space) : PieceColor
+		+ImplementGetType(BoardSpace space) : PieceType
+		+IsInCheck(PieceColor color) : bool
+		-ViolatesRepeatRule(PieceColor color) : bool
+		+GetMoveLog() : std::map<PieceColor , vector<ExecutedMove>>
+		-move_log_ : std::map<PieceColor, vector<ExecutedMove>>
+		+ImplementGetAllSpacesOccupiedBy(PieceColor color) : vector<BoardSpace>
+		-AddToMoveLog(ExecutedMove executed_move) : void
+		+ImplementAttachMoveCallback(function<void ( ExecutedMove )> callback) : void
+		+ImplementUndoMove(ExecutedMove executed_move) : void
+		-RemoveFromMoveLog(ExecutedMove executed_move) : void
+		-SetOccupant(BoardSpace space, GamePiece piece) : void
+		-UpdateHashCalculator(ExecutedMove executed_move) : void
+	}
+
+	enum PieceColor {
+		kBlk
+		kNul
+		kRed
+	}
+
+	enum PieceType {
+		kAdv
+		kCan
+		kCha
+		kEle
+		kGen
+		kHor
+		kNnn
+		kSol
+	}
+
 	class BoardDirection {
 		+file : BoardIdx_t
 		+rank : BoardIdx_t
@@ -343,13 +324,6 @@ namespace board_components {
 		+min_rank : BoardIdx_t
 	}
 
-	class ExecutedMove {
-		+destination_piece : GamePiece
-		+moving_piece : GamePiece
-		+spaces : Move
-		+operator==(const ExecutedMove other) : bool
-	}
-
 	class GamePiece {
 		+GamePiece()
 		+GamePiece(int int_piece)
@@ -358,24 +332,41 @@ namespace board_components {
 		+piece_type : PieceType
 		+operator==(const GamePiece& other) : bool {query}
 	}
+}
 
-	class Move {
-		+end : BoardSpace
-		+start : BoardSpace
-		+operator==(const Move other) : bool
+
+namespace boardstate {
+	class HashCalculator <template<typename KeyType>> {
+		+HashCalculator(ZobristKeys<KeyType> zkeys)
+		+HashCalculator()
+		+ImplementGetState() : KeyType
+		-board_state_ : KeyType
+		-transposition_table_ : TranspositionTable<KeyType>
+		+ImplementGetTrData(int search_depth) : TranspositionTableSearchResult
+		-zkeys_ : ZobristKeys<KeyType>
+		+ImplementFullBoardStateCalc(const BoardMap_t& board_map) : void
+		+ImplementRecordTrData(int search_depth, MinimaxResultType result_type, BestMoves& best_moves) : void
+		+ImplementUpdateBoardState(const ExecutedMove& move) : void
+		-_ImplementUpdateBoardState(ExecutedMove move) : void
 	}
 
-	class MoveCollection {
-		+MoveCollection()
-		+MoveCollection(vector<Move> my_moves)
-		+MoveCollection(size_t reserve_size)
-		+ContainsDestination(const BoardSpace& space) : bool
-		+ContainsMove(const Move& move) : bool {query}
-		+Size() : size_t {query}
-		+moves : vector<Move>
-		+Append(Move move) : void
-		+Concat(vector<Move> other_moves) : void
-		+Concat(MoveCollection other) : void
+	class TranspositionTable <template<typename KeyType>> {
+		+GetData(KeyType board_state, int remaining_search_depth) : TranspositionTableSearchResult
+		-data_ : unordered_map<KeyType, vector<TranspositionTableEntry>>
+		+RecordData(KeyType state, int search_depth, MinimaxResultType result_type, BestMoves& best_moves) : void
+	}
+
+	class ZobristKeys <template<typename KeyType>> {
+		+ZobristKeys()
+		+ZobristKeys(uint32_t seed)
+		+ZobristKeys(KeyType new_turn_key, GameZarray_t& new_zarray)
+		+ZobristKeys(json json_object)
+		+ZobristKeys(string json_file_path)
+		+{static} create_game_zarray(std::mt19937_64& gen_64) : GameZarray_t
+		+zarray : GameZarray_t
+		+GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) : KeyType
+		+turn_key : KeyType
+		+ToJson() : json
 	}
 }
 
@@ -391,19 +382,19 @@ piece_points.AbstractBPOFileHandlerFactory <|-- piece_points.NlohmannBPOFileHand
 piece_points.BPOFileHandler <|-- piece_points.NlohmannBPOFileHandler
 
 
-BoardStateSummarizer <|-- HashCalculator
+BoardStateSummarizer <|-- boardstate.HashCalculator
 
 
-MoveEvaluatorInterface <|-- MinimaxMoveEvaluator
+MoveEvaluatorInterface <|-- moveselection.MinimaxMoveEvaluator
 
 
-MoveEvaluatorInterface <|-- RandomMoveEvaluator
+MoveEvaluatorInterface <|-- moveselection.RandomMoveEvaluator
 
 
 PieceValueProvider <|-- piece_points.PiecePositionPoints
 
 
-SpaceInfoProvider <|-- GameBoard
+SpaceInfoProvider <|-- gameboard.GameBoard
 
 
 
@@ -414,67 +405,49 @@ SpaceInfoProvider <|-- GameBoard
 piece_points.BPOPointsSKeys *-- piece_points.BPOFileHandler
 
 
-board_components.ExecutedMove "2" *-- board_components.GamePiece
+moves.ExecutedMove *-- moves.Move
 
 
-board_components.ExecutedMove *-- board_components.Move
+gameboard.GameBoard *-- gameboard.PieceColor
 
 
-GameBoard *-- MoveCalculator
+gameboard.GamePiece *-- gameboard.PieceColor
 
 
-GameBoard *-- PieceColor
+gameboard.GamePiece *-- gameboard.PieceType
 
 
-board_components.GamePiece *-- PieceColor
+boardstate.HashCalculator *-- boardstate.TranspositionTable
 
 
-board_components.GamePiece *-- PieceType
+boardstate.HashCalculator *-- boardstate.ZobristKeys
 
 
-HashCalculator *-- TranspositionTable
+moveselection.MinimaxMoveEvaluator *-- moveselection.SearchSummaries
 
 
-HashCalculator *-- ZobristKeys
+moves.MoveCalculator *-- moves.PieceMoves
 
 
-MinimaxMoveEvaluator *-- PieceColor
+moves.MoveCollection *-- moves.Move
 
 
-MinimaxMoveEvaluator *-- SearchSummaries
+moveselection.SearchSummaries "2" *-- moveselection.SearchSummary
 
 
-board_components.Move "2" *-- board_components.BoardSpace
+moveselection.SearchSummary *-- moveselection.BestMoves
 
 
-MoveCalculator *-- PieceMoves
+moveselection.SearchSummary "2" *-- moveselection.ResultDepthCounts
 
 
-board_components.MoveCollection *-- board_components.Move
+moveselection.TranspositionTableEntry *-- moveselection.BestMoves
 
 
-RandomMoveEvaluator *-- PieceColor
+moveselection.TranspositionTableEntry *-- moveselection.MinimaxResultType
 
 
-SearchSummaries "2" *-- SearchSummary
-
-
-SearchSummary *-- BestMoves
-
-
-SearchSummary "2" *-- ResultDepthCounts
-
-
-TranspositionTable *-- TranspositionTableEntry
-
-
-TranspositionTableEntry *-- BestMoves
-
-
-TranspositionTableEntry *-- MinimaxResultType
-
-
-TranspositionTableSearchResult *-- TranspositionTableEntry
+moveselection.TranspositionTableSearchResult *-- moveselection.TranspositionTableEntry
 
 
 
@@ -482,7 +455,6 @@ TranspositionTableSearchResult *-- TranspositionTableEntry
 
 
 /' Nested objects '/
-
 
 
 @enduml

@@ -18,7 +18,8 @@
 #include <limits>
 #include <utility_functs.hpp>
 
-using namespace board_components;
+using namespace gameboard;
+using namespace moves;
 
 // CRTP INTERFACE: Evaluator <- SpaceInfoProvider (concrete example =
 // New GameBoard)
@@ -81,14 +82,14 @@ public:
 
   void RecordTrData(
       int search_depth,
-      MinimaxResultType result_type,
-      BestMoves &best_moves
+      moveselection::MinimaxResultType result_type,
+      moveselection::BestMoves &best_moves
   ) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)
         ->ImplementRecordTrData(search_depth, result_type, best_moves);
   }
 
-  TranspositionTableSearchResult GetTrData(int search_depth) {
+  moveselection::TranspositionTableSearchResult GetTrData(int search_depth) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetTrData(
         search_depth
     );
@@ -123,6 +124,8 @@ public:
     );
   }
 };
+
+namespace moveselection {
 
 // CLASS TEMPLATE: MinimaxMoveEvaluator
 // IMPLEMENTS INTERFACE:
@@ -159,17 +162,12 @@ public:
 
   Move ImplementSelectMove();
   Points_t GetPlayerTotal(PieceColor color);
-  inline SearchSummaries GetSearchSummaries() {
-    return search_summaries_;
-  }
-  inline int StartingSearchDepth() {
-    return starting_search_depth_;
-  }
+  inline moveselection::SearchSummaries GetSearchSummaries() { return search_summaries_; }
+  inline int StartingSearchDepth() { return starting_search_depth_; }
 
   inline size_t KeySizeBits() {
     return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
   }
-
 
 private:
   PieceColor evaluating_player_;
@@ -178,8 +176,7 @@ private:
   ConcreteSpaceInfoProvider &game_board_;
   int num_move_selections_;
   int starting_search_depth_;
-  SearchSummaries search_summaries_;
-  
+  moveselection::SearchSummaries search_summaries_;
 
   BestMoves EvaluateNonWinLeaf(PieceColor cur_player);
   BestMoves EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &result_type);
@@ -198,14 +195,13 @@ private:
       int alpha,
       int beta,
       PieceColor cur_player,
-      SearchSummary& single_search_summary,
+      SearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
   Move RunMinimax(
       SearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
-
 };
 
 // CLASS TEMPLATE: RandomMoveEvaluator
@@ -236,6 +232,7 @@ private:
   PieceColor evaluating_player_;
   ConcreteSpaceInfoProvider &game_board_;
 };
+} // namespace moveselection
 
 #include <move_evaluators.tpp>
 

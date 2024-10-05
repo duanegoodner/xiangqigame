@@ -17,11 +17,12 @@
 #include <vector>
 
 using namespace std;
-using namespace board_components;
+using namespace gameboard;
 
 // Template for class GameBoard which implements interface
 // SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
 
+namespace gameboard {
 extern const BoardMapInt_t kStartingBoard;
 
 extern const int kRepeatPeriodsToCheck[3];
@@ -56,5 +57,7 @@ private:
   bool ViolatesRepeatRule(PieceColor color);
 
 };
+
+}
 
 #endif // _GAME_BOARD_
