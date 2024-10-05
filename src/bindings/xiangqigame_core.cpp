@@ -20,7 +20,8 @@
 
 namespace py = pybind11;
 using namespace py::literals;
-using namespace board_components;
+using namespace boardstate;
+using namespace gameboard;
 using namespace piece_points;
 
 template <typename KeyType>

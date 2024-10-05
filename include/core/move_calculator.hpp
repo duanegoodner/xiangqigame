@@ -6,7 +6,6 @@
 // Description:
 // Defines and implements MoveCalculator class.
 
-
 #ifndef _MOVE_CALCULATOR_
 #define _MOVE_CALCULATOR_
 
@@ -17,8 +16,10 @@
 #include <piece_moves.hpp>
 
 using namespace std;
-using namespace board_components;
+using namespace gameboard;
 using namespace board_utilities;
+
+namespace moves {
 
 class MoveCalculator {
 public:
@@ -37,10 +38,7 @@ public:
   ) {
     ImplementCalcMovesFrom(space, team_moves, board_map);
   }
-  MoveCollection CalcAllMovesNoCheckTest(
-      PieceColor color,
-      const BoardMap_t &board_map
-  ) {
+  MoveCollection CalcAllMovesNoCheckTest(PieceColor color, const BoardMap_t &board_map) {
     return ImplementCalcAllMovesNoCheckTest(color, board_map);
   }
 
@@ -78,5 +76,7 @@ private:
     return untested_moves;
   }
 };
+
+} // namespace moves
 
 #endif // _MOVE_CALCULATOR_

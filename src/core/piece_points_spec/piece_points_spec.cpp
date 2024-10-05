@@ -17,6 +17,7 @@
 
 using namespace std;
 using namespace piece_points;
+using namespace gameboard;
 using nloh_json = nlohmann::json;
 
 void NlohmannBPOFileHandler::Import(BPOPointsSKeys &bpo_points, const string file_path) {

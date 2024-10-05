@@ -17,6 +17,7 @@ using namespace board_utilities;
 using namespace std;
 
 
+namespace gameboard {
 const BoardMapInt_t kStartingBoard = {{
     {5, 4, 3, 2, 1, 2, 3, 4, 5},
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -152,4 +153,6 @@ bool GameBoard::ViolatesRepeatRule(PieceColor color) {
     }
   }
   return false;
+}
+
 }

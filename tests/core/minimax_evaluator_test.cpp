@@ -5,6 +5,7 @@
 #include <piece_position_points.hpp>
 #include <utility_functs.hpp>
 
+using namespace boardstate;
 using namespace piece_points;
 
 class RandomEvaluatorTest : public ::testing::Test {

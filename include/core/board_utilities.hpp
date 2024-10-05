@@ -19,7 +19,7 @@
 // ///////////////////////////////////////////////////////////////////////////////////////
 
 namespace board_utilities {
-using namespace board_components;
+using namespace gameboard;
 
 inline BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
   BoardMap_t game_piece_board;

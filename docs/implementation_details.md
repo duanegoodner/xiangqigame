@@ -135,3 +135,41 @@ Below is the high-level file structure of `./src/core`.
 ### UI
 
 
+<div id="svg-container" style="width: 740px; height: 400px; overflow: scroll; border: 1px solid black;">
+  <img id="zoomable-svg" src="path_to_your_svg.svg" alt="Your SVG Image" style="width: 100%; height: auto;">
+</div>
+
+<script>
+  var container = document.getElementById('svg-container');
+  var img = document.getElementById('zoomable-svg');
+
+  // Initial scale
+  var scale = 1;
+
+  // Function to handle zooming
+  function zoomIn() {
+    scale *= 1.1;  // Increase the scale by 10%
+    img.style.transform = 'scale(' + scale + ')';
+  }
+
+  function zoomOut() {
+    scale /= 1.1;  // Decrease the scale by 10%
+    img.style.transform = 'scale(' + scale + ')';
+  }
+
+  // Adding keyboard events for zoom in and zoom out
+  container.addEventListener('keydown', function(e) {
+    if (e.key === '+') {
+      zoomIn();
+    } else if (e.key === '-') {
+      zoomOut();
+    }
+  });
+
+  // Make the container focusable
+  container.setAttribute('tabindex', '0');
+  container.style.outline = 'none';
+</script>
+
+
+

@@ -4,6 +4,7 @@
 #include <piece_points_spec.hpp>
 #include <utility_functs.hpp>
 
+using namespace gameboard;
 using namespace piece_points;
 
 class PiecePointsSpecTest : public ::testing::Test {

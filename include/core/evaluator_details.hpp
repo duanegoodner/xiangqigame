@@ -5,15 +5,17 @@
 #include <common.hpp>
 #include <map>
 
-using namespace board_components;
+using namespace gameboard;
+
+namespace moveselection {
 
 struct BestMoves {
   Points_t best_eval;
-  MoveCollection best_moves;
+  moves::MoveCollection best_moves;
 };
 
 struct RatedMove {
-  Move move;
+  moves::Move move;
   Points_t rating;
 };
 
@@ -47,7 +49,7 @@ struct TranspositionTableSearchResult {
 };
 
 inline BestMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_player) {
-  auto empty_best_moves = MoveCollection();
+  auto empty_best_moves = moves::MoveCollection();
 
   if (cur_player == initiating_player) {
     return BestMoves{numeric_limits<Points_t>::min(), empty_best_moves};
@@ -57,7 +59,7 @@ inline BestMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_
 }
 
 // TODO: consider changing data from 2-D std::vector to 2-D std::array
-struct  ResultDepthCounts {
+struct ResultDepthCounts {
 
   ResultDepthCounts(int max_search_depth) {
     data.reserve(MinimaxResultType::kMax);
@@ -100,7 +102,9 @@ struct SearchSummary {
     time = search_time;
   }
   void SetBestMoves(BestMoves best_moves) { this->best_moves = best_moves; }
-  void SetSelectedMove(Move selected_move) { this->selected_move = selected_move; }
+  void SetSelectedMove(moves::Move selected_move) {
+    this->selected_move = selected_move;
+  }
   std::vector<std::vector<int>> GetResultDepthCounts() {
     return result_depth_counts.data;
   }
@@ -114,7 +118,7 @@ struct SearchSummary {
   ResultDepthCounts result_depth_counts;
   ResultDepthCounts transposition_table_hits;
   BestMoves best_moves;
-  Move selected_move;
+  moves::Move selected_move;
 };
 
 struct SearchSummaries {
@@ -132,3 +136,4 @@ struct SearchSummaries {
     return new_search_entry.first->second;
   }
 };
+} // namespace move_selection

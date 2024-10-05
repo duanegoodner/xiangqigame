@@ -15,7 +15,9 @@
 #include <evaluator_details.hpp>
 #include <iostream>
 #include <limits>
-using namespace board_components;
+using namespace gameboard;
+
+namespace moveselection {
 
 template <
     typename ConcreteSpaceInfoProvider,
@@ -247,7 +249,10 @@ BestMoves MinimaxMoveEvaluator<
       auto existing_result_type = state_score_search_result.table_entry.result_type;
       auto result = state_score_search_result.table_entry.best_moves;
       search_summary.Update(result_type, remaining_search_depth, result);
-      search_summary.UpdateTranspositionTableHits(existing_result_type, remaining_search_depth);
+      search_summary.UpdateTranspositionTableHits(
+          existing_result_type,
+          remaining_search_depth
+      );
       return result;
     }
   }
@@ -389,5 +394,6 @@ Move MinimaxMoveEvaluator<
 
   return selected_move;
 }
+} // namespace moveselection
 
 #endif /* MINIMAX_EVALUATOR */

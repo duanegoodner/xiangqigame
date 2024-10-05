@@ -11,7 +11,7 @@
 #include <utility_functs.hpp>
 
 using namespace std;
-using namespace board_components;
+using namespace gameboard;
 using namespace piece_points;
 using json = nlohmann::json;
 using nlohmann::json_schema::json_validator;
