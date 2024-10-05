@@ -1,0 +1,7 @@
+<map id="MoveEvaluatorInterface&lt; ConcreteMoveEvaluator &gt;" name="MoveEvaluatorInterface&lt; ConcreteMoveEvaluator &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="185,5,393,97"/>
+<area shape="rect" id="node2" href="$classMoveEvaluatorInterface.html" title=" " alt="" coords="37,204,276,340"/>
+<area shape="rect" id="node4" href="$classMoveEvaluatorInterface.html" title=" " alt="" coords="322,219,565,325"/>
+<area shape="rect" id="node3" href="$classmoveselection_1_1MinimaxMoveEvaluator.html" title=" " alt="" coords="5,389,284,599"/>
+<area shape="rect" id="node5" href="$classmoveselection_1_1RandomMoveEvaluator.html" title=" " alt="" coords="309,441,599,547"/>
+</map>

@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['main_0',['main',['../namespacexiangqigame_1_1command__input.html#a70ce5a694ee3c00e16362bf7ed69bb30',1,'xiangqigame.command_input.main()'],['../namespacexiangqigame_1_1____main____.html#a6c60d8c565a33ce0657dc3000ac15474',1,'xiangqigame.__main__.main()']]],
+  ['match_5fy_5flimits_1',['match_y_limits',['../classxiangqigame_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a4417ac7f14fb3dcb2cd2964cbfbd6f62',1,'xiangqigame::game_summary_plotters::GameSummaryPlotter']]],
+  ['match_5fy_5flimits_5fall_5frows_2',['match_y_limits_all_rows',['../classxiangqigame_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a1c149e4f47e7157c102fb3329da19b4e',1,'xiangqigame::game_summary_plotters::GameSummaryPlotter']]],
+  ['max_5fsearch_5fdepth_3',['max_search_depth',['../classxiangqigame_1_1game__interfaces_1_1Player.html#a611487317318d76b7051e46b199eece5',1,'xiangqigame::game_interfaces::Player']]],
+  ['mean_5ftime_5fper_5fnode_5fns_4',['mean_time_per_node_ns',['../classxiangqigame_1_1core__dataclass__mirrors_1_1SearchSummary.html#a9315b3dc4dedebdd3dd94c3ca965eb11',1,'xiangqigame::core_dataclass_mirrors::SearchSummary']]],
+  ['minimax_5',['MINIMAX',['../classxiangqigame_1_1enums_1_1EvaluatorType.html#ab0ac8ce92b403053a4f663f7dfc935d9',1,'xiangqigame::enums::EvaluatorType']]],
+  ['minimaxresulttypepy_6',['MinimaxResultTypePy',['../classxiangqigame_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html',1,'xiangqigame::core_dataclass_mirrors']]],
+  ['move_7',['Move',['../classxiangqigame_1_1core__dataclass__mirrors_1_1Move.html',1,'xiangqigame::core_dataclass_mirrors']]],
+  ['move_5fcounts_8',['move_counts',['../classxiangqigame_1_1game__summary_1_1GameSummary.html#a93eac4b2e1c8e852f42ce5070a8aaa19',1,'xiangqigame::game_summary::GameSummary']]],
+  ['move_5fevaluator_5ftranslator_9',['move_evaluator_translator',['../classxiangqigame_1_1terminal__output_1_1TerminalStatusReporter.html#a1db3059c125434210992db769c36d5b3',1,'xiangqigame::terminal_output::TerminalStatusReporter']]],
+  ['move_5fevaluator_5ftype_10',['move_evaluator_type',['../classxiangqigame_1_1game__interfaces_1_1Player.html#a35078a106c092c75b7918a7ea89d7b98',1,'xiangqigame::game_interfaces::Player']]],
+  ['move_5fnumbers_11',['move_numbers',['../classxiangqigame_1_1game__summary_1_1GameSummary.html#a4ca4995caebefdac318b2d47dff4ba20',1,'xiangqigame::game_summary::GameSummary']]],
+  ['move_5fselection_5fsummary_12',['move_selection_summary',['../classxiangqigame_1_1players_1_1AIPlayer.html#a90a5a7bee1b651b8fabb8f52cc510b2d',1,'xiangqigame::players::AIPlayer']]],
+  ['move_5ftranslator_2epy_13',['move_translator.py',['../move__translator_8py.html',1,'']]],
+  ['movecollection_14',['MoveCollection',['../classxiangqigame_1_1core__dataclass__mirrors_1_1MoveCollection.html',1,'xiangqigame::core_dataclass_mirrors']]],
+  ['my_5fgame_5fsummary_15',['my_game_summary',['../namespacexiangqigame_1_1game__summary__plot__manager.html#a69eea569f37a8a883237568afe1d65e8',1,'xiangqigame::game_summary_plot_manager']]],
+  ['my_5fint_16',['my_int',['../namespacexiangqigame_1_1game__summary__io.html#a569bc649efb9b969bbea828d51acffe2',1,'xiangqigame::game_summary_io']]],
+  ['my_5fpiece_5fcolor_17',['my_piece_color',['../namespacexiangqigame_1_1game__summary__io.html#ae0a49ee28358ed5de84b11336b218e6c',1,'xiangqigame::game_summary_io']]]
+];

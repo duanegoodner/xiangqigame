@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,98,81,125"/>
+<area shape="rect" id="node2" href="$classxiangqigame_1_1game__interfaces_1_1GameStatusReporter.html" title=" " alt="" coords="129,32,353,73"/>
+<area shape="rect" id="node4" href="$classxiangqigame_1_1game__interfaces_1_1Player.html" title=" " alt="" coords="129,123,353,164"/>
+<area shape="rect" id="node3" href="$classxiangqigame_1_1terminal__output_1_1TerminalStatusReporter.html" title=" " alt="" coords="401,5,629,47"/>
+<area shape="rect" id="node5" href="$classxiangqigame_1_1players_1_1AIPlayer.html" title=" " alt="" coords="407,71,624,98"/>
+<area shape="rect" id="node6" href="$classxiangqigame_1_1players_1_1HumanPlayer.html" title=" " alt="" coords="410,123,621,164"/>
+<area shape="rect" id="node7" href="$classxiangqigame_1_1players_1_1ScriptedPlayer.html" title=" " alt="" coords="407,188,623,229"/>
+<area shape="rect" id="node8" href="$classxiangqigame_1_1players_1_1ScriptedPlayerWithRetries.html" title=" " alt="" coords="407,253,623,295"/>
+</map>

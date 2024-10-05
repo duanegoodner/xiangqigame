@@ -1,13 +1,9 @@
-// Filename: game_board.hpp
-// Author: Duane Goodner
-// Created: 2022-11-14
-// Last Modified: 2024-09-30
+//! @file game_board.hpp
+//! @brief Declaration of GameBoard and related constants.
+//! All declarations are in the gameboard namespace.
 
-// Description:
-// Definition of GameBoard class.
 
-#ifndef _GAME_BOARD_
-#define _GAME_BOARD_
+#pragma once
 
 #include <board_components.hpp>
 #include <common.hpp>
@@ -19,15 +15,23 @@
 using namespace std;
 using namespace gameboard;
 
-// Template for class GameBoard which implements interface
-// SpaceInfoProvider, and uses a ConcreteBoardStateSummarizer
-
+//! Classes, structs and constants related to GameBoard
 namespace gameboard {
+
+
+//!Starting board represented as 2-D array of integers.
+//!Can be converted to array of GamePiece objects by board_utilities::int_board_to_game_pieces.
 extern const BoardMapInt_t kStartingBoard;
 
 extern const int kRepeatPeriodsToCheck[3];
 extern const int kMaxAllowedRepeatPeriods;
 
+
+
+//!Brief description of GameBoard class template.
+//!Detailed
+//!description of
+//!Gameboard
 class GameBoard : public SpaceInfoProvider<GameBoard> {
 public:
   GameBoard();
@@ -59,5 +63,3 @@ private:
 };
 
 }
-
-#endif // _GAME_BOARD_
