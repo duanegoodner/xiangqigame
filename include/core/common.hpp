@@ -131,7 +131,6 @@ inline bool operator==(
 
 // types for base-points offset (BPO) spec
 typedef unordered_map<gameboard::PieceType, Points_t> TeamBasePoints_t;
-typedef array<Points_t, gameboard::kNumPieceTypeVals> base_points_array_t;
 typedef unordered_map<string, Points_t> BasePointsSMap_t;
 typedef unordered_map<gameboard::PieceType, PiecePointsArray_t> TeamPointsEMap_t;
 typedef unordered_map<string, PiecePointsArray_t> TeamPointsSMap_t;
@@ -148,8 +147,6 @@ inline bool operator==(TeamPointsSMap_t &a, TeamPointsSMap_t &b) {
   return are_equal;
 }
 
-typedef pair<BasePointsSMap_t, TeamPointsSMap_t> BasePositionSMapPair_t;
-typedef unordered_map<string, BasePositionSMapPair_t> BPOSpecSMap_t;
 typedef unordered_map<gameboard::PieceColor, TeamPointsEMap_t> GamePointsEMap_t;
 typedef unordered_map<string, TeamPointsSMap_t> GamePointsSMap_t;
 
