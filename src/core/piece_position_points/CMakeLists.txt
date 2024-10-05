@@ -4,8 +4,6 @@ add_library(
 
 target_link_libraries(
     piece_position_points PRIVATE
-    nlohmann_json::nlohmann_json
-    nlohmann_json_schema_validator
     utility_functs
     minimax_evaluator
     piece_points_spec
@@ -23,8 +21,6 @@ target_link_libraries(
     piece_position_points
     piece_points_spec
     minimax_evaluator
-    nlohmann_json::nlohmann_json
-    nlohmann_json_schema_validator
     utility_functs
 )
 target_include_directories(

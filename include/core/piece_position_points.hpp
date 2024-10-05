@@ -4,8 +4,7 @@
 // Last Modified: 2024-10-02
 
 // Description:
-// Defines PiecePositionPoints class and other classes that PiecePositionPoints is
-// composed of or help build PiecePositionPoints.
+// Defines PiecePositionPoints class.
 
 #ifndef _PIECE_POINTS_
 #define _PIECE_POINTS_
@@ -13,10 +12,8 @@
 #include <board_components.hpp>
 #include <common.hpp>
 #include <move_evaluators.hpp>
-#include <nlohmann/json.hpp>
 #include <piece_points_details.hpp>
 #include <piece_points_spec.hpp>
-#include <string>
 
 namespace piece_points {
 
@@ -44,8 +41,6 @@ struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   static TeamPointsEMap_t TeamPointsArrayToEMap(TeamPointsArray_t team_array);
   GamePointsEMap_t PointsArraytoEMap();
   GamePointsSMap_t PointsArrayToSmap();
-  // json ToJson();
-  // void ToFile(string output_file);
 };
 
 } // namespace piece_points
