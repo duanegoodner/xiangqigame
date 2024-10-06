@@ -20,30 +20,6 @@ using namespace piece_points;
 using namespace gameboard;
 using nloh_json = nlohmann::json;
 
-// void NlohmannBPOFileHandler::Import(BPOPointsSKeys &bpo_points, const string file_path) {
-//   ifstream input{file_path};
-//   auto json_object = nloh_json::parse(input);
-//   json_object.at("black_base").get_to(bpo_points.black_base_);
-//   json_object.at("red_base_offsets").get_to(bpo_points.red_base_offsets_);
-//   json_object.at("black_position").get_to(bpo_points.black_position_);
-//   json_object.at("red_position_offsets").get_to(bpo_points.red_position_offsets_);
-// }
-
-// nloh_json NlohmannBPOFileHandler::ToJsonObject(BPOPointsSKeys &bpo_points) {
-//   nloh_json j;
-//   j["black_base"] = bpo_points.black_base_;
-//   j["red_base_offsets"] = bpo_points.red_base_offsets_;
-//   j["black_position"] = bpo_points.black_position_;
-//   j["red_position_offsets"] = bpo_points.red_position_offsets_;
-//   return j;
-// }
-
-// void NlohmannBPOFileHandler::Export(BPOPointsSKeys &bpo_points, string file_path) {
-//   auto json_object = ToJsonObject(bpo_points);
-//   ofstream fout(file_path);
-//   fout << setw(4) << json_object << endl;
-// }
-
 BPOPointsSKeys::BPOPointsSKeys()
     : black_base_{}
     , red_base_offsets_{}
