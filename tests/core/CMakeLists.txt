@@ -100,6 +100,17 @@ target_link_libraries(
         game_board
         GTest::gtest_main)
 
+add_executable(
+    json_utility_test json_utility_test.cpp
+)
+target_link_libraries(
+    json_utility_test PRIVATE
+    nlohmann_json::nlohmann_json
+    piece_points_spec
+    utility_functs
+    GTest::gtest_main
+)
+
 # add_executable(
 #     json_internal_test
 #     json_internal_test.cpp)

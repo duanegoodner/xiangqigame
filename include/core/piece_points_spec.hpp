@@ -110,13 +110,13 @@ public:
   TeamPointsEMap_t red_position_offsets_;
 };
 
-const string kICGABPOPath_x =
+const string kICGABPOPath =
     utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
-const string kICGARawPath_x =
+const string kICGARawPath =
     utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
-const string kRawSchemaPath_x =
+const string kRawSchemaPath =
     utility_functs::get_data_file_abs_path("raw_points_schema.json");
-const string kBPOSchemaPath_x =
+const string kBPOSchemaPath =
     utility_functs::get_data_file_abs_path("bpo_schema.json");
 } // namespace piece_points
 
