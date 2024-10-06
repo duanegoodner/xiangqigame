@@ -11,13 +11,17 @@
 #define E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 
 #include <common.hpp>
-// #include <json_utility_interface.hpp>
-// #include <json_utility_nlohmann.hpp>
+#include <json_utility_interface.hpp>
+#include <json_utility_nlohmann.hpp>
 #include <nlohmann/json.hpp>
 #include <string>
 #include <typeinfo>
 #include <unordered_map>
 #include <utility_functs.hpp>
+
+namespace jsonio {
+  class NlohmannJsonUtility;
+}
 
 namespace piece_points {
 using namespace std;
@@ -89,7 +93,7 @@ public:
 
 private:
   unique_ptr<BPOFileHandler> file_handler_;
-  // unique_ptr<NlohmannJsonUtility> json_utility_;
+  unique_ptr<jsonio::JsonUtility<jsonio::NlohmannJsonUtility>> json_utility_;
 };
 
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for

@@ -73,11 +73,11 @@ BPOPointsSKeys::BPOPointsSKeys(
     , black_position_{}
     , red_position_offsets_{}
     , file_handler_{file_handler_factory.create_bpo_file_handler()} {
-  file_handler_->Import(*this, json_file_path);
+  json_utility_->Import(*this, json_file_path);
 }
 
 void BPOPointsSKeys::ToFile(string output_path) {
-  file_handler_->Export(*this, output_path);
+  json_utility_->Export(*this, output_path);
 }
 
 GamePointsSMap_t BPOPointsSKeys::ToGamePointsSmap() {
