@@ -8,7 +8,7 @@ namespace piece_points {
 class BPOPointsSKeys;
 } // namespace piece_points
 
-namespace jsonio {
+// namespace jsonio {
 
 template <typename ConcreteJsonUtility>
 class JsonUtility {
@@ -32,4 +32,4 @@ public:
   }
 };
 
-} // namespace jsonio
+// } // namespace jsonio

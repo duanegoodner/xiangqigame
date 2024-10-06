@@ -57,7 +57,7 @@ public:
   GamePointsArray_t ToGamePointsArray();
 
 private:
-  unique_ptr<jsonio::JsonUtility<jsonio::NlohmannJsonUtility>> json_utility_;
+  unique_ptr<JsonUtility<jsonio::NlohmannJsonUtility>> json_utility_;
 };
 
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for
