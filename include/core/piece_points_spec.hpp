@@ -30,34 +30,34 @@ using nloh_json = nlohmann::json;
 class BPOPointsSKeys;
 class BPOPointsEKeys;
 
-class BPOFileHandler {
-public:
-  virtual ~BPOFileHandler() = default;
-  virtual void Import(BPOPointsSKeys &bpo_points, string file_path) = 0;
-  virtual void Export(BPOPointsSKeys &bpo_points, string file_path) = 0;
-};
+// class BPOFileHandler {
+// public:
+//   virtual ~BPOFileHandler() = default;
+//   virtual void Import(BPOPointsSKeys &bpo_points, string file_path) = 0;
+//   virtual void Export(BPOPointsSKeys &bpo_points, string file_path) = 0;
+// };
 
-class AbstractBPOFileHandlerFactory {
-public:
-  virtual ~AbstractBPOFileHandlerFactory() = default;
-  virtual unique_ptr<BPOFileHandler> create_bpo_file_handler() const = 0;
-};
+// class AbstractBPOFileHandlerFactory {
+// public:
+//   virtual ~AbstractBPOFileHandlerFactory() = default;
+//   virtual unique_ptr<BPOFileHandler> create_bpo_file_handler() const = 0;
+// };
 
-class NlohmannBPOFileHandler : public BPOFileHandler {
-public:
-  void Import(BPOPointsSKeys &bpo_points, string file_path);
-  void Export(BPOPointsSKeys &bpo_points, string file_path);
+// class NlohmannBPOFileHandler : public BPOFileHandler {
+// public:
+//   void Import(BPOPointsSKeys &bpo_points, string file_path);
+//   void Export(BPOPointsSKeys &bpo_points, string file_path);
 
-private:
-  nloh_json ToJsonObject(BPOPointsSKeys &bpo_points);
-};
+// private:
+//   nloh_json ToJsonObject(BPOPointsSKeys &bpo_points);
+// };
 
-class NlohmannBPOFileHandlerFactory : public AbstractBPOFileHandlerFactory {
-public:
-  unique_ptr<BPOFileHandler> create_bpo_file_handler() const override {
-    return make_unique<NlohmannBPOFileHandler>();
-  }
-};
+// class NlohmannBPOFileHandlerFactory : public AbstractBPOFileHandlerFactory {
+// public:
+//   unique_ptr<BPOFileHandler> create_bpo_file_handler() const override {
+//     return make_unique<NlohmannBPOFileHandler>();
+//   }
+// };
 
 // Piece Points spec in "Base Points Offset" form with string keys to easily
 // read/write external json
@@ -66,19 +66,15 @@ public:
   BPOPointsSKeys(const BPOPointsSKeys &) = delete;
   BPOPointsSKeys &operator=(const BPOPointsSKeys &) = delete;
 
-  explicit BPOPointsSKeys(
-      const AbstractBPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
-  );
+  BPOPointsSKeys();
   BPOPointsSKeys(
       BasePointsSMap_t black_base_input,
       BasePointsSMap_t red_base_offsets_input,
       TeamPointsSMap_t black_position_input,
-      TeamPointsSMap_t red_position_offsets_input,
-      const AbstractBPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
+      TeamPointsSMap_t red_position_offsets_input
   );
   BPOPointsSKeys(
-      const string &json_file_path,
-      const AbstractBPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
+      const string &json_file_path
   );
 
   BasePointsSMap_t black_base_;
@@ -92,7 +88,7 @@ public:
   GamePointsArray_t ToGamePointsArray();
 
 private:
-  unique_ptr<BPOFileHandler> file_handler_;
+  // unique_ptr<BPOFileHandler> file_handler_;
   unique_ptr<jsonio::JsonUtility<jsonio::NlohmannJsonUtility>> json_utility_;
 };
 
