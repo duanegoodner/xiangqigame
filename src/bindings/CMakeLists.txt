@@ -6,8 +6,6 @@ target_link_libraries(
     xiangqigame_core PRIVATE
     hash_calculator
     game_board
-    nlohmann_json::nlohmann_json
-    nlohmann_json_schema_validator
     piece_position_points
     piece_points_spec
     utility_functs

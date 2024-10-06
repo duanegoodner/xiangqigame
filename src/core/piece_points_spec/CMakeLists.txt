@@ -4,7 +4,6 @@ add_library(
 
     target_link_libraries(
         piece_points_spec PRIVATE
-        nlohmann_json
+        json_utility_nlohmann
         utility_functs
-        nlohmann_json::nlohmann_json
     )

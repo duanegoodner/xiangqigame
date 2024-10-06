@@ -20,64 +20,33 @@ using namespace piece_points;
 using namespace gameboard;
 using nloh_json = nlohmann::json;
 
-void NlohmannBPOFileHandler::Import(BPOPointsSKeys &bpo_points, const string file_path) {
-  ifstream input{file_path};
-  auto json_object = nloh_json::parse(input);
-  json_object.at("black_base").get_to(bpo_points.black_base_);
-  json_object.at("red_base_offsets").get_to(bpo_points.red_base_offsets_);
-  json_object.at("black_position").get_to(bpo_points.black_position_);
-  json_object.at("red_position_offsets").get_to(bpo_points.red_position_offsets_);
-}
-
-nloh_json NlohmannBPOFileHandler::ToJsonObject(BPOPointsSKeys &bpo_points) {
-  nloh_json j;
-  j["black_base"] = bpo_points.black_base_;
-  j["red_base_offsets"] = bpo_points.red_base_offsets_;
-  j["black_position"] = bpo_points.black_position_;
-  j["red_position_offsets"] = bpo_points.red_position_offsets_;
-  return j;
-}
-
-void NlohmannBPOFileHandler::Export(BPOPointsSKeys &bpo_points, string file_path) {
-  auto json_object = ToJsonObject(bpo_points);
-  ofstream fout(file_path);
-  fout << setw(4) << json_object << endl;
-}
-
-BPOPointsSKeys::BPOPointsSKeys(const AbstractBPOFileHandlerFactory &file_handler_factory)
+BPOPointsSKeys::BPOPointsSKeys()
     : black_base_{}
     , red_base_offsets_{}
     , black_position_{}
-    , red_position_offsets_{}
-    , file_handler_{file_handler_factory.create_bpo_file_handler()} {};
+    , red_position_offsets_{} {};
 
 BPOPointsSKeys::BPOPointsSKeys(
     BasePointsSMap_t black_base_input,
     BasePointsSMap_t red_base_offsets_input,
     TeamPointsSMap_t black_position_input,
-    TeamPointsSMap_t red_position_offsets_input,
-    const AbstractBPOFileHandlerFactory &file_handler_factory
+    TeamPointsSMap_t red_position_offsets_input
 )
     : black_base_{black_base_input}
     , red_base_offsets_{red_base_offsets_input}
     , black_position_{black_position_input}
-    , red_position_offsets_{red_position_offsets_input}
-    , file_handler_{file_handler_factory.create_bpo_file_handler()} {}
+    , red_position_offsets_{red_position_offsets_input} {}
 
-    BPOPointsSKeys::BPOPointsSKeys(
-        const string &json_file_path,
-        const AbstractBPOFileHandlerFactory &file_handler_factory
-    )
+BPOPointsSKeys::BPOPointsSKeys(const string &json_file_path)
     : black_base_{}
     , red_base_offsets_{}
     , black_position_{}
-    , red_position_offsets_{}
-    , file_handler_{file_handler_factory.create_bpo_file_handler()} {
-  file_handler_->Import(*this, json_file_path);
+    , red_position_offsets_{} {
+  json_utility_->Import(*this, json_file_path);
 }
 
 void BPOPointsSKeys::ToFile(string output_path) {
-  file_handler_->Export(*this, output_path);
+  json_utility_->Export(*this, output_path);
 }
 
 GamePointsSMap_t BPOPointsSKeys::ToGamePointsSmap() {

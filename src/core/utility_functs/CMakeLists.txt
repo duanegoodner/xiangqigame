@@ -4,5 +4,5 @@ add_library(
 target_link_libraries(
     utility_functs PUBLIC
     nlohmann_json::nlohmann_json
-     
+    nlohmann_json_schema_validator
 )

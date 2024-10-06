@@ -5,5 +5,5 @@ target_link_libraries(
         utility_functs
         game_board
         piece_position_points
-        nlohmann_json::nlohmann_json)
+        )
 

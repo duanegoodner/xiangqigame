@@ -7,7 +7,6 @@ target_link_libraries(
     move_calculator
     minimax_evaluator
     piece_moves
-    nlohmann_json::nlohmann_json
     hash_calculator
     utility_functs)
 

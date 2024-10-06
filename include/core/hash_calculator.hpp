@@ -18,7 +18,6 @@
 using namespace gameboard;
 using namespace moveselection;
 using namespace std;
-using json = nlohmann::json;
 
 namespace boardstate {
 
@@ -51,20 +50,20 @@ struct ZobristKeys {
       : turn_key{new_turn_key}
       , zarray{new_zarray} {};
 
-  ZobristKeys(const json &json_object) {
-    json_object.at("turn_key").get_to(turn_key);
-    json_object.at("zarray").get_to(zarray);
-  };
+  // ZobristKeys(const json &json_object) {
+  //   json_object.at("turn_key").get_to(turn_key);
+  //   json_object.at("zarray").get_to(zarray);
+  // };
 
-  ZobristKeys(string json_file_path)
-      : ZobristKeys(utility_functs::import_json(json_file_path)) {};
+  // ZobristKeys(string json_file_path)
+  //     : ZobristKeys(utility_functs::import_json(json_file_path)) {};
 
-  json ToJson() {
-    json j;
-    j["zarray"] = zarray;
-    j["turn_key"] = turn_key;
-    return j;
-  };
+  // json ToJson() {
+  //   json j;
+  //   j["zarray"] = zarray;
+  //   j["turn_key"] = turn_key;
+  //   return j;
+  // };
 
   KeyType GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) {
     return zarray[get_zcolor_index(color)][piece_type][space.rank][space.file];

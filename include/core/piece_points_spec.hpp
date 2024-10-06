@@ -11,47 +11,22 @@
 #define E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
 
 #include <common.hpp>
-#include <nlohmann/json.hpp>
+#include <json_utility_interface.hpp>
+#include <json_utility_nlohmann.hpp>
 #include <string>
 #include <typeinfo>
 #include <unordered_map>
 #include <utility_functs.hpp>
 
+namespace jsonio {
+  class NlohmannJsonUtility;
+}
+
 namespace piece_points {
 using namespace std;
-using nloh_json = nlohmann::json;
 
 class BPOPointsSKeys;
 class BPOPointsEKeys;
-
-class BPOFileHandler {
-public:
-  virtual ~BPOFileHandler() = default;
-  virtual void Import(BPOPointsSKeys &bpo_points, string file_path) = 0;
-  virtual void Export(BPOPointsSKeys &bpo_points, string file_path) = 0;
-};
-
-class AbstractBPOFileHandlerFactory {
-public:
-  virtual ~AbstractBPOFileHandlerFactory() = default;
-  virtual unique_ptr<BPOFileHandler> create_bpo_file_handler() const = 0;
-};
-
-class NlohmannBPOFileHandler : public BPOFileHandler {
-public:
-  void Import(BPOPointsSKeys &bpo_points, string file_path);
-  void Export(BPOPointsSKeys &bpo_points, string file_path);
-
-private:
-  nloh_json ToJsonObject(BPOPointsSKeys &bpo_points);
-};
-
-class NlohmannBPOFileHandlerFactory : public AbstractBPOFileHandlerFactory {
-public:
-  unique_ptr<BPOFileHandler> create_bpo_file_handler() const override {
-    return make_unique<NlohmannBPOFileHandler>();
-  }
-};
 
 // Piece Points spec in "Base Points Offset" form with string keys to easily
 // read/write external json
@@ -60,19 +35,15 @@ public:
   BPOPointsSKeys(const BPOPointsSKeys &) = delete;
   BPOPointsSKeys &operator=(const BPOPointsSKeys &) = delete;
 
-  explicit BPOPointsSKeys(
-      const AbstractBPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
-  );
+  BPOPointsSKeys();
   BPOPointsSKeys(
       BasePointsSMap_t black_base_input,
       BasePointsSMap_t red_base_offsets_input,
       TeamPointsSMap_t black_position_input,
-      TeamPointsSMap_t red_position_offsets_input,
-      const AbstractBPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
+      TeamPointsSMap_t red_position_offsets_input
   );
   BPOPointsSKeys(
-      const string &json_file_path,
-      const AbstractBPOFileHandlerFactory &file_handler_factory = NlohmannBPOFileHandlerFactory()
+      const string &json_file_path
   );
 
   BasePointsSMap_t black_base_;
@@ -86,7 +57,7 @@ public:
   GamePointsArray_t ToGamePointsArray();
 
 private:
-  unique_ptr<BPOFileHandler> file_handler_;
+  unique_ptr<jsonio::JsonUtility<jsonio::NlohmannJsonUtility>> json_utility_;
 };
 
 // Piece Points spec in "Base Points Offset" form with PieceType enum keys for
@@ -110,13 +81,13 @@ public:
   TeamPointsEMap_t red_position_offsets_;
 };
 
-const string kICGABPOPath_x =
+const string kICGABPOPath =
     utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
-const string kICGARawPath_x =
+const string kICGARawPath =
     utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
-const string kRawSchemaPath_x =
+const string kRawSchemaPath =
     utility_functs::get_data_file_abs_path("raw_points_schema.json");
-const string kBPOSchemaPath_x =
+const string kBPOSchemaPath =
     utility_functs::get_data_file_abs_path("bpo_schema.json");
 } // namespace piece_points
 
