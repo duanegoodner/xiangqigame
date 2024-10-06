@@ -32,10 +32,7 @@ public:
   ) {
     ifstream input{file_path};
     auto serialized_json = nlohmann::json::parse(input);
-    serialized_json.at("black_base").get_to(bpo_points.black_base_);
-    serialized_json.at("red_base_offsets").get_to(bpo_points.red_base_offsets_);
-    serialized_json.at("black_position").get_to(bpo_points.black_position_);
-    serialized_json.at("red_position_offsets").get_to(bpo_points.red_position_offsets_);
+    Deserialize(serialized_json, bpo_points);
   }
 
   void ImplementExport(
@@ -55,6 +52,16 @@ private:
   nlohmann::json ImportToSerializedJson(const string file_path) {
     ifstream input{file_path};
     return nlohmann::json::parse(input);
+  }
+
+  void Deserialize(
+      nlohmann::json serialized_json,
+      piece_points::BPOPointsSKeys &bpo_points
+  ) {
+    serialized_json.at("black_base").get_to(bpo_points.black_base_);
+    serialized_json.at("red_base_offsets").get_to(bpo_points.red_base_offsets_);
+    serialized_json.at("black_position").get_to(bpo_points.black_position_);
+    serialized_json.at("red_position_offsets").get_to(bpo_points.red_position_offsets_);
   }
 
   nlohmann::json Serialize(piece_points::BPOPointsSKeys &bpo_points) {
