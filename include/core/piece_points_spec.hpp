@@ -13,7 +13,6 @@
 #include <common.hpp>
 #include <json_utility_interface.hpp>
 #include <json_utility_nlohmann.hpp>
-#include <nlohmann/json.hpp>
 #include <string>
 #include <typeinfo>
 #include <unordered_map>
@@ -25,7 +24,6 @@ namespace jsonio {
 
 namespace piece_points {
 using namespace std;
-using nloh_json = nlohmann::json;
 
 class BPOPointsSKeys;
 class BPOPointsEKeys;

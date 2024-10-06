@@ -23,11 +23,6 @@ nloh_json utility_functs::import_json(string file_path) {
   return json::parse(input);
 }
 
-void utility_functs::export_json(const nloh_json &j, string filename) {
-  ofstream fout(filename);
-  fout << setw(4) << j << endl;
-}
-
 const string utility_functs::get_data_file_abs_path(const string data_file) {
   const string abs_path = string(DATA_DIR) + "/" + data_file;
   return abs_path;
