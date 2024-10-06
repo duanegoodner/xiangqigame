@@ -111,12 +111,12 @@ public:
   }
 };
 
-// CRTP Interface: AIPlayer <- MoveEvaluatorInterface
+// CRTP Interface: AIPlayer <- MoveEvaluator
 // Currently not using since AI Player is currently in Python side of app.
 // If/when implement AI Player in C++, will move this interface definition to
 // C++ Player header file.
 template <typename ConcreteMoveEvaluator>
-class MoveEvaluatorInterface {
+class MoveEvaluator {
 public:
   Move SelectMove() {
     return static_cast<ConcreteMoveEvaluator *>(this)->ImplementSelectMove(
@@ -129,7 +129,7 @@ namespace moveselection {
 
 // CLASS TEMPLATE: MinimaxMoveEvaluator
 // IMPLEMENTS INTERFACE:
-//    MoveEvaluatorInterface
+//    MoveEvaluator
 // USES:
 //    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
 //    SpaceInfoProvider.
@@ -141,7 +141,7 @@ template <
     typename ConcreteSpaceInfoProvider,
     typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-class MinimaxMoveEvaluator : public MoveEvaluatorInterface<MinimaxMoveEvaluator<
+class MinimaxMoveEvaluator : public MoveEvaluator<MinimaxMoveEvaluator<
                                  ConcreteSpaceInfoProvider,
                                  ConcreteBoardStateSummarizer,
                                  ConcretePieceValueProvider>> {
@@ -206,14 +206,14 @@ private:
 
 // CLASS TEMPLATE: RandomMoveEvaluator
 // IMPLEMENTS INTERFACE:
-//    MoveEvaluatorInterface
+//    MoveEvaluator
 // USES:
 //    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
 //    SpaceInfoProvider.
 // Randomly chooses one of the legal moves available to evaluating_player_.
 template <typename ConcreteSpaceInfoProvider>
 class RandomMoveEvaluator
-    : public MoveEvaluatorInterface<RandomMoveEvaluator<ConcreteSpaceInfoProvider>> {
+    : public MoveEvaluator<RandomMoveEvaluator<ConcreteSpaceInfoProvider>> {
 public:
   RandomMoveEvaluator(
       PieceColor evaluating_player,
