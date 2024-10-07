@@ -362,7 +362,7 @@ namespace boardstate {
 		+ZobristKeys()
 		+ZobristKeys(uint32_t seed)
 		+ZobristKeys(KeyType new_turn_key, GameZarray_t& new_zarray)
-		+{static} create_game_zarray(std::mt19937_64& gen_64) : GameZarray_t
+		+{static} CreateGameZarray(std::mt19937_64& gen_64) : GameZarray_t
 		+zarray : GameZarray_t
 		+GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) : KeyType
 		+turn_key : KeyType

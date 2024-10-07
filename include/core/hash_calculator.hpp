@@ -32,50 +32,39 @@ struct ZobristKeys {
   ZobristKeys()
       : zarray{}
       , turn_key{} {
-    std::random_device rd;
-    std::mt19937_64 gen_64{rd()};
-    turn_key = keygenerator::generate_key<KeyType>(gen_64);
-    zarray = create_game_zarray(gen_64);
+    KeyGenerator key_generator;
+    // std::random_device rd;
+    // std::mt19937_64 gen_64{rd()};
+    turn_key = key_generator.GenerateKey<KeyType>();
+    // turn_key = keygenerator::generate_key<KeyType>(gen_64);
+    zarray = CreateGameZarray(key_generator);
   };
 
   ZobristKeys(uint32_t seed)
       : zarray{}
       , turn_key{} {
-    std::mt19937_64 gen_64(seed);
-    turn_key = keygenerator::generate_key<KeyType>(gen_64);
-    zarray = create_game_zarray(gen_64);
+    KeyGenerator key_generator;
+    // std::mt19937_64 gen_64(seed);
+    turn_key = key_generator.GenerateKey<KeyType>();
+    zarray = CreateGameZarray(key_generator);
   };
 
   ZobristKeys(KeyType new_turn_key, GameZarray_t &new_zarray)
       : turn_key{new_turn_key}
       , zarray{new_zarray} {};
 
-  // ZobristKeys(const json &json_object) {
-  //   json_object.at("turn_key").get_to(turn_key);
-  //   json_object.at("zarray").get_to(zarray);
-  // };
-
-  // ZobristKeys(string json_file_path)
-  //     : ZobristKeys(utility_functs::import_json(json_file_path)) {};
-
-  // json ToJson() {
-  //   json j;
-  //   j["zarray"] = zarray;
-  //   j["turn_key"] = turn_key;
-  //   return j;
-  // };
-
   KeyType GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) {
     return zarray[get_zcolor_index(color)][piece_type][space.rank][space.file];
   }
-  static const GameZarray_t create_game_zarray(std::mt19937_64 &gen_64) {
+  // static const GameZarray_t CreateGameZarray(std::mt19937_64 &gen_64) {
+  static const GameZarray_t CreateGameZarray(KeyGenerator key_generator) {
     GameZarray_t game_zarray{};
     for (auto color_idx = 0; color_idx < 2; color_idx++) {
       for (auto piece_id = 1; piece_id < kNumPieceTypeVals; piece_id++) {
         for (auto rank = 0; rank < kNumRanks; rank++) {
           for (auto file = 0; file < kNumFiles; file++) {
             game_zarray[color_idx][piece_id][rank][file] =
-                keygenerator::generate_key<KeyType>(gen_64);
+                key_generator.GenerateKey<KeyType>();
           }
         }
       }
