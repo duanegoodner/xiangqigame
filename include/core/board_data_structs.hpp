@@ -5,13 +5,19 @@
 
 #include <array>
 #include <cassert>
-#include <common.hpp>
+// #include <common.hpp>
+#include <game_piece.hpp>
 #include <random>
 #include <vector>
 
 using namespace std;
+using namespace gamepiece;
 
 namespace gameboard {
+
+typedef int BoardIdx_t;
+const BoardIdx_t kNumRanks = 10;
+const BoardIdx_t kNumFiles = 9;
 
 const BoardIdx_t kRedRiverEdge = 5;
 const BoardIdx_t kBlackRiverEdge = 4;

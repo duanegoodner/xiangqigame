@@ -12,7 +12,7 @@
 
 #include <board_data_structs.hpp>
 #include <board_state_summarizer_interface.hpp>
-#include <common.hpp>
+// #include <common.hpp>
 #include <evaluator_details.hpp>
 #include <functional>
 #include <limits>

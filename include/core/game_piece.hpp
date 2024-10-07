@@ -1,34 +1,13 @@
-//! @file common.hpp
-//! Constants and typedefs that are widely used in multiple namespaces.
-
-// Filename: common.hpp
-// Author: Duane Goodner
-// Created: 2022-11-15
-// Last Modified: 2024-08-16
-
-// Description:
-// Contains typedefs, enums, structs and constants for game piece definitions,
-// and points specs. Also contains typedefs and simple operators for points
-// calcs and zobrish hashmaps with minimax algo.
-
 #pragma once
 
-#include <array>
-#include <limits>
-#include <random>
 #include <string>
 #include <unordered_map>
-#include <vector>
+
 
 using namespace std;
 
-// ///////
-// Pieces
-// //////
-
-namespace gameboard {
-
-enum PieceType : int {
+namespace gamepiece {
+    enum PieceType : int {
   kNnn = 0,
   kGen = 1,
   kAdv = 2,
@@ -78,12 +57,4 @@ inline PieceColor get_piece_color(size_t zcolor_index) {
   return static_cast<PieceColor>(piece_color_val);
 }
 
-// //////
-// Board
-// //////
-typedef int BoardIdx_t;
-const BoardIdx_t kNumRanks = 10;
-const BoardIdx_t kNumFiles = 9;
-
 }
-

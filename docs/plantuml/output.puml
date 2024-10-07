@@ -30,7 +30,7 @@ class JsonUtility <template<typename ConcreteJsonUtility>> {
 
 
 class MoveEvaluator <template<typename ConcreteMoveEvaluator>> {
-	+SelectMove() : Move
+	+SelectMove() : moves::Move
 }
 
 

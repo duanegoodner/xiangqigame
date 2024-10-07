@@ -1,4 +1,4 @@
-#include <common.hpp>
+// #include <common.hpp>
 #include <piece_points_bpo.hpp>
 #include <piece_position_points.hpp>
 #include <unordered_map>
