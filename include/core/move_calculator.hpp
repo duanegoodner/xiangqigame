@@ -10,7 +10,7 @@
 #pragma once
 
 #include <any>
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
 #include <move_calculator_details.hpp>
 #include <piece_moves.hpp>
 

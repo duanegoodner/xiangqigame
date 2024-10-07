@@ -11,7 +11,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
 #include <game_board.hpp>
 #include <hash_calculator.hpp>
 #include <move_evaluators.hpp>

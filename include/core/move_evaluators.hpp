@@ -10,7 +10,7 @@
 
 #pragma once
 
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
 #include <board_state_summarizer_interface.hpp>
 #include <common.hpp>
 #include <evaluator_details.hpp>

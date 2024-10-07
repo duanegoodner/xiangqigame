@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
 #include <common.hpp>
 #include <move_evaluators.hpp>
 #include <piece_points_spec.hpp>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
 
 // CRTP Interface: AIPlayer <- MoveEvaluator
 // Currently not using since AI Player is currently in Python side of app.

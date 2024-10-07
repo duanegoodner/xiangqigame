@@ -9,7 +9,7 @@
 #ifndef _MINIMAX_EVALUATOR_TEMPLATE_
 #define _MINIMAX_EVALUATOR_TEMPLATE_
 
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
 #include <chrono>
 #include <common.hpp>
 #include <evaluator_details.hpp>

@@ -3,7 +3,8 @@
 
 #pragma once
 
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
+#include <move_data_structs.hpp>
 #include <chrono>
 #include <common.hpp>
 #include <map>

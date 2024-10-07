@@ -12,7 +12,7 @@
 #pragma once
 
 #include <array>
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
 #include <common.hpp>
 #include <game_board.hpp>
 #include <key_generator.hpp>

@@ -1,7 +1,7 @@
 #pragma  once
 
 
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
 #include <common.hpp>
 
 using namespace gameboard;
