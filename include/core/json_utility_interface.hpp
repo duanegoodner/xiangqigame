@@ -1,3 +1,6 @@
+//! @file json_utility_interface.hpp
+//! Definition of JsonUtility CRTP interface.
+
 #pragma once
 
 #include <string>
@@ -8,7 +11,6 @@ namespace piece_points {
 class BPOPointsSKeys;
 } // namespace piece_points
 
-// namespace jsonio {
 
 template <typename ConcreteJsonUtility>
 class JsonUtility {
@@ -32,4 +34,3 @@ public:
   }
 };
 
-// } // namespace jsonio

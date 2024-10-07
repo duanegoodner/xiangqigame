@@ -1,16 +1,16 @@
+//! @file move_calculator.hpp
+//! Definition of MoveCalculator 
+
 // Filename: move_calculator.hpp
 // Author: Duane Goodner
 // Created: 2022-11-23
 // Last Modified: 2024-08-16
 
-// Description:
-// Defines and implements MoveCalculator class.
 
 #pragma once
 
 #include <any>
-#include <board_components.hpp>
-#include <board_utilities.hpp>
+#include <board_data_structs.hpp>
 #include <move_calculator_details.hpp>
 #include <piece_moves.hpp>
 

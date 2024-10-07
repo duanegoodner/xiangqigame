@@ -1,3 +1,6 @@
+//! @file hash_calculator.hpp
+//! Class templates for HashCalculator and its supporting class ZobristKeys.
+
 // Filename: game_board.tpp
 // Author: Duane Goodner
 // Created: 2022-12-27
@@ -9,7 +12,7 @@
 #pragma once
 
 #include <array>
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
 #include <common.hpp>
 #include <game_board.hpp>
 #include <key_generator.hpp>

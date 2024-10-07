@@ -1,11 +1,5 @@
-// Filename: board_components.hpp
-// Author: Duane Goodner
-// Created: 2022-11-15
-// Last Modified: 2024-08-16
-
-// Description:
-// Contains simple structs and typedefs of board components, container structs
-// for grouping components, and simple functions using these components.
+//! @file board_data_structs.hpp
+//! Constants, typedefs, and simple structs used by GameBoard.
 
 #pragma once
 
@@ -105,8 +99,7 @@ struct BoardSpace {
   }
 };
 
-// Data struct for internal tracking of team's castle spaces as 1-D array, and
-// then
+// Data struct for internal tracking of team's castle spaces as 1-D array
 typedef array<BoardSpace, 9> Castle_t;
 
 // Generates 1-D array of castle spaces from castle edge definitions
@@ -127,66 +120,68 @@ constexpr Castle_t red_castle_spaces() { return calc_castle_spaces(kRedCastleEdg
 constexpr Castle_t black_castle_spaces() {
   return calc_castle_spaces(kBlackCastleEdges);
 }
+
+inline BoardMap_t int_board_to_game_pieces(const BoardMapInt_t int_board) {
+  BoardMap_t game_piece_board;
+  for (auto rank = 0; rank < kNumRanks; rank++) {
+    for (auto file = 0; file < kNumFiles; file++) {
+      game_piece_board[rank][file] = GamePiece(int_board[rank][file]);
+    }
+  }
+  return game_piece_board;
+}
+
+inline bool is_occupied(const BoardMap_t &board_map, const BoardSpace &space) {
+  return board_map[space.rank][space.file].piece_color != PieceColor::kNul;
+}
+
+inline PieceColor get_color(
+    const BoardMap_t &board_map,
+    const BoardSpace &space
+) {
+  return board_map[space.rank][space.file].piece_color;
+}
+
+inline PieceType get_type(
+    const BoardMap_t &board_map,
+    const BoardSpace &space
+) {
+  return board_map[space.rank][space.file].piece_type;
+}
+
+inline BoardSpace get_general_position(
+    const BoardMap_t &board_map,
+    const PieceColor color
+) {
+  auto castle = (color == PieceColor::kRed) ? red_castle_spaces()
+                                            : black_castle_spaces();
+
+  BoardSpace found_space;
+
+  for (BoardSpace board_space : castle) {
+    auto piece = board_map[board_space.rank][board_space.file];
+    if (piece.piece_type == PieceType::kGen) {
+      found_space = board_space;
+    }
+  }
+  return found_space;
+}
+
+inline vector<BoardSpace> get_all_spaces_occupied_by(
+    const BoardMap_t &board_map,
+    const PieceColor color
+) {
+  vector<BoardSpace> occupied_spaces;
+  occupied_spaces.reserve(16);
+  for (auto rank = 0; rank < kNumRanks; rank++) {
+    for (auto file = 0; file < kNumFiles; file++) {
+      if (get_color(board_map, BoardSpace{rank, file}) == color) {
+        occupied_spaces.emplace_back(BoardSpace{rank, file});
+      }
+    }
+  }
+  return occupied_spaces;
+}
 } // namespace board_components
 
-namespace moves {
-  struct Move {
-  gameboard::BoardSpace start;
-  gameboard::BoardSpace end;
 
-  bool operator==(const Move other) {
-    return (start == other.start) && (end == other.end);
-  }
-};
-
-struct MoveCollection {
-  vector<Move> moves;
-  MoveCollection()
-      : moves{} {};
-  MoveCollection(vector<Move> my_moves)
-      : moves{my_moves} {};
-  MoveCollection(size_t reserve_size)
-      : moves{} {
-    moves.reserve(reserve_size);
-  }
-
-  size_t Size() const { return moves.size(); }
-
-  bool ContainsMove(const Move &move) const {
-    for (auto entry : moves) {
-      if ((move.start == entry.start) && (move.end == entry.end)) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  bool ContainsDestination(const gameboard::BoardSpace &space) {
-    for (auto move : moves) {
-      if (move.end == space) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  void Append(Move move) { moves.emplace_back(move); }
-  void Concat(vector<Move> other_moves) {
-    moves.insert(moves.end(), other_moves.begin(), other_moves.end());
-  }
-  void Concat(MoveCollection other) {
-    moves.insert(moves.end(), other.moves.begin(), other.moves.end());
-  }
-};
-
-struct ExecutedMove {
-  Move spaces;
-  gameboard::GamePiece moving_piece;
-  gameboard::GamePiece destination_piece;
-
-  bool operator==(const ExecutedMove other) {
-    return (other.spaces == spaces) && (other.moving_piece == moving_piece) &&
-           (other.destination_piece == destination_piece);
-  }
-};
-}

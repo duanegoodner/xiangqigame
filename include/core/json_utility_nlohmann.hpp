@@ -1,3 +1,6 @@
+//! @file json_utility_nlohmann.hpp
+//! Declaration and implementation of templated portions of NlohmannJsonUtility.
+
 #pragma once
 
 #include <fstream>
@@ -5,7 +8,7 @@
 // #include <nlohmann/json-schema.hpp>
 #include <nlohmann/json.hpp>
 // #include <nlohmann/json_fwd.hpp>
-#include <piece_points_spec.hpp>
+#include <piece_points_bpo.hpp>
 #include <string>
 
 using namespace std;

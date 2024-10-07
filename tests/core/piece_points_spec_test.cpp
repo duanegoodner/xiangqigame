@@ -1,7 +1,7 @@
 #include <common.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
-#include <piece_points_spec.hpp>
+#include <piece_points_bpo.hpp>
 #include <utility_functs.hpp>
 
 using namespace gameboard;

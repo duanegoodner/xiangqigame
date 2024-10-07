@@ -1,11 +1,17 @@
+//! @file evaluator_details.hpp
+//! Data structs used by MinimaxEvaluator
+
 #pragma once
 
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
+#include <move_data_structs.hpp>
+#include <piece_points_bpo.hpp>
 #include <chrono>
 #include <common.hpp>
 #include <map>
 
 using namespace gameboard;
+using namespace piece_points;
 
 namespace moveselection {
 
@@ -22,8 +28,6 @@ struct RatedMove {
 enum MinimaxResultType : size_t {
   kUnknown = 0,
   kTrTableHit = 1,
-  // kTrTableHitEvaluatorLoses = 2,
-  // kTrTableHitEvaluatorWins = 3,
   kEvaluatorLoses = 4,
   kEvaluatorWins = 5,
   kFullyEvaluatedNode = 6,

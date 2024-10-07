@@ -1,5 +1,5 @@
 #include <common.hpp>
-#include <piece_points_spec.hpp>
+#include <piece_points_bpo.hpp>
 #include <piece_position_points.hpp>
 #include <unordered_map>
 #include <utility_functs.hpp>

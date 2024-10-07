@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <json_utility_interface.hpp>
 #include <json_utility_nlohmann.hpp>
-#include <piece_points_spec.hpp>
+#include <piece_points_bpo.hpp>
 #include <random>
 #include <sstream>
 #include <unordered_map>
@@ -46,7 +46,7 @@ TEST_F(JsonUtilityTest, ExportSimpleMap) {
 
 TEST_F(JsonUtilityTest, ExportImportSimpleMap) {
   std::string test_map_path = (temp_dir / "testa_map.json").string();
-  
+
   EXPECT_FALSE(filesystem::exists(test_map_path));
   nlohmann_json_utility.Export(test_map, test_map_path);
   EXPECT_TRUE(filesystem::exists(test_map_path));
@@ -83,7 +83,7 @@ TEST_F(JsonUtilityTest, ImportExportImportBPOPoints) {
 }
 
 TEST_F(JsonUtilityTest, ImportGamePointsSMap) {
-  GamePointsSMap_t s_map;
+  piece_points::GamePointsSMap_t s_map;
   nlohmann_json_utility.Import(s_map, piece_points::kICGARawPath);
   EXPECT_EQ(s_map["black"]["horse"][0][0], 270);
   EXPECT_EQ(s_map["red"]["horse"][0][0], 274);

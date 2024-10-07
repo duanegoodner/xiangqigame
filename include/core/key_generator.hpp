@@ -1,3 +1,6 @@
+//! @file key_generator.hpp
+//! Declaration of KeyGenerator and implementation of its method templates.
+
 // Filename: game_board.tpp
 // Author: Duane Goodner
 // Created: 2024-09-03
