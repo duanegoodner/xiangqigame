@@ -1,5 +1,4 @@
-#ifndef CB52FD2C_25B0_49AA_9220_93596AFF821A
-#define CB52FD2C_25B0_49AA_9220_93596AFF821
+#pragma once
 
 #include <array>
 #include <board_components.hpp>
@@ -30,5 +29,3 @@ inline constexpr PieceDispatchArray_t build_piece_dispatch_array() {
     return dispatch_array;
 }
 }
-
-#endif /* CB52FD2C_25B0_49AA_9220_93596AFF821A */

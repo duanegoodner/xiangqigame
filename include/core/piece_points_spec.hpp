@@ -7,8 +7,7 @@
 // Defines classes that enforce specs that external json files with piece
 // points info must comply with.
 
-#ifndef E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
-#define E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802
+#pragma once
 
 #include <common.hpp>
 #include <json_utility_interface.hpp>
@@ -91,4 +90,3 @@ const string kBPOSchemaPath =
     utility_functs::get_data_file_abs_path("bpo_schema.json");
 } // namespace piece_points
 
-#endif /* E0F8CBC1_E4D2_4FE0_9B50_4D7799B44802 */

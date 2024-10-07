@@ -7,8 +7,7 @@
 // Contains functions for obtaining info about the state of a board map.
 // Functions are inlined to improve speed.
 
-#ifndef _BOARD_UTILITIES_FREE_
-#define _BOARD_UTILITIES_FREE_
+#pragma once
 
 #include <board_components.hpp>
 #include <common.hpp>
@@ -84,5 +83,3 @@ inline vector<BoardSpace> get_all_spaces_occupied_by(
 }
 
 } // namespace gameboard
-
-#endif

@@ -6,8 +6,7 @@
 // Description:
 // Defines and implements MoveCalculator class.
 
-#ifndef _MOVE_CALCULATOR_
-#define _MOVE_CALCULATOR_
+#pragma once
 
 #include <any>
 #include <board_components.hpp>
@@ -78,5 +77,3 @@ private:
 };
 
 } // namespace moves
-
-#endif // _MOVE_CALCULATOR_

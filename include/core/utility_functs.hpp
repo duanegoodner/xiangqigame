@@ -7,8 +7,7 @@
 // Contains definitions and many inline implementations (for speed) of utility
 // functions.
 
-#ifndef _UTILITY_FUNCTS_
-#define _UTILITY_FUNCTS_
+#pragma once
 
 #include <array>
 #include <config.hpp>
@@ -168,5 +167,3 @@ const string get_data_file_abs_path(const std::string data_file);
 
 
 } // namespace utility_functs
-
-#endif // _UTILITY_FUNCTS_

@@ -7,8 +7,7 @@
 // Contains simple structs and typedefs of board components, container structs
 // for grouping components, and simple functions using these components.
 
-#ifndef _BOARD_COMPONENTS_
-#define _BOARD_COMPONENTS_
+#pragma once
 
 #include <array>
 #include <cassert>
@@ -191,5 +190,3 @@ struct ExecutedMove {
   }
 };
 }
-
-#endif // _SHARED_COMPONENTS_
