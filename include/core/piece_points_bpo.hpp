@@ -1,4 +1,4 @@
-// Filename: piece_points_spec.hpp
+// Filename: piece_points_bpo.hpp
 // Author: Duane Goodner
 // Created: 2022-12-15
 // Last Modified: 2024-08-16
@@ -12,19 +12,21 @@
 #include <common.hpp>
 #include <json_utility_interface.hpp>
 #include <json_utility_nlohmann.hpp>
+#include <piece_points_data_structs.hpp>
 #include <string>
 #include <typeinfo>
 #include <unordered_map>
 #include <utility_functs.hpp>
 
+using namespace std;
+
 namespace jsonio {
-  class NlohmannJsonUtility;
+class NlohmannJsonUtility;
 }
 
 namespace piece_points {
-using namespace std;
 
-class BPOPointsSKeys;
+// forward declare BPOPointsEKeys so BPOPointsSKeys is aware of it
 class BPOPointsEKeys;
 
 // Piece Points spec in "Base Points Offset" form with string keys to easily
@@ -41,9 +43,7 @@ public:
       TeamPointsSMap_t black_position_input,
       TeamPointsSMap_t red_position_offsets_input
   );
-  BPOPointsSKeys(
-      const string &json_file_path
-  );
+  BPOPointsSKeys(const string &json_file_path);
 
   BasePointsSMap_t black_base_;
   BasePointsSMap_t red_base_offsets_;
@@ -80,13 +80,9 @@ public:
   TeamPointsEMap_t red_position_offsets_;
 };
 
-const string kICGABPOPath =
-    utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
-const string kICGARawPath =
-    utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
+const string kICGABPOPath = utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
+const string kICGARawPath = utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
 const string kRawSchemaPath =
     utility_functs::get_data_file_abs_path("raw_points_schema.json");
-const string kBPOSchemaPath =
-    utility_functs::get_data_file_abs_path("bpo_schema.json");
+const string kBPOSchemaPath = utility_functs::get_data_file_abs_path("bpo_schema.json");
 } // namespace piece_points
-

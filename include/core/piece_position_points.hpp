@@ -11,7 +11,7 @@
 #include <board_data_structs.hpp>
 #include <common.hpp>
 #include <move_evaluators.hpp>
-#include <piece_points_spec.hpp>
+#include <piece_points_bpo.hpp>
 
 using namespace gameboard;
 using namespace std;

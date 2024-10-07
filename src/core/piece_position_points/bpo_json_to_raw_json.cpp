@@ -1,5 +1,5 @@
 #include <piece_position_points.hpp>
-#include <piece_points_spec.hpp>
+#include <piece_points_bpo.hpp>
 
 using namespace piece_points;
 // using namespace piece_points_spec;
