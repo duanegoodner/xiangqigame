@@ -9,7 +9,6 @@ scale 0.75
 
 
 
-
 /' Objects '/
 
 class BoardStateSummarizer <template<typename ConcreteBoardStateSummarizer, typename KeyType>> {
@@ -352,6 +351,13 @@ namespace boardstate {
 		-_ImplementUpdateBoardState(ExecutedMove move) : void
 	}
 
+	class KeyGenerator {
+		+KeyGenerator(unsigned long seed)
+		+GenerateKey() : T
+		-gen_64_ : std::mt19937_64
+		+DisplayKey(T key) : void
+	}
+
 	class TranspositionTable <template<typename KeyType>> {
 		+GetData(KeyType board_state, int remaining_search_depth) : TranspositionTableSearchResult
 		-data_ : unordered_map<KeyType, vector<TranspositionTableEntry>>
@@ -362,7 +368,7 @@ namespace boardstate {
 		+ZobristKeys()
 		+ZobristKeys(uint32_t seed)
 		+ZobristKeys(KeyType new_turn_key, GameZarray_t& new_zarray)
-		+{static} CreateGameZarray(std::mt19937_64& gen_64) : GameZarray_t
+		+{static} CreateGameZarray(KeyGenerator key_generator) : GameZarray_t
 		+zarray : GameZarray_t
 		+GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) : KeyType
 		+turn_key : KeyType

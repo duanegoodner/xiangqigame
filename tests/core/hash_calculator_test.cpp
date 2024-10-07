@@ -2,7 +2,6 @@
 #include <game_board.hpp>
 #include <gtest/gtest.h>
 #include <hash_calculator.hpp>
-#include <hash_calculator_details.hpp>
 #include <nlohmann/json.hpp>
 #include <string>
 
@@ -12,7 +11,6 @@ using namespace std;
 
 class ZobristKeysTest : public ::testing::Test {
 protected:
-  string key_file_path = DEFAULT_ZKEYS_FILEPATH;
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
 };
 
