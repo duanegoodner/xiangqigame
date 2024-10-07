@@ -7,7 +7,7 @@
 // Implementation of PiecePointsSpec
 
 #include <algorithm>
-#include <common.hpp>
+// #include <common.hpp>
 #include <fstream>
 #include <iostream>
 #include <nlohmann/json.hpp>
