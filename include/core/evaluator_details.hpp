@@ -1,3 +1,6 @@
+//! @file evaluator_details.hpp
+//! Data structs used by MinimaxEvaluator
+
 #pragma once
 
 #include <board_components.hpp>
@@ -22,8 +25,6 @@ struct RatedMove {
 enum MinimaxResultType : size_t {
   kUnknown = 0,
   kTrTableHit = 1,
-  // kTrTableHitEvaluatorLoses = 2,
-  // kTrTableHitEvaluatorWins = 3,
   kEvaluatorLoses = 4,
   kEvaluatorWins = 5,
   kFullyEvaluatedNode = 6,

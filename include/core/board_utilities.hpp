@@ -1,3 +1,7 @@
+//! @file
+//! Free functions that serve as helpers for GameBoard.
+//! All heavily called functions in this file are inlined for performance.
+
 // Filename: board_components.hpp
 // Author: Duane Goodner
 // Created: 2022-12-02

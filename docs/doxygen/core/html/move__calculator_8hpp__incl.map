@@ -1,0 +1,16 @@
+<map id="include/core/move_calculator.hpp" name="include/core/move_calculator.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="127,5,367,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,52,107"/>
+<area shape="rect" id="node3" href="$board__components_8hpp.html" title="Constants, typedefs, and simple structs used by GameBoard." alt="" coords="312,304,487,331"/>
+<area shape="rect" id="node12" href="$board__utilities_8hpp.html" title="Free functions that serve as helpers for GameBoard." alt="" coords="172,229,315,256"/>
+<area shape="rect" id="node13" href="$move__calculator__details_8hpp.html" title=" " alt="" coords="143,80,352,107"/>
+<area shape="rect" id="node14" href="$piece__moves_8hpp.html" title=" " alt="" coords="331,155,467,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="37,453,93,480"/>
+<area shape="rect" id="node5" title=" " alt="" coords="365,379,434,405"/>
+<area shape="rect" id="node6" href="$common_8hpp.html" title="Constants and typedefs that are widely used in multiple namespaces." alt="" coords="234,379,341,405"/>
+<area shape="rect" id="node8" title=" " alt="" coords="519,453,591,480"/>
+<area shape="rect" id="node11" title=" " alt="" coords="432,453,495,480"/>
+<area shape="rect" id="node7" title=" " alt="" coords="266,453,325,480"/>
+<area shape="rect" id="node9" title=" " alt="" coords="349,453,407,480"/>
+<area shape="rect" id="node10" title=" " alt="" coords="117,453,241,480"/>
+</map>

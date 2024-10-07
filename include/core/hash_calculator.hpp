@@ -1,3 +1,6 @@
+//! @file hash_calculator.hpp
+//! Class templates for HashCalculator and its supporting class ZobristKeys.
+
 // Filename: game_board.tpp
 // Author: Duane Goodner
 // Created: 2022-12-27

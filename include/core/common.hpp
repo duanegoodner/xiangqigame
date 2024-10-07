@@ -1,3 +1,6 @@
+//! @file common.hpp
+//! Constants and typedefs that are widely used in multiple namespaces.
+
 // Filename: common.hpp
 // Author: Duane Goodner
 // Created: 2022-11-15

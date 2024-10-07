@@ -1,3 +1,6 @@
+//! @file json_utility_nlohmann.hpp
+//! Declaration and implementation of templated portions of NlohmannJsonUtility.
+
 #pragma once
 
 #include <fstream>

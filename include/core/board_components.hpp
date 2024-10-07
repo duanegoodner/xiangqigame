@@ -1,3 +1,8 @@
+//! @file board_components.hpp
+//! Constants, typedefs, and simple structs used by GameBoard
+
+
+
 // Filename: board_components.hpp
 // Author: Duane Goodner
 // Created: 2022-11-15
