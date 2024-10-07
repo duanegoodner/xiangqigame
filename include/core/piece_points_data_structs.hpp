@@ -1,3 +1,6 @@
+//! @file piece_points_data_structs.hpp
+//! Typedefs for collections of piece points
+
 #pragma once
 
 #include <board_data_structs.hpp>

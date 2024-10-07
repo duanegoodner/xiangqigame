@@ -1,11 +1,5 @@
-// Filename: piece_points_bpo.hpp
-// Author: Duane Goodner
-// Created: 2022-12-15
-// Last Modified: 2024-08-16
-
-// Description:
-// Defines classes that enforce specs that external json files with piece
-// points info must comply with.
+//! @file piece_points_bpo.hpp
+//! Definitions of classes used for storing piece points in Base Points Offset form.
 
 #pragma once
 
