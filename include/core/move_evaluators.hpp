@@ -8,8 +8,7 @@
 // PiecePointsEvaluator requires GameBoard and GamePoints classes to comply
 // with.
 
-#ifndef _MINIMAX_EVALUATOR_
-#define _MINIMAX_EVALUATOR_
+#pragma once
 
 #include <board_components.hpp>
 #include <common.hpp>
@@ -235,5 +234,3 @@ private:
 } // namespace moveselection
 
 #include <move_evaluators.tpp>
-
-#endif /* MINIMAX_EVALUATOR */

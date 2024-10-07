@@ -6,8 +6,7 @@
 // Description:
 // Defines PiecePositionPoints class.
 
-#ifndef _PIECE_POINTS_
-#define _PIECE_POINTS_
+#pragma once
 
 #include <board_components.hpp>
 #include <common.hpp>
@@ -48,5 +47,3 @@ struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
 };
 
 } // namespace piece_points
-
-#endif // _PIECE_POINTS

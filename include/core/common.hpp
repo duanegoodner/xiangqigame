@@ -8,8 +8,7 @@
 // and points specs. Also contains typedefs and simple operators for points
 // calcs and zobrish hashmaps with minimax algo.
 
-#ifndef _COMMON_
-#define _COMMON_
+#pragma once
 
 #include <array>
 #include <limits>
@@ -160,5 +159,3 @@ inline bool operator==(GamePointsSMap_t &a, GamePointsSMap_t &b) {
   }
   return are_equal;
 }
-
-#endif

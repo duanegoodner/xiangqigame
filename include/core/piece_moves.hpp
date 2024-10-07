@@ -6,8 +6,7 @@
 // Description:
 // Defines PieceMoves class.
 
-#ifndef AB6A1802_337A_4767_8288_AD0E610AC2F5
-#define AB6A1802_337A_4767_8288_AD0E610AC2F5
+#pragma once
 
 #include <board_components.hpp>
 #include <board_utilities.hpp>
@@ -94,4 +93,3 @@ private:
   }
 };
 } // namespace moves
-#endif /* AB6A1802_337A_4767_8288_AD0E610AC2F5 */
