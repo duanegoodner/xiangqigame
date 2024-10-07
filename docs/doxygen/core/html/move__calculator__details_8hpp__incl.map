@@ -1,5 +1,5 @@
 <map id="include/core/move_calculator_details.hpp" name="include/core/move_calculator_details.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="168,5,381,47"/>
+<area shape="rect" id="node1" title="Typedefs and data struct used by MoveCalculator to select appropriate method from PieceMoves." alt="" coords="168,5,381,47"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,393,61,420"/>
 <area shape="rect" id="node3" href="$board__components_8hpp.html" title="Constants, typedefs, and simple structs used by GameBoard." alt="" coords="311,244,486,271"/>
 <area shape="rect" id="node11" href="$board__utilities_8hpp.html" title="Free functions that serve as helpers for GameBoard." alt="" coords="202,169,345,196"/>

@@ -56,11 +56,6 @@ const unordered_map<string, PieceType> kPieceTypeStringToEnum = [] {
 
 enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
 const int kNumPieceColorVals = 3;
-// const unordered_map<string, PieceColor> kPieceColorStringToEnum = {
-//     {"red", PieceColor::kRed},
-//     {"null", PieceColor::kNul},
-//     {"black", PieceColor::kBlk}
-// };
 
 // Use lambda function because hpp2plantuml can't parse {{
 const unordered_map<string, PieceColor> kPieceColorStringToEnum = [] {

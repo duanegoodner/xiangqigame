@@ -1,16 +1,5 @@
 //! @file board_components.hpp
-//! Constants, typedefs, and simple structs used by GameBoard
-
-
-
-// Filename: board_components.hpp
-// Author: Duane Goodner
-// Created: 2022-11-15
-// Last Modified: 2024-08-16
-
-// Description:
-// Contains simple structs and typedefs of board components, container structs
-// for grouping components, and simple functions using these components.
+//! Constants, typedefs, and simple structs used by GameBoard.
 
 #pragma once
 
@@ -110,8 +99,7 @@ struct BoardSpace {
   }
 };
 
-// Data struct for internal tracking of team's castle spaces as 1-D array, and
-// then
+// Data struct for internal tracking of team's castle spaces as 1-D array
 typedef array<BoardSpace, 9> Castle_t;
 
 // Generates 1-D array of castle spaces from castle edge definitions

@@ -11,118 +11,18 @@
 #pragma once
 
 #include <board_components.hpp>
+#include <board_state_summarizer_interface.hpp>
 #include <common.hpp>
 #include <evaluator_details.hpp>
 #include <functional>
 #include <limits>
+#include <piece_value_provider_interface.hpp>
+#include <move_evaluator_interface.hpp>
+#include <space_info_provider_interface.hpp>
 #include <utility_functs.hpp>
 
 using namespace gameboard;
 using namespace moves;
-
-// CRTP INTERFACE: Evaluator <- SpaceInfoProvider (concrete example =
-// New GameBoard)
-template <typename ConcreteSpaceInfoProvider>
-class SpaceInfoProvider {
-public:
-  vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)
-        ->ImplementGetAllSpacesOccupiedBy(color);
-  }
-
-  PieceColor GetColor(BoardSpace space) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetColor(space);
-  }
-
-  PieceType GetType(BoardSpace space) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetType(space);
-  }
-
-  MoveCollection CalcFinalMovesOf(PieceColor color) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementCalcFinalMovesOf(
-        color
-    );
-  };
-
-  ExecutedMove ExecuteMove(Move move) {
-    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementExecuteMove(move);
-  }
-
-  void UndoMove(ExecutedMove executed_move) {
-    static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementUndoMove(executed_move);
-  }
-
-  void AttachMoveCallback(function<void(ExecutedMove)> callback) {
-    static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementAttachMoveCallback(callback
-    );
-  }
-};
-
-// CRTP Interface: Evaluator <- BoardStateSummarizer (e.g. HashCalculator)
-template <typename ConcreteBoardStateSummarizer, typename KeyType>
-class BoardStateSummarizer {
-public:
-  typedef KeyType ZobristKey_t;
-  void FullBoardStateCalc(BoardMap_t &board_map) {
-    static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementFullBoardStateCalc(
-        board_map
-    );
-  }
-
-  void UpdateBoardState(const ExecutedMove &move) {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementUpdateBoardState(
-        move
-    );
-  }
-
-  ZobristKey_t GetState() {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetState();
-  }
-
-  void RecordTrData(
-      int search_depth,
-      moveselection::MinimaxResultType result_type,
-      moveselection::BestMoves &best_moves
-  ) {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)
-        ->ImplementRecordTrData(search_depth, result_type, best_moves);
-  }
-
-  moveselection::TranspositionTableSearchResult GetTrData(int search_depth) {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetTrData(
-        search_depth
-    );
-  }
-};
-
-// CRTP Interface: Evaluator <- GamePoints
-template <typename ConcretePieceValueProvider>
-class PieceValueProvider {
-public:
-  // typedef Points_t PieceValue_t;
-  Points_t GetValueOfPieceAtPosition(
-      PieceColor color,
-      PieceType piece_type,
-      BoardSpace space
-  ) {
-    return static_cast<ConcretePieceValueProvider *>(this)
-        ->ImplementGetValueOfPieceAtPosition(color, piece_type, space);
-  }
-};
-
-// CRTP Interface: AIPlayer <- MoveEvaluator
-// Currently not using since AI Player is currently in Python side of app.
-// If/when implement AI Player in C++, will move this interface definition to
-// C++ Player header file.
-template <typename ConcreteMoveEvaluator>
-class MoveEvaluator {
-public:
-  Move SelectMove() {
-    return static_cast<ConcreteMoveEvaluator *>(this)->ImplementSelectMove(
-        // cur_player
-    );
-  }
-};
 
 namespace moveselection {
 

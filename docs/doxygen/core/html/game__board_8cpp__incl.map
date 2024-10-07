@@ -15,10 +15,10 @@
 <area shape="rect" id="node8" title=" " alt="" coords="1009,617,1068,644"/>
 <area shape="rect" id="node9" title=" " alt="" coords="847,617,971,644"/>
 <area shape="rect" id="node13" title=" " alt="" coords="500,393,587,420"/>
-<area shape="rect" id="node14" href="$move__calculator_8hpp.html" title=" " alt="" coords="332,169,489,196"/>
+<area shape="rect" id="node14" href="$move__calculator_8hpp.html" title="Definition of MoveCalculator" alt="" coords="332,169,489,196"/>
 <area shape="rect" id="node18" href="$move__evaluators_8hpp.html" title=" " alt="" coords="733,319,896,345"/>
 <area shape="rect" id="node15" title=" " alt="" coords="363,244,410,271"/>
-<area shape="rect" id="node16" href="$move__calculator__details_8hpp.html" title=" " alt="" coords="130,244,339,271"/>
+<area shape="rect" id="node16" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by MoveCalculator to select appropriate method from PieceMoves." alt="" coords="130,244,339,271"/>
 <area shape="rect" id="node17" href="$piece__moves_8hpp.html" title=" " alt="" coords="230,319,366,345"/>
 <area shape="rect" id="node19" href="$evaluator__details_8hpp.html" title="Data structs used by MinimaxEvaluator." alt="" coords="897,393,1060,420"/>
 <area shape="rect" id="node25" title=" " alt="" coords="662,393,822,420"/>

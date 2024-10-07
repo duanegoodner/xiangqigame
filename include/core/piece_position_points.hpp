@@ -18,12 +18,6 @@ using namespace std;
 
 namespace piece_points {
 
-// const string kICGABPOPath = utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
-// const string kICGARawPath = utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
-// const string kRawSchemaPath =
-//     utility_functs::get_data_file_abs_path("raw_points_schema.json");
-// const string kBPOSchemaPath = utility_functs::get_data_file_abs_path("bpo_schema.json");
-
 struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   PiecePositionPoints();
   PiecePositionPoints(GamePointsArray_t game_points_array);
