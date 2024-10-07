@@ -1,3 +1,6 @@
+//! @file board_state_summarizer_interface.hpp
+//! Definition of BoardStateSummarizer 
+
 #pragma once
 
 #include <evaluator_details.hpp>

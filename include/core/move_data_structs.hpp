@@ -1,13 +1,14 @@
+//! @file move_data_structs.hpp 
+//! Definitions and implementations of move-related structs.
+
 #pragma once
 
-
 #include <board_data_structs.hpp>
-
 
 using namespace gameboard;
 
 namespace moves {
-  struct Move {
+struct Move {
   gameboard::BoardSpace start;
   gameboard::BoardSpace end;
 
@@ -67,6 +68,4 @@ struct ExecutedMove {
   }
 };
 
-
-
-}
+} // namespace moves

@@ -1,13 +1,5 @@
 //! @file key_generator.hpp
-//! Declaration of KeyGenerator and implementation of its method templates.
-
-// Filename: game_board.tpp
-// Author: Duane Goodner
-// Created: 2024-09-03
-// Last Modified: 2024-09-04
-
-// Description:
-// Header only library for creating and displaying ints used as Zobrist keys.
+//! Declaration of KeyGenerator and implementation of its template methods.
 
 #pragma once
 

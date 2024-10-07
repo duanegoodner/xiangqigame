@@ -1,19 +1,10 @@
 //! @file hash_calculator.hpp
 //! Class templates for HashCalculator and its supporting class ZobristKeys.
 
-// Filename: game_board.tpp
-// Author: Duane Goodner
-// Created: 2022-12-27
-// Last Modified: 2024-08-16
-
-// Description:
-// Defines struct and class used for Zobrist Hash tracking of board state.
-
 #pragma once
 
 #include <array>
 #include <board_data_structs.hpp>
-// #include <common.hpp>
 #include <game_board.hpp>
 #include <key_generator.hpp>
 #include <utility_functs.hpp>

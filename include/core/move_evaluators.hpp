@@ -12,12 +12,11 @@
 
 #include <board_data_structs.hpp>
 #include <board_state_summarizer_interface.hpp>
-// #include <common.hpp>
 #include <evaluator_details.hpp>
 #include <functional>
 #include <limits>
-#include <piece_value_provider_interface.hpp>
 #include <move_evaluator_interface.hpp>
+#include <piece_value_provider_interface.hpp>
 #include <space_info_provider_interface.hpp>
 #include <utility_functs.hpp>
 
@@ -61,7 +60,9 @@ public:
 
   Move ImplementSelectMove();
   Points_t GetPlayerTotal(PieceColor color);
-  inline moveselection::SearchSummaries GetSearchSummaries() { return search_summaries_; }
+  inline moveselection::SearchSummaries GetSearchSummaries() {
+    return search_summaries_;
+  }
   inline int StartingSearchDepth() { return starting_search_depth_; }
 
   inline size_t KeySizeBits() {
@@ -117,15 +118,8 @@ public:
   RandomMoveEvaluator(
       PieceColor evaluating_player,
       ConcreteSpaceInfoProvider &game_board
-  )
-      : evaluating_player_{evaluating_player}
-      , game_board_{game_board} {};
-  Move ImplementSelectMove() {
-    auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
-    auto selected_move_index =
-        utility_functs::random((size_t)0, allowed_moves.moves.size() - 1);
-    return allowed_moves.moves[selected_move_index];
-  };
+  );
+  Move ImplementSelectMove();
 
 private:
   PieceColor evaluating_player_;
@@ -133,4 +127,5 @@ private:
 };
 } // namespace moveselection
 
-#include <move_evaluators.tpp>
+#include <minimax_move_evaluator.tpp>
+#include <random_move_evaluator.tpp>

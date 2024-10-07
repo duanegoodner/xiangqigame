@@ -1,3 +1,6 @@
+//! @file move_evaluator_interface.hpp
+//! Definition of MoveEvaluator interface. 
+
 #pragma once
 
 #include <board_data_structs.hpp>

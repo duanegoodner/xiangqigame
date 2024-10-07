@@ -1,13 +1,17 @@
+//! @file game_piece.hpp
+//! Enums and utility functions for describing occupant of BoardSpace.
+//! We do not have an actual GamePiece data type - just descriptors to indicate
+//! properties of BoardSpace objects.
+
 #pragma once
 
 #include <string>
 #include <unordered_map>
 
-
 using namespace std;
 
 namespace gamepiece {
-    enum PieceType : int {
+enum PieceType : int {
   kNnn = 0,
   kGen = 1,
   kAdv = 2,
@@ -19,18 +23,17 @@ namespace gamepiece {
 };
 const int kNumPieceTypeVals = 8;
 
-
 const unordered_map<string, PieceType> kPieceTypeStringToEnum = [] {
-    unordered_map<string, PieceType> temp;
-    temp.insert(make_pair("null", PieceType::kNnn));
-    temp.insert(make_pair("general", PieceType::kGen));
-    temp.insert(make_pair("advisor", PieceType::kAdv));
-    temp.insert(make_pair("elephant", PieceType::kEle));
-    temp.insert(make_pair("chariot", PieceType::kCha));
-    temp.insert(make_pair("horse", PieceType::kHor));
-    temp.insert(make_pair("cannon", PieceType::kCan));
-    temp.insert(make_pair("soldier", PieceType::kSol));
-    return temp;
+  unordered_map<string, PieceType> temp;
+  temp.insert(make_pair("null", PieceType::kNnn));
+  temp.insert(make_pair("general", PieceType::kGen));
+  temp.insert(make_pair("advisor", PieceType::kAdv));
+  temp.insert(make_pair("elephant", PieceType::kEle));
+  temp.insert(make_pair("chariot", PieceType::kCha));
+  temp.insert(make_pair("horse", PieceType::kHor));
+  temp.insert(make_pair("cannon", PieceType::kCan));
+  temp.insert(make_pair("soldier", PieceType::kSol));
+  return temp;
 }();
 
 enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
@@ -45,8 +48,6 @@ const unordered_map<string, PieceColor> kPieceColorStringToEnum = [] {
   return temp;
 }();
 
-
-
 // converts red/black: -1/1 of PieceColor enum to 0/1 used in some arrays
 inline size_t get_zcolor_index(PieceColor color) {
   return (size_t)(color + (int)(color < 0));
@@ -57,4 +58,4 @@ inline PieceColor get_piece_color(size_t zcolor_index) {
   return static_cast<PieceColor>(piece_color_val);
 }
 
-}
+} // namespace gamepiece

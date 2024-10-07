@@ -5,7 +5,6 @@
 
 #include <array>
 #include <cassert>
-// #include <common.hpp>
 #include <game_piece.hpp>
 #include <random>
 #include <vector>
