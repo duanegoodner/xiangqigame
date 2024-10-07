@@ -33,10 +33,7 @@ struct ZobristKeys {
       : zarray{}
       , turn_key{} {
     KeyGenerator key_generator;
-    // std::random_device rd;
-    // std::mt19937_64 gen_64{rd()};
     turn_key = key_generator.GenerateKey<KeyType>();
-    // turn_key = keygenerator::generate_key<KeyType>(gen_64);
     zarray = CreateGameZarray(key_generator);
   };
 
@@ -44,7 +41,6 @@ struct ZobristKeys {
       : zarray{}
       , turn_key{} {
     KeyGenerator key_generator;
-    // std::mt19937_64 gen_64(seed);
     turn_key = key_generator.GenerateKey<KeyType>();
     zarray = CreateGameZarray(key_generator);
   };
@@ -56,7 +52,6 @@ struct ZobristKeys {
   KeyType GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) {
     return zarray[get_zcolor_index(color)][piece_type][space.rank][space.file];
   }
-  // static const GameZarray_t CreateGameZarray(std::mt19937_64 &gen_64) {
   static const GameZarray_t CreateGameZarray(KeyGenerator key_generator) {
     GameZarray_t game_zarray{};
     for (auto color_idx = 0; color_idx < 2; color_idx++) {

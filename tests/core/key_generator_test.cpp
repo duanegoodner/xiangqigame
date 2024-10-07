@@ -5,19 +5,7 @@
 
 class KeyGeneratorTest : public ::testing::Test {
 protected:
-  // std::random_device rd_;
-  // std::mt19937_64 gen_64_{rd_()};
 };
-
-// TEST_F(KeyGeneratorTest, Generate64BitKey) {
-//     auto result = keygenerator::generate_key<uint64_t>(gen_64_);
-//     keygenerator::display_key<uint64_t>(result);
-// }
-
-// TEST_F(KeyGeneratorTest, Generate128BitKey) {
-//     auto result = keygenerator::generate_key<__uint128_t>(gen_64_);
-//     keygenerator::display_key<__uint128_t>(result);
-// }
 
 TEST_F(KeyGeneratorTest, InstantiateClass) {
   boardstate::KeyGenerator key_generator;
