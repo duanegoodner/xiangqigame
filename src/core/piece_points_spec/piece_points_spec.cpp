@@ -11,7 +11,7 @@
 #include <fstream>
 #include <iostream>
 #include <nlohmann/json.hpp>
-#include <piece_points_spec.hpp>
+#include <piece_points_bpo.hpp>
 #include <unordered_map>
 #include <utility_functs.hpp>
 

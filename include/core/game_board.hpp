@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <board_components.hpp>
+#include <board_data_structs.hpp>
 #include <common.hpp>
 #include <functional>
 #include <move_calculator.hpp>

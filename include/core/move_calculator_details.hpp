@@ -5,8 +5,7 @@
 #pragma once
 
 #include <array>
-#include <board_components.hpp>
-#include <board_utilities.hpp>
+#include <board_data_structs.hpp>
 #include <piece_moves.hpp>
 
 using namespace std;

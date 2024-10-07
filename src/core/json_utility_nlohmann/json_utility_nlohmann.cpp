@@ -1,5 +1,5 @@
 #include <json_utility_nlohmann.hpp>
-#include <piece_points_spec.hpp>
+#include <piece_points_bpo.hpp>
 
 using namespace std;
 

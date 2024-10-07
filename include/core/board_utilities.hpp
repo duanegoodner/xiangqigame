@@ -87,3 +87,4 @@ inline vector<BoardSpace> get_all_spaces_occupied_by(
 }
 
 } // namespace gameboard
+

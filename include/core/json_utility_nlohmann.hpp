@@ -8,7 +8,7 @@
 // #include <nlohmann/json-schema.hpp>
 #include <nlohmann/json.hpp>
 // #include <nlohmann/json_fwd.hpp>
-#include <piece_points_spec.hpp>
+#include <piece_points_bpo.hpp>
 #include <string>
 
 using namespace std;
