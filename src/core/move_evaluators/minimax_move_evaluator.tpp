@@ -118,7 +118,7 @@ template <
     typename ConcreteSpaceInfoProvider,
     typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-BestMoves MinimaxMoveEvaluator<
+EqualValueMoves MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::EvaluateNonWinLeaf(PieceColor cur_player) {
@@ -128,9 +128,9 @@ BestMoves MinimaxMoveEvaluator<
   auto empty_move_collection = MoveCollection();
 
   if (cur_player == evaluating_player_) {
-    return BestMoves{(cur_player_points - opponent_points), empty_move_collection};
+    return EqualValueMoves{(cur_player_points - opponent_points), empty_move_collection};
   } else {
-    return BestMoves{(opponent_points - cur_player_points), empty_move_collection};
+    return EqualValueMoves{(opponent_points - cur_player_points), empty_move_collection};
   }
 }
 
@@ -138,7 +138,7 @@ template <
     typename ConcreteSpaceInfoProvider,
     typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-BestMoves MinimaxMoveEvaluator<
+EqualValueMoves MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::
@@ -147,10 +147,10 @@ BestMoves MinimaxMoveEvaluator<
 
   if (cur_player == evaluating_player_) {
     result_type = MinimaxResultType::kEvaluatorLoses;
-    return BestMoves{numeric_limits<Points_t>::min(), empty_best_moves};
+    return EqualValueMoves{numeric_limits<Points_t>::min(), empty_best_moves};
   } else {
     result_type = MinimaxResultType::kEvaluatorWins;
-    return BestMoves{numeric_limits<Points_t>::max(), empty_best_moves};
+    return EqualValueMoves{numeric_limits<Points_t>::max(), empty_best_moves};
   }
 }
 
@@ -219,7 +219,7 @@ template <
     typename ConcreteSpaceInfoProvider,
     typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-BestMoves MinimaxMoveEvaluator<
+EqualValueMoves MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::
@@ -309,11 +309,11 @@ BestMoves MinimaxMoveEvaluator<
     if (result_type == MinimaxResultType::kUnknown) {
       result_type = MinimaxResultType::kFullyEvaluatedNode;
     }
-    auto result = BestMoves{max_eval, best_moves};
+    auto result = EqualValueMoves{max_eval, best_moves};
     hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
     search_summary.Update(result_type, remaining_search_depth, result);
     // search_summary.result_counts[result_type]++;
-    return BestMoves{max_eval, best_moves};
+    return EqualValueMoves{max_eval, best_moves};
 
   } else {
     // evaluation of each legal move when it's evaluating player's opponent's turn
@@ -350,7 +350,7 @@ BestMoves MinimaxMoveEvaluator<
     if (result_type == MinimaxResultType::kUnknown) {
       result_type = MinimaxResultType::kFullyEvaluatedNode;
     }
-    auto result = BestMoves{min_eval, best_moves};
+    auto result = EqualValueMoves{min_eval, best_moves};
     hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
     search_summary.Update(result_type, remaining_search_depth, result);
     // search_summary.result_counts[result_type]++;

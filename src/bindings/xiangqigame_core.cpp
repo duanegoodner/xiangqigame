@@ -88,9 +88,9 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .def("size", &MoveCollection::Size)
       .def("ContainsMove", &MoveCollection::ContainsMove);
 
-  py::class_<BestMoves>(m, "BestMoves")
-      .def_readonly("best_eval", &BestMoves::best_eval)
-      .def_readonly("best_moves", &BestMoves::best_moves);
+  py::class_<EqualValueMoves>(m, "EqualValueMoves")
+      .def_readonly("best_eval", &EqualValueMoves::best_eval)
+      .def_readonly("best_moves", &EqualValueMoves::best_moves);
 
   py::class_<ExecutedMove>(m, "ExecutedMove")
       .def(

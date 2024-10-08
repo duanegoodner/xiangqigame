@@ -33,7 +33,7 @@ public:
   void RecordTrData(
       int search_depth,
       moveselection::MinimaxResultType result_type,
-      moveselection::BestMoves &best_moves
+      moveselection::EqualValueMoves &best_moves
   ) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)
         ->ImplementRecordTrData(search_depth, result_type, best_moves);

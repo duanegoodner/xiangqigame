@@ -71,8 +71,8 @@ private:
   int starting_search_depth_;
   moveselection::SearchSummaries search_summaries_;
 
-  BestMoves EvaluateNonWinLeaf(PieceColor cur_player);
-  BestMoves EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &result_type);
+  EqualValueMoves EvaluateNonWinLeaf(PieceColor cur_player);
+  EqualValueMoves EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &result_type);
   RatedMove RateMove(Move move, PieceColor cur_player);
   Points_t GetValueOfPieceAtPosition(
       PieceColor color,
@@ -83,7 +83,7 @@ private:
       PieceColor cur_player,
       MoveCollection &cur_player_moves
   );
-  BestMoves MinimaxRec(
+  EqualValueMoves MinimaxRec(
       int remaining_search_depth,
       int alpha,
       int beta,
