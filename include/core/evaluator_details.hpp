@@ -75,17 +75,21 @@ inline EqualScoreMoves evaluate_win_leaf(
 struct ResultDepthCounts {
 
   ResultDepthCounts(int max_search_depth) {
-    data.reserve(MinimaxResultType::kMax);
-    for (auto idx = 0; idx <= MinimaxResultType::kMax; idx++) {
-      data.emplace_back(max_search_depth + 1, 0);
+    // data.reserve(MinimaxResultType::kMax);
+    for (auto &vec : data) {
+      vec.resize(max_search_depth + 1);
     }
+
+    // for (auto idx = 0; idx <= MinimaxResultType::kMax; idx++) {
+    //   data.emplace_back(max_search_depth + 1, 0);
+    // }
   }
 
   void Update(MinimaxResultType result_type, int search_depth) {
     data[result_type][search_depth]++;
   }
 
-  std::vector<std::vector<int>> data;
+  std::array<std::vector<int>, MinimaxResultType::kMax + 1> data;
 };
 
 struct SearchSummary {
@@ -93,11 +97,6 @@ struct SearchSummary {
       : num_nodes{}
       , result_depth_counts{ResultDepthCounts(max_search_depth)}
       , transposition_table_hits(ResultDepthCounts(max_search_depth)) {
-    // reserve a "row" for each result type
-    // result_depth_counts.reserve(MinimaxResultType::kMax);
-    // for (auto idx = 0; idx <= MinimaxResultType::kMax; idx++) {
-    // for each "row", create vector long enough to hold each possible search depth
-    // result_depth_counts.emplace_back(max_search_depth + 1, 0);
   }
 
   void Update(
@@ -124,10 +123,10 @@ struct SearchSummary {
   void SetSelectedMove(moves::Move selected_move) {
     this->selected_move = selected_move;
   }
-  std::vector<std::vector<int>> GetResultDepthCounts() {
+  std::array<std::vector<int>, MinimaxResultType::kMax + 1> GetResultDepthCounts() {
     return result_depth_counts.data;
   }
-  std::vector<std::vector<int>> GetTranspositionTableHits() {
+  std::array<std::vector<int>, MinimaxResultType::kMax + 1> GetTranspositionTableHits() {
     return transposition_table_hits.data;
   }
 
