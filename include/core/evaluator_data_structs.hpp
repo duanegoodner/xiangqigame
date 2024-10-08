@@ -71,6 +71,7 @@ inline EqualScoreMoves evaluate_win_leaf(
   }
 }
 
+typedef std::array<std::vector<int>, MinimaxResultType::kMax + 1> ResultDepthCountsData_t;
 
 struct ResultDepthCounts {
 
@@ -84,7 +85,7 @@ struct ResultDepthCounts {
     data[result_type][search_depth]++;
   }
 
-  std::array<std::vector<int>, MinimaxResultType::kMax + 1> data;
+  ResultDepthCountsData_t data;
 };
 
 struct SearchSummary {
@@ -118,10 +119,10 @@ struct SearchSummary {
   void SetSelectedMove(moves::Move selected_move) {
     this->selected_move = selected_move;
   }
-  std::array<std::vector<int>, MinimaxResultType::kMax + 1> GetResultDepthCounts() {
+  ResultDepthCountsData_t GetResultDepthCounts() {
     return result_depth_counts.data;
   }
-  std::array<std::vector<int>, MinimaxResultType::kMax + 1> GetTranspositionTableHits() {
+  ResultDepthCountsData_t GetTranspositionTableHits() {
     return transposition_table_hits.data;
   }
 
