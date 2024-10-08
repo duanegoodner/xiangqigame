@@ -4,6 +4,7 @@
 #pragma once
 
 #include <board_data_structs.hpp>
+#include <game_piece.hpp>
 
 using namespace gameboard;
 
@@ -59,8 +60,8 @@ struct MoveCollection {
 
 struct ExecutedMove {
   Move spaces;
-  gameboard::GamePiece moving_piece;
-  gameboard::GamePiece destination_piece;
+  gamepiece::GamePiece moving_piece;
+  gamepiece::GamePiece destination_piece;
 
   bool operator==(const ExecutedMove other) {
     return (other.spaces == spaces) && (other.moving_piece == moving_piece) &&

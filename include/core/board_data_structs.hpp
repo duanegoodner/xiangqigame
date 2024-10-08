@@ -34,32 +34,6 @@ struct BoardDirection {
   BoardIdx_t rank, file;
 };
 
-
-struct GamePiece {
-  PieceType piece_type;
-  PieceColor piece_color;
-
-  GamePiece() {
-    piece_type = PieceType::kNnn;
-    piece_color = PieceColor::kNul;
-  }
-
-  GamePiece(int int_piece) {
-    piece_type = static_cast<PieceType>(abs(int_piece));
-    piece_color = (int_piece == 0) ? PieceColor::kNul
-                                   : static_cast<PieceColor>(copysign(1, int_piece));
-  }
-
-  GamePiece(PieceType type, PieceColor color) {
-    piece_type = type;
-    piece_color = color;
-  }
-
-  bool operator==(const GamePiece &other) const {
-    return (piece_type == other.piece_type) && (piece_color == other.piece_color);
-  }
-};
-
 inline PieceColor opponent_of(PieceColor color) {
   return static_cast<PieceColor>(-1 * color);
 }

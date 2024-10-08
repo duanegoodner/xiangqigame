@@ -1,10 +1,9 @@
 //! @file game_piece.hpp
-//! Enums and utility functions for describing occupant of gameboard::BoardSpace.
-//! We do not have an actual GamePiece data type - just descriptors to indicate
-//! properties of BoardSpace objects.
+//! Defines GamePiece and supporting constants and free functions.
 
 #pragma once
 
+#include <cmath>
 #include <string>
 #include <unordered_map>
 
@@ -38,6 +37,31 @@ const unordered_map<string, PieceType> kPieceTypeStringToEnum = [] {
 
 enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
 const int kNumPieceColorVals = 3;
+
+struct GamePiece {
+  PieceType piece_type;
+  PieceColor piece_color;
+
+  GamePiece() {
+    piece_type = PieceType::kNnn;
+    piece_color = PieceColor::kNul;
+  }
+
+  GamePiece(int int_piece) {
+    piece_type = static_cast<PieceType>(abs(int_piece));
+    piece_color = (int_piece == 0) ? PieceColor::kNul
+                                   : static_cast<PieceColor>(copysign(1, int_piece));
+  }
+
+  GamePiece(PieceType type, PieceColor color) {
+    piece_type = type;
+    piece_color = color;
+  }
+
+  bool operator==(const GamePiece &other) const {
+    return (piece_type == other.piece_type) && (piece_color == other.piece_color);
+  }
+};
 
 // Use lambda function because hpp2plantuml can't parse {{
 const unordered_map<string, PieceColor> kPieceColorStringToEnum = [] {
