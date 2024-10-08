@@ -1,5 +1,5 @@
 //! @file key_generator.hpp
-//! Declaration of KeyGenerator and implementation of its template methods.
+//! Declaration of boardstate::KeyGenerator and implementation of its template methods.
 
 #pragma once
 
@@ -10,6 +10,8 @@
 
 namespace boardstate {
 
+//! Used by boardstate::ZobristKeys to generate hash keys. Supports 64-bit and 128-bit
+//! keys.
 class KeyGenerator {
 public:
   KeyGenerator(unsigned long seed = std::random_device{}())

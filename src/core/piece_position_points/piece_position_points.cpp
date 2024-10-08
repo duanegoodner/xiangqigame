@@ -1,4 +1,6 @@
-// #include <common.hpp>
+//! @file piece_position_points.cpp
+//! Implementation of piece_points::PiecePositionPoints. 
+
 #include <piece_points_bpo.hpp>
 #include <piece_position_points.hpp>
 #include <unordered_map>

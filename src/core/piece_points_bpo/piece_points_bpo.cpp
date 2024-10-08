@@ -1,13 +1,7 @@
-// Filename: piece_points_spec.cpp
-// Author: Duane Goodner
-// Created: 2022-12-15
-// Last Modified: 2024-08-16
-
-// Description:
-// Implementation of PiecePointsSpec
+//! @file piece_points_bpo.cpp
+//! Implementation of methods that store piece points info in Base Point Offset form. 
 
 #include <algorithm>
-// #include <common.hpp>
 #include <fstream>
 #include <iostream>
 #include <nlohmann/json.hpp>

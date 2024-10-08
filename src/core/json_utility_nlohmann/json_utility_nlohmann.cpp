@@ -1,3 +1,6 @@
+//! @file json_utility_nlohmann.cpp
+//! Implementation of methods for jsonio::NlohmannJsonUtility.  
+
 #include <json_utility_nlohmann.hpp>
 #include <piece_points_bpo.hpp>
 

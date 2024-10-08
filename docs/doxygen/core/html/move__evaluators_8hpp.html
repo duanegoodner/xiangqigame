@@ -72,36 +72,55 @@ $(function() {
   <div class="headertitle"><div class="title">move_evaluators.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="common_8hpp_source.html">common.hpp</a>&gt;</code><br />
+
+<p>Definitions of concrete classes that implement the <a class="el" href="classMoveEvaluator.html">MoveEvaluator</a> interface.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &lt;<a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>&gt;</code><br />
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;limits&gt;</code><br />
+<code>#include &lt;<a class="el" href="move__evaluator__interface_8hpp_source.html">move_evaluator_interface.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="piece__value__provider__interface_8hpp_source.html">piece_value_provider_interface.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="space__info__provider__interface_8hpp_source.html">space_info_provider_interface.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="utility__functs_8hpp_source.html">utility_functs.hpp</a>&gt;</code><br />
-<code>#include &lt;minimax_move_evaluators.tpp&gt;</code><br />
+<code>#include &lt;minimax_move_evaluator.tpp&gt;</code><br />
+<code>#include &lt;random_move_evaluator.tpp&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for move_evaluators.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="move__evaluators_8hpp__incl.png" border="0" usemap="#ainclude_2core_2move__evaluators_8hpp" alt=""/></div>
 <map name="ainclude_2core_2move__evaluators_8hpp" id="ainclude_2core_2move__evaluators_8hpp">
-<area shape="rect" title=" " alt="" coords="378,5,625,32"/>
-<area shape="rect" href="board__components_8hpp.html" title="Constants, typedefs, and simple structs used by GameBoard." alt="" coords="22,155,197,181"/>
-<area shape="rect" href="common_8hpp.html" title="Constants and typedefs that are widely used in multiple namespaces." alt="" coords="248,229,355,256"/>
-<area shape="rect" title=" " alt="" coords="615,304,673,331"/>
-<area shape="rect" href="evaluator__details_8hpp.html" title="Data structs used by MinimaxEvaluator." alt="" coords="228,80,391,107"/>
-<area shape="rect" title=" " alt="" coords="590,80,677,107"/>
-<area shape="rect" href="utility__functs_8hpp.html" title=" " alt="" coords="379,229,514,256"/>
-<area shape="rect" title=" " alt="" coords="701,80,861,107"/>
-<area shape="rect" title=" " alt="" coords="5,304,61,331"/>
-<area shape="rect" title=" " alt="" coords="53,229,123,256"/>
-<area shape="rect" title=" " alt="" coords="85,304,157,331"/>
-<area shape="rect" title=" " alt="" coords="182,304,245,331"/>
-<area shape="rect" title=" " alt="" coords="417,304,476,331"/>
-<area shape="rect" title=" " alt="" coords="269,304,393,331"/>
-<area shape="rect" title=" " alt="" coords="347,155,413,181"/>
-<area shape="rect" title=" " alt="" coords="221,155,272,181"/>
-<area shape="rect" title=" " alt="" coords="501,304,590,331"/>
-<area shape="rect" title=" " alt="" coords="697,304,844,331"/>
+<area shape="rect" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="1511,5,1758,32"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="1217,423,1391,449"/>
+<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer" alt="" coords="1145,80,1329,121"/>
+<area shape="rect" href="evaluator__details_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1003,177,1165,203"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="666,423,801,449"/>
+<area shape="rect" title=" " alt="" coords="1723,87,1810,114"/>
+<area shape="rect" title=" " alt="" coords="1835,87,1893,114"/>
+<area shape="rect" href="move__evaluator__interface_8hpp.html" title="Definition of MoveEvaluator interface." alt="" coords="1189,177,1411,203"/>
+<area shape="rect" href="piece__value__provider__interface_8hpp.html" title="Definition of PieceValueProvider CRTP interface." alt="" coords="1435,169,1597,211"/>
+<area shape="rect" href="space__info__provider__interface_8hpp.html" title="Definition of SpaceInfoProvider CRTP interface." alt="" coords="1494,333,1647,375"/>
+<area shape="rect" title=" " alt="" coords="1918,87,2135,114"/>
+<area shape="rect" title=" " alt="" coords="2159,87,2369,114"/>
+<area shape="rect" title=" " alt="" coords="1037,497,1093,524"/>
+<area shape="rect" title=" " alt="" coords="1323,497,1392,524"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Enums and utility functions for describing occupant of gameboard::BoardSpace." alt="" coords="1118,497,1247,524"/>
+<area shape="rect" title=" " alt="" coords="853,497,925,524"/>
+<area shape="rect" title=" " alt="" coords="950,497,1013,524"/>
+<area shape="rect" title=" " alt="" coords="460,572,519,599"/>
+<area shape="rect" title=" " alt="" coords="1171,572,1295,599"/>
+<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of moves::Move and other move&#45;related structs." alt="" coords="1115,341,1290,367"/>
+<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="537,259,700,285"/>
+<area shape="rect" title=" " alt="" coords="1051,259,1117,285"/>
+<area shape="rect" title=" " alt="" coords="1141,259,1192,285"/>
+<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="5,497,192,524"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="231,423,425,449"/>
+<area shape="rect" href="piece__points__data__structs_8hpp.html" title="Typedefs for collections of piece points." alt="" coords="656,341,875,367"/>
+<area shape="rect" title=" " alt="" coords="899,341,975,367"/>
+<area shape="rect" title=" " alt="" coords="217,497,290,524"/>
+<area shape="rect" title=" " alt="" coords="416,497,563,524"/>
+<area shape="rect" title=" " alt="" coords="689,497,778,524"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -109,15 +128,14 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="move__evaluators_8hpp__dep__incl.png" border="0" usemap="#ainclude_2core_2move__evaluators_8hppdep" alt=""/></div>
 <map name="ainclude_2core_2move__evaluators_8hppdep" id="ainclude_2core_2move__evaluators_8hppdep">
-<area shape="rect" title=" " alt="" coords="446,5,693,32"/>
-<area shape="rect" href="game__board_8hpp.html" title="Declaration of GameBoard and related constants." alt="" coords="215,87,430,114"/>
-<area shape="rect" href="xiangqigame__core_8cpp.html" title=" " alt="" coords="300,273,489,315"/>
-<area shape="rect" href="piece__position__points_8hpp.html" title=" " alt="" coords="550,80,706,121"/>
-<area shape="rect" href="move__evaluators_8cpp.html" title=" " alt="" coords="730,80,921,121"/>
-<area shape="rect" href="hash__calculator_8hpp.html" title="Class templates for HashCalculator and its supporting class ZobristKeys." alt="" coords="5,184,240,211"/>
-<area shape="rect" href="game__board_8cpp.html" title=" " alt="" coords="315,177,474,218"/>
-<area shape="rect" href="bpo__json__to__raw__json_8cpp.html" title=" " alt="" coords="601,169,783,225"/>
-<area shape="rect" href="piece__position__points_8cpp.html" title=" " alt="" coords="808,169,979,225"/>
+<area shape="rect" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="446,5,693,32"/>
+<area shape="rect" href="game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="215,87,430,114"/>
+<area shape="rect" href="xiangqigame__core_8cpp.html" title="Implements Pybind11 module xiangqigame_core, exposing C++ classes and methods to Python." alt="" coords="300,273,489,315"/>
+<area shape="rect" href="piece__position__points_8hpp.html" title="Definition of piece_points::PiecePositionPoints." alt="" coords="550,80,706,121"/>
+<area shape="rect" href="move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="730,80,921,121"/>
+<area shape="rect" href="hash__calculator_8hpp.html" title="Class templates for boardstate::HashCalculator and its supporting class boardstate::ZobristKeys." alt="" coords="5,184,240,211"/>
+<area shape="rect" href="game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="315,177,474,218"/>
+<area shape="rect" href="piece__position__points_8cpp.html" title="Implementation of piece_points::PiecePositionPoints." alt="" coords="600,169,771,225"/>
 </map>
 </div>
 </div>
@@ -125,14 +143,6 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpaceInfoProvider.html">SpaceInfoProvider&lt; ConcreteSpaceInfoProvider &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBoardStateSummarizer.html">BoardStateSummarizer&lt; ConcreteBoardStateSummarizer, KeyType &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPieceValueProvider.html">PieceValueProvider&lt; ConcretePieceValueProvider &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMoveEvaluator.html">MoveEvaluator&lt; ConcreteMoveEvaluator &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html">moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;</a></td></tr>
@@ -143,10 +153,14 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespacemoveselection"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemoveselection.html">moveselection</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Definitions of concrete classes that implement the <a class="el" href="classMoveEvaluator.html">MoveEvaluator</a> interface. </p>
+
+<p class="definition">Definition in file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 7 2024 13:51:59 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 00:52:08 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

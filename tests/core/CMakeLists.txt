@@ -15,7 +15,7 @@ target_link_libraries(
     GTest::gtest_main)
 target_include_directories(
     piece_position_points_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
+    ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
     ${rapidjson_SOURCE_DIR}/include)
 
@@ -49,14 +49,14 @@ target_link_libraries(
     utility_functs
     )
 
-add_executable(piece_points_spec_test piece_points_spec_test.cpp)
+add_executable(piece_points_bpo_test piece_points_bpo_test.cpp)
 target_link_libraries(
-    piece_points_spec_test PRIVATE
-    piece_points_spec
+    piece_points_bpo_test PRIVATE
+    piece_points_bpo
     utility_functs
     GTest::gtest_main)
 target_include_directories(
-    piece_points_spec_test PRIVATE
+    piece_points_bpo_test PRIVATE
     ${rapidjson_SOURCE_DIR}/include
     )
 
@@ -71,7 +71,7 @@ target_link_libraries(
     GTest::gtest_main)
 target_include_directories(
     minimax_evaluator_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
+    ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
     ${rapidjson_SOURCE_DIR}/include)
 
 add_executable(
@@ -98,7 +98,7 @@ target_link_libraries(
     json_utility_test PRIVATE
     json_utility_nlohmann
     nlohmann_json::nlohmann_json
-    piece_points_spec
+    piece_points_bpo
     utility_functs
     GTest::gtest_main
 )

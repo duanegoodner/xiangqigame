@@ -7,15 +7,15 @@ target_link_libraries(
     hash_calculator
     game_board
     piece_position_points
-    piece_points_spec
+    piece_points_bpo
     utility_functs
     )
 
 target_include_directories(
     xiangqigame_core PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
+    ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points_spec
+    ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
     ${CMAKE_CURRENT_SOURCE_DIR})
 
 if(SKBUILD)

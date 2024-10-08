@@ -1,5 +1,5 @@
 //! @file move_data_structs.hpp 
-//! Definitions and implementations of move-related structs.
+//! Definitions and implementations of moves::Move and other move-related structs.
 
 #pragma once
 

@@ -1,5 +1,5 @@
 //! @file board_data_structs.hpp
-//! Constants, typedefs, and simple structs used by GameBoard.
+//! Constants, typedefs, and simple structs used by gameboard::GameBoard.
 
 #pragma once
 
@@ -28,9 +28,12 @@ struct CastleEdges {
 };
 constexpr CastleEdges kRedCastleEdges = {7, 9, 3, 5};
 constexpr CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
+
+//! Acts as a vector with same units as gameboard::BoardSpace. 
 struct BoardDirection {
   BoardIdx_t rank, file;
 };
+
 
 struct GamePiece {
   PieceType piece_type;

@@ -1,6 +1,6 @@
 //! @file move_calculator_details.hpp
-//! Typedefs and data struct used by MoveCalculator to select appropriate method from
-//! PieceMoves.
+//! Typedefs and data struct used by moves::MoveCalculator to select appropriate method
+//! from moves::PieceMoves.
 
 #pragma once
 

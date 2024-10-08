@@ -1,7 +1,9 @@
+//! @file piece_value_provider_interface.hpp
+//! Definition of PieceValueProvider CRTP interface.  
+
 #pragma once
 
 #include <board_data_structs.hpp>
-// #include <common.hpp>
 
 using namespace gameboard;
 

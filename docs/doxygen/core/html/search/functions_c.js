@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['main_0',['main',['../json__schema__validate_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;json_schema_validate.cpp'],['../my__schemas_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;my_schemas.cpp'],['../bpo__json__to__raw__json_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;bpo_json_to_raw_json.cpp']]],
+  ['main_0',['main',['../json__schema__validate_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;json_schema_validate.cpp'],['../my__schemas_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;my_schemas.cpp']]],
   ['map_1',['map',['../classgameboard_1_1GameBoard.html#add9c13f8d6d2cc2d3e64036338f0f4da',1,'gameboard::GameBoard']]],
   ['minimaxmoveevaluator_2',['MinimaxMoveEvaluator',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a715fde207cafc6514f84ca371fb32023',1,'moveselection::MinimaxMoveEvaluator::MinimaxMoveEvaluator(PieceColor evaluating_player, int starting_search_depth, ConcreteSpaceInfoProvider &amp;game_board, ConcretePieceValueProvider game_position_points)'],['../classmoveselection_1_1MinimaxMoveEvaluator.html#afbb53bb5922a10c301ad9cbe69922526',1,'moveselection::MinimaxMoveEvaluator::MinimaxMoveEvaluator(PieceColor evaluating_player, int starting_search_depth, ConcreteSpaceInfoProvider &amp;game_board)']]],
   ['minimaxrec_3',['MinimaxRec',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a49d1536c397aabac919605c5c62278e4',1,'moveselection::MinimaxMoveEvaluator']]],

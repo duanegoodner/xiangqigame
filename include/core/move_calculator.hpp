@@ -1,5 +1,5 @@
 //! @file move_calculator.hpp
-//! Definition of MoveCalculator
+//! Definition of moves::MoveCalculator.
 
 #pragma once
 

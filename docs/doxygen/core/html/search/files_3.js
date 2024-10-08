@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['game_5fboard_2ecpp_0',['game_board.cpp',['../game__board_8cpp.html',1,'']]],
-  ['game_5fboard_2ehpp_1',['game_board.hpp',['../game__board_8hpp.html',1,'']]]
+  ['hash_5fcalculator_2ehpp_0',['hash_calculator.hpp',['../hash__calculator_8hpp.html',1,'']]]
 ];

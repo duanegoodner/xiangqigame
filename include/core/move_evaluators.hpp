@@ -1,12 +1,5 @@
-// Filename: move_evaluators.hpp
-// Author: Duane Goodner
-// Created: 2022-12-17
-// Last Modified: 2024-09-30
-
-// Description:
-// Defines PiecePointsEvaluator template class and interfaces that
-// PiecePointsEvaluator requires GameBoard and GamePoints classes to comply
-// with.
+//! @file move_evaluators.hpp
+//! Definitions of concrete classes that implement the MoveEvaluator interface.
 
 #pragma once
 

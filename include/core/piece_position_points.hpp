@@ -1,15 +1,9 @@
-// Filename: piece_points.hpp
-// Author: Duane Goodner
-// Created: 2022-11-10
-// Last Modified: 2024-10-02
-
-// Description:
-// Defines PiecePositionPoints class.
+//! @file piece_position_points.hpp
+//! Definition of piece_points::PiecePositionPoints. 
 
 #pragma once
 
 #include <board_data_structs.hpp>
-// #include <common.hpp>
 #include <move_evaluators.hpp>
 #include <piece_points_bpo.hpp>
 

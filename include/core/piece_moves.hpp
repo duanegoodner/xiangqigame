@@ -1,10 +1,5 @@
-// Filename: piece_moves.hpp
-// Author: Duane Goodner
-// Created: 2022-11-10
-// Last Modified: 2024-08-16
-
-// Description:
-// Defines PieceMoves class.
+//! @file piece_moves.hpp
+//! Definition of moves::PieceMoves and related constants.  
 
 #pragma once
 

@@ -1,15 +1,15 @@
-#pragma  once
+//! @file space_info_provider_interface.hpp
+//! Definition of SpaceInfoProvider CRTP interface.  
 
+#pragma once
 
 #include <board_data_structs.hpp>
-// #include <common.hpp>
 
 using namespace gameboard;
 using namespace moves;
 
-
 // CRTP INTERFACE: Evaluator <- SpaceInfoProvider (concrete example =
-// New GameBoard)
+// GameBoard)
 template <typename ConcreteSpaceInfoProvider>
 class SpaceInfoProvider {
 public:

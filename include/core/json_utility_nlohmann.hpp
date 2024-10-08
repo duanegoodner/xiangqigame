@@ -1,5 +1,5 @@
 //! @file json_utility_nlohmann.hpp
-//! Declaration and implementation of templated portions of NlohmannJsonUtility.
+//! Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility.
 
 #pragma once
 

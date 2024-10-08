@@ -1,5 +1,5 @@
 //! @file game_piece.hpp
-//! Enums and utility functions for describing occupant of BoardSpace.
+//! Enums and utility functions for describing occupant of gameboard::BoardSpace.
 //! We do not have an actual GamePiece data type - just descriptors to indicate
 //! properties of BoardSpace objects.
 

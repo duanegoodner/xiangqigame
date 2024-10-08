@@ -1,13 +1,7 @@
-// Filename: game_board.tpp
-// Author: Duane Goodner
-// Created: 2022-12-27
-// Last Modified: 2024-08-16
+//! @file minimax_move_evaluator.tpp
+//! Implementation of moveselection::MinimaxMoveEvaluator methods.  
 
-// Description:
-// Implements PiecePointsEvaluator template class.
-
-#ifndef _MINIMAX_EVALUATOR_TEMPLATE_
-#define _MINIMAX_EVALUATOR_TEMPLATE_
+#pragma once
 
 #include <board_data_structs.hpp>
 #include <chrono>
@@ -395,5 +389,3 @@ Move MinimaxMoveEvaluator<
   return selected_move;
 }
 } // namespace moveselection
-
-#endif /* MINIMAX_EVALUATOR */

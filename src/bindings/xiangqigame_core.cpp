@@ -1,11 +1,7 @@
-// Filename: xiangqigame_core.cpp
-// Author: Duane Goodner
-// Created: 2022-12-07
-// Last Modified: 2024-09-08
+//! @file xiangqigame_core.cpp
+//! Implements Pybind11 module xiangqigame_core, exposing C++ classes and methods to
+//! Python.
 
-// Description:
-// Implements pybind module that exposes GameBoard and related classes /
-// functions to Python.
 
 #include <pybind11/chrono.h>
 #include <pybind11/pybind11.h>
@@ -26,7 +22,8 @@ using namespace piece_points;
 
 template <typename KeyType>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
-  py::class_<MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>>(
+  py::class_<
+      MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>>(
       m,
       class_name.c_str()
   )
@@ -38,24 +35,32 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
       )
       .def(
           "select_move",
-          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>::
-              SelectMove
+          &MinimaxMoveEvaluator<
+              GameBoard,
+              HashCalculator<KeyType>,
+              PiecePositionPoints>::SelectMove
       )
       .def(
           "get_search_summaries",
-          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>::
-              GetSearchSummaries,
+          &MinimaxMoveEvaluator<
+              GameBoard,
+              HashCalculator<KeyType>,
+              PiecePositionPoints>::GetSearchSummaries,
           py::return_value_policy::copy
       )
       .def(
           "starting_search_depth",
-          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>::
-              StartingSearchDepth
+          &MinimaxMoveEvaluator<
+              GameBoard,
+              HashCalculator<KeyType>,
+              PiecePositionPoints>::StartingSearchDepth
       )
       .def(
           "zobrist_key_size_bits",
-          &MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>::
-              KeySizeBits
+          &MinimaxMoveEvaluator<
+              GameBoard,
+              HashCalculator<KeyType>,
+              PiecePositionPoints>::KeySizeBits
       );
 }
 
@@ -121,8 +126,8 @@ PYBIND11_MODULE(xiangqigame_core, m) {
   py::enum_<MinimaxResultType>(m, "MinimaxResultType")
       .value("Unknown", kUnknown)
       .value("TrTableHit", kTrTableHit)
-    //   .value("TrTableHitEvaluatorLoses", kTrTableHitEvaluatorLoses)
-    //   .value("TrTableHitEvaluatorWins", kTrTableHitEvaluatorWins)
+      //   .value("TrTableHitEvaluatorLoses", kTrTableHitEvaluatorLoses)
+      //   .value("TrTableHitEvaluatorWins", kTrTableHitEvaluatorWins)
       .value("EvaluatorLoses", kEvaluatorLoses)
       .value("EvaluatorWins", kEvaluatorWins)
       .value("FullyEvaluatedNode", kFullyEvaluatedNode)

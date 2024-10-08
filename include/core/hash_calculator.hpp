@@ -1,5 +1,6 @@
 //! @file hash_calculator.hpp
-//! Class templates for HashCalculator and its supporting class ZobristKeys.
+//! Class templates for boardstate::HashCalculator and its supporting class
+//! boardstate::ZobristKeys.
 
 #pragma once
 
@@ -15,6 +16,7 @@ using namespace std;
 
 namespace boardstate {
 
+//! Container for all of the hash keys needed to run a boardstate::HashCalculator.
 template <typename KeyType>
 struct ZobristKeys {
   typedef array<array<KeyType, kNumFiles>, kNumRanks> PieceZarray_t;
@@ -62,6 +64,8 @@ struct ZobristKeys {
   };
 };
 
+//! Container where boardstate::HashCalculator stores moveselection::MinimaxMoveEvaluator
+//! results; supports recording, look-up and retrieval of data.
 template <typename KeyType>
 struct TranspositionTable {
 
@@ -102,6 +106,9 @@ private:
   unordered_map<KeyType, vector<TranspositionTableEntry>> data_;
 };
 
+//! Calculates Zobrist hash value of board configuration, and provides
+//! moveselection::MinimaxMoveEvaluator access to boardstate::TranspositionTable
+//! (implements BoardStateSummarizer interface).
 template <typename KeyType>
 class HashCalculator : public BoardStateSummarizer<HashCalculator<KeyType>, KeyType> {
 public:

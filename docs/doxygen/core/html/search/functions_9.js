@@ -23,7 +23,7 @@ var searchData=
   ['importtoserializedjson_20',['ImportToSerializedJson',['../classjsonio_1_1NlohmannJsonUtility.html#a6f99b392306eca8fee58704d7b8b8339',1,'jsonio::NlohmannJsonUtility']]],
   ['int_5fboard_5fto_5fgame_5fpieces_21',['int_board_to_game_pieces',['../namespacegameboard.html#aa06ff448689c3fcec3968e33752e0d19',1,'gameboard']]],
   ['is_5foccupied_22',['is_occupied',['../namespacegameboard.html#a6c941b62b18fde02113a22837e8254e5',1,'gameboard']]],
-  ['is_5fsigned_5fpoints_5ftype_23',['is_signed_points_type',['../common_8hpp.html#a60a60e301e2be83519e8a12b44462148',1,'common.hpp']]],
+  ['is_5fsigned_5fpoints_5ftype_23',['is_signed_points_type',['../namespacepiece__points.html#a5d172a06291aea48fe9ae18210c2797b',1,'piece_points']]],
   ['isincastleof_24',['IsInCastleOf',['../structgameboard_1_1BoardSpace.html#a56adc3a074cab5fae2f34f98bac61d83',1,'gameboard::BoardSpace']]],
   ['isincheck_25',['IsInCheck',['../classgameboard_1_1GameBoard.html#a902f9949ae78be0503250b09798c9f28',1,'gameboard::GameBoard']]],
   ['isinhomelandof_26',['IsInHomelandOf',['../structgameboard_1_1BoardSpace.html#a8b0a2d2780677d8e3b47b17f9ede60fa',1,'gameboard::BoardSpace']]],

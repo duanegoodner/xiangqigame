@@ -1,11 +1,5 @@
-// Filename: utility_functs.hpp
-// Author: Duane Goodner
-// Created: 2022-12-07
-// Last Modified: 2024-08-16
-
-// Description:
-// Contains definitions and many inline implementations (for speed) of utility
-// functions.
+//! @file utility_functs.hpp
+//! Defiition of miscellaneous free functions (and implementation of those that are templates).  
 
 #pragma once
 

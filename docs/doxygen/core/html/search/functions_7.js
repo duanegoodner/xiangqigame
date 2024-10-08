@@ -9,9 +9,9 @@ var searchData=
   ['get_5fcolor_6',['get_color',['../namespacegameboard.html#ab46418a8f6b553347e091decce903d08',1,'gameboard']]],
   ['get_5fdata_5ffile_5fabs_5fpath_7',['get_data_file_abs_path',['../namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673',1,'utility_functs']]],
   ['get_5fgeneral_5fposition_8',['get_general_position',['../namespacegameboard.html#a1fb18238af2aa997fdfa498c3a17e264',1,'gameboard']]],
-  ['get_5fpiece_5fcolor_9',['get_piece_color',['../namespacegameboard.html#a3aa2ce7e026b7eb6d768bf4b0261e546',1,'gameboard']]],
+  ['get_5fpiece_5fcolor_9',['get_piece_color',['../namespacegamepiece.html#a5e6be2678349b7fc7d05c20245a2d811',1,'gamepiece']]],
   ['get_5ftype_10',['get_type',['../namespacegameboard.html#ae9bf535a990158e293d64e91db8daee4',1,'gameboard']]],
-  ['get_5fzcolor_5findex_11',['get_zcolor_index',['../namespacegameboard.html#a75fc40f337461b680b48011deb3470f1',1,'gameboard']]],
+  ['get_5fzcolor_5findex_11',['get_zcolor_index',['../namespacegamepiece.html#aa5d05d62db78e7b2d4b5eb50f8c60490',1,'gamepiece']]],
   ['getallspacesoccupiedby_12',['GetAllSpacesOccupiedBy',['../classSpaceInfoProvider.html#a5a8d6cecce34e98caabde2be4e342927',1,'SpaceInfoProvider']]],
   ['getcolor_13',['GetColor',['../classSpaceInfoProvider.html#a1dce5646290eda8146512324200fa2a6',1,'SpaceInfoProvider']]],
   ['getdata_14',['GetData',['../structboardstate_1_1TranspositionTable.html#a37f60cc46a12ce0d71cc9b0805908395',1,'boardstate::TranspositionTable']]],
@@ -25,5 +25,5 @@ var searchData=
   ['gettranspositiontablehits_22',['GetTranspositionTableHits',['../structmoveselection_1_1SearchSummary.html#a51864219d00a31f7ba568c28df0e215c',1,'moveselection::SearchSummary']]],
   ['gettrdata_23',['GetTrData',['../classBoardStateSummarizer.html#a7c66e113ecf4cd730ab6e1ac526a49a7',1,'BoardStateSummarizer']]],
   ['gettype_24',['GetType',['../classSpaceInfoProvider.html#a0f8feac17755e4d588eede4cf0635a60',1,'SpaceInfoProvider']]],
-  ['getvalueofpieceatposition_25',['GetValueOfPieceAtPosition',['../classPieceValueProvider.html#a4bec329bdc42d3aff4aa29779a32d258',1,'PieceValueProvider::GetValueOfPieceAtPosition()'],['../classmoveselection_1_1MinimaxMoveEvaluator.html#af3f4a166e7e921a6c41fa806c7044a7d',1,'moveselection::MinimaxMoveEvaluator::GetValueOfPieceAtPosition()']]]
+  ['getvalueofpieceatposition_25',['GetValueOfPieceAtPosition',['../classmoveselection_1_1MinimaxMoveEvaluator.html#af3f4a166e7e921a6c41fa806c7044a7d',1,'moveselection::MinimaxMoveEvaluator::GetValueOfPieceAtPosition()'],['../classPieceValueProvider.html#a4bec329bdc42d3aff4aa29779a32d258',1,'PieceValueProvider::GetValueOfPieceAtPosition()']]]
 ];

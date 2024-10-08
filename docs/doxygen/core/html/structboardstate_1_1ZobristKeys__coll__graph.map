@@ -1,5 +1,5 @@
 <map id="boardstate::ZobristKeys&lt; KeyType &gt;" name="boardstate::ZobristKeys&lt; KeyType &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="91,145,269,296"/>
+<area shape="rect" id="node1" title="Container for all of the hash keys needed to run a boardstate::HashCalculator." alt="" coords="91,145,269,296"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,197,83"/>
 <area shape="rect" id="node3" title=" " alt="" coords="222,5,298,83"/>
 </map>

@@ -1,5 +1,9 @@
+//! @file random_move_evaluator.tpp
+//! Implementation of moveselection::RandomMoveEvaluator methods. 
+
 #pragma once
 
+#include <board_data_structs.hpp>
 #include <game_piece.hpp>
 #include <utility_functs.hpp>
 

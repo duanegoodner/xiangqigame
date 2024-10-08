@@ -64,6 +64,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">piece_points Namespace Reference</div></div>
 </div><!--header-->
@@ -78,17 +80,383 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpiece__points_1_1PiecePositionPoints.html">PiecePositionPoints</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a585755d109c780f8b840bfc1044d1591"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a585755d109c780f8b840bfc1044d1591">Points_t</a></td></tr>
+<tr class="separator:a585755d109c780f8b840bfc1044d1591"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e58e4a06e3e9fdab7e13ef31626b015"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; int, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">gameboard::kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">gameboard::kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">PiecePointsArray_t</a></td></tr>
+<tr class="separator:a4e58e4a06e3e9fdab7e13ef31626b015"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b971b075db66344748c5483a8f9bb91"><td class="memItemLeft" align="right" valign="top">typedef array&lt; <a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">PiecePointsArray_t</a>, <a class="el" href="namespacegamepiece.html#a53564c3a7fc305b200aeae5cd21fefa1">gamepiece::kNumPieceTypeVals</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a6b971b075db66344748c5483a8f9bb91">TeamPointsArray_t</a></td></tr>
+<tr class="separator:a6b971b075db66344748c5483a8f9bb91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9570781db7fb63bb1f3ccd2256569f55"><td class="memItemLeft" align="right" valign="top">typedef unordered_map&lt; <a class="el" href="namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07">gamepiece::PieceType</a>, <a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">PiecePointsArray_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a9570781db7fb63bb1f3ccd2256569f55">TeamPointsEMap_t</a></td></tr>
+<tr class="separator:a9570781db7fb63bb1f3ccd2256569f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae607b91dd9236965e25aa95aed4d22c4"><td class="memItemLeft" align="right" valign="top">typedef unordered_map&lt; string, <a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">PiecePointsArray_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#ae607b91dd9236965e25aa95aed4d22c4">TeamPointsSMap_t</a></td></tr>
+<tr class="separator:ae607b91dd9236965e25aa95aed4d22c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94aff6c5a707ca0ab74297359b969839"><td class="memItemLeft" align="right" valign="top">typedef array&lt; <a class="el" href="namespacepiece__points.html#a6b971b075db66344748c5483a8f9bb91">TeamPointsArray_t</a>, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a94aff6c5a707ca0ab74297359b969839">GamePointsArray_t</a></td></tr>
+<tr class="separator:a94aff6c5a707ca0ab74297359b969839"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1d2931674480006d0e5e84230fecfcc"><td class="memItemLeft" align="right" valign="top">typedef unordered_map&lt; <a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">gamepiece::PieceColor</a>, <a class="el" href="namespacepiece__points.html#a9570781db7fb63bb1f3ccd2256569f55">TeamPointsEMap_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#ab1d2931674480006d0e5e84230fecfcc">GamePointsEMap_t</a></td></tr>
+<tr class="separator:ab1d2931674480006d0e5e84230fecfcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5561cfafcf9d0cd6316bb9950e384dc1"><td class="memItemLeft" align="right" valign="top">typedef unordered_map&lt; string, <a class="el" href="namespacepiece__points.html#ae607b91dd9236965e25aa95aed4d22c4">TeamPointsSMap_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a5561cfafcf9d0cd6316bb9950e384dc1">GamePointsSMap_t</a></td></tr>
+<tr class="separator:a5561cfafcf9d0cd6316bb9950e384dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac05e3c27242d1ac84b43b15b1bb07e98"><td class="memItemLeft" align="right" valign="top">typedef unordered_map&lt; <a class="el" href="namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07">gamepiece::PieceType</a>, <a class="el" href="namespacepiece__points.html#a585755d109c780f8b840bfc1044d1591">Points_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#ac05e3c27242d1ac84b43b15b1bb07e98">TeamBasePoints_t</a></td></tr>
+<tr class="separator:ac05e3c27242d1ac84b43b15b1bb07e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6756b9102c44e4cfbbbec1e53814cf49"><td class="memItemLeft" align="right" valign="top">typedef unordered_map&lt; string, <a class="el" href="namespacepiece__points.html#a585755d109c780f8b840bfc1044d1591">Points_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a6756b9102c44e4cfbbbec1e53814cf49">BasePointsSMap_t</a></td></tr>
+<tr class="separator:a6756b9102c44e4cfbbbec1e53814cf49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:af74bb5bc44c9f4b1a432112500c93c48"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#af74bb5bc44c9f4b1a432112500c93c48">size_of_points_type</a> ()</td></tr>
+<tr class="separator:af74bb5bc44c9f4b1a432112500c93c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d172a06291aea48fe9ae18210c2797b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a5d172a06291aea48fe9ae18210c2797b">is_signed_points_type</a> ()</td></tr>
+<tr class="separator:a5d172a06291aea48fe9ae18210c2797b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade4bbdacd9bc10a8a3f29914cfa57ae5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#ade4bbdacd9bc10a8a3f29914cfa57ae5">operator==</a> (const <a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">PiecePointsArray_t</a> &amp;a, const <a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">PiecePointsArray_t</a> &amp;b)</td></tr>
+<tr class="separator:ade4bbdacd9bc10a8a3f29914cfa57ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad942a1831c11772a4ad652f7cfe7c6fe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#ad942a1831c11772a4ad652f7cfe7c6fe">operator==</a> (<a class="el" href="namespacepiece__points.html#ae607b91dd9236965e25aa95aed4d22c4">TeamPointsSMap_t</a> &amp;a, <a class="el" href="namespacepiece__points.html#ae607b91dd9236965e25aa95aed4d22c4">TeamPointsSMap_t</a> &amp;b)</td></tr>
+<tr class="separator:ad942a1831c11772a4ad652f7cfe7c6fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd3e09d4c7c0c7ef36ef1c207c399379"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#abd3e09d4c7c0c7ef36ef1c207c399379">operator==</a> (<a class="el" href="namespacepiece__points.html#a5561cfafcf9d0cd6316bb9950e384dc1">GamePointsSMap_t</a> &amp;a, <a class="el" href="namespacepiece__points.html#a5561cfafcf9d0cd6316bb9950e384dc1">GamePointsSMap_t</a> &amp;b)</td></tr>
+<tr class="separator:abd3e09d4c7c0c7ef36ef1c207c399379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a2f8fa666a8c2dccc590e3950cbfcf831"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a2f8fa666a8c2dccc590e3950cbfcf831">kICGABPOPath</a></td></tr>
+<tr class="memitem:a2f8fa666a8c2dccc590e3950cbfcf831"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a2f8fa666a8c2dccc590e3950cbfcf831">kICGABPOPath</a> = <a class="el" href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a>(&quot;ICGA_2004_bpo.json&quot;)</td></tr>
 <tr class="separator:a2f8fa666a8c2dccc590e3950cbfcf831"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c4caebd6a178729a67fb2d737c93d42"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a5c4caebd6a178729a67fb2d737c93d42">kICGARawPath</a></td></tr>
+<tr class="memitem:a5c4caebd6a178729a67fb2d737c93d42"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a5c4caebd6a178729a67fb2d737c93d42">kICGARawPath</a> = <a class="el" href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a>(&quot;ICGA_2004_raw.json&quot;)</td></tr>
 <tr class="separator:a5c4caebd6a178729a67fb2d737c93d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d223b2a0daa55aedb63804897beaf1d"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a7d223b2a0daa55aedb63804897beaf1d">kRawSchemaPath</a></td></tr>
 <tr class="separator:a7d223b2a0daa55aedb63804897beaf1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a385aad72810e7b3a02006816b98ffaf7"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a385aad72810e7b3a02006816b98ffaf7">kBPOSchemaPath</a></td></tr>
+<tr class="memitem:a385aad72810e7b3a02006816b98ffaf7"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiece__points.html#a385aad72810e7b3a02006816b98ffaf7">kBPOSchemaPath</a> = <a class="el" href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a>(&quot;bpo_schema.json&quot;)</td></tr>
 <tr class="separator:a385aad72810e7b3a02006816b98ffaf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a6756b9102c44e4cfbbbec1e53814cf49" name="a6756b9102c44e4cfbbbec1e53814cf49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6756b9102c44e4cfbbbec1e53814cf49">&#9670;&nbsp;</a></span>BasePointsSMap_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unordered_map&lt;string, <a class="el" href="namespacepiece__points.html#a585755d109c780f8b840bfc1044d1591">Points_t</a>&gt; <a class="el" href="namespacepiece__points.html#a6756b9102c44e4cfbbbec1e53814cf49">piece_points::BasePointsSMap_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00070">70</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a94aff6c5a707ca0ab74297359b969839" name="a94aff6c5a707ca0ab74297359b969839"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94aff6c5a707ca0ab74297359b969839">&#9670;&nbsp;</a></span>GamePointsArray_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef array&lt;<a class="el" href="namespacepiece__points.html#a6b971b075db66344748c5483a8f9bb91">TeamPointsArray_t</a>, 2&gt; <a class="el" href="namespacepiece__points.html#a94aff6c5a707ca0ab74297359b969839">piece_points::GamePointsArray_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00054">54</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab1d2931674480006d0e5e84230fecfcc" name="ab1d2931674480006d0e5e84230fecfcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1d2931674480006d0e5e84230fecfcc">&#9670;&nbsp;</a></span>GamePointsEMap_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unordered_map&lt;<a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">gamepiece::PieceColor</a>, <a class="el" href="namespacepiece__points.html#a9570781db7fb63bb1f3ccd2256569f55">TeamPointsEMap_t</a>&gt; <a class="el" href="namespacepiece__points.html#ab1d2931674480006d0e5e84230fecfcc">piece_points::GamePointsEMap_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00055">55</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a5561cfafcf9d0cd6316bb9950e384dc1" name="a5561cfafcf9d0cd6316bb9950e384dc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5561cfafcf9d0cd6316bb9950e384dc1">&#9670;&nbsp;</a></span>GamePointsSMap_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unordered_map&lt;string, <a class="el" href="namespacepiece__points.html#ae607b91dd9236965e25aa95aed4d22c4">TeamPointsSMap_t</a>&gt; <a class="el" href="namespacepiece__points.html#a5561cfafcf9d0cd6316bb9950e384dc1">piece_points::GamePointsSMap_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00056">56</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a4e58e4a06e3e9fdab7e13ef31626b015" name="a4e58e4a06e3e9fdab7e13ef31626b015"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e58e4a06e3e9fdab7e13ef31626b015">&#9670;&nbsp;</a></span>PiecePointsArray_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef array&lt;array&lt;int, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">gameboard::kNumFiles</a>&gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">gameboard::kNumRanks</a>&gt; <a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">piece_points::PiecePointsArray_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00020">20</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a585755d109c780f8b840bfc1044d1591" name="a585755d109c780f8b840bfc1044d1591"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a585755d109c780f8b840bfc1044d1591">&#9670;&nbsp;</a></span>Points_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int <a class="el" href="namespacepiece__points.html#a585755d109c780f8b840bfc1044d1591">piece_points::Points_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00015">15</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ac05e3c27242d1ac84b43b15b1bb07e98" name="ac05e3c27242d1ac84b43b15b1bb07e98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac05e3c27242d1ac84b43b15b1bb07e98">&#9670;&nbsp;</a></span>TeamBasePoints_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unordered_map&lt;<a class="el" href="namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07">gamepiece::PieceType</a>, <a class="el" href="namespacepiece__points.html#a585755d109c780f8b840bfc1044d1591">Points_t</a>&gt; <a class="el" href="namespacepiece__points.html#ac05e3c27242d1ac84b43b15b1bb07e98">piece_points::TeamBasePoints_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00069">69</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a6b971b075db66344748c5483a8f9bb91" name="a6b971b075db66344748c5483a8f9bb91"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b971b075db66344748c5483a8f9bb91">&#9670;&nbsp;</a></span>TeamPointsArray_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef array&lt;<a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">PiecePointsArray_t</a>, <a class="el" href="namespacegamepiece.html#a53564c3a7fc305b200aeae5cd21fefa1">gamepiece::kNumPieceTypeVals</a>&gt; <a class="el" href="namespacepiece__points.html#a6b971b075db66344748c5483a8f9bb91">piece_points::TeamPointsArray_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00037">37</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a9570781db7fb63bb1f3ccd2256569f55" name="a9570781db7fb63bb1f3ccd2256569f55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9570781db7fb63bb1f3ccd2256569f55">&#9670;&nbsp;</a></span>TeamPointsEMap_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unordered_map&lt;<a class="el" href="namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07">gamepiece::PieceType</a>, <a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">PiecePointsArray_t</a>&gt; <a class="el" href="namespacepiece__points.html#a9570781db7fb63bb1f3ccd2256569f55">piece_points::TeamPointsEMap_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00038">38</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae607b91dd9236965e25aa95aed4d22c4" name="ae607b91dd9236965e25aa95aed4d22c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae607b91dd9236965e25aa95aed4d22c4">&#9670;&nbsp;</a></span>TeamPointsSMap_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef unordered_map&lt;string, <a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">PiecePointsArray_t</a>&gt; <a class="el" href="namespacepiece__points.html#ae607b91dd9236965e25aa95aed4d22c4">piece_points::TeamPointsSMap_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00039">39</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a5d172a06291aea48fe9ae18210c2797b" name="a5d172a06291aea48fe9ae18210c2797b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d172a06291aea48fe9ae18210c2797b">&#9670;&nbsp;</a></span>is_signed_points_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool piece_points::is_signed_points_type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00017">17</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ade4bbdacd9bc10a8a3f29914cfa57ae5" name="ade4bbdacd9bc10a8a3f29914cfa57ae5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade4bbdacd9bc10a8a3f29914cfa57ae5">&#9670;&nbsp;</a></span>operator==() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool piece_points::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">PiecePointsArray_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="namespacepiece__points.html#a4e58e4a06e3e9fdab7e13ef31626b015">PiecePointsArray_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00022">22</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="abd3e09d4c7c0c7ef36ef1c207c399379" name="abd3e09d4c7c0c7ef36ef1c207c399379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd3e09d4c7c0c7ef36ef1c207c399379">&#9670;&nbsp;</a></span>operator==() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool piece_points::operator== </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacepiece__points.html#a5561cfafcf9d0cd6316bb9950e384dc1">GamePointsSMap_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacepiece__points.html#a5561cfafcf9d0cd6316bb9950e384dc1">GamePointsSMap_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00057">57</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad942a1831c11772a4ad652f7cfe7c6fe" name="ad942a1831c11772a4ad652f7cfe7c6fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad942a1831c11772a4ad652f7cfe7c6fe">&#9670;&nbsp;</a></span>operator==() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool piece_points::operator== </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacepiece__points.html#ae607b91dd9236965e25aa95aed4d22c4">TeamPointsSMap_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacepiece__points.html#ae607b91dd9236965e25aa95aed4d22c4">TeamPointsSMap_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00041">41</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af74bb5bc44c9f4b1a432112500c93c48" name="af74bb5bc44c9f4b1a432112500c93c48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af74bb5bc44c9f4b1a432112500c93c48">&#9670;&nbsp;</a></span>size_of_points_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t piece_points::size_of_points_type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points__data__structs_8hpp_source.html#l00016">16</a> of file <a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a385aad72810e7b3a02006816b98ffaf7" name="a385aad72810e7b3a02006816b98ffaf7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a385aad72810e7b3a02006816b98ffaf7">&#9670;&nbsp;</a></span>kBPOSchemaPath</h2>
@@ -97,15 +465,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const string piece_points::kBPOSchemaPath</td>
+          <td class="memname">const string piece_points::kBPOSchemaPath = <a class="el" href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a>(&quot;bpo_schema.json&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">    <a class="code hl_function" href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a>(<span class="stringliteral">&quot;bpo_schema.json&quot;</span>)</div>
-<div class="ttc" id="anamespaceutility__functs_html_a2fe7e23b37727edf1509588253c3c673"><div class="ttname"><a href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a></div><div class="ttdeci">const string get_data_file_abs_path(const std::string data_file)</div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="piece__points__spec_8hpp_source.html#l00089">89</a> of file <a class="el" href="piece__points__spec_8hpp_source.html">piece_points_spec.hpp</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="piece__points__bpo_8hpp_source.html#l00081">81</a> of file <a class="el" href="piece__points__bpo_8hpp_source.html">piece_points_bpo.hpp</a>.</p>
 
 </div>
 </div>
@@ -116,14 +481,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const string piece_points::kICGABPOPath</td>
+          <td class="memname">const string piece_points::kICGABPOPath = <a class="el" href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a>(&quot;ICGA_2004_bpo.json&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">    <a class="code hl_function" href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a>(<span class="stringliteral">&quot;ICGA_2004_bpo.json&quot;</span>)</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="piece__points__spec_8hpp_source.html#l00083">83</a> of file <a class="el" href="piece__points__spec_8hpp_source.html">piece_points_spec.hpp</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="piece__points__bpo_8hpp_source.html#l00077">77</a> of file <a class="el" href="piece__points__bpo_8hpp_source.html">piece_points_bpo.hpp</a>.</p>
 
 </div>
 </div>
@@ -134,14 +497,12 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const string piece_points::kICGARawPath</td>
+          <td class="memname">const string piece_points::kICGARawPath = <a class="el" href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a>(&quot;ICGA_2004_raw.json&quot;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">    <a class="code hl_function" href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a>(<span class="stringliteral">&quot;ICGA_2004_raw.json&quot;</span>)</div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="piece__points__spec_8hpp_source.html#l00085">85</a> of file <a class="el" href="piece__points__spec_8hpp_source.html">piece_points_spec.hpp</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="piece__points__bpo_8hpp_source.html#l00078">78</a> of file <a class="el" href="piece__points__bpo_8hpp_source.html">piece_points_bpo.hpp</a>.</p>
 
 </div>
 </div>
@@ -158,15 +519,16 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
 <div class="line">    <a class="code hl_function" href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a>(<span class="stringliteral">&quot;raw_points_schema.json&quot;</span>)</div>
+<div class="ttc" id="anamespaceutility__functs_html_a2fe7e23b37727edf1509588253c3c673"><div class="ttname"><a href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a></div><div class="ttdeci">const string get_data_file_abs_path(const std::string data_file)</div></div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="piece__points__spec_8hpp_source.html#l00087">87</a> of file <a class="el" href="piece__points__spec_8hpp_source.html">piece_points_spec.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="piece__points__bpo_8hpp_source.html#l00079">79</a> of file <a class="el" href="piece__points__bpo_8hpp_source.html">piece_points_bpo.hpp</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 7 2024 13:51:59 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 00:52:08 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

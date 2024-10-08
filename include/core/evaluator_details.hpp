@@ -1,5 +1,5 @@
 //! @file evaluator_details.hpp
-//! Data structs used by MinimaxEvaluator
+//! Data structs used by moveselection::MinimaxEvaluator
 
 #pragma once
 
