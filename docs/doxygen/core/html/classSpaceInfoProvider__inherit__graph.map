@@ -1,5 +1,5 @@
 <map id="SpaceInfoProvider&lt; ConcreteSpaceInfoProvider &gt;" name="SpaceInfoProvider&lt; ConcreteSpaceInfoProvider &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="37,5,255,185"/>
+<area shape="rect" id="node1" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,..." alt="" coords="37,5,255,185"/>
 <area shape="rect" id="node2" href="$classSpaceInfoProvider.html" title=" " alt="" coords="41,248,251,428"/>
 <area shape="rect" id="node3" href="$classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,..." alt="" coords="5,477,287,848"/>
 </map>

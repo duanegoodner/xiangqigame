@@ -11,8 +11,10 @@ namespace piece_points {
 class BPOPointsSKeys;
 } // namespace piece_points
 
-
 template <typename ConcreteJsonUtility>
+
+//! CRTP interface with methods of importing / exporting objects from / to json files
+//! (concrete example = jsonio::NlohmannJsonUtility).
 class JsonUtility {
 public:
   template <typename T>
@@ -33,4 +35,3 @@ public:
     static_cast<ConcreteJsonUtility *>(this)->ImplementExport(bpo_points, file_path);
   }
 };
-

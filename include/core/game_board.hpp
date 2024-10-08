@@ -12,7 +12,6 @@
 using namespace std;
 using namespace gameboard;
 
-//! Classes, structs and constants related to GameBoard
 namespace gameboard {
 
 extern const BoardMapInt_t kStartingBoard;

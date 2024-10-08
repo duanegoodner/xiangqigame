@@ -19,10 +19,10 @@ var searchData=
   ['getmovelog_16',['GetMoveLog',['../classgameboard_1_1GameBoard.html#a79245f0d8e0de803afb4ccecd11e3f76',1,'gameboard::GameBoard']]],
   ['getoccupant_17',['GetOccupant',['../classgameboard_1_1GameBoard.html#ae8d3a60954fa005edefd8cd461eab1d9',1,'gameboard::GameBoard']]],
   ['getplayertotal_18',['GetPlayerTotal',['../classmoveselection_1_1MinimaxMoveEvaluator.html#aa53e65c0138ec9ed751758ed454f681a',1,'moveselection::MinimaxMoveEvaluator']]],
-  ['getresultdepthcounts_19',['GetResultDepthCounts',['../structmoveselection_1_1SearchSummary.html#afec75240f4524ff45d0b835c23fa9ae6',1,'moveselection::SearchSummary']]],
+  ['getresultdepthcounts_19',['GetResultDepthCounts',['../structmoveselection_1_1SearchSummary.html#a869d14d03ab6abf5688b8dfe66ae30ab',1,'moveselection::SearchSummary']]],
   ['getsearchsummaries_20',['GetSearchSummaries',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a1977c881eaa110e7752223bb3d6dc1f0',1,'moveselection::MinimaxMoveEvaluator']]],
   ['getstate_21',['GetState',['../classBoardStateSummarizer.html#a91a1690d9c1cff23763cb40e8ac3bc9b',1,'BoardStateSummarizer']]],
-  ['gettranspositiontablehits_22',['GetTranspositionTableHits',['../structmoveselection_1_1SearchSummary.html#a51864219d00a31f7ba568c28df0e215c',1,'moveselection::SearchSummary']]],
+  ['gettranspositiontablehits_22',['GetTranspositionTableHits',['../structmoveselection_1_1SearchSummary.html#aa7264774347ac17608e80be74617a325',1,'moveselection::SearchSummary']]],
   ['gettrdata_23',['GetTrData',['../classBoardStateSummarizer.html#a7c66e113ecf4cd730ab6e1ac526a49a7',1,'BoardStateSummarizer']]],
   ['gettype_24',['GetType',['../classSpaceInfoProvider.html#a0f8feac17755e4d588eede4cf0635a60',1,'SpaceInfoProvider']]],
   ['getvalueofpieceatposition_25',['GetValueOfPieceAtPosition',['../classmoveselection_1_1MinimaxMoveEvaluator.html#af3f4a166e7e921a6c41fa806c7044a7d',1,'moveselection::MinimaxMoveEvaluator::GetValueOfPieceAtPosition()'],['../classPieceValueProvider.html#a4bec329bdc42d3aff4aa29779a32d258',1,'PieceValueProvider::GetValueOfPieceAtPosition()']]]

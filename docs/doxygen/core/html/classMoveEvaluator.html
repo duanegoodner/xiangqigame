@@ -69,17 +69,20 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>CRTP interface with a method for selecting a <a class="el" href="structmoves_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">moves::Move</a> (concrete examples = <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move based on Minimax algorithm; uses SpaceInfo...">moveselection::MinimaxMoveEvaluator</a>, <a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html" title="Implements moves::MoveEvaluator interface.">moveselection::RandomMoveEvaluator</a>).  
+ <a href="classMoveEvaluator.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="move__evaluator__interface_8hpp_source.html">move_evaluator_interface.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MoveEvaluator&lt; ConcreteMoveEvaluator &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMoveEvaluator__inherit__graph.png" border="0" usemap="#aMoveEvaluator_3_01ConcreteMoveEvaluator_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMoveEvaluator_3_01ConcreteMoveEvaluator_01_4_inherit__map" id="aMoveEvaluator_3_01ConcreteMoveEvaluator_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="187,5,417,97"/>
+<area shape="rect" title="CRTP interface with a method for selecting a moves::Move (concrete examples = moveselection::MinimaxM..." alt="" coords="187,5,417,97"/>
 <area shape="rect" href="classMoveEvaluator.html" title=" " alt="" coords="5,204,284,325"/>
 <area shape="rect" href="classMoveEvaluator.html" title=" " alt="" coords="308,219,613,311"/>
-<area shape="rect" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title=" " alt="" coords="5,375,284,775"/>
-<area shape="rect" href="classmoveselection_1_1RandomMoveEvaluator.html" title=" " alt="" coords="315,514,606,635"/>
+<area shape="rect" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move based on Minimax algorithm; uses SpaceInfo..." alt="" coords="5,375,284,775"/>
+<area shape="rect" href="classmoveselection_1_1RandomMoveEvaluator.html" title="Implements moves::MoveEvaluator interface." alt="" coords="315,514,606,635"/>
 </map>
 </div>
 <div class="dynheader">
@@ -87,7 +90,7 @@ Collaboration diagram for MoveEvaluator&lt; ConcreteMoveEvaluator &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMoveEvaluator__coll__graph.png" border="0" usemap="#aMoveEvaluator_3_01ConcreteMoveEvaluator_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aMoveEvaluator_3_01ConcreteMoveEvaluator_01_4_coll__map" id="aMoveEvaluator_3_01ConcreteMoveEvaluator_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,235,97"/>
+<area shape="rect" title="CRTP interface with a method for selecting a moves::Move (concrete examples = moveselection::MinimaxM..." alt="" coords="5,5,235,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -98,8 +101,9 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename ConcreteMoveEvaluator&gt;<br />
-class MoveEvaluator&lt; ConcreteMoveEvaluator &gt;</div>
-<p class="definition">Definition at line <a class="el" href="move__evaluator__interface_8hpp_source.html#l00013">13</a> of file <a class="el" href="move__evaluator__interface_8hpp_source.html">move_evaluator_interface.hpp</a>.</p>
+class MoveEvaluator&lt; ConcreteMoveEvaluator &gt;</div><p >CRTP interface with a method for selecting a <a class="el" href="structmoves_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">moves::Move</a> (concrete examples = <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move based on Minimax algorithm; uses SpaceInfo...">moveselection::MinimaxMoveEvaluator</a>, <a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html" title="Implements moves::MoveEvaluator interface.">moveselection::RandomMoveEvaluator</a>). </p>
+
+<p class="definition">Definition at line <a class="el" href="move__evaluator__interface_8hpp_source.html#l00011">11</a> of file <a class="el" href="move__evaluator__interface_8hpp_source.html">move_evaluator_interface.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9be7652c033ecde85f4ef7211f1c99b7" name="a9be7652c033ecde85f4ef7211f1c99b7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9be7652c033ecde85f4ef7211f1c99b7">&#9670;&nbsp;</a></span>SelectMove()</h2>
@@ -126,7 +130,7 @@ template&lt;typename ConcreteMoveEvaluator &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluator__interface_8hpp_source.html#l00015">15</a> of file <a class="el" href="move__evaluator__interface_8hpp_source.html">move_evaluator_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluator__interface_8hpp_source.html#l00013">13</a> of file <a class="el" href="move__evaluator__interface_8hpp_source.html">move_evaluator_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -136,7 +140,7 @@ template&lt;typename ConcreteMoveEvaluator &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 8 2024 15:58:22 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 23:16:58 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

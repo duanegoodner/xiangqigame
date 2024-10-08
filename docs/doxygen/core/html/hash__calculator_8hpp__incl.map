@@ -19,8 +19,8 @@
 <area shape="rect" id="node15" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by moves::MoveCalculator to select appropriate method from moves::Piece..." alt="" coords="1847,326,2057,353"/>
 <area shape="rect" id="node16" href="$piece__moves_8hpp.html" title="Definition of moves::PieceMoves and related constants." alt="" coords="1729,408,1865,435"/>
 <area shape="rect" id="node17" href="$move__data__structs_8hpp.html" title="Definitions and implementations of moves::Move and other move&#45;related structs." alt="" coords="1078,490,1253,517"/>
-<area shape="rect" id="node19" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer" alt="" coords="1191,229,1375,271"/>
-<area shape="rect" id="node20" href="$evaluator__details_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1021,326,1184,353"/>
+<area shape="rect" id="node19" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="1191,229,1375,271"/>
+<area shape="rect" id="node20" href="$evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1003,326,1202,353"/>
 <area shape="rect" id="node32" title=" " alt="" coords="632,237,691,263"/>
 <area shape="rect" id="node33" href="$move__evaluator__interface_8hpp.html" title="Definition of MoveEvaluator interface." alt="" coords="1551,326,1772,353"/>
 <area shape="rect" id="node34" href="$piece__value__provider__interface_8hpp.html" title="Definition of PieceValueProvider CRTP interface." alt="" coords="1329,483,1490,524"/>

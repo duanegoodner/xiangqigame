@@ -3,11 +3,11 @@
 <area shape="rect" id="node2" href="$json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="997,95,1174,136"/>
 <area shape="rect" id="node3" href="$piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="957,184,1097,225"/>
 <area shape="rect" id="node14" href="$json__utility__nlohmann_8cpp.html" title="Implementation of methods for jsonio::NlohmannJsonUtility." alt="" coords="1217,273,1388,329"/>
-<area shape="rect" id="node4" href="$evaluator__details_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="703,281,870,322"/>
+<area shape="rect" id="node4" href="$evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="703,281,870,322"/>
 <area shape="rect" id="node11" href="$piece__position__points_8hpp.html" title="Definition of piece_points::PiecePositionPoints." alt="" coords="765,541,921,583"/>
 <area shape="rect" id="node12" href="$piece__position__points_8cpp.html" title="Implementation of piece_points::PiecePositionPoints." alt="" coords="815,631,985,687"/>
 <area shape="rect" id="node15" href="$piece__points__bpo_8cpp.html" title="Implementation of methods that store piece points info in Base Point Offset form." alt="" coords="996,281,1193,322"/>
-<area shape="rect" id="node5" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer" alt="" coords="513,377,753,419"/>
+<area shape="rect" id="node5" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="513,377,753,419"/>
 <area shape="rect" id="node6" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="518,467,765,493"/>
 <area shape="rect" id="node7" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="215,549,430,575"/>
 <area shape="rect" id="node9" href="$xiangqigame__core_8cpp.html" title="Implements Pybind11 module xiangqigame_core, exposing C++ classes and methods to Python." alt="" coords="300,735,489,776"/>

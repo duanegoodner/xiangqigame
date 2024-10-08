@@ -52,7 +52,7 @@ struct TranspositionTableEntry {
 };
 
 //! Container for storing a moveselection::TranspositionTableEntry retrieved by a call to
-//! moveselection::BoardStateSummarizer.GetTrData.
+//! boardstate::HashCalculator.ImplementGetTrData.
 struct TranspositionTableSearchResult {
   TranspositionTableEntry table_entry;
   bool found;
@@ -71,8 +71,15 @@ inline EqualScoreMoves evaluate_win_leaf(
   }
 }
 
-typedef std::array<std::vector<int>, MinimaxResultType::kMax + 1> ResultDepthCountsData_t;
+//! Array of vectors for storing counts of moveselection::MinimaxResultType for each
+//! posible remaining search depth. Outer (array) index ->
+//! moveslection::MinimaxResultType; inner (vector) index -> remaining search depth when
+//! result was obtained.
+typedef std::array<std::vector<int>, MinimaxResultType::kMax + 1>
+    ResultDepthCountsData_t;
 
+//! Container for storing and updating data in a moveselection::ResultDepthCountsData_t
+//! array of vectors.
 struct ResultDepthCounts {
 
   ResultDepthCounts(int max_search_depth) {
@@ -88,12 +95,16 @@ struct ResultDepthCounts {
   ResultDepthCountsData_t data;
 };
 
+//! Stores data collected during a single call to
+//! moveselection::MinimaxMoveEvaluator.ImplementSelectMove. Includes total number of
+//! nodes explored, a moveseelection::ResultDepthCounts object for
+//! moveselection::MinimaxResultType::kTrTableHit search results, and another
+//! moveseelection::ResultDepthCounts  for all other search result types.
 struct SearchSummary {
   SearchSummary(int max_search_depth)
       : num_nodes{}
       , result_depth_counts{ResultDepthCounts(max_search_depth)}
-      , transposition_table_hits(ResultDepthCounts(max_search_depth)) {
-  }
+      , transposition_table_hits(ResultDepthCounts(max_search_depth)) {}
 
   void Update(
       MinimaxResultType result_type,
@@ -119,22 +130,26 @@ struct SearchSummary {
   void SetSelectedMove(moves::Move selected_move) {
     this->selected_move = selected_move;
   }
-  ResultDepthCountsData_t GetResultDepthCounts() {
-    return result_depth_counts.data;
-  }
+  ResultDepthCountsData_t GetResultDepthCounts() { return result_depth_counts.data; }
   ResultDepthCountsData_t GetTranspositionTableHits() {
     return transposition_table_hits.data;
   }
 
   int num_nodes;
   std::chrono::duration<double, std::nano> time;
-  // row -> node result_type; col -> node depth
   ResultDepthCounts result_depth_counts;
   ResultDepthCounts transposition_table_hits;
   EqualScoreMoves similar_moves;
   moves::Move selected_move;
 };
 
+//! Stores a moveselection::SearchSummary for each
+//! moveselection::MinimaxMoveEvaluator.ImplementSelectMove made for a particular player
+//! during a game.
+//! If a second call to moveselection::MinimaxMoveEvaluator.RunMinimax is needed (due to
+//! a hash collision causing in illegal move to be returned by the first call to to
+//! moveselection::MinimaxMoveEvaluator.RunMinimax), a moveselection::SearchSummary for
+//! the second search is stored in moveselection::SearchSummaries.extra_searches.
 struct SearchSummaries {
   std::vector<SearchSummary> first_searches;
   std::map<int, SearchSummary> extra_searches;

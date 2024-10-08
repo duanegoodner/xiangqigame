@@ -18,16 +18,9 @@ using namespace moves;
 
 namespace moveselection {
 
-// CLASS TEMPLATE: MinimaxMoveEvaluator
-// IMPLEMENTS INTERFACE:
-//    MoveEvaluator
-// USES:
-//    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
-//    SpaceInfoProvider.
-//    ConcretePieceValueProvider (e.g. PiecePoints) that
-//    implements PieceValueProvider
-// Uses minimax algorithm with alpha-beta pruning to select a move for
-// evaluating_player_.
+//! Implements MoveEvaluator interface, and selects move::Move based on Minimax
+//! algorithm; uses SpaceInfoProvider, BoardStateSummarizer, and PieceValueProvider
+//! interfaces.
 template <
     typename ConcreteSpaceInfoProvider,
     typename ConcreteBoardStateSummarizer,
@@ -72,7 +65,10 @@ private:
   moveselection::SearchSummaries search_summaries_;
 
   EqualScoreMoves EvaluateNonWinLeaf(PieceColor cur_player);
-  EqualScoreMoves EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &result_type);
+  EqualScoreMoves EvaluateEndOfGameLeaf(
+      PieceColor cur_player,
+      MinimaxResultType &result_type
+  );
   ScoredMove RateMove(Move move, PieceColor cur_player);
   Points_t GetValueOfPieceAtPosition(
       PieceColor color,
@@ -97,13 +93,8 @@ private:
   );
 };
 
-// CLASS TEMPLATE: RandomMoveEvaluator
-// IMPLEMENTS INTERFACE:
-//    MoveEvaluator
-// USES:
-//    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
-//    SpaceInfoProvider.
-// Randomly chooses one of the legal moves available to evaluating_player_.
+//! Implements moves::MoveEvaluator interface. Randomly chooses one of legal moves
+//! available to moveselection::RandomMoveEvaluator.evaluating_player_.
 template <typename ConcreteSpaceInfoProvider>
 class RandomMoveEvaluator
     : public MoveEvaluator<RandomMoveEvaluator<ConcreteSpaceInfoProvider>> {

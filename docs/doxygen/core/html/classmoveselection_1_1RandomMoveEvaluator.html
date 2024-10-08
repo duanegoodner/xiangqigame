@@ -74,15 +74,18 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Implements moves::MoveEvaluator interface.  
+ <a href="classmoveselection_1_1RandomMoveEvaluator.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classmoveselection_1_1RandomMoveEvaluator__inherit__graph.png" border="0" usemap="#amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_inherit__map" id="amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="13,316,303,437"/>
+<area shape="rect" title="Implements moves::MoveEvaluator interface." alt="" coords="13,316,303,437"/>
 <area shape="rect" href="classMoveEvaluator.html" title=" " alt="" coords="5,175,311,267"/>
-<area shape="rect" href="classMoveEvaluator.html" title=" " alt="" coords="43,5,273,97"/>
+<area shape="rect" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a moves::Move (concrete examples = moveselection::MinimaxM..." alt="" coords="43,5,273,97"/>
 </map>
 </div>
 <div class="dynheader">
@@ -90,9 +93,9 @@ Collaboration diagram for moveselection::RandomMoveEvaluator&lt; ConcreteSpaceIn
 <div class="dyncontent">
 <div class="center"><img src="classmoveselection_1_1RandomMoveEvaluator__coll__graph.png" border="0" usemap="#amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_coll__map" id="amoveselection_1_1RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="235,329,526,436"/>
+<area shape="rect" title="Implements moves::MoveEvaluator interface." alt="" coords="235,329,526,436"/>
 <area shape="rect" href="classMoveEvaluator.html" title=" " alt="" coords="5,175,311,267"/>
-<area shape="rect" href="classMoveEvaluator.html" title=" " alt="" coords="43,5,273,97"/>
+<area shape="rect" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a moves::Move (concrete examples = moveselection::MinimaxM..." alt="" coords="43,5,273,97"/>
 <area shape="rect" title=" " alt="" coords="335,182,426,259"/>
 <area shape="rect" title=" " alt="" coords="451,182,663,259"/>
 </map>
@@ -117,8 +120,10 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename ConcreteSpaceInfoProvider&gt;<br />
-class moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;</div>
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00108">108</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+class moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;</div><p >Implements moves::MoveEvaluator interface. </p>
+<p >Randomly chooses one of legal moves available to <a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html#a69fdaf3024cf61c1b3a4472c1b52d35b">moveselection::RandomMoveEvaluator.evaluating_player_</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00099">99</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a69b94792d3d265d5ddb69840e256a273" name="a69b94792d3d265d5ddb69840e256a273"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a69b94792d3d265d5ddb69840e256a273">&#9670;&nbsp;</a></span>RandomMoveEvaluator()</h2>
@@ -193,7 +198,7 @@ template&lt;typename ConcreteSpaceInfoProvider &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00118">118</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00109">109</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
@@ -219,7 +224,7 @@ template&lt;typename ConcreteSpaceInfoProvider &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00119">119</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00110">110</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
@@ -229,7 +234,7 @@ template&lt;typename ConcreteSpaceInfoProvider &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 8 2024 15:58:22 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 23:16:58 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

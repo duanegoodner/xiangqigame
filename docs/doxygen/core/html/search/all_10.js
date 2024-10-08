@@ -8,7 +8,7 @@ var searchData=
   ['recordtrdata_5',['RecordTrData',['../classBoardStateSummarizer.html#ab2187a1c6c4d96b603b18177c7d920e6',1,'BoardStateSummarizer']]],
   ['red_5fbase_5foffsets_5f_6',['red_base_offsets_',['../classpiece__points_1_1BPOPointsSKeys.html#a3869ac1bb1765d4d2b277d44f07b0c9f',1,'piece_points::BPOPointsSKeys::red_base_offsets_()'],['../classpiece__points_1_1BPOPointsEKeys.html#add0bba65a758574679b5ea64647df236',1,'piece_points::BPOPointsEKeys::red_base_offsets_()']]],
   ['red_5fcastle_5fspaces_7',['red_castle_spaces',['../namespacegameboard.html#a5276c175a40d19b70dc764a7ff5a878f',1,'gameboard']]],
-  ['red_5fposition_5foffsets_5f_8',['red_position_offsets_',['../classpiece__points_1_1BPOPointsSKeys.html#a190b431492bca8950f0cf1ab37b3814f',1,'piece_points::BPOPointsSKeys::red_position_offsets_()'],['../classpiece__points_1_1BPOPointsEKeys.html#a28f9e37252ecbd7b1c62702d1f80f95b',1,'piece_points::BPOPointsEKeys::red_position_offsets_()']]],
+  ['red_5fposition_5foffsets_5f_8',['red_position_offsets_',['../classpiece__points_1_1BPOPointsEKeys.html#a28f9e37252ecbd7b1c62702d1f80f95b',1,'piece_points::BPOPointsEKeys::red_position_offsets_()'],['../classpiece__points_1_1BPOPointsSKeys.html#a190b431492bca8950f0cf1ab37b3814f',1,'piece_points::BPOPointsSKeys::red_position_offsets_()']]],
   ['rednetpoints_9',['RedNetPoints',['../classpiece__points_1_1BPOPointsEKeys.html#aa0945f311d671e17883326d36b8ccb93',1,'piece_points::BPOPointsEKeys']]],
   ['remaining_5fsearch_5fdepth_10',['remaining_search_depth',['../structmoveselection_1_1TranspositionTableEntry.html#a2695cfdf5b009082a224a127593132cc',1,'moveselection::TranspositionTableEntry']]],
   ['removefrommovelog_11',['RemoveFromMoveLog',['../classgameboard_1_1GameBoard.html#aa1b04ddda87d4a7d38005d6570a62037',1,'gameboard::GameBoard']]],
@@ -18,5 +18,6 @@ var searchData=
   ['result_5fdepth_5fcounts_15',['result_depth_counts',['../structmoveselection_1_1SearchSummary.html#a8a9040373c96556a6822d9d5e8bb6577',1,'moveselection::SearchSummary']]],
   ['result_5ftype_16',['result_type',['../structmoveselection_1_1TranspositionTableEntry.html#a5dd4140200bd820f43bdceb97f9561f1',1,'moveselection::TranspositionTableEntry']]],
   ['resultdepthcounts_17',['ResultDepthCounts',['../structmoveselection_1_1ResultDepthCounts.html',1,'moveselection::ResultDepthCounts'],['../structmoveselection_1_1ResultDepthCounts.html#a2d2b88f03d80c029bced3752772437b7',1,'moveselection::ResultDepthCounts::ResultDepthCounts()']]],
-  ['runminimax_18',['RunMinimax',['../classmoveselection_1_1MinimaxMoveEvaluator.html#abd67319d84e9527bb6b6e53b1ede7fdb',1,'moveselection::MinimaxMoveEvaluator']]]
+  ['resultdepthcountsdata_5ft_18',['ResultDepthCountsData_t',['../namespacemoveselection.html#aa4c456c3f118a94017483880ff42991b',1,'moveselection']]],
+  ['runminimax_19',['RunMinimax',['../classmoveselection_1_1MinimaxMoveEvaluator.html#abd67319d84e9527bb6b6e53b1ede7fdb',1,'moveselection::MinimaxMoveEvaluator']]]
 ];

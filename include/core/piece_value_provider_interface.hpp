@@ -1,5 +1,5 @@
 //! @file piece_value_provider_interface.hpp
-//! Definition of PieceValueProvider CRTP interface.  
+//! Definition of PieceValueProvider CRTP interface.
 
 #pragma once
 
@@ -7,7 +7,9 @@
 
 using namespace gameboard;
 
-// CRTP Interface: Evaluator <- GamePoints
+//! CRTP interface with method to retrieve points value for a specific
+//! gamepiece::GamePiece at a specific gameboard::BoardSpace (concrete example:
+//! piece_points::PiecePositionPoints).
 template <typename ConcretePieceValueProvider>
 class PieceValueProvider {
 public:

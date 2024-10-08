@@ -1,5 +1,5 @@
 <map id="include/core/board_state_summarizer_interface.hpp" name="include/core/board_state_summarizer_interface.hpp">
-<area shape="rect" id="node1" title="Definition of BoardStateSummarizer" alt="" coords="449,5,689,47"/>
+<area shape="rect" id="node1" title="Definition of BoardStateSummarizer." alt="" coords="449,5,689,47"/>
 <area shape="rect" id="node2" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="446,95,693,121"/>
 <area shape="rect" id="node3" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="215,177,430,203"/>
 <area shape="rect" id="node5" href="$xiangqigame__core_8cpp.html" title="Implements Pybind11 module xiangqigame_core, exposing C++ classes and methods to Python." alt="" coords="300,363,489,404"/>

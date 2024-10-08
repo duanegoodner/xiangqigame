@@ -12,8 +12,8 @@
 <area shape="rect" id="node5" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="259,459,473,486"/>
 <area shape="rect" id="node7" href="$piece__position__points_8hpp.html" title="Definition of piece_points::PiecePositionPoints." alt="" coords="764,452,920,493"/>
 <area shape="rect" id="node9" href="$move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="549,452,740,493"/>
-<area shape="rect" id="node11" href="$evaluator__details_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="703,184,869,225"/>
+<area shape="rect" id="node11" href="$evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="703,184,869,225"/>
 <area shape="rect" id="node13" href="$json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1097,184,1275,225"/>
 <area shape="rect" id="node14" href="$json__utility__nlohmann_8cpp.html" title="Implementation of methods for jsonio::NlohmannJsonUtility." alt="" coords="1074,273,1245,329"/>
-<area shape="rect" id="node12" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer" alt="" coords="553,281,793,322"/>
+<area shape="rect" id="node12" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="553,281,793,322"/>
 </map>

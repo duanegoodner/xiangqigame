@@ -1,6 +1,6 @@
 <map id="include/core/board_data_structs.hpp" name="include/core/board_data_structs.hpp">
 <area shape="rect" id="node1" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="549,5,691,47"/>
-<area shape="rect" id="node2" href="$evaluator__details_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="807,273,974,315"/>
+<area shape="rect" id="node2" href="$evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="807,273,974,315"/>
 <area shape="rect" id="node4" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="925,474,1171,501"/>
 <area shape="rect" id="node5" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="533,563,747,590"/>
 <area shape="rect" id="node6" href="$hash__calculator_8hpp.html" title="Class templates for boardstate::HashCalculator and its supporting class boardstate::ZobristKeys." alt="" coords="480,660,715,687"/>
@@ -15,7 +15,7 @@
 <area shape="rect" id="node19" href="$piece__points__data__structs_8hpp.html" title="Typedefs for collections of piece points." alt="" coords="1480,95,1664,136"/>
 <area shape="rect" id="node24" href="$piece__value__provider__interface_8hpp.html" title="Definition of PieceValueProvider CRTP interface." alt="" coords="1187,184,1405,225"/>
 <area shape="rect" id="node25" href="$space__info__provider__interface_8hpp.html" title="Definition of SpaceInfoProvider CRTP interface." alt="" coords="657,95,865,136"/>
-<area shape="rect" id="node3" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer" alt="" coords="771,370,1011,411"/>
+<area shape="rect" id="node3" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="771,370,1011,411"/>
 <area shape="rect" id="node11" href="$move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="819,556,1010,597"/>
 <area shape="rect" id="node10" href="$piece__position__points_8cpp.html" title="Implementation of piece_points::PiecePositionPoints." alt="" coords="1303,645,1473,701"/>
 <area shape="rect" id="node13" href="$move__calculator_8cpp.html" title="Acts as linkage point for move_calculator.hpp (where full implementation is located)" alt="" coords="361,467,546,508"/>

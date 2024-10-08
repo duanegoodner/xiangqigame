@@ -105,8 +105,8 @@ Include dependency graph for hash_calculator.hpp:</div>
 <area shape="rect" href="move__calculator__details_8hpp.html" title="Typedefs and data struct used by moves::MoveCalculator to select appropriate method from moves::Piece..." alt="" coords="1847,326,2057,353"/>
 <area shape="rect" href="piece__moves_8hpp.html" title="Definition of moves::PieceMoves and related constants." alt="" coords="1729,408,1865,435"/>
 <area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of moves::Move and other move&#45;related structs." alt="" coords="1078,490,1253,517"/>
-<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer" alt="" coords="1191,229,1375,271"/>
-<area shape="rect" href="evaluator__details_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1021,326,1184,353"/>
+<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="1191,229,1375,271"/>
+<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1003,326,1202,353"/>
 <area shape="rect" title=" " alt="" coords="632,237,691,263"/>
 <area shape="rect" href="move__evaluator__interface_8hpp.html" title="Definition of MoveEvaluator interface." alt="" coords="1551,326,1772,353"/>
 <area shape="rect" href="piece__value__provider__interface_8hpp.html" title="Definition of PieceValueProvider CRTP interface." alt="" coords="1329,483,1490,524"/>
@@ -146,10 +146,10 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for all of the hash keys needed to run a <a class="el" href="classboardstate_1_1HashCalculator.html" title="Implements BoardStateSummarizer interface; calculates Zobrist hash value of board configuration; prov...">boardstate::HashCalculator</a>.  <a href="structboardstate_1_1ZobristKeys.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboardstate_1_1TranspositionTable.html">boardstate::TranspositionTable&lt; KeyType &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container where <a class="el" href="classboardstate_1_1HashCalculator.html" title="Implements BoardStateSummarizer interface; calculates Zobrist hash value of board configuration; prov...">boardstate::HashCalculator</a> stores <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a> results; supports recording, look-up and retrieval of data.  <a href="structboardstate_1_1TranspositionTable.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container where <a class="el" href="classboardstate_1_1HashCalculator.html" title="Implements BoardStateSummarizer interface; calculates Zobrist hash value of board configuration; prov...">boardstate::HashCalculator</a> stores <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move based on Minimax algorithm; uses SpaceInfo...">moveselection::MinimaxMoveEvaluator</a> results; supports recording, look-up and retrieval of data.  <a href="structboardstate_1_1TranspositionTable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1HashCalculator.html">boardstate::HashCalculator&lt; KeyType &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classBoardStateSummarizer.html">BoardStateSummarizer</a> interface; calculates Zobrist hash value of board configuration; provides <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a> access to <a class="el" href="structboardstate_1_1TranspositionTable.html" title="Container where boardstate::HashCalculator stores moveselection::MinimaxMoveEvaluator results; suppor...">boardstate::TranspositionTable</a>.  <a href="classboardstate_1_1HashCalculator.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateSummarizer</a> interface; calculates Zobrist hash value of board configuration; provides <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move based on Minimax algorithm; uses SpaceInfo...">moveselection::MinimaxMoveEvaluator</a> access to <a class="el" href="structboardstate_1_1TranspositionTable.html" title="Container where boardstate::HashCalculator stores moveselection::MinimaxMoveEvaluator results; suppor...">boardstate::TranspositionTable</a>.  <a href="classboardstate_1_1HashCalculator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -164,7 +164,7 @@ Namespaces</h2></td></tr>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 8 2024 15:58:22 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 23:16:58 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>
