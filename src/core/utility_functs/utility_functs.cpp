@@ -1,10 +1,5 @@
-// Filename: utility_functs.cpp
-// Author: Duane Goodner
-// Created: 2022-12-07
-// Last Modified: 2024-08-16
-
-// Description:
-// Contains implementations of the utility functions that are not defined inline in .hpp file.
+//! @file utility_functs.cpp
+//! Implementation of the non-tempate functions defined in utility_functs.hpp.
 
 #include <fstream>
 #include <iostream>

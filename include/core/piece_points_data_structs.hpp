@@ -16,7 +16,8 @@ typedef int Points_t;
 inline size_t size_of_points_type() { return sizeof(Points_t); }
 inline bool is_signed_points_type() { return numeric_limits<Points_t>::is_signed; }
 
-// 2-D array of points values for single piece
+//! 2-D array of points values for single piece at each position on a
+//! gameboard::GameBoard.board_map_.
 typedef array<array<int, gameboard::kNumFiles>, gameboard::kNumRanks> PiecePointsArray_t;
 
 inline bool operator==(const PiecePointsArray_t &a, const PiecePointsArray_t &b) {

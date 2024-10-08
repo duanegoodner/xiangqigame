@@ -1,8 +1,8 @@
 <map id="moveselection::TranspositionTableEntry" name="moveselection::TranspositionTableEntry">
-<area shape="rect" id="node1" title=" " alt="" coords="203,543,415,635"/>
-<area shape="rect" id="node2" title=" " alt="" coords="73,204,112,281"/>
-<area shape="rect" id="node4" href="$structmoveselection_1_1BestMoves.html" title=" " alt="" coords="209,403,408,480"/>
-<area shape="rect" id="node3" title=" " alt="" coords="432,403,583,480"/>
-<area shape="rect" id="node5" href="$structmoves_1_1MoveCollection.html" title=" " alt="" coords="219,145,398,340"/>
-<area shape="rect" id="node6" title=" " alt="" coords="218,5,399,83"/>
+<area shape="rect" id="node1" title="Data structure that holds a moveselection::EqualScoreMoves and other search&#45;related info obtained fro..." alt="" coords="204,557,416,649"/>
+<area shape="rect" id="node2" title=" " alt="" coords="75,204,113,281"/>
+<area shape="rect" id="node4" href="$structmoveselection_1_1EqualScoreMoves.html" title="Holds a moves::MoveCollection in which all moves::Move have the same value (as perceived by a MoveEva..." alt="" coords="211,403,409,495"/>
+<area shape="rect" id="node3" title=" " alt="" coords="433,410,584,487"/>
+<area shape="rect" id="node5" href="$structmoves_1_1MoveCollection.html" title="A container for multiple moves::Move objects." alt="" coords="221,145,399,340"/>
+<area shape="rect" id="node6" title=" " alt="" coords="219,5,401,83"/>
 </map>

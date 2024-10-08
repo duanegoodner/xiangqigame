@@ -1,11 +1,11 @@
 var searchData=
 [
   ['table_5fentry_0',['table_entry',['../structmoveselection_1_1TranspositionTableSearchResult.html#a1bd94efe12b6825330ae31e655142760',1,'moveselection::TranspositionTableSearchResult']]],
-  ['teambasepoints_5ft_1',['TeamBasePoints_t',['../common_8hpp.html#aff4148ee3310d0e503880a43e8ed6647',1,'common.hpp']]],
-  ['teampointsarray_5ft_2',['TeamPointsArray_t',['../common_8hpp.html#a1aec167146102c64117bd1068f74284b',1,'common.hpp']]],
+  ['teambasepoints_5ft_1',['TeamBasePoints_t',['../namespacepiece__points.html#ac05e3c27242d1ac84b43b15b1bb07e98',1,'piece_points']]],
+  ['teampointsarray_5ft_2',['TeamPointsArray_t',['../namespacepiece__points.html#a6b971b075db66344748c5483a8f9bb91',1,'piece_points']]],
   ['teampointsarraytoemap_3',['TeamPointsArrayToEMap',['../structpiece__points_1_1PiecePositionPoints.html#a062a67e6d29cdf2d1d7f4334c67c148d',1,'piece_points::PiecePositionPoints']]],
-  ['teampointsemap_5ft_4',['TeamPointsEMap_t',['../common_8hpp.html#afea2ab82df8ba25b1a78f4264b453f27',1,'common.hpp']]],
-  ['teampointssmap_5ft_5',['TeamPointsSMap_t',['../common_8hpp.html#a3125eaddeabb606e839c603808b034ad',1,'common.hpp']]],
+  ['teampointsemap_5ft_4',['TeamPointsEMap_t',['../namespacepiece__points.html#a9570781db7fb63bb1f3ccd2256569f55',1,'piece_points']]],
+  ['teampointssmap_5ft_5',['TeamPointsSMap_t',['../namespacepiece__points.html#ae607b91dd9236965e25aa95aed4d22c4',1,'piece_points']]],
   ['teamzarray_5ft_6',['TeamZarray_t',['../structboardstate_1_1ZobristKeys.html#ab8ae6ebe62247e2d3e82bae67378884c',1,'boardstate::ZobristKeys']]],
   ['time_7',['time',['../structmoveselection_1_1SearchSummary.html#ac43135689edf3acc155d83fc68d72c9b',1,'moveselection::SearchSummary']]],
   ['tobpopointsekeys_8',['ToBPOPointsEKeys',['../classpiece__points_1_1BPOPointsSKeys.html#a2246551fef9e239ba166630f637fddba',1,'piece_points::BPOPointsSKeys']]],

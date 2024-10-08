@@ -74,13 +74,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>&gt;</code></p>
+<p>Stores a <a class="el" href="structmoveselection_1_1SearchSummary.html" title="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator....">moveselection::SearchSummary</a> for each <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a73e5d0e857aa08562e4ef1251824f487">moveselection::MinimaxMoveEvaluator.ImplementSelectMove</a> made for a particular player during a game.  
+ <a href="structmoveselection_1_1SearchSummaries.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for moveselection::SearchSummaries:</div>
 <div class="dyncontent">
 <div class="center"><img src="structmoveselection_1_1SearchSummaries__coll__graph.png" border="0" usemap="#amoveselection_1_1SearchSummaries_coll__map" alt="Collaboration graph"/></div>
 <map name="amoveselection_1_1SearchSummaries_coll__map" id="amoveselection_1_1SearchSummaries_coll__map">
-<area shape="rect" title=" " alt="" coords="73,160,317,252"/>
+<area shape="rect" title="Stores a moveselection::SearchSummary for each moveselection::MinimaxMoveEvaluator...." alt="" coords="73,160,317,252"/>
 <area shape="rect" title=" " alt="" coords="5,5,180,97"/>
 <area shape="rect" title=" " alt="" coords="205,5,391,97"/>
 </map>
@@ -101,8 +104,10 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a30ee77cf9e450e764688f0e4a3599c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00125">125</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<div class="textblock"><p >Stores a <a class="el" href="structmoveselection_1_1SearchSummary.html" title="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator....">moveselection::SearchSummary</a> for each <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a73e5d0e857aa08562e4ef1251824f487">moveselection::MinimaxMoveEvaluator.ImplementSelectMove</a> made for a particular player during a game. </p>
+<p >If a second call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#abd67319d84e9527bb6b6e53b1ede7fdb">moveselection::MinimaxMoveEvaluator.RunMinimax</a> is needed (due to a hash collision causing in illegal move to be returned by the first call to to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#abd67319d84e9527bb6b6e53b1ede7fdb">moveselection::MinimaxMoveEvaluator.RunMinimax</a>), a <a class="el" href="structmoveselection_1_1SearchSummary.html" title="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator....">moveselection::SearchSummary</a> for the second search is stored in <a class="el" href="structmoveselection_1_1SearchSummaries.html#a30ee77cf9e450e764688f0e4a3599c6a">moveselection::SearchSummaries.extra_searches</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00153">153</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a60a9714525a71c29c3a0c63349e539c7" name="a60a9714525a71c29c3a0c63349e539c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a60a9714525a71c29c3a0c63349e539c7">&#9670;&nbsp;</a></span>NewExtraSearch()</h2>
@@ -138,7 +143,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00134">134</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00162">162</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -166,7 +171,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00129">129</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00157">157</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -183,7 +188,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00127">127</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00155">155</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -199,17 +204,17 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00126">126</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00154">154</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/core/<a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a></li>
+<li>include/core/<a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 7 2024 13:51:59 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 23:16:58 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

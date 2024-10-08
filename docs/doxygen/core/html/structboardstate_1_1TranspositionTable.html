@@ -74,13 +74,16 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Container where <a class="el" href="classboardstate_1_1HashCalculator.html" title="Implements BoardStateSummarizer interface; calculates Zobrist hash value of board configuration; prov...">boardstate::HashCalculator</a> stores <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move based on Minimax algorithm; uses SpaceInfo...">moveselection::MinimaxMoveEvaluator</a> results; supports recording, look-up and retrieval of data.  
+ <a href="structboardstate_1_1TranspositionTable.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for boardstate::TranspositionTable&lt; KeyType &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="structboardstate_1_1TranspositionTable__coll__graph.png" border="0" usemap="#aboardstate_1_1TranspositionTable_3_01KeyType_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aboardstate_1_1TranspositionTable_3_01KeyType_01_4_coll__map" id="aboardstate_1_1TranspositionTable_3_01KeyType_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="45,160,232,267"/>
+<area shape="rect" title="Container where boardstate::HashCalculator stores moveselection::MinimaxMoveEvaluator results; suppor..." alt="" coords="45,160,232,267"/>
 <area shape="rect" title=" " alt="" coords="5,5,272,97"/>
 </map>
 </div>
@@ -89,8 +92,8 @@ Collaboration diagram for boardstate::TranspositionTable&lt; KeyType &gt;:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a37f60cc46a12ce0d71cc9b0805908395"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html">TranspositionTableSearchResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboardstate_1_1TranspositionTable.html#a37f60cc46a12ce0d71cc9b0805908395">GetData</a> (KeyType board_state, int remaining_search_depth)</td></tr>
 <tr class="separator:a37f60cc46a12ce0d71cc9b0805908395"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd2e912e94c6996ed36b6642e1ec06e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboardstate_1_1TranspositionTable.html#abd2e912e94c6996ed36b6642e1ec06e2">RecordData</a> (KeyType state, int search_depth, <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> result_type, <a class="el" href="structmoveselection_1_1BestMoves.html">BestMoves</a> &amp;best_moves)</td></tr>
-<tr class="separator:abd2e912e94c6996ed36b6642e1ec06e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a877ae515defc1d74c11c3a7103946b34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structboardstate_1_1TranspositionTable.html#a877ae515defc1d74c11c3a7103946b34">RecordData</a> (KeyType state, int search_depth, <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> result_type, <a class="el" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> &amp;similar_moves)</td></tr>
+<tr class="separator:a877ae515defc1d74c11c3a7103946b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -99,8 +102,9 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename KeyType&gt;<br />
-struct boardstate::TranspositionTable&lt; KeyType &gt;</div>
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00075">75</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+struct boardstate::TranspositionTable&lt; KeyType &gt;</div><p >Container where <a class="el" href="classboardstate_1_1HashCalculator.html" title="Implements BoardStateSummarizer interface; calculates Zobrist hash value of board configuration; prov...">boardstate::HashCalculator</a> stores <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move based on Minimax algorithm; uses SpaceInfo...">moveselection::MinimaxMoveEvaluator</a> results; supports recording, look-up and retrieval of data. </p>
+
+<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00070">70</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a37f60cc46a12ce0d71cc9b0805908395" name="a37f60cc46a12ce0d71cc9b0805908395"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a37f60cc46a12ce0d71cc9b0805908395">&#9670;&nbsp;</a></span>GetData()</h2>
@@ -138,12 +142,12 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00077">77</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00072">72</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
 
 </div>
 </div>
-<a id="abd2e912e94c6996ed36b6642e1ec06e2" name="abd2e912e94c6996ed36b6642e1ec06e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd2e912e94c6996ed36b6642e1ec06e2">&#9670;&nbsp;</a></span>RecordData()</h2>
+<a id="a877ae515defc1d74c11c3a7103946b34" name="a877ae515defc1d74c11c3a7103946b34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a877ae515defc1d74c11c3a7103946b34">&#9670;&nbsp;</a></span>RecordData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -174,8 +178,8 @@ template&lt;typename KeyType &gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structmoveselection_1_1BestMoves.html">BestMoves</a> &amp;&#160;</td>
-          <td class="paramname"><em>best_moves</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> &amp;&#160;</td>
+          <td class="paramname"><em>similar_moves</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -190,7 +194,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00096">96</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00091">91</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
 
 </div>
 </div>
@@ -217,7 +221,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00111">111</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00106">106</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
 
 </div>
 </div>
@@ -227,7 +231,7 @@ template&lt;typename KeyType &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 7 2024 13:51:59 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 23:16:58 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

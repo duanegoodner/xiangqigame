@@ -1,13 +1,5 @@
 //! @file key_generator.hpp
-//! Declaration of KeyGenerator and implementation of its method templates.
-
-// Filename: game_board.tpp
-// Author: Duane Goodner
-// Created: 2024-09-03
-// Last Modified: 2024-09-04
-
-// Description:
-// Header only library for creating and displaying ints used as Zobrist keys.
+//! Declaration of boardstate::KeyGenerator and implementation of its template methods.
 
 #pragma once
 
@@ -18,6 +10,8 @@
 
 namespace boardstate {
 
+//! Used by boardstate::ZobristKeys to generate hash keys. Supports 64-bit and 128-bit
+//! keys.
 class KeyGenerator {
 public:
   KeyGenerator(unsigned long seed = std::random_device{}())

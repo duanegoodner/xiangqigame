@@ -1,12 +1,17 @@
+//! @file board_state_summarizer_interface.hpp
+//! Definition of BoardStateSummarizer
+
 #pragma once
 
-#include <evaluator_details.hpp>
+#include <evaluator_data_structs.hpp>
 
-using  namespace gameboard;
+using namespace gameboard;
 using namespace moves;
 
-
-// CRTP Interface: Evaluator <- BoardStateSummarizer (e.g. HashCalculator)
+//! CRTP Interface with methods to calculate / read / update hash values representing a
+//! board state; and storing and retreiving data from completed calculations of scores
+//! associated with specific board states (concrete example =
+//! boardstate::HashCalculator).
 template <typename ConcreteBoardStateSummarizer, typename KeyType>
 class BoardStateSummarizer {
 public:
@@ -30,10 +35,10 @@ public:
   void RecordTrData(
       int search_depth,
       moveselection::MinimaxResultType result_type,
-      moveselection::BestMoves &best_moves
+      moveselection::EqualScoreMoves &similar_moves
   ) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)
-        ->ImplementRecordTrData(search_depth, result_type, best_moves);
+        ->ImplementRecordTrData(search_depth, result_type, similar_moves);
   }
 
   moveselection::TranspositionTableSearchResult GetTrData(int search_depth) {

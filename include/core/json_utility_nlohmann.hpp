@@ -1,5 +1,5 @@
 //! @file json_utility_nlohmann.hpp
-//! Declaration and implementation of templated portions of NlohmannJsonUtility.
+//! Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility.
 
 #pragma once
 
@@ -14,6 +14,9 @@
 using namespace std;
 
 namespace jsonio {
+
+//! Implements JsonUtility interface; imports / exports objects from / to json files
+//! using the [**Nlohmann json library**](https://github.com/nlohmann/json).
 class NlohmannJsonUtility : public JsonUtility<NlohmannJsonUtility> {
 public:
   template <typename T>

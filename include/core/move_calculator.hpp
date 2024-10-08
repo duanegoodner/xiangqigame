@@ -1,11 +1,5 @@
 //! @file move_calculator.hpp
-//! Definition of MoveCalculator 
-
-// Filename: move_calculator.hpp
-// Author: Duane Goodner
-// Created: 2022-11-23
-// Last Modified: 2024-08-16
-
+//! Definition of moves::MoveCalculator.
 
 #pragma once
 
@@ -20,6 +14,8 @@ using namespace gameboard;
 
 namespace moves {
 
+//! Calculates  legal moves::Move objects for of a gameboard::GameBoard with a particular
+//! state.
 class MoveCalculator {
 public:
   MoveCalculator()

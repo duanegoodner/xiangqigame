@@ -1,10 +1,5 @@
-// Filename: game_board.cpp
-// Author: Duane Goodner
-// Created: 2022-12-18
-// Last Modified: 2024-09-30
-
-// Description:
-// Implementations of all methods for GameBoard
+//! @file game_board.cpp
+//! Implements gameboard::GameBoard and a few related constants.
 
 #include <board_data_structs.hpp>
 #include <game_board.hpp>
@@ -15,9 +10,7 @@
 using namespace gameboard;
 using namespace std;
 
-
 namespace gameboard {
-
 
 //! Starting board represented as 2-D array of integers.
 //! Can be converted to array of GamePiece objects by
@@ -43,8 +36,6 @@ const int kRepeatPeriodsToCheck[3] = {2, 3, 4};
 //! following sequences are probibited:
 //! ABABAB, ABCABCABC, ABCDABCDABCD
 const int kRepeatPeriodsMaxAllowed = 2;
-
-
 
 GameBoard::GameBoard(const BoardMapInt_t starting_board)
     : board_map_{int_board_to_game_pieces(starting_board)}
@@ -123,9 +114,7 @@ void GameBoard::ImplementAttachMoveCallback(function<void(ExecutedMove)> callbac
   move_callbacks_.emplace_back(callback);
 }
 
-std::map<PieceColor, vector<ExecutedMove>> GameBoard::GetMoveLog() {
-  return move_log_;
-}
+std::map<PieceColor, vector<ExecutedMove>> GameBoard::GetMoveLog() { return move_log_; }
 
 void GameBoard::UpdateHashCalculator(ExecutedMove executed_move) {
   for (const auto &callback : move_callbacks_) {
@@ -165,4 +154,4 @@ bool GameBoard::ViolatesRepeatRule(PieceColor color) {
   return false;
 }
 
-}
+} // namespace gameboard

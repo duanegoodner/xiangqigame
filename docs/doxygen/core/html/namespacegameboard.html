@@ -65,65 +65,43 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">gameboard Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Stores piece positions, and exposes methods for calculating, executing, an un-doing moves.">GameBoard</a>.  
-<a href="namespacegameboard.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1BoardDirection.html">BoardDirection</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Descirbes a direction on a <a class="el" href="classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8" title="2-D array of GamePiece objects.">gameboard::GameBoard.board_map_</a>.  <a href="structgameboard_1_1BoardDirection.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboard features: board size, river locations, and castle locations.  <a href="structgameboard_1_1BoardSpace.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1CastleEdges.html">CastleEdges</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a castle feature in terms of its min / max rank and file.  <a href="structgameboard_1_1CastleEdges.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html">GameBoard</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores piece positions, and exposes methods for calculating, executing, an un-doing moves.  <a href="classgameboard_1_1GameBoard.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,...">SpaceInfoProvider</a> interface; stores piece positions, and exposes methods for calculating, executing, an un-doing moves.  <a href="classgameboard_1_1GameBoard.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a></td></tr>
+<tr class="memitem:a568951e681950d2439ca397e18fefbe0"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a568951e681950d2439ca397e18fefbe0">BoardIdx_t</a></td></tr>
+<tr class="separator:a568951e681950d2439ca397e18fefbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; <a class="el" href="structgamepiece_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a></td></tr>
+<tr class="memdesc:aab2a12a4ad1333460ff7d6d910c6160d"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of gameboard::GamePiece objects.  <a href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">More...</a><br /></td></tr>
 <tr class="separator:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e9a3466821b60dadcb183d4c8175133"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; int, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a></td></tr>
+<tr class="memdesc:a2e9a3466821b60dadcb183d4c8175133"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of integers; can be converted to <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d" title="2-D array of gameboard::GamePiece objects.">gameboard::BoardMap_t</a> using <a class="el" href="namespacegameboard.html#aa06ff448689c3fcec3968e33752e0d19">gameboard::int_board_to_game_pieces</a>.  <a href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">More...</a><br /></td></tr>
 <tr class="separator:a2e9a3466821b60dadcb183d4c8175133"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3930c18039797b276764917d1ea8fcac"><td class="memItemLeft" align="right" valign="top">typedef array&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a>, 9 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a3930c18039797b276764917d1ea8fcac">Castle_t</a></td></tr>
 <tr class="separator:a3930c18039797b276764917d1ea8fcac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a568951e681950d2439ca397e18fefbe0"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a568951e681950d2439ca397e18fefbe0">BoardIdx_t</a></td></tr>
-<tr class="separator:a568951e681950d2439ca397e18fefbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a8d35500d8e8b10edb726f8629fd25e76"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a> : int { <br />
-&#160;&#160;<a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac9e13349ba9f4cdf999c3ca466f6d597">kNnn</a> = 0
-, <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438">kGen</a> = 1
-, <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4">kAdv</a> = 2
-, <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a12e20fe9e463f0ac39de69fbe1d93283">kEle</a> = 3
-, <br />
-&#160;&#160;<a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a43b285933641d3aac35909a5e69db9b3">kHor</a> = 4
-, <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266">kCha</a> = 5
-, <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328">kCan</a> = 6
-, <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aa980f91549dc566f894454d2e2015ef3">kSol</a> = 7
-<br />
- }</td></tr>
-<tr class="separator:a8d35500d8e8b10edb726f8629fd25e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae01851261ebf0d4dc64b2157179e142"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> : int { <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00">kRed</a> = -1
-, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142aee687c405ed14e1db1a6299dc520735c">kNul</a> = 0
-, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b">kBlk</a> = 1
- }</td></tr>
-<tr class="separator:aae01851261ebf0d4dc64b2157179e142"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a96f2b0bb2cc896e13f52854427e155d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a96f2b0bb2cc896e13f52854427e155d9">opponent_of</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
+<tr class="memitem:a96f2b0bb2cc896e13f52854427e155d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a96f2b0bb2cc896e13f52854427e155d9">opponent_of</a> (<a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">PieceColor</a> color)</td></tr>
 <tr class="separator:a96f2b0bb2cc896e13f52854427e155d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6f8be767cc393da7504f0852d4eeb7f5"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespacegameboard.html#a3930c18039797b276764917d1ea8fcac">Castle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a6f8be767cc393da7504f0852d4eeb7f5">calc_castle_spaces</a> (const <a class="el" href="structgameboard_1_1CastleEdges.html">CastleEdges</a> &amp;edges)</td></tr>
 <tr class="separator:a6f8be767cc393da7504f0852d4eeb7f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,21 +113,21 @@ Functions</h2></td></tr>
 <tr class="separator:aa06ff448689c3fcec3968e33752e0d19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c941b62b18fde02113a22837e8254e5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a6c941b62b18fde02113a22837e8254e5">is_occupied</a> (const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;board_map, const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space)</td></tr>
 <tr class="separator:a6c941b62b18fde02113a22837e8254e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab46418a8f6b553347e091decce903d08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ab46418a8f6b553347e091decce903d08">get_color</a> (const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;board_map, const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space)</td></tr>
+<tr class="memitem:ab46418a8f6b553347e091decce903d08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ab46418a8f6b553347e091decce903d08">get_color</a> (const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;board_map, const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space)</td></tr>
 <tr class="separator:ab46418a8f6b553347e091decce903d08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9bf535a990158e293d64e91db8daee4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ae9bf535a990158e293d64e91db8daee4">get_type</a> (const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;board_map, const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space)</td></tr>
+<tr class="memitem:ae9bf535a990158e293d64e91db8daee4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07">PieceType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ae9bf535a990158e293d64e91db8daee4">get_type</a> (const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;board_map, const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space)</td></tr>
 <tr class="separator:ae9bf535a990158e293d64e91db8daee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fb18238af2aa997fdfa498c3a17e264"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a1fb18238af2aa997fdfa498c3a17e264">get_general_position</a> (const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;board_map, const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
+<tr class="memitem:a1fb18238af2aa997fdfa498c3a17e264"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a1fb18238af2aa997fdfa498c3a17e264">get_general_position</a> (const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;board_map, const <a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">PieceColor</a> color)</td></tr>
 <tr class="separator:a1fb18238af2aa997fdfa498c3a17e264"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9638b1bf6a230b70ec0764d02f2041c5"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a9638b1bf6a230b70ec0764d02f2041c5">get_all_spaces_occupied_by</a> (const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;board_map, const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
+<tr class="memitem:a9638b1bf6a230b70ec0764d02f2041c5"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a9638b1bf6a230b70ec0764d02f2041c5">get_all_spaces_occupied_by</a> (const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;board_map, const <a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">PieceColor</a> color)</td></tr>
 <tr class="separator:a9638b1bf6a230b70ec0764d02f2041c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75fc40f337461b680b48011deb3470f1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a75fc40f337461b680b48011deb3470f1">get_zcolor_index</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
-<tr class="separator:a75fc40f337461b680b48011deb3470f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3aa2ce7e026b7eb6d768bf4b0261e546"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a3aa2ce7e026b7eb6d768bf4b0261e546">get_piece_color</a> (size_t zcolor_index)</td></tr>
-<tr class="separator:a3aa2ce7e026b7eb6d768bf4b0261e546"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a5c4bd2ef24f756227318f6fd75eb4895"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacegameboard.html#a568951e681950d2439ca397e18fefbe0">BoardIdx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a> = 10</td></tr>
+<tr class="separator:a5c4bd2ef24f756227318f6fd75eb4895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5e296086982321384dc034288cee600"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacegameboard.html#a568951e681950d2439ca397e18fefbe0">BoardIdx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a> = 9</td></tr>
+<tr class="separator:ad5e296086982321384dc034288cee600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fffbf20f72f3d01b3a24bb59499425e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacegameboard.html#a568951e681950d2439ca397e18fefbe0">BoardIdx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a2fffbf20f72f3d01b3a24bb59499425e">kRedRiverEdge</a> = 5</td></tr>
 <tr class="separator:a2fffbf20f72f3d01b3a24bb59499425e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adfea0925fa61e4179c09e5293da07400"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacegameboard.html#a568951e681950d2439ca397e18fefbe0">BoardIdx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#adfea0925fa61e4179c09e5293da07400">kBlackRiverEdge</a> = 4</td></tr>
@@ -158,18 +136,6 @@ Variables</h2></td></tr>
 <tr class="separator:af8583f8680f6f904b8eb4a07ba892f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae715c4cc954af711a8f9da82271d2aba"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structgameboard_1_1CastleEdges.html">CastleEdges</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ae715c4cc954af711a8f9da82271d2aba">kBlackCastleEdges</a> = {0, 2, 3, 5}</td></tr>
 <tr class="separator:ae715c4cc954af711a8f9da82271d2aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb2a36261e130fe53dbde981e8b74ff6"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aeb2a36261e130fe53dbde981e8b74ff6">kNumPieceTypeVals</a> = 8</td></tr>
-<tr class="separator:aeb2a36261e130fe53dbde981e8b74ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abdd4836e7aa4520ae9423da97d3a7617"><td class="memItemLeft" align="right" valign="top">const unordered_map&lt; string, <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#abdd4836e7aa4520ae9423da97d3a7617">kPieceTypeStringToEnum</a></td></tr>
-<tr class="separator:abdd4836e7aa4520ae9423da97d3a7617"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f12f6873e7dfe11c82b0c811165020b"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a9f12f6873e7dfe11c82b0c811165020b">kNumPieceColorVals</a> = 3</td></tr>
-<tr class="separator:a9f12f6873e7dfe11c82b0c811165020b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefbd77f29548c55abf6dadb32a28fad8"><td class="memItemLeft" align="right" valign="top">const unordered_map&lt; string, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aefbd77f29548c55abf6dadb32a28fad8">kPieceColorStringToEnum</a></td></tr>
-<tr class="separator:aefbd77f29548c55abf6dadb32a28fad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c4bd2ef24f756227318f6fd75eb4895"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacegameboard.html#a568951e681950d2439ca397e18fefbe0">BoardIdx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a> = 10</td></tr>
-<tr class="separator:a5c4bd2ef24f756227318f6fd75eb4895"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5e296086982321384dc034288cee600"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacegameboard.html#a568951e681950d2439ca397e18fefbe0">BoardIdx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a> = 9</td></tr>
-<tr class="separator:ad5e296086982321384dc034288cee600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61c9cb4f6bae74d1541f537bff5a5c5b"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a61c9cb4f6bae74d1541f537bff5a5c5b">kStartingBoard</a></td></tr>
 <tr class="memdesc:a61c9cb4f6bae74d1541f537bff5a5c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starting board represented as 2-D array of integers.  <a href="namespacegameboard.html#a61c9cb4f6bae74d1541f537bff5a5c5b">More...</a><br /></td></tr>
 <tr class="separator:a61c9cb4f6bae74d1541f537bff5a5c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,9 +146,7 @@ Variables</h2></td></tr>
 <tr class="memdesc:adc3c88bd024708e1e2b062c7c0df4afb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Repeated move sequence lengths forbidden under move repetition rules.  <a href="namespacegameboard.html#adc3c88bd024708e1e2b062c7c0df4afb">More...</a><br /></td></tr>
 <tr class="separator:adc3c88bd024708e1e2b062c7c0df4afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Stores piece positions, and exposes methods for calculating, executing, an un-doing moves.">GameBoard</a>. </p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
+<h2 class="groupheader">Typedef Documentation</h2>
 <a id="a568951e681950d2439ca397e18fefbe0" name="a568951e681950d2439ca397e18fefbe0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a568951e681950d2439ca397e18fefbe0">&#9670;&nbsp;</a></span>BoardIdx_t</h2>
 
@@ -195,7 +159,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_8hpp_source.html#l00089">89</a> of file <a class="el" href="common_8hpp_source.html">common.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00017">17</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -206,12 +170,15 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef array&lt;array&lt;<a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a>&gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a>&gt; <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a></td>
+          <td class="memname">typedef array&lt;array&lt;<a class="el" href="structgamepiece_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a>&gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a>&gt; <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__components_8hpp_source.html#l00072">72</a> of file <a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>.</p>
+<p>2-D array of gameboard::GamePiece objects. </p>
+<p >This is the data type of <a class="el" href="classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8" title="2-D array of GamePiece objects.">gameboard::GameBoard.board_map_</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00045">45</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -227,7 +194,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__components_8hpp_source.html#l00074">74</a> of file <a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>.</p>
+<p>2-D array of integers; can be converted to <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d" title="2-D array of gameboard::GamePiece objects.">gameboard::BoardMap_t</a> using <a class="el" href="namespacegameboard.html#aa06ff448689c3fcec3968e33752e0d19">gameboard::int_board_to_game_pieces</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00048">48</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -243,55 +212,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__components_8hpp_source.html#l00115">115</a> of file <a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="aae01851261ebf0d4dc64b2157179e142" name="aae01851261ebf0d4dc64b2157179e142"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae01851261ebf0d4dc64b2157179e142">&#9670;&nbsp;</a></span>PieceColor</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> : int</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00" name="aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00"></a>kRed&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aae01851261ebf0d4dc64b2157179e142aee687c405ed14e1db1a6299dc520735c" name="aae01851261ebf0d4dc64b2157179e142aee687c405ed14e1db1a6299dc520735c"></a>kNul&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b" name="aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b"></a>kBlk&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="common_8hpp_source.html#l00057">57</a> of file <a class="el" href="common_8hpp_source.html">common.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a8d35500d8e8b10edb726f8629fd25e76" name="a8d35500d8e8b10edb726f8629fd25e76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d35500d8e8b10edb726f8629fd25e76">&#9670;&nbsp;</a></span>PieceType</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">gameboard::PieceType</a> : int</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a8d35500d8e8b10edb726f8629fd25e76ac9e13349ba9f4cdf999c3ca466f6d597" name="a8d35500d8e8b10edb726f8629fd25e76ac9e13349ba9f4cdf999c3ca466f6d597"></a>kNnn&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438" name="a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438"></a>kGen&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4" name="a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4"></a>kAdv&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8d35500d8e8b10edb726f8629fd25e76a12e20fe9e463f0ac39de69fbe1d93283" name="a8d35500d8e8b10edb726f8629fd25e76a12e20fe9e463f0ac39de69fbe1d93283"></a>kEle&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8d35500d8e8b10edb726f8629fd25e76a43b285933641d3aac35909a5e69db9b3" name="a8d35500d8e8b10edb726f8629fd25e76a43b285933641d3aac35909a5e69db9b3"></a>kHor&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266" name="a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266"></a>kCha&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328" name="a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328"></a>kCan&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a8d35500d8e8b10edb726f8629fd25e76aa980f91549dc566f894454d2e2015ef3" name="a8d35500d8e8b10edb726f8629fd25e76aa980f91549dc566f894454d2e2015ef3"></a>kSol&#160;</td><td class="fielddoc"></td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="common_8hpp_source.html#l00031">31</a> of file <a class="el" href="common_8hpp_source.html">common.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00090">90</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -319,7 +240,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__components_8hpp_source.html#l00132">132</a> of file <a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00107">107</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -347,7 +268,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__components_8hpp_source.html#l00118">118</a> of file <a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00093">93</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -369,7 +290,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">PieceColor</a>&#160;</td>
           <td class="paramname"><em>color</em>&#160;</td>
         </tr>
         <tr>
@@ -385,7 +306,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__utilities_8hpp_source.html#l00073">73</a> of file <a class="el" href="board__utilities_8hpp_source.html">board_utilities.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00151">151</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -399,7 +320,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> gameboard::get_color </td>
+          <td class="memname"><a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">PieceColor</a> gameboard::get_color </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;&#160;</td>
           <td class="paramname"><em>board_map</em>, </td>
@@ -423,7 +344,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__utilities_8hpp_source.html#l00041">41</a> of file <a class="el" href="board__utilities_8hpp_source.html">board_utilities.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00125">125</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -445,7 +366,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">PieceColor</a>&#160;</td>
           <td class="paramname"><em>color</em>&#160;</td>
         </tr>
         <tr>
@@ -461,35 +382,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__utilities_8hpp_source.html#l00055">55</a> of file <a class="el" href="board__utilities_8hpp_source.html">board_utilities.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a3aa2ce7e026b7eb6d768bf4b0261e546" name="a3aa2ce7e026b7eb6d768bf4b0261e546"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3aa2ce7e026b7eb6d768bf4b0261e546">&#9670;&nbsp;</a></span>get_piece_color()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> gameboard::get_piece_color </td>
-          <td>(</td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>zcolor_index</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="common_8hpp_source.html#l00081">81</a> of file <a class="el" href="common_8hpp_source.html">common.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00133">133</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -503,7 +396,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a> gameboard::get_type </td>
+          <td class="memname"><a class="el" href="namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07">PieceType</a> gameboard::get_type </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;&#160;</td>
           <td class="paramname"><em>board_map</em>, </td>
@@ -527,35 +420,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__utilities_8hpp_source.html#l00048">48</a> of file <a class="el" href="board__utilities_8hpp_source.html">board_utilities.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a75fc40f337461b680b48011deb3470f1" name="a75fc40f337461b680b48011deb3470f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75fc40f337461b680b48011deb3470f1">&#9670;&nbsp;</a></span>get_zcolor_index()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t gameboard::get_zcolor_index </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
-          <td class="paramname"><em>color</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="common_8hpp_source.html#l00077">77</a> of file <a class="el" href="common_8hpp_source.html">common.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00129">129</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -583,7 +448,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__utilities_8hpp_source.html#l00027">27</a> of file <a class="el" href="board__utilities_8hpp_source.html">board_utilities.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00111">111</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -621,7 +486,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__utilities_8hpp_source.html#l00037">37</a> of file <a class="el" href="board__utilities_8hpp_source.html">board_utilities.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00121">121</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -635,9 +500,9 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> gameboard::opponent_of </td>
+          <td class="memname"><a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">PieceColor</a> gameboard::opponent_of </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">PieceColor</a>&#160;</td>
           <td class="paramname"><em>color</em></td><td>)</td>
           <td></td>
         </tr>
@@ -649,7 +514,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__components_8hpp_source.html#l00066">66</a> of file <a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00039">39</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -676,7 +541,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__components_8hpp_source.html#l00130">130</a> of file <a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00105">105</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -701,7 +566,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__components_8hpp_source.html#l00036">36</a> of file <a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00032">32</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -717,7 +582,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__components_8hpp_source.html#l00028">28</a> of file <a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00022">22</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -733,39 +598,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_8hpp_source.html#l00091">91</a> of file <a class="el" href="common_8hpp_source.html">common.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a9f12f6873e7dfe11c82b0c811165020b" name="a9f12f6873e7dfe11c82b0c811165020b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f12f6873e7dfe11c82b0c811165020b">&#9670;&nbsp;</a></span>kNumPieceColorVals</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int gameboard::kNumPieceColorVals = 3</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="common_8hpp_source.html#l00058">58</a> of file <a class="el" href="common_8hpp_source.html">common.hpp</a>.</p>
-
-</div>
-</div>
-<a id="aeb2a36261e130fe53dbde981e8b74ff6" name="aeb2a36261e130fe53dbde981e8b74ff6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb2a36261e130fe53dbde981e8b74ff6">&#9670;&nbsp;</a></span>kNumPieceTypeVals</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int gameboard::kNumPieceTypeVals = 8</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="common_8hpp_source.html#l00041">41</a> of file <a class="el" href="common_8hpp_source.html">common.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00019">19</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -781,69 +614,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="common_8hpp_source.html#l00090">90</a> of file <a class="el" href="common_8hpp_source.html">common.hpp</a>.</p>
-
-</div>
-</div>
-<a id="aefbd77f29548c55abf6dadb32a28fad8" name="aefbd77f29548c55abf6dadb32a28fad8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aefbd77f29548c55abf6dadb32a28fad8">&#9670;&nbsp;</a></span>kPieceColorStringToEnum</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const unordered_map&lt;string, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&gt; gameboard::kPieceColorStringToEnum</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= [] {</div>
-<div class="line">  unordered_map&lt;string, PieceColor&gt; temp;</div>
-<div class="line">  temp.insert(make_pair(<span class="stringliteral">&quot;red&quot;</span>, <a class="code hl_enumvalue" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00">PieceColor::kRed</a>));</div>
-<div class="line">  temp.insert(make_pair(<span class="stringliteral">&quot;null&quot;</span>, <a class="code hl_enumvalue" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142aee687c405ed14e1db1a6299dc520735c">PieceColor::kNul</a>));</div>
-<div class="line">  temp.insert(make_pair(<span class="stringliteral">&quot;black&quot;</span>, <a class="code hl_enumvalue" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b">PieceColor::kBlk</a>));</div>
-<div class="line">  <span class="keywordflow">return</span> temp;</div>
-<div class="line">}()</div>
-<div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00">gameboard::kRed</a></div><div class="ttdeci">@ kRed</div><div class="ttdef"><b>Definition:</b> <a href="common_8hpp_source.html#l00057">common.hpp:57</a></div></div>
-<div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b">gameboard::kBlk</a></div><div class="ttdeci">@ kBlk</div><div class="ttdef"><b>Definition:</b> <a href="common_8hpp_source.html#l00057">common.hpp:57</a></div></div>
-<div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142aee687c405ed14e1db1a6299dc520735c"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142aee687c405ed14e1db1a6299dc520735c">gameboard::kNul</a></div><div class="ttdeci">@ kNul</div><div class="ttdef"><b>Definition:</b> <a href="common_8hpp_source.html#l00057">common.hpp:57</a></div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="common_8hpp_source.html#l00066">66</a> of file <a class="el" href="common_8hpp_source.html">common.hpp</a>.</p>
-
-</div>
-</div>
-<a id="abdd4836e7aa4520ae9423da97d3a7617" name="abdd4836e7aa4520ae9423da97d3a7617"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abdd4836e7aa4520ae9423da97d3a7617">&#9670;&nbsp;</a></span>kPieceTypeStringToEnum</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const unordered_map&lt;string, <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a>&gt; gameboard::kPieceTypeStringToEnum</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= [] {</div>
-<div class="line">    unordered_map&lt;string, PieceType&gt; temp;</div>
-<div class="line">    temp.insert(make_pair(<span class="stringliteral">&quot;null&quot;</span>, <a class="code hl_enumvalue" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac9e13349ba9f4cdf999c3ca466f6d597">PieceType::kNnn</a>));</div>
-<div class="line">    temp.insert(make_pair(<span class="stringliteral">&quot;general&quot;</span>, <a class="code hl_enumvalue" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438">PieceType::kGen</a>));</div>
-<div class="line">    temp.insert(make_pair(<span class="stringliteral">&quot;advisor&quot;</span>, <a class="code hl_enumvalue" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4">PieceType::kAdv</a>));</div>
-<div class="line">    temp.insert(make_pair(<span class="stringliteral">&quot;elephant&quot;</span>, <a class="code hl_enumvalue" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a12e20fe9e463f0ac39de69fbe1d93283">PieceType::kEle</a>));</div>
-<div class="line">    temp.insert(make_pair(<span class="stringliteral">&quot;chariot&quot;</span>, <a class="code hl_enumvalue" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266">PieceType::kCha</a>));</div>
-<div class="line">    temp.insert(make_pair(<span class="stringliteral">&quot;horse&quot;</span>, <a class="code hl_enumvalue" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a43b285933641d3aac35909a5e69db9b3">PieceType::kHor</a>));</div>
-<div class="line">    temp.insert(make_pair(<span class="stringliteral">&quot;cannon&quot;</span>, <a class="code hl_enumvalue" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328">PieceType::kCan</a>));</div>
-<div class="line">    temp.insert(make_pair(<span class="stringliteral">&quot;soldier&quot;</span>, <a class="code hl_enumvalue" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aa980f91549dc566f894454d2e2015ef3">PieceType::kSol</a>));</div>
-<div class="line">    <span class="keywordflow">return</span> temp;</div>
-<div class="line">}()</div>
-<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76a12e20fe9e463f0ac39de69fbe1d93283"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a12e20fe9e463f0ac39de69fbe1d93283">gameboard::kEle</a></div><div class="ttdeci">@ kEle</div><div class="ttdef"><b>Definition:</b> <a href="common_8hpp_source.html#l00035">common.hpp:35</a></div></div>
-<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76a43b285933641d3aac35909a5e69db9b3"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a43b285933641d3aac35909a5e69db9b3">gameboard::kHor</a></div><div class="ttdeci">@ kHor</div><div class="ttdef"><b>Definition:</b> <a href="common_8hpp_source.html#l00036">common.hpp:36</a></div></div>
-<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328">gameboard::kCan</a></div><div class="ttdeci">@ kCan</div><div class="ttdef"><b>Definition:</b> <a href="common_8hpp_source.html#l00038">common.hpp:38</a></div></div>
-<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76aa980f91549dc566f894454d2e2015ef3"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aa980f91549dc566f894454d2e2015ef3">gameboard::kSol</a></div><div class="ttdeci">@ kSol</div><div class="ttdef"><b>Definition:</b> <a href="common_8hpp_source.html#l00040">common.hpp:39</a></div></div>
-<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266">gameboard::kCha</a></div><div class="ttdeci">@ kCha</div><div class="ttdef"><b>Definition:</b> <a href="common_8hpp_source.html#l00037">common.hpp:37</a></div></div>
-<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438">gameboard::kGen</a></div><div class="ttdeci">@ kGen</div><div class="ttdef"><b>Definition:</b> <a href="common_8hpp_source.html#l00033">common.hpp:33</a></div></div>
-<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4">gameboard::kAdv</a></div><div class="ttdeci">@ kAdv</div><div class="ttdef"><b>Definition:</b> <a href="common_8hpp_source.html#l00034">common.hpp:34</a></div></div>
-<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76ac9e13349ba9f4cdf999c3ca466f6d597"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac9e13349ba9f4cdf999c3ca466f6d597">gameboard::kNnn</a></div><div class="ttdeci">@ kNnn</div><div class="ttdef"><b>Definition:</b> <a href="common_8hpp_source.html#l00032">common.hpp:32</a></div></div>
-</div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="common_8hpp_source.html#l00044">44</a> of file <a class="el" href="common_8hpp_source.html">common.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00018">18</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -867,7 +638,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__components_8hpp_source.html#l00035">35</a> of file <a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00031">31</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -883,7 +654,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__components_8hpp_source.html#l00027">27</a> of file <a class="el" href="board__components_8hpp_source.html">board_components.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00021">21</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -902,7 +673,7 @@ Variables</h2></td></tr>
 <p>Repeated move sequence lengths forbidden under move repetition rules. </p>
 <p >If kRepeatPeriodsToCheck = {2, 3, 4} and kRepeatPeriodsMaxAllowed = 2, then the following sequences are probibited: ABABAB, ABCABCABC, ABCDABCDABCD </p>
 
-<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00046">46</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00038">38</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
 
 </div>
 </div>
@@ -920,7 +691,7 @@ Variables</h2></td></tr>
 
 <p>Max allowed repetitions of prohibited move sequence lengths. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00040">40</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00032">32</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
 
 </div>
 </div>
@@ -949,16 +720,16 @@ Variables</h2></td></tr>
 <div class="line">}}</div>
 </div><!-- fragment -->
 <p>Starting board represented as 2-D array of integers. </p>
-<p >Can be converted to array of <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> objects by board_utilities::int_board_to_game_pieces. </p>
+<p >Can be converted to array of GamePiece objects by board_utilities::int_board_to_game_pieces. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00026">26</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00018">18</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 7 2024 13:51:59 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 23:16:58 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

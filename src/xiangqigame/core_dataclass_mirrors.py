@@ -94,16 +94,16 @@ class MoveCollection:
 
 
 @dataclass
-class BestMoves:
-    best_eval: PointsT
-    best_moves: MoveCollection
+class EqualScoreMoves:
+    shared_score: PointsT
+    similar_moves: MoveCollection
 
     @classmethod
-    def from_core_best_moves(cls, core_best_moves: core.BestMoves):
+    def from_core_similar_moves(cls, core_similar_moves: core.EqualScoreMoves):
         return cls(
-            best_eval=core_best_moves.best_eval,
-            best_moves=MoveCollection.from_core_move_collection(
-                core_move_collection=core_best_moves.best_moves
+            shared_score=core_similar_moves.shared_score,
+            similar_moves=MoveCollection.from_core_move_collection(
+                core_move_collection=core_similar_moves.similar_moves
             ),
         )
 
@@ -133,7 +133,7 @@ class SearchSummary:
     time: datetime.timedelta
     result_depth_counts: np.ndarray
     transposition_table_hits: np.ndarray
-    best_moves: BestMoves
+    similar_moves: EqualScoreMoves
     selected_move: Move
 
     @classmethod
@@ -143,8 +143,8 @@ class SearchSummary:
             time=core_search_summary.time,
             result_depth_counts=np.array(core_search_summary.get_result_depth_counts()),
             transposition_table_hits=np.array(core_search_summary.get_transposition_table_hits()),
-            best_moves=BestMoves.from_core_best_moves(
-                core_best_moves=core_search_summary.best_moves
+            similar_moves=EqualScoreMoves.from_core_similar_moves(
+                core_similar_moves=core_search_summary.similar_moves
             ),
             selected_move=Move.from_core_move(
                 core_move=core_search_summary.selected_move

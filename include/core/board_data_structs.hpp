@@ -1,11 +1,10 @@
 //! @file board_data_structs.hpp
-//! Constants, typedefs, and simple structs used by GameBoard.
+//! Constants, typedefs, and simple structs used by gameboard::GameBoard.
 
 #pragma once
 
 #include <array>
 #include <cassert>
-// #include <common.hpp>
 #include <game_piece.hpp>
 #include <random>
 #include <vector>
@@ -21,6 +20,8 @@ const BoardIdx_t kNumFiles = 9;
 
 const BoardIdx_t kRedRiverEdge = 5;
 const BoardIdx_t kBlackRiverEdge = 4;
+
+//! Defines a castle feature in terms of its min / max rank and file.
 struct CastleEdges {
   BoardIdx_t min_rank;
   BoardIdx_t max_rank;
@@ -29,45 +30,25 @@ struct CastleEdges {
 };
 constexpr CastleEdges kRedCastleEdges = {7, 9, 3, 5};
 constexpr CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
+
+//! Descirbes a direction on a gameboard::GameBoard.board_map_.
 struct BoardDirection {
   BoardIdx_t rank, file;
-};
-
-struct GamePiece {
-  PieceType piece_type;
-  PieceColor piece_color;
-
-  GamePiece() {
-    piece_type = PieceType::kNnn;
-    piece_color = PieceColor::kNul;
-  }
-
-  GamePiece(int int_piece) {
-    piece_type = static_cast<PieceType>(abs(int_piece));
-    piece_color = (int_piece == 0) ? PieceColor::kNul
-                                   : static_cast<PieceColor>(copysign(1, int_piece));
-  }
-
-  GamePiece(PieceType type, PieceColor color) {
-    piece_type = type;
-    piece_color = color;
-  }
-
-  bool operator==(const GamePiece &other) const {
-    return (piece_type == other.piece_type) && (piece_color == other.piece_color);
-  }
 };
 
 inline PieceColor opponent_of(PieceColor color) {
   return static_cast<PieceColor>(-1 * color);
 }
 
-// We have two wayts to represent a board map:
-// 1. As an array of GamePiece objects
+//! 2-D array of gameboard::GamePiece objects.
+//! This is the data type of gameboard::GameBoard.board_map_.
 typedef array<array<GamePiece, kNumFiles>, kNumRanks> BoardMap_t;
-// 2. As an array of integers
+//! 2-D array of integers; can be converted to gameboard::BoardMap_t using
+//! gameboard::int_board_to_game_pieces.
 typedef array<array<int, kNumFiles>, kNumRanks> BoardMapInt_t;
 
+//! A pair of coordinate (rank, and file) with properties determined by comparison with
+//! values of gameboard features: board size, river locations, and castle locations.
 struct BoardSpace {
 
   BoardIdx_t rank, file;
@@ -141,17 +122,11 @@ inline bool is_occupied(const BoardMap_t &board_map, const BoardSpace &space) {
   return board_map[space.rank][space.file].piece_color != PieceColor::kNul;
 }
 
-inline PieceColor get_color(
-    const BoardMap_t &board_map,
-    const BoardSpace &space
-) {
+inline PieceColor get_color(const BoardMap_t &board_map, const BoardSpace &space) {
   return board_map[space.rank][space.file].piece_color;
 }
 
-inline PieceType get_type(
-    const BoardMap_t &board_map,
-    const BoardSpace &space
-) {
+inline PieceType get_type(const BoardMap_t &board_map, const BoardSpace &space) {
   return board_map[space.rank][space.file].piece_type;
 }
 
@@ -159,8 +134,8 @@ inline BoardSpace get_general_position(
     const BoardMap_t &board_map,
     const PieceColor color
 ) {
-  auto castle = (color == PieceColor::kRed) ? red_castle_spaces()
-                                            : black_castle_spaces();
+  auto castle =
+      (color == PieceColor::kRed) ? red_castle_spaces() : black_castle_spaces();
 
   BoardSpace found_space;
 
@@ -188,6 +163,4 @@ inline vector<BoardSpace> get_all_spaces_occupied_by(
   }
   return occupied_spaces;
 }
-} // namespace board_components
-
-
+} // namespace gameboard

@@ -1,19 +1,11 @@
 //! @file hash_calculator.hpp
-//! Class templates for HashCalculator and its supporting class ZobristKeys.
-
-// Filename: game_board.tpp
-// Author: Duane Goodner
-// Created: 2022-12-27
-// Last Modified: 2024-08-16
-
-// Description:
-// Defines struct and class used for Zobrist Hash tracking of board state.
+//! Class templates for boardstate::HashCalculator and its supporting class
+//! boardstate::ZobristKeys.
 
 #pragma once
 
 #include <array>
 #include <board_data_structs.hpp>
-// #include <common.hpp>
 #include <game_board.hpp>
 #include <key_generator.hpp>
 #include <utility_functs.hpp>
@@ -24,6 +16,7 @@ using namespace std;
 
 namespace boardstate {
 
+//! Container for all of the hash keys needed to run a boardstate::HashCalculator.
 template <typename KeyType>
 struct ZobristKeys {
   typedef array<array<KeyType, kNumFiles>, kNumRanks> PieceZarray_t;
@@ -71,6 +64,8 @@ struct ZobristKeys {
   };
 };
 
+//! Container where boardstate::HashCalculator stores moveselection::MinimaxMoveEvaluator
+//! results; supports recording, look-up and retrieval of data.
 template <typename KeyType>
 struct TranspositionTable {
 
@@ -97,12 +92,12 @@ struct TranspositionTable {
       KeyType state,
       int search_depth,
       MinimaxResultType result_type,
-      BestMoves &best_moves
+      EqualScoreMoves &similar_moves
   ) {
     TranspositionTableEntry transposition_table_entry{
         search_depth,
         result_type,
-        best_moves
+        similar_moves
     };
     data_[state].push_back(transposition_table_entry);
   };
@@ -111,6 +106,9 @@ private:
   unordered_map<KeyType, vector<TranspositionTableEntry>> data_;
 };
 
+//! Implements BoardStateSummarizer interface; calculates Zobrist hash value of board
+//! configuration; provides moveselection::MinimaxMoveEvaluator access to
+//! boardstate::TranspositionTable
 template <typename KeyType>
 class HashCalculator : public BoardStateSummarizer<HashCalculator<KeyType>, KeyType> {
 public:
@@ -141,9 +139,9 @@ public:
   void ImplementRecordTrData(
       int search_depth,
       MinimaxResultType result_type,
-      BestMoves &best_moves
+      EqualScoreMoves &similar_moves
   ) {
-    transposition_table_.RecordData(board_state_, search_depth, result_type, best_moves);
+    transposition_table_.RecordData(board_state_, search_depth, result_type, similar_moves);
   }
 
   TranspositionTableSearchResult ImplementGetTrData(int search_depth) {

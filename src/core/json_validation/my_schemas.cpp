@@ -1,11 +1,5 @@
-
-// Filename: game_board.tpp
-// Author: Duane Goodner
-// Created: 2022-12-20
-// Last Modified: 2024-08-16
-
-// Description:
-// Dev script for validating format of piece points .json files 
+//! @file my_schemas.cpp 
+//! json validation gist, unused by rest of project, but keeping here for reference. 
 
 #include <cstdlib>
 #include <iomanip>
