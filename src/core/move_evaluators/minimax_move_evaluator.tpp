@@ -94,12 +94,12 @@ template <
     typename ConcreteSpaceInfoProvider,
     typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-std::vector<RatedMove> MinimaxMoveEvaluator<
+std::vector<ScoredMove> MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::
     GenerateRankedMoveList(PieceColor cur_player, MoveCollection &cur_player_moves) {
-  vector<RatedMove> rated_moves;
+  vector<ScoredMove> rated_moves;
   for (auto cur_move : cur_player_moves.moves) {
     auto cur_rated_move = RateMove(cur_move, cur_player);
     rated_moves.emplace_back(cur_rated_move);
@@ -107,8 +107,8 @@ std::vector<RatedMove> MinimaxMoveEvaluator<
   sort(
       rated_moves.begin(),
       rated_moves.end(),
-      [](const RatedMove &move_a, const RatedMove &move_b) {
-        return move_a.rating > move_b.rating;
+      [](const ScoredMove &move_a, const ScoredMove &move_b) {
+        return move_a.score > move_b.score;
       }
   );
   return rated_moves;
@@ -158,7 +158,7 @@ template <
     typename ConcreteSpaceInfoProvider,
     typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-RatedMove MinimaxMoveEvaluator<
+ScoredMove MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::RateMove(Move move, PieceColor cur_player) {
@@ -183,7 +183,7 @@ RatedMove MinimaxMoveEvaluator<
     capture_val = 0;
   }
 
-  return RatedMove{move, (position_value_delta + capture_val)};
+  return ScoredMove{move, (position_value_delta + capture_val)};
 }
 
 template <

@@ -73,13 +73,13 @@ private:
 
   EqualScoreMoves EvaluateNonWinLeaf(PieceColor cur_player);
   EqualScoreMoves EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &result_type);
-  RatedMove RateMove(Move move, PieceColor cur_player);
+  ScoredMove RateMove(Move move, PieceColor cur_player);
   Points_t GetValueOfPieceAtPosition(
       PieceColor color,
       PieceType piece_type,
       BoardSpace space
   );
-  std::vector<RatedMove> GenerateRankedMoveList(
+  std::vector<ScoredMove> GenerateRankedMoveList(
       PieceColor cur_player,
       MoveCollection &cur_player_moves
   );

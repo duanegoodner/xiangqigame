@@ -4,25 +4,26 @@
 #pragma once
 
 #include <board_data_structs.hpp>
-#include <move_data_structs.hpp>
-#include <piece_points_bpo.hpp>
 #include <chrono>
 #include <map>
+#include <move_data_structs.hpp>
+#include <piece_points_bpo.hpp>
 
 using namespace gameboard;
 using namespace piece_points;
 
 namespace moveselection {
 
-//! A moves::MoveCollection in which all moves::Move have the same value. 
+//! Holds a moves::MoveCollection in which all moves::Move have the same value (as perceived by
+//! a MoveEvaluator), and the value of the shared score.
 struct EqualScoreMoves {
   Points_t shared_score;
   moves::MoveCollection similar_moves;
 };
 
-struct RatedMove {
+struct ScoredMove {
   moves::Move move;
-  Points_t rating;
+  Points_t score;
 };
 
 enum MinimaxResultType : size_t {
@@ -52,7 +53,10 @@ struct TranspositionTableSearchResult {
   bool found;
 };
 
-inline EqualScoreMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_player) {
+inline EqualScoreMoves evaluate_win_leaf(
+    PieceColor cur_player,
+    PieceColor initiating_player
+) {
   auto empty_similar_moves = moves::MoveCollection();
 
   if (cur_player == initiating_player) {
@@ -91,7 +95,11 @@ struct SearchSummary {
     // result_depth_counts.emplace_back(max_search_depth + 1, 0);
   }
 
-  void Update(MinimaxResultType result_type, int search_depth, EqualScoreMoves similar_moves) {
+  void Update(
+      MinimaxResultType result_type,
+      int search_depth,
+      EqualScoreMoves similar_moves
+  ) {
     // result_depth_counts[result_type][search_depth]++;
     result_depth_counts.Update(result_type, search_depth);
     num_nodes++;
@@ -105,7 +113,9 @@ struct SearchSummary {
   void SetTime(std::chrono::duration<double, std::nano> search_time) {
     time = search_time;
   }
-  void SetEqualScoreMoves(EqualScoreMoves similar_moves) { this->similar_moves = similar_moves; }
+  void SetEqualScoreMoves(EqualScoreMoves similar_moves) {
+    this->similar_moves = similar_moves;
+  }
   void SetSelectedMove(moves::Move selected_move) {
     this->selected_move = selected_move;
   }
@@ -140,4 +150,4 @@ struct SearchSummaries {
     return new_search_entry.first->second;
   }
 };
-} // namespace move_selection
+} // namespace moveselection

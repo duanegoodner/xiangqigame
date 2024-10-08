@@ -78,7 +78,7 @@ class PlayerSummary:
         )
         df.index.name = "game_move_numbers"
 
-        # Populate the DataFrame by iterating over result types
+        # Populate the DataFrame by itescore over result types
         for idx, (name, value) in enumerate(
             core.MinimaxResultType.__members__.items()
         ):
