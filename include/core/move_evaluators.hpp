@@ -5,7 +5,7 @@
 
 #include <board_data_structs.hpp>
 #include <board_state_summarizer_interface.hpp>
-#include <evaluator_details.hpp>
+#include <evaluator_data_structs.hpp>
 #include <functional>
 #include <limits>
 #include <move_evaluator_interface.hpp>

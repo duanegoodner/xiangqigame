@@ -6,7 +6,7 @@
 #include <board_data_structs.hpp>
 #include <chrono>
 // #include <common.hpp>
-#include <evaluator_details.hpp>
+#include <evaluator_data_structs.hpp>
 #include <iostream>
 #include <limits>
 using namespace gameboard;

@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <evaluator_details.hpp>
+#include <evaluator_data_structs.hpp>
 
 using  namespace gameboard;
 using namespace moves;

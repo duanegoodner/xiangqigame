@@ -1,4 +1,4 @@
-//! @file evaluator_details.hpp
+//! @file evaluator_data_structs.hpp
 //! Data structs used by moveselection::MinimaxEvaluator
 
 #pragma once
@@ -71,18 +71,13 @@ inline EqualScoreMoves evaluate_win_leaf(
   }
 }
 
-// TODO: consider changing data from 2-D std::vector to 2-D std::array
+
 struct ResultDepthCounts {
 
   ResultDepthCounts(int max_search_depth) {
-    // data.reserve(MinimaxResultType::kMax);
     for (auto &vec : data) {
       vec.resize(max_search_depth + 1);
     }
-
-    // for (auto idx = 0; idx <= MinimaxResultType::kMax; idx++) {
-    //   data.emplace_back(max_search_depth + 1, 0);
-    // }
   }
 
   void Update(MinimaxResultType result_type, int search_depth) {

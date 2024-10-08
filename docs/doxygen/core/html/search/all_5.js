@@ -8,7 +8,7 @@ var searchData=
   ['evaluateendofgameleaf_5',['EvaluateEndOfGameLeaf',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a062024c5b53db2679b335eb28350d5e8',1,'moveselection::MinimaxMoveEvaluator']]],
   ['evaluatenonwinleaf_6',['EvaluateNonWinLeaf',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a8153e9edfb49f8905c61a6f81e5ebf04',1,'moveselection::MinimaxMoveEvaluator']]],
   ['evaluating_5fplayer_5f_7',['evaluating_player_',['../classmoveselection_1_1RandomMoveEvaluator.html#a69fdaf3024cf61c1b3a4472c1b52d35b',1,'moveselection::RandomMoveEvaluator::evaluating_player_()'],['../classmoveselection_1_1MinimaxMoveEvaluator.html#a05b0532a2e17f408c328c925d7e09172',1,'moveselection::MinimaxMoveEvaluator::evaluating_player_()']]],
-  ['evaluator_5fdetails_2ehpp_8',['evaluator_details.hpp',['../evaluator__details_8hpp.html',1,'']]],
+  ['evaluator_5fdetails_2ehpp_8',['evaluator_data_structs.hpp',['../evaluator__details_8hpp.html',1,'']]],
   ['executedmove_9',['ExecutedMove',['../structmoves_1_1ExecutedMove.html',1,'moves']]],
   ['executemove_10',['ExecuteMove',['../classSpaceInfoProvider.html#ad0c4d0c637a6ef1af279f098167c05f7',1,'SpaceInfoProvider']]],
   ['existsandpassescolortest_11',['ExistsAndPassesColorTest',['../classmoves_1_1PieceMoves.html#a0bdd887767b290971bc46748b664f7ac',1,'moves::PieceMoves']]],
