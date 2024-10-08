@@ -1,5 +1,5 @@
 <map id="moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;" name="moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="13,316,303,437"/>
+<area shape="rect" id="node1" title="Implements moves::MoveEvaluator interface." alt="" coords="13,316,303,437"/>
 <area shape="rect" id="node2" href="$classMoveEvaluator.html" title=" " alt="" coords="5,175,311,267"/>
-<area shape="rect" id="node3" href="$classMoveEvaluator.html" title=" " alt="" coords="43,5,273,97"/>
+<area shape="rect" id="node3" href="$classMoveEvaluator.html" title="CRTP interface with a method for selecting a moves::Move (concrete examples = moveselection::MinimaxM..." alt="" coords="43,5,273,97"/>
 </map>

@@ -1,18 +1,11 @@
-// Filename: move_evaluators.hpp
-// Author: Duane Goodner
-// Created: 2022-12-17
-// Last Modified: 2024-09-30
-
-// Description:
-// Defines PiecePointsEvaluator template class and interfaces that
-// PiecePointsEvaluator requires GameBoard and GamePoints classes to comply
-// with.
+//! @file move_evaluators.hpp
+//! Definitions of concrete classes that implement the MoveEvaluator interface.
 
 #pragma once
 
 #include <board_data_structs.hpp>
 #include <board_state_summarizer_interface.hpp>
-#include <evaluator_details.hpp>
+#include <evaluator_data_structs.hpp>
 #include <functional>
 #include <limits>
 #include <move_evaluator_interface.hpp>
@@ -25,16 +18,9 @@ using namespace moves;
 
 namespace moveselection {
 
-// CLASS TEMPLATE: MinimaxMoveEvaluator
-// IMPLEMENTS INTERFACE:
-//    MoveEvaluator
-// USES:
-//    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
-//    SpaceInfoProvider.
-//    ConcretePieceValueProvider (e.g. PiecePoints) that
-//    implements PieceValueProvider
-// Uses minimax algorithm with alpha-beta pruning to select a move for
-// evaluating_player_.
+//! Implements MoveEvaluator interface, and selects move::Move based on Minimax
+//! algorithm; uses SpaceInfoProvider, BoardStateSummarizer, and PieceValueProvider
+//! interfaces.
 template <
     typename ConcreteSpaceInfoProvider,
     typename ConcreteBoardStateSummarizer,
@@ -78,19 +64,22 @@ private:
   int starting_search_depth_;
   moveselection::SearchSummaries search_summaries_;
 
-  BestMoves EvaluateNonWinLeaf(PieceColor cur_player);
-  BestMoves EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &result_type);
-  RatedMove RateMove(Move move, PieceColor cur_player);
+  EqualScoreMoves EvaluateNonWinLeaf(PieceColor cur_player);
+  EqualScoreMoves EvaluateEndOfGameLeaf(
+      PieceColor cur_player,
+      MinimaxResultType &result_type
+  );
+  ScoredMove RateMove(Move move, PieceColor cur_player);
   Points_t GetValueOfPieceAtPosition(
       PieceColor color,
       PieceType piece_type,
       BoardSpace space
   );
-  std::vector<RatedMove> GenerateRankedMoveList(
+  std::vector<ScoredMove> GenerateRankedMoveList(
       PieceColor cur_player,
       MoveCollection &cur_player_moves
   );
-  BestMoves MinimaxRec(
+  EqualScoreMoves MinimaxRec(
       int remaining_search_depth,
       int alpha,
       int beta,
@@ -104,13 +93,8 @@ private:
   );
 };
 
-// CLASS TEMPLATE: RandomMoveEvaluator
-// IMPLEMENTS INTERFACE:
-//    MoveEvaluator
-// USES:
-//    ConcreteSpaceInfoProvider (e.g. GameBoard) that implements
-//    SpaceInfoProvider.
-// Randomly chooses one of the legal moves available to evaluating_player_.
+//! Implements moves::MoveEvaluator interface. Randomly chooses one of legal moves
+//! available to moveselection::RandomMoveEvaluator.evaluating_player_.
 template <typename ConcreteSpaceInfoProvider>
 class RandomMoveEvaluator
     : public MoveEvaluator<RandomMoveEvaluator<ConcreteSpaceInfoProvider>> {

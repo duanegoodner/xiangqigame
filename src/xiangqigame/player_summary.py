@@ -78,7 +78,7 @@ class PlayerSummary:
         )
         df.index.name = "game_move_numbers"
 
-        # Populate the DataFrame by iterating over result types
+        # Populate the DataFrame by itescore over result types
         for idx, (name, value) in enumerate(
             core.MinimaxResultType.__members__.items()
         ):
@@ -116,7 +116,7 @@ class PlayerSummary:
         ])
 
         eval_score = np.array([
-            search_summary.best_moves.best_eval
+            search_summary.similar_moves.shared_score
             for search_summary in self.search_summaries.first_searches
         ], dtype=PointsT)
 

@@ -74,22 +74,25 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>&gt;</code></p>
+<p>Stores data collected during a single call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a73e5d0e857aa08562e4ef1251824f487">moveselection::MinimaxMoveEvaluator.ImplementSelectMove</a>.  
+ <a href="structmoveselection_1_1SearchSummary.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for moveselection::SearchSummary:</div>
 <div class="dyncontent">
 <div class="center"><img src="structmoveselection_1_1SearchSummary__coll__graph.png" border="0" usemap="#amoveselection_1_1SearchSummary_coll__map" alt="Collaboration graph"/></div>
 <map name="amoveselection_1_1SearchSummary_coll__map" id="amoveselection_1_1SearchSummary_coll__map">
-<area shape="rect" title=" " alt="" coords="407,616,640,811"/>
-<area shape="rect" title=" " alt="" coords="640,5,679,83"/>
-<area shape="rect" href="structmoveselection_1_1BestMoves.html" title=" " alt="" coords="424,447,623,524"/>
-<area shape="rect" href="structgameboard_1_1BoardSpace.html" title=" " alt="" coords="697,182,878,333"/>
+<area shape="rect" title="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator...." alt="" coords="407,616,640,811"/>
+<area shape="rect" title=" " alt="" coords="641,5,680,83"/>
+<area shape="rect" href="structmoveselection_1_1EqualScoreMoves.html" title="Holds a moves::MoveCollection in which all moves::Move have the same value (as perceived by a MoveEva..." alt="" coords="424,439,623,531"/>
+<area shape="rect" href="structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa..." alt="" coords="698,182,879,333"/>
 <area shape="rect" title=" " alt="" coords="237,439,399,531"/>
-<area shape="rect" href="structmoveselection_1_1ResultDepthCounts.html" title=" " alt="" coords="5,432,212,539"/>
-<area shape="rect" title=" " alt="" coords="35,211,182,303"/>
-<area shape="rect" href="structmoves_1_1MoveCollection.html" title=" " alt="" coords="317,160,495,355"/>
-<area shape="rect" title=" " alt="" coords="315,5,497,83"/>
-<area shape="rect" href="structmoves_1_1Move.html" title=" " alt="" coords="709,447,833,524"/>
+<area shape="rect" href="structmoveselection_1_1ResultDepthCounts.html" title="Container for storing and updating data in a moveselection::ResultDepthCountsData_t array of vectors." alt="" coords="5,432,212,539"/>
+<area shape="rect" title=" " alt="" coords="6,204,211,311"/>
+<area shape="rect" href="structmoves_1_1MoveCollection.html" title="A container for multiple moves::Move objects." alt="" coords="295,160,474,355"/>
+<area shape="rect" title=" " alt="" coords="294,5,475,83"/>
+<area shape="rect" href="structmoves_1_1Move.html" title="A gameboard::BoardSpace pair (start and end)." alt="" coords="711,447,835,524"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -97,20 +100,20 @@ Collaboration diagram for moveselection::SearchSummary:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:add943de3b7c2ab9bc167c417420ba0e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#add943de3b7c2ab9bc167c417420ba0e3">SearchSummary</a> (int max_search_depth)</td></tr>
 <tr class="separator:add943de3b7c2ab9bc167c417420ba0e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0281f99a9f74109a9d4b235dbf0c2a65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#a0281f99a9f74109a9d4b235dbf0c2a65">Update</a> (<a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> result_type, int search_depth, <a class="el" href="structmoveselection_1_1BestMoves.html">BestMoves</a> <a class="el" href="structmoveselection_1_1SearchSummary.html#ae166ff2d7906a531f41be28e6b1ac819">best_moves</a>)</td></tr>
-<tr class="separator:a0281f99a9f74109a9d4b235dbf0c2a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb2d675e5569eede657ed21729362060"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#afb2d675e5569eede657ed21729362060">Update</a> (<a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> result_type, int search_depth, <a class="el" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="structmoveselection_1_1SearchSummary.html#a66200654533986f6b8813b5442de053f">similar_moves</a>)</td></tr>
+<tr class="separator:afb2d675e5569eede657ed21729362060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62f64dc3adc1d3b05439cfb92f3d159a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#a62f64dc3adc1d3b05439cfb92f3d159a">UpdateTranspositionTableHits</a> (<a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> result_type, int search_depth)</td></tr>
 <tr class="separator:a62f64dc3adc1d3b05439cfb92f3d159a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2b749b7bfb93c85564b9ac46b6935f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#ae2b749b7bfb93c85564b9ac46b6935f4">SetTime</a> (std::chrono::duration&lt; double, std::nano &gt; search_time)</td></tr>
 <tr class="separator:ae2b749b7bfb93c85564b9ac46b6935f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f660b78bb56810bdbae1ed31c8163f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#a4f660b78bb56810bdbae1ed31c8163f1">SetBestMoves</a> (<a class="el" href="structmoveselection_1_1BestMoves.html">BestMoves</a> <a class="el" href="structmoveselection_1_1SearchSummary.html#ae166ff2d7906a531f41be28e6b1ac819">best_moves</a>)</td></tr>
-<tr class="separator:a4f660b78bb56810bdbae1ed31c8163f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef41f911c3998993971ae306fcbdad68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#aef41f911c3998993971ae306fcbdad68">SetEqualScoreMoves</a> (<a class="el" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="structmoveselection_1_1SearchSummary.html#a66200654533986f6b8813b5442de053f">similar_moves</a>)</td></tr>
+<tr class="separator:aef41f911c3998993971ae306fcbdad68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a43437241f947349c15acd9522a9db8aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#a43437241f947349c15acd9522a9db8aa">SetSelectedMove</a> (<a class="el" href="structmoves_1_1Move.html">moves::Move</a> <a class="el" href="structmoveselection_1_1SearchSummary.html#ad6fd246f27691acf0a7ca1b97a3621d6">selected_move</a>)</td></tr>
 <tr class="separator:a43437241f947349c15acd9522a9db8aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afec75240f4524ff45d0b835c23fa9ae6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#afec75240f4524ff45d0b835c23fa9ae6">GetResultDepthCounts</a> ()</td></tr>
-<tr class="separator:afec75240f4524ff45d0b835c23fa9ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51864219d00a31f7ba568c28df0e215c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#a51864219d00a31f7ba568c28df0e215c">GetTranspositionTableHits</a> ()</td></tr>
-<tr class="separator:a51864219d00a31f7ba568c28df0e215c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a869d14d03ab6abf5688b8dfe66ae30ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemoveselection.html#aa4c456c3f118a94017483880ff42991b">ResultDepthCountsData_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#a869d14d03ab6abf5688b8dfe66ae30ab">GetResultDepthCounts</a> ()</td></tr>
+<tr class="separator:a869d14d03ab6abf5688b8dfe66ae30ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7264774347ac17608e80be74617a325"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemoveselection.html#aa4c456c3f118a94017483880ff42991b">ResultDepthCountsData_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#aa7264774347ac17608e80be74617a325">GetTranspositionTableHits</a> ()</td></tr>
+<tr class="separator:aa7264774347ac17608e80be74617a325"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -122,14 +125,16 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a8a9040373c96556a6822d9d5e8bb6577"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a164a829da6524397a3e5eab071c4f08e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1ResultDepthCounts.html">ResultDepthCounts</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#a164a829da6524397a3e5eab071c4f08e">transposition_table_hits</a></td></tr>
 <tr class="separator:a164a829da6524397a3e5eab071c4f08e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae166ff2d7906a531f41be28e6b1ac819"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1BestMoves.html">BestMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#ae166ff2d7906a531f41be28e6b1ac819">best_moves</a></td></tr>
-<tr class="separator:ae166ff2d7906a531f41be28e6b1ac819"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66200654533986f6b8813b5442de053f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#a66200654533986f6b8813b5442de053f">similar_moves</a></td></tr>
+<tr class="separator:a66200654533986f6b8813b5442de053f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6fd246f27691acf0a7ca1b97a3621d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoves_1_1Move.html">moves::Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummary.html#ad6fd246f27691acf0a7ca1b97a3621d6">selected_move</a></td></tr>
 <tr class="separator:ad6fd246f27691acf0a7ca1b97a3621d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00079">79</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<div class="textblock"><p >Stores data collected during a single call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a73e5d0e857aa08562e4ef1251824f487">moveselection::MinimaxMoveEvaluator.ImplementSelectMove</a>. </p>
+<p >Includes total number of nodes explored, a moveseelection::ResultDepthCounts object for moveselection::MinimaxResultType::kTrTableHit search results, and another moveseelection::ResultDepthCounts for all other search result types. </p>
+
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00103">103</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="add943de3b7c2ab9bc167c417420ba0e3" name="add943de3b7c2ab9bc167c417420ba0e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add943de3b7c2ab9bc167c417420ba0e3">&#9670;&nbsp;</a></span>SearchSummary()</h2>
@@ -155,13 +160,13 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00080">80</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00104">104</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="afec75240f4524ff45d0b835c23fa9ae6" name="afec75240f4524ff45d0b835c23fa9ae6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afec75240f4524ff45d0b835c23fa9ae6">&#9670;&nbsp;</a></span>GetResultDepthCounts()</h2>
+<a id="a869d14d03ab6abf5688b8dfe66ae30ab" name="a869d14d03ab6abf5688b8dfe66ae30ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a869d14d03ab6abf5688b8dfe66ae30ab">&#9670;&nbsp;</a></span>GetResultDepthCounts()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +175,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::vector&lt; int &gt; &gt; moveselection::SearchSummary::GetResultDepthCounts </td>
+          <td class="memname"><a class="el" href="namespacemoveselection.html#aa4c456c3f118a94017483880ff42991b">ResultDepthCountsData_t</a> moveselection::SearchSummary::GetResultDepthCounts </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -183,12 +188,12 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00109">109</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00133">133</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a51864219d00a31f7ba568c28df0e215c" name="a51864219d00a31f7ba568c28df0e215c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51864219d00a31f7ba568c28df0e215c">&#9670;&nbsp;</a></span>GetTranspositionTableHits()</h2>
+<a id="aa7264774347ac17608e80be74617a325" name="aa7264774347ac17608e80be74617a325"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7264774347ac17608e80be74617a325">&#9670;&nbsp;</a></span>GetTranspositionTableHits()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,7 +202,7 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::vector&lt; int &gt; &gt; moveselection::SearchSummary::GetTranspositionTableHits </td>
+          <td class="memname"><a class="el" href="namespacemoveselection.html#aa4c456c3f118a94017483880ff42991b">ResultDepthCountsData_t</a> moveselection::SearchSummary::GetTranspositionTableHits </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -210,12 +215,12 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00112">112</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00134">134</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a4f660b78bb56810bdbae1ed31c8163f1" name="a4f660b78bb56810bdbae1ed31c8163f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f660b78bb56810bdbae1ed31c8163f1">&#9670;&nbsp;</a></span>SetBestMoves()</h2>
+<a id="aef41f911c3998993971ae306fcbdad68" name="aef41f911c3998993971ae306fcbdad68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef41f911c3998993971ae306fcbdad68">&#9670;&nbsp;</a></span>SetEqualScoreMoves()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -224,10 +229,10 @@ Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void moveselection::SearchSummary::SetBestMoves </td>
+          <td class="memname">void moveselection::SearchSummary::SetEqualScoreMoves </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmoveselection_1_1BestMoves.html">BestMoves</a>&#160;</td>
-          <td class="paramname"><em>best_moves</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td>
+          <td class="paramname"><em>similar_moves</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -238,7 +243,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00105">105</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00127">127</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -266,7 +271,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00106">106</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00130">130</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -294,12 +299,12 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00102">102</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00124">124</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a0281f99a9f74109a9d4b235dbf0c2a65" name="a0281f99a9f74109a9d4b235dbf0c2a65"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0281f99a9f74109a9d4b235dbf0c2a65">&#9670;&nbsp;</a></span>Update()</h2>
+<a id="afb2d675e5569eede657ed21729362060" name="afb2d675e5569eede657ed21729362060"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb2d675e5569eede657ed21729362060">&#9670;&nbsp;</a></span>Update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -322,8 +327,8 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structmoveselection_1_1BestMoves.html">BestMoves</a>&#160;</td>
-          <td class="paramname"><em>best_moves</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td>
+          <td class="paramname"><em>similar_moves</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -338,7 +343,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00091">91</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00109">109</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -376,27 +381,11 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00098">98</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00120">120</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae166ff2d7906a531f41be28e6b1ac819" name="ae166ff2d7906a531f41be28e6b1ac819"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae166ff2d7906a531f41be28e6b1ac819">&#9670;&nbsp;</a></span>best_moves</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structmoveselection_1_1BestMoves.html">BestMoves</a> moveselection::SearchSummary::best_moves</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00121">121</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
-
-</div>
-</div>
 <a id="a238608961e46c5a77f00b0b86be4bd2b" name="a238608961e46c5a77f00b0b86be4bd2b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a238608961e46c5a77f00b0b86be4bd2b">&#9670;&nbsp;</a></span>num_nodes</h2>
 
@@ -409,7 +398,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00116">116</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00138">138</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -425,7 +414,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00119">119</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00140">140</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -441,7 +430,23 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00122">122</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00143">143</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a66200654533986f6b8813b5442de053f" name="a66200654533986f6b8813b5442de053f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66200654533986f6b8813b5442de053f">&#9670;&nbsp;</a></span>similar_moves</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> moveselection::SearchSummary::similar_moves</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00142">142</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -457,7 +462,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00117">117</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00139">139</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -473,17 +478,17 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__details_8hpp_source.html#l00120">120</a> of file <a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00141">141</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/core/<a class="el" href="evaluator__details_8hpp_source.html">evaluator_details.hpp</a></li>
+<li>include/core/<a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 7 2024 13:51:59 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 23:16:58 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

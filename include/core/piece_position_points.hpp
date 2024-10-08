@@ -1,15 +1,9 @@
-// Filename: piece_points.hpp
-// Author: Duane Goodner
-// Created: 2022-11-10
-// Last Modified: 2024-10-02
-
-// Description:
-// Defines PiecePositionPoints class.
+//! @file piece_position_points.hpp
+//! Definition of piece_points::PiecePositionPoints.
 
 #pragma once
 
 #include <board_data_structs.hpp>
-// #include <common.hpp>
 #include <move_evaluators.hpp>
 #include <piece_points_bpo.hpp>
 
@@ -18,11 +12,14 @@ using namespace std;
 
 namespace piece_points {
 
+//! Holds a piece_points::GamePointsArray_t of points values, and exposes a method for
+//! accessing element correspondig to specific gamepiece::PieceType located at a specific
+//! gameboard::BoardSpace.
 struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   PiecePositionPoints();
   PiecePositionPoints(GamePointsArray_t game_points_array);
-  PiecePositionPoints(BPOPointsEKeys& bpo_points_ekeys);
-  PiecePositionPoints(BPOPointsSKeys& bpo_points_skeys);
+  PiecePositionPoints(BPOPointsEKeys &bpo_points_ekeys);
+  PiecePositionPoints(BPOPointsSKeys &bpo_points_skeys);
   PiecePositionPoints(string json_file);
 
   // define in header to force inlining

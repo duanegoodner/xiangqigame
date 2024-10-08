@@ -1,0 +1,12 @@
+<map id="include/core/space_info_provider_interface.hpp" name="include/core/space_info_provider_interface.hpp">
+<area shape="rect" id="node1" title="Definition of SpaceInfoProvider CRTP interface." alt="" coords="140,5,348,47"/>
+<area shape="rect" id="node2" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="157,95,331,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,169,61,196"/>
+<area shape="rect" id="node4" title=" " alt="" coords="85,169,155,196"/>
+<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="179,169,309,196"/>
+<area shape="rect" id="node9" title=" " alt="" coords="333,169,405,196"/>
+<area shape="rect" id="node10" title=" " alt="" coords="430,169,493,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="127,244,190,271"/>
+<area shape="rect" id="node7" title=" " alt="" coords="215,244,273,271"/>
+<area shape="rect" id="node8" title=" " alt="" coords="298,244,422,271"/>
+</map>

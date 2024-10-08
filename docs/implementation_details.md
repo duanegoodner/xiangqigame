@@ -39,7 +39,7 @@ Below is the high-level file structure of `./src/core`.
 ├── move_evaluators
 ├── piece_moves
 ├── piece_points
-├── piece_points_spec
+├── piece_points_bpo
 ├── points_containers
 └── utility_functs
 ```

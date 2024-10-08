@@ -1,13 +1,13 @@
 <map id="include/core/piece_moves.hpp" name="include/core/piece_moves.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="313,5,453,47"/>
-<area shape="rect" id="node2" href="$board__components_8hpp.html" title="Constants, typedefs, and simple structs used by GameBoard." alt="" coords="350,169,525,196"/>
-<area shape="rect" id="node11" href="$board__utilities_8hpp.html" title="Free functions that serve as helpers for GameBoard." alt="" coords="257,95,399,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,319,61,345"/>
-<area shape="rect" id="node4" title=" " alt="" coords="524,244,593,271"/>
-<area shape="rect" id="node5" href="$common_8hpp.html" title="Constants and typedefs that are widely used in multiple namespaces." alt="" coords="259,244,365,271"/>
-<area shape="rect" id="node7" title=" " alt="" coords="400,319,472,345"/>
-<area shape="rect" id="node10" title=" " alt="" coords="497,319,559,345"/>
-<area shape="rect" id="node6" title=" " alt="" coords="85,319,144,345"/>
-<area shape="rect" id="node8" title=" " alt="" coords="168,319,227,345"/>
-<area shape="rect" id="node9" title=" " alt="" coords="251,319,375,345"/>
+<area shape="rect" id="node1" title="Definition of moves::PieceMoves and related constants." alt="" coords="250,5,390,47"/>
+<area shape="rect" id="node2" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="170,169,345,196"/>
+<area shape="rect" id="node11" href="$move__data__structs_8hpp.html" title="Definitions and implementations of moves::Move and other move&#45;related structs." alt="" coords="295,95,470,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,244,61,271"/>
+<area shape="rect" id="node4" title=" " alt="" coords="85,244,155,271"/>
+<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="362,244,491,271"/>
+<area shape="rect" id="node9" title=" " alt="" coords="179,244,251,271"/>
+<area shape="rect" id="node10" title=" " alt="" coords="275,244,338,271"/>
+<area shape="rect" id="node6" title=" " alt="" coords="310,319,373,345"/>
+<area shape="rect" id="node7" title=" " alt="" coords="397,319,456,345"/>
+<area shape="rect" id="node8" title=" " alt="" coords="481,319,605,345"/>
 </map>

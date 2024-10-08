@@ -1,4 +1,4 @@
 <map id="boardstate::TranspositionTable&lt; KeyType &gt;" name="boardstate::TranspositionTable&lt; KeyType &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="45,160,232,267"/>
+<area shape="rect" id="node1" title="Container where boardstate::HashCalculator stores moveselection::MinimaxMoveEvaluator results; suppor..." alt="" coords="45,160,232,267"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,272,97"/>
 </map>

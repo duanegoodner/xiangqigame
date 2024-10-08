@@ -23,8 +23,8 @@ namespace piece_points {
 // forward declare BPOPointsEKeys so BPOPointsSKeys is aware of it
 class BPOPointsEKeys;
 
-// Piece Points spec in "Base Points Offset" form with string keys to easily
-// read/write external json
+//! Piece Points spec in "Base Points Offset" form with string keys in member
+//! unordered_map objects for easy reading / writing data from / to .json files.
 class BPOPointsSKeys {
 public:
   BPOPointsSKeys(const BPOPointsSKeys &) = delete;
@@ -53,8 +53,9 @@ private:
   unique_ptr<JsonUtility<jsonio::NlohmannJsonUtility>> json_utility_;
 };
 
-// Piece Points spec in "Base Points Offset" form with PieceType enum keys for
-// use in internal data structs
+//! Piece Points spec in "Base Points Offset" form with PieceType enum keys in member
+//! unordered_map objects for easy conversion to / from piece_points::GamePointsArray_t
+//! form.
 class BPOPointsEKeys {
 public:
   BPOPointsEKeys(

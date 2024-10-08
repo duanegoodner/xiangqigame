@@ -1,10 +1,5 @@
-// Filename: json_schema_validate.cpp
-// Author: Duane Goodner
-// Created: 2022-12-07
-// Last Modified: 2024-08-16
-
-// Description:
-// Quick dev script for practicing json schema validation.
+//! @file json_schema_validate.cpp
+//! json validation gist, unused by rest of project, but keeping here for reference. 
 
 #include <iostream>
 #include <iomanip>

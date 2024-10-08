@@ -1,5 +1,5 @@
 //! @file game_board.hpp
-//! Definition of GameBoard class
+//! Definition of gameboard::GameBoard class
 
 #pragma once
 
@@ -12,15 +12,14 @@
 using namespace std;
 using namespace gameboard;
 
-//! Classes, structs and constants related to GameBoard
 namespace gameboard {
 
 extern const BoardMapInt_t kStartingBoard;
 extern const int kRepeatPeriodsToCheck[3];
 extern const int kRepeatPeriodsMaxAllowed;
 
-//! Stores piece positions, and exposes methods for calculating, executing, an un-doing
-//! moves. Implements CRTP Interface SpaceInfoProvider.
+//! Implements SpaceInfoProvider interface; stores piece positions, and exposes methods
+//! for calculating, executing, an un-doing moves..
 class GameBoard : public SpaceInfoProvider<GameBoard> {
 public:
   GameBoard();
@@ -40,14 +39,14 @@ public:
 private:
   //! 2-D array of GamePiece objects.
   BoardMap_t board_map_;
-  
+
   //! Encapsulates all calculations of allowed moves.
   MoveCalculator move_calculator_;
-  
+
   //! Stores functions that are called after any change in board config to keep
   //! boardstate::HashCalculator objects updated.
   vector<function<void(ExecutedMove)>> move_callbacks_;
-  
+
   //! Vectors of all moves that have been executed (and not un-done) by each player.
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
 
