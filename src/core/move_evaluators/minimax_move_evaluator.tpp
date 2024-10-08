@@ -118,7 +118,7 @@ template <
     typename ConcreteSpaceInfoProvider,
     typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-EqualValueMoves MinimaxMoveEvaluator<
+EqualScoreMoves MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::EvaluateNonWinLeaf(PieceColor cur_player) {
@@ -128,9 +128,9 @@ EqualValueMoves MinimaxMoveEvaluator<
   auto empty_move_collection = MoveCollection();
 
   if (cur_player == evaluating_player_) {
-    return EqualValueMoves{(cur_player_points - opponent_points), empty_move_collection};
+    return EqualScoreMoves{(cur_player_points - opponent_points), empty_move_collection};
   } else {
-    return EqualValueMoves{(opponent_points - cur_player_points), empty_move_collection};
+    return EqualScoreMoves{(opponent_points - cur_player_points), empty_move_collection};
   }
 }
 
@@ -138,19 +138,19 @@ template <
     typename ConcreteSpaceInfoProvider,
     typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-EqualValueMoves MinimaxMoveEvaluator<
+EqualScoreMoves MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::
     EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &result_type) {
-  auto empty_best_moves = MoveCollection();
+  auto empty_similar_moves = MoveCollection();
 
   if (cur_player == evaluating_player_) {
     result_type = MinimaxResultType::kEvaluatorLoses;
-    return EqualValueMoves{numeric_limits<Points_t>::min(), empty_best_moves};
+    return EqualScoreMoves{numeric_limits<Points_t>::min(), empty_similar_moves};
   } else {
     result_type = MinimaxResultType::kEvaluatorWins;
-    return EqualValueMoves{numeric_limits<Points_t>::max(), empty_best_moves};
+    return EqualScoreMoves{numeric_limits<Points_t>::max(), empty_similar_moves};
   }
 }
 
@@ -219,7 +219,7 @@ template <
     typename ConcreteSpaceInfoProvider,
     typename ConcreteBoardStateSummarizer,
     typename ConcretePieceValueProvider>
-EqualValueMoves MinimaxMoveEvaluator<
+EqualScoreMoves MinimaxMoveEvaluator<
     ConcreteSpaceInfoProvider,
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::
@@ -241,7 +241,7 @@ EqualValueMoves MinimaxMoveEvaluator<
     if (state_score_search_result.found) {
       result_type = MinimaxResultType::kTrTableHit;
       auto existing_result_type = state_score_search_result.table_entry.result_type;
-      auto result = state_score_search_result.table_entry.best_moves;
+      auto result = state_score_search_result.table_entry.similar_moves;
       search_summary.Update(result_type, remaining_search_depth, result);
       search_summary.UpdateTranspositionTableHits(
           existing_result_type,
@@ -275,7 +275,7 @@ EqualValueMoves MinimaxMoveEvaluator<
   if (cur_player == evaluating_player_) {
     // evaluation of each legal move when it's evaluating player's turn
     auto max_eval = numeric_limits<int>::min();
-    MoveCollection best_moves;
+    MoveCollection similar_moves;
     auto ranked_moves = GenerateRankedMoveList(cur_player, cur_moves);
     for (auto rated_move : ranked_moves) {
       auto executed_move = game_board_.ExecuteMove(rated_move.move);
@@ -287,13 +287,13 @@ EqualValueMoves MinimaxMoveEvaluator<
                           search_summary,
                           use_transposition_table
       )
-                          .best_eval;
+                          .shared_score;
       if (cur_eval == max_eval) {
-        best_moves.Append(rated_move.move);
+        similar_moves.Append(rated_move.move);
       } else if (cur_eval > max_eval) {
         max_eval = cur_eval;
-        best_moves.moves.clear();
-        best_moves.Append(rated_move.move);
+        similar_moves.moves.clear();
+        similar_moves.Append(rated_move.move);
       }
       game_board_.UndoMove(executed_move);
       alpha = max(alpha, cur_eval);
@@ -309,16 +309,16 @@ EqualValueMoves MinimaxMoveEvaluator<
     if (result_type == MinimaxResultType::kUnknown) {
       result_type = MinimaxResultType::kFullyEvaluatedNode;
     }
-    auto result = EqualValueMoves{max_eval, best_moves};
+    auto result = EqualScoreMoves{max_eval, similar_moves};
     hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
     search_summary.Update(result_type, remaining_search_depth, result);
     // search_summary.result_counts[result_type]++;
-    return EqualValueMoves{max_eval, best_moves};
+    return EqualScoreMoves{max_eval, similar_moves};
 
   } else {
     // evaluation of each legal move when it's evaluating player's opponent's turn
     auto min_eval = numeric_limits<int>::max();
-    MoveCollection best_moves;
+    MoveCollection similar_moves;
     auto ranked_moves = GenerateRankedMoveList(cur_player, cur_moves);
     for (auto rated_move : ranked_moves) {
       auto executed_move = game_board_.ExecuteMove(rated_move.move);
@@ -330,14 +330,14 @@ EqualValueMoves MinimaxMoveEvaluator<
                           search_summary,
                           use_transposition_table
       )
-                          .best_eval;
+                          .shared_score;
       if (cur_eval == min_eval) {
-        best_moves.Append(rated_move.move);
+        similar_moves.Append(rated_move.move);
       } else if (cur_eval < min_eval) {
         {
           min_eval = cur_eval;
-          best_moves.moves.clear();
-          best_moves.Append(rated_move.move);
+          similar_moves.moves.clear();
+          similar_moves.Append(rated_move.move);
         }
       }
       game_board_.UndoMove(executed_move);
@@ -350,7 +350,7 @@ EqualValueMoves MinimaxMoveEvaluator<
     if (result_type == MinimaxResultType::kUnknown) {
       result_type = MinimaxResultType::kFullyEvaluatedNode;
     }
-    auto result = EqualValueMoves{min_eval, best_moves};
+    auto result = EqualScoreMoves{min_eval, similar_moves};
     hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
     search_summary.Update(result_type, remaining_search_depth, result);
     // search_summary.result_counts[result_type]++;
@@ -382,8 +382,8 @@ Move MinimaxMoveEvaluator<
   search_summary.SetTime(search_time);
   // search_summary.time = search_time;
   auto selected_move_index =
-      utility_functs::random((size_t)0, minimax_result.best_moves.moves.size() - 1);
-  auto selected_move = minimax_result.best_moves.moves[selected_move_index];
+      utility_functs::random((size_t)0, minimax_result.similar_moves.moves.size() - 1);
+  auto selected_move = minimax_result.similar_moves.moves[selected_move_index];
   search_summary.SetSelectedMove(selected_move);
 
   return selected_move;

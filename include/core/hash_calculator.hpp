@@ -92,12 +92,12 @@ struct TranspositionTable {
       KeyType state,
       int search_depth,
       MinimaxResultType result_type,
-      EqualValueMoves &best_moves
+      EqualScoreMoves &similar_moves
   ) {
     TranspositionTableEntry transposition_table_entry{
         search_depth,
         result_type,
-        best_moves
+        similar_moves
     };
     data_[state].push_back(transposition_table_entry);
   };
@@ -139,9 +139,9 @@ public:
   void ImplementRecordTrData(
       int search_depth,
       MinimaxResultType result_type,
-      EqualValueMoves &best_moves
+      EqualScoreMoves &similar_moves
   ) {
-    transposition_table_.RecordData(board_state_, search_depth, result_type, best_moves);
+    transposition_table_.RecordData(board_state_, search_depth, result_type, similar_moves);
   }
 
   TranspositionTableSearchResult ImplementGetTrData(int search_depth) {

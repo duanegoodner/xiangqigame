@@ -88,9 +88,9 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .def("size", &MoveCollection::Size)
       .def("ContainsMove", &MoveCollection::ContainsMove);
 
-  py::class_<EqualValueMoves>(m, "EqualValueMoves")
-      .def_readonly("best_eval", &EqualValueMoves::best_eval)
-      .def_readonly("best_moves", &EqualValueMoves::best_moves);
+  py::class_<EqualScoreMoves>(m, "EqualScoreMoves")
+      .def_readonly("shared_score", &EqualScoreMoves::shared_score)
+      .def_readonly("similar_moves", &EqualScoreMoves::similar_moves);
 
   py::class_<ExecutedMove>(m, "ExecutedMove")
       .def(
@@ -163,7 +163,7 @@ PYBIND11_MODULE(xiangqigame_core, m) {
       .def_readonly("time", &SearchSummary::time)
       .def("get_result_depth_counts", &SearchSummary::GetResultDepthCounts)
       .def("get_transposition_table_hits", &SearchSummary::GetTranspositionTableHits)
-      .def_readonly("best_moves", &SearchSummary::best_moves)
+      .def_readonly("similar_moves", &SearchSummary::similar_moves)
       .def_readonly("selected_move", &SearchSummary::selected_move);
 
   py::class_<SearchSummaries>(m, "SearchSummaries")

@@ -15,9 +15,9 @@ using namespace piece_points;
 namespace moveselection {
 
 //! A moves::MoveCollection in which all moves::Move have the same value. 
-struct EqualValueMoves {
-  Points_t best_eval;
-  moves::MoveCollection best_moves;
+struct EqualScoreMoves {
+  Points_t shared_score;
+  moves::MoveCollection similar_moves;
 };
 
 struct RatedMove {
@@ -42,9 +42,9 @@ const size_t kNumResultTypes{7};
 struct TranspositionTableEntry {
   int remaining_search_depth;
   MinimaxResultType result_type;
-  EqualValueMoves best_moves;
+  EqualScoreMoves similar_moves;
 
-  Points_t Score() { return best_moves.best_eval; }
+  Points_t Score() { return similar_moves.shared_score; }
 };
 
 struct TranspositionTableSearchResult {
@@ -52,13 +52,13 @@ struct TranspositionTableSearchResult {
   bool found;
 };
 
-inline EqualValueMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_player) {
-  auto empty_best_moves = moves::MoveCollection();
+inline EqualScoreMoves evaluate_win_leaf(PieceColor cur_player, PieceColor initiating_player) {
+  auto empty_similar_moves = moves::MoveCollection();
 
   if (cur_player == initiating_player) {
-    return EqualValueMoves{numeric_limits<Points_t>::min(), empty_best_moves};
+    return EqualScoreMoves{numeric_limits<Points_t>::min(), empty_similar_moves};
   } else {
-    return EqualValueMoves{numeric_limits<Points_t>::max(), empty_best_moves};
+    return EqualScoreMoves{numeric_limits<Points_t>::max(), empty_similar_moves};
   }
 }
 
@@ -91,11 +91,11 @@ struct SearchSummary {
     // result_depth_counts.emplace_back(max_search_depth + 1, 0);
   }
 
-  void Update(MinimaxResultType result_type, int search_depth, EqualValueMoves best_moves) {
+  void Update(MinimaxResultType result_type, int search_depth, EqualScoreMoves similar_moves) {
     // result_depth_counts[result_type][search_depth]++;
     result_depth_counts.Update(result_type, search_depth);
     num_nodes++;
-    SetEqualValueMoves(best_moves);
+    SetEqualScoreMoves(similar_moves);
   }
 
   void UpdateTranspositionTableHits(MinimaxResultType result_type, int search_depth) {
@@ -105,7 +105,7 @@ struct SearchSummary {
   void SetTime(std::chrono::duration<double, std::nano> search_time) {
     time = search_time;
   }
-  void SetEqualValueMoves(EqualValueMoves best_moves) { this->best_moves = best_moves; }
+  void SetEqualScoreMoves(EqualScoreMoves similar_moves) { this->similar_moves = similar_moves; }
   void SetSelectedMove(moves::Move selected_move) {
     this->selected_move = selected_move;
   }
@@ -121,7 +121,7 @@ struct SearchSummary {
   // row -> node result_type; col -> node depth
   ResultDepthCounts result_depth_counts;
   ResultDepthCounts transposition_table_hits;
-  EqualValueMoves best_moves;
+  EqualScoreMoves similar_moves;
   moves::Move selected_move;
 };
 

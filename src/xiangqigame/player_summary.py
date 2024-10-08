@@ -116,7 +116,7 @@ class PlayerSummary:
         ])
 
         eval_score = np.array([
-            search_summary.best_moves.best_eval
+            search_summary.similar_moves.shared_score
             for search_summary in self.search_summaries.first_searches
         ], dtype=PointsT)
 
