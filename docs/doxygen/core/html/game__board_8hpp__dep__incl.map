@@ -1,0 +1,6 @@
+<map id="include/core/game_board.hpp" name="include/core/game_board.hpp">
+<area shape="rect" id="node1" title="Definition of gameboard::GameBoard class." alt="" coords="170,5,385,32"/>
+<area shape="rect" id="node2" href="$hash__calculator_8hpp.html" title="Class templates for boardstate::HashCalculator and its supporting class boardstate::ZobristKeys." alt="" coords="5,87,240,114"/>
+<area shape="rect" id="node3" href="$xiangqigame__core_8cpp.html" title="Implements Pybind11 module xiangqigame_core, exposing C++ classes and methods to Python." alt="" coords="105,169,295,211"/>
+<area shape="rect" id="node4" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="315,80,474,121"/>
+</map>

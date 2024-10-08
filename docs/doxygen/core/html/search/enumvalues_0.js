@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['kadv_0',['kAdv',['../namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07a5fc0840fabcbab79b6ebf565aeb8ade9',1,'gamepiece']]],
+  ['kalphaprune_1',['kAlphaPrune',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda71f7c72c022ad1322f406bdd0ca7be25',1,'moveselection']]],
+  ['kbetaprune_2',['kBetaPrune',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda0c1922f53a20c3978b37b675895a49aa',1,'moveselection']]],
+  ['kblk_3',['kBlk',['../namespacegamepiece.html#ace5256e95062da0fa5092a012317c297a9cf01d38220ca466cb181c3193111d9c',1,'gamepiece']]],
+  ['kcan_4',['kCan',['../namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07ad72bf3eafffae2d05fc6272c31c10d00',1,'gamepiece']]],
+  ['kcha_5',['kCha',['../namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07a07c647cc7594d2f9c284a8f7a62fd817',1,'gamepiece']]],
+  ['kele_6',['kEle',['../namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07aa52ab4a6eee2cb92c342b7366c4021f7',1,'gamepiece']]],
+  ['kevaluatorloses_7',['kEvaluatorLoses',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061edacf13d4e4d1a33bcd701f870b4d5103f3',1,'moveselection']]],
+  ['kevaluatorwins_8',['kEvaluatorWins',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda0fe64a6e73a77fefbfe91370bb0652d5',1,'moveselection']]],
+  ['kfullyevaluatednode_9',['kFullyEvaluatedNode',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda5fdab859498d9e51a5300bb6fe535a60',1,'moveselection']]],
+  ['kgen_10',['kGen',['../namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07a1a3c37a55e7e708abf8d71eb243563ff',1,'gamepiece']]],
+  ['khor_11',['kHor',['../namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07af489cac26fd183e4efb4f07573b591f8',1,'gamepiece']]],
+  ['kmax_12',['kMax',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061edaf54182497e4f5d7092bee94582bf3f79',1,'moveselection']]],
+  ['kmin_13',['kMin',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda1ceae30bbee1b637dc47a380d0e4ad36',1,'moveselection']]],
+  ['knnn_14',['kNnn',['../namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07a4666b85abdbd507aeb11421c907ccf35',1,'gamepiece']]],
+  ['knul_15',['kNul',['../namespacegamepiece.html#ace5256e95062da0fa5092a012317c297a4d05bdb9f838591d91890649ebb3eac2',1,'gamepiece']]],
+  ['kred_16',['kRed',['../namespacegamepiece.html#ace5256e95062da0fa5092a012317c297adb0bae1161c558d088d7d9e1c489e03e',1,'gamepiece']]],
+  ['ksol_17',['kSol',['../namespacegamepiece.html#a5652e34dce0a9c9a9c604407a23f6b07a8c461027e12de6c176f90dec777306f4',1,'gamepiece']]],
+  ['kstandardleaf_18',['kStandardLeaf',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda65b563cc5a2a595f6f19adea98b99fa9',1,'moveselection']]],
+  ['ktrtablehit_19',['kTrTableHit',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda552dd3cbc3a757459c0df9b2ae2edd27',1,'moveselection']]],
+  ['kunknown_20',['kUnknown',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061edadef73b774725d74259cc49e9fe97e6dd',1,'moveselection']]]
+];

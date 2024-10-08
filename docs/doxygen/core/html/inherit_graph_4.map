@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classBoardStateSummarizer.html" title=" " alt="" coords="5,5,211,61"/>
+<area shape="rect" id="node2" href="$classboardstate_1_1HashCalculator.html" title="Implements BoardStateSummarizer interface; calculates Zobrist hash value of board configuration; prov..." alt="" coords="259,13,457,54"/>
+</map>

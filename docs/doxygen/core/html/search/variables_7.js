@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['kalldiagonaldirections_0',['kAllDiagonalDirections',['../namespacemoves.html#a7dc53913539eba52ae5859aa7868cf8e',1,'moves']]],
+  ['kallorthogonaldirections_1',['kAllOrthogonalDirections',['../namespacemoves.html#a100ad4a9aa94820d3c49cae02d97f47a',1,'moves']]],
+  ['kblackcastleedges_2',['kBlackCastleEdges',['../namespacegameboard.html#ae715c4cc954af711a8f9da82271d2aba',1,'gameboard']]],
+  ['kblackriveredge_3',['kBlackRiverEdge',['../namespacegameboard.html#adfea0925fa61e4179c09e5293da07400',1,'gameboard']]],
+  ['kbposchemapath_4',['kBPOSchemaPath',['../namespacepiece__points.html#a385aad72810e7b3a02006816b98ffaf7',1,'piece_points']]],
+  ['khorsepaths_5',['kHorsePaths',['../namespacemoves.html#a817ce312db7e5d974ce87d223d8afa04',1,'moves']]],
+  ['kicgabpopath_6',['kICGABPOPath',['../namespacepiece__points.html#a2f8fa666a8c2dccc590e3950cbfcf831',1,'piece_points']]],
+  ['kicgarawpath_7',['kICGARawPath',['../namespacepiece__points.html#a5c4caebd6a178729a67fb2d737c93d42',1,'piece_points']]],
+  ['knumfiles_8',['kNumFiles',['../namespacegameboard.html#ad5e296086982321384dc034288cee600',1,'gameboard']]],
+  ['knumpiececolorvals_9',['kNumPieceColorVals',['../namespacegamepiece.html#a0d32e6d097e8b468b4fef8c19572c6e7',1,'gamepiece']]],
+  ['knumpiecetypevals_10',['kNumPieceTypeVals',['../namespacegamepiece.html#a53564c3a7fc305b200aeae5cd21fefa1',1,'gamepiece']]],
+  ['knumranks_11',['kNumRanks',['../namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895',1,'gameboard']]],
+  ['knumresulttypes_12',['kNumResultTypes',['../namespacemoveselection.html#aacb89c689b18ae5eda93504dc317b1ae',1,'moveselection']]],
+  ['kpiececolorstringtoenum_13',['kPieceColorStringToEnum',['../namespacegamepiece.html#a37719e682c1482f96731a92c452e2235',1,'gamepiece']]],
+  ['kpiecetypestringtoenum_14',['kPieceTypeStringToEnum',['../namespacegamepiece.html#a77eb570b0704a446a3319f1abb7a62f4',1,'gamepiece']]],
+  ['krawschemapath_15',['kRawSchemaPath',['../namespacepiece__points.html#a7d223b2a0daa55aedb63804897beaf1d',1,'piece_points']]],
+  ['kredcastleedges_16',['kRedCastleEdges',['../namespacegameboard.html#af8583f8680f6f904b8eb4a07ba892f98',1,'gameboard']]],
+  ['kredriveredge_17',['kRedRiverEdge',['../namespacegameboard.html#a2fffbf20f72f3d01b3a24bb59499425e',1,'gameboard']]],
+  ['krepeatperiodsmaxallowed_18',['kRepeatPeriodsMaxAllowed',['../namespacegameboard.html#adc3c88bd024708e1e2b062c7c0df4afb',1,'gameboard']]],
+  ['krepeatperiodstocheck_19',['kRepeatPeriodsToCheck',['../namespacegameboard.html#ab7f90d284c0b95bc54f4c5be7b4bce8e',1,'gameboard']]],
+  ['ksidedirections_20',['kSideDirections',['../namespacemoves.html#a03a2b6aac9b6b00c54b9f89901d75b80',1,'moves']]],
+  ['kstartingboard_21',['kStartingBoard',['../namespacegameboard.html#a61c9cb4f6bae74d1541f537bff5a5c5b',1,'gameboard']]]
+];

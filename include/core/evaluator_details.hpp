@@ -14,13 +14,14 @@ using namespace piece_points;
 
 namespace moveselection {
 
-//! Holds a moves::MoveCollection in which all moves::Move have the same value (as perceived by
-//! a MoveEvaluator), and the value of the shared score.
+//! Holds a moves::MoveCollection in which all moves::Move have the same value (as
+//! perceived by a MoveEvaluator), and the value of the shared score.
 struct EqualScoreMoves {
   Points_t shared_score;
   moves::MoveCollection similar_moves;
 };
 
+//! A moves::Move, and an associated score calculated by a MoveEvaluator.
 struct ScoredMove {
   moves::Move move;
   Points_t score;
@@ -40,6 +41,8 @@ enum MinimaxResultType : size_t {
 };
 const size_t kNumResultTypes{7};
 
+//! Data structure that holds a moveselection::EqualScoreMoves and other search-related
+//! info obtained from a call to moveselection::MinimaxMoveEvaluator.MinimaxRec.
 struct TranspositionTableEntry {
   int remaining_search_depth;
   MinimaxResultType result_type;
@@ -48,6 +51,8 @@ struct TranspositionTableEntry {
   Points_t Score() { return similar_moves.shared_score; }
 };
 
+//! Container for storing a moveselection::TranspositionTableEntry retrieved by a call to
+//! moveselection::BoardStateSummarizer.GetTrData.
 struct TranspositionTableSearchResult {
   TranspositionTableEntry table_entry;
   bool found;

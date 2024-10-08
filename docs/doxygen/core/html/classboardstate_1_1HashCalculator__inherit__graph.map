@@ -1,0 +1,5 @@
+<map id="boardstate::HashCalculator&lt; KeyType &gt;" name="boardstate::HashCalculator&lt; KeyType &gt;">
+<area shape="rect" id="node1" title="Implements BoardStateSummarizer interface; calculates Zobrist hash value of board configuration; prov..." alt="" coords="10,463,251,687"/>
+<area shape="rect" id="node2" href="$classBoardStateSummarizer.html" title=" " alt="" coords="28,248,233,413"/>
+<area shape="rect" id="node3" href="$classBoardStateSummarizer.html" title=" " alt="" coords="5,5,256,171"/>
+</map>
