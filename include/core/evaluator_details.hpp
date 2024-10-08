@@ -7,7 +7,6 @@
 #include <move_data_structs.hpp>
 #include <piece_points_bpo.hpp>
 #include <chrono>
-// #include <common.hpp>
 #include <map>
 
 using namespace gameboard;
@@ -15,7 +14,7 @@ using namespace piece_points;
 
 namespace moveselection {
 
-// TODO: rename this to "EquallyValuedMoves" 
+//! A moves::MoveCollection in which all moves::Move have the same value. 
 struct EqualValueMoves {
   Points_t best_eval;
   moves::MoveCollection best_moves;

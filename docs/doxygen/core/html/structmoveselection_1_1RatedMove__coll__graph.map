@@ -1,6 +1,0 @@
-<map id="moveselection::RatedMove" name="moveselection::RatedMove">
-<area shape="rect" id="node1" title=" " alt="" coords="5,528,205,605"/>
-<area shape="rect" id="node2" href="$structmoves_1_1Move.html" title="A gameboard::BoardSpace pair (start and end)." alt="" coords="118,388,242,465"/>
-<area shape="rect" id="node3" href="$structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa..." alt="" coords="104,160,285,311"/>
-<area shape="rect" id="node4" title=" " alt="" coords="69,5,107,83"/>
-</map>
