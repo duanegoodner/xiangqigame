@@ -1,5 +1,6 @@
 <map id="include/core/game_piece.hpp" name="include/core/game_piece.hpp">
-<area shape="rect" id="node1" title="Enums and utility functions for describing occupant of gameboard::BoardSpace." alt="" coords="5,5,217,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="25,80,83,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="108,80,232,107"/>
+<area shape="rect" id="node1" title="Defines GamePiece and supporting constants and free functions." alt="" coords="16,5,228,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,68,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="93,80,151,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="176,80,300,107"/>
 </map>

@@ -1,15 +1,16 @@
 <map id="include/core/move_calculator.hpp" name="include/core/move_calculator.hpp">
-<area shape="rect" id="node1" title="Definition of moves::MoveCalculator." alt="" coords="131,5,371,32"/>
+<area shape="rect" id="node1" title="Definition of moves::MoveCalculator." alt="" coords="41,5,281,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,80,52,107"/>
-<area shape="rect" id="node3" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="285,304,460,331"/>
-<area shape="rect" id="node11" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by moves::MoveCalculator to select appropriate method from moves::Piece..." alt="" coords="76,80,285,107"/>
-<area shape="rect" id="node12" href="$piece__moves_8hpp.html" title="Definition of moves::PieceMoves and related constants." alt="" coords="246,155,382,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="102,379,158,405"/>
-<area shape="rect" id="node5" title=" " alt="" coords="521,379,590,405"/>
-<area shape="rect" id="node6" href="$game__piece_8hpp.html" title="Enums and utility functions for describing occupant of gameboard::BoardSpace." alt="" coords="183,379,312,405"/>
-<area shape="rect" id="node9" title=" " alt="" coords="337,379,409,405"/>
-<area shape="rect" id="node10" title=" " alt="" coords="433,379,496,405"/>
-<area shape="rect" id="node7" title=" " alt="" coords="159,453,218,480"/>
-<area shape="rect" id="node8" title=" " alt="" coords="243,453,367,480"/>
-<area shape="rect" id="node13" href="$move__data__structs_8hpp.html" title="Definitions and implementations of moves::Move and other move&#45;related structs." alt="" coords="219,229,393,256"/>
+<area shape="rect" id="node3" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="192,304,367,331"/>
+<area shape="rect" id="node12" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by moves::MoveCalculator to select appropriate method from moves::Piece..." alt="" coords="128,80,337,107"/>
+<area shape="rect" id="node13" href="$piece__moves_8hpp.html" title="Definition of moves::PieceMoves and related constants." alt="" coords="289,155,425,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="70,379,126,405"/>
+<area shape="rect" id="node5" title=" " alt="" coords="150,379,219,405"/>
+<area shape="rect" id="node6" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="427,379,556,405"/>
+<area shape="rect" id="node10" title=" " alt="" coords="243,379,315,405"/>
+<area shape="rect" id="node11" title=" " alt="" coords="340,379,403,405"/>
+<area shape="rect" id="node7" title=" " alt="" coords="375,453,437,480"/>
+<area shape="rect" id="node8" title=" " alt="" coords="462,453,521,480"/>
+<area shape="rect" id="node9" title=" " alt="" coords="545,453,669,480"/>
+<area shape="rect" id="node14" href="$move__data__structs_8hpp.html" title="Definitions and implementations of moves::Move and other move&#45;related structs." alt="" coords="321,229,496,256"/>
 </map>

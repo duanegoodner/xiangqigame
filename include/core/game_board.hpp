@@ -19,8 +19,8 @@ extern const BoardMapInt_t kStartingBoard;
 extern const int kRepeatPeriodsToCheck[3];
 extern const int kRepeatPeriodsMaxAllowed;
 
-//! Stores piece positions, and exposes methods for calculating, executing, an un-doing
-//! moves (implements SpaceInfoProvider CRTP Interface).
+//! Implements SpaceInfoProvider interface; stores piece positions, and exposes methods
+//! for calculating, executing, an un-doing moves..
 class GameBoard : public SpaceInfoProvider<GameBoard> {
 public:
   GameBoard();

@@ -14,6 +14,9 @@
 using namespace std;
 
 namespace jsonio {
+
+//! Implements JsonUtility interface; imports / exports objects from / to json files
+//! using the [**Nlohmann json library**](https://github.com/nlohmann/json).
 class NlohmannJsonUtility : public JsonUtility<NlohmannJsonUtility> {
 public:
   template <typename T>

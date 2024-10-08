@@ -9,5 +9,5 @@ var searchData=
   ['move_5fcallbacks_5f_6',['move_callbacks_',['../classgameboard_1_1GameBoard.html#ad30b7544b03ff3102c6eaae310159c74',1,'gameboard::GameBoard']]],
   ['move_5flog_5f_7',['move_log_',['../classgameboard_1_1GameBoard.html#a60fe6e8e76ed864050109524b4c136d5',1,'gameboard::GameBoard']]],
   ['moves_8',['moves',['../structmoves_1_1MoveCollection.html#ac4777a3b3b22fb671a05c9ece100f0f0',1,'moves::MoveCollection']]],
-  ['moving_5fpiece_9',['moving_piece',['../structmoves_1_1ExecutedMove.html#ae1b73ed9c7eb97e2c6c077c8ee482a57',1,'moves::ExecutedMove']]]
+  ['moving_5fpiece_9',['moving_piece',['../structmoves_1_1ExecutedMove.html#a89a9da85f42556f1514c6583a10ed6d3',1,'moves::ExecutedMove']]]
 ];

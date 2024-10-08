@@ -75,7 +75,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Stores piece positions, and exposes methods for calculating, executing, an un-doing moves (implements <a class="el" href="classSpaceInfoProvider.html">SpaceInfoProvider</a> CRTP Interface).  
+<p>Implements <a class="el" href="classSpaceInfoProvider.html">SpaceInfoProvider</a> interface; stores piece positions, and exposes methods for calculating, executing, an un-doing moves.  
  <a href="classgameboard_1_1GameBoard.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="game__board_8hpp_source.html">game_board.hpp</a>&gt;</code></p>
@@ -84,7 +84,7 @@ Inheritance diagram for gameboard::GameBoard:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgameboard_1_1GameBoard__inherit__graph.png" border="0" usemap="#agameboard_1_1GameBoard_inherit__map" alt="Inheritance graph"/></div>
 <map name="agameboard_1_1GameBoard_inherit__map" id="agameboard_1_1GameBoard_inherit__map">
-<area shape="rect" title="Stores piece positions, and exposes methods for calculating, executing, an un&#45;doing moves (implements..." alt="" coords="5,477,287,848"/>
+<area shape="rect" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,..." alt="" coords="5,477,287,848"/>
 <area shape="rect" href="classSpaceInfoProvider.html" title=" " alt="" coords="41,248,251,428"/>
 <area shape="rect" href="classSpaceInfoProvider.html" title=" " alt="" coords="37,5,255,185"/>
 </map>
@@ -94,13 +94,13 @@ Collaboration diagram for gameboard::GameBoard:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgameboard_1_1GameBoard__coll__graph.png" border="0" usemap="#agameboard_1_1GameBoard_coll__map" alt="Collaboration graph"/></div>
 <map name="agameboard_1_1GameBoard_coll__map" id="agameboard_1_1GameBoard_coll__map">
-<area shape="rect" title="Stores piece positions, and exposes methods for calculating, executing, an un&#45;doing moves (implements..." alt="" coords="461,535,743,861"/>
+<area shape="rect" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,..." alt="" coords="461,535,743,861"/>
 <area shape="rect" href="classSpaceInfoProvider.html" title=" " alt="" coords="9,292,219,472"/>
 <area shape="rect" href="classSpaceInfoProvider.html" title=" " alt="" coords="5,27,223,207"/>
 <area shape="rect" title=" " alt="" coords="243,336,455,428"/>
-<area shape="rect" href="classmoves_1_1MoveCalculator.html" title=" " alt="" coords="478,299,726,465"/>
+<area shape="rect" href="classmoves_1_1MoveCalculator.html" title="Calculates legal moves::Move objects for of a gameboard::GameBoard with a particular state." alt="" coords="478,299,726,465"/>
 <area shape="rect" title=" " alt="" coords="408,71,580,163"/>
-<area shape="rect" href="classmoves_1_1PieceMoves.html" title=" " alt="" coords="604,5,813,229"/>
+<area shape="rect" href="classmoves_1_1PieceMoves.html" title="Implements piece type dependent move rules; used by moves::MoveCalculator." alt="" coords="604,5,813,229"/>
 <area shape="rect" title=" " alt="" coords="751,336,925,428"/>
 <area shape="rect" title=" " alt="" coords="950,336,1134,428"/>
 </map>
@@ -126,7 +126,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8a70ed6bfc8cae32850db2e1ad66d53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93eadc3eeadf4c60c565f7cdb5085203"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#a93eadc3eeadf4c60c565f7cdb5085203">ImplementUndoMove</a> (<a class="el" href="structmoves_1_1ExecutedMove.html">ExecutedMove</a> executed_move)</td></tr>
 <tr class="separator:a93eadc3eeadf4c60c565f7cdb5085203"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8d3a60954fa005edefd8cd461eab1d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#ae8d3a60954fa005edefd8cd461eab1d9">GetOccupant</a> (<a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> space)</td></tr>
+<tr class="memitem:ae8d3a60954fa005edefd8cd461eab1d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgamepiece_1_1GamePiece.html">GamePiece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#ae8d3a60954fa005edefd8cd461eab1d9">GetOccupant</a> (<a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> space)</td></tr>
 <tr class="separator:ae8d3a60954fa005edefd8cd461eab1d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add9c13f8d6d2cc2d3e64036338f0f4da"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#add9c13f8d6d2cc2d3e64036338f0f4da">map</a> () const</td></tr>
 <tr class="separator:add9c13f8d6d2cc2d3e64036338f0f4da"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,7 +154,7 @@ Public Member Functions</h2></td></tr>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a59f7aa418c9186d5c09a3b3dec389e2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#a59f7aa418c9186d5c09a3b3dec389e2e">UpdateHashCalculator</a> (<a class="el" href="structmoves_1_1ExecutedMove.html">ExecutedMove</a> executed_move)</td></tr>
 <tr class="separator:a59f7aa418c9186d5c09a3b3dec389e2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6ec62a50a66f3296271a9b1711e41c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#ab6ec62a50a66f3296271a9b1711e41c5">SetOccupant</a> (<a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> space, <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> piece)</td></tr>
+<tr class="memitem:ab6ec62a50a66f3296271a9b1711e41c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#ab6ec62a50a66f3296271a9b1711e41c5">SetOccupant</a> (<a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> space, <a class="el" href="structgamepiece_1_1GamePiece.html">GamePiece</a> piece)</td></tr>
 <tr class="separator:ab6ec62a50a66f3296271a9b1711e41c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7ad5feab5892a8aa1084bf49a3c48e18"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#a7ad5feab5892a8aa1084bf49a3c48e18">AddToMoveLog</a> (<a class="el" href="structmoves_1_1ExecutedMove.html">ExecutedMove</a> executed_move)</td></tr>
 <tr class="separator:a7ad5feab5892a8aa1084bf49a3c48e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,20 +166,20 @@ Private Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:abccbc49237b8fc46091df6e2d7fdafe8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8">board_map_</a></td></tr>
-<tr class="memdesc:abccbc49237b8fc46091df6e2d7fdafe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> objects.  <a href="classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8">More...</a><br /></td></tr>
+<tr class="memdesc:abccbc49237b8fc46091df6e2d7fdafe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of GamePiece objects.  <a href="classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8">More...</a><br /></td></tr>
 <tr class="separator:abccbc49237b8fc46091df6e2d7fdafe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e2d70154b962c74321f298f1908a69a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoves_1_1MoveCalculator.html">MoveCalculator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#a1e2d70154b962c74321f298f1908a69a">move_calculator_</a></td></tr>
 <tr class="memdesc:a1e2d70154b962c74321f298f1908a69a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encapsulates all calculations of allowed moves.  <a href="classgameboard_1_1GameBoard.html#a1e2d70154b962c74321f298f1908a69a">More...</a><br /></td></tr>
 <tr class="separator:a1e2d70154b962c74321f298f1908a69a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad30b7544b03ff3102c6eaae310159c74"><td class="memItemLeft" align="right" valign="top">vector&lt; function&lt; void(<a class="el" href="structmoves_1_1ExecutedMove.html">ExecutedMove</a>)&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#ad30b7544b03ff3102c6eaae310159c74">move_callbacks_</a></td></tr>
-<tr class="memdesc:ad30b7544b03ff3102c6eaae310159c74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores functions that are called after any change in board config to keep <a class="el" href="classboardstate_1_1HashCalculator.html" title="Calculates Zobrist hash value of board configuration, and provides moveselection::MinimaxMoveEvaluato...">boardstate::HashCalculator</a> objects updated.  <a href="classgameboard_1_1GameBoard.html#ad30b7544b03ff3102c6eaae310159c74">More...</a><br /></td></tr>
+<tr class="memdesc:ad30b7544b03ff3102c6eaae310159c74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores functions that are called after any change in board config to keep <a class="el" href="classboardstate_1_1HashCalculator.html" title="Implements BoardStateSummarizer interface; calculates Zobrist hash value of board configuration; prov...">boardstate::HashCalculator</a> objects updated.  <a href="classgameboard_1_1GameBoard.html#ad30b7544b03ff3102c6eaae310159c74">More...</a><br /></td></tr>
 <tr class="separator:ad30b7544b03ff3102c6eaae310159c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60fe6e8e76ed864050109524b4c136d5"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="namespacegamepiece.html#ace5256e95062da0fa5092a012317c297">PieceColor</a>, vector&lt; <a class="el" href="structmoves_1_1ExecutedMove.html">ExecutedMove</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html#a60fe6e8e76ed864050109524b4c136d5">move_log_</a></td></tr>
 <tr class="memdesc:a60fe6e8e76ed864050109524b4c136d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vectors of all moves that have been executed (and not un-done) by each player.  <a href="classgameboard_1_1GameBoard.html#a60fe6e8e76ed864050109524b4c136d5">More...</a><br /></td></tr>
 <tr class="separator:a60fe6e8e76ed864050109524b4c136d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Stores piece positions, and exposes methods for calculating, executing, an un-doing moves (implements <a class="el" href="classSpaceInfoProvider.html">SpaceInfoProvider</a> CRTP Interface). </p>
+<div class="textblock"><p >Implements <a class="el" href="classSpaceInfoProvider.html">SpaceInfoProvider</a> interface; stores piece positions, and exposes methods for calculating, executing, an un-doing moves. </p>
 
 <p class="definition">Definition at line <a class="el" href="game__board_8hpp_source.html#l00024">24</a> of file <a class="el" href="game__board_8hpp_source.html">game_board.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -277,7 +277,7 @@ Private Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> gameboard::GameBoard::GetOccupant </td>
+          <td class="memname"><a class="el" href="structgamepiece_1_1GamePiece.html">GamePiece</a> gameboard::GameBoard::GetOccupant </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a>&#160;</td>
           <td class="paramname"><em>space</em></td><td>)</td>
@@ -515,7 +515,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="structgamepiece_1_1GamePiece.html">GamePiece</a>&#160;</td>
           <td class="paramname"><em>piece</em>&#160;</td>
         </tr>
         <tr>
@@ -612,7 +612,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>2-D array of <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> objects. </p>
+<p>2-D array of GamePiece objects. </p>
 
 <p class="definition">Definition at line <a class="el" href="game__board_8hpp_source.html#l00042">42</a> of file <a class="el" href="game__board_8hpp_source.html">game_board.hpp</a>.</p>
 
@@ -664,7 +664,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Stores functions that are called after any change in board config to keep <a class="el" href="classboardstate_1_1HashCalculator.html" title="Calculates Zobrist hash value of board configuration, and provides moveselection::MinimaxMoveEvaluato...">boardstate::HashCalculator</a> objects updated. </p>
+<p>Stores functions that are called after any change in board config to keep <a class="el" href="classboardstate_1_1HashCalculator.html" title="Implements BoardStateSummarizer interface; calculates Zobrist hash value of board configuration; prov...">boardstate::HashCalculator</a> objects updated. </p>
 
 <p class="definition">Definition at line <a class="el" href="game__board_8hpp_source.html#l00049">49</a> of file <a class="el" href="game__board_8hpp_source.html">game_board.hpp</a>.</p>
 
@@ -703,7 +703,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 8 2024 00:52:08 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 05:23:50 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

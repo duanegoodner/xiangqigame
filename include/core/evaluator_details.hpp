@@ -15,6 +15,7 @@ using namespace piece_points;
 
 namespace moveselection {
 
+// TODO: rename this to "EquallyValuedMoves" 
 struct BestMoves {
   Points_t best_eval;
   moves::MoveCollection best_moves;

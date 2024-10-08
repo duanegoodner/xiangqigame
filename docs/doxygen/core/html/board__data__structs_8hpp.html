@@ -76,7 +76,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Constants, typedefs, and simple structs used by <a class="el" href="classgameboard_1_1GameBoard.html" title="Stores piece positions, and exposes methods for calculating, executing, an un-doing moves (implements...">gameboard::GameBoard</a>.  
+<p>Constants, typedefs, and simple structs used by <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;array&gt;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
@@ -91,11 +91,12 @@ Include dependency graph for board_data_structs.hpp:</div>
 <area shape="rect" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="173,5,315,47"/>
 <area shape="rect" title=" " alt="" coords="5,95,61,121"/>
 <area shape="rect" title=" " alt="" coords="85,95,155,121"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Enums and utility functions for describing occupant of gameboard::BoardSpace." alt="" coords="179,95,309,121"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="179,95,309,121"/>
 <area shape="rect" title=" " alt="" coords="333,95,405,121"/>
 <area shape="rect" title=" " alt="" coords="430,95,493,121"/>
-<area shape="rect" title=" " alt="" coords="156,169,215,196"/>
-<area shape="rect" title=" " alt="" coords="239,169,363,196"/>
+<area shape="rect" title=" " alt="" coords="127,169,190,196"/>
+<area shape="rect" title=" " alt="" coords="215,169,273,196"/>
+<area shape="rect" title=" " alt="" coords="298,169,422,196"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -136,28 +137,30 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1CastleEdges.html">gameboard::CastleEdges</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a castle feature in terms of its min / max rank and file.  <a href="structgameboard_1_1CastleEdges.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1BoardDirection.html">gameboard::BoardDirection</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acts as a vector with same units as <a class="el" href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a>.  <a href="structgameboard_1_1BoardDirection.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1GamePiece.html">gameboard::GamePiece</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Descirbes a direction on a <a class="el" href="classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8" title="2-D array of GamePiece objects.">gameboard::GameBoard.board_map_</a>.  <a href="structgameboard_1_1BoardDirection.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboard features: board size, river locations, and castle locations.  <a href="structgameboard_1_1BoardSpace.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacegameboard"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html">gameboard</a></td></tr>
-<tr class="memdesc:namespacegameboard"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Stores piece positions, and exposes methods for calculating, executing, an un-doing moves (implements...">GameBoard</a>. <br /></td></tr>
+<tr class="memdesc:namespacegameboard"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">GameBoard</a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a568951e681950d2439ca397e18fefbe0"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a568951e681950d2439ca397e18fefbe0">gameboard::BoardIdx_t</a></td></tr>
 <tr class="separator:a568951e681950d2439ca397e18fefbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; GamePiece, kNumFiles &gt;, kNumRanks &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a></td></tr>
+<tr class="memitem:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; <a class="el" href="structgamepiece_1_1GamePiece.html">GamePiece</a>, kNumFiles &gt;, kNumRanks &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a></td></tr>
+<tr class="memdesc:aab2a12a4ad1333460ff7d6d910c6160d"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of gameboard::GamePiece objects.  <a href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">More...</a><br /></td></tr>
 <tr class="separator:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e9a3466821b60dadcb183d4c8175133"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; int, kNumFiles &gt;, kNumRanks &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">gameboard::BoardMapInt_t</a></td></tr>
+<tr class="memdesc:a2e9a3466821b60dadcb183d4c8175133"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of integers; can be converted to <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d" title="2-D array of gameboard::GamePiece objects.">gameboard::BoardMap_t</a> using <a class="el" href="namespacegameboard.html#aa06ff448689c3fcec3968e33752e0d19">gameboard::int_board_to_game_pieces</a>.  <a href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">More...</a><br /></td></tr>
 <tr class="separator:a2e9a3466821b60dadcb183d4c8175133"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3930c18039797b276764917d1ea8fcac"><td class="memItemLeft" align="right" valign="top">typedef array&lt; BoardSpace, 9 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a3930c18039797b276764917d1ea8fcac">gameboard::Castle_t</a></td></tr>
 <tr class="separator:a3930c18039797b276764917d1ea8fcac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,13 +204,13 @@ Variables</h2></td></tr>
 <tr class="separator:ae715c4cc954af711a8f9da82271d2aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Constants, typedefs, and simple structs used by <a class="el" href="classgameboard_1_1GameBoard.html" title="Stores piece positions, and exposes methods for calculating, executing, an un-doing moves (implements...">gameboard::GameBoard</a>. </p>
+<div class="textblock"><p >Constants, typedefs, and simple structs used by <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a>. </p>
 
 <p class="definition">Definition in file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 8 2024 00:52:08 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 05:23:49 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

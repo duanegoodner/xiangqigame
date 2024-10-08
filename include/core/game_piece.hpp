@@ -38,6 +38,7 @@ const unordered_map<string, PieceType> kPieceTypeStringToEnum = [] {
 enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
 const int kNumPieceColorVals = 3;
 
+//! A Xiangqi game piece described by its gamepiece::PieceType and its gamepiece::PieceColor. 
 struct GamePiece {
   PieceType piece_type;
   PieceColor piece_color;

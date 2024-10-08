@@ -74,14 +74,19 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoves_1_1ExecutedMove.html">ExecutedMove</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A change in the state of a <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a> represented by a <a class="el" href="structmoves_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">moves::Move</a>, and each of the <a class="el" href="structgamepiece_1_1GamePiece.html" title="A Xiangqi game piece described by its gamepiece::PieceType and its gamepiece::PieceColor.">gamepiece::GamePiece</a> objects located at the <b>start</b> and <b>end</b> locations of the <a class="el" href="structmoves_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">Move</a>.  <a href="structmoves_1_1ExecutedMove.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoves_1_1Move.html">Move</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa...">gameboard::BoardSpace</a> pair (start and end).  <a href="structmoves_1_1Move.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoves_1_1MoveCalculator.html">MoveCalculator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates legal <a class="el" href="structmoves_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">moves::Move</a> objects for of a <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a> with a particular state.  <a href="classmoves_1_1MoveCalculator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoves_1_1MoveCollection.html">MoveCollection</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A container for multiple <a class="el" href="structmoves_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">moves::Move</a> objects.  <a href="structmoves_1_1MoveCollection.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoves_1_1PieceMoves.html">PieceMoves</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements piece type dependent move rules; used by <a class="el" href="classmoves_1_1MoveCalculator.html" title="Calculates legal moves::Move objects for of a gameboard::GameBoard with a particular state.">moves::MoveCalculator</a>.  <a href="classmoves_1_1PieceMoves.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
@@ -186,7 +191,7 @@ Variables</h2></td></tr>
 <div class="line">    <a class="code hl_struct" href="structgameboard_1_1BoardDirection.html">BoardDirection</a>{-1, 1},</div>
 <div class="line">    <a class="code hl_struct" href="structgameboard_1_1BoardDirection.html">BoardDirection</a>{-1, -1}</div>
 <div class="line">}</div>
-<div class="ttc" id="astructgameboard_1_1BoardDirection_html"><div class="ttname"><a href="structgameboard_1_1BoardDirection.html">gameboard::BoardDirection</a></div><div class="ttdoc">Acts as a vector with same units as gameboard::BoardSpace.</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00033">board_data_structs.hpp:33</a></div></div>
+<div class="ttc" id="astructgameboard_1_1BoardDirection_html"><div class="ttname"><a href="structgameboard_1_1BoardDirection.html">gameboard::BoardDirection</a></div><div class="ttdoc">Descirbes a direction on a gameboard::GameBoard.board_map_.</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00035">board_data_structs.hpp:35</a></div></div>
 </div><!-- fragment -->
 <p class="definition">Definition at line <a class="el" href="piece__moves_8cpp_source.html#l00027">27</a> of file <a class="el" href="piece__moves_8cpp_source.html">piece_moves.cpp</a>.</p>
 
@@ -259,7 +264,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 8 2024 00:52:08 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 05:23:50 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

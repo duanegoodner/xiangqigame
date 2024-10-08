@@ -16,6 +16,7 @@ extern const vector<pair<BoardDirection, vector<BoardDirection>>> kHorsePaths;
 extern const vector<BoardDirection> kAllOrthogonalDirections;
 extern const vector<BoardDirection> kAllDiagonalDirections;
 
+//! Implements piece type dependent move rules; used by moves::MoveCalculator. 
 class PieceMoves {
 public:
   void SoldierMoves(

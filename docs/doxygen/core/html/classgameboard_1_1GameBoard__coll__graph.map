@@ -1,11 +1,11 @@
 <map id="gameboard::GameBoard" name="gameboard::GameBoard">
-<area shape="rect" id="node1" title="Stores piece positions, and exposes methods for calculating, executing, an un&#45;doing moves (implements..." alt="" coords="461,535,743,861"/>
+<area shape="rect" id="node1" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,..." alt="" coords="461,535,743,861"/>
 <area shape="rect" id="node2" href="$classSpaceInfoProvider.html" title=" " alt="" coords="9,292,219,472"/>
 <area shape="rect" id="node3" href="$classSpaceInfoProvider.html" title=" " alt="" coords="5,27,223,207"/>
 <area shape="rect" id="node4" title=" " alt="" coords="243,336,455,428"/>
-<area shape="rect" id="node5" href="$classmoves_1_1MoveCalculator.html" title=" " alt="" coords="478,299,726,465"/>
+<area shape="rect" id="node5" href="$classmoves_1_1MoveCalculator.html" title="Calculates legal moves::Move objects for of a gameboard::GameBoard with a particular state." alt="" coords="478,299,726,465"/>
 <area shape="rect" id="node6" title=" " alt="" coords="408,71,580,163"/>
-<area shape="rect" id="node7" href="$classmoves_1_1PieceMoves.html" title=" " alt="" coords="604,5,813,229"/>
+<area shape="rect" id="node7" href="$classmoves_1_1PieceMoves.html" title="Implements piece type dependent move rules; used by moves::MoveCalculator." alt="" coords="604,5,813,229"/>
 <area shape="rect" id="node8" title=" " alt="" coords="751,336,925,428"/>
 <area shape="rect" id="node9" title=" " alt="" coords="950,336,1134,428"/>
 </map>

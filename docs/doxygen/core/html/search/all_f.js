@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['piece_5fcolor_0',['piece_color',['../structgameboard_1_1GamePiece.html#aafe4abdcc60240f0c2e8e31c244b95dc',1,'gameboard::GamePiece']]],
+  ['piece_5fcolor_0',['piece_color',['../structgamepiece_1_1GamePiece.html#a7fac313d1b2b4db61df51091bfed668e',1,'gamepiece::GamePiece']]],
   ['piece_5fdispatch_5farray_5f_1',['piece_dispatch_array_',['../classmoves_1_1MoveCalculator.html#ae43d899bde01dc3cd3f800f809c866b1',1,'moves::MoveCalculator']]],
   ['piece_5fmoves_2ecpp_2',['piece_moves.cpp',['../piece__moves_8cpp.html',1,'']]],
   ['piece_5fmoves_2ehpp_3',['piece_moves.hpp',['../piece__moves_8hpp.html',1,'']]],
@@ -11,7 +11,7 @@ var searchData=
   ['piece_5fpoints_5fdata_5fstructs_2ehpp_8',['piece_points_data_structs.hpp',['../piece__points__data__structs_8hpp.html',1,'']]],
   ['piece_5fposition_5fpoints_2ecpp_9',['piece_position_points.cpp',['../piece__position__points_8cpp.html',1,'']]],
   ['piece_5fposition_5fpoints_2ehpp_10',['piece_position_points.hpp',['../piece__position__points_8hpp.html',1,'']]],
-  ['piece_5ftype_11',['piece_type',['../structgameboard_1_1GamePiece.html#ab499589d3dbcc9f8acc4969fac6f25e3',1,'gameboard::GamePiece']]],
+  ['piece_5ftype_11',['piece_type',['../structgamepiece_1_1GamePiece.html#ab74469d248e7923fe738b13debd94e9f',1,'gamepiece::GamePiece']]],
   ['piece_5fvalue_5fprovider_5finterface_2ehpp_12',['piece_value_provider_interface.hpp',['../piece__value__provider__interface_8hpp.html',1,'']]],
   ['piececolor_13',['PieceColor',['../namespacegamepiece.html#ace5256e95062da0fa5092a012317c297',1,'gamepiece']]],
   ['piecedispatcharray_5ft_14',['PieceDispatchArray_t',['../namespacemoves.html#ab0b73293133e6838c2f0375525e5bbb9',1,'moves']]],

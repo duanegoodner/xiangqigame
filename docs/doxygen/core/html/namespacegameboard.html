@@ -71,31 +71,33 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Stores piece positions, and exposes methods for calculating, executing, an un-doing moves (implements...">GameBoard</a>.  
+<p>Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">GameBoard</a>.  
 <a href="namespacegameboard.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1BoardDirection.html">BoardDirection</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Acts as a vector with same units as <a class="el" href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a>.  <a href="structgameboard_1_1BoardDirection.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Descirbes a direction on a <a class="el" href="classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8" title="2-D array of GamePiece objects.">gameboard::GameBoard.board_map_</a>.  <a href="structgameboard_1_1BoardDirection.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboard features: board size, river locations, and castle locations.  <a href="structgameboard_1_1BoardSpace.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1CastleEdges.html">CastleEdges</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines a castle feature in terms of its min / max rank and file.  <a href="structgameboard_1_1CastleEdges.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html">GameBoard</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores piece positions, and exposes methods for calculating, executing, an un-doing moves (implements <a class="el" href="classSpaceInfoProvider.html">SpaceInfoProvider</a> CRTP Interface).  <a href="classgameboard_1_1GameBoard.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classSpaceInfoProvider.html">SpaceInfoProvider</a> interface; stores piece positions, and exposes methods for calculating, executing, an un-doing moves.  <a href="classgameboard_1_1GameBoard.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a568951e681950d2439ca397e18fefbe0"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a568951e681950d2439ca397e18fefbe0">BoardIdx_t</a></td></tr>
 <tr class="separator:a568951e681950d2439ca397e18fefbe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a></td></tr>
+<tr class="memitem:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; <a class="el" href="structgamepiece_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a></td></tr>
+<tr class="memdesc:aab2a12a4ad1333460ff7d6d910c6160d"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of gameboard::GamePiece objects.  <a href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">More...</a><br /></td></tr>
 <tr class="separator:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e9a3466821b60dadcb183d4c8175133"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; int, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a></td></tr>
+<tr class="memdesc:a2e9a3466821b60dadcb183d4c8175133"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of integers; can be converted to <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d" title="2-D array of gameboard::GamePiece objects.">gameboard::BoardMap_t</a> using <a class="el" href="namespacegameboard.html#aa06ff448689c3fcec3968e33752e0d19">gameboard::int_board_to_game_pieces</a>.  <a href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">More...</a><br /></td></tr>
 <tr class="separator:a2e9a3466821b60dadcb183d4c8175133"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3930c18039797b276764917d1ea8fcac"><td class="memItemLeft" align="right" valign="top">typedef array&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a>, 9 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a3930c18039797b276764917d1ea8fcac">Castle_t</a></td></tr>
 <tr class="separator:a3930c18039797b276764917d1ea8fcac"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -148,7 +150,7 @@ Variables</h2></td></tr>
 <tr class="separator:adc3c88bd024708e1e2b062c7c0df4afb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Stores piece positions, and exposes methods for calculating, executing, an un-doing moves (implements...">GameBoard</a>. </p>
+<div class="textblock"><p >Classes, structs and constants related to <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">GameBoard</a>. </p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a568951e681950d2439ca397e18fefbe0" name="a568951e681950d2439ca397e18fefbe0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a568951e681950d2439ca397e18fefbe0">&#9670;&nbsp;</a></span>BoardIdx_t</h2>
@@ -173,12 +175,15 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef array&lt;array&lt;<a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a>&gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a>&gt; <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a></td>
+          <td class="memname">typedef array&lt;array&lt;<a class="el" href="structgamepiece_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a>&gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a>&gt; <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00069">69</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p>2-D array of gameboard::GamePiece objects. </p>
+<p >This is the data type of <a class="el" href="classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8" title="2-D array of GamePiece objects.">gameboard::GameBoard.board_map_</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00045">45</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -194,7 +199,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00071">71</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p>2-D array of integers; can be converted to <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d" title="2-D array of gameboard::GamePiece objects.">gameboard::BoardMap_t</a> using <a class="el" href="namespacegameboard.html#aa06ff448689c3fcec3968e33752e0d19">gameboard::int_board_to_game_pieces</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00048">48</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -210,7 +217,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00111">111</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00090">90</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -238,7 +245,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00128">128</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00107">107</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -266,7 +273,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00114">114</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00093">93</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -304,7 +311,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00178">178</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00151">151</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -342,7 +349,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00146">146</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00125">125</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -380,7 +387,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00160">160</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00133">133</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -418,7 +425,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00153">153</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00129">129</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -446,7 +453,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00132">132</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00111">111</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -484,7 +491,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00142">142</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00121">121</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -512,7 +519,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00063">63</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00039">39</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -539,7 +546,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00126">126</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00105">105</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -564,7 +571,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00030">30</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00032">32</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -636,7 +643,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00029">29</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__data__structs_8hpp_source.html#l00031">31</a> of file <a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -718,7 +725,7 @@ Variables</h2></td></tr>
 <div class="line">}}</div>
 </div><!-- fragment -->
 <p>Starting board represented as 2-D array of integers. </p>
-<p >Can be converted to array of <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> objects by board_utilities::int_board_to_game_pieces. </p>
+<p >Can be converted to array of GamePiece objects by board_utilities::int_board_to_game_pieces. </p>
 
 <p class="definition">Definition at line <a class="el" href="game__board_8cpp_source.html#l00018">18</a> of file <a class="el" href="game__board_8cpp_source.html">game_board.cpp</a>.</p>
 
@@ -727,7 +734,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 8 2024 00:52:08 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+Generated on Tue Oct 8 2024 05:23:49 for Xiangiqgame Core by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
 </small></address>
 </body>
 </html>

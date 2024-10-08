@@ -1,11 +1,12 @@
 <map id="include/core/move_data_structs.hpp" name="include/core/move_data_structs.hpp">
-<area shape="rect" id="node1" title="Definitions and implementations of moves::Move and other move&#45;related structs." alt="" coords="155,5,333,47"/>
-<area shape="rect" id="node2" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="157,95,331,121"/>
+<area shape="rect" id="node1" title="Definitions and implementations of moves::Move and other move&#45;related structs." alt="" coords="231,5,409,47"/>
+<area shape="rect" id="node2" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="170,95,345,121"/>
+<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="362,169,491,196"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,169,61,196"/>
 <area shape="rect" id="node4" title=" " alt="" coords="85,169,155,196"/>
-<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Enums and utility functions for describing occupant of gameboard::BoardSpace." alt="" coords="179,169,309,196"/>
-<area shape="rect" id="node8" title=" " alt="" coords="333,169,405,196"/>
-<area shape="rect" id="node9" title=" " alt="" coords="430,169,493,196"/>
-<area shape="rect" id="node6" title=" " alt="" coords="156,244,215,271"/>
-<area shape="rect" id="node7" title=" " alt="" coords="239,244,363,271"/>
+<area shape="rect" id="node9" title=" " alt="" coords="179,169,251,196"/>
+<area shape="rect" id="node10" title=" " alt="" coords="275,169,338,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="310,244,373,271"/>
+<area shape="rect" id="node7" title=" " alt="" coords="397,244,456,271"/>
+<area shape="rect" id="node8" title=" " alt="" coords="481,244,605,271"/>
 </map>

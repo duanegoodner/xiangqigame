@@ -106,9 +106,9 @@ private:
   unordered_map<KeyType, vector<TranspositionTableEntry>> data_;
 };
 
-//! Calculates Zobrist hash value of board configuration, and provides
-//! moveselection::MinimaxMoveEvaluator access to boardstate::TranspositionTable
-//! (implements BoardStateSummarizer interface).
+//! Implements BoardStateSummarizer interface; calculates Zobrist hash value of board
+//! configuration; provides moveselection::MinimaxMoveEvaluator access to
+//! boardstate::TranspositionTable
 template <typename KeyType>
 class HashCalculator : public BoardStateSummarizer<HashCalculator<KeyType>, KeyType> {
 public:

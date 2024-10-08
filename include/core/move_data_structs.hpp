@@ -1,4 +1,4 @@
-//! @file move_data_structs.hpp 
+//! @file move_data_structs.hpp
 //! Definitions and implementations of moves::Move and other move-related structs.
 
 #pragma once
@@ -9,6 +9,11 @@
 using namespace gameboard;
 
 namespace moves {
+
+//! A gameboard::BoardSpace pair (start and end).
+//! Does not have a gamepiece::GamePiece object associated with it (unlike a
+//! moves::ExecutedMove). To know what gamepiece::GamePiece would be associated with a
+//! moves::Move, must compare with a gameboard::GameBoard.board_map_.
 struct Move {
   gameboard::BoardSpace start;
   gameboard::BoardSpace end;
@@ -18,6 +23,9 @@ struct Move {
   }
 };
 
+//! A container for multiple moves::Move objects. Typically used to either hold every
+//! moves::Move that *could* be made given a particular state of a gameboard::GameBoard,
+//! or a collection of the *best* moves::Move objects, as determined by a MoveEvaluator.
 struct MoveCollection {
   vector<Move> moves;
   MoveCollection()
@@ -58,6 +66,12 @@ struct MoveCollection {
   }
 };
 
+//! A change in the state of a gameboard::GameBoard represented by a moves::Move, and
+//! each of the gamepiece::GamePiece objects located at the **start** and **end**
+//! locations of the Move. moves::ExecutedMove.moving_piece
+//! is located at moves::ExecutedMove.spaces.start, and
+//! moves::ExecutedMove.destication_piece is located at moves::ExecutedMove.spaces.end
+//! *rior to the change in state*.
 struct ExecutedMove {
   Move spaces;
   gamepiece::GamePiece moving_piece;
