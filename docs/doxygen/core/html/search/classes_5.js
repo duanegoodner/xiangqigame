@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['jsonutility_0',['JsonUtility',['../classJsonUtility.html',1,'']]],
-  ['jsonutility_3c_20nlohmannjsonutility_20_3e_1',['JsonUtility&lt; NlohmannJsonUtility &gt;',['../classJsonUtility.html',1,'']]]
+  ['hashcalculator_0',['HashCalculator',['../classboardstate_1_1HashCalculator.html',1,'boardstate']]],
+  ['humanplayer_1',['HumanPlayer',['../classxiangqigame_1_1players_1_1HumanPlayer.html',1,'xiangqigame::players']]]
 ];

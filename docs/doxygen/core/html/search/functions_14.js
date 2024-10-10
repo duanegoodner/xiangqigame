@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['vertical_5fflip_5farray_0',['vertical_flip_array',['../namespaceutility__functs.html#ae8dd90e2e426dd1bdc0e106beea322d1',1,'utility_functs']]],
-  ['violatesrepeatrule_1',['ViolatesRepeatRule',['../classgameboard_1_1GameBoard.html#a031246444046de065689cd3cf52349bd',1,'gameboard::GameBoard']]]
+  ['undomove_0',['UndoMove',['../classSpaceInfoProvider.html#aebb7d47820d773fac481052ef55b7a77',1,'SpaceInfoProvider']]],
+  ['update_1',['Update',['../structmoveselection_1_1ResultDepthCounts.html#aebe1e28d82923f40bf23e99c3197cc02',1,'moveselection::ResultDepthCounts::Update()'],['../structmoveselection_1_1SearchSummary.html#afb2d675e5569eede657ed21729362060',1,'moveselection::SearchSummary::Update()']]],
+  ['updateboardstate_2',['UpdateBoardState',['../classBoardStateSummarizer.html#ae5235006c3e65983722da90183a404cb',1,'BoardStateSummarizer']]],
+  ['updatehashcalculator_3',['UpdateHashCalculator',['../classgameboard_1_1GameBoard.html#a59f7aa418c9186d5c09a3b3dec389e2e',1,'gameboard::GameBoard']]],
+  ['updatetranspositiontablehits_4',['UpdateTranspositionTableHits',['../structmoveselection_1_1SearchSummary.html#a62f64dc3adc1d3b05439cfb92f3d159a',1,'moveselection::SearchSummary']]]
 ];

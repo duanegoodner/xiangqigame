@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['file_0',['file',['../structgameboard_1_1BoardDirection.html#ae0e60fad8181ed32066f978ae210c846',1,'gameboard::BoardDirection::file()'],['../structgameboard_1_1BoardSpace.html#ac9af213d1a28426de0e03ec7f98c1dc1',1,'gameboard::BoardSpace::file()']]],
-  ['first_5fsearches_1',['first_searches',['../structmoveselection_1_1SearchSummaries.html#aa236883fc6b5b34ba98fbab1e12b7871',1,'moveselection::SearchSummaries']]],
-  ['found_2',['found',['../structmoveselection_1_1TranspositionTableSearchResult.html#aed1146a8d734cf83d13e895b33733369',1,'moveselection::TranspositionTableSearchResult']]]
+  ['cannon_5fposition_5ficga_5f2004_0',['cannon_position_icga_2004',['../namespacexiangqigame_1_1piece__points.html#a19fe0b12327f8ff35dfa36961cb4cf3a',1,'xiangqigame::piece_points']]],
+  ['catchable_5fsignals_1',['catchable_signals',['../namespacexiangqigame_1_1handlers_1_1signals.html#acb6b2613751d84204f4efdc247a18b6c',1,'xiangqigame::handlers::signals']]],
+  ['chariot_5fposition_5ficga_5f2004_2',['chariot_position_icga_2004',['../namespacexiangqigame_1_1piece__points.html#a56778fa2d09e1786938bd083425d447f',1,'xiangqigame::piece_points']]],
+  ['cmap_3',['cmap',['../classxiangqigame_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a25476e74b739160638ef3f814df8be12',1,'xiangqigame::game_summary_plotters::SearchResultsByTypePlotter']]],
+  ['color_4',['color',['../classxiangqigame_1_1player__summary_1_1PlayerSummary.html#a0ea46d37bd4aeb99c870f00cc9a28c1f',1,'xiangqigame::player_summary::PlayerSummary']]]
 ];

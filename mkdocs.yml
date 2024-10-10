@@ -5,8 +5,20 @@ nav:
 - Running: running.md
 - Game Rules and Notation: notation.md
 - Rules: implemented_rules.md
+- C++ Core: core_docs.md
 - Design and Implementation Highlights: implementation_details.md
+- Python Classes: py_classes.md
 # - Analyzing Game Data: analyzing_game_data.md
 
 theme:
     name: readthedocs
+plugins:
+- search
+- mkdocstrings:
+    handlers:
+        python:
+            rendering:
+                show_module_heading: true
+            paths: [src]
+            options:
+                docstring_style: sphinx

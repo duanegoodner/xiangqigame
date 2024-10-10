@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['hash_5fcalculator_2ehpp_0',['hash_calculator.hpp',['../hash__calculator_8hpp.html',1,'']]]
+  ['command_5finput_2epy_0',['command_input.py',['../command__input_8py.html',1,'']]],
+  ['core_5fdataclass_5fmirrors_2epy_1',['core_dataclass_mirrors.py',['../core__dataclass__mirrors_8py.html',1,'']]],
+  ['core_5fhome_2emd_2',['core_home.md',['../core__home_8md.html',1,'']]]
 ];

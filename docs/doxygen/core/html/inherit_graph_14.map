@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structmoves_1_1ExecutedMove.html" title="A change in the state of a gameboard::GameBoard represented by a moves::Move, and each of the gamepie..." alt="" coords="5,5,175,32"/>
+<area shape="rect" id="node1" href="$classJsonUtility.html" title=" " alt="" coords="5,5,204,47"/>
+<area shape="rect" id="node2" href="$classjsonio_1_1NlohmannJsonUtility.html" title="Implements JsonUtility interface; imports / exports objects from / to json files using the Nlohmann j..." alt="" coords="252,13,455,39"/>
 </map>

@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['save_5ffig_0',['save_fig',['../classxiangqigame_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a8aaea2e92067032136bfcf390a1f2ca3',1,'xiangqigame::game_summary_plot_manager::GameSummaryPlotManager']]],
+  ['save_5ffigure_1',['save_figure',['../namespacexiangqigame_1_1game__summary__plot__manager.html#a0fafa199f0ec04177671d391efe38bc5',1,'xiangqigame::game_summary_plot_manager']]],
+  ['score_2',['score',['../structmoveselection_1_1ScoredMove.html#a9af6b23e467c87847b20aad2be9e2a71',1,'moveselection::ScoredMove']]],
+  ['scripted_3',['SCRIPTED',['../classxiangqigame_1_1enums_1_1PlayerType.html#ab94f706f040bee109a5874fc74e325af',1,'xiangqigame::enums::PlayerType']]],
+  ['search_5fstats_5ftime_5fcols_4',['search_stats_time_cols',['../classxiangqigame_1_1game__summary__plotters_1_1SearchTimePlotter.html#a2aa2c78205dcf95a79574d3e59420a5a',1,'xiangqigame::game_summary_plotters::SearchTimePlotter']]],
+  ['search_5fsummaries_5f_5',['search_summaries_',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ae691602ed173beb3246329f714611980',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['search_5ftime_5fplots_6',['search_time_plots',['../classxiangqigame_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a53d9bad030778430dfbb4fcc619cbd2f',1,'xiangqigame::game_summary_plot_manager::GameSummaryPlotManager']]],
+  ['search_5ftype_5fplots_7',['search_type_plots',['../classxiangqigame_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#abeb31726b9799c1de50b6a44a78c54db',1,'xiangqigame::game_summary_plot_manager::GameSummaryPlotManager']]],
+  ['searchsummaries_8',['SearchSummaries',['../classxiangqigame_1_1player__summary_1_1PlayerSummary.html#ae2aefba4b95798abceae626b7eba1425',1,'xiangqigame::player_summary::PlayerSummary']]],
+  ['selected_5fmove_9',['selected_move',['../structmoveselection_1_1SearchSummary.html#ad6fd246f27691acf0a7ca1b97a3621d6',1,'moveselection::SearchSummary']]],
+  ['shared_5fscore_10',['shared_score',['../structmoveselection_1_1EqualScoreMoves.html#a957c26f9758003cb31895a512c0e5b3e',1,'moveselection::EqualScoreMoves']]],
+  ['signals_5fto_5fignore_11',['signals_to_ignore',['../namespacexiangqigame_1_1handlers_1_1signals.html#ae9d244d520612af149054a3c972224ed',1,'xiangqigame::handlers::signals']]],
+  ['similar_5fmoves_12',['similar_moves',['../structmoveselection_1_1TranspositionTableEntry.html#a9a989081e2d22b3f72f8152c9cdeedd3',1,'moveselection::TranspositionTableEntry::similar_moves()'],['../structmoveselection_1_1SearchSummary.html#a66200654533986f6b8813b5442de053f',1,'moveselection::SearchSummary::similar_moves()'],['../structmoveselection_1_1EqualScoreMoves.html#a6a8a430bbf0011d392d138f467fcf0fd',1,'moveselection::EqualScoreMoves::similar_moves()']]],
+  ['soldier_5fposition_5ficga_5f2004_13',['soldier_position_icga_2004',['../namespacexiangqigame_1_1piece__points.html#a0c45dbc27596ad524126e97129794db1',1,'xiangqigame::piece_points']]],
+  ['spaces_14',['spaces',['../structmoves_1_1ExecutedMove.html#adc58efece7eab6d8cc9e8e2a2a79a01c',1,'moves::ExecutedMove']]],
+  ['standardleaf_15',['StandardLeaf',['../classxiangqigame_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#ada554a005fd616ef06893ef0ef4212f1',1,'xiangqigame::core_dataclass_mirrors::MinimaxResultTypePy']]],
+  ['start_16',['start',['../structmoves_1_1Move.html#a82144ae3c96270d7ca3b5b78f70af390',1,'moves::Move']]],
+  ['starting_5fsearch_5fdepth_5f_17',['starting_search_depth_',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a4a0edae47be034565cd665ab9c4e1647',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['str_18',['str',['../classxiangqigame_1_1command__input_1_1XiangqiGameCommand.html#a9f3dc9e7b13dbd9263f9c3b1296318a1',1,'xiangqigame.command_input.XiangqiGameCommand.str()'],['../classxiangqigame_1_1terminal__output_1_1InputRetrievalMessages.html#af26fd66f9ca08c8400faf1c00d891fe6',1,'xiangqigame.terminal_output.InputRetrievalMessages.str()']]],
+  ['strength_5finput_19',['strength_input',['../classxiangqigame_1_1command__input_1_1PlayerCommandInterpreter.html#aea36b6dfd5fc91aa43cfeee75a675472',1,'xiangqigame::command_input::PlayerCommandInterpreter']]]
+];

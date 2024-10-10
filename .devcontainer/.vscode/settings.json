@@ -2,6 +2,7 @@
     "[python]": {
         "editor.defaultFormatter": "ms-python.black-formatter",
     },
+    "autoDocstring.docstringFormat": "sphinx",
     "editor.guides.indentation": false,
     "black-formatter.args": ["--line-length", "79"],
     "python.testing.pytestArgs": [

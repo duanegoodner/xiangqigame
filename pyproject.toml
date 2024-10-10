@@ -26,7 +26,8 @@ dependencies = [
     "matplotlib",
     "msgspec",
     "numpy",
-    "pandas"
+    "pandas",
+    "mkdocstrings[python]>=0.18"
 ]
 
 [project.optional-dependencies]

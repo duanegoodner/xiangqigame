@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['board_5fdata_5fstructs_2ehpp_0',['board_data_structs.hpp',['../board__data__structs_8hpp.html',1,'']]],
-  ['board_5fstate_5fsummarizer_5finterface_2ehpp_1',['board_state_summarizer_interface.hpp',['../board__state__summarizer__interface_8hpp.html',1,'']]]
+  ['_5f_5finit_5f_5f_2epy_0',['__init__.py',['../____init_____8py.html',1,'(Global Namespace)'],['../handlers_2____init_____8py.html',1,'(Global Namespace)']]],
+  ['_5f_5fmain_5f_5f_2epy_1',['__main__.py',['../____main_____8py.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nlohmannjsonutility_0',['NlohmannJsonUtility',['../classjsonio_1_1NlohmannJsonUtility.html',1,'jsonio']]]
+  ['keygenerator_0',['KeyGenerator',['../classboardstate_1_1KeyGenerator.html',1,'boardstate']]]
 ];

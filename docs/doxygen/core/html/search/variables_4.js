@@ -1,6 +1,9 @@
 var searchData=
 [
-  ['game_5fboard_5f_0',['game_board_',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a4544225bd659713f8463c0415b512aed',1,'moveselection::MinimaxMoveEvaluator::game_board_()'],['../classmoveselection_1_1RandomMoveEvaluator.html#adf9a8b780202d5d6b6052ff912d8fb39',1,'moveselection::RandomMoveEvaluator::game_board_()']]],
-  ['game_5fposition_5fpoints_5f_1',['game_position_points_',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a279c7caee2b1c06b293f2fe4f4354daf',1,'moveselection::MinimaxMoveEvaluator']]],
-  ['gen_5f64_5f_2',['gen_64_',['../classboardstate_1_1KeyGenerator.html#a6dc1f1a7109fa21c2c44d4fd9d1787d1',1,'boardstate::KeyGenerator']]]
+  ['data_0',['data',['../structmoveselection_1_1ResultDepthCounts.html#a627a08b252aca1993483d22cf22bf696',1,'moveselection::ResultDepthCounts']]],
+  ['data_5f_1',['data_',['../structboardstate_1_1TranspositionTable.html#a6fc16ed5bdf9c620141399b2c885d55a',1,'boardstate::TranspositionTable']]],
+  ['decoder_2',['decoder',['../namespacexiangqigame_1_1game__summary__io.html#a39ffa0a3cd9de5458a1feb8526399395',1,'xiangqigame::game_summary_io']]],
+  ['default_5fbase_5fpoints_3',['DEFAULT_BASE_POINTS',['../namespacexiangqigame_1_1piece__points.html#aadd4a76350d1cda8203aaae006dcaab3',1,'xiangqigame::piece_points']]],
+  ['default_5fposition_5fpoints_4',['DEFAULT_POSITION_POINTS',['../namespacexiangqigame_1_1piece__points.html#af67b4f49612c37be17c2ffe4e2ba2c35',1,'xiangqigame::piece_points']]],
+  ['destination_5fpiece_5',['destination_piece',['../structmoves_1_1ExecutedMove.html#a35f2bca447c7f60757047347acbe8ea5',1,'moves::ExecutedMove']]]
 ];

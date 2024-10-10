@@ -1,3 +1,8 @@
+"""Summary of the game module
+
+This is the game module summary.
+"""
+
 from datetime import datetime
 from typing import Dict, List
 
@@ -12,7 +17,9 @@ from xiangqigame.handlers.errors import handle_interactive_eof
 
 
 class Game:
-
+    """Summary of Game class
+    
+    """
     def __init__(
         self,
         players: Dict[core.PieceColor, Player],

@@ -1,3 +1,8 @@
+"""Summary
+
+This is a summary of the app module.
+"""
+
 import colorama
 import xiangqigame_core as core
 from pathlib import Path
