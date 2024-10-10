@@ -1,4 +1,4 @@
-from xiangqigame.game_summary import GameSummary
+from xiangqipy.game_summary import GameSummary
 from pathlib import Path
 
 

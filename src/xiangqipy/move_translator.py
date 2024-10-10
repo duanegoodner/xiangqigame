@@ -1,6 +1,6 @@
 import re
 # from cpp_modules.game_board_py import BoardSpace, Move
-from xiangqigame_core import BoardSpace, Move
+from xiangqi_bindings import BoardSpace, Move
 from typing import List
 
 

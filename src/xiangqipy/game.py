@@ -6,14 +6,14 @@ This is the game module summary.
 from datetime import datetime
 from typing import Dict, List
 
-import xiangqigame_core as core
+import xiangqi_bindings as bindings
 
-import xiangqigame.core_dataclass_mirrors as cdm
-import xiangqigame.terminal_output as msg
-from xiangqigame.enums import GameState
-from xiangqigame.game_interfaces import GameStatusReporter, Player
-from xiangqigame.game_summary import GameSummary, PlayerSummaries
-from xiangqigame.handlers.errors import handle_interactive_eof
+import xiangqipy.core_dataclass_mirrors as cdm
+import xiangqipy.terminal_output as msg
+from xiangqipy.enums import GameState
+from xiangqipy.game_interfaces import GameStatusReporter, Player
+from xiangqipy.game_summary import GameSummary, PlayerSummaries
+from xiangqipy.handlers.errors import handle_interactive_eof
 
 
 class Game:
@@ -22,13 +22,13 @@ class Game:
     """
     def __init__(
         self,
-        players: Dict[core.PieceColor, Player],
-        game_board: core.GameBoard,
+        players: Dict[bindings.PieceColor, Player],
+        game_board: bindings.GameBoard,
         status_reporter: GameStatusReporter = msg.TerminalStatusReporter(),
-        move_log: List[core.Move] = None,
+        move_log: List[bindings.Move] = None,
     ):
         self._game_state = GameState.UNFINISHED
-        self._whose_turn = core.PieceColor.kRed
+        self._whose_turn = bindings.PieceColor.kRed
         self._board = game_board
         self._players = players
         self._status_reporter = status_reporter
@@ -52,8 +52,8 @@ class Game:
                 for item in self._move_log
             ],
             player_summaries=PlayerSummaries(
-                kRed=self._players[core.PieceColor.kRed].summary,
-                kBlk=self._players[core.PieceColor.kBlk].summary,
+                kRed=self._players[bindings.PieceColor.kRed].summary,
+                kBlk=self._players[bindings.PieceColor.kBlk].summary,
             ),
         )
 
@@ -62,13 +62,13 @@ class Game:
         return len(self._move_log)
 
     def change_whose_turn(self):
-        self._whose_turn = core.opponent_of(self._whose_turn)
+        self._whose_turn = bindings.opponent_of(self._whose_turn)
 
     @staticmethod
-    def is_valid_move(proposed_move: core.Move, avail_moves: List[core.Move]):
+    def is_valid_move(proposed_move: bindings.Move, avail_moves: List[bindings.Move]):
         return proposed_move in avail_moves
 
-    def get_valid_move(self, avail_moves: core.MoveCollection):
+    def get_valid_move(self, avail_moves: bindings.MoveCollection):
         valid_move = None
         while not valid_move:
             proposed_move = self._players[self._whose_turn].propose_move(
@@ -84,7 +84,7 @@ class Game:
                 )
         return valid_move
 
-    def player_turn(self, avail_moves: core.MoveCollection):
+    def player_turn(self, avail_moves: bindings.MoveCollection):
         try:
             valid_move = self.get_valid_move(avail_moves=avail_moves)
         except EOFError:
@@ -96,7 +96,7 @@ class Game:
         self._game_state = game_state
 
     def set_winner(self, color: int):
-        if color == core.PieceColor.kRed:
+        if color == bindings.PieceColor.kRed:
             self.set_game_state(GameState.RED_WON)
         else:
             self.set_game_state(GameState.BLACK_WON)
@@ -107,8 +107,8 @@ class Game:
         else:
             prev_move = None
         self._status_reporter.report_game_info(
-            red_player_summary=self._players[core.PieceColor.kRed].summary,
-            black_player_summary=self._players[core.PieceColor.kBlk].summary,
+            red_player_summary=self._players[bindings.PieceColor.kRed].summary,
+            black_player_summary=self._players[bindings.PieceColor.kBlk].summary,
             game_state=self._game_state,
             game_board=self._board,
             whose_turn=self._whose_turn,
@@ -122,7 +122,7 @@ class Game:
             self.send_game_info_to_status_reporter()
             avail_moves = self._board.CalcFinalMovesOf(self._whose_turn)
             if avail_moves.size() == 0:
-                self.set_winner(core.opponent_of(self._whose_turn))
+                self.set_winner(bindings.opponent_of(self._whose_turn))
                 break
             self.player_turn(avail_moves=avail_moves)
             self.change_whose_turn()

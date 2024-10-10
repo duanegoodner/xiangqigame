@@ -64,7 +64,7 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
       );
 }
 
-PYBIND11_MODULE(xiangqigame_core, m) {
+PYBIND11_MODULE(xiangqi_bindings, m) {
 
   py::class_<BoardSpace>(m, "BoardSpace")
       .def(py::init<int, int>(), "rank"_a, "file"_a)

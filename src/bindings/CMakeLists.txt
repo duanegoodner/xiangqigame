@@ -1,9 +1,9 @@
 # add_compile_options(-Wall -Wextra -O3)
 
 
-pybind11_add_module(xiangqigame_core xiangqigame_core.cpp)
+pybind11_add_module(xiangqi_bindings bindings.cpp)
 target_link_libraries(
-    xiangqigame_core PRIVATE
+    xiangqi_bindings PRIVATE
     hash_calculator
     game_board
     piece_position_points
@@ -12,12 +12,12 @@ target_link_libraries(
     )
 
 target_include_directories(
-    xiangqigame_core PRIVATE
+    xiangqi_bindings PRIVATE
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
     ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
     ${CMAKE_CURRENT_SOURCE_DIR})
 
 if(SKBUILD)
-    install(TARGETS xiangqigame_core LIBRARY DESTINATION .)
+    install(TARGETS xiangqi_bindings LIBRARY DESTINATION .)
 endif()

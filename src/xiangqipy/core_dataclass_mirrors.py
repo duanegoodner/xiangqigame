@@ -5,7 +5,7 @@ from typing import Dict, List, TypeAlias
 
 import numpy as np
 import pandas as pd
-import xiangqigame_core as core
+import xiangqi_bindings as bindings
 
 
 class PointsTypeDeterminer:
@@ -21,7 +21,7 @@ class PointsTypeDeterminer:
     }
 
     def get_points_type(self) -> type:
-        dtype_key = (core.is_signed_points_type(), core.size_of_points_type())
+        dtype_key = (bindings.is_signed_points_type(), bindings.size_of_points_type())
         return self._dtype_map[dtype_key]
 
 
@@ -29,23 +29,23 @@ PointsT: TypeAlias = PointsTypeDeterminer().get_points_type()
 
 
 class MinimaxResultTypePy(Enum):
-    Unknown = int(core.MinimaxResultType.Unknown)
-    TrTableHit = int(core.MinimaxResultType.TrTableHit)
-    EvaluatorLoses = int(core.MinimaxResultType.EvaluatorLoses)
-    EvaluatorWins = int(core.MinimaxResultType.EvaluatorWins)
-    FullyEvaluatedNode = int(core.MinimaxResultType.FullyEvaluatedNode)
-    StandardLeaf = int(core.MinimaxResultType.StandardLeaf)
-    AlphaPrune = int(core.MinimaxResultType.AlphaPrune)
-    BetaPrune = int(core.MinimaxResultType.BetaPrune)
+    Unknown = int(bindings.MinimaxResultType.Unknown)
+    TrTableHit = int(bindings.MinimaxResultType.TrTableHit)
+    EvaluatorLoses = int(bindings.MinimaxResultType.EvaluatorLoses)
+    EvaluatorWins = int(bindings.MinimaxResultType.EvaluatorWins)
+    FullyEvaluatedNode = int(bindings.MinimaxResultType.FullyEvaluatedNode)
+    StandardLeaf = int(bindings.MinimaxResultType.StandardLeaf)
+    AlphaPrune = int(bindings.MinimaxResultType.AlphaPrune)
+    BetaPrune = int(bindings.MinimaxResultType.BetaPrune)
 
 
 @dataclass
 class GamePiece:
-    piece_color: core.PieceColor
-    piece_type: core.PieceType
+    piece_color: bindings.PieceColor
+    piece_type: bindings.PieceType
 
     @classmethod
-    def from_core_game_piece(cls, core_game_piece: core.GamePiece):
+    def from_core_game_piece(cls, core_game_piece: bindings.GamePiece):
         return cls(
             piece_color=core_game_piece.piece_color,
             piece_type=core_game_piece.piece_type,
@@ -58,7 +58,7 @@ class BoardSpace:
     file: int
 
     @classmethod
-    def from_core_board_space(cls, core_board_space: core.BoardSpace):
+    def from_core_board_space(cls, core_board_space: bindings.BoardSpace):
         return cls(rank=core_board_space.rank, file=core_board_space.file)
 
 
@@ -68,7 +68,7 @@ class Move:
     end: BoardSpace
 
     @classmethod
-    def from_core_move(cls, core_move: core.Move):
+    def from_core_move(cls, core_move: bindings.Move):
         start = BoardSpace.from_core_board_space(core_move.start)
         end = BoardSpace.from_core_board_space(core_move.end)
         return cls(start=start, end=end)
@@ -80,7 +80,7 @@ class MoveCollection:
 
     @classmethod
     def from_core_move_collection(
-        cls, core_move_collection: core.MoveCollection
+        cls, core_move_collection: bindings.MoveCollection
     ):
         moves = [
             Move.from_core_move(core_move=core_move)
@@ -99,7 +99,7 @@ class EqualScoreMoves:
     similar_moves: MoveCollection
 
     @classmethod
-    def from_core_similar_moves(cls, core_similar_moves: core.EqualScoreMoves):
+    def from_core_similar_moves(cls, core_similar_moves: bindings.EqualScoreMoves):
         return cls(
             shared_score=core_similar_moves.shared_score,
             similar_moves=MoveCollection.from_core_move_collection(
@@ -115,7 +115,7 @@ class ExecutedMove:
     spaces: Move
 
     @classmethod
-    def from_core_executed_move(cls, core_executed_move: core.ExecutedMove):
+    def from_core_executed_move(cls, core_executed_move: bindings.ExecutedMove):
         return cls(
             moving_piece=GamePiece.from_core_game_piece(
                 core_game_piece=core_executed_move.moving_piece
@@ -137,7 +137,7 @@ class SearchSummary:
     selected_move: Move
 
     @classmethod
-    def from_core_search_summary(cls, core_search_summary: core.SearchSummary):
+    def from_core_search_summary(cls, core_search_summary: bindings.SearchSummary):
         return cls(
             num_nodes=core_search_summary.num_nodes,
             time=core_search_summary.time,
@@ -163,7 +163,7 @@ class SearchSummaries:
 
     @classmethod
     def from_core_search_summaries(
-        cls, core_search_summaries: core.SearchSummaries
+        cls, core_search_summaries: bindings.SearchSummaries
     ):
         return cls(
             first_searches=[

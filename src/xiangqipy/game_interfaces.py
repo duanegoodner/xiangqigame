@@ -4,18 +4,18 @@ from typing import Dict, List
 
 import numpy as np
 import pandas as pd
-import xiangqigame_core as core
+import xiangqi_bindings as bindings
 
-import xiangqigame.core_dataclass_mirrors as cdm
-from xiangqigame.enums import GameState, PlayerType, EvaluatorType
-from xiangqigame.player_summary import PlayerSummary
+import xiangqipy.core_dataclass_mirrors as cdm
+from xiangqipy.enums import GameState, PlayerType, EvaluatorType
+from xiangqipy.player_summary import PlayerSummary
 
 
 class Player(abc.ABC):
 
     def __init__(
         self,
-        color: core.PieceColor,
+        color: bindings.PieceColor,
         player_type: PlayerType,
         evaluator_type: EvaluatorType = EvaluatorType.NULL,
     ) -> None:
@@ -25,16 +25,16 @@ class Player(abc.ABC):
 
     @abc.abstractmethod
     def propose_move(
-        self, game_board: core.GameBoard, cur_moves: List[core.Move]
-    ) -> core.Move:
+        self, game_board: bindings.GameBoard, cur_moves: List[bindings.Move]
+    ) -> bindings.Move:
         pass
 
     @abc.abstractmethod
     def illegal_move_notice_response(
         self,
-        illegal_move: core.Move,
-        game_board: core.GameBoard,
-        cur_moves: List[core.Move],
+        illegal_move: bindings.Move,
+        game_board: bindings.GameBoard,
+        cur_moves: List[bindings.Move],
     ):
         pass
 
@@ -83,10 +83,10 @@ class GameStatusReporter(abc.ABC):
         red_player_summary: PlayerSummary,
         black_player_summary: PlayerSummary,
         game_state: GameState,
-        game_board: core.GameBoard,
-        whose_turn: core.PieceColor,
+        game_board: bindings.GameBoard,
+        whose_turn: bindings.PieceColor,
         is_in_check: bool,
         move_count: int,
-        prev_move: core.Move = None,
+        prev_move: bindings.Move = None,
     ):
         pass

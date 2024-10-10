@@ -2,11 +2,11 @@ from dataclasses import dataclass
 from typing import Dict, List
 
 import msgspec
-import xiangqigame_core as core
+import xiangqi_bindings as bindings
 
-import xiangqigame.core_dataclass_mirrors as cdm
-from xiangqigame.enums import GameState
-from xiangqigame.player_summary import PlayerSummary
+import xiangqipy.core_dataclass_mirrors as cdm
+from xiangqipy.enums import GameState
+from xiangqipy.player_summary import PlayerSummary
 
 
 @dataclass
@@ -18,7 +18,7 @@ class PlayerSummaries:
 class GameSummary(msgspec.Struct):
     game_id: str
     game_state: GameState
-    whose_turn: core.PieceColor
+    whose_turn: bindings.PieceColor
     move_log: List[cdm.ExecutedMove]
     player_summaries: PlayerSummaries
 
@@ -27,15 +27,15 @@ class GameSummary(msgspec.Struct):
         return len(self.move_log)
 
     @property
-    def move_numbers(self) -> Dict[core.PieceColor, List[int]]:
+    def move_numbers(self) -> Dict[bindings.PieceColor, List[int]]:
         return {
-            core.PieceColor.kBlk: [
+            bindings.PieceColor.kBlk: [
                 val for val in range(1, self.move_counts + 1) if (val % 2) == 0
             ],
-            core.PieceColor.kRed: [
+            bindings.PieceColor.kRed: [
                 val for val in range(self.move_counts + 1) if (val % 2) == 1
             ],
         }
 
-    def get_player_summary(self, player: core.PieceColor) -> PlayerSummary:
+    def get_player_summary(self, player: bindings.PieceColor) -> PlayerSummary:
         return self.player_summaries.__dict__[player.name]

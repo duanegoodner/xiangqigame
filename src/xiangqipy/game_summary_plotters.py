@@ -3,26 +3,26 @@ from typing import Dict, Tuple, cast, List
 
 import numpy as np
 import pandas as pd
-import xiangqigame_core as core
+import xiangqi_bindings as bindings
 from matplotlib import pyplot as plt
 
-from xiangqigame.core_dataclass_mirrors import PointsT
+from xiangqipy.core_dataclass_mirrors import PointsT
 
 
 class GameSummaryPlotter(ABC):
     evaluating_player_line_colors = {
-        core.PieceColor.kRed: "red",
-        core.PieceColor.kBlk: "black",
+        bindings.PieceColor.kRed: "red",
+        bindings.PieceColor.kBlk: "black",
     }
 
     player_text_labels = {
-        core.PieceColor.kRed: "Red Player",
-        core.PieceColor.kBlk: "Black Player",
+        bindings.PieceColor.kRed: "Red Player",
+        bindings.PieceColor.kBlk: "Black Player",
     }
 
     non_evaluating_player_line_colors = {
-        core.PieceColor.kRed: "lightcoral",
-        core.PieceColor.kBlk: "darkgray",
+        bindings.PieceColor.kRed: "lightcoral",
+        bindings.PieceColor.kBlk: "darkgray",
     }
 
     def __init__(
@@ -49,27 +49,27 @@ class GameSummaryPlotter(ABC):
     @property
     def dfs(self) -> Dict[str, pd.DataFrame]:
         return {
-            core.PieceColor.kRed.name: self._red_data,
-            core.PieceColor.kBlk.name: self._black_data,
+            bindings.PieceColor.kRed.name: self._red_data,
+            bindings.PieceColor.kBlk.name: self._black_data,
         }
 
-    def has_data(self, player: core.PieceColor) -> bool:
+    def has_data(self, player: bindings.PieceColor) -> bool:
         return self.dfs[player.name] is not None
 
     @property
     def num_players_with_data(self) -> int:
         return sum(
             [
-                int(self.has_data(core.PieceColor.kRed)),
-                int(self.has_data(core.PieceColor.kBlk)),
+                int(self.has_data(bindings.PieceColor.kRed)),
+                int(self.has_data(bindings.PieceColor.kBlk)),
             ]
         )
 
     def validate_dfs(self):
         if self.num_players_with_data == 2:
             assert (
-                self.dfs[core.PieceColor.kRed.name].columns
-                == self.dfs[core.PieceColor.kBlk.name].columns
+                self.dfs[bindings.PieceColor.kRed.name].columns
+                == self.dfs[bindings.PieceColor.kBlk.name].columns
             ).all()
 
     def set_y_axes(self):
@@ -96,13 +96,13 @@ class GameSummaryPlotter(ABC):
             ax.set_xlabel("Game Move Number", fontsize=14)
 
     @property
-    def player_plot_col(self) -> Dict[core.PieceColor, int]:
+    def player_plot_col(self) -> Dict[bindings.PieceColor, int]:
         if self.num_players_with_data == 2:
-            return {core.PieceColor.kRed: 0, core.PieceColor.kBlk: 1}
-        elif self.has_data(player=core.PieceColor.kRed):
-            return {core.PieceColor.kRed: 0, core.PieceColor.kBlk: None}
-        elif self.has_data(player=core.PieceColor.kBlk):
-            return {core.PieceColor.kRed: None, core.PieceColor.kBlk: 0}
+            return {bindings.PieceColor.kRed: 0, bindings.PieceColor.kBlk: 1}
+        elif self.has_data(player=bindings.PieceColor.kRed):
+            return {bindings.PieceColor.kRed: 0, bindings.PieceColor.kBlk: None}
+        elif self.has_data(player=bindings.PieceColor.kBlk):
+            return {bindings.PieceColor.kRed: None, bindings.PieceColor.kBlk: 0}
 
     @property
     def data_columns(self) -> pd.Index:
@@ -139,10 +139,10 @@ class GameSummaryPlotter(ABC):
     def set_plot_col_titles(self):
         for idx, ax in enumerate(self.axes[0, :]):
             ax = cast(plt.Axes, ax)
-            if idx == self.player_plot_col[core.PieceColor.kRed]:
-                ax.set_title(self.player_text_labels[core.PieceColor.kRed], fontsize=16)
-            if idx == self.player_plot_col[core.PieceColor.kBlk]:
-                ax.set_title(self.player_text_labels[core.PieceColor.kBlk], fontsize=16)
+            if idx == self.player_plot_col[bindings.PieceColor.kRed]:
+                ax.set_title(self.player_text_labels[bindings.PieceColor.kRed], fontsize=16)
+            if idx == self.player_plot_col[bindings.PieceColor.kBlk]:
+                ax.set_title(self.player_text_labels[bindings.PieceColor.kBlk], fontsize=16)
 
     def plot(self):
         self.plot_data()
@@ -186,7 +186,7 @@ class SearchResultsByTypePlotter(GameSummaryPlotter):
         }
 
     def plot_search_results_by_type_stacked(
-        self, player: core.PieceColor, ax: plt.Axes
+        self, player: bindings.PieceColor, ax: plt.Axes
     ):
         df = self.dfs[player.name]
         df_sorted = df[sorted(df.columns, key=lambda col: df[col].mean())]
@@ -200,7 +200,7 @@ class SearchResultsByTypePlotter(GameSummaryPlotter):
             colors=sorted_colors,
         )
 
-    def plot_player_data(self, player: core.PieceColor):
+    def plot_player_data(self, player: bindings.PieceColor):
         for plot_row in range(2):
             plot_col = self.player_plot_col[player]
             ax = cast(plt.Axes, self.axes[plot_row, plot_col])
@@ -226,7 +226,7 @@ class SearchResultsByTypePlotter(GameSummaryPlotter):
 
     def plot_data(self):
 
-        for player in [core.PieceColor.kRed, core.PieceColor.kBlk]:
+        for player in [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:
             if self.has_data(player=player):
                 self.plot_player_data(player=player)
         self.add_legend()
@@ -255,7 +255,7 @@ class SearchTimePlotter(GameSummaryPlotter):
             add_plot_column_titles=add_plot_column_titles
         )
 
-    def plot_player_search_times(self, player: core.PieceColor):
+    def plot_player_search_times(self, player: bindings.PieceColor):
         df = self.dfs[player.name]
         plot_col = self.player_plot_col[player]
         for data_col_idx, data_col in enumerate(self.search_stats_time_cols):
@@ -267,7 +267,7 @@ class SearchTimePlotter(GameSummaryPlotter):
             )
 
     def plot_data(self):
-        for player in [core.PieceColor.kRed, core.PieceColor.kBlk]:
+        for player in [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:
             if self.has_data(player=player):
                 self.plot_player_search_times(player=player)
 
@@ -319,7 +319,7 @@ class EvalScorePlotter(GameSummaryPlotter):
 
     def plot_player_data(
         self,
-        player: core.PieceColor,
+        player: bindings.PieceColor,
         ax: plt.Axes,
         is_evaluating_player: bool = True,
     ):
@@ -344,19 +344,19 @@ class EvalScorePlotter(GameSummaryPlotter):
             legend = ax.legend(loc="upper left", fontsize="12")
             legend.get_frame().set_facecolor("white")
 
-    def plot_player_and_opponent_overlay(self, player: core.PieceColor):
+    def plot_player_and_opponent_overlay(self, player: bindings.PieceColor):
         plot_grid_col = self.player_plot_col[player]
         ax = cast(plt.Axes, self.axes[0, plot_grid_col])
         self.plot_player_data(player=player, ax=ax)
 
-        if self.has_data(player=core.opponent_of(player)):
+        if self.has_data(player=bindings.opponent_of(player)):
             self.plot_player_data(
-                player=core.opponent_of(player),
+                player=bindings.opponent_of(player),
                 ax=ax,
                 is_evaluating_player=False,
             )
 
     def plot_data(self):
-        for player in [core.PieceColor.kRed, core.PieceColor.kBlk]:
+        for player in [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:
             if self.has_data(player=player):
                 self.plot_player_and_opponent_overlay(player=player)
