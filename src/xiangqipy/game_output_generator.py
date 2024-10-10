@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from xiangqigame.game_summary import GameSummary
-from xiangqigame.game_summary_io import export_game_summary
-from xiangqigame.game_summary_plot_manager import GameSummaryPlotManager
+from xiangqipy.game_summary import GameSummary
+from xiangqipy.game_summary_io import export_game_summary
+from xiangqipy.game_summary_plot_manager import GameSummaryPlotManager
 
 
 class GameOutputGenerator:

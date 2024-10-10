@@ -4,16 +4,16 @@ from typing import Dict, List
 
 import numpy as np
 import pandas as pd
-import xiangqigame_core as core
+import xiangqi_bindings as bindings
 
-import xiangqigame.core_dataclass_mirrors as cdm
-from xiangqigame.enums import PlayerType, EvaluatorType
-from xiangqigame.core_dataclass_mirrors import PointsT
+import xiangqipy.core_dataclass_mirrors as cdm
+from xiangqipy.enums import PlayerType, EvaluatorType
+from xiangqipy.core_dataclass_mirrors import PointsT
 
 
 @dataclass
 class PlayerSummary:
-    color: core.PieceColor
+    color: bindings.PieceColor
     player_type: PlayerType
     move_evaluator_type: EvaluatorType = EvaluatorType.NULL
     max_search_depth: int = None
@@ -25,9 +25,9 @@ class PlayerSummary:
         return self.search_summaries is not None
 
     def get_game_move_numbers(self, player_move_count: int) -> List[int]:
-        if self.color == core.PieceColor.kRed:
+        if self.color == bindings.PieceColor.kRed:
             return list(range(1, 2 * player_move_count, 2))
-        if self.color == core.PieceColor.kBlk:
+        if self.color == bindings.PieceColor.kBlk:
             return list(range(2, 2 * player_move_count + 1, 2))
 
     @property
@@ -37,7 +37,7 @@ class PlayerSummary:
         if not self.has_search_summaries:
             return None
         result = {}
-        for name, value in core.MinimaxResultType.__members__.items():
+        for name, value in bindings.MinimaxResultType.__members__.items():
             new_df = pd.DataFrame(
                 [
                     search_summary.result_depth_counts[value, :]
@@ -62,7 +62,7 @@ class PlayerSummary:
             return None
 
         # Get the list of MinimaxResultType names
-        result_type_names = list(core.MinimaxResultType.__members__.keys())
+        result_type_names = list(bindings.MinimaxResultType.__members__.keys())
         num_result_types = len(result_type_names)
 
         # Preallocate the DataFrame with zeros (dtype=int64)
@@ -80,7 +80,7 @@ class PlayerSummary:
 
         # Populate the DataFrame by itescore over result types
         for idx, (name, value) in enumerate(
-            core.MinimaxResultType.__members__.items()
+            bindings.MinimaxResultType.__members__.items()
         ):
             for search_idx, search_summary in enumerate(
                 self.search_summaries.first_searches

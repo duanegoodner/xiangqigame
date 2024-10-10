@@ -1,14 +1,14 @@
 import numpy as np
-import xiangqigame.move_translator as mt
+import xiangqipy.move_translator as mt
 from typing import List, Tuple
 
-from xiangqigame.enums import PlayerType, EvaluatorType
+from xiangqipy.enums import PlayerType, EvaluatorType
 
 # from cpp_modules.src.pybind_modules.GameBoardPy import GameBoard, PieceColor, Move, MoveCollection
-from xiangqigame.game_interfaces import Player
-import xiangqigame.terminal_output as msg
+from xiangqipy.game_interfaces import Player
+import xiangqipy.terminal_output as msg
 
-from xiangqigame_core import (
+from xiangqi_bindings import (
     GameBoard,
     PieceColor,
     Move,

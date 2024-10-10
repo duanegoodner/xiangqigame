@@ -1,4 +1,4 @@
-import xiangqigame.app as app
+import xiangqipy.app as app
 
 
 if __name__ == "__main__":

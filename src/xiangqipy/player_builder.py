@@ -1,6 +1,6 @@
 from typing import Callable, Any, Dict, Tuple
 
-from xiangqigame_core import (
+from xiangqi_bindings import (
     GameBoard,
     MinimaxMoveEvaluator64,
     MinimaxMoveEvaluator128,
@@ -8,13 +8,13 @@ from xiangqigame_core import (
     RandomMoveEvaluator,
 )
 
-from xiangqigame.command_input import (
+from xiangqipy.command_input import (
     PlayerInput,
     XiangqiGameCommand,
     PlayerType,
     EvaluatorType,
 )
-from xiangqigame.players import AIPlayer, HumanPlayer
+from xiangqipy.players import AIPlayer, HumanPlayer
 
 
 class SinglePlayerBuilder:

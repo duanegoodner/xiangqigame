@@ -3,8 +3,8 @@ import numpy as np
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Type
-from xiangqigame_core import PieceColor, PieceType
-from xiangqigame.game import GameSummary
+from xiangqi_bindings import PieceColor, PieceType
+from xiangqipy.game import GameSummary
 
 
 def enc_hook(obj: Any) -> Any:

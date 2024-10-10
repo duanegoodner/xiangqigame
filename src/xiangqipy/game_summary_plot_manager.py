@@ -3,11 +3,11 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.gridspec import GridSpec
-import xiangqigame_core as core
+import xiangqi_bindings as bindings
 
-from xiangqigame.game_summary import GameSummary
-from xiangqigame.game_summary_io import import_game_summary
-from xiangqigame.game_summary_plotters import (
+from xiangqipy.game_summary import GameSummary
+from xiangqipy.game_summary_io import import_game_summary
+from xiangqipy.game_summary_plotters import (
     SearchResultsByTypePlotter,
     SearchTimePlotter,
     EvalScorePlotter,
@@ -37,7 +37,7 @@ class GameSummaryPlotManager:
         )
         self.build_layout()
 
-    def has_minimax_data(self, player: core.PieceColor) -> bool:
+    def has_minimax_data(self, player: bindings.PieceColor) -> bool:
         return self.game_summary.get_player_summary(
             player=player
         ).has_search_summaries
@@ -46,8 +46,8 @@ class GameSummaryPlotManager:
     def num_players_with_minimax_data(self) -> int:
         return sum(
             [
-                int(self.has_minimax_data(player=core.PieceColor.kRed)),
-                int(self.has_minimax_data(player=core.PieceColor.kBlk)),
+                int(self.has_minimax_data(player=bindings.PieceColor.kRed)),
+                int(self.has_minimax_data(player=bindings.PieceColor.kBlk)),
             ]
         )
 
@@ -95,12 +95,12 @@ class GameSummaryPlotManager:
         self.fig.text(
             x=0.05,
             y=0.85,
-            s=f"RED player type: {self.game_summary.get_player_summary(core.PieceColor.kRed).player_type}\n"
-            f"RED max search depth: {self.game_summary.get_player_summary(core.PieceColor.kRed).max_search_depth}\n"
-            f"RED Zobrist key size: {self.game_summary.get_player_summary(core.PieceColor.kRed).zobrist_key_size} bits\n\n"
-            f"BLACK player type: {self.game_summary.get_player_summary(core.PieceColor.kBlk).player_type}\n"
-            f"BLACK max search depth: {self.game_summary.get_player_summary(core.PieceColor.kBlk).max_search_depth}\n"
-            f"BLACK Zobrist key size: {self.game_summary.get_player_summary(core.PieceColor.kBlk).zobrist_key_size} bits\n\n"
+            s=f"RED player type: {self.game_summary.get_player_summary(bindings.PieceColor.kRed).player_type}\n"
+            f"RED max search depth: {self.game_summary.get_player_summary(bindings.PieceColor.kRed).max_search_depth}\n"
+            f"RED Zobrist key size: {self.game_summary.get_player_summary(bindings.PieceColor.kRed).zobrist_key_size} bits\n\n"
+            f"BLACK player type: {self.game_summary.get_player_summary(bindings.PieceColor.kBlk).player_type}\n"
+            f"BLACK max search depth: {self.game_summary.get_player_summary(bindings.PieceColor.kBlk).max_search_depth}\n"
+            f"BLACK Zobrist key size: {self.game_summary.get_player_summary(bindings.PieceColor.kBlk).zobrist_key_size} bits\n\n"
             f"Result = {self.game_summary.game_state.name}",
             fontsize=14,
         )
@@ -167,10 +167,10 @@ class GameSummaryPlotManager:
         search_results_by_type_plotter = SearchResultsByTypePlotter(
             axes=self.search_type_plots,
             red_data=self.game_summary.get_player_summary(
-                player=core.PieceColor.kRed
+                player=bindings.PieceColor.kRed
             ).first_searches_by_type,
             black_data=self.game_summary.get_player_summary(
-                player=core.PieceColor.kBlk
+                player=bindings.PieceColor.kBlk
             ).first_searches_by_type,
         )
         search_results_by_type_plotter.plot()
@@ -178,10 +178,10 @@ class GameSummaryPlotManager:
         search_time_plotter = SearchTimePlotter(
             axes=self.search_time_plots,
             red_data=self.game_summary.get_player_summary(
-                player=core.PieceColor.kRed
+                player=bindings.PieceColor.kRed
             ).first_search_stats,
             black_data=self.game_summary.get_player_summary(
-                player=core.PieceColor.kBlk
+                player=bindings.PieceColor.kBlk
             ).first_search_stats,
         )
         search_time_plotter.plot()
@@ -189,10 +189,10 @@ class GameSummaryPlotManager:
         eval_score_plotter = EvalScorePlotter(
             axes=self.eval_score_plots,
             red_data=self.game_summary.get_player_summary(
-                player=core.PieceColor.kRed
+                player=bindings.PieceColor.kRed
             ).first_search_stats,
             black_data=self.game_summary.get_player_summary(
-                player=core.PieceColor.kBlk
+                player=bindings.PieceColor.kBlk
             ).first_search_stats,
             add_plot_column_titles=False,
         )

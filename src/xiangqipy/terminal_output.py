@@ -4,8 +4,8 @@ import subprocess
 from dataclasses import dataclass
 from typing import Dict
 
-import xiangqigame.move_translator as mt
-from xiangqigame_core import (
+import xiangqipy.move_translator as mt
+from xiangqi_bindings import (
     GameBoard,
     GamePiece,
     Move,
@@ -13,10 +13,10 @@ from xiangqigame_core import (
     PieceColor,
     PieceType,
 )
-from xiangqigame.game_interfaces import GameStatusReporter
-from xiangqigame.enums import GameState, EvaluatorType
-from xiangqigame.piece_info_extractor import PIECE_READER
-from xiangqigame.player_summary import PlayerSummary
+from xiangqipy.game_interfaces import GameStatusReporter
+from xiangqipy.enums import GameState, EvaluatorType
+from xiangqipy.piece_info_extractor import PIECE_READER
+from xiangqipy.player_summary import PlayerSummary
 
 
 @dataclass
