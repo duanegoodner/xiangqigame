@@ -1,5 +1,5 @@
-//! @file xiangqigame_core.cpp
-//! Implements Pybind11 module xiangqigame_core, exposing C++ classes and methods to
+//! @file bindings.cpp
+//! Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to
 //! Python.
 
 

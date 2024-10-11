@@ -1,14 +1,15 @@
 
 
 
-## Terminal Game Board and Notation
+# Terminal Game Board and Notation
+
+<div style="text-align:left">
+  <img src="../resources/board_for_notation_section.png" alt="Alt text" width="700">
+</div>
 
 
 
-![starting_game_board](resources/board_for_notation_section.png)
-
-
-### Piece Notation
+## Piece Notation
 
 In our simple text-based game board, each piece is represented by two characters. The first character represents the piece type, and the second character represents the color.
 

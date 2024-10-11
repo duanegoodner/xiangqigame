@@ -114,10 +114,6 @@ COPY ./.devcontainer/entrypoint.sh /usr/local/bin/
 RUN sudo chown $USER_UID:$USER_GID /usr/local/bin/ && \
     sudo chmod u+x /usr/local/bin/entrypoint.sh
 
-RUN git clone https://github.com/jothepro/doxygen-awesome-css $HOME/workspace/doxygen-awesome-css
-
-
-
 WORKDIR $HOME/workspace/project
 
 

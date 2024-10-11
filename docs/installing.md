@@ -1,6 +1,6 @@
 # Installing Xiangqigame
 
-Xiangqigame can be installed natively (preferably in a virtual environment or conda environment), or in a Docker container. Terminal recordings of each installation option are show in the Demos section:
+Xiangqigame can be installed natively (preferably in a virtual environment or conda environment), or in a Docker container.
 
 
 ## Native Installation
@@ -23,6 +23,9 @@ pip install .
 ```
 
 ### Demo
+
+In the following terminal recording, we install Xiangqigame in a native Conda environment, and then confim the installation by running `play_xiangqi`.
+
 ![Native Installation Demo](demos/gifs/native_install.gif)
 
 

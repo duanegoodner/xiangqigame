@@ -1,4 +1,6 @@
 """
+@file player_summary.py
+
 Contains PlayerSummary class.
 """
 

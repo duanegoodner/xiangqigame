@@ -2,7 +2,7 @@
 
 Once `xiangqigame` has been installed into a Python environment, games can be run using the command `play_xiangqi`.
 
-## The `play_xiangqi` Command
+## The play_xiangqi Command
 
 Information on all available `play_xiangqi` options can be obtained by running `play_xiangqi --help`.
 
