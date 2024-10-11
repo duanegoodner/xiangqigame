@@ -47,7 +47,7 @@ play_xiangqi = "xiangqipy.__main__:main"
 
 [tool.scikit-build.wheel.packages]
 "xiangqipy" = "src/xiangqipy"
-"xiangqiy/data" = "src/data"
+"xiangqipy/data" = "src/data"
 
 # [tool.scikit-build]
 # build-dir = "./skbuild"
