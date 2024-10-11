@@ -1,3 +1,12 @@
+"""
+@file game_summary_plotters.py
+
+Contains the GameSummaryPlotter abstract base class, and 
+multiple subclasses that implement it.
+
+Each sub-class plots a different portion of data from a GameSummary.
+"""
+
 from abc import ABC, abstractmethod
 from typing import Dict, Tuple, cast, List
 
@@ -10,6 +19,10 @@ from xiangqipy.core_dataclass_mirrors import PointsT
 
 
 class GameSummaryPlotter(ABC):
+    """
+    Abstract base class for plotting data stored in pandas
+    dataframes (one df for each player) to a numpy array of matplotlib Axes
+    """
     evaluating_player_line_colors = {
         bindings.PieceColor.kRed: "red",
         bindings.PieceColor.kBlk: "black",
@@ -153,6 +166,10 @@ class GameSummaryPlotter(ABC):
 
 
 class SearchResultsByTypePlotter(GameSummaryPlotter):
+    """
+    Implements GameSummaryPlotter, and produces stacked plots of Minimax
+    search result counts grouped by MinimaxResultType.
+    """
     def __init__(
         self,
         axes: np.ndarray,
@@ -233,6 +250,10 @@ class SearchResultsByTypePlotter(GameSummaryPlotter):
 
 
 class SearchTimePlotter(GameSummaryPlotter):
+    """
+    Implements GameSummaryPlotter, and produces plots showing time spent
+    by core MinimaxMoveEvaluator(s) evaluating nodes and selecting Moves.
+    """
     search_stats_time_cols = ["search_time_s", "mean_time_per_node_ns"]
 
     def __init__(
@@ -273,6 +294,10 @@ class SearchTimePlotter(GameSummaryPlotter):
 
 
 class EvalScorePlotter(GameSummaryPlotter):
+    """
+    Implements GameSummaryPlotter, and plots evaluated score of each move of
+    each Player using a Minimax algorithm in a Game.
+    """
     def __init__(
         self,
         axes: np.ndarray,

@@ -1,3 +1,9 @@
+"""
+@file game_summary_plot_manager.py
+
+Contains the GameSummaryPlotManager class.
+"""
+
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -15,6 +21,10 @@ from xiangqipy.game_summary_plotters import (
 
 
 class GameSummaryPlotManager:
+    """
+    Manages the layout and file output of a figure containing multiple
+    plots of data from a GameSummary.
+    """
     def __init__(self, game_summary: GameSummary, save_fig: bool = False):
         plt.style.use("bmh")
         self.game_summary = game_summary

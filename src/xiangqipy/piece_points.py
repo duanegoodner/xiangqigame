@@ -1,3 +1,7 @@
+"""
+No longer used, but keep for reference: classes for handling piece points.
+"""
+
 from typing import Dict
 
 import numpy as np

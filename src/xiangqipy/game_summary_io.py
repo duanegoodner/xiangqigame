@@ -1,6 +1,11 @@
+"""
+@file game_summary_io.py
+
+Contains functions for importing / exporting a GameSummary from / to .json file.
+"""
+
 import msgspec
 import numpy as np
-from datetime import datetime
 from pathlib import Path
 from typing import Any, Type
 from xiangqi_bindings import PieceColor, PieceType

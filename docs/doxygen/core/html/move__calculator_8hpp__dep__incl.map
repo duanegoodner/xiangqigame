@@ -1,8 +1,0 @@
-<map id="include/core/move_calculator.hpp" name="include/core/move_calculator.hpp">
-<area shape="rect" id="node1" title="Definition of moves::MoveCalculator." alt="" coords="269,5,509,32"/>
-<area shape="rect" id="node2" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="170,87,385,114"/>
-<area shape="rect" id="node6" href="$move__calculator_8cpp.html" title="Acts as linkage point for move_calculator.hpp (where full implementation is located)" alt="" coords="409,80,594,121"/>
-<area shape="rect" id="node3" href="$hash__calculator_8hpp.html" title="Class templates for boardstate::HashCalculator and its supporting class boardstate::ZobristKeys." alt="" coords="5,177,240,203"/>
-<area shape="rect" id="node4" href="$xiangqigame__core_8cpp.html" title="Implements Pybind11 module xiangqigame_core, exposing C++ classes and methods to Python." alt="" coords="105,259,295,300"/>
-<area shape="rect" id="node5" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="315,169,474,211"/>
-</map>

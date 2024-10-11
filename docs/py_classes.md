@@ -2,12 +2,17 @@
 
 ## app.py
 
-::: xiangqigame.app
+::: xiangqipy.app
 
 
 ## Game class
 
-::: xiangqigame.game
+::: xiangqipy.game
 
 
-## 
+## All py code
+
+::: xiangqipy
+
+
+## Some c++ code

@@ -1,3 +1,9 @@
+"""
+@file signals.py
+
+Handlers for signals received when Game is running in terminal UI.
+"""
+
 import signal
 import sys
 

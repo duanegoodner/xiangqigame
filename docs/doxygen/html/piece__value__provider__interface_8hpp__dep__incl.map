@@ -1,0 +1,11 @@
+<map id="include/core/piece_value_provider_interface.hpp" name="include/core/piece_value_provider_interface.hpp">
+<area shape="rect" id="node1" title="Definition of PieceValueProvider CRTP interface." alt="" coords="460,5,679,47"/>
+<area shape="rect" id="node2" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="446,95,693,121"/>
+<area shape="rect" id="node3" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="215,177,430,203"/>
+<area shape="rect" id="node5" href="$bindings_8cpp.html" title=" " alt="" coords="301,363,488,389"/>
+<area shape="rect" id="node7" href="$piece__position__points_8hpp.html" title="Definition of piece_points::PiecePositionPoints." alt="" coords="550,169,706,211"/>
+<area shape="rect" id="node9" href="$move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="730,169,921,211"/>
+<area shape="rect" id="node4" href="$hash__calculator_8hpp.html" title="Class templates for boardstate::HashCalculator and its supporting class boardstate::ZobristKeys." alt="" coords="5,273,240,300"/>
+<area shape="rect" id="node6" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="315,266,474,307"/>
+<area shape="rect" id="node8" href="$piece__position__points_8cpp.html" title="Implementation of piece_points::PiecePositionPoints." alt="" coords="600,259,771,315"/>
+</map>

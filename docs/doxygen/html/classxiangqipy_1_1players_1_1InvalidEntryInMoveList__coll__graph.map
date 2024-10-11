@@ -1,0 +1,4 @@
+<map id="xiangqipy.players.InvalidEntryInMoveList" name="xiangqipy.players.InvalidEntryInMoveList">
+<area shape="rect" id="node1" title="Raised when scripted player proposed move has invalid syntax." alt="" coords="5,131,189,252"/>
+<area shape="rect" id="node2" href="$classException.html" title=" " alt="" coords="54,5,141,83"/>
+</map>

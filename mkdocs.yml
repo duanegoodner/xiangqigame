@@ -8,6 +8,9 @@ nav:
 - C++ Core: core_docs.md
 - Design and Implementation Highlights: implementation_details.md
 - Python Classes: py_classes.md
+- XiangqiGameCore:
+    - Classes:
+        - Class LIst: XianqiGameCore/annotated.md
 # - Analyzing Game Data: analyzing_game_data.md
 
 theme:
@@ -22,3 +25,14 @@ plugins:
             paths: [src]
             options:
                 docstring_style: sphinx
+- mkdoxy:
+    projects:
+        XianqiGameCore:
+            src-dirs: ./src/include/core ./src/bindings ./src/core
+            full-doc: True
+            doxy-cfg:
+                FILE_PATTERNS: "*.cpp *.hpp"
+                RECURSIVE: True
+                EXTRACT_ALL: True
+
+

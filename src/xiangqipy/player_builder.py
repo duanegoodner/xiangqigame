@@ -1,3 +1,7 @@
+"""
+Classes for building Player objects.
+"""
+
 from typing import Callable, Any, Dict, Tuple
 
 from xiangqi_bindings import (
@@ -18,6 +22,9 @@ from xiangqipy.players import AIPlayer, HumanPlayer
 
 
 class SinglePlayerBuilder:
+    """
+    Builds a Player object of specific color and GameBoard.
+    """
 
     def __init__(
         self,
@@ -90,6 +97,9 @@ class SinglePlayerBuilder:
 
 
 class RedAndBlackPlayersBuilder:
+    """
+    Builds two Player objects for a GameBoard based on XiangqiGameCommand.
+    """
 
     def __init__(
         self, xiangqi_command: XiangqiGameCommand, game_board: GameBoard

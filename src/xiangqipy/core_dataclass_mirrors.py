@@ -1,3 +1,10 @@
+"""
+@file core_dataclass_mirrors.py
+
+Contains classes that mirror the structure of some core C++ classes,
+primarily to facilitate easy IO of a GameSummary with msgspec.
+"""
+
 import datetime
 from enum import Enum
 from dataclasses import dataclass
@@ -9,6 +16,11 @@ import xiangqi_bindings as bindings
 
 
 class PointsTypeDeterminer:
+    """
+    Determines the integer type used for Points int the C++ core, and provides
+    a numpy integer type with the same size and signed-ness.
+    """
+
     _dtype_map = {
         (True, 1): np.int8,
         (True, 2): np.int16,
@@ -21,7 +33,10 @@ class PointsTypeDeterminer:
     }
 
     def get_points_type(self) -> type:
-        dtype_key = (bindings.is_signed_points_type(), bindings.size_of_points_type())
+        dtype_key = (
+            bindings.is_signed_points_type(),
+            bindings.size_of_points_type(),
+        )
         return self._dtype_map[dtype_key]
 
 
@@ -29,6 +44,11 @@ PointsT: TypeAlias = PointsTypeDeterminer().get_points_type()
 
 
 class MinimaxResultTypePy(Enum):
+    """
+    Enum indicating the type of result obtained from Minimax analysis 
+    of a single node.
+    """
+
     Unknown = int(bindings.MinimaxResultType.Unknown)
     TrTableHit = int(bindings.MinimaxResultType.TrTableHit)
     EvaluatorLoses = int(bindings.MinimaxResultType.EvaluatorLoses)
@@ -41,6 +61,9 @@ class MinimaxResultTypePy(Enum):
 
 @dataclass
 class GamePiece:
+    """
+    A Python GamePiece.
+    """
     piece_color: bindings.PieceColor
     piece_type: bindings.PieceType
 
@@ -54,6 +77,9 @@ class GamePiece:
 
 @dataclass
 class BoardSpace:
+    """
+    A Python BoardSpace.
+    """
     rank: int
     file: int
 
@@ -64,6 +90,9 @@ class BoardSpace:
 
 @dataclass
 class Move:
+    """
+    A Python Move.
+    """
     start: BoardSpace
     end: BoardSpace
 
@@ -76,6 +105,9 @@ class Move:
 
 @dataclass
 class MoveCollection:
+    """
+    A Python MoveCollection.
+    """
     moves: List[Move]
 
     @classmethod
@@ -95,11 +127,16 @@ class MoveCollection:
 
 @dataclass
 class EqualScoreMoves:
+    """
+    A Ptyhon EqualScoreMoves.
+    """
     shared_score: PointsT
     similar_moves: MoveCollection
 
     @classmethod
-    def from_core_similar_moves(cls, core_similar_moves: bindings.EqualScoreMoves):
+    def from_core_similar_moves(
+        cls, core_similar_moves: bindings.EqualScoreMoves
+    ):
         return cls(
             shared_score=core_similar_moves.shared_score,
             similar_moves=MoveCollection.from_core_move_collection(
@@ -110,12 +147,17 @@ class EqualScoreMoves:
 
 @dataclass
 class ExecutedMove:
+    """
+    A Python ExecutedMove
+    """
     moving_piece: GamePiece
     destination_piece: GamePiece
     spaces: Move
 
     @classmethod
-    def from_core_executed_move(cls, core_executed_move: bindings.ExecutedMove):
+    def from_core_executed_move(
+        cls, core_executed_move: bindings.ExecutedMove
+    ):
         return cls(
             moving_piece=GamePiece.from_core_game_piece(
                 core_game_piece=core_executed_move.moving_piece
@@ -129,6 +171,9 @@ class ExecutedMove:
 
 @dataclass
 class SearchSummary:
+    """
+    A Python SearchSummary.
+    """
     num_nodes: int
     time: datetime.timedelta
     result_depth_counts: np.ndarray
@@ -137,12 +182,18 @@ class SearchSummary:
     selected_move: Move
 
     @classmethod
-    def from_core_search_summary(cls, core_search_summary: bindings.SearchSummary):
+    def from_core_search_summary(
+        cls, core_search_summary: bindings.SearchSummary
+    ):
         return cls(
             num_nodes=core_search_summary.num_nodes,
             time=core_search_summary.time,
-            result_depth_counts=np.array(core_search_summary.get_result_depth_counts()),
-            transposition_table_hits=np.array(core_search_summary.get_transposition_table_hits()),
+            result_depth_counts=np.array(
+                core_search_summary.get_result_depth_counts()
+            ),
+            transposition_table_hits=np.array(
+                core_search_summary.get_transposition_table_hits()
+            ),
             similar_moves=EqualScoreMoves.from_core_similar_moves(
                 core_similar_moves=core_search_summary.similar_moves
             ),
@@ -158,6 +209,9 @@ class SearchSummary:
 
 @dataclass
 class SearchSummaries:
+    """
+    A Python SearchSummaries.
+    """
     first_searches: List[SearchSummary]
     extra_searches: Dict[int, SearchSummary]
 
@@ -175,4 +229,3 @@ class SearchSummaries:
                 for key, val in core_search_summaries.extra_searches.items()
             },
         )
-

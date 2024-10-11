@@ -1,3 +1,9 @@
+"""
+@file game_summary.py
+
+GameSummary class and its component classes.
+"""
+
 from dataclasses import dataclass
 from typing import Dict, List
 
@@ -11,11 +17,20 @@ from xiangqipy.player_summary import PlayerSummary
 
 @dataclass
 class PlayerSummaries:
+    """
+    A data container for holding onle PlayerSummary for each player in a Game.
+    """
     kRed: PlayerSummary
     kBlk: PlayerSummary
 
 
 class GameSummary(msgspec.Struct):
+    """
+    Holds summary info of a Game; implement msgspec.Struct for json IO.
+
+    Attributes are all either primitives or from core_data_class_mirrors to
+    minimize need for enc_hook's in msgspec IO.
+    """
     game_id: str
     game_state: GameState
     whose_turn: bindings.PieceColor

@@ -1,5 +1,8 @@
+"""
+Contains PlayerSummary class.
+"""
+
 from dataclasses import dataclass
-from enum import Enum, auto
 from typing import Dict, List
 
 import numpy as np
@@ -13,6 +16,9 @@ from xiangqipy.core_dataclass_mirrors import PointsT
 
 @dataclass
 class PlayerSummary:
+    """
+    Data container for data from one Player in a Game.
+    """
     color: bindings.PieceColor
     player_type: PlayerType
     move_evaluator_type: EvaluatorType = EvaluatorType.NULL

@@ -1,5 +1,11 @@
+"""
+@file move_translators.py
+
+Contains functions used to convert algebraic board notation into
+integer indices array notation.
+"""
+
 import re
-# from cpp_modules.game_board_py import BoardSpace, Move
 from xiangqi_bindings import BoardSpace, Move
 from typing import List
 

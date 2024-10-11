@@ -1,29 +1,28 @@
-"""Summary
+"""
+@file app.py
 
-This is a summary of the app module.
+Contains a single function, run(), that does everything needed to play a Game.
 """
 
+from typing import Dict
 import colorama
 import xiangqi_bindings as bindings
-from pathlib import Path
 from xiangqipy.command_input import (
     RunKwargsInterpreter,
     XiangqiGameCommandLine,
 )
-from xiangqipy.game import Game, GameSummary
+from xiangqipy.game import Game
 from xiangqipy.game_output_generator import GameOutputGenerator
-from xiangqipy.game_summary_io import export_game_summary
-from xiangqipy.game_summary_plot_manager import GameSummaryPlotManager
 from xiangqipy.handlers.signals import set_signal_handlers
-from xiangqipy.output_path_builder import create_output_path
 from xiangqipy.player_builder import RedAndBlackPlayersBuilder
 
 
-def run(**kwargs) -> GameSummary:
+def run(**kwargs: Dict):
     """
+    Collects command line args, instantiates everything needed for a Game, runs the Game,
+    and optionally saves GameSummary info.
 
-    :param **kwargs:
-
+    :param **kwargs: optional key value pairs that can supplement or override command line args.
     """
     set_signal_handlers()
     colorama.init()

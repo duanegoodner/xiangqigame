@@ -1,4 +1,0 @@
-<map id="include/core/hash_calculator.hpp" name="include/core/hash_calculator.hpp">
-<area shape="rect" id="node1" title="Class templates for boardstate::HashCalculator and its supporting class boardstate::ZobristKeys." alt="" coords="5,5,240,32"/>
-<area shape="rect" id="node2" href="$xiangqigame__core_8cpp.html" title="Implements Pybind11 module xiangqigame_core, exposing C++ classes and methods to Python." alt="" coords="28,80,217,121"/>
-</map>

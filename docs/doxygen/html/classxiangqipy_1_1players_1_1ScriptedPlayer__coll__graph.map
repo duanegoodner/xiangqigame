@@ -1,0 +1,5 @@
+<map id="xiangqipy.players.ScriptedPlayer" name="xiangqipy.players.ScriptedPlayer">
+<area shape="rect" id="node1" title="Proposes moves sequentially from a list of algebraic notation moves." alt="" coords="9,432,203,583"/>
+<area shape="rect" id="node2" href="$classxiangqipy_1_1game__interfaces_1_1Player.html" title="Can take a turn in a Game." alt="" coords="5,131,207,384"/>
+<area shape="rect" id="node3" title=" " alt="" coords="68,5,144,83"/>
+</map>

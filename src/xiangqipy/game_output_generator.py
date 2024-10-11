@@ -1,3 +1,9 @@
+"""
+@file game_output_generator.py
+
+Contains the GameOutputGenerator class.
+"""
+
 from pathlib import Path
 
 from xiangqipy.game_summary import GameSummary
@@ -6,6 +12,9 @@ from xiangqipy.game_summary_plot_manager import GameSummaryPlotManager
 
 
 class GameOutputGenerator:
+    """
+    Outputs GameSummary to .json file, and saves plots to a .png file.
+    """
     def __init__(self, game_summary: GameSummary, output_dir_suffix: str = ""):
         self.game_summary = game_summary
         self.output_dir_suffix = output_dir_suffix

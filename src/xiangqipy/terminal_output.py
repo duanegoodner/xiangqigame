@@ -1,3 +1,8 @@
+"""
+Classes for terminal UI output including board representation and, messages
+requesting info, and status messages.
+"""
+
 import os
 import colorama as cr
 import subprocess
@@ -15,12 +20,14 @@ from xiangqi_bindings import (
 )
 from xiangqipy.game_interfaces import GameStatusReporter
 from xiangqipy.enums import GameState, EvaluatorType
-from xiangqipy.piece_info_extractor import PIECE_READER
 from xiangqipy.player_summary import PlayerSummary
 
 
 @dataclass
 class InputRetrievalMessages:
+    """
+    Provides messages requesting input from a Player.
+    """
     input_prompt: str = "Enter a move in the form 'from_space, to_space': "
     invalid_input_msg: str = "Invalid input"
     illegal_move_msg: str = "Illegal move. Please enter a different move."
@@ -33,6 +40,10 @@ class InputRetrievalMessages:
 
 
 class TerminalStatusReporter(GameStatusReporter):
+    """
+    Outputs a text-base game board with GamePiece locations in algebraic
+    notation.
+    """
 
     _disp_format = {
         PieceColor.kRed: cr.Style.BRIGHT + cr.Fore.WHITE + cr.Back.RED,

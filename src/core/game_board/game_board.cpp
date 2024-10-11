@@ -37,6 +37,8 @@ const int kRepeatPeriodsToCheck[3] = {2, 3, 4};
 //! ABABAB, ABCABCABC, ABCDABCDABCD
 const int kRepeatPeriodsMaxAllowed = 2;
 
+//! Initializes a gameboard::GameBoard from array of pieces represented as integers.
+//! @param starting_board An array of integers representing pieces on the board. 
 GameBoard::GameBoard(const BoardMapInt_t starting_board)
     : board_map_{int_board_to_game_pieces(starting_board)}
     , move_calculator_{MoveCalculator()} {}
@@ -45,7 +47,7 @@ GameBoard::GameBoard()
     : GameBoard(kStartingBoard) {}
 
 vector<BoardSpace> GameBoard::ImplementGetAllSpacesOccupiedBy(PieceColor color) {
-  return get_all_spaces_occupied_by(board_map_, color);
+  return get_all_spaces_occupied_by(board_map_, color); 
 }
 
 PieceColor GameBoard::ImplementGetColor(BoardSpace space) {

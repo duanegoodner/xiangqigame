@@ -1,8 +1,0 @@
-<map id="xiangqigame.game_interfaces.Player" name="xiangqigame.game_interfaces.Player">
-<area shape="rect" id="node1" title=" " alt="" coords="360,131,584,384"/>
-<area shape="rect" id="node3" href="$classxiangqigame_1_1players_1_1AIPlayer.html" title=" " alt="" coords="5,447,224,583"/>
-<area shape="rect" id="node4" href="$classxiangqigame_1_1players_1_1HumanPlayer.html" title=" " alt="" coords="248,447,459,583"/>
-<area shape="rect" id="node5" href="$classxiangqigame_1_1players_1_1ScriptedPlayer.html" title=" " alt="" coords="483,439,699,590"/>
-<area shape="rect" id="node6" href="$classxiangqigame_1_1players_1_1ScriptedPlayerWithRetries.html" title=" " alt="" coords="723,432,939,597"/>
-<area shape="rect" id="node2" title=" " alt="" coords="434,5,510,83"/>
-</map>

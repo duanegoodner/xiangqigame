@@ -1,6 +1,7 @@
-"""Summary of the game module
+"""
+@file game.py
 
-This is the game module summary.
+Contains Game class.
 """
 
 from datetime import datetime
@@ -17,8 +18,11 @@ from xiangqipy.handlers.errors import handle_interactive_eof
 
 
 class Game:
-    """Summary of Game class
-    
+    """
+    Runs a game between two Players.
+
+    Tracks Game state, collects proposed moves, alternates Player turns,
+    maintains on gong GameSummary, and sends info to terminal.
     """
     def __init__(
         self,
@@ -85,6 +89,11 @@ class Game:
         return valid_move
 
     def player_turn(self, avail_moves: bindings.MoveCollection):
+        """
+        Selects and executes a move.
+
+        @param avail_moves: a bindings.MoveCollection of legal moves
+        """
         try:
             valid_move = self.get_valid_move(avail_moves=avail_moves)
         except EOFError:

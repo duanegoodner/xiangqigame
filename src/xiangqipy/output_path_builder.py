@@ -1,3 +1,9 @@
+"""
+@file output_path_builder.py
+
+Contains function
+"""
+
 from xiangqipy.game_summary import GameSummary
 from pathlib import Path
 

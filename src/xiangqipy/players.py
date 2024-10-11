@@ -1,10 +1,16 @@
+"""
+Implementations of Player, and Exceptions for notifying specific Player types
+of illegal proposed Move.
+
+Human Player does not have an associated Exception - just prompt for new entry.
+"""
+
 import numpy as np
 import xiangqipy.move_translator as mt
 from typing import List, Tuple
 
 from xiangqipy.enums import PlayerType, EvaluatorType
 
-# from cpp_modules.src.pybind_modules.GameBoardPy import GameBoard, PieceColor, Move, MoveCollection
 from xiangqipy.game_interfaces import Player
 import xiangqipy.terminal_output as msg
 
@@ -21,6 +27,9 @@ from xiangqi_bindings import (
 
 
 class HumanPlayer(Player):
+    """
+    Uses terminal UI to propose moves.
+    """
 
     def __init__(self, color: PieceColor, player_type: PlayerType) -> None:
         super().__init__(color=color, player_type=player_type)
@@ -52,6 +61,9 @@ class HumanPlayer(Player):
 
 
 class ScriptedPlayer(Player):
+    """
+    Proposes moves sequentially from a list of algebraic notation moves.
+    """
 
     def __init__(self, color: PieceColor, move_list: List[str]):
         super().__init__(color=color, player_type=PlayerType.SCRIPTED)
@@ -79,7 +91,9 @@ class ScriptedPlayer(Player):
 
 
 class ScriptedPlayerWithRetries(Player):
-
+    """
+    Has intentionally illegal move in list, followed by legal move (for tests).
+    """
     def __init__(self, color: PieceColor, move_list: List[str]):
         super().__init__(color=color, player_type=PlayerType.SCRIPTED)
         self._move_list = move_list
@@ -105,6 +119,9 @@ class ScriptedPlayerWithRetries(Player):
 
 
 class AIPlayer(Player):
+    """
+    Proposed moves selected using an implementation of core MoveEvaluator.
+    """
 
     def __init__(
         self,
@@ -145,6 +162,9 @@ class AIPlayer(Player):
 
 
 class InvalidEntryInMoveList(Exception):
+    """
+    Raised when scripted player proposed move has invalid syntax.
+    """
     def __init__(
         self,
         algebraic_move_input: str,
@@ -158,6 +178,9 @@ class InvalidEntryInMoveList(Exception):
 
 
 class IllegalMoveInMoveList(Exception):
+    """
+    Raised when scripted player proposes an illegal move.
+    """
     def __init__(
         self,
         board_map: np.array,
@@ -173,6 +196,9 @@ class IllegalMoveInMoveList(Exception):
 
 
 class IllegalAIMove(Exception):
+    """
+    Raised when AI player proposed illegal move.
+    """
     def __init__(
         self, move: Move, message="AI player proposed an illegal move"
     ):

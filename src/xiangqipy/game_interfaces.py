@@ -1,3 +1,9 @@
+"""
+@file game_interfaces.py
+
+Python abstract classes used by a Game.
+"""
+
 import abc
 from dataclasses import dataclass
 from typing import Dict, List
@@ -12,6 +18,9 @@ from xiangqipy.player_summary import PlayerSummary
 
 
 class Player(abc.ABC):
+    """
+    Can take a turn in a Game.
+    """
 
     def __init__(
         self,
@@ -76,6 +85,9 @@ class Player(abc.ABC):
 
 
 class GameStatusReporter(abc.ABC):
+    """
+    Reports details of a Game.
+    """
 
     @abc.abstractmethod
     def report_game_info(

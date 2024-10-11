@@ -1,20 +1,25 @@
+"""
+@file command_input.py
 
+Contains classes for collecting command line input, and converting to a form
+that will be convenient for instantiating all of the objects needed to play a
+Game.
+"""
 
 import argparse
 from dataclasses import dataclass
-from enum import Enum, auto
-from typing import Callable, Any
+from typing import Any
+
+from xiangqi_bindings import MinimaxMoveEvaluator64, MinimaxMoveEvaluator128
+
 from xiangqipy.enums import EvaluatorType, PlayerType
-from xiangqipy.players import AIPlayer, HumanPlayer, Player
-from xiangqi_bindings import (
-    MinimaxMoveEvaluator64,
-    MinimaxMoveEvaluator128,
-    RandomMoveEvaluator,
-)
 
 
 @dataclass
 class PlayerInput:
+    """
+    Container for info collected from command line for specific player.
+    """
     player_type: PlayerType
     algo: EvaluatorType
     strength: int
@@ -22,6 +27,9 @@ class PlayerInput:
 
 
 class PlayerCommandInterpreter:
+    """
+    Converts command line input related to a player into PlayerInput object.
+    """
     _player_input_dispatch = {
         "ai": PlayerType.AI,
         "person": PlayerType.HUMAN,
@@ -83,6 +91,9 @@ class PlayerCommandInterpreter:
 
 @dataclass
 class XiangqiGameCommand:
+    """
+    Data container with all the info needed to instantiate a Game.
+    """
     red_player_input: PlayerInput
     black_player_input: PlayerInput
     save_summary: bool = False
@@ -91,6 +102,10 @@ class XiangqiGameCommand:
 
 @dataclass
 class RunKwargsInterpreter:
+    """
+    Converts dictionary output by XiangqiGameCommandLine into a
+    XiangqiGameCommand.
+    """
     run_kwargs: dict[str, Any]
 
     def interpret_command(self) -> XiangqiGameCommand:
@@ -115,48 +130,12 @@ class RunKwargsInterpreter:
         )
 
 
-class XiangqiGameCommandInterpreter:
-    _player_type_dispatch = {
-        "ai": PlayerType.AI,
-        "person": PlayerType.HUMAN,
-        None: PlayerType.AI,
-    }
-
-    _move_evaluator_dispatch = {
-        "random": EvaluatorType.RANDOM,
-        "minimax": EvaluatorType.MINIMAX,
-        None: None,
-    }
-
-    def __init__(self, command_input: argparse.Namespace):
-        self._command_input = command_input
-
-    def interpret_command(self) -> XiangqiGameCommand:
-        red_player_input = PlayerInput(
-            player_type=self._player_type_dispatch[
-                self._command_input.red_player_type
-            ],
-            algo=self._move_evaluator_dispatch[self._command_input.red_algo],
-            strength=self._command_input.red_strength,
-            key_size=self._command_input.red_key_size,
-        )
-
-        black_player_input = PlayerInput(
-            player_type=self._player_type_dispatch[
-                self._command_input.black_player_type
-            ],
-            algo=self._move_evaluator_dispatch[self._command_input.black_algo],
-            strength=self._command_input.black_strength,
-            key_size=self._command_input.black_key_size,
-        )
-
-        return XiangqiGameCommand(
-            red_player_input=red_player_input,
-            black_player_input=black_player_input,
-        )
-
-
 class XiangqiGameCommandLine:
+    """
+    Collects info from command line args out outputs as a dictionary.
+
+    Includes default values for any items not specified in command line args.
+    """
 
     def __init__(self):
         self._parser = argparse.ArgumentParser(
