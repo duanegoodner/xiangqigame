@@ -1,6 +1,0 @@
-<map id="moveselection::EqualScoreMoves" name="moveselection::EqualScoreMoves">
-<area shape="rect" id="node1" title="Holds a moves::MoveCollection in which all moves::Move have the same value (as perceived by a MoveEva..." alt="" coords="5,403,204,495"/>
-<area shape="rect" id="node2" title=" " alt="" coords="20,204,59,281"/>
-<area shape="rect" id="node3" href="$structmoves_1_1MoveCollection.html" title="A container for multiple moves::Move objects." alt="" coords="83,145,262,340"/>
-<area shape="rect" id="node4" title=" " alt="" coords="82,5,263,83"/>
-</map>

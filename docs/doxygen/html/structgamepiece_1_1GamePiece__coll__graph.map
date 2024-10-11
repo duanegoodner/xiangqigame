@@ -1,5 +1,0 @@
-<map id="gamepiece::GamePiece" name="gamepiece::GamePiece">
-<area shape="rect" id="node1" title="A Xiangqi game piece described by its gamepiece::PieceType and its gamepiece::PieceColor." alt="" coords="19,145,195,267"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,92,83"/>
-<area shape="rect" id="node3" title=" " alt="" coords="121,5,211,83"/>
-</map>

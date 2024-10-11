@@ -1,8 +1,0 @@
-<map id="xiangqipy.game_interfaces.Player" name="xiangqipy.game_interfaces.Player">
-<area shape="rect" id="node1" title="Can take a turn in a Game." alt="" coords="379,131,581,384"/>
-<area shape="rect" id="node3" href="$classxiangqipy_1_1players_1_1AIPlayer.html" title="Proposed moves selected using an implementation of core MoveEvaluator." alt="" coords="5,447,224,583"/>
-<area shape="rect" id="node4" href="$classxiangqipy_1_1players_1_1HumanPlayer.html" title="Uses terminal UI to propose moves." alt="" coords="249,454,477,575"/>
-<area shape="rect" id="node5" href="$classxiangqipy_1_1players_1_1ScriptedPlayer.html" title="Proposes moves sequentially from a list of algebraic notation moves." alt="" coords="501,439,694,590"/>
-<area shape="rect" id="node6" href="$classxiangqipy_1_1players_1_1ScriptedPlayerWithRetries.html" title="Has intentionally illegal move in list, followed by legal move (for tests)." alt="" coords="718,432,911,597"/>
-<area shape="rect" id="node2" title=" " alt="" coords="442,5,518,83"/>
-</map>

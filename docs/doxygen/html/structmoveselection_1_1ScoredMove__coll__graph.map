@@ -1,6 +1,0 @@
-<map id="moveselection::ScoredMove" name="moveselection::ScoredMove">
-<area shape="rect" id="node1" title="A moves::Move, and an associated score calculated by a MoveEvaluator." alt="" coords="5,528,212,605"/>
-<area shape="rect" id="node2" href="$structmoves_1_1Move.html" title="A gameboard::BoardSpace pair (start and end)." alt="" coords="121,388,245,465"/>
-<area shape="rect" id="node3" href="$structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa..." alt="" coords="107,160,289,311"/>
-<area shape="rect" id="node4" title=" " alt="" coords="72,5,111,83"/>
-</map>
