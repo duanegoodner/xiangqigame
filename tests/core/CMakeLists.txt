@@ -16,8 +16,7 @@ target_link_libraries(
 target_include_directories(
     piece_position_points_test PRIVATE
     ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
-    ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
-    ${rapidjson_SOURCE_DIR}/include)
+    ${PROJECT_SOURCE_DIR}/src/core/move_evaluators)
 
 add_executable(
     move_calculator_test
@@ -55,10 +54,6 @@ target_link_libraries(
     piece_points_bpo
     utility_functs
     GTest::gtest_main)
-target_include_directories(
-    piece_points_bpo_test PRIVATE
-    ${rapidjson_SOURCE_DIR}/include
-    )
 
 add_executable(minimax_evaluator_test minimax_evaluator_test.cpp)
 target_link_libraries(
@@ -69,10 +64,6 @@ target_link_libraries(
     game_board
     utility_functs
     GTest::gtest_main)
-target_include_directories(
-    minimax_evaluator_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
-    ${rapidjson_SOURCE_DIR}/include)
 
 add_executable(
     key_generator_test
