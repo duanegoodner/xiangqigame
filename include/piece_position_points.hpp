@@ -13,7 +13,7 @@ using namespace std;
 namespace piece_points {
 
 //! Holds a piece_points::GamePointsArray_t of points values, and exposes a method for
-//! accessing element correspondig to specific gamepiece::PieceType located at a specific
+//! accessing element correspondig to specific gameboard::PieceType located at a specific
 //! gameboard::BoardSpace.
 struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   PiecePositionPoints();

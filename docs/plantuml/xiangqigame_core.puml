@@ -219,8 +219,8 @@ namespace moves {
 	class ExecutedMove {
 		+spaces : Move
 		+operator==(const ExecutedMove other) : bool
-		+destination_piece : gamepiece::GamePiece
-		+moving_piece : gamepiece::GamePiece
+		+destination_piece : gameboard::GamePiece
+		+moving_piece : gameboard::GamePiece
 	}
 
 	class Move {
@@ -258,35 +258,6 @@ namespace jsonio {
 }
 
 
-namespace gamepiece {
-	enum PieceColor {
-		kBlk
-		kNul
-		kRed
-	}
-
-	enum PieceType {
-		kAdv
-		kCan
-		kCha
-		kEle
-		kGen
-		kHor
-		kNnn
-		kSol
-	}
-
-	class GamePiece {
-		+GamePiece()
-		+GamePiece(int int_piece)
-		+GamePiece(PieceType type, PieceColor color)
-		+piece_color : PieceColor
-		+piece_type : PieceType
-		+operator==(const GamePiece& other) : bool {query}
-	}
-}
-
-
 namespace gameboard {
 	class GameBoard {
 		+GameBoard()
@@ -313,6 +284,23 @@ namespace gameboard {
 		-UpdateHashCalculator(ExecutedMove executed_move) : void
 	}
 
+	enum PieceColor {
+		kBlk
+		kNul
+		kRed
+	}
+
+	enum PieceType {
+		kAdv
+		kCan
+		kCha
+		kEle
+		kGen
+		kHor
+		kNnn
+		kSol
+	}
+
 	class BoardDirection {
 		+file : int
 		+rank : int
@@ -334,6 +322,15 @@ namespace gameboard {
 		+max_rank : int
 		+min_file : int
 		+min_rank : int
+	}
+
+	class GamePiece {
+		+GamePiece()
+		+GamePiece(int int_piece)
+		+GamePiece(PieceType type, PieceColor color)
+		+piece_color : PieceColor
+		+piece_type : PieceType
+		+operator==(const GamePiece& other) : bool {query}
 	}
 }
 
@@ -409,10 +406,13 @@ SpaceInfoProvider <|-- gameboard.GameBoard
 moves.ExecutedMove *-- moves.Move
 
 
-gamepiece.GamePiece *-- gamepiece.PieceColor
+gameboard.GameBoard *-- gameboard.PieceColor
 
 
-gamepiece.GamePiece *-- gamepiece.PieceType
+gameboard.GamePiece *-- gameboard.PieceColor
+
+
+gameboard.GamePiece *-- gameboard.PieceType
 
 
 boardstate.HashCalculator *-- boardstate.TranspositionTable

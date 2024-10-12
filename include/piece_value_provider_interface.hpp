@@ -8,7 +8,7 @@
 using namespace gameboard;
 
 //! CRTP interface with method to retrieve points value for a specific
-//! gamepiece::GamePiece at a specific gameboard::BoardSpace (concrete example:
+//! gameboard::GamePiece at a specific gameboard::BoardSpace (concrete example:
 //! piece_points::PiecePositionPoints).
 template <typename ConcretePieceValueProvider>
 class PieceValueProvider {

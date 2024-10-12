@@ -11,8 +11,8 @@ using namespace gameboard;
 namespace moves {
 
 //! A gameboard::BoardSpace pair (start and end).
-//! Does not have a gamepiece::GamePiece object associated with it (unlike a
-//! moves::ExecutedMove). To know what gamepiece::GamePiece would be associated with a
+//! Does not have a gameboard::GamePiece object associated with it (unlike a
+//! moves::ExecutedMove). To know what gameboard::GamePiece would be associated with a
 //! moves::Move, must compare with a gameboard::GameBoard.board_map_.
 struct Move {
   gameboard::BoardSpace start;
@@ -67,15 +67,15 @@ struct MoveCollection {
 };
 
 //! A change in the state of a gameboard::GameBoard represented by a moves::Move, and
-//! each of the gamepiece::GamePiece objects located at the **start** and **end**
+//! each of the gameboard::GamePiece objects located at the **start** and **end**
 //! locations of the Move. moves::ExecutedMove.moving_piece
 //! is located at moves::ExecutedMove.spaces.start, and
 //! moves::ExecutedMove.destication_piece is located at moves::ExecutedMove.spaces.end
 //! *rior to the change in state*.
 struct ExecutedMove {
   Move spaces;
-  gamepiece::GamePiece moving_piece;
-  gamepiece::GamePiece destination_piece;
+  gameboard::GamePiece moving_piece;
+  gameboard::GamePiece destination_piece;
 
   bool operator==(const ExecutedMove other) {
     return (other.spaces == spaces) && (other.moving_piece == moving_piece) &&

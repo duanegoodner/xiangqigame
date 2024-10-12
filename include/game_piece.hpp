@@ -9,7 +9,7 @@
 
 using namespace std;
 
-namespace gamepiece {
+namespace gameboard {
 enum PieceType : int {
   kNnn = 0,
   kGen = 1,
@@ -38,7 +38,7 @@ const unordered_map<string, PieceType> kPieceTypeStringToEnum = [] {
 enum PieceColor : int { kRed = -1, kNul = 0, kBlk = 1 };
 const int kNumPieceColorVals = 3;
 
-//! A Xiangqi game piece described by its gamepiece::PieceType and its gamepiece::PieceColor. 
+//! A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor. 
 struct GamePiece {
   PieceType piece_type;
   PieceColor piece_color;
@@ -83,4 +83,4 @@ inline PieceColor get_piece_color(size_t zcolor_index) {
   return static_cast<PieceColor>(piece_color_val);
 }
 
-} // namespace gamepiece
+} // namespace gameboard
