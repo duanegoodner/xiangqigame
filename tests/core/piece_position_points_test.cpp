@@ -6,7 +6,7 @@
 #include <piece_position_points.hpp>
 #include <utility_functs.hpp>
 
-using namespace piece_points;
+using namespace piecepoints;
 
 class PiecePositionPointsTest : public ::testing::Test {
 

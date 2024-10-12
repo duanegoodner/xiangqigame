@@ -32,16 +32,16 @@ public:
     ExportSerializedJson(j, file_path);
   };
 
-  void ImplementImport(piece_points::BPOPointsSKeys &bpo_points, const string file_path);
-  void ImplementExport(piece_points::BPOPointsSKeys &bpo_points, const string file_path);
+  void ImplementImport(piecepoints::BPOPointsSKeys &bpo_points, const string file_path);
+  void ImplementExport(piecepoints::BPOPointsSKeys &bpo_points, const string file_path);
 
 private:
   void ExportSerializedJson(nlohmann::json serialized_json, const string file_path);
   nlohmann::json ImportToSerializedJson(const string file_path);
   void Deserialize(
       nlohmann::json serialized_json,
-      piece_points::BPOPointsSKeys &bpo_points
+      piecepoints::BPOPointsSKeys &bpo_points
   );
-  nlohmann::json Serialize(piece_points::BPOPointsSKeys &bpo_points);
+  nlohmann::json Serialize(piecepoints::BPOPointsSKeys &bpo_points);
 };
 } // namespace jsonio

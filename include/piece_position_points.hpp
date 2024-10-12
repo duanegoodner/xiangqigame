@@ -1,5 +1,5 @@
 //! @file piece_position_points.hpp
-//! Definition of piece_points::PiecePositionPoints.
+//! Definition of piecepoints::PiecePositionPoints.
 
 #pragma once
 
@@ -10,9 +10,9 @@
 using namespace gameboard;
 using namespace std;
 
-namespace piece_points {
+namespace piecepoints {
 
-//! Holds a piece_points::GamePointsArray_t of points values, and exposes a method for
+//! Holds a piecepoints::GamePointsArray_t of points values, and exposes a method for
 //! accessing element correspondig to specific gameboard::PieceType located at a specific
 //! gameboard::BoardSpace.
 struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
@@ -37,4 +37,4 @@ struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
   GamePointsSMap_t PointsArrayToSmap();
 };
 
-} // namespace piece_points
+} // namespace piecepoints

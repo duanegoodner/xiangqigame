@@ -10,7 +10,7 @@
 #include <utility_functs.hpp>
 
 using namespace std;
-using namespace piece_points;
+using namespace piecepoints;
 using namespace gameboard;
 using nloh_json = nlohmann::json;
 

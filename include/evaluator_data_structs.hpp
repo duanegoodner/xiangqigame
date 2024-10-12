@@ -10,7 +10,7 @@
 #include <piece_points_bpo.hpp>
 
 using namespace gameboard;
-using namespace piece_points;
+using namespace piecepoints;
 
 namespace moveselection {
 

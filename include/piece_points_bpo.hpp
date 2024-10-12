@@ -18,7 +18,7 @@ namespace jsonio {
 class NlohmannJsonUtility;
 }
 
-namespace piece_points {
+namespace piecepoints {
 
 // forward declare BPOPointsEKeys so BPOPointsSKeys is aware of it
 class BPOPointsEKeys;
@@ -54,7 +54,7 @@ private:
 };
 
 //! Piece Points spec in "Base Points Offset" form with PieceType enum keys in member
-//! unordered_map objects for easy conversion to / from piece_points::GamePointsArray_t
+//! unordered_map objects for easy conversion to / from piecepoints::GamePointsArray_t
 //! form.
 class BPOPointsEKeys {
 public:
@@ -80,4 +80,4 @@ const string kICGARawPath = utility_functs::get_data_file_abs_path("ICGA_2004_ra
 const string kRawSchemaPath =
     utility_functs::get_data_file_abs_path("raw_points_schema.json");
 const string kBPOSchemaPath = utility_functs::get_data_file_abs_path("bpo_schema.json");
-} // namespace piece_points
+} // namespace piecepoints

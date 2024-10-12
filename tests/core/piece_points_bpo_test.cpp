@@ -5,7 +5,7 @@
 #include <utility_functs.hpp>
 
 using namespace gameboard;
-using namespace piece_points;
+using namespace piecepoints;
 
 class PiecePointsSpecTest : public ::testing::Test {
 protected:

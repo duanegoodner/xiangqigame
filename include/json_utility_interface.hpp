@@ -7,9 +7,9 @@
 
 using namespace std;
 
-namespace piece_points {
+namespace piecepoints {
 class BPOPointsSKeys;
-} // namespace piece_points
+} // namespace piecepoints
 
 template <typename ConcreteJsonUtility>
 
@@ -27,11 +27,11 @@ public:
     static_cast<ConcreteJsonUtility *>(this)->ImplementExport(object, file_path);
   }
 
-  void Import(piece_points::BPOPointsSKeys &bpo_points, const string file_path) {
+  void Import(piecepoints::BPOPointsSKeys &bpo_points, const string file_path) {
     static_cast<ConcreteJsonUtility *>(this)->ImplementImport(bpo_points, file_path);
   }
 
-  void Export(piece_points::BPOPointsSKeys &bpo_points, const string file_path) {
+  void Export(piecepoints::BPOPointsSKeys &bpo_points, const string file_path) {
     static_cast<ConcreteJsonUtility *>(this)->ImplementExport(bpo_points, file_path);
   }
 };

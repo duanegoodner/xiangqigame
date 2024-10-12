@@ -1,4 +1,4 @@
-//! @file piece_points_data_structs.hpp
+//! @file piecepoints_data_structs.hpp
 //! Typedefs for collections of piece points
 
 #pragma once
@@ -10,7 +10,7 @@
 
 using namespace std;
 
-namespace piece_points {
+namespace piecepoints {
 
 typedef int Points_t;
 inline size_t size_of_points_type() { return sizeof(Points_t); }
@@ -69,4 +69,4 @@ inline bool operator==(GamePointsSMap_t &a, GamePointsSMap_t &b) {
 // types for base-points offset (BPO) spec
 typedef unordered_map<gameboard::PieceType, Points_t> TeamBasePoints_t;
 typedef unordered_map<string, Points_t> BasePointsSMap_t;
-} // namespace piece_points
+} // namespace piecepoints
