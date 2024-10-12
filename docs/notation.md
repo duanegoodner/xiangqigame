@@ -3,6 +3,8 @@
 
 # Terminal Game Board and Notation
 
+The following screenshot shows the state of the terminal UI after a human red player has executed a single opening move.
+
 <div style="text-align:left">
   <img src="../resources/board_for_notation_section.png" alt="Alt text" width="700">
 </div>

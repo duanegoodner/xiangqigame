@@ -1,4 +1,4 @@
-# Running (playing the game)
+# Running
 
 Once `xiangqigame` has been installed into a Python environment, games can be run using the command `play_xiangqi`.
 

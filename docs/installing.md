@@ -1,4 +1,4 @@
-# Installing Xiangqigame
+# Installing
 
 Xiangqigame can be installed natively (preferably in a virtual environment or conda environment), or in a Docker container.
 
@@ -50,7 +50,7 @@ pip install .
 ```
 ### Stopping the Docker Container
 
-When you are done using the `cpyenv` container, run `docker compose down` at a local terminal (i.e. outside of the container) while in the `xiangqigame/.devcontainer` directory.
+When you are done using the `cpyenv` container, run `exit` from the terminal prompt in the container to exit the container get back to a local terminal prompt in the `./xiangqigame/.devcontainer` directory. Then run `docker compose down` to stop the container.
 
 ### Re-Starting the Docker Container
 
@@ -64,6 +64,8 @@ pip install .
 ```
 
 ### Demo
+
+The full docker install procedure, including container shutdown, is demonstrated in the following terminal recording.
 
 ![Native Installation Demo](demos/gifs/docker_install.gif)
 
