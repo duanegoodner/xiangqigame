@@ -28,7 +28,7 @@ plugins:
 - mkdoxy:
     projects:
         XianqiGameCore:
-            src-dirs: ./src/include/core ./src/bindings ./src/core
+            src-dirs: ./src/include ./src/bindings ./src/core
             full-doc: True
             doxy-cfg:
                 FILE_PATTERNS: "*.cpp *.hpp"
