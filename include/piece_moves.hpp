@@ -1,5 +1,5 @@
 //! @file piece_moves.hpp
-//! Definition of moves::PieceMoves and related constants.  
+//! Definition of gameboard::PieceMoves and related constants.  
 
 #pragma once
 
@@ -7,16 +7,15 @@
 #include <move_data_structs.hpp>
 
 using namespace gameboard;
-using namespace gameboard;
 
-namespace moves {
+namespace gameboard {
 
 extern const array<BoardDirection, 2> kSideDirections;
 extern const vector<pair<BoardDirection, vector<BoardDirection>>> kHorsePaths;
 extern const vector<BoardDirection> kAllOrthogonalDirections;
 extern const vector<BoardDirection> kAllDiagonalDirections;
 
-//! Implements piece type dependent move rules; used by moves::MoveCalculator. 
+//! Implements piece type dependent move rules; used by gameboard::MoveCalculator. 
 class PieceMoves {
 public:
   void SoldierMoves(
@@ -88,4 +87,4 @@ private:
            get_color(board_map, space) != static_cast<PieceColor>(moving_piece_color);
   }
 };
-} // namespace moves
+} // namespace gameboard

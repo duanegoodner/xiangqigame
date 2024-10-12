@@ -1,5 +1,4 @@
 #include "utility_functs.hpp"
-// #include <common.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <piece_points_bpo.hpp>

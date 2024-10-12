@@ -5,12 +5,12 @@
 
 #include <board_data_structs.hpp>
 
-//! CRTP interface with a method for selecting a moves::Move (concrete examples =
+//! CRTP interface with a method for selecting a gameboard::Move (concrete examples =
 //! moveselection::MinimaxMoveEvaluator, moveselection::RandomMoveEvaluator).
 template <typename ConcreteMoveEvaluator>
 class MoveEvaluator {
 public:
-  moves::Move SelectMove() {
+  gameboard::Move SelectMove() {
     return static_cast<ConcreteMoveEvaluator *>(this)->ImplementSelectMove();
   }
 };

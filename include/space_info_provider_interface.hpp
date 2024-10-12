@@ -6,11 +6,10 @@
 #include <board_data_structs.hpp>
 
 using namespace gameboard;
-using namespace moves;
 
 //! CRTP interface with methods for obtaining information about gameboard::BoardSpace
-//! objects, calculating legal moves::Move objects, executing a moves::Move, and un-doing
-//! a moves::ExecutedMove (concrete example = gameboard::GameBoard).
+//! objects, calculating legal gameboard::Move objects, executing a gameboard::Move, and un-doing
+//! a gameboard::ExecutedMove (concrete example = gameboard::GameBoard).
 template <typename ConcreteSpaceInfoProvider>
 class SpaceInfoProvider {
 public:

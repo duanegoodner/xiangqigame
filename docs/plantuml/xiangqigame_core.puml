@@ -9,7 +9,6 @@ scale 0.75
 
 
 
-
 /' Objects '/
 
 class BoardStateSummarizer <template<typename ConcreteBoardStateSummarizer, typename KeyType>> {
@@ -30,7 +29,7 @@ class JsonUtility <template<typename ConcreteJsonUtility>> {
 
 
 class MoveEvaluator <template<typename ConcreteMoveEvaluator>> {
-	+SelectMove() : moves::Move
+	+SelectMove() : gameboard::Move
 }
 
 
@@ -139,8 +138,8 @@ namespace moveselection {
 	}
 
 	class EqualScoreMoves {
+		+similar_moves : MoveCollection
 		+shared_score : Points_t
-		+similar_moves : moves::MoveCollection
 	}
 
 	class ResultDepthCounts {
@@ -150,8 +149,8 @@ namespace moveselection {
 	}
 
 	class ScoredMove {
+		+move : Move
 		+score : Points_t
-		+move : moves::Move
 	}
 
 	class SearchSummaries {
@@ -164,15 +163,15 @@ namespace moveselection {
 	class SearchSummary {
 		+SearchSummary(int max_search_depth)
 		+similar_moves : EqualScoreMoves
+		+selected_move : Move
 		+result_depth_counts : ResultDepthCounts
 		+transposition_table_hits : ResultDepthCounts
 		+GetResultDepthCounts() : ResultDepthCountsData_t
 		+GetTranspositionTableHits() : ResultDepthCountsData_t
 		+num_nodes : int
-		+selected_move : moves::Move
 		+time : std::chrono::duration<double, std::nano>
 		+SetEqualScoreMoves(EqualScoreMoves similar_moves) : void
-		+SetSelectedMove(moves::Move selected_move) : void
+		+SetSelectedMove(Move selected_move) : void
 		+SetTime(std::chrono::duration<double, std::nano> search_time) : void
 		+Update(MinimaxResultType result_type, int search_depth, EqualScoreMoves similar_moves) : void
 		+UpdateTranspositionTableHits(MinimaxResultType result_type, int search_depth) : void
@@ -188,60 +187,6 @@ namespace moveselection {
 	class TranspositionTableSearchResult {
 		+table_entry : TranspositionTableEntry
 		+found : bool
-	}
-}
-
-
-namespace moves {
-	class MoveCalculator {
-		+MoveCalculator()
-		+CalcAllMovesNoCheckTest(PieceColor color, const BoardMap_t& board_map) : MoveCollection
-		-ImplementCalcAllMovesNoCheckTest(PieceColor color, const BoardMap_t& board_map) : MoveCollection
-		-piece_dispatch_array_ : PieceDispatchArray_t
-		-piece_moves_ : PieceMoves
-		+IsOccupied(const BoardMap_t& board_map, const BoardSpace& space) : bool
-		+CalcMovesFrom(const BoardSpace space, MoveCollection& team_moves, const BoardMap_t& board_map) : void
-		-ImplementCalcMovesFrom(const BoardSpace space, MoveCollection& team_moves, const BoardMap_t& board_map) : void
-	}
-
-	class PieceMoves {
-		-{static} FwdDirection(PieceColor color) : BoardDirection
-		-{static} ExistsAndPassesColorTest(const BoardMap_t& board_map, const BoardSpace& space, PieceColor moving_piece_color) : bool
-		+AdvisorMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-		+CannonMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-		+ChariotMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-		+ElephantMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-		+FlyingGeneralMove(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-		+GeneralMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-		+HorseMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-		+SoldierMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-		+StandardGeneralMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
-	}
-
-	class ExecutedMove {
-		+spaces : Move
-		+operator==(const ExecutedMove other) : bool
-		+destination_piece : gameboard::GamePiece
-		+moving_piece : gameboard::GamePiece
-	}
-
-	class Move {
-		+operator==(const Move other) : bool
-		+end : gameboard::BoardSpace
-		+start : gameboard::BoardSpace
-	}
-
-	class MoveCollection {
-		+MoveCollection()
-		+MoveCollection(vector<Move> my_moves)
-		+MoveCollection(size_t reserve_size)
-		+ContainsDestination(const gameboard::BoardSpace& space) : bool
-		+ContainsMove(const Move& move) : bool {query}
-		+Size() : size_t {query}
-		+moves : vector<Move>
-		+Append(Move move) : void
-		+Concat(vector<Move> other_moves) : void
-		+Concat(MoveCollection other) : void
 	}
 }
 
@@ -286,6 +231,31 @@ namespace gameboard {
 		-UpdateHashCalculator(ExecutedMove executed_move) : void
 	}
 
+	class MoveCalculator {
+		+MoveCalculator()
+		+CalcAllMovesNoCheckTest(PieceColor color, const BoardMap_t& board_map) : MoveCollection
+		-ImplementCalcAllMovesNoCheckTest(PieceColor color, const BoardMap_t& board_map) : MoveCollection
+		-piece_dispatch_array_ : PieceDispatchArray_t
+		-piece_moves_ : PieceMoves
+		+IsOccupied(const BoardMap_t& board_map, const BoardSpace& space) : bool
+		+CalcMovesFrom(const BoardSpace space, MoveCollection& team_moves, const BoardMap_t& board_map) : void
+		-ImplementCalcMovesFrom(const BoardSpace space, MoveCollection& team_moves, const BoardMap_t& board_map) : void
+	}
+
+	class PieceMoves {
+		-{static} FwdDirection(PieceColor color) : BoardDirection
+		-{static} ExistsAndPassesColorTest(const BoardMap_t& board_map, const BoardSpace& space, PieceColor moving_piece_color) : bool
+		+AdvisorMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+CannonMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+ChariotMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+ElephantMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+FlyingGeneralMove(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+GeneralMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+HorseMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+SoldierMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+		+StandardGeneralMoves(const BoardMap_t& board_map, PieceColor color, const BoardSpace& space, MoveCollection& team_moves) : void
+	}
+
 	enum PieceColor {
 		kBlk
 		kNul
@@ -326,6 +296,13 @@ namespace gameboard {
 		+min_rank : int
 	}
 
+	class ExecutedMove {
+		+spaces : Move
+		+operator==(const ExecutedMove other) : bool
+		+destination_piece : gameboard::GamePiece
+		+moving_piece : gameboard::GamePiece
+	}
+
 	class GamePiece {
 		+GamePiece()
 		+GamePiece(int int_piece)
@@ -333,6 +310,25 @@ namespace gameboard {
 		+piece_color : PieceColor
 		+piece_type : PieceType
 		+operator==(const GamePiece& other) : bool {query}
+	}
+
+	class Move {
+		+operator==(const Move other) : bool
+		+end : gameboard::BoardSpace
+		+start : gameboard::BoardSpace
+	}
+
+	class MoveCollection {
+		+MoveCollection()
+		+MoveCollection(vector<Move> my_moves)
+		+MoveCollection(size_t reserve_size)
+		+ContainsDestination(const gameboard::BoardSpace& space) : bool
+		+ContainsMove(const Move& move) : bool {query}
+		+Size() : size_t {query}
+		+moves : vector<Move>
+		+Append(Move move) : void
+		+Concat(vector<Move> other_moves) : void
+		+Concat(MoveCollection other) : void
 	}
 }
 
@@ -405,10 +401,16 @@ SpaceInfoProvider <|-- gameboard.GameBoard
 
 /' Aggregation relationships '/
 
-moves.ExecutedMove *-- moves.Move
+gameboard.ExecutedMove "2" *-- gameboard.GamePiece
 
 
-gameboard.GameBoard *-- gameboard.PieceColor
+gameboard.ExecutedMove *-- gameboard.Move
+
+
+gameboard.GameBoard *-- gameboard.ExecutedMove
+
+
+gameboard.GameBoard *-- gameboard.MoveCalculator
 
 
 gameboard.GamePiece *-- gameboard.PieceColor
@@ -426,10 +428,13 @@ boardstate.HashCalculator *-- boardstate.ZobristKeys
 moveselection.MinimaxMoveEvaluator *-- moveselection.SearchSummaries
 
 
-moves.MoveCalculator *-- moves.PieceMoves
+gameboard.Move "2" *-- gameboard.BoardSpace
 
 
-moves.MoveCollection *-- moves.Move
+gameboard.MoveCalculator *-- gameboard.PieceMoves
+
+
+gameboard.MoveCollection *-- gameboard.Move
 
 
 moveselection.SearchSummaries "2" *-- moveselection.SearchSummary

@@ -1,5 +1,5 @@
 //! @file move_calculator.hpp
-//! Definition of moves::MoveCalculator.
+//! Definition of gameboard::MoveCalculator.
 
 #pragma once
 
@@ -10,11 +10,10 @@
 
 using namespace std;
 using namespace gameboard;
-using namespace gameboard;
 
-namespace moves {
+namespace gameboard {
 
-//! Calculates  legal moves::Move objects for of a gameboard::GameBoard with a particular
+//! Calculates  legal gameboard::Move objects for of a gameboard::GameBoard with a particular
 //! state.
 class MoveCalculator {
 public:
@@ -72,4 +71,4 @@ private:
   }
 };
 
-} // namespace moves
+} // namespace gameboard

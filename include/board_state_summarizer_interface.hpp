@@ -6,7 +6,6 @@
 #include <evaluator_data_structs.hpp>
 
 using namespace gameboard;
-using namespace moves;
 
 //! CRTP Interface with methods to calculate / read / update hash values representing a
 //! board state; and storing and retreiving data from completed calculations of scores

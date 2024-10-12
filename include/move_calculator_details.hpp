@@ -1,6 +1,6 @@
 //! @file move_calculator_details.hpp
-//! Typedefs and data struct used by moves::MoveCalculator to select appropriate method
-//! from moves::PieceMoves.
+//! Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method
+//! from gameboard::PieceMoves.
 
 #pragma once
 
@@ -12,7 +12,7 @@ using namespace std;
 using namespace gameboard;
 using namespace gameboard;
 
-namespace moves {
+namespace gameboard {
 typedef void (PieceMoves::*
                   MethodPtr_t)(const BoardMap_t &, PieceColor, const BoardSpace &, MoveCollection &);
 
@@ -31,4 +31,4 @@ inline constexpr PieceDispatchArray_t build_piece_dispatch_array() {
 
   return dispatch_array;
 }
-} // namespace moves
+} // namespace gameboard

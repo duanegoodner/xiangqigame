@@ -3,7 +3,7 @@
 
 #include <piece_moves.hpp>
 
-namespace moves {
+namespace gameboard {
 
 const array<BoardDirection, 2> kSideDirections = {
     BoardDirection{0, 1},

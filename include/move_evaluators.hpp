@@ -14,7 +14,6 @@
 #include <utility_functs.hpp>
 
 using namespace gameboard;
-using namespace moves;
 
 namespace moveselection {
 
@@ -93,7 +92,7 @@ private:
   );
 };
 
-//! Implements moves::MoveEvaluator interface. Randomly chooses one of legal moves
+//! Implements gameboard::MoveEvaluator interface. Randomly chooses one of legal moves
 //! available to moveselection::RandomMoveEvaluator.evaluating_player_.
 template <typename ConcreteSpaceInfoProvider>
 class RandomMoveEvaluator

@@ -14,16 +14,16 @@ using namespace piecepoints;
 
 namespace moveselection {
 
-//! Holds a moves::MoveCollection in which all moves::Move have the same value (as
+//! Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as
 //! perceived by a MoveEvaluator), and the value of the shared score.
 struct EqualScoreMoves {
   Points_t shared_score;
-  moves::MoveCollection similar_moves;
+  MoveCollection similar_moves;
 };
 
-//! A moves::Move, and an associated score calculated by a MoveEvaluator.
+//! A gameboard::Move, and an associated score calculated by a MoveEvaluator.
 struct ScoredMove {
-  moves::Move move;
+  Move move;
   Points_t score;
 };
 
@@ -62,7 +62,7 @@ inline EqualScoreMoves evaluate_win_leaf(
     PieceColor cur_player,
     PieceColor initiating_player
 ) {
-  auto empty_similar_moves = moves::MoveCollection();
+  auto empty_similar_moves = MoveCollection();
 
   if (cur_player == initiating_player) {
     return EqualScoreMoves{numeric_limits<Points_t>::min(), empty_similar_moves};
@@ -127,7 +127,7 @@ struct SearchSummary {
   void SetEqualScoreMoves(EqualScoreMoves similar_moves) {
     this->similar_moves = similar_moves;
   }
-  void SetSelectedMove(moves::Move selected_move) {
+  void SetSelectedMove(Move selected_move) {
     this->selected_move = selected_move;
   }
   ResultDepthCountsData_t GetResultDepthCounts() { return result_depth_counts.data; }
@@ -140,7 +140,7 @@ struct SearchSummary {
   ResultDepthCounts result_depth_counts;
   ResultDepthCounts transposition_table_hits;
   EqualScoreMoves similar_moves;
-  moves::Move selected_move;
+  Move selected_move;
 };
 
 //! Stores a moveselection::SearchSummary for each
