@@ -916,7 +916,7 @@ INPUT                  = ./include \
                          ./docs/installing.md \
                          ./docs/running.md \
                          ./docs/notation.md \
-                         ./docs/implemented_rules.md \
+                         ./docs/components.md \
                          ./docs/implementation_details.md
 
 # This tag can be used to specify the character encoding of the source files
