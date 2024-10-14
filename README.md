@@ -1,5 +1,5 @@
 
-![intro figure](docs/doxygen/resources/headline_image.png)
+![intro figure](docs/doxygen/resources/headline_image_new.png)
 
 
 ## Overview
