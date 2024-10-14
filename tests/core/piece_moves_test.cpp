@@ -19,8 +19,8 @@ TEST_F(PieceMovesTest, SoldierMoves) {
   }};
 
   auto board_map = int_board_to_game_pieces(kSoldierMoveTestBoard);
-  moves::MoveCollection red_soldier_move_collection{};
-  moves::PieceMoves piece_moves{};
+  MoveCollection red_soldier_move_collection{};
+  PieceMoves piece_moves{};
   BoardSpace test_player_space_a{2, 5};
   BoardSpace test_player_space_b{0, 6};
 

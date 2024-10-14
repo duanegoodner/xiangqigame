@@ -18,7 +18,7 @@ namespace py = pybind11;
 using namespace py::literals;
 using namespace boardstate;
 using namespace gameboard;
-using namespace piece_points;
+using namespace piecepoints;
 
 template <typename KeyType>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {

@@ -57,34 +57,34 @@ TEST_F(JsonUtilityTest, ExportImportSimpleMap) {
 }
 
 TEST_F(JsonUtilityTest, ImportBPOPoints) {
-  piece_points::BPOPointsSKeys bpo_points{};
-  nlohmann_json_utility.Import(bpo_points, piece_points::kICGABPOPath);
+  piecepoints::BPOPointsSKeys bpo_points{};
+  nlohmann_json_utility.Import(bpo_points, piecepoints::kICGABPOPath);
   EXPECT_EQ(bpo_points.black_base_["horse"], 270);
   EXPECT_EQ(bpo_points.red_base_offsets_["horse"], 0);
 }
 
 TEST_F(JsonUtilityTest, ImportExportBPOPoints) {
-  piece_points::BPOPointsSKeys bpo_points{};
-  nlohmann_json_utility.Import(bpo_points, piece_points::kICGABPOPath);
+  piecepoints::BPOPointsSKeys bpo_points{};
+  nlohmann_json_utility.Import(bpo_points, piecepoints::kICGABPOPath);
 
   std::string file_path = (temp_dir / "bpo_output.json").string();
   nlohmann_json_utility.Export(bpo_points, file_path);
 }
 
 TEST_F(JsonUtilityTest, ImportExportImportBPOPoints) {
-  piece_points::BPOPointsSKeys bpo_points{};
-  nlohmann_json_utility.Import(bpo_points, piece_points::kICGABPOPath);
+  piecepoints::BPOPointsSKeys bpo_points{};
+  nlohmann_json_utility.Import(bpo_points, piecepoints::kICGABPOPath);
 
   std::string file_path = (temp_dir / "bpo_output.json").string();
   nlohmann_json_utility.Export(bpo_points, file_path);
 
-  piece_points::BPOPointsSKeys bpo_points_second_import{};
+  piecepoints::BPOPointsSKeys bpo_points_second_import{};
   nlohmann_json_utility.Import(bpo_points_second_import, file_path);
 }
 
 TEST_F(JsonUtilityTest, ImportGamePointsSMap) {
-  piece_points::GamePointsSMap_t s_map;
-  nlohmann_json_utility.Import(s_map, piece_points::kICGARawPath);
+  piecepoints::GamePointsSMap_t s_map;
+  nlohmann_json_utility.Import(s_map, piecepoints::kICGARawPath);
   EXPECT_EQ(s_map["black"]["horse"][0][0], 270);
   EXPECT_EQ(s_map["red"]["horse"][0][0], 274);
 }

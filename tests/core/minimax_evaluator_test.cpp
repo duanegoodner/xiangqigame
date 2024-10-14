@@ -6,7 +6,7 @@
 #include <utility_functs.hpp>
 
 using namespace boardstate;
-using namespace piece_points;
+using namespace piecepoints;
 
 class RandomEvaluatorTest : public ::testing::Test {
 protected:

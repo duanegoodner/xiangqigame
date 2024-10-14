@@ -1,5 +1,5 @@
 //! @file piece_position_points.cpp
-//! Implementation of piece_points::PiecePositionPoints. 
+//! Implementation of piecepoints::PiecePositionPoints. 
 
 #include <piece_points_bpo.hpp>
 #include <piece_position_points.hpp>
@@ -8,7 +8,7 @@
 
 using namespace std;
 using namespace gameboard;
-using namespace piece_points;
+using namespace piecepoints;
 
 
 

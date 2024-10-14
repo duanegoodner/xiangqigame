@@ -7,7 +7,7 @@
 using namespace std;
 
 void jsonio::NlohmannJsonUtility::ImplementImport(
-    piece_points::BPOPointsSKeys &bpo_points,
+    piecepoints::BPOPointsSKeys &bpo_points,
     const string file_path
 ) {
   ifstream input{file_path};
@@ -16,7 +16,7 @@ void jsonio::NlohmannJsonUtility::ImplementImport(
 }
 
 void jsonio::NlohmannJsonUtility::ImplementExport(
-    piece_points::BPOPointsSKeys &bpo_points,
+    piecepoints::BPOPointsSKeys &bpo_points,
     const string file_path
 ) {
   auto serialized_json = Serialize(bpo_points);
@@ -39,7 +39,7 @@ nlohmann::json jsonio::NlohmannJsonUtility::ImportToSerializedJson(const string 
 
 void jsonio::NlohmannJsonUtility::Deserialize(
     nlohmann::json serialized_json,
-    piece_points::BPOPointsSKeys &bpo_points
+    piecepoints::BPOPointsSKeys &bpo_points
 ) {
   serialized_json.at("black_base").get_to(bpo_points.black_base_);
   serialized_json.at("red_base_offsets").get_to(bpo_points.red_base_offsets_);
@@ -47,7 +47,7 @@ void jsonio::NlohmannJsonUtility::Deserialize(
   serialized_json.at("red_position_offsets").get_to(bpo_points.red_position_offsets_);
 }
 
-nlohmann::json jsonio::NlohmannJsonUtility::Serialize(piece_points::BPOPointsSKeys &bpo_points) {
+nlohmann::json jsonio::NlohmannJsonUtility::Serialize(piecepoints::BPOPointsSKeys &bpo_points) {
     nlohmann::json j;
     j["black_base"] = bpo_points.black_base_;
     j["red_base_offsets"] = bpo_points.red_base_offsets_;

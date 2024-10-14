@@ -1,12 +1,11 @@
 #include "utility_functs.hpp"
-// #include <common.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <piece_points_bpo.hpp>
 #include <piece_position_points.hpp>
 #include <utility_functs.hpp>
 
-using namespace piece_points;
+using namespace piecepoints;
 
 class PiecePositionPointsTest : public ::testing::Test {
 
