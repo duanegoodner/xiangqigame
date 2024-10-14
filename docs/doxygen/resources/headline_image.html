@@ -29,7 +29,7 @@
     /* Styling for the title */
     h1 {
       font-family: 'Poppins', sans-serif; /* Use Poppins font */
-      font-size: 70px; /* Larger font size */
+      font-size: 140px; /* Larger font size */
       margin: 0;
       padding-bottom: 20px;
       color: #adacac; /* Text fill color */
@@ -49,23 +49,22 @@
 
     /* Styling for the capture div with gradient background */
     #capture {
-      background: linear-gradient(to right, #A7C7E7, #B2F9C1); /* Soft blue to mint green */
-      padding: 20px;
-      width: 800px;
-      height: 300px; /* Reduce the height to make the div shorter */
+      background: linear-gradient(to right, #A7C7E7, #B2F9C1);
+      padding: 20px 50px; /* Adjust padding if necessary */
+      width: 880px;   /* Adjust width if necessary */
+      height: 170px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between; /* Updated this line */
       align-items: center;
-      border-radius: 20px;
-      position: relative;
+      border-radius: 15px;
       overflow: hidden;
-    }
-    
+  }
+  
 
     /* Center the image within the div */
     #capture img {
-      max-width: 100%;
-      max-height: 100%;
+      max-width: 55%;
+      height: 90%;
       object-fit: contain;
     }
 
@@ -98,7 +97,9 @@
 
     <!-- Image content inside the capture div -->
     <div id="capture">
-      <img src="end_of_game_2.png" alt="Xiangqi Game Screenshot" />
+      <img src="starting_board.png" alt="Starting Board of Xiangqi" />
+      <img src="example_time_6_v_6.png" alt="Selection Time Example">
+      <img src="example_node_counts_6_v_6.png" alt="Node Counts Example" />
     </div>
   </div>
 

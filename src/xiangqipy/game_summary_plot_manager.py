@@ -216,8 +216,9 @@ if __name__ == "__main__":
     game_summary_path_depth_6 = (
         Path(__file__).parent.parent.parent
         / "data"
-        / "20240924144506337600"
-        / "20240924144506337600.json"
+        / "game_summaries"
+        / "20241014170226897474-for_logo"
+        / "20241014170226897474.json"
     )
 
     game_summary_path_depth_3 = (
@@ -229,4 +230,4 @@ if __name__ == "__main__":
 
     my_game_summary = import_game_summary(path=game_summary_path_depth_6)
     plot_manager = GameSummaryPlotManager(game_summary=my_game_summary)
-    plot_manager.plot(save_figure=False)
+    plot_manager.plot(show_plot=True)

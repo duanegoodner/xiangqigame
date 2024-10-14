@@ -239,6 +239,9 @@ class SearchResultsByTypePlotter(GameSummaryPlotter):
             self.data_columns,
             bbox_to_anchor=(1.05, 0.50),
             fontsize=14,
+            title="Node Type",
+            title_fontsize=15,
+            alignment="left"
         )
 
     def plot_data(self):

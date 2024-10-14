@@ -1,5 +1,7 @@
 \mainpage
 
+![intro figure](../resources/headline_image_new.png)
+
 
 # Overview
 
