@@ -4,9 +4,9 @@
 ## UML Diagram
 
 
-A UML diagram showing the C++ namespaces and classes can be viewed [here](../../plantuml/xiangqigame_core.svg). Key things to note in this diagram are:
-- There 5 non-anonymous namespaces: gameboard, boardstate, piecepoints, moveslection, and jsonio
-- There are 5 anonymously namespaced classes: SpaceInfoProvider, PieceValueProvider, MoveEvaluator, JsonUtility, and BoardStateSummarizer.
+Relationships among classes and the organization of classes into namespaces can be viewed in the [UML diagram linked here](../../plantuml/xiangqigame_core.svg). Key things to note in this diagram are:
+- There five non-anonymous namespaces: gameboard, boardstate, piecepoints, moveslection, and jsonio
+- There are five anonymously namespaced classes: SpaceInfoProvider, PieceValueProvider, MoveEvaluator, JsonUtility, and BoardStateSummarizer.
 - Each of the anonymously namespaced classes is a CRTP interface and is implemented by one or two concrete classes from exactly one of the 5 namespaces.
 - The concrete-to-interface class pairings are:
     - gameboard::GameBoard implements SpaceInfoProvider.
@@ -56,7 +56,7 @@ hashcalculator::HashCalculator, our concrete BoardStateSummarizer, supports usin
 
 | Previous          |                              Next |
 |:------------------|----------------------------------:|
-| [Running](05_game_data.md) | [Doxygen AutoDoc Guide](07_doxygen_guide.md) |
+| [Running](05_game_data.md) |                          |
 
 </div>
 

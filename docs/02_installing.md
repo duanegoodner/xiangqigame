@@ -14,19 +14,19 @@ Xiangqigame can be installed natively (preferably in a virtual environment or co
 
 ### Procedure
     
-```
+```shell
 git clone https://github.com/duanegoodner/xiangqigame
 cd xiangqigame
 conda create --name xiangqigame python=3.10 -y
 conda activate xiangqigame
 pip install .
+play_xiangqi
 ```
+The above commands clone a copy of xiangqigame to the local machine, create and activate a conda environment, install xiangqigame into the newly created conda environment, and confirm the installation by running `play_xiangqi`.  This procedure is demonstrated in the following terminal recording.
 
-### Demo
+### Native Installation Demo
 
-In the following terminal recording, we install Xiangqigame in a native Conda environment, and then confim the installation by running `play_xiangqi`.
-
-![Native Installation Demo](demos/gifs/native_install.gif)
+![](demos/gifs/native_install.gif)
 
 
 ## Docker Installation
@@ -67,7 +67,7 @@ pip install .
 
 The full docker install procedure, including container shutdown, is demonstrated in the following terminal recording.
 
-![Native Installation Demo](demos/gifs/docker_install.gif)
+![](demos/gifs/docker_install.gif)
 
 
 <div class="section_buttons">
