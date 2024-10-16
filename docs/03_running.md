@@ -53,9 +53,18 @@ Minimax with search depth = 2.
 
 ## Example Games
 
-This section shows terminal recordings and Minimax data plots for games run with a variety of `play_xiangqi` command options.
+This section shows terminal recordings and Minimax data plots for games run with a variety of `play_xiangqi` command options. 
 
-### Red=SD5, Black=SD5
+
+
+### Game #1:
+
+#### Settings
+
+- Red: Search depth = 5, Zobrist key size = 64 bits
+
+
+
 
 ```
 play_xiangqi -rst 5 -bst 5 -s -d game_01
