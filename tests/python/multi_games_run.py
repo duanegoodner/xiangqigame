@@ -23,7 +23,9 @@ class SingleSettingsTester:
         return Path(__file__).parent.parent.joinpath()
 
     def run_game(self):
-        game_summary = app.run(**self.app_run_kwargs)
+        game_summary = app.run(
+            game_collection_id=self.game_collection_id, **self.app_run_kwargs
+        )
         self.game_summaries.append(game_summary)
 
     def run_all_tests(self):
@@ -47,7 +49,7 @@ class SingleSettingsTester:
         output_dir = (
             Path(__file__).parent.parent.parent
             / "data"
-            / "multi_game_summaries"
+            / "game_summaries"
             / output_dir_name
         )
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -188,22 +190,22 @@ class GameSummariesCollection:
 
 
 if __name__ == "__main__":
-    # settings_tester = SingleSettingsTester(
-    #     app_run_kwargs={
-    #         "red_strength": 3,
-    #         "black_strength": 3,
-    #         "save_summary": True,
-    #         "output_dir_suffix": "testing",
-    #     },
-    #     num_games=3,
-    # )
-    #
-    # settings_tester.run_all_tests()
-    # settings_tester.save_basic_stats()
-
-    my_game_collection_id = "20241016072621833003"
-    my_game_summaries_collection = GameSummariesCollection(
-        game_collection_id=my_game_collection_id
+    settings_tester = SingleSettingsTester(
+        app_run_kwargs={
+            "red_strength": 3,
+            "black_strength": 3,
+            "save_summary": True,
+            "output_dir_suffix": "testing-batch",
+        },
+        num_games=3,
     )
+
+    settings_tester.run_all_tests()
+    settings_tester.save_basic_stats()
+
+    # my_game_collection_id = "20241016072621833003"
+    # my_game_summaries_collection = GameSummariesCollection(
+    #     game_collection_id=my_game_collection_id
+    # )
 
     print("pause")
