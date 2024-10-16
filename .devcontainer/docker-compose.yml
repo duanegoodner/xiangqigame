@@ -13,6 +13,7 @@ services:
     volumes:
       - ../:/home/${USER}/workspace/project
       - ./.vscode/:/home/${USER}/workspace/.vscode
+      - /etc/localtime:/etc/localtime:ro
       # - ./.vscode_local_placeholder/:/home/${USER}/workspace/project/.vscode:ro
     ports:
       - "2201:22"
