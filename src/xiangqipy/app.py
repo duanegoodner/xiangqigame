@@ -3,7 +3,7 @@
 
 Contains a single function, run(), that does everything needed to play a Game.
 """
-
+from pathlib import Path
 from typing import Dict
 import colorama
 import xiangqi_bindings as bindings
@@ -18,13 +18,13 @@ from xiangqipy.handlers.signals import set_signal_handlers
 from xiangqipy.player_builder import RedAndBlackPlayersBuilder
 
 
-def run(game_collection_id: str = None, **kwargs: Dict) -> GameSummary:
+def run(custom_output_root: Path = None, **kwargs: Dict) -> GameSummary:
     """
     Collects command line args, instantiates everything needed for a Game, runs the Game,
     and optionally saves GameSummary info.
 
-    @param game_collection_id: optional id of collection of games; used for
-    batch runs.
+    @param custom_output_root: optional Path of output parent dir; if not specified,
+    defaults to ./data/game_summaries/<timestamp-based-dirname>
     @param **kwargs: optional key value pairs that can supplement or override
     command line args.
     """
@@ -50,7 +50,8 @@ def run(game_collection_id: str = None, **kwargs: Dict) -> GameSummary:
         output_generator = GameOutputGenerator(
             game_summary=game_summary,
             output_dir_suffix=xiangqi_command.output_dir_suffix,
-            game_collection_id=game_collection_id,
+            custom_output_root=custom_output_root,
+            # game_collection_id=game_collection_id,
         )
         output_generator.generate_output()
 
