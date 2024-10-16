@@ -13,11 +13,12 @@ from xiangqipy.command_input import (
 )
 from xiangqipy.game import Game
 from xiangqipy.game_output_generator import GameOutputGenerator
+from xiangqipy.game_summary import GameSummary
 from xiangqipy.handlers.signals import set_signal_handlers
 from xiangqipy.player_builder import RedAndBlackPlayersBuilder
 
 
-def run(**kwargs: Dict):
+def run(**kwargs: Dict) -> GameSummary:
     """
     Collects command line args, instantiates everything needed for a Game, runs the Game,
     and optionally saves GameSummary info.
@@ -48,6 +49,8 @@ def run(**kwargs: Dict):
             output_dir_suffix=xiangqi_command.output_dir_suffix,
         )
         output_generator.generate_output()
+
+    return game_summary
 
 
 if __name__ == "__main__":

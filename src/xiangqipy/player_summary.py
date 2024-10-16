@@ -19,8 +19,15 @@ from xiangqipy.core_dataclass_mirrors import PointsT
 @dataclass
 class PlayerSummary:
     """
-    Data container for data from one Player in a Game.
+    Data container for data from one xiangqipy.game_interfaces.Player in a Game.
+
+    @param color xiangi_bindings.PieceColoar: color of Player the summary belongs to.
+    @param player_type xiangipy.enums.PlayerType: type of the Player.
+    @param move_evaluator_type xiangqipy.enums.EvaluatorType: type of Player's move evaluator.
+    @param max_search_depth int: maximum depth that a Minimax move evaluator will search.
+    @param search_summaries xiangqipy.core_dataclass_mirrors.SearchSummaries:
     """
+
     color: bindings.PieceColor
     player_type: PlayerType
     move_evaluator_type: EvaluatorType = EvaluatorType.NULL
@@ -32,16 +39,29 @@ class PlayerSummary:
     def has_search_summaries(self) -> bool:
         return self.search_summaries is not None
 
-    def get_game_move_numbers(self, player_move_count: int) -> List[int]:
+    @property
+    def player_move_count(self) -> int:
+        return len(self.search_summaries.first_searches)
+
+    @property
+    def game_move_numbers(self) -> List[int]:
         if self.color == bindings.PieceColor.kRed:
-            return list(range(1, 2 * player_move_count, 2))
+            return list(range(1, 2 * self.player_move_count, 2))
         if self.color == bindings.PieceColor.kBlk:
-            return list(range(2, 2 * player_move_count + 1, 2))
+            return list(range(2, 2 * self.player_move_count + 1, 2))
 
     @property
     def first_searches_by_type_and_depth(
         self,
     ) -> Dict[str, pd.DataFrame] | None:
+        """
+        Dictionary with strings corresponding to
+        xiangqi_bindings.MinimaxResultType values as keys, and DataFrame of
+        result type counts as values.
+
+        Each row of data frame -> move number, each col -> a value of
+        remaining search depth when result was obtained.
+        """
         if not self.has_search_summaries:
             return None
         result = {}
@@ -52,9 +72,7 @@ class PlayerSummary:
                     for search_summary in self.search_summaries.first_searches
                 ]
             )
-            new_df.index = self.get_game_move_numbers(
-                player_move_count=len(new_df)
-            )
+            new_df.index = self.game_move_numbers
             new_df.index.name = "game_move_numbers"
             new_df.columns = [
                 f"remaining_depth={col_idx}"
@@ -66,6 +84,9 @@ class PlayerSummary:
 
     @property
     def first_searches_by_type(self) -> pd.DataFrame | None:
+        """
+        Dataframe with row -> move number, col -> xiangqi_bindings.MinimaxResultType.
+        """
         if not self.has_search_summaries:
             return None
 
@@ -79,9 +100,7 @@ class PlayerSummary:
             np.zeros(
                 (num_first_searches, num_result_types), dtype=np.int64
             ),  # Preallocate with zeros as integers
-            index=self.get_game_move_numbers(
-                player_move_count=num_first_searches
-            ),
+            index=self.game_move_numbers,
             columns=result_type_names,
         )
         df.index.name = "game_move_numbers"
@@ -105,28 +124,42 @@ class PlayerSummary:
 
     @property
     def first_search_stats(self) -> pd.DataFrame | None:
+        """
+        Dataframe with row -> move number; cols -> number of nodes explored,
+        total time for move selection, average time per node, and minimax
+        evaluation score of the selected move.
+        """
         if not self.has_search_summaries:
             return None
 
-        num_nodes = np.array([
-            search_summary.num_nodes
-            for search_summary in self.search_summaries.first_searches
-        ])
+        num_nodes = np.array(
+            [
+                search_summary.num_nodes
+                for search_summary in self.search_summaries.first_searches
+            ]
+        )
 
-        search_time_s = np.array([
-            search_summary.time.total_seconds()
-            for search_summary in self.search_summaries.first_searches
-        ])
+        search_time_s = np.array(
+            [
+                search_summary.time.total_seconds()
+                for search_summary in self.search_summaries.first_searches
+            ]
+        )
 
-        mean_time_per_node_ns = np.array([
-            search_summary.mean_time_per_node_ns
-            for search_summary in self.search_summaries.first_searches
-        ])
+        mean_time_per_node_ns = np.array(
+            [
+                search_summary.mean_time_per_node_ns
+                for search_summary in self.search_summaries.first_searches
+            ]
+        )
 
-        eval_score = np.array([
-            search_summary.similar_moves.shared_score
-            for search_summary in self.search_summaries.first_searches
-        ], dtype=PointsT)
+        eval_score = np.array(
+            [
+                search_summary.similar_moves.shared_score
+                for search_summary in self.search_summaries.first_searches
+            ],
+            dtype=PointsT,
+        )
 
         assert (
             len(num_nodes)
@@ -142,9 +175,46 @@ class PlayerSummary:
                 "mean_time_per_node_ns": mean_time_per_node_ns,
                 "eval_score": eval_score,
             },
-            index=self.get_game_move_numbers(player_move_count=len(num_nodes)),
+            index=self.game_move_numbers,
         )
         df.index.name = "game_move_numbers"
 
         return df
 
+    @property
+    def selecton_stats_mean(self) -> pd.Series | None:
+        """
+        Pandas Series with mean & max nodes per move, mean & max time per move,
+        and number of known hash collisions.
+        """
+
+        if self.has_search_summaries:
+            nodes_per_move = self.first_search_stats["num_nodes"].mean()
+            time_per_move_s = self.first_search_stats[
+                "search_time_s"
+            ].mean()
+            time_per_node_ns = self.first_search_stats[
+                "mean_time_per_node_ns"
+            ].mean()
+            collisions_per_move = len(
+                self.search_summaries.extra_searches
+            ) / self.player_move_count
+
+            return pd.Series(
+                [
+                    self.max_search_depth,
+                    self.zobrist_key_size,
+                    nodes_per_move,
+                    time_per_move_s,
+                    time_per_node_ns,
+                    collisions_per_move,
+                ],
+                index=[
+                    "search_depth",
+                    "zobrist_key_size",
+                    "nodes_per_move",
+                    "time_per_move_s",
+                    "time_per_node_ns",
+                    "collisions_per_move",
+                ],
+            )

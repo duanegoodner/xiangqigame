@@ -15,15 +15,25 @@ class GameOutputGenerator:
     """
     Outputs GameSummary to .json file, and saves plots to a .png file.
     """
+
     def __init__(self, game_summary: GameSummary, output_dir_suffix: str = ""):
         self.game_summary = game_summary
         self.output_dir_suffix = output_dir_suffix
 
     def create_output_dir(self) -> Path:
-        output_dir_str = f"./data/game_summaries/{self.game_summary.game_id}"
+        output_dir_name = self.game_summary.game_id
         if self.output_dir_suffix:
-            output_dir_str += f"-{self.output_dir_suffix}"
-        output_dir = Path(output_dir_str)
+            output_dir_name += f"-{self.output_dir_suffix}"
+        output_dir = (
+            Path(__file__).parent.parent.parent
+            / "data"
+            / "game_summaries"
+            / output_dir_name
+        )
+        # output_dir_str = f"./data/game_summaries/{self.game_summary.game_id}"
+        # if self.output_dir_suffix:
+        #     output_dir_str += f"-{self.output_dir_suffix}"
+        # output_dir = Path(output_dir_str)
         output_dir.mkdir(parents=True, exist_ok=True)
 
         return output_dir
