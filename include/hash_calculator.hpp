@@ -148,6 +148,10 @@ public:
     return transposition_table_.GetData(board_state_, search_depth);
   }
 
+  const ZobristKeys<KeyType>& GetZobristKeys() const {
+    return zkeys_;
+  }
+
 private:
   ZobristKeys<KeyType> zkeys_;
   KeyType board_state_;
