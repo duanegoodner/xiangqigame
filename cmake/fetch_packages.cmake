@@ -30,3 +30,14 @@ FetchContent_Declare(
         URL
         https://github.com/pybind/pybind11/archive/refs/tags/v2.10.3.tar.gz)
 FetchContent_MakeAvailable(pybind11)
+
+FetchContent_Declare(
+    Boost
+    URL https://boostorg.jfrog.io/artifactory/main/release/1.86.0/source/boost_1_86_0.tar.gz
+)
+
+FetchContent_GetProperties(Boost)
+if(NOT Boost_POPULATED)
+    FetchContent_Populate(Boost)
+    set(BOOST_INCLUDEDIR ${boost_SOURCE_DIR}/)
+endif()
