@@ -49,6 +49,29 @@ double kolmogorovSmirnovTest(const std::vector<KeyType>& keys) {
     return D;
 }
 
+template <typename KeyType>
+double kolmogorovSmirnovFullRangeTest(const std::vector<KeyType>& keys) {
+    if (keys.empty()) return -1;  // Handle empty vector case
+
+    std::vector<KeyType> sorted_keys = keys;
+    std::sort(sorted_keys.begin(), sorted_keys.end());
+
+    double D = 0.0;
+    double n = static_cast<double>(sorted_keys.size());
+
+    // Use the full range of the data type
+    KeyType min_key = 0;  // Start of the range
+    KeyType max_key = std::numeric_limits<KeyType>::max();  // End of the range
+
+    for (KeyType key : sorted_keys) {
+        double theoretical_cdf = static_cast<double>(key - min_key) / (max_key - min_key);
+        double ecdf_val = (std::upper_bound(sorted_keys.begin(), sorted_keys.end(), key) - sorted_keys.begin()) / n;
+        D = std::max(D, std::abs(ecdf_val - theoretical_cdf));
+    }
+
+    return D;
+}
+
 // Function to calculate the Nearest Neighbor Index
 template <typename KeyType>
 double nearestNeighborIndex(const std::vector<KeyType>& keys) {
@@ -70,13 +93,16 @@ double nearestNeighborIndex(const std::vector<KeyType>& keys) {
 }
 
 int main() {
-    std::vector<uint64_t> keys = {10, 20, 50, 60, 90, 100, 120, 150, 180, 200};
+    std::vector<uint64_t> keys = {10, 20, 30, 40, 50, 60, 70, 80, 90, 00};
 
     std::cout << "Analyzing Key Distribution:\n";
     analyzeKeyDistribution(keys);
 
     double D = kolmogorovSmirnovTest(keys);
     std::cout << "Kolmogorov-Smirnov Statistic (D): " << D << std::endl;
+
+    double D_full = kolmogorovSmirnovFullRangeTest(keys);
+    std::cout << "Kolmogorov-Smirnov Statistic with full range (D): " << D << std::endl;
 
     double NNI = nearestNeighborIndex(keys);
     std::cout << "Nearest Neighbor Index (NNI): " << NNI << std::endl;
