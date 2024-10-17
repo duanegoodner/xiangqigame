@@ -46,14 +46,17 @@ class HashCalculatorTest : public ::testing::Test {
 protected:
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
   ZobristKeys<uint64_t> zobrist_keys{};
+  ZobristKeys<__uint128_t> zobrist_keys_128{};
 };
 
 TEST_F(HashCalculatorTest, InitializeFromKeysAndMap) {
   auto my_hash_calculator = HashCalculator<uint64_t>(zobrist_keys);
+  auto my_hash_calculator_128 = HashCalculator<__uint128_t>(zobrist_keys_128);
 }
 
 TEST_F(HashCalculatorTest, DefaultInit) {
   auto my_hash_calculator = HashCalculator<uint64_t>();
+  auto my_hash_calculator_128 = HashCalculator<__uint128_t>();
 }
 
 TEST_F(HashCalculatorTest, InitializeBoardState) {
@@ -64,9 +67,31 @@ TEST_F(HashCalculatorTest, InitializeBoardState) {
   EXPECT_NE(my_hash_calculator.ImplementGetState(), 0);
 }
 
-TEST_F(HashCalculatorTest, ExecuteAndUndoMove) {
+TEST_F(HashCalculatorTest, ExecuteAndUndoMove64) {
 
   auto my_hash_calculator = HashCalculator<uint64_t>(zobrist_keys);
+
+  auto start = BoardSpace{6, 0};
+  auto end = BoardSpace{5, 0};
+  auto move = Move{start, end};
+  auto moving_piece = GamePiece{PieceType::kSol, PieceColor::kRed};
+  auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
+  auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
+
+  my_hash_calculator.ImplementFullBoardStateCalc(board_map);
+  auto initial_state = my_hash_calculator.ImplementGetState();
+  my_hash_calculator.ImplementUpdateBoardState(executed_move);
+  auto post_move_state = my_hash_calculator.ImplementGetState();
+  my_hash_calculator.ImplementUpdateBoardState(executed_move);
+  auto final_state = my_hash_calculator.ImplementGetState();
+
+  EXPECT_NE(initial_state, post_move_state);
+  EXPECT_EQ(initial_state, final_state);
+}
+
+TEST_F(HashCalculatorTest, ExecuteAndUndoMove128) {
+
+  auto my_hash_calculator = HashCalculator<__uint128_t>(zobrist_keys_128);
 
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};

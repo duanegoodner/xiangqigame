@@ -112,6 +112,26 @@ TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelection) {
   );
 }
 
+TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelection128) {
+  GameBoard starting_board;
+  MinimaxMoveEvaluator<GameBoard, HashCalculator<__uint128_t>, PiecePositionPoints>
+      red_evaluator{
+          PieceColor::kRed,
+          standard_search_depth,
+          starting_board,
+          imported_piece_points
+      };
+
+  auto red_selected_move = red_evaluator.SelectMove();
+
+  EXPECT_TRUE(
+      (red_selected_move.start == BoardSpace{9, 1} &&
+       red_selected_move.end == BoardSpace{7, 2}) ||
+      (red_selected_move.start == BoardSpace{9, 7} &&
+       red_selected_move.end == BoardSpace{7, 6})
+  );
+}
+
 TEST_F(MinimaxEvaluatorTest, GetSearchSummaries) {
   int shallow_search_depth{2};
   GameBoard starting_board;

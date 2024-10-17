@@ -182,7 +182,7 @@ class PlayerSummary:
         return df
 
     @property
-    def selecton_stats_mean(self) -> pd.Series | None:
+    def selection_stats_mean(self) -> pd.Series | None:
         """
         Pandas Series with mean & max nodes per move, mean & max time per move,
         and number of known hash collisions.
@@ -190,15 +190,18 @@ class PlayerSummary:
 
         if self.has_search_summaries:
             nodes_per_move = self.first_search_stats["num_nodes"].mean()
-            time_per_move_s = self.first_search_stats[
-                "search_time_s"
-            ].mean()
+            time_per_move_s = self.first_search_stats["search_time_s"].mean()
             time_per_node_ns = self.first_search_stats[
                 "mean_time_per_node_ns"
             ].mean()
-            collisions_per_move = len(
-                self.search_summaries.extra_searches
-            ) / self.player_move_count
+            collisions_per_move = (
+                len(self.search_summaries.extra_searches)
+                / self.player_move_count
+            )
+            collisions_per_node = (
+                len(self.search_summaries.extra_searches)
+                / self.first_search_stats["num_nodes"].sum()
+            )
 
             return pd.Series(
                 [
@@ -208,6 +211,7 @@ class PlayerSummary:
                     time_per_move_s,
                     time_per_node_ns,
                     collisions_per_move,
+                    collisions_per_node,
                 ],
                 index=[
                     "search_depth",
@@ -216,5 +220,6 @@ class PlayerSummary:
                     "time_per_move_s",
                     "time_per_node_ns",
                     "collisions_per_move",
+                    "collisions_per_node",
                 ],
             )

@@ -4,10 +4,37 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 import pandas as pd
+import re
 
 import xiangqipy.app as app
 from xiangqipy.game_summary import GameSummary
 from xiangqipy.game_summary_io import import_game_summary
+
+DEFAULT_NUM_GAMES = 10
+
+
+@dataclass
+class BatchTestConditions:
+    run_kwargs: Dict[str, Any]
+    num_games: int = DEFAULT_NUM_GAMES
+
+    @classmethod
+    def from_abbreviation(cls, abbreviation: str) -> "BatchTestConditions":
+        abbrev_split = abbreviation.split("-")
+        num_games = int(abbrev_split[0])
+        red_strength = int(re.sub(f"[a-zA-Z]", "", abbrev_split[2]))
+        red_key_size = int(re.sub(f"[a-zA-Z]", "", abbrev_split[3]))
+        black_strength = int(re.sub(f"[a-zA-Z]", "", abbrev_split[5]))
+        black_key_size = int(re.sub(f"[a-zA-Z]", "", abbrev_split[6]))
+        run_kwargs = {
+            "red_strength": red_strength,
+            "red_key_size": red_key_size,
+            "black_strength": black_strength,
+            "black_key_size": black_key_size,
+            "save_summary": True,
+            "output_dir_suffix": abbreviation,
+        }
+        return cls(num_games=num_games, run_kwargs=run_kwargs)
 
 
 class BatchTester:
@@ -114,6 +141,9 @@ class BatchDataSummarizer:
         red_collisions_per_move = self.batch_df[
             "kRed_collisions_per_move"
         ].mean()
+        red_collisions_per_node = self.batch_df[
+            "kRed_collisions_per_node"
+        ].mean()
         black_depth = self.batch_df["kBlk_search_depth"].mean()
         black_key_size = self.batch_df["kBlk_zobrist_key_size"].mean()
         black_nodes_per_move = self.batch_df["kBlk_nodes_per_move"].mean()
@@ -121,6 +151,9 @@ class BatchDataSummarizer:
         black_time_per_node_ns = self.batch_df["kBlk_time_per_node_ns"].mean()
         black_collisions_per_move = self.batch_df[
             "kBlk_collisions_per_move"
+        ].mean()
+        black_collisions_per_node = self.batch_df[
+            "kBlk_collisions_per_node"
         ].mean()
 
         return pd.Series(
@@ -134,12 +167,14 @@ class BatchDataSummarizer:
                 red_time_per_move_s,
                 red_time_per_node_ns,
                 red_collisions_per_move,
+                red_collisions_per_node,
                 black_depth,
                 black_key_size,
                 black_nodes_per_move,
                 black_time_per_move_s,
                 black_time_per_node_ns,
                 black_collisions_per_move,
+                black_collisions_per_node
             ],
             index=[
                 "num_games",
@@ -151,12 +186,14 @@ class BatchDataSummarizer:
                 "red_time_per_move_s",
                 "red_time_per_node_ns",
                 "red_collisions_per_move",
+                "red_collisions_per_node",
                 "black_depth",
                 "black_key_size",
                 "black_nodes_per_move",
                 "black_time_per_move_s",
                 "black_time_per_node_ns",
                 "black_collisions_per_move",
+                "black_collisions_per_node",
             ],
         )
 
@@ -236,17 +273,16 @@ if __name__ == "__main__":
     #
     # settings_tester.run_all_tests()
 
-    # my_game_collection_id = "20241016122642665682"
+    # my_game_collection_id = "20241016184729933778"
     # full_batch_summary = FullBatchSummary(
     #     game_collection_id=my_game_collection_id
     # )
-    #
-    # batch_data_summarizer = BatchDataSummarizer(batch_id=my_game_collection_id)
-    #
+
+    batch_data_summarizer = BatchDataSummarizer(batch_id=my_game_collection_id)
+
     my_batch_ids = [
-        "20241016145630274882",
-        "20241016145638717717",
-        "20241016145647309458",
+        "20241016220647854785",
+        "20241016220740560468",
     ]
 
     multi_batch_summarizer = MultiBatchDataSummarizer(batch_ids=my_batch_ids)
