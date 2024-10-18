@@ -147,7 +147,7 @@ class AIPlayer(Player):
             "MinimaxMoveEvaluator64",
             "MinimaxMoveEvaluator128",
         ]:
-            return self._move_evaluator.get_search_summaries()
+            return self._move_evaluator.search_summaries
 
     def propose_move(
         self, game_board: GameBoard, cur_moves: MoveCollection

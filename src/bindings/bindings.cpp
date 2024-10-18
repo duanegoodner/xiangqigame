@@ -54,13 +54,12 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
               HashCalculator<KeyType>,
               PiecePositionPoints>::SelectMove
       )
-      .def(
-          "get_search_summaries",
+      .def_property_readonly(
+          "search_summaries",
           &MinimaxMoveEvaluator<
               GameBoard,
               HashCalculator<KeyType>,
-              PiecePositionPoints>::search_summaries,
-          py::return_value_policy::copy
+              PiecePositionPoints>::search_summaries
       )
       .def(
           "starting_search_depth",

@@ -20,7 +20,7 @@ def test_red_get_search_summaries(starting_board):
     # run move_evaluator.select_move() to generate and store data in
     # move_evaluator.search_summaries_
     proposed_move = move_evaluator.select_move()
-    search_summaries = move_evaluator.get_search_summaries()
+    search_summaries = move_evaluator.search_summaries
 
     num_move_selections = len(search_summaries.first_searches)
     assert num_move_selections == 1
