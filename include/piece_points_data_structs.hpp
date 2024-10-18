@@ -39,11 +39,11 @@ typedef array<PiecePointsArray_t, gameboard::kNumPieceTypeVals> TeamPointsArray_
 typedef unordered_map<gameboard::PieceType, PiecePointsArray_t> TeamPointsEMap_t;
 typedef unordered_map<string, PiecePointsArray_t> TeamPointsSMap_t;
 
-inline bool operator==(TeamPointsSMap_t &a, TeamPointsSMap_t &b) {
+inline bool operator==(const TeamPointsSMap_t &a,const TeamPointsSMap_t &b) {
   bool are_equal = true;
 
-  for (auto piece : a) {
-    if (a[piece.first] != b[piece.first]) {
+  for (auto &piece : a) {
+    if (a.at(piece.first) != b.at(piece.first)) {
       are_equal = false;
       return are_equal;
     }
