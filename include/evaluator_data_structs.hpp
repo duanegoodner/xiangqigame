@@ -58,18 +58,18 @@ struct TranspositionTableSearchResult {
   bool found;
 };
 
-inline EqualScoreMoves evaluate_win_leaf(
-    PieceColor cur_player,
-    PieceColor initiating_player
-) {
-  auto empty_similar_moves = MoveCollection();
+// inline EqualScoreMoves evaluate_win_leaf(
+//     PieceColor cur_player,
+//     PieceColor initiating_player
+// ) {
+//   auto empty_similar_moves = MoveCollection();
 
-  if (cur_player == initiating_player) {
-    return EqualScoreMoves{numeric_limits<Points_t>::min(), empty_similar_moves};
-  } else {
-    return EqualScoreMoves{numeric_limits<Points_t>::max(), empty_similar_moves};
-  }
-}
+//   if (cur_player == initiating_player) {
+//     return EqualScoreMoves{numeric_limits<Points_t>::min(), empty_similar_moves};
+//   } else {
+//     return EqualScoreMoves{numeric_limits<Points_t>::max(), empty_similar_moves};
+//   }
+// }
 
 //! Array of vectors for storing counts of moveselection::MinimaxResultType for each
 //! posible remaining search depth. Outer (array) index ->
