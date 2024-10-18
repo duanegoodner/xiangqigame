@@ -28,7 +28,7 @@ struct PiecePositionPoints : public PieceValueProvider<PiecePositionPoints> {
       PieceType piece_type,
       BoardSpace space
   ) {
-    return points_array[get_zcolor_index(color)][piece_type][space.rank][space.file];
+    return points_array[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
   }
 
   GamePointsArray_t points_array;

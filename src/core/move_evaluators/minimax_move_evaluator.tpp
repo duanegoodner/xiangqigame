@@ -25,7 +25,7 @@ MinimaxMoveEvaluator<
         PieceColor evaluating_player,
         int starting_search_depth,
         ConcreteSpaceInfoProvider &game_board,
-        ConcretePieceValueProvider game_position_points
+        const ConcretePieceValueProvider &game_position_points
     )
     : evaluating_player_{evaluating_player}
     , starting_search_depth_{starting_search_depth}

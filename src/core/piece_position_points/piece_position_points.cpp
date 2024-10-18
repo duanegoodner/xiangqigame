@@ -38,7 +38,7 @@ TeamPointsEMap_t PiecePositionPoints::TeamPointsArrayToEMap(TeamPointsArray_t te
 GamePointsEMap_t PiecePositionPoints::PointsArraytoEMap() {
   GamePointsEMap_t pts_map;
   for (auto zcolor_idx = 0; zcolor_idx < points_array.size(); zcolor_idx++) {
-    pts_map[get_piece_color(zcolor_idx)] = TeamPointsArrayToEMap(points_array[zcolor_idx]);
+    pts_map[GetPieceColorOf(zcolor_idx)] = TeamPointsArrayToEMap(points_array[zcolor_idx]);
   }
   return pts_map;
 }

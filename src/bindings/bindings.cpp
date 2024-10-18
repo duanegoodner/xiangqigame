@@ -59,7 +59,7 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           &MinimaxMoveEvaluator<
               GameBoard,
               HashCalculator<KeyType>,
-              PiecePositionPoints>::GetSearchSummaries,
+              PiecePositionPoints>::search_summaries,
           py::return_value_policy::copy
       )
       .def(

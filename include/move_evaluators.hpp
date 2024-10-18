@@ -34,7 +34,7 @@ public:
       PieceColor evaluating_player,
       int starting_search_depth,
       ConcreteSpaceInfoProvider &game_board,
-      ConcretePieceValueProvider game_position_points
+      const ConcretePieceValueProvider &game_position_points
   );
 
   MinimaxMoveEvaluator(
@@ -45,7 +45,7 @@ public:
 
   Move ImplementSelectMove();
   Points_t GetPlayerTotal(PieceColor color);
-  inline moveselection::SearchSummaries GetSearchSummaries() {
+  inline const moveselection::SearchSummaries& search_summaries() {
     return search_summaries_;
   }
   inline int StartingSearchDepth() { return starting_search_depth_; }
