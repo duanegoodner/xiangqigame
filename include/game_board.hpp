@@ -31,10 +31,10 @@ public:
   bool IsInCheck(PieceColor color);
   ExecutedMove ImplementExecuteMove(Move move);
   void ImplementUndoMove(ExecutedMove executed_move);
-  GamePiece GetOccupant(BoardSpace space) const;
+  GamePiece GetOccupantAt(BoardSpace space) const;
   const BoardMap_t &map() const;
   void ImplementAttachMoveCallback(const function<void(ExecutedMove)>& callback);
-  const std::map<PieceColor, vector<ExecutedMove>>& GetMoveLog() const;
+  const std::map<PieceColor, vector<ExecutedMove>>& move_log() const;
 
 private:
   //! 2-D array of GamePiece objects.
@@ -51,7 +51,7 @@ private:
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
 
   void UpdateHashCalculator(ExecutedMove executed_move);
-  void SetOccupant(BoardSpace space, GamePiece piece);
+  void SetOccupantAt(BoardSpace space, GamePiece piece);
   void AddToMoveLog(ExecutedMove executed_move);
   void RemoveFromMoveLog(ExecutedMove executed_move);
   bool ViolatesRepeatRule(PieceColor color);

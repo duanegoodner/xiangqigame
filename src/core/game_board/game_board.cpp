@@ -87,10 +87,10 @@ bool GameBoard::IsInCheck(PieceColor color) {
 }
 
 ExecutedMove GameBoard::ImplementExecuteMove(Move move) {
-  auto moving_piece = GetOccupant(move.start);
-  auto destination_piece = GetOccupant(move.end);
-  SetOccupant(move.end, moving_piece);
-  SetOccupant(move.start, GamePiece(PieceType::kNnn, PieceColor::kNul));
+  auto moving_piece = GetOccupantAt(move.start);
+  auto destination_piece = GetOccupantAt(move.end);
+  SetOccupantAt(move.end, moving_piece);
+  SetOccupantAt(move.start, GamePiece(PieceType::kNnn, PieceColor::kNul));
 
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
   UpdateHashCalculator(executed_move);
@@ -100,13 +100,13 @@ ExecutedMove GameBoard::ImplementExecuteMove(Move move) {
 };
 
 void GameBoard::ImplementUndoMove(ExecutedMove executed_move) {
-  SetOccupant(executed_move.spaces.start, executed_move.moving_piece);
-  SetOccupant(executed_move.spaces.end, executed_move.destination_piece);
+  SetOccupantAt(executed_move.spaces.start, executed_move.moving_piece);
+  SetOccupantAt(executed_move.spaces.end, executed_move.destination_piece);
   UpdateHashCalculator(executed_move);
   RemoveFromMoveLog(executed_move);
 };
 
-GamePiece GameBoard::GetOccupant(BoardSpace space) const {
+GamePiece GameBoard::GetOccupantAt(BoardSpace space) const {
   return board_map_[space.rank][space.file];
 };
 
@@ -116,7 +116,7 @@ void GameBoard::ImplementAttachMoveCallback(const function<void(ExecutedMove)>& 
   move_callbacks_.emplace_back(callback);
 }
 
-const std::map<PieceColor, vector<ExecutedMove>>& GameBoard::GetMoveLog() const { return move_log_; }
+const std::map<PieceColor, vector<ExecutedMove>>& GameBoard::move_log() const { return move_log_; }
 
 void GameBoard::UpdateHashCalculator(ExecutedMove executed_move) {
   for (const auto &callback : move_callbacks_) {
@@ -124,7 +124,7 @@ void GameBoard::UpdateHashCalculator(ExecutedMove executed_move) {
   }
 };
 
-void GameBoard::SetOccupant(BoardSpace space, GamePiece piece) {
+void GameBoard::SetOccupantAt(BoardSpace space, GamePiece piece) {
   board_map_[space.rank][space.file] = piece;
 }
 
