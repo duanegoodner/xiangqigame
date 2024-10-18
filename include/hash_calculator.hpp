@@ -5,6 +5,7 @@
 #pragma once
 
 #include <array>
+// #include <boost/math/distributions/uniform.hpp>
 #include <board_data_structs.hpp>
 #include <game_board.hpp>
 #include <key_generator.hpp>
@@ -62,6 +63,25 @@ struct ZobristKeys {
     }
     return game_zarray;
   };
+
+   //! Collects all keys into a std::vector (typically used for entropy calc).
+  std::vector<KeyType> KeysVector() const {
+    std::vector<KeyType> keys_vector;
+
+    for (const auto& team : zarray) {
+      for (const auto& piece_zarray : team) {
+        for (const auto& rank : piece_zarray) {
+          for (KeyType key : rank) {
+            keys_vector.push_back(key);
+          }
+        }
+      }
+    }
+    keys_vector.push_back(turn_key);
+
+    return keys_vector;
+  }
+
 };
 
 //! Container where boardstate::HashCalculator stores moveselection::MinimaxMoveEvaluator
@@ -146,6 +166,10 @@ public:
 
   TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
     return transposition_table_.GetData(board_state_, search_depth);
+  }
+
+  const ZobristKeys<KeyType>& GetZobristKeys() const {
+    return zkeys_;
   }
 
 private:

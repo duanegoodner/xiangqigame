@@ -53,6 +53,9 @@ public:
   inline size_t KeySizeBits() {
     return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
   }
+  const ConcreteBoardStateSummarizer& GetHashCalculator() const {
+    return hash_calculator_;
+  }
 
 private:
   PieceColor evaluating_player_;

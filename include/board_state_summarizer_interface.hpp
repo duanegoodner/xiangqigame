@@ -15,7 +15,7 @@ template <typename ConcreteBoardStateSummarizer, typename KeyType>
 class BoardStateSummarizer {
 public:
   typedef KeyType ZobristKey_t;
-  void FullBoardStateCalc(BoardMap_t &board_map) {
+  void FullBoardStateCalc(const BoardMap_t &board_map) {
     static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementFullBoardStateCalc(
         board_map
     );

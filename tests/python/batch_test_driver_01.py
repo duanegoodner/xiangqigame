@@ -1,19 +1,7 @@
-from dataclasses import dataclass
-from typing import Any, Dict
-
 import batch_testing as bt
 
 
-DEFAULT_NUM_GAMES = 10
-
-
-@dataclass
-class BatchTestConditions:
-    run_kwargs: Dict[str, Any]
-    num_games: int = DEFAULT_NUM_GAMES
-
-
-test_conditions_01 = BatchTestConditions(
+test_conditions_01 = bt.BatchTestConditions(
     run_kwargs={
         "red_strength": 3,
         "red_key_size": 64,
@@ -24,7 +12,7 @@ test_conditions_01 = BatchTestConditions(
     },
 )
 
-test_conditions_02 = BatchTestConditions(
+test_conditions_02 = bt.BatchTestConditions(
     run_kwargs={
         "red_strength": 3,
         "red_key_size": 128,
@@ -35,7 +23,7 @@ test_conditions_02 = BatchTestConditions(
     }
 )
 
-test_conditions_03 = BatchTestConditions(
+test_conditions_03 = bt.BatchTestConditions(
     run_kwargs={
         "red_strength": 3,
         "red_key_size": 64,
@@ -46,7 +34,7 @@ test_conditions_03 = BatchTestConditions(
     }
 )
 
-test_conditions_04 = BatchTestConditions(
+test_conditions_04 = bt.BatchTestConditions(
     run_kwargs={
         "red_strength": 4,
         "red_key_size": 64,
@@ -57,7 +45,7 @@ test_conditions_04 = BatchTestConditions(
     },
 )
 
-test_conditions_05 = BatchTestConditions(
+test_conditions_05 = bt.BatchTestConditions(
     run_kwargs={
         "red_strength": 4,
         "red_key_size": 128,
@@ -68,7 +56,7 @@ test_conditions_05 = BatchTestConditions(
     },
 )
 
-test_conditions_06 = BatchTestConditions(
+test_conditions_06 = bt.BatchTestConditions(
     run_kwargs={
         "red_strength": 4,
         "red_key_size": 64,
@@ -79,7 +67,7 @@ test_conditions_06 = BatchTestConditions(
     },
 )
 
-test_conditions_07 = BatchTestConditions(
+test_conditions_07 = bt.BatchTestConditions(
     run_kwargs={
         "red_strength": 5,
         "red_key_size": 64,
@@ -90,7 +78,7 @@ test_conditions_07 = BatchTestConditions(
     },
 )
 
-test_conditions_08 = BatchTestConditions(
+test_conditions_08 = bt.BatchTestConditions(
     run_kwargs={
         "red_strength": 5,
         "red_key_size": 128,
@@ -101,7 +89,7 @@ test_conditions_08 = BatchTestConditions(
     },
 )
 
-test_conditions_09 = BatchTestConditions(
+test_conditions_09 = bt.BatchTestConditions(
     run_kwargs={
         "red_strength": 5,
         "red_key_size": 64,
@@ -111,8 +99,6 @@ test_conditions_09 = BatchTestConditions(
         "output_dir_suffix": "R-d5-k064-B-d5-k128",
     },
 )
-
-
 
 
 def main():

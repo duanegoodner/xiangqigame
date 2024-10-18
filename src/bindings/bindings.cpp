@@ -2,7 +2,6 @@
 //! Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to
 //! Python.
 
-
 #include <pybind11/chrono.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
@@ -19,6 +18,21 @@ using namespace py::literals;
 using namespace boardstate;
 using namespace gameboard;
 using namespace piecepoints;
+
+template <typename KeyType>
+void bind_zobrist_keys(py::module_ &m, const std::string &class_name) {
+  py::class_<ZobristKeys<KeyType>>(m, class_name.c_str())
+      .def(py::init<>())
+      .def(py::init<uint32_t>(), "seed"_a)
+      .def_readonly("turn_key", &ZobristKeys<KeyType>::turn_key)
+      .def_readonly("zarray", &ZobristKeys<KeyType>::zarray);
+}
+
+template <typename KeyType>
+void bind_hash_calculator(py::module_ &m, const std::string &class_name) {
+    py::class_<HashCalculator<KeyType>>(m, class_name.c_str())
+    .def("get_zobrist_keys", &HashCalculator<KeyType>::GetZobristKeys);
+}
 
 template <typename KeyType>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
@@ -61,6 +75,13 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
               GameBoard,
               HashCalculator<KeyType>,
               PiecePositionPoints>::KeySizeBits
+      )
+      .def(
+          "get_hash_calculator",
+          &MinimaxMoveEvaluator<
+              GameBoard,
+              HashCalculator<KeyType>,
+              PiecePositionPoints>::GetHashCalculator
       );
 }
 
@@ -176,4 +197,6 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
 
   bind_minimax_move_evaluator<uint64_t>(m, "MinimaxMoveEvaluator64");
   bind_minimax_move_evaluator<__uint128_t>(m, "MinimaxMoveEvaluator128");
+  bind_zobrist_keys<uint64_t>(m, "ZobristKeys64");
+  bind_zobrist_keys<__uint128_t>(m, "ZobristKeys128");
 }

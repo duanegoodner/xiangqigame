@@ -39,6 +39,7 @@ MinimaxMoveEvaluator<
       &hash_calculator_,
       std::placeholders::_1
   ));
+  hash_calculator_.FullBoardStateCalc(game_board_.map());
 }
 
 template <
