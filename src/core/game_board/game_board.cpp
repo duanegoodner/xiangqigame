@@ -46,15 +46,15 @@ GameBoard::GameBoard(const BoardMapInt_t starting_board)
 GameBoard::GameBoard()
     : GameBoard(kStartingBoard) {}
 
-vector<BoardSpace> GameBoard::ImplementGetAllSpacesOccupiedBy(PieceColor color) {
+vector<BoardSpace> GameBoard::ImplementGetAllSpacesOccupiedBy(PieceColor color) const {
   return get_all_spaces_occupied_by(board_map_, color); 
 }
 
-PieceColor GameBoard::ImplementGetColor(BoardSpace space) {
+PieceColor GameBoard::ImplementGetColor(BoardSpace space) const {
   return get_color(board_map_, space);
 }
 
-PieceType GameBoard::ImplementGetType(BoardSpace space) {
+PieceType GameBoard::ImplementGetType(BoardSpace space) const {
   return get_type(board_map_, space);
 }
 
@@ -106,17 +106,17 @@ void GameBoard::ImplementUndoMove(ExecutedMove executed_move) {
   RemoveFromMoveLog(executed_move);
 };
 
-GamePiece GameBoard::GetOccupant(BoardSpace space) {
+GamePiece GameBoard::GetOccupant(BoardSpace space) const {
   return board_map_[space.rank][space.file];
 };
 
 const BoardMap_t &GameBoard::map() const { return board_map_; }
 
-void GameBoard::ImplementAttachMoveCallback(function<void(ExecutedMove)> callback) {
+void GameBoard::ImplementAttachMoveCallback(const function<void(ExecutedMove)>& callback) {
   move_callbacks_.emplace_back(callback);
 }
 
-std::map<PieceColor, vector<ExecutedMove>> GameBoard::GetMoveLog() { return move_log_; }
+const std::map<PieceColor, vector<ExecutedMove>>& GameBoard::GetMoveLog() const { return move_log_; }
 
 void GameBoard::UpdateHashCalculator(ExecutedMove executed_move) {
   for (const auto &callback : move_callbacks_) {

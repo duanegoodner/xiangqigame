@@ -24,17 +24,17 @@ class GameBoard : public SpaceInfoProvider<GameBoard> {
 public:
   GameBoard();
   GameBoard(const BoardMapInt_t starting_board);
-  vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color);
-  PieceColor ImplementGetColor(BoardSpace space);
-  PieceType ImplementGetType(BoardSpace space);
+  vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color) const;
+  PieceColor ImplementGetColor(BoardSpace space) const;
+  PieceType ImplementGetType(BoardSpace space) const;
   MoveCollection ImplementCalcFinalMovesOf(PieceColor color);
   bool IsInCheck(PieceColor color);
   ExecutedMove ImplementExecuteMove(Move move);
   void ImplementUndoMove(ExecutedMove executed_move);
-  GamePiece GetOccupant(BoardSpace space);
+  GamePiece GetOccupant(BoardSpace space) const;
   const BoardMap_t &map() const;
-  void ImplementAttachMoveCallback(function<void(ExecutedMove)> callback);
-  std::map<PieceColor, vector<ExecutedMove>> GetMoveLog();
+  void ImplementAttachMoveCallback(const function<void(ExecutedMove)>& callback);
+  const std::map<PieceColor, vector<ExecutedMove>>& GetMoveLog() const;
 
 private:
   //! 2-D array of GamePiece objects.
