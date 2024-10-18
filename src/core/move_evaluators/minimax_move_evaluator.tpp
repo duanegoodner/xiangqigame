@@ -380,7 +380,7 @@ Move MinimaxMoveEvaluator<
   );
   auto search_end = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double, std::nano> search_time = search_end - search_start;
-  search_summary.SetTime(search_time);
+  search_summary.set_time(search_time);
   // search_summary.time = search_time;
   auto selected_move_index =
       utility_functs::random((size_t)0, minimax_result.similar_moves.moves.size() - 1);

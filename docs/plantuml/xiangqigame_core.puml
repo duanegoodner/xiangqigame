@@ -170,7 +170,7 @@ namespace moveselection {
 		+GetTranspositionTableHits() : ResultDepthCountsData_t
 		+num_nodes : int
 		+time : std::chrono::duration<double, std::nano>
-		+SetEqualScoreMoves(EqualScoreMoves similar_moves) : void
+		+set_similar_moves(EqualScoreMoves similar_moves) : void
 		+SetSelectedMove(Move selected_move) : void
 		+SetTime(std::chrono::duration<double, std::nano> search_time) : void
 		+Update(MinimaxResultType result_type, int search_depth, EqualScoreMoves similar_moves) : void
