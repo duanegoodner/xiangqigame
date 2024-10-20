@@ -58,19 +58,6 @@ struct TranspositionTableSearchResult {
   bool found;
 };
 
-inline EqualScoreMoves evaluate_win_leaf(
-    PieceColor cur_player,
-    PieceColor initiating_player
-) {
-  auto empty_similar_moves = MoveCollection();
-
-  if (cur_player == initiating_player) {
-    return EqualScoreMoves{numeric_limits<Points_t>::min(), empty_similar_moves};
-  } else {
-    return EqualScoreMoves{numeric_limits<Points_t>::max(), empty_similar_moves};
-  }
-}
-
 //! Array of vectors for storing counts of moveselection::MinimaxResultType for each
 //! posible remaining search depth. Outer (array) index ->
 //! moveslection::MinimaxResultType; inner (vector) index -> remaining search depth when
@@ -114,17 +101,17 @@ struct SearchSummary {
     // result_depth_counts[result_type][search_depth]++;
     result_depth_counts.Update(result_type, search_depth);
     num_nodes++;
-    SetEqualScoreMoves(similar_moves);
+    set_similar_moves(similar_moves);
   }
 
   void UpdateTranspositionTableHits(MinimaxResultType result_type, int search_depth) {
     transposition_table_hits.Update(result_type, search_depth);
   }
 
-  void SetTime(std::chrono::duration<double, std::nano> search_time) {
+  void set_time(std::chrono::duration<double, std::nano> search_time) {
     time = search_time;
   }
-  void SetEqualScoreMoves(EqualScoreMoves similar_moves) {
+  void set_similar_moves(EqualScoreMoves similar_moves) {
     this->similar_moves = similar_moves;
   }
   void SetSelectedMove(Move selected_move) {

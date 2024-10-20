@@ -169,7 +169,7 @@ TeamPointsArray_t BPOPointsEKeys::RedNetPoints() {
 
 GamePointsArray_t BPOPointsEKeys::ToGamePointsArray() {
   GamePointsArray_t game_points_array{};
-  game_points_array[get_zcolor_index(PieceColor::kBlk)] = BlackNetPoints();
-  game_points_array[get_zcolor_index(PieceColor::kRed)] = RedNetPoints();
+  game_points_array[GetZColorIndexOf(PieceColor::kBlk)] = BlackNetPoints();
+  game_points_array[GetZColorIndexOf(PieceColor::kRed)] = RedNetPoints();
   return game_points_array;
 }

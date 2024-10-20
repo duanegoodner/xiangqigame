@@ -69,7 +69,7 @@ class Player(abc.ABC):
     def search_summaries(self) -> cdm.SearchSummaries | None:
         if self._evaluator_type == EvaluatorType.MINIMAX:
             return cdm.SearchSummaries.from_core_search_summaries(
-                core_search_summaries=self._move_evaluator.get_search_summaries()
+                core_search_summaries=self._move_evaluator.search_summaries
             )
 
     @property

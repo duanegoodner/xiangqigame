@@ -47,7 +47,7 @@ struct ZobristKeys {
       , zarray{new_zarray} {};
 
   KeyType GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) {
-    return zarray[get_zcolor_index(color)][piece_type][space.rank][space.file];
+    return zarray[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
   }
   static const GameZarray_t CreateGameZarray(KeyGenerator key_generator) {
     GameZarray_t game_zarray{};
@@ -89,7 +89,7 @@ struct ZobristKeys {
 template <typename KeyType>
 struct TranspositionTable {
 
-  TranspositionTableSearchResult GetData(
+  TranspositionTableSearchResult GetDataAt(
       KeyType board_state,
       int remaining_search_depth
   ) {
@@ -165,7 +165,7 @@ public:
   }
 
   TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
-    return transposition_table_.GetData(board_state_, search_depth);
+    return transposition_table_.GetDataAt(board_state_, search_depth);
   }
 
   const ZobristKeys<KeyType>& GetZobristKeys() const {

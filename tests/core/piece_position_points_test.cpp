@@ -74,7 +74,7 @@ TEST_F(PiecePositionPointsTest, ConvertGamePointsArrayToSMap) {
     for (auto piece_type : color.second) {
       EXPECT_EQ(
           piece_type.second,
-          game_points_array[get_zcolor_index(kPieceColorStringToEnum.at(color.first))]
+          game_points_array[GetZColorIndexOf(kPieceColorStringToEnum.at(color.first))]
                            [kPieceTypeStringToEnum.at(piece_type.first)]
       );
     }

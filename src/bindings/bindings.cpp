@@ -54,13 +54,12 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
               HashCalculator<KeyType>,
               PiecePositionPoints>::SelectMove
       )
-      .def(
-          "get_search_summaries",
+      .def_property_readonly(
+          "search_summaries",
           &MinimaxMoveEvaluator<
               GameBoard,
               HashCalculator<KeyType>,
-              PiecePositionPoints>::GetSearchSummaries,
-          py::return_value_policy::copy
+              PiecePositionPoints>::search_summaries
       )
       .def(
           "starting_search_depth",
@@ -166,7 +165,7 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def("CalcFinalMovesOf", &GameBoard::CalcFinalMovesOf, "color"_a)
       .def("IsInCheck", &GameBoard::IsInCheck, "color"_a)
       .def("GetType", &GameBoard::GetType, "space"_a)
-      .def("GetMoveLog", &GameBoard::GetMoveLog)
+      .def_property_readonly("move_log", &GameBoard::move_log)
       .def("GetColor", &GameBoard::GetColor, "space"_a);
 
   m.def("opponent_of", &opponent_of);

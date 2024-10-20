@@ -26,9 +26,9 @@ protected:
 // }
 
 TEST_F(GameBoardTest, GetsCorrectOccupants) {
-  EXPECT_EQ(gb_.GetOccupant(BoardSpace{0, 0}), 5);
-  EXPECT_EQ(gb_.GetOccupant(BoardSpace{1, 0}), 0);
-  EXPECT_EQ(gb_.GetOccupant(BoardSpace{9, 7}), -4);
+  EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{0, 0}), 5);
+  EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{1, 0}), 0);
+  EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{9, 7}), -4);
 }
 
 // TEST_F(GameBoardTest, SimpleMove) {
@@ -38,8 +38,8 @@ TEST_F(GameBoardTest, GetsCorrectOccupants) {
 //   auto end_state = gb_.board_state();
 
 //   EXPECT_NE(start_state, end_state);
-//   EXPECT_EQ(gb_.GetOccupant(BoardSpace{0, 0}), 0);
-//   EXPECT_EQ(gb_.GetOccupant(BoardSpace{1, 0}), 5);
+//   EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{0, 0}), 0);
+//   EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{1, 0}), 5);
 // }
 
 // After adding move_log_ to GameBoard, cannot undo a move
@@ -48,8 +48,8 @@ TEST_F(GameBoardTest, GetsCorrectOccupants) {
 //   auto pretend_executed_move =
 //       ExecutedMove{Move{BoardSpace{8, 0}, BoardSpace{9, 0}}, -5, 0};
 //   gb_.UndoMove(pretend_executed_move);
-//   EXPECT_EQ(gb_.GetOccupant(BoardSpace{8, 0}), -5);
-//   EXPECT_EQ(gb_.GetOccupant(BoardSpace{9, 0}), 0);
+//   EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{8, 0}), -5);
+//   EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{9, 0}), 0);
 // }
 
 TEST_F(GameBoardTest, ExecuteAndUndoActualMove) {
@@ -59,13 +59,13 @@ TEST_F(GameBoardTest, ExecuteAndUndoActualMove) {
   auto actual_executed_move = gb_.ExecuteMove(actual_move);
   // auto post_move_state = gb_.board_state();
   // EXPECT_NE(start_state, post_move_state);
-  EXPECT_EQ(gb_.GetOccupant(BoardSpace{6, 2}), 0);
-  EXPECT_EQ(gb_.GetOccupant(BoardSpace{5, 2}), -7);
+  EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{6, 2}), 0);
+  EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{5, 2}), -7);
   gb_.UndoMove(actual_executed_move);
   // auto end_state = gb_.board_state();
   // EXPECT_EQ(start_state, end_state);
-  EXPECT_EQ(gb_.GetOccupant(BoardSpace{6, 2}), -7);
-  EXPECT_EQ(gb_.GetOccupant(BoardSpace{5, 2}), 0);
+  EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{6, 2}), -7);
+  EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{5, 2}), 0);
 }
 
 TEST_F(GameBoardTest, CorrecNumSpacesOccupiedByBlack) {

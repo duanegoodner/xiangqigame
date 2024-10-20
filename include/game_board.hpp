@@ -24,17 +24,17 @@ class GameBoard : public SpaceInfoProvider<GameBoard> {
 public:
   GameBoard();
   GameBoard(const BoardMapInt_t starting_board);
-  vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color);
-  PieceColor ImplementGetColor(BoardSpace space);
-  PieceType ImplementGetType(BoardSpace space);
+  vector<BoardSpace> ImplementGetAllSpacesOccupiedBy(PieceColor color) const;
+  PieceColor ImplementGetColor(BoardSpace space) const;
+  PieceType ImplementGetType(BoardSpace space) const;
   MoveCollection ImplementCalcFinalMovesOf(PieceColor color);
   bool IsInCheck(PieceColor color);
   ExecutedMove ImplementExecuteMove(Move move);
   void ImplementUndoMove(ExecutedMove executed_move);
-  GamePiece GetOccupant(BoardSpace space);
+  GamePiece GetOccupantAt(BoardSpace space) const;
   const BoardMap_t &map() const;
-  void ImplementAttachMoveCallback(function<void(ExecutedMove)> callback);
-  std::map<PieceColor, vector<ExecutedMove>> GetMoveLog();
+  void ImplementAttachMoveCallback(const function<void(ExecutedMove)>& callback);
+  const std::map<PieceColor, vector<ExecutedMove>>& move_log() const;
 
 private:
   //! 2-D array of GamePiece objects.
@@ -51,7 +51,7 @@ private:
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
 
   void UpdateHashCalculator(ExecutedMove executed_move);
-  void SetOccupant(BoardSpace space, GamePiece piece);
+  void SetOccupantAt(BoardSpace space, GamePiece piece);
   void AddToMoveLog(ExecutedMove executed_move);
   void RemoveFromMoveLog(ExecutedMove executed_move);
   bool ViolatesRepeatRule(PieceColor color);
