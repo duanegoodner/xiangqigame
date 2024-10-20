@@ -32,12 +32,26 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(pybind11)
 
 FetchContent_Declare(
-    Boost
-    URL https://boostorg.jfrog.io/artifactory/main/release/1.86.0/source/boost_1_86_0.tar.gz
+    boost_math
+    URL https://github.com/boostorg/math/archive/refs/tags/boost-1.86.0.tar.gz
 )
 
-FetchContent_GetProperties(Boost)
-if(NOT Boost_POPULATED)
-    FetchContent_Populate(Boost)
-    set(BOOST_INCLUDEDIR ${boost_SOURCE_DIR}/)
+# FetchContent_Declare(
+#   boost_multiprecision
+#   URL https://github.com/boostorg/multiprecision/archive/refs/tags/Boost_1_86_0.tar.gz
+# )
+
+FetchContent_GetProperties(boost_math)
+if(NOT boost_math_POPULATED)
+    FetchContent_Populate(boost_math)
+    set(BOOST_MATH_INCLUDE_DIR ${boost_math_SOURCE_DIR}/include)
 endif()
+
+# FetchContent_GetProperties(boost_multiprecision)
+# if(NOT boost_multiprecision_POPULATED)
+#   FetchContent_Populate(boost_multiprecision)
+#   set(BOOST_MULTIPRECISION_INCLUDE_DIR ${boost_multiprecision_SOURCE_DIR}/include)
+# endif()
+
+# include_directories(${BOOST_MULTIPRECISION_INCLUDE_DIR})
+# include_directories(${BOOST_MATH_INCLUDE_DIR})
