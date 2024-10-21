@@ -8,9 +8,13 @@ Game.
 
 import argparse
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Dict
 
-from xiangqi_bindings import MinimaxMoveEvaluator64, MinimaxMoveEvaluator128
+from xiangqi_bindings import (
+    MinimaxMoveEvaluator32,
+    MinimaxMoveEvaluator64,
+    MinimaxMoveEvaluator128,
+)
 
 from xiangqipy.enums import EvaluatorType, PlayerType
 
@@ -20,6 +24,7 @@ class PlayerInput:
     """
     Container for info collected from command line for specific player.
     """
+
     player_type: PlayerType
     algo: EvaluatorType
     strength: int
@@ -30,6 +35,7 @@ class PlayerCommandInterpreter:
     """
     Converts command line input related to a player into PlayerInput object.
     """
+
     _player_input_dispatch = {
         "ai": PlayerType.AI,
         "person": PlayerType.HUMAN,
@@ -37,6 +43,7 @@ class PlayerCommandInterpreter:
     }
 
     _minimax_key_size_dispatch = {
+        32: MinimaxMoveEvaluator32,
         64: MinimaxMoveEvaluator64,
         128: MinimaxMoveEvaluator128,
     }
@@ -94,6 +101,7 @@ class XiangqiGameCommand:
     """
     Data container with all the info needed to instantiate a Game.
     """
+
     red_player_input: PlayerInput
     black_player_input: PlayerInput
     save_summary: bool = False
@@ -106,6 +114,7 @@ class RunKwargsInterpreter:
     Converts dictionary output by XiangqiGameCommandLine into a
     XiangqiGameCommand.
     """
+
     run_kwargs: dict[str, Any]
 
     def interpret_command(self) -> XiangqiGameCommand:
@@ -177,7 +186,7 @@ class XiangqiGameCommandLine:
             "-rk",
             "--red_key_size",
             type=int,
-            choices=[64, 128],
+            choices=[32, 64, 128],
             required=False,
             help="Key size (in bits) used for red AI player Zobrist hashing",
         )
@@ -212,7 +221,7 @@ class XiangqiGameCommandLine:
             "-bk",
             "--black_key_size",
             type=int,
-            choices=[64, 128],
+            choices=[32, 64, 128],
             required=False,
             help="Key size (in bits) used for black AI player Zobrist hashing",
         )
@@ -240,7 +249,7 @@ class XiangqiGameCommandLine:
         return vars(args_namespace)
 
 
-def main() -> XiangqiGameCommand:
+def main() -> dict[str, Any]:
     command_retriever = XiangqiGameCommandLine()
     my_command = command_retriever.get_args()
     return my_command
