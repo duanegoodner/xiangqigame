@@ -97,10 +97,12 @@ private:
 //! moveseelection::ResultDepthCounts  for all other search result types.
 class SearchSummary {
 public:
-  SearchSummary(int max_search_depth)
+  SearchSummary(int max_search_depth, TranspositionTableSize tr_table_size_initial)
       : num_nodes_{}
       , result_depth_counts_{ResultDepthCounts(max_search_depth)}
-      , transposition_table_hits_(ResultDepthCounts(max_search_depth)) {}
+      , transposition_table_hits_(ResultDepthCounts(max_search_depth))
+      , tr_table_size_initial_{tr_table_size_initial}
+      , tr_table_size_final_{} {}
 
   void Update(
       MinimaxResultType result_type,
@@ -134,6 +136,11 @@ public:
   ResultDepthCountsData_t GetTranspositionTableHits() {
     return transposition_table_hits_.data();
   }
+  TranspositionTableSize tr_table_size_initial() { return tr_table_size_initial_; }
+  TranspositionTableSize tr_table_size_final() { return tr_table_size_final_; }
+  void set_tr_table_size_final(TranspositionTableSize tr_table_size_final) {
+    tr_table_size_final_ = tr_table_size_final;
+  }
 
 private:
   int num_nodes_;
@@ -142,6 +149,8 @@ private:
   ResultDepthCounts transposition_table_hits_;
   EqualScoreMoves similar_moves_;
   Move selected_move_;
+  TranspositionTableSize tr_table_size_initial_;
+  TranspositionTableSize tr_table_size_final_;
 };
 
 //! Stores a moveselection::SearchSummary for each
@@ -155,14 +164,23 @@ struct SearchSummaries {
   std::vector<SearchSummary> first_searches;
   std::map<int, SearchSummary> extra_searches;
 
-  SearchSummary &NewFirstSearch(int search_depth) {
-    first_searches.emplace_back(SearchSummary(search_depth));
+  SearchSummary &NewFirstSearch(
+      int search_depth,
+      TranspositionTableSize tr_table_size_initial
+  ) {
+    first_searches.emplace_back(SearchSummary(search_depth, tr_table_size_initial));
     return first_searches.back();
   }
 
-  SearchSummary &NewExtraSearch(int search_depth, int search_number) {
-    auto new_search_entry =
-        extra_searches.emplace(search_number, SearchSummary(search_depth));
+  SearchSummary &NewExtraSearch(
+      int search_depth,
+      int search_number,
+      TranspositionTableSize tr_table_size_current
+  ) {
+    auto new_search_entry = extra_searches.emplace(
+        search_number,
+        SearchSummary(search_depth, tr_table_size_current)
+    );
     return new_search_entry.first->second;
   }
 };
