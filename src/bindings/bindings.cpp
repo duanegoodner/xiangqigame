@@ -176,15 +176,15 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
 
   py::class_<SearchSummary>(m, "SearchSummary")
       .def(py::init<int>()) // Constructor, as needed for initialization
-      .def_readonly(
+      .def_property_readonly(
           "num_nodes",
           &SearchSummary::num_nodes
       ) // Read-only access to fields
-      .def_readonly("time", &SearchSummary::time)
+      .def_property_readonly("time", &SearchSummary::time)
       .def("get_result_depth_counts", &SearchSummary::GetResultDepthCounts)
       .def("get_transposition_table_hits", &SearchSummary::GetTranspositionTableHits)
-      .def_readonly("similar_moves", &SearchSummary::similar_moves)
-      .def_readonly("selected_move", &SearchSummary::selected_move);
+      .def_property_readonly("similar_moves", &SearchSummary::similar_moves)
+      .def_property_readonly("selected_move", &SearchSummary::selected_move);
 
   py::class_<SearchSummaries>(m, "SearchSummaries")
       .def(py::init<>()) // Constructor, as needed for initialization

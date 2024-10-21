@@ -144,7 +144,7 @@ TEST_F(MinimaxEvaluatorTest, GetSearchSummaries) {
       };
   auto red_selected_move = red_evaluator.SelectMove();
   auto search_summaries = red_evaluator.search_summaries();
-  auto num_nodes_visited = search_summaries.first_searches[0].num_nodes;
+  auto num_nodes_visited = search_summaries.first_searches[0].num_nodes();
   EXPECT_TRUE(num_nodes_visited > 0);
 }
 
