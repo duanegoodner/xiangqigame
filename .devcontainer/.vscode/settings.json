@@ -100,7 +100,11 @@
         "syncstream": "cpp",
         "expected": "cpp",
         "spanstream": "cpp",
-        "stacktrace": "cpp"
+        "stacktrace": "cpp",
+        "*.ipp": "cpp",
+        "strstream": "cpp",
+        "rope": "cpp",
+        "slist": "cpp"
     },
     "cmake.sourceDirectory": "/home/duane/workspace/project"
 }

@@ -216,14 +216,14 @@ class MultiBatchDataSummarizer:
 
 
 class FullBatchSummary:
-    def __init__(self, game_collection_id: str):
-        self.game_collection_id = game_collection_id
+    def __init__(self, batch_id: str):
+        self.game_collection_id = batch_id
         self.game_collection_dir = self.get_game_collection_dir()
         self.all_game_summaries: List[GameSummary] = (
             self.load_all_game_summaries()
         )
         self.batch_data_summarizer = BatchDataSummarizer(
-            batch_id=game_collection_id
+            batch_id=batch_id
         )
 
     def get_game_collection_dir(self) -> Path:
@@ -278,7 +278,7 @@ if __name__ == "__main__":
     #     game_collection_id=my_game_collection_id
     # )
 
-    batch_data_summarizer = BatchDataSummarizer(batch_id=my_game_collection_id)
+    # batch_data_summarizer = BatchDataSummarizer(batch_id=my_game_collection_id)
 
     my_batch_ids = [
         "20241016220647854785",

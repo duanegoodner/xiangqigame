@@ -194,8 +194,10 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       ) // Read-only vectors and maps
       .def_readonly("extra_searches", &SearchSummaries::extra_searches);
 
+  bind_minimax_move_evaluator<uint32_t>(m, "MinimaxMoveEvaluator32");
   bind_minimax_move_evaluator<uint64_t>(m, "MinimaxMoveEvaluator64");
   bind_minimax_move_evaluator<__uint128_t>(m, "MinimaxMoveEvaluator128");
+  bind_zobrist_keys<uint32_t>(m, "ZobristKeys32");
   bind_zobrist_keys<uint64_t>(m, "ZobristKeys64");
   bind_zobrist_keys<__uint128_t>(m, "ZobristKeys128");
 }

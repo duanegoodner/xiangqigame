@@ -8,6 +8,7 @@ from typing import Callable, Any, Dict, Tuple
 
 from xiangqi_bindings import (
     GameBoard,
+    MinimaxMoveEvaluator32,
     MinimaxMoveEvaluator64,
     MinimaxMoveEvaluator128,
     PieceColor,
@@ -46,6 +47,11 @@ class SinglePlayerBuilder:
                 "evaluating_player": self._color,
                 "game_board": self._game_board,
             },
+            MinimaxMoveEvaluator32: {
+                "evaluating_player": self._color,
+                "starting_search_depth": self.player_input.strength,
+                "game_board": self._game_board,
+            },
             MinimaxMoveEvaluator64: {
                 "evaluating_player": self._color,
                 "starting_search_depth": self.player_input.strength,
@@ -62,6 +68,7 @@ class SinglePlayerBuilder:
     def evaluator_constructor_dispatch(self) -> Dict[Tuple, Callable]:
         return {
             (EvaluatorType.RANDOM, None): RandomMoveEvaluator,
+            (EvaluatorType.MINIMAX, 32): MinimaxMoveEvaluator32,
             (EvaluatorType.MINIMAX, 64): MinimaxMoveEvaluator64,
             (EvaluatorType.MINIMAX, 128): MinimaxMoveEvaluator128,
         }

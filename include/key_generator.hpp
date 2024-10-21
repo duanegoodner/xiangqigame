@@ -10,6 +10,45 @@
 
 namespace boardstate {
 
+template <typename IntType>
+class KeyGeneratorNew {
+public:
+  IntType GenerateKey() {
+    IntType result = 0;
+    auto bits_per_block = 8 * sizeof(std::random_device::result_type);
+    auto blocks_per_int = sizeof(IntType) / sizeof(std::random_device::result_type);
+    for (auto idx = 0; idx < blocks_per_int; ++idx) {
+      result <<= bits_per_block;
+      result |= static_cast<IntType>(rd_());
+    }
+    return result;
+  }
+
+private:
+  std::random_device rd_;
+};
+
+template <typename IntType>
+void PrintHex(IntType num) {
+  constexpr int bits_per_block = 8 * sizeof(std::random_device::result_type);
+  constexpr int bits_per_hex_digit = 4; // Each hex digit represents 4 bits
+  constexpr int hex_digits_per_block =
+      bits_per_block / bits_per_hex_digit; // Hex digits per block
+  constexpr int total_blocks =
+      (sizeof(IntType) * 8 + bits_per_block - 1) /
+      bits_per_block; // Calculate the number of 32-bit blocks needed
+
+  std::cout << "0x";
+  for (int i = total_blocks - 1; i >= 0; --i) {
+    // Extract each 32-bit block
+    uint32_t block = static_cast<uint32_t>(num >> (i * bits_per_block));
+    // Print the block, handling leading zeros within each block
+    std::cout << std::hex << std::setfill('0') << std::setw(hex_digits_per_block)
+              << block;
+  }
+  std::cout << std::dec << std::endl; // Reset to decimal output
+}
+
 //! Used by boardstate::ZobristKeys to generate hash keys. Supports 64-bit and 128-bit
 //! keys.
 class KeyGenerator {
