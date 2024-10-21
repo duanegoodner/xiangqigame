@@ -45,4 +45,8 @@ public:
         search_depth
     );
   }
+
+  moveselection::TranspositionTableSize GetTrTableSize() {
+    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetTrTableSize();
+  }
 };

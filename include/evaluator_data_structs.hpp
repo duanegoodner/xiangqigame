@@ -58,6 +58,11 @@ struct TranspositionTableSearchResult {
   bool found;
 };
 
+struct TranspositionTableSize {
+  uint64_t num_entries;
+  uint64_t num_states;
+};
+
 //! Array of vectors for storing counts of moveselection::MinimaxResultType for each
 //! posible remaining search depth. Outer (array) index ->
 //! moveslection::MinimaxResultType; inner (vector) index -> remaining search depth when

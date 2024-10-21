@@ -49,14 +49,13 @@ struct ZobristKeys {
   KeyType GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) {
     return zarray[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
   }
-  static const GameZarray_t CreateGameZarray(KeyGeneratorNew<KeyType>& key_generator) {
+  static const GameZarray_t CreateGameZarray(KeyGeneratorNew<KeyType> &key_generator) {
     GameZarray_t game_zarray{};
     for (auto color_idx = 0; color_idx < 2; color_idx++) {
       for (auto piece_id = 1; piece_id < kNumPieceTypeVals; piece_id++) {
         for (auto rank = 0; rank < kNumRanks; rank++) {
           for (auto file = 0; file < kNumFiles; file++) {
-            game_zarray[color_idx][piece_id][rank][file] =
-                key_generator.GenerateKey();
+            game_zarray[color_idx][piece_id][rank][file] = key_generator.GenerateKey();
           }
         }
       }
@@ -64,13 +63,13 @@ struct ZobristKeys {
     return game_zarray;
   };
 
-   //! Collects all keys into a std::vector (typically used for entropy calc).
+  //! Collects all keys into a std::vector (typically used for entropy calc).
   std::vector<KeyType> KeysVector() const {
     std::vector<KeyType> keys_vector;
 
-    for (const auto& team : zarray) {
-      for (const auto& piece_zarray : team) {
-        for (const auto& rank : piece_zarray) {
+    for (const auto &team : zarray) {
+      for (const auto &piece_zarray : team) {
+        for (const auto &rank : piece_zarray) {
           for (KeyType key : rank) {
             keys_vector.push_back(key);
           }
@@ -81,13 +80,15 @@ struct ZobristKeys {
 
     return keys_vector;
   }
-
 };
 
 //! Container where boardstate::HashCalculator stores moveselection::MinimaxMoveEvaluator
 //! results; supports recording, look-up and retrieval of data.
 template <typename KeyType>
-struct TranspositionTable {
+class TranspositionTable {
+public:
+  TranspositionTable()
+      : num_entries_{0} {}
 
   TranspositionTableSearchResult GetDataAt(
       KeyType board_state,
@@ -120,10 +121,16 @@ struct TranspositionTable {
         similar_moves
     };
     data_[state].push_back(transposition_table_entry);
+    num_entries_++;
   };
+
+  uint64_t num_entries() { return num_entries_; }
+
+  uint64_t num_states() { return data_.size(); }
 
 private:
   unordered_map<KeyType, vector<TranspositionTableEntry>> data_;
+  uint64_t num_entries_;
 };
 
 //! Implements BoardStateSummarizer interface; calculates Zobrist hash value of board
@@ -161,16 +168,23 @@ public:
       MinimaxResultType result_type,
       EqualScoreMoves &similar_moves
   ) {
-    transposition_table_.RecordData(board_state_, search_depth, result_type, similar_moves);
+    transposition_table_
+        .RecordData(board_state_, search_depth, result_type, similar_moves);
   }
 
   TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
     return transposition_table_.GetDataAt(board_state_, search_depth);
   }
 
-  const ZobristKeys<KeyType>& GetZobristKeys() const {
-    return zkeys_;
+  moveselection::TranspositionTableSize ImplementGetTrTableSize() {
+    moveselection::TranspositionTableSize result{
+        transposition_table_.num_entries(),
+        transposition_table_.num_states()
+    };
+    return result;
   }
+
+  const ZobristKeys<KeyType> &GetZobristKeys() const { return zkeys_; }
 
 private:
   ZobristKeys<KeyType> zkeys_;
