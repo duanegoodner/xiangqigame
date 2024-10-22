@@ -174,17 +174,24 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def(py::init<PieceColor, GameBoard &>(), "evaluating_player"_a, "game_board"_a)
       .def("select_move", &RandomMoveEvaluator<GameBoard>::SelectMove);
 
+  py::class_<TranspositionTableSize>(m, "TranspositionTableSize")
+    .def_readonly("num_entries", &TranspositionTableSize::num_entries)
+    .def_readonly("num_states", &TranspositionTableSize::num_states);
+  
   py::class_<SearchSummary>(m, "SearchSummary")
-      .def(py::init<int>()) // Constructor, as needed for initialization
-      .def_readonly(
+    //   .def(py::init<int>()) // Constructor, as needed for initialization
+      .def_property_readonly(
           "num_nodes",
           &SearchSummary::num_nodes
       ) // Read-only access to fields
-      .def_readonly("time", &SearchSummary::time)
+      .def_property_readonly("time", &SearchSummary::time)
       .def("get_result_depth_counts", &SearchSummary::GetResultDepthCounts)
       .def("get_transposition_table_hits", &SearchSummary::GetTranspositionTableHits)
-      .def_readonly("similar_moves", &SearchSummary::similar_moves)
-      .def_readonly("selected_move", &SearchSummary::selected_move);
+      .def_property_readonly("similar_moves", &SearchSummary::similar_moves)
+      .def_property_readonly("selected_move", &SearchSummary::selected_move)
+      .def_property_readonly("returned_illegal_move", &SearchSummary::returned_illegal_move)
+      .def_property_readonly("tr_table_size_initial", &SearchSummary::tr_table_size_initial)
+      .def_property_readonly("tr_table_size_final", &SearchSummary::tr_table_size_final);
 
   py::class_<SearchSummaries>(m, "SearchSummaries")
       .def(py::init<>()) // Constructor, as needed for initialization

@@ -1,10 +1,16 @@
+import re
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
+from statistics import covariance
 from typing import Any, Dict, List
 
+import numpy as np
 import pandas as pd
-import re
+import xiangqi_bindings as bindings
+from matplotlib import pyplot as plt
+from scipy.interpolate import UnivariateSpline
+from scipy.optimize import curve_fit
 
 import xiangqipy.app as app
 from xiangqipy.game_summary import GameSummary
@@ -174,7 +180,7 @@ class BatchDataSummarizer:
                 black_time_per_move_s,
                 black_time_per_node_ns,
                 black_collisions_per_move,
-                black_collisions_per_node
+                black_collisions_per_node,
             ],
             index=[
                 "num_games",
@@ -222,9 +228,7 @@ class FullBatchSummary:
         self.all_game_summaries: List[GameSummary] = (
             self.load_all_game_summaries()
         )
-        self.batch_data_summarizer = BatchDataSummarizer(
-            batch_id=batch_id
-        )
+        self.batch_data_summarizer = BatchDataSummarizer(batch_id=batch_id)
 
     def get_game_collection_dir(self) -> Path:
         output_root = (
@@ -258,6 +262,112 @@ class FullBatchSummary:
             game_summaries.append(import_game_summary(path=path))
 
         return game_summaries
+
+    def get_player_collision_data(
+        self, color: bindings.PieceColor
+    ) -> pd.DataFrame | None:
+        player_summaries = [
+            game_summary.get_player_summary(color)
+            for game_summary in self.all_game_summaries
+        ]
+
+        tr_collision_cols = [
+            "tr_table_num_states",
+            "tr_table_num_entries",
+            "returned_illegal_move",
+            "cumulative_illegal_moves",
+        ]
+
+        if any(
+            [
+                player_summary.has_search_summaries
+                for player_summary in player_summaries
+            ]
+        ):
+
+            data_frames = []
+            for summary, game_summary in zip(
+                player_summaries, self.all_game_summaries
+            ):
+                if summary.has_search_summaries:
+                    # Create a copy to avoid modifying the original DataFrame
+                    df = summary.first_search_stats[tr_collision_cols].copy()
+                    df["game_id"] = (
+                        game_summary.game_id
+                    )  # Append the game_id column
+                    df.reset_index(drop=True, inplace=True)  # Reset the index
+                    data_frames.append(df)
+
+            # Concatenate all the prepared DataFrames
+            batch_collision_df = pd.concat(data_frames, axis=0)
+
+            # Reorder columns to make 'game_id' the first column
+            columns = ["game_id"] + [
+                col for col in batch_collision_df.columns if col != "game_id"
+            ]
+            batch_collision_df = batch_collision_df[columns]
+
+            return batch_collision_df
+
+    @property
+    def all_collision_data(self) -> Dict[str, pd.DataFrame]:
+        result = {}
+        for color in [bindings.PieceColor.kBlk, bindings.PieceColor.kRed]:
+            result[color.name] = self.get_player_collision_data(color)
+        return result
+
+    def plot_all_collision_data(
+        self, color: bindings.PieceColor, by_game_id: bool = True
+    ):
+        df = self.all_collision_data[color.name]
+        # fig, ax = plt.subplots()
+
+        def poisson_collision_model(k, n):
+            return k**2 / (2 * n)
+
+        sorted_df = df.sort_values(by="tr_table_num_entries", ascending=True)
+
+        x_data = sorted_df["tr_table_num_states"]
+        y_data = sorted_df["cumulative_illegal_moves"]
+        labels = sorted_df["game_id"].unique()
+        data_point_colors = plt.cm.get_cmap("tab20", len(labels))
+
+        params, params_covariance, *_ = curve_fit(
+            poisson_collision_model, x_data, y_data
+        )
+
+        fitted_collisions = poisson_collision_model(x_data, *params)
+
+        plt.figure(figsize=(10, 6))
+
+        if by_game_id:
+            for i, label in enumerate(labels):
+                subset = sorted_df[sorted_df["game_id"] == label]
+                plt.scatter(
+                    subset["tr_table_num_states"],
+                    subset["cumulative_illegal_moves"],
+                    color=data_point_colors(i),
+                    label=label,
+                )
+        else:
+            plt.scatter(
+                sorted_df["tr_table_num_states"],
+                sorted_df["cumulative_illegal_moves"],
+                color="blue"
+            )
+            # plt.scatter(x_data, y_data, color="blue", label="Data Points")
+        plt.plot(
+            x_data,
+            fitted_collisions,
+            label="Fitted Poisson Approximation Model",
+            color="red",
+        )
+
+        plt.title("Exponential Fit to Data")
+        plt.xlabel("X values")
+        plt.ylabel("Cumulative Counts")
+        # plt.legend()
+        plt.show()
 
 
 if __name__ == "__main__":

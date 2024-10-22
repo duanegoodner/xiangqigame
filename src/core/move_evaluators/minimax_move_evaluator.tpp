@@ -71,7 +71,8 @@ Move MinimaxMoveEvaluator<
     ConcreteBoardStateSummarizer,
     ConcretePieceValueProvider>::ImplementSelectMove() {
 
-  auto &first_search_summary = search_summaries_.NewFirstSearch(starting_search_depth_);
+  auto tr_table_size = hash_calculator_.GetTrTableSize();
+  auto &first_search_summary = search_summaries_.NewFirstSearch(starting_search_depth_, tr_table_size);
   Move final_selected_move;
 
   auto first_selected_move = RunMinimax(first_search_summary);
@@ -82,8 +83,10 @@ Move MinimaxMoveEvaluator<
   if (allowed_moves.ContainsMove(first_selected_move)) {
     final_selected_move = first_selected_move;
   } else {
+    first_search_summary.set_returned_illegal_move(true);
+    auto tr_table_size = hash_calculator_.GetTrTableSize();
     auto &second_search_summary =
-        search_summaries_.NewExtraSearch(starting_search_depth_, num_move_selections_);
+        search_summaries_.NewExtraSearch(starting_search_depth_, num_move_selections_, tr_table_size);
     auto second_selected_move = RunMinimax(second_search_summary, false);
     final_selected_move = second_selected_move;
   }
@@ -386,6 +389,8 @@ Move MinimaxMoveEvaluator<
       utility_functs::random((size_t)0, minimax_result.similar_moves.moves.size() - 1);
   auto selected_move = minimax_result.similar_moves.moves[selected_move_index];
   search_summary.SetSelectedMove(selected_move);
+  auto tr_table_size = hash_calculator_.GetTrTableSize();
+  search_summary.set_tr_table_size_final(tr_table_size);
 
   return selected_move;
 }

@@ -11,7 +11,6 @@ from dataclasses import dataclass
 from typing import Dict, List, TypeAlias
 
 import numpy as np
-import pandas as pd
 import xiangqi_bindings as bindings
 
 
@@ -45,7 +44,7 @@ PointsT: TypeAlias = PointsTypeDeterminer().get_points_type()
 
 class MinimaxResultTypePy(Enum):
     """
-    Enum indicating the type of result obtained from Minimax analysis 
+    Enum indicating the type of result obtained from Minimax analysis
     of a single node.
     """
 
@@ -64,6 +63,7 @@ class GamePiece:
     """
     A Python GamePiece.
     """
+
     piece_color: bindings.PieceColor
     piece_type: bindings.PieceType
 
@@ -80,6 +80,7 @@ class BoardSpace:
     """
     A Python BoardSpace.
     """
+
     rank: int
     file: int
 
@@ -93,6 +94,7 @@ class Move:
     """
     A Python Move.
     """
+
     start: BoardSpace
     end: BoardSpace
 
@@ -108,6 +110,7 @@ class MoveCollection:
     """
     A Python MoveCollection.
     """
+
     moves: List[Move]
 
     @classmethod
@@ -130,6 +133,7 @@ class EqualScoreMoves:
     """
     A Ptyhon EqualScoreMoves.
     """
+
     shared_score: PointsT
     similar_moves: MoveCollection
 
@@ -146,10 +150,24 @@ class EqualScoreMoves:
 
 
 @dataclass
+class TranspositionTableSize:
+    num_entries: int
+    num_states: int
+
+    @classmethod
+    def from_core_transposition_table_size(cls, core_transposition_table_size):
+        return cls(
+            num_entries=core_transposition_table_size.num_entries,
+            num_states=core_transposition_table_size.num_states,
+        )
+
+
+@dataclass
 class ExecutedMove:
     """
     A Python ExecutedMove
     """
+
     moving_piece: GamePiece
     destination_piece: GamePiece
     spaces: Move
@@ -174,12 +192,16 @@ class SearchSummary:
     """
     A Python SearchSummary.
     """
+
     num_nodes: int
     time: datetime.timedelta
     result_depth_counts: np.ndarray
     transposition_table_hits: np.ndarray
     similar_moves: EqualScoreMoves
     selected_move: Move
+    returned_illegal_move: bool
+    tr_table_size_initial: TranspositionTableSize
+    tr_table_size_final: TranspositionTableSize
 
     @classmethod
     def from_core_search_summary(
@@ -200,6 +222,13 @@ class SearchSummary:
             selected_move=Move.from_core_move(
                 core_move=core_search_summary.selected_move
             ),
+            returned_illegal_move=core_search_summary.returned_illegal_move,
+            tr_table_size_initial=TranspositionTableSize.from_core_transposition_table_size(
+                core_transposition_table_size=core_search_summary.tr_table_size_initial
+            ),
+            tr_table_size_final=TranspositionTableSize.from_core_transposition_table_size(
+                core_transposition_table_size=core_search_summary.tr_table_size_final
+            ),
         )
 
     @property
@@ -212,6 +241,7 @@ class SearchSummaries:
     """
     A Python SearchSummaries.
     """
+
     first_searches: List[SearchSummary]
     extra_searches: Dict[int, SearchSummary]
 

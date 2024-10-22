@@ -73,7 +73,7 @@ class GameSummary(msgspec.Struct):
         """
         Gets the xiangqipy.player_summary.PlayerSummary for a particular xiangqi_bindings.PieceColor.
 
-        @param player xiang_bindings.PieceColor of player that PlayerSummary is being retrieved for.
+        @param player xiangqi_bindings.PieceColor of player that PlayerSummary is being retrieved for.
         """
         return self.player_summaries.__dict__[player.name]
 
