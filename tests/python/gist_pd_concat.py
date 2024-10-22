@@ -1,4 +1,3 @@
-
 import pandas as pd
 
 # Example DataFrames
@@ -24,14 +23,27 @@ df3 = pd.DataFrame({
     'E': [43, 44, 45]
 })
 
-# List of DataFrames
+# List of original DataFrames
 dataframes = [df1, df2, df3]
 
-# Columns to stack: 3 to 5 (Python uses 0-based indexing, so these are columns 'C', 'D', 'E')
-selected_columns = dataframes[0].columns[2:5]
+# Make copies of the DataFrames and reset index
+copies = [df.copy() for df in dataframes]
+for i, df in enumerate(copies):
+    df.reset_index(inplace=True)
+    df.rename(columns={'index': 'Original_Index'}, inplace=True)
 
-# Concatenate the selected columns from each DataFrame
-stacked_df = pd.concat([df[selected_columns] for df in dataframes], axis=0)
+# Columns to stack: include 'Original_Index' and columns 3 to 5 (Python uses 0-based indexing)
+selected_columns = ['Original_Index'] + copies[0].columns[3:6].tolist()
+
+# Concatenate the selected columns from each DataFrame copy with keys
+stacked_df = pd.concat([df[selected_columns] for df in copies], keys=['1', '2', '3'], axis=0)
+
+# Reset index to bring the keys into a column and clean up the DataFrame, dropping the multi-level index
+stacked_df.reset_index(level=0, inplace=True)
+stacked_df.rename(columns={'level_0': 'Source_ID'}, inplace=True)
+
+# Additional step: Reset index again to make it monotonically increasing across the entire DataFrame
+stacked_df.reset_index(drop=True, inplace=True)
 
 # Show the result
 print(stacked_df)
