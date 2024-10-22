@@ -15,7 +15,7 @@ using namespace gameboard;
 namespace gameboard {
 
 extern const BoardMapInt_t kStartingBoard;
-extern const int kRepeatPeriodsToCheck[3];
+extern const int kRepeatPeriodsToCheck[5];
 extern const int kRepeatPeriodsMaxAllowed;
 
 //! Implements SpaceInfoProvider interface; stores piece positions, and exposes methods

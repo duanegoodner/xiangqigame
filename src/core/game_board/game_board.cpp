@@ -29,7 +29,7 @@ const BoardMapInt_t kStartingBoard = {{
 }};
 
 //! Max allowed repetitions of prohibited move sequence lengths.
-const int kRepeatPeriodsToCheck[3] = {2, 3, 4};
+const int kRepeatPeriodsToCheck[15] = {2, 3, 4, 5, 6};
 
 //! Repeated move sequence lengths forbidden under move repetition rules.
 //! If kRepeatPeriodsToCheck = {2, 3, 4} and kRepeatPeriodsMaxAllowed = 2, then the
