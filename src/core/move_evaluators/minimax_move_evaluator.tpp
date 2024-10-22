@@ -83,6 +83,7 @@ Move MinimaxMoveEvaluator<
   if (allowed_moves.ContainsMove(first_selected_move)) {
     final_selected_move = first_selected_move;
   } else {
+    first_search_summary.set_returned_illegal_move(true);
     auto tr_table_size = hash_calculator_.GetTrTableSize();
     auto &second_search_summary =
         search_summaries_.NewExtraSearch(starting_search_depth_, num_move_selections_, tr_table_size);

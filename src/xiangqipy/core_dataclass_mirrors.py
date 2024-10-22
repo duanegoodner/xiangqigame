@@ -11,7 +11,6 @@ from dataclasses import dataclass
 from typing import Dict, List, TypeAlias
 
 import numpy as np
-import pandas as pd
 import xiangqi_bindings as bindings
 
 
@@ -200,6 +199,7 @@ class SearchSummary:
     transposition_table_hits: np.ndarray
     similar_moves: EqualScoreMoves
     selected_move: Move
+    returned_illegal_move: bool
     tr_table_size_initial: TranspositionTableSize
     tr_table_size_final: TranspositionTableSize
 
@@ -222,12 +222,13 @@ class SearchSummary:
             selected_move=Move.from_core_move(
                 core_move=core_search_summary.selected_move
             ),
+            returned_illegal_move=core_search_summary.returned_illegal_move,
             tr_table_size_initial=TranspositionTableSize.from_core_transposition_table_size(
                 core_transposition_table_size=core_search_summary.tr_table_size_initial
             ),
             tr_table_size_final=TranspositionTableSize.from_core_transposition_table_size(
                 core_transposition_table_size=core_search_summary.tr_table_size_final
-            )
+            ),
         )
 
     @property

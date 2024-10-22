@@ -189,6 +189,7 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def("get_transposition_table_hits", &SearchSummary::GetTranspositionTableHits)
       .def_property_readonly("similar_moves", &SearchSummary::similar_moves)
       .def_property_readonly("selected_move", &SearchSummary::selected_move)
+      .def_property_readonly("returned_illegal_move", &SearchSummary::returned_illegal_move)
       .def_property_readonly("tr_table_size_initial", &SearchSummary::tr_table_size_initial)
       .def_property_readonly("tr_table_size_final", &SearchSummary::tr_table_size_final);
 

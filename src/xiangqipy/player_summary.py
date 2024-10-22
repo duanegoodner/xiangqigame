@@ -161,12 +161,24 @@ class PlayerSummary:
             dtype=PointsT,
         )
 
-        assert (
-            len(num_nodes)
-            == len(search_time_s)
-            == len(mean_time_per_node_ns)
-            == len(eval_score)
+        tr_table_num_states = [
+            search_summary.tr_table_size_final.num_states
+            for search_summary in self.search_summaries.first_searches
+        ]
+
+        tr_table_num_entries = [
+            search_summary.tr_table_size_final.num_entries
+            for search_summary in self.search_summaries.first_searches
+        ]
+
+        returned_illegal_move = np.array(
+            [
+                search_summary.returned_illegal_move
+                for search_summary in self.search_summaries.first_searches
+            ]
         )
+
+        cumulative_illegal_moves = np.cumsum(returned_illegal_move)
 
         df = pd.DataFrame(
             {
@@ -174,6 +186,10 @@ class PlayerSummary:
                 "search_time_s": search_time_s,
                 "mean_time_per_node_ns": mean_time_per_node_ns,
                 "eval_score": eval_score,
+                "tr_table_num_states": tr_table_num_states,
+                "tr_table_num_entries": tr_table_num_entries,
+                "returned_illegal_move": returned_illegal_move,
+                "cumulative_illegal_moves": cumulative_illegal_moves,
             },
             index=self.game_move_numbers,
         )

@@ -1,10 +1,11 @@
+import re
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List
 
 import pandas as pd
-import re
+import xiangqi_bindings as bindings
 
 import xiangqipy.app as app
 from xiangqipy.game_summary import GameSummary
@@ -174,7 +175,7 @@ class BatchDataSummarizer:
                 black_time_per_move_s,
                 black_time_per_node_ns,
                 black_collisions_per_move,
-                black_collisions_per_node
+                black_collisions_per_node,
             ],
             index=[
                 "num_games",
@@ -222,9 +223,7 @@ class FullBatchSummary:
         self.all_game_summaries: List[GameSummary] = (
             self.load_all_game_summaries()
         )
-        self.batch_data_summarizer = BatchDataSummarizer(
-            batch_id=batch_id
-        )
+        self.batch_data_summarizer = BatchDataSummarizer(batch_id=batch_id)
 
     def get_game_collection_dir(self) -> Path:
         output_root = (
@@ -258,6 +257,44 @@ class FullBatchSummary:
             game_summaries.append(import_game_summary(path=path))
 
         return game_summaries
+
+    def get_player_collision_data(
+        self, color: bindings.PieceColor
+    ) -> pd.DataFrame | None:
+        player_summaries = [
+            game_summary.get_player_summary(color)
+            for game_summary in self.all_game_summaries
+        ]
+
+        tr_collision_cols = [
+            "tr_table_num_states",
+            "tr_table_num_entries",
+            "returned_illegal_move",
+            "cumulative_illegal_moves",
+        ]
+
+        if any(
+            [
+                player_summary.has_search_summaries
+                for player_summary in player_summaries
+            ]
+        ):
+            batch_collision_df = pd.concat(
+                [
+                    summary.first_search_stats[tr_collision_cols]
+                    for summary in player_summaries
+                    if summary.has_search_summaries
+                ]
+            )
+            return batch_collision_df
+
+    @property
+    def all_collision_data(self) -> Dict[str, pd.DataFrame]:
+        result = {}
+        for color in [bindings.PieceColor.kBlk, bindings.PieceColor.kRed]:
+            result[color.name] = self.get_player_collision_data(color)
+        return result
+
 
 
 if __name__ == "__main__":

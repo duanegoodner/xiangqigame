@@ -103,6 +103,7 @@ public:
         if (entry.remaining_search_depth == remaining_search_depth) {
           result.found = true;
           result.table_entry = entry;
+          break;
         }
       }
     }
@@ -115,12 +116,13 @@ public:
       MinimaxResultType result_type,
       EqualScoreMoves &similar_moves
   ) {
-    TranspositionTableEntry transposition_table_entry{
-        search_depth,
-        result_type,
-        similar_moves
-    };
-    data_[state].push_back(transposition_table_entry);
+    // TranspositionTableEntry transposition_table_entry{
+    //     search_depth,
+    //     result_type,
+    //     similar_moves
+    // };
+    // data_[state].push_back(transposition_table_entry);
+    data_[state].emplace_back(search_depth, result_type, similar_moves);
     num_entries_++;
   };
 

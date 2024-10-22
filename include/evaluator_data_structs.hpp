@@ -101,6 +101,7 @@ public:
       : num_nodes_{}
       , result_depth_counts_{ResultDepthCounts(max_search_depth)}
       , transposition_table_hits_(ResultDepthCounts(max_search_depth))
+      , returned_illegal_move_{false}
       , tr_table_size_initial_{tr_table_size_initial}
       , tr_table_size_final_{} {}
 
@@ -141,6 +142,8 @@ public:
   void set_tr_table_size_final(TranspositionTableSize tr_table_size_final) {
     tr_table_size_final_ = tr_table_size_final;
   }
+  void set_returned_illegal_move(bool status) { returned_illegal_move_ = status; }
+  bool returned_illegal_move() { return returned_illegal_move_; }
 
 private:
   int num_nodes_;
@@ -149,6 +152,7 @@ private:
   ResultDepthCounts transposition_table_hits_;
   EqualScoreMoves similar_moves_;
   Move selected_move_;
+  bool returned_illegal_move_;
   TranspositionTableSize tr_table_size_initial_;
   TranspositionTableSize tr_table_size_final_;
 };
