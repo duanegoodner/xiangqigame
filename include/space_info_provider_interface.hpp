@@ -8,8 +8,8 @@
 using namespace gameboard;
 
 //! CRTP interface with methods for obtaining information about gameboard::BoardSpace
-//! objects, calculating legal gameboard::Move objects, executing a gameboard::Move, and un-doing
-//! a gameboard::ExecutedMove (concrete example = gameboard::GameBoard).
+//! objects, calculating legal gameboard::Move objects, executing a gameboard::Move, and
+//! un-doing a gameboard::ExecutedMove (concrete example = gameboard::GameBoard).
 template <typename ConcreteSpaceInfoProvider>
 class SpaceInfoProvider {
 public:
@@ -43,5 +43,9 @@ public:
   void AttachMoveCallback(function<void(ExecutedMove)> callback) {
     static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementAttachMoveCallback(callback
     );
+  }
+
+  bool IsDraw() {
+    return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementIsDraw();
   }
 };

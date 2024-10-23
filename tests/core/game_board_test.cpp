@@ -110,12 +110,16 @@ TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_02) {
 
   for (int round_trips = 0; round_trips < 2; round_trips++) {
     late_game_board.ExecuteMove(move_x);
-    EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() > 0);
+    auto avail_moves_a = late_game_board.CalcFinalMovesOf(PieceColor::kRed);
+    EXPECT_TRUE(avail_moves_a.Size() > 0);
+    
     late_game_board.ExecuteMove(move_y);
-    EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() > 0);
+    auto avail_moves_b = late_game_board.CalcFinalMovesOf(PieceColor::kRed);
+    EXPECT_TRUE(avail_moves_b.Size() > 0);
   }
   late_game_board.ExecuteMove(move_x);
-  EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() == 0);
+  auto avail_moves_c = late_game_board.CalcFinalMovesOf(PieceColor::kRed);
+  EXPECT_TRUE(avail_moves_c.Size() == 0);
 }
 
 TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_03) {

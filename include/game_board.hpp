@@ -15,8 +15,9 @@ using namespace gameboard;
 namespace gameboard {
 
 extern const BoardMapInt_t kStartingBoard;
-extern const int kRepeatPeriodsToCheck[5];
+extern const int kRepeatPeriodsToCheck[3];
 extern const int kRepeatPeriodsMaxAllowed;
+extern const int kMaxMovesWithoutCapture;
 
 //! Implements SpaceInfoProvider interface; stores piece positions, and exposes methods
 //! for calculating, executing, an un-doing moves..
@@ -30,10 +31,12 @@ public:
   MoveCollection ImplementCalcFinalMovesOf(PieceColor color);
   bool IsInCheck(PieceColor color);
   ExecutedMove ImplementExecuteMove(Move move);
+  bool IsCaptureMove(ExecutedMove executed_move);
   void ImplementUndoMove(ExecutedMove executed_move);
   GamePiece GetOccupantAt(BoardSpace space) const;
   const BoardMap_t &map() const;
   void ImplementAttachMoveCallback(const function<void(ExecutedMove)>& callback);
+  bool ImplementIsDraw();
   const std::map<PieceColor, vector<ExecutedMove>>& move_log() const;
 
 private:
@@ -49,6 +52,9 @@ private:
 
   //! Vectors of all moves that have been executed (and not un-done) by each player.
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
+
+  //! Number of moves executed since last time a piece was captured. 
+  int moves_since_last_capture_; 
 
   void UpdateHashCalculator(ExecutedMove executed_move);
   void SetOccupantAt(BoardSpace space, GamePiece piece);
