@@ -150,6 +150,7 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       //   .value("TrTableHitEvaluatorWins", kTrTableHitEvaluatorWins)
       .value("EvaluatorLoses", kEvaluatorLoses)
       .value("EvaluatorWins", kEvaluatorWins)
+      .value("Draw", kDraw)
       .value("FullyEvaluatedNode", kFullyEvaluatedNode)
       .value("StandardLeaf", kStandardLeaf)
       .value("AlphaPrune", kAlphaPrune)

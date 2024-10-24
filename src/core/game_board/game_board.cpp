@@ -63,7 +63,12 @@ PieceType GameBoard::ImplementGetType(BoardSpace space) const {
 
 MoveCollection GameBoard::ImplementCalcFinalMovesOf(PieceColor color) {
   auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
-  MoveCollection validated_moves;
+  MoveCollection validated_moves{};
+
+  if (IsDraw()) {
+    return validated_moves;
+  }
+
   validated_moves.moves.reserve(un_tested_moves.moves.size());
 
   for (auto move : un_tested_moves.moves) {
