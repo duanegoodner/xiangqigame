@@ -149,6 +149,11 @@ EqualScoreMoves MinimaxMoveEvaluator<
     EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &result_type) {
   auto empty_similar_moves = MoveCollection();
 
+  if (game_board_.IsDraw()) {
+    result_type = MinimaxResultType::kDraw;
+    return EqualScoreMoves{0, empty_similar_moves};
+  }
+
   if (cur_player == evaluating_player_) {
     result_type = MinimaxResultType::kEvaluatorLoses;
     return EqualScoreMoves{numeric_limits<Points_t>::min(), empty_similar_moves};

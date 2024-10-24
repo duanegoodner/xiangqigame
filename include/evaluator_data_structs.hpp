@@ -32,10 +32,11 @@ enum MinimaxResultType : size_t {
   kTrTableHit = 1,
   kEvaluatorLoses = 4,
   kEvaluatorWins = 5,
-  kFullyEvaluatedNode = 6,
-  kStandardLeaf = 7,
-  kAlphaPrune = 8,
-  kBetaPrune = 9,
+  kDraw = 6,
+  kFullyEvaluatedNode = 7,
+  kStandardLeaf = 8,
+  kAlphaPrune = 9,
+  kBetaPrune = 10,
   kMin = kUnknown,
   kMax = kBetaPrune
 };

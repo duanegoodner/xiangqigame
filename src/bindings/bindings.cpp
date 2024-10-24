@@ -150,6 +150,7 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       //   .value("TrTableHitEvaluatorWins", kTrTableHitEvaluatorWins)
       .value("EvaluatorLoses", kEvaluatorLoses)
       .value("EvaluatorWins", kEvaluatorWins)
+      .value("Draw", kDraw)
       .value("FullyEvaluatedNode", kFullyEvaluatedNode)
       .value("StandardLeaf", kStandardLeaf)
       .value("AlphaPrune", kAlphaPrune)
@@ -166,6 +167,7 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def("IsInCheck", &GameBoard::IsInCheck, "color"_a)
       .def("GetType", &GameBoard::GetType, "space"_a)
       .def_property_readonly("move_log", &GameBoard::move_log)
+      .def_property_readonly("is_draw", &GameBoard::IsDraw)
       .def("GetColor", &GameBoard::GetColor, "space"_a);
 
   m.def("opponent_of", &opponent_of);

@@ -173,6 +173,8 @@ class TerminalStatusReporter(GameStatusReporter):
             print("Red won the game.")
         if game_state == GameState.BLACK_WON:
             print("Black won the game.")
+        if game_state == GameState.DRAW:
+            print("Game ended in a draw.")
 
     def report_game_info(
         self,

@@ -107,30 +107,23 @@ class BatchTester:
 
 
 class BatchDataSummarizer:
-    def __init__(self, batch_id: str, custom_data_dir: Path = None):
-        self.batch_id = batch_id
-        self.custom_data_dir = custom_data_dir
-        self.data_dir = self.get_data_dir()
-        self.batch_df = pd.read_feather(
-            path=self.data_dir / f"{self.batch_id}.feather"
-        )
-
-    def get_data_dir(self) -> Path:
-        if self.custom_data_dir:
-            return self.custom_data_dir
+    def __init__(
+        self,
+        batch_dir: str | Path,
+    ):
+        if Path(batch_dir).is_absolute():
+            self.batch_dir = Path(batch_dir)
         else:
-            batch_data_dir = None
-            game_summaries_root = (
-                Path(__file__).parent.parent.parent / "data" / "game_summaries"
+            self.batch_dir = (
+                Path(__file__).parent.parent.parent
+                / "data"
+                / "game_summaries"
+                / str(batch_dir)
             )
-            for path in game_summaries_root.iterdir():
-                if path.name.startswith(self.batch_id):
-                    batch_data_dir = path
-            if batch_data_dir is None:
-                raise FileNotFoundError(
-                    f"Directory with {self.batch_id} in name not found."
-                )
-            return batch_data_dir
+        self.batch_id = self.batch_dir.name.split("-")[0]
+        self.batch_df = pd.read_feather(
+            path=self.batch_dir / f"{self.batch_id}.feather"
+        )
 
     @property
     def batch_summary_series(self) -> pd.Series:
@@ -205,10 +198,11 @@ class BatchDataSummarizer:
 
 
 class MultiBatchDataSummarizer:
-    def __init__(self, batch_ids: List[str]):
-        self.batch_ids = batch_ids
+    def __init__(self, batch_dirs: List[Path | str]):
+        self.batch_dirs = batch_dirs
         self.batch_data_summarizers: List[BatchDataSummarizer] = [
-            BatchDataSummarizer(batch_id=batch_id) for batch_id in batch_ids
+            BatchDataSummarizer(batch_dir=batch_dir)
+            for batch_dir in batch_dirs
         ]
 
     @property
@@ -222,32 +216,25 @@ class MultiBatchDataSummarizer:
 
 
 class FullBatchSummary:
-    def __init__(self, batch_id: str):
-        self.game_collection_id = batch_id
-        self.game_collection_dir = self.get_game_collection_dir()
+    def __init__(self, batch_dir: str):
+        if Path(batch_dir).is_absolute():
+            self.batch_dir = Path(batch_dir)
+        else:
+            self.batch_dir = (
+                Path(__file__).parent.parent.parent
+                / "data"
+                / "game_summaries"
+                / str(batch_dir)
+            )
+
         self.all_game_summaries: List[GameSummary] = (
             self.load_all_game_summaries()
         )
-        self.batch_data_summarizer = BatchDataSummarizer(batch_id=batch_id)
-
-    def get_game_collection_dir(self) -> Path:
-        output_root = (
-            Path(__file__).parent.parent.parent / "data" / "game_summaries"
-        )
-
-        game_collection_dir = None
-        for path in output_root.iterdir():
-            if path.name.startswith(self.game_collection_id):
-                game_collection_dir = path
-        if game_collection_dir is None:
-            raise FileNotFoundError(
-                f"Directory with {self.game_collection_id} in name not found."
-            )
-        return game_collection_dir
+        self.batch_data_summarizer = BatchDataSummarizer(batch_dir=batch_dir)
 
     def get_game_summary_paths(self) -> Dict[str, Path]:
         paths = {}
-        for path in self.game_collection_dir.iterdir():
+        for path in self.batch_dir.iterdir():
             if path.is_dir():
                 path_game_id = path.name.split("-")[0]
                 paths[path_game_id] = path / f"{path_game_id}.json"
@@ -262,6 +249,15 @@ class FullBatchSummary:
             game_summaries.append(import_game_summary(path=path))
 
         return game_summaries
+
+    @property
+    def games_basic_stats(self) -> pd.DataFrame:
+        return pd.DataFrame(
+            [game_summary.basic_stats for game_summary in self.all_game_summaries],
+            index=[
+                game_summary.game_id for game_summary in self.all_game_summaries
+            ],
+        )
 
     def get_player_collision_data(
         self, color: bindings.PieceColor
@@ -353,7 +349,7 @@ class FullBatchSummary:
             plt.scatter(
                 sorted_df["tr_table_num_states"],
                 sorted_df["cumulative_illegal_moves"],
-                color="blue"
+                color="blue",
             )
             # plt.scatter(x_data, y_data, color="blue", label="Data Points")
         plt.plot(
@@ -371,30 +367,27 @@ class FullBatchSummary:
 
 
 if __name__ == "__main__":
-    # settings_tester = BatchTester(
-    #     app_run_kwargs={
-    #         "red_strength": 2,
-    #         "black_strength": 2,
-    #         "save_summary": True,
-    #         "output_dir_suffix": "testing-batch-03",
-    #     },
-    #     num_games=3,
-    # )
-    #
-    # settings_tester.run_all_tests()
-
-    # my_game_collection_id = "20241016184729933778"
-    # full_batch_summary = FullBatchSummary(
-    #     game_collection_id=my_game_collection_id
-    # )
-
-    # batch_data_summarizer = BatchDataSummarizer(batch_id=my_game_collection_id)
-
-    my_batch_ids = [
-        "20241016220647854785",
-        "20241016220740560468",
+    my_batch_dirs = [
+        "20241023221443600060-BATCH-20-R-d3-k032-B-d3-k032",
+        "20241023221537744237-BATCH-20-R-d3-k064-B-d3-k064",
+        "20241023221623930853-BATCH-20-R-d3-k128-B-d3-k128",
     ]
 
-    multi_batch_summarizer = MultiBatchDataSummarizer(batch_ids=my_batch_ids)
+    full_batch_summary_032_bit = FullBatchSummary(
+        batch_dir=my_batch_dirs[0],
+    )
+    full_batch_summary_064_bit = FullBatchSummary(
+        batch_dir=my_batch_dirs[1],
+    )
+    full_batch_summary_128_bit = FullBatchSummary(
+        batch_dir=my_batch_dirs[2],
+    )
 
+    multi_batch_summarizer = MultiBatchDataSummarizer(batch_dirs=my_batch_dirs)
+
+    test_item = (
+        full_batch_summary_032_bit.all_game_summaries[2]
+        .get_player_summary(bindings.PieceColor.kBlk)
+        .tr_table_size_at_first_known_collision
+    )
     print("pause")

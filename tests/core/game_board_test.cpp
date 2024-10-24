@@ -21,9 +21,45 @@ protected:
   }};
 };
 
+const BoardMapInt_t kDrawTestBoard{{
+    {0, 0, 0, 1, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {-7, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {7, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, -1, 0, 0, 0, 0},
+}};
+
 // TEST_F(GameBoardTest, InitializesBoardState) {
 //   EXPECT_NE(gb_.board_state(), 0);
 // }
+
+TEST_F(GameBoardTest, DetectsDraw) {
+  GameBoard draw_game_board{kDrawTestBoard};
+
+  for (auto round_trip = 0; round_trip < 10; ++round_trip) {
+    for (auto idx = 0; idx < 6; ++idx) {
+      BoardSpace start{3, idx};
+      BoardSpace end{3, idx + 1};
+      Move move{start, end};
+      draw_game_board.ExecuteMove(move);
+    }
+
+    for (auto idx = 6; idx > 0; idx--) {
+      BoardSpace start{3, idx};
+      BoardSpace end{3, idx - 1};
+      Move move{start, end};
+      draw_game_board.ExecuteMove(move);
+    }
+  }
+  auto is_draw = draw_game_board.IsDraw();
+  auto red_available_moves = draw_game_board.CalcFinalMovesOf(PieceColor::kRed);
+  std::cout << draw_game_board.IsDraw() << std::endl;
+}
 
 TEST_F(GameBoardTest, GetsCorrectOccupants) {
   EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{0, 0}), 5);
@@ -110,18 +146,20 @@ TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_02) {
 
   for (int round_trips = 0; round_trips < 2; round_trips++) {
     late_game_board.ExecuteMove(move_x);
-    EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() > 0);
+    auto avail_moves_a = late_game_board.CalcFinalMovesOf(PieceColor::kRed);
+    EXPECT_TRUE(avail_moves_a.Size() > 0);
+
     late_game_board.ExecuteMove(move_y);
-    EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() > 0);
+    auto avail_moves_b = late_game_board.CalcFinalMovesOf(PieceColor::kRed);
+    EXPECT_TRUE(avail_moves_b.Size() > 0);
   }
   late_game_board.ExecuteMove(move_x);
-  EXPECT_TRUE(late_game_board.CalcFinalMovesOf(PieceColor::kRed).Size() == 0);
+  auto avail_moves_c = late_game_board.CalcFinalMovesOf(PieceColor::kRed);
+  EXPECT_TRUE(avail_moves_c.Size() == 0);
 }
 
 TEST_F(GameBoardTest, ProhibitsTripleRepeatMovePeriod_03) {
-  GameBoard late_game_board(
-      kRepeatMoveTestBoard
-  );
+  GameBoard late_game_board(kRepeatMoveTestBoard);
   auto red_king_position_a = BoardSpace{9, 4};
   auto red_king_position_b = BoardSpace{9, 3};
   auto red_king_position_c = BoardSpace{9, 5};

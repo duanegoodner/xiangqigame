@@ -29,25 +29,28 @@ const BoardMapInt_t kStartingBoard = {{
 }};
 
 //! Max allowed repetitions of prohibited move sequence lengths.
-const int kRepeatPeriodsToCheck[15] = {2, 3, 4, 5, 6};
+const int kRepeatPeriodsToCheck[3] = {2, 3, 4};
 
 //! Repeated move sequence lengths forbidden under move repetition rules.
 //! If kRepeatPeriodsToCheck = {2, 3, 4} and kRepeatPeriodsMaxAllowed = 2, then the
 //! following sequences are probibited:
-//! ABABAB, ABCABCABC, ABCDABCDABCD
+//! ABABAB, ABCABCABC, ABCDABCDABCD, ABCDEABCDEABCDE, ABCDEFABCDEFABCDEF
 const int kRepeatPeriodsMaxAllowed = 2;
 
+const int kMaxMovesWithoutCapture = 120;
+
 //! Initializes a gameboard::GameBoard from array of pieces represented as integers.
-//! @param starting_board An array of integers representing pieces on the board. 
+//! @param starting_board An array of integers representing pieces on the board.
 GameBoard::GameBoard(const BoardMapInt_t starting_board)
     : board_map_{int_board_to_game_pieces(starting_board)}
-    , move_calculator_{MoveCalculator()} {}
+    , move_calculator_{MoveCalculator()}
+    , moves_since_last_capture_{} {}
 
 GameBoard::GameBoard()
     : GameBoard(kStartingBoard) {}
 
 vector<BoardSpace> GameBoard::ImplementGetAllSpacesOccupiedBy(PieceColor color) const {
-  return get_all_spaces_occupied_by(board_map_, color); 
+  return get_all_spaces_occupied_by(board_map_, color);
 }
 
 PieceColor GameBoard::ImplementGetColor(BoardSpace space) const {
@@ -60,7 +63,12 @@ PieceType GameBoard::ImplementGetType(BoardSpace space) const {
 
 MoveCollection GameBoard::ImplementCalcFinalMovesOf(PieceColor color) {
   auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
-  MoveCollection validated_moves;
+  MoveCollection validated_moves{};
+
+  if (IsDraw()) {
+    return validated_moves;
+  }
+
   validated_moves.moves.reserve(un_tested_moves.moves.size());
 
   for (auto move : un_tested_moves.moves) {
@@ -92,17 +100,28 @@ ExecutedMove GameBoard::ImplementExecuteMove(Move move) {
   SetOccupantAt(move.end, moving_piece);
   SetOccupantAt(move.start, GamePiece(PieceType::kNnn, PieceColor::kNul));
 
-  auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
+  auto executed_move =
+      ExecutedMove{move, moving_piece, destination_piece, moves_since_last_capture_};
   UpdateHashCalculator(executed_move);
   AddToMoveLog(executed_move);
+  if (!IsCaptureMove(executed_move)) {
+    moves_since_last_capture_++;
+  } else {
+    moves_since_last_capture_ = 0;
+  }
 
-  return ExecutedMove{move, moving_piece, destination_piece};
+  return executed_move;
 };
+
+bool GameBoard::IsCaptureMove(ExecutedMove executed_move) {
+  return executed_move.destination_piece != PieceColor::kNul;
+}
 
 void GameBoard::ImplementUndoMove(ExecutedMove executed_move) {
   SetOccupantAt(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupantAt(executed_move.spaces.end, executed_move.destination_piece);
   UpdateHashCalculator(executed_move);
+  moves_since_last_capture_ = executed_move.moves_since_last_capture;
   RemoveFromMoveLog(executed_move);
 };
 
@@ -112,11 +131,18 @@ GamePiece GameBoard::GetOccupantAt(BoardSpace space) const {
 
 const BoardMap_t &GameBoard::map() const { return board_map_; }
 
-void GameBoard::ImplementAttachMoveCallback(const function<void(ExecutedMove)>& callback) {
+void GameBoard::ImplementAttachMoveCallback(const function<void(ExecutedMove)> &callback
+) {
   move_callbacks_.emplace_back(callback);
 }
 
-const std::map<PieceColor, vector<ExecutedMove>>& GameBoard::move_log() const { return move_log_; }
+bool GameBoard::ImplementIsDraw() {
+  return moves_since_last_capture_ >= kMaxMovesWithoutCapture;
+}
+
+const std::map<PieceColor, vector<ExecutedMove>> &GameBoard::move_log() const {
+  return move_log_;
+}
 
 void GameBoard::UpdateHashCalculator(ExecutedMove executed_move) {
   for (const auto &callback : move_callbacks_) {
