@@ -131,7 +131,10 @@ class Game:
             self.send_game_info_to_status_reporter()
             avail_moves = self._board.CalcFinalMovesOf(self._whose_turn)
             if avail_moves.size() == 0:
-                self.set_winner(bindings.opponent_of(self._whose_turn))
+                if self._board.is_draw:
+                    self.set_game_state(GameState.DRAW)
+                else:
+                    self.set_winner(bindings.opponent_of(self._whose_turn))
                 break
             self.player_turn(avail_moves=avail_moves)
             self.change_whose_turn()

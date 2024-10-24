@@ -368,9 +368,9 @@ class FullBatchSummary:
 
 if __name__ == "__main__":
     my_batch_dirs = [
-        "20241023153411705876-BATCH-100-R-d2-k032-B-d2-k032",
-        "20241023153611738579-BATCH-100-R-d2-k064-B-d2-k064",
-        "20241023153811028455-BATCH-100-R-d2-k128-B-d2-k128",
+        "20241023221443600060-BATCH-20-R-d3-k032-B-d3-k032",
+        "20241023221537744237-BATCH-20-R-d3-k064-B-d3-k064",
+        "20241023221623930853-BATCH-20-R-d3-k128-B-d3-k128",
     ]
 
     full_batch_summary_032_bit = FullBatchSummary(

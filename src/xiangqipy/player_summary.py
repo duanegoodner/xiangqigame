@@ -216,7 +216,7 @@ class PlayerSummary:
         return df
 
     @property
-    def selection_stats_mean(self) -> pd.Series | None:
+    def selecton_stats(self) -> pd.Series | None:
         """
         Pandas Series with mean & max nodes per move, mean & max time per move,
         and number of known hash collisions.
