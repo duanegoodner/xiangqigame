@@ -86,7 +86,7 @@ class GameSummary(msgspec.Struct):
         for player in [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:
             player_summary = self.get_player_summary(player=player)
             if player_summary.has_search_summaries:
-                player_stats = player_summary.selecton_stats
+                player_stats = player_summary.selection_stats
                 player_stats.index = [
                     f"{player.name}_{idx}"
                     for idx in player_stats.index

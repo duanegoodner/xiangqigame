@@ -151,8 +151,8 @@ class EqualScoreMoves:
 
 @dataclass
 class TranspositionTableSize:
-    num_entries: int
-    num_states: int
+    num_entries: int | None
+    num_states: int | None
 
     @classmethod
     def from_core_transposition_table_size(cls, core_transposition_table_size):
@@ -160,6 +160,12 @@ class TranspositionTableSize:
             num_entries=core_transposition_table_size.num_entries,
             num_states=core_transposition_table_size.num_states,
         )
+
+
+@dataclass
+class TranspositionTableSizesAtEvents:
+    first_collision: TranspositionTableSize | None
+    end_game: TranspositionTableSize | None
 
 
 @dataclass

@@ -1,18 +1,19 @@
 import re
+from collections import OrderedDict
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from statistics import covariance
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Literal, Tuple
 
 import numpy as np
 import pandas as pd
 import xiangqi_bindings as bindings
+from batch_collision_analyzer import PoissonCollisionAnalyzer
 from matplotlib import pyplot as plt
-from scipy.interpolate import UnivariateSpline
 from scipy.optimize import curve_fit
 
 import xiangqipy.app as app
+import xiangqipy.core_dataclass_mirrors as cdm
 from xiangqipy.game_summary import GameSummary
 from xiangqipy.game_summary_io import import_game_summary
 
@@ -227,10 +228,11 @@ class FullBatchSummary:
                 / str(batch_dir)
             )
 
-        self.all_game_summaries: List[GameSummary] = (
-            self.load_all_game_summaries()
-        )
-        self.batch_data_summarizer = BatchDataSummarizer(batch_dir=batch_dir)
+        self.game_summaries: List[GameSummary] = self.load_game_summaries()
+        # self.size_collision_analyzer = TrSizeCollisionAnalyzer(
+        #     games_basic_stats=self.games_basic_stats
+        # )
+        # self.batch_data_summarizer = BatchDataSummarizer(batch_dir=batch_dir)
 
     def get_game_summary_paths(self) -> Dict[str, Path]:
         paths = {}
@@ -241,7 +243,102 @@ class FullBatchSummary:
 
         return paths
 
-    def load_all_game_summaries(self) -> List[GameSummary]:
+    @property
+    def tr_table_sizes_at_events(
+        self,
+    ) -> Dict[str, Dict[str, cdm.TranspositionTableSizesAtEvents]]:
+        results = {}
+        for color in [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:
+            player_result = {
+                game_summary.game_id: game_summary.get_player_summary(
+                    player=color
+                ).tr_table_sizes_at_events
+                for game_summary in self.game_summaries
+            }
+            results[color.name] = player_result
+
+        return results
+
+    def get_sorted_tr_size_event_info(
+        self,
+        color: bindings.PieceColor,
+        event: Literal["end_game", "first_collision"],
+        size_type: Literal["num_entries", "num_states"],
+        reverse: bool = False,
+    ) -> tuple[tuple[str, int], ...]:
+        result_list = []
+        for game_summary in self.game_summaries:
+            player_summary = game_summary.get_player_summary(player=color)
+            events_info = player_summary.tr_table_sizes_at_events
+            single_event_info: cdm.TranspositionTableSize = getattr(
+                events_info, event
+            )
+            value = getattr(single_event_info, size_type)
+            if value is not None:
+                result_list.append((game_summary.game_id, value))
+        result_list.sort(key=lambda x: x[1], reverse=reverse)
+
+        return tuple(result_list)
+
+    def tr_event_size_scan(
+        self,
+        color: bindings.PieceColor,
+        size_type: Literal["num_entries", "num_states"],
+    ) -> np.ndarray:
+        first_collision_tuple = self.get_sorted_tr_size_event_info(
+            color=color, event="first_collision", size_type=size_type
+        )
+        first_collision_dict = dict(first_collision_tuple)
+
+        end_game_tuple = self.get_sorted_tr_size_event_info(
+            color=color, event="end_game", size_type=size_type
+        )
+
+        num_rows = len(first_collision_tuple) + len(end_game_tuple) + 1
+        num_cols = 3
+        result = np.zeros(shape=(num_rows, num_cols), dtype=np.int64)
+
+        size = num_with_collision_at_size = 0
+        num_tables_at_size = len(end_game_tuple)
+
+        result_idx = collision_idx = end_game_idx = 0
+
+        result[result_idx, :] = [
+            size,
+            num_tables_at_size,
+            num_with_collision_at_size,
+        ]
+
+        for result_idx in range(1, num_rows):
+            if collision_idx < len(first_collision_tuple):
+                next_first_collision = first_collision_tuple[collision_idx]
+                next_end_game = end_game_tuple[end_game_idx]
+                if next_first_collision[1] <= next_end_game[1]:
+                    size = next_first_collision[1]
+                    num_with_collision_at_size += 1
+                    collision_idx += 1
+                else:
+                    size = next_end_game[1]
+                    num_tables_at_size -= 1
+                    end_game_idx += 1
+                    if next_end_game[0] in first_collision_dict:
+                        num_with_collision_at_size -= 1
+            else:
+                next_end_game = end_game_tuple[end_game_idx]
+                size = next_end_game[1]
+                num_tables_at_size -= 1
+                end_game_idx += 1
+                if next_end_game[0] in first_collision_dict:
+                    num_with_collision_at_size -= 1
+
+            result[result_idx, :] = [
+                size,
+                num_tables_at_size,
+                num_with_collision_at_size,
+            ]
+        return result
+
+    def load_game_summaries(self) -> List[GameSummary]:
         game_summary_paths = self.get_game_summary_paths()
 
         game_summaries = []
@@ -253,117 +350,26 @@ class FullBatchSummary:
     @property
     def games_basic_stats(self) -> pd.DataFrame:
         return pd.DataFrame(
-            [game_summary.basic_stats for game_summary in self.all_game_summaries],
+            [game_summary.basic_stats for game_summary in self.game_summaries],
             index=[
-                game_summary.game_id for game_summary in self.all_game_summaries
+                game_summary.game_id for game_summary in self.game_summaries
             ],
         )
 
-    def get_player_collision_data(
-        self, color: bindings.PieceColor
-    ) -> pd.DataFrame | None:
-        player_summaries = [
-            game_summary.get_player_summary(color)
-            for game_summary in self.all_game_summaries
-        ]
-
-        tr_collision_cols = [
-            "tr_table_num_states",
-            "tr_table_num_entries",
-            "returned_illegal_move",
-            "cumulative_illegal_moves",
-        ]
-
-        if any(
-            [
-                player_summary.has_search_summaries
-                for player_summary in player_summaries
-            ]
-        ):
-
-            data_frames = []
-            for summary, game_summary in zip(
-                player_summaries, self.all_game_summaries
-            ):
-                if summary.has_search_summaries:
-                    # Create a copy to avoid modifying the original DataFrame
-                    df = summary.first_search_stats[tr_collision_cols].copy()
-                    df["game_id"] = (
-                        game_summary.game_id
-                    )  # Append the game_id column
-                    df.reset_index(drop=True, inplace=True)  # Reset the index
-                    data_frames.append(df)
-
-            # Concatenate all the prepared DataFrames
-            batch_collision_df = pd.concat(data_frames, axis=0)
-
-            # Reorder columns to make 'game_id' the first column
-            columns = ["game_id"] + [
-                col for col in batch_collision_df.columns if col != "game_id"
-            ]
-            batch_collision_df = batch_collision_df[columns]
-
-            return batch_collision_df
-
     @property
-    def all_collision_data(self) -> Dict[str, pd.DataFrame]:
-        result = {}
-        for color in [bindings.PieceColor.kBlk, bindings.PieceColor.kRed]:
-            result[color.name] = self.get_player_collision_data(color)
-        return result
-
-    def plot_all_collision_data(
-        self, color: bindings.PieceColor, by_game_id: bool = True
-    ):
-        df = self.all_collision_data[color.name]
-        # fig, ax = plt.subplots()
-
-        def poisson_collision_model(k, n):
-            return k**2 / (2 * n)
-
-        sorted_df = df.sort_values(by="tr_table_num_entries", ascending=True)
-
-        x_data = sorted_df["tr_table_num_states"]
-        y_data = sorted_df["cumulative_illegal_moves"]
-        labels = sorted_df["game_id"].unique()
-        data_point_colors = plt.cm.get_cmap("tab20", len(labels))
-
-        params, params_covariance, *_ = curve_fit(
-            poisson_collision_model, x_data, y_data
-        )
-
-        fitted_collisions = poisson_collision_model(x_data, *params)
-
-        plt.figure(figsize=(10, 6))
-
-        if by_game_id:
-            for i, label in enumerate(labels):
-                subset = sorted_df[sorted_df["game_id"] == label]
-                plt.scatter(
-                    subset["tr_table_num_states"],
-                    subset["cumulative_illegal_moves"],
-                    color=data_point_colors(i),
-                    label=label,
-                )
-        else:
-            plt.scatter(
-                sorted_df["tr_table_num_states"],
-                sorted_df["cumulative_illegal_moves"],
-                color="blue",
-            )
-            # plt.scatter(x_data, y_data, color="blue", label="Data Points")
-        plt.plot(
-            x_data,
-            fitted_collisions,
-            label="Fitted Poisson Approximation Model",
-            color="red",
-        )
-
-        plt.title("Exponential Fit to Data")
-        plt.xlabel("X values")
-        plt.ylabel("Cumulative Counts")
-        # plt.legend()
-        plt.show()
+    def tr_table_size_df(self) -> pd.DataFrame:
+        return self.games_basic_stats[
+            [
+                "kRed_tr_table_num_states_first_known_collision",
+                "kRed_tr_table_num_entries_first_known_collision",
+                "kRed_tr_table_num_states_final",
+                "kRed_tr_table_num_entries_final",
+                "kBlk_tr_table_num_states_first_known_collision",
+                "kBlk_tr_table_num_entries_first_known_collision",
+                "kBlk_tr_table_num_states_final",
+                "kBlk_tr_table_num_entries_final",
+            ]
+        ]
 
 
 if __name__ == "__main__":
@@ -383,11 +389,27 @@ if __name__ == "__main__":
         batch_dir=my_batch_dirs[2],
     )
 
-    multi_batch_summarizer = MultiBatchDataSummarizer(batch_dirs=my_batch_dirs)
+    # multi_batch_summarizer = MultiBatchDataSummarizer(batch_dirs=my_batch_dirs)
+    #
+    # collision_analyzer_032bit = BatchCollisionAnalyzer(
+    #     game_summaries=full_batch_summary_032_bit.game_summaries
+    # )
+    # collision_analyzer_032bit.plot_player_collision_data(
+    #     color=bindings.PieceColor.kBlk
+    # )
 
-    test_item = (
-        full_batch_summary_032_bit.all_game_summaries[2]
-        .get_player_summary(bindings.PieceColor.kBlk)
-        .tr_table_size_at_first_known_collision
+    my_result_a = full_batch_summary_032_bit.get_sorted_tr_size_event_info(
+        color=bindings.PieceColor.kRed,
+        event="first_collision",
+        size_type="num_states",
     )
+    my_result_b = full_batch_summary_064_bit.get_sorted_tr_size_event_info(
+        color=bindings.PieceColor.kRed,
+        event="end_game",
+        size_type="num_states",
+    )
+    my_result_c = full_batch_summary_032_bit.tr_event_size_scan(
+        color=bindings.PieceColor.kRed, size_type="num_states"
+    )
+
     print("pause")

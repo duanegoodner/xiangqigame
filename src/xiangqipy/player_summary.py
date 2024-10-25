@@ -10,11 +10,10 @@ from typing import Dict, List
 import numpy as np
 import pandas as pd
 import xiangqi_bindings as bindings
-from pandas.core.sample import process_sampling_size
 
 import xiangqipy.core_dataclass_mirrors as cdm
 from xiangqipy.enums import PlayerType, EvaluatorType
-from xiangqipy.core_dataclass_mirrors import PointsT
+from xiangqipy.core_dataclass_mirrors import PointsT, TranspositionTableSize
 
 
 @dataclass
@@ -124,21 +123,31 @@ class PlayerSummary:
         return df
 
     @property
-    def tr_table_size_at_first_known_collision(
+    def tr_table_size_first_collision(
         self,
-    ) -> cdm.TranspositionTableSize | None:
-        if not self.has_search_summaries:
-            return None
-        if self.search_summaries.extra_searches:
+    ) -> cdm.TranspositionTableSize:
+        if self.has_search_summaries and self.search_summaries.extra_searches:
             return self.search_summaries.extra_searches[
                 min(self.search_summaries.extra_searches)
             ].tr_table_size_initial
+        else:
+            return TranspositionTableSize(num_entries=None, num_states=None)
 
     @property
-    def tr_table_size_final(self) -> cdm.TranspositionTableSize | None:
-        if not self.has_search_summaries:
-            return None
-        return self.search_summaries.first_searches[-1].tr_table_size_final
+    def tr_table_size_end_game(self) -> cdm.TranspositionTableSize:
+        if self.has_search_summaries:
+            return self.search_summaries.first_searches[-1].tr_table_size_final
+        else:
+            return cdm.TranspositionTableSize(
+                num_entries=None, num_states=None
+            )
+
+    @property
+    def tr_table_sizes_at_events(self) -> cdm.TranspositionTableSizesAtEvents:
+        return cdm.TranspositionTableSizesAtEvents(
+            first_collision=self.tr_table_size_first_collision,
+            end_game=self.tr_table_size_end_game,
+        )
 
     @property
     def first_search_stats(self) -> pd.DataFrame | None:
@@ -216,7 +225,7 @@ class PlayerSummary:
         return df
 
     @property
-    def selecton_stats(self) -> pd.Series | None:
+    def selection_stats(self) -> pd.Series | None:
         """
         Pandas Series with mean & max nodes per move, mean & max time per move,
         and number of known hash collisions.
@@ -246,27 +255,10 @@ class PlayerSummary:
                     time_per_node_ns,
                     collisions_per_move,
                     collisions_per_node,
-                    (
-                        self.tr_table_size_at_first_known_collision.num_states
-                        if self.tr_table_size_at_first_known_collision
-                        else None
-                    ),
-                    (
-                        self.tr_table_size_at_first_known_collision.num_entries
-                        if self.tr_table_size_at_first_known_collision
-                        else None
-                    ),
-                    (
-                        self.tr_table_size_final.num_states
-                        if self.tr_table_size_final
-                        else None
-                    ),
-                    (
-                        self.tr_table_size_final.num_entries
-                        if self.tr_table_size_final
-                        else None
-                    ),
-
+                    self.tr_table_size_first_collision.num_states,
+                    self.tr_table_size_first_collision.num_entries,
+                    self.tr_table_size_end_game.num_states,
+                    self.tr_table_size_end_game.num_entries,
                 ],
                 index=[
                     "search_depth",
@@ -276,9 +268,9 @@ class PlayerSummary:
                     "time_per_node_ns",
                     "collisions_per_move",
                     "collisions_per_node",
-                    "tr_table_num_states_first_known_collision",
-                    "tr_table_num_entries_first_known_collision",
-                    "tr_table_num_states_final",
-                    "tr_table_num_entries_final",
+                    "tr_table_num_states_first_collision",
+                    "tr_table_num_entries_first_collision",
+                    "tr_table_num_states_end_game",
+                    "tr_table_num_entries_end_game",
                 ],
             )
