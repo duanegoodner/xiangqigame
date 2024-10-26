@@ -216,6 +216,20 @@ class MultiBatchDataSummarizer:
         )
 
 
+@dataclass
+class TranspositionTableEvent:
+    game_id: str
+    event_type: Literal["end_game", "first_collision"]
+    size_type: Literal["num_entries", "num_states"]
+    table_size: int
+
+    def __lt__(self, other):
+        if self.table_size != other.table_size:
+            return self.table_size < other.table_size
+        else:
+            return self.event_type == "first_collision"
+
+
 class FullBatchSummary:
     def __init__(self, batch_dir: str):
         if Path(batch_dir).is_absolute():
@@ -243,100 +257,120 @@ class FullBatchSummary:
 
         return paths
 
-    @property
-    def tr_table_sizes_at_events(
-        self,
-    ) -> Dict[str, Dict[str, cdm.TranspositionTableSizesAtEvents]]:
-        results = {}
-        for color in [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:
-            player_result = {
-                game_summary.game_id: game_summary.get_player_summary(
-                    player=color
-                ).tr_table_sizes_at_events
-                for game_summary in self.game_summaries
-            }
-            results[color.name] = player_result
-
-        return results
+    def get_transposition_table_events(self, color: bindings.PieceColor):
+        result_list = []
 
     def get_sorted_tr_size_event_info(
         self,
         color: bindings.PieceColor,
-        event: Literal["end_game", "first_collision"],
-        size_type: Literal["num_entries", "num_states"],
-        reverse: bool = False,
-    ) -> tuple[tuple[str, int], ...]:
+        size_type: Literal["num_entries", "num_states"] = "num_states",
+    ) -> tuple[TranspositionTableEvent, ...]:
         result_list = []
         for game_summary in self.game_summaries:
             player_summary = game_summary.get_player_summary(player=color)
             events_info = player_summary.tr_table_sizes_at_events
-            single_event_info: cdm.TranspositionTableSize = getattr(
-                events_info, event
+            result_list.append(
+                TranspositionTableEvent(
+                    game_id=game_summary.game_id,
+                    event_type="first_collision",
+                    size_type=size_type,
+                    table_size=getattr(events_info.first_collision, size_type),
+                )
             )
-            value = getattr(single_event_info, size_type)
-            if value is not None:
-                result_list.append((game_summary.game_id, value))
-        result_list.sort(key=lambda x: x[1], reverse=reverse)
+            result_list.append(
+                TranspositionTableEvent(
+                    game_id=game_summary.game_id,
+                    event_type="end_game",
+                    size_type=size_type,
+                    table_size=getattr(events_info.end_game, size_type),
+                )
+            )
+        result_list = [
+            item for item in result_list if item.table_size is not None
+        ]
+
+        result_list.sort(reverse=False)
 
         return tuple(result_list)
 
-    def tr_event_size_scan(
+    def scan_tr_event_size(
         self,
         color: bindings.PieceColor,
-        size_type: Literal["num_entries", "num_states"],
-    ) -> np.ndarray:
-        first_collision_tuple = self.get_sorted_tr_size_event_info(
-            color=color, event="first_collision", size_type=size_type
-        )
-        first_collision_dict = dict(first_collision_tuple)
+        size_type: Literal["num_entries", "num_states"] = "num_states",
+    ) -> pd.DataFrame:
 
-        end_game_tuple = self.get_sorted_tr_size_event_info(
-            color=color, event="end_game", size_type=size_type
+        event_info = self.get_sorted_tr_size_event_info(
+            color=color, size_type=size_type
         )
+        first_collisions_dict = {
+            item.game_id: item.table_size
+            for item in event_info
+            if item.event_type == "first_collision"
+        }
 
-        num_rows = len(first_collision_tuple) + len(end_game_tuple) + 1
+        num_rows = len(event_info) + 1
         num_cols = 3
         result = np.zeros(shape=(num_rows, num_cols), dtype=np.int64)
+        table_size = num_tables_with_collision = 0
+        num_tables = len(event_info) - len(first_collisions_dict)
+        result[0, :] = [table_size, num_tables, num_tables_with_collision]
 
-        size = num_with_collision_at_size = 0
-        num_tables_at_size = len(end_game_tuple)
-
-        result_idx = collision_idx = end_game_idx = 0
-
-        result[result_idx, :] = [
-            size,
-            num_tables_at_size,
-            num_with_collision_at_size,
-        ]
-
-        for result_idx in range(1, num_rows):
-            if collision_idx < len(first_collision_tuple):
-                next_first_collision = first_collision_tuple[collision_idx]
-                next_end_game = end_game_tuple[end_game_idx]
-                if next_first_collision[1] <= next_end_game[1]:
-                    size = next_first_collision[1]
-                    num_with_collision_at_size += 1
-                    collision_idx += 1
-                else:
-                    size = next_end_game[1]
-                    num_tables_at_size -= 1
-                    end_game_idx += 1
-                    if next_end_game[0] in first_collision_dict:
-                        num_with_collision_at_size -= 1
-            else:
-                next_end_game = end_game_tuple[end_game_idx]
-                size = next_end_game[1]
-                num_tables_at_size -= 1
-                end_game_idx += 1
-                if next_end_game[0] in first_collision_dict:
-                    num_with_collision_at_size -= 1
-
-            result[result_idx, :] = [
-                size,
-                num_tables_at_size,
-                num_with_collision_at_size,
+        for idx, event in enumerate(event_info):
+            table_size = event.table_size
+            if event.event_type == "first_collision":
+                num_tables_with_collision += 1
+            if event.event_type == "end_game":
+                num_tables -= 1
+                if (
+                    event.game_id in first_collisions_dict
+                    and first_collisions_dict[event.game_id] <= table_size
+                ):
+                    num_tables_with_collision -= 1
+            result[idx + 1, :] = [
+                table_size,
+                num_tables,
+                num_tables_with_collision,
             ]
+        df = pd.DataFrame(
+            result,
+            columns=["table_size", "num_tables", "num_tables_with_collision"],
+        )
+        df["fraction_orig_tables"] = df["num_tables"] / (
+            len(event_info) - len(first_collisions_dict)
+        )
+        df["fraction_tables_with_collision"] = (
+            df["num_tables_with_collision"] / df["num_tables"]
+        )
+
+        return df
+
+    @property
+    def tr_event_size_data(self) -> dict[str, pd.DataFrame]:
+        result = {}
+        for color in [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:
+            result[color.name] = self.scan_tr_event_size(color=color)
         return result
+
+    def plot_tr_event_size_data(self):
+        for color in [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:
+            if any(
+                [
+                    game_summary.get_player_summary(
+                        player=color
+                    ).has_search_summaries
+                    for game_summary in self.game_summaries
+                ]
+            ):
+                df = self.tr_event_size_data[color.name]
+                fig, ax1 = plt.subplots()
+                ax1.set_ylabel("Fraction remaining tables at size")
+                ax1.plot(df["table_size"], df["fraction_orig_tables"])
+                ax2 = ax1.twinx()
+                ax2.set_ylabel("Fraction tables with collision")
+                ax2.plot(df["table_size"], df["fraction_tables_with_collision"])
+
+                plt.show()
+
 
     def load_game_summaries(self) -> List[GameSummary]:
         game_summary_paths = self.get_game_summary_paths()
@@ -398,18 +432,8 @@ if __name__ == "__main__":
     #     color=bindings.PieceColor.kBlk
     # )
 
-    my_result_a = full_batch_summary_032_bit.get_sorted_tr_size_event_info(
-        color=bindings.PieceColor.kRed,
-        event="first_collision",
-        size_type="num_states",
-    )
-    my_result_b = full_batch_summary_064_bit.get_sorted_tr_size_event_info(
-        color=bindings.PieceColor.kRed,
-        event="end_game",
-        size_type="num_states",
-    )
-    my_result_c = full_batch_summary_032_bit.tr_event_size_scan(
-        color=bindings.PieceColor.kRed, size_type="num_states"
-    )
+    full_batch_summary_032_bit.plot_tr_event_size_data()
+    full_batch_summary_064_bit.plot_tr_event_size_data()
+    full_batch_summary_128_bit.plot_tr_event_size_data()
 
     print("pause")
