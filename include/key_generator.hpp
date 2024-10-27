@@ -11,7 +11,43 @@
 namespace boardstate {
 
 template <typename IntType>
-class KeyGeneratorNew {
+class PseudoRandomKeyGenerator {
+public:
+  PseudoRandomKeyGenerator()
+      : seed_{std::random_device{}()}
+      , prng_{seed_} {}
+
+  PseudoRandomKeyGenerator(std::random_device::result_type seed)
+      : seed_{seed}
+      , prng_{seed_} {}
+
+  //! Generates a pseudorandom IntType value using mt19937.
+  //! The 0xFFFFFFFF bit mask is used b/c std::mt19937 uses std::uint_fast32_t which is a
+  //! 64-bit integer on 64-bit systems (but still only uses the lower 32 bits).
+  //! See discussion at:
+  //! https://stackoverflow.com/questions/63601328/why-do-std-implementations-of-mt19937-have-double-sizeof-as-boost-version
+  IntType GenerateKey() {
+    IntType result = 0;
+    auto bits_per_block = 8 * sizeof(uint32_t);
+    auto blocks_per_int = sizeof(IntType) / sizeof(uint32_t);
+    for (auto idx = 0; idx < blocks_per_int; ++idx) {
+      result <<= bits_per_block;
+      result |= static_cast<IntType>(prng_() & 0xFFFFFFFF);
+    }
+    return result;
+  }
+
+  std::random_device::result_type seed() { return seed_; }
+
+private:
+  std::random_device::result_type seed_;
+  std::mt19937 prng_;
+};
+
+//! Template for class that generates random integer values of IntType.
+//! Uses std::random_device to build ints in 32-bit blocks.
+template <typename IntType>
+class RandomKeyGenerator {
 public:
   IntType GenerateKey() {
     IntType result = 0;
@@ -48,48 +84,5 @@ void PrintHex(IntType num) {
   }
   std::cout << std::dec << std::endl; // Reset to decimal output
 }
-
-// //! Used by boardstate::ZobristKeys to generate hash keys. Supports 64-bit and 128-bit
-// //! keys.
-// class KeyGenerator {
-// public:
-//   KeyGenerator(unsigned long seed = std::random_device{}())
-//       : gen_64_{seed} {}
-
-//   template <typename T>
-//   T GenerateKey();
-
-//   template <typename T>
-//   void DisplayKey(T key);
-
-// private:
-//   std::mt19937_64 gen_64_;
-// };
-
-// template <>
-// inline uint64_t KeyGenerator::GenerateKey<uint64_t>() {
-//   return gen_64_();
-// }
-
-// template <>
-// inline void KeyGenerator::DisplayKey(uint64_t key) {
-//   std::cout << "all bits = " << std::bitset<64>(key) << std::endl;
-// }
-
-// template <>
-// inline __uint128_t KeyGenerator::GenerateKey<__uint128_t>() {
-//   uint64_t high_bits = gen_64_();
-//   uint64_t low_bits = gen_64_();
-//   __uint128_t all_bits = ((__uint128_t)high_bits << 64) | low_bits;
-//   return all_bits;
-// }
-
-// template <>
-// inline void KeyGenerator::DisplayKey(__uint128_t key) {
-//   uint64_t hi_bits = static_cast<uint64_t>(key >> 64);
-//   uint64_t lo_bits = static_cast<uint64_t>(key);
-//   std::cout << "hi bits = " << std::bitset<64>(hi_bits) << std::endl;
-//   std::cout << "lo bits = " << std::bitset<64>(lo_bits) << std::endl;
-// }
 
 } // namespace boardstate
