@@ -237,12 +237,13 @@ class PlayerSummary:
             time_per_node_ns = self.first_search_stats[
                 "mean_time_per_node_ns"
             ].mean()
+            num_collisions = len(self.search_summaries.extra_searches)
             collisions_per_move = (
-                len(self.search_summaries.extra_searches)
+                num_collisions
                 / self.player_move_count
             )
             collisions_per_node = (
-                len(self.search_summaries.extra_searches)
+                num_collisions
                 / self.first_search_stats["num_nodes"].sum()
             )
 
@@ -253,6 +254,7 @@ class PlayerSummary:
                     nodes_per_move,
                     time_per_move_s,
                     time_per_node_ns,
+                    num_collisions,
                     collisions_per_move,
                     collisions_per_node,
                     self.tr_table_size_first_collision.num_states,
@@ -266,6 +268,7 @@ class PlayerSummary:
                     "nodes_per_move",
                     "time_per_move_s",
                     "time_per_node_ns",
+                    "num_collisions",
                     "collisions_per_move",
                     "collisions_per_node",
                     "tr_table_num_states_first_collision",

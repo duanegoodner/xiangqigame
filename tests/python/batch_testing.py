@@ -1,19 +1,24 @@
 import re
-from collections import OrderedDict
+from _ast import Mult
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Literal, Tuple
+from typing import Any, Literal
 
 import numpy as np
 import pandas as pd
 import xiangqi_bindings as bindings
-from batch_collision_analyzer import PoissonCollisionAnalyzer
+from batch_collision_analyzer import (
+    game_summaries_have_search_summary,
+    PoissonCollisionAnalyzer,
+    TrSizeEventScanner,
+)
 from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit
 
 import xiangqipy.app as app
 import xiangqipy.core_dataclass_mirrors as cdm
+from xiangqipy.game_interfaces import Player
 from xiangqipy.game_summary import GameSummary
 from xiangqipy.game_summary_io import import_game_summary
 
@@ -22,7 +27,7 @@ DEFAULT_NUM_GAMES = 10
 
 @dataclass
 class BatchTestConditions:
-    run_kwargs: Dict[str, Any]
+    run_kwargs: dict[str, Any]
     num_games: int = DEFAULT_NUM_GAMES
 
     @classmethod
@@ -47,7 +52,7 @@ class BatchTestConditions:
 class BatchTester:
     def __init__(
         self,
-        app_run_kwargs: Dict[str, Any],
+        app_run_kwargs: dict[str, Any],
         num_games: int,
         output_root: Path = None,
     ):
@@ -60,7 +65,7 @@ class BatchTester:
             output_root = self.create_output_root_dir()
         self.output_root = output_root
 
-        self.game_summaries: List[GameSummary] = []
+        self.game_summaries: list[GameSummary] = []
 
     @property
     def output_dir(self) -> Path:
@@ -199,9 +204,9 @@ class BatchDataSummarizer:
 
 
 class MultiBatchDataSummarizer:
-    def __init__(self, batch_dirs: List[Path | str]):
+    def __init__(self, batch_dirs: list[Path | str]):
         self.batch_dirs = batch_dirs
-        self.batch_data_summarizers: List[BatchDataSummarizer] = [
+        self.batch_data_summarizers: list[BatchDataSummarizer] = [
             BatchDataSummarizer(batch_dir=batch_dir)
             for batch_dir in batch_dirs
         ]
@@ -216,20 +221,6 @@ class MultiBatchDataSummarizer:
         )
 
 
-@dataclass
-class TranspositionTableEvent:
-    game_id: str
-    event_type: Literal["end_game", "first_collision"]
-    size_type: Literal["num_entries", "num_states"]
-    table_size: int
-
-    def __lt__(self, other):
-        if self.table_size != other.table_size:
-            return self.table_size < other.table_size
-        else:
-            return self.event_type == "first_collision"
-
-
 class FullBatchSummary:
     def __init__(self, batch_dir: str):
         if Path(batch_dir).is_absolute():
@@ -242,13 +233,27 @@ class FullBatchSummary:
                 / str(batch_dir)
             )
 
-        self.game_summaries: List[GameSummary] = self.load_game_summaries()
-        # self.size_collision_analyzer = TrSizeCollisionAnalyzer(
-        #     games_basic_stats=self.games_basic_stats
-        # )
-        # self.batch_data_summarizer = BatchDataSummarizer(batch_dir=batch_dir)
+        self.game_summaries: list[GameSummary] = self.load_game_summaries()
+        self.poisson_collision_analyzer = PoissonCollisionAnalyzer(
+            self.game_summaries
+        )
+        self.tr_size_event_scanner = TrSizeEventScanner(self.game_summaries)
 
-    def get_game_summary_paths(self) -> Dict[str, Path]:
+    @property
+    def players_with_data(self) -> list[bindings.PieceColor]:
+        return [
+            color
+            for color in [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]
+            if game_summaries_have_search_summary(
+                color=color, game_summaries=self.game_summaries
+            )
+        ]
+
+    @property
+    def player_data_col_prefixes(self) -> list[str]:
+        return [player.name for player in self.players_with_data]
+
+    def get_game_summary_paths(self) -> dict[str, Path]:
         paths = {}
         for path in self.batch_dir.iterdir():
             if path.is_dir():
@@ -257,122 +262,7 @@ class FullBatchSummary:
 
         return paths
 
-    def get_transposition_table_events(self, color: bindings.PieceColor):
-        result_list = []
-
-    def get_sorted_tr_size_event_info(
-        self,
-        color: bindings.PieceColor,
-        size_type: Literal["num_entries", "num_states"] = "num_states",
-    ) -> tuple[TranspositionTableEvent, ...]:
-        result_list = []
-        for game_summary in self.game_summaries:
-            player_summary = game_summary.get_player_summary(player=color)
-            events_info = player_summary.tr_table_sizes_at_events
-            result_list.append(
-                TranspositionTableEvent(
-                    game_id=game_summary.game_id,
-                    event_type="first_collision",
-                    size_type=size_type,
-                    table_size=getattr(events_info.first_collision, size_type),
-                )
-            )
-            result_list.append(
-                TranspositionTableEvent(
-                    game_id=game_summary.game_id,
-                    event_type="end_game",
-                    size_type=size_type,
-                    table_size=getattr(events_info.end_game, size_type),
-                )
-            )
-        result_list = [
-            item for item in result_list if item.table_size is not None
-        ]
-
-        result_list.sort(reverse=False)
-
-        return tuple(result_list)
-
-    def scan_tr_event_size(
-        self,
-        color: bindings.PieceColor,
-        size_type: Literal["num_entries", "num_states"] = "num_states",
-    ) -> pd.DataFrame:
-
-        event_info = self.get_sorted_tr_size_event_info(
-            color=color, size_type=size_type
-        )
-        first_collisions_dict = {
-            item.game_id: item.table_size
-            for item in event_info
-            if item.event_type == "first_collision"
-        }
-
-        num_rows = len(event_info) + 1
-        num_cols = 3
-        result = np.zeros(shape=(num_rows, num_cols), dtype=np.int64)
-        table_size = num_tables_with_collision = 0
-        num_tables = len(event_info) - len(first_collisions_dict)
-        result[0, :] = [table_size, num_tables, num_tables_with_collision]
-
-        for idx, event in enumerate(event_info):
-            table_size = event.table_size
-            if event.event_type == "first_collision":
-                num_tables_with_collision += 1
-            if event.event_type == "end_game":
-                num_tables -= 1
-                if (
-                    event.game_id in first_collisions_dict
-                    and first_collisions_dict[event.game_id] <= table_size
-                ):
-                    num_tables_with_collision -= 1
-            result[idx + 1, :] = [
-                table_size,
-                num_tables,
-                num_tables_with_collision,
-            ]
-        df = pd.DataFrame(
-            result,
-            columns=["table_size", "num_tables", "num_tables_with_collision"],
-        )
-        df["fraction_orig_tables"] = df["num_tables"] / (
-            len(event_info) - len(first_collisions_dict)
-        )
-        df["fraction_tables_with_collision"] = (
-            df["num_tables_with_collision"] / df["num_tables"]
-        )
-
-        return df
-
-    @property
-    def tr_event_size_data(self) -> dict[str, pd.DataFrame]:
-        result = {}
-        for color in [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:
-            result[color.name] = self.scan_tr_event_size(color=color)
-        return result
-
-    def plot_tr_event_size_data(self):
-        for color in [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:
-            if any(
-                [
-                    game_summary.get_player_summary(
-                        player=color
-                    ).has_search_summaries
-                    for game_summary in self.game_summaries
-                ]
-            ):
-                df = self.tr_event_size_data[color.name]
-                fig, ax1 = plt.subplots()
-                ax1.set_ylabel("Fraction remaining tables at size")
-                ax1.plot(df["table_size"], df["fraction_orig_tables"])
-                ax2 = ax1.twinx()
-                ax2.set_ylabel("Fraction tables with collision")
-                ax2.plot(df["table_size"], df["fraction_tables_with_collision"])
-
-                plt.show()
-
-
-    def load_game_summaries(self) -> List[GameSummary]:
+    def load_game_summaries(self) -> list[GameSummary]:
         game_summary_paths = self.get_game_summary_paths()
 
         game_summaries = []
@@ -383,57 +273,123 @@ class FullBatchSummary:
 
     @property
     def games_basic_stats(self) -> pd.DataFrame:
-        return pd.DataFrame(
+        df = pd.DataFrame(
             [game_summary.basic_stats for game_summary in self.game_summaries],
             index=[
                 game_summary.game_id for game_summary in self.game_summaries
             ],
         )
+        return df
 
     @property
-    def tr_table_size_df(self) -> pd.DataFrame:
-        return self.games_basic_stats[
-            [
-                "kRed_tr_table_num_states_first_known_collision",
-                "kRed_tr_table_num_entries_first_known_collision",
-                "kRed_tr_table_num_states_final",
-                "kRed_tr_table_num_entries_final",
-                "kBlk_tr_table_num_states_first_known_collision",
-                "kBlk_tr_table_num_entries_first_known_collision",
-                "kBlk_tr_table_num_states_final",
-                "kBlk_tr_table_num_entries_final",
-            ]
+    def num_games(self) -> pd.Series:
+        return pd.Series(
+            data=[len(self.games_basic_stats)], index=["num_games"]
+        )
+
+    @property
+    def win_lose_draw_summary(self) -> pd.Series:
+        series = self.games_basic_stats["game_state"].value_counts(
+            normalize=True
+        )
+
+        series = series.rename(
+            {item: f"fraction_{item}" for item in series.index}
+        )
+        return series
+
+    @property
+    def fraction_games_with_known_collision(self) -> pd.Series:
+        num_collisions_cols = [
+            f"{prefix}_num_collisions"
+            for prefix in self.player_data_col_prefixes
         ]
+        series = self.games_basic_stats[num_collisions_cols].astype(
+            bool
+        ).sum() / len(self.games_basic_stats)
+
+        rename_dict = {
+            f"{prefix}_num_collisions": f"{prefix}_fraction_games_with_known_collision"
+            for prefix in self.player_data_col_prefixes
+        }
+        series = series.rename(rename_dict)
+        return series
+
+    @property
+    def basic_stats_means(self) -> pd.Series:
+        player_info_names_for_means = [
+            "search_depth",
+            "zobrist_key_size",
+            "nodes_per_move",
+            "time_per_move_s",
+            "time_per_node_ns",
+            "num_collisions",
+            "collisions_per_move",
+            "collisions_per_node",
+        ]
+
+        players_data_cols_for_means = []
+        for prefix in self.player_data_col_prefixes:
+            for player_info_name in player_info_names_for_means:
+                players_data_cols_for_means.append(
+                    f"{prefix}_{player_info_name}"
+                )
+
+        series = self.games_basic_stats[
+            ["move_counts"] + players_data_cols_for_means
+        ].mean()
+
+        series = series.rename({item: f"{item}_mean" for item in series.index})
+
+        return series
+
+    @property
+    def batch_summary_series(self) -> pd.Series:
+        return pd.concat(
+            [
+                self.num_games,
+                self.win_lose_draw_summary,
+                self.fraction_games_with_known_collision,
+                self.basic_stats_means,
+            ]
+        )
+
+    def plot_poisson_collision_fits(self):
+        self.poisson_collision_analyzer.plot_all_collision_data()
+
+    def plot_tr_event_size_scan_data(self):
+        self.tr_size_event_scanner.plot_all_event_size_scan_data()
+
+
+class MultiBatchSummary:
+    def __init__(self, batch_dirs: list[Path | str]):
+        self.batch_dirs = batch_dirs
+        self.batch_summaries = [
+            FullBatchSummary(batch_dir=batch_dir) for batch_dir in batch_dirs
+        ]
+
+    @property
+    def summary_df(self) -> pd.DataFrame:
+        return pd.DataFrame(
+            [
+                batch_summary.batch_summary_series
+                for batch_summary in self.batch_summaries
+            ]
+        )
 
 
 if __name__ == "__main__":
-    my_batch_dirs = [
-        "20241023221443600060-BATCH-20-R-d3-k032-B-d3-k032",
-        "20241023221537744237-BATCH-20-R-d3-k064-B-d3-k064",
-        "20241023221623930853-BATCH-20-R-d3-k128-B-d3-k128",
-    ]
 
-    full_batch_summary_032_bit = FullBatchSummary(
-        batch_dir=my_batch_dirs[0],
-    )
-    full_batch_summary_064_bit = FullBatchSummary(
-        batch_dir=my_batch_dirs[1],
-    )
-    full_batch_summary_128_bit = FullBatchSummary(
-        batch_dir=my_batch_dirs[2],
+    multi_batch_summary = MultiBatchSummary(
+        batch_dirs=[
+            "20241025234946385162-BATCH-100-R-d3-k032-B-d3-k032",
+            "20241025235424349282-BATCH-100-R-d3-k064-B-d3-k064",
+            "20241025235912087473-BATCH-100-R-d3-k128-B-d3-k128",
+            "20241026003730823478-BATCH-100-R-d3-k032-B-d3-k128",
+            "20241026004214836880-BATCH-100-R-d3-k128-B-d3-k032"
+        ]
     )
 
-    # multi_batch_summarizer = MultiBatchDataSummarizer(batch_dirs=my_batch_dirs)
-    #
-    # collision_analyzer_032bit = BatchCollisionAnalyzer(
-    #     game_summaries=full_batch_summary_032_bit.game_summaries
-    # )
-    # collision_analyzer_032bit.plot_player_collision_data(
-    #     color=bindings.PieceColor.kBlk
-    # )
-
-    full_batch_summary_032_bit.plot_tr_event_size_data()
-    full_batch_summary_064_bit.plot_tr_event_size_data()
-    full_batch_summary_128_bit.plot_tr_event_size_data()
+    summary_df = multi_batch_summary.summary_df
 
     print("pause")
