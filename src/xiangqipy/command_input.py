@@ -30,7 +30,7 @@ class PlayerInput:
     algo: EvaluatorType
     strength: int
     key_size: int
-    zkeys_seed: np.uint32 | None = None
+    zkeys_seed: int | None = None
 
 
 class PlayerCommandInterpreter:
@@ -60,7 +60,7 @@ class PlayerCommandInterpreter:
         algo_input: str,
         strength_input: int,
         key_size_input: int,
-        zkeys_seed: np.uint32,
+        zkeys_seed: int,
     ):
         self.player_input = player_input
         self.algo_input = algo_input
@@ -97,6 +97,7 @@ class PlayerCommandInterpreter:
             algo=algo,
             strength=strength,
             key_size=key_size,
+            zkeys_seed=self.zkeys_seed,
         )
 
 
@@ -200,7 +201,7 @@ class XiangqiGameCommandLine:
         self._parser.add_argument(
             "-rz",
             "--red_zkeys_seed",
-            type=np.uint32,
+            type=int,
             required=False,
             help="Seed for red player Zobrist Keys generator. "
                  "32-bit unsigned int.",
@@ -244,7 +245,7 @@ class XiangqiGameCommandLine:
         self._parser.add_argument(
             "-bz",
             "--black_zkeys_seed",
-            type=np.uint32,
+            type=int,
             required=False,
             help="Seed for black player Zobrist Keys generator. "
                  "32-bit unsigned int.",

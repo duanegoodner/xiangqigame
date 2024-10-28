@@ -73,7 +73,7 @@ class SinglePlayerBuilder:
             ]:
                 dispatch_table[constructor][
                     "zkeys_seed"
-                ] = np.uint32(self.player_input.zkeys_seed)
+                ] = self.player_input.zkeys_seed
         return dispatch_table
 
     @property

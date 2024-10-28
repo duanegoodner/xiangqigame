@@ -51,7 +51,7 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           "evaluating_player"_a,
           "starting_search_depth"_a,
           "game_board"_a,
-          "zkey_seed"_a
+          "zkeys_seed"_a
       )
       .def(
           "select_move",

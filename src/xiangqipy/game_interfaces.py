@@ -61,7 +61,7 @@ class Player(abc.ABC):
             return self._move_evaluator.starting_search_depth()
 
     @property
-    def zkeys_seed(self) -> np.uint32 | None:
+    def zkeys_seed(self) -> int | None:
         return self._move_evaluator.zkeys_seed
 
     @property

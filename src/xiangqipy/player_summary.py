@@ -33,7 +33,7 @@ class PlayerSummary:
     move_evaluator_type: EvaluatorType = EvaluatorType.NULL
     max_search_depth: int = None
     zobrist_key_size: int = None
-    zkeys_seed: np.uint32 = None
+    zkeys_seed: int = None
     search_summaries: cdm.SearchSummaries = None
 
     @property
