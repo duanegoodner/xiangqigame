@@ -15,7 +15,7 @@ protected:
 };
 
 TEST_F(ZobristKeysTest, DefaultInit) {
-  auto zobrist_keys = ZobristKeys<uint64_t>();
+  auto zobrist_keys = ZobristKeys<uint64_t>(123456);
   EXPECT_NE(0, zobrist_keys.turn_key());
   EXPECT_EQ(2, zobrist_keys.zarray().size());
   EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray()[0].size());
@@ -33,7 +33,7 @@ TEST_F(ZobristKeysTest, InitFromSeed) {
 }
 
 TEST_F(ZobristKeysTest, GetHashValueAt) {
-  auto zobrist_keys = ZobristKeys<uint64_t>();
+  auto zobrist_keys = ZobristKeys<uint64_t>(1234567);
   auto sample_key_value = zobrist_keys.GetHashValueAt(
       PieceColor::kBlk,
       PieceType::kAdv,
@@ -45,8 +45,8 @@ class HashCalculatorTest : public ::testing::Test {
 
 protected:
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
-  ZobristKeys<uint64_t> zobrist_keys{};
-  ZobristKeys<__uint128_t> zobrist_keys_128{};
+  ZobristKeys<uint64_t> zobrist_keys{654321};
+  ZobristKeys<__uint128_t> zobrist_keys_128{2468};
 };
 
 TEST_F(HashCalculatorTest, InitializeFromKeysAndMap) {
@@ -55,12 +55,12 @@ TEST_F(HashCalculatorTest, InitializeFromKeysAndMap) {
 }
 
 TEST_F(HashCalculatorTest, DefaultInit) {
-  auto my_hash_calculator = HashCalculator<uint64_t>();
-  auto my_hash_calculator_128 = HashCalculator<__uint128_t>();
+  auto my_hash_calculator = HashCalculator<uint64_t>(3579);
+  auto my_hash_calculator_128 = HashCalculator<__uint128_t>(8675309);
 }
 
 TEST_F(HashCalculatorTest, InitializeBoardState) {
-  auto my_hash_calculator = HashCalculator<uint64_t>();
+  auto my_hash_calculator = HashCalculator<uint64_t>(22443355);
   uint64_t board_state{0};
   EXPECT_EQ(my_hash_calculator.ImplementGetState(), 0);
   my_hash_calculator.ImplementFullBoardStateCalc(board_map);

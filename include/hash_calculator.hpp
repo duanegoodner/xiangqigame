@@ -25,15 +25,15 @@ public:
   typedef array<PieceZarray_t, kNumPieceTypeVals> TeamZarray_t;
   typedef array<TeamZarray_t, 2> GameZarray_t;
 
-  ZobristKeys()
-      : zarray_{}
-      , turn_key_{}
-      , seed_{} {
-    PseudoRandomKeyGenerator<KeyType> key_generator;
-    turn_key_ = key_generator.GenerateKey();
-    seed_ = key_generator.seed();
-    zarray_ = CreateGameZarray(key_generator);
-  };
+  // ZobristKeys()
+  //     : zarray_{}
+  //     , turn_key_{}
+  //     , seed_{} {
+  //   PseudoRandomKeyGenerator<KeyType> key_generator;
+  //   turn_key_ = key_generator.GenerateKey();
+  //   seed_ = key_generator.seed();
+  //   zarray_ = CreateGameZarray(key_generator);
+  // };
 
   ZobristKeys(uint32_t seed)
       : zarray_{}
@@ -46,7 +46,8 @@ public:
 
   ZobristKeys(KeyType new_turn_key, GameZarray_t &new_zarray)
       : turn_key_{new_turn_key}
-      , zarray_{new_zarray} {};
+      , zarray_{new_zarray}
+      , seed_{} {};
 
   KeyType GetHashValueAt(PieceColor color, PieceType piece_type, BoardSpace space) {
     return zarray_[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
@@ -158,8 +159,11 @@ public:
       : zkeys_{zkeys}
       , board_state_{}
       , transposition_table_{} {};
-  HashCalculator()
-      : HashCalculator(ZobristKeys<KeyType>()) {};
+  HashCalculator(uint32_t seed)
+      : HashCalculator(ZobristKeys<KeyType>(seed)) {};
+
+  // HashCalculator()
+  //     : HashCalculator(ZobristKeys<KeyType>()) {};
   KeyType ImplementGetState() { return board_state_; }
   void ImplementUpdateBoardState(const ExecutedMove &move) {
     _ImplementUpdateBoardState(move);
@@ -200,6 +204,10 @@ public:
   }
 
   const ZobristKeys<KeyType> &GetZobristKeys() const { return zkeys_; }
+
+  const uint32_t zkeys_seed() { return zkeys_.seed(); }
+
+  const KeyType board_state() { return board_state_; }
 
 private:
   ZobristKeys<KeyType> zkeys_;

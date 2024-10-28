@@ -1,5 +1,5 @@
 //! @file minimax_move_evaluator.tpp
-//! Implementation of moveselection::MinimaxMoveEvaluator methods.  
+//! Implementation of moveselection::MinimaxMoveEvaluator methods.
 
 #pragma once
 
@@ -9,6 +9,7 @@
 #include <evaluator_data_structs.hpp>
 #include <iostream>
 #include <limits>
+#include <random>
 using namespace gameboard;
 
 namespace moveselection {
@@ -25,13 +26,14 @@ MinimaxMoveEvaluator<
         PieceColor evaluating_player,
         int starting_search_depth,
         ConcreteSpaceInfoProvider &game_board,
-        const ConcretePieceValueProvider &game_position_points
+        const ConcretePieceValueProvider &game_position_points,
+        uint32_t zkey_seed
     )
     : evaluating_player_{evaluating_player}
     , starting_search_depth_{starting_search_depth}
     , game_board_{game_board}
     , game_position_points_{game_position_points}
-    , hash_calculator_{ConcreteBoardStateSummarizer{}}
+    , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
     , num_move_selections_{0}
     , search_summaries_{} {
   game_board_.AttachMoveCallback(std::bind(
@@ -53,13 +55,58 @@ MinimaxMoveEvaluator<
     MinimaxMoveEvaluator(
         PieceColor evaluating_player,
         int starting_search_depth,
+        ConcreteSpaceInfoProvider &game_board,
+        const ConcretePieceValueProvider &game_position_points
+    )
+    : MinimaxMoveEvaluator(
+          evaluating_player,
+          starting_search_depth,
+          game_board,
+          game_position_points,
+          std::random_device{}()
+      ) {}
+
+template <
+    typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
+    typename ConcretePieceValueProvider>
+MinimaxMoveEvaluator<
+    ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
+    ConcretePieceValueProvider>::
+    MinimaxMoveEvaluator(
+        PieceColor evaluating_player,
+        int starting_search_depth,
+        ConcreteSpaceInfoProvider &game_board,
+        uint32_t zkey_seed
+    )
+    : MinimaxMoveEvaluator(
+          evaluating_player,
+          starting_search_depth,
+          game_board,
+          ConcretePieceValueProvider(),
+          zkey_seed
+      ) {}
+
+template <
+    typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
+    typename ConcretePieceValueProvider>
+MinimaxMoveEvaluator<
+    ConcreteSpaceInfoProvider,
+    ConcreteBoardStateSummarizer,
+    ConcretePieceValueProvider>::
+    MinimaxMoveEvaluator(
+        PieceColor evaluating_player,
+        int starting_search_depth,
         ConcreteSpaceInfoProvider &game_board
     )
     : MinimaxMoveEvaluator(
           evaluating_player,
           starting_search_depth,
           game_board,
-          ConcretePieceValueProvider()
+          ConcretePieceValueProvider(),
+          std::random_device{}()
       ) {}
 
 template <
@@ -72,7 +119,8 @@ Move MinimaxMoveEvaluator<
     ConcretePieceValueProvider>::ImplementSelectMove() {
 
   auto tr_table_size = hash_calculator_.GetTrTableSize();
-  auto &first_search_summary = search_summaries_.NewFirstSearch(starting_search_depth_, tr_table_size);
+  auto &first_search_summary =
+      search_summaries_.NewFirstSearch(starting_search_depth_, tr_table_size);
   Move final_selected_move;
 
   auto first_selected_move = RunMinimax(first_search_summary);
@@ -85,8 +133,11 @@ Move MinimaxMoveEvaluator<
   } else {
     first_search_summary.set_returned_illegal_move(true);
     auto tr_table_size = hash_calculator_.GetTrTableSize();
-    auto &second_search_summary =
-        search_summaries_.NewExtraSearch(starting_search_depth_, num_move_selections_, tr_table_size);
+    auto &second_search_summary = search_summaries_.NewExtraSearch(
+        starting_search_depth_,
+        num_move_selections_,
+        tr_table_size
+    );
     auto second_selected_move = RunMinimax(second_search_summary, false);
     final_selected_move = second_selected_move;
   }

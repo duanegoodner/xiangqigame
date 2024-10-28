@@ -34,7 +34,22 @@ public:
       PieceColor evaluating_player,
       int starting_search_depth,
       ConcreteSpaceInfoProvider &game_board,
+      const ConcretePieceValueProvider &game_position_points,
+      uint32_t zkey_seed
+  );
+
+  MinimaxMoveEvaluator(
+      PieceColor evaluating_player,
+      int starting_search_depth,
+      ConcreteSpaceInfoProvider &game_board,
       const ConcretePieceValueProvider &game_position_points
+  );
+
+  MinimaxMoveEvaluator(
+      PieceColor evaluating_player,
+      int starting_search_depth,
+      ConcreteSpaceInfoProvider &game_board,
+      uint32_t zkey_seed
   );
 
   MinimaxMoveEvaluator(
@@ -53,8 +68,12 @@ public:
   inline size_t KeySizeBits() {
     return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
   }
-  const ConcreteBoardStateSummarizer& GetHashCalculator() const {
+  const ConcreteBoardStateSummarizer& hash_calculaotr() const {
     return hash_calculator_;
+  }
+
+  const uint32_t zkeys_seed() {
+    return hash_calculator_.zkeys_seed();
   }
 
 private:
