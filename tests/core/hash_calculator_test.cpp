@@ -15,26 +15,26 @@ protected:
 };
 
 TEST_F(ZobristKeysTest, DefaultInit) {
-  auto zobrist_keys = ZobristKeys<uint64_t>(123456);
-  EXPECT_NE(0, zobrist_keys.turn_key());
-  EXPECT_EQ(2, zobrist_keys.zarray().size());
-  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray()[0].size());
-  EXPECT_EQ(kNumRanks, zobrist_keys.zarray()[0][0].size());
-  EXPECT_EQ(kNumFiles, zobrist_keys.zarray()[0][0][0].size());
+  auto zobrist_keys_064 = ZobristKeys<uint64_t>(123456);
+  EXPECT_NE(0, zobrist_keys_064.turn_key());
+  EXPECT_EQ(2, zobrist_keys_064.zarray().size());
+  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys_064.zarray()[0].size());
+  EXPECT_EQ(kNumRanks, zobrist_keys_064.zarray()[0][0].size());
+  EXPECT_EQ(kNumFiles, zobrist_keys_064.zarray()[0][0][0].size());
 }
 
 TEST_F(ZobristKeysTest, InitFromSeed) {
-  auto zobrist_keys = ZobristKeys<uint64_t>(123456);
-  EXPECT_NE(0, zobrist_keys.turn_key());
-  EXPECT_EQ(2, zobrist_keys.zarray().size());
-  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray()[0].size());
-  EXPECT_EQ(kNumRanks, zobrist_keys.zarray()[0][0].size());
-  EXPECT_EQ(kNumFiles, zobrist_keys.zarray()[0][0][0].size());
+  auto zobrist_keys_064 = ZobristKeys<uint64_t>(123456);
+  EXPECT_NE(0, zobrist_keys_064.turn_key());
+  EXPECT_EQ(2, zobrist_keys_064.zarray().size());
+  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys_064.zarray()[0].size());
+  EXPECT_EQ(kNumRanks, zobrist_keys_064.zarray()[0][0].size());
+  EXPECT_EQ(kNumFiles, zobrist_keys_064.zarray()[0][0][0].size());
 }
 
 TEST_F(ZobristKeysTest, GetHashValueAt) {
-  auto zobrist_keys = ZobristKeys<uint64_t>(1234567);
-  auto sample_key_value = zobrist_keys.GetHashValueAt(
+  auto zobrist_keys_064 = ZobristKeys<uint64_t>(1234567);
+  auto sample_key_value = zobrist_keys_064.GetHashValueAt(
       PieceColor::kBlk,
       PieceType::kAdv,
       BoardSpace{0, 3}
@@ -45,31 +45,51 @@ class HashCalculatorTest : public ::testing::Test {
 
 protected:
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
-  ZobristKeys<uint64_t> zobrist_keys{654321};
+  ZobristKeys<uint32_t> zobrist_keys_032{78910};
+  ZobristKeys<uint64_t> zobrist_keys_064{654321};
   ZobristKeys<__uint128_t> zobrist_keys_128{2468};
 };
 
 TEST_F(HashCalculatorTest, InitializeFromKeysAndMap) {
-  auto my_hash_calculator = HashCalculator<uint64_t>(zobrist_keys);
+  auto my_hash_calculator_064 = HashCalculator<uint64_t>(zobrist_keys_064);
   auto my_hash_calculator_128 = HashCalculator<__uint128_t>(zobrist_keys_128);
 }
 
 TEST_F(HashCalculatorTest, DefaultInit) {
-  auto my_hash_calculator = HashCalculator<uint64_t>(3579);
+  auto my_hash_calculator_064 = HashCalculator<uint64_t>(3579);
   auto my_hash_calculator_128 = HashCalculator<__uint128_t>(8675309);
 }
 
 TEST_F(HashCalculatorTest, InitializeBoardState) {
-  auto my_hash_calculator = HashCalculator<uint64_t>(22443355);
+  auto my_hash_calculator_064 = HashCalculator<uint64_t>(22443355);
   uint64_t board_state{0};
-  EXPECT_EQ(my_hash_calculator.ImplementGetState(), 0);
-  my_hash_calculator.ImplementFullBoardStateCalc(board_map);
-  EXPECT_NE(my_hash_calculator.ImplementGetState(), 0);
+  EXPECT_EQ(my_hash_calculator_064.ImplementGetState(), 0);
+  my_hash_calculator_064.ImplementFullBoardStateCalc(board_map);
+  EXPECT_NE(my_hash_calculator_064.ImplementGetState(), 0);
+}
+
+TEST_F(HashCalculatorTest, BoardStateHexString) {
+  auto my_hash_calculator_032 = HashCalculator<uint32_t>(22443355);
+  my_hash_calculator_032.ImplementFullBoardStateCalc(board_map);
+  auto hex_state_032 = my_hash_calculator_032.board_state_hex_str();
+  std::cout << hex_state_032 << std::endl;
+  
+  auto my_hash_calculator_064 = HashCalculator<uint64_t>(22443355);
+  my_hash_calculator_064.ImplementFullBoardStateCalc(board_map);
+  auto hex_state_064 = my_hash_calculator_064.board_state_hex_str();
+  std::cout << hex_state_064 << std::endl;
+
+
+  auto my_hash_calculator_128 = HashCalculator<__uint128_t>(22443355);
+  my_hash_calculator_128.ImplementFullBoardStateCalc(board_map);
+  auto hex_state_128 = my_hash_calculator_128.board_state_hex_str();
+  std::cout << hex_state_128 << std::endl;
+
 }
 
 TEST_F(HashCalculatorTest, ExecuteAndUndoMove64) {
 
-  auto my_hash_calculator = HashCalculator<uint64_t>(zobrist_keys);
+  auto my_hash_calculator = HashCalculator<uint64_t>(zobrist_keys_064);
 
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};

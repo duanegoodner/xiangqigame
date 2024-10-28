@@ -80,6 +80,13 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
               GameBoard,
               HashCalculator<KeyType>,
               PiecePositionPoints>::zkeys_seed
+      )
+      .def_property_readonly(
+        "board_state_hex_str",
+         &MinimaxMoveEvaluator<
+              GameBoard,
+              HashCalculator<KeyType>,
+              PiecePositionPoints>::board_state_hex_str
       );
 }
 

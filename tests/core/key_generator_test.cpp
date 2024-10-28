@@ -36,19 +36,16 @@ TEST_F(PseudoRandomKeyGeneratorTest, GenerateAndPrintKeysNoSeed) {
   auto random_032 = key_generator_032.GenerateKey();
   auto random_032_string = boardstate::IntToHexString(random_032);
   boardstate::PrintHex(random_032);
-  std::cout << random_032_string << std::endl;
 
   boardstate::PseudoRandomKeyGenerator<uint64_t> key_generator_064{};
   auto random_064 = key_generator_064.GenerateKey();
   auto random_064_string = boardstate::IntToHexString(random_064);
   boardstate::PrintHex(random_064);
-  std::cout << random_064_string << std::endl;
 
   boardstate::PseudoRandomKeyGenerator<__uint128_t> key_generator_128{};
   auto random_128 = key_generator_128.GenerateKey();
   auto random_128_string = boardstate::IntToHexString(random_128);
   boardstate::PrintHex(random_128);
-  std::cout << random_128_string << std::endl;
 
 }
 

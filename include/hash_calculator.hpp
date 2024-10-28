@@ -25,16 +25,6 @@ public:
   typedef array<PieceZarray_t, kNumPieceTypeVals> TeamZarray_t;
   typedef array<TeamZarray_t, 2> GameZarray_t;
 
-  // ZobristKeys()
-  //     : zarray_{}
-  //     , turn_key_{}
-  //     , seed_{} {
-  //   PseudoRandomKeyGenerator<KeyType> key_generator;
-  //   turn_key_ = key_generator.GenerateKey();
-  //   seed_ = key_generator.seed();
-  //   zarray_ = CreateGameZarray(key_generator);
-  // };
-
   ZobristKeys(uint32_t seed)
       : zarray_{}
       , turn_key_{}
@@ -208,6 +198,8 @@ public:
   const uint32_t zkeys_seed() { return zkeys_.seed(); }
 
   const KeyType board_state() { return board_state_; }
+
+  const string board_state_hex_str() { return boardstate::IntToHexString(board_state_); }
 
 private:
   ZobristKeys<KeyType> zkeys_;
