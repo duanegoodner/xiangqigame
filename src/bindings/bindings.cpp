@@ -47,6 +47,13 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           "game_board"_a
       )
       .def(
+          py::init<PieceColor, int, GameBoard &, uint32_t>(),
+          "evaluating_player"_a,
+          "starting_search_depth"_a,
+          "game_board"_a,
+          "zkey_seed"_a
+      )
+      .def(
           "select_move",
           &MinimaxMoveEvaluator<
               GameBoard,
@@ -82,8 +89,8 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
               PiecePositionPoints>::zkeys_seed
       )
       .def_property_readonly(
-        "board_state_hex_str",
-         &MinimaxMoveEvaluator<
+          "board_state_hex_str",
+          &MinimaxMoveEvaluator<
               GameBoard,
               HashCalculator<KeyType>,
               PiecePositionPoints>::board_state_hex_str
