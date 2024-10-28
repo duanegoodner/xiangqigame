@@ -45,6 +45,11 @@ const size_t kNumResultTypes{7};
 //! Data structure that holds a moveselection::EqualScoreMoves and other search-related
 //! info obtained from a call to moveselection::MinimaxMoveEvaluator.MinimaxRec.
 struct TranspositionTableEntry {
+  TranspositionTableEntry() : remaining_search_depth{}, result_type{}, similar_moves{} {}
+
+  TranspositionTableEntry(int depth, MinimaxResultType type, EqualScoreMoves moves)
+    : remaining_search_depth(depth), result_type(type), similar_moves(std::move(moves)) {}
+  
   int remaining_search_depth;
   MinimaxResultType result_type;
   EqualScoreMoves similar_moves;
