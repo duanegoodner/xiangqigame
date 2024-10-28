@@ -4,8 +4,10 @@
 #pragma once
 
 #include <bitset>
+#include <iomanip>
 #include <iostream>
 #include <random>
+#include <sstream>
 #include <type_traits>
 
 namespace boardstate {
@@ -65,7 +67,7 @@ private:
 };
 
 template <typename IntType>
-void PrintHex(IntType num) {
+std::string IntToHexString(IntType num) {
   constexpr int bits_per_block = 8 * sizeof(std::random_device::result_type);
   constexpr int bits_per_hex_digit = 4; // Each hex digit represents 4 bits
   constexpr int hex_digits_per_block =
@@ -74,15 +76,46 @@ void PrintHex(IntType num) {
       (sizeof(IntType) * 8 + bits_per_block - 1) /
       bits_per_block; // Calculate the number of 32-bit blocks needed
 
-  std::cout << "0x";
+ std::ostringstream oss;
+
+  oss << "0x";
   for (int i = total_blocks - 1; i >= 0; --i) {
     // Extract each 32-bit block
     uint32_t block = static_cast<uint32_t>(num >> (i * bits_per_block));
     // Print the block, handling leading zeros within each block
-    std::cout << std::hex << std::setfill('0') << std::setw(hex_digits_per_block)
+    oss << std::hex << std::setfill('0') << std::setw(hex_digits_per_block)
               << block;
   }
-  std::cout << std::dec << std::endl; // Reset to decimal output
+  return oss.str();
 }
+
+template <typename IntType>
+void PrintHex(IntType num) {
+
+  auto hex_string = IntToHexString(num);
+  std::cout << hex_string << std::endl;
+
+  // constexpr int bits_per_block = 8 * sizeof(std::random_device::result_type);
+  // constexpr int bits_per_hex_digit = 4; // Each hex digit represents 4 bits
+  // constexpr int hex_digits_per_block =
+  //     bits_per_block / bits_per_hex_digit; // Hex digits per block
+  // constexpr int total_blocks =
+  //     (sizeof(IntType) * 8 + bits_per_block - 1) /
+  //     bits_per_block; // Calculate the number of 32-bit blocks needed
+
+  // std::cout << "0x";
+  // for (int i = total_blocks - 1; i >= 0; --i) {
+  //   // Extract each 32-bit block
+  //   uint32_t block = static_cast<uint32_t>(num >> (i * bits_per_block));
+  //   // Print the block, handling leading zeros within each block
+  //   std::cout << std::hex << std::setfill('0') << std::setw(hex_digits_per_block)
+  //             << block;
+  // }
+  // std::cout << std::dec << std::endl; // Reset to decimal output
+}
+
+
+
+
 
 } // namespace boardstate
