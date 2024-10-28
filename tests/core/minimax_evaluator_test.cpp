@@ -74,6 +74,29 @@ TEST_F(MinimaxEvaluatorTest, TestConstructorsWithDefaultPiecePositionPoints) {
       black_evaluator{PieceColor::kBlk, standard_search_depth, starting_board};
 }
 
+TEST_F(MinimaxEvaluatorTest, ConstructorWithZKeySeedSpecified) {
+  GameBoard starting_board;
+  MinimaxMoveEvaluator<GameBoard, HashCalculator<uint64_t>, PiecePositionPoints>
+      red_evaluator{PieceColor::kRed, standard_search_depth, starting_board, 12345};
+  EXPECT_EQ(red_evaluator.zkeys_seed(), 12345);
+}
+
+TEST_F(MinimaxEvaluatorTest, TestGetStateHexString) {
+  GameBoard starting_board;
+  MinimaxMoveEvaluator<GameBoard, HashCalculator<uint32_t>, PiecePositionPoints>
+      red_evaluator_032{PieceColor::kRed, standard_search_depth, starting_board};
+  std::cout << red_evaluator_032.board_state_hex_str() << std::endl;
+
+
+  MinimaxMoveEvaluator<GameBoard, HashCalculator<uint64_t>, PiecePositionPoints>
+      red_evaluator_064{PieceColor::kRed, standard_search_depth, starting_board};
+  std::cout << red_evaluator_064.board_state_hex_str() << std::endl;
+
+  MinimaxMoveEvaluator<GameBoard, HashCalculator<__uint128_t>, PiecePositionPoints>
+      red_evaluator_128{PieceColor::kRed, standard_search_depth, starting_board};
+  std::cout << red_evaluator_128.board_state_hex_str() << std::endl;
+}
+
 TEST_F(MinimaxEvaluatorTest, TestConstructorsWithImportedPiecePositionPoints) {
   GameBoard starting_board;
   MinimaxMoveEvaluator<GameBoard, HashCalculator<uint64_t>, PiecePositionPoints>

@@ -7,6 +7,7 @@ Game.
 """
 
 import argparse
+import numpy as np
 from dataclasses import dataclass
 from typing import Any, Dict
 
@@ -29,6 +30,7 @@ class PlayerInput:
     algo: EvaluatorType
     strength: int
     key_size: int
+    zkeys_seed: int | None = None
 
 
 class PlayerCommandInterpreter:
@@ -58,11 +60,13 @@ class PlayerCommandInterpreter:
         algo_input: str,
         strength_input: int,
         key_size_input: int,
+        zkeys_seed: int,
     ):
         self.player_input = player_input
         self.algo_input = algo_input
         self.strength_input = strength_input
         self.key_size_input = key_size_input
+        self.zkeys_seed = zkeys_seed
 
     def _get_key_size(self) -> int:
         if self.key_size_input is None:
@@ -93,6 +97,7 @@ class PlayerCommandInterpreter:
             algo=algo,
             strength=strength,
             key_size=key_size,
+            zkeys_seed=self.zkeys_seed,
         )
 
 
@@ -123,12 +128,14 @@ class RunKwargsInterpreter:
             algo_input=self.run_kwargs["red_algo"],
             strength_input=self.run_kwargs["red_strength"],
             key_size_input=self.run_kwargs["red_key_size"],
+            zkeys_seed=self.run_kwargs["red_zkeys_seed"],
         )
         black_interpreter = PlayerCommandInterpreter(
             player_input=self.run_kwargs["black_player_type"],
             algo_input=self.run_kwargs["black_algo"],
             strength_input=self.run_kwargs["black_strength"],
             key_size_input=self.run_kwargs["black_key_size"],
+            zkeys_seed=self.run_kwargs["black_zkeys_seed"],
         )
 
         return XiangqiGameCommand(
@@ -192,6 +199,15 @@ class XiangqiGameCommandLine:
         )
 
         self._parser.add_argument(
+            "-rz",
+            "--red_zkeys_seed",
+            type=int,
+            required=False,
+            help="Seed for red player Zobrist Keys generator. "
+                 "32-bit unsigned int.",
+        )
+
+        self._parser.add_argument(
             "-bt",
             "--black_player_type",
             choices=["person", "ai"],
@@ -224,6 +240,15 @@ class XiangqiGameCommandLine:
             choices=[32, 64, 128],
             required=False,
             help="Key size (in bits) used for black AI player Zobrist hashing",
+        )
+
+        self._parser.add_argument(
+            "-bz",
+            "--black_zkeys_seed",
+            type=int,
+            required=False,
+            help="Seed for black player Zobrist Keys generator. "
+                 "32-bit unsigned int.",
         )
 
         self._parser.add_argument(

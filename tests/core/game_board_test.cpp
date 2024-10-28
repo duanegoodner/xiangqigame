@@ -127,8 +127,8 @@ TEST_F(GameBoardTest, CorrectNumberAvailableMoves) {
 // }
 
 TEST_F(GameBoardTest, ExecuteMoveWithAttachedHashCalculators) {
-  auto red_hash_calculator = boardstate::HashCalculator<uint64_t>();
-  auto black_hash_calculator = boardstate::HashCalculator<uint64_t>();
+  auto red_hash_calculator = boardstate::HashCalculator<uint64_t>(1234);
+  auto black_hash_calculator = boardstate::HashCalculator<uint64_t>(12345);
   // gb_.ImplementAttachHashCalculator(&red_hash_calculator, 0);
   // gb_.ImplementAttachHashCalculator(&black_hash_calculator, 1);
   auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};

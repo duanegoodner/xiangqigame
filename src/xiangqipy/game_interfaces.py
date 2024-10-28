@@ -61,6 +61,10 @@ class Player(abc.ABC):
             return self._move_evaluator.starting_search_depth()
 
     @property
+    def zkeys_seed(self) -> int | None:
+        return self._move_evaluator.zkeys_seed
+
+    @property
     def zobrist_key_size(self) -> int | None:
         if self._evaluator_type == EvaluatorType.MINIMAX:
             return self._move_evaluator.zobrist_key_size_bits()
@@ -80,6 +84,7 @@ class Player(abc.ABC):
             move_evaluator_type=self.move_evaluator_type,
             max_search_depth=self.max_search_depth,
             zobrist_key_size=self.zobrist_key_size,
+            zkeys_seed=self.zkeys_seed,
             search_summaries=self.search_summaries,
         )
 

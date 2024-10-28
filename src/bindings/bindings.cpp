@@ -22,16 +22,15 @@ using namespace piecepoints;
 template <typename KeyType>
 void bind_zobrist_keys(py::module_ &m, const std::string &class_name) {
   py::class_<ZobristKeys<KeyType>>(m, class_name.c_str())
-      .def(py::init<>())
       .def(py::init<uint32_t>(), "seed"_a)
-      .def_readonly("turn_key", &ZobristKeys<KeyType>::turn_key)
-      .def_readonly("zarray", &ZobristKeys<KeyType>::zarray);
+      .def_property_readonly("turn_key", &ZobristKeys<KeyType>::turn_key)
+      .def_property_readonly("zarray", &ZobristKeys<KeyType>::zarray);
 }
 
 template <typename KeyType>
 void bind_hash_calculator(py::module_ &m, const std::string &class_name) {
-    py::class_<HashCalculator<KeyType>>(m, class_name.c_str())
-    .def("get_zobrist_keys", &HashCalculator<KeyType>::GetZobristKeys);
+  py::class_<HashCalculator<KeyType>>(m, class_name.c_str())
+      .def("get_zobrist_keys", &HashCalculator<KeyType>::GetZobristKeys);
 }
 
 template <typename KeyType>
@@ -46,6 +45,13 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           "evaluating_player"_a,
           "starting_search_depth"_a,
           "game_board"_a
+      )
+      .def(
+          py::init<PieceColor, int, GameBoard &, uint32_t>(),
+          "evaluating_player"_a,
+          "starting_search_depth"_a,
+          "game_board"_a,
+          "zkeys_seed"_a
       )
       .def(
           "select_move",
@@ -75,12 +81,19 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
               HashCalculator<KeyType>,
               PiecePositionPoints>::KeySizeBits
       )
-      .def(
-          "get_hash_calculator",
+      .def_property_readonly(
+          "zkeys_seed",
           &MinimaxMoveEvaluator<
               GameBoard,
               HashCalculator<KeyType>,
-              PiecePositionPoints>::GetHashCalculator
+              PiecePositionPoints>::zkeys_seed
+      )
+      .def_property_readonly(
+          "board_state_hex_str",
+          &MinimaxMoveEvaluator<
+              GameBoard,
+              HashCalculator<KeyType>,
+              PiecePositionPoints>::board_state_hex_str
       );
 }
 
@@ -177,11 +190,11 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def("select_move", &RandomMoveEvaluator<GameBoard>::SelectMove);
 
   py::class_<TranspositionTableSize>(m, "TranspositionTableSize")
-    .def_readonly("num_entries", &TranspositionTableSize::num_entries)
-    .def_readonly("num_states", &TranspositionTableSize::num_states);
-  
+      .def_readonly("num_entries", &TranspositionTableSize::num_entries)
+      .def_readonly("num_states", &TranspositionTableSize::num_states);
+
   py::class_<SearchSummary>(m, "SearchSummary")
-    //   .def(py::init<int>()) // Constructor, as needed for initialization
+      //   .def(py::init<int>()) // Constructor, as needed for initialization
       .def_property_readonly(
           "num_nodes",
           &SearchSummary::num_nodes
@@ -191,8 +204,14 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def("get_transposition_table_hits", &SearchSummary::GetTranspositionTableHits)
       .def_property_readonly("similar_moves", &SearchSummary::similar_moves)
       .def_property_readonly("selected_move", &SearchSummary::selected_move)
-      .def_property_readonly("returned_illegal_move", &SearchSummary::returned_illegal_move)
-      .def_property_readonly("tr_table_size_initial", &SearchSummary::tr_table_size_initial)
+      .def_property_readonly(
+          "returned_illegal_move",
+          &SearchSummary::returned_illegal_move
+      )
+      .def_property_readonly(
+          "tr_table_size_initial",
+          &SearchSummary::tr_table_size_initial
+      )
       .def_property_readonly("tr_table_size_final", &SearchSummary::tr_table_size_final);
 
   py::class_<SearchSummaries>(m, "SearchSummaries")

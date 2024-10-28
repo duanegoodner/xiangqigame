@@ -34,7 +34,22 @@ public:
       PieceColor evaluating_player,
       int starting_search_depth,
       ConcreteSpaceInfoProvider &game_board,
+      const ConcretePieceValueProvider &game_position_points,
+      uint32_t zkey_seed
+  );
+
+  MinimaxMoveEvaluator(
+      PieceColor evaluating_player,
+      int starting_search_depth,
+      ConcreteSpaceInfoProvider &game_board,
       const ConcretePieceValueProvider &game_position_points
+  );
+
+  MinimaxMoveEvaluator(
+      PieceColor evaluating_player,
+      int starting_search_depth,
+      ConcreteSpaceInfoProvider &game_board,
+      uint32_t zkey_seed
   );
 
   MinimaxMoveEvaluator(
@@ -45,7 +60,7 @@ public:
 
   Move ImplementSelectMove();
   Points_t GetPlayerTotal(PieceColor color);
-  inline const moveselection::SearchSummaries& search_summaries() {
+  inline const moveselection::SearchSummaries &search_summaries() {
     return search_summaries_;
   }
   inline int StartingSearchDepth() { return starting_search_depth_; }
@@ -53,8 +68,14 @@ public:
   inline size_t KeySizeBits() {
     return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
   }
-  const ConcreteBoardStateSummarizer& GetHashCalculator() const {
+  const ConcreteBoardStateSummarizer &hash_calculator() const {
     return hash_calculator_;
+  }
+
+  const uint32_t zkeys_seed() { return hash_calculator_.zkeys_seed(); }
+
+  const std::string board_state_hex_str() {
+    return hash_calculator_.board_state_hex_str();
   }
 
 private:

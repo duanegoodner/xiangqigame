@@ -213,21 +213,15 @@ class GameSummaryPlotManager:
 
 
 if __name__ == "__main__":
-    game_summary_path_depth_6 = (
+
+    my_game_summary_path = (
         Path(__file__).parent.parent.parent
         / "data"
         / "game_summaries"
-        / "20241014170226897474-for_logo"
-        / "20241014170226897474.json"
+        / "20241028122912410212-test"
+        / "20241028122912410212.json"
     )
 
-    game_summary_path_depth_3 = (
-        Path(__file__).parent.parent.parent
-        / "data"
-        / "20240924144452286119"
-        / "20240924144452286119.json"
-    )
-
-    my_game_summary = import_game_summary(path=game_summary_path_depth_6)
+    my_game_summary = import_game_summary(path=my_game_summary_path)
     plot_manager = GameSummaryPlotManager(game_summary=my_game_summary)
     plot_manager.plot(show_plot=True)

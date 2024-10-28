@@ -34,6 +34,8 @@ def dec_hook(type: Type, obj: Any) -> Any:
         return np.array(obj)
     if type is np.int32:
         return np.int32(obj)
+    if type is np.uint32:
+        return np.uint32(obj)
 
     else:
         raise NotImplementedError(f"Objects of type {type} are not supported")

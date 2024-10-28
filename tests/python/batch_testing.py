@@ -41,8 +41,10 @@ class BatchTestConditions:
         run_kwargs = {
             "red_strength": red_strength,
             "red_key_size": red_key_size,
+            # "red_zkeys_seed": 1395666524,
             "black_strength": black_strength,
             "black_key_size": black_key_size,
+            # "black_zkeys_seed": 3554841162,
             "save_summary": True,
             "output_dir_suffix": abbreviation,
         }
@@ -272,11 +274,9 @@ if __name__ == "__main__":
 
     multi_batch_summary = MultiBatchSummary(
         batch_dirs=[
-            "20241025234946385162-BATCH-100-R-d3-k032-B-d3-k032",
-            "20241025235424349282-BATCH-100-R-d3-k064-B-d3-k064",
-            "20241025235912087473-BATCH-100-R-d3-k128-B-d3-k128",
-            "20241026003730823478-BATCH-100-R-d3-k032-B-d3-k128",
-            "20241026004214836880-BATCH-100-R-d3-k128-B-d3-k032"
+            "20241028150350966806-BATCH-100-R-d2-k032-B-d2-k032",
+            "20241028150548771441-BATCH-100-R-d2-k064-B-d2-k064",
+            "20241028150751510768-BATCH-100-R-d2-k128-B-d2-k128"
         ]
     )
 

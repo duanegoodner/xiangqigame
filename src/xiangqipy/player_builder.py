@@ -6,6 +6,7 @@ Classes for building Player objects.
 
 from typing import Callable, Any, Dict, Tuple
 
+import numpy as np
 from xiangqi_bindings import (
     GameBoard,
     MinimaxMoveEvaluator32,
@@ -42,7 +43,7 @@ class SinglePlayerBuilder:
 
     @property
     def _move_evaluator_args(self) -> dict[Callable, Any]:
-        return {
+        dispatch_table = {
             RandomMoveEvaluator: {
                 "evaluating_player": self._color,
                 "game_board": self._game_board,
@@ -63,6 +64,17 @@ class SinglePlayerBuilder:
                 "game_board": self._game_board,
             },
         }
+
+        if self.player_input.zkeys_seed is not None:
+            for constructor in [
+                MinimaxMoveEvaluator32,
+                MinimaxMoveEvaluator64,
+                MinimaxMoveEvaluator128,
+            ]:
+                dispatch_table[constructor][
+                    "zkeys_seed"
+                ] = self.player_input.zkeys_seed
+        return dispatch_table
 
     @property
     def evaluator_constructor_dispatch(self) -> Dict[Tuple, Callable]:
