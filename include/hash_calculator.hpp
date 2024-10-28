@@ -19,37 +19,41 @@ namespace boardstate {
 
 //! Container for all of the hash keys needed to run a boardstate::HashCalculator.
 template <typename KeyType>
-struct ZobristKeys {
+class ZobristKeys {
+public:
   typedef array<array<KeyType, kNumFiles>, kNumRanks> PieceZarray_t;
   typedef array<PieceZarray_t, kNumPieceTypeVals> TeamZarray_t;
   typedef array<TeamZarray_t, 2> GameZarray_t;
-  GameZarray_t zarray;
-  KeyType turn_key;
 
   ZobristKeys()
-      : zarray{}
-      , turn_key{} {
+      : zarray_{}
+      , turn_key_{}
+      , seed_{} {
     PseudoRandomKeyGenerator<KeyType> key_generator;
-    turn_key = key_generator.GenerateKey();
-    zarray = CreateGameZarray(key_generator);
+    turn_key_ = key_generator.GenerateKey();
+    seed_ = key_generator.seed();
+    zarray_ = CreateGameZarray(key_generator);
   };
 
   ZobristKeys(uint32_t seed)
-      : zarray{}
-      , turn_key{} {
+      : zarray_{}
+      , turn_key_{}
+      , seed_{seed} {
     PseudoRandomKeyGenerator<KeyType> key_generator{seed};
-    turn_key = key_generator.GenerateKey();
-    zarray = CreateGameZarray(key_generator);
+    turn_key_ = key_generator.GenerateKey();
+    zarray_ = CreateGameZarray(key_generator);
   };
 
   ZobristKeys(KeyType new_turn_key, GameZarray_t &new_zarray)
-      : turn_key{new_turn_key}
-      , zarray{new_zarray} {};
+      : turn_key_{new_turn_key}
+      , zarray_{new_zarray} {};
 
-  KeyType GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) {
-    return zarray[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
+  KeyType GetHashValueAt(PieceColor color, PieceType piece_type, BoardSpace space) {
+    return zarray_[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
   }
-  static const GameZarray_t CreateGameZarray(PseudoRandomKeyGenerator<KeyType> &key_generator) {
+  static const GameZarray_t CreateGameZarray(
+      PseudoRandomKeyGenerator<KeyType> &key_generator
+  ) {
     GameZarray_t game_zarray{};
     for (auto color_idx = 0; color_idx < 2; color_idx++) {
       for (auto piece_id = 1; piece_id < kNumPieceTypeVals; piece_id++) {
@@ -80,6 +84,15 @@ struct ZobristKeys {
 
     return keys_vector;
   }
+
+  GameZarray_t zarray() { return zarray_; }
+  KeyType turn_key() { return turn_key_; }
+  uint32_t seed() { return seed_; }
+
+private:
+  GameZarray_t zarray_;
+  KeyType turn_key_;
+  uint32_t seed_;
 };
 
 //! Container where boardstate::HashCalculator stores moveselection::MinimaxMoveEvaluator
@@ -156,7 +169,7 @@ public:
     for (size_t rank = 0; rank < kNumRanks; rank++) {
       for (size_t file = 0; file < kNumFiles; file++) {
         if (board_map[rank][file].piece_color != 0) {
-          board_state_ = board_state_ ^ zkeys_.GetHashValue(
+          board_state_ = board_state_ ^ zkeys_.GetHashValueAt(
                                             board_map[rank][file].piece_color,
                                             board_map[rank][file].piece_type,
                                             BoardSpace{(int)rank, (int)file}
@@ -195,7 +208,7 @@ private:
 
   void _ImplementUpdateBoardState(ExecutedMove move) {
     // moving piece moves away from space
-    board_state_ = board_state_ ^ zkeys_.GetHashValue(
+    board_state_ = board_state_ ^ zkeys_.GetHashValueAt(
                                       move.moving_piece.piece_color,
                                       move.moving_piece.piece_type,
                                       move.spaces.start
@@ -203,7 +216,7 @@ private:
 
     // if capture piece, remove from board
     if (move.destination_piece.piece_color != PieceColor::kNul) {
-      board_state_ = board_state_ ^ zkeys_.GetHashValue(
+      board_state_ = board_state_ ^ zkeys_.GetHashValueAt(
                                         move.destination_piece.piece_color,
                                         move.destination_piece.piece_type,
                                         move.spaces.end
@@ -211,14 +224,14 @@ private:
     }
 
     // moving piece to new space
-    board_state_ = board_state_ ^ zkeys_.GetHashValue(
+    board_state_ = board_state_ ^ zkeys_.GetHashValueAt(
                                       move.moving_piece.piece_color,
                                       move.moving_piece.piece_type,
                                       move.spaces.end
                                   );
 
     // change state now that its other player's turn
-    board_state_ = board_state_ ^ zkeys_.turn_key;
+    board_state_ = board_state_ ^ zkeys_.turn_key();
   }
 };
 

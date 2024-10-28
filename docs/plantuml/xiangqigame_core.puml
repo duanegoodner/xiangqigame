@@ -367,7 +367,7 @@ namespace boardstate {
 		+ZobristKeys(KeyType new_turn_key, GameZarray_t& new_zarray)
 		+{static} CreateGameZarray(KeyGenerator key_generator) : GameZarray_t
 		+zarray : GameZarray_t
-		+GetHashValue(PieceColor color, PieceType piece_type, BoardSpace space) : KeyType
+		+GetHashValueAt(PieceColor color, PieceType piece_type, BoardSpace space) : KeyType
 		+turn_key : KeyType
 	}
 }

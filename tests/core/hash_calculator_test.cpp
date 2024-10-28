@@ -16,25 +16,25 @@ protected:
 
 TEST_F(ZobristKeysTest, DefaultInit) {
   auto zobrist_keys = ZobristKeys<uint64_t>();
-  EXPECT_NE(0, zobrist_keys.turn_key);
-  EXPECT_EQ(2, zobrist_keys.zarray.size());
-  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray[0].size());
-  EXPECT_EQ(kNumRanks, zobrist_keys.zarray[0][0].size());
-  EXPECT_EQ(kNumFiles, zobrist_keys.zarray[0][0][0].size());
+  EXPECT_NE(0, zobrist_keys.turn_key());
+  EXPECT_EQ(2, zobrist_keys.zarray().size());
+  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray()[0].size());
+  EXPECT_EQ(kNumRanks, zobrist_keys.zarray()[0][0].size());
+  EXPECT_EQ(kNumFiles, zobrist_keys.zarray()[0][0][0].size());
 }
 
 TEST_F(ZobristKeysTest, InitFromSeed) {
   auto zobrist_keys = ZobristKeys<uint64_t>(123456);
-  EXPECT_NE(0, zobrist_keys.turn_key);
-  EXPECT_EQ(2, zobrist_keys.zarray.size());
-  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray[0].size());
-  EXPECT_EQ(kNumRanks, zobrist_keys.zarray[0][0].size());
-  EXPECT_EQ(kNumFiles, zobrist_keys.zarray[0][0][0].size());
+  EXPECT_NE(0, zobrist_keys.turn_key());
+  EXPECT_EQ(2, zobrist_keys.zarray().size());
+  EXPECT_EQ(kNumPieceTypeVals, zobrist_keys.zarray()[0].size());
+  EXPECT_EQ(kNumRanks, zobrist_keys.zarray()[0][0].size());
+  EXPECT_EQ(kNumFiles, zobrist_keys.zarray()[0][0][0].size());
 }
 
-TEST_F(ZobristKeysTest, GetHashValue) {
+TEST_F(ZobristKeysTest, GetHashValueAt) {
   auto zobrist_keys = ZobristKeys<uint64_t>();
-  auto sample_key_value = zobrist_keys.GetHashValue(
+  auto sample_key_value = zobrist_keys.GetHashValueAt(
       PieceColor::kBlk,
       PieceType::kAdv,
       BoardSpace{0, 3}

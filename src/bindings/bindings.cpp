@@ -24,8 +24,8 @@ void bind_zobrist_keys(py::module_ &m, const std::string &class_name) {
   py::class_<ZobristKeys<KeyType>>(m, class_name.c_str())
       .def(py::init<>())
       .def(py::init<uint32_t>(), "seed"_a)
-      .def_readonly("turn_key", &ZobristKeys<KeyType>::turn_key)
-      .def_readonly("zarray", &ZobristKeys<KeyType>::zarray);
+      .def_property_readonly("turn_key", &ZobristKeys<KeyType>::turn_key)
+      .def_property_readonly("zarray", &ZobristKeys<KeyType>::zarray);
 }
 
 template <typename KeyType>
