@@ -17,7 +17,7 @@ public:
       : seed_{std::random_device{}()}
       , prng_{seed_} {}
 
-  PseudoRandomKeyGenerator(std::random_device::result_type seed)
+  PseudoRandomKeyGenerator(uint32_t seed)
       : seed_{seed}
       , prng_{seed_} {}
 
