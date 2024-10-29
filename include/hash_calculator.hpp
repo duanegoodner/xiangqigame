@@ -1,6 +1,6 @@
 //! @file hash_calculator.hpp
 //! Class templates for boardstate::HashCalculator and its supporting class
-//! boardstate::ZobristKeys.
+//! boardstate::ZobristCalculator.
 
 #pragma once
 
@@ -19,13 +19,13 @@ namespace boardstate {
 
 //! Container for all of the hash keys needed to run a boardstate::HashCalculator.
 template <typename KeyType>
-class ZobristKeys {
+class ZobristCalculator {
 public:
   typedef array<array<KeyType, kNumFiles>, kNumRanks> PieceZarray_t;
   typedef array<PieceZarray_t, kNumPieceTypeVals> TeamZarray_t;
   typedef array<TeamZarray_t, 2> GameZarray_t;
 
-  ZobristKeys(uint32_t seed)
+  ZobristCalculator(uint32_t seed)
       : zarray_{}
       , turn_key_{}
       , seed_{seed} {
@@ -34,7 +34,7 @@ public:
     zarray_ = CreateGameZarray(key_generator);
   };
 
-  ZobristKeys(KeyType new_turn_key, GameZarray_t &new_zarray)
+  ZobristCalculator(KeyType new_turn_key, GameZarray_t &new_zarray)
       : turn_key_{new_turn_key}
       , zarray_{new_zarray}
       , seed_{} {};
@@ -240,12 +240,12 @@ private:
 template <typename KeyType>
 class HashCalculator : public BoardStateSummarizer<HashCalculator<KeyType>, KeyType> {
 public:
-  HashCalculator(ZobristKeys<KeyType> zkeys)
+  HashCalculator(ZobristCalculator<KeyType> zkeys)
       : zkeys_{zkeys}
       // , board_state_{}
       , transposition_table_{} {};
   HashCalculator(uint32_t seed)
-      : HashCalculator(ZobristKeys<KeyType>(seed)) {};
+      : HashCalculator(ZobristCalculator<KeyType>(seed)) {};
 
   KeyType ImplementGetState() { return zkeys_.board_state(); }
 
@@ -276,7 +276,7 @@ public:
     return result;
   }
 
-  const ZobristKeys<KeyType> &GetZobristKeys() const { return zkeys_; }
+  const ZobristCalculator<KeyType> &GetZobristCalculator() const { return zkeys_; }
 
   const uint32_t zkeys_seed() { return zkeys_.seed(); }
 
@@ -287,7 +287,7 @@ public:
   }
 
 private:
-  ZobristKeys<KeyType> zkeys_;
+  ZobristCalculator<KeyType> zkeys_;
   TranspositionTable<KeyType> transposition_table_;
 };
 

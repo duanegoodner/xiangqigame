@@ -5,8 +5,8 @@ import xiangqi_bindings as bindings
 
 if __name__ == "__main__":
 
-    zkeys_64 = bindings.ZobristKeys64()
-    zkeys_128 = bindings.ZobristKeys128()
+    zkeys_64 = bindings.ZobristCalculator64()
+    zkeys_128 = bindings.ZobristCalculator128()
 
     # Example usage with numpy array of data
     data = np.array([10, 20, 50, 60, 90, 100, 120, 150, 180, 200])

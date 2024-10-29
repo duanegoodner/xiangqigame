@@ -21,16 +21,16 @@ using namespace piecepoints;
 
 template <typename KeyType>
 void bind_zobrist_keys(py::module_ &m, const std::string &class_name) {
-  py::class_<ZobristKeys<KeyType>>(m, class_name.c_str())
+  py::class_<ZobristCalculator<KeyType>>(m, class_name.c_str())
       .def(py::init<uint32_t>(), "seed"_a)
-      .def_property_readonly("turn_key", &ZobristKeys<KeyType>::turn_key)
-      .def_property_readonly("zarray", &ZobristKeys<KeyType>::zarray);
+      .def_property_readonly("turn_key", &ZobristCalculator<KeyType>::turn_key)
+      .def_property_readonly("zarray", &ZobristCalculator<KeyType>::zarray);
 }
 
 template <typename KeyType>
 void bind_hash_calculator(py::module_ &m, const std::string &class_name) {
   py::class_<HashCalculator<KeyType>>(m, class_name.c_str())
-      .def("get_zobrist_keys", &HashCalculator<KeyType>::GetZobristKeys);
+      .def("get_zobrist_keys", &HashCalculator<KeyType>::GetZobristCalculator);
 }
 
 template <typename KeyType>
@@ -225,7 +225,7 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
   bind_minimax_move_evaluator<uint32_t>(m, "MinimaxMoveEvaluator32");
   bind_minimax_move_evaluator<uint64_t>(m, "MinimaxMoveEvaluator64");
   bind_minimax_move_evaluator<__uint128_t>(m, "MinimaxMoveEvaluator128");
-  bind_zobrist_keys<uint32_t>(m, "ZobristKeys32");
-  bind_zobrist_keys<uint64_t>(m, "ZobristKeys64");
-  bind_zobrist_keys<__uint128_t>(m, "ZobristKeys128");
+  bind_zobrist_keys<uint32_t>(m, "ZobristCalculator32");
+  bind_zobrist_keys<uint64_t>(m, "ZobristCalculator64");
+  bind_zobrist_keys<__uint128_t>(m, "ZobristCalculator128");
 }

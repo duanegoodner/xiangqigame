@@ -9,13 +9,13 @@ using namespace boardstate;
 using namespace nlohmann::json_abi_v3_11_3;
 using namespace std;
 
-class ZobristKeysTest : public ::testing::Test {
+class ZobristCalculatorTest : public ::testing::Test {
 protected:
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
 };
 
-TEST_F(ZobristKeysTest, DefaultInit) {
-  auto zobrist_keys_064 = ZobristKeys<uint64_t>(123456);
+TEST_F(ZobristCalculatorTest, DefaultInit) {
+  auto zobrist_keys_064 = ZobristCalculator<uint64_t>(123456);
   EXPECT_NE(0, zobrist_keys_064.turn_key());
   EXPECT_EQ(2, zobrist_keys_064.zarray().size());
   EXPECT_EQ(kNumPieceTypeVals, zobrist_keys_064.zarray()[0].size());
@@ -23,8 +23,8 @@ TEST_F(ZobristKeysTest, DefaultInit) {
   EXPECT_EQ(kNumFiles, zobrist_keys_064.zarray()[0][0][0].size());
 }
 
-TEST_F(ZobristKeysTest, InitFromSeed) {
-  auto zobrist_keys_064 = ZobristKeys<uint64_t>(123456);
+TEST_F(ZobristCalculatorTest, InitFromSeed) {
+  auto zobrist_keys_064 = ZobristCalculator<uint64_t>(123456);
   EXPECT_NE(0, zobrist_keys_064.turn_key());
   EXPECT_EQ(2, zobrist_keys_064.zarray().size());
   EXPECT_EQ(kNumPieceTypeVals, zobrist_keys_064.zarray()[0].size());
@@ -32,8 +32,8 @@ TEST_F(ZobristKeysTest, InitFromSeed) {
   EXPECT_EQ(kNumFiles, zobrist_keys_064.zarray()[0][0][0].size());
 }
 
-TEST_F(ZobristKeysTest, GetHashValueAt) {
-  auto zobrist_keys_064 = ZobristKeys<uint64_t>(1234567);
+TEST_F(ZobristCalculatorTest, GetHashValueAt) {
+  auto zobrist_keys_064 = ZobristCalculator<uint64_t>(1234567);
   auto sample_key_value = zobrist_keys_064.GetHashValueAt(
       PieceColor::kBlk,
       PieceType::kAdv,
@@ -45,9 +45,9 @@ class HashCalculatorTest : public ::testing::Test {
 
 protected:
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
-  ZobristKeys<uint32_t> zobrist_keys_032{78910};
-  ZobristKeys<uint64_t> zobrist_keys_064{654321};
-  ZobristKeys<__uint128_t> zobrist_keys_128{2468};
+  ZobristCalculator<uint32_t> zobrist_keys_032{78910};
+  ZobristCalculator<uint64_t> zobrist_keys_064{654321};
+  ZobristCalculator<__uint128_t> zobrist_keys_128{2468};
 };
 
 TEST_F(HashCalculatorTest, InitializeFromKeysAndMap) {
