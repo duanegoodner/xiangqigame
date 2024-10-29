@@ -39,24 +39,51 @@ public:
       , zarray_{new_zarray}
       , seed_{} {};
 
-  KeyType GetHashValueAt(PieceColor color, PieceType piece_type, BoardSpace space) {
-    return zarray_[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
-  }
-  static const GameZarray_t CreateGameZarray(
-      PseudoRandomKeyGenerator<KeyType> &key_generator
-  ) {
-    GameZarray_t game_zarray{};
-    for (auto color_idx = 0; color_idx < 2; color_idx++) {
-      for (auto piece_id = 1; piece_id < kNumPieceTypeVals; piece_id++) {
-        for (auto rank = 0; rank < kNumRanks; rank++) {
-          for (auto file = 0; file < kNumFiles; file++) {
-            game_zarray[color_idx][piece_id][rank][file] = key_generator.GenerateKey();
-          }
+  void FullBoardStateCalc(const BoardMap_t &board_map) {
+    board_state_ = 0;
+    for (size_t rank = 0; rank < kNumRanks; rank++) {
+      for (size_t file = 0; file < kNumFiles; file++) {
+        if (board_map[rank][file].piece_color != 0) {
+          board_state_ = board_state_ ^ GetHashValueAt(
+                                            board_map[rank][file].piece_color,
+                                            board_map[rank][file].piece_type,
+                                            BoardSpace{(int)rank, (int)file}
+                                        );
         }
       }
     }
-    return game_zarray;
-  };
+  }
+
+  void UpdateBoardState(ExecutedMove move) {
+    board_state_ = board_state_ ^ GetHashValueAt(
+                                      move.moving_piece.piece_color,
+                                      move.moving_piece.piece_type,
+                                      move.spaces.start
+                                  );
+
+    // if capture piece, remove from board
+    if (move.destination_piece.piece_color != PieceColor::kNul) {
+      board_state_ = board_state_ ^ GetHashValueAt(
+                                        move.destination_piece.piece_color,
+                                        move.destination_piece.piece_type,
+                                        move.spaces.end
+                                    );
+    }
+
+    // moving piece to new space
+    board_state_ = board_state_ ^ GetHashValueAt(
+                                      move.moving_piece.piece_color,
+                                      move.moving_piece.piece_type,
+                                      move.spaces.end
+                                  );
+
+    // change state now that its other player's turn
+    board_state_ = board_state_ ^ turn_key();
+  }
+
+  KeyType GetHashValueAt(PieceColor color, PieceType piece_type, BoardSpace space) {
+    return zarray_[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
+  }
 
   //! Collects all keys into a std::vector (typically used for entropy calc).
   std::vector<KeyType> KeysVector() const {
@@ -76,6 +103,7 @@ public:
     return keys_vector;
   }
 
+  KeyType board_state() { return board_state_; }
   GameZarray_t zarray() { return zarray_; }
   KeyType turn_key() { return turn_key_; }
   uint32_t seed() { return seed_; }
@@ -84,6 +112,23 @@ private:
   GameZarray_t zarray_;
   KeyType turn_key_;
   uint32_t seed_;
+  KeyType board_state_;
+
+  static const GameZarray_t CreateGameZarray(
+      PseudoRandomKeyGenerator<KeyType> &key_generator
+  ) {
+    GameZarray_t game_zarray{};
+    for (auto color_idx = 0; color_idx < 2; color_idx++) {
+      for (auto piece_id = 1; piece_id < kNumPieceTypeVals; piece_id++) {
+        for (auto rank = 0; rank < kNumRanks; rank++) {
+          for (auto file = 0; file < kNumFiles; file++) {
+            game_zarray[color_idx][piece_id][rank][file] = key_generator.GenerateKey();
+          }
+        }
+      }
+    }
+    return game_zarray;
+  };
 };
 
 //! Container where boardstate::HashCalculator stores moveselection::MinimaxMoveEvaluator
@@ -197,30 +242,18 @@ class HashCalculator : public BoardStateSummarizer<HashCalculator<KeyType>, KeyT
 public:
   HashCalculator(ZobristKeys<KeyType> zkeys)
       : zkeys_{zkeys}
-      , board_state_{}
+      // , board_state_{}
       , transposition_table_{} {};
   HashCalculator(uint32_t seed)
       : HashCalculator(ZobristKeys<KeyType>(seed)) {};
 
-  // HashCalculator()
-  //     : HashCalculator(ZobristKeys<KeyType>()) {};
-  KeyType ImplementGetState() { return board_state_; }
-  void ImplementUpdateBoardState(const ExecutedMove &move) {
-    _ImplementUpdateBoardState(move);
+  KeyType ImplementGetState() { return zkeys_.board_state(); }
+
+  void ImplementUpdateBoardState(const ExecutedMove &executed_move) {
+    zkeys_.UpdateBoardState(executed_move);
   }
   void ImplementFullBoardStateCalc(const BoardMap_t &board_map) {
-    board_state_ = 0;
-    for (size_t rank = 0; rank < kNumRanks; rank++) {
-      for (size_t file = 0; file < kNumFiles; file++) {
-        if (board_map[rank][file].piece_color != 0) {
-          board_state_ = board_state_ ^ zkeys_.GetHashValueAt(
-                                            board_map[rank][file].piece_color,
-                                            board_map[rank][file].piece_type,
-                                            BoardSpace{(int)rank, (int)file}
-                                        );
-        }
-      }
-    }
+    zkeys_.FullBoardStateCalc(board_map);
   };
   void ImplementRecordTrData(
       int search_depth,
@@ -228,11 +261,11 @@ public:
       EqualScoreMoves &similar_moves
   ) {
     transposition_table_
-        .RecordData(board_state_, search_depth, result_type, similar_moves);
+        .RecordData(zkeys_.board_state(), search_depth, result_type, similar_moves);
   }
 
   TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
-    return transposition_table_.GetDataAt(board_state_, search_depth);
+    return transposition_table_.GetDataAt(zkeys_.board_state(), search_depth);
   }
 
   moveselection::TranspositionTableSize ImplementGetTrTableSize() {
@@ -247,42 +280,15 @@ public:
 
   const uint32_t zkeys_seed() { return zkeys_.seed(); }
 
-  const KeyType board_state() { return board_state_; }
+  const KeyType board_state() { return zkeys_.board_state(); }
 
-  const string board_state_hex_str() { return boardstate::IntToHexString(board_state_); }
+  const string board_state_hex_str() {
+    return boardstate::IntToHexString(board_state());
+  }
 
 private:
   ZobristKeys<KeyType> zkeys_;
-  KeyType board_state_;
   TranspositionTable<KeyType> transposition_table_;
-
-  void _ImplementUpdateBoardState(ExecutedMove move) {
-    // moving piece moves away from space
-    board_state_ = board_state_ ^ zkeys_.GetHashValueAt(
-                                      move.moving_piece.piece_color,
-                                      move.moving_piece.piece_type,
-                                      move.spaces.start
-                                  );
-
-    // if capture piece, remove from board
-    if (move.destination_piece.piece_color != PieceColor::kNul) {
-      board_state_ = board_state_ ^ zkeys_.GetHashValueAt(
-                                        move.destination_piece.piece_color,
-                                        move.destination_piece.piece_type,
-                                        move.spaces.end
-                                    );
-    }
-
-    // moving piece to new space
-    board_state_ = board_state_ ^ zkeys_.GetHashValueAt(
-                                      move.moving_piece.piece_color,
-                                      move.moving_piece.piece_type,
-                                      move.spaces.end
-                                  );
-
-    // change state now that its other player's turn
-    board_state_ = board_state_ ^ zkeys_.turn_key();
-  }
 };
 
 // template <typename KeyType>
@@ -291,8 +297,29 @@ private:
 // public:
 //   DualHashCalculator(uint32_t seed);
 
+//   KeyType ImplementGetState() { return primary_hash_calculator_.GetState(); }
+
+//   void ImplementUpdateBoardState(const ExecutedMove &move) {
+//     primary_hash_calculator_.UpdateBoardState();
+//     confirmation_hash_calculator_.UpdateBoardState();
+//   }
+
+//   void ImplementFullBoardStateCalc(const BoardMap_t &board_map) {
+//     primary_hash_calculator_.FullBoardStateCalc();
+//     confirmation_hash_calculator_.FullBoardStateCalc();
+//   }
+
+//   void ImplementRecordTrData(
+//     int search_depth,
+//     MinimaxResultType result_type,
+//     EqualScoreMoves &similar_moves
+//   ) {
+
+//   }
+
 // private:
-//   HashCalculator<KeyType>
+//   HashCalculator<KeyType> primary_hash_calculator_;
+//   HashCalculator<KeyType> confirmation_hash_calculator_;
 // };
 
 } // namespace boardstate
