@@ -29,6 +29,7 @@ public:
   ZobristCalculator(uint32_t seed)
       : zarray_{}
       , turn_key_{}
+      , board_state_{}
       , seed_{seed} {
     PseudoRandomKeyGenerator<KeyType> key_generator{seed};
     turn_key_ = key_generator.GenerateKey();
@@ -37,11 +38,6 @@ public:
 
   ZobristCalculator()
       : ZobristCalculator(random_device{}()) {}
-
-  // ZobristCalculator(KeyType new_turn_key, GameZarray_t &new_zarray)
-  //     : turn_key_{new_turn_key}
-  //     , zarray_{new_zarray}
-  //     , seed_{} {};
 
   void FullBoardStateCalc(const BoardMap_t &board_map) {
     board_state_ = 0;
@@ -301,7 +297,7 @@ private:
 
 template <typename KeyType>
 class DualZobristTracker
-    : public BoardStateSummarizer<SingleZobristTracker<KeyType>, KeyType> {
+    : public BoardStateSummarizer<DualZobristTracker<KeyType>, KeyType> {
 public:
   DualZobristTracker(
       ZobristCalculator<KeyType> primary_calculator,
@@ -322,12 +318,6 @@ public:
 
   DualZobristTracker()
       : DualZobristTracker(random_device{}()) {}
-
-  // DualZobristTracker()
-  //     : primary_calculator_{}
-  //     , confirmation_calculator_{}
-  //     , transposition_table_{}
-  //     , zkeys_seed_{} {}
 
   KeyType ImplementGetState() { return primary_calculator_.board_state(); }
 

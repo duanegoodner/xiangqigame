@@ -76,18 +76,16 @@ TEST_F(SingleZobristTrackerTest, BoardStateHexString) {
   my_hash_calculator_032.ImplementFullBoardStateCalc(board_map);
   auto hex_state_032 = my_hash_calculator_032.board_state_hex_str();
   std::cout << hex_state_032 << std::endl;
-  
+
   auto my_hash_calculator_064 = SingleZobristTracker<uint64_t>(22443355);
   my_hash_calculator_064.ImplementFullBoardStateCalc(board_map);
   auto hex_state_064 = my_hash_calculator_064.board_state_hex_str();
   std::cout << hex_state_064 << std::endl;
 
-
   auto my_hash_calculator_128 = SingleZobristTracker<__uint128_t>(22443355);
   my_hash_calculator_128.ImplementFullBoardStateCalc(board_map);
   auto hex_state_128 = my_hash_calculator_128.board_state_hex_str();
   std::cout << hex_state_128 << std::endl;
-
 }
 
 TEST_F(SingleZobristTrackerTest, ExecuteAndUndoMove64) {
@@ -132,6 +130,86 @@ TEST_F(SingleZobristTrackerTest, ExecuteAndUndoMove128) {
 
   EXPECT_NE(initial_state, post_move_state);
   EXPECT_EQ(initial_state, final_state);
+}
+
+class DualZobristTrackerTest : public ::testing::Test {
+protected:
+  BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
+  ZobristCalculator<uint32_t> zobrist_calculator_032_a{78910};
+  ZobristCalculator<uint32_t> zobrist_calculator_032_b{910789};
+
+  ZobristCalculator<uint64_t> zobrist_calculator_064_a{654321};
+  ZobristCalculator<uint64_t> zobrist_calculator_064_b{321654};
+
+  ZobristCalculator<__uint128_t> zobrist_calculator_128_a{2468};
+  ZobristCalculator<__uint128_t> zobrist_calculator_128_b{6824};
+};
+
+TEST_F(DualZobristTrackerTest, DefaultInit) {
+  auto dual_tracker_032 = DualZobristTracker<uint32_t>();
+  auto dual_tracker_064 = DualZobristTracker<uint64_t>();
+  auto dual_tracker_128 = DualZobristTracker<__uint128_t>();
+}
+
+TEST_F(DualZobristTrackerTest, InitWithExistingCalculators) {
+  auto dual_tracker_032 =
+      DualZobristTracker<uint32_t>(zobrist_calculator_032_a, zobrist_calculator_032_b);
+  auto dual_tracker_064 =
+      DualZobristTracker<uint64_t>(zobrist_calculator_064_a, zobrist_calculator_064_b);
+  auto dual_tracker_128 =
+      DualZobristTracker<__uint128_t>(zobrist_calculator_128_a, zobrist_calculator_128_b);
+}
+
+TEST_F(DualZobristTrackerTest, InitFromSeed) {
+  DualZobristTracker<uint32_t> dual_tracker_032{20241031};
+  DualZobristTracker<uint64_t> dual_tracker_064{20241030};
+  DualZobristTracker<__uint128_t> dual_tracker_128{20241029};
+}
+
+TEST_F(DualZobristTrackerTest, ExecuteAndUndoMove64) {
+
+  DualZobristTracker<uint64_t> dual_tracker_064{};
+
+  auto start = BoardSpace{6, 0};
+  auto end = BoardSpace{5, 0};
+  auto move = Move{start, end};
+  auto moving_piece = GamePiece{PieceType::kSol, PieceColor::kRed};
+  auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
+  auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
+
+  dual_tracker_064.ImplementFullBoardStateCalc(board_map);
+  auto initial_state = dual_tracker_064.ImplementGetState();
+  dual_tracker_064.ImplementUpdateBoardState(executed_move);
+  auto post_move_state = dual_tracker_064.ImplementGetState();
+  dual_tracker_064.ImplementUpdateBoardState(executed_move);
+  auto final_state = dual_tracker_064.ImplementGetState();
+
+  EXPECT_NE(initial_state, post_move_state);
+  EXPECT_EQ(initial_state, final_state);
+}
+
+TEST_F(DualZobristTrackerTest, RecordData) {
+  
+  DualZobristTracker<uint64_t> dual_tracker_064{};
+  
+  auto start = BoardSpace{6, 0};
+  auto end = BoardSpace{5, 0};
+  auto move = Move{start, end};
+  auto moving_piece = GamePiece{PieceType::kSol, PieceColor::kRed};
+  auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
+  auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
+
+  dual_tracker_064.ImplementFullBoardStateCalc(board_map);
+  auto initial_state = dual_tracker_064.ImplementGetState();
+
+  MoveCollection dummy_move_collection{};
+  dummy_move_collection.Append(move);
+
+  EqualScoreMoves dummy_equal_score_moves{1, dummy_move_collection};
+  
+  dual_tracker_064.RecordTrData(1, MinimaxResultType::kFullyEvaluatedNode, dummy_equal_score_moves);
+
+
 }
 
 int main(int argc, char **argv) {
