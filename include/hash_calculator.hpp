@@ -38,10 +38,10 @@ public:
   ZobristCalculator()
       : ZobristCalculator(random_device{}()) {}
 
-  ZobristCalculator(KeyType new_turn_key, GameZarray_t &new_zarray)
-      : turn_key_{new_turn_key}
-      , zarray_{new_zarray}
-      , seed_{} {};
+  // ZobristCalculator(KeyType new_turn_key, GameZarray_t &new_zarray)
+  //     : turn_key_{new_turn_key}
+  //     , zarray_{new_zarray}
+  //     , seed_{} {};
 
   void FullBoardStateCalc(const BoardMap_t &board_map) {
     board_state_ = 0;
@@ -139,9 +139,9 @@ private:
 //! moveselection::MinimaxMoveEvaluator results; supports recording, look-up and
 //! retrieval of data.
 template <typename KeyType>
-class TranspositionTable {
+class SingleKeyTranspositionTable {
 public:
-  TranspositionTable()
+  SingleKeyTranspositionTable()
       : num_entries_{0} {}
 
   TranspositionTableSearchResult GetDataAt(
@@ -239,7 +239,7 @@ private:
   uint64_t num_entries_;
 };
 
-//! Implements BoardStateSummarizer interface; calculates Zobrist hash value of board
+//! Tracks board state using one boardstate::ZobristCalculator and a Implements BoardStateSummarizer interface; calculates Zobrist hash value of board
 //! configuration; provides moveselection::MinimaxMoveEvaluator access to
 //! boardstate::TranspositionTable
 template <typename KeyType>
@@ -247,13 +247,15 @@ class SingleZobristTracker
     : public BoardStateSummarizer<SingleZobristTracker<KeyType>, KeyType> {
 public:
   SingleZobristTracker(ZobristCalculator<KeyType> calculator)
-      : calculator_{calculator} // , board_state_{}
+      : calculator_{calculator}
       , transposition_table_{} {};
-  
+
+  SingleZobristTracker()
+      : calculator_{}
+      , transposition_table_{} {};
+
   SingleZobristTracker(uint32_t seed)
       : SingleZobristTracker(ZobristCalculator<KeyType>(seed)) {};
-  
-  SingleZobristTracker() : calculator_{}, transposition_table_{} {};
 
   KeyType ImplementGetState() { return calculator_.board_state(); }
 
@@ -294,7 +296,7 @@ public:
 
 private:
   ZobristCalculator<KeyType> calculator_;
-  TranspositionTable<KeyType> transposition_table_;
+  SingleKeyTranspositionTable<KeyType> transposition_table_;
 };
 
 template <typename KeyType>
@@ -306,19 +308,26 @@ public:
       ZobristCalculator<KeyType> confirmation_calculator
   )
       : primary_calculator_{primary_calculator}
-      , confirmation_calculator_{confirmation_calculator} {}
-
-  DualZobristTracker()
-      : primary_calculator_{}
-      , confirmation_calculator_{} {}
+      , confirmation_calculator_{confirmation_calculator}
+      , transposition_table_{}
+      , zkeys_seed_{} {}
 
   DualZobristTracker(uint32_t zkeys_seed)
-      : zkeys_seed_{zkeys_seed} {
+      : transposition_table_{}
+      , zkeys_seed_{zkeys_seed} {
     std::mt19937 calculator_seed_generator{zkeys_seed_};
-    primary_calculator_ = ZobristCalculator<KeyType>{calculator_seed_generator()};
-    confirmation_calculator_ =
-    ZobristCalculator<KeyType>{calculator_seed_generator()};
+    primary_calculator_ = ZobristCalculator<KeyType>{(uint32_t) calculator_seed_generator()};
+    confirmation_calculator_ = ZobristCalculator<KeyType>{(uint32_t) calculator_seed_generator()};
   }
+
+  DualZobristTracker()
+      : DualZobristTracker(random_device{}()) {}
+
+  // DualZobristTracker()
+  //     : primary_calculator_{}
+  //     , confirmation_calculator_{}
+  //     , transposition_table_{}
+  //     , zkeys_seed_{} {}
 
   KeyType ImplementGetState() { return primary_calculator_.board_state(); }
 
@@ -362,9 +371,9 @@ public:
   }
 
   const uint32_t zkeys_seed() { return zkeys_seed_; }
-
+  const uint32_t primary_calculator_seed() {return primary_calculator_.seed(); }
+  const uint32_t confirmation_calculator_seed() {return confirmation_calculator_.seed(); }
   const KeyType board_state() { return primary_calculator_.board_state(); }
-
   const string board_state_hex_str() {
     return boardstate::IntToHexString(board_state());
   }
