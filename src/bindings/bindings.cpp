@@ -29,14 +29,14 @@ void bind_zobrist_keys(py::module_ &m, const std::string &class_name) {
 
 template <typename KeyType>
 void bind_hash_calculator(py::module_ &m, const std::string &class_name) {
-  py::class_<HashCalculator<KeyType>>(m, class_name.c_str())
-      .def("get_zobrist_keys", &HashCalculator<KeyType>::GetZobristCalculator);
+  py::class_<SingleZobristTracker<KeyType>>(m, class_name.c_str())
+      .def("get_zobrist_keys", &SingleZobristTracker<KeyType>::GetZobristCalculator);
 }
 
 template <typename KeyType>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
   py::class_<
-      MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>>(
+      MinimaxMoveEvaluator<GameBoard, SingleZobristTracker<KeyType>, PiecePositionPoints>>(
       m,
       class_name.c_str()
   )
@@ -57,42 +57,42 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           "select_move",
           &MinimaxMoveEvaluator<
               GameBoard,
-              HashCalculator<KeyType>,
+              SingleZobristTracker<KeyType>,
               PiecePositionPoints>::SelectMove
       )
       .def_property_readonly(
           "search_summaries",
           &MinimaxMoveEvaluator<
               GameBoard,
-              HashCalculator<KeyType>,
+              SingleZobristTracker<KeyType>,
               PiecePositionPoints>::search_summaries
       )
       .def(
           "starting_search_depth",
           &MinimaxMoveEvaluator<
               GameBoard,
-              HashCalculator<KeyType>,
+              SingleZobristTracker<KeyType>,
               PiecePositionPoints>::StartingSearchDepth
       )
       .def(
           "zobrist_key_size_bits",
           &MinimaxMoveEvaluator<
               GameBoard,
-              HashCalculator<KeyType>,
+              SingleZobristTracker<KeyType>,
               PiecePositionPoints>::KeySizeBits
       )
       .def_property_readonly(
           "zkeys_seed",
           &MinimaxMoveEvaluator<
               GameBoard,
-              HashCalculator<KeyType>,
+              SingleZobristTracker<KeyType>,
               PiecePositionPoints>::zkeys_seed
       )
       .def_property_readonly(
           "board_state_hex_str",
           &MinimaxMoveEvaluator<
               GameBoard,
-              HashCalculator<KeyType>,
+              SingleZobristTracker<KeyType>,
               PiecePositionPoints>::board_state_hex_str
       );
 }

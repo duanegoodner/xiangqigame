@@ -58,7 +58,7 @@ struct TranspositionTableEntry {
 };
 
 //! Container for storing a moveselection::TranspositionTableEntry retrieved by a call to
-//! boardstate::HashCalculator.ImplementGetTrData.
+//! boardstate::SingleZobristTracker.ImplementGetTrData.
 struct TranspositionTableSearchResult {
   TranspositionTableEntry table_entry;
   bool found;

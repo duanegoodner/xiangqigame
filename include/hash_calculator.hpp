@@ -1,5 +1,5 @@
 //! @file hash_calculator.hpp
-//! Class templates for boardstate::HashCalculator and its supporting class
+//! Class templates for boardstate::SingleZobristTracker and its supporting class
 //! boardstate::ZobristCalculator.
 
 #pragma once
@@ -17,7 +17,7 @@ using namespace std;
 
 namespace boardstate {
 
-//! Container for all of the hash keys needed to run a boardstate::HashCalculator.
+//! Container for all of the hash keys needed to run a boardstate::SingleZobristTracker.
 template <typename KeyType>
 class ZobristCalculator {
 public:
@@ -131,7 +131,7 @@ private:
   };
 };
 
-//! Container where boardstate::HashCalculator stores moveselection::MinimaxMoveEvaluator
+//! Container where boardstate::SingleZobristTracker stores moveselection::MinimaxMoveEvaluator
 //! results; supports recording, look-up and retrieval of data.
 template <typename KeyType>
 class TranspositionTable {
@@ -238,14 +238,14 @@ private:
 //! configuration; provides moveselection::MinimaxMoveEvaluator access to
 //! boardstate::TranspositionTable
 template <typename KeyType>
-class HashCalculator : public BoardStateSummarizer<HashCalculator<KeyType>, KeyType> {
+class SingleZobristTracker : public BoardStateSummarizer<SingleZobristTracker<KeyType>, KeyType> {
 public:
-  HashCalculator(ZobristCalculator<KeyType> zkeys)
+  SingleZobristTracker(ZobristCalculator<KeyType> zkeys)
       : zkeys_{zkeys}
       // , board_state_{}
       , transposition_table_{} {};
-  HashCalculator(uint32_t seed)
-      : HashCalculator(ZobristCalculator<KeyType>(seed)) {};
+  SingleZobristTracker(uint32_t seed)
+      : SingleZobristTracker(ZobristCalculator<KeyType>(seed)) {};
 
   KeyType ImplementGetState() { return zkeys_.board_state(); }
 
@@ -292,10 +292,10 @@ private:
 };
 
 // template <typename KeyType>
-// class DualHashCalculator
-//     : public BoardStateSummarizer<HashCalculator<KeyType>, KeyType> {
+// class DualSingleZobristTracker
+//     : public BoardStateSummarizer<SingleZobristTracker<KeyType>, KeyType> {
 // public:
-//   DualHashCalculator(uint32_t seed);
+//   DualSingleZobristTracker(uint32_t seed);
 
 //   KeyType ImplementGetState() { return primary_hash_calculator_.GetState(); }
 
@@ -318,8 +318,8 @@ private:
 //   }
 
 // private:
-//   HashCalculator<KeyType> primary_hash_calculator_;
-//   HashCalculator<KeyType> confirmation_hash_calculator_;
+//   SingleZobristTracker<KeyType> primary_hash_calculator_;
+//   SingleZobristTracker<KeyType> confirmation_hash_calculator_;
 // };
 
 } // namespace boardstate

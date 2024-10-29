@@ -102,7 +102,7 @@ ExecutedMove GameBoard::ImplementExecuteMove(Move move) {
 
   auto executed_move =
       ExecutedMove{move, moving_piece, destination_piece, moves_since_last_capture_};
-  UpdateHashCalculator(executed_move);
+  UpdateStateTracker(executed_move);
   AddToMoveLog(executed_move);
   if (!IsCaptureMove(executed_move)) {
     moves_since_last_capture_++;
@@ -120,7 +120,7 @@ bool GameBoard::IsCaptureMove(ExecutedMove executed_move) {
 void GameBoard::ImplementUndoMove(ExecutedMove executed_move) {
   SetOccupantAt(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupantAt(executed_move.spaces.end, executed_move.destination_piece);
-  UpdateHashCalculator(executed_move);
+  UpdateStateTracker(executed_move);
   moves_since_last_capture_ = executed_move.moves_since_last_capture;
   RemoveFromMoveLog(executed_move);
 };
@@ -144,7 +144,7 @@ const std::map<PieceColor, vector<ExecutedMove>> &GameBoard::move_log() const {
   return move_log_;
 }
 
-void GameBoard::UpdateHashCalculator(ExecutedMove executed_move) {
+void GameBoard::UpdateStateTracker(ExecutedMove executed_move) {
   for (const auto &callback : move_callbacks_) {
     callback(executed_move);
   }
