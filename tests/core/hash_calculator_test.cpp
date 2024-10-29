@@ -58,6 +58,9 @@ TEST_F(SingleZobristTrackerTest, InitializeFromKeysAndMap) {
 TEST_F(SingleZobristTrackerTest, DefaultInit) {
   auto my_hash_calculator_064 = SingleZobristTracker<uint64_t>(3579);
   auto my_hash_calculator_128 = SingleZobristTracker<__uint128_t>(8675309);
+
+  auto dual_hash_calculator_064 = DualZobristTracker<uint64_t>();
+  auto dual_hash_calculator_128 = DualZobristTracker<__uint128_t>();
 }
 
 TEST_F(SingleZobristTrackerTest, InitializeBoardState) {

@@ -35,6 +35,9 @@ public:
     zarray_ = CreateGameZarray(key_generator);
   };
 
+  ZobristCalculator()
+      : ZobristCalculator(random_device{}()) {}
+
   ZobristCalculator(KeyType new_turn_key, GameZarray_t &new_zarray)
       : turn_key_{new_turn_key}
       , zarray_{new_zarray}
@@ -243,19 +246,22 @@ template <typename KeyType>
 class SingleZobristTracker
     : public BoardStateSummarizer<SingleZobristTracker<KeyType>, KeyType> {
 public:
-  SingleZobristTracker(ZobristCalculator<KeyType> zkeys)
-      : zkeys_{zkeys} // , board_state_{}
+  SingleZobristTracker(ZobristCalculator<KeyType> calculator)
+      : calculator_{calculator} // , board_state_{}
       , transposition_table_{} {};
+  
   SingleZobristTracker(uint32_t seed)
       : SingleZobristTracker(ZobristCalculator<KeyType>(seed)) {};
+  
+  SingleZobristTracker() : calculator_{}, transposition_table_{} {};
 
-  KeyType ImplementGetState() { return zkeys_.board_state(); }
+  KeyType ImplementGetState() { return calculator_.board_state(); }
 
   void ImplementUpdateBoardState(const ExecutedMove &executed_move) {
-    zkeys_.UpdateBoardState(executed_move);
+    calculator_.UpdateBoardState(executed_move);
   }
   void ImplementFullBoardStateCalc(const BoardMap_t &board_map) {
-    zkeys_.FullBoardStateCalc(board_map);
+    calculator_.FullBoardStateCalc(board_map);
   };
   void ImplementRecordTrData(
       int search_depth,
@@ -263,11 +269,11 @@ public:
       EqualScoreMoves &similar_moves
   ) {
     transposition_table_
-        .RecordData(zkeys_.board_state(), search_depth, result_type, similar_moves);
+        .RecordData(calculator_.board_state(), search_depth, result_type, similar_moves);
   }
 
   TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
-    return transposition_table_.GetDataAt(zkeys_.board_state(), search_depth);
+    return transposition_table_.GetDataAt(calculator_.board_state(), search_depth);
   }
 
   moveselection::TranspositionTableSize ImplementGetTrTableSize() {
@@ -278,16 +284,16 @@ public:
     return result;
   }
 
-  const uint32_t zkeys_seed() { return zkeys_.seed(); }
+  const uint32_t zkeys_seed() { return calculator_.seed(); }
 
-  const KeyType board_state() { return zkeys_.board_state(); }
+  const KeyType board_state() { return calculator_.board_state(); }
 
   const string board_state_hex_str() {
     return boardstate::IntToHexString(board_state());
   }
 
 private:
-  ZobristCalculator<KeyType> zkeys_;
+  ZobristCalculator<KeyType> calculator_;
   TranspositionTable<KeyType> transposition_table_;
 };
 
@@ -295,14 +301,24 @@ template <typename KeyType>
 class DualZobristTracker
     : public BoardStateSummarizer<SingleZobristTracker<KeyType>, KeyType> {
 public:
+  DualZobristTracker(
+      ZobristCalculator<KeyType> primary_calculator,
+      ZobristCalculator<KeyType> confirmation_calculator
+  )
+      : primary_calculator_{primary_calculator}
+      , confirmation_calculator_{confirmation_calculator} {}
+
+  DualZobristTracker()
+      : primary_calculator_{}
+      , confirmation_calculator_{} {}
+
   DualZobristTracker(uint32_t zkeys_seed)
       : zkeys_seed_{zkeys_seed} {
     std::mt19937 calculator_seed_generator{zkeys_seed_};
     primary_calculator_ = ZobristCalculator<KeyType>{calculator_seed_generator()};
-    confirmation_calculator_ = ZobristCalculator<KeyType>{calculator_seed_generator()};
+    confirmation_calculator_ =
+    ZobristCalculator<KeyType>{calculator_seed_generator()};
   }
-  DualZobristTracker()
-      : DualZobristTracker(std::random_device{}()) {}
 
   KeyType ImplementGetState() { return primary_calculator_.board_state(); }
 
@@ -349,7 +365,9 @@ public:
 
   const KeyType board_state() { return primary_calculator_.board_state(); }
 
-  const string board_state_hex_str() { return boardstate::IntToHexString(board_state()); }
+  const string board_state_hex_str() {
+    return boardstate::IntToHexString(board_state());
+  }
 
 private:
   uint32_t zkeys_seed_;
