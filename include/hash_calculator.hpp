@@ -9,6 +9,7 @@
 #include <board_data_structs.hpp>
 #include <game_board.hpp>
 #include <key_generator.hpp>
+#include <random>
 #include <utility_functs.hpp>
 
 using namespace gameboard;
@@ -54,27 +55,27 @@ public:
     }
   }
 
-  void UpdateBoardState(ExecutedMove move) {
+  void UpdateBoardState(ExecutedMove executed_move) {
     board_state_ = board_state_ ^ GetHashValueAt(
-                                      move.moving_piece.piece_color,
-                                      move.moving_piece.piece_type,
-                                      move.spaces.start
+                                      executed_move.moving_piece.piece_color,
+                                      executed_move.moving_piece.piece_type,
+                                      executed_move.spaces.start
                                   );
 
     // if capture piece, remove from board
-    if (move.destination_piece.piece_color != PieceColor::kNul) {
+    if (executed_move.destination_piece.piece_color != PieceColor::kNul) {
       board_state_ = board_state_ ^ GetHashValueAt(
-                                        move.destination_piece.piece_color,
-                                        move.destination_piece.piece_type,
-                                        move.spaces.end
+                                        executed_move.destination_piece.piece_color,
+                                        executed_move.destination_piece.piece_type,
+                                        executed_move.spaces.end
                                     );
     }
 
     // moving piece to new space
     board_state_ = board_state_ ^ GetHashValueAt(
-                                      move.moving_piece.piece_color,
-                                      move.moving_piece.piece_type,
-                                      move.spaces.end
+                                      executed_move.moving_piece.piece_color,
+                                      executed_move.moving_piece.piece_type,
+                                      executed_move.spaces.end
                                   );
 
     // change state now that its other player's turn
@@ -131,8 +132,9 @@ private:
   };
 };
 
-//! Container where boardstate::SingleZobristTracker stores moveselection::MinimaxMoveEvaluator
-//! results; supports recording, look-up and retrieval of data.
+//! Container where boardstate::SingleZobristTracker stores
+//! moveselection::MinimaxMoveEvaluator results; supports recording, look-up and
+//! retrieval of data.
 template <typename KeyType>
 class TranspositionTable {
 public:
@@ -238,11 +240,11 @@ private:
 //! configuration; provides moveselection::MinimaxMoveEvaluator access to
 //! boardstate::TranspositionTable
 template <typename KeyType>
-class SingleZobristTracker : public BoardStateSummarizer<SingleZobristTracker<KeyType>, KeyType> {
+class SingleZobristTracker
+    : public BoardStateSummarizer<SingleZobristTracker<KeyType>, KeyType> {
 public:
   SingleZobristTracker(ZobristCalculator<KeyType> zkeys)
-      : zkeys_{zkeys}
-      // , board_state_{}
+      : zkeys_{zkeys} // , board_state_{}
       , transposition_table_{} {};
   SingleZobristTracker(uint32_t seed)
       : SingleZobristTracker(ZobristCalculator<KeyType>(seed)) {};
@@ -276,8 +278,6 @@ public:
     return result;
   }
 
-  const ZobristCalculator<KeyType> &GetZobristCalculator() const { return zkeys_; }
-
   const uint32_t zkeys_seed() { return zkeys_.seed(); }
 
   const KeyType board_state() { return zkeys_.board_state(); }
@@ -291,35 +291,71 @@ private:
   TranspositionTable<KeyType> transposition_table_;
 };
 
-// template <typename KeyType>
-// class DualSingleZobristTracker
-//     : public BoardStateSummarizer<SingleZobristTracker<KeyType>, KeyType> {
-// public:
-//   DualSingleZobristTracker(uint32_t seed);
+template <typename KeyType>
+class DualZobristTracker
+    : public BoardStateSummarizer<SingleZobristTracker<KeyType>, KeyType> {
+public:
+  DualZobristTracker(uint32_t zkeys_seed)
+      : zkeys_seed_{zkeys_seed} {
+    std::mt19937 calculator_seed_generator{zkeys_seed_};
+    primary_calculator_ = ZobristCalculator<KeyType>{calculator_seed_generator()};
+    confirmation_calculator_ = ZobristCalculator<KeyType>{calculator_seed_generator()};
+  }
+  DualZobristTracker()
+      : DualZobristTracker(std::random_device{}()) {}
 
-//   KeyType ImplementGetState() { return primary_hash_calculator_.GetState(); }
+  KeyType ImplementGetState() { return primary_calculator_.board_state(); }
 
-//   void ImplementUpdateBoardState(const ExecutedMove &move) {
-//     primary_hash_calculator_.UpdateBoardState();
-//     confirmation_hash_calculator_.UpdateBoardState();
-//   }
+  void ImplementUpdateBoardState(const ExecutedMove &executed_move) {
+    primary_calculator_.UpdateBoardState(executed_move);
+    confirmation_calculator_.UpdateBoardState(executed_move);
+  }
 
-//   void ImplementFullBoardStateCalc(const BoardMap_t &board_map) {
-//     primary_hash_calculator_.FullBoardStateCalc();
-//     confirmation_hash_calculator_.FullBoardStateCalc();
-//   }
+  void ImplementFullBoardStateCalc(const BoardMap_t &board_map) {
+    primary_calculator_.FullBoardStateCalc(board_map);
+    confirmation_calculator_.FullBoardStateCalc(board_map);
+  }
 
-//   void ImplementRecordTrData(
-//     int search_depth,
-//     MinimaxResultType result_type,
-//     EqualScoreMoves &similar_moves
-//   ) {
+  void ImplementRecordTrData(
+      int search_depth,
+      MinimaxResultType result_type,
+      EqualScoreMoves &similar_moves
+  ) {
+    transposition_table_.RecordData(
+        primary_calculator_.board_state(),
+        confirmation_calculator_.board_state(),
+        search_depth,
+        result_type,
+        similar_moves
+    );
+  }
 
-//   }
+  TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
+    return transposition_table_.GetDataAt(
+        primary_calculator_.board_state(),
+        search_depth
+    );
+  }
 
-// private:
-//   SingleZobristTracker<KeyType> primary_hash_calculator_;
-//   SingleZobristTracker<KeyType> confirmation_hash_calculator_;
-// };
+  moveselection::TranspositionTableSize ImplementGetTrTableSize() {
+    moveselection::TranspositionTableSize result{
+        transposition_table_.num_entries(),
+        transposition_table_.num_states()
+    };
+    return result;
+  }
+
+  const uint32_t zkeys_seed() { return zkeys_seed_; }
+
+  const KeyType board_state() { return primary_calculator_.board_state(); }
+
+  const string board_state_hex_str() { return boardstate::IntToHexString(board_state()); }
+
+private:
+  uint32_t zkeys_seed_;
+  ZobristCalculator<KeyType> primary_calculator_;
+  ZobristCalculator<KeyType> confirmation_calculator_;
+  DualKeyTranspositionTable<KeyType> transposition_table_;
+};
 
 } // namespace boardstate
