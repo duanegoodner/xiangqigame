@@ -62,6 +62,7 @@ struct TranspositionTableEntry {
 struct TranspositionTableSearchResult {
   TranspositionTableEntry table_entry;
   bool found;
+  bool known_collision;
 };
 
 struct TranspositionTableSize {

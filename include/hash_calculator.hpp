@@ -120,12 +120,6 @@ public:
       MinimaxResultType result_type,
       EqualScoreMoves &similar_moves
   ) {
-    // TranspositionTableEntry transposition_table_entry{
-    //     search_depth,
-    //     result_type,
-    //     similar_moves
-    // };
-    // data_[state].push_back(transposition_table_entry);
     data_[state].emplace_back(search_depth, result_type, similar_moves);
     num_entries_++;
   };
@@ -234,5 +228,16 @@ private:
     board_state_ = board_state_ ^ zkeys_.turn_key();
   }
 };
+
+// template <typename KeyType>
+// class DualHashCalculator
+//     : public BoardStateSummarizer<HashCalculator<KeyType>, KeyType> {
+// public:
+//   DualHashCalculator(uint32_t seed);
+
+
+// private:
+//   HashCalculator<KeyType> 
+// };
 
 } // namespace boardstate
