@@ -126,10 +126,66 @@ public:
 
   uint64_t num_entries() { return num_entries_; }
 
-  uint64_t num_states() { return data_.size(); }
+  size_t num_states() { return data_.size(); }
 
 private:
   unordered_map<KeyType, vector<TranspositionTableEntry>> data_;
+  uint64_t num_entries_;
+};
+
+template <typename KeyType>
+struct DualKeyTranspositionTableEntry {
+  KeyType confirmation_state;
+  TranspositionTableEntry single_key_entry;
+};
+
+template <typename KeyType>
+class DualKeyTranspositionTable {
+public:
+  DualKeyTranspositionTable()
+      : num_entries_{0} {}
+
+  TranspositionTableSearchResult GetDataAt(
+      KeyType board_state,
+      KeyType expected_confirmation_state,
+      int remaining_search_depth
+  ) {
+    TranspositionTableSearchResult result{};
+    auto dual_key_entry_vector_it = data_.find(board_state);
+    if (dual_key_entry_vector_it != data_.end()) {
+      auto dual_key_entry_vector = dual_key_entry_vector_it->second;
+      for (auto dual_key_entry : dual_key_entry_vector) {
+        if (dual_key_entry.single_key_entry.remaining_search_depth ==
+            remaining_search_depth) {
+          result.found = true;
+          result.table_entry = dual_key_entry.single_key_entry;
+          if (dual_key_entry.confirmation_state != expected_confirmation_state) {
+            result.known_collision = true;
+          }
+          break;
+        }
+      }
+    }
+    return result;
+  }
+
+  void RecordData(
+      KeyType board_state,
+      KeyType confirmation_state,
+      int search_depth,
+      MinimaxResultType result_type,
+      EqualScoreMoves &similar_moves
+  ) {
+    TranspositionTableEntry single_key_entry{search_depth, result_type, similar_moves};
+    data_[board_state].emplace_back(confirmation_state, single_key_entry);
+    num_entries_++;
+  }
+
+  uint64_t num_entries() { return num_entries_; }
+  size_t num_states() { return data_.size(); }
+
+private:
+  unordered_map<KeyType, vector<DualKeyTranspositionTableEntry<KeyType>>> data_;
   uint64_t num_entries_;
 };
 
@@ -235,9 +291,8 @@ private:
 // public:
 //   DualHashCalculator(uint32_t seed);
 
-
 // private:
-//   HashCalculator<KeyType> 
+//   HashCalculator<KeyType>
 // };
 
 } // namespace boardstate
