@@ -99,11 +99,12 @@ MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxMoveEvaluator(
 //! board config
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
 bool MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ValidateMove(
-    // Move selected_move,
-    SearchSummary &search_summary
+    SearchSummary &search_summary,
+    MoveCollection &allowed_moves
 ) {
-  auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
-  bool is_selected_move_allowed = allowed_moves.ContainsMove(search_summary.selected_move());
+  // auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
+  bool is_selected_move_allowed =
+      allowed_moves.ContainsMove(search_summary.selected_move());
   if (!is_selected_move_allowed) {
     search_summary.set_returned_illegal_move(true);
   }
@@ -111,7 +112,7 @@ bool MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ValidateMove(
 }
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-SearchSummary& MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunFirstSearch() {
+SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunFirstSearch() {
   auto &first_search_summary = search_summaries_.NewFirstSearch(
       starting_search_depth_,
       hash_calculator_.GetTrTableSize()
@@ -122,31 +123,33 @@ SearchSummary& MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunFirstSearch() {
 }
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-SearchSummary& MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunSecondSearch() {
+SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunSecondSearch() {
   auto &second_search_summary = search_summaries_.NewExtraSearch(
-        starting_search_depth_,
-        num_move_selections_,
-        hash_calculator_.GetTrTableSize()
-    );
-    RunMinimax(second_search_summary, false);
+      starting_search_depth_,
+      num_move_selections_,
+      hash_calculator_.GetTrTableSize()
+  );
+  RunMinimax(second_search_summary, false);
 
-    return second_search_summary;
+  return second_search_summary;
 }
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
 Move MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ImplementSelectMove() {
-  
+
   Move final_selected_move;
+
+  auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
 
   auto &first_search_summary = RunFirstSearch();
 
-  if (ValidateMove(first_search_summary)) {
+  if (ValidateMove(first_search_summary, allowed_moves)) {
     final_selected_move = first_search_summary.selected_move();
   } else {
     auto &second_search_summary = RunSecondSearch();
     final_selected_move = second_search_summary.selected_move();
   }
-  
+
   IncrementNumMoveSelections();
   return final_selected_move;
 }
@@ -273,7 +276,8 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
     if (state_score_search_result.found) {
       // TODO: If any move(s) in result violate repeat move rule or draw, remove them
       // from collection. If removal results in empty collection, then continue with
-      // regular search
+      // regular search. Would add small overhead to every call, but nearly eliminate
+      // need for any "second searches"
       result_type = MinimaxResultType::kTrTableHit;
       search_summary.RecordTrTableHitInfo(
           result_type,
