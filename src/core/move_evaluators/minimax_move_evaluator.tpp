@@ -290,10 +290,10 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
   }
 
   // Get all legal moves
-  auto cur_moves = game_board_.CalcFinalMovesOf(cur_player);
+  auto allowed_moves = game_board_.CalcFinalMovesOf(cur_player);
 
   // If no legal moves, node is an end-of-game leaf
-  if (cur_moves.moves.size() == 0) {
+  if (allowed_moves.moves.size() == 0) {
     auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
     hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
     search_summary.Update(result_type, remaining_search_depth, result);
@@ -312,7 +312,7 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
     // evaluation of each legal move when it's evaluating player's turn
     auto max_eval = numeric_limits<int>::min();
     MoveCollection similar_moves;
-    auto ranked_moves = GenerateRankedMoveList(cur_player, cur_moves);
+    auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
     for (auto rated_move : ranked_moves) {
       auto executed_move = game_board_.ExecuteMove(rated_move.move);
       auto cur_eval = MinimaxRec(
@@ -354,7 +354,7 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
     // evaluation of each legal move when it's evaluating player's opponent's turn
     auto min_eval = numeric_limits<int>::max();
     MoveCollection similar_moves;
-    auto ranked_moves = GenerateRankedMoveList(cur_player, cur_moves);
+    auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
     for (auto rated_move : ranked_moves) {
       auto executed_move = game_board_.ExecuteMove(rated_move.move);
       auto cur_eval = MinimaxRec(
