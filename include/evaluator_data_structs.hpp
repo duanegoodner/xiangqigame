@@ -45,11 +45,16 @@ const size_t kNumResultTypes{7};
 //! Data structure that holds a moveselection::EqualScoreMoves and other search-related
 //! info obtained from a call to moveselection::MinimaxMoveEvaluator.MinimaxRec.
 struct TranspositionTableEntry {
-  TranspositionTableEntry() : remaining_search_depth{}, result_type{}, similar_moves{} {}
+  TranspositionTableEntry()
+      : remaining_search_depth{}
+      , result_type{}
+      , similar_moves{} {}
 
   TranspositionTableEntry(int depth, MinimaxResultType type, EqualScoreMoves moves)
-    : remaining_search_depth(depth), result_type(type), similar_moves(std::move(moves)) {}
-  
+      : remaining_search_depth(depth)
+      , result_type(type)
+      , similar_moves(std::move(moves)) {}
+
   int remaining_search_depth;
   MinimaxResultType result_type;
   EqualScoreMoves similar_moves;
@@ -58,10 +63,11 @@ struct TranspositionTableEntry {
 };
 
 //! Container for storing a moveselection::TranspositionTableEntry retrieved by a call to
-//! boardstate::HashCalculator.ImplementGetTrData.
+//! boardstate::SingleZobristTracker.ImplementGetTrData.
 struct TranspositionTableSearchResult {
   TranspositionTableEntry table_entry;
   bool found;
+  bool known_collision;
 };
 
 struct TranspositionTableSize {
@@ -108,6 +114,7 @@ public:
       , result_depth_counts_{ResultDepthCounts(max_search_depth)}
       , transposition_table_hits_(ResultDepthCounts(max_search_depth))
       , returned_illegal_move_{false}
+      , num_collisions_{0}
       , tr_table_size_initial_{tr_table_size_initial}
       , tr_table_size_final_{} {}
 
@@ -124,6 +131,22 @@ public:
 
   void UpdateTranspositionTableHits(MinimaxResultType result_type, int search_depth) {
     transposition_table_hits_.Update(result_type, search_depth);
+  }
+
+  void RecordTrTableHitInfo(
+      MinimaxResultType result_type,
+      int remaining_search_depth,
+      TranspositionTableSearchResult tr_table_search_result
+  ) {
+    Update(
+        result_type,
+        remaining_search_depth,
+        tr_table_search_result.table_entry.similar_moves
+    );
+    UpdateTranspositionTableHits(result_type, remaining_search_depth);
+    if (tr_table_search_result.known_collision) {
+      num_collisions_++;
+    }
   }
 
   int num_nodes() { return num_nodes_; }
@@ -150,6 +173,7 @@ public:
   }
   void set_returned_illegal_move(bool status) { returned_illegal_move_ = status; }
   bool returned_illegal_move() { return returned_illegal_move_; }
+  int num_collisions() {return num_collisions_; }
 
 private:
   int num_nodes_;
@@ -159,6 +183,7 @@ private:
   EqualScoreMoves similar_moves_;
   Move selected_move_;
   bool returned_illegal_move_;
+  int num_collisions_;
   TranspositionTableSize tr_table_size_initial_;
   TranspositionTableSize tr_table_size_final_;
 };

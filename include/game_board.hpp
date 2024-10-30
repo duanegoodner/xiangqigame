@@ -47,7 +47,7 @@ private:
   MoveCalculator move_calculator_;
 
   //! Stores functions that are called after any change in board config to keep
-  //! boardstate::HashCalculator objects updated.
+  //! boardstate::SingleZobristTracker objects updated.
   vector<function<void(ExecutedMove)>> move_callbacks_;
 
   //! Vectors of all moves that have been executed (and not un-done) by each player.
@@ -56,7 +56,7 @@ private:
   //! Number of moves executed since last time a piece was captured. 
   int moves_since_last_capture_; 
 
-  void UpdateHashCalculator(ExecutedMove executed_move);
+  void UpdateStateTracker(ExecutedMove executed_move);
   void SetOccupantAt(BoardSpace space, GamePiece piece);
   void AddToMoveLog(ExecutedMove executed_move);
   void RemoveFromMoveLog(ExecutedMove executed_move);

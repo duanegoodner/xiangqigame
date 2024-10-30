@@ -30,6 +30,7 @@ class PlayerInput:
     algo: EvaluatorType
     strength: int
     key_size: int
+    num_zobrist_states: int
     zkeys_seed: int | None = None
 
 
@@ -54,6 +55,8 @@ class PlayerCommandInterpreter:
 
     _default_strength = 4
 
+    _default_number_zobrist_states = 1
+
     def __init__(
         self,
         player_input: str,
@@ -61,12 +64,14 @@ class PlayerCommandInterpreter:
         strength_input: int,
         key_size_input: int,
         zkeys_seed: int,
+        number_zobrist_states: int,
     ):
         self.player_input = player_input
         self.algo_input = algo_input
         self.strength_input = strength_input
         self.key_size_input = key_size_input
         self.zkeys_seed = zkeys_seed
+        self.number_zobrist_states = number_zobrist_states
 
     def _get_key_size(self) -> int:
         if self.key_size_input is None:
@@ -80,24 +85,32 @@ class PlayerCommandInterpreter:
         else:
             return self.strength_input
 
+    def _get_number_zobrist_states(self) -> int:
+        if self.number_zobrist_states is None:
+            return self._default_number_zobrist_states
+        else:
+            return self.number_zobrist_states
+
     def interpret_command(self) -> PlayerInput:
         player_type = self._player_input_dispatch[self.player_input]
         if player_type == PlayerType.HUMAN:
-            algo = strength = key_size = None
+            algo = strength = key_size = num_zobrist_states = None
         else:
             if self.algo_input == "random":
                 algo = EvaluatorType.RANDOM
-                strength = key_size = None
+                strength = key_size = num_zobrist_states = None
             else:
                 key_size = self._get_key_size()
                 algo = EvaluatorType.MINIMAX
                 strength = self._get_strength()
+                num_zobrist_states = self._get_number_zobrist_states()
         return PlayerInput(
             player_type=player_type,
             algo=algo,
             strength=strength,
             key_size=key_size,
             zkeys_seed=self.zkeys_seed,
+            num_zobrist_states=num_zobrist_states,
         )
 
 
@@ -129,6 +142,7 @@ class RunKwargsInterpreter:
             strength_input=self.run_kwargs["red_strength"],
             key_size_input=self.run_kwargs["red_key_size"],
             zkeys_seed=self.run_kwargs["red_zkeys_seed"],
+            number_zobrist_states=self.run_kwargs["red_number_zobrist_states"],
         )
         black_interpreter = PlayerCommandInterpreter(
             player_input=self.run_kwargs["black_player_type"],
@@ -136,6 +150,9 @@ class RunKwargsInterpreter:
             strength_input=self.run_kwargs["black_strength"],
             key_size_input=self.run_kwargs["black_key_size"],
             zkeys_seed=self.run_kwargs["black_zkeys_seed"],
+            number_zobrist_states=self.run_kwargs[
+                "black_number_zobrist_states"
+            ],
         )
 
         return XiangqiGameCommand(
@@ -199,12 +216,21 @@ class XiangqiGameCommandLine:
         )
 
         self._parser.add_argument(
+            "-rn",
+            "--red_number_zobrist_states",
+            type=int,
+            choices=[1, 2],
+            required=False,
+            help="Number of Zobrist state values to maintain for red.",
+        )
+
+        self._parser.add_argument(
             "-rz",
             "--red_zkeys_seed",
             type=int,
             required=False,
             help="Seed for red player Zobrist Keys generator. "
-                 "32-bit unsigned int.",
+            "32-bit unsigned int.",
         )
 
         self._parser.add_argument(
@@ -243,12 +269,21 @@ class XiangqiGameCommandLine:
         )
 
         self._parser.add_argument(
+            "-bn",
+            "--black_number_zobrist_states",
+            type=int,
+            choices=[1, 2],
+            required=False,
+            help="Number of Zobrist state values to maintain for black.",
+        )
+
+        self._parser.add_argument(
             "-bz",
             "--black_zkeys_seed",
             type=int,
             required=False,
             help="Seed for black player Zobrist Keys generator. "
-                 "32-bit unsigned int.",
+            "32-bit unsigned int.",
         )
 
         self._parser.add_argument(

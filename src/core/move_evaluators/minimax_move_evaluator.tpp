@@ -299,15 +299,16 @@ EqualScoreMoves MinimaxMoveEvaluator<
   if (use_transposition_table) {
     auto state_score_search_result = hash_calculator_.GetTrData(remaining_search_depth);
     if (state_score_search_result.found) {
+      // TODO: If any move(s) in result violate repeat move rule or draw, remove them from
+      // collection. If removal results in empty collection, then continue with regular
+      // search
       result_type = MinimaxResultType::kTrTableHit;
-      auto existing_result_type = state_score_search_result.table_entry.result_type;
-      auto result = state_score_search_result.table_entry.similar_moves;
-      search_summary.Update(result_type, remaining_search_depth, result);
-      search_summary.UpdateTranspositionTableHits(
-          existing_result_type,
-          remaining_search_depth
+      search_summary.RecordTrTableHitInfo(
+          result_type,
+          remaining_search_depth,
+          state_score_search_result
       );
-      return result;
+      return state_score_search_result.table_entry.similar_moves;
     }
   }
 
@@ -319,7 +320,6 @@ EqualScoreMoves MinimaxMoveEvaluator<
     auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
     hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
     search_summary.Update(result_type, remaining_search_depth, result);
-    // search_summary.result_counts[result_type]++;
     return result;
   }
   // If search depth is zero, node is a normal leaf (end of our search depth)
@@ -328,7 +328,6 @@ EqualScoreMoves MinimaxMoveEvaluator<
     auto result = EvaluateNonWinLeaf(cur_player);
     hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
     search_summary.Update(result_type, remaining_search_depth, result);
-    // search_summary.result_counts[result_type]++;
     return result;
   }
 
@@ -372,7 +371,6 @@ EqualScoreMoves MinimaxMoveEvaluator<
     auto result = EqualScoreMoves{max_eval, similar_moves};
     hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
     search_summary.Update(result_type, remaining_search_depth, result);
-    // search_summary.result_counts[result_type]++;
     return EqualScoreMoves{max_eval, similar_moves};
 
   } else {
@@ -413,7 +411,6 @@ EqualScoreMoves MinimaxMoveEvaluator<
     auto result = EqualScoreMoves{min_eval, similar_moves};
     hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
     search_summary.Update(result_type, remaining_search_depth, result);
-    // search_summary.result_counts[result_type]++;
     return result;
   }
 }
@@ -440,7 +437,6 @@ Move MinimaxMoveEvaluator<
   auto search_end = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double, std::nano> search_time = search_end - search_start;
   search_summary.set_time(search_time);
-  // search_summary.time = search_time;
   auto selected_move_index =
       utility_functs::random((size_t)0, minimax_result.similar_moves.moves.size() - 1);
   auto selected_move = minimax_result.similar_moves.moves[selected_move_index];

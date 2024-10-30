@@ -19,24 +19,9 @@ using namespace boardstate;
 using namespace gameboard;
 using namespace piecepoints;
 
-template <typename KeyType>
-void bind_zobrist_keys(py::module_ &m, const std::string &class_name) {
-  py::class_<ZobristKeys<KeyType>>(m, class_name.c_str())
-      .def(py::init<uint32_t>(), "seed"_a)
-      .def_property_readonly("turn_key", &ZobristKeys<KeyType>::turn_key)
-      .def_property_readonly("zarray", &ZobristKeys<KeyType>::zarray);
-}
-
-template <typename KeyType>
-void bind_hash_calculator(py::module_ &m, const std::string &class_name) {
-  py::class_<HashCalculator<KeyType>>(m, class_name.c_str())
-      .def("get_zobrist_keys", &HashCalculator<KeyType>::GetZobristKeys);
-}
-
-template <typename KeyType>
+template <typename KeyType, typename ZobristTrackerType>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
-  py::class_<
-      MinimaxMoveEvaluator<GameBoard, HashCalculator<KeyType>, PiecePositionPoints>>(
+  py::class_<MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>>(
       m,
       class_name.c_str()
   )
@@ -55,45 +40,33 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
       )
       .def(
           "select_move",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              HashCalculator<KeyType>,
-              PiecePositionPoints>::SelectMove
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              SelectMove
       )
       .def_property_readonly(
           "search_summaries",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              HashCalculator<KeyType>,
-              PiecePositionPoints>::search_summaries
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              search_summaries
       )
       .def(
           "starting_search_depth",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              HashCalculator<KeyType>,
-              PiecePositionPoints>::StartingSearchDepth
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              StartingSearchDepth
       )
       .def(
           "zobrist_key_size_bits",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              HashCalculator<KeyType>,
-              PiecePositionPoints>::KeySizeBits
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              KeySizeBits
       )
       .def_property_readonly(
           "zkeys_seed",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              HashCalculator<KeyType>,
-              PiecePositionPoints>::zkeys_seed
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              zkeys_seed
       )
       .def_property_readonly(
           "board_state_hex_str",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              HashCalculator<KeyType>,
-              PiecePositionPoints>::board_state_hex_str
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              board_state_hex_str
       );
 }
 
@@ -208,6 +181,7 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
           "returned_illegal_move",
           &SearchSummary::returned_illegal_move
       )
+      .def_property_readonly("num_collisions", &SearchSummary::num_collisions)
       .def_property_readonly(
           "tr_table_size_initial",
           &SearchSummary::tr_table_size_initial
@@ -222,10 +196,26 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       ) // Read-only vectors and maps
       .def_readonly("extra_searches", &SearchSummaries::extra_searches);
 
-  bind_minimax_move_evaluator<uint32_t>(m, "MinimaxMoveEvaluator32");
-  bind_minimax_move_evaluator<uint64_t>(m, "MinimaxMoveEvaluator64");
-  bind_minimax_move_evaluator<__uint128_t>(m, "MinimaxMoveEvaluator128");
-  bind_zobrist_keys<uint32_t>(m, "ZobristKeys32");
-  bind_zobrist_keys<uint64_t>(m, "ZobristKeys64");
-  bind_zobrist_keys<__uint128_t>(m, "ZobristKeys128");
+  bind_minimax_move_evaluator<uint32_t, boardstate::SingleZobristTracker<uint32_t>>(
+      m,
+      "MinimaxMoveEvaluator32"
+  );
+  bind_minimax_move_evaluator<uint64_t, boardstate::SingleZobristTracker<uint64_t>>(
+      m,
+      "MinimaxMoveEvaluator64"
+  );
+  bind_minimax_move_evaluator<
+      __uint128_t,
+      boardstate::SingleZobristTracker<__uint128_t>>(m, "MinimaxMoveEvaluator128");
+  bind_minimax_move_evaluator<uint32_t, boardstate::DualZobristTracker<uint32_t>>(
+      m,
+      "MinimaxMoveEvaluator32Dual"
+  );
+  bind_minimax_move_evaluator<uint64_t, boardstate::DualZobristTracker<uint64_t>>(
+      m,
+      "MinimaxMoveEvaluator64Dual"
+  );
+  bind_minimax_move_evaluator<
+      __uint128_t,
+      boardstate::DualZobristTracker<__uint128_t>>(m, "MinimaxMoveEvaluator128Dual");
 }
