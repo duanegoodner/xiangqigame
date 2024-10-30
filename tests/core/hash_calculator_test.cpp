@@ -156,8 +156,10 @@ TEST_F(DualZobristTrackerTest, InitWithExistingCalculators) {
       DualZobristTracker<uint32_t>(zobrist_calculator_032_a, zobrist_calculator_032_b);
   auto dual_tracker_064 =
       DualZobristTracker<uint64_t>(zobrist_calculator_064_a, zobrist_calculator_064_b);
-  auto dual_tracker_128 =
-      DualZobristTracker<__uint128_t>(zobrist_calculator_128_a, zobrist_calculator_128_b);
+  auto dual_tracker_128 = DualZobristTracker<__uint128_t>(
+      zobrist_calculator_128_a,
+      zobrist_calculator_128_b
+  );
 }
 
 TEST_F(DualZobristTrackerTest, InitFromSeed) {
@@ -188,10 +190,10 @@ TEST_F(DualZobristTrackerTest, ExecuteAndUndoMove64) {
   EXPECT_EQ(initial_state, final_state);
 }
 
-TEST_F(DualZobristTrackerTest, RecordData) {
-  
+TEST_F(DualZobristTrackerTest, RecordAndReadData) {
+
   DualZobristTracker<uint64_t> dual_tracker_064{};
-  
+
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};
   auto move = Move{start, end};
@@ -206,10 +208,11 @@ TEST_F(DualZobristTrackerTest, RecordData) {
   dummy_move_collection.Append(move);
 
   EqualScoreMoves dummy_equal_score_moves{1, dummy_move_collection};
-  
-  dual_tracker_064.RecordTrData(1, MinimaxResultType::kFullyEvaluatedNode, dummy_equal_score_moves);
 
+  dual_tracker_064
+      .RecordTrData(1, MinimaxResultType::kFullyEvaluatedNode, dummy_equal_score_moves);
 
+  auto retrieved_data = dual_tracker_064.GetTrData(1);
 }
 
 int main(int argc, char **argv) {

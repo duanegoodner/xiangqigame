@@ -348,6 +348,7 @@ public:
   TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
     return transposition_table_.GetDataAt(
         primary_calculator_.board_state(),
+        confirmation_calculator_.board_state(),
         search_depth
     );
   }
