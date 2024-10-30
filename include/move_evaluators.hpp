@@ -110,6 +110,7 @@ private:
       SearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
+  bool ValidateMove(Move selected_move, SearchSummary &search_summary);
   Move RunMinimax(
       SearchSummary &single_search_summary,
       bool use_transposition_table = true

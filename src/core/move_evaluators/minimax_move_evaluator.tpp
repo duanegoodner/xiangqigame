@@ -5,7 +5,6 @@
 
 #include <board_data_structs.hpp>
 #include <chrono>
-// #include <common.hpp>
 #include <evaluator_data_structs.hpp>
 #include <iostream>
 #include <limits>
@@ -93,23 +92,37 @@ MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxMoveEvaluator(
           std::random_device{}()
       ) {}
 
+//! Checks if move (typicall selected by first search) is allowed.
+//! Cases where 1st search move is illegal:
+//! - transposition table provided move that violates repeat move rule
+//! - hash collision caused transposition table to provide move for entirely different
+//! board config
+MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
+bool MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ValidateMove(
+    Move selected_move,
+    SearchSummary &search_summary
+) {
+  auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
+  bool is_selected_move_allowed = allowed_moves.ContainsMove(selected_move);
+  if (!is_selected_move_allowed) {
+    search_summary.set_returned_illegal_move(true);
+  }
+  return is_selected_move_allowed;
+}
+
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
 Move MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ImplementSelectMove() {
-
-  auto tr_table_size = hash_calculator_.GetTrTableSize();
-  auto &first_search_summary =
-      search_summaries_.NewFirstSearch(starting_search_depth_, tr_table_size);
   Move final_selected_move;
 
+  auto &first_search_summary = search_summaries_.NewFirstSearch(
+      starting_search_depth_,
+      hash_calculator_.GetTrTableSize()
+  );
   auto first_selected_move = RunMinimax(first_search_summary);
 
-  // check if move selected by first search is allowed
-  // (if we had a hash collision, we might select an illegal move)
-  auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
-  if (allowed_moves.ContainsMove(first_selected_move)) {
+  if (ValidateMove(first_selected_move, first_search_summary)) {
     final_selected_move = first_selected_move;
   } else {
-    first_search_summary.set_returned_illegal_move(true);
     auto tr_table_size = hash_calculator_.GetTrTableSize();
     auto &second_search_summary = search_summaries_.NewExtraSearch(
         starting_search_depth_,
