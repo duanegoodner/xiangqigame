@@ -103,6 +103,7 @@ private:
       MoveCollection &cur_player_moves
   );
   EqualScoreMoves MinimaxRec(
+      MoveCollection &allowed_moves,
       int remaining_search_depth,
       int alpha,
       int beta,
@@ -112,11 +113,12 @@ private:
   );
   bool ValidateMove(SearchSummary &search_summary, MoveCollection &allowed_moves);
   void RunMinimax(
+      MoveCollection& allowed_moves,
       SearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
-  SearchSummary& RunFirstSearch();
-  SearchSummary& RunSecondSearch();
+  SearchSummary& RunFirstSearch(MoveCollection &allowed_moves);
+  SearchSummary& RunSecondSearch(MoveCollection &allowed_moves);
   void IncrementNumMoveSelections() { num_move_selections_++; }
 };
 

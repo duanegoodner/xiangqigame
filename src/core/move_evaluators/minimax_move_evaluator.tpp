@@ -112,24 +112,24 @@ bool MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ValidateMove(
 }
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunFirstSearch() {
+SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunFirstSearch(MoveCollection &allowed_moves) {
   auto &first_search_summary = search_summaries_.NewFirstSearch(
       starting_search_depth_,
       hash_calculator_.GetTrTableSize()
   );
-  RunMinimax(first_search_summary);
+  RunMinimax(allowed_moves, first_search_summary);
 
   return first_search_summary;
 }
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunSecondSearch() {
+SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunSecondSearch(MoveCollection &allowed_moves) {
   auto &second_search_summary = search_summaries_.NewExtraSearch(
       starting_search_depth_,
       num_move_selections_,
       hash_calculator_.GetTrTableSize()
   );
-  RunMinimax(second_search_summary, false);
+  RunMinimax(allowed_moves, second_search_summary, false);
 
   return second_search_summary;
 }
@@ -142,12 +142,12 @@ Move MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ImplementSelectMove(MoveCollection &allow
 
   // auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
 
-  auto &first_search_summary = RunFirstSearch();
+  auto &first_search_summary = RunFirstSearch(allowed_moves);
 
   if (ValidateMove(first_search_summary, allowed_moves)) {
     final_selected_move = first_search_summary.selected_move();
   } else {
-    auto &second_search_summary = RunSecondSearch();
+    auto &second_search_summary = RunSecondSearch(allowed_moves);
     final_selected_move = second_search_summary.selected_move();
   }
 
@@ -260,6 +260,7 @@ Points_t MINIMAX_MOVE_EVALUATOR_CRTP_DECL::GetPlayerTotal(PieceColor color) {
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
 EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
+    MoveCollection &allowed_moves,
     int remaining_search_depth,
     int alpha,
     int beta,
@@ -290,7 +291,7 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
   }
 
   // Get all legal moves
-  auto allowed_moves = game_board_.CalcFinalMovesOf(cur_player);
+  // auto allowed_moves = game_board_.CalcFinalMovesOf(cur_player);
 
   // If no legal moves, node is an end-of-game leaf
   if (allowed_moves.moves.size() == 0) {
@@ -315,7 +316,9 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
     auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
     for (auto rated_move : ranked_moves) {
       auto executed_move = game_board_.ExecuteMove(rated_move.move);
+      auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(evaluating_player_));
       auto cur_eval = MinimaxRec(
+                          new_allowed_moves,
                           remaining_search_depth - 1,
                           alpha,
                           beta,
@@ -357,7 +360,9 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
     auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
     for (auto rated_move : ranked_moves) {
       auto executed_move = game_board_.ExecuteMove(rated_move.move);
+      auto new_allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
       auto cur_eval = MinimaxRec(
+                          new_allowed_moves,
                           remaining_search_depth - 1,
                           alpha,
                           beta,
@@ -394,12 +399,14 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
 void MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunMinimax(
+    MoveCollection &allowed_moves,
     SearchSummary &search_summary,
     bool use_transposition_table
 ) {
 
   auto search_start = std::chrono::high_resolution_clock::now();
   auto minimax_result = MinimaxRec(
+      allowed_moves,
       starting_search_depth_,
       numeric_limits<Points_t>::min(),
       numeric_limits<Points_t>::max(),
