@@ -135,11 +135,12 @@ SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunSecondSearch() {
 }
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-Move MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ImplementSelectMove() {
+Move MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ImplementSelectMove(MoveCollection &allowed_moves
+) {
 
   Move final_selected_move;
 
-  auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
+  // auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
 
   auto &first_search_summary = RunFirstSearch();
 

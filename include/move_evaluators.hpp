@@ -58,7 +58,7 @@ public:
       ConcreteSpaceInfoProvider &game_board
   );
 
-  Move ImplementSelectMove();
+  Move ImplementSelectMove(MoveCollection &allowed_moves);
   Points_t GetPlayerTotal(PieceColor color);
   inline const moveselection::SearchSummaries &search_summaries() {
     return search_summaries_;
@@ -130,7 +130,7 @@ public:
       PieceColor evaluating_player,
       ConcreteSpaceInfoProvider &game_board
   );
-  Move ImplementSelectMove();
+  Move ImplementSelectMove(MoveCollection &allowed_moves);
 
 private:
   PieceColor evaluating_player_;

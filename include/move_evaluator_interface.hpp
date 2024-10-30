@@ -3,14 +3,15 @@
 
 #pragma once
 
-#include <board_data_structs.hpp>
+#include <move_data_structs.hpp>
+
 
 //! CRTP interface with a method for selecting a gameboard::Move (concrete examples =
 //! moveselection::MinimaxMoveEvaluator, moveselection::RandomMoveEvaluator).
 template <typename ConcreteMoveEvaluator>
 class MoveEvaluator {
 public:
-  gameboard::Move SelectMove() {
-    return static_cast<ConcreteMoveEvaluator *>(this)->ImplementSelectMove();
+  gameboard::Move SelectMove(MoveCollection &allowed_moves) {
+    return static_cast<ConcreteMoveEvaluator *>(this)->ImplementSelectMove(allowed_moves);
   }
 };
