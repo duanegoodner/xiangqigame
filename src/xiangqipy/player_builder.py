@@ -12,6 +12,9 @@ from xiangqi_bindings import (
     MinimaxMoveEvaluator32,
     MinimaxMoveEvaluator64,
     MinimaxMoveEvaluator128,
+    MinimaxMoveEvaluator32Dual,
+    MinimaxMoveEvaluator64Dual,
+    MinimaxMoveEvaluator128Dual,
     PieceColor,
     RandomMoveEvaluator,
 )
@@ -63,6 +66,21 @@ class SinglePlayerBuilder:
                 "starting_search_depth": self.player_input.strength,
                 "game_board": self._game_board,
             },
+            MinimaxMoveEvaluator32Dual: {
+                "evaluating_player": self._color,
+                "starting_search_depth": self.player_input.strength,
+                "game_board": self._game_board,
+            },
+            MinimaxMoveEvaluator64Dual: {
+                "evaluating_player": self._color,
+                "starting_search_depth": self.player_input.strength,
+                "game_board": self._game_board,
+            },
+            MinimaxMoveEvaluator128Dual: {
+                "evaluating_player": self._color,
+                "starting_search_depth": self.player_input.strength,
+                "game_board": self._game_board,
+            },
         }
 
         if self.player_input.zkeys_seed is not None:
@@ -70,6 +88,9 @@ class SinglePlayerBuilder:
                 MinimaxMoveEvaluator32,
                 MinimaxMoveEvaluator64,
                 MinimaxMoveEvaluator128,
+                MinimaxMoveEvaluator32Dual,
+                MinimaxMoveEvaluator64Dual,
+                MinimaxMoveEvaluator128Dual,
             ]:
                 dispatch_table[constructor][
                     "zkeys_seed"
@@ -79,10 +100,13 @@ class SinglePlayerBuilder:
     @property
     def evaluator_constructor_dispatch(self) -> Dict[Tuple, Callable]:
         return {
-            (EvaluatorType.RANDOM, None): RandomMoveEvaluator,
-            (EvaluatorType.MINIMAX, 32): MinimaxMoveEvaluator32,
-            (EvaluatorType.MINIMAX, 64): MinimaxMoveEvaluator64,
-            (EvaluatorType.MINIMAX, 128): MinimaxMoveEvaluator128,
+            (EvaluatorType.RANDOM, None, None): RandomMoveEvaluator,
+            (EvaluatorType.MINIMAX, 32, 1): MinimaxMoveEvaluator32,
+            (EvaluatorType.MINIMAX, 64, 1): MinimaxMoveEvaluator64,
+            (EvaluatorType.MINIMAX, 128, 1): MinimaxMoveEvaluator128,
+            (EvaluatorType.MINIMAX, 32, 2): MinimaxMoveEvaluator32Dual,
+            (EvaluatorType.MINIMAX, 64, 2): MinimaxMoveEvaluator64Dual,
+            (EvaluatorType.MINIMAX, 128, 2): MinimaxMoveEvaluator128Dual,
         }
 
     def _build_human_player(self):
@@ -93,7 +117,11 @@ class SinglePlayerBuilder:
 
     def _build_ai_player(self):
         player_constructor = self.evaluator_constructor_dispatch[
-            (self.player_input.algo, self.player_input.key_size)
+            (
+                self.player_input.algo,
+                self.player_input.key_size,
+                self.player_input.num_zobrist_states,
+            )
         ]
 
         constructor_kwargs = self._move_evaluator_args[player_constructor]
