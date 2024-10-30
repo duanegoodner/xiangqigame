@@ -113,17 +113,34 @@ private:
   );
   bool ValidateMove(SearchSummary &search_summary, MoveCollection &allowed_moves);
   void RunMinimax(
-      MoveCollection& allowed_moves,
+      MoveCollection &allowed_moves,
       SearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
-  SearchSummary& RunFirstSearch(MoveCollection &allowed_moves);
-  SearchSummary& RunSecondSearch(MoveCollection &allowed_moves);
+  SearchSummary &RunFirstSearch(MoveCollection &allowed_moves);
+  SearchSummary &RunSecondSearch(MoveCollection &allowed_moves);
   void IncrementNumMoveSelections() { num_move_selections_++; }
 
-  // bool IsTrTableResultAcceptable(, MoveCollection &allowed_moves) {
-
-  // }
+  bool IsTrTableResultAcceptable(
+      TranspositionTableSearchResult &search_result,
+      MoveCollection &allowed_moves
+  ) {
+    if (search_result.table_entry.similar_moves.similar_moves.moves.empty() !=
+        allowed_moves.moves.empty()) {
+      return false;
+    }
+    if (search_result.table_entry.similar_moves.similar_moves.moves.empty() and
+        allowed_moves.moves.empty()) {
+      return true;
+    }
+    for (const auto &move : search_result.table_entry.similar_moves.similar_moves.moves) {
+      if (std::find(allowed_moves.moves.begin(), allowed_moves.moves.end(), move) ==
+          allowed_moves.moves.end()) {
+        return false;
+      }
+    }
+    return true;
+  }
 };
 
 //! Implements gameboard::MoveEvaluator interface. Randomly chooses one of legal moves

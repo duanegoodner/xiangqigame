@@ -112,7 +112,9 @@ bool MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ValidateMove(
 }
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunFirstSearch(MoveCollection &allowed_moves) {
+SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunFirstSearch(
+    MoveCollection &allowed_moves
+) {
   auto &first_search_summary = search_summaries_.NewFirstSearch(
       starting_search_depth_,
       hash_calculator_.GetTrTableSize()
@@ -123,7 +125,9 @@ SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunFirstSearch(MoveCollection &
 }
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunSecondSearch(MoveCollection &allowed_moves) {
+SearchSummary &MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunSecondSearch(
+    MoveCollection &allowed_moves
+) {
   auto &second_search_summary = search_summaries_.NewExtraSearch(
       starting_search_depth_,
       num_move_selections_,
@@ -275,11 +279,8 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
   // this is a second search in which case we don't use transposition table)
   if (use_transposition_table) {
     auto tr_table_search_result = hash_calculator_.GetTrData(remaining_search_depth);
-    if (tr_table_search_result.found) {
-      // TODO: If any move(s) in result violate repeat move rule or draw, remove them
-      // from collection. If removal results in empty collection, then continue with
-      // regular search. Would add small overhead to every call, but nearly eliminate
-      // need for any "second searches"
+    if (tr_table_search_result.found &&
+        IsTrTableResultAcceptable(tr_table_search_result, allowed_moves)) {
       result_type = MinimaxResultType::kTrTableHit;
       search_summary.RecordTrTableHitInfo(
           result_type,
@@ -289,9 +290,6 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
       return tr_table_search_result.table_entry.similar_moves;
     }
   }
-
-  // Get all legal moves
-  // auto allowed_moves = game_board_.CalcFinalMovesOf(cur_player);
 
   // If no legal moves, node is an end-of-game leaf
   if (allowed_moves.moves.size() == 0) {
@@ -316,7 +314,8 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
     auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
     for (auto rated_move : ranked_moves) {
       auto executed_move = game_board_.ExecuteMove(rated_move.move);
-      auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(evaluating_player_));
+      auto new_allowed_moves =
+          game_board_.CalcFinalMovesOf(opponent_of(evaluating_player_));
       auto cur_eval = MinimaxRec(
                           new_allowed_moves,
                           remaining_search_depth - 1,
