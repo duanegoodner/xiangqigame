@@ -274,8 +274,8 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
   // First we check if result for current board state is in transposition table (unless
   // this is a second search in which case we don't use transposition table)
   if (use_transposition_table) {
-    auto state_score_search_result = hash_calculator_.GetTrData(remaining_search_depth);
-    if (state_score_search_result.found) {
+    auto tr_table_search_result = hash_calculator_.GetTrData(remaining_search_depth);
+    if (tr_table_search_result.found) {
       // TODO: If any move(s) in result violate repeat move rule or draw, remove them
       // from collection. If removal results in empty collection, then continue with
       // regular search. Would add small overhead to every call, but nearly eliminate
@@ -284,9 +284,9 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
       search_summary.RecordTrTableHitInfo(
           result_type,
           remaining_search_depth,
-          state_score_search_result
+          tr_table_search_result
       );
-      return state_score_search_result.table_entry.similar_moves;
+      return tr_table_search_result.table_entry.similar_moves;
     }
   }
 

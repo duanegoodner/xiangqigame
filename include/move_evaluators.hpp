@@ -120,6 +120,10 @@ private:
   SearchSummary& RunFirstSearch(MoveCollection &allowed_moves);
   SearchSummary& RunSecondSearch(MoveCollection &allowed_moves);
   void IncrementNumMoveSelections() { num_move_selections_++; }
+
+  // bool IsTrTableResultAcceptable(, MoveCollection &allowed_moves) {
+
+  // }
 };
 
 //! Implements gameboard::MoveEvaluator interface. Randomly chooses one of legal moves
