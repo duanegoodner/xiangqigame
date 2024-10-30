@@ -153,7 +153,7 @@ class AIPlayer(Player):
         self, game_board: GameBoard, cur_moves: MoveCollection
     ) -> Move:
         proposed_move = self._move_evaluator.select_move(
-            # game_board=game_board, piece_color=self._color
+            allowed_moves=cur_moves
         )
         return proposed_move
 

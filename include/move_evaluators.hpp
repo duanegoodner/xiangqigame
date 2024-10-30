@@ -58,7 +58,7 @@ public:
       ConcreteSpaceInfoProvider &game_board
   );
 
-  Move ImplementSelectMove();
+  Move ImplementSelectMove(MoveCollection &allowed_moves);
   Points_t GetPlayerTotal(PieceColor color);
   inline const moveselection::SearchSummaries &search_summaries() {
     return search_summaries_;
@@ -103,6 +103,7 @@ private:
       MoveCollection &cur_player_moves
   );
   EqualScoreMoves MinimaxRec(
+      MoveCollection &allowed_moves,
       int remaining_search_depth,
       int alpha,
       int beta,
@@ -110,10 +111,36 @@ private:
       SearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
-  Move RunMinimax(
+  bool ValidateMove(SearchSummary &search_summary, MoveCollection &allowed_moves);
+  void RunMinimax(
+      MoveCollection &allowed_moves,
       SearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
+  SearchSummary &RunFirstSearch(MoveCollection &allowed_moves);
+  SearchSummary &RunSecondSearch(MoveCollection &allowed_moves);
+  void IncrementNumMoveSelections() { num_move_selections_++; }
+
+  bool IsTrTableResultAcceptable(
+      TranspositionTableSearchResult &search_result,
+      MoveCollection &allowed_moves
+  ) {
+    if (search_result.table_entry.similar_moves.similar_moves.moves.empty() !=
+        allowed_moves.moves.empty()) {
+      return false;
+    }
+    if (search_result.table_entry.similar_moves.similar_moves.moves.empty() and
+        allowed_moves.moves.empty()) {
+      return true;
+    }
+    for (const auto &move : search_result.table_entry.similar_moves.similar_moves.moves) {
+      if (std::find(allowed_moves.moves.begin(), allowed_moves.moves.end(), move) ==
+          allowed_moves.moves.end()) {
+        return false;
+      }
+    }
+    return true;
+  }
 };
 
 //! Implements gameboard::MoveEvaluator interface. Randomly chooses one of legal moves
@@ -126,7 +153,7 @@ public:
       PieceColor evaluating_player,
       ConcreteSpaceInfoProvider &game_board
   );
-  Move ImplementSelectMove();
+  Move ImplementSelectMove(MoveCollection &allowed_moves);
 
 private:
   PieceColor evaluating_player_;

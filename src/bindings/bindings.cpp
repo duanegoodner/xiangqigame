@@ -41,7 +41,7 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
       .def(
           "select_move",
           &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
-              SelectMove
+              SelectMove, "allowed_moves"_a
       )
       .def_property_readonly(
           "search_summaries",

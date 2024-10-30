@@ -31,8 +31,10 @@ TEST_F(RandomEvaluatorTest, TestStartingMoveSelection) {
 
   std::set<Move, bool (*)(const Move &, const Move &)> move_set(moveComparator);
 
+  auto allowed_moves = starting_board.CalcFinalMovesOf(PieceColor::kRed);
+  
   for (auto idx = 0; idx < num_first_move_selections; idx++) {
-    auto red_selected_move = red_evaluator.SelectMove();
+    auto red_selected_move = red_evaluator.SelectMove(allowed_moves);
     move_set.insert(red_selected_move);
   }
   EXPECT_TRUE(move_set.size() > 5);
@@ -170,7 +172,7 @@ TEST_F(MinimaxEvaluatorTest, PlayGameDualZobristTracker) {
       losing_player = PieceColor::kRed;
       break;
     }
-    auto red_selected_move = red_evaluator.SelectMove();
+    auto red_selected_move = red_evaluator.SelectMove(red_moves);
     auto red_executed_move = game_board.ExecuteMove(red_selected_move);
 
     auto black_moves = game_board.CalcFinalMovesOf(PieceColor::kBlk);
@@ -180,7 +182,7 @@ TEST_F(MinimaxEvaluatorTest, PlayGameDualZobristTracker) {
       break;
     }
 
-    auto black_selected_move = black_evaluator.SelectMove();
+    auto black_selected_move = black_evaluator.SelectMove(black_moves);
     auto black_executed_move = game_board.ExecuteMove(black_selected_move);
   }
 
@@ -197,7 +199,8 @@ TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelection) {
           imported_piece_points
       };
 
-  auto red_selected_move = red_evaluator.SelectMove();
+  auto allowed_moves = starting_board.CalcFinalMovesOf(PieceColor::kRed);
+  auto red_selected_move = red_evaluator.SelectMove(allowed_moves);
 
   EXPECT_TRUE(
       (red_selected_move.start == BoardSpace{9, 1} &&
@@ -217,7 +220,8 @@ TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelectionDualTracker) {
           imported_piece_points
       };
 
-  auto red_selected_move = red_evaluator.SelectMove();
+  auto allowed_moves = starting_board.CalcFinalMovesOf(PieceColor::kRed);
+  auto red_selected_move = red_evaluator.SelectMove(allowed_moves);
 
   EXPECT_TRUE(
       (red_selected_move.start == BoardSpace{9, 1} &&
@@ -237,7 +241,8 @@ TEST_F(MinimaxEvaluatorTest, RedStartingMoveSelection128) {
           imported_piece_points
       };
 
-  auto red_selected_move = red_evaluator.SelectMove();
+  auto allowed_moves = starting_board.CalcFinalMovesOf(PieceColor::kRed);
+  auto red_selected_move = red_evaluator.SelectMove(allowed_moves);
 
   EXPECT_TRUE(
       (red_selected_move.start == BoardSpace{9, 1} &&
@@ -257,7 +262,9 @@ TEST_F(MinimaxEvaluatorTest, GetSearchSummaries) {
           starting_board,
           imported_piece_points
       };
-  auto red_selected_move = red_evaluator.SelectMove();
+
+  auto allowed_moves = starting_board.CalcFinalMovesOf(PieceColor::kRed);
+  auto red_selected_move = red_evaluator.SelectMove(allowed_moves);
   auto search_summaries = red_evaluator.search_summaries();
   auto num_nodes_visited = search_summaries.first_searches[0].num_nodes();
   EXPECT_TRUE(num_nodes_visited > 0);
@@ -273,7 +280,8 @@ TEST_F(MinimaxEvaluatorTest, EndOfGameSelectorTest) {
           imported_piece_points
       };
 
-  auto black_selected_move = black_evaluator.SelectMove();
+  auto allowed_black_moves = late_game_board_.CalcFinalMovesOf(PieceColor::kBlk);
+  auto black_selected_move = black_evaluator.SelectMove(allowed_black_moves);
   auto black_executed_move = late_game_board_.ExecuteMove(black_selected_move);
   auto red_possible_moves = late_game_board_.CalcFinalMovesOf(PieceColor::kRed);
   auto red_num_possible_moves = red_possible_moves.Size();
@@ -310,7 +318,7 @@ TEST_F(MinimaxEvaluatorTest, PlayGame) {
       losing_player = PieceColor::kRed;
       break;
     }
-    auto red_selected_move = red_evaluator.SelectMove();
+    auto red_selected_move = red_evaluator.SelectMove(red_moves);
     auto red_executed_move = game_board.ExecuteMove(red_selected_move);
 
     auto black_moves = game_board.CalcFinalMovesOf(PieceColor::kBlk);
@@ -320,7 +328,7 @@ TEST_F(MinimaxEvaluatorTest, PlayGame) {
       break;
     }
 
-    auto black_selected_move = black_evaluator.SelectMove();
+    auto black_selected_move = black_evaluator.SelectMove(black_moves);
     auto black_executed_move = game_board.ExecuteMove(black_selected_move);
   }
 
