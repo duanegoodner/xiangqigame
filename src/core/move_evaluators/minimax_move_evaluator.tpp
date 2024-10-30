@@ -99,11 +99,11 @@ MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxMoveEvaluator(
 //! board config
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
 bool MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ValidateMove(
-    Move selected_move,
+    // Move selected_move,
     SearchSummary &search_summary
 ) {
   auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
-  bool is_selected_move_allowed = allowed_moves.ContainsMove(selected_move);
+  bool is_selected_move_allowed = allowed_moves.ContainsMove(search_summary.selected_move());
   if (!is_selected_move_allowed) {
     search_summary.set_returned_illegal_move(true);
   }
@@ -111,28 +111,43 @@ bool MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ValidateMove(
 }
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-Move MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ImplementSelectMove() {
-  Move final_selected_move;
-
+SearchSummary& MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunFirstSearch() {
   auto &first_search_summary = search_summaries_.NewFirstSearch(
       starting_search_depth_,
       hash_calculator_.GetTrTableSize()
   );
-  auto first_selected_move = RunMinimax(first_search_summary);
+  RunMinimax(first_search_summary);
 
-  if (ValidateMove(first_selected_move, first_search_summary)) {
-    final_selected_move = first_selected_move;
-  } else {
-    auto tr_table_size = hash_calculator_.GetTrTableSize();
-    auto &second_search_summary = search_summaries_.NewExtraSearch(
+  return first_search_summary;
+}
+
+MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
+SearchSummary& MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunSecondSearch() {
+  auto &second_search_summary = search_summaries_.NewExtraSearch(
         starting_search_depth_,
         num_move_selections_,
-        tr_table_size
+        hash_calculator_.GetTrTableSize()
     );
-    auto second_selected_move = RunMinimax(second_search_summary, false);
-    final_selected_move = second_selected_move;
+    RunMinimax(second_search_summary, false);
+
+    return second_search_summary;
+}
+
+MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
+Move MINIMAX_MOVE_EVALUATOR_CRTP_DECL::ImplementSelectMove() {
+  
+  Move final_selected_move;
+
+  auto &first_search_summary = RunFirstSearch();
+
+  if (ValidateMove(first_search_summary)) {
+    final_selected_move = first_search_summary.selected_move();
+  } else {
+    auto &second_search_summary = RunSecondSearch();
+    final_selected_move = second_search_summary.selected_move();
   }
-  num_move_selections_++;
+  
+  IncrementNumMoveSelections();
   return final_selected_move;
 }
 
@@ -373,7 +388,7 @@ EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
 }
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-Move MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunMinimax(
+void MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunMinimax(
     SearchSummary &search_summary,
     bool use_transposition_table
 ) {
@@ -397,6 +412,6 @@ Move MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunMinimax(
   auto tr_table_size = hash_calculator_.GetTrTableSize();
   search_summary.set_tr_table_size_final(tr_table_size);
 
-  return selected_move;
+  // return selected_move;
 }
 } // namespace moveselection

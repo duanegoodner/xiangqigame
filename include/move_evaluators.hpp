@@ -110,11 +110,14 @@ private:
       SearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
-  bool ValidateMove(Move selected_move, SearchSummary &search_summary);
-  Move RunMinimax(
+  bool ValidateMove(SearchSummary &search_summary);
+  void RunMinimax(
       SearchSummary &single_search_summary,
       bool use_transposition_table = true
   );
+  SearchSummary& RunFirstSearch();
+  SearchSummary& RunSecondSearch();
+  void IncrementNumMoveSelections() { num_move_selections_++; }
 };
 
 //! Implements gameboard::MoveEvaluator interface. Randomly chooses one of legal moves
