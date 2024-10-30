@@ -299,15 +299,22 @@ EqualScoreMoves MinimaxMoveEvaluator<
   if (use_transposition_table) {
     auto state_score_search_result = hash_calculator_.GetTrData(remaining_search_depth);
     if (state_score_search_result.found) {
+      // TODO: if .known_collision, increment num_collisions
       result_type = MinimaxResultType::kTrTableHit;
-      auto existing_result_type = state_score_search_result.table_entry.result_type;
-      auto result = state_score_search_result.table_entry.similar_moves;
-      search_summary.Update(result_type, remaining_search_depth, result);
-      search_summary.UpdateTranspositionTableHits(
-          existing_result_type,
-          remaining_search_depth
+      search_summary.RecordTrTableHitInfo(
+          result_type,
+          remaining_search_depth,
+          state_score_search_result
       );
-      return result;
+
+      // auto existing_result_type = state_score_search_result.table_entry.result_type;
+      // auto result = state_score_search_result.table_entry.similar_moves;
+      // search_summary.Update(result_type, remaining_search_depth, result);
+      // search_summary.UpdateTranspositionTableHits(
+      //     existing_result_type,
+      //     remaining_search_depth
+      // );
+      return state_score_search_result.table_entry.similar_moves;
     }
   }
 
