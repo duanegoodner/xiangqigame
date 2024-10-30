@@ -280,6 +280,55 @@ TEST_F(MinimaxEvaluatorTest, PlayGame) {
   EXPECT_TRUE(losing_player == PieceColor::kRed);
 }
 
+TEST_F(MinimaxEvaluatorTest, PlayGameDualZobristTracker) {
+  GameBoard game_board;
+
+  int red_search_depth{2};
+  MinimaxMoveEvaluator<GameBoard, DualZobristTracker<uint64_t>, PiecePositionPoints>
+      red_evaluator{
+          PieceColor::kRed,
+          red_search_depth,
+          game_board,
+          imported_piece_points
+      };
+
+  int black_search_depth{3};
+  MinimaxMoveEvaluator<GameBoard, DualZobristTracker<uint64_t>, PiecePositionPoints>
+      black_evaluator{
+          PieceColor::kBlk,
+          black_search_depth,
+          game_board,
+          imported_piece_points
+      };
+
+  PieceColor losing_player{};
+
+  while (true) {
+    auto red_moves = game_board.CalcFinalMovesOf(PieceColor::kRed);
+    if (red_moves.Size() == 0) {
+      std::cout << "Red has no available moves" << std::endl;
+      losing_player = PieceColor::kRed;
+      break;
+    }
+    auto red_selected_move = red_evaluator.SelectMove();
+    auto red_executed_move = game_board.ExecuteMove(red_selected_move);
+
+    auto black_moves = game_board.CalcFinalMovesOf(PieceColor::kBlk);
+    if (black_moves.Size() == 0) {
+      std::cout << "Black has no available moves" << std::endl;
+      losing_player = PieceColor::kBlk;
+      break;
+    }
+
+    auto black_selected_move = black_evaluator.SelectMove();
+    auto black_executed_move = game_board.ExecuteMove(black_selected_move);
+  }
+
+  EXPECT_TRUE(losing_player == PieceColor::kRed);
+}
+
+
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
