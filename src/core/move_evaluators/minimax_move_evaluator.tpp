@@ -401,8 +401,8 @@ void MINIMAX_MOVE_EVALUATOR_CRTP_DECL::RunMinimax(
   auto search_start = std::chrono::high_resolution_clock::now();
   auto minimax_result = MinimaxRec(
       starting_search_depth_,
-      numeric_limits<int>::min(),
-      numeric_limits<int>::max(),
+      numeric_limits<Points_t>::min(),
+      numeric_limits<Points_t>::max(),
       evaluating_player_,
       search_summary,
       use_transposition_table
