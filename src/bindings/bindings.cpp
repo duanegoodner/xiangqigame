@@ -19,13 +19,12 @@ using namespace boardstate;
 using namespace gameboard;
 using namespace piecepoints;
 
-
-template <typename KeyType>
+template <typename KeyType, typename ZobristTrackerType>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
-  py::class_<MinimaxMoveEvaluator<
-      GameBoard,
-      SingleZobristTracker<KeyType>,
-      PiecePositionPoints>>(m, class_name.c_str())
+  py::class_<MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>>(
+      m,
+      class_name.c_str()
+  )
       .def(
           py::init<PieceColor, int, GameBoard &>(),
           "evaluating_player"_a,
@@ -41,45 +40,33 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
       )
       .def(
           "select_move",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              SingleZobristTracker<KeyType>,
-              PiecePositionPoints>::SelectMove
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              SelectMove
       )
       .def_property_readonly(
           "search_summaries",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              SingleZobristTracker<KeyType>,
-              PiecePositionPoints>::search_summaries
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              search_summaries
       )
       .def(
           "starting_search_depth",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              SingleZobristTracker<KeyType>,
-              PiecePositionPoints>::StartingSearchDepth
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              StartingSearchDepth
       )
       .def(
           "zobrist_key_size_bits",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              SingleZobristTracker<KeyType>,
-              PiecePositionPoints>::KeySizeBits
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              KeySizeBits
       )
       .def_property_readonly(
           "zkeys_seed",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              SingleZobristTracker<KeyType>,
-              PiecePositionPoints>::zkeys_seed
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              zkeys_seed
       )
       .def_property_readonly(
           "board_state_hex_str",
-          &MinimaxMoveEvaluator<
-              GameBoard,
-              SingleZobristTracker<KeyType>,
-              PiecePositionPoints>::board_state_hex_str
+          &MinimaxMoveEvaluator<GameBoard, ZobristTrackerType, PiecePositionPoints>::
+              board_state_hex_str
       );
 }
 
@@ -209,7 +196,26 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       ) // Read-only vectors and maps
       .def_readonly("extra_searches", &SearchSummaries::extra_searches);
 
-  bind_minimax_move_evaluator<uint32_t>(m, "MinimaxMoveEvaluator32");
-  bind_minimax_move_evaluator<uint64_t>(m, "MinimaxMoveEvaluator64");
-  bind_minimax_move_evaluator<__uint128_t>(m, "MinimaxMoveEvaluator128");
+  bind_minimax_move_evaluator<uint32_t, boardstate::SingleZobristTracker<uint32_t>>(
+      m,
+      "MinimaxMoveEvaluator32"
+  );
+  bind_minimax_move_evaluator<uint64_t, boardstate::SingleZobristTracker<uint64_t>>(
+      m,
+      "MinimaxMoveEvaluator64"
+  );
+  bind_minimax_move_evaluator<
+      __uint128_t,
+      boardstate::SingleZobristTracker<__uint128_t>>(m, "MinimaxMoveEvaluator128");
+  bind_minimax_move_evaluator<uint32_t, boardstate::DualZobristTracker<uint32_t>>(
+      m,
+      "MinimaxMoveEvaluator32Dual"
+  );
+  bind_minimax_move_evaluator<uint64_t, boardstate::DualZobristTracker<uint64_t>>(
+      m,
+      "MinimaxMoveEvaluator64Dual"
+  );
+  bind_minimax_move_evaluator<
+      __uint128_t,
+      boardstate::DualZobristTracker<__uint128_t>>(m, "MinimaxMoveEvaluator128Dual");
 }
