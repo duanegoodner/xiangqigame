@@ -25,72 +25,72 @@
 
 namespace moveselection {
 
-MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxMoveEvaluator(
-    PieceColor evaluating_player,
-    int starting_search_depth,
-    ConcreteSpaceInfoProvider &game_board,
-    const ConcretePieceValueProvider &game_position_points,
-    uint32_t zkey_seed
-)
-    : evaluating_player_{evaluating_player}
-    , starting_search_depth_{starting_search_depth}
-    , game_board_{game_board}
-    , game_position_points_{game_position_points}
-    , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
-    , num_move_selections_{0}
-    , search_summaries_{} {
-  game_board_.AttachMoveCallback(std::bind(
-      &ConcreteBoardStateSummarizer::UpdateBoardState,
-      &hash_calculator_,
-      std::placeholders::_1
-  ));
-  hash_calculator_.FullBoardStateCalc(game_board_.map());
-}
+// MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
+// MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxMoveEvaluator(
+//     PieceColor evaluating_player,
+//     int starting_search_depth,
+//     ConcreteSpaceInfoProvider &game_board,
+//     const ConcretePieceValueProvider &game_position_points,
+//     uint32_t zkey_seed
+// )
+//     : evaluating_player_{evaluating_player}
+//     , starting_search_depth_{starting_search_depth}
+//     , game_board_{game_board}
+//     , game_position_points_{game_position_points}
+//     , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
+//     , num_move_selections_{0}
+//     , search_summaries_{} {
+//   game_board_.AttachMoveCallback(std::bind(
+//       &ConcreteBoardStateSummarizer::UpdateBoardState,
+//       &hash_calculator_,
+//       std::placeholders::_1
+//   ));
+//   hash_calculator_.FullBoardStateCalc(game_board_.map());
+// }
 
-MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxMoveEvaluator(
-    PieceColor evaluating_player,
-    int starting_search_depth,
-    ConcreteSpaceInfoProvider &game_board,
-    const ConcretePieceValueProvider &game_position_points
-)
-    : MinimaxMoveEvaluator(
-          evaluating_player,
-          starting_search_depth,
-          game_board,
-          game_position_points,
-          std::random_device{}()
-      ) {}
+// MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
+// MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxMoveEvaluator(
+//     PieceColor evaluating_player,
+//     int starting_search_depth,
+//     ConcreteSpaceInfoProvider &game_board,
+//     const ConcretePieceValueProvider &game_position_points
+// )
+//     : MinimaxMoveEvaluator(
+//           evaluating_player,
+//           starting_search_depth,
+//           game_board,
+//           game_position_points,
+//           std::random_device{}()
+//       ) {}
 
-MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxMoveEvaluator(
-    PieceColor evaluating_player,
-    int starting_search_depth,
-    ConcreteSpaceInfoProvider &game_board,
-    uint32_t zkey_seed
-)
-    : MinimaxMoveEvaluator(
-          evaluating_player,
-          starting_search_depth,
-          game_board,
-          ConcretePieceValueProvider(),
-          zkey_seed
-      ) {}
+// MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
+// MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxMoveEvaluator(
+//     PieceColor evaluating_player,
+//     int starting_search_depth,
+//     ConcreteSpaceInfoProvider &game_board,
+//     uint32_t zkey_seed
+// )
+//     : MinimaxMoveEvaluator(
+//           evaluating_player,
+//           starting_search_depth,
+//           game_board,
+//           ConcretePieceValueProvider(),
+//           zkey_seed
+//       ) {}
 
-MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
-MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxMoveEvaluator(
-    PieceColor evaluating_player,
-    int starting_search_depth,
-    ConcreteSpaceInfoProvider &game_board
-)
-    : MinimaxMoveEvaluator(
-          evaluating_player,
-          starting_search_depth,
-          game_board,
-          ConcretePieceValueProvider(),
-          std::random_device{}()
-      ) {}
+// MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
+// MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxMoveEvaluator(
+//     PieceColor evaluating_player,
+//     int starting_search_depth,
+//     ConcreteSpaceInfoProvider &game_board
+// )
+//     : MinimaxMoveEvaluator(
+//           evaluating_player,
+//           starting_search_depth,
+//           game_board,
+//           ConcretePieceValueProvider(),
+//           std::random_device{}()
+//       ) {}
 
 //! Checks if move (typicall selected by first search) is allowed.
 //! Cases where 1st search move is illegal:
