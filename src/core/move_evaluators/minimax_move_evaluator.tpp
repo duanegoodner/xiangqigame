@@ -267,19 +267,14 @@ bool MINIMAX_MOVE_EVALUATOR_CRTP_DECL::IsTrTableResultAcceptable(
     TranspositionTableSearchResult &search_result,
     MoveCollection &allowed_moves
 ) {
-  if (allowed_moves.moves.empty() and
-      !search_result.table_entry.similar_moves.similar_moves.moves.empty()) {
+  if (allowed_moves.IsEmpty() and !search_result.moves().IsEmpty()) {
     return false;
   }
-  if (search_result.table_entry.similar_moves.similar_moves.moves.empty() and
-      allowed_moves.moves.empty()) {
+  if (allowed_moves.IsEmpty() and search_result.moves().IsEmpty()) {
     return true;
   }
-  for (const auto &move : search_result.table_entry.similar_moves.similar_moves.moves) {
-    if (std::find(allowed_moves.moves.begin(), allowed_moves.moves.end(), move) ==
-        allowed_moves.moves.end()) {
-      return false;
-    }
+  if (search_result.moves().ContainsAnyMoveNotIn(allowed_moves)) {
+    return false;
   }
   return true;
 }
