@@ -263,6 +263,28 @@ Points_t MINIMAX_MOVE_EVALUATOR_CRTP_DECL::GetPlayerTotal(PieceColor color) {
 }
 
 MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
+bool MINIMAX_MOVE_EVALUATOR_CRTP_DECL::IsTrTableResultAcceptable(
+    TranspositionTableSearchResult &search_result,
+    MoveCollection &allowed_moves
+) {
+  if (allowed_moves.moves.empty() and
+      !search_result.table_entry.similar_moves.similar_moves.moves.empty()) {
+    return false;
+  }
+  if (search_result.table_entry.similar_moves.similar_moves.moves.empty() and
+      allowed_moves.moves.empty()) {
+    return true;
+  }
+  for (const auto &move : search_result.table_entry.similar_moves.similar_moves.moves) {
+    if (std::find(allowed_moves.moves.begin(), allowed_moves.moves.end(), move) ==
+        allowed_moves.moves.end()) {
+      return false;
+    }
+  }
+  return true;
+}
+
+MINIMAX_MOVE_EVALUATOR_TEMPLATE_DECL
 EqualScoreMoves MINIMAX_MOVE_EVALUATOR_CRTP_DECL::MinimaxRec(
     MoveCollection &allowed_moves,
     int remaining_search_depth,

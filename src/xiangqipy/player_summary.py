@@ -124,7 +124,7 @@ class PlayerSummary:
         return df
 
     @property
-    def tr_table_size_first_collision(
+    def tr_table_size_first_illegal_move_request(
         self,
     ) -> cdm.TranspositionTableSize:
         if self.has_search_summaries and self.search_summaries.extra_searches:
@@ -146,7 +146,7 @@ class PlayerSummary:
     @property
     def tr_table_sizes_at_events(self) -> cdm.TranspositionTableSizesAtEvents:
         return cdm.TranspositionTableSizesAtEvents(
-            first_collision=self.tr_table_size_first_collision,
+            first_illegal_move_request=self.tr_table_size_first_illegal_move_request,
             end_game=self.tr_table_size_end_game,
         )
 
@@ -206,7 +206,14 @@ class PlayerSummary:
             ]
         )
 
-        cumulative_illegal_moves = np.cumsum(returned_illegal_move)
+        num_collisions = np.array(
+            [
+                search_summary.num_collisions
+                for search_summary in self.search_summaries.first_searches
+            ]
+        )
+
+        # cumulative_illegal_moves = np.cumsum(returned_illegal_move)
 
         df = pd.DataFrame(
             {
@@ -217,7 +224,8 @@ class PlayerSummary:
                 "tr_table_num_states": tr_table_num_states,
                 "tr_table_num_entries": tr_table_num_entries,
                 "returned_illegal_move": returned_illegal_move,
-                "cumulative_illegal_moves": cumulative_illegal_moves,
+                "num_collisions": num_collisions,
+                # "cumulative_illegal_moves": cumulative_illegal_moves,
             },
             index=self.game_move_numbers,
         )
@@ -229,7 +237,7 @@ class PlayerSummary:
     def selection_stats(self) -> pd.Series | None:
         """
         Pandas Series with mean & max nodes per move, mean & max time per move,
-        and number of known hash collisions.
+        and number of illegal move requests.
         """
 
         if self.has_search_summaries:
@@ -238,13 +246,15 @@ class PlayerSummary:
             time_per_node_ns = self.first_search_stats[
                 "mean_time_per_node_ns"
             ].mean()
-            num_collisions = len(self.search_summaries.extra_searches)
-            collisions_per_move = (
-                num_collisions
-                / self.player_move_count
+            num_illegal_move_requests = len(
+                self.search_summaries.extra_searches
             )
+            num_collisions = self.first_search_stats["num_collisions"].sum()
+            collisions_per_move = (
+                self.first_search_stats["num_collisions"]
+            ).sum() / self.player_move_count
             collisions_per_node = (
-                num_collisions
+                self.first_search_stats["num_collisions"].sum()
                 / self.first_search_stats["num_nodes"].sum()
             )
 
@@ -256,11 +266,12 @@ class PlayerSummary:
                     nodes_per_move,
                     time_per_move_s,
                     time_per_node_ns,
+                    num_illegal_move_requests,
                     num_collisions,
                     collisions_per_move,
                     collisions_per_node,
-                    self.tr_table_size_first_collision.num_states,
-                    self.tr_table_size_first_collision.num_entries,
+                    self.tr_table_size_first_illegal_move_request.num_states,
+                    self.tr_table_size_first_illegal_move_request.num_entries,
                     self.tr_table_size_end_game.num_states,
                     self.tr_table_size_end_game.num_entries,
                 ],
@@ -271,11 +282,12 @@ class PlayerSummary:
                     "nodes_per_move",
                     "time_per_move_s",
                     "time_per_node_ns",
+                    "num_illegal_move_requests",
                     "num_collisions",
                     "collisions_per_move",
                     "collisions_per_node",
-                    "tr_table_num_states_first_collision",
-                    "tr_table_num_entries_first_collision",
+                    "tr_table_num_states_first_illegal_move_request",
+                    "tr_table_num_entries_first_illegal_move_request",
                     "tr_table_num_states_end_game",
                     "tr_table_num_entries_end_game",
                 ],

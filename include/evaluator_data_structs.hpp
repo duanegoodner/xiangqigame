@@ -19,6 +19,8 @@ namespace moveselection {
 struct EqualScoreMoves {
   Points_t shared_score;
   MoveCollection similar_moves;
+
+  MoveCollection moves() {return similar_moves; }
 };
 
 //! A gameboard::Move, and an associated score calculated by a MoveEvaluator.
@@ -60,6 +62,7 @@ struct TranspositionTableEntry {
   EqualScoreMoves similar_moves;
 
   Points_t Score() { return similar_moves.shared_score; }
+  MoveCollection moves() { return similar_moves.moves(); }
 };
 
 //! Container for storing a moveselection::TranspositionTableEntry retrieved by a call to
@@ -68,6 +71,7 @@ struct TranspositionTableSearchResult {
   TranspositionTableEntry table_entry;
   bool found;
   bool known_collision;
+  MoveCollection moves() { return table_entry.moves(); }
 };
 
 struct TranspositionTableSize {
@@ -100,6 +104,11 @@ public:
 
 private:
   ResultDepthCountsData_t data_;
+};
+
+struct CollisionInfo {
+  TranspositionTableSize tr_table_size;
+  std::string board_state;
 };
 
 //! Stores data collected during a single call to
@@ -173,7 +182,7 @@ public:
   }
   void set_returned_illegal_move(bool status) { returned_illegal_move_ = status; }
   bool returned_illegal_move() { return returned_illegal_move_; }
-  int num_collisions() {return num_collisions_; }
+  int num_collisions() { return num_collisions_; }
 
 private:
   int num_nodes_;

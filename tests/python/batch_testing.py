@@ -113,6 +113,7 @@ class BatchTester:
             self.run_game()
             self.save_basic_stats()
 
+
 class FullBatchSummary:
     def __init__(self, batch_dir: str):
         if Path(batch_dir).is_absolute():
@@ -126,10 +127,11 @@ class FullBatchSummary:
             )
 
         self.game_summaries: list[GameSummary] = self.load_game_summaries()
-        self.poisson_collision_analyzer = PoissonCollisionAnalyzer(
-            self.game_summaries
-        )
-        self.tr_size_event_scanner = TrSizeEventScanner(self.game_summaries)
+
+        # self.poisson_collision_analyzer = PoissonCollisionAnalyzer(
+        #     self.game_summaries
+        # )
+        # self.tr_size_event_scanner = TrSizeEventScanner(self.game_summaries)
 
     @property
     def players_with_data(self) -> list[bindings.PieceColor]:
@@ -191,17 +193,17 @@ class FullBatchSummary:
         return series
 
     @property
-    def fraction_games_with_known_collision(self) -> pd.Series:
-        num_collisions_cols = [
-            f"{prefix}_num_collisions"
+    def fraction_games_with_illegal_move_request(self) -> pd.Series:
+        num_illegal_move_requests_cols = [
+            f"{prefix}_num_illegal_move_requests"
             for prefix in self.player_data_col_prefixes
         ]
-        series = self.games_basic_stats[num_collisions_cols].astype(
+        series = self.games_basic_stats[num_illegal_move_requests_cols].astype(
             bool
         ).sum() / len(self.games_basic_stats)
 
         rename_dict = {
-            f"{prefix}_num_collisions": f"{prefix}_fraction_games_with_known_collision"
+            f"{prefix}_num_illegal_move_requests": f"{prefix}_fraction_games_with_illegal_move_request"
             for prefix in self.player_data_col_prefixes
         }
         series = series.rename(rename_dict)
@@ -215,7 +217,7 @@ class FullBatchSummary:
             "nodes_per_move",
             "time_per_move_s",
             "time_per_node_ns",
-            "num_collisions",
+            "num_illegal_move_requests",
             "collisions_per_move",
             "collisions_per_node",
         ]
@@ -241,16 +243,16 @@ class FullBatchSummary:
             [
                 self.num_games,
                 self.win_lose_draw_summary,
-                self.fraction_games_with_known_collision,
+                self.fraction_games_with_illegal_move_request,
                 self.basic_stats_means,
             ]
         )
 
-    def plot_poisson_collision_fits(self):
-        self.poisson_collision_analyzer.plot_all_collision_data()
+    # def plot_poisson_collision_fits(self):
+    #     self.poisson_collision_analyzer.plot_all_collision_data()
 
-    def plot_tr_event_size_scan_data(self):
-        self.tr_size_event_scanner.plot_all_event_size_scan_data()
+    # def plot_tr_event_size_scan_data(self):
+    #     self.tr_size_event_scanner.plot_all_event_size_scan_data()
 
 
 class MultiBatchSummary:
@@ -274,9 +276,7 @@ if __name__ == "__main__":
 
     multi_batch_summary = MultiBatchSummary(
         batch_dirs=[
-            "20241030173843042929-BATCH-10-R-d3-k032-B-d3-k032",
-            "20241030173919920346-BATCH-10-R-d3-k064-B-d3-k064",
-            "20241030173946704607-BATCH-10-R-d3-k128-B-d3-k128"
+            "20241030235307679434-BATCH-2-R-d7-k064-B-d3-k064",
         ]
     )
 

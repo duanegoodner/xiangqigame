@@ -164,7 +164,7 @@ class TranspositionTableSize:
 
 @dataclass
 class TranspositionTableSizesAtEvents:
-    first_collision: TranspositionTableSize | None
+    first_illegal_move_request: TranspositionTableSize | None
     end_game: TranspositionTableSize | None
 
 

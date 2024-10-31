@@ -96,6 +96,7 @@ class ScriptedPlayerWithRetries(Player):
     """
     Has intentionally illegal move in list, followed by legal move (for tests).
     """
+
     def __init__(self, color: PieceColor, move_list: List[str]):
         super().__init__(color=color, player_type=PlayerType.SCRIPTED)
         self._move_list = move_list
@@ -167,6 +168,7 @@ class InvalidEntryInMoveList(Exception):
     """
     Raised when scripted player proposed move has invalid syntax.
     """
+
     def __init__(
         self,
         algebraic_move_input: str,
@@ -183,6 +185,7 @@ class IllegalMoveInMoveList(Exception):
     """
     Raised when scripted player proposes an illegal move.
     """
+
     def __init__(
         self,
         board_map: np.array,
@@ -201,6 +204,7 @@ class IllegalAIMove(Exception):
     """
     Raised when AI player proposed illegal move.
     """
+
     def __init__(
         self, move: Move, message="AI player proposed an illegal move"
     ):
