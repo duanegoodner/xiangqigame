@@ -71,7 +71,21 @@ struct TranspositionTableSearchResult {
   TranspositionTableEntry table_entry;
   bool found;
   bool known_collision;
+  
   MoveCollection moves() { return table_entry.moves(); }
+
+  bool IsConsistentWith(MoveCollection &allowed_moves) {
+     if (allowed_moves.IsEmpty() and moves().IsEmpty()) {
+      return false;
+    }
+    if (allowed_moves.IsEmpty() and moves().IsEmpty()) {
+      return true;
+    }
+    if (moves().ContainsAnyMoveNotIn(allowed_moves)) {
+      return false;
+    }
+    return true;
+  }
 };
 
 struct TranspositionTableSize {

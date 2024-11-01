@@ -91,11 +91,13 @@ public:
   inline const moveselection::SearchSummaries &search_summaries() {
     return search_summaries_;
   }
+  
   inline int StartingSearchDepth() { return starting_search_depth_; }
 
   inline size_t KeySizeBits() {
     return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
   }
+  
   const ConcreteBoardStateSummarizer &hash_calculator() const {
     return hash_calculator_;
   }
@@ -273,22 +275,6 @@ private:
 
   void IncrementNumMoveSelections() { num_move_selections_++; }
 
-  bool IsTrTableResultAcceptable(
-      TranspositionTableSearchResult &search_result,
-      MoveCollection &allowed_moves
-  ) {
-    if (allowed_moves.IsEmpty() and !search_result.moves().IsEmpty()) {
-      return false;
-    }
-    if (allowed_moves.IsEmpty() and search_result.moves().IsEmpty()) {
-      return true;
-    }
-    if (search_result.moves().ContainsAnyMoveNotIn(allowed_moves)) {
-      return false;
-    }
-    return true;
-  }
-
   EqualScoreMoves MinimaxRec(
       MoveCollection &allowed_moves,
       int remaining_search_depth,
@@ -306,7 +292,7 @@ private:
     if (use_transposition_table) {
       auto tr_table_search_result = hash_calculator_.GetTrData(remaining_search_depth);
       if (tr_table_search_result.found &&
-          IsTrTableResultAcceptable(tr_table_search_result, allowed_moves)) {
+          tr_table_search_result.IsConsistentWith( allowed_moves)) {
         result_type = MinimaxResultType::kTrTableHit;
         search_summary.RecordTrTableHitInfo(
             result_type,
