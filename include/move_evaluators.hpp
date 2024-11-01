@@ -275,6 +275,10 @@ private:
 
   void IncrementNumMoveSelections() { num_move_selections_++; }
 
+  void HandleTrTableHit(MinimaxResultType &result_type) {
+
+  }
+  
   EqualScoreMoves MinimaxRec(
       MoveCollection &allowed_moves,
       int remaining_search_depth,
@@ -293,12 +297,13 @@ private:
       auto tr_table_search_result = hash_calculator_.GetTrData(remaining_search_depth);
       if (tr_table_search_result.found &&
           tr_table_search_result.IsConsistentWith( allowed_moves)) {
-        result_type = MinimaxResultType::kTrTableHit;
-        search_summary.RecordTrTableHitInfo(
-            result_type,
-            remaining_search_depth,
-            tr_table_search_result
-        );
+        // result_type = MinimaxResultType::kTrTableHit;
+        // search_summary.RecordTrTableHitInfo(
+        //     result_type,
+        //     remaining_search_depth,
+        //     tr_table_search_result
+        // );
+        search_summary.HandleTrTableHit(tr_table_search_result, result_type, remaining_search_depth);
         return tr_table_search_result.table_entry.similar_moves;
       }
     }
@@ -307,7 +312,7 @@ private:
     if (allowed_moves.moves.size() == 0) {
       auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
       hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
-      search_summary.Update(result_type, remaining_search_depth, result);
+      search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
       return result;
     }
     // If search depth is zero, node is a normal leaf (end of our search depth)
@@ -315,7 +320,7 @@ private:
       result_type = MinimaxResultType::kStandardLeaf;
       auto result = EvaluateNonWinLeaf(cur_player);
       hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
-      search_summary.Update(result_type, remaining_search_depth, result);
+      search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
       return result;
     }
 
@@ -361,7 +366,7 @@ private:
       }
       auto result = EqualScoreMoves{max_eval, similar_moves};
       hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
-      search_summary.Update(result_type, remaining_search_depth, result);
+      search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
       return EqualScoreMoves{max_eval, similar_moves};
 
     } else {
@@ -403,7 +408,7 @@ private:
       }
       auto result = EqualScoreMoves{min_eval, similar_moves};
       hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
-      search_summary.Update(result_type, remaining_search_depth, result);
+      search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
       return result;
     }
   }

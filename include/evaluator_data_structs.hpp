@@ -20,7 +20,7 @@ struct EqualScoreMoves {
   Points_t shared_score;
   MoveCollection similar_moves;
 
-  MoveCollection moves() {return similar_moves; }
+  MoveCollection moves() { return similar_moves; }
 };
 
 //! A gameboard::Move, and an associated score calculated by a MoveEvaluator.
@@ -71,11 +71,11 @@ struct TranspositionTableSearchResult {
   TranspositionTableEntry table_entry;
   bool found;
   bool known_collision;
-  
+
   MoveCollection moves() { return table_entry.moves(); }
 
   bool IsConsistentWith(MoveCollection &allowed_moves) {
-     if (allowed_moves.IsEmpty() and moves().IsEmpty()) {
+    if (allowed_moves.IsEmpty() and moves().IsEmpty()) {
       return false;
     }
     if (allowed_moves.IsEmpty() and moves().IsEmpty()) {
@@ -110,7 +110,7 @@ public:
     }
   }
 
-  void Update(MinimaxResultType result_type, int search_depth) {
+  void IncrementDataAt(MinimaxResultType result_type, int search_depth) {
     data_[result_type][search_depth]++;
   }
 
@@ -141,19 +141,19 @@ public:
       , tr_table_size_initial_{tr_table_size_initial}
       , tr_table_size_final_{} {}
 
-  void Update(
-      MinimaxResultType result_type,
+  void RecordNodeInfo(
+      MinimaxResultType &result_type,
       int search_depth,
       EqualScoreMoves similar_moves
   ) {
     // result_depth_counts[result_type][search_depth]++;
-    result_depth_counts_.Update(result_type, search_depth);
+    result_depth_counts_.IncrementDataAt(result_type, search_depth);
     num_nodes_++;
     set_similar_moves(similar_moves);
   }
 
   void UpdateTranspositionTableHits(MinimaxResultType result_type, int search_depth) {
-    transposition_table_hits_.Update(result_type, search_depth);
+    transposition_table_hits_.IncrementDataAt(result_type, search_depth);
   }
 
   void RecordTrTableHitInfo(
@@ -161,7 +161,7 @@ public:
       int remaining_search_depth,
       TranspositionTableSearchResult tr_table_search_result
   ) {
-    Update(
+    RecordNodeInfo(
         result_type,
         remaining_search_depth,
         tr_table_search_result.table_entry.similar_moves
@@ -170,6 +170,16 @@ public:
     if (tr_table_search_result.known_collision) {
       num_collisions_++;
     }
+  }
+
+  void HandleTrTableHit(
+      TranspositionTableSearchResult &tr_table_search_result,
+      MinimaxResultType &result_type,
+      int remaining_search_depth
+  ) {
+    result_type = MinimaxResultType::kTrTableHit;
+    RecordNodeInfo(result_type, remaining_search_depth, tr_table_search_result.table_entry.similar_moves);
+    
   }
 
   int num_nodes() { return num_nodes_; }
