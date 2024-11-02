@@ -335,7 +335,21 @@ private:
     return cur_eval < previous_best_eval;
   }
 
-  
+  void UpdateBestMoves(
+      PieceColor cur_player,
+      Move move,
+      MoveCollection &best_moves,
+      int cur_eval,
+      int &previous_best_eval
+  ) {
+    if (cur_eval == previous_best_eval) {
+      best_moves.Append(move);
+    } else if (eval_comparator_map_.at(cur_player)(cur_eval, previous_best_eval)) {
+      previous_best_eval = cur_eval;
+      best_moves.moves.clear();
+      best_moves.Append(move);
+    }
+  }
 
   int EvaluateMove(
       Move move,
@@ -418,13 +432,7 @@ private:
             use_transposition_table
         );
 
-        if (cur_eval == max_eval) {
-          best_moves.Append(rated_move.move);
-        } else if (cur_eval > max_eval) {
-          max_eval = cur_eval;
-          best_moves.moves.clear();
-          best_moves.Append(rated_move.move);
-        }
+        UpdateBestMoves(cur_player, rated_move.move, best_moves, cur_eval, max_eval);
         alpha = max(alpha, cur_eval);
         if (beta <= alpha) {
           result_type = MinimaxResultType::kAlphaPrune;
@@ -458,15 +466,7 @@ private:
             search_summary,
             use_transposition_table
         );
-        if (cur_eval == min_eval) {
-          best_moves.Append(rated_move.move);
-        } else if (cur_eval < min_eval) {
-          {
-            min_eval = cur_eval;
-            best_moves.moves.clear();
-            best_moves.Append(rated_move.move);
-          }
-        }
+        UpdateBestMoves(cur_player, rated_move.move, best_moves, cur_eval, min_eval);
 
         beta = min(beta, cur_eval);
         if (beta <= alpha) {
