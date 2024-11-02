@@ -11,6 +11,7 @@
 #include <move_evaluator_interface.hpp>
 #include <piece_value_provider_interface.hpp>
 #include <space_info_provider_interface.hpp>
+#include <unordered_map>
 #include <utility_functs.hpp>
 
 using namespace gameboard;
@@ -91,13 +92,13 @@ public:
   inline const moveselection::SearchSummaries &search_summaries() {
     return search_summaries_;
   }
-  
+
   inline int StartingSearchDepth() { return starting_search_depth_; }
 
   inline size_t KeySizeBits() {
     return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
   }
-  
+
   const ConcreteBoardStateSummarizer &hash_calculator() const {
     return hash_calculator_;
   }
@@ -129,7 +130,16 @@ private:
         std::placeholders::_1
     ));
     hash_calculator_.FullBoardStateCalc(game_board_.map());
+    eval_comparator_map_[evaluating_player_] =
+        [this](int cur_eval, int previous_best_eval) {
+          return this->IsImprovementForEvaluator(cur_eval, previous_best_eval);
+        };
+    eval_comparator_map_[opponent_of(evaluating_player)] =
+        [this](int cur_eval, int previous_best_eval) {
+          return this->IsImprovementForEvaluatorOpponent(cur_eval, previous_best_eval);
+        };
   }
+
   PieceColor evaluating_player_;
   ConcretePieceValueProvider game_position_points_;
   ConcreteBoardStateSummarizer hash_calculator_;
@@ -137,6 +147,7 @@ private:
   int num_move_selections_;
   int starting_search_depth_;
   moveselection::SearchSummaries search_summaries_;
+  unordered_map<PieceColor, function<bool(int, int)>> eval_comparator_map_;
 
   Points_t GetPlayerTotal(PieceColor color) {
     Points_t pre_attack_total = 0;
@@ -146,45 +157,6 @@ private:
           game_position_points_.GetValueOfPieceAtPosition(color, piece_type, space);
     }
     return pre_attack_total;
-  }
-
-  EqualScoreMoves EvaluateNonWinLeaf(PieceColor cur_player) {
-    auto cur_player_points = GetPlayerTotal(cur_player);
-    auto opponent_points = GetPlayerTotal(opponent_of(cur_player));
-
-    auto empty_move_collection = MoveCollection();
-
-    if (cur_player == evaluating_player_) {
-      return EqualScoreMoves{
-          (cur_player_points - opponent_points),
-          empty_move_collection
-      };
-    } else {
-      return EqualScoreMoves{
-          (opponent_points - cur_player_points),
-          empty_move_collection
-      };
-    }
-  };
-
-  EqualScoreMoves EvaluateEndOfGameLeaf(
-      PieceColor cur_player,
-      MinimaxResultType &result_type
-  ) {
-    auto empty_similar_moves = MoveCollection();
-
-    if (game_board_.IsDraw()) {
-      result_type = MinimaxResultType::kDraw;
-      return EqualScoreMoves{0, empty_similar_moves};
-    }
-
-    if (cur_player == evaluating_player_) {
-      result_type = MinimaxResultType::kEvaluatorLoses;
-      return EqualScoreMoves{numeric_limits<Points_t>::min(), empty_similar_moves};
-    } else {
-      result_type = MinimaxResultType::kEvaluatorWins;
-      return EqualScoreMoves{numeric_limits<Points_t>::max(), empty_similar_moves};
-    }
   }
 
   ScoredMove RateMove(Move move, PieceColor cur_player) {
@@ -275,10 +247,119 @@ private:
 
   void IncrementNumMoveSelections() { num_move_selections_++; }
 
-  void HandleTrTableHit(MinimaxResultType &result_type) {
-
+  EqualScoreMoves HandleTrTableHit(
+      SearchSummary &search_summary,
+      MinimaxResultType &result_type,
+      TranspositionTableSearchResult &tr_table_search_result,
+      int remaining_search_depth
+  ) {
+    result_type = MinimaxResultType::kTrTableHit;
+    search_summary.RecordTrTableHit(tr_table_search_result, remaining_search_depth);
+    return tr_table_search_result.score_and_moves();
   }
-  
+
+  EqualScoreMoves EvaluateEndOfGameLeaf(
+      PieceColor cur_player,
+      MinimaxResultType &result_type
+  ) {
+    auto empty_similar_moves = MoveCollection();
+
+    if (game_board_.IsDraw()) {
+      result_type = MinimaxResultType::kDraw;
+      return EqualScoreMoves{0, empty_similar_moves};
+    }
+
+    if (cur_player == evaluating_player_) {
+      result_type = MinimaxResultType::kEvaluatorLoses;
+      return EqualScoreMoves{numeric_limits<Points_t>::min(), empty_similar_moves};
+    } else {
+      result_type = MinimaxResultType::kEvaluatorWins;
+      return EqualScoreMoves{numeric_limits<Points_t>::max(), empty_similar_moves};
+    }
+  }
+
+  EqualScoreMoves HandleEndOfGame(
+      PieceColor cur_player,
+      SearchSummary &search_summary,
+      MinimaxResultType &result_type,
+      int remaining_search_depth
+  ) {
+    auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
+    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
+    return result;
+  }
+
+  EqualScoreMoves EvaluateNonWinLeaf(
+      PieceColor cur_player,
+      MinimaxResultType &result_type
+  ) {
+    result_type = MinimaxResultType::kStandardLeaf;
+
+    auto cur_player_points = GetPlayerTotal(cur_player);
+    auto opponent_points = GetPlayerTotal(opponent_of(cur_player));
+
+    auto empty_move_collection = MoveCollection();
+
+    if (cur_player == evaluating_player_) {
+      return EqualScoreMoves{
+          (cur_player_points - opponent_points),
+          empty_move_collection
+      };
+    } else {
+      return EqualScoreMoves{
+          (opponent_points - cur_player_points),
+          empty_move_collection
+      };
+    }
+  };
+
+  EqualScoreMoves HandleLeaf(
+      PieceColor cur_player,
+      SearchSummary &search_summary,
+      MinimaxResultType &result_type,
+      int remaining_search_depth
+  ) {
+    auto result = EvaluateNonWinLeaf(cur_player, result_type);
+    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
+
+    return result;
+  }
+
+  bool IsImprovementForEvaluator(int cur_eval, int previous_best_eval) const {
+    return cur_eval > previous_best_eval;
+  }
+
+  bool IsImprovementForEvaluatorOpponent(int cur_eval, int previous_best_eval) const {
+    return cur_eval < previous_best_eval;
+  }
+
+  int EvaluateMove(
+      Move move,
+      PieceColor cur_player,
+      int remaining_search_depth,
+      int alpha,
+      int beta,
+      SearchSummary &search_summary,
+      bool use_transposition_table
+  ) {
+    auto executed_move = game_board_.ExecuteMove(move);
+    auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(cur_player));
+    auto cur_eval = MinimaxRec(
+                        new_allowed_moves,
+                        remaining_search_depth - 1,
+                        alpha,
+                        beta,
+                        opponent_of(cur_player),
+                        search_summary,
+                        use_transposition_table
+    )
+                        .shared_score;
+    game_board_.UndoMove(executed_move);
+    return cur_eval;
+  }
+
   EqualScoreMoves MinimaxRec(
       MoveCollection &allowed_moves,
       int remaining_search_depth,
@@ -288,40 +369,35 @@ private:
       SearchSummary &search_summary,
       bool use_transposition_table
   ) {
-    // search_summary.num_nodes++;
     MinimaxResultType result_type{};
 
-    // First we check if result for current board state is in transposition table (unless
-    // this is a second search in which case we don't use transposition table)
+    // First we check if result for current board state is in transposition table
+    // (unless this is a second search in which case we don't use transposition table)
     if (use_transposition_table) {
       auto tr_table_search_result = hash_calculator_.GetTrData(remaining_search_depth);
       if (tr_table_search_result.found &&
-          tr_table_search_result.IsConsistentWith( allowed_moves)) {
-        // result_type = MinimaxResultType::kTrTableHit;
-        // search_summary.RecordTrTableHitInfo(
-        //     result_type,
-        //     remaining_search_depth,
-        //     tr_table_search_result
-        // );
-        search_summary.HandleTrTableHit(tr_table_search_result, result_type, remaining_search_depth);
-        return tr_table_search_result.table_entry.similar_moves;
+          tr_table_search_result.IsConsistentWith(allowed_moves)) {
+        return HandleTrTableHit(
+            search_summary,
+            result_type,
+            tr_table_search_result,
+            remaining_search_depth
+        );
       }
     }
 
     // If no legal moves, node is an end-of-game leaf
     if (allowed_moves.moves.size() == 0) {
-      auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
-      hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
-      search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
-      return result;
+      return HandleEndOfGame(
+          cur_player,
+          search_summary,
+          result_type,
+          remaining_search_depth
+      );
     }
     // If search depth is zero, node is a normal leaf (end of our search depth)
     if (remaining_search_depth == 0) {
-      result_type = MinimaxResultType::kStandardLeaf;
-      auto result = EvaluateNonWinLeaf(cur_player);
-      hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
-      search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
-      return result;
+      return HandleLeaf(cur_player, search_summary, result_type, remaining_search_depth);
     }
 
     if (cur_player == evaluating_player_) {
@@ -330,19 +406,30 @@ private:
       MoveCollection similar_moves;
       auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
       for (auto rated_move : ranked_moves) {
-        auto executed_move = game_board_.ExecuteMove(rated_move.move);
-        auto new_allowed_moves =
-            game_board_.CalcFinalMovesOf(opponent_of(evaluating_player_));
-        auto cur_eval = MinimaxRec(
-                            new_allowed_moves,
-                            remaining_search_depth - 1,
-                            alpha,
-                            beta,
-                            opponent_of(evaluating_player_),
-                            search_summary,
-                            use_transposition_table
-        )
-                            .shared_score;
+        auto cur_eval = EvaluateMove(
+            rated_move.move,
+            cur_player,
+            remaining_search_depth,
+            alpha,
+            beta,
+            search_summary,
+            use_transposition_table
+        );
+        // auto executed_move = game_board_.ExecuteMove(rated_move.move);
+        // auto new_allowed_moves =
+        // game_board_.CalcFinalMovesOf(opponent_of(cur_player)); auto cur_eval =
+        // MinimaxRec(
+        //                     new_allowed_moves,
+        //                     remaining_search_depth - 1,
+        //                     alpha,
+        //                     beta,
+        //                     opponent_of(cur_player),
+        //                     search_summary,
+        //                     use_transposition_table
+        // )
+        //                     .shared_score;
+        // game_board_.UndoMove(executed_move);
+
         if (cur_eval == max_eval) {
           similar_moves.Append(rated_move.move);
         } else if (cur_eval > max_eval) {
@@ -350,7 +437,6 @@ private:
           similar_moves.moves.clear();
           similar_moves.Append(rated_move.move);
         }
-        game_board_.UndoMove(executed_move);
         alpha = max(alpha, cur_eval);
         if (beta <= alpha) {
           result_type = MinimaxResultType::kAlphaPrune;
@@ -367,7 +453,7 @@ private:
       auto result = EqualScoreMoves{max_eval, similar_moves};
       hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
       search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
-      return EqualScoreMoves{max_eval, similar_moves};
+      return result;
 
     } else {
       // evaluation of each legal move when it's evaluating player's opponent's turn
@@ -375,18 +461,29 @@ private:
       MoveCollection similar_moves;
       auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
       for (auto rated_move : ranked_moves) {
-        auto executed_move = game_board_.ExecuteMove(rated_move.move);
-        auto new_allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
-        auto cur_eval = MinimaxRec(
-                            new_allowed_moves,
-                            remaining_search_depth - 1,
-                            alpha,
-                            beta,
-                            evaluating_player_,
-                            search_summary,
-                            use_transposition_table
-        )
-                            .shared_score;
+        auto cur_eval = EvaluateMove(
+            rated_move.move,
+            cur_player,
+            remaining_search_depth,
+            alpha,
+            beta,
+            search_summary,
+            use_transposition_table
+        );
+        // auto executed_move = game_board_.ExecuteMove(rated_move.move);
+        // auto new_allowed_moves =
+        // game_board_.CalcFinalMovesOf(opponent_of(cur_player)); auto cur_eval =
+        // MinimaxRec(
+        //                     new_allowed_moves,
+        //                     remaining_search_depth - 1,
+        //                     alpha,
+        //                     beta,
+        //                     opponent_of(cur_player),
+        //                     search_summary,
+        //                     use_transposition_table
+        // )
+        //                     .shared_score;
+        // game_board_.UndoMove(executed_move);
         if (cur_eval == min_eval) {
           similar_moves.Append(rated_move.move);
         } else if (cur_eval < min_eval) {
@@ -396,7 +493,7 @@ private:
             similar_moves.Append(rated_move.move);
           }
         }
-        game_board_.UndoMove(executed_move);
+
         beta = min(beta, cur_eval);
         if (beta <= alpha) {
           result_type = MinimaxResultType::kBetaPrune;
@@ -456,14 +553,12 @@ public:
       : evaluating_player_{evaluating_player}
       , game_board_{game_board} {}
 
-  Move ImplementSelectMove(
-    MoveCollection &allowed_moves
-) {
-//   auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
-  auto selected_move_index =
-      utility_functs::random((size_t)0, allowed_moves.moves.size() - 1);
-  return allowed_moves.moves[selected_move_index];
-}
+  Move ImplementSelectMove(MoveCollection &allowed_moves) {
+    //   auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
+    auto selected_move_index =
+        utility_functs::random((size_t)0, allowed_moves.moves.size() - 1);
+    return allowed_moves.moves[selected_move_index];
+  }
 
 private:
   PieceColor evaluating_player_;

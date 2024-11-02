@@ -86,6 +86,8 @@ struct TranspositionTableSearchResult {
     }
     return true;
   }
+
+  EqualScoreMoves score_and_moves() { return table_entry.similar_moves; }
 };
 
 struct TranspositionTableSize {
@@ -142,9 +144,9 @@ public:
       , tr_table_size_final_{} {}
 
   void RecordNodeInfo(
-      MinimaxResultType &result_type,
+      MinimaxResultType result_type,
       int search_depth,
-      EqualScoreMoves similar_moves
+      EqualScoreMoves &similar_moves
   ) {
     // result_depth_counts[result_type][search_depth]++;
     result_depth_counts_.IncrementDataAt(result_type, search_depth);
@@ -156,30 +158,23 @@ public:
     transposition_table_hits_.IncrementDataAt(result_type, search_depth);
   }
 
-  void RecordTrTableHitInfo(
-      MinimaxResultType result_type,
-      int remaining_search_depth,
-      TranspositionTableSearchResult tr_table_search_result
+  void RecordTrTableHit(
+      // MinimaxResultType result_type,
+      TranspositionTableSearchResult &tr_table_search_result,
+      int remaining_search_depth
   ) {
     RecordNodeInfo(
-        result_type,
+        MinimaxResultType::kTrTableHit,
         remaining_search_depth,
         tr_table_search_result.table_entry.similar_moves
     );
-    UpdateTranspositionTableHits(result_type, remaining_search_depth);
+    UpdateTranspositionTableHits(
+        tr_table_search_result.table_entry.result_type,
+        remaining_search_depth
+    );
     if (tr_table_search_result.known_collision) {
       num_collisions_++;
     }
-  }
-
-  void HandleTrTableHit(
-      TranspositionTableSearchResult &tr_table_search_result,
-      MinimaxResultType &result_type,
-      int remaining_search_depth
-  ) {
-    result_type = MinimaxResultType::kTrTableHit;
-    RecordNodeInfo(result_type, remaining_search_depth, tr_table_search_result.table_entry.similar_moves);
-    
   }
 
   int num_nodes() { return num_nodes_; }
