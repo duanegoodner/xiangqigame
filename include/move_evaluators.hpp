@@ -376,6 +376,26 @@ private:
     return cur_eval;
   }
 
+  EqualScoreMoves FinalizeNodeResult(
+      MinimaxResultType &result_type,
+      int best_eval,
+      MoveCollection best_moves,
+      int remaining_search_depth,
+      SearchSummary &search_summary
+  ) {
+
+    // If result_type is still unknown by the time FinalizeNodeResult is called, then we
+    // have evaluated all moves from (i.e. children of) the node. Can achieve this for
+    // root node or interior node, but not for a leaf node.
+    if (result_type == MinimaxResultType::kUnknown) {
+      result_type = MinimaxResultType::kFullyEvaluatedNode;
+    }
+    EqualScoreMoves result{best_eval, best_moves};
+    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
+    return result;
+  }
+
   EqualScoreMoves MinimaxRec(
       MoveCollection &allowed_moves,
       int remaining_search_depth,
@@ -439,23 +459,22 @@ private:
           break;
         }
       }
-      //  if we get here and result type is still unknown, then we fully evaluated the
-      //  node. Note that "full evaluation" just means not end of search. Could be the
-      // root node or could be interior node. Recommend finding a way to store search
-      // depth in SearchResult
-      if (result_type == MinimaxResultType::kUnknown) {
-        result_type = MinimaxResultType::kFullyEvaluatedNode;
-      }
-      auto result = EqualScoreMoves{max_eval, best_moves};
-      hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
-      search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
-      return result;
+
+      return FinalizeNodeResult(
+          result_type,
+          max_eval,
+          best_moves,
+          remaining_search_depth,
+          search_summary
+      );
 
     } else {
       // evaluation of each legal move when it's evaluating player's opponent's turn
       auto min_eval = numeric_limits<int>::max();
       MoveCollection best_moves;
+      
       auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
+      
       for (auto rated_move : ranked_moves) {
         auto cur_eval = EvaluateMove(
             rated_move.move,
@@ -474,13 +493,14 @@ private:
           break;
         }
       }
-      if (result_type == MinimaxResultType::kUnknown) {
-        result_type = MinimaxResultType::kFullyEvaluatedNode;
-      }
-      auto result = EqualScoreMoves{min_eval, best_moves};
-      hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
-      search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
-      return result;
+
+      return FinalizeNodeResult(
+          result_type,
+          min_eval,
+          best_moves,
+          remaining_search_depth,
+          search_summary
+      );
     }
   }
 
