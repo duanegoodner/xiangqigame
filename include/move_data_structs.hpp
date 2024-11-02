@@ -40,6 +40,8 @@ struct MoveCollection {
 
   size_t Size() const { return moves.size(); }
 
+  bool IsEmpty() { return moves.empty(); }
+
   bool ContainsMove(const Move &move) const {
     for (auto entry : moves) {
       if ((move.start == entry.start) && (move.end == entry.end)) {
@@ -48,6 +50,17 @@ struct MoveCollection {
     }
     return false;
   }
+
+  bool ContainsAnyMoveNotIn(const MoveCollection &other) {
+    for (auto& entry : moves) {
+      if (!other.ContainsMove(entry)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
 
   bool ContainsDestination(const gameboard::BoardSpace &space) {
     for (auto move : moves) {
