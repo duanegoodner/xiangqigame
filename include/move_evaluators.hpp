@@ -3,6 +3,7 @@
 
 #pragma once
 
+#include <array>
 #include <board_data_structs.hpp>
 #include <board_state_summarizer_interface.hpp>
 #include <evaluator_data_structs.hpp>
@@ -110,7 +111,7 @@ public:
   }
 
 private:
-  MinimaxMoveEvaluator(
+  explicit MinimaxMoveEvaluator(
       PieceColor evaluating_player,
       int starting_search_depth,
       ConcreteSpaceInfoProvider &game_board,
@@ -130,11 +131,19 @@ private:
         std::placeholders::_1
     ));
     hash_calculator_.FullBoardStateCalc(game_board_.map());
-    eval_comparator_map_[evaluating_player_] =
+    // eval_comparator_map_[evaluating_player_] =
+    //     [this](int cur_eval, int previous_best_eval) {
+    //       return this->IsImprovementForEvaluator(cur_eval, previous_best_eval);
+    //     };
+    // eval_comparator_map_[opponent_of(evaluating_player)] =
+    //     [this](int cur_eval, int previous_best_eval) {
+    //       return this->IsImprovementForEvaluatorOpponent(cur_eval, previous_best_eval);
+    //     };
+    points_comparators_[GetZColorIndexOf(evaluating_player_)] =
         [this](int cur_eval, int previous_best_eval) {
           return this->IsImprovementForEvaluator(cur_eval, previous_best_eval);
         };
-    eval_comparator_map_[opponent_of(evaluating_player)] =
+    points_comparators_[GetZColorIndexOf(opponent_of(evaluating_player_))] =
         [this](int cur_eval, int previous_best_eval) {
           return this->IsImprovementForEvaluatorOpponent(cur_eval, previous_best_eval);
         };
@@ -147,7 +156,10 @@ private:
   int num_move_selections_;
   int starting_search_depth_;
   moveselection::SearchSummaries search_summaries_;
-  unordered_map<PieceColor, function<bool(int, int)>> eval_comparator_map_;
+  // unordered_map<PieceColor, function<bool(int, int)>> eval_comparator_map_;
+  std::array<function<bool(int, int)>, 2> points_comparators_;
+
+
 
   Points_t GetPlayerTotal(PieceColor color) {
     Points_t pre_attack_total = 0;
@@ -344,7 +356,8 @@ private:
   ) {
     if (cur_eval == previous_best_eval) {
       best_moves.Append(move);
-    } else if (eval_comparator_map_.at(cur_player)(cur_eval, previous_best_eval)) {
+    } else if (points_comparators_[GetZColorIndexOf(cur_player)](cur_eval, previous_best_eval)) {
+    // else if (eval_comparator_map_.at(cur_player)(cur_eval, previous_best_eval)) {
       previous_best_eval = cur_eval;
       best_moves.moves.clear();
       best_moves.Append(move);
@@ -472,9 +485,9 @@ private:
       // evaluation of each legal move when it's evaluating player's opponent's turn
       auto min_eval = numeric_limits<int>::max();
       MoveCollection best_moves;
-      
+
       auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
-      
+
       for (auto rated_move : ranked_moves) {
         auto cur_eval = EvaluateMove(
             rated_move.move,
