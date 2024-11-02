@@ -262,19 +262,19 @@ private:
       PieceColor cur_player,
       MinimaxResultType &result_type
   ) {
-    auto empty_similar_moves = MoveCollection();
+    auto empty_best_moves = MoveCollection();
 
     if (game_board_.IsDraw()) {
       result_type = MinimaxResultType::kDraw;
-      return EqualScoreMoves{0, empty_similar_moves};
+      return EqualScoreMoves{0, empty_best_moves};
     }
 
     if (cur_player == evaluating_player_) {
       result_type = MinimaxResultType::kEvaluatorLoses;
-      return EqualScoreMoves{numeric_limits<Points_t>::min(), empty_similar_moves};
+      return EqualScoreMoves{numeric_limits<Points_t>::min(), empty_best_moves};
     } else {
       result_type = MinimaxResultType::kEvaluatorWins;
-      return EqualScoreMoves{numeric_limits<Points_t>::max(), empty_similar_moves};
+      return EqualScoreMoves{numeric_limits<Points_t>::max(), empty_best_moves};
     }
   }
 
@@ -334,6 +334,8 @@ private:
   bool IsImprovementForEvaluatorOpponent(int cur_eval, int previous_best_eval) const {
     return cur_eval < previous_best_eval;
   }
+
+  
 
   int EvaluateMove(
       Move move,
@@ -403,7 +405,7 @@ private:
     if (cur_player == evaluating_player_) {
       // evaluation of each legal move when it's evaluating player's turn
       auto max_eval = numeric_limits<int>::min();
-      MoveCollection similar_moves;
+      MoveCollection best_moves;
       auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
       for (auto rated_move : ranked_moves) {
         auto cur_eval = EvaluateMove(
@@ -415,27 +417,13 @@ private:
             search_summary,
             use_transposition_table
         );
-        // auto executed_move = game_board_.ExecuteMove(rated_move.move);
-        // auto new_allowed_moves =
-        // game_board_.CalcFinalMovesOf(opponent_of(cur_player)); auto cur_eval =
-        // MinimaxRec(
-        //                     new_allowed_moves,
-        //                     remaining_search_depth - 1,
-        //                     alpha,
-        //                     beta,
-        //                     opponent_of(cur_player),
-        //                     search_summary,
-        //                     use_transposition_table
-        // )
-        //                     .shared_score;
-        // game_board_.UndoMove(executed_move);
 
         if (cur_eval == max_eval) {
-          similar_moves.Append(rated_move.move);
+          best_moves.Append(rated_move.move);
         } else if (cur_eval > max_eval) {
           max_eval = cur_eval;
-          similar_moves.moves.clear();
-          similar_moves.Append(rated_move.move);
+          best_moves.moves.clear();
+          best_moves.Append(rated_move.move);
         }
         alpha = max(alpha, cur_eval);
         if (beta <= alpha) {
@@ -450,7 +438,7 @@ private:
       if (result_type == MinimaxResultType::kUnknown) {
         result_type = MinimaxResultType::kFullyEvaluatedNode;
       }
-      auto result = EqualScoreMoves{max_eval, similar_moves};
+      auto result = EqualScoreMoves{max_eval, best_moves};
       hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
       search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
       return result;
@@ -458,7 +446,7 @@ private:
     } else {
       // evaluation of each legal move when it's evaluating player's opponent's turn
       auto min_eval = numeric_limits<int>::max();
-      MoveCollection similar_moves;
+      MoveCollection best_moves;
       auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
       for (auto rated_move : ranked_moves) {
         auto cur_eval = EvaluateMove(
@@ -470,27 +458,13 @@ private:
             search_summary,
             use_transposition_table
         );
-        // auto executed_move = game_board_.ExecuteMove(rated_move.move);
-        // auto new_allowed_moves =
-        // game_board_.CalcFinalMovesOf(opponent_of(cur_player)); auto cur_eval =
-        // MinimaxRec(
-        //                     new_allowed_moves,
-        //                     remaining_search_depth - 1,
-        //                     alpha,
-        //                     beta,
-        //                     opponent_of(cur_player),
-        //                     search_summary,
-        //                     use_transposition_table
-        // )
-        //                     .shared_score;
-        // game_board_.UndoMove(executed_move);
         if (cur_eval == min_eval) {
-          similar_moves.Append(rated_move.move);
+          best_moves.Append(rated_move.move);
         } else if (cur_eval < min_eval) {
           {
             min_eval = cur_eval;
-            similar_moves.moves.clear();
-            similar_moves.Append(rated_move.move);
+            best_moves.moves.clear();
+            best_moves.Append(rated_move.move);
           }
         }
 
@@ -503,7 +477,7 @@ private:
       if (result_type == MinimaxResultType::kUnknown) {
         result_type = MinimaxResultType::kFullyEvaluatedNode;
       }
-      auto result = EqualScoreMoves{min_eval, similar_moves};
+      auto result = EqualScoreMoves{min_eval, best_moves};
       hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
       search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
       return result;
