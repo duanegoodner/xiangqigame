@@ -236,7 +236,7 @@ private:
     return second_search_summary;
   }
 
-  void IncrementNumMoveSelections() { num_move_selections_++; }
+  inline void IncrementNumMoveSelections() { num_move_selections_++; }
 
   EqualScoreMoves HandleTrTableHit(
       SearchSummary &search_summary,
@@ -318,7 +318,7 @@ private:
     return result;
   }
 
-  bool IsImprovement(int cur_eval, int previous_best_eval, PieceColor cur_player) {
+  inline bool IsImprovement(int cur_eval, int previous_best_eval, PieceColor cur_player) {
     if (cur_player == evaluating_player_) {
       return cur_eval > previous_best_eval;
     } else {
@@ -362,11 +362,11 @@ private:
     return result;
   }
 
-  void UpdateAlpha(int &alpha, int cur_eval) { alpha = max(alpha, cur_eval); }
+  inline void UpdateAlpha(int &alpha, int cur_eval) { alpha = max(alpha, cur_eval); }
 
-  void UpdateBeta(int &beta, int cur_eval) { beta = min(beta, cur_eval); }
+  inline void UpdateBeta(int &beta, int cur_eval) { beta = min(beta, cur_eval); }
 
-  bool IsPrunableForEvaluator(int &alpha, int &beta, MinimaxResultType &result_type) {
+  inline bool IsPrunableForEvaluator(int &alpha, int &beta, MinimaxResultType &result_type) {
     bool is_prunable = (beta <= alpha);
     if (is_prunable) {
       result_type = MinimaxResultType::kAlphaPrune;
@@ -374,7 +374,7 @@ private:
     return is_prunable;
   }
 
-  bool IsPrunableForEvaluatorOpponent(
+  inline bool IsPrunableForEvaluatorOpponent(
       int &alpha,
       int &beta,
       MinimaxResultType &result_type
