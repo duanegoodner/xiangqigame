@@ -326,14 +326,6 @@ private:
     }
   }
 
-  bool IsImprovementForEvaluator(int cur_eval, int previous_best_eval) const {
-    return cur_eval > previous_best_eval;
-  }
-
-  bool IsImprovementForEvaluatorOpponent(int cur_eval, int previous_best_eval) const {
-    return cur_eval < previous_best_eval;
-  }
-
   void UpdateBestMoves(
       PieceColor cur_player,
       Move move,
@@ -348,31 +340,6 @@ private:
       best_moves.moves.clear();
       best_moves.Append(move);
     }
-  }
-
-  int EvaluateMove(
-      Move move,
-      PieceColor cur_player,
-      int remaining_search_depth,
-      int alpha,
-      int beta,
-      SearchSummary &search_summary,
-      bool use_transposition_table
-  ) {
-    auto executed_move = game_board_.ExecuteMove(move);
-    auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(cur_player));
-    auto cur_eval = MinimaxRec(
-                        new_allowed_moves,
-                        remaining_search_depth - 1,
-                        alpha,
-                        beta,
-                        opponent_of(cur_player),
-                        search_summary,
-                        use_transposition_table
-    )
-                        .shared_score;
-    game_board_.UndoMove(executed_move);
-    return cur_eval;
   }
 
   EqualScoreMoves FinalizeNodeResult(
@@ -502,19 +469,6 @@ private:
             search_summary,
             use_transposition_table
         );
-        // auto executed_move = game_board_.ExecuteMove(rated_move.move);
-        // auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(cur_player));
-        // auto cur_eval = MinimaxRec(
-        //                     new_allowed_moves,
-        //                     remaining_search_depth - 1,
-        //                     alpha,
-        //                     beta,
-        //                     opponent_of(cur_player),
-        //                     search_summary,
-        //                     use_transposition_table
-        // )
-        //                     .shared_score;
-        // game_board_.UndoMove(executed_move);
 
         UpdateBestMoves(cur_player, rated_move.move, best_moves, cur_eval, max_eval);
 
@@ -550,20 +504,6 @@ private:
             search_summary,
             use_transposition_table
         );
-        // auto executed_move = game_board_.ExecuteMove(rated_move.move);
-        // auto new_allowed_moves =
-        // game_board_.CalcFinalMovesOf(opponent_of(cur_player)); auto cur_eval =
-        // MinimaxRec(
-        //                     new_allowed_moves,
-        //                     remaining_search_depth - 1,
-        //                     alpha,
-        //                     beta,
-        //                     opponent_of(cur_player),
-        //                     search_summary,
-        //                     use_transposition_table
-        // )
-        //                     .shared_score;
-        // game_board_.UndoMove(executed_move);
 
         UpdateBestMoves(cur_player, rated_move.move, best_moves, cur_eval, min_eval);
         UpdateBeta(beta, cur_eval);
