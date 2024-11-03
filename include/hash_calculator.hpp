@@ -137,25 +137,32 @@ private:
 template <typename KeyType>
 class SingleKeyTranspositionTable {
 public:
-  SingleKeyTranspositionTable()
-      : num_entries_{0} {}
-
   TranspositionTableSearchResult GetDataAt(
       KeyType board_state,
       int remaining_search_depth
   ) {
     TranspositionTableSearchResult result{};
 
-    auto entry_vector_it = data_.find(board_state);
-    if (entry_vector_it != data_.end()) {
-      auto entry_vector = entry_vector_it->second;
-      for (auto entry : entry_vector) {
-        if (entry.remaining_search_depth == remaining_search_depth) {
-          result.found = true;
-          result.table_entry = entry;
-          break;
-        }
+    // auto entry_vector_it = data_.find(board_state);
+    auto tr_table_entry_it = data_.find(board_state);
+
+    if (tr_table_entry_it != data_.end()) {
+      // auto entry_vector = entry_vector_it->second;
+      auto tr_table_entry = tr_table_entry_it->second;
+      if (tr_table_entry.remaining_search_depth >= remaining_search_depth) {
+        result.found = true;
+        result.table_entry = tr_table_entry;
       }
+
+      //   for (auto entry : entry_vector) {
+      //     if (entry.remaining_search_depth == remaining_search_depth) {
+      //       result.found = true;
+      //       result.table_entry = entry;
+      //       break;
+      //     }
+      //   }
+      // }
+      // return result;
     }
     return result;
   }
@@ -166,17 +173,23 @@ public:
       MinimaxResultType result_type,
       EqualScoreMoves &similar_moves
   ) {
-    data_[state].emplace_back(search_depth, result_type, similar_moves);
-    num_entries_++;
+
+    // data_[state].emplace_back(search_depth, result_type, similar_moves);
+    data_.insert_or_assign(
+        state,
+        TranspositionTableEntry{search_depth, result_type, similar_moves}
+    );
+    // num_entries_++;
   };
 
-  uint64_t num_entries() { return num_entries_; }
+  uint64_t num_entries() { return data_.size(); }
 
   size_t num_states() { return data_.size(); }
 
 private:
-  unordered_map<KeyType, vector<TranspositionTableEntry>> data_;
-  uint64_t num_entries_;
+  // unordered_map<KeyType, vector<TranspositionTableEntry>> data_;
+  unordered_map<KeyType, TranspositionTableEntry> data_;
+  // uint64_t num_entries_;
 };
 
 template <typename KeyType>
@@ -235,9 +248,9 @@ private:
   uint64_t num_entries_;
 };
 
-//! Tracks board state using one boardstate::ZobristCalculator and a Implements BoardStateSummarizer interface; calculates Zobrist hash value of board
-//! configuration; provides moveselection::MinimaxMoveEvaluator access to
-//! boardstate::TranspositionTable
+//! Tracks board state using one boardstate::ZobristCalculator and a Implements
+//! BoardStateSummarizer interface; calculates Zobrist hash value of board configuration;
+//! provides moveselection::MinimaxMoveEvaluator access to boardstate::TranspositionTable
 template <typename KeyType>
 class SingleZobristTracker
     : public BoardStateSummarizer<SingleZobristTracker<KeyType>, KeyType> {
@@ -312,8 +325,10 @@ public:
       : transposition_table_{}
       , zkeys_seed_{zkeys_seed} {
     std::mt19937 calculator_seed_generator{zkeys_seed_};
-    primary_calculator_ = ZobristCalculator<KeyType>{(uint32_t) calculator_seed_generator()};
-    confirmation_calculator_ = ZobristCalculator<KeyType>{(uint32_t) calculator_seed_generator()};
+    primary_calculator_ =
+        ZobristCalculator<KeyType>{(uint32_t)calculator_seed_generator()};
+    confirmation_calculator_ =
+        ZobristCalculator<KeyType>{(uint32_t)calculator_seed_generator()};
   }
 
   DualZobristTracker()
@@ -362,8 +377,10 @@ public:
   }
 
   const uint32_t zkeys_seed() { return zkeys_seed_; }
-  const uint32_t primary_calculator_seed() {return primary_calculator_.seed(); }
-  const uint32_t confirmation_calculator_seed() {return confirmation_calculator_.seed(); }
+  const uint32_t primary_calculator_seed() { return primary_calculator_.seed(); }
+  const uint32_t confirmation_calculator_seed() {
+    return confirmation_calculator_.seed();
+  }
   const KeyType board_state() { return primary_calculator_.board_state(); }
   const string board_state_hex_str() {
     return boardstate::IntToHexString(board_state());
