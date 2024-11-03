@@ -77,7 +77,7 @@ const unordered_map<string, PieceColor> kPieceColorStringToEnum = [] {
 inline size_t GetZColorIndexOf(PieceColor color) {
   return (size_t)(color + (int)(color < 0));
 }
-// converts red/black: 0/1 to -1/1
+// converts red/black: 0/1 to PieceColor -1/1 enum
 inline PieceColor GetPieceColorOf(size_t zcolor_index) {
   int piece_color_val = (int)(zcolor_index - (size_t)(zcolor_index == 0));
   return static_cast<PieceColor>(piece_color_val);
