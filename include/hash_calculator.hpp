@@ -143,26 +143,14 @@ public:
   ) {
     TranspositionTableSearchResult result{};
 
-    // auto entry_vector_it = data_.find(board_state);
     auto tr_table_entry_it = data_.find(board_state);
 
     if (tr_table_entry_it != data_.end()) {
-      // auto entry_vector = entry_vector_it->second;
       auto tr_table_entry = tr_table_entry_it->second;
       if (tr_table_entry.remaining_search_depth >= remaining_search_depth) {
         result.found = true;
         result.table_entry = tr_table_entry;
       }
-
-      //   for (auto entry : entry_vector) {
-      //     if (entry.remaining_search_depth == remaining_search_depth) {
-      //       result.found = true;
-      //       result.table_entry = entry;
-      //       break;
-      //     }
-      //   }
-      // }
-      // return result;
     }
     return result;
   }
@@ -201,8 +189,8 @@ struct DualKeyTranspositionTableEntry {
 template <typename KeyType>
 class DualKeyTranspositionTable {
 public:
-  DualKeyTranspositionTable()
-      : num_entries_{0} {}
+  // DualKeyTranspositionTable()
+  //     : num_entries_{0} {}
 
   TranspositionTableSearchResult GetDataAt(
       KeyType board_state,
@@ -210,22 +198,37 @@ public:
       int remaining_search_depth
   ) {
     TranspositionTableSearchResult result{};
-    auto dual_key_entry_vector_it = data_.find(board_state);
-    if (dual_key_entry_vector_it != data_.end()) {
-      auto dual_key_entry_vector = dual_key_entry_vector_it->second;
-      for (auto dual_key_entry : dual_key_entry_vector) {
-        if (dual_key_entry.single_key_entry.remaining_search_depth ==
-            remaining_search_depth) {
-          result.found = true;
-          result.table_entry = dual_key_entry.single_key_entry;
-          if (dual_key_entry.confirmation_state != expected_confirmation_state) {
-            result.known_collision = true;
-          }
-          break;
+
+    // auto dual_key_entry_vector_it = data_.find(board_state);
+    auto dual_key_tr_table_entry_it = data_.find(board_state);
+    if (dual_key_tr_table_entry_it != data_.end()) {
+      auto dual_key_tr_table_entry = dual_key_tr_table_entry_it->second;
+      if (dual_key_tr_table_entry.single_key_entry.remaining_search_depth >=
+          remaining_search_depth) {
+        result.found = true;
+        result.table_entry = dual_key_tr_table_entry.single_key_entry;
+        if (dual_key_tr_table_entry.confirmation_state != expected_confirmation_state) {
+          result.known_collision = true;
         }
       }
     }
     return result;
+
+    // if (dual_key_entry_vector_it != data_.end()) {
+    //   auto dual_key_entry_vector = dual_key_entry_vector_it->second;
+    //   for (auto dual_key_entry : dual_key_entry_vector) {
+    //     if (dual_key_entry.single_key_entry.remaining_search_depth ==
+    //         remaining_search_depth) {
+    //       result.found = true;
+    //       result.table_entry = dual_key_entry.single_key_entry;
+    //       if (dual_key_entry.confirmation_state != expected_confirmation_state) {
+    //         result.known_collision = true;
+    //       }
+    //       break;
+    //     }
+    //   }
+    // }
+    // return result;
   }
 
   void RecordData(
@@ -236,16 +239,20 @@ public:
       EqualScoreMoves &similar_moves
   ) {
     TranspositionTableEntry single_key_entry{search_depth, result_type, similar_moves};
-    data_[board_state].emplace_back(confirmation_state, single_key_entry);
-    num_entries_++;
+    // data_[board_state].emplace_back(confirmation_state, single_key_entry);
+    data_.insert_or_assign(
+        board_state,
+        DualKeyTranspositionTableEntry<KeyType>{confirmation_state, single_key_entry}
+    );
+    // num_entries_++;
   }
 
-  uint64_t num_entries() { return num_entries_; }
+  uint64_t num_entries() { return data_.size(); }
   size_t num_states() { return data_.size(); }
 
 private:
-  unordered_map<KeyType, vector<DualKeyTranspositionTableEntry<KeyType>>> data_;
-  uint64_t num_entries_;
+  unordered_map<KeyType, DualKeyTranspositionTableEntry<KeyType>> data_;
+  // uint64_t num_entries_;
 };
 
 //! Tracks board state using one boardstate::ZobristCalculator and a Implements
