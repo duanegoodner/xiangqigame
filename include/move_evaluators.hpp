@@ -131,14 +131,6 @@ private:
         std::placeholders::_1
     ));
     hash_calculator_.FullBoardStateCalc(game_board_.map());
-    points_comparators_[GetZColorIndexOf(evaluating_player_)] =
-        [this](int cur_eval, int previous_best_eval) {
-          return this->IsImprovementForEvaluator(cur_eval, previous_best_eval);
-        };
-    points_comparators_[GetZColorIndexOf(opponent_of(evaluating_player_))] =
-        [this](int cur_eval, int previous_best_eval) {
-          return this->IsImprovementForEvaluatorOpponent(cur_eval, previous_best_eval);
-        };
   }
 
   PieceColor evaluating_player_;
@@ -148,7 +140,6 @@ private:
   int num_move_selections_;
   int starting_search_depth_;
   moveselection::SearchSummaries search_summaries_;
-  std::array<function<bool(int, int)>, 2> points_comparators_;
 
   Points_t GetPlayerTotal(PieceColor color) {
     Points_t pre_attack_total = 0;
@@ -327,6 +318,14 @@ private:
     return result;
   }
 
+  bool IsImprovement(int cur_eval, int previous_best_eval, PieceColor cur_player) {
+    if (cur_player == evaluating_player_) {
+      return cur_eval > previous_best_eval;
+    } else {
+      return cur_eval < previous_best_eval;
+    }
+  }
+
   bool IsImprovementForEvaluator(int cur_eval, int previous_best_eval) const {
     return cur_eval > previous_best_eval;
   }
@@ -344,10 +343,7 @@ private:
   ) {
     if (cur_eval == previous_best_eval) {
       best_moves.Append(move);
-    } else if (points_comparators_[GetZColorIndexOf(cur_player)](
-                   cur_eval,
-                   previous_best_eval
-               )) {
+    } else if (IsImprovement(cur_eval, previous_best_eval, cur_player)) {
       previous_best_eval = cur_eval;
       best_moves.moves.clear();
       best_moves.Append(move);
@@ -399,19 +395,11 @@ private:
     return result;
   }
 
-  void UpdateAlpha(int &alpha, int cur_eval) {
-    alpha = max(alpha, cur_eval);
-  }
+  void UpdateAlpha(int &alpha, int cur_eval) { alpha = max(alpha, cur_eval); }
 
-  void UpdateBeta(int &beta, int cur_eval) {
-    beta = min(beta, cur_eval);
-  }
-  
-  bool IsPrunableForEvaluator(
-      int &alpha,
-      int &beta,
-      MinimaxResultType &result_type
-  ) {
+  void UpdateBeta(int &beta, int cur_eval) { beta = min(beta, cur_eval); }
+
+  bool IsPrunableForEvaluator(int &alpha, int &beta, MinimaxResultType &result_type) {
     bool is_prunable = (beta <= alpha);
     if (is_prunable) {
       result_type = MinimaxResultType::kAlphaPrune;
@@ -498,11 +486,6 @@ private:
         if (IsPrunableForEvaluator(alpha, beta, result_type)) {
           break;
         }
-
-        // if (beta <= alpha) {
-        //   result_type = MinimaxResultType::kAlphaPrune;
-        //   break;
-        // }
       }
 
       return FinalizeNodeResult(
@@ -539,11 +522,6 @@ private:
         if (IsPrunableForEvaluatorOpponent(alpha, beta, result_type)) {
           break;
         }
-
-        // if (beta <= alpha) {
-        //   result_type = MinimaxResultType::kBetaPrune;
-        //   break;
-        // }
       }
 
       return FinalizeNodeResult(
@@ -600,7 +578,6 @@ public:
       , game_board_{game_board} {}
 
   Move ImplementSelectMove(MoveCollection &allowed_moves) {
-    //   auto allowed_moves = game_board_.CalcFinalMovesOf(evaluating_player_);
     auto selected_move_index =
         utility_functs::random((size_t)0, allowed_moves.moves.size() - 1);
     return allowed_moves.moves[selected_move_index];
