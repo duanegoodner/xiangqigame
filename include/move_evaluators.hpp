@@ -419,6 +419,32 @@ private:
     return is_prunable;
   }
 
+  int RecursivelyVisitNodes(
+      Move move,
+      PieceColor cur_player,
+      MoveCollection &allowed_moves,
+      int remaining_search_depth,
+      int alpha,
+      int beta,
+      SearchSummary &search_summary,
+      bool use_transposition_table
+  ) {
+    auto executed_move = game_board_.ExecuteMove(move);
+    auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(cur_player));
+    auto cur_eval = MinimaxRec(
+                        new_allowed_moves,
+                        remaining_search_depth - 1,
+                        alpha,
+                        beta,
+                        opponent_of(cur_player),
+                        search_summary,
+                        use_transposition_table
+    )
+                        .shared_score;
+    game_board_.UndoMove(executed_move);
+    return cur_eval;
+  }
+
   EqualScoreMoves MinimaxRec(
       MoveCollection &allowed_moves,
       int remaining_search_depth,
@@ -464,20 +490,31 @@ private:
       auto max_eval = numeric_limits<int>::min();
       MoveCollection best_moves;
       auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
+
       for (auto rated_move : ranked_moves) {
-        auto executed_move = game_board_.ExecuteMove(rated_move.move);
-        auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(cur_player));
-        auto cur_eval = MinimaxRec(
-                            new_allowed_moves,
-                            remaining_search_depth - 1,
-                            alpha,
-                            beta,
-                            opponent_of(cur_player),
-                            search_summary,
-                            use_transposition_table
-        )
-                            .shared_score;
-        game_board_.UndoMove(executed_move);
+        auto cur_eval = RecursivelyVisitNodes(
+            rated_move.move,
+            cur_player,
+            allowed_moves,
+            remaining_search_depth,
+            alpha,
+            beta,
+            search_summary,
+            use_transposition_table
+        );
+        // auto executed_move = game_board_.ExecuteMove(rated_move.move);
+        // auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(cur_player));
+        // auto cur_eval = MinimaxRec(
+        //                     new_allowed_moves,
+        //                     remaining_search_depth - 1,
+        //                     alpha,
+        //                     beta,
+        //                     opponent_of(cur_player),
+        //                     search_summary,
+        //                     use_transposition_table
+        // )
+        //                     .shared_score;
+        // game_board_.UndoMove(executed_move);
 
         UpdateBestMoves(cur_player, rated_move.move, best_moves, cur_eval, max_eval);
 
@@ -502,21 +539,32 @@ private:
       MoveCollection best_moves;
 
       auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
-
       for (auto rated_move : ranked_moves) {
-        auto executed_move = game_board_.ExecuteMove(rated_move.move);
-        auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(cur_player));
-        auto cur_eval = MinimaxRec(
-                            new_allowed_moves,
-                            remaining_search_depth - 1,
-                            alpha,
-                            beta,
-                            opponent_of(cur_player),
-                            search_summary,
-                            use_transposition_table
-        )
-                            .shared_score;
-        game_board_.UndoMove(executed_move);
+        auto cur_eval = RecursivelyVisitNodes(
+            rated_move.move,
+            cur_player,
+            allowed_moves,
+            remaining_search_depth,
+            alpha,
+            beta,
+            search_summary,
+            use_transposition_table
+        );
+        // auto executed_move = game_board_.ExecuteMove(rated_move.move);
+        // auto new_allowed_moves =
+        // game_board_.CalcFinalMovesOf(opponent_of(cur_player)); auto cur_eval =
+        // MinimaxRec(
+        //                     new_allowed_moves,
+        //                     remaining_search_depth - 1,
+        //                     alpha,
+        //                     beta,
+        //                     opponent_of(cur_player),
+        //                     search_summary,
+        //                     use_transposition_table
+        // )
+        //                     .shared_score;
+        // game_board_.UndoMove(executed_move);
+
         UpdateBestMoves(cur_player, rated_move.move, best_moves, cur_eval, min_eval);
         UpdateBeta(beta, cur_eval);
         if (IsPrunableForEvaluatorOpponent(alpha, beta, result_type)) {
