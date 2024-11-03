@@ -19,7 +19,7 @@ using namespace gameboard;
 
 namespace moveselection {
 
-//! Implements MoveEvaluator interface, and selects move::Move based on Minimax
+//! Implements MoveEvaluator interface, and selects move::Move using Minimax
 //! algorithm; uses SpaceInfoProvider, BoardStateSummarizer, and PieceValueProvider
 //! interfaces.
 template <
@@ -318,7 +318,11 @@ private:
     return result;
   }
 
-  inline bool IsImprovement(int cur_eval, int previous_best_eval, PieceColor cur_player) {
+  inline bool IsImprovement(
+      int cur_eval,
+      int previous_best_eval,
+      PieceColor cur_player
+  ) {
     if (cur_player == evaluating_player_) {
       return cur_eval > previous_best_eval;
     } else {
@@ -366,7 +370,11 @@ private:
 
   inline void UpdateBeta(int &beta, int cur_eval) { beta = min(beta, cur_eval); }
 
-  inline bool IsPrunableForEvaluator(int &alpha, int &beta, MinimaxResultType &result_type) {
+  inline bool IsPrunableForEvaluator(
+      int &alpha,
+      int &beta,
+      MinimaxResultType &result_type
+  ) {
     bool is_prunable = (beta <= alpha);
     if (is_prunable) {
       result_type = MinimaxResultType::kAlphaPrune;
@@ -384,6 +392,19 @@ private:
       result_type = MinimaxResultType::kBetaPrune;
     }
     return is_prunable;
+  }
+
+  inline bool IsPrunable(
+      int &alpha,
+      int &beta,
+      MinimaxResultType &result_type,
+      PieceColor cur_player
+  ) {
+    if (cur_player == evaluating_player_) {
+      return IsPrunableForEvaluator(alpha, beta, result_type);
+    } else {
+      return IsPrunableForEvaluatorOpponent(alpha, beta, result_type);
+    }
   }
 
   int RecursivelyVisitNodes(
@@ -412,6 +433,67 @@ private:
     return cur_eval;
   }
 
+  inline int InitializedBestEval(PieceColor cur_player) {
+    if (cur_player == evaluating_player_) {
+      return numeric_limits<int>::min();
+    } else {
+      return numeric_limits<int>::max();
+    }
+  }
+
+  inline void
+  UpdatePruningParam(int &alpha, int &beta, int cur_eval, PieceColor cur_player) {
+    if (cur_player == evaluating_player_) {
+      UpdateAlpha(alpha, cur_eval);
+    } else {
+      UpdateBeta(beta, cur_eval);
+    }
+  }
+
+  EqualScoreMoves HandleInternalNode(
+      PieceColor cur_player,
+      MoveCollection &allowed_moves,
+      int &remaining_search_depth,
+      int &alpha,
+      int &beta,
+      MinimaxResultType result_type,
+      SearchSummary &search_summary,
+      bool use_transposition_table
+  ) {
+    auto max_eval = InitializedBestEval(cur_player);
+    MoveCollection best_moves;
+    auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
+
+    for (auto rated_move : ranked_moves) {
+      auto cur_eval = RecursivelyVisitNodes(
+          rated_move.move,
+          cur_player,
+          allowed_moves,
+          remaining_search_depth,
+          alpha,
+          beta,
+          search_summary,
+          use_transposition_table
+      );
+
+      UpdateBestMoves(cur_player, rated_move.move, best_moves, cur_eval, max_eval);
+
+      UpdatePruningParam(alpha, beta, cur_eval, cur_player);
+
+      if (IsPrunable(alpha, beta, result_type, cur_player)) {
+        break;
+      }
+    }
+
+    return FinalizeNodeResult(
+        result_type,
+        max_eval,
+        best_moves,
+        remaining_search_depth,
+        search_summary
+    );
+  }
+
   EqualScoreMoves MinimaxRec(
       MoveCollection &allowed_moves,
       int remaining_search_depth,
@@ -423,7 +505,7 @@ private:
   ) {
     MinimaxResultType result_type{};
 
-    // First we check if result for current board state is in transposition table
+    // Check if result for current board state is in transposition table
     // (unless this is a second search in which case we don't use transposition table)
     if (use_transposition_table) {
       auto tr_table_search_result = hash_calculator_.GetTrData(remaining_search_depth);
@@ -447,79 +529,24 @@ private:
           remaining_search_depth
       );
     }
-    // If search depth is zero, node is a normal leaf (end of our search depth)
+
+    // If remaining search depth is zero, treat node as "normal" leaf (not end of game,
+    // just end of search)
     if (remaining_search_depth == 0) {
       return HandleLeaf(cur_player, search_summary, result_type, remaining_search_depth);
     }
 
-    if (cur_player == evaluating_player_) {
-      // evaluation of each legal move when it's evaluating player's turn
-      auto max_eval = numeric_limits<int>::min();
-      MoveCollection best_moves;
-      auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
-
-      for (auto rated_move : ranked_moves) {
-        auto cur_eval = RecursivelyVisitNodes(
-            rated_move.move,
-            cur_player,
-            allowed_moves,
-            remaining_search_depth,
-            alpha,
-            beta,
-            search_summary,
-            use_transposition_table
-        );
-
-        UpdateBestMoves(cur_player, rated_move.move, best_moves, cur_eval, max_eval);
-
-        UpdateAlpha(alpha, cur_eval);
-
-        if (IsPrunableForEvaluator(alpha, beta, result_type)) {
-          break;
-        }
-      }
-
-      return FinalizeNodeResult(
-          result_type,
-          max_eval,
-          best_moves,
-          remaining_search_depth,
-          search_summary
-      );
-
-    } else {
-      // evaluation of each legal move when it's evaluating player's opponent's turn
-      auto min_eval = numeric_limits<int>::max();
-      MoveCollection best_moves;
-
-      auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
-      for (auto rated_move : ranked_moves) {
-        auto cur_eval = RecursivelyVisitNodes(
-            rated_move.move,
-            cur_player,
-            allowed_moves,
-            remaining_search_depth,
-            alpha,
-            beta,
-            search_summary,
-            use_transposition_table
-        );
-
-        UpdateBestMoves(cur_player, rated_move.move, best_moves, cur_eval, min_eval);
-        UpdateBeta(beta, cur_eval);
-        if (IsPrunableForEvaluatorOpponent(alpha, beta, result_type)) {
-          break;
-        }
-      }
-
-      return FinalizeNodeResult(
-          result_type,
-          min_eval,
-          best_moves,
-          remaining_search_depth,
-          search_summary
-      );
-    }
+    // If not end-of-game, nor end-of-search, treat node as internal node.
+    return HandleInternalNode(
+        cur_player,
+        allowed_moves,
+        remaining_search_depth,
+        alpha,
+        beta,
+        result_type,
+        search_summary,
+        use_transposition_table
+    );
   }
 
   void RunMinimax(
@@ -576,6 +603,3 @@ private:
   ConcreteSpaceInfoProvider &game_board_;
 };
 } // namespace moveselection
-
-// #include <minimax_move_evaluator.tpp>
-// #include <random_move_evaluator.tpp>
