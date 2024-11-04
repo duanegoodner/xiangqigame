@@ -1,0 +1,607 @@
+<!-- HTML header for doxygen 1.9.4-->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="generator" content="Doxygen 1.9.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiangiqgame: src/xiangqipy/game_summary_plotters.py Source File</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+  </script>
+  <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+  </script>
+</head>
+<body>
+  <!-- https://tholman.com/github-corners/ -->
+  <a href="https://github.com/duanegoodner/xiangqigame" class="github-corner" aria-label="View source on GitHub"><svg
+      width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
+    </svg></a>
+  <style>
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+    @keyframes octocat-wave {
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+      20%,
+      60% {
+        transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+        transform: rotate(10deg)
+      }
+    }
+    @media (max-width:500px) {
+      .github-corner:hover .octo-arm {
+        animation: none
+      }
+      .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+      }
+    }
+  </style>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectalign">
+                <div id="projectname">Xiangiqgame
+                </div>
+                <div id="projectbrief">AI engine for Xiangqi</div>
+              </td>
+            </tr>
+            <!--BEGIN FULL_SIDEBAR-->
+            <tr>
+              <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+            </tr>
+            <!--END FULL_SIDEBAR-->
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('game__summary__plotters_8py_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">game_summary_plotters.py</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="game__summary__plotters_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacexiangqipy_1_1game__summary__plotters.html">    1</a></span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="stringliteral">@file game_summary_plotters.py</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">Contains the GameSummaryPlotter abstract base class, and </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="stringliteral">multiple subclasses that implement it.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="stringliteral">Each sub-class plots a different portion of data from a GameSummary.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">from</span> abc <span class="keyword">import</span> ABC, abstractmethod</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">from</span> typing <span class="keyword">import</span> Dict, Tuple, cast, List</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">import</span> numpy <span class="keyword">as</span> np</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> xiangqi_bindings <span class="keyword">as</span> bindings</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">from</span> <a class="code" href="namespacexiangqipy_1_1core__dataclass__mirrors.html">xiangqipy.core_dataclass_mirrors</a> <span class="keyword">import</span> PointsT</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html">   21</a></span>&#160;<span class="keyword">class </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html">GameSummaryPlotter</a>(ABC):</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">    Abstract base class for plotting data stored in pandas</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral">    dataframes (one df for each player) to a numpy array of matplotlib Axes</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ad7323f87ef8002340295812fb0683049">   26</a></span>&#160;    evaluating_player_line_colors = {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        bindings.PieceColor.kRed: <span class="stringliteral">&quot;red&quot;</span>,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        bindings.PieceColor.kBlk: <span class="stringliteral">&quot;black&quot;</span>,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa58822fc95728c9985558400b1705540">   31</a></span>&#160;    player_text_labels = {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        bindings.PieceColor.kRed: <span class="stringliteral">&quot;Red Player&quot;</span>,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        bindings.PieceColor.kBlk: <span class="stringliteral">&quot;Black Player&quot;</span>,</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5b3080ca95c9e02b81354627cab26988">   36</a></span>&#160;    non_evaluating_player_line_colors = {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        bindings.PieceColor.kRed: <span class="stringliteral">&quot;lightcoral&quot;</span>,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        bindings.PieceColor.kBlk: <span class="stringliteral">&quot;darkgray&quot;</span>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7a1f62e3d49489f1e6d5e0c104d1b274">   41</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7a1f62e3d49489f1e6d5e0c104d1b274">__init__</a>(</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        self,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        axes: np.ndarray,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        y_labels: Tuple[str, ...],</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        log_scale_rows: int | Tuple[int, ...] = tuple(),</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        red_data: pd.DataFrame = <span class="keywordtype">None</span>,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        black_data: pd.DataFrame = <span class="keywordtype">None</span>,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        add_plot_column_titles: bool = <span class="keyword">True</span>,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    ):</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">   50</a></span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes = axes</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5e99cbc725009b18e5b1475bd3f41b11">   51</a></span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5e99cbc725009b18e5b1475bd3f41b11">y_labels</a>y_labels = y_labels</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">if</span> type(log_scale_rows) == int:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            log_scale_rows = (log_scale_rows,)</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#afae591c50d61a02094352c25f04b7082">   54</a></span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#afae591c50d61a02094352c25f04b7082">log_scale_rows</a>log_scale_rows = log_scale_rows</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ab2d000aed5a970b3f0a9c7a3c2a1aaa9">   55</a></span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ab2d000aed5a970b3f0a9c7a3c2a1aaa9">_red_data</a>_red_data = red_data</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a54451205b1b787d399d4872f2b92cc2d">   56</a></span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a54451205b1b787d399d4872f2b92cc2d">_black_data</a>_black_data = black_data</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a87e11af97b15e8af13082391c9de5be5">   57</a></span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a87e11af97b15e8af13082391c9de5be5">_add_plot_column_titles</a>_add_plot_column_titles = add_plot_column_titles</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a81bf130561d7d49eeec98a78750c8cca">validate_dfs</a>validate_dfs()</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a4ca9f4bb978043f7ab8e743f92485e5d">set_y_axes</a>set_y_axes()</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ab784c7e54e20acd700c800e0c191e8e6">set_x_axes</a>set_x_axes()</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c">   63</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c">dfs</a>(self) -&gt; Dict[str, pd.DataFrame]:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">return</span> {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            bindings.PieceColor.kRed.name: self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ab2d000aed5a970b3f0a9c7a3c2a1aaa9">_red_data</a>_red_data,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            bindings.PieceColor.kBlk.name: self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a54451205b1b787d399d4872f2b92cc2d">_black_data</a>_black_data,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">   69</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">has_data</a>(self, player: bindings.PieceColor) -&gt; bool:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">return</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c">dfs</a>dfs[player.name] <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a21e588a0239c288dfd03694110cf954a">   73</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa64814458211c850f0f40234c99cc360">num_players_with_data</a>(self) -&gt; int:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">return</span> sum(</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            [</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                int(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">has_data</a>has_data(bindings.PieceColor.kRed)),</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                int(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">has_data</a>has_data(bindings.PieceColor.kBlk)),</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            ]</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        )</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a81bf130561d7d49eeec98a78750c8cca">   81</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a81bf130561d7d49eeec98a78750c8cca">validate_dfs</a>(self):</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa64814458211c850f0f40234c99cc360">   82</a></span>&#160;        <span class="keywordflow">if</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa64814458211c850f0f40234c99cc360">num_players_with_data</a><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a21e588a0239c288dfd03694110cf954a">num_players_with_data</a>num_players_with_data == 2:</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keyword">assert</span> (</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c">dfs</a>dfs[bindings.PieceColor.kRed.name].columns</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                == self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c">dfs</a>dfs[bindings.PieceColor.kBlk.name].columns</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            ).all()</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a4ca9f4bb978043f7ab8e743f92485e5d">   88</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a4ca9f4bb978043f7ab8e743f92485e5d">set_y_axes</a>(self):</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">for</span> grid_row_idx, grid_row <span class="keywordflow">in</span> enumerate(</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes[self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#afae591c50d61a02094352c25f04b7082">log_scale_rows</a>log_scale_rows, :]</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        ):</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">for</span> ax <span class="keywordflow">in</span> grid_row:</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                ax = cast(plt.Axes, ax)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                ax.set_yscale(<span class="stringliteral">&quot;log&quot;</span>)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">for</span> grid_row_idx, ax <span class="keywordflow">in</span> enumerate(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes[:, 0]):</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            ax = cast(plt.Axes, ax)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            ax.set_ylabel(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5e99cbc725009b18e5b1475bd3f41b11">y_labels</a>y_labels[grid_row_idx], fontsize=14)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            ax.yaxis.set_label_coords(-0.15, 0.5)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ab784c7e54e20acd700c800e0c191e8e6">  101</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ab784c7e54e20acd700c800e0c191e8e6">set_x_axes</a>(self):</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">for</span> grid_row_idx, grid_row <span class="keywordflow">in</span> enumerate(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes[0:-1, :]):</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">for</span> ax <span class="keywordflow">in</span> grid_row:</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                ax = cast(plt.Axes, ax)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                ax.set_xticklabels([])</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">for</span> grid_col_idx, ax <span class="keywordflow">in</span> enumerate(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes[-1, :]):</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            ax = cast(plt.Axes, ax)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            ax.set_xlabel(<span class="stringliteral">&quot;Game Move Number&quot;</span>, fontsize=14)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8f1da1b80423a550dc20372eabd76cf4">  112</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8f1da1b80423a550dc20372eabd76cf4">player_plot_col</a>(self) -&gt; Dict[bindings.PieceColor, int]:</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">if</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa64814458211c850f0f40234c99cc360">num_players_with_data</a><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a21e588a0239c288dfd03694110cf954a">num_players_with_data</a>num_players_with_data == 2:</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">return</span> {bindings.PieceColor.kRed: 0, bindings.PieceColor.kBlk: 1}</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">elif</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">has_data</a>has_data(player=bindings.PieceColor.kRed):</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">return</span> {bindings.PieceColor.kRed: 0, bindings.PieceColor.kBlk: <span class="keywordtype">None</span>}</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">elif</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">has_data</a>has_data(player=bindings.PieceColor.kBlk):</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">return</span> {bindings.PieceColor.kRed: <span class="keywordtype">None</span>, bindings.PieceColor.kBlk: 0}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a18a24e7e087764a41f6bb4234ee7b66a">  121</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a18a24e7e087764a41f6bb4234ee7b66a">data_columns</a>(self) -&gt; pd.Index:</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">return</span> [</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            item.columns <span class="keywordflow">for</span> item <span class="keywordflow">in</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c">dfs</a>dfs.values() <span class="keywordflow">if</span> item <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        ][0]</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="preprocessor">@staticmethod</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a48fb81885053cf64eb9a346edfecb1db">  127</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a48fb81885053cf64eb9a346edfecb1db">match_y_limits</a>(axes_row: np.ndarray):</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        y_limits_low = []</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        y_limits_high = []</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">for</span> col_idx <span class="keywordflow">in</span> range(axes_row.shape[0]):</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            cur_ax = cast(plt.Axes, axes_row[col_idx])</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            y_limits_low.append(cur_ax.get_ylim()[0])</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            y_limits_high.append(cur_ax.get_ylim()[1])</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">for</span> col_idx <span class="keywordflow">in</span> range(axes_row.shape[0]):</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            cur_ax = cast(plt.Axes, axes_row[col_idx])</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            cur_ax.set_ylim((min(y_limits_low), max(y_limits_high)))</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a6063a2fba3dfb21ac09fe60fac81929d">  138</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a6063a2fba3dfb21ac09fe60fac81929d">match_y_limits_all_rows</a>(self):</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">for</span> row_idx <span class="keywordflow">in</span> range(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes.shape[0]):</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a48fb81885053cf64eb9a346edfecb1db">match_y_limits</a>match_y_limits(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes[row_idx, :])</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="preprocessor">@abstractmethod</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aea21d66fd4e3c5221fae89f08543815b">  143</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aea21d66fd4e3c5221fae89f08543815b">plot_data</a>(self):</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">pass</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8e01edd01fb354d223680069b2c2de5c">  146</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8e01edd01fb354d223680069b2c2de5c">remove_second_plot_col_ylabels</a>(self):</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keywordflow">if</span> self.axes.shape[1] == 2:</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">for</span> idx, ax <span class="keywordflow">in</span> enumerate(self.axes[:, 1]):</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                ax = cast(plt.Axes, ax)</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                ax.set_yticklabels([])</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ae624b27783ed0beb7ad1c09518493f51">  152</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ae624b27783ed0beb7ad1c09518493f51">set_plot_col_titles</a>(self):</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">for</span> idx, ax <span class="keywordflow">in</span> enumerate(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes[0, :]):</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            ax = cast(plt.Axes, ax)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            <span class="keywordflow">if</span> idx == self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8f1da1b80423a550dc20372eabd76cf4">player_plot_col</a>player_plot_col[bindings.PieceColor.kRed]:</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                ax.set_title(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa58822fc95728c9985558400b1705540">player_text_labels</a>player_text_labels[bindings.PieceColor.kRed], fontsize=16)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">if</span> idx == self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8f1da1b80423a550dc20372eabd76cf4">player_plot_col</a>player_plot_col[bindings.PieceColor.kBlk]:</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                ax.set_title(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa58822fc95728c9985558400b1705540">player_text_labels</a>player_text_labels[bindings.PieceColor.kBlk], fontsize=16)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5dc78caa506504d43c2ed5dd7beee0e0">  160</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5dc78caa506504d43c2ed5dd7beee0e0">plot</a>(self):</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aea21d66fd4e3c5221fae89f08543815b">plot_data</a>plot_data()</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8e01edd01fb354d223680069b2c2de5c">remove_second_plot_col_ylabels</a>remove_second_plot_col_ylabels()</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">if</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a87e11af97b15e8af13082391c9de5be5">_add_plot_column_titles</a>_add_plot_column_titles:</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ae624b27783ed0beb7ad1c09518493f51">set_plot_col_titles</a>set_plot_col_titles()</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a6063a2fba3dfb21ac09fe60fac81929d">match_y_limits_all_rows</a>match_y_limits_all_rows()</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html">  168</a></span>&#160;<span class="keyword">class </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html">SearchResultsByTypePlotter</a>(<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html">GameSummaryPlotter</a>):</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="stringliteral">    Implements GameSummaryPlotter, and produces stacked plots of Minimax</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="stringliteral">    search result counts grouped by MinimaxResultType.</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a6af37c1d39e44832172182c7e29ea58d">  173</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a6af37c1d39e44832172182c7e29ea58d">__init__</a>(</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        self,</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        axes: np.ndarray,</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        y_labels: Tuple[str] = (</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="stringliteral">&quot;Node Counts&quot;</span>,</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="stringliteral">&quot;Node Counts Log Scale&quot;</span>,</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        ),</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        log_scale_rows: int | Tuple[int, int] = 1,</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        cmap_name: str = <span class="stringliteral">&quot;Accent&quot;</span>,</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        red_data: pd.DataFrame = <span class="keywordtype">None</span>,</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        black_data: pd.DataFrame = <span class="keywordtype">None</span>,</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        add_plot_column_titles: bool = <span class="keyword">True</span>,</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    ):</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        super().<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a6af37c1d39e44832172182c7e29ea58d">__init__</a>(</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            axes=axes,</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            y_labels=y_labels,</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            log_scale_rows=log_scale_rows,</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            red_data=red_data,</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            black_data=black_data,</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            add_plot_column_titles=add_plot_column_titles</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        )</div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#afd9e09a9cab4c56e65c16a15e704b8e0">  194</a></span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#afd9e09a9cab4c56e65c16a15e704b8e0">cmap</a>cmap = plt.get_cmap(cmap_name)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#ab53b83ac221c0c2710233b939056d0fa">  197</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#ab53b83ac221c0c2710233b939056d0fa">data_column_colors</a>(</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        self,</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    ) -&gt; Dict[str, Tuple[float, float, float, float]]:</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <span class="keywordflow">return</span> {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            cast(str, col_name): self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#afd9e09a9cab4c56e65c16a15e704b8e0">cmap</a>cmap(idx)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="keywordflow">for</span> idx, col_name <span class="keywordflow">in</span> enumerate(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a18a24e7e087764a41f6bb4234ee7b66a">data_columns</a>data_columns)</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a9899cfdc6d3f6134b40a57a90be217bf">  205</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a9899cfdc6d3f6134b40a57a90be217bf">plot_search_results_by_type_stacked</a>(</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        self, player: bindings.PieceColor, ax: plt.Axes</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    ):</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        df = self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c">dfs</a>dfs[player.name]</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        df_sorted = df[sorted(df.columns, key=<span class="keyword">lambda</span> col: df[col].mean())]</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        sorted_colors = [</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#ab53b83ac221c0c2710233b939056d0fa">data_column_colors</a>data_column_colors[col] <span class="keywordflow">for</span> col <span class="keywordflow">in</span> df_sorted.columns</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        ]</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        ax.stackplot(</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            df.index,</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            df_sorted.T,</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            labels=df_sorted.columns,</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            colors=sorted_colors,</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        )</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a969557f843ecb45bac416da9445e575f">  220</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a969557f843ecb45bac416da9445e575f">plot_player_data</a>(self, player: bindings.PieceColor):</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">for</span> plot_row <span class="keywordflow">in</span> range(2):</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            plot_col = self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8f1da1b80423a550dc20372eabd76cf4">player_plot_col</a>player_plot_col[player]</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            ax = cast(plt.Axes, self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes[plot_row, plot_col])</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a9899cfdc6d3f6134b40a57a90be217bf">plot_search_results_by_type_stacked</a>plot_search_results_by_type_stacked(player=player, ax=ax)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a01414df8d5c1e6aa580b0669519ce7c5">  226</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a01414df8d5c1e6aa580b0669519ce7c5">add_legend</a>(self):</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        upper_right_plot = cast(plt.Axes, self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes[0, -1])</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        handles = [</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            plt.Line2D(</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                xdata=[0],</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                ydata=[0],</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                color=self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#ab53b83ac221c0c2710233b939056d0fa">data_column_colors</a>data_column_colors[col],</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                lw=4,</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            )</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            <span class="keywordflow">for</span> col <span class="keywordflow">in</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a18a24e7e087764a41f6bb4234ee7b66a">data_columns</a>data_columns</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        ]</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        upper_right_plot.legend(</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            handles,</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a18a24e7e087764a41f6bb4234ee7b66a">data_columns</a>data_columns,</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            bbox_to_anchor=(1.05, 0.50),</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            fontsize=14,</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            title=<span class="stringliteral">&quot;Node Type&quot;</span>,</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            title_fontsize=15,</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            alignment=<span class="stringliteral">&quot;left&quot;</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        )</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#ada8cb56d3683257e592fbe3b786401e5">  247</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#ada8cb56d3683257e592fbe3b786401e5">plot_data</a>(self):</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="keywordflow">for</span> player <span class="keywordflow">in</span> [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">if</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">has_data</a>has_data(player=player):</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a969557f843ecb45bac416da9445e575f">plot_player_data</a>plot_player_data(player=player)</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a01414df8d5c1e6aa580b0669519ce7c5">add_legend</a>add_legend()</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html">  255</a></span>&#160;<span class="keyword">class </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html">SearchTimePlotter</a>(<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html">GameSummaryPlotter</a>):</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="stringliteral">    Implements GameSummaryPlotter, and produces plots showing time spent</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="stringliteral">    by core MinimaxMoveEvaluator(s) evaluating nodes and selecting Moves.</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#ad1e65e6d6f1274a293fa38e3a105ee22">  260</a></span>&#160;    search_stats_time_cols = [<span class="stringliteral">&quot;search_time_s&quot;</span>, <span class="stringliteral">&quot;mean_time_per_node_ns&quot;</span>]</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a16f507206070d4dd754a1d8bc41f28e8">  262</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a16f507206070d4dd754a1d8bc41f28e8">__init__</a>(</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        self,</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        axes: np.ndarray,</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        log_scale_rows: int | Tuple[int, ...] = tuple(),</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        red_data: pd.DataFrame = <span class="keywordtype">None</span>,</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        black_data: pd.DataFrame = <span class="keywordtype">None</span>,</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        add_plot_column_titles: bool = <span class="keyword">True</span>,</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    ):</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        super().<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a16f507206070d4dd754a1d8bc41f28e8">__init__</a>(</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            axes=axes,</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            y_labels=(</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                <span class="stringliteral">&quot;Search Time (s)&quot;</span>,</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                <span class="stringliteral">&quot;Time per Node (ns)&quot;</span>,</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            ),</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            log_scale_rows=log_scale_rows,</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            red_data=red_data,</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            black_data=black_data,</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            add_plot_column_titles=add_plot_column_titles</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        )</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a044e5295f3e05e43807659e98e5f9650">  282</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a044e5295f3e05e43807659e98e5f9650">plot_player_search_times</a>(self, player: bindings.PieceColor):</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        df = self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c">dfs</a>dfs[player.name]</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        plot_col = self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8f1da1b80423a550dc20372eabd76cf4">player_plot_col</a>player_plot_col[player]</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <span class="keywordflow">for</span> data_col_idx, data_col <span class="keywordflow">in</span> enumerate(self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#ad1e65e6d6f1274a293fa38e3a105ee22">search_stats_time_cols</a>search_stats_time_cols):</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            ax = cast(plt.Axes, self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes[data_col_idx, plot_col])</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            ax.plot(</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                df.index,</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                df[data_col],</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                color=self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ad7323f87ef8002340295812fb0683049">evaluating_player_line_colors</a>evaluating_player_line_colors[player],</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            )</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a44e7ad89596ff889e6891070bcefaf9c">  293</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a44e7ad89596ff889e6891070bcefaf9c">plot_data</a>(self):</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        <span class="keywordflow">for</span> player <span class="keywordflow">in</span> [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordflow">if</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">has_data</a>has_data(player=player):</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a044e5295f3e05e43807659e98e5f9650">plot_player_search_times</a>plot_player_search_times(player=player)</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html">  299</a></span>&#160;<span class="keyword">class </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html">EvalScorePlotter</a>(<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html">GameSummaryPlotter</a>):</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="stringliteral">    Implements GameSummaryPlotter, and plots evaluated score of each move of</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="stringliteral">    each Player using a Minimax algorithm in a Game.</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a97ce3fb2af0b2e9ee4dae553e66dbca0">  304</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a97ce3fb2af0b2e9ee4dae553e66dbca0">__init__</a>(</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        self,</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        axes: np.ndarray,</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        log_scale_rows: int | Tuple[int, ...] = tuple(),</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        red_data: pd.DataFrame = <span class="keywordtype">None</span>,</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        black_data: pd.DataFrame = <span class="keywordtype">None</span>,</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        add_plot_column_titles: bool = <span class="keyword">True</span>,</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    ):</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        super().<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a97ce3fb2af0b2e9ee4dae553e66dbca0">__init__</a>(</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            axes=axes,</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            y_labels=(<span class="stringliteral">&quot;Evaluation Score&quot;</span>,),</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            log_scale_rows=log_scale_rows,</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            red_data=red_data,</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            black_data=black_data,</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            add_plot_column_titles=add_plot_column_titles</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        )</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#abf1cca37aeb2561aab6b177fe7c357f6">  322</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#abf1cca37aeb2561aab6b177fe7c357f6">largest_magnitude_noninf_eval_score</a>(self) -&gt; int:</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        largest_score_magnitudes = []</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        inf_like_values = [np.iinfo(PointsT).max, np.iinfo(PointsT).min]</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keywordflow">for</span> df <span class="keywordflow">in</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c">dfs</a>dfs.values():</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="keywordflow">if</span> df <span class="keywordflow">is</span> <span class="keywordflow">not</span> <span class="keywordtype">None</span>:</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                <span class="keyword">assert</span> df[<span class="stringliteral">&quot;eval_score&quot;</span>].dtype == PointsT</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                non_inf_like_values = df[</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                    ~df[<span class="stringliteral">&quot;eval_score&quot;</span>].isin(inf_like_values)</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                ][<span class="stringliteral">&quot;eval_score&quot;</span>]</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                largest_score_magnitudes.append(</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                    np.abs(non_inf_like_values.min())</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                )</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                largest_score_magnitudes.append(</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                    np.abs(non_inf_like_values.max())</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                )</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="keywordflow">return</span> max(largest_score_magnitudes)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="preprocessor">@staticmethod</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a45474f1f52cf3dbb28d3105cdf65deee">  340</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a45474f1f52cf3dbb28d3105cdf65deee">symmetric_winsorize</a>(</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        data: pd.Series, magnitude: int | float</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    ) -&gt; pd.Series:</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="keyword">assert</span> magnitude &gt;= 0</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="keywordflow">return</span> cast(</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            pd.Series, np.clip(data, a_min=-1 * magnitude, a_max=magnitude)</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        )</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#ad0ad2520ac6c53e50b2d392310778224">  348</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#ad0ad2520ac6c53e50b2d392310778224">plot_player_data</a>(</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        self,</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        player: bindings.PieceColor,</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        ax: plt.Axes,</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        is_evaluating_player: bool = <span class="keyword">True</span>,</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    ):</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keywordflow">if</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">has_data</a>has_data(player=player):</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            df = self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c">dfs</a>dfs[player.name]</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;            <span class="keywordflow">if</span> is_evaluating_player:</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                line_color = self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ad7323f87ef8002340295812fb0683049">evaluating_player_line_colors</a>evaluating_player_line_colors[player]</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                line_style = <span class="stringliteral">&quot;solid&quot;</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            <span class="keywordflow">else</span>:</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                line_color = self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5b3080ca95c9e02b81354627cab26988">non_evaluating_player_line_colors</a>non_evaluating_player_line_colors[player]</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                line_style = <span class="stringliteral">&quot;dotted&quot;</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            ax.plot(</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;                df.index,</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a45474f1f52cf3dbb28d3105cdf65deee">symmetric_winsorize</a>symmetric_winsorize(</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                    data=df[<span class="stringliteral">&quot;eval_score&quot;</span>],</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                    magnitude=1.5 * self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#abf1cca37aeb2561aab6b177fe7c357f6">largest_magnitude_noninf_eval_score</a>largest_magnitude_noninf_eval_score,</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                ),</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                color=line_color,</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                linestyle=line_style,</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                label=self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa58822fc95728c9985558400b1705540">player_text_labels</a>player_text_labels[player],</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            )</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            legend = ax.legend(loc=<span class="stringliteral">&quot;upper left&quot;</span>, fontsize=<span class="stringliteral">&quot;12&quot;</span>)</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            legend.get_frame().set_facecolor(<span class="stringliteral">&quot;white&quot;</span>)</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a81f4e6f9bf2e0242f92d24bc894251c8">  375</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a81f4e6f9bf2e0242f92d24bc894251c8">plot_player_and_opponent_overlay</a>(self, player: bindings.PieceColor):</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        plot_grid_col = self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8f1da1b80423a550dc20372eabd76cf4">player_plot_col</a>player_plot_col[player]</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        ax = cast(plt.Axes, self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">axes</a>axes[0, plot_grid_col])</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#ad0ad2520ac6c53e50b2d392310778224">plot_player_data</a>plot_player_data(player=player, ax=ax)</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <span class="keywordflow">if</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">has_data</a>has_data(player=bindings.opponent_of(player)):</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#ad0ad2520ac6c53e50b2d392310778224">plot_player_data</a>plot_player_data(</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                player=bindings.opponent_of(player),</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;                ax=ax,</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;                is_evaluating_player=<span class="keyword">False</span>,</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            )</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#ada770f66dc3c8bf438584810bd729123">  387</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#ada770f66dc3c8bf438584810bd729123">plot_data</a>(self):</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        <span class="keywordflow">for</span> player <span class="keywordflow">in</span> [bindings.PieceColor.kRed, bindings.PieceColor.kBlk]:</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            <span class="keywordflow">if</span> self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">has_data</a>has_data(player=player):</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;                self.<a class="code" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a81f4e6f9bf2e0242f92d24bc894251c8">plot_player_and_opponent_overlay</a>plot_player_and_opponent_overlay(player=player)</div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter_html"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html">xiangqipy.game_summary_plotters.EvalScorePlotter</a></div><div class="ttdoc">Implements GameSummaryPlotter, and plots evaluated score of each move of each Player using a Minimax ...</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00299">game_summary_plotters.py:299</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter_html_a45474f1f52cf3dbb28d3105cdf65deee"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a45474f1f52cf3dbb28d3105cdf65deee">xiangqipy.game_summary_plotters.EvalScorePlotter.symmetric_winsorize</a></div><div class="ttdeci">pd.Series symmetric_winsorize(pd.Series data, int|float magnitude)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00340">game_summary_plotters.py:342</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter_html_a81f4e6f9bf2e0242f92d24bc894251c8"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a81f4e6f9bf2e0242f92d24bc894251c8">xiangqipy.game_summary_plotters.EvalScorePlotter.plot_player_and_opponent_overlay</a></div><div class="ttdeci">def plot_player_and_opponent_overlay(self, bindings.PieceColor player)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00375">game_summary_plotters.py:375</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter_html_a97ce3fb2af0b2e9ee4dae553e66dbca0"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a97ce3fb2af0b2e9ee4dae553e66dbca0">xiangqipy.game_summary_plotters.EvalScorePlotter.__init__</a></div><div class="ttdeci">def __init__(self, np.ndarray axes, int|Tuple[int,...] log_scale_rows=tuple(), pd.DataFrame red_data=None, pd.DataFrame black_data=None, bool add_plot_column_titles=True)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00304">game_summary_plotters.py:311</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter_html_abf1cca37aeb2561aab6b177fe7c357f6"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#abf1cca37aeb2561aab6b177fe7c357f6">xiangqipy.game_summary_plotters.EvalScorePlotter.largest_magnitude_noninf_eval_score</a></div><div class="ttdeci">int largest_magnitude_noninf_eval_score(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00322">game_summary_plotters.py:322</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter_html_ad0ad2520ac6c53e50b2d392310778224"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#ad0ad2520ac6c53e50b2d392310778224">xiangqipy.game_summary_plotters.EvalScorePlotter.plot_player_data</a></div><div class="ttdeci">def plot_player_data(self, bindings.PieceColor player, plt.Axes ax, bool is_evaluating_player=True)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00348">game_summary_plotters.py:353</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter_html_ada770f66dc3c8bf438584810bd729123"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#ada770f66dc3c8bf438584810bd729123">xiangqipy.game_summary_plotters.EvalScorePlotter.plot_data</a></div><div class="ttdeci">def plot_data(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00387">game_summary_plotters.py:387</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html">xiangqipy.game_summary_plotters.GameSummaryPlotter</a></div><div class="ttdoc">Abstract base class for plotting data stored in pandas dataframes (one df for each player) to a numpy...</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00021">game_summary_plotters.py:21</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a03831bbe60c957b470ac8ce75014a7b6"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">xiangqipy.game_summary_plotters.GameSummaryPlotter.axes</a></div><div class="ttdeci">axes</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00050">game_summary_plotters.py:50</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a18a24e7e087764a41f6bb4234ee7b66a"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a18a24e7e087764a41f6bb4234ee7b66a">xiangqipy.game_summary_plotters.GameSummaryPlotter.data_columns</a></div><div class="ttdeci">pd.Index data_columns(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00121">game_summary_plotters.py:121</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a21e588a0239c288dfd03694110cf954a"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a21e588a0239c288dfd03694110cf954a">xiangqipy.game_summary_plotters.GameSummaryPlotter.num_players_with_data</a></div><div class="ttdeci">int num_players_with_data(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00073">game_summary_plotters.py:73</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a48fb81885053cf64eb9a346edfecb1db"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a48fb81885053cf64eb9a346edfecb1db">xiangqipy.game_summary_plotters.GameSummaryPlotter.match_y_limits</a></div><div class="ttdeci">def match_y_limits(np.ndarray axes_row)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00127">game_summary_plotters.py:127</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a4ca9f4bb978043f7ab8e743f92485e5d"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a4ca9f4bb978043f7ab8e743f92485e5d">xiangqipy.game_summary_plotters.GameSummaryPlotter.set_y_axes</a></div><div class="ttdeci">def set_y_axes(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00088">game_summary_plotters.py:88</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a54451205b1b787d399d4872f2b92cc2d"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a54451205b1b787d399d4872f2b92cc2d">xiangqipy.game_summary_plotters.GameSummaryPlotter._black_data</a></div><div class="ttdeci">_black_data</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00056">game_summary_plotters.py:56</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a5b3080ca95c9e02b81354627cab26988"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5b3080ca95c9e02b81354627cab26988">xiangqipy.game_summary_plotters.GameSummaryPlotter.non_evaluating_player_line_colors</a></div><div class="ttdeci">dictionary non_evaluating_player_line_colors</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00036">game_summary_plotters.py:36</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a5dc78caa506504d43c2ed5dd7beee0e0"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5dc78caa506504d43c2ed5dd7beee0e0">xiangqipy.game_summary_plotters.GameSummaryPlotter.plot</a></div><div class="ttdeci">def plot(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00160">game_summary_plotters.py:160</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a5e99cbc725009b18e5b1475bd3f41b11"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5e99cbc725009b18e5b1475bd3f41b11">xiangqipy.game_summary_plotters.GameSummaryPlotter.y_labels</a></div><div class="ttdeci">y_labels</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00051">game_summary_plotters.py:51</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a6063a2fba3dfb21ac09fe60fac81929d"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a6063a2fba3dfb21ac09fe60fac81929d">xiangqipy.game_summary_plotters.GameSummaryPlotter.match_y_limits_all_rows</a></div><div class="ttdeci">def match_y_limits_all_rows(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00138">game_summary_plotters.py:138</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a7a1f62e3d49489f1e6d5e0c104d1b274"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7a1f62e3d49489f1e6d5e0c104d1b274">xiangqipy.game_summary_plotters.GameSummaryPlotter.__init__</a></div><div class="ttdeci">def __init__(self, np.ndarray axes, Tuple[str,...] y_labels, int|Tuple[int,...] log_scale_rows=tuple(), pd.DataFrame red_data=None, pd.DataFrame black_data=None, bool add_plot_column_titles=True)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00041">game_summary_plotters.py:49</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a7f019dd6f66fd96202f8a46f6daf6981"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981">xiangqipy.game_summary_plotters.GameSummaryPlotter.has_data</a></div><div class="ttdeci">bool has_data(self, bindings.PieceColor player)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00069">game_summary_plotters.py:69</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a81bf130561d7d49eeec98a78750c8cca"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a81bf130561d7d49eeec98a78750c8cca">xiangqipy.game_summary_plotters.GameSummaryPlotter.validate_dfs</a></div><div class="ttdeci">def validate_dfs(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00081">game_summary_plotters.py:81</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a87e11af97b15e8af13082391c9de5be5"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a87e11af97b15e8af13082391c9de5be5">xiangqipy.game_summary_plotters.GameSummaryPlotter._add_plot_column_titles</a></div><div class="ttdeci">_add_plot_column_titles</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00057">game_summary_plotters.py:57</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a8e01edd01fb354d223680069b2c2de5c"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8e01edd01fb354d223680069b2c2de5c">xiangqipy.game_summary_plotters.GameSummaryPlotter.remove_second_plot_col_ylabels</a></div><div class="ttdeci">def remove_second_plot_col_ylabels(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00146">game_summary_plotters.py:146</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_a8f1da1b80423a550dc20372eabd76cf4"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8f1da1b80423a550dc20372eabd76cf4">xiangqipy.game_summary_plotters.GameSummaryPlotter.player_plot_col</a></div><div class="ttdeci">Dict[bindings.PieceColor, int] player_plot_col(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00112">game_summary_plotters.py:112</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_aa58822fc95728c9985558400b1705540"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa58822fc95728c9985558400b1705540">xiangqipy.game_summary_plotters.GameSummaryPlotter.player_text_labels</a></div><div class="ttdeci">dictionary player_text_labels</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00031">game_summary_plotters.py:31</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_aa64814458211c850f0f40234c99cc360"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa64814458211c850f0f40234c99cc360">xiangqipy.game_summary_plotters.GameSummaryPlotter.num_players_with_data</a></div><div class="ttdeci">num_players_with_data</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00082">game_summary_plotters.py:82</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_ab2d000aed5a970b3f0a9c7a3c2a1aaa9"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ab2d000aed5a970b3f0a9c7a3c2a1aaa9">xiangqipy.game_summary_plotters.GameSummaryPlotter._red_data</a></div><div class="ttdeci">_red_data</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00055">game_summary_plotters.py:55</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_ab784c7e54e20acd700c800e0c191e8e6"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ab784c7e54e20acd700c800e0c191e8e6">xiangqipy.game_summary_plotters.GameSummaryPlotter.set_x_axes</a></div><div class="ttdeci">def set_x_axes(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00101">game_summary_plotters.py:101</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_ad7323f87ef8002340295812fb0683049"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ad7323f87ef8002340295812fb0683049">xiangqipy.game_summary_plotters.GameSummaryPlotter.evaluating_player_line_colors</a></div><div class="ttdeci">dictionary evaluating_player_line_colors</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00026">game_summary_plotters.py:26</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_ae624b27783ed0beb7ad1c09518493f51"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ae624b27783ed0beb7ad1c09518493f51">xiangqipy.game_summary_plotters.GameSummaryPlotter.set_plot_col_titles</a></div><div class="ttdeci">def set_plot_col_titles(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00152">game_summary_plotters.py:152</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_aea21d66fd4e3c5221fae89f08543815b"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aea21d66fd4e3c5221fae89f08543815b">xiangqipy.game_summary_plotters.GameSummaryPlotter.plot_data</a></div><div class="ttdeci">def plot_data(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00143">game_summary_plotters.py:143</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_aeaeaf4632adbdfb8f00e0d4ee6cf373c"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c">xiangqipy.game_summary_plotters.GameSummaryPlotter.dfs</a></div><div class="ttdeci">Dict[str, pd.DataFrame] dfs(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00063">game_summary_plotters.py:63</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter_html_afae591c50d61a02094352c25f04b7082"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#afae591c50d61a02094352c25f04b7082">xiangqipy.game_summary_plotters.GameSummaryPlotter.log_scale_rows</a></div><div class="ttdeci">log_scale_rows</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00054">game_summary_plotters.py:54</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter_html"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html">xiangqipy.game_summary_plotters.SearchResultsByTypePlotter</a></div><div class="ttdoc">Implements GameSummaryPlotter, and produces stacked plots of Minimax search result counts grouped by ...</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00168">game_summary_plotters.py:168</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter_html_a01414df8d5c1e6aa580b0669519ce7c5"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a01414df8d5c1e6aa580b0669519ce7c5">xiangqipy.game_summary_plotters.SearchResultsByTypePlotter.add_legend</a></div><div class="ttdeci">def add_legend(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00226">game_summary_plotters.py:226</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter_html_a6af37c1d39e44832172182c7e29ea58d"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a6af37c1d39e44832172182c7e29ea58d">xiangqipy.game_summary_plotters.SearchResultsByTypePlotter.__init__</a></div><div class="ttdeci">def __init__(self, np.ndarray axes, Tuple[str] y_labels=(&quot;Node Counts&quot;, &quot;Node Counts Log Scale&quot;,), int|Tuple[int, int] log_scale_rows=1, str cmap_name=&quot;Accent&quot;, pd.DataFrame red_data=None, pd.DataFrame black_data=None, bool add_plot_column_titles=True)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00173">game_summary_plotters.py:185</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter_html_a969557f843ecb45bac416da9445e575f"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a969557f843ecb45bac416da9445e575f">xiangqipy.game_summary_plotters.SearchResultsByTypePlotter.plot_player_data</a></div><div class="ttdeci">def plot_player_data(self, bindings.PieceColor player)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00220">game_summary_plotters.py:220</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter_html_a9899cfdc6d3f6134b40a57a90be217bf"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a9899cfdc6d3f6134b40a57a90be217bf">xiangqipy.game_summary_plotters.SearchResultsByTypePlotter.plot_search_results_by_type_stacked</a></div><div class="ttdeci">def plot_search_results_by_type_stacked(self, bindings.PieceColor player, plt.Axes ax)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00205">game_summary_plotters.py:207</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter_html_ab53b83ac221c0c2710233b939056d0fa"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#ab53b83ac221c0c2710233b939056d0fa">xiangqipy.game_summary_plotters.SearchResultsByTypePlotter.data_column_colors</a></div><div class="ttdeci">Dict[str, Tuple[float, float, float, float]] data_column_colors(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00197">game_summary_plotters.py:199</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter_html_ada8cb56d3683257e592fbe3b786401e5"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#ada8cb56d3683257e592fbe3b786401e5">xiangqipy.game_summary_plotters.SearchResultsByTypePlotter.plot_data</a></div><div class="ttdeci">def plot_data(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00247">game_summary_plotters.py:247</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter_html_afd9e09a9cab4c56e65c16a15e704b8e0"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#afd9e09a9cab4c56e65c16a15e704b8e0">xiangqipy.game_summary_plotters.SearchResultsByTypePlotter.cmap</a></div><div class="ttdeci">cmap</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00194">game_summary_plotters.py:194</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter_html"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html">xiangqipy.game_summary_plotters.SearchTimePlotter</a></div><div class="ttdoc">Implements GameSummaryPlotter, and produces plots showing time spent by core MinimaxMoveEvaluator(s) ...</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00255">game_summary_plotters.py:255</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter_html_a044e5295f3e05e43807659e98e5f9650"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a044e5295f3e05e43807659e98e5f9650">xiangqipy.game_summary_plotters.SearchTimePlotter.plot_player_search_times</a></div><div class="ttdeci">def plot_player_search_times(self, bindings.PieceColor player)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00282">game_summary_plotters.py:282</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter_html_a16f507206070d4dd754a1d8bc41f28e8"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a16f507206070d4dd754a1d8bc41f28e8">xiangqipy.game_summary_plotters.SearchTimePlotter.__init__</a></div><div class="ttdeci">def __init__(self, np.ndarray axes, int|Tuple[int,...] log_scale_rows=tuple(), pd.DataFrame red_data=None, pd.DataFrame black_data=None, bool add_plot_column_titles=True)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00262">game_summary_plotters.py:269</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter_html_a44e7ad89596ff889e6891070bcefaf9c"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a44e7ad89596ff889e6891070bcefaf9c">xiangqipy.game_summary_plotters.SearchTimePlotter.plot_data</a></div><div class="ttdeci">def plot_data(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00293">game_summary_plotters.py:293</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter_html_ad1e65e6d6f1274a293fa38e3a105ee22"><div class="ttname"><a href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#ad1e65e6d6f1274a293fa38e3a105ee22">xiangqipy.game_summary_plotters.SearchTimePlotter.search_stats_time_cols</a></div><div class="ttdeci">list search_stats_time_cols</div><div class="ttdef"><b>Definition:</b> <a href="game__summary__plotters_8py_source.html#l00260">game_summary_plotters.py:260</a></div></div>
+<div class="ttc" id="anamespacexiangqipy_1_1core__dataclass__mirrors_html"><div class="ttname"><a href="namespacexiangqipy_1_1core__dataclass__mirrors.html">xiangqipy.core_dataclass_mirrors</a></div><div class="ttdef"><b>Definition:</b> <a href="core__dataclass__mirrors_8py_source.html#l00001">core_dataclass_mirrors.py:1</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_46e67b79a66d4e1bea97ac4ccddce80e.html">xiangqipy</a></li><li class="navelem"><a class="el" href="game__summary__plotters_8py.html">game_summary_plotters.py</a></li>
+    <li class="footer">Generated on Mon Nov 4 2024 21:56:49 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

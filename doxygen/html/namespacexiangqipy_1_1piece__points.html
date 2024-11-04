@@ -1,0 +1,451 @@
+<!-- HTML header for doxygen 1.9.4-->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="generator" content="Doxygen 1.9.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiangiqgame: xiangqipy.piece_points Namespace Reference</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+  </script>
+  <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+  </script>
+</head>
+<body>
+  <!-- https://tholman.com/github-corners/ -->
+  <a href="https://github.com/duanegoodner/xiangqigame" class="github-corner" aria-label="View source on GitHub"><svg
+      width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
+    </svg></a>
+  <style>
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+    @keyframes octocat-wave {
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+      20%,
+      60% {
+        transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+        transform: rotate(10deg)
+      }
+    }
+    @media (max-width:500px) {
+      .github-corner:hover .octo-arm {
+        animation: none
+      }
+      .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+      }
+    }
+  </style>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectalign">
+                <div id="projectname">Xiangiqgame
+                </div>
+                <div id="projectbrief">AI engine for Xiangqi</div>
+              </td>
+            </tr>
+            <!--BEGIN FULL_SIDEBAR-->
+            <tr>
+              <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+            </tr>
+            <!--END FULL_SIDEBAR-->
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('namespacexiangqipy_1_1piece__points.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">xiangqipy.piece_points Namespace Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1piece__points_1_1BasePoints.html">BasePoints</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1piece__points_1_1PositionPts.html">PositionPts</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aa058b74098b5f3fde6d12216fd67df2d"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacexiangqipy_1_1piece__points.html#aa058b74098b5f3fde6d12216fd67df2d">base_pts_icga_2004</a></td></tr>
+<tr class="separator:aa058b74098b5f3fde6d12216fd67df2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a174663c81b613e093111714cbcadc9b1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacexiangqipy_1_1piece__points.html#a174663c81b613e093111714cbcadc9b1">general_position_icga_2004</a> = np.zeros(90).reshape((10, 9))</td></tr>
+<tr class="separator:a174663c81b613e093111714cbcadc9b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dcacb423bd1ad09d3aea4ce049eb1ab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacexiangqipy_1_1piece__points.html#a6dcacb423bd1ad09d3aea4ce049eb1ab">advisor_position_icga_2004</a> = np.zeros(90).reshape((10, 9))</td></tr>
+<tr class="separator:a6dcacb423bd1ad09d3aea4ce049eb1ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9837a42e95bd2ec3f3014c4ebef6c9f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacexiangqipy_1_1piece__points.html#aa9837a42e95bd2ec3f3014c4ebef6c9f">elephant_position_icga_2004</a> = np.zeros(90).reshape((10, 9))</td></tr>
+<tr class="separator:aa9837a42e95bd2ec3f3014c4ebef6c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5d88f2db2c21aba17ce447a5fa7865c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacexiangqipy_1_1piece__points.html#af5d88f2db2c21aba17ce447a5fa7865c">chariot_position_icga_2004</a></td></tr>
+<tr class="separator:af5d88f2db2c21aba17ce447a5fa7865c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af10cb2961f7a88880c7ab1f283f71972"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacexiangqipy_1_1piece__points.html#af10cb2961f7a88880c7ab1f283f71972">horse_position_icga_2004</a></td></tr>
+<tr class="separator:af10cb2961f7a88880c7ab1f283f71972"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef545d8ef45f09575fff0e8d86731b71"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacexiangqipy_1_1piece__points.html#aef545d8ef45f09575fff0e8d86731b71">cannon_position_icga_2004</a></td></tr>
+<tr class="separator:aef545d8ef45f09575fff0e8d86731b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ebb316da950b701772176c2d75275d1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacexiangqipy_1_1piece__points.html#a1ebb316da950b701772176c2d75275d1">soldier_position_icga_2004</a></td></tr>
+<tr class="separator:a1ebb316da950b701772176c2d75275d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08c6b1077a8aa54e460db7f91434ae97"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacexiangqipy_1_1piece__points.html#a08c6b1077a8aa54e460db7f91434ae97">position_points_icga_2004</a></td></tr>
+<tr class="separator:a08c6b1077a8aa54e460db7f91434ae97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad31f4d5101c9a2a40ee45070fdc58e9b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacexiangqipy_1_1piece__points.html#ad31f4d5101c9a2a40ee45070fdc58e9b">DEFAULT_BASE_POINTS</a> = <a class="el" href="classxiangqipy_1_1piece__points_1_1BasePoints.html">BasePoints</a>(piece_vals=<a class="el" href="namespacexiangqipy_1_1piece__points.html#aa058b74098b5f3fde6d12216fd67df2d">base_pts_icga_2004</a>)</td></tr>
+<tr class="separator:ad31f4d5101c9a2a40ee45070fdc58e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f200dbba04d15ace4b17fe94fa294e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacexiangqipy_1_1piece__points.html#a8f200dbba04d15ace4b17fe94fa294e8">DEFAULT_POSITION_POINTS</a></td></tr>
+<tr class="separator:a8f200dbba04d15ace4b17fe94fa294e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a6dcacb423bd1ad09d3aea4ce049eb1ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dcacb423bd1ad09d3aea4ce049eb1ab">&#9670;&nbsp;</a></span>advisor_position_icga_2004</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xiangqipy.piece_points.advisor_position_icga_2004 = np.zeros(90).reshape((10, 9))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points_8py_source.html#l00057">57</a> of file <a class="el" href="piece__points_8py_source.html">piece_points.py</a>.</p>
+
+</div>
+</div>
+<a id="aa058b74098b5f3fde6d12216fd67df2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa058b74098b5f3fde6d12216fd67df2d">&#9670;&nbsp;</a></span>base_pts_icga_2004</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary xiangqipy.piece_points.base_pts_icga_2004</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  {</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    PieceType.kGen: 6000,</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    PieceType.kAdv: 120,</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    PieceType.kEle: 120,</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    PieceType.kCha: 600,</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    PieceType.kHor: 270,</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    PieceType.kCan: 285,</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    PieceType.kSol: 30</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="piece__points_8py_source.html#l00012">12</a> of file <a class="el" href="piece__points_8py_source.html">piece_points.py</a>.</p>
+
+</div>
+</div>
+<a id="aef545d8ef45f09575fff0e8d86731b71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef545d8ef45f09575fff0e8d86731b71">&#9670;&nbsp;</a></span>cannon_position_icga_2004</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xiangqipy.piece_points.cannon_position_icga_2004</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  np.array([</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    [0, 0, 2, 6, 6, 6, 2, 0, 0],</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    [0, 2, 4, 6, 6, 6, 4, 2, 0],</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    [4, 0, 8, 6, 10, 6, 8, 0, 4],</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    [0, 0, 0, 2, 4, 2, 0, 0, 0],</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    [-2, 0, 4, 2, 6, 2, 4, 0, -2],</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    [0, 0, 0, 2, 8, 2, 0, 0, 0],</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    [0, 0, -2, 4, 10, 4, -2, 0, 0],</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    [2, 2, 0, -10, -8, -10, 0, 2, 2],</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    [2, 2, 0, -4, -14, -4, 0, 2, 2],</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    [6, 4, 0, -10, -12, -10, 0, 4, 6]</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;])</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="piece__points_8py_source.html#l00086">86</a> of file <a class="el" href="piece__points_8py_source.html">piece_points.py</a>.</p>
+
+</div>
+</div>
+<a id="af5d88f2db2c21aba17ce447a5fa7865c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5d88f2db2c21aba17ce447a5fa7865c">&#9670;&nbsp;</a></span>chariot_position_icga_2004</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xiangqipy.piece_points.chariot_position_icga_2004</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  np.array([</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    [-2, 10, 6, 14, 12, 14, 6, 10, -2],</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    [8, 4, 8, 16, 8, 16, 8, 4, 8],</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    [4, 8, 6, 14, 12, 14, 6, 8, 4],</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    [6, 10, 8, 14, 14, 14, 8, 10, 6],</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    [12, 16, 14, 20, 20, 20, 14, 16, 12],</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    [12, 14, 12, 18, 18, 18, 12, 14, 12],</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    [12, 18, 16, 22, 22, 22, 16, 18, 12],</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    [12, 12, 12, 18, 18, 18, 12, 12, 12],</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    [16, 20, 18, 24, 26, 24, 18, 20, 16],</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    [14, 14, 12, 18, 16, 18, 12, 14, 14]</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;])</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="piece__points_8py_source.html#l00060">60</a> of file <a class="el" href="piece__points_8py_source.html">piece_points.py</a>.</p>
+
+</div>
+</div>
+<a id="ad31f4d5101c9a2a40ee45070fdc58e9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad31f4d5101c9a2a40ee45070fdc58e9b">&#9670;&nbsp;</a></span>DEFAULT_BASE_POINTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xiangqipy.piece_points.DEFAULT_BASE_POINTS = <a class="el" href="classxiangqipy_1_1piece__points_1_1BasePoints.html">BasePoints</a>(piece_vals=<a class="el" href="namespacexiangqipy_1_1piece__points.html#aa058b74098b5f3fde6d12216fd67df2d">base_pts_icga_2004</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points_8py_source.html#l00123">123</a> of file <a class="el" href="piece__points_8py_source.html">piece_points.py</a>.</p>
+
+</div>
+</div>
+<a id="a8f200dbba04d15ace4b17fe94fa294e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f200dbba04d15ace4b17fe94fa294e8">&#9670;&nbsp;</a></span>DEFAULT_POSITION_POINTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xiangqipy.piece_points.DEFAULT_POSITION_POINTS</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  PositionPts(</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    pts_arrays_black=position_points_icga_2004)</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="piece__points_8py_source.html#l00124">124</a> of file <a class="el" href="piece__points_8py_source.html">piece_points.py</a>.</p>
+
+</div>
+</div>
+<a id="aa9837a42e95bd2ec3f3014c4ebef6c9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9837a42e95bd2ec3f3014c4ebef6c9f">&#9670;&nbsp;</a></span>elephant_position_icga_2004</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xiangqipy.piece_points.elephant_position_icga_2004 = np.zeros(90).reshape((10, 9))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points_8py_source.html#l00058">58</a> of file <a class="el" href="piece__points_8py_source.html">piece_points.py</a>.</p>
+
+</div>
+</div>
+<a id="a174663c81b613e093111714cbcadc9b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a174663c81b613e093111714cbcadc9b1">&#9670;&nbsp;</a></span>general_position_icga_2004</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xiangqipy.piece_points.general_position_icga_2004 = np.zeros(90).reshape((10, 9))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="piece__points_8py_source.html#l00056">56</a> of file <a class="el" href="piece__points_8py_source.html">piece_points.py</a>.</p>
+
+</div>
+</div>
+<a id="af10cb2961f7a88880c7ab1f283f71972"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af10cb2961f7a88880c7ab1f283f71972">&#9670;&nbsp;</a></span>horse_position_icga_2004</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xiangqipy.piece_points.horse_position_icga_2004</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  np.array([</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    [0, -4, 0, 0, 0, 0, 0, -4, 0],</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    [0, 2, 4, 4, -2, 4, 4, 2, 0],</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    [4, 2, 8, 8, 4, 8, 8, 2, 4],</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    [2, 6, 8, 6, 10, 6, 8, 6, 2],</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    [4, 12, 16, 14, 12, 14, 16, 12, 4],</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    [6, 16, 14, 18, 16, 18, 14, 16, 6],</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    [8, 24, 18, 24, 20, 24, 18, 24, 8],</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    [12, 14, 16, 20, 18, 20, 16, 14, 12],</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    [4, 10, 28, 16, 8, 16, 28, 10, 4],</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    [4, 8, 16, 12, 4, 12, 16, 8, 4]</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;])</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="piece__points_8py_source.html#l00073">73</a> of file <a class="el" href="piece__points_8py_source.html">piece_points.py</a>.</p>
+
+</div>
+</div>
+<a id="a08c6b1077a8aa54e460db7f91434ae97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08c6b1077a8aa54e460db7f91434ae97">&#9670;&nbsp;</a></span>position_points_icga_2004</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary xiangqipy.piece_points.position_points_icga_2004</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  {</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    PieceType.kGen: general_position_icga_2004,</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    PieceType.kAdv: advisor_position_icga_2004,</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    PieceType.kEle: elephant_position_icga_2004,</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    PieceType.kCha: chariot_position_icga_2004,</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    PieceType.kHor: horse_position_icga_2004,</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    PieceType.kCan: cannon_position_icga_2004,</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    PieceType.kSol: soldier_position_icga_2004</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="piece__points_8py_source.html#l00112">112</a> of file <a class="el" href="piece__points_8py_source.html">piece_points.py</a>.</p>
+
+</div>
+</div>
+<a id="a1ebb316da950b701772176c2d75275d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ebb316da950b701772176c2d75275d1">&#9670;&nbsp;</a></span>soldier_position_icga_2004</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">xiangqipy.piece_points.soldier_position_icga_2004</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;=  np.array([</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;    [0, 0, 0, 0, 0, 0, 0, 0, 0],</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;    [0, 0, 0, 0, 0, 0, 0, 0, 0],</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;    [0, 0, 0, 0, 0, 0, 0, 0, 0],</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;    [0, 0, -2, 0, 0, 0, -2, 0, 0],</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    [2, 0, 8, 0, 8, 0, 8, 0, 2],</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    [6, 12, 18, 18, 20, 18, 18, 12, 6],</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    [10, 20, 30, 34, 40, 34, 30, 20, 10],</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    [14, 26, 42, 60, 80, 60, 42, 26, 14],</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    [18, 36, 56, 80, 120, 80, 56, 36, 18],</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    [0, 3, 6, 9, 12, 9, 6, 3, 0]</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;])</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="piece__points_8py_source.html#l00099">99</a> of file <a class="el" href="piece__points_8py_source.html">piece_points.py</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacexiangqipy.html">xiangqipy</a></li><li class="navelem"><a class="el" href="namespacexiangqipy_1_1piece__points.html">piece_points</a></li>
+    <li class="footer">Generated on Mon Nov 4 2024 21:56:49 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
