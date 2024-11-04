@@ -1,0 +1,209 @@
+<!-- HTML header for doxygen 1.9.4-->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="generator" content="Doxygen 1.9.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiangiqgame: src/xiangqipy/enums.py Source File</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+  </script>
+  <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+  </script>
+</head>
+<body>
+  <!-- https://tholman.com/github-corners/ -->
+  <a href="https://github.com/duanegoodner/xiangqigame" class="github-corner" aria-label="View source on GitHub"><svg
+      width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
+    </svg></a>
+  <style>
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+    @keyframes octocat-wave {
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+      20%,
+      60% {
+        transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+        transform: rotate(10deg)
+      }
+    }
+    @media (max-width:500px) {
+      .github-corner:hover .octo-arm {
+        animation: none
+      }
+      .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+      }
+    }
+  </style>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectalign">
+                <div id="projectname">Xiangiqgame
+                </div>
+                <div id="projectbrief">AI engine for Xiangqi</div>
+              </td>
+            </tr>
+            <!--BEGIN FULL_SIDEBAR-->
+            <tr>
+              <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+            </tr>
+            <!--END FULL_SIDEBAR-->
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('enums_8py_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">enums.py</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="enums_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacexiangqipy_1_1enums.html">    1</a></span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="stringliteral">@file enums.py</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">Enums that are only used on the Python side of the app.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">from</span> enum <span class="keyword">import</span> Enum, auto</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classxiangqipy_1_1enums_1_1GameState.html">GameState</a>(Enum):</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">    Enum indicating state of game: is either unfinished, or a particular player has won.</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#a4469a8e809e14a36de6333213e297849">   14</a></span>&#160;    UNFINISHED = auto()</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#ac8187cfaee55e4910fd5581e701bd338">   15</a></span>&#160;    RED_WON = auto()</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#acf57f4dfb3460b0e58a9b46004176bdd">   16</a></span>&#160;    BLACK_WON = auto()</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#aefcb3e7672c7c81b618aab989b40eba2">   17</a></span>&#160;    DRAW = auto()</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classxiangqipy_1_1enums_1_1PlayerType.html">PlayerType</a>(Enum):</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral">    Enum indicating type of player: Human, AI, or Scripted.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">    Scripted players are primarily used for testing specific move sequences.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html#a1f74c7cc9eacfec14dbe064ff5c72e85">   25</a></span>&#160;    HUMAN = auto()</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html#ac2e74ea023cfb19ecddea794540d2dd4">   26</a></span>&#160;    AI = auto()</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html#ae4d8939ba3fcf16f69dd4b2c110f90ad">   27</a></span>&#160;    SCRIPTED = auto()</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classxiangqipy_1_1enums_1_1EvaluatorType.html">EvaluatorType</a>(Enum):</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="stringliteral">    Enum indicating type of core MoveEvaluator used for a Player.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#acfab9e29e5d22a094cedca319c9d6d63">   34</a></span>&#160;    NULL = auto()</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#ad26f49c4df454130e88c144cf24cf102">   35</a></span>&#160;    MINIMAX = auto()</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#a8f40e079b5c2cd19404f7b55508a0b7a">   36</a></span>&#160;    RANDOM = auto()</div>
+<div class="ttc" id="aclassxiangqipy_1_1enums_1_1EvaluatorType_html"><div class="ttname"><a href="classxiangqipy_1_1enums_1_1EvaluatorType.html">xiangqipy.enums.EvaluatorType</a></div><div class="ttdoc">Enum indicating type of core MoveEvaluator used for a Player.</div><div class="ttdef"><b>Definition:</b> <a href="enums_8py_source.html#l00030">enums.py:30</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1enums_1_1GameState_html"><div class="ttname"><a href="classxiangqipy_1_1enums_1_1GameState.html">xiangqipy.enums.GameState</a></div><div class="ttdoc">Enum indicating state of game: is either unfinished, or a particular player has won.</div><div class="ttdef"><b>Definition:</b> <a href="enums_8py_source.html#l00010">enums.py:10</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1enums_1_1PlayerType_html"><div class="ttname"><a href="classxiangqipy_1_1enums_1_1PlayerType.html">xiangqipy.enums.PlayerType</a></div><div class="ttdoc">Enum indicating type of player: Human, AI, or Scripted.</div><div class="ttdef"><b>Definition:</b> <a href="enums_8py_source.html#l00020">enums.py:20</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_46e67b79a66d4e1bea97ac4ccddce80e.html">xiangqipy</a></li><li class="navelem"><a class="el" href="enums_8py.html">enums.py</a></li>
+    <li class="footer">Generated on Mon Nov 4 2024 22:39:03 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

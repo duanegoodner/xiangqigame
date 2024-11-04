@@ -1,0 +1,299 @@
+<!-- HTML header for doxygen 1.9.4-->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="generator" content="Doxygen 1.9.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiangiqgame: src/xiangqipy/game_interfaces.py Source File</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+  </script>
+  <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+  </script>
+</head>
+<body>
+  <!-- https://tholman.com/github-corners/ -->
+  <a href="https://github.com/duanegoodner/xiangqigame" class="github-corner" aria-label="View source on GitHub"><svg
+      width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
+    </svg></a>
+  <style>
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+    @keyframes octocat-wave {
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+      20%,
+      60% {
+        transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+        transform: rotate(10deg)
+      }
+    }
+    @media (max-width:500px) {
+      .github-corner:hover .octo-arm {
+        animation: none
+      }
+      .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+      }
+    }
+  </style>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectalign">
+                <div id="projectname">Xiangiqgame
+                </div>
+                <div id="projectbrief">AI engine for Xiangqi</div>
+              </td>
+            </tr>
+            <!--BEGIN FULL_SIDEBAR-->
+            <tr>
+              <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+            </tr>
+            <!--END FULL_SIDEBAR-->
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('game__interfaces_8py_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">game_interfaces.py</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="game__interfaces_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno"><a class="line" href="namespacexiangqipy_1_1game__interfaces.html">    1</a></span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="stringliteral">@file game_interfaces.py</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="stringliteral">Python abstract classes used by a Game.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">import</span> abc</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">from</span> dataclasses <span class="keyword">import</span> dataclass</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">from</span> typing <span class="keyword">import</span> Dict, List</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">import</span> numpy <span class="keyword">as</span> np</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">import</span> xiangqi_bindings <span class="keyword">as</span> bindings</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">import</span> <a class="code" href="namespacexiangqipy_1_1core__dataclass__mirrors.html">xiangqipy.core_dataclass_mirrors</a> <span class="keyword">as</span> cdm</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">from</span> <a class="code" href="namespacexiangqipy_1_1enums.html">xiangqipy.enums</a> <span class="keyword">import</span> GameState, PlayerType, EvaluatorType</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">from</span> <a class="code" href="namespacexiangqipy_1_1player__summary.html">xiangqipy.player_summary</a> <span class="keyword">import</span> PlayerSummary</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html">Player</a>(abc.ABC):</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="stringliteral">    Can take a turn in a Game.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a803f419269cdc649f9dcbe4a75b34d9d">   25</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a803f419269cdc649f9dcbe4a75b34d9d">__init__</a>(</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        self,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        color: bindings.PieceColor,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        player_type: PlayerType,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        evaluator_type: EvaluatorType = EvaluatorType.NULL,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    ) -&gt; <span class="keywordtype">None</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#aa9fccc09061f8d0271852829d4ba1df0">   31</a></span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#aa9fccc09061f8d0271852829d4ba1df0">_color</a>_color = color</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a76cbcfa99549ed5f87c3a5b54b3b9246">   32</a></span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a76cbcfa99549ed5f87c3a5b54b3b9246">_player_type</a>_player_type = player_type</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#aff16e2778fae81015a637cdfc62e3e28">   33</a></span>&#160;        self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#aff16e2778fae81015a637cdfc62e3e28">_evaluator_type</a>_evaluator_type = evaluator_type</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="preprocessor">@abc.abstractmethod</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ae4802081d25f3a5929bc9a7bf68efb69">   36</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ae4802081d25f3a5929bc9a7bf68efb69">propose_move</a>(</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        self, game_board: bindings.GameBoard, cur_moves: List[bindings.Move]</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    ) -&gt; bindings.Move:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">pass</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="preprocessor">@abc.abstractmethod</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ace53222f037c754e9084ab6d802db822">   42</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ace53222f037c754e9084ab6d802db822">illegal_move_notice_response</a>(</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        self,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        illegal_move: bindings.Move,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        game_board: bindings.GameBoard,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        cur_moves: List[bindings.Move],</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    ):</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">pass</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#af19bfd9c54d09a86a75ace00fcd29373">   51</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#af19bfd9c54d09a86a75ace00fcd29373">player_type</a>(self) -&gt; PlayerType:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">return</span> self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a76cbcfa99549ed5f87c3a5b54b3b9246">_player_type</a>_player_type</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a7b1094504c93d302ff16f90975d7877c">   55</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a7b1094504c93d302ff16f90975d7877c">move_evaluator_type</a>(self) -&gt; EvaluatorType:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#aff16e2778fae81015a637cdfc62e3e28">_evaluator_type</a>_evaluator_type</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#af809df1b19d3212d4b074fb331ec1391">   59</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#af809df1b19d3212d4b074fb331ec1391">max_search_depth</a>(self) -&gt; int | None:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#aff16e2778fae81015a637cdfc62e3e28">_evaluator_type</a>_evaluator_type == EvaluatorType.MINIMAX:</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">return</span> self._move_evaluator.starting_search_depth()</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ab0de4b6c9ae93635a3b8c96427824011">   64</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ab0de4b6c9ae93635a3b8c96427824011">zkeys_seed</a>(self) -&gt; int | None:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span> self._move_evaluator.zkeys_seed</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a7b591251c8390aef9e279ddeebc625de">   68</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a7b591251c8390aef9e279ddeebc625de">zobrist_key_size</a>(self) -&gt; int | None:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span> self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#aff16e2778fae81015a637cdfc62e3e28">_evaluator_type</a>_evaluator_type == EvaluatorType.MINIMAX:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> self._move_evaluator.zobrist_key_size_bits()</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ab3cf4adcfc1b82352679e4db30b9b2dc">   73</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ab3cf4adcfc1b82352679e4db30b9b2dc">search_summaries</a>(self) -&gt; cdm.SearchSummaries | None:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">if</span> self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#aff16e2778fae81015a637cdfc62e3e28">_evaluator_type</a>_evaluator_type == EvaluatorType.MINIMAX:</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">return</span> cdm.SearchSummaries.from_core_search_summaries(</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                core_search_summaries=self._move_evaluator.search_summaries</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            )</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="preprocessor">@property</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ae03eeaf15c3d1a89d141c1954ee093fe">   80</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ae03eeaf15c3d1a89d141c1954ee093fe">summary</a>(self) -&gt; PlayerSummary:</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a>(</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            color=self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#aa9fccc09061f8d0271852829d4ba1df0">_color</a>_color,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            player_type=self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#af19bfd9c54d09a86a75ace00fcd29373">player_type</a>player_type,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            move_evaluator_type=self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a7b1094504c93d302ff16f90975d7877c">move_evaluator_type</a>move_evaluator_type,</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            max_search_depth=self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#af809df1b19d3212d4b074fb331ec1391">max_search_depth</a>max_search_depth,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            zobrist_key_size=self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a7b591251c8390aef9e279ddeebc625de">zobrist_key_size</a>zobrist_key_size,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            zkeys_seed=self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ab0de4b6c9ae93635a3b8c96427824011">zkeys_seed</a>zkeys_seed,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            search_summaries=self.<a class="code" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ab3cf4adcfc1b82352679e4db30b9b2dc">search_summaries</a>search_summaries,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        )</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html">   92</a></span>&#160;<span class="keyword">class </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html">GameStatusReporter</a>(abc.ABC):</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">    Reports details of a Game.</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">    &quot;&quot;&quot;</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="preprocessor">@abc.abstractmethod</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html#aaef1caf75ee8440e858efae36ebb9790">   98</a></span>&#160;    <span class="keyword">def </span><a class="code" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html#aaef1caf75ee8440e858efae36ebb9790">report_game_info</a>(</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        self,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        red_player_summary: PlayerSummary,</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        black_player_summary: PlayerSummary,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        game_state: GameState,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        game_board: bindings.GameBoard,</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        whose_turn: bindings.PieceColor,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        is_in_check: bool,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        move_count: int,</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        prev_move: bindings.Move = <span class="keywordtype">None</span>,</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    ):</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">pass</span></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1GameStatusReporter_html"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html">xiangqipy.game_interfaces.GameStatusReporter</a></div><div class="ttdoc">Reports details of a Game.</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00092">game_interfaces.py:92</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1GameStatusReporter_html_aaef1caf75ee8440e858efae36ebb9790"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html#aaef1caf75ee8440e858efae36ebb9790">xiangqipy.game_interfaces.GameStatusReporter.report_game_info</a></div><div class="ttdeci">def report_game_info(self, PlayerSummary red_player_summary, PlayerSummary black_player_summary, GameState game_state, bindings.GameBoard game_board, bindings.PieceColor whose_turn, bool is_in_check, int move_count, bindings.Move prev_move=None)</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00098">game_interfaces.py:108</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html">xiangqipy.game_interfaces.Player</a></div><div class="ttdoc">Can take a turn in a Game.</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00020">game_interfaces.py:20</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_a76cbcfa99549ed5f87c3a5b54b3b9246"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#a76cbcfa99549ed5f87c3a5b54b3b9246">xiangqipy.game_interfaces.Player._player_type</a></div><div class="ttdeci">_player_type</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00032">game_interfaces.py:32</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_a7b1094504c93d302ff16f90975d7877c"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#a7b1094504c93d302ff16f90975d7877c">xiangqipy.game_interfaces.Player.move_evaluator_type</a></div><div class="ttdeci">EvaluatorType move_evaluator_type(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00055">game_interfaces.py:55</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_a7b591251c8390aef9e279ddeebc625de"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#a7b591251c8390aef9e279ddeebc625de">xiangqipy.game_interfaces.Player.zobrist_key_size</a></div><div class="ttdeci">int|None zobrist_key_size(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00068">game_interfaces.py:68</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_a803f419269cdc649f9dcbe4a75b34d9d"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#a803f419269cdc649f9dcbe4a75b34d9d">xiangqipy.game_interfaces.Player.__init__</a></div><div class="ttdeci">None __init__(self, bindings.PieceColor color, PlayerType player_type, EvaluatorType evaluator_type=EvaluatorType.NULL)</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00025">game_interfaces.py:30</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_aa9fccc09061f8d0271852829d4ba1df0"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#aa9fccc09061f8d0271852829d4ba1df0">xiangqipy.game_interfaces.Player._color</a></div><div class="ttdeci">_color</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00031">game_interfaces.py:31</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_ab0de4b6c9ae93635a3b8c96427824011"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#ab0de4b6c9ae93635a3b8c96427824011">xiangqipy.game_interfaces.Player.zkeys_seed</a></div><div class="ttdeci">int|None zkeys_seed(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00064">game_interfaces.py:64</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_ab3cf4adcfc1b82352679e4db30b9b2dc"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#ab3cf4adcfc1b82352679e4db30b9b2dc">xiangqipy.game_interfaces.Player.search_summaries</a></div><div class="ttdeci">cdm.SearchSummaries|None search_summaries(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00073">game_interfaces.py:73</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_ace53222f037c754e9084ab6d802db822"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#ace53222f037c754e9084ab6d802db822">xiangqipy.game_interfaces.Player.illegal_move_notice_response</a></div><div class="ttdeci">def illegal_move_notice_response(self, bindings.Move illegal_move, bindings.GameBoard game_board, List[bindings.Move] cur_moves)</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00042">game_interfaces.py:47</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_ae03eeaf15c3d1a89d141c1954ee093fe"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#ae03eeaf15c3d1a89d141c1954ee093fe">xiangqipy.game_interfaces.Player.summary</a></div><div class="ttdeci">PlayerSummary summary(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00080">game_interfaces.py:80</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_ae4802081d25f3a5929bc9a7bf68efb69"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#ae4802081d25f3a5929bc9a7bf68efb69">xiangqipy.game_interfaces.Player.propose_move</a></div><div class="ttdeci">bindings.Move propose_move(self, bindings.GameBoard game_board, List[bindings.Move] cur_moves)</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00036">game_interfaces.py:38</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_af19bfd9c54d09a86a75ace00fcd29373"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#af19bfd9c54d09a86a75ace00fcd29373">xiangqipy.game_interfaces.Player.player_type</a></div><div class="ttdeci">PlayerType player_type(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00051">game_interfaces.py:51</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_af809df1b19d3212d4b074fb331ec1391"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#af809df1b19d3212d4b074fb331ec1391">xiangqipy.game_interfaces.Player.max_search_depth</a></div><div class="ttdeci">int|None max_search_depth(self)</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00059">game_interfaces.py:59</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1game__interfaces_1_1Player_html_aff16e2778fae81015a637cdfc62e3e28"><div class="ttname"><a href="classxiangqipy_1_1game__interfaces_1_1Player.html#aff16e2778fae81015a637cdfc62e3e28">xiangqipy.game_interfaces.Player._evaluator_type</a></div><div class="ttdeci">_evaluator_type</div><div class="ttdef"><b>Definition:</b> <a href="game__interfaces_8py_source.html#l00033">game_interfaces.py:33</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1player__summary_1_1PlayerSummary_html"><div class="ttname"><a href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">xiangqipy.player_summary.PlayerSummary</a></div><div class="ttdoc">Data container for data from one xiangqipy.game_interfaces.Player in a Game.</div><div class="ttdef"><b>Definition:</b> <a href="player__summary_8py_source.html#l00020">player_summary.py:20</a></div></div>
+<div class="ttc" id="anamespacexiangqipy_1_1core__dataclass__mirrors_html"><div class="ttname"><a href="namespacexiangqipy_1_1core__dataclass__mirrors.html">xiangqipy.core_dataclass_mirrors</a></div><div class="ttdef"><b>Definition:</b> <a href="core__dataclass__mirrors_8py_source.html#l00001">core_dataclass_mirrors.py:1</a></div></div>
+<div class="ttc" id="anamespacexiangqipy_1_1enums_html"><div class="ttname"><a href="namespacexiangqipy_1_1enums.html">xiangqipy.enums</a></div><div class="ttdef"><b>Definition:</b> <a href="enums_8py_source.html#l00001">enums.py:1</a></div></div>
+<div class="ttc" id="anamespacexiangqipy_1_1player__summary_html"><div class="ttname"><a href="namespacexiangqipy_1_1player__summary.html">xiangqipy.player_summary</a></div><div class="ttdef"><b>Definition:</b> <a href="player__summary_8py_source.html#l00001">player_summary.py:1</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_46e67b79a66d4e1bea97ac4ccddce80e.html">xiangqipy</a></li><li class="navelem"><a class="el" href="game__interfaces_8py.html">game_interfaces.py</a></li>
+    <li class="footer">Generated on Mon Nov 4 2024 22:39:03 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
