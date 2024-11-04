@@ -1,0 +1,265 @@
+<!-- HTML header for doxygen 1.9.4-->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="generator" content="Doxygen 1.9.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiangiqgame: Class Members - Functions</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+  </script>
+  <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+  </script>
+</head>
+<body>
+  <!-- https://tholman.com/github-corners/ -->
+  <a href="https://github.com/duanegoodner/xiangqigame" class="github-corner" aria-label="View source on GitHub"><svg
+      width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
+    </svg></a>
+  <style>
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+    @keyframes octocat-wave {
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+      20%,
+      60% {
+        transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+        transform: rotate(10deg)
+      }
+    }
+    @media (max-width:500px) {
+      .github-corner:hover .octo-arm {
+        animation: none
+      }
+      .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+      }
+    }
+  </style>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectalign">
+                <div id="projectname">Xiangiqgame
+                </div>
+                <div id="projectbrief">AI engine for Xiangqi</div>
+              </td>
+            </tr>
+            <!--BEGIN FULL_SIDEBAR-->
+            <tr>
+              <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+            </tr>
+            <!--END FULL_SIDEBAR-->
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('functions_func_s.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+&#160;
+
+<h3><a id="index_s"></a>- s -</h3><ul>
+<li>save_figure()
+: <a class="el" href="classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a94b159a824524e88156a5e5debe1a64d">xiangqipy.game_summary_plot_manager.GameSummaryPlotManager</a>
+</li>
+<li>Score()
+: <a class="el" href="structmoveselection_1_1TranspositionTableEntry.html#a6f25cc369a641c096e61a28ff84d94e8">moveselection::TranspositionTableEntry</a>
+</li>
+<li>score_and_moves()
+: <a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html#a778284da9767ddf3762a5a2efc6cadf4">moveselection::TranspositionTableSearchResult</a>
+</li>
+<li>search_summaries()
+: <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a722b7cead14f8071b1f6f7483c89e852">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;</a>
+, <a class="el" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ab3cf4adcfc1b82352679e4db30b9b2dc">xiangqipy.game_interfaces.Player</a>
+</li>
+<li>SearchSummary()
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#ac09ccbc69a6772220acda0ccf024e3ec">moveselection::SearchSummary</a>
+</li>
+<li>seed()
+: <a class="el" href="classboardstate_1_1PseudoRandomKeyGenerator.html#aef4405df4e8d64784734c3b2faca1c03">boardstate::PseudoRandomKeyGenerator&lt; IntType &gt;</a>
+, <a class="el" href="classboardstate_1_1ZobristCalculator.html#a2816b7eade2f385944093b1344a51351">boardstate::ZobristCalculator&lt; KeyType &gt;</a>
+</li>
+<li>selected_move()
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#ab455786cfc82050b0b5460e67e827fe8">moveselection::SearchSummary</a>
+</li>
+<li>selection_stats()
+: <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a59afecb1376fb47f1f969e4f129a3114">xiangqipy.player_summary.PlayerSummary</a>
+</li>
+<li>SelectMove()
+: <a class="el" href="classMoveEvaluator.html#a3d099b92a96225ad2a626bebbd3d151f">MoveEvaluator&lt; ConcreteMoveEvaluator &gt;</a>
+</li>
+<li>send_game_info_to_status_reporter()
+: <a class="el" href="classxiangqipy_1_1game_1_1Game.html#a577730c7a13538e652cf53c055901de0">xiangqipy.game.Game</a>
+</li>
+<li>Serialize()
+: <a class="el" href="classjsonio_1_1NlohmannJsonUtility.html#a44a8c2ec861e801dec1ae1b46aee37b0">jsonio::NlohmannJsonUtility</a>
+</li>
+<li>set_game_state()
+: <a class="el" href="classxiangqipy_1_1game_1_1Game.html#a2a0cba4948a0676da086d97c7eefd9ff">xiangqipy.game.Game</a>
+</li>
+<li>set_plot_col_titles()
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ae624b27783ed0beb7ad1c09518493f51">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+<li>set_returned_illegal_move()
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#a02d1608177f330975e7a01c5d5a3479a">moveselection::SearchSummary</a>
+</li>
+<li>set_similar_moves()
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#a32bbbebac712d77928318bc9a185658c">moveselection::SearchSummary</a>
+</li>
+<li>set_time()
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#a14fdc122ed2b721036773773b49f98ac">moveselection::SearchSummary</a>
+</li>
+<li>set_tr_table_size_final()
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#ae5d63bd7f763b468ecfc6f25136569f0">moveselection::SearchSummary</a>
+</li>
+<li>set_winner()
+: <a class="el" href="classxiangqipy_1_1game_1_1Game.html#adb6799fb40b40102f3f98116daa8bf77">xiangqipy.game.Game</a>
+</li>
+<li>set_x_axes()
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ab784c7e54e20acd700c800e0c191e8e6">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+<li>set_y_axes()
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a4ca9f4bb978043f7ab8e743f92485e5d">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+<li>SetOccupantAt()
+: <a class="el" href="classgameboard_1_1GameBoard.html#a6002a6971d74832ae207304681c8708b">gameboard::GameBoard</a>
+</li>
+<li>SetSelectedMove()
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#aebecc89334baf04db5848bbcacd05596">moveselection::SearchSummary</a>
+</li>
+<li>similar_moves()
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#ae6519b2bc3d1f4ee2b6e458511fa508b">moveselection::SearchSummary</a>
+</li>
+<li>SingleZobristTracker()
+: <a class="el" href="classboardstate_1_1SingleZobristTracker.html#ad69a267ec82ff8f3b9f4d30801780761">boardstate::SingleZobristTracker&lt; KeyType &gt;</a>
+</li>
+<li>Size()
+: <a class="el" href="structgameboard_1_1MoveCollection.html#a40c1b1e41cb2452431b77b9c3cc0e4c1">gameboard::MoveCollection</a>
+</li>
+<li>size()
+: <a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MoveCollection.html#afc075e34f6cfb35446ab01cebf5d89e9">xiangqipy.core_dataclass_mirrors.MoveCollection</a>
+</li>
+<li>SoldierMoves()
+: <a class="el" href="classgameboard_1_1PieceMoves.html#a6dff27f1f60341c2a0cb3a539d0129c3">gameboard::PieceMoves</a>
+</li>
+<li>StandardGeneralMoves()
+: <a class="el" href="classgameboard_1_1PieceMoves.html#a79edec11aa1ce74e06ae53fc91bb20cc">gameboard::PieceMoves</a>
+</li>
+<li>StartingSearchDepth()
+: <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4ce5365b299f9c2401c6b1c9fe82909c">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;</a>
+</li>
+<li>summary()
+: <a class="el" href="classxiangqipy_1_1game_1_1Game.html#a963ed1eddd4ae219571897531224925d">xiangqipy.game.Game</a>
+, <a class="el" href="classxiangqipy_1_1game__interfaces_1_1Player.html#ae03eeaf15c3d1a89d141c1954ee093fe">xiangqipy.game_interfaces.Player</a>
+</li>
+<li>symmetric_winsorize()
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html#a45474f1f52cf3dbb28d3105cdf65deee">xiangqipy.game_summary_plotters.EvalScorePlotter</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Nov 4 2024 22:45:20 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

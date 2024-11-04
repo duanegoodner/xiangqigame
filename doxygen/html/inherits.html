@@ -1,0 +1,549 @@
+<!-- HTML header for doxygen 1.9.4-->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="generator" content="Doxygen 1.9.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiangiqgame: Class Hierarchy</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+  </script>
+  <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+  </script>
+</head>
+<body>
+  <!-- https://tholman.com/github-corners/ -->
+  <a href="https://github.com/duanegoodner/xiangqigame" class="github-corner" aria-label="View source on GitHub"><svg
+      width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
+    </svg></a>
+  <style>
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+    @keyframes octocat-wave {
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+      20%,
+      60% {
+        transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+        transform: rotate(10deg)
+      }
+    }
+    @media (max-width:500px) {
+      .github-corner:hover .octo-arm {
+        animation: none
+      }
+      .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+      }
+    }
+  </style>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectalign">
+                <div id="projectname">Xiangiqgame
+                </div>
+                <div id="projectbrief">AI engine for Xiangqi</div>
+              </td>
+            </tr>
+            <!--BEGIN FULL_SIDEBAR-->
+            <tr>
+              <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+            </tr>
+            <!--END FULL_SIDEBAR-->
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('hierarchy.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Class Hierarchy</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock">
+<p><a href="hierarchy.html">Go to the textual class hierarchy</a></p>
+</div><table border="0" cellspacing="10" cellpadding="0">
+<tr><td><img src="inherit_graph_0.png" border="0" usemap="#aboardstate_1_1DualKeyTranspositionTable_3_01KeyType_01_4" alt=""/>
+<map name="aboardstate_1_1DualKeyTranspositionTable_3_01KeyType_01_4" id="aboardstate_1_1DualKeyTranspositionTable_3_01KeyType_01_4">
+<area shape="rect" title=" " alt="" coords="5,86,55,113"/>
+<area shape="rect" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html" title="Abstract base class for plotting data stored in pandas dataframes (one df for each player) to a numpy..." alt="" coords="103,79,331,120"/>
+<area shape="rect" href="classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html" title="Implements GameSummaryPlotter, and plots evaluated score of each move of each Player using a Minimax ..." alt="" coords="393,5,587,47"/>
+<area shape="rect" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html" title="Implements GameSummaryPlotter, and produces stacked plots of Minimax search result counts grouped by ..." alt="" coords="379,71,601,127"/>
+<area shape="rect" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html" title="Implements GameSummaryPlotter, and produces plots showing time spent by core MinimaxMoveEvaluator(s) ..." alt="" coords="389,152,591,193"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_1.png" border="0" usemap="#aboardstate_1_1DualKeyTranspositionTableEntry_3_01KeyType_01_4" alt=""/>
+<map name="aboardstate_1_1DualKeyTranspositionTableEntry_3_01KeyType_01_4" id="aboardstate_1_1DualKeyTranspositionTableEntry_3_01KeyType_01_4">
+<area shape="rect" title=" " alt="" coords="5,90,81,117"/>
+<area shape="rect" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html" title="Reports details of a Game." alt="" coords="129,28,331,69"/>
+<area shape="rect" href="classxiangqipy_1_1game__interfaces_1_1Player.html" title="Can take a turn in a Game." alt="" coords="129,115,331,156"/>
+<area shape="rect" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html" title="Outputs a text&#45;base game board with GamePiece locations in algebraic notation." alt="" coords="379,5,607,47"/>
+<area shape="rect" href="classxiangqipy_1_1players_1_1AIPlayer.html" title="Proposed moves selected using an implementation of core MoveEvaluator." alt="" coords="395,71,590,98"/>
+<area shape="rect" href="classxiangqipy_1_1players_1_1HumanPlayer.html" title="Uses terminal UI to propose moves." alt="" coords="379,122,607,149"/>
+<area shape="rect" href="classxiangqipy_1_1players_1_1ScriptedPlayer.html" title="Proposes moves sequentially from a list of algebraic notation moves." alt="" coords="396,173,589,215"/>
+<area shape="rect" href="classxiangqipy_1_1players_1_1ScriptedPlayerWithRetries.html" title="Has intentionally illegal move in list, followed by legal move (for tests)." alt="" coords="396,239,589,280"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_2.png" border="0" usemap="#aboardstate_1_1PseudoRandomKeyGenerator_3_01IntType_01_4" alt=""/>
+<map name="aboardstate_1_1PseudoRandomKeyGenerator_3_01IntType_01_4" id="aboardstate_1_1PseudoRandomKeyGenerator_3_01IntType_01_4">
+<area shape="rect" href="classboardstate_1_1DualKeyTranspositionTable.html" title=" " alt="" coords="5,5,245,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_3.png" border="0" usemap="#aboardstate_1_1RandomKeyGenerator_3_01IntType_01_4" alt=""/>
+<map name="aboardstate_1_1RandomKeyGenerator_3_01IntType_01_4" id="aboardstate_1_1RandomKeyGenerator_3_01IntType_01_4">
+<area shape="rect" href="structboardstate_1_1DualKeyTranspositionTableEntry.html" title=" " alt="" coords="5,5,245,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_4.png" border="0" usemap="#aboardstate_1_1SingleKeyTranspositionTable_3_01KeyType_01_4" alt=""/>
+<map name="aboardstate_1_1SingleKeyTranspositionTable_3_01KeyType_01_4" id="aboardstate_1_1SingleKeyTranspositionTable_3_01KeyType_01_4">
+<area shape="rect" href="classboardstate_1_1PseudoRandomKeyGenerator.html" title=" " alt="" coords="5,5,207,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_5.png" border="0" usemap="#aboardstate_1_1ZobristCalculator_3_01KeyType_01_4" alt=""/>
+<map name="aboardstate_1_1ZobristCalculator_3_01KeyType_01_4" id="aboardstate_1_1ZobristCalculator_3_01KeyType_01_4">
+<area shape="rect" href="classboardstate_1_1RandomKeyGenerator.html" title="Template for class that generates random integer values of IntType." alt="" coords="5,5,248,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_6.png" border="0" usemap="#aBoardStateSummarizer_3_01ConcreteBoardStateSummarizer_00_01KeyType_01_4" alt=""/>
+<map name="aBoardStateSummarizer_3_01ConcreteBoardStateSummarizer_00_01KeyType_01_4" id="aBoardStateSummarizer_3_01ConcreteBoardStateSummarizer_00_01KeyType_01_4">
+<area shape="rect" href="classboardstate_1_1SingleKeyTranspositionTable.html" title="Container where boardstate::SingleZobristTracker stores moveselection::MinimaxMoveEvaluator results; ..." alt="" coords="5,5,256,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_7.png" border="0" usemap="#aBoardStateSummarizer_3_01DualZobristTracker_3_01KeyType_01_4_00_01KeyType_01_4" alt=""/>
+<map name="aBoardStateSummarizer_3_01DualZobristTracker_3_01KeyType_01_4_00_01KeyType_01_4" id="aBoardStateSummarizer_3_01DualZobristTracker_3_01KeyType_01_4_00_01KeyType_01_4">
+<area shape="rect" href="classboardstate_1_1ZobristCalculator.html" title="Container for all of the hash keys needed to run a boardstate::SingleZobristTracker." alt="" coords="5,5,217,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_8.png" border="0" usemap="#aBoardStateSummarizer_3_01SingleZobristTracker_3_01KeyType_01_4_00_01KeyType_01_4" alt=""/>
+<map name="aBoardStateSummarizer_3_01SingleZobristTracker_3_01KeyType_01_4_00_01KeyType_01_4" id="aBoardStateSummarizer_3_01SingleZobristTracker_3_01KeyType_01_4_00_01KeyType_01_4">
+<area shape="rect" href="classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="5,5,256,61"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_9.png" border="0" usemap="#aException" alt=""/>
+<map name="aException" id="aException">
+<area shape="rect" href="classBoardStateSummarizer.html" title=" " alt="" coords="5,5,188,61"/>
+<area shape="rect" href="classboardstate_1_1DualZobristTracker.html" title=" " alt="" coords="236,13,459,54"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_10.png" border="0" usemap="#agameboard_1_1BoardDirection" alt=""/>
+<map name="agameboard_1_1BoardDirection" id="agameboard_1_1BoardDirection">
+<area shape="rect" href="classBoardStateSummarizer.html" title=" " alt="" coords="5,5,188,61"/>
+<area shape="rect" href="classboardstate_1_1SingleZobristTracker.html" title="Tracks board state using one boardstate::ZobristCalculator and a Implements BoardStateSummarizer inte..." alt="" coords="236,13,423,54"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_11.png" border="0" usemap="#agameboard_1_1BoardSpace" alt=""/>
+<map name="agameboard_1_1BoardSpace" id="agameboard_1_1BoardSpace">
+<area shape="rect" title=" " alt="" coords="5,97,64,123"/>
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html" title="Enum indicating the type of result obtained from Minimax analysis of a single node." alt="" coords="114,5,338,47"/>
+<area shape="rect" href="classxiangqipy_1_1enums_1_1EvaluatorType.html" title="Enum indicating type of core MoveEvaluator used for a Player." alt="" coords="112,71,340,98"/>
+<area shape="rect" href="classxiangqipy_1_1enums_1_1GameState.html" title="Enum indicating state of game: is either unfinished, or a particular player has won." alt="" coords="121,122,331,149"/>
+<area shape="rect" href="classxiangqipy_1_1enums_1_1PlayerType.html" title="Enum indicating type of player: Human, AI, or Scripted." alt="" coords="123,173,329,199"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_12.png" border="0" usemap="#agameboard_1_1CastleEdges" alt=""/>
+<map name="agameboard_1_1CastleEdges" id="agameboard_1_1CastleEdges">
+<area shape="rect" href="classException.html" title=" " alt="" coords="5,78,92,105"/>
+<area shape="rect" href="classxiangqipy_1_1players_1_1IllegalAIMove.html" title="Raised when AI player proposed illegal move." alt="" coords="142,5,322,47"/>
+<area shape="rect" href="classxiangqipy_1_1players_1_1IllegalMoveInMoveList.html" title="Raised when scripted player proposes an illegal move." alt="" coords="142,71,322,112"/>
+<area shape="rect" href="classxiangqipy_1_1players_1_1InvalidEntryInMoveList.html" title="Raised when scripted player proposed move has invalid syntax." alt="" coords="140,136,324,177"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_13.png" border="0" usemap="#agameboard_1_1ExecutedMove" alt=""/>
+<map name="agameboard_1_1ExecutedMove" id="agameboard_1_1ExecutedMove">
+<area shape="rect" href="structgameboard_1_1BoardDirection.html" title="Descirbes a direction on a gameboard::GameBoard.board_map_." alt="" coords="5,5,207,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_14.png" border="0" usemap="#agameboard_1_1GamePiece" alt=""/>
+<map name="agameboard_1_1GamePiece" id="agameboard_1_1GamePiece">
+<area shape="rect" href="structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa..." alt="" coords="5,5,187,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_15.png" border="0" usemap="#agameboard_1_1Move" alt=""/>
+<map name="agameboard_1_1Move" id="agameboard_1_1Move">
+<area shape="rect" href="structgameboard_1_1CastleEdges.html" title="Defines a castle feature in terms of its min / max rank and file." alt="" coords="5,5,189,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_16.png" border="0" usemap="#agameboard_1_1MoveCalculator" alt=""/>
+<map name="agameboard_1_1MoveCalculator" id="agameboard_1_1MoveCalculator">
+<area shape="rect" href="structgameboard_1_1ExecutedMove.html" title="A change in the state of a gameboard::GameBoard represented by a gameboard::Move, and each of the gam..." alt="" coords="5,5,204,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_17.png" border="0" usemap="#agameboard_1_1MoveCollection" alt=""/>
+<map name="agameboard_1_1MoveCollection" id="agameboard_1_1MoveCollection">
+<area shape="rect" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor." alt="" coords="5,5,184,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_18.png" border="0" usemap="#agameboard_1_1PieceMoves" alt=""/>
+<map name="agameboard_1_1PieceMoves" id="agameboard_1_1PieceMoves">
+<area shape="rect" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end)." alt="" coords="5,5,145,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_19.png" border="0" usemap="#aJsonUtility_3_01ConcreteJsonUtility_01_4" alt=""/>
+<map name="aJsonUtility_3_01ConcreteJsonUtility_01_4" id="aJsonUtility_3_01ConcreteJsonUtility_01_4">
+<area shape="rect" href="classgameboard_1_1MoveCalculator.html" title="Calculates legal gameboard::Move objects for of a gameboard::GameBoard with a particular state." alt="" coords="5,5,212,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_20.png" border="0" usemap="#aJsonUtility_3_01NlohmannJsonUtility_01_4" alt=""/>
+<map name="aJsonUtility_3_01NlohmannJsonUtility_01_4" id="aJsonUtility_3_01NlohmannJsonUtility_01_4">
+<area shape="rect" href="structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects." alt="" coords="5,5,211,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_21.png" border="0" usemap="#aMoveEvaluator_3_01ConcreteMoveEvaluator_01_4" alt=""/>
+<map name="aMoveEvaluator_3_01ConcreteMoveEvaluator_01_4" id="aMoveEvaluator_3_01ConcreteMoveEvaluator_01_4">
+<area shape="rect" href="classgameboard_1_1PieceMoves.html" title="Implements piece type dependent move rules; used by gameboard::MoveCalculator." alt="" coords="5,5,188,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_22.png" border="0" usemap="#aMoveEvaluator_3_01MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateSummarizer_00_01ConcretePieceValueProvider_01_4_01_4" alt=""/>
+<map name="aMoveEvaluator_3_01MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateSummarizer_00_01ConcretePieceValueProvider_01_4_01_4" id="aMoveEvaluator_3_01MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateSummarizer_00_01ConcretePieceValueProvider_01_4_01_4">
+<area shape="rect" href="classJsonUtility.html" title="CRTP interface with methods of importing / exporting objects from / to json files (concrete example =..." alt="" coords="5,5,195,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_23.png" border="0" usemap="#aMoveEvaluator_3_01RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_01_4" alt=""/>
+<map name="aMoveEvaluator_3_01RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_01_4" id="aMoveEvaluator_3_01RandomMoveEvaluator_3_01ConcreteSpaceInfoProvider_01_4_01_4">
+<area shape="rect" href="classJsonUtility.html" title=" " alt="" coords="5,5,204,47"/>
+<area shape="rect" href="classjsonio_1_1NlohmannJsonUtility.html" title="Implements JsonUtility interface; imports / exports objects from / to json files using the Nlohmann j..." alt="" coords="252,13,455,39"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_24.png" border="0" usemap="#amoveselection_1_1CollisionInfo" alt=""/>
+<map name="amoveselection_1_1CollisionInfo" id="amoveselection_1_1CollisionInfo">
+<area shape="rect" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini..." alt="" coords="5,5,235,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_25.png" border="0" usemap="#amoveselection_1_1EqualScoreMoves" alt=""/>
+<map name="amoveselection_1_1EqualScoreMoves" id="amoveselection_1_1EqualScoreMoves">
+<area shape="rect" href="classMoveEvaluator.html" title=" " alt="" coords="5,5,284,76"/>
+<area shape="rect" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="332,5,611,76"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_26.png" border="0" usemap="#amoveselection_1_1ResultDepthCounts" alt=""/>
+<map name="amoveselection_1_1ResultDepthCounts" id="amoveselection_1_1ResultDepthCounts">
+<area shape="rect" href="classMoveEvaluator.html" title=" " alt="" coords="5,5,311,47"/>
+<area shape="rect" href="classmoveselection_1_1RandomMoveEvaluator.html" title="Implements gameboard::MoveEvaluator interface." alt="" coords="359,5,649,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_27.png" border="0" usemap="#amoveselection_1_1ScoredMove" alt=""/>
+<map name="amoveselection_1_1ScoredMove" id="amoveselection_1_1ScoredMove">
+<area shape="rect" href="structmoveselection_1_1CollisionInfo.html" title=" " alt="" coords="5,5,212,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_28.png" border="0" usemap="#amoveselection_1_1SearchSummaries" alt=""/>
+<map name="amoveselection_1_1SearchSummaries" id="amoveselection_1_1SearchSummaries">
+<area shape="rect" href="structmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="5,5,204,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_29.png" border="0" usemap="#amoveselection_1_1SearchSummary" alt=""/>
+<map name="amoveselection_1_1SearchSummary" id="amoveselection_1_1SearchSummary">
+<area shape="rect" href="classmoveselection_1_1ResultDepthCounts.html" title="Container for storing and updating data in a moveselection::ResultDepthCountsData_t array of vectors." alt="" coords="5,5,212,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_30.png" border="0" usemap="#amoveselection_1_1TranspositionTableEntry" alt=""/>
+<map name="amoveselection_1_1TranspositionTableEntry" id="amoveselection_1_1TranspositionTableEntry">
+<area shape="rect" href="structmoveselection_1_1ScoredMove.html" title="A gameboard::Move, and an associated score calculated by a MoveEvaluator." alt="" coords="5,5,212,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_31.png" border="0" usemap="#amoveselection_1_1TranspositionTableSearchResult" alt=""/>
+<map name="amoveselection_1_1TranspositionTableSearchResult" id="amoveselection_1_1TranspositionTableSearchResult">
+<area shape="rect" href="structmoveselection_1_1SearchSummaries.html" title="Stores a moveselection::SearchSummary for each moveselection::MinimaxMoveEvaluator...." alt="" coords="5,5,249,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_32.png" border="0" usemap="#amoveselection_1_1TranspositionTableSize" alt=""/>
+<map name="amoveselection_1_1TranspositionTableSize" id="amoveselection_1_1TranspositionTableSize">
+<area shape="rect" href="classmoveselection_1_1SearchSummary.html" title="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator...." alt="" coords="5,5,239,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_33.png" border="0" usemap="#apiecepoints_1_1BPOPointsEKeys" alt=""/>
+<map name="apiecepoints_1_1BPOPointsEKeys" id="apiecepoints_1_1BPOPointsEKeys">
+<area shape="rect" href="structmoveselection_1_1TranspositionTableEntry.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search&#45;related info obtained fro..." alt="" coords="5,5,217,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_34.png" border="0" usemap="#apiecepoints_1_1BPOPointsSKeys" alt=""/>
+<map name="apiecepoints_1_1BPOPointsSKeys" id="apiecepoints_1_1BPOPointsSKeys">
+<area shape="rect" href="structmoveselection_1_1TranspositionTableSearchResult.html" title="Container for storing a moveselection::TranspositionTableEntry retrieved by a call to boardstate::Sin..." alt="" coords="5,5,217,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_35.png" border="0" usemap="#aPieceValueProvider_3_01ConcretePieceValueProvider_01_4" alt=""/>
+<map name="aPieceValueProvider_3_01ConcretePieceValueProvider_01_4" id="aPieceValueProvider_3_01ConcretePieceValueProvider_01_4">
+<area shape="rect" href="structmoveselection_1_1TranspositionTableSize.html" title=" " alt="" coords="5,5,217,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_36.png" border="0" usemap="#aPieceValueProvider_3_01PiecePositionPoints_01_4" alt=""/>
+<map name="aPieceValueProvider_3_01PiecePositionPoints_01_4" id="aPieceValueProvider_3_01PiecePositionPoints_01_4">
+<area shape="rect" title=" " alt="" coords="5,13,128,39"/>
+<area shape="rect" href="classxiangqipy_1_1game__summary_1_1GameSummary.html" title="Holds summary info of a xiangqipy.game.Game; implements msgspec.Struct for json IO." alt="" coords="176,5,411,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_37.png" border="0" usemap="#aSpaceInfoProvider_3_01ConcreteSpaceInfoProvider_01_4" alt=""/>
+<map name="aSpaceInfoProvider_3_01ConcreteSpaceInfoProvider_01_4" id="aSpaceInfoProvider_3_01ConcreteSpaceInfoProvider_01_4">
+<area shape="rect" href="classpiecepoints_1_1BPOPointsEKeys.html" title="Piece Points spec in &quot;Base Points Offset&quot; form with PieceType enum keys in member unordered_map objec..." alt="" coords="5,5,216,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_38.png" border="0" usemap="#aSpaceInfoProvider_3_01GameBoard_01_4" alt=""/>
+<map name="aSpaceInfoProvider_3_01GameBoard_01_4" id="aSpaceInfoProvider_3_01GameBoard_01_4">
+<area shape="rect" href="classpiecepoints_1_1BPOPointsSKeys.html" title="Piece Points spec in &quot;Base Points Offset&quot; form with string keys in member unordered_map objects for e..." alt="" coords="5,5,216,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_39.png" border="0" usemap="#axiangqipy_8command__input_8PlayerCommandInterpreter" alt=""/>
+<map name="axiangqipy_8command__input_8PlayerCommandInterpreter" id="axiangqipy_8command__input_8PlayerCommandInterpreter">
+<area shape="rect" href="classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific..." alt="" coords="5,5,240,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_40.png" border="0" usemap="#axiangqipy_8command__input_8PlayerInput" alt=""/>
+<map name="axiangqipy_8command__input_8PlayerInput" id="axiangqipy_8command__input_8PlayerInput">
+<area shape="rect" href="classPieceValueProvider.html" title=" " alt="" coords="5,5,184,47"/>
+<area shape="rect" href="structpiecepoints_1_1PiecePositionPoints.html" title="Holds a piecepoints::GamePointsArray_t of points values, and exposes a method for accessing element c..." alt="" coords="232,5,424,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_41.png" border="0" usemap="#axiangqipy_8command__input_8RunKwargsInterpreter" alt=""/>
+<map name="axiangqipy_8command__input_8RunKwargsInterpreter" id="axiangqipy_8command__input_8RunKwargsInterpreter">
+<area shape="rect" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,..." alt="" coords="5,5,223,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_42.png" border="0" usemap="#axiangqipy_8command__input_8XiangqiGameCommand" alt=""/>
+<map name="axiangqipy_8command__input_8XiangqiGameCommand" id="axiangqipy_8command__input_8XiangqiGameCommand">
+<area shape="rect" href="classSpaceInfoProvider.html" title=" " alt="" coords="5,5,156,47"/>
+<area shape="rect" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,..." alt="" coords="204,13,385,39"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_43.png" border="0" usemap="#axiangqipy_8command__input_8XiangqiGameCommandLine" alt=""/>
+<map name="axiangqipy_8command__input_8XiangqiGameCommandLine" id="axiangqipy_8command__input_8XiangqiGameCommandLine">
+<area shape="rect" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html" title="Converts command line input related to a player into PlayerInput object." alt="" coords="5,5,204,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_44.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8BoardSpace" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8BoardSpace" id="axiangqipy_8core__dataclass__mirrors_8BoardSpace">
+<area shape="rect" href="classxiangqipy_1_1command__input_1_1PlayerInput.html" title="Container for info collected from command line for specific player." alt="" coords="5,5,203,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_45.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8EqualScoreMoves" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8EqualScoreMoves" id="axiangqipy_8core__dataclass__mirrors_8EqualScoreMoves">
+<area shape="rect" href="classxiangqipy_1_1command__input_1_1RunKwargsInterpreter.html" title="Converts dictionary output by XiangqiGameCommandLine into a XiangqiGameCommand." alt="" coords="5,5,203,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_46.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8ExecutedMove" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8ExecutedMove" id="axiangqipy_8core__dataclass__mirrors_8ExecutedMove">
+<area shape="rect" href="classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html" title="Data container with all the info needed to instantiate a Game." alt="" coords="5,5,203,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_47.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8GamePiece" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8GamePiece" id="axiangqipy_8core__dataclass__mirrors_8GamePiece">
+<area shape="rect" href="classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine.html" title="Collects info from command line args out outputs as a dictionary." alt="" coords="5,5,209,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_48.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8MinimaxResultTypePy" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8MinimaxResultTypePy" id="axiangqipy_8core__dataclass__mirrors_8MinimaxResultTypePy">
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1BoardSpace.html" title="A Python BoardSpace." alt="" coords="5,5,191,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_49.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8Move" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8Move" id="axiangqipy_8core__dataclass__mirrors_8Move">
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1EqualScoreMoves.html" title="A Ptyhon EqualScoreMoves." alt="" coords="5,5,200,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_50.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8MoveCollection" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8MoveCollection" id="axiangqipy_8core__dataclass__mirrors_8MoveCollection">
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1ExecutedMove.html" title="A Python ExecutedMove." alt="" coords="5,5,191,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_51.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8PointsTypeDeterminer" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8PointsTypeDeterminer" id="axiangqipy_8core__dataclass__mirrors_8PointsTypeDeterminer">
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1GamePiece.html" title="A Python GamePiece." alt="" coords="5,5,191,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_52.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8SearchSummaries" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8SearchSummaries" id="axiangqipy_8core__dataclass__mirrors_8SearchSummaries">
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html" title="A Python Move." alt="" coords="5,5,191,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_53.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8SearchSummary" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8SearchSummary" id="axiangqipy_8core__dataclass__mirrors_8SearchSummary">
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MoveCollection.html" title="A Python MoveCollection." alt="" coords="5,5,191,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_54.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8TranspositionTableSize" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8TranspositionTableSize" id="axiangqipy_8core__dataclass__mirrors_8TranspositionTableSize">
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer.html" title="Determines the integer type used for Points int the C++ core, and provides a numpy integer type with ..." alt="" coords="5,5,229,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_55.png" border="0" usemap="#axiangqipy_8core__dataclass__mirrors_8TranspositionTableSizesAtEvents" alt=""/>
+<map name="axiangqipy_8core__dataclass__mirrors_8TranspositionTableSizesAtEvents" id="axiangqipy_8core__dataclass__mirrors_8TranspositionTableSizesAtEvents">
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummaries.html" title="A Python SearchSummaries." alt="" coords="5,5,204,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_56.png" border="0" usemap="#axiangqipy_8game_8Game" alt=""/>
+<map name="axiangqipy_8game_8Game" id="axiangqipy_8game_8Game">
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html" title="A Python SearchSummary." alt="" coords="5,5,192,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_57.png" border="0" usemap="#axiangqipy_8game__interfaces_8GameStatusReporter" alt=""/>
+<map name="axiangqipy_8game__interfaces_8GameStatusReporter" id="axiangqipy_8game__interfaces_8GameStatusReporter">
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize.html" title=" " alt="" coords="5,5,232,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_58.png" border="0" usemap="#axiangqipy_8game__output__generator_8GameOutputGenerator" alt=""/>
+<map name="axiangqipy_8game__output__generator_8GameOutputGenerator" id="axiangqipy_8game__output__generator_8GameOutputGenerator">
+<area shape="rect" href="classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents.html" title=" " alt="" coords="5,5,240,61"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_59.png" border="0" usemap="#axiangqipy_8game__summary_8GameSummary" alt=""/>
+<map name="axiangqipy_8game__summary_8GameSummary" id="axiangqipy_8game__summary_8GameSummary">
+<area shape="rect" href="classxiangqipy_1_1game_1_1Game.html" title="Runs a game between two Players." alt="" coords="5,5,173,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_60.png" border="0" usemap="#axiangqipy_8game__summary_8PlayerSummaries" alt=""/>
+<map name="axiangqipy_8game__summary_8PlayerSummaries" id="axiangqipy_8game__summary_8PlayerSummaries">
+<area shape="rect" href="classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html" title="Outputs GameSummary to .json file, and saves plots to a .png file." alt="" coords="5,5,248,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_61.png" border="0" usemap="#axiangqipy_8game__summary__plot__manager_8GameSummaryPlotManager" alt=""/>
+<map name="axiangqipy_8game__summary__plot__manager_8GameSummaryPlotManager" id="axiangqipy_8game__summary__plot__manager_8GameSummaryPlotManager">
+<area shape="rect" href="classxiangqipy_1_1game__summary_1_1PlayerSummaries.html" title="A data container for holding one PlayerSummary for each player in a Game." alt="" coords="5,5,243,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_62.png" border="0" usemap="#axiangqipy_8game__summary__plotters_8GameSummaryPlotter" alt=""/>
+<map name="axiangqipy_8game__summary__plotters_8GameSummaryPlotter" id="axiangqipy_8game__summary__plotters_8GameSummaryPlotter">
+<area shape="rect" href="classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html" title="Manages the layout and file output of a figure containing multiple plots of data from a GameSummary." alt="" coords="5,5,255,61"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_63.png" border="0" usemap="#axiangqipy_8piece__info__extractor_8PieceReader" alt=""/>
+<map name="axiangqipy_8piece__info__extractor_8PieceReader" id="axiangqipy_8piece__info__extractor_8PieceReader">
+<area shape="rect" href="classxiangqipy_1_1piece__info__extractor_1_1PieceReader.html" title="Converts primitive integer to piece type and color." alt="" coords="5,5,177,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_64.png" border="0" usemap="#axiangqipy_8piece__points_8BasePoints" alt=""/>
+<map name="axiangqipy_8piece__points_8BasePoints" id="axiangqipy_8piece__points_8BasePoints">
+<area shape="rect" href="classxiangqipy_1_1piece__points_1_1BasePoints.html" title=" " alt="" coords="5,5,212,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_65.png" border="0" usemap="#axiangqipy_8piece__points_8PositionPts" alt=""/>
+<map name="axiangqipy_8piece__points_8PositionPts" id="axiangqipy_8piece__points_8PositionPts">
+<area shape="rect" href="classxiangqipy_1_1piece__points_1_1PositionPts.html" title=" " alt="" coords="5,5,252,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_66.png" border="0" usemap="#axiangqipy_8player__builder_8RedAndBlackPlayersBuilder" alt=""/>
+<map name="axiangqipy_8player__builder_8RedAndBlackPlayersBuilder" id="axiangqipy_8player__builder_8RedAndBlackPlayersBuilder">
+<area shape="rect" href="classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html" title="Builds two Player objects for a GameBoard based on XiangqiGameCommand." alt="" coords="5,5,208,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_67.png" border="0" usemap="#axiangqipy_8player__builder_8SinglePlayerBuilder" alt=""/>
+<map name="axiangqipy_8player__builder_8SinglePlayerBuilder" id="axiangqipy_8player__builder_8SinglePlayerBuilder">
+<area shape="rect" href="classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html" title="Builds a Player object of specific color and GameBoard." alt="" coords="5,5,189,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_68.png" border="0" usemap="#axiangqipy_8player__summary_8PlayerSummary" alt=""/>
+<map name="axiangqipy_8player__summary_8PlayerSummary" id="axiangqipy_8player__summary_8PlayerSummary">
+<area shape="rect" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html" title="Data container for data from one xiangqipy.game_interfaces.Player in a Game." alt="" coords="5,5,205,47"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_69.png" border="0" usemap="#axiangqipy_8terminal__output_8InputRetrievalMessages" alt=""/>
+<map name="axiangqipy_8terminal__output_8InputRetrievalMessages" id="axiangqipy_8terminal__output_8InputRetrievalMessages">
+<area shape="rect" href="classxiangqipy_1_1terminal__output_1_1InputRetrievalMessages.html" title="Provides messages requesting input from a Player." alt="" coords="5,5,237,47"/>
+</map>
+</td></tr>
+</table>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Nov 4 2024 22:45:20 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
