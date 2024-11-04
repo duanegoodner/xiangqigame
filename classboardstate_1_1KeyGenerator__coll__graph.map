@@ -1,0 +1,4 @@
+<map id="boardstate::KeyGenerator" name="boardstate::KeyGenerator">
+<area shape="rect" id="node1" title="Used by boardstate::ZobristKeys to generate hash keys." alt="" coords="5,145,195,311"/>
+<area shape="rect" id="node2" title=" " alt="" coords="49,5,151,83"/>
+</map>

@@ -1,0 +1,17 @@
+digraph "xiangqipy.game_interfaces.Player"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{xiangqipy.game_interfaces.\lPlayer\n|- _color\l- _player_type\l- _evaluator_type\l|+ __init__()\l+ propose_move()\l+ illegal_move_notice\l_response()\l+ player_type()\l+ move_evaluator_type()\l+ max_search_depth()\l+ zkeys_seed()\l+ zobrist_key_size()\l+ search_summaries()\l+ summary()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Can take a turn in a Game."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{abc.ABC\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node3 [label="{xiangqipy.players.AIPlayer\n|- _move_evaluator\l|+ __init__()\l+ move_selection_summary()\l+ propose_move()\l+ illegal_move_notice\l_response()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1players_1_1AIPlayer.html",tooltip="Proposed moves selected using an implementation of core MoveEvaluator."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node4 [label="{xiangqipy.players.HumanPlayer\n|- _input_req\l|+ __init__()\l+ propose_move()\l+ illegal_move_notice\l_response()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1players_1_1HumanPlayer.html",tooltip="Uses terminal UI to propose moves."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node5 [label="{xiangqipy.players.Scripted\lPlayer\n|- _move_list\l- _move_index\l|+ __init__()\l+ propose_move()\l+ illegal_move_notice\l_response()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1players_1_1ScriptedPlayer.html",tooltip="Proposes moves sequentially from a list of algebraic notation moves."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node6 [label="{xiangqipy.players.Scripted\lPlayerWithRetries\n|- _move_list\l- _move_index\l- _input_req\l|+ __init__()\l+ propose_move()\l+ illegal_move_notice\l_response()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1players_1_1ScriptedPlayerWithRetries.html",tooltip="Has intentionally illegal move in list, followed by legal move (for tests)."];
+}

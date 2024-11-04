@@ -1,0 +1,22 @@
+digraph "moveselection::TranspositionTableSearchResult"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{moveselection::Transposition\lTableSearchResult\n||+ moves()\l+ IsConsistentWith()\l+ score_and_moves()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Container for storing a moveselection::TranspositionTableEntry retrieved by a call to boardstate::Sin..."];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +table_entry" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node2 [label="{moveselection::Transposition\lTableEntry\n||+ TranspositionTableEntry()\l+ TranspositionTableEntry()\l+ Score()\l+ moves()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structmoveselection_1_1TranspositionTableEntry.html",tooltip="Data structure that holds a moveselection::EqualScoreMoves and other search-related info obtained fro..."];
+  Node3 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +similar_moves" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node3 [label="{moveselection::EqualScore\lMoves\n||+ moves()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structmoveselection_1_1EqualScoreMoves.html",tooltip="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..."];
+  Node4 -> Node3 [color="grey25",fontsize="10",style="solid",label=" +similar_moves" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node4 [label="{gameboard::MoveCollection\n||+ MoveCollection()\l+ MoveCollection()\l+ MoveCollection()\l+ Size()\l+ IsEmpty()\l+ ContainsMove()\l+ ContainsAnyMoveNotIn()\l+ ContainsDestination()\l+ Append()\l+ Concat()\l+ Concat()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgameboard_1_1MoveCollection.html",tooltip="A container for multiple gameboard::Move objects."];
+  Node5 -> Node4 [color="grey25",fontsize="10",style="solid",label=" +moves" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node5 [label="{vector\< gameboard::\lMove \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node6 -> Node3 [color="grey25",fontsize="10",style="solid",label=" +shared_score" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node6 [label="{int\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node6 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +remaining_search_depth" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node7 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +result_type" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node7 [label="{MinimaxResultType\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node8 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +found\n+known_collision" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node8 [label="{bool\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

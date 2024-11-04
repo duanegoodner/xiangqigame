@@ -1,0 +1,11 @@
+<map id="include/board_data_structs.hpp" name="include/board_data_structs.hpp">
+<area shape="rect" id="node1" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="171,5,317,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,61,121"/>
+<area shape="rect" id="node3" title=" " alt="" coords="85,95,155,121"/>
+<area shape="rect" id="node4" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="179,95,309,121"/>
+<area shape="rect" id="node8" title=" " alt="" coords="333,95,405,121"/>
+<area shape="rect" id="node9" title=" " alt="" coords="430,95,493,121"/>
+<area shape="rect" id="node5" title=" " alt="" coords="127,169,190,196"/>
+<area shape="rect" id="node6" title=" " alt="" coords="215,169,273,196"/>
+<area shape="rect" id="node7" title=" " alt="" coords="298,169,422,196"/>
+</map>

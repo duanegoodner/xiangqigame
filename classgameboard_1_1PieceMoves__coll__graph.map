@@ -1,0 +1,3 @@
+<map id="gameboard::PieceMoves" name="gameboard::PieceMoves">
+<area shape="rect" id="node1" title="Implements piece type dependent move rules; used by gameboard::MoveCalculator." alt="" coords="5,5,215,229"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="gameboard::MoveCollection" name="gameboard::MoveCollection">
+<area shape="rect" id="node1" title="A container for multiple gameboard::Move objects." alt="" coords="5,160,211,384"/>
+<area shape="rect" id="node2" title=" " alt="" coords="28,5,188,97"/>
+</map>

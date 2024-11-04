@@ -1,0 +1,11 @@
+digraph "src/core/json_validation" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_aebb8dcc11953d78e620bbef0b9e2183 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="core" fontname="Helvetica", fontsize="10", URL="dir_aebb8dcc11953d78e620bbef0b9e2183.html"]
+  dir_f73c3987aef589f6f3b5b90a337abde5 [shape=box, label="json_validation", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_f73c3987aef589f6f3b5b90a337abde5.html"];
+  }
+  dir_d44c64559bbebec7f509842c48db8b23 [shape=box label="include" URL="dir_d44c64559bbebec7f509842c48db8b23.html"];
+  dir_f73c3987aef589f6f3b5b90a337abde5->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="1", labeldistance=1.5 headhref="dir_000008_000001.html"];
+}

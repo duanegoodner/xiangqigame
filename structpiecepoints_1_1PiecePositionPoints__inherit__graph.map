@@ -1,0 +1,5 @@
+<map id="piecepoints::PiecePositionPoints" name="piecepoints::PiecePositionPoints">
+<area shape="rect" id="node1" title="Holds a piecepoints::GamePointsArray_t of points values, and exposes a method for accessing element c..." alt="" coords="14,301,231,525"/>
+<area shape="rect" id="node2" href="$classPieceValueProvider.html" title=" " alt="" coords="11,160,234,252"/>
+<area shape="rect" id="node3" href="$classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific..." alt="" coords="5,5,240,97"/>
+</map>

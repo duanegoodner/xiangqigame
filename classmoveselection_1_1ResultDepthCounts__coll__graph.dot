@@ -1,0 +1,9 @@
+digraph "moveselection::ResultDepthCounts"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{moveselection::ResultDepth\lCounts\n||+ ResultDepthCounts()\l+ IncrementDataAt()\l+ data()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Container for storing and updating data in a moveselection::ResultDepthCountsData_t array of vectors."];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -data_" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node2 [label="{array\< std::vector\l\< int \>, MinimaxResultType\l::kMax+1 \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

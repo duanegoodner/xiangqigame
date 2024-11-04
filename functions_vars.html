@@ -1,0 +1,761 @@
+<!-- HTML header for doxygen 1.9.4-->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="generator" content="Doxygen 1.9.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiangiqgame: Class Members - Variables</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+  </script>
+  <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+  </script>
+</head>
+<body>
+  <!-- https://tholman.com/github-corners/ -->
+  <a href="https://github.com/duanegoodner/xiangqigame" class="github-corner" aria-label="View source on GitHub"><svg
+      width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
+    </svg></a>
+  <style>
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+    @keyframes octocat-wave {
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+      20%,
+      60% {
+        transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+        transform: rotate(10deg)
+      }
+    }
+    @media (max-width:500px) {
+      .github-corner:hover .octo-arm {
+        animation: none
+      }
+      .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+      }
+    }
+  </style>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectalign">
+                <div id="projectname">Xiangiqgame
+                </div>
+                <div id="projectbrief">AI engine for Xiangqi</div>
+              </td>
+            </tr>
+            <!--BEGIN FULL_SIDEBAR-->
+            <tr>
+              <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+            </tr>
+            <!--END FULL_SIDEBAR-->
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('functions_vars.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="contents">
+&#160;
+
+<h3><a id="index__5F"></a>- _ -</h3><ul>
+<li>_add_plot_column_titles
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a87e11af97b15e8af13082391c9de5be5">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+<li>_algebraic_move_input
+: <a class="el" href="classxiangqipy_1_1players_1_1InvalidEntryInMoveList.html#ad9d8d59160c117fee1691eb27c661cc9">xiangqipy.players.InvalidEntryInMoveList</a>
+</li>
+<li>_black_data
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a54451205b1b787d399d4872f2b92cc2d">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+<li>_board
+: <a class="el" href="classxiangqipy_1_1game_1_1Game.html#ac42247e88efa42e70e74cd6bfe1d9419">xiangqipy.game.Game</a>
+, <a class="el" href="classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#ae041f7a3517a849b8ef1a9324a5947d7">xiangqipy.player_builder.RedAndBlackPlayersBuilder</a>
+</li>
+<li>_board_map
+: <a class="el" href="classxiangqipy_1_1players_1_1IllegalMoveInMoveList.html#a161e0c283043b872ed5ed421fd425f3f">xiangqipy.players.IllegalMoveInMoveList</a>
+</li>
+<li>_color
+: <a class="el" href="classxiangqipy_1_1game__interfaces_1_1Player.html#aa9fccc09061f8d0271852829d4ba1df0">xiangqipy.game_interfaces.Player</a>
+, <a class="el" href="classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html#ab162eea464b8cce60852838468258099">xiangqipy.player_builder.SinglePlayerBuilder</a>
+</li>
+<li>_color_to_code
+: <a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a1cb57c9fbdadba2cac2e84af4311e22e">xiangqipy.terminal_output.TerminalStatusReporter</a>
+</li>
+<li>_command
+: <a class="el" href="classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#a74e9480dfea1a57479ee951d42587ec8">xiangqipy.player_builder.RedAndBlackPlayersBuilder</a>
+</li>
+<li>_default_key_size
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#a86678715757e7e3a6046d7216d45a044">xiangqipy.command_input.PlayerCommandInterpreter</a>
+</li>
+<li>_default_number_zobrist_states
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#a036dd408af12bb5b98a92a0e8b5f9ca6">xiangqipy.command_input.PlayerCommandInterpreter</a>
+</li>
+<li>_default_strength
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#a3c635631107f986707af519511a0f81f">xiangqipy.command_input.PlayerCommandInterpreter</a>
+</li>
+<li>_disp_format
+: <a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#aa2674c58a7cb815f3a729ab06f376bf7">xiangqipy.terminal_output.TerminalStatusReporter</a>
+</li>
+<li>_display_team_name
+: <a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a4644f8fb67c068d7692b2403eb73e5d3">xiangqipy.terminal_output.TerminalStatusReporter</a>
+</li>
+<li>_dtype_map
+: <a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer.html#a6e5d4cdba5899f53d49ede18253b97f8">xiangqipy.core_dataclass_mirrors.PointsTypeDeterminer</a>
+</li>
+<li>_evaluator_type
+: <a class="el" href="classxiangqipy_1_1game__interfaces_1_1Player.html#aff16e2778fae81015a637cdfc62e3e28">xiangqipy.game_interfaces.Player</a>
+</li>
+<li>_game_board
+: <a class="el" href="classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html#aa333b9d151857ad02acac4105f4a6ba5">xiangqipy.player_builder.SinglePlayerBuilder</a>
+</li>
+<li>_game_id
+: <a class="el" href="classxiangqipy_1_1game_1_1Game.html#a71ceac45062d1bc5ae133582c286b9fa">xiangqipy.game.Game</a>
+</li>
+<li>_game_state
+: <a class="el" href="classxiangqipy_1_1game_1_1Game.html#a9eae64d7de8077d97d4612ce2d091c95">xiangqipy.game.Game</a>
+</li>
+<li>_input_req
+: <a class="el" href="classxiangqipy_1_1players_1_1HumanPlayer.html#a8888252b985fe1af1d534b41f7f37bfb">xiangqipy.players.HumanPlayer</a>
+, <a class="el" href="classxiangqipy_1_1players_1_1ScriptedPlayerWithRetries.html#ac602e55df28250a6def4b8f63556e9b8">xiangqipy.players.ScriptedPlayerWithRetries</a>
+</li>
+<li>_minimax_key_size_dispatch
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#aa5300d8de27db23d693785e681e379ba">xiangqipy.command_input.PlayerCommandInterpreter</a>
+</li>
+<li>_move
+: <a class="el" href="classxiangqipy_1_1players_1_1IllegalAIMove.html#afdf6219749b0fb9c745344033a776b94">xiangqipy.players.IllegalAIMove</a>
+, <a class="el" href="classxiangqipy_1_1players_1_1IllegalMoveInMoveList.html#ae9f8e7e643e4649da364de7475988bde">xiangqipy.players.IllegalMoveInMoveList</a>
+</li>
+<li>_move_evaluator
+: <a class="el" href="classxiangqipy_1_1players_1_1AIPlayer.html#a82cf81d11510c93f7f0624afb1dffa25">xiangqipy.players.AIPlayer</a>
+</li>
+<li>_move_index
+: <a class="el" href="classxiangqipy_1_1players_1_1ScriptedPlayer.html#a9cd0d183e5d2d97ebaeb85bd628cf7a2">xiangqipy.players.ScriptedPlayer</a>
+, <a class="el" href="classxiangqipy_1_1players_1_1ScriptedPlayerWithRetries.html#a61e1b1929cf8f3bf2494fb7db4b89f5b">xiangqipy.players.ScriptedPlayerWithRetries</a>
+</li>
+<li>_move_list
+: <a class="el" href="classxiangqipy_1_1players_1_1ScriptedPlayer.html#ab5d1bfac7a9886f09ae853b00f679e99">xiangqipy.players.ScriptedPlayer</a>
+, <a class="el" href="classxiangqipy_1_1players_1_1ScriptedPlayerWithRetries.html#a40354fad9c8944701fd8c11c77af2848">xiangqipy.players.ScriptedPlayerWithRetries</a>
+</li>
+<li>_move_log
+: <a class="el" href="classxiangqipy_1_1game_1_1Game.html#a9305fd264a513bebd72ffb96cc3f186b">xiangqipy.game.Game</a>
+</li>
+<li>_msg
+: <a class="el" href="classxiangqipy_1_1players_1_1IllegalAIMove.html#aebaa08f6ca01e343a771a21030b3f8f9">xiangqipy.players.IllegalAIMove</a>
+, <a class="el" href="classxiangqipy_1_1players_1_1IllegalMoveInMoveList.html#a8c91dd47170b9f9763bb0371fefbd3e2">xiangqipy.players.IllegalMoveInMoveList</a>
+, <a class="el" href="classxiangqipy_1_1players_1_1InvalidEntryInMoveList.html#a362176f54984ffd966892ed302dc619f">xiangqipy.players.InvalidEntryInMoveList</a>
+</li>
+<li>_parser
+: <a class="el" href="classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine.html#a5034862c24b03fb8043ce2376d950f89">xiangqipy.command_input.XiangqiGameCommandLine</a>
+</li>
+<li>_piece_vals
+: <a class="el" href="classxiangqipy_1_1piece__points_1_1BasePoints.html#a1d81addd6758da69419d579667889c4c">xiangqipy.piece_points.BasePoints</a>
+</li>
+<li>_player_input_dispatch
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#a6e01552f08ccfc8a08d95ec2ae502cf9">xiangqipy.command_input.PlayerCommandInterpreter</a>
+</li>
+<li>_player_type
+: <a class="el" href="classxiangqipy_1_1game__interfaces_1_1Player.html#a76cbcfa99549ed5f87c3a5b54b3b9246">xiangqipy.game_interfaces.Player</a>
+</li>
+<li>_players
+: <a class="el" href="classxiangqipy_1_1game_1_1Game.html#abe09c7d2ba65ebe7be772a308400256e">xiangqipy.game.Game</a>
+</li>
+<li>_pts_arrays
+: <a class="el" href="classxiangqipy_1_1piece__points_1_1PositionPts.html#a1a1fb2e8d5aebfb2e5aa1ab371b98400">xiangqipy.piece_points.PositionPts</a>
+</li>
+<li>_red_data
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ab2d000aed5a970b3f0a9c7a3c2a1aaa9">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+<li>_status_reporter
+: <a class="el" href="classxiangqipy_1_1game_1_1Game.html#a498255f6da07b9e0ecb62204118c89cb">xiangqipy.game.Game</a>
+</li>
+<li>_type_to_code
+: <a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a8ccfb4f6488e78d5b4ff75e95d0430ae">xiangqipy.terminal_output.TerminalStatusReporter</a>
+</li>
+<li>_whose_turn
+: <a class="el" href="classxiangqipy_1_1game_1_1Game.html#abbd548b95ebab1c7381c655efd48ec8c">xiangqipy.game.Game</a>
+</li>
+</ul>
+
+
+<h3><a id="index_a"></a>- a -</h3><ul>
+<li>AI
+: <a class="el" href="classxiangqipy_1_1enums_1_1PlayerType.html#ac2e74ea023cfb19ecddea794540d2dd4">xiangqipy.enums.PlayerType</a>
+</li>
+<li>algo_input
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#af9d14b8098435e29d5038af9fb93179b">xiangqipy.command_input.PlayerCommandInterpreter</a>
+</li>
+<li>AlphaPrune
+: <a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a488af5163c4b27e5a75be89cdebbf943">xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy</a>
+</li>
+<li>axes
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+</ul>
+
+
+<h3><a id="index_b"></a>- b -</h3><ul>
+<li>BetaPrune
+: <a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#acc21af05edf3ff34a54acb79d5d02d1d">xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy</a>
+</li>
+<li>black_base_
+: <a class="el" href="classpiecepoints_1_1BPOPointsEKeys.html#a807c034e339819b46feedec0a7b20ec1">piecepoints::BPOPointsEKeys</a>
+, <a class="el" href="classpiecepoints_1_1BPOPointsSKeys.html#aa7559941cbd42f7514b9bdbd93dfccfe">piecepoints::BPOPointsSKeys</a>
+</li>
+<li>black_position_
+: <a class="el" href="classpiecepoints_1_1BPOPointsEKeys.html#aaadfcd90d2c403ae6879453fa3224b19">piecepoints::BPOPointsEKeys</a>
+, <a class="el" href="classpiecepoints_1_1BPOPointsSKeys.html#a2853ef5ac7565f8354521b5ca2ad33c8">piecepoints::BPOPointsSKeys</a>
+</li>
+<li>BLACK_WON
+: <a class="el" href="classxiangqipy_1_1enums_1_1GameState.html#acf57f4dfb3460b0e58a9b46004176bdd">xiangqipy.enums.GameState</a>
+</li>
+<li>board_map_
+: <a class="el" href="classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8">gameboard::GameBoard</a>
+</li>
+<li>board_state
+: <a class="el" href="structmoveselection_1_1CollisionInfo.html#afc786008d2ad78c311254f6d6181e43e">moveselection::CollisionInfo</a>
+</li>
+<li>board_state_
+: <a class="el" href="classboardstate_1_1ZobristCalculator.html#a0b0ddafb88d6d97fb69b97715279349c">boardstate::ZobristCalculator&lt; KeyType &gt;</a>
+</li>
+<li>bool
+: <a class="el" href="classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#a83c7fab9dde74471e19870f011f05bf0">xiangqipy.command_input.XiangqiGameCommand</a>
+</li>
+</ul>
+
+
+<h3><a id="index_c"></a>- c -</h3><ul>
+<li>calculator_
+: <a class="el" href="classboardstate_1_1SingleZobristTracker.html#a6f31555938fd3621bb53c9cd26d1b42d">boardstate::SingleZobristTracker&lt; KeyType &gt;</a>
+</li>
+<li>cmap
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#afd9e09a9cab4c56e65c16a15e704b8e0">xiangqipy.game_summary_plotters.SearchResultsByTypePlotter</a>
+</li>
+<li>color
+: <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a5270ede5cae30217a56a5869ff72248c">xiangqipy.player_summary.PlayerSummary</a>
+</li>
+<li>confirmation_calculator_
+: <a class="el" href="classboardstate_1_1DualZobristTracker.html#a3294a25e9cbe0368c309f1fee42b20fa">boardstate::DualZobristTracker&lt; KeyType &gt;</a>
+</li>
+<li>confirmation_state
+: <a class="el" href="structboardstate_1_1DualKeyTranspositionTableEntry.html#ac06ffbd582222cf0dd97b9509a549eb8">boardstate::DualKeyTranspositionTableEntry&lt; KeyType &gt;</a>
+</li>
+<li>custom_output_root
+: <a class="el" href="classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html#a908520ade300294b502fe1a33e75dd7c">xiangqipy.game_output_generator.GameOutputGenerator</a>
+</li>
+</ul>
+
+
+<h3><a id="index_d"></a>- d -</h3><ul>
+<li>data_
+: <a class="el" href="classboardstate_1_1DualKeyTranspositionTable.html#ac639955ee69815e4c2281afe19d57152">boardstate::DualKeyTranspositionTable&lt; KeyType &gt;</a>
+, <a class="el" href="classboardstate_1_1SingleKeyTranspositionTable.html#aa24c82f9205217c086b94730c1ecf5f3">boardstate::SingleKeyTranspositionTable&lt; KeyType &gt;</a>
+, <a class="el" href="classmoveselection_1_1ResultDepthCounts.html#a05a1d55c66c927066732315c46119b41">moveselection::ResultDepthCounts</a>
+</li>
+<li>destination_piece
+: <a class="el" href="structgameboard_1_1ExecutedMove.html#ae69400c9b93b659d6cfb904f6dc68c7c">gameboard::ExecutedMove</a>
+</li>
+<li>DRAW
+: <a class="el" href="classxiangqipy_1_1enums_1_1GameState.html#aefcb3e7672c7c81b618aab989b40eba2">xiangqipy.enums.GameState</a>
+</li>
+</ul>
+
+
+<h3><a id="index_e"></a>- e -</h3><ul>
+<li>end
+: <a class="el" href="structgameboard_1_1Move.html#a081f9df36eb132385a8082b19ee1e510">gameboard::Move</a>
+</li>
+<li>eval_score_plots
+: <a class="el" href="classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a4a91869bc3e760b9dcbc9aa5de0033e4">xiangqipy.game_summary_plot_manager.GameSummaryPlotManager</a>
+</li>
+<li>evaluating_player_
+: <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a05b0532a2e17f408c328c925d7e09172">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;</a>
+, <a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html#a69fdaf3024cf61c1b3a4472c1b52d35b">moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;</a>
+</li>
+<li>evaluating_player_line_colors
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ad7323f87ef8002340295812fb0683049">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+<li>EvaluatorLoses
+: <a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a77ecaa19ab698156fae98fac0987b244">xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy</a>
+</li>
+<li>EvaluatorType
+: <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#ac69742334fe40a0e0a7ff806c66cdf1c">xiangqipy.player_summary.PlayerSummary</a>
+</li>
+<li>EvaluatorWins
+: <a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a373f4b95a728197d4021708e224b5e54">xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy</a>
+</li>
+<li>extra_searches
+: <a class="el" href="structmoveselection_1_1SearchSummaries.html#a30ee77cf9e450e764688f0e4a3599c6a">moveselection::SearchSummaries</a>
+</li>
+</ul>
+
+
+<h3><a id="index_f"></a>- f -</h3><ul>
+<li>fig
+: <a class="el" href="classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a156c82da4f851f709413bb69807806de">xiangqipy.game_summary_plot_manager.GameSummaryPlotManager</a>
+</li>
+<li>file
+: <a class="el" href="structgameboard_1_1BoardDirection.html#ae0e60fad8181ed32066f978ae210c846">gameboard::BoardDirection</a>
+, <a class="el" href="structgameboard_1_1BoardSpace.html#ac9af213d1a28426de0e03ec7f98c1dc1">gameboard::BoardSpace</a>
+</li>
+<li>first_searches
+: <a class="el" href="structmoveselection_1_1SearchSummaries.html#aa236883fc6b5b34ba98fbab1e12b7871">moveselection::SearchSummaries</a>
+</li>
+<li>found
+: <a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html#aed1146a8d734cf83d13e895b33733369">moveselection::TranspositionTableSearchResult</a>
+</li>
+<li>FullyEvaluatedNode
+: <a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a9e7ff4d3506daff4c5b0a77cb76e1f11">xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy</a>
+</li>
+</ul>
+
+
+<h3><a id="index_g"></a>- g -</h3><ul>
+<li>game_board_
+: <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4544225bd659713f8463c0415b512aed">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;</a>
+, <a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html#adf9a8b780202d5d6b6052ff912d8fb39">moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;</a>
+</li>
+<li>game_position_points_
+: <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a279c7caee2b1c06b293f2fe4f4354daf">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;</a>
+</li>
+<li>game_summary
+: <a class="el" href="classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html#aab177b2d87fbda1de7f5dda461dcb3ac">xiangqipy.game_output_generator.GameOutputGenerator</a>
+, <a class="el" href="classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a23e552d0b9dc379d3d90236acd45c6e7">xiangqipy.game_summary_plot_manager.GameSummaryPlotManager</a>
+</li>
+<li>gs
+: <a class="el" href="classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a87d4c2f950b8b47a7afcbea87616df46">xiangqipy.game_summary_plot_manager.GameSummaryPlotManager</a>
+</li>
+</ul>
+
+
+<h3><a id="index_h"></a>- h -</h3><ul>
+<li>hash_calculator_
+: <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab14a434d105381e3be6e23cff8ac37c7">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;</a>
+</li>
+<li>HUMAN
+: <a class="el" href="classxiangqipy_1_1enums_1_1PlayerType.html#a1f74c7cc9eacfec14dbe064ff5c72e85">xiangqipy.enums.PlayerType</a>
+</li>
+</ul>
+
+
+<h3><a id="index_i"></a>- i -</h3><ul>
+<li>int
+: <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#af849646fefc510837a80dd516a29fd49">xiangqipy.player_summary.PlayerSummary</a>
+</li>
+</ul>
+
+
+<h3><a id="index_j"></a>- j -</h3><ul>
+<li>json_utility_
+: <a class="el" href="classpiecepoints_1_1BPOPointsSKeys.html#a890259873854bda0b463098bc2acb8cf">piecepoints::BPOPointsSKeys</a>
+</li>
+</ul>
+
+
+<h3><a id="index_k"></a>- k -</h3><ul>
+<li>key_size_input
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#a2a0387ad112cba1e2f3629d55e4d8caa">xiangqipy.command_input.PlayerCommandInterpreter</a>
+</li>
+<li>known_collision
+: <a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html#a7979bb2f223e757a0cde7bae58b0db13">moveselection::TranspositionTableSearchResult</a>
+</li>
+</ul>
+
+
+<h3><a id="index_l"></a>- l -</h3><ul>
+<li>log_scale_rows
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#afae591c50d61a02094352c25f04b7082">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+</ul>
+
+
+<h3><a id="index_m"></a>- m -</h3><ul>
+<li>max_file
+: <a class="el" href="structgameboard_1_1CastleEdges.html#adb5ff5a78c04dc2cdf47956414938bd7">gameboard::CastleEdges</a>
+</li>
+<li>max_rank
+: <a class="el" href="structgameboard_1_1CastleEdges.html#a43ba98fb500c783a06dc57bc9cddaae5">gameboard::CastleEdges</a>
+</li>
+<li>min_file
+: <a class="el" href="structgameboard_1_1CastleEdges.html#a92c7e4fa84ed412924ae5ddd690a165c">gameboard::CastleEdges</a>
+</li>
+<li>min_rank
+: <a class="el" href="structgameboard_1_1CastleEdges.html#a9cd900bff0928e50446d9e8b19282a87">gameboard::CastleEdges</a>
+</li>
+<li>MINIMAX
+: <a class="el" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#ad26f49c4df454130e88c144cf24cf102">xiangqipy.enums.EvaluatorType</a>
+</li>
+<li>move
+: <a class="el" href="structmoveselection_1_1ScoredMove.html#a192222a9c87e36d295cb6056f30c0a4a">moveselection::ScoredMove</a>
+</li>
+<li>move_calculator_
+: <a class="el" href="classgameboard_1_1GameBoard.html#a1e2d70154b962c74321f298f1908a69a">gameboard::GameBoard</a>
+</li>
+<li>move_callbacks_
+: <a class="el" href="classgameboard_1_1GameBoard.html#ad30b7544b03ff3102c6eaae310159c74">gameboard::GameBoard</a>
+</li>
+<li>move_log_
+: <a class="el" href="classgameboard_1_1GameBoard.html#a60fe6e8e76ed864050109524b4c136d5">gameboard::GameBoard</a>
+</li>
+<li>moves
+: <a class="el" href="structgameboard_1_1MoveCollection.html#a93e7b00791f7e132e29bd3827f37c6e0">gameboard::MoveCollection</a>
+</li>
+<li>moves_since_last_capture
+: <a class="el" href="structgameboard_1_1ExecutedMove.html#acda0ac0e4e99d8e136dc6a3796a43774">gameboard::ExecutedMove</a>
+</li>
+<li>moves_since_last_capture_
+: <a class="el" href="classgameboard_1_1GameBoard.html#aa61e3705bfc5101736893d4835d84074">gameboard::GameBoard</a>
+</li>
+<li>moving_piece
+: <a class="el" href="structgameboard_1_1ExecutedMove.html#a44ceb980865ffab0c3bdef27feb1ef61">gameboard::ExecutedMove</a>
+</li>
+</ul>
+
+
+<h3><a id="index_n"></a>- n -</h3><ul>
+<li>non_evaluating_player_line_colors
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5b3080ca95c9e02b81354627cab26988">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+<li>None
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerInput.html#af0ebeb3f2eb136c64fc5ad3c66bc8df8">xiangqipy.command_input.PlayerInput</a>
+</li>
+<li>NULL
+: <a class="el" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#acfab9e29e5d22a094cedca319c9d6d63">xiangqipy.enums.EvaluatorType</a>
+</li>
+<li>num_collisions_
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#a04707896ea90fdcbd0300c9f511ace3d">moveselection::SearchSummary</a>
+</li>
+<li>num_entries
+: <a class="el" href="structmoveselection_1_1TranspositionTableSize.html#acedd284d7d46e5fdfda767c712bae8e7">moveselection::TranspositionTableSize</a>
+</li>
+<li>num_move_selections_
+: <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a67601e9ebf21785e6bb13940029e4cb2">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;</a>
+</li>
+<li>num_nodes_
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#a9510b1a89562e863acc5ec60e9d0ec47">moveselection::SearchSummary</a>
+</li>
+<li>num_players_with_data
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa64814458211c850f0f40234c99cc360">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+<li>num_states
+: <a class="el" href="structmoveselection_1_1TranspositionTableSize.html#ad7a52fcaf91cc877a376d55c52d1a74f">moveselection::TranspositionTableSize</a>
+</li>
+<li>number_zobrist_states
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#afd6900a73c8f46a8f2c58c8f9b636bc9">xiangqipy.command_input.PlayerCommandInterpreter</a>
+</li>
+</ul>
+
+
+<h3><a id="index_o"></a>- o -</h3><ul>
+<li>output_dir
+: <a class="el" href="classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html#af496642caf6dfe83685f37b2badf439b">xiangqipy.game_output_generator.GameOutputGenerator</a>
+</li>
+<li>output_dir_suffix
+: <a class="el" href="classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html#a182623510864d4613e379a456e9e52f4">xiangqipy.game_output_generator.GameOutputGenerator</a>
+</li>
+</ul>
+
+
+<h3><a id="index_p"></a>- p -</h3><ul>
+<li>piece_color
+: <a class="el" href="structgameboard_1_1GamePiece.html#aafe4abdcc60240f0c2e8e31c244b95dc">gameboard::GamePiece</a>
+</li>
+<li>piece_dispatch_array_
+: <a class="el" href="classgameboard_1_1MoveCalculator.html#a5b058c38620297ec35b06871bc3a4991">gameboard::MoveCalculator</a>
+</li>
+<li>piece_moves_
+: <a class="el" href="classgameboard_1_1MoveCalculator.html#a422c25179dd9af640644bf170218fc80">gameboard::MoveCalculator</a>
+</li>
+<li>piece_type
+: <a class="el" href="structgameboard_1_1GamePiece.html#ab499589d3dbcc9f8acc4969fac6f25e3">gameboard::GamePiece</a>
+</li>
+<li>player_input
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#aeda7a341a67ddd9916e151db115897a4">xiangqipy.command_input.PlayerCommandInterpreter</a>
+, <a class="el" href="classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html#ab7770429a3c656cb5c9983990173c503">xiangqipy.player_builder.SinglePlayerBuilder</a>
+</li>
+<li>player_text_labels
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa58822fc95728c9985558400b1705540">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+<li>points_array
+: <a class="el" href="structpiecepoints_1_1PiecePositionPoints.html#a1562468626d164564d9631c657266b54">piecepoints::PiecePositionPoints</a>
+</li>
+<li>primary_calculator_
+: <a class="el" href="classboardstate_1_1DualZobristTracker.html#af9dc3d638bdb0261e87e421c5fd3a134">boardstate::DualZobristTracker&lt; KeyType &gt;</a>
+</li>
+<li>prng_
+: <a class="el" href="classboardstate_1_1PseudoRandomKeyGenerator.html#ae30a2b91d59161a046c03f09ef30f75c">boardstate::PseudoRandomKeyGenerator&lt; IntType &gt;</a>
+</li>
+</ul>
+
+
+<h3><a id="index_r"></a>- r -</h3><ul>
+<li>RANDOM
+: <a class="el" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#a8f40e079b5c2cd19404f7b55508a0b7a">xiangqipy.enums.EvaluatorType</a>
+</li>
+<li>rank
+: <a class="el" href="structgameboard_1_1BoardDirection.html#a23e0e5655eeeeaec36124df949acf128">gameboard::BoardDirection</a>
+, <a class="el" href="structgameboard_1_1BoardSpace.html#a08d5bd02bd1633a17913036f95a81826">gameboard::BoardSpace</a>
+</li>
+<li>rd_
+: <a class="el" href="classboardstate_1_1RandomKeyGenerator.html#aaf5ef04c51c534b2b487b6f837bd5eb7">boardstate::RandomKeyGenerator&lt; IntType &gt;</a>
+</li>
+<li>red_base_offsets_
+: <a class="el" href="classpiecepoints_1_1BPOPointsEKeys.html#a2c9162482904800688603f109ae56fde">piecepoints::BPOPointsEKeys</a>
+, <a class="el" href="classpiecepoints_1_1BPOPointsSKeys.html#abc4cd8479032e35f3765a5198b36af50">piecepoints::BPOPointsSKeys</a>
+</li>
+<li>red_position_offsets_
+: <a class="el" href="classpiecepoints_1_1BPOPointsEKeys.html#a34ca12928e97508f93656386fbf88688">piecepoints::BPOPointsEKeys</a>
+, <a class="el" href="classpiecepoints_1_1BPOPointsSKeys.html#aad6f97f1c6eb4af46850ec3ff2893973">piecepoints::BPOPointsSKeys</a>
+</li>
+<li>RED_WON
+: <a class="el" href="classxiangqipy_1_1enums_1_1GameState.html#ac8187cfaee55e4910fd5581e701bd338">xiangqipy.enums.GameState</a>
+</li>
+<li>remaining_search_depth
+: <a class="el" href="structmoveselection_1_1TranspositionTableEntry.html#a2695cfdf5b009082a224a127593132cc">moveselection::TranspositionTableEntry</a>
+</li>
+<li>result_depth_counts_
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#a60aa9ee0b3890461aa0af4d7feb3edb4">moveselection::SearchSummary</a>
+</li>
+<li>result_type
+: <a class="el" href="structmoveselection_1_1TranspositionTableEntry.html#a5dd4140200bd820f43bdceb97f9561f1">moveselection::TranspositionTableEntry</a>
+</li>
+<li>returned_illegal_move_
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#aec98baa34c66eb9c85b52b70c5d47ccb">moveselection::SearchSummary</a>
+</li>
+</ul>
+
+
+<h3><a id="index_s"></a>- s -</h3><ul>
+<li>save_fig
+: <a class="el" href="classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a776897c94dc3084a1728d6ab9a9d0a00">xiangqipy.game_summary_plot_manager.GameSummaryPlotManager</a>
+</li>
+<li>score
+: <a class="el" href="structmoveselection_1_1ScoredMove.html#a9af6b23e467c87847b20aad2be9e2a71">moveselection::ScoredMove</a>
+</li>
+<li>SCRIPTED
+: <a class="el" href="classxiangqipy_1_1enums_1_1PlayerType.html#ae4d8939ba3fcf16f69dd4b2c110f90ad">xiangqipy.enums.PlayerType</a>
+</li>
+<li>search_stats_time_cols
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#ad1e65e6d6f1274a293fa38e3a105ee22">xiangqipy.game_summary_plotters.SearchTimePlotter</a>
+</li>
+<li>search_summaries_
+: <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ae691602ed173beb3246329f714611980">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;</a>
+</li>
+<li>search_time_plots
+: <a class="el" href="classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a892b22e7e8a70c0d28c180302fa50dd0">xiangqipy.game_summary_plot_manager.GameSummaryPlotManager</a>
+</li>
+<li>search_type_plots
+: <a class="el" href="classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a84572293d3a12443ccf8eeb7725a0a86">xiangqipy.game_summary_plot_manager.GameSummaryPlotManager</a>
+</li>
+<li>SearchSummaries
+: <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a1a643a16d0cbd8bb22f98adc4409f550">xiangqipy.player_summary.PlayerSummary</a>
+</li>
+<li>seed_
+: <a class="el" href="classboardstate_1_1PseudoRandomKeyGenerator.html#ac9fa56f6fca5c0d55206346aca274a9f">boardstate::PseudoRandomKeyGenerator&lt; IntType &gt;</a>
+, <a class="el" href="classboardstate_1_1ZobristCalculator.html#adba5e516537c2de00fe9a2cf4bbb690e">boardstate::ZobristCalculator&lt; KeyType &gt;</a>
+</li>
+<li>selected_move_
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#aa5e305f84de44cd656cefd2245be4807">moveselection::SearchSummary</a>
+</li>
+<li>shared_score
+: <a class="el" href="structmoveselection_1_1EqualScoreMoves.html#a957c26f9758003cb31895a512c0e5b3e">moveselection::EqualScoreMoves</a>
+</li>
+<li>similar_moves
+: <a class="el" href="structmoveselection_1_1EqualScoreMoves.html#a52d81021a5e09406edd4f947173c91c2">moveselection::EqualScoreMoves</a>
+, <a class="el" href="structmoveselection_1_1TranspositionTableEntry.html#a9a989081e2d22b3f72f8152c9cdeedd3">moveselection::TranspositionTableEntry</a>
+</li>
+<li>similar_moves_
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#a946878c7edd6bfc4d226b4d6f4ecfa68">moveselection::SearchSummary</a>
+</li>
+<li>single_key_entry
+: <a class="el" href="structboardstate_1_1DualKeyTranspositionTableEntry.html#a179ccdccea9555315b0e462aaad3705e">boardstate::DualKeyTranspositionTableEntry&lt; KeyType &gt;</a>
+</li>
+<li>spaces
+: <a class="el" href="structgameboard_1_1ExecutedMove.html#ad743903083a23162f8d8f2fda800b6e7">gameboard::ExecutedMove</a>
+</li>
+<li>StandardLeaf
+: <a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#ac726d4b0e2023373d08a6d276d28b940">xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy</a>
+</li>
+<li>start
+: <a class="el" href="structgameboard_1_1Move.html#a6697f432e43a5607333c22fc13e46f95">gameboard::Move</a>
+</li>
+<li>starting_search_depth_
+: <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4a0edae47be034565cd665ab9c4e1647">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;</a>
+</li>
+<li>str
+: <a class="el" href="classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#a8ba0316c391209da68d8d4c35b16cbac">xiangqipy.command_input.XiangqiGameCommand</a>
+, <a class="el" href="classxiangqipy_1_1terminal__output_1_1InputRetrievalMessages.html#aaa80857681636f453dbe24a869d73176">xiangqipy.terminal_output.InputRetrievalMessages</a>
+</li>
+<li>strength_input
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#ab0aeb8ebdf7d30434bc37a9628a3822e">xiangqipy.command_input.PlayerCommandInterpreter</a>
+</li>
+</ul>
+
+
+<h3><a id="index_t"></a>- t -</h3><ul>
+<li>table_entry
+: <a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html#a1bd94efe12b6825330ae31e655142760">moveselection::TranspositionTableSearchResult</a>
+</li>
+<li>time_
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#aca46c5117d23ceb67f8dbdc722649b71">moveselection::SearchSummary</a>
+</li>
+<li>tr_table_size
+: <a class="el" href="structmoveselection_1_1CollisionInfo.html#ac399a532a5a5af2e3dbf2170d813d5d4">moveselection::CollisionInfo</a>
+</li>
+<li>tr_table_size_final_
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#a5fdbaabcd7877a018433a3c49f09a7d9">moveselection::SearchSummary</a>
+</li>
+<li>tr_table_size_initial_
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#ad7ae71ba111a046dc85e2b852471721e">moveselection::SearchSummary</a>
+</li>
+<li>transposition_table_
+: <a class="el" href="classboardstate_1_1DualZobristTracker.html#ad7745a5d9fd0aa873f8e0442a20db319">boardstate::DualZobristTracker&lt; KeyType &gt;</a>
+, <a class="el" href="classboardstate_1_1SingleZobristTracker.html#a48bce08dfa9fbe58e7c1bea3a9baf4a7">boardstate::SingleZobristTracker&lt; KeyType &gt;</a>
+</li>
+<li>transposition_table_hits_
+: <a class="el" href="classmoveselection_1_1SearchSummary.html#ac970df793d70ed93038df1a18cab6e5a">moveselection::SearchSummary</a>
+</li>
+<li>TrTableHit
+: <a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a4cc266cf41244dc914caa8e7d6897e6c">xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy</a>
+</li>
+<li>turn_key_
+: <a class="el" href="classboardstate_1_1ZobristCalculator.html#a335edff19b9a3e788b0b0cd5b413de01">boardstate::ZobristCalculator&lt; KeyType &gt;</a>
+</li>
+</ul>
+
+
+<h3><a id="index_u"></a>- u -</h3><ul>
+<li>UNFINISHED
+: <a class="el" href="classxiangqipy_1_1enums_1_1GameState.html#a4469a8e809e14a36de6333213e297849">xiangqipy.enums.GameState</a>
+</li>
+<li>Unknown
+: <a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a51a319aab5c14befb687e505b7169557">xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy</a>
+</li>
+</ul>
+
+
+<h3><a id="index_y"></a>- y -</h3><ul>
+<li>y_labels
+: <a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5e99cbc725009b18e5b1475bd3f41b11">xiangqipy.game_summary_plotters.GameSummaryPlotter</a>
+</li>
+</ul>
+
+
+<h3><a id="index_z"></a>- z -</h3><ul>
+<li>zarray_
+: <a class="el" href="classboardstate_1_1ZobristCalculator.html#a56a74b8feb3029ba48b04a681745e8fd">boardstate::ZobristCalculator&lt; KeyType &gt;</a>
+</li>
+<li>zkeys_seed
+: <a class="el" href="classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#ae121eeed4271c5b98d82d7e644b206d9">xiangqipy.command_input.PlayerCommandInterpreter</a>
+</li>
+<li>zkeys_seed_
+: <a class="el" href="classboardstate_1_1DualZobristTracker.html#a853ccddc9e1dd21dd088d65eaf966c60">boardstate::DualZobristTracker&lt; KeyType &gt;</a>
+</li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Nov 4 2024 21:28:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

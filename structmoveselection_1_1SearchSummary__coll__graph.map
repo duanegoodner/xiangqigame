@@ -1,0 +1,12 @@
+<map id="moveselection::SearchSummary" name="moveselection::SearchSummary">
+<area shape="rect" id="node1" title="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator...." alt="" coords="407,631,640,825"/>
+<area shape="rect" id="node2" title=" " alt="" coords="641,13,680,90"/>
+<area shape="rect" id="node6" href="$structmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="424,454,623,546"/>
+<area shape="rect" id="node10" href="$structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa..." alt="" coords="698,197,879,347"/>
+<area shape="rect" id="node3" title=" " alt="" coords="237,454,399,546"/>
+<area shape="rect" id="node4" href="$structmoveselection_1_1ResultDepthCounts.html" title="Container for storing and updating data in a moveselection::ResultDepthCountsData_t array of vectors." alt="" coords="5,447,212,553"/>
+<area shape="rect" id="node5" title=" " alt="" coords="6,219,211,325"/>
+<area shape="rect" id="node7" href="$structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects." alt="" coords="269,175,474,369"/>
+<area shape="rect" id="node8" title=" " alt="" coords="291,5,451,97"/>
+<area shape="rect" id="node9" href="$structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end)." alt="" coords="707,461,847,539"/>
+</map>

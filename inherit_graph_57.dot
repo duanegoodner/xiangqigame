@@ -1,0 +1,22 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="abc.ABC",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="xiangqipy.game_interfaces.\lGameStatusReporter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html",tooltip="Reports details of a Game."];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="xiangqipy.terminal\l_output.TerminalStatusReporter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html",tooltip="Outputs a text-base game board with GamePiece locations in algebraic notation."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="xiangqipy.game_interfaces.\lPlayer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1game__interfaces_1_1Player.html",tooltip="Can take a turn in a Game."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="xiangqipy.players.AIPlayer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1players_1_1AIPlayer.html",tooltip="Proposed moves selected using an implementation of core MoveEvaluator."];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="xiangqipy.players.HumanPlayer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1players_1_1HumanPlayer.html",tooltip="Uses terminal UI to propose moves."];
+  Node4 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="xiangqipy.players.Scripted\lPlayer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1players_1_1ScriptedPlayer.html",tooltip="Proposes moves sequentially from a list of algebraic notation moves."];
+  Node4 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="xiangqipy.players.Scripted\lPlayerWithRetries",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1players_1_1ScriptedPlayerWithRetries.html",tooltip="Has intentionally illegal move in list, followed by legal move (for tests)."];
+}

@@ -1,0 +1,312 @@
+<!-- HTML header for doxygen 1.9.4-->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="generator" content="Doxygen 1.9.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiangiqgame: Running</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+  </script>
+  <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+  </script>
+</head>
+<body>
+  <!-- https://tholman.com/github-corners/ -->
+  <a href="https://github.com/duanegoodner/xiangqigame" class="github-corner" aria-label="View source on GitHub"><svg
+      width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
+    </svg></a>
+  <style>
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+    @keyframes octocat-wave {
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+      20%,
+      60% {
+        transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+        transform: rotate(10deg)
+      }
+    }
+    @media (max-width:500px) {
+      .github-corner:hover .octo-arm {
+        animation: none
+      }
+      .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+      }
+    }
+  </style>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectalign">
+                <div id="projectname">Xiangiqgame
+                </div>
+                <div id="projectbrief">AI engine for Xiangqi</div>
+              </td>
+            </tr>
+            <!--BEGIN FULL_SIDEBAR-->
+            <tr>
+              <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+            </tr>
+            <!--END FULL_SIDEBAR-->
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('md_docs_03_running.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">Running </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p>Once <code>xiangqigame</code> has been installed into a Python environment, games can be run using the command <code>play_xiangqi</code>.</p>
+<h1><a class="anchor" id="autotoc_md17"></a>
+The play_xiangqi Command</h1>
+<p>Information on all available <code>play_xiangqi</code> options can be obtained by running <code>play_xiangqi --help</code>.</p>
+<div class="fragment"><div class="line">usage: play_xiangqi [-h] [-rt {person,ai}] [-ra {random,minimax}]</div>
+<div class="line">                    [-rst {1,2,3,4,5,6,7,8,9}] [-rk {64,128}] [-bt {person,ai}]</div>
+<div class="line">                    [-ba {random,minimax}] [-bst {1,2,3,4,5,6,7,8,9}]</div>
+<div class="line">                    [-bk {64,128}] [-s] [-d OUTPUT_DIR_SUFFIX]</div>
+<div class="line"> </div>
+<div class="line">A Xiangqi (a.k.a. Chinese Chess) game that can be played as Human vs. Human, AI</div>
+<div class="line">vs. AI, or Human vs. AI</div>
+<div class="line"> </div>
+<div class="line">options:</div>
+<div class="line">  -h, --help            show this help message and exit</div>
+<div class="line">  -rt {person,ai}, --red_player_type {person,ai}</div>
+<div class="line">                        Can be &#39;person&#39;, or &#39;ai&#39;. Default is &#39;ai&#39;.</div>
+<div class="line">  -ra {random,minimax}, --red_algo {random,minimax}</div>
+<div class="line">                        Search algorithm to use for red player (if player type is</div>
+<div class="line">                        &#39;ai&#39;). Can be &#39;random&#39; or &#39;minimax&#39;. Default is minimax.</div>
+<div class="line">  -rst {1,2,3,4,5,6,7,8,9}, --red_strength {1,2,3,4,5,6,7,8,9}</div>
+<div class="line">                        Search depth to user for red AI player with minimax</div>
+<div class="line">                        algoDefault is 4.</div>
+<div class="line">  -rk {64,128}, --red_key_size {64,128}</div>
+<div class="line">                        Key size (in bits) used for red AI player Zobrist hashing</div>
+<div class="line">  -bt {person,ai}, --black_player_type {person,ai}</div>
+<div class="line">                        Can be &#39;person&#39;, or &#39;ai&#39;. Default is &#39;ai&#39;.</div>
+<div class="line">  -ba {random,minimax}, --black_algo {random,minimax}</div>
+<div class="line">                        Search depth to user for black AI player with minimax</div>
+<div class="line">                        algoDefault is 4.</div>
+<div class="line">  -bst {1,2,3,4,5,6,7,8,9}, --black_strength {1,2,3,4,5,6,7,8,9}</div>
+<div class="line">                        Search depth to user for red player when red is &#39;ai&#39; with</div>
+<div class="line">                        &#39;minimax.&#39; Default is 4.</div>
+<div class="line">  -bk {64,128}, --black_key_size {64,128}</div>
+<div class="line">                        Key size (in bits) used for black AI player Zobrist</div>
+<div class="line">                        hashing</div>
+<div class="line">  -s, --save_summary    Save GameSummary as .json</div>
+<div class="line">  -d OUTPUT_DIR_SUFFIX, --output_dir_suffix OUTPUT_DIR_SUFFIX</div>
+<div class="line">                        String to append to end of output directory name. Output</div>
+<div class="line">                        dir relative to cwd will be</div>
+<div class="line">                        ./data/game_summaries/&lt;timestamp&gt;&lt;optional-suffix&gt;</div>
+<div class="line"> </div>
+<div class="line">Note: If all default parameters are used, the red player will be an AI using a</div>
+<div class="line">Minimax algorithm with search depth = 1, and the black player will be an AI using</div>
+<div class="line">Minimax with search depth = 2.</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md18"></a>
+Example Games</h1>
+<p>This section shows terminal recordings and Minimax data plots for games run with a variety of <code>play_xiangqi</code> command options.</p>
+<h2><a class="anchor" id="autotoc_md19"></a>
+Game #1:</h2>
+<h3><a class="anchor" id="autotoc_md20"></a>
+Settings</h3>
+<ul>
+<li>Red: Search depth = 5, Zobrist key size = 64 bits</li>
+</ul>
+<div class="fragment"><div class="line">play_xiangqi -rst 5 -bst 5 -s -d game_01</div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md21"></a>
+Terminal Recording</h3>
+<p><img src="game_01.gif" alt="" class="inline" title="game_01_demo"/></p>
+<h3><a class="anchor" id="autotoc_md22"></a>
+Minimax Data</h3>
+<p><img src="20240928184815779820.png" alt="" class="inline" title="game_01_data"/></p>
+<h3><a class="anchor" id="autotoc_md23"></a>
+Synopsis</h3>
+<p>Red establishes an advantage early, and maintains it throughout the game. During searches for moves ~ 40 - 60, both players detect ~100 leaf nodes with Red losing, but Red is able to prevent actual game moves from going down these paths. Around move 65, Red discovers a transposition table hit in the root node, resulting very low search time. Red's search time per node trends downward throughout the game as its ratio of transposition table hits to standard leaves increases. Search time per node for both players drops sharply in the final ~10 moves, likely due to discovery of shallow end-of-game leaves.</p>
+<h2><a class="anchor" id="autotoc_md24"></a>
+Red=SD5, Black=SD3</h2>
+<div class="fragment"><div class="line">play_xiangqi -rst 5 -bst 3 -s -d game_02</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md25"></a>
+Terminal Recording</h3>
+<p><img src="game_02.gif" alt="" class="inline" title="game_02_demo"/></p>
+<h3><a class="anchor" id="autotoc_md26"></a>
+Minimax Data</h3>
+<p><img src="20240928185023180736.png" alt="" class="inline" title="game_02_data"/></p>
+<h3><a class="anchor" id="autotoc_md27"></a>
+Synopsis</h3>
+<p>With the the deeper search depth, Red explores ~100x more nodes per move than Black throughout most of the game. Red's search time per node drops significantly from moves 40 - 60, largely due an increase in the ratio of transposition table hits to standard leaves. Black's search time per node also decreases in the same move range, benefitting from significant alpha pruning. Red realizes that its victory is guaranteed around move 85. Black does not realize that its loss is inevitable until move ~102.</p>
+<h2><a class="anchor" id="autotoc_md28"></a>
+Red=SD3, Black=SD5</h2>
+<div class="fragment"><div class="line">play_xiangqi -rst 3 -bst 5 -s -d game_03</div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md29"></a>
+Terminal Recording</h3>
+<p><img src="game_03.gif" alt="" class="inline" title="game_03_demo"/></p>
+<h3><a class="anchor" id="autotoc_md30"></a>
+Minimax Data</h3>
+<p><img src="20240929074421157031.png" alt="" class="inline" title="game_03_data"/></p>
+<h3><a class="anchor" id="autotoc_md31"></a>
+Synopsis</h3>
+<p>Now, with Black using the deeper search depth, it searches ~100x more nodes per move than red. Both players exhibit a downward trend in search time per node throughout the game as pruning and transposition table hits become more significant (relative to standard leaves and fully evaluated nodes). Black detects that its victory is nearly certain around move 63.</p>
+<h2><a class="anchor" id="autotoc_md32"></a>
+Red=Random, Black=SD5</h2>
+<div class="fragment"><div class="line">play_xiangqi -ra random -bst 5 -s -d game_04</div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md33"></a>
+Terminal Recording</h3>
+<p><img src="game_04.gif" alt="" class="inline" title="game_04_demo"/></p>
+<h3><a class="anchor" id="autotoc_md34"></a>
+Minimax Data</h3>
+<p><img src="20240928185407356119.png" alt="" class="inline" title="game_04_data"/></p>
+<h3><a class="anchor" id="autotoc_md35"></a>
+Synopsis</h3>
+<p>In this game Red randomly selects one of its available moves on each turn, so Minimax data are only generated for Black. Black detects a path to victory at move 40, although the game continues for another 30 moves after this point. This larger than usual number of moves between victory detection and end-of-game is likely due to Red's random decisions which do not match the assumptions of Black's Minimax algorithm. Black's number of nodes explored per move drops dramatically at the same time that it realizes victory is virtually assured due to the discovery of end of game nodes.</p>
+<h2><a class="anchor" id="autotoc_md36"></a>
+Red=SD6, Black=SD6</h2>
+<div class="fragment"><div class="line">play_xiangqi -rst 6 -bst 6 -s -d game_05</div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md37"></a>
+Terminal Recording</h3>
+<p><img src="game_05.gif" alt="" class="inline" title="game_05_demo"/></p>
+<h3><a class="anchor" id="autotoc_md38"></a>
+Minimax Data</h3>
+<p><img src="20240928185526089812.png" alt="" class="inline" title="game_05_data"/></p>
+<h3><a class="anchor" id="autotoc_md39"></a>
+Synopsis</h3>
+<p>In this game, both players use a max search depth = 6, which is larger than the search depths used in any other games in our demo series. During early moves, max search times per move are ~2x higher than observed for players with search depth = 5. Black has the advantage until move 80, but Red then quickly gains the upper hand and ultimately wins at move 136. Both players become aware of the eventual result around move 124.</p>
+<h2><a class="anchor" id="autotoc_md40"></a>
+Red=SD5:K64, Black=SD5:K128</h2>
+<div class="fragment"><div class="line">play_xiangqi -rst 5 -bst 5 -bk 128 -s -d game_06</div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md41"></a>
+Terminal Recording</h3>
+<p><img src="game_06.gif" alt="" class="inline" title="game_06_demo"/></p>
+<h3><a class="anchor" id="autotoc_md42"></a>
+Minimax Data</h3>
+<p><img src="20240928212851712774.png" alt="" class="inline" title="game_06_data"/></p>
+<h3><a class="anchor" id="autotoc_md43"></a>
+Synopsis</h3>
+<p>Here, Red and Black use the same search depth (= 5), but black uses 128 bit Zobrist hashing keys instead of the usual 64 bits. While the use of 128 bit keys drastically reduces the hash collision probability, the time per node data do not indicate any significant search time penalty for the larger key size.</p>
+<p>Deeper investigation into Minimax game data shows that with 64 bit keys and search depth = 5, evidence of one or more hash collisions is found in approximately 1 out of 6 games. It is likely that the actual rate of collisions is more common than this, as a collison is only detected if it causes a player to attempt an illegal move - and not all collisions will result in selection of an illegal move. With 128 bit keys, the practical hash probability goes to zero. Although the player with the larger key size does win the game here, it is not yet clear if 128 bit keys produce a significant benefit over 64 bit keys in game outcome.</p>
+<h2><a class="anchor" id="autotoc_md44"></a>
+Red=Human, Black=SD4</h2>
+<div class="fragment"><div class="line">play_xiangqi -rt person -bst 4 -s -d game_07</div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md45"></a>
+Terminal Recording</h3>
+<p><img src="game_07.gif" alt="" class="inline" title="game_07_demo"/></p>
+<h3><a class="anchor" id="autotoc_md46"></a>
+Minimax Data</h3>
+<p><img src="20240928213216195660.png" alt="" class="inline" title="game_07_data"/></p>
+<h3><a class="anchor" id="autotoc_md47"></a>
+Synopsis</h3>
+<div class="section_buttons"></div><div class="section_buttons"><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadLeft">Previous   </th><th class="markdownTableHeadRight">Next    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyLeft"><a class="el" href="md_docs_02_installing.html">Installing</a>   </td><td class="markdownTableBodyRight"><a class="el" href="md_docs_04_notation.html">Notation</a>   </td></tr>
+</table>
+</div><div class="section_buttons"></div> </div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated on Mon Nov 4 2024 21:28:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!-- HTML header for doxygen 1.9.4-->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="generator" content="Doxygen 1.9.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiangiqgame: include/move_calculator_details.hpp Source File</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+  </script>
+  <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+  </script>
+</head>
+<body>
+  <!-- https://tholman.com/github-corners/ -->
+  <a href="https://github.com/duanegoodner/xiangqigame" class="github-corner" aria-label="View source on GitHub"><svg
+      width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
+    </svg></a>
+  <style>
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+    @keyframes octocat-wave {
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+      20%,
+      60% {
+        transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+        transform: rotate(10deg)
+      }
+    }
+    @media (max-width:500px) {
+      .github-corner:hover .octo-arm {
+        animation: none
+      }
+      .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+      }
+    }
+  </style>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectalign">
+                <div id="projectname">Xiangiqgame
+                </div>
+                <div id="projectbrief">AI engine for Xiangqi</div>
+              </td>
+            </tr>
+            <!--BEGIN FULL_SIDEBAR-->
+            <tr>
+              <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+            </tr>
+            <!--END FULL_SIDEBAR-->
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('move__calculator__details_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">move_calculator_details.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="move__calculator__details_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="board__data__structs_8hpp.html">board_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="piece__moves_8hpp.html">piece_moves.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegameboard.html">gameboard</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegameboard.html">gameboard</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacegameboard.html">gameboard</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="namespacegameboard.html#a12801a549cf55bdb95d21079da8c22ec">   16</a></span>&#160;<span class="keyword">typedef</span> void (<a class="code" href="classgameboard_1_1PieceMoves.html">PieceMoves</a>::*</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                  <a class="code" href="namespacegameboard.html#a12801a549cf55bdb95d21079da8c22ec">MethodPtr_t</a>)(<span class="keyword">const</span> <a class="code" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;, <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>, <span class="keyword">const</span> <a class="code" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;, <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespacegameboard.html#a674308b4542167d49e6884d492d3d1b3">   19</a></span>&#160;<span class="keyword">typedef</span> array&lt;MethodPtr_t, kNumPieceTypeVals&gt; <a class="code" href="namespacegameboard.html#a674308b4542167d49e6884d492d3d1b3">PieceDispatchArray_t</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="namespacegameboard.html#adc1b9c3450830170bb984a1839073a9a">   21</a></span>&#160;<span class="keyword">inline</span> constexpr <a class="code" href="namespacegameboard.html#a674308b4542167d49e6884d492d3d1b3">PieceDispatchArray_t</a> <a class="code" href="namespacegameboard.html#adc1b9c3450830170bb984a1839073a9a">build_piece_dispatch_array</a>() {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <a class="code" href="namespacegameboard.html#a674308b4542167d49e6884d492d3d1b3">PieceDispatchArray_t</a> dispatch_array{};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  dispatch_array[<a class="code" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac9e13349ba9f4cdf999c3ca466f6d597">PieceType::kNnn</a>] = {};</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  dispatch_array[<a class="code" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aa980f91549dc566f894454d2e2015ef3">PieceType::kSol</a>] = &amp;PieceMoves::SoldierMoves;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  dispatch_array[<a class="code" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328">PieceType::kCan</a>] = &amp;PieceMoves::CannonMoves;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  dispatch_array[<a class="code" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266">PieceType::kCha</a>] = &amp;PieceMoves::ChariotMoves;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  dispatch_array[<a class="code" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a43b285933641d3aac35909a5e69db9b3">PieceType::kHor</a>] = &amp;PieceMoves::HorseMoves;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  dispatch_array[<a class="code" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a12e20fe9e463f0ac39de69fbe1d93283">PieceType::kEle</a>] = &amp;PieceMoves::ElephantMoves;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  dispatch_array[<a class="code" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4">PieceType::kAdv</a>] = &amp;PieceMoves::AdvisorMoves;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  dispatch_array[<a class="code" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438">PieceType::kGen</a>] = &amp;PieceMoves::GeneralMoves;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="keywordflow">return</span> dispatch_array;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;} <span class="comment">// namespace gameboard</span></div>
+<div class="ttc" id="aboard__data__structs_8hpp_html"><div class="ttname"><a href="board__data__structs_8hpp.html">board_data_structs.hpp</a></div><div class="ttdoc">Constants, typedefs, and simple structs used by gameboard::GameBoard.</div></div>
+<div class="ttc" id="aclassgameboard_1_1PieceMoves_html"><div class="ttname"><a href="classgameboard_1_1PieceMoves.html">gameboard::PieceMoves</a></div><div class="ttdoc">Implements piece type dependent move rules; used by gameboard::MoveCalculator.</div><div class="ttdef"><b>Definition:</b> <a href="piece__moves_8hpp_source.html#l00019">piece_moves.hpp:19</a></div></div>
+<div class="ttc" id="anamespacegameboard_html"><div class="ttname"><a href="namespacegameboard.html">gameboard</a></div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00014">board_data_structs.hpp:14</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a12801a549cf55bdb95d21079da8c22ec"><div class="ttname"><a href="namespacegameboard.html#a12801a549cf55bdb95d21079da8c22ec">gameboard::MethodPtr_t</a></div><div class="ttdeci">void(PieceMoves::* MethodPtr_t)(const BoardMap_t &amp;, PieceColor, const BoardSpace &amp;, MoveCollection &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="move__calculator__details_8hpp_source.html#l00016">move_calculator_details.hpp:17</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a674308b4542167d49e6884d492d3d1b3"><div class="ttname"><a href="namespacegameboard.html#a674308b4542167d49e6884d492d3d1b3">gameboard::PieceDispatchArray_t</a></div><div class="ttdeci">array&lt; MethodPtr_t, kNumPieceTypeVals &gt; PieceDispatchArray_t</div><div class="ttdef"><b>Definition:</b> <a href="move__calculator__details_8hpp_source.html#l00019">move_calculator_details.hpp:19</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76a12e20fe9e463f0ac39de69fbe1d93283"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a12e20fe9e463f0ac39de69fbe1d93283">gameboard::kEle</a></div><div class="ttdeci">@ kEle</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00017">game_piece.hpp:17</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76a43b285933641d3aac35909a5e69db9b3"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a43b285933641d3aac35909a5e69db9b3">gameboard::kHor</a></div><div class="ttdeci">@ kHor</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00018">game_piece.hpp:18</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328">gameboard::kCan</a></div><div class="ttdeci">@ kCan</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00020">game_piece.hpp:20</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76aa980f91549dc566f894454d2e2015ef3"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aa980f91549dc566f894454d2e2015ef3">gameboard::kSol</a></div><div class="ttdeci">@ kSol</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00022">game_piece.hpp:21</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266">gameboard::kCha</a></div><div class="ttdeci">@ kCha</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00019">game_piece.hpp:19</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438">gameboard::kGen</a></div><div class="ttdeci">@ kGen</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00015">game_piece.hpp:15</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4">gameboard::kAdv</a></div><div class="ttdeci">@ kAdv</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00016">game_piece.hpp:16</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76ac9e13349ba9f4cdf999c3ca466f6d597"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac9e13349ba9f4cdf999c3ca466f6d597">gameboard::kNnn</a></div><div class="ttdeci">@ kNnn</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00014">game_piece.hpp:14</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_aab2a12a4ad1333460ff7d6d910c6160d"><div class="ttname"><a href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a></div><div class="ttdeci">array&lt; array&lt; GamePiece, kNumFiles &gt;, kNumRanks &gt; BoardMap_t</div><div class="ttdoc">2-D array of gameboard::GamePiece objects.</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00044">board_data_structs.hpp:44</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a></div><div class="ttdeci">PieceColor</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_adc1b9c3450830170bb984a1839073a9a"><div class="ttname"><a href="namespacegameboard.html#adc1b9c3450830170bb984a1839073a9a">gameboard::build_piece_dispatch_array</a></div><div class="ttdeci">constexpr PieceDispatchArray_t build_piece_dispatch_array()</div><div class="ttdef"><b>Definition:</b> <a href="move__calculator__details_8hpp_source.html#l00021">move_calculator_details.hpp:21</a></div></div>
+<div class="ttc" id="apiece__moves_8hpp_html"><div class="ttname"><a href="piece__moves_8hpp.html">piece_moves.hpp</a></div><div class="ttdoc">Definition of gameboard::PieceMoves and related constants.</div></div>
+<div class="ttc" id="astructgameboard_1_1BoardSpace_html"><div class="ttname"><a href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a></div><div class="ttdoc">A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa...</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00051">board_data_structs.hpp:51</a></div></div>
+<div class="ttc" id="astructgameboard_1_1MoveCollection_html"><div class="ttname"><a href="structgameboard_1_1MoveCollection.html">gameboard::MoveCollection</a></div><div class="ttdoc">A container for multiple gameboard::Move objects.</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00030">move_data_structs.hpp:30</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="move__calculator__details_8hpp.html">move_calculator_details.hpp</a></li>
+    <li class="footer">Generated on Mon Nov 4 2024 21:28:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

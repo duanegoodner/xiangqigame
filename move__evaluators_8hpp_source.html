@@ -1,0 +1,868 @@
+<!-- HTML header for doxygen 1.9.4-->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="generator" content="Doxygen 1.9.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiangiqgame: include/move_evaluators.hpp Source File</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+  </script>
+  <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+  </script>
+</head>
+<body>
+  <!-- https://tholman.com/github-corners/ -->
+  <a href="https://github.com/duanegoodner/xiangqigame" class="github-corner" aria-label="View source on GitHub"><svg
+      width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
+    </svg></a>
+  <style>
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+    @keyframes octocat-wave {
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+      20%,
+      60% {
+        transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+        transform: rotate(10deg)
+      }
+    }
+    @media (max-width:500px) {
+      .github-corner:hover .octo-arm {
+        animation: none
+      }
+      .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+      }
+    }
+  </style>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectalign">
+                <div id="projectname">Xiangiqgame
+                </div>
+                <div id="projectbrief">AI engine for Xiangqi</div>
+              </td>
+            </tr>
+            <!--BEGIN FULL_SIDEBAR-->
+            <tr>
+              <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+            </tr>
+            <!--END FULL_SIDEBAR-->
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('move__evaluators_8hpp_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">move_evaluators.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="move__evaluators_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="board__data__structs_8hpp.html">board_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="board__state__summarizer__interface_8hpp.html">board_state_summarizer_interface.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="evaluator__data__structs_8hpp.html">evaluator_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="move__evaluator__interface_8hpp.html">move_evaluator_interface.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="piece__value__provider__interface_8hpp.html">piece_value_provider_interface.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="space__info__provider__interface_8hpp.html">space_info_provider_interface.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="utility__functs_8hpp.html">utility_functs.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using namespace </span><a class="code" href="namespacegameboard.html">gameboard</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemoveselection.html">moveselection</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">template</span> &lt;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">typename</span> ConcreteSpaceInfoProvider,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">typename</span> ConcreteBoardStateSummarizer,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">typename</span> ConcretePieceValueProvider&gt;</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html">MinimaxMoveEvaluator</a> : <span class="keyword">public</span> <a class="code" href="classMoveEvaluator.html">MoveEvaluator</a>&lt;MinimaxMoveEvaluator&lt;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                 ConcreteSpaceInfoProvider,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                                 ConcreteBoardStateSummarizer,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                 ConcretePieceValueProvider&gt;&gt; {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a1ad65f5425ab83dceebbfa31ab0e8a33">   35</a></span>&#160;  <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a1ad65f5425ab83dceebbfa31ab0e8a33">MinimaxMoveEvaluator</a>(</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> evaluating_player,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      <span class="keywordtype">int</span> starting_search_depth,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      ConcreteSpaceInfoProvider &amp;game_board,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      <span class="keyword">const</span> ConcretePieceValueProvider &amp;game_position_points</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  )</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      : <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html">MinimaxMoveEvaluator</a>(</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            evaluating_player,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            starting_search_depth,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            game_board,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            game_position_points,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            std::random_device{}()</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        ) {}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab504aa27a5aff93d05b4a61e99c07dfb">   49</a></span>&#160;  <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab504aa27a5aff93d05b4a61e99c07dfb">MinimaxMoveEvaluator</a>(</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> evaluating_player,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;      <span class="keywordtype">int</span> starting_search_depth,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      ConcreteSpaceInfoProvider &amp;game_board,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      uint32_t zkey_seed</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  )</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      : <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html">MinimaxMoveEvaluator</a>(</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            evaluating_player,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            starting_search_depth,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            game_board,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            ConcretePieceValueProvider(),</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            zkey_seed</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        ) {}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#afbb53bb5922a10c301ad9cbe69922526">   63</a></span>&#160;  <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#afbb53bb5922a10c301ad9cbe69922526">MinimaxMoveEvaluator</a>(</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> evaluating_player,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <span class="keywordtype">int</span> starting_search_depth,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      ConcreteSpaceInfoProvider &amp;game_board</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  )</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      : <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html">MinimaxMoveEvaluator</a>(</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            evaluating_player,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            starting_search_depth,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            game_board,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            ConcretePieceValueProvider(),</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            std::random_device{}()</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        ) {}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a915db2cf8efbcf62b40c8b329bcc666f">   76</a></span>&#160;  <a class="code" href="structgameboard_1_1Move.html">Move</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a915db2cf8efbcf62b40c8b329bcc666f">ImplementSelectMove</a>(<a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="structgameboard_1_1Move.html">Move</a> final_selected_move;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">auto</span> &amp;first_search_summary = RunFirstSearch(allowed_moves);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">if</span> (ValidateMove(first_search_summary, allowed_moves)) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      final_selected_move = first_search_summary.selected_move();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keyword">auto</span> &amp;second_search_summary = RunSecondSearch(allowed_moves);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      final_selected_move = second_search_summary.selected_move();</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    IncrementNumMoveSelections();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">return</span> final_selected_move;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a722b7cead14f8071b1f6f7483c89e852">   93</a></span>&#160;  <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a> &amp;<a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a722b7cead14f8071b1f6f7483c89e852">search_summaries</a>() {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">return</span> search_summaries_;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4ce5365b299f9c2401c6b1c9fe82909c">   97</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4ce5365b299f9c2401c6b1c9fe82909c">StartingSearchDepth</a>() { <span class="keywordflow">return</span> starting_search_depth_; }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#aa49f98c887dcc14c0d39d3e0d269d3e2">   99</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">size_t</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#aa49f98c887dcc14c0d39d3e0d269d3e2">KeySizeBits</a>() {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">return</span> 8 * <span class="keyword">sizeof</span>(<span class="keyword">typename</span> ConcreteBoardStateSummarizer::ZobristKey_t);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#aed729e6567075bcb066d9df4eebad179">  103</a></span>&#160;  <span class="keyword">const</span> ConcreteBoardStateSummarizer &amp;<a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#aed729e6567075bcb066d9df4eebad179">hash_calculator</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> hash_calculator_;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a04096db6e7e61a03c6fce7a328c85cb0">  107</a></span>&#160;  <span class="keyword">const</span> uint32_t <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a04096db6e7e61a03c6fce7a328c85cb0">zkeys_seed</a>() { <span class="keywordflow">return</span> hash_calculator_.zkeys_seed(); }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac6f9bfa2e56a664feb178575fff89f07">  109</a></span>&#160;  <span class="keyword">const</span> std::string <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac6f9bfa2e56a664feb178575fff89f07">board_state_hex_str</a>() {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span> hash_calculator_.board_state_hex_str();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a007dd17769cdef66a3eb6070c4b2a331">  114</a></span>&#160;  <span class="keyword">explicit</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a007dd17769cdef66a3eb6070c4b2a331">MinimaxMoveEvaluator</a>(</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> evaluating_player,</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="keywordtype">int</span> starting_search_depth,</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;      ConcreteSpaceInfoProvider &amp;game_board,</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <span class="keyword">const</span> ConcretePieceValueProvider &amp;game_position_points,</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      uint32_t zkey_seed</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  )</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      : evaluating_player_{evaluating_player}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      , starting_search_depth_{starting_search_depth}</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      , game_board_{game_board}</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      , game_position_points_{game_position_points}</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      , num_move_selections_{0}</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      , search_summaries_{} {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    game_board_.AttachMoveCallback(std::bind(</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        &amp;ConcreteBoardStateSummarizer::UpdateBoardState,</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        &amp;hash_calculator_,</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        std::placeholders::_1</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    ));</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    hash_calculator_.FullBoardStateCalc(game_board_.map());</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a05b0532a2e17f408c328c925d7e09172">  136</a></span>&#160;  <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a05b0532a2e17f408c328c925d7e09172">evaluating_player_</a>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a279c7caee2b1c06b293f2fe4f4354daf">  137</a></span>&#160;  ConcretePieceValueProvider <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a279c7caee2b1c06b293f2fe4f4354daf">game_position_points_</a>;</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab14a434d105381e3be6e23cff8ac37c7">  138</a></span>&#160;  ConcreteBoardStateSummarizer <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab14a434d105381e3be6e23cff8ac37c7">hash_calculator_</a>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4544225bd659713f8463c0415b512aed">  139</a></span>&#160;  ConcreteSpaceInfoProvider &amp;<a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4544225bd659713f8463c0415b512aed">game_board_</a>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a67601e9ebf21785e6bb13940029e4cb2">  140</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a67601e9ebf21785e6bb13940029e4cb2">num_move_selections_</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4a0edae47be034565cd665ab9c4e1647">  141</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4a0edae47be034565cd665ab9c4e1647">starting_search_depth_</a>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ae691602ed173beb3246329f714611980">  142</a></span>&#160;  <a class="code" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ae691602ed173beb3246329f714611980">search_summaries_</a>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#aa53e65c0138ec9ed751758ed454f681a">  144</a></span>&#160;  <a class="code" href="namespacepiecepoints.html#a70d6ac023c4aade3434209ba7eb7db57">Points_t</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#aa53e65c0138ec9ed751758ed454f681a">GetPlayerTotal</a>(<a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color) {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <a class="code" href="namespacepiecepoints.html#a70d6ac023c4aade3434209ba7eb7db57">Points_t</a> pre_attack_total = 0;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> space : game_board_.GetAllSpacesOccupiedBy(color)) {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;      <span class="keyword">auto</span> piece_type = game_board_.GetType(space);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;      pre_attack_total +=</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;          game_position_points_.GetValueOfPieceAtPosition(color, piece_type, space);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">return</span> pre_attack_total;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  }</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad60e3db49acd90848644eb0fafd8a287">  154</a></span>&#160;  <a class="code" href="structmoveselection_1_1ScoredMove.html">ScoredMove</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad60e3db49acd90848644eb0fafd8a287">RateMove</a>(<a class="code" href="structgameboard_1_1Move.html">Move</a> move, <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keyword">auto</span> piece_type = game_board_.GetType(move.<a class="code" href="structgameboard_1_1Move.html#a6697f432e43a5607333c22fc13e46f95">start</a>);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keyword">auto</span> end_points = game_position_points_</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                          .GetValueOfPieceAtPosition(cur_player, piece_type, move.<a class="code" href="structgameboard_1_1Move.html#a081f9df36eb132385a8082b19ee1e510">end</a>);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keyword">auto</span> start_points = game_position_points_.GetValueOfPieceAtPosition(</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        cur_player,</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        piece_type,</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        move.<a class="code" href="structgameboard_1_1Move.html#a6697f432e43a5607333c22fc13e46f95">start</a></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    );</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keyword">auto</span> position_value_delta = end_points - start_points;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="namespacepiecepoints.html#a70d6ac023c4aade3434209ba7eb7db57">Points_t</a> capture_val;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">if</span> (game_board_.GetColor(move.<a class="code" href="structgameboard_1_1Move.html#a081f9df36eb132385a8082b19ee1e510">end</a>) == <a class="code" href="namespacegameboard.html#a96f2b0bb2cc896e13f52854427e155d9">opponent_of</a>(cur_player)) {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      <span class="keyword">auto</span> captured_piece_type = game_board_.GetType(move.<a class="code" href="structgameboard_1_1Move.html#a081f9df36eb132385a8082b19ee1e510">end</a>);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      capture_val = GetValueOfPieceAtPosition(</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;          <a class="code" href="namespacegameboard.html#a96f2b0bb2cc896e13f52854427e155d9">opponent_of</a>(cur_player),</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;          captured_piece_type,</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;          move.<a class="code" href="structgameboard_1_1Move.html#a081f9df36eb132385a8082b19ee1e510">end</a></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      );</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      capture_val = 0;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structmoveselection_1_1ScoredMove.html">ScoredMove</a>{move, (position_value_delta + capture_val)};</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#af3f4a166e7e921a6c41fa806c7044a7d">  182</a></span>&#160;  <a class="code" href="namespacepiecepoints.html#a70d6ac023c4aade3434209ba7eb7db57">Points_t</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#af3f4a166e7e921a6c41fa806c7044a7d">GetValueOfPieceAtPosition</a>(</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color,</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;      <a class="code" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a> piece_type,</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <a class="code" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> space</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  ) {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">return</span> game_position_points_.GetValueOfPieceAtPosition(color, piece_type, space);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a6d24d4c8d2a4ef6d6eb344c6db4e1f93">  190</a></span>&#160;  std::vector&lt;ScoredMove&gt; <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a6d24d4c8d2a4ef6d6eb344c6db4e1f93">GenerateRankedMoveList</a>(</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player,</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;      <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;cur_player_moves</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  ) {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    vector&lt;ScoredMove&gt; rated_moves;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> cur_move : cur_player_moves.<a class="code" href="structgameboard_1_1MoveCollection.html#a93e7b00791f7e132e29bd3827f37c6e0">moves</a>) {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;      <span class="keyword">auto</span> cur_rated_move = RateMove(cur_move, cur_player);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      rated_moves.emplace_back(cur_rated_move);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    sort(</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        rated_moves.begin(),</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        rated_moves.end(),</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        [](<span class="keyword">const</span> <a class="code" href="structmoveselection_1_1ScoredMove.html">ScoredMove</a> &amp;move_a, <span class="keyword">const</span> <a class="code" href="structmoveselection_1_1ScoredMove.html">ScoredMove</a> &amp;move_b) {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;          return move_a.score &gt; move_b.score;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    );</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">return</span> rated_moves;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a83f67df9d17cc1e0bce81018889a892d">  209</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a83f67df9d17cc1e0bce81018889a892d">ValidateMove</a>(<a class="code" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves) {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordtype">bool</span> is_selected_move_allowed =</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        allowed_moves.<a class="code" href="structgameboard_1_1MoveCollection.html#a4e76a0f747731cb2de782a98bf4e5a96">ContainsMove</a>(search_summary.<a class="code" href="classmoveselection_1_1SearchSummary.html#ab455786cfc82050b0b5460e67e827fe8">selected_move</a>());</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">if</span> (!is_selected_move_allowed) {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;      search_summary.<a class="code" href="classmoveselection_1_1SearchSummary.html#a02d1608177f330975e7a01c5d5a3479a">set_returned_illegal_move</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">return</span> is_selected_move_allowed;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00218"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad25c2711e733ccae81fb40ea72481249">  218</a></span>&#160;  <a class="code" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;<a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad25c2711e733ccae81fb40ea72481249">RunFirstSearch</a>(<a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves) {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keyword">auto</span> &amp;first_search_summary = search_summaries_.<a class="code" href="structmoveselection_1_1SearchSummaries.html#a919a543da44a08438a6771dc61c5626c">NewFirstSearch</a>(</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        starting_search_depth_,</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        hash_calculator_.GetTrTableSize()</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    );</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    RunMinimax(allowed_moves, first_search_summary);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">return</span> first_search_summary;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  };</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a1a79a1ba5bf0c33cf2b2596b66c2658d">  228</a></span>&#160;  <a class="code" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;<a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a1a79a1ba5bf0c33cf2b2596b66c2658d">RunSecondSearch</a>(<a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves) {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keyword">auto</span> &amp;second_search_summary = search_summaries_.<a class="code" href="structmoveselection_1_1SearchSummaries.html#a93cdc427ea3e4a7cdb3b344106619cf4">NewExtraSearch</a>(</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        starting_search_depth_,</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        num_move_selections_,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        hash_calculator_.GetTrTableSize()</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    );</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    RunMinimax(allowed_moves, second_search_summary, <span class="keyword">false</span>);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">return</span> second_search_summary;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4f2188d2a811e778a8e060ce9247a06a">  239</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4f2188d2a811e778a8e060ce9247a06a">IncrementNumMoveSelections</a>() { num_move_selections_++; }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#abbc27bd54767226d5f576c174dcdfdc3">  241</a></span>&#160;  <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#abbc27bd54767226d5f576c174dcdfdc3">HandleTrTableHit</a>(</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      <a class="code" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary,</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> &amp;result_type,</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;      <a class="code" href="structmoveselection_1_1TranspositionTableSearchResult.html">TranspositionTableSearchResult</a> &amp;tr_table_search_result,</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;      <span class="keywordtype">int</span> remaining_search_depth</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  ) {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    result_type = <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda552dd3cbc3a757459c0df9b2ae2edd27">MinimaxResultType::kTrTableHit</a>;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    search_summary.<a class="code" href="classmoveselection_1_1SearchSummary.html#a42e91f2b0146be44a5d877b049216ebb">RecordTrTableHit</a>(tr_table_search_result, remaining_search_depth);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">return</span> tr_table_search_result.<a class="code" href="structmoveselection_1_1TranspositionTableSearchResult.html#a778284da9767ddf3762a5a2efc6cadf4">score_and_moves</a>();</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a062024c5b53db2679b335eb28350d5e8">  252</a></span>&#160;  <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a062024c5b53db2679b335eb28350d5e8">EvaluateEndOfGameLeaf</a>(</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player,</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> &amp;result_type</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  ) {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keyword">auto</span> empty_best_moves = <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a>();</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">if</span> (game_board_.IsDraw()) {</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      result_type = <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda39391e47fa69eaa70726091d4f4e2298">MinimaxResultType::kDraw</a>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>{0, empty_best_moves};</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">if</span> (cur_player == evaluating_player_) {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      result_type = <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061edacf13d4e4d1a33bcd701f870b4d5103f3">MinimaxResultType::kEvaluatorLoses</a>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>{numeric_limits&lt;Points_t&gt;::min(), empty_best_moves};</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;      result_type = <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda0fe64a6e73a77fefbfe91370bb0652d5">MinimaxResultType::kEvaluatorWins</a>;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>{numeric_limits&lt;Points_t&gt;::max(), empty_best_moves};</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a5d1680378f0b4cbf3ea8786dc93c430c">  272</a></span>&#160;  <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a5d1680378f0b4cbf3ea8786dc93c430c">HandleEndOfGame</a>(</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player,</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;      <a class="code" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary,</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;      <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> &amp;result_type,</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;      <span class="keywordtype">int</span> remaining_search_depth</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  ) {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keyword">auto</span> <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a> = EvaluateEndOfGameLeaf(cur_player, result_type);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    hash_calculator_.RecordTrData(remaining_search_depth, result_type, <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a>);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    search_summary.<a class="code" href="classmoveselection_1_1SearchSummary.html#ac40fe25ebdefd13a5dd08a07ccb68460">RecordNodeInfo</a>(result_type, remaining_search_depth, <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a>);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a>;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a7c4d98fb3e5b84101ed9a922113fc438">  284</a></span>&#160;  <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a7c4d98fb3e5b84101ed9a922113fc438">EvaluateNonWinLeaf</a>(</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player,</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;      <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> &amp;result_type</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  ) {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    result_type = <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda65b563cc5a2a595f6f19adea98b99fa9">MinimaxResultType::kStandardLeaf</a>;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keyword">auto</span> cur_player_points = GetPlayerTotal(cur_player);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keyword">auto</span> opponent_points = GetPlayerTotal(<a class="code" href="namespacegameboard.html#a96f2b0bb2cc896e13f52854427e155d9">opponent_of</a>(cur_player));</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keyword">auto</span> empty_move_collection = <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a>();</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">if</span> (cur_player == evaluating_player_) {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>{</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;          (cur_player_points - opponent_points),</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;          empty_move_collection</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;      };</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>{</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;          (opponent_points - cur_player_points),</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;          empty_move_collection</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;      };</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    }</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  };</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
+<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a0f0bcd08f1c5bd0b13d5f825df7e03d9">  308</a></span>&#160;  <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a0f0bcd08f1c5bd0b13d5f825df7e03d9">HandleLeaf</a>(</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player,</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;      <a class="code" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary,</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;      <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> &amp;result_type,</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;      <span class="keywordtype">int</span> remaining_search_depth</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  ) {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keyword">auto</span> <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a> = EvaluateNonWinLeaf(cur_player, result_type);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    hash_calculator_.RecordTrData(remaining_search_depth, result_type, <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a>);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    search_summary.<a class="code" href="classmoveselection_1_1SearchSummary.html#ac40fe25ebdefd13a5dd08a07ccb68460">RecordNodeInfo</a>(result_type, remaining_search_depth, <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a>);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a>;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a8a1cb783b25d96f2c0fa3b8621c73c32">  321</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a8a1cb783b25d96f2c0fa3b8621c73c32">IsImprovement</a>(</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;      <span class="keywordtype">int</span> cur_eval,</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;      <span class="keywordtype">int</span> previous_best_eval,</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  ) {</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">if</span> (cur_player == evaluating_player_) {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;      <span class="keywordflow">return</span> cur_eval &gt; previous_best_eval;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;      <span class="keywordflow">return</span> cur_eval &lt; previous_best_eval;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  }</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac48c6b5c667fc0057ac8285a996d522a">  333</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac48c6b5c667fc0057ac8285a996d522a">UpdateBestMoves</a>(</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player,</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;      <a class="code" href="structgameboard_1_1Move.html">Move</a> move,</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;      <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;best_moves,</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;      <span class="keywordtype">int</span> cur_eval,</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;      <span class="keywordtype">int</span> &amp;previous_best_eval</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  ) {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="keywordflow">if</span> (cur_eval == previous_best_eval) {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;      best_moves.<a class="code" href="structgameboard_1_1MoveCollection.html#a5b1838b6ffa4126795a4803984fe2dfc">Append</a>(move);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (IsImprovement(cur_eval, previous_best_eval, cur_player)) {</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;      previous_best_eval = cur_eval;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;      best_moves.<a class="code" href="structgameboard_1_1MoveCollection.html#a93e7b00791f7e132e29bd3827f37c6e0">moves</a>.clear();</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;      best_moves.<a class="code" href="structgameboard_1_1MoveCollection.html#a5b1838b6ffa4126795a4803984fe2dfc">Append</a>(move);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    }</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  }</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a35709bb338c6ff36ccb4ce3a0ab1ff63">  349</a></span>&#160;  <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a35709bb338c6ff36ccb4ce3a0ab1ff63">FinalizeNodeResult</a>(</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;      <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> &amp;result_type,</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;      <span class="keywordtype">int</span> best_eval,</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;      <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> best_moves,</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;      <span class="keywordtype">int</span> remaining_search_depth,</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;      <a class="code" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  ) {</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="comment">// If result_type is still unknown by the time FinalizeNodeResult is called, then we</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="comment">// have evaluated all moves from (i.e. children of) the node. Can achieve this for</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="comment">// root node or interior node, but not for a leaf node.</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keywordflow">if</span> (result_type == <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061edadef73b774725d74259cc49e9fe97e6dd">MinimaxResultType::kUnknown</a>) {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;      result_type = <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda5fdab859498d9e51a5300bb6fe535a60">MinimaxResultType::kFullyEvaluatedNode</a>;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a>{best_eval, best_moves};</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    hash_calculator_.RecordTrData(remaining_search_depth, result_type, <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a>);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    search_summary.<a class="code" href="classmoveselection_1_1SearchSummary.html#ac40fe25ebdefd13a5dd08a07ccb68460">RecordNodeInfo</a>(result_type, remaining_search_depth, <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a>);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">result</a>;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  }</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a1c37023e5d00c0f55e16e31c8ebf7a12">  369</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a1c37023e5d00c0f55e16e31c8ebf7a12">UpdateAlpha</a>(<span class="keywordtype">int</span> &amp;alpha, <span class="keywordtype">int</span> cur_eval) { alpha = max(alpha, cur_eval); }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
+<div class="line"><a name="l00371"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#afaa15ee320416d50b967d25a7a786bf5">  371</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#afaa15ee320416d50b967d25a7a786bf5">UpdateBeta</a>(<span class="keywordtype">int</span> &amp;beta, <span class="keywordtype">int</span> cur_eval) { beta = min(beta, cur_eval); }</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
+<div class="line"><a name="l00373"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4ba576bb0b128a9ad429e54e4dabf855">  373</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4ba576bb0b128a9ad429e54e4dabf855">IsPrunableForEvaluator</a>(</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;      <span class="keywordtype">int</span> &amp;alpha,</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;      <span class="keywordtype">int</span> &amp;beta,</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;      <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> &amp;result_type</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  ) {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordtype">bool</span> is_prunable = (beta &lt;= alpha);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordflow">if</span> (is_prunable) {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;      result_type = <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda71f7c72c022ad1322f406bdd0ca7be25">MinimaxResultType::kAlphaPrune</a>;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    }</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordflow">return</span> is_prunable;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  }</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#abc1c48dec94592657cd7c45c3a7d541b">  385</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#abc1c48dec94592657cd7c45c3a7d541b">IsPrunableForEvaluatorOpponent</a>(</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;      <span class="keywordtype">int</span> &amp;alpha,</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;      <span class="keywordtype">int</span> &amp;beta,</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;      <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> &amp;result_type</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  ) {</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordtype">bool</span> is_prunable = (beta &lt;= alpha);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">if</span> (is_prunable) {</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;      result_type = <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda0c1922f53a20c3978b37b675895a49aa">MinimaxResultType::kBetaPrune</a>;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    }</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordflow">return</span> is_prunable;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="line"><a name="l00397"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a805963258a0940b4feef71e1eed5e0f8">  397</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a805963258a0940b4feef71e1eed5e0f8">IsPrunable</a>(</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;      <span class="keywordtype">int</span> &amp;alpha,</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;      <span class="keywordtype">int</span> &amp;beta,</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;      <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> &amp;result_type,</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  ) {</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="keywordflow">if</span> (cur_player == evaluating_player_) {</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;      <span class="keywordflow">return</span> IsPrunableForEvaluator(alpha, beta, result_type);</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;      <span class="keywordflow">return</span> IsPrunableForEvaluatorOpponent(alpha, beta, result_type);</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    }</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  }</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
+<div class="line"><a name="l00410"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab88b12c953c26ed844f4683efebbc51a">  410</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab88b12c953c26ed844f4683efebbc51a">RecursivelyVisitNodes</a>(</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;      <a class="code" href="structgameboard_1_1Move.html">Move</a> move,</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player,</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;      <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves,</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;      <span class="keywordtype">int</span> remaining_search_depth,</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;      <span class="keywordtype">int</span> alpha,</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;      <span class="keywordtype">int</span> beta,</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;      <a class="code" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary,</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;      <span class="keywordtype">bool</span> use_transposition_table</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  ) {</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <span class="keyword">auto</span> executed_move = game_board_.ExecuteMove(move);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    <span class="keyword">auto</span> new_allowed_moves = game_board_.CalcFinalMovesOf(<a class="code" href="namespacegameboard.html#a96f2b0bb2cc896e13f52854427e155d9">opponent_of</a>(cur_player));</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keyword">auto</span> cur_eval = MinimaxRec(</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                        new_allowed_moves,</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                        remaining_search_depth - 1,</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                        alpha,</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                        beta,</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                        <a class="code" href="namespacegameboard.html#a96f2b0bb2cc896e13f52854427e155d9">opponent_of</a>(cur_player),</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                        search_summary,</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                        use_transposition_table</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    )</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                        .shared_score;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    game_board_.UndoMove(executed_move);</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keywordflow">return</span> cur_eval;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;  }</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
+<div class="line"><a name="l00436"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a08750f9f9b11af378a0bace09e68f79b">  436</a></span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a08750f9f9b11af378a0bace09e68f79b">InitializedBestEval</a>(<a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player) {</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">if</span> (cur_player == evaluating_player_) {</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;      <span class="keywordflow">return</span> numeric_limits&lt;int&gt;::min();</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;      <span class="keywordflow">return</span> numeric_limits&lt;int&gt;::max();</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    }</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;  }</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;  <span class="keyword">inline</span> <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a5630a3d225c2ea8986a935ce5650b61c">  445</a></span>&#160;  <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a5630a3d225c2ea8986a935ce5650b61c">UpdatePruningParam</a>(<span class="keywordtype">int</span> &amp;alpha, <span class="keywordtype">int</span> &amp;beta, <span class="keywordtype">int</span> cur_eval, <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player) {</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="keywordflow">if</span> (cur_player == evaluating_player_) {</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;      UpdateAlpha(alpha, cur_eval);</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;      UpdateBeta(beta, cur_eval);</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;  }</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4bd850fdf843e1751f5633904d4054c5">  453</a></span>&#160;  <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4bd850fdf843e1751f5633904d4054c5">HandleInternalNode</a>(</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player,</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;      <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves,</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;      <span class="keywordtype">int</span> &amp;remaining_search_depth,</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;      <span class="keywordtype">int</span> &amp;alpha,</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;      <span class="keywordtype">int</span> &amp;beta,</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;      <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> result_type,</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;      <a class="code" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary,</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;      <span class="keywordtype">bool</span> use_transposition_table</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;  ) {</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <span class="keyword">auto</span> max_eval = InitializedBestEval(cur_player);</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> best_moves;</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <span class="keyword">auto</span> ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160; </div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> rated_move : ranked_moves) {</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;      <span class="keyword">auto</span> cur_eval = RecursivelyVisitNodes(</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;          rated_move.move,</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;          cur_player,</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;          allowed_moves,</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;          remaining_search_depth,</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;          alpha,</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;          beta,</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;          search_summary,</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;          use_transposition_table</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;      );</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160; </div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;      UpdateBestMoves(cur_player, rated_move.move, best_moves, cur_eval, max_eval);</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160; </div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;      UpdatePruningParam(alpha, beta, cur_eval, cur_player);</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160; </div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;      <span class="keywordflow">if</span> (IsPrunable(alpha, beta, result_type, cur_player)) {</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;      }</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    }</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160; </div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    <span class="keywordflow">return</span> FinalizeNodeResult(</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        result_type,</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        max_eval,</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        best_moves,</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        remaining_search_depth,</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        search_summary</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    );</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;  }</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
+<div class="line"><a name="l00497"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad084c0263a813449171c681b59ab9a96">  497</a></span>&#160;  <a class="code" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad084c0263a813449171c681b59ab9a96">MinimaxRec</a>(</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;      <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves,</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;      <span class="keywordtype">int</span> remaining_search_depth,</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;      <span class="keywordtype">int</span> alpha,</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;      <span class="keywordtype">int</span> beta,</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player,</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;      <a class="code" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary,</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;      <span class="keywordtype">bool</span> use_transposition_table</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;  ) {</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    <a class="code" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> result_type{};</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160; </div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    <span class="comment">// Check if result for current board state is in transposition table</span></div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    <span class="comment">// (unless this is a second search in which case we don&#39;t use transposition table)</span></div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    <span class="keywordflow">if</span> (use_transposition_table) {</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;      <span class="keyword">auto</span> tr_table_search_result = hash_calculator_.GetTrData(remaining_search_depth);</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;      <span class="keywordflow">if</span> (tr_table_search_result.found &amp;&amp;</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;          tr_table_search_result.IsConsistentWith(allowed_moves)) {</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        <span class="keywordflow">return</span> HandleTrTableHit(</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            search_summary,</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            result_type,</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;            tr_table_search_result,</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            remaining_search_depth</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;        );</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;      }</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    }</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; </div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;    <span class="comment">// If no legal moves, node is an end-of-game leaf</span></div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    <span class="keywordflow">if</span> (allowed_moves.<a class="code" href="structgameboard_1_1MoveCollection.html#a93e7b00791f7e132e29bd3827f37c6e0">moves</a>.size() == 0) {</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;      <span class="keywordflow">return</span> HandleEndOfGame(</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;          cur_player,</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;          search_summary,</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;          result_type,</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;          remaining_search_depth</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;      );</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    }</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    <span class="comment">// If remaining search depth is zero, treat node as &quot;normal&quot; leaf (not end of game,</span></div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    <span class="comment">// just end of search)</span></div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    <span class="keywordflow">if</span> (remaining_search_depth == 0) {</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;      <span class="keywordflow">return</span> HandleLeaf(cur_player, search_summary, result_type, remaining_search_depth);</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    }</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160; </div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    <span class="comment">// If not end-of-game, nor end-of-search, treat node as internal node.</span></div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    <span class="keywordflow">return</span> HandleInternalNode(</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;        cur_player,</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        allowed_moves,</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;        remaining_search_depth,</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        alpha,</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;        beta,</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        result_type,</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        search_summary,</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        use_transposition_table</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    );</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;  }</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160; </div>
+<div class="line"><a name="l00552"></a><span class="lineno"><a class="line" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a834b5a9fffcef4d3fe5596c13de43218">  552</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a834b5a9fffcef4d3fe5596c13de43218">RunMinimax</a>(</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;      <a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves,</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;      <a class="code" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary,</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;      <span class="keywordtype">bool</span> use_transposition_table = <span class="keyword">true</span></div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;  ) {</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160; </div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    <span class="keyword">auto</span> search_start = std::chrono::high_resolution_clock::now();</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    <span class="keyword">auto</span> minimax_result = MinimaxRec(</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        allowed_moves,</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        starting_search_depth_,</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        numeric_limits&lt;Points_t&gt;::min(),</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        numeric_limits&lt;Points_t&gt;::max(),</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        evaluating_player_,</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        search_summary,</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        use_transposition_table</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;    );</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    <span class="keyword">auto</span> search_end = std::chrono::high_resolution_clock::now();</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;    std::chrono::duration&lt;double, std::nano&gt; search_time = search_end - search_start;</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    search_summary.<a class="code" href="classmoveselection_1_1SearchSummary.html#a14fdc122ed2b721036773773b49f98ac">set_time</a>(search_time);</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;    <span class="keyword">auto</span> selected_move_index =</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;        <a class="code" href="namespaceutility__functs.html#a754117eda4e493add56b6ce4899826a9">utility_functs::random</a>((<span class="keywordtype">size_t</span>)0, minimax_result.similar_moves.moves.size() - 1);</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;    <span class="keyword">auto</span> selected_move = minimax_result.similar_moves.moves[selected_move_index];</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    search_summary.<a class="code" href="classmoveselection_1_1SearchSummary.html#aebecc89334baf04db5848bbcacd05596">SetSelectedMove</a>(selected_move);</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    <span class="keyword">auto</span> tr_table_size = hash_calculator_.GetTrTableSize();</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;    search_summary.<a class="code" href="classmoveselection_1_1SearchSummary.html#ae5d63bd7f763b468ecfc6f25136569f0">set_tr_table_size_final</a>(tr_table_size);</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160; </div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    <span class="comment">// return selected_move;</span></div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;  }</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;};</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160; </div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> ConcreteSpaceInfoProv<span class="keywordtype">id</span>er&gt;</div>
+<div class="line"><a name="l00585"></a><span class="lineno"><a class="line" href="classmoveselection_1_1RandomMoveEvaluator.html">  585</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmoveselection_1_1RandomMoveEvaluator.html">RandomMoveEvaluator</a></div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    : <span class="keyword">public</span> <a class="code" href="classMoveEvaluator.html">MoveEvaluator</a>&lt;RandomMoveEvaluator&lt;ConcreteSpaceInfoProvider&gt;&gt; {</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00588"></a><span class="lineno"><a class="line" href="classmoveselection_1_1RandomMoveEvaluator.html#a69b94792d3d265d5ddb69840e256a273">  588</a></span>&#160;  <a class="code" href="classmoveselection_1_1RandomMoveEvaluator.html#a69b94792d3d265d5ddb69840e256a273">RandomMoveEvaluator</a>(</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;      <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> evaluating_player,</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;      ConcreteSpaceInfoProvider &amp;game_board</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;  )</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;      : evaluating_player_{evaluating_player}</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;      , game_board_{game_board} {}</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160; </div>
+<div class="line"><a name="l00595"></a><span class="lineno"><a class="line" href="classmoveselection_1_1RandomMoveEvaluator.html#a18c0052fe2e5fe4b83f841234bc38047">  595</a></span>&#160;  <a class="code" href="structgameboard_1_1Move.html">Move</a> <a class="code" href="classmoveselection_1_1RandomMoveEvaluator.html#a18c0052fe2e5fe4b83f841234bc38047">ImplementSelectMove</a>(<a class="code" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves) {</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    <span class="keyword">auto</span> selected_move_index =</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        <a class="code" href="namespaceutility__functs.html#a754117eda4e493add56b6ce4899826a9">utility_functs::random</a>((<span class="keywordtype">size_t</span>)0, allowed_moves.<a class="code" href="structgameboard_1_1MoveCollection.html#a93e7b00791f7e132e29bd3827f37c6e0">moves</a>.size() - 1);</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    <span class="keywordflow">return</span> allowed_moves.<a class="code" href="structgameboard_1_1MoveCollection.html#a93e7b00791f7e132e29bd3827f37c6e0">moves</a>[selected_move_index];</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;  }</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160; </div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00602"></a><span class="lineno"><a class="line" href="classmoveselection_1_1RandomMoveEvaluator.html#a69fdaf3024cf61c1b3a4472c1b52d35b">  602</a></span>&#160;  <a class="code" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> <a class="code" href="classmoveselection_1_1RandomMoveEvaluator.html#a69fdaf3024cf61c1b3a4472c1b52d35b">evaluating_player_</a>;</div>
+<div class="line"><a name="l00603"></a><span class="lineno"><a class="line" href="classmoveselection_1_1RandomMoveEvaluator.html#adf9a8b780202d5d6b6052ff912d8fb39">  603</a></span>&#160;  ConcreteSpaceInfoProvider &amp;<a class="code" href="classmoveselection_1_1RandomMoveEvaluator.html#adf9a8b780202d5d6b6052ff912d8fb39">game_board_</a>;</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;};</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;} <span class="comment">// namespace moveselection</span></div>
+<div class="ttc" id="aboard__data__structs_8hpp_html"><div class="ttname"><a href="board__data__structs_8hpp.html">board_data_structs.hpp</a></div><div class="ttdoc">Constants, typedefs, and simple structs used by gameboard::GameBoard.</div></div>
+<div class="ttc" id="aboard__state__summarizer__interface_8hpp_html"><div class="ttname"><a href="board__state__summarizer__interface_8hpp.html">board_state_summarizer_interface.hpp</a></div><div class="ttdoc">Definition of BoardStateSummarizer.</div></div>
+<div class="ttc" id="aclassMoveEvaluator_html"><div class="ttname"><a href="classMoveEvaluator.html">MoveEvaluator</a></div><div class="ttdoc">CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluator__interface_8hpp_source.html#l00012">move_evaluator_interface.hpp:12</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a></div><div class="ttdoc">Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro...</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00029">move_evaluators.hpp:32</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a007dd17769cdef66a3eb6070c4b2a331"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a007dd17769cdef66a3eb6070c4b2a331">moveselection::MinimaxMoveEvaluator::MinimaxMoveEvaluator</a></div><div class="ttdeci">MinimaxMoveEvaluator(PieceColor evaluating_player, int starting_search_depth, ConcreteSpaceInfoProvider &amp;game_board, const ConcretePieceValueProvider &amp;game_position_points, uint32_t zkey_seed)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00114">move_evaluators.hpp:114</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a04096db6e7e61a03c6fce7a328c85cb0"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a04096db6e7e61a03c6fce7a328c85cb0">moveselection::MinimaxMoveEvaluator::zkeys_seed</a></div><div class="ttdeci">const uint32_t zkeys_seed()</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00107">move_evaluators.hpp:107</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a05b0532a2e17f408c328c925d7e09172"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a05b0532a2e17f408c328c925d7e09172">moveselection::MinimaxMoveEvaluator::evaluating_player_</a></div><div class="ttdeci">PieceColor evaluating_player_</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00136">move_evaluators.hpp:136</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a062024c5b53db2679b335eb28350d5e8"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a062024c5b53db2679b335eb28350d5e8">moveselection::MinimaxMoveEvaluator::EvaluateEndOfGameLeaf</a></div><div class="ttdeci">EqualScoreMoves EvaluateEndOfGameLeaf(PieceColor cur_player, MinimaxResultType &amp;result_type)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00252">move_evaluators.hpp:252</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a08750f9f9b11af378a0bace09e68f79b"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a08750f9f9b11af378a0bace09e68f79b">moveselection::MinimaxMoveEvaluator::InitializedBestEval</a></div><div class="ttdeci">int InitializedBestEval(PieceColor cur_player)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00436">move_evaluators.hpp:436</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a0f0bcd08f1c5bd0b13d5f825df7e03d9"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a0f0bcd08f1c5bd0b13d5f825df7e03d9">moveselection::MinimaxMoveEvaluator::HandleLeaf</a></div><div class="ttdeci">EqualScoreMoves HandleLeaf(PieceColor cur_player, SearchSummary &amp;search_summary, MinimaxResultType &amp;result_type, int remaining_search_depth)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00308">move_evaluators.hpp:308</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a1a79a1ba5bf0c33cf2b2596b66c2658d"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a1a79a1ba5bf0c33cf2b2596b66c2658d">moveselection::MinimaxMoveEvaluator::RunSecondSearch</a></div><div class="ttdeci">SearchSummary &amp; RunSecondSearch(MoveCollection &amp;allowed_moves)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00228">move_evaluators.hpp:228</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a1ad65f5425ab83dceebbfa31ab0e8a33"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a1ad65f5425ab83dceebbfa31ab0e8a33">moveselection::MinimaxMoveEvaluator::MinimaxMoveEvaluator</a></div><div class="ttdeci">MinimaxMoveEvaluator(PieceColor evaluating_player, int starting_search_depth, ConcreteSpaceInfoProvider &amp;game_board, const ConcretePieceValueProvider &amp;game_position_points)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00035">move_evaluators.hpp:35</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a1c37023e5d00c0f55e16e31c8ebf7a12"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a1c37023e5d00c0f55e16e31c8ebf7a12">moveselection::MinimaxMoveEvaluator::UpdateAlpha</a></div><div class="ttdeci">void UpdateAlpha(int &amp;alpha, int cur_eval)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00369">move_evaluators.hpp:369</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a279c7caee2b1c06b293f2fe4f4354daf"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a279c7caee2b1c06b293f2fe4f4354daf">moveselection::MinimaxMoveEvaluator::game_position_points_</a></div><div class="ttdeci">ConcretePieceValueProvider game_position_points_</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00137">move_evaluators.hpp:137</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a35709bb338c6ff36ccb4ce3a0ab1ff63"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a35709bb338c6ff36ccb4ce3a0ab1ff63">moveselection::MinimaxMoveEvaluator::FinalizeNodeResult</a></div><div class="ttdeci">EqualScoreMoves FinalizeNodeResult(MinimaxResultType &amp;result_type, int best_eval, MoveCollection best_moves, int remaining_search_depth, SearchSummary &amp;search_summary)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00349">move_evaluators.hpp:349</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a4544225bd659713f8463c0415b512aed"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4544225bd659713f8463c0415b512aed">moveselection::MinimaxMoveEvaluator::game_board_</a></div><div class="ttdeci">ConcreteSpaceInfoProvider &amp; game_board_</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00139">move_evaluators.hpp:139</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a4a0edae47be034565cd665ab9c4e1647"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4a0edae47be034565cd665ab9c4e1647">moveselection::MinimaxMoveEvaluator::starting_search_depth_</a></div><div class="ttdeci">int starting_search_depth_</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00141">move_evaluators.hpp:141</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a4ba576bb0b128a9ad429e54e4dabf855"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4ba576bb0b128a9ad429e54e4dabf855">moveselection::MinimaxMoveEvaluator::IsPrunableForEvaluator</a></div><div class="ttdeci">bool IsPrunableForEvaluator(int &amp;alpha, int &amp;beta, MinimaxResultType &amp;result_type)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00373">move_evaluators.hpp:373</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a4bd850fdf843e1751f5633904d4054c5"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4bd850fdf843e1751f5633904d4054c5">moveselection::MinimaxMoveEvaluator::HandleInternalNode</a></div><div class="ttdeci">EqualScoreMoves HandleInternalNode(PieceColor cur_player, MoveCollection &amp;allowed_moves, int &amp;remaining_search_depth, int &amp;alpha, int &amp;beta, MinimaxResultType result_type, SearchSummary &amp;search_summary, bool use_transposition_table)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00453">move_evaluators.hpp:453</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a4ce5365b299f9c2401c6b1c9fe82909c"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4ce5365b299f9c2401c6b1c9fe82909c">moveselection::MinimaxMoveEvaluator::StartingSearchDepth</a></div><div class="ttdeci">int StartingSearchDepth()</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00097">move_evaluators.hpp:97</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a4f2188d2a811e778a8e060ce9247a06a"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4f2188d2a811e778a8e060ce9247a06a">moveselection::MinimaxMoveEvaluator::IncrementNumMoveSelections</a></div><div class="ttdeci">void IncrementNumMoveSelections()</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00239">move_evaluators.hpp:239</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a5630a3d225c2ea8986a935ce5650b61c"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a5630a3d225c2ea8986a935ce5650b61c">moveselection::MinimaxMoveEvaluator::UpdatePruningParam</a></div><div class="ttdeci">void UpdatePruningParam(int &amp;alpha, int &amp;beta, int cur_eval, PieceColor cur_player)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00445">move_evaluators.hpp:445</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a5d1680378f0b4cbf3ea8786dc93c430c"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a5d1680378f0b4cbf3ea8786dc93c430c">moveselection::MinimaxMoveEvaluator::HandleEndOfGame</a></div><div class="ttdeci">EqualScoreMoves HandleEndOfGame(PieceColor cur_player, SearchSummary &amp;search_summary, MinimaxResultType &amp;result_type, int remaining_search_depth)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00272">move_evaluators.hpp:272</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a67601e9ebf21785e6bb13940029e4cb2"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a67601e9ebf21785e6bb13940029e4cb2">moveselection::MinimaxMoveEvaluator::num_move_selections_</a></div><div class="ttdeci">int num_move_selections_</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00140">move_evaluators.hpp:140</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a6d24d4c8d2a4ef6d6eb344c6db4e1f93"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a6d24d4c8d2a4ef6d6eb344c6db4e1f93">moveselection::MinimaxMoveEvaluator::GenerateRankedMoveList</a></div><div class="ttdeci">std::vector&lt; ScoredMove &gt; GenerateRankedMoveList(PieceColor cur_player, MoveCollection &amp;cur_player_moves)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00190">move_evaluators.hpp:190</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a722b7cead14f8071b1f6f7483c89e852"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a722b7cead14f8071b1f6f7483c89e852">moveselection::MinimaxMoveEvaluator::search_summaries</a></div><div class="ttdeci">const moveselection::SearchSummaries &amp; search_summaries()</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00093">move_evaluators.hpp:93</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a7c4d98fb3e5b84101ed9a922113fc438"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a7c4d98fb3e5b84101ed9a922113fc438">moveselection::MinimaxMoveEvaluator::EvaluateNonWinLeaf</a></div><div class="ttdeci">EqualScoreMoves EvaluateNonWinLeaf(PieceColor cur_player, MinimaxResultType &amp;result_type)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00284">move_evaluators.hpp:284</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a805963258a0940b4feef71e1eed5e0f8"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a805963258a0940b4feef71e1eed5e0f8">moveselection::MinimaxMoveEvaluator::IsPrunable</a></div><div class="ttdeci">bool IsPrunable(int &amp;alpha, int &amp;beta, MinimaxResultType &amp;result_type, PieceColor cur_player)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00397">move_evaluators.hpp:397</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a834b5a9fffcef4d3fe5596c13de43218"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a834b5a9fffcef4d3fe5596c13de43218">moveselection::MinimaxMoveEvaluator::RunMinimax</a></div><div class="ttdeci">void RunMinimax(MoveCollection &amp;allowed_moves, SearchSummary &amp;search_summary, bool use_transposition_table=true)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00552">move_evaluators.hpp:552</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a83f67df9d17cc1e0bce81018889a892d"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a83f67df9d17cc1e0bce81018889a892d">moveselection::MinimaxMoveEvaluator::ValidateMove</a></div><div class="ttdeci">bool ValidateMove(SearchSummary &amp;search_summary, MoveCollection &amp;allowed_moves)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00209">move_evaluators.hpp:209</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a8a1cb783b25d96f2c0fa3b8621c73c32"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a8a1cb783b25d96f2c0fa3b8621c73c32">moveselection::MinimaxMoveEvaluator::IsImprovement</a></div><div class="ttdeci">bool IsImprovement(int cur_eval, int previous_best_eval, PieceColor cur_player)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00321">move_evaluators.hpp:321</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_a915db2cf8efbcf62b40c8b329bcc666f"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#a915db2cf8efbcf62b40c8b329bcc666f">moveselection::MinimaxMoveEvaluator::ImplementSelectMove</a></div><div class="ttdeci">Move ImplementSelectMove(MoveCollection &amp;allowed_moves)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00076">move_evaluators.hpp:76</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_aa49f98c887dcc14c0d39d3e0d269d3e2"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#aa49f98c887dcc14c0d39d3e0d269d3e2">moveselection::MinimaxMoveEvaluator::KeySizeBits</a></div><div class="ttdeci">size_t KeySizeBits()</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00099">move_evaluators.hpp:99</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_aa53e65c0138ec9ed751758ed454f681a"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#aa53e65c0138ec9ed751758ed454f681a">moveselection::MinimaxMoveEvaluator::GetPlayerTotal</a></div><div class="ttdeci">Points_t GetPlayerTotal(PieceColor color)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00144">move_evaluators.hpp:144</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_ab14a434d105381e3be6e23cff8ac37c7"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab14a434d105381e3be6e23cff8ac37c7">moveselection::MinimaxMoveEvaluator::hash_calculator_</a></div><div class="ttdeci">ConcreteBoardStateSummarizer hash_calculator_</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00138">move_evaluators.hpp:138</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_ab504aa27a5aff93d05b4a61e99c07dfb"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab504aa27a5aff93d05b4a61e99c07dfb">moveselection::MinimaxMoveEvaluator::MinimaxMoveEvaluator</a></div><div class="ttdeci">MinimaxMoveEvaluator(PieceColor evaluating_player, int starting_search_depth, ConcreteSpaceInfoProvider &amp;game_board, uint32_t zkey_seed)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00049">move_evaluators.hpp:49</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_ab88b12c953c26ed844f4683efebbc51a"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab88b12c953c26ed844f4683efebbc51a">moveselection::MinimaxMoveEvaluator::RecursivelyVisitNodes</a></div><div class="ttdeci">int RecursivelyVisitNodes(Move move, PieceColor cur_player, MoveCollection &amp;allowed_moves, int remaining_search_depth, int alpha, int beta, SearchSummary &amp;search_summary, bool use_transposition_table)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00410">move_evaluators.hpp:410</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_abbc27bd54767226d5f576c174dcdfdc3"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#abbc27bd54767226d5f576c174dcdfdc3">moveselection::MinimaxMoveEvaluator::HandleTrTableHit</a></div><div class="ttdeci">EqualScoreMoves HandleTrTableHit(SearchSummary &amp;search_summary, MinimaxResultType &amp;result_type, TranspositionTableSearchResult &amp;tr_table_search_result, int remaining_search_depth)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00241">move_evaluators.hpp:241</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_abc1c48dec94592657cd7c45c3a7d541b"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#abc1c48dec94592657cd7c45c3a7d541b">moveselection::MinimaxMoveEvaluator::IsPrunableForEvaluatorOpponent</a></div><div class="ttdeci">bool IsPrunableForEvaluatorOpponent(int &amp;alpha, int &amp;beta, MinimaxResultType &amp;result_type)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00385">move_evaluators.hpp:385</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_ac48c6b5c667fc0057ac8285a996d522a"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac48c6b5c667fc0057ac8285a996d522a">moveselection::MinimaxMoveEvaluator::UpdateBestMoves</a></div><div class="ttdeci">void UpdateBestMoves(PieceColor cur_player, Move move, MoveCollection &amp;best_moves, int cur_eval, int &amp;previous_best_eval)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00333">move_evaluators.hpp:333</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_ac6f9bfa2e56a664feb178575fff89f07"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac6f9bfa2e56a664feb178575fff89f07">moveselection::MinimaxMoveEvaluator::board_state_hex_str</a></div><div class="ttdeci">const std::string board_state_hex_str()</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00109">move_evaluators.hpp:109</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_ad084c0263a813449171c681b59ab9a96"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad084c0263a813449171c681b59ab9a96">moveselection::MinimaxMoveEvaluator::MinimaxRec</a></div><div class="ttdeci">EqualScoreMoves MinimaxRec(MoveCollection &amp;allowed_moves, int remaining_search_depth, int alpha, int beta, PieceColor cur_player, SearchSummary &amp;search_summary, bool use_transposition_table)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00497">move_evaluators.hpp:497</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_ad25c2711e733ccae81fb40ea72481249"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad25c2711e733ccae81fb40ea72481249">moveselection::MinimaxMoveEvaluator::RunFirstSearch</a></div><div class="ttdeci">SearchSummary &amp; RunFirstSearch(MoveCollection &amp;allowed_moves)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00218">move_evaluators.hpp:218</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_ad60e3db49acd90848644eb0fafd8a287"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad60e3db49acd90848644eb0fafd8a287">moveselection::MinimaxMoveEvaluator::RateMove</a></div><div class="ttdeci">ScoredMove RateMove(Move move, PieceColor cur_player)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00154">move_evaluators.hpp:154</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_ae691602ed173beb3246329f714611980"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#ae691602ed173beb3246329f714611980">moveselection::MinimaxMoveEvaluator::search_summaries_</a></div><div class="ttdeci">moveselection::SearchSummaries search_summaries_</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00142">move_evaluators.hpp:142</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_aed729e6567075bcb066d9df4eebad179"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#aed729e6567075bcb066d9df4eebad179">moveselection::MinimaxMoveEvaluator::hash_calculator</a></div><div class="ttdeci">const ConcreteBoardStateSummarizer &amp; hash_calculator() const</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00103">move_evaluators.hpp:103</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_af3f4a166e7e921a6c41fa806c7044a7d"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#af3f4a166e7e921a6c41fa806c7044a7d">moveselection::MinimaxMoveEvaluator::GetValueOfPieceAtPosition</a></div><div class="ttdeci">Points_t GetValueOfPieceAtPosition(PieceColor color, PieceType piece_type, BoardSpace space)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00182">move_evaluators.hpp:182</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_afaa15ee320416d50b967d25a7a786bf5"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#afaa15ee320416d50b967d25a7a786bf5">moveselection::MinimaxMoveEvaluator::UpdateBeta</a></div><div class="ttdeci">void UpdateBeta(int &amp;beta, int cur_eval)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00371">move_evaluators.hpp:371</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1MinimaxMoveEvaluator_html_afbb53bb5922a10c301ad9cbe69922526"><div class="ttname"><a href="classmoveselection_1_1MinimaxMoveEvaluator.html#afbb53bb5922a10c301ad9cbe69922526">moveselection::MinimaxMoveEvaluator::MinimaxMoveEvaluator</a></div><div class="ttdeci">MinimaxMoveEvaluator(PieceColor evaluating_player, int starting_search_depth, ConcreteSpaceInfoProvider &amp;game_board)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00063">move_evaluators.hpp:63</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1RandomMoveEvaluator_html"><div class="ttname"><a href="classmoveselection_1_1RandomMoveEvaluator.html">moveselection::RandomMoveEvaluator</a></div><div class="ttdoc">Implements gameboard::MoveEvaluator interface.</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00585">move_evaluators.hpp:586</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1RandomMoveEvaluator_html_a18c0052fe2e5fe4b83f841234bc38047"><div class="ttname"><a href="classmoveselection_1_1RandomMoveEvaluator.html#a18c0052fe2e5fe4b83f841234bc38047">moveselection::RandomMoveEvaluator::ImplementSelectMove</a></div><div class="ttdeci">Move ImplementSelectMove(MoveCollection &amp;allowed_moves)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00595">move_evaluators.hpp:595</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1RandomMoveEvaluator_html_a69b94792d3d265d5ddb69840e256a273"><div class="ttname"><a href="classmoveselection_1_1RandomMoveEvaluator.html#a69b94792d3d265d5ddb69840e256a273">moveselection::RandomMoveEvaluator::RandomMoveEvaluator</a></div><div class="ttdeci">RandomMoveEvaluator(PieceColor evaluating_player, ConcreteSpaceInfoProvider &amp;game_board)</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00588">move_evaluators.hpp:588</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1RandomMoveEvaluator_html_a69fdaf3024cf61c1b3a4472c1b52d35b"><div class="ttname"><a href="classmoveselection_1_1RandomMoveEvaluator.html#a69fdaf3024cf61c1b3a4472c1b52d35b">moveselection::RandomMoveEvaluator::evaluating_player_</a></div><div class="ttdeci">PieceColor evaluating_player_</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00602">move_evaluators.hpp:602</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1RandomMoveEvaluator_html_adf9a8b780202d5d6b6052ff912d8fb39"><div class="ttname"><a href="classmoveselection_1_1RandomMoveEvaluator.html#adf9a8b780202d5d6b6052ff912d8fb39">moveselection::RandomMoveEvaluator::game_board_</a></div><div class="ttdeci">ConcreteSpaceInfoProvider &amp; game_board_</div><div class="ttdef"><b>Definition:</b> <a href="move__evaluators_8hpp_source.html#l00603">move_evaluators.hpp:603</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1SearchSummary_html"><div class="ttname"><a href="classmoveselection_1_1SearchSummary.html">moveselection::SearchSummary</a></div><div class="ttdoc">Stores data collected during a single call to moveselection::MinimaxMoveEvaluator....</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00135">evaluator_data_structs.hpp:135</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1SearchSummary_html_a02d1608177f330975e7a01c5d5a3479a"><div class="ttname"><a href="classmoveselection_1_1SearchSummary.html#a02d1608177f330975e7a01c5d5a3479a">moveselection::SearchSummary::set_returned_illegal_move</a></div><div class="ttdeci">void set_returned_illegal_move(bool status)</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00202">evaluator_data_structs.hpp:202</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1SearchSummary_html_a14fdc122ed2b721036773773b49f98ac"><div class="ttname"><a href="classmoveselection_1_1SearchSummary.html#a14fdc122ed2b721036773773b49f98ac">moveselection::SearchSummary::set_time</a></div><div class="ttdeci">void set_time(std::chrono::duration&lt; double, std::nano &gt; search_time)</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00183">evaluator_data_structs.hpp:183</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1SearchSummary_html_a42e91f2b0146be44a5d877b049216ebb"><div class="ttname"><a href="classmoveselection_1_1SearchSummary.html#a42e91f2b0146be44a5d877b049216ebb">moveselection::SearchSummary::RecordTrTableHit</a></div><div class="ttdeci">void RecordTrTableHit(TranspositionTableSearchResult &amp;tr_table_search_result, int remaining_search_depth)</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00161">evaluator_data_structs.hpp:161</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1SearchSummary_html_ab455786cfc82050b0b5460e67e827fe8"><div class="ttname"><a href="classmoveselection_1_1SearchSummary.html#ab455786cfc82050b0b5460e67e827fe8">moveselection::SearchSummary::selected_move</a></div><div class="ttdeci">Move selected_move()</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00191">evaluator_data_structs.hpp:191</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1SearchSummary_html_ac40fe25ebdefd13a5dd08a07ccb68460"><div class="ttname"><a href="classmoveselection_1_1SearchSummary.html#ac40fe25ebdefd13a5dd08a07ccb68460">moveselection::SearchSummary::RecordNodeInfo</a></div><div class="ttdeci">void RecordNodeInfo(MinimaxResultType result_type, int search_depth, EqualScoreMoves &amp;similar_moves)</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00146">evaluator_data_structs.hpp:146</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1SearchSummary_html_ae5d63bd7f763b468ecfc6f25136569f0"><div class="ttname"><a href="classmoveselection_1_1SearchSummary.html#ae5d63bd7f763b468ecfc6f25136569f0">moveselection::SearchSummary::set_tr_table_size_final</a></div><div class="ttdeci">void set_tr_table_size_final(TranspositionTableSize tr_table_size_final)</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00199">evaluator_data_structs.hpp:199</a></div></div>
+<div class="ttc" id="aclassmoveselection_1_1SearchSummary_html_aebecc89334baf04db5848bbcacd05596"><div class="ttname"><a href="classmoveselection_1_1SearchSummary.html#aebecc89334baf04db5848bbcacd05596">moveselection::SearchSummary::SetSelectedMove</a></div><div class="ttdeci">void SetSelectedMove(Move selected_move)</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00192">evaluator_data_structs.hpp:192</a></div></div>
+<div class="ttc" id="aevaluator__data__structs_8hpp_html"><div class="ttname"><a href="evaluator__data__structs_8hpp.html">evaluator_data_structs.hpp</a></div><div class="ttdoc">Data structs used by moveselection::MinimaxEvaluator.</div></div>
+<div class="ttc" id="amove__evaluator__interface_8hpp_html"><div class="ttname"><a href="move__evaluator__interface_8hpp.html">move_evaluator_interface.hpp</a></div><div class="ttdoc">Definition of MoveEvaluator interface.</div></div>
+<div class="ttc" id="anamespacegameboard_html"><div class="ttname"><a href="namespacegameboard.html">gameboard</a></div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00014">board_data_structs.hpp:14</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">gameboard::PieceType</a></div><div class="ttdeci">PieceType</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00013">game_piece.hpp:13</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_a96f2b0bb2cc896e13f52854427e155d9"><div class="ttname"><a href="namespacegameboard.html#a96f2b0bb2cc896e13f52854427e155d9">gameboard::opponent_of</a></div><div class="ttdeci">PieceColor opponent_of(PieceColor color)</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00038">board_data_structs.hpp:38</a></div></div>
+<div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a></div><div class="ttdeci">PieceColor</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html"><div class="ttname"><a href="namespacemoveselection.html">moveselection</a></div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00015">evaluator_data_structs.hpp:15</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html_acdb529ae14e6752318706ace995061ed"><div class="ttname"><a href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">moveselection::MinimaxResultType</a></div><div class="ttdeci">MinimaxResultType</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00032">evaluator_data_structs.hpp:32</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html_acdb529ae14e6752318706ace995061eda0c1922f53a20c3978b37b675895a49aa"><div class="ttname"><a href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda0c1922f53a20c3978b37b675895a49aa">moveselection::kBetaPrune</a></div><div class="ttdeci">@ kBetaPrune</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00041">evaluator_data_structs.hpp:41</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html_acdb529ae14e6752318706ace995061eda0fe64a6e73a77fefbfe91370bb0652d5"><div class="ttname"><a href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda0fe64a6e73a77fefbfe91370bb0652d5">moveselection::kEvaluatorWins</a></div><div class="ttdeci">@ kEvaluatorWins</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00036">evaluator_data_structs.hpp:36</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html_acdb529ae14e6752318706ace995061eda39391e47fa69eaa70726091d4f4e2298"><div class="ttname"><a href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda39391e47fa69eaa70726091d4f4e2298">moveselection::kDraw</a></div><div class="ttdeci">@ kDraw</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00037">evaluator_data_structs.hpp:37</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html_acdb529ae14e6752318706ace995061eda552dd3cbc3a757459c0df9b2ae2edd27"><div class="ttname"><a href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda552dd3cbc3a757459c0df9b2ae2edd27">moveselection::kTrTableHit</a></div><div class="ttdeci">@ kTrTableHit</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00034">evaluator_data_structs.hpp:34</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html_acdb529ae14e6752318706ace995061eda5fdab859498d9e51a5300bb6fe535a60"><div class="ttname"><a href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda5fdab859498d9e51a5300bb6fe535a60">moveselection::kFullyEvaluatedNode</a></div><div class="ttdeci">@ kFullyEvaluatedNode</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00038">evaluator_data_structs.hpp:38</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html_acdb529ae14e6752318706ace995061eda65b563cc5a2a595f6f19adea98b99fa9"><div class="ttname"><a href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda65b563cc5a2a595f6f19adea98b99fa9">moveselection::kStandardLeaf</a></div><div class="ttdeci">@ kStandardLeaf</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00039">evaluator_data_structs.hpp:39</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html_acdb529ae14e6752318706ace995061eda71f7c72c022ad1322f406bdd0ca7be25"><div class="ttname"><a href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda71f7c72c022ad1322f406bdd0ca7be25">moveselection::kAlphaPrune</a></div><div class="ttdeci">@ kAlphaPrune</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00040">evaluator_data_structs.hpp:40</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html_acdb529ae14e6752318706ace995061edacf13d4e4d1a33bcd701f870b4d5103f3"><div class="ttname"><a href="namespacemoveselection.html#acdb529ae14e6752318706ace995061edacf13d4e4d1a33bcd701f870b4d5103f3">moveselection::kEvaluatorLoses</a></div><div class="ttdeci">@ kEvaluatorLoses</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00035">evaluator_data_structs.hpp:35</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html_acdb529ae14e6752318706ace995061edadef73b774725d74259cc49e9fe97e6dd"><div class="ttname"><a href="namespacemoveselection.html#acdb529ae14e6752318706ace995061edadef73b774725d74259cc49e9fe97e6dd">moveselection::kUnknown</a></div><div class="ttdeci">@ kUnknown</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00033">evaluator_data_structs.hpp:33</a></div></div>
+<div class="ttc" id="anamespacepiecepoints_html_a70d6ac023c4aade3434209ba7eb7db57"><div class="ttname"><a href="namespacepiecepoints.html#a70d6ac023c4aade3434209ba7eb7db57">piecepoints::Points_t</a></div><div class="ttdeci">int Points_t</div><div class="ttdef"><b>Definition:</b> <a href="piece__points__data__structs_8hpp_source.html#l00015">piece_points_data_structs.hpp:15</a></div></div>
+<div class="ttc" id="anamespaceutility__functs_html_a754117eda4e493add56b6ce4899826a9"><div class="ttname"><a href="namespaceutility__functs.html#a754117eda4e493add56b6ce4899826a9">utility_functs::random</a></div><div class="ttdeci">T random(T range_from, T range_to)</div><div class="ttdef"><b>Definition:</b> <a href="utility__functs_8hpp_source.html#l00020">utility_functs.hpp:20</a></div></div>
+<div class="ttc" id="anamespacexiangqipy_1_1command__input_html_a46612d7349f393c16563cb108d447abb"><div class="ttname"><a href="namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb">xiangqipy.command_input.result</a></div><div class="ttdeci">dict[str, Any] result</div><div class="ttdef"><b>Definition:</b> <a href="command__input_8py_source.html#l00319">command_input.py:319</a></div></div>
+<div class="ttc" id="apiece__value__provider__interface_8hpp_html"><div class="ttname"><a href="piece__value__provider__interface_8hpp.html">piece_value_provider_interface.hpp</a></div><div class="ttdoc">Definition of PieceValueProvider CRTP interface.</div></div>
+<div class="ttc" id="aspace__info__provider__interface_8hpp_html"><div class="ttname"><a href="space__info__provider__interface_8hpp.html">space_info_provider_interface.hpp</a></div><div class="ttdoc">Definition of SpaceInfoProvider CRTP interface.</div></div>
+<div class="ttc" id="astructgameboard_1_1BoardSpace_html"><div class="ttname"><a href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a></div><div class="ttdoc">A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa...</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00051">board_data_structs.hpp:51</a></div></div>
+<div class="ttc" id="astructgameboard_1_1MoveCollection_html"><div class="ttname"><a href="structgameboard_1_1MoveCollection.html">gameboard::MoveCollection</a></div><div class="ttdoc">A container for multiple gameboard::Move objects.</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00030">move_data_structs.hpp:30</a></div></div>
+<div class="ttc" id="astructgameboard_1_1MoveCollection_html_a4e76a0f747731cb2de782a98bf4e5a96"><div class="ttname"><a href="structgameboard_1_1MoveCollection.html#a4e76a0f747731cb2de782a98bf4e5a96">gameboard::MoveCollection::ContainsMove</a></div><div class="ttdeci">bool ContainsMove(const Move &amp;move) const</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00045">move_data_structs.hpp:45</a></div></div>
+<div class="ttc" id="astructgameboard_1_1MoveCollection_html_a5b1838b6ffa4126795a4803984fe2dfc"><div class="ttname"><a href="structgameboard_1_1MoveCollection.html#a5b1838b6ffa4126795a4803984fe2dfc">gameboard::MoveCollection::Append</a></div><div class="ttdeci">void Append(Move move)</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00074">move_data_structs.hpp:74</a></div></div>
+<div class="ttc" id="astructgameboard_1_1MoveCollection_html_a93e7b00791f7e132e29bd3827f37c6e0"><div class="ttname"><a href="structgameboard_1_1MoveCollection.html#a93e7b00791f7e132e29bd3827f37c6e0">gameboard::MoveCollection::moves</a></div><div class="ttdeci">vector&lt; Move &gt; moves</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00031">move_data_structs.hpp:31</a></div></div>
+<div class="ttc" id="astructgameboard_1_1Move_html"><div class="ttname"><a href="structgameboard_1_1Move.html">gameboard::Move</a></div><div class="ttdoc">A gameboard::BoardSpace pair (start and end).</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00017">move_data_structs.hpp:17</a></div></div>
+<div class="ttc" id="astructgameboard_1_1Move_html_a081f9df36eb132385a8082b19ee1e510"><div class="ttname"><a href="structgameboard_1_1Move.html#a081f9df36eb132385a8082b19ee1e510">gameboard::Move::end</a></div><div class="ttdeci">gameboard::BoardSpace end</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00019">move_data_structs.hpp:19</a></div></div>
+<div class="ttc" id="astructgameboard_1_1Move_html_a6697f432e43a5607333c22fc13e46f95"><div class="ttname"><a href="structgameboard_1_1Move.html#a6697f432e43a5607333c22fc13e46f95">gameboard::Move::start</a></div><div class="ttdeci">gameboard::BoardSpace start</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00018">move_data_structs.hpp:18</a></div></div>
+<div class="ttc" id="astructmoveselection_1_1EqualScoreMoves_html"><div class="ttname"><a href="structmoveselection_1_1EqualScoreMoves.html">moveselection::EqualScoreMoves</a></div><div class="ttdoc">Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a...</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00019">evaluator_data_structs.hpp:19</a></div></div>
+<div class="ttc" id="astructmoveselection_1_1ScoredMove_html"><div class="ttname"><a href="structmoveselection_1_1ScoredMove.html">moveselection::ScoredMove</a></div><div class="ttdoc">A gameboard::Move, and an associated score calculated by a MoveEvaluator.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00027">evaluator_data_structs.hpp:27</a></div></div>
+<div class="ttc" id="astructmoveselection_1_1SearchSummaries_html"><div class="ttname"><a href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a></div><div class="ttdoc">Stores a moveselection::SearchSummary for each moveselection::MinimaxMoveEvaluator....</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00226">evaluator_data_structs.hpp:226</a></div></div>
+<div class="ttc" id="astructmoveselection_1_1SearchSummaries_html_a919a543da44a08438a6771dc61c5626c"><div class="ttname"><a href="structmoveselection_1_1SearchSummaries.html#a919a543da44a08438a6771dc61c5626c">moveselection::SearchSummaries::NewFirstSearch</a></div><div class="ttdeci">SearchSummary &amp; NewFirstSearch(int search_depth, TranspositionTableSize tr_table_size_initial)</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00230">evaluator_data_structs.hpp:230</a></div></div>
+<div class="ttc" id="astructmoveselection_1_1SearchSummaries_html_a93cdc427ea3e4a7cdb3b344106619cf4"><div class="ttname"><a href="structmoveselection_1_1SearchSummaries.html#a93cdc427ea3e4a7cdb3b344106619cf4">moveselection::SearchSummaries::NewExtraSearch</a></div><div class="ttdeci">SearchSummary &amp; NewExtraSearch(int search_depth, int search_number, TranspositionTableSize tr_table_size_current)</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00238">evaluator_data_structs.hpp:238</a></div></div>
+<div class="ttc" id="astructmoveselection_1_1TranspositionTableSearchResult_html"><div class="ttname"><a href="structmoveselection_1_1TranspositionTableSearchResult.html">moveselection::TranspositionTableSearchResult</a></div><div class="ttdoc">Container for storing a moveselection::TranspositionTableEntry retrieved by a call to boardstate::Sin...</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00070">evaluator_data_structs.hpp:70</a></div></div>
+<div class="ttc" id="astructmoveselection_1_1TranspositionTableSearchResult_html_a778284da9767ddf3762a5a2efc6cadf4"><div class="ttname"><a href="structmoveselection_1_1TranspositionTableSearchResult.html#a778284da9767ddf3762a5a2efc6cadf4">moveselection::TranspositionTableSearchResult::score_and_moves</a></div><div class="ttdeci">EqualScoreMoves score_and_moves()</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00090">evaluator_data_structs.hpp:90</a></div></div>
+<div class="ttc" id="autility__functs_8hpp_html"><div class="ttname"><a href="utility__functs_8hpp.html">utility_functs.hpp</a></div><div class="ttdoc">Defiition of miscellaneous free functions (and implementation of those that are templates).</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="move__evaluators_8hpp.html">move_evaluators.hpp</a></li>
+    <li class="footer">Generated on Mon Nov 4 2024 21:28:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

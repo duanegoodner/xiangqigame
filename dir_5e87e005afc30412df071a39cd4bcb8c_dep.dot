@@ -1,0 +1,11 @@
+digraph "src/core/piece_points_bpo" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_aebb8dcc11953d78e620bbef0b9e2183 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="core" fontname="Helvetica", fontsize="10", URL="dir_aebb8dcc11953d78e620bbef0b9e2183.html"]
+  dir_5e87e005afc30412df071a39cd4bcb8c [shape=box, label="piece_points_bpo", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_5e87e005afc30412df071a39cd4bcb8c.html"];
+  }
+  dir_d44c64559bbebec7f509842c48db8b23 [shape=box label="include" URL="dir_d44c64559bbebec7f509842c48db8b23.html"];
+  dir_5e87e005afc30412df071a39cd4bcb8c->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="2", labeldistance=1.5 headhref="dir_000012_000001.html"];
+}

@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['random_1168',['random',['../namespaceutility__functs.html#a754117eda4e493add56b6ce4899826a9',1,'utility_functs']]],
+  ['randommoveevaluator_1169',['RandomMoveEvaluator',['../classmoveselection_1_1RandomMoveEvaluator.html#a69b94792d3d265d5ddb69840e256a273',1,'moveselection::RandomMoveEvaluator']]],
+  ['ratemove_1170',['RateMove',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ad60e3db49acd90848644eb0fafd8a287',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['recorddata_1171',['RecordData',['../classboardstate_1_1DualKeyTranspositionTable.html#a6e23d708c78364cf65f0500d8b91abed',1,'boardstate::DualKeyTranspositionTable::RecordData()'],['../classboardstate_1_1SingleKeyTranspositionTable.html#a1abc4a38f46ada43088cd9b494f0accc',1,'boardstate::SingleKeyTranspositionTable::RecordData()']]],
+  ['recordnodeinfo_1172',['RecordNodeInfo',['../classmoveselection_1_1SearchSummary.html#ac40fe25ebdefd13a5dd08a07ccb68460',1,'moveselection::SearchSummary']]],
+  ['recordtrdata_1173',['RecordTrData',['../classBoardStateSummarizer.html#ab2187a1c6c4d96b603b18177c7d920e6',1,'BoardStateSummarizer']]],
+  ['recordtrtablehit_1174',['RecordTrTableHit',['../classmoveselection_1_1SearchSummary.html#a42e91f2b0146be44a5d877b049216ebb',1,'moveselection::SearchSummary']]],
+  ['recursivelyvisitnodes_1175',['RecursivelyVisitNodes',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ab88b12c953c26ed844f4683efebbc51a',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['red_5fcastle_5fspaces_1176',['red_castle_spaces',['../namespacegameboard.html#a5276c175a40d19b70dc764a7ff5a878f',1,'gameboard']]],
+  ['rednetpoints_1177',['RedNetPoints',['../classpiecepoints_1_1BPOPointsEKeys.html#aa0945f311d671e17883326d36b8ccb93',1,'piecepoints::BPOPointsEKeys']]],
+  ['remove_5fsecond_5fplot_5fcol_5fylabels_1178',['remove_second_plot_col_ylabels',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a8e01edd01fb354d223680069b2c2de5c',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
+  ['removefrommovelog_1179',['RemoveFromMoveLog',['../classgameboard_1_1GameBoard.html#aa1b04ddda87d4a7d38005d6570a62037',1,'gameboard::GameBoard']]],
+  ['replace_5fkeys_1180',['replace_keys',['../namespaceutility__functs.html#a3ce905050d8fc772ea108ae69f149537',1,'utility_functs']]],
+  ['replace_5fkeys_5fforward_1181',['replace_keys_forward',['../namespaceutility__functs.html#a6a540b4fe77b3b4368bc8f8f04ca4c4d',1,'utility_functs']]],
+  ['replace_5fkeys_5freverse_1182',['replace_keys_reverse',['../namespaceutility__functs.html#a185719f0e845f8bafb6a26ab3e7a01f6',1,'utility_functs']]],
+  ['report_5fgame_5finfo_1183',['report_game_info',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#aa7dd4a866da36af09620b33871f10184',1,'xiangqipy.terminal_output.TerminalStatusReporter.report_game_info()'],['../classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html#aaef1caf75ee8440e858efae36ebb9790',1,'xiangqipy.game_interfaces.GameStatusReporter.report_game_info()']]],
+  ['resultdepthcounts_1184',['ResultDepthCounts',['../classmoveselection_1_1ResultDepthCounts.html#a2d2b88f03d80c029bced3752772437b7',1,'moveselection::ResultDepthCounts']]],
+  ['returned_5fillegal_5fmove_1185',['returned_illegal_move',['../classmoveselection_1_1SearchSummary.html#ad5f02b2a75f248998b7b6b0942d1565d',1,'moveselection::SearchSummary']]],
+  ['run_1186',['run',['../namespacexiangqipy_1_1app.html#ac09777385f4e43af5903c4c664c70ae4',1,'xiangqipy::app']]],
+  ['runfirstsearch_1187',['RunFirstSearch',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ad25c2711e733ccae81fb40ea72481249',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['runminimax_1188',['RunMinimax',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a834b5a9fffcef4d3fe5596c13de43218',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['runsecondsearch_1189',['RunSecondSearch',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a1a79a1ba5bf0c33cf2b2596b66c2658d',1,'moveselection::MinimaxMoveEvaluator']]]
+];

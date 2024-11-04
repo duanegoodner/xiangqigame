@@ -1,0 +1,33 @@
+digraph "moveselection::SearchSummary"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{moveselection::SearchSummary\n||+ SearchSummary()\l+ RecordNodeInfo()\l+ UpdateTranspositionTable\lHits()\l+ RecordTrTableHit()\l+ num_nodes()\l+ time()\l+ set_time()\l+ similar_moves()\l+ set_similar_moves()\l+ selected_move()\l+ SetSelectedMove()\l+ GetResultDepthCounts()\l+ GetTranspositionTableHits()\l+ tr_table_size_initial()\l+ tr_table_size_final()\l+ set_tr_table_size_final()\l+ set_returned_illegal\l_move()\l+ returned_illegal_move()\l+ num_collisions()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator...."];
+  Node2 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -selected_move_" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node2 [label="{gameboard::Move\n||+ operator==()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgameboard_1_1Move.html",tooltip="A gameboard::BoardSpace pair (start and end)."];
+  Node3 -> Node2 [color="grey25",fontsize="10",style="solid",label=" +end\n+start" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node3 [label="{gameboard::BoardSpace\n||+ IsOnBoard()\l+ IsInHomelandOf()\l+ IsInCastleOf()\l+ operator+()\l+ operator==()\l+ operator!=()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgameboard_1_1BoardSpace.html",tooltip="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa..."];
+  Node4 -> Node3 [color="grey25",fontsize="10",style="solid",label=" +file\n+rank" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node4 [label="{int\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node5 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -similar_moves_" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node5 [label="{moveselection::EqualScore\lMoves\n||+ moves()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structmoveselection_1_1EqualScoreMoves.html",tooltip="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..."];
+  Node6 -> Node5 [color="grey25",fontsize="10",style="solid",label=" +similar_moves" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node6 [label="{gameboard::MoveCollection\n||+ MoveCollection()\l+ MoveCollection()\l+ MoveCollection()\l+ Size()\l+ IsEmpty()\l+ ContainsMove()\l+ ContainsAnyMoveNotIn()\l+ ContainsDestination()\l+ Append()\l+ Concat()\l+ Concat()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgameboard_1_1MoveCollection.html",tooltip="A container for multiple gameboard::Move objects."];
+  Node7 -> Node6 [color="grey25",fontsize="10",style="solid",label=" +moves" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node7 [label="{vector\< gameboard::\lMove \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node4 -> Node5 [color="grey25",fontsize="10",style="solid",label=" +shared_score" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node8 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -result_depth_counts\l_\n-transposition_table\l_hits_" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node8 [label="{moveselection::ResultDepth\lCounts\n||+ ResultDepthCounts()\l+ IncrementDataAt()\l+ data()\l}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classmoveselection_1_1ResultDepthCounts.html",tooltip="Container for storing and updating data in a moveselection::ResultDepthCountsData_t array of vectors."];
+  Node9 -> Node8 [color="grey25",fontsize="10",style="solid",label=" -data_" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node9 [label="{array\< std::vector\l\< int \>, MinimaxResultType\l::kMax+1 \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node4 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -num_collisions_\n-num_nodes_" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node10 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -returned_illegal_move_" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node10 [label="{bool\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node11 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -tr_table_size_final\l_\n-tr_table_size_initial_" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node11 [label="{moveselection::Transposition\lTableSize\n||}",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structmoveselection_1_1TranspositionTableSize.html",tooltip=" "];
+  Node12 -> Node11 [color="grey25",fontsize="10",style="solid",label=" +num_entries\n+num_states" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node12 [label="{uint64_t\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node13 -> Node1 [color="grey25",fontsize="10",style="solid",label=" -time_" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node13 [label="{duration\< double, std\l::nano \>\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

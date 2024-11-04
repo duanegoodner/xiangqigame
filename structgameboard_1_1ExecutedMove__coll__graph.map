@@ -1,0 +1,9 @@
+<map id="gameboard::ExecutedMove" name="gameboard::ExecutedMove">
+<area shape="rect" id="node1" title="A change in the state of a gameboard::GameBoard represented by a gameboard::Move, and each of the gam..." alt="" coords="85,587,284,664"/>
+<area shape="rect" id="node2" href="$structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end)." alt="" coords="114,410,254,487"/>
+<area shape="rect" id="node3" href="$structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa..." alt="" coords="62,160,243,311"/>
+<area shape="rect" id="node4" title=" " alt="" coords="24,5,62,83"/>
+<area shape="rect" id="node5" href="$structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor." alt="" coords="279,388,458,509"/>
+<area shape="rect" id="node6" title=" " alt="" coords="269,197,356,274"/>
+<area shape="rect" id="node7" title=" " alt="" coords="384,197,475,274"/>
+</map>

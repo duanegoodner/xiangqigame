@@ -1,0 +1,5 @@
+<map id="xiangqipy.game_summary_plotters.SearchResultsByTypePlotter" name="xiangqipy.game_summary_plotters.SearchResultsByTypePlotter">
+<area shape="rect" id="node1" title="Implements GameSummaryPlotter, and produces stacked plots of Minimax search result counts grouped by ..." alt="" coords="8,667,231,861"/>
+<area shape="rect" id="node2" href="$classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html" title="Abstract base class for plotting data stored in pandas dataframes (one df for each player) to a numpy..." alt="" coords="5,131,233,619"/>
+<area shape="rect" id="node3" title=" " alt="" coords="95,5,144,83"/>
+</map>

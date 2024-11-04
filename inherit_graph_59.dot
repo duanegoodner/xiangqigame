@@ -1,0 +1,10 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node77 [label="msgspec.Struct",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node77 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="xiangqipy.game_summary.Game\lSummary",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classxiangqipy_1_1game__summary_1_1GameSummary.html",tooltip="Holds summary info of a xiangqipy.game.Game; implements msgspec.Struct for json IO."];
+}

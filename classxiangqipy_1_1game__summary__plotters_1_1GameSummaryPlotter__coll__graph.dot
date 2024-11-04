@@ -1,0 +1,11 @@
+digraph "xiangqipy.game_summary_plotters.GameSummaryPlotter"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{xiangqipy.game_summary\l_plotters.GameSummaryPlotter\n|+ axes\l+ y_labels\l+ log_scale_rows\l+ num_players_with_data\l- _red_data\l- _black_data\l- _add_plot_column_titles\l|+ __init__()\l+ dfs()\l+ has_data()\l+ num_players_with_data()\l+ validate_dfs()\l+ set_y_axes()\l+ set_x_axes()\l+ player_plot_col()\l+ data_columns()\l+ match_y_limits_all\l_rows()\l+ plot_data()\l+ remove_second_plot\l_col_ylabels()\l+ set_plot_col_titles()\l+ plot()\l+ match_y_limits()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Abstract base class for plotting data stored in pandas dataframes (one df for each player) to a numpy..."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",arrowtail="onormal",fontname="Helvetica"];
+  Node2 [label="{ABC\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node3 -> Node1 [color="grey25",fontsize="10",style="solid",label=" +evaluating_player\l_line_colors\n+non_evaluating_player\l_line_colors\n+player_text_labels" ,arrowhead="odiamond",fontname="Helvetica"];
+  Node3 [label="{dictionary\n||}",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+}

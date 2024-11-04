@@ -1,0 +1,750 @@
+<!-- HTML header for doxygen 1.9.4-->
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=11" />
+  <meta name="generator" content="Doxygen 1.9.1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Xiangiqgame: xiangqipy.terminal_output.TerminalStatusReporter Class Reference</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+  </script>
+  <script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script type="text/javascript">
+    DoxygenAwesomeDarkModeToggle.init()
+  </script>
+</head>
+<body>
+  <!-- https://tholman.com/github-corners/ -->
+  <a href="https://github.com/duanegoodner/xiangqigame" class="github-corner" aria-label="View source on GitHub"><svg
+      width="80" height="80" viewBox="0 0 250 250"
+      style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+      <path
+        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+      <path
+        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+        fill="currentColor" class="octo-body"></path>
+    </svg></a>
+  <style>
+    .github-corner:hover .octo-arm {
+      animation: octocat-wave 560ms ease-in-out
+    }
+    @keyframes octocat-wave {
+      0%,
+      100% {
+        transform: rotate(0)
+      }
+      20%,
+      60% {
+        transform: rotate(-25deg)
+      }
+      40%,
+      80% {
+        transform: rotate(10deg)
+      }
+    }
+    @media (max-width:500px) {
+      .github-corner:hover .octo-arm {
+        animation: none
+      }
+      .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+      }
+    }
+  </style>
+    <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="projectrow">
+              <td id="projectalign">
+                <div id="projectname">Xiangiqgame
+                </div>
+                <div id="projectbrief">AI engine for Xiangqi</div>
+              </td>
+            </tr>
+            <!--BEGIN FULL_SIDEBAR-->
+            <tr>
+              <td colspan="2">        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.svg"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+            </tr>
+            <!--END FULL_SIDEBAR-->
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part --><!-- Generated by Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Search','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
+<a href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter-members.html">List of all members</a>  </div>
+  <div class="headertitle">
+<div class="title">xiangqipy.terminal_output.TerminalStatusReporter Class Reference</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Outputs a text-base game board with GamePiece locations in algebraic notation.  
+ <a href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#details">More...</a></p>
+<div class="dynheader">
+Inheritance diagram for xiangqipy.terminal_output.TerminalStatusReporter:</div>
+<div class="dyncontent">
+<div class="center"><img src="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter__inherit__graph.png" border="0" usemap="#axiangqipy_8terminal__output_8TerminalStatusReporter_inherit__map" alt="Inheritance graph"/></div>
+<map name="axiangqipy_8terminal__output_8TerminalStatusReporter_inherit__map" id="axiangqipy_8terminal__output_8TerminalStatusReporter_inherit__map">
+<area shape="rect" title="Outputs a text&#45;base game board with GamePiece locations in algebraic notation." alt="" coords="5,271,233,553"/>
+<area shape="rect" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html" title="Reports details of a Game." alt="" coords="19,131,220,223"/>
+<area shape="rect" title=" " alt="" coords="79,5,159,83"/>
+</map>
+</div>
+<div class="dynheader">
+Collaboration diagram for xiangqipy.terminal_output.TerminalStatusReporter:</div>
+<div class="dyncontent">
+<div class="center"><img src="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter__coll__graph.png" border="0" usemap="#axiangqipy_8terminal__output_8TerminalStatusReporter_coll__map" alt="Collaboration graph"/></div>
+<map name="axiangqipy_8terminal__output_8TerminalStatusReporter_coll__map" id="axiangqipy_8terminal__output_8TerminalStatusReporter_coll__map">
+<area shape="rect" title="Outputs a text&#45;base game board with GamePiece locations in algebraic notation." alt="" coords="117,331,345,569"/>
+<area shape="rect" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html" title="Reports details of a Game." alt="" coords="5,132,207,224"/>
+<area shape="rect" title=" " alt="" coords="66,5,146,83"/>
+<area shape="rect" title=" " alt="" coords="231,139,317,217"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aab88d0fe44a7d1c93ae88361d2afe3d6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#aab88d0fe44a7d1c93ae88361d2afe3d6">encode_piece</a> (self, GamePiece piece)</td></tr>
+<tr class="separator:aab88d0fe44a7d1c93ae88361d2afe3d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c9473dc5d8bac87db40a9e6978a6233"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a2c9473dc5d8bac87db40a9e6978a6233">format_board_output</a> (self, GameBoard board)</td></tr>
+<tr class="separator:a2c9473dc5d8bac87db40a9e6978a6233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb98c60e2f8dab93be7507da5d058132"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#afb98c60e2f8dab93be7507da5d058132">display_player_info</a> (self, <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> player_summary)</td></tr>
+<tr class="separator:afb98c60e2f8dab93be7507da5d058132"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb565e06f20756972d59b70cac385b5a"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#afb565e06f20756972d59b70cac385b5a">display_prev_move</a> (self, PieceColor color, Move prev_move=None)</td></tr>
+<tr class="separator:afb565e06f20756972d59b70cac385b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90a2dbe978c48812d23caacf83a6880e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a90a2dbe978c48812d23caacf83a6880e">display_whose_turn</a> (self, PieceColor color)</td></tr>
+<tr class="separator:a90a2dbe978c48812d23caacf83a6880e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1451a7b15e89a4f793dd997d7f48e918"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a1451a7b15e89a4f793dd997d7f48e918">display_if_is_in_check</a> (self, PieceColor color, bool is_in_check)</td></tr>
+<tr class="separator:a1451a7b15e89a4f793dd997d7f48e918"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d8c066bf9f47c9382b3f8a56b609ca0"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a5d8c066bf9f47c9382b3f8a56b609ca0">display_final_move</a> (self, PieceColor color, Move final_move)</td></tr>
+<tr class="separator:a5d8c066bf9f47c9382b3f8a56b609ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7dd4a866da36af09620b33871f10184"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#aa7dd4a866da36af09620b33871f10184">report_game_info</a> (self, <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> red_player_summary, <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> black_player_summary, <a class="el" href="classxiangqipy_1_1enums_1_1GameState.html">GameState</a> game_state, GameBoard game_board, PieceColor whose_turn, bool is_in_check, int move_count, Move prev_move=None)</td></tr>
+<tr class="separator:aa7dd4a866da36af09620b33871f10184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classxiangqipy_1_1game__interfaces_1_1GameStatusReporter"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classxiangqipy_1_1game__interfaces_1_1GameStatusReporter')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html">xiangqipy.game_interfaces.GameStatusReporter</a></td></tr>
+<tr class="memitem:aaef1caf75ee8440e858efae36ebb9790 inherit pub_methods_classxiangqipy_1_1game__interfaces_1_1GameStatusReporter"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html#aaef1caf75ee8440e858efae36ebb9790">report_game_info</a> (self, <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> red_player_summary, <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> black_player_summary, <a class="el" href="classxiangqipy_1_1enums_1_1GameState.html">GameState</a> game_state, bindings.GameBoard game_board, bindings.PieceColor whose_turn, bool is_in_check, int move_count, bindings.Move prev_move=None)</td></tr>
+<tr class="separator:aaef1caf75ee8440e858efae36ebb9790 inherit pub_methods_classxiangqipy_1_1game__interfaces_1_1GameStatusReporter"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a7e2f8ed82244387d11abace2fd2c328e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a7e2f8ed82244387d11abace2fd2c328e">clear_screen</a> ()</td></tr>
+<tr class="separator:a7e2f8ed82244387d11abace2fd2c328e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae29f1c77cb181113823fbd565491e41"><td class="memItemLeft" align="right" valign="top">Dict[str, str]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#aae29f1c77cb181113823fbd565491e41">move_evaluator_translator</a> (<a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> player_summary)</td></tr>
+<tr class="separator:aae29f1c77cb181113823fbd565491e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c30270fe4f8b6f58c756cab3d7b7f9c"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a3c30270fe4f8b6f58c756cab3d7b7f9c">display_winner</a> (<a class="el" href="classxiangqipy_1_1enums_1_1GameState.html">GameState</a> game_state)</td></tr>
+<tr class="separator:a3c30270fe4f8b6f58c756cab3d7b7f9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:aa2674c58a7cb815f3a729ab06f376bf7"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#aa2674c58a7cb815f3a729ab06f376bf7">_disp_format</a></td></tr>
+<tr class="separator:aa2674c58a7cb815f3a729ab06f376bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4644f8fb67c068d7692b2403eb73e5d3"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a4644f8fb67c068d7692b2403eb73e5d3">_display_team_name</a> = {PieceColor.kRed: &quot;Red&quot;, PieceColor.kBlk: &quot;Black&quot;}</td></tr>
+<tr class="separator:a4644f8fb67c068d7692b2403eb73e5d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cb57c9fbdadba2cac2e84af4311e22e"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a1cb57c9fbdadba2cac2e84af4311e22e">_color_to_code</a></td></tr>
+<tr class="separator:a1cb57c9fbdadba2cac2e84af4311e22e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ccfb4f6488e78d5b4ff75e95d0430ae"><td class="memItemLeft" align="right" valign="top">dictionary&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a8ccfb4f6488e78d5b4ff75e95d0430ae">_type_to_code</a></td></tr>
+<tr class="separator:a8ccfb4f6488e78d5b4ff75e95d0430ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Outputs a text-base game board with GamePiece locations in algebraic notation. </p>
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00044">44</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7e2f8ed82244387d11abace2fd2c328e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e2f8ed82244387d11abace2fd2c328e">&#9670;&nbsp;</a></span>clear_screen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def xiangqipy.terminal_output.TerminalStatusReporter.clear_screen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00076">76</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="a5d8c066bf9f47c9382b3f8a56b609ca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d8c066bf9f47c9382b3f8a56b609ca0">&#9670;&nbsp;</a></span>display_final_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def xiangqipy.terminal_output.TerminalStatusReporter.display_final_move </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PieceColor&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Move&#160;</td>
+          <td class="paramname"><em>final_move</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00163">163</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="a1451a7b15e89a4f793dd997d7f48e918"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1451a7b15e89a4f793dd997d7f48e918">&#9670;&nbsp;</a></span>display_if_is_in_check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def xiangqipy.terminal_output.TerminalStatusReporter.display_if_is_in_check </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PieceColor&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_in_check</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00159">159</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="afb98c60e2f8dab93be7507da5d058132"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb98c60e2f8dab93be7507da5d058132">&#9670;&nbsp;</a></span>display_player_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def xiangqipy.terminal_output.TerminalStatusReporter.display_player_info </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a>&#160;</td>
+          <td class="paramname"><em>player_summary</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00121">121</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="afb565e06f20756972d59b70cac385b5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb565e06f20756972d59b70cac385b5a">&#9670;&nbsp;</a></span>display_prev_move()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def xiangqipy.terminal_output.TerminalStatusReporter.display_prev_move </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PieceColor&#160;</td>
+          <td class="paramname"><em>color</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Move &#160;</td>
+          <td class="paramname"><em>prev_move</em> = <code>None</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00146">146</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="a90a2dbe978c48812d23caacf83a6880e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90a2dbe978c48812d23caacf83a6880e">&#9670;&nbsp;</a></span>display_whose_turn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def xiangqipy.terminal_output.TerminalStatusReporter.display_whose_turn </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PieceColor&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00156">156</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="a3c30270fe4f8b6f58c756cab3d7b7f9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c30270fe4f8b6f58c756cab3d7b7f9c">&#9670;&nbsp;</a></span>display_winner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">def xiangqipy.terminal_output.TerminalStatusReporter.display_winner </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classxiangqipy_1_1enums_1_1GameState.html">GameState</a>&#160;</td>
+          <td class="paramname"><em>game_state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00171">171</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="aab88d0fe44a7d1c93ae88361d2afe3d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab88d0fe44a7d1c93ae88361d2afe3d6">&#9670;&nbsp;</a></span>encode_piece()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def xiangqipy.terminal_output.TerminalStatusReporter.encode_piece </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GamePiece&#160;</td>
+          <td class="paramname"><em>piece</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00079">79</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="a2c9473dc5d8bac87db40a9e6978a6233"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c9473dc5d8bac87db40a9e6978a6233">&#9670;&nbsp;</a></span>format_board_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def xiangqipy.terminal_output.TerminalStatusReporter.format_board_output </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GameBoard&#160;</td>
+          <td class="paramname"><em>board</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00087">87</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="aae29f1c77cb181113823fbd565491e41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae29f1c77cb181113823fbd565491e41">&#9670;&nbsp;</a></span>move_evaluator_translator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"> Dict[str, str] xiangqipy.terminal_output.TerminalStatusReporter.move_evaluator_translator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a>&#160;</td>
+          <td class="paramname"><em>player_summary</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00109">109</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="aa7dd4a866da36af09620b33871f10184"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7dd4a866da36af09620b33871f10184">&#9670;&nbsp;</a></span>report_game_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">def xiangqipy.terminal_output.TerminalStatusReporter.report_game_info </td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a>&#160;</td>
+          <td class="paramname"><em>red_player_summary</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a>&#160;</td>
+          <td class="paramname"><em>black_player_summary</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classxiangqipy_1_1enums_1_1GameState.html">GameState</a>&#160;</td>
+          <td class="paramname"><em>game_state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GameBoard&#160;</td>
+          <td class="paramname"><em>game_board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PieceColor&#160;</td>
+          <td class="paramname"><em>whose_turn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>is_in_check</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>move_count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Move &#160;</td>
+          <td class="paramname"><em>prev_move</em> = <code>None</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00179">179</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1cb57c9fbdadba2cac2e84af4311e22e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cb57c9fbdadba2cac2e84af4311e22e">&#9670;&nbsp;</a></span>_color_to_code</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary xiangqipy.terminal_output.TerminalStatusReporter._color_to_code</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  {</div>
+<div class="line">        PieceColor.kRed: <span class="stringliteral">&quot;r&quot;</span>,</div>
+<div class="line">        PieceColor.kBlk: <span class="stringliteral">&quot;b&quot;</span>,</div>
+<div class="line">        PieceColor.kNul: <span class="stringliteral">&quot;-&quot;</span>,</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00058">58</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="aa2674c58a7cb815f3a729ab06f376bf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2674c58a7cb815f3a729ab06f376bf7">&#9670;&nbsp;</a></span>_disp_format</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary xiangqipy.terminal_output.TerminalStatusReporter._disp_format</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  {</div>
+<div class="line">        PieceColor.kRed: cr.Style.BRIGHT + cr.Fore.WHITE + cr.Back.RED,</div>
+<div class="line">        PieceColor.kBlk: cr.Style.BRIGHT + cr.Fore.BLACK + cr.Back.WHITE,</div>
+<div class="line">        PieceColor.kNul: cr.Fore.RESET + cr.Back.RESET,</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00050">50</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="a4644f8fb67c068d7692b2403eb73e5d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4644f8fb67c068d7692b2403eb73e5d3">&#9670;&nbsp;</a></span>_display_team_name</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary xiangqipy.terminal_output.TerminalStatusReporter._display_team_name = {PieceColor.kRed: &quot;Red&quot;, PieceColor.kBlk: &quot;Black&quot;}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00056">56</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<a id="a8ccfb4f6488e78d5b4ff75e95d0430ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ccfb4f6488e78d5b4ff75e95d0430ae">&#9670;&nbsp;</a></span>_type_to_code</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">dictionary xiangqipy.terminal_output.TerminalStatusReporter._type_to_code</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=  {</div>
+<div class="line">        PieceType.kCha: <span class="stringliteral">&quot;R&quot;</span>,</div>
+<div class="line">        PieceType.kHor: <span class="stringliteral">&quot;H&quot;</span>,</div>
+<div class="line">        PieceType.kEle: <span class="stringliteral">&quot;E&quot;</span>,</div>
+<div class="line">        PieceType.kAdv: <span class="stringliteral">&quot;A&quot;</span>,</div>
+<div class="line">        PieceType.kGen: <span class="stringliteral">&quot;G&quot;</span>,</div>
+<div class="line">        PieceType.kCan: <span class="stringliteral">&quot;C&quot;</span>,</div>
+<div class="line">        PieceType.kSol: <span class="stringliteral">&quot;S&quot;</span>,</div>
+<div class="line">        PieceType.kNnn: <span class="stringliteral">&quot;-&quot;</span>,</div>
+<div class="line">    }</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00064">64</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/xiangqipy/<a class="el" href="terminal__output_8py_source.html">terminal_output.py</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacexiangqipy.html">xiangqipy</a></li><li class="navelem"><a class="el" href="namespacexiangqipy_1_1terminal__output.html">terminal_output</a></li><li class="navelem"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html">TerminalStatusReporter</a></li>
+    <li class="footer">Generated on Mon Nov 4 2024 21:28:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>
