@@ -1,0 +1,4 @@
+<map id="xiangqipy.players.IllegalMoveInMoveList" name="xiangqipy.players.IllegalMoveInMoveList">
+<area shape="rect" id="node1" title="Raised when scripted player proposes an illegal move." alt="" coords="5,131,185,267"/>
+<area shape="rect" id="node2" href="$classException.html" title=" " alt="" coords="52,5,139,83"/>
+</map>

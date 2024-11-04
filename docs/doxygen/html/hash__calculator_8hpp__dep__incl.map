@@ -1,0 +1,4 @@
+<map id="include/hash_calculator.hpp" name="include/hash_calculator.hpp">
+<area shape="rect" id="node1" title="Class templates for boardstate::SingleZobristTracker and its supporting class boardstate::ZobristCalc..." alt="" coords="5,5,208,32"/>
+<area shape="rect" id="node2" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="13,80,200,107"/>
+</map>

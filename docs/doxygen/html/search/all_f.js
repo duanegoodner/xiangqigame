@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['nearestneighborindex_0',['nearestNeighborIndex',['../keys__quality_8cpp.html#a828198839ba255226fece3c86283c837',1,'keys_quality.cpp']]],
+  ['newextrasearch_1',['NewExtraSearch',['../structmoveselection_1_1SearchSummaries.html#a536671fbdde15571141fd9b06b47cef4',1,'moveselection::SearchSummaries']]],
+  ['newfirstsearch_2',['NewFirstSearch',['../structmoveselection_1_1SearchSummaries.html#a94396fe38c271cb1bc404d29799a9ebc',1,'moveselection::SearchSummaries']]],
+  ['nloh_5fjson_3',['nloh_json',['../utility__functs_8cpp.html#ab7dd67b88ec9143273b4aafdb9db7585',1,'nloh_json():&#160;utility_functs.cpp'],['../piece__points__bpo_8cpp.html#ab7dd67b88ec9143273b4aafdb9db7585',1,'nloh_json():&#160;piece_points_bpo.cpp']]],
+  ['nlohmannjsonutility_4',['NlohmannJsonUtility',['../classjsonio_1_1NlohmannJsonUtility.html',1,'jsonio']]],
+  ['non_5fevaluating_5fplayer_5fline_5fcolors_5',['non_evaluating_player_line_colors',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5b3080ca95c9e02b81354627cab26988',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
+  ['none_6',['None',['../classxiangqipy_1_1command__input_1_1PlayerInput.html#af0ebeb3f2eb136c64fc5ad3c66bc8df8',1,'xiangqipy::command_input::PlayerInput']]],
+  ['notify_5fillegal_5fmove_7',['notify_illegal_move',['../classxiangqipy_1_1terminal__output_1_1InputRetrievalMessages.html#a3f2bea8fc41cce3101d389bb81a49444',1,'xiangqipy::terminal_output::InputRetrievalMessages']]],
+  ['notify_5finvalid_5finput_8',['notify_invalid_input',['../classxiangqipy_1_1terminal__output_1_1InputRetrievalMessages.html#ab6921749fa70500ed6e3ab900033cc25',1,'xiangqipy::terminal_output::InputRetrievalMessages']]],
+  ['null_9',['NULL',['../classxiangqipy_1_1enums_1_1EvaluatorType.html#acfab9e29e5d22a094cedca319c9d6d63',1,'xiangqipy::enums::EvaluatorType']]],
+  ['num_5fcollisions_10',['num_collisions',['../classmoveselection_1_1SearchSummary.html#a40c547c3757265a784b3a214980cc1e1',1,'moveselection::SearchSummary']]],
+  ['num_5fcollisions_5f_11',['num_collisions_',['../classmoveselection_1_1SearchSummary.html#a04707896ea90fdcbd0300c9f511ace3d',1,'moveselection::SearchSummary']]],
+  ['num_5fentries_12',['num_entries',['../structmoveselection_1_1TranspositionTableSize.html#acedd284d7d46e5fdfda767c712bae8e7',1,'moveselection::TranspositionTableSize::num_entries()'],['../classboardstate_1_1SingleKeyTranspositionTable.html#ae895d6af240b6027ef2bc04dfa3b64de',1,'boardstate::SingleKeyTranspositionTable::num_entries()'],['../classboardstate_1_1DualKeyTranspositionTable.html#a0caab8800f312707a4decc1f7c144c67',1,'boardstate::DualKeyTranspositionTable::num_entries()']]],
+  ['num_5fmove_5fselections_5f_13',['num_move_selections_',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a67601e9ebf21785e6bb13940029e4cb2',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['num_5fnodes_14',['num_nodes',['../classmoveselection_1_1SearchSummary.html#a30a2f7de20e447c8cc64de1c7b41882d',1,'moveselection::SearchSummary']]],
+  ['num_5fnodes_5f_15',['num_nodes_',['../classmoveselection_1_1SearchSummary.html#a9510b1a89562e863acc5ec60e9d0ec47',1,'moveselection::SearchSummary']]],
+  ['num_5fplayers_5fwith_5fdata_16',['num_players_with_data',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa64814458211c850f0f40234c99cc360',1,'xiangqipy.game_summary_plotters.GameSummaryPlotter.num_players_with_data()'],['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a21e588a0239c288dfd03694110cf954a',1,'xiangqipy.game_summary_plotters.GameSummaryPlotter.num_players_with_data(self)']]],
+  ['num_5fplayers_5fwith_5fminimax_5fdata_17',['num_players_with_minimax_data',['../classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a3893e4ce7e54f8deccd943b3457fedcc',1,'xiangqipy::game_summary_plot_manager::GameSummaryPlotManager']]],
+  ['num_5fstates_18',['num_states',['../structmoveselection_1_1TranspositionTableSize.html#ad7a52fcaf91cc877a376d55c52d1a74f',1,'moveselection::TranspositionTableSize::num_states()'],['../classboardstate_1_1SingleKeyTranspositionTable.html#a98f1a7bee3f34a6399ab2383bc6f3d50',1,'boardstate::SingleKeyTranspositionTable::num_states()'],['../classboardstate_1_1DualKeyTranspositionTable.html#ab6df74dc85b249faf75212b07cb3cbaa',1,'boardstate::DualKeyTranspositionTable::num_states()']]],
+  ['number_5fzobrist_5fstates_19',['number_zobrist_states',['../classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#afd6900a73c8f46a8f2c58c8f9b636bc9',1,'xiangqipy::command_input::PlayerCommandInterpreter']]]
+];

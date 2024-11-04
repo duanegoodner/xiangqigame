@@ -1,0 +1,5 @@
+<map id="xiangqipy.game_interfaces.GameStatusReporter" name="xiangqipy.game_interfaces.GameStatusReporter">
+<area shape="rect" id="node1" title="Reports details of a Game." alt="" coords="19,131,220,223"/>
+<area shape="rect" id="node3" href="$classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html" title="Outputs a text&#45;base game board with GamePiece locations in algebraic notation." alt="" coords="5,271,233,553"/>
+<area shape="rect" id="node2" title=" " alt="" coords="79,5,159,83"/>
+</map>

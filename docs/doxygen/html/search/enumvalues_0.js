@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['kadv_0',['kAdv',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4',1,'gameboard']]],
+  ['kalphaprune_1',['kAlphaPrune',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda71f7c72c022ad1322f406bdd0ca7be25',1,'moveselection']]],
+  ['kbetaprune_2',['kBetaPrune',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda0c1922f53a20c3978b37b675895a49aa',1,'moveselection']]],
+  ['kblk_3',['kBlk',['../namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b',1,'gameboard']]],
+  ['kcan_4',['kCan',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328',1,'gameboard']]],
+  ['kcha_5',['kCha',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266',1,'gameboard']]],
+  ['kdraw_6',['kDraw',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda39391e47fa69eaa70726091d4f4e2298',1,'moveselection']]],
+  ['kele_7',['kEle',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a12e20fe9e463f0ac39de69fbe1d93283',1,'gameboard']]],
+  ['kevaluatorloses_8',['kEvaluatorLoses',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061edacf13d4e4d1a33bcd701f870b4d5103f3',1,'moveselection']]],
+  ['kevaluatorwins_9',['kEvaluatorWins',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda0fe64a6e73a77fefbfe91370bb0652d5',1,'moveselection']]],
+  ['kfullyevaluatednode_10',['kFullyEvaluatedNode',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda5fdab859498d9e51a5300bb6fe535a60',1,'moveselection']]],
+  ['kgen_11',['kGen',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438',1,'gameboard']]],
+  ['khor_12',['kHor',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a43b285933641d3aac35909a5e69db9b3',1,'gameboard']]],
+  ['kmax_13',['kMax',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061edaf54182497e4f5d7092bee94582bf3f79',1,'moveselection']]],
+  ['kmin_14',['kMin',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda1ceae30bbee1b637dc47a380d0e4ad36',1,'moveselection']]],
+  ['knnn_15',['kNnn',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac9e13349ba9f4cdf999c3ca466f6d597',1,'gameboard']]],
+  ['knul_16',['kNul',['../namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142aee687c405ed14e1db1a6299dc520735c',1,'gameboard']]],
+  ['kred_17',['kRed',['../namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00',1,'gameboard']]],
+  ['ksol_18',['kSol',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aa980f91549dc566f894454d2e2015ef3',1,'gameboard']]],
+  ['kstandardleaf_19',['kStandardLeaf',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda65b563cc5a2a595f6f19adea98b99fa9',1,'moveselection']]],
+  ['ktrtablehit_20',['kTrTableHit',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061eda552dd3cbc3a757459c0df9b2ae2edd27',1,'moveselection']]],
+  ['kunknown_21',['kUnknown',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061edadef73b774725d74259cc49e9fe97e6dd',1,'moveselection']]]
+];

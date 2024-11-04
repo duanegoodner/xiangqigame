@@ -1,0 +1,9 @@
+<map id="include/move_calculator_details.hpp" name="include/move_calculator_details.hpp">
+<area shape="rect" id="node1" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="259,5,440,47"/>
+<area shape="rect" id="node2" href="$move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="245,95,453,121"/>
+<area shape="rect" id="node3" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="154,177,337,203"/>
+<area shape="rect" id="node7" href="$move__calculator_8cpp.html" title="Acts as linkage point for move_calculator.hpp (where full implementation is located)" alt="" coords="361,169,546,211"/>
+<area shape="rect" id="node4" href="$hash__calculator_8hpp.html" title="Class templates for boardstate::SingleZobristTracker and its supporting class boardstate::ZobristCalc..." alt="" coords="5,266,208,293"/>
+<area shape="rect" id="node5" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="83,348,269,375"/>
+<area shape="rect" id="node6" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="283,259,442,300"/>
+</map>

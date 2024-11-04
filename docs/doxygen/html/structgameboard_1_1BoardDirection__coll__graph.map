@@ -1,0 +1,4 @@
+<map id="gameboard::BoardDirection" name="gameboard::BoardDirection">
+<area shape="rect" id="node1" title="Descirbes a direction on a gameboard::GameBoard.board_map_." alt="" coords="5,160,207,237"/>
+<area shape="rect" id="node2" title=" " alt="" coords="87,5,125,83"/>
+</map>

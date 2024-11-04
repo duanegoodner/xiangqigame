@@ -1,0 +1,10 @@
+<map id="boardstate::DualKeyTranspositionTableEntry&lt; KeyType &gt;" name="boardstate::DualKeyTranspositionTableEntry&lt; KeyType &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="108,800,348,892"/>
+<area shape="rect" id="node2" title=" " alt="" coords="106,631,182,708"/>
+<area shape="rect" id="node3" href="$structmoveselection_1_1TranspositionTableEntry.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search&#45;related info obtained fro..." alt="" coords="206,601,418,737"/>
+<area shape="rect" id="node4" title=" " alt="" coords="70,233,109,311"/>
+<area shape="rect" id="node6" href="$structmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="213,447,412,539"/>
+<area shape="rect" id="node5" title=" " alt="" coords="436,454,586,531"/>
+<area shape="rect" id="node7" href="$structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects." alt="" coords="210,160,415,384"/>
+<area shape="rect" id="node8" title=" " alt="" coords="232,5,392,97"/>
+</map>

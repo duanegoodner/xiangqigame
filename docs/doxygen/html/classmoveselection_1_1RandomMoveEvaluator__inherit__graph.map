@@ -1,0 +1,5 @@
+<map id="moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;" name="moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;">
+<area shape="rect" id="node1" title="Implements gameboard::MoveEvaluator interface." alt="" coords="13,316,303,437"/>
+<area shape="rect" id="node2" href="$classMoveEvaluator.html" title=" " alt="" coords="5,175,311,267"/>
+<area shape="rect" id="node3" href="$classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini..." alt="" coords="43,5,273,97"/>
+</map>
