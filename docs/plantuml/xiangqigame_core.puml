@@ -544,10 +544,10 @@ gameboard.ExecutedMove "2" *-- gameboard.GamePiece
 gameboard.ExecutedMove *-- gameboard.Move
 
 
-gameboard.GameBoard *-- gameboard.ExecutedMove
-
-
 gameboard.GameBoard *-- gameboard.MoveCalculator
+
+
+gameboard.GameBoard *-- gameboard.PieceColor
 
 
 gameboard.GamePiece *-- gameboard.PieceColor

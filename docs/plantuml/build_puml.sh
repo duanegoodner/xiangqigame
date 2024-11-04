@@ -2,7 +2,7 @@
 
 # Define input and output paths
 input_path="./include/*.hpp"
-output_path="./docs/plantuml/my_project.puml"
+output_path="./docs/plantuml/xiangqigame_core.puml"
 
 # Run hpp2plantuml to generate the initial .puml file
 hpp2plantuml -i "$input_path" -o "$output_path"
