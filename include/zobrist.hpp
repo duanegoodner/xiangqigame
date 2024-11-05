@@ -120,16 +120,55 @@ private:
   };
 };
 
-// template <typename KeyType>
-// class ZobristComponent {
-// public:
-//   explicit ZobristComponent(const std::vector<ZobristCalculator<KeyType>> &calculators)
-//       : calculators_(calculators) {}
+template <typename KeyType>
+class ZobristComponent {
+public:
+  explicit ZobristComponent(const std::vector<ZobristCalculator<KeyType>> &calculators)
+      : calculators_(calculators) {}
 
-//   void UpdateBoardState(const ExecutedMove& executed_move)
+  ZobristComponent(int num_calculators)
+      : calculators_{} {
+    for (auto index = 0; index < num_calculators; ++index) {
+      calculators_.emplace_back();
+    }
+  }
 
-// private:
-//   std::vector<ZobristCalculator<KeyType>> calculators_;
-// };
+  ZobristComponent(std::vector<uint32_t> seeds)
+      : calculators_{} {
+        for (auto seed : seeds) {
+            calculators_.emplace_back(seed);
+        }
+      }
+
+  void UpdateBoardStates(const ExecutedMove &executed_move) {
+    for (auto &calculator : calculators_) {
+      calculator.UpdateBoardState(executed_move);
+    }
+  }
+
+  std::vector<KeyType> GetBoardStates() const {
+    std::vector<KeyType> states;
+    for (const auto &calculator : calculators_) {
+      states.push_back(calculator.board_state());
+    }
+    return states;
+  }
+
+  std::vector<uint32_t> seeds() const {
+    std::vector<uint32_t> seeds;
+    for (const auto &calculator : calculators_) {
+      seeds.push_back(calculator.seed());
+    }
+    return seeds;
+  }
+
+  std::string primary_board_state_hex_str() const {
+    return boardstate::IntToHexString(calculators_.front().board_state());
+  }
+
+  // Other methods as needed...
+private:
+  std::vector<ZobristCalculator<KeyType>> calculators_;
+};
 
 } // namespace boardstate

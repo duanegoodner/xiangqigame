@@ -49,12 +49,10 @@ public:
       EqualScoreMoves &similar_moves
   ) {
 
-    // data_[state].emplace_back(search_depth, result_type, similar_moves);
     data_.insert_or_assign(
         state,
         TranspositionTableEntry{search_depth, result_type, similar_moves}
     );
-    // num_entries_++;
   };
 
   uint64_t num_entries() { return data_.size(); }
@@ -62,9 +60,7 @@ public:
   size_t num_states() { return data_.size(); }
 
 private:
-  // unordered_map<KeyType, vector<TranspositionTableEntry>> data_;
   unordered_map<KeyType, TranspositionTableEntry> data_;
-  // uint64_t num_entries_;
 };
 
 template <typename KeyType>
@@ -76,9 +72,6 @@ struct DualKeyTranspositionTableEntry {
 template <typename KeyType>
 class DualKeyTranspositionTable {
 public:
-  // DualKeyTranspositionTable()
-  //     : num_entries_{0} {}
-
   TranspositionTableSearchResult GetDataAt(
       KeyType board_state,
       KeyType expected_confirmation_state,
@@ -100,7 +93,6 @@ public:
       }
     }
     return result;
-
   }
 
   void RecordData(
@@ -267,6 +259,22 @@ private:
   ZobristCalculator<KeyType> primary_calculator_;
   ZobristCalculator<KeyType> confirmation_calculator_;
   DualKeyTranspositionTable<KeyType> transposition_table_;
+};
+
+template <typename KeyType>
+class ZobristTracker : public BoardStateSummarizer<ZobristTracker<KeyType>, KeyType> {
+public:
+  explicit ZobristTracker(ZobristComponent<KeyType> zobrist_component)
+      : zobrist_component_{std::move(zobrist_component)} {}
+
+  ZobristTracker(int num_calculators)
+      : ZobristTracker(ZobristComponent(num_calculators)) {}
+
+  ZobristTracker(std::vector<uint32_t> seeds)
+      : ZobristTracker(ZobristComponent(seeds)) {}
+
+private:
+  ZobristComponent<KeyType> zobrist_component_;
 };
 
 } // namespace boardstate
