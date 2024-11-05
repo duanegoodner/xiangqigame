@@ -1,7 +1,7 @@
 var namespacepiecepoints =
 [
-    [ "BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html", "classpiecepoints_1_1BPOPointsSKeys" ],
     [ "BPOPointsEKeys", "classpiecepoints_1_1BPOPointsEKeys.html", "classpiecepoints_1_1BPOPointsEKeys" ],
+    [ "BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html", "classpiecepoints_1_1BPOPointsSKeys" ],
     [ "PiecePositionPoints", "structpiecepoints_1_1PiecePositionPoints.html", "structpiecepoints_1_1PiecePositionPoints" ],
     [ "BasePointsSMap_t", "namespacepiecepoints.html#a4ca7d246b8a310704a6215eec810c60a", null ],
     [ "GamePointsArray_t", "namespacepiecepoints.html#a57e34e605798acbb80e64cd62e951e2d", null ],

@@ -1,3 +1,4 @@
 <map id="xiangqipy.terminal_output.InputRetrievalMessages" name="xiangqipy.terminal_output.InputRetrievalMessages">
-<area shape="rect" id="node1" title="Provides messages requesting input from a Player." alt="" coords="5,5,237,112"/>
+<area shape="rect" id="node1" title="Provides messages requesting input from a Player." alt="" coords="5,175,237,281"/>
+<area shape="rect" id="node2" title=" " alt="" coords="102,5,141,83"/>
 </map>

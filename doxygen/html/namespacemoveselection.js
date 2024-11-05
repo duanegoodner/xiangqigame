@@ -1,16 +1,16 @@
 var namespacemoveselection =
 [
+    [ "CollisionInfo", "structmoveselection_1_1CollisionInfo.html", "structmoveselection_1_1CollisionInfo" ],
     [ "EqualScoreMoves", "structmoveselection_1_1EqualScoreMoves.html", "structmoveselection_1_1EqualScoreMoves" ],
+    [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
+    [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],
+    [ "ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", "classmoveselection_1_1ResultDepthCounts" ],
     [ "ScoredMove", "structmoveselection_1_1ScoredMove.html", "structmoveselection_1_1ScoredMove" ],
+    [ "SearchSummaries", "structmoveselection_1_1SearchSummaries.html", "structmoveselection_1_1SearchSummaries" ],
+    [ "SearchSummary", "classmoveselection_1_1SearchSummary.html", "classmoveselection_1_1SearchSummary" ],
     [ "TranspositionTableEntry", "structmoveselection_1_1TranspositionTableEntry.html", "structmoveselection_1_1TranspositionTableEntry" ],
     [ "TranspositionTableSearchResult", "structmoveselection_1_1TranspositionTableSearchResult.html", "structmoveselection_1_1TranspositionTableSearchResult" ],
     [ "TranspositionTableSize", "structmoveselection_1_1TranspositionTableSize.html", "structmoveselection_1_1TranspositionTableSize" ],
-    [ "ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", "classmoveselection_1_1ResultDepthCounts" ],
-    [ "CollisionInfo", "structmoveselection_1_1CollisionInfo.html", "structmoveselection_1_1CollisionInfo" ],
-    [ "SearchSummary", "classmoveselection_1_1SearchSummary.html", "classmoveselection_1_1SearchSummary" ],
-    [ "SearchSummaries", "structmoveselection_1_1SearchSummaries.html", "structmoveselection_1_1SearchSummaries" ],
-    [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
-    [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],
     [ "ResultDepthCountsData_t", "namespacemoveselection.html#aa4c456c3f118a94017483880ff42991b", null ],
     [ "MinimaxResultType", "namespacemoveselection.html#acdb529ae14e6752318706ace995061ed", [
       [ "kUnknown", "namespacemoveselection.html#acdb529ae14e6752318706ace995061edadef73b774725d74259cc49e9fe97e6dd", null ],

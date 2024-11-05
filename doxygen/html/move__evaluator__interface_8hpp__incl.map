@@ -1,13 +1,13 @@
 <map id="include/move_evaluator_interface.hpp" name="include/move_evaluator_interface.hpp">
-<area shape="rect" id="node1" title="Definition of MoveEvaluator interface." alt="" coords="231,5,409,47"/>
-<area shape="rect" id="node2" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="233,95,407,121"/>
-<area shape="rect" id="node3" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="170,169,345,196"/>
-<area shape="rect" id="node6" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="362,244,491,271"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,244,61,271"/>
-<area shape="rect" id="node5" title=" " alt="" coords="85,244,155,271"/>
-<area shape="rect" id="node10" title=" " alt="" coords="179,244,251,271"/>
-<area shape="rect" id="node11" title=" " alt="" coords="275,244,338,271"/>
-<area shape="rect" id="node7" title=" " alt="" coords="310,319,373,345"/>
-<area shape="rect" id="node8" title=" " alt="" coords="397,319,456,345"/>
-<area shape="rect" id="node9" title=" " alt="" coords="481,319,605,345"/>
+<area shape="rect" id="node1" title="Definition of MoveEvaluator interface." alt="" coords="231,5,409,45"/>
+<area shape="rect" id="node2" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="233,93,407,119"/>
+<area shape="rect" id="node3" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="170,167,345,192"/>
+<area shape="rect" id="node6" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="362,240,491,265"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,240,61,265"/>
+<area shape="rect" id="node5" title=" " alt="" coords="85,240,155,265"/>
+<area shape="rect" id="node10" title=" " alt="" coords="179,240,251,265"/>
+<area shape="rect" id="node11" title=" " alt="" coords="275,240,338,265"/>
+<area shape="rect" id="node7" title=" " alt="" coords="310,313,373,339"/>
+<area shape="rect" id="node8" title=" " alt="" coords="397,313,456,339"/>
+<area shape="rect" id="node9" title=" " alt="" coords="481,313,605,339"/>
 </map>

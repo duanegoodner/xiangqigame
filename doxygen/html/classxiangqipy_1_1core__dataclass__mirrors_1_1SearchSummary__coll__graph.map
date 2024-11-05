@@ -1,3 +1,14 @@
 <map id="xiangqipy.core_dataclass_mirrors.SearchSummary" name="xiangqipy.core_dataclass_mirrors.SearchSummary">
-<area shape="rect" id="node1" title="A Python SearchSummary." alt="" coords="5,5,237,112"/>
+<area shape="rect" id="node1" title="A Python SearchSummary." alt="" coords="403,591,635,697"/>
+<area shape="rect" id="node2" title=" " alt="" coords="154,5,193,83"/>
+<area shape="rect" id="node10" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1BoardSpace.html" title="A Python BoardSpace." alt="" coords="72,167,275,259"/>
+<area shape="rect" id="node12" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize.html" title=" " alt="" coords="221,291,448,397"/>
+<area shape="rect" id="node3" title=" " alt="" coords="478,429,559,506"/>
+<area shape="rect" id="node4" title=" " alt="" coords="583,429,622,506"/>
+<area shape="rect" id="node5" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1EqualScoreMoves.html" title="A Ptyhon EqualScoreMoves." alt="" coords="679,421,895,513"/>
+<area shape="rect" id="node6" title=" " alt="" coords="685,175,755,252"/>
+<area shape="rect" id="node7" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1MoveCollection.html" title="A Python MoveCollection." alt="" coords="780,160,1007,267"/>
+<area shape="rect" id="node8" title=" " alt="" coords="871,5,916,83"/>
+<area shape="rect" id="node9" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html" title="A Python Move." alt="" coords="81,421,266,513"/>
+<area shape="rect" id="node11" title=" " alt="" coords="919,429,969,506"/>
 </map>

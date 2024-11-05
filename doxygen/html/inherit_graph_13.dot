@@ -1,8 +1,0 @@
-digraph "Graphical Class Hierarchy"
-{
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node0 [label="gameboard::ExecutedMove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structgameboard_1_1ExecutedMove.html",tooltip="A change in the state of a gameboard::GameBoard represented by a gameboard::Move, and each of the gam..."];
-}

@@ -1,3 +1,11 @@
 <map id="xiangqipy.game_summary.PlayerSummaries" name="xiangqipy.game_summary.PlayerSummaries">
-<area shape="rect" id="node1" title="A data container for holding one PlayerSummary for each player in a Game." alt="" coords="5,5,243,97"/>
+<area shape="rect" id="node1" title="A data container for holding one PlayerSummary for each player in a Game." alt="" coords="344,675,581,767"/>
+<area shape="rect" id="node2" href="$classxiangqipy_1_1player__summary_1_1PlayerSummary.html" title="Data container for data from one xiangqipy.game_interfaces.Player in a Game." alt="" coords="359,344,567,597"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,175,83,252"/>
+<area shape="rect" id="node4" href="$classxiangqipy_1_1enums_1_1PlayerType.html" title="Enum indicating type of player: Human, AI, or Scripted." alt="" coords="359,175,566,252"/>
+<area shape="rect" id="node5" title=" " alt="" coords="236,5,295,83"/>
+<area shape="rect" id="node7" href="$classxiangqipy_1_1enums_1_1EvaluatorType.html" title="Enum indicating type of core MoveEvaluator used for a Player." alt="" coords="107,175,335,252"/>
+<area shape="rect" id="node6" title=" " alt="" coords="363,5,413,83"/>
+<area shape="rect" id="node8" title=" " alt="" coords="590,175,629,252"/>
+<area shape="rect" id="node9" title=" " alt="" coords="741,175,792,252"/>
 </map>

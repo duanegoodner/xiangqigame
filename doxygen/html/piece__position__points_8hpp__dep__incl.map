@@ -1,5 +1,5 @@
 <map id="include/piece_position_points.hpp" name="include/piece_position_points.hpp">
-<area shape="rect" id="node1" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="117,5,283,47"/>
-<area shape="rect" id="node2" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="5,109,192,136"/>
-<area shape="rect" id="node3" href="$piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="216,95,387,151"/>
+<area shape="rect" id="node1" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="117,5,283,45"/>
+<area shape="rect" id="node2" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="5,108,192,133"/>
+<area shape="rect" id="node3" href="$piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="216,93,387,148"/>
 </map>

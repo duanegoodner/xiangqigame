@@ -1,12 +1,12 @@
 <map id="include/move_data_structs.hpp" name="include/move_data_structs.hpp">
-<area shape="rect" id="node1" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="207,5,433,32"/>
-<area shape="rect" id="node2" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="170,80,345,107"/>
-<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="362,155,491,181"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,155,61,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="85,155,155,181"/>
-<area shape="rect" id="node9" title=" " alt="" coords="179,155,251,181"/>
-<area shape="rect" id="node10" title=" " alt="" coords="275,155,338,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="310,229,373,256"/>
-<area shape="rect" id="node7" title=" " alt="" coords="397,229,456,256"/>
-<area shape="rect" id="node8" title=" " alt="" coords="481,229,605,256"/>
+<area shape="rect" id="node1" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="207,5,433,31"/>
+<area shape="rect" id="node2" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="170,79,345,104"/>
+<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="362,152,491,177"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,152,61,177"/>
+<area shape="rect" id="node4" title=" " alt="" coords="85,152,155,177"/>
+<area shape="rect" id="node9" title=" " alt="" coords="179,152,251,177"/>
+<area shape="rect" id="node10" title=" " alt="" coords="275,152,338,177"/>
+<area shape="rect" id="node6" title=" " alt="" coords="310,225,373,251"/>
+<area shape="rect" id="node7" title=" " alt="" coords="397,225,456,251"/>
+<area shape="rect" id="node8" title=" " alt="" coords="481,225,605,251"/>
 </map>

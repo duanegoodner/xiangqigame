@@ -1,4 +1,5 @@
 <map id="xiangqipy.enums.PlayerType" name="xiangqipy.enums.PlayerType">
-<area shape="rect" id="node1" title="Enum indicating type of player: Human, AI, or Scripted." alt="" coords="5,131,212,237"/>
-<area shape="rect" id="node2" title=" " alt="" coords="79,5,138,83"/>
+<area shape="rect" id="node1" title="Enum indicating type of player: Human, AI, or Scripted." alt="" coords="5,175,212,252"/>
+<area shape="rect" id="node2" title=" " alt="" coords="41,5,99,83"/>
+<area shape="rect" id="node3" title=" " alt="" coords="123,5,174,83"/>
 </map>

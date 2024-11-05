@@ -4,7 +4,7 @@ var classpiecepoints_1_1BPOPointsSKeys =
     [ "BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html#a4464d428122af729109059a6a9608e86", null ],
     [ "BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html#acbc6d750a0dbdd3663857c6c151200fe", null ],
     [ "BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html#afd0804512a9cd8d8cda02feb184ed513", null ],
-    [ "operator=", "classpiecepoints_1_1BPOPointsSKeys.html#ac4193e3b2d34070863f378f7d0fb0f07", null ],
+    [ "operator=", "classpiecepoints_1_1BPOPointsSKeys.html#ab82738dd20e9f6af55f6ba73276b9b86", null ],
     [ "ToBPOPointsEKeys", "classpiecepoints_1_1BPOPointsSKeys.html#a2246551fef9e239ba166630f637fddba", null ],
     [ "ToFile", "classpiecepoints_1_1BPOPointsSKeys.html#afada4e556af9d7842e6aa2189bf15931", null ],
     [ "ToGamePointsArray", "classpiecepoints_1_1BPOPointsSKeys.html#a9ec51a0ef9c47920d318419b5a2c4d12", null ],

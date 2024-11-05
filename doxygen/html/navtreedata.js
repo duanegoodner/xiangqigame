@@ -127,7 +127,7 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Typedefs", "functions_type.html", null ]
       ] ]
     ] ],
@@ -146,10 +146,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____init_____8py.html",
-"classmoveselection_1_1ResultDepthCounts.html#a6a128b64fa7b4d0a7e019903937d0ce0",
-"classxiangqipy_1_1piece__points_1_1PositionPts.html#a12815bd8a4fa87df6a2442853c6b4136",
-"hash__calculator_8hpp.html",
-"namespacexiangqipy_1_1core__dataclass__mirrors.html"
+"classgameboard_1_1GameBoard.html#aa21b6004551dd753008e4a2ecda866fc",
+"classpiecepoints_1_1BPOPointsEKeys.html",
+"classxiangqipy_1_1enums_1_1EvaluatorType.html#a40386eb4edde7f36d3534e324df37528",
+"classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html#a16f507206070d4dd754a1d8bc41f28e8",
+"errors_8py_source.html",
+"md_docs_06_components.html#autotoc_md65",
+"piece__points__data__structs_8hpp.html#a70c12c629ce81810a64a420a0ecaa86a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

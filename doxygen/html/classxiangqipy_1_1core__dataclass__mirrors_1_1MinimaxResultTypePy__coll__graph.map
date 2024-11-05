@@ -1,4 +1,5 @@
 <map id="xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy" name="xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy">
-<area shape="rect" id="node1" title="Enum indicating the type of result obtained from Minimax analysis of a single node." alt="" coords="5,131,229,325"/>
-<area shape="rect" id="node2" title=" " alt="" coords="88,5,147,83"/>
+<area shape="rect" id="node1" title="Enum indicating the type of result obtained from Minimax analysis of a single node." alt="" coords="5,248,229,340"/>
+<area shape="rect" id="node2" title=" " alt="" coords="52,5,111,83"/>
+<area shape="rect" id="node3" title=" " alt="" coords="135,5,174,83"/>
 </map>

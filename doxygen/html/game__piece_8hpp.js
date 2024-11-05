@@ -1,6 +1,6 @@
 var game__piece_8hpp =
 [
-    [ "GamePiece", "structgameboard_1_1GamePiece.html", "structgameboard_1_1GamePiece" ],
+    [ "gameboard::GamePiece", "structgameboard_1_1GamePiece.html", "structgameboard_1_1GamePiece" ],
     [ "PieceColor", "game__piece_8hpp.html#aae01851261ebf0d4dc64b2157179e142", [
       [ "kRed", "game__piece_8hpp.html#aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00", null ],
       [ "kNul", "game__piece_8hpp.html#aae01851261ebf0d4dc64b2157179e142aee687c405ed14e1db1a6299dc520735c", null ],

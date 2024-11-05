@@ -1,6 +1,6 @@
 var classxiangqipy_1_1enums_1_1EvaluatorType =
 [
-    [ "MINIMAX", "classxiangqipy_1_1enums_1_1EvaluatorType.html#ad26f49c4df454130e88c144cf24cf102", null ],
-    [ "NULL", "classxiangqipy_1_1enums_1_1EvaluatorType.html#acfab9e29e5d22a094cedca319c9d6d63", null ],
-    [ "RANDOM", "classxiangqipy_1_1enums_1_1EvaluatorType.html#a8f40e079b5c2cd19404f7b55508a0b7a", null ]
+    [ "MINIMAX", "classxiangqipy_1_1enums_1_1EvaluatorType.html#aef2c8be5590e83c6050656d4a536aad4", null ],
+    [ "NULL", "classxiangqipy_1_1enums_1_1EvaluatorType.html#a40386eb4edde7f36d3534e324df37528", null ],
+    [ "RANDOM", "classxiangqipy_1_1enums_1_1EvaluatorType.html#ae15cd4373e9d8ed4e98f2fe9f134e6c4", null ]
 ];

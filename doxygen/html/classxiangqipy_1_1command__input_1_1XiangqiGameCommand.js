@@ -1,5 +1,7 @@
 var classxiangqipy_1_1command__input_1_1XiangqiGameCommand =
 [
-    [ "bool", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#a83c7fab9dde74471e19870f011f05bf0", null ],
-    [ "str", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#a8ba0316c391209da68d8d4c35b16cbac", null ]
+    [ "black_player_input", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#aebd3c3a8ef73e4698ea10bcd92e0a5e8", null ],
+    [ "output_dir_suffix", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#a4782014f655c72f0a716c7bf85421d35", null ],
+    [ "red_player_input", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#abd110c99743fd5c416e7128981259e60", null ],
+    [ "save_summary", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#a3b82fd7a60a67e0fd9882b874a9955eb", null ]
 ];

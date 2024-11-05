@@ -1,4 +1,5 @@
 <map id="xiangqipy.enums.EvaluatorType" name="xiangqipy.enums.EvaluatorType">
-<area shape="rect" id="node1" title="Enum indicating type of core MoveEvaluator used for a Player." alt="" coords="5,131,233,237"/>
-<area shape="rect" id="node2" title=" " alt="" coords="90,5,149,83"/>
+<area shape="rect" id="node1" title="Enum indicating type of core MoveEvaluator used for a Player." alt="" coords="5,175,233,252"/>
+<area shape="rect" id="node2" title=" " alt="" coords="51,5,110,83"/>
+<area shape="rect" id="node3" title=" " alt="" coords="134,5,185,83"/>
 </map>

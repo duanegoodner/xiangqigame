@@ -15,7 +15,7 @@ var classmoveselection_1_1SearchSummary =
     [ "set_tr_table_size_final", "classmoveselection_1_1SearchSummary.html#ae5d63bd7f763b468ecfc6f25136569f0", null ],
     [ "SetSelectedMove", "classmoveselection_1_1SearchSummary.html#aebecc89334baf04db5848bbcacd05596", null ],
     [ "similar_moves", "classmoveselection_1_1SearchSummary.html#ae6519b2bc3d1f4ee2b6e458511fa508b", null ],
-    [ "time", "classmoveselection_1_1SearchSummary.html#a123c295abeb28cff759cbeebbc7ff528", null ],
+    [ "time", "classmoveselection_1_1SearchSummary.html#af137634fa000ec713c08add22b062c47", null ],
     [ "tr_table_size_final", "classmoveselection_1_1SearchSummary.html#aa9ab4a3930c9f632bee0009067380b28", null ],
     [ "tr_table_size_initial", "classmoveselection_1_1SearchSummary.html#ac0b61cc3d696af146cb1e88e6c867ba5", null ],
     [ "UpdateTranspositionTableHits", "classmoveselection_1_1SearchSummary.html#a62f64dc3adc1d3b05439cfb92f3d159a", null ],

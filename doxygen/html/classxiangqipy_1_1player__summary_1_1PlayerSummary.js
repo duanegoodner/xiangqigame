@@ -10,8 +10,12 @@ var classxiangqipy_1_1player__summary_1_1PlayerSummary =
     [ "tr_table_size_end_game", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a3efcc257793bf431ffa90db39285952e", null ],
     [ "tr_table_size_first_illegal_move_request", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a33815929c774f01db241350b350f4e54", null ],
     [ "tr_table_sizes_at_events", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a23c8e410a65a9a53a923020f7722a929", null ],
+    [ "color", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aed7001413f156056645e9a5e7be0b50b", null ],
     [ "color", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a5270ede5cae30217a56a5869ff72248c", null ],
-    [ "EvaluatorType", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#ac69742334fe40a0e0a7ff806c66cdf1c", null ],
-    [ "int", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#af849646fefc510837a80dd516a29fd49", null ],
-    [ "SearchSummaries", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a1a643a16d0cbd8bb22f98adc4409f550", null ]
+    [ "max_search_depth", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a122ccb24a667bc628478c88326fa2da7", null ],
+    [ "move_evaluator_type", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aa48f54b0d1d247c430064fad8d10a03a", null ],
+    [ "player_type", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a706b1ba5cede528a00dc0634bed0e3b3", null ],
+    [ "search_summaries", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a6fea7f9dfb025b41acc87ad4ef9fc45a", null ],
+    [ "zkeys_seed", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a90c2b0ecbf011fd5934a43d98aff838b", null ],
+    [ "zobrist_key_size", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a439456670c455882f4329c978b3b8dda", null ]
 ];

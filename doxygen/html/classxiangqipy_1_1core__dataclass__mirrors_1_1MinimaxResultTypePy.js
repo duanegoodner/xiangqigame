@@ -1,11 +1,11 @@
 var classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy =
 [
-    [ "AlphaPrune", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a488af5163c4b27e5a75be89cdebbf943", null ],
-    [ "BetaPrune", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#acc21af05edf3ff34a54acb79d5d02d1d", null ],
-    [ "EvaluatorLoses", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a77ecaa19ab698156fae98fac0987b244", null ],
-    [ "EvaluatorWins", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a373f4b95a728197d4021708e224b5e54", null ],
-    [ "FullyEvaluatedNode", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a9e7ff4d3506daff4c5b0a77cb76e1f11", null ],
-    [ "StandardLeaf", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#ac726d4b0e2023373d08a6d276d28b940", null ],
-    [ "TrTableHit", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a4cc266cf41244dc914caa8e7d6897e6c", null ],
-    [ "Unknown", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a51a319aab5c14befb687e505b7169557", null ]
+    [ "AlphaPrune", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a44118441814f3bf228c5d3aca4e30e49", null ],
+    [ "BetaPrune", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#ab581a91d8bad438363ae5d9bcde909e0", null ],
+    [ "EvaluatorLoses", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a176c899e93c8adfbd9cb1b00c75c7935", null ],
+    [ "EvaluatorWins", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#acf7da36d1a29bb5c195d4756e31d1b0c", null ],
+    [ "FullyEvaluatedNode", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a72cc86206366939fc6dd8b3c40ef1614", null ],
+    [ "StandardLeaf", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a5ea68eedecdf69e7bfa6bc4f4b55af43", null ],
+    [ "TrTableHit", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a0b230446002e85c3fc30c3d1f57c4946", null ],
+    [ "Unknown", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a646fb81f6ff3c2c86ace5f270dd1878c", null ]
 ];

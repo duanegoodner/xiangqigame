@@ -19,10 +19,10 @@ var classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter =
     [ "_black_data", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a54451205b1b787d399d4872f2b92cc2d", null ],
     [ "_red_data", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ab2d000aed5a970b3f0a9c7a3c2a1aaa9", null ],
     [ "axes", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6", null ],
-    [ "evaluating_player_line_colors", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#ad7323f87ef8002340295812fb0683049", null ],
+    [ "evaluating_player_line_colors", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#adc45fb3da91126f667b09df577147a26", null ],
     [ "log_scale_rows", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#afae591c50d61a02094352c25f04b7082", null ],
-    [ "non_evaluating_player_line_colors", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5b3080ca95c9e02b81354627cab26988", null ],
+    [ "non_evaluating_player_line_colors", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa0b7cc1041413388db523f77768a4c71", null ],
     [ "num_players_with_data", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa64814458211c850f0f40234c99cc360", null ],
-    [ "player_text_labels", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa58822fc95728c9985558400b1705540", null ],
+    [ "player_text_labels", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#abc287552e1c25477a3f2fcc65a589d5d", null ],
     [ "y_labels", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5e99cbc725009b18e5b1475bd3f41b11", null ]
 ];

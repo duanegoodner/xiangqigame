@@ -18,10 +18,10 @@ var namespacexiangqipy =
       [ "enc_hook", "namespacexiangqipy_1_1game__summary__io.html#a41ff5f9044c6f215390ddac59120057b", null ],
       [ "export_game_summary", "namespacexiangqipy_1_1game__summary__io.html#a25ce12744b590c06e4c529192110e11c", null ],
       [ "import_game_summary", "namespacexiangqipy_1_1game__summary__io.html#a169730ff8c31dbd436a1e7df1e26bebb", null ],
-      [ "decoder", "namespacexiangqipy_1_1game__summary__io.html#a141dee75c19ab49888a4aec1897a6db5", null ],
-      [ "encoder", "namespacexiangqipy_1_1game__summary__io.html#a4bd5599ca201f0381966d2b7a440ad12", null ],
-      [ "my_int", "namespacexiangqipy_1_1game__summary__io.html#a1da215ad9dbbb92f504357d5f336dd2d", null ],
-      [ "my_piece_color", "namespacexiangqipy_1_1game__summary__io.html#a6c93ca458bca8f3a0fb8433416835438", null ]
+      [ "decoder", "namespacexiangqipy_1_1game__summary__io.html#ae2953dcdf61acd7eec7a9ec87d1ede3f", null ],
+      [ "encoder", "namespacexiangqipy_1_1game__summary__io.html#acf83b277c198dbcdc1dc1406978c6c5d", null ],
+      [ "my_int", "namespacexiangqipy_1_1game__summary__io.html#a94c56e55ffaca28b12c61d6225d252c0", null ],
+      [ "my_piece_color", "namespacexiangqipy_1_1game__summary__io.html#a8233bc364f0bbebe500a8c3aeaa3db97", null ]
     ] ],
     [ "game_summary_plot_manager", "namespacexiangqipy_1_1game__summary__plot__manager.html", "namespacexiangqipy_1_1game__summary__plot__manager" ],
     [ "game_summary_plotters", "namespacexiangqipy_1_1game__summary__plotters.html", "namespacexiangqipy_1_1game__summary__plotters" ],

@@ -2,5 +2,5 @@
 <area shape="rect" id="node1" title=" " alt="" coords="256,5,343,83"/>
 <area shape="rect" id="node2" href="$classxiangqipy_1_1players_1_1IllegalAIMove.html" title="Raised when AI player proposed illegal move." alt="" coords="5,138,185,259"/>
 <area shape="rect" id="node3" href="$classxiangqipy_1_1players_1_1IllegalMoveInMoveList.html" title="Raised when scripted player proposes an illegal move." alt="" coords="209,131,389,267"/>
-<area shape="rect" id="node4" href="$classxiangqipy_1_1players_1_1InvalidEntryInMoveList.html" title="Raised when scripted player proposed move has invalid syntax." alt="" coords="414,138,598,259"/>
+<area shape="rect" id="node4" href="$classxiangqipy_1_1players_1_1InvalidEntryInMoveList.html" title="Raised when scripted player proposed move has invalid syntax." alt="" coords="413,138,601,259"/>
 </map>

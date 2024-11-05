@@ -1,10 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,90,81,117"/>
-<area shape="rect" id="node2" href="$classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html" title="Reports details of a Game." alt="" coords="129,28,331,69"/>
-<area shape="rect" id="node4" href="$classxiangqipy_1_1game__interfaces_1_1Player.html" title="Can take a turn in a Game." alt="" coords="129,115,331,156"/>
-<area shape="rect" id="node3" href="$classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html" title="Outputs a text&#45;base game board with GamePiece locations in algebraic notation." alt="" coords="379,5,607,47"/>
-<area shape="rect" id="node5" href="$classxiangqipy_1_1players_1_1AIPlayer.html" title="Proposed moves selected using an implementation of core MoveEvaluator." alt="" coords="395,71,590,98"/>
-<area shape="rect" id="node6" href="$classxiangqipy_1_1players_1_1HumanPlayer.html" title="Uses terminal UI to propose moves." alt="" coords="379,122,607,149"/>
-<area shape="rect" id="node7" href="$classxiangqipy_1_1players_1_1ScriptedPlayer.html" title="Proposes moves sequentially from a list of algebraic notation moves." alt="" coords="396,173,589,215"/>
-<area shape="rect" id="node8" href="$classxiangqipy_1_1players_1_1ScriptedPlayerWithRetries.html" title="Has intentionally illegal move in list, followed by legal move (for tests)." alt="" coords="396,239,589,280"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,87,81,113"/>
+<area shape="rect" id="node2" href="$classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html" title="Reports details of a Game." alt="" coords="129,27,331,67"/>
+<area shape="rect" id="node4" href="$classxiangqipy_1_1game__interfaces_1_1Player.html" title="Can take a turn in a Game." alt="" coords="129,112,331,152"/>
+<area shape="rect" id="node3" href="$classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html" title="Outputs a text&#45;base game board with GamePiece locations in algebraic notation." alt="" coords="379,5,607,45"/>
+<area shape="rect" id="node5" href="$classxiangqipy_1_1players_1_1AIPlayer.html" title="Proposed moves selected using an implementation of core MoveEvaluator." alt="" coords="395,70,590,95"/>
+<area shape="rect" id="node6" href="$classxiangqipy_1_1players_1_1HumanPlayer.html" title="Uses terminal UI to propose moves." alt="" coords="379,119,607,145"/>
+<area shape="rect" id="node7" href="$classxiangqipy_1_1players_1_1ScriptedPlayer.html" title="Proposes moves sequentially from a list of algebraic notation moves." alt="" coords="396,169,589,209"/>
+<area shape="rect" id="node8" href="$classxiangqipy_1_1players_1_1ScriptedPlayerWithRetries.html" title="Has intentionally illegal move in list, followed by legal move (for tests)." alt="" coords="396,233,589,273"/>
 </map>

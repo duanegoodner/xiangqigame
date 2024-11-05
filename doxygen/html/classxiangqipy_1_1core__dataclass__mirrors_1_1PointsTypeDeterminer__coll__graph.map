@@ -1,4 +1,5 @@
 <map id="xiangqipy.core_dataclass_mirrors.PointsTypeDeterminer" name="xiangqipy.core_dataclass_mirrors.PointsTypeDeterminer">
 <area shape="rect" id="node1" title="Determines the integer type used for Points int the C++ core, and provides a numpy integer type with ..." alt="" coords="5,145,229,237"/>
-<area shape="rect" id="node2" title=" " alt="" coords="74,5,161,83"/>
+<area shape="rect" id="node2" title=" " alt="" coords="31,5,78,83"/>
+<area shape="rect" id="node3" title=" " alt="" coords="139,5,223,83"/>
 </map>

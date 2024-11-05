@@ -1,3 +1,8 @@
 <map id="xiangqipy.core_dataclass_mirrors.ExecutedMove" name="xiangqipy.core_dataclass_mirrors.ExecutedMove">
-<area shape="rect" id="node1" title="A Python ExecutedMove." alt="" coords="5,5,191,112"/>
+<area shape="rect" id="node1" title="A Python ExecutedMove." alt="" coords="119,499,304,605"/>
+<area shape="rect" id="node2" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1GamePiece.html" title="A Python GamePiece." alt="" coords="5,329,204,421"/>
+<area shape="rect" id="node3" title=" " alt="" coords="66,167,143,245"/>
+<area shape="rect" id="node4" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html" title="A Python Move." alt="" coords="228,329,413,421"/>
+<area shape="rect" id="node5" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1BoardSpace.html" title="A Python BoardSpace." alt="" coords="219,160,422,252"/>
+<area shape="rect" id="node6" title=" " alt="" coords="301,5,340,83"/>
 </map>

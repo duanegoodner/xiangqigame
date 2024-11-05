@@ -1,5 +1,5 @@
 <map id="include/key_generator.hpp" name="include/key_generator.hpp">
-<area shape="rect" id="node1" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="10,5,203,32"/>
-<area shape="rect" id="node2" href="$hash__calculator_8hpp.html" title="Class templates for boardstate::SingleZobristTracker and its supporting class boardstate::ZobristCalc..." alt="" coords="5,80,208,107"/>
-<area shape="rect" id="node3" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="13,155,200,181"/>
+<area shape="rect" id="node1" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="10,5,203,31"/>
+<area shape="rect" id="node2" href="$hash__calculator_8hpp.html" title="Class templates for boardstate::SingleZobristTracker and its supporting class boardstate::ZobristCalc..." alt="" coords="5,79,208,104"/>
+<area shape="rect" id="node3" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="13,152,200,177"/>
 </map>

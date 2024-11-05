@@ -1,5 +1,5 @@
 <map id="xiangqipy.command_input.PlayerCommandInterpreter" name="xiangqipy.command_input.PlayerCommandInterpreter">
-<area shape="rect" id="node1" title="Converts command line input related to a player into PlayerInput object." alt="" coords="43,189,241,428"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,92,83"/>
-<area shape="rect" id="node3" title=" " alt="" coords="216,5,255,83"/>
+<area shape="rect" id="node1" title="Converts command line input related to a player into PlayerInput object." alt="" coords="25,189,224,428"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,52,83"/>
+<area shape="rect" id="node3" title=" " alt="" coords="201,5,240,83"/>
 </map>

@@ -1,14 +1,14 @@
 var evaluator__data__structs_8hpp =
 [
-    [ "EqualScoreMoves", "structmoveselection_1_1EqualScoreMoves.html", "structmoveselection_1_1EqualScoreMoves" ],
-    [ "ScoredMove", "structmoveselection_1_1ScoredMove.html", "structmoveselection_1_1ScoredMove" ],
-    [ "TranspositionTableEntry", "structmoveselection_1_1TranspositionTableEntry.html", "structmoveselection_1_1TranspositionTableEntry" ],
-    [ "TranspositionTableSearchResult", "structmoveselection_1_1TranspositionTableSearchResult.html", "structmoveselection_1_1TranspositionTableSearchResult" ],
-    [ "TranspositionTableSize", "structmoveselection_1_1TranspositionTableSize.html", "structmoveselection_1_1TranspositionTableSize" ],
-    [ "ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", "classmoveselection_1_1ResultDepthCounts" ],
-    [ "CollisionInfo", "structmoveselection_1_1CollisionInfo.html", "structmoveselection_1_1CollisionInfo" ],
-    [ "SearchSummary", "classmoveselection_1_1SearchSummary.html", "classmoveselection_1_1SearchSummary" ],
-    [ "SearchSummaries", "structmoveselection_1_1SearchSummaries.html", "structmoveselection_1_1SearchSummaries" ],
+    [ "moveselection::EqualScoreMoves", "structmoveselection_1_1EqualScoreMoves.html", "structmoveselection_1_1EqualScoreMoves" ],
+    [ "moveselection::ScoredMove", "structmoveselection_1_1ScoredMove.html", "structmoveselection_1_1ScoredMove" ],
+    [ "moveselection::TranspositionTableEntry", "structmoveselection_1_1TranspositionTableEntry.html", "structmoveselection_1_1TranspositionTableEntry" ],
+    [ "moveselection::TranspositionTableSearchResult", "structmoveselection_1_1TranspositionTableSearchResult.html", "structmoveselection_1_1TranspositionTableSearchResult" ],
+    [ "moveselection::TranspositionTableSize", "structmoveselection_1_1TranspositionTableSize.html", "structmoveselection_1_1TranspositionTableSize" ],
+    [ "moveselection::ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", "classmoveselection_1_1ResultDepthCounts" ],
+    [ "moveselection::CollisionInfo", "structmoveselection_1_1CollisionInfo.html", "structmoveselection_1_1CollisionInfo" ],
+    [ "moveselection::SearchSummary", "classmoveselection_1_1SearchSummary.html", "classmoveselection_1_1SearchSummary" ],
+    [ "moveselection::SearchSummaries", "structmoveselection_1_1SearchSummaries.html", "structmoveselection_1_1SearchSummaries" ],
     [ "ResultDepthCountsData_t", "evaluator__data__structs_8hpp.html#aa4c456c3f118a94017483880ff42991b", null ],
     [ "MinimaxResultType", "evaluator__data__structs_8hpp.html#acdb529ae14e6752318706ace995061ed", [
       [ "kUnknown", "evaluator__data__structs_8hpp.html#acdb529ae14e6752318706ace995061edadef73b774725d74259cc49e9fe97e6dd", null ],
