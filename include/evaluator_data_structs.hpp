@@ -46,13 +46,13 @@ const size_t kNumResultTypes{7};
 
 //! Data structure that holds a moveselection::EqualScoreMoves and other search-related
 //! info obtained from a call to moveselection::MinimaxMoveEvaluator.MinimaxRec.
-struct TranspositionTableEntry {
-  TranspositionTableEntry()
+struct MinmaxCalcResult {
+  MinmaxCalcResult()
       : remaining_search_depth{}
       , result_type{}
       , similar_moves{} {}
 
-  TranspositionTableEntry(int depth, MinimaxResultType type, EqualScoreMoves moves)
+  MinmaxCalcResult(int depth, MinimaxResultType type, EqualScoreMoves moves)
       : remaining_search_depth(depth)
       , result_type(type)
       , similar_moves(std::move(moves)) {}
@@ -65,10 +65,10 @@ struct TranspositionTableEntry {
   MoveCollection moves() { return similar_moves.moves(); }
 };
 
-//! Container for storing a moveselection::TranspositionTableEntry retrieved by a call to
+//! Container for storing a moveselection::MinmaxCalcResult retrieved by a call to
 //! boardstate::SingleZobristTracker.ImplementGetTrData.
 struct TranspositionTableSearchResult {
-  TranspositionTableEntry table_entry;
+  MinmaxCalcResult table_entry;
   bool found;
   bool known_collision;
 

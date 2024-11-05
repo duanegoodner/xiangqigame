@@ -51,7 +51,7 @@ public:
 
     data_.insert_or_assign(
         state,
-        TranspositionTableEntry{search_depth, result_type, similar_moves}
+        MinmaxCalcResult{search_depth, result_type, similar_moves}
     );
   };
 
@@ -60,13 +60,13 @@ public:
   size_t num_states() { return data_.size(); }
 
 private:
-  unordered_map<KeyType, TranspositionTableEntry> data_;
+  unordered_map<KeyType, MinmaxCalcResult> data_;
 };
 
 template <typename KeyType>
-struct DualKeyTranspositionTableEntry {
+struct DualKeyMinmaxCalcResult {
   KeyType confirmation_state;
-  TranspositionTableEntry single_key_entry;
+  MinmaxCalcResult single_key_entry;
 };
 
 template <typename KeyType>
@@ -102,10 +102,10 @@ public:
       MinimaxResultType result_type,
       EqualScoreMoves &similar_moves
   ) {
-    TranspositionTableEntry single_key_entry{search_depth, result_type, similar_moves};
+    MinmaxCalcResult single_key_entry{search_depth, result_type, similar_moves};
     data_.insert_or_assign(
         board_state,
-        DualKeyTranspositionTableEntry<KeyType>{confirmation_state, single_key_entry}
+        DualKeyMinmaxCalcResult<KeyType>{confirmation_state, single_key_entry}
     );
   }
 
@@ -113,7 +113,7 @@ public:
   size_t num_states() { return data_.size(); }
 
 private:
-  unordered_map<KeyType, DualKeyTranspositionTableEntry<KeyType>> data_;
+  unordered_map<KeyType, DualKeyMinmaxCalcResult<KeyType>> data_;
 };
 
 //! Tracks board state using one boardstate::ZobristCalculator and a Implements
