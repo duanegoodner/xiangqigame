@@ -53,11 +53,11 @@ vector<BoardSpace> GameBoard::ImplementGetAllSpacesOccupiedBy(PieceColor color) 
   return get_all_spaces_occupied_by(board_map_, color);
 }
 
-PieceColor GameBoard::ImplementGetColor(BoardSpace space) const {
+PieceColor GameBoard::ImplementGetColor(const BoardSpace &space) const {
   return get_color(board_map_, space);
 }
 
-PieceType GameBoard::ImplementGetType(BoardSpace space) const {
+PieceType GameBoard::ImplementGetType(const BoardSpace &space) const {
   return get_type(board_map_, space);
 }
 
@@ -94,7 +94,7 @@ bool GameBoard::IsInCheck(PieceColor color) {
   return opponent_moves.ContainsDestination(gen_position);
 }
 
-ExecutedMove GameBoard::ImplementExecuteMove(Move move) {
+ExecutedMove GameBoard::ImplementExecuteMove(const Move &move) {
   auto moving_piece = GetOccupantAt(move.start);
   auto destination_piece = GetOccupantAt(move.end);
   SetOccupantAt(move.end, moving_piece);
@@ -113,11 +113,11 @@ ExecutedMove GameBoard::ImplementExecuteMove(Move move) {
   return executed_move;
 };
 
-bool GameBoard::IsCaptureMove(ExecutedMove executed_move) {
+bool GameBoard::IsCaptureMove(const ExecutedMove &executed_move) const {
   return executed_move.destination_piece != PieceColor::kNul;
 }
 
-void GameBoard::ImplementUndoMove(ExecutedMove executed_move) {
+void GameBoard::ImplementUndoMove(const ExecutedMove &executed_move) {
   SetOccupantAt(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupantAt(executed_move.spaces.end, executed_move.destination_piece);
   UpdateStateTracker(executed_move);
@@ -125,13 +125,13 @@ void GameBoard::ImplementUndoMove(ExecutedMove executed_move) {
   RemoveFromMoveLog(executed_move);
 };
 
-GamePiece GameBoard::GetOccupantAt(BoardSpace space) const {
+GamePiece GameBoard::GetOccupantAt(const BoardSpace &space) const {
   return board_map_[space.rank][space.file];
 };
 
 const BoardMap_t &GameBoard::map() const { return board_map_; }
 
-void GameBoard::ImplementAttachMoveCallback(const function<void(ExecutedMove)> &callback
+void GameBoard::ImplementAttachMoveCallback(const function<void(const ExecutedMove&)> &callback
 ) {
   move_callbacks_.emplace_back(callback);
 }
@@ -144,22 +144,22 @@ const std::map<PieceColor, vector<ExecutedMove>> &GameBoard::move_log() const {
   return move_log_;
 }
 
-void GameBoard::UpdateStateTracker(ExecutedMove executed_move) {
+void GameBoard::UpdateStateTracker(const ExecutedMove &executed_move) {
   for (const auto &callback : move_callbacks_) {
     callback(executed_move);
   }
 };
 
-void GameBoard::SetOccupantAt(BoardSpace space, GamePiece piece) {
+void GameBoard::SetOccupantAt(const BoardSpace &space, GamePiece piece) {
   board_map_[space.rank][space.file] = piece;
 }
 
-void GameBoard::AddToMoveLog(ExecutedMove executed_move) {
+void GameBoard::AddToMoveLog(const ExecutedMove &executed_move) {
   auto piece_color = executed_move.moving_piece.piece_color;
   move_log_[piece_color].push_back(executed_move);
 };
 
-void GameBoard::RemoveFromMoveLog(ExecutedMove executed_move) {
+void GameBoard::RemoveFromMoveLog(const ExecutedMove &executed_move) {
   auto piece_color = executed_move.moving_piece.piece_color;
   auto last_move_by_color = move_log_[piece_color].back();
   if (!(executed_move == last_move_by_color)) {
