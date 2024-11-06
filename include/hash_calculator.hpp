@@ -66,6 +66,13 @@ private:
 template <typename KeyType>
 class TranspositionTableEntry {
 public:
+  TranspositionTableEntry(
+      MinimaxCalcResult calc_result,
+      std::vector<KeyType> confirmation_keys
+  )
+      : calc_result_{calc_result}
+      , confirmation_keys_{confirmation_keys} {}
+
   moveselection::MinimaxCalcResult calc_result() { return calc_result_; }
 
   std::vector<KeyType> confirmation_keys() { return confirmation_keys_; }
@@ -104,9 +111,10 @@ public:
 
     if (tr_table_entry_it != data_.end()) {
       auto tr_table_entry = tr_table_entry_it->second;
-      if (tr_table_entry.remaining_search_depth >= remaining_search_depth) {
+      if (tr_table_entry.calc_result().remaining_search_depth >=
+          remaining_search_depth) {
         result.found = true;
-        result.table_entry = tr_table_entry;
+        result.table_entry = tr_table_entry.calc_result();
       }
     }
     return result;
@@ -136,7 +144,7 @@ public:
   ) {
     data_.insert_or_assign(
         state,
-        TranspositionTableEntry{
+        TranspositionTableEntry<KeyType>{
             MinimaxCalcResult{search_depth, result_type, similar_moves},
             std::vector<KeyType>{}
         }
@@ -375,8 +383,9 @@ public:
 
   ZobristTracker(std::vector<uint32_t> seeds)
       : ZobristTracker(ZobristComponent<KeyType>(seeds)) {}
-  
-  ZobristTracker() : ZobristTracker(2) {}
+
+  ZobristTracker()
+      : ZobristTracker(2) {}
 
   KeyType ImplementGetState() { return zobrist_component_.GetPrimaryBoardState(); }
 

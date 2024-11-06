@@ -65,12 +65,68 @@ protected:
   GameBoard late_game_board_{kLateGameBoardMap};
 
   const int standard_search_depth = 4;
+
+  template <typename KeyType>
+  void PlayGameWithZobristTracker(int red_search_depth, int black_search_depth) {
+    GameBoard game_board;
+    MinimaxMoveEvaluator<GameBoard, ZobristTracker<uint64_t>, PiecePositionPoints>
+        red_evaluator{
+            PieceColor::kRed,
+            red_search_depth,
+            game_board,
+            imported_piece_points
+        };
+    MinimaxMoveEvaluator<GameBoard, ZobristTracker<uint64_t>, PiecePositionPoints>
+        black_evaluator{
+            PieceColor::kBlk,
+            black_search_depth,
+            game_board,
+            imported_piece_points
+        };
+
+    // GameBoard game_board;
+    PieceColor losing_player{};
+
+    while (true) {
+      auto red_moves = game_board.CalcFinalMovesOf(PieceColor::kRed);
+      if (red_moves.Size() == 0) {
+        std::cout << "Red has no available moves" << std::endl;
+        losing_player = PieceColor::kRed;
+        break;
+      }
+      auto red_selected_move = red_evaluator.SelectMove(red_moves);
+      auto red_executed_move = game_board.ExecuteMove(red_selected_move);
+
+      auto black_moves = game_board.CalcFinalMovesOf(PieceColor::kBlk);
+      if (black_moves.Size() == 0) {
+        std::cout << "Black has no available moves" << std::endl;
+        losing_player = PieceColor::kBlk;
+        break;
+      }
+
+      auto black_selected_move = black_evaluator.SelectMove(black_moves);
+      auto black_executed_move = game_board.ExecuteMove(black_selected_move);
+    }
+
+    if (red_search_depth < black_search_depth) {
+      EXPECT_TRUE(losing_player == PieceColor::kRed);
+    }
+    if (black_search_depth < red_search_depth) {
+      EXPECT_TRUE(losing_player == PieceColor::kBlk);
+    }
+  }
 };
 
 TEST_F(MinimaxEvaluatorTest, ConstructWithNumKeysAgnosticZobristTracker) {
   GameBoard starting_board;
   MinimaxMoveEvaluator<GameBoard, ZobristTracker<uint64_t>, PiecePositionPoints>
-      red_evaluator{PieceColor::kRed, standard_search_depth, starting_board};
+      red_evaluator{PieceColor::kRed, 2, starting_board};
+  MinimaxMoveEvaluator<GameBoard, ZobristTracker<uint64_t>, PiecePositionPoints>
+      black_evaluator{PieceColor::kBlk, 3, starting_board};
+}
+
+TEST_F(MinimaxEvaluatorTest, PlayGameWithNumKeysAgnosticZobristTracker) {
+  PlayGameWithZobristTracker<uint64_t>(2, 3);
 }
 
 TEST_F(MinimaxEvaluatorTest, TestConstructorsWithDefaultPiecePositionPoints) {
