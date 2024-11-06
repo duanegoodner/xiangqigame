@@ -41,6 +41,136 @@ TEST_F(ZobristCalculatorTest, GetHashValueAt) {
   );
 }
 
+template <typename KeyType>
+  struct CalcFullBoardStateResult {
+    std::vector<KeyType> initial_states;
+    KeyType initial_primary_state;
+    std::vector<KeyType> final_states;
+    KeyType final_primary_state;
+  };
+
+class ZobristComponentTest : public ::testing::Test {
+protected:
+  ZobristCalculator<uint64_t> zobrist_calculator_064_a{};
+  ZobristCalculator<uint64_t> zobrist_calculator_064_b{};
+
+  BoardMap_t board_map{int_board_to_game_pieces(kStartingBoard)};
+
+  template <typename KeyType>
+  CalcFullBoardStateResult<KeyType> TestCalcFullBoardState(int num_calculators) {
+    ZobristComponent<KeyType> zobrist_component{num_calculators};
+    auto board_states_vector_initial = zobrist_component.GetAllBoardStates();
+    auto primary_board_state_initial = zobrist_component.GetPrimaryBoardState();
+    zobrist_component.FullBoardStateCalc(board_map);
+    auto board_states_vector_final = zobrist_component.GetAllBoardStates();
+    auto primary_board_state_final = zobrist_component.GetPrimaryBoardState();
+
+    return CalcFullBoardStateResult{
+        board_states_vector_initial,
+        primary_board_state_initial,
+        board_states_vector_final,
+        primary_board_state_final
+    };
+  }
+};
+
+TEST_F(ZobristComponentTest, InitFromVectorOfCalculators) {
+  std::vector<ZobristCalculator<uint64_t>> calculators{
+      {zobrist_calculator_064_a},
+      {zobrist_calculator_064_b}
+  };
+  ZobristComponent<uint64_t> component_064{calculators};
+}
+
+TEST_F(ZobristComponentTest, InitFromNumCalculators) {
+  ZobristComponent<uint64_t> component_064_single{1};
+  ZobristComponent<uint64_t> component_064_dual{2};
+  ZobristComponent<uint64_t> component_064_triple{3};
+}
+
+TEST_F(ZobristComponentTest, InitFromVectorOfSeeds) {
+  std::vector<uint32_t> one_seed{1234};
+  ZobristComponent<uint64_t> component_064_single{one_seed};
+
+  std::vector<uint32_t> two_seeds{12345, 678910};
+  ZobristComponent<uint64_t> component_064_dual{two_seeds};
+
+  std::vector<uint32_t> three_seeds{1234, 5678, 9101};
+  ZobristComponent<uint64_t> component_064_triple{three_seeds};
+}
+
+TEST_F(ZobristComponentTest, CalcFullBoardState) {
+  auto component_064_single_result = TestCalcFullBoardState<uint64_t>(1);
+  auto component_064_dual_result = TestCalcFullBoardState<uint64_t>(2);
+  auto component_065_triple_result = TestCalcFullBoardState<uint64_t>(3);
+}
+
+TEST_F(ZobristComponentTest, ConvertBoardStatesToHexStrings) {
+  auto component_064_dual_result = TestCalcFullBoardState<uint64_t>(2);
+  auto initial_primary_state =
+      boardstate::IntToHexString(component_064_dual_result.initial_primary_state);
+  std::cout << initial_primary_state << std::endl;
+
+  for (auto &initial_state : component_064_dual_result.initial_states) {
+    auto state_as_string = IntToHexString(initial_state);
+    std::cout << state_as_string << std::endl;
+  }
+
+  auto final_primary_state =
+      boardstate::IntToHexString(component_064_dual_result.final_primary_state);
+  std::cout << final_primary_state << std::endl;
+
+  for (auto &final_state : component_064_dual_result.final_states) {
+    auto state_as_string = IntToHexString(final_state);
+    std::cout << state_as_string << std::endl;
+  }
+}
+
+class ZobristTrackerTest : public ::testing::Test {
+protected:
+  ZobristComponent<uint64_t> component_064_single{1};
+  ZobristComponent<uint64_t> component_064_dual{2};
+  ZobristComponent<uint64_t> component_064_triple{3};
+
+  BoardMap_t board_map{int_board_to_game_pieces(kStartingBoard)};
+
+  template <typename KeyType>
+  void TestCalcFullBoardState(int num_calculators) {
+    ZobristTracker<KeyType> zobrist_tracker{num_calculators};
+    auto board_state_initial = zobrist_tracker.GetState();
+    EXPECT_EQ(board_state_initial, 0);
+    zobrist_tracker.FullBoardStateCalc(board_map);
+    auto board_state_final = zobrist_tracker.GetState();
+    EXPECT_NE(board_state_initial, board_state_final);
+  }
+};
+
+TEST_F(ZobristTrackerTest, InitFromComponent) {
+
+  ZobristTracker<uint64_t> tracker_064_single{component_064_single};
+  ZobristTracker<uint64_t> tracker_064_dual{component_064_dual};
+  ZobristTracker<uint64_t> tracker_064_triple{component_064_triple};
+}
+
+TEST_F(ZobristTrackerTest, InitFromSeeds) {
+
+  ZobristTracker<uint64_t> tracker_064_single{std::vector<uint32_t>{1234}};
+  ZobristTracker<uint64_t> tracker_064_double{std::vector<uint32_t>{1234, 5678}};
+  ZobristTracker<uint64_t> tracker_064_triple{std::vector<uint32_t>{1234, 5678, 9100}};
+}
+
+TEST_F(ZobristTrackerTest, InitFromNumCalculators) {
+  ZobristTracker<uint64_t> tracker_064_single{1};
+  ZobristTracker<uint64_t> tracker_064_double{2};
+  ZobristTracker<uint64_t> tracker_064_triple{3};
+}
+
+TEST_F(ZobristTrackerTest, FullBoardStateCalc) {
+  TestCalcFullBoardState<uint64_t>(1);
+  TestCalcFullBoardState<uint64_t>(2);
+  TestCalcFullBoardState<uint64_t>(3);
+}
+
 class SingleZobristTrackerTest : public ::testing::Test {
 
 protected:
@@ -65,7 +195,6 @@ TEST_F(SingleZobristTrackerTest, DefaultInit) {
 
 TEST_F(SingleZobristTrackerTest, InitializeBoardState) {
   auto my_hash_calculator_064 = SingleZobristTracker<uint64_t>(22443355);
-  uint64_t board_state{0};
   EXPECT_EQ(my_hash_calculator_064.ImplementGetState(), 0);
   my_hash_calculator_064.ImplementFullBoardStateCalc(board_map);
   EXPECT_NE(my_hash_calculator_064.ImplementGetState(), 0);

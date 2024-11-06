@@ -51,7 +51,7 @@ public:
 
     data_.insert_or_assign(
         state,
-        MinmaxCalcResult{search_depth, result_type, similar_moves}
+        MinimaxCalcResult{search_depth, result_type, similar_moves}
     );
   };
 
@@ -60,13 +60,116 @@ public:
   size_t num_states() { return data_.size(); }
 
 private:
-  unordered_map<KeyType, MinmaxCalcResult> data_;
+  unordered_map<KeyType, MinimaxCalcResult> data_;
 };
 
 template <typename KeyType>
-struct DualKeyMinmaxCalcResult {
+class TranspositionTableEntry {
+public:
+  moveselection::MinimaxCalcResult calc_result() { return calc_result_; }
+
+  std::vector<KeyType> confirmation_keys() { return confirmation_keys_; }
+
+  bool HasConfirmationKeys() { return confirmation_keys_.size() > 0; }
+
+  size_t num_confirmation_keys() { return confirmation_keys_.size(); }
+
+  bool ConfirmationKeysMatchExpected(std::vector<KeyType> expected_keys) {
+    if (expected_keys.size() != confirmation_keys_.size()) {
+      throw std::invalid_argument("Vectors have different sizes");
+    }
+
+    for (auto index = 0; index < expected_keys.size(); ++index) {
+      if (expected_keys[index] != confirmation_keys_[index]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+private:
+  moveselection::MinimaxCalcResult calc_result_;
+  std::vector<KeyType> confirmation_keys_;
+};
+
+template <typename KeyType>
+struct TranspositionTable {
+public:
+  TranspositionTableSearchResult GetDataAt(
+      KeyType board_state,
+      int remaining_search_depth
+  ) {
+    TranspositionTableSearchResult result{};
+    auto tr_table_entry_it = data_.find(board_state);
+
+    if (tr_table_entry_it != data_.end()) {
+      auto tr_table_entry = tr_table_entry_it->second;
+      if (tr_table_entry.remaining_search_depth >= remaining_search_depth) {
+        result.found = true;
+        result.table_entry = tr_table_entry;
+      }
+    }
+    return result;
+  }
+
+  TranspositionTableSearchResult GetDataAt(
+      KeyType board_state,
+      int remaining_search_depth,
+      const std::vector<KeyType> &expected_keys
+  ) {
+
+    auto result = GetDataAt(board_state, remaining_search_depth);
+    if (result.found) {
+      if (result.tr_table_entry.ConfirmationKeysMatchExpectedKeys(expected_keys)) {
+        result.known_collision = true;
+      }
+    }
+
+    return result;
+  }
+
+  void RecordData(
+      KeyType state,
+      int search_depth,
+      MinimaxResultType result_type,
+      EqualScoreMoves &similar_moves
+  ) {
+    data_.insert_or_assign(
+        state,
+        TranspositionTableEntry{
+            MinimaxCalcResult{search_depth, result_type, similar_moves},
+            std::vector<KeyType>{}
+        }
+    );
+  }
+
+  void RecordData(
+      KeyType state,
+      int search_depth,
+      MinimaxResultType result_type,
+      EqualScoreMoves &similar_moves,
+      std::vector<KeyType> &confirmation_keys
+  ) {
+    data_.insert_or_assign(
+        state,
+        TranspositionTableEntry{
+            MinimaxCalcResult{search_depth, result_type, similar_moves},
+            confirmation_keys
+        }
+    );
+  }
+
+  size_t num_entries() { return data_.size(); }
+  size_t num_states() { return data_.size(); }
+
+private:
+  unordered_map<KeyType, TranspositionTableEntry<KeyType>> data_;
+};
+
+template <typename KeyType>
+struct DualKeyMinimaxCalcResult {
   KeyType confirmation_state;
-  MinmaxCalcResult single_key_entry;
+  MinimaxCalcResult single_key_entry;
 };
 
 template <typename KeyType>
@@ -102,10 +205,10 @@ public:
       MinimaxResultType result_type,
       EqualScoreMoves &similar_moves
   ) {
-    MinmaxCalcResult single_key_entry{search_depth, result_type, similar_moves};
+    MinimaxCalcResult single_key_entry{search_depth, result_type, similar_moves};
     data_.insert_or_assign(
         board_state,
-        DualKeyMinmaxCalcResult<KeyType>{confirmation_state, single_key_entry}
+        DualKeyMinimaxCalcResult<KeyType>{confirmation_state, single_key_entry}
     );
   }
 
@@ -113,7 +216,7 @@ public:
   size_t num_states() { return data_.size(); }
 
 private:
-  unordered_map<KeyType, DualKeyMinmaxCalcResult<KeyType>> data_;
+  unordered_map<KeyType, DualKeyMinimaxCalcResult<KeyType>> data_;
 };
 
 //! Tracks board state using one boardstate::ZobristCalculator and a Implements
@@ -268,13 +371,63 @@ public:
       : zobrist_component_{std::move(zobrist_component)} {}
 
   ZobristTracker(int num_calculators)
-      : ZobristTracker(ZobristComponent(num_calculators)) {}
+      : ZobristTracker(ZobristComponent<KeyType>(num_calculators)) {}
 
   ZobristTracker(std::vector<uint32_t> seeds)
-      : ZobristTracker(ZobristComponent(seeds)) {}
+      : ZobristTracker(ZobristComponent<KeyType>(seeds)) {}
+
+  KeyType ImplementGetState() { return zobrist_component_.GetPrimaryBoardState(); }
+
+  void ImplementUpdateBoardState(const ExecutedMove &executed_move) {
+    zobrist_component_.UpdateBoardStates(executed_move);
+  }
+
+  void ImplementFullBoardStateCalc(const BoardMap_t &board_map) {
+    zobrist_component_.FullBoardStateCalc(board_map);
+  }
+
+  void ImplementRecordTrData(
+      int search_depth,
+      MinimaxResultType result_type,
+      EqualScoreMoves &similar_move
+  ) {
+    transposition_table_.RecordData(
+        zobrist_component_.GetPrimaryBoardState(),
+        search_depth,
+        result_type,
+        similar_move
+    );
+  }
+
+  TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
+    return transposition_table_.GetDataAt(
+        zobrist_component_.GetPrimaryBoardState(),
+        search_depth
+    );
+  }
+
+  TranspositionTableSearchResult ImplementGetTrData(
+      int search_depth,
+      const std::vector<KeyType> &expected_keys
+  ) {
+    return transposition_table_.GetDataAt(
+        zobrist_component_.GetPrimaryBoardState(),
+        search_depth,
+        expected_keys
+    );
+  }
+
+  moveselection::TranspositionTableSize ImplementGetTrTableSize() {
+    moveselection::TranspositionTableSize result{
+        transposition_table_.num_entries(),
+        transposition_table_.num_states()
+    };
+    return result;
+  }
 
 private:
   ZobristComponent<KeyType> zobrist_component_;
+  TranspositionTable<KeyType> transposition_table_;
 };
 
 } // namespace boardstate

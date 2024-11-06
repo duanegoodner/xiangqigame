@@ -92,10 +92,10 @@ public:
     return keys_vector;
   }
 
-  KeyType board_state() { return board_state_; }
-  GameZarray_t zarray() { return zarray_; }
-  KeyType turn_key() { return turn_key_; }
-  uint32_t seed() { return seed_; }
+  KeyType board_state() const { return board_state_; }
+  GameZarray_t zarray() const { return zarray_; }
+  KeyType turn_key() const { return turn_key_; }
+  uint32_t seed() const { return seed_; }
 
 private:
   GameZarray_t zarray_;
@@ -146,12 +146,22 @@ public:
     }
   }
 
-  std::vector<KeyType> GetBoardStates() const {
+  void FullBoardStateCalc(const BoardMap_t &board_map) {
+    for (auto &calculator : calculators_) {
+        calculator.FullBoardStateCalc(board_map);
+    }
+  }
+
+  std::vector<KeyType> GetAllBoardStates() {
     std::vector<KeyType> states;
     for (const auto &calculator : calculators_) {
       states.push_back(calculator.board_state());
     }
     return states;
+  }
+
+  KeyType GetPrimaryBoardState() {
+    return calculators_.front().board_state();
   }
 
   std::vector<uint32_t> seeds() const {
