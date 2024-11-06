@@ -32,7 +32,7 @@ TEST_F(RandomEvaluatorTest, TestStartingMoveSelection) {
   std::set<Move, bool (*)(const Move &, const Move &)> move_set(moveComparator);
 
   auto allowed_moves = starting_board.CalcFinalMovesOf(PieceColor::kRed);
-  
+
   for (auto idx = 0; idx < num_first_move_selections; idx++) {
     auto red_selected_move = red_evaluator.SelectMove(allowed_moves);
     move_set.insert(red_selected_move);
@@ -67,7 +67,11 @@ protected:
   const int standard_search_depth = 4;
 };
 
-
+TEST_F(MinimaxEvaluatorTest, ConstructWithNumKeysAgnosticZobristTracker) {
+  GameBoard starting_board;
+  MinimaxMoveEvaluator<GameBoard, ZobristTracker<uint64_t>, PiecePositionPoints>
+      red_evaluator{PieceColor::kRed, standard_search_depth, starting_board};
+}
 
 TEST_F(MinimaxEvaluatorTest, TestConstructorsWithDefaultPiecePositionPoints) {
   GameBoard starting_board;
@@ -336,7 +340,6 @@ TEST_F(MinimaxEvaluatorTest, PlayGame) {
 
   EXPECT_TRUE(losing_player == PieceColor::kRed);
 }
-
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

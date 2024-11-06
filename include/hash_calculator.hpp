@@ -375,6 +375,8 @@ public:
 
   ZobristTracker(std::vector<uint32_t> seeds)
       : ZobristTracker(ZobristComponent<KeyType>(seeds)) {}
+  
+  ZobristTracker() : ZobristTracker(2) {}
 
   KeyType ImplementGetState() { return zobrist_component_.GetPrimaryBoardState(); }
 
