@@ -1,5 +1,6 @@
 var classboardstate_1_1TranspositionTableEntry =
 [
+    [ "TranspositionTableEntry", "classboardstate_1_1TranspositionTableEntry.html#a0b769a9966b8a2bb891486ed64c6d9cd", null ],
     [ "calc_result", "classboardstate_1_1TranspositionTableEntry.html#a4308916966ccfe4b26b4c042e07f0d1a", null ],
     [ "confirmation_keys", "classboardstate_1_1TranspositionTableEntry.html#a76c2a871fe317a958fa4536a21625f9e", null ],
     [ "ConfirmationKeysMatchExpected", "classboardstate_1_1TranspositionTableEntry.html#aaf4aff2fa7f3081001735dd7b5cdeb3a", null ],

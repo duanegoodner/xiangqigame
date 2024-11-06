@@ -1,5 +1,11 @@
 var NAVTREEINDEX8 =
 {
+"structmoveselection_1_1MinimaxCalcResult.html#afb242527fc8248c7131edef8ac3bd588":[6,0,3,2,0],
+"structmoveselection_1_1MinimaxCalcResult.html#afb242527fc8248c7131edef8ac3bd588":[7,0,3,2,0],
+"structmoveselection_1_1ScoredMove.html":[7,0,3,6],
+"structmoveselection_1_1ScoredMove.html":[6,0,3,6],
+"structmoveselection_1_1ScoredMove.html#a192222a9c87e36d295cb6056f30c0a4a":[6,0,3,6,0],
+"structmoveselection_1_1ScoredMove.html#a192222a9c87e36d295cb6056f30c0a4a":[7,0,3,6,0],
 "structmoveselection_1_1ScoredMove.html#a9af6b23e467c87847b20aad2be9e2a71":[6,0,3,6,1],
 "structmoveselection_1_1ScoredMove.html#a9af6b23e467c87847b20aad2be9e2a71":[7,0,3,6,1],
 "structmoveselection_1_1SearchSummaries.html":[6,0,3,7],

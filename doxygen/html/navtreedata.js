@@ -146,14 +146,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____init_____8py.html",
-"classboardstate_1_1ZobristComponent.html#af9c98e784c54591677ff31a1a3affdee",
-"classmoveselection_1_1ResultDepthCounts.html#a6a128b64fa7b4d0a7e019903937d0ce0",
-"classxiangqipy_1_1core__dataclass__mirrors_1_1MoveCollection.html#a0ef37978768726f9dfdc50920acf71a8",
-"classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a48fb81885053cf64eb9a346edfecb1db",
-"classxiangqipy_1_1terminal__output_1_1InputRetrievalMessages.html#a575765ad612b34af56b2c50b9c2f27f2",
-"ks__test_8cpp.html",
-"namespacexiangqipy_1_1move__translator.html#a488a0b16e217d948606740a5da57c4fb",
-"structmoveselection_1_1ScoredMove.html#a9af6b23e467c87847b20aad2be9e2a71"
+"classboardstate_1_1ZobristComponent.html#ad6a7d6e45b83820e0ab135e1891de463",
+"classmoveselection_1_1ResultDepthCounts.html",
+"classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html#a8991b0e9187ec7d6ed05530d0778e1f0",
+"classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6",
+"classxiangqipy_1_1terminal__output_1_1InputRetrievalMessages.html",
+"keys__quality_8cpp.html#a3634695e07a7510aa2642a6fb0a91c63",
+"namespacexiangqipy_1_1handlers_1_1signals.html#a4159506827e084a156764c676d2f1f49",
+"structmoveselection_1_1MinimaxCalcResult.html#afb242527fc8248c7131edef8ac3bd588"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

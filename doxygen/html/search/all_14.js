@@ -28,7 +28,7 @@ var searchData=
   ['transposition_5ftable_5fhits_25',['transposition_table_hits',['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a0a5ee38e4b23414871e7b82ec8f018b0',1,'xiangqipy::core_dataclass_mirrors::SearchSummary']]],
   ['transposition_5ftable_5fhits_5f_26',['transposition_table_hits_',['../classmoveselection_1_1SearchSummary.html#ac970df793d70ed93038df1a18cab6e5a',1,'moveselection::SearchSummary']]],
   ['transpositiontable_27',['TranspositionTable',['../structboardstate_1_1TranspositionTable.html',1,'boardstate']]],
-  ['transpositiontableentry_28',['TranspositionTableEntry',['../classboardstate_1_1TranspositionTableEntry.html',1,'boardstate']]],
+  ['transpositiontableentry_28',['TranspositionTableEntry',['../classboardstate_1_1TranspositionTableEntry.html',1,'boardstate::TranspositionTableEntry&lt; KeyType &gt;'],['../classboardstate_1_1TranspositionTableEntry.html#a0b769a9966b8a2bb891486ed64c6d9cd',1,'boardstate::TranspositionTableEntry::TranspositionTableEntry()']]],
   ['transpositiontablesearchresult_29',['TranspositionTableSearchResult',['../structmoveselection_1_1TranspositionTableSearchResult.html',1,'moveselection']]],
   ['transpositiontablesize_30',['TranspositionTableSize',['../structmoveselection_1_1TranspositionTableSize.html',1,'moveselection::TranspositionTableSize'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize.html',1,'xiangqipy.core_dataclass_mirrors.TranspositionTableSize']]],
   ['transpositiontablesizesatevents_31',['TranspositionTableSizesAtEvents',['../classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents.html',1,'xiangqipy::core_dataclass_mirrors']]],
