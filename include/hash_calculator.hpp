@@ -436,6 +436,10 @@ public:
     return result;
   }
 
+  const std::string board_state_hex_str() {
+    return IntToHexString(ImplementGetState());
+  }
+
 private:
   ZobristComponent<KeyType> zobrist_component_;
   TranspositionTable<KeyType> transposition_table_;
