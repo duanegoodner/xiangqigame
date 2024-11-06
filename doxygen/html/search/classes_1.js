@@ -6,6 +6,7 @@ var searchData=
   ['boardstatesummarizer_3',['BoardStateSummarizer',['../classBoardStateSummarizer.html',1,'']]],
   ['boardstatesummarizer_3c_20dualzobristtracker_3c_20keytype_20_3e_2c_20keytype_20_3e_4',['BoardStateSummarizer&lt; DualZobristTracker&lt; KeyType &gt;, KeyType &gt;',['../classBoardStateSummarizer.html',1,'']]],
   ['boardstatesummarizer_3c_20singlezobristtracker_3c_20keytype_20_3e_2c_20keytype_20_3e_5',['BoardStateSummarizer&lt; SingleZobristTracker&lt; KeyType &gt;, KeyType &gt;',['../classBoardStateSummarizer.html',1,'']]],
-  ['bpopointsekeys_6',['BPOPointsEKeys',['../classpiecepoints_1_1BPOPointsEKeys.html',1,'piecepoints']]],
-  ['bpopointsskeys_7',['BPOPointsSKeys',['../classpiecepoints_1_1BPOPointsSKeys.html',1,'piecepoints']]]
+  ['boardstatesummarizer_3c_20zobristtracker_3c_20keytype_20_3e_2c_20keytype_20_3e_6',['BoardStateSummarizer&lt; ZobristTracker&lt; KeyType &gt;, KeyType &gt;',['../classBoardStateSummarizer.html',1,'']]],
+  ['bpopointsekeys_7',['BPOPointsEKeys',['../classpiecepoints_1_1BPOPointsEKeys.html',1,'piecepoints']]],
+  ['bpopointsskeys_8',['BPOPointsSKeys',['../classpiecepoints_1_1BPOPointsSKeys.html',1,'piecepoints']]]
 ];

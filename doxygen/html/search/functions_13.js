@@ -11,7 +11,6 @@ var searchData=
   ['tr_5ftable_5fsize_5ffirst_5fillegal_5fmove_5frequest_8',['tr_table_size_first_illegal_move_request',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a33815929c774f01db241350b350f4e54',1,'xiangqipy::player_summary::PlayerSummary']]],
   ['tr_5ftable_5fsize_5finitial_9',['tr_table_size_initial',['../classmoveselection_1_1SearchSummary.html#ac0b61cc3d696af146cb1e88e6c867ba5',1,'moveselection::SearchSummary']]],
   ['tr_5ftable_5fsizes_5fat_5fevents_10',['tr_table_sizes_at_events',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a23c8e410a65a9a53a923020f7722a929',1,'xiangqipy::player_summary::PlayerSummary']]],
-  ['transpositiontableentry_11',['TranspositionTableEntry',['../structmoveselection_1_1TranspositionTableEntry.html#a0263ecf9845c63dcfbeab94e9b468d89',1,'moveselection::TranspositionTableEntry::TranspositionTableEntry()'],['../structmoveselection_1_1TranspositionTableEntry.html#af997ff76fb9328f7e2dcab3e058e34e4',1,'moveselection::TranspositionTableEntry::TranspositionTableEntry(int depth, MinimaxResultType type, EqualScoreMoves moves)']]],
-  ['turn_5fkey_12',['turn_key',['../classboardstate_1_1ZobristCalculator.html#abab1484f223ba5bb3979d4a5d6edc459',1,'boardstate::ZobristCalculator']]],
-  ['two_5farray_5fsum_13',['two_array_sum',['../namespaceutility__functs.html#aae76ff892c89c429d4ef7bf31fdbbc02',1,'utility_functs']]]
+  ['turn_5fkey_11',['turn_key',['../classboardstate_1_1ZobristCalculator.html#aadf193d0681ba076acbac6d2d7188fb9',1,'boardstate::ZobristCalculator']]],
+  ['two_5farray_5fsum_12',['two_array_sum',['../namespaceutility__functs.html#aae76ff892c89c429d4ef7bf31fdbbc02',1,'utility_functs']]]
 ];

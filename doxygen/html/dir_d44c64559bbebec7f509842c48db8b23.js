@@ -20,5 +20,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "piece_position_points.hpp", "piece__position__points_8hpp.html", "piece__position__points_8hpp" ],
     [ "piece_value_provider_interface.hpp", "piece__value__provider__interface_8hpp.html", "piece__value__provider__interface_8hpp" ],
     [ "space_info_provider_interface.hpp", "space__info__provider__interface_8hpp.html", "space__info__provider__interface_8hpp" ],
-    [ "utility_functs.hpp", "utility__functs_8hpp.html", "utility__functs_8hpp" ]
+    [ "utility_functs.hpp", "utility__functs_8hpp.html", "utility__functs_8hpp" ],
+    [ "zobrist.hpp", "zobrist_8hpp.html", "zobrist_8hpp" ]
 ];

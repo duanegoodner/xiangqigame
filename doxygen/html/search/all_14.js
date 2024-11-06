@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['table_5fentry_0',['table_entry',['../structmoveselection_1_1TranspositionTableSearchResult.html#a1bd94efe12b6825330ae31e655142760',1,'moveselection::TranspositionTableSearchResult']]],
+  ['table_5fentry_0',['table_entry',['../structmoveselection_1_1TranspositionTableSearchResult.html#aacb897073f07a7d3c847656d84cdffe6',1,'moveselection::TranspositionTableSearchResult']]],
   ['teambasepoints_5ft_1',['TeamBasePoints_t',['../namespacepiecepoints.html#a70c12c629ce81810a64a420a0ecaa86a',1,'piecepoints']]],
   ['teampointsarray_5ft_2',['TeamPointsArray_t',['../namespacepiecepoints.html#ac9f72505daaa180dc8985a0a0f113bbe',1,'piecepoints']]],
   ['teampointsarraytoemap_3',['TeamPointsArrayToEMap',['../structpiecepoints_1_1PiecePositionPoints.html#a062a67e6d29cdf2d1d7f4334c67c148d',1,'piecepoints::PiecePositionPoints']]],
@@ -24,15 +24,16 @@ var searchData=
   ['tr_5ftable_5fsize_5finitial_21',['tr_table_size_initial',['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#addbab954aaf7c0de516a430542d0632b',1,'xiangqipy.core_dataclass_mirrors.SearchSummary.tr_table_size_initial()'],['../classmoveselection_1_1SearchSummary.html#ac0b61cc3d696af146cb1e88e6c867ba5',1,'moveselection::SearchSummary::tr_table_size_initial()']]],
   ['tr_5ftable_5fsize_5finitial_5f_22',['tr_table_size_initial_',['../classmoveselection_1_1SearchSummary.html#ad7ae71ba111a046dc85e2b852471721e',1,'moveselection::SearchSummary']]],
   ['tr_5ftable_5fsizes_5fat_5fevents_23',['tr_table_sizes_at_events',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a23c8e410a65a9a53a923020f7722a929',1,'xiangqipy::player_summary::PlayerSummary']]],
-  ['transposition_5ftable_5f_24',['transposition_table_',['../classboardstate_1_1SingleZobristTracker.html#a48bce08dfa9fbe58e7c1bea3a9baf4a7',1,'boardstate::SingleZobristTracker::transposition_table_()'],['../classboardstate_1_1DualZobristTracker.html#ad7745a5d9fd0aa873f8e0442a20db319',1,'boardstate::DualZobristTracker::transposition_table_()']]],
+  ['transposition_5ftable_5f_24',['transposition_table_',['../classboardstate_1_1SingleZobristTracker.html#a48bce08dfa9fbe58e7c1bea3a9baf4a7',1,'boardstate::SingleZobristTracker::transposition_table_()'],['../classboardstate_1_1DualZobristTracker.html#ad7745a5d9fd0aa873f8e0442a20db319',1,'boardstate::DualZobristTracker::transposition_table_()'],['../classboardstate_1_1ZobristTracker.html#aa6de77bf83f4207b20493e561396aaa4',1,'boardstate::ZobristTracker::transposition_table_()']]],
   ['transposition_5ftable_5fhits_25',['transposition_table_hits',['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a0a5ee38e4b23414871e7b82ec8f018b0',1,'xiangqipy::core_dataclass_mirrors::SearchSummary']]],
   ['transposition_5ftable_5fhits_5f_26',['transposition_table_hits_',['../classmoveselection_1_1SearchSummary.html#ac970df793d70ed93038df1a18cab6e5a',1,'moveselection::SearchSummary']]],
-  ['transpositiontableentry_27',['TranspositionTableEntry',['../structmoveselection_1_1TranspositionTableEntry.html',1,'moveselection::TranspositionTableEntry'],['../structmoveselection_1_1TranspositionTableEntry.html#af997ff76fb9328f7e2dcab3e058e34e4',1,'moveselection::TranspositionTableEntry::TranspositionTableEntry(int depth, MinimaxResultType type, EqualScoreMoves moves)'],['../structmoveselection_1_1TranspositionTableEntry.html#a0263ecf9845c63dcfbeab94e9b468d89',1,'moveselection::TranspositionTableEntry::TranspositionTableEntry()']]],
-  ['transpositiontablesearchresult_28',['TranspositionTableSearchResult',['../structmoveselection_1_1TranspositionTableSearchResult.html',1,'moveselection']]],
-  ['transpositiontablesize_29',['TranspositionTableSize',['../structmoveselection_1_1TranspositionTableSize.html',1,'moveselection::TranspositionTableSize'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize.html',1,'xiangqipy.core_dataclass_mirrors.TranspositionTableSize']]],
-  ['transpositiontablesizesatevents_30',['TranspositionTableSizesAtEvents',['../classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents.html',1,'xiangqipy::core_dataclass_mirrors']]],
-  ['trtablehit_31',['TrTableHit',['../classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a0b230446002e85c3fc30c3d1f57c4946',1,'xiangqipy::core_dataclass_mirrors::MinimaxResultTypePy']]],
-  ['turn_5fkey_32',['turn_key',['../classboardstate_1_1ZobristCalculator.html#abab1484f223ba5bb3979d4a5d6edc459',1,'boardstate::ZobristCalculator']]],
-  ['turn_5fkey_5f_33',['turn_key_',['../classboardstate_1_1ZobristCalculator.html#a335edff19b9a3e788b0b0cd5b413de01',1,'boardstate::ZobristCalculator']]],
-  ['two_5farray_5fsum_34',['two_array_sum',['../namespaceutility__functs.html#aae76ff892c89c429d4ef7bf31fdbbc02',1,'utility_functs']]]
+  ['transpositiontable_27',['TranspositionTable',['../structboardstate_1_1TranspositionTable.html',1,'boardstate']]],
+  ['transpositiontableentry_28',['TranspositionTableEntry',['../classboardstate_1_1TranspositionTableEntry.html',1,'boardstate']]],
+  ['transpositiontablesearchresult_29',['TranspositionTableSearchResult',['../structmoveselection_1_1TranspositionTableSearchResult.html',1,'moveselection']]],
+  ['transpositiontablesize_30',['TranspositionTableSize',['../structmoveselection_1_1TranspositionTableSize.html',1,'moveselection::TranspositionTableSize'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize.html',1,'xiangqipy.core_dataclass_mirrors.TranspositionTableSize']]],
+  ['transpositiontablesizesatevents_31',['TranspositionTableSizesAtEvents',['../classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents.html',1,'xiangqipy::core_dataclass_mirrors']]],
+  ['trtablehit_32',['TrTableHit',['../classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a0b230446002e85c3fc30c3d1f57c4946',1,'xiangqipy::core_dataclass_mirrors::MinimaxResultTypePy']]],
+  ['turn_5fkey_33',['turn_key',['../classboardstate_1_1ZobristCalculator.html#aadf193d0681ba076acbac6d2d7188fb9',1,'boardstate::ZobristCalculator']]],
+  ['turn_5fkey_5f_34',['turn_key_',['../classboardstate_1_1ZobristCalculator.html#a335edff19b9a3e788b0b0cd5b413de01',1,'boardstate::ZobristCalculator']]],
+  ['two_5farray_5fsum_35',['two_array_sum',['../namespaceutility__functs.html#aae76ff892c89c429d4ef7bf31fdbbc02',1,'utility_functs']]]
 ];

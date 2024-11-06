@@ -24,7 +24,7 @@ var searchData=
   ['evaluatorwins_21',['EvaluatorWins',['../classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#acf7da36d1a29bb5c195d4756e31d1b0c',1,'xiangqipy::core_dataclass_mirrors::MinimaxResultTypePy']]],
   ['exception_22',['Exception',['../classException.html',1,'']]],
   ['executedmove_23',['ExecutedMove',['../structgameboard_1_1ExecutedMove.html',1,'gameboard::ExecutedMove'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1ExecutedMove.html',1,'xiangqipy.core_dataclass_mirrors.ExecutedMove']]],
-  ['executemove_24',['ExecuteMove',['../classSpaceInfoProvider.html#ad0c4d0c637a6ef1af279f098167c05f7',1,'SpaceInfoProvider']]],
+  ['executemove_24',['ExecuteMove',['../classSpaceInfoProvider.html#a407ac781b9100a332bcd44cbc6e301de',1,'SpaceInfoProvider']]],
   ['existsandpassescolortest_25',['ExistsAndPassesColorTest',['../classgameboard_1_1PieceMoves.html#a11321e41d2d6f9d05a10a4ed33845721',1,'gameboard::PieceMoves']]],
   ['export_26',['Export',['../classJsonUtility.html#ad8d163e77326c07d972e18550aff6ba4',1,'JsonUtility::Export(piecepoints::BPOPointsSKeys &amp;bpo_points, const string file_path)'],['../classJsonUtility.html#a1729d89b9bbfefaad0b139c7ca161cb8',1,'JsonUtility::Export(T &amp;object, const string file_path)']]],
   ['export_5fgame_5fsummary_27',['export_game_summary',['../namespacexiangqipy_1_1game__summary__io.html#a25ce12744b590c06e4c529192110e11c',1,'xiangqipy::game_summary_io']]],

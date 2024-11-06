@@ -8,7 +8,7 @@ var searchData=
   ['minimax_5',['MINIMAX',['../classxiangqipy_1_1enums_1_1EvaluatorType.html#aef2c8be5590e83c6050656d4a536aad4',1,'xiangqipy::enums::EvaluatorType']]],
   ['move_6',['move',['../structmoveselection_1_1ScoredMove.html#a192222a9c87e36d295cb6056f30c0a4a',1,'moveselection::ScoredMove']]],
   ['move_5fcalculator_5f_7',['move_calculator_',['../classgameboard_1_1GameBoard.html#a1e2d70154b962c74321f298f1908a69a',1,'gameboard::GameBoard']]],
-  ['move_5fcallbacks_5f_8',['move_callbacks_',['../classgameboard_1_1GameBoard.html#ad30b7544b03ff3102c6eaae310159c74',1,'gameboard::GameBoard']]],
+  ['move_5fcallbacks_5f_8',['move_callbacks_',['../classgameboard_1_1GameBoard.html#a8ea1791d8e940edca2ae367f6f4b0c9a',1,'gameboard::GameBoard']]],
   ['move_5fevaluator_5ftype_9',['move_evaluator_type',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aa48f54b0d1d247c430064fad8d10a03a',1,'xiangqipy::player_summary::PlayerSummary']]],
   ['move_5flog_10',['move_log',['../classxiangqipy_1_1game__summary_1_1GameSummary.html#a1e846d2fef6802d7fbf813e56b6c71da',1,'xiangqipy::game_summary::GameSummary']]],
   ['move_5flog_5f_11',['move_log_',['../classgameboard_1_1GameBoard.html#a60fe6e8e76ed864050109524b4c136d5',1,'gameboard::GameBoard']]],

@@ -1,14 +1,18 @@
 var annotated_dup =
 [
     [ "boardstate", "namespaceboardstate.html", [
+      [ "DualKeyMinimaxCalcResult", "structboardstate_1_1DualKeyMinimaxCalcResult.html", "structboardstate_1_1DualKeyMinimaxCalcResult" ],
       [ "DualKeyTranspositionTable", "classboardstate_1_1DualKeyTranspositionTable.html", "classboardstate_1_1DualKeyTranspositionTable" ],
-      [ "DualKeyTranspositionTableEntry", "structboardstate_1_1DualKeyTranspositionTableEntry.html", "structboardstate_1_1DualKeyTranspositionTableEntry" ],
       [ "DualZobristTracker", "classboardstate_1_1DualZobristTracker.html", "classboardstate_1_1DualZobristTracker" ],
       [ "PseudoRandomKeyGenerator", "classboardstate_1_1PseudoRandomKeyGenerator.html", "classboardstate_1_1PseudoRandomKeyGenerator" ],
       [ "RandomKeyGenerator", "classboardstate_1_1RandomKeyGenerator.html", "classboardstate_1_1RandomKeyGenerator" ],
       [ "SingleKeyTranspositionTable", "classboardstate_1_1SingleKeyTranspositionTable.html", "classboardstate_1_1SingleKeyTranspositionTable" ],
       [ "SingleZobristTracker", "classboardstate_1_1SingleZobristTracker.html", "classboardstate_1_1SingleZobristTracker" ],
-      [ "ZobristCalculator", "classboardstate_1_1ZobristCalculator.html", "classboardstate_1_1ZobristCalculator" ]
+      [ "TranspositionTable", "structboardstate_1_1TranspositionTable.html", "structboardstate_1_1TranspositionTable" ],
+      [ "TranspositionTableEntry", "classboardstate_1_1TranspositionTableEntry.html", "classboardstate_1_1TranspositionTableEntry" ],
+      [ "ZobristCalculator", "classboardstate_1_1ZobristCalculator.html", "classboardstate_1_1ZobristCalculator" ],
+      [ "ZobristComponent", "classboardstate_1_1ZobristComponent.html", "classboardstate_1_1ZobristComponent" ],
+      [ "ZobristTracker", "classboardstate_1_1ZobristTracker.html", "classboardstate_1_1ZobristTracker" ]
     ] ],
     [ "gameboard", "namespacegameboard.html", [
       [ "BoardDirection", "structgameboard_1_1BoardDirection.html", "structgameboard_1_1BoardDirection" ],
@@ -28,13 +32,13 @@ var annotated_dup =
     [ "moveselection", "namespacemoveselection.html", [
       [ "CollisionInfo", "structmoveselection_1_1CollisionInfo.html", "structmoveselection_1_1CollisionInfo" ],
       [ "EqualScoreMoves", "structmoveselection_1_1EqualScoreMoves.html", "structmoveselection_1_1EqualScoreMoves" ],
+      [ "MinimaxCalcResult", "structmoveselection_1_1MinimaxCalcResult.html", "structmoveselection_1_1MinimaxCalcResult" ],
       [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
       [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],
       [ "ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", "classmoveselection_1_1ResultDepthCounts" ],
       [ "ScoredMove", "structmoveselection_1_1ScoredMove.html", "structmoveselection_1_1ScoredMove" ],
       [ "SearchSummaries", "structmoveselection_1_1SearchSummaries.html", "structmoveselection_1_1SearchSummaries" ],
       [ "SearchSummary", "classmoveselection_1_1SearchSummary.html", "classmoveselection_1_1SearchSummary" ],
-      [ "TranspositionTableEntry", "structmoveselection_1_1TranspositionTableEntry.html", "structmoveselection_1_1TranspositionTableEntry" ],
       [ "TranspositionTableSearchResult", "structmoveselection_1_1TranspositionTableSearchResult.html", "structmoveselection_1_1TranspositionTableSearchResult" ],
       [ "TranspositionTableSize", "structmoveselection_1_1TranspositionTableSize.html", "structmoveselection_1_1TranspositionTableSize" ]
     ] ],

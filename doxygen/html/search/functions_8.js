@@ -8,7 +8,8 @@ var searchData=
   ['has_5fdata_5',['has_data',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
   ['has_5fminimax_5fdata_6',['has_minimax_data',['../classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a2ccdfda51db304bc6bb8705bd76f06d4',1,'xiangqipy::game_summary_plot_manager::GameSummaryPlotManager']]],
   ['has_5fsearch_5fsummaries_7',['has_search_summaries',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a94f0fa899f0e4908d6d6c260c76dc071',1,'xiangqipy::player_summary::PlayerSummary']]],
-  ['hash_5fcalculator_8',['hash_calculator',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a7edb742d0ce69b9c81ab036cb0c262f5',1,'moveselection::MinimaxMoveEvaluator']]],
-  ['hasrepeatingpattern_9',['hasRepeatingPattern',['../namespaceutility__functs.html#ab6b690b5028447413647af99fb320e70',1,'utility_functs']]],
-  ['horsemoves_10',['HorseMoves',['../classgameboard_1_1PieceMoves.html#a8ae87252fe0d0cbcdd3842c3b591ab70',1,'gameboard::PieceMoves']]]
+  ['hasconfirmationkeys_8',['HasConfirmationKeys',['../classboardstate_1_1TranspositionTableEntry.html#a725d8cdbd237e95ceb33191d1ca1bd26',1,'boardstate::TranspositionTableEntry']]],
+  ['hash_5fcalculator_9',['hash_calculator',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a7edb742d0ce69b9c81ab036cb0c262f5',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['hasrepeatingpattern_10',['hasRepeatingPattern',['../namespaceutility__functs.html#ab6b690b5028447413647af99fb320e70',1,'utility_functs']]],
+  ['horsemoves_11',['HorseMoves',['../classgameboard_1_1PieceMoves.html#a8ae87252fe0d0cbcdd3842c3b591ab70',1,'gameboard::PieceMoves']]]
 ];

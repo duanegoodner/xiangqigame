@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data_0',['data',['../classmoveselection_1_1ResultDepthCounts.html#aca9066cf4ae1c57f3b0644931b9f0f1f',1,'moveselection::ResultDepthCounts']]],
-  ['data_5f_1',['data_',['../classmoveselection_1_1ResultDepthCounts.html#a05a1d55c66c927066732315c46119b41',1,'moveselection::ResultDepthCounts::data_()'],['../classboardstate_1_1SingleKeyTranspositionTable.html#aa24c82f9205217c086b94730c1ecf5f3',1,'boardstate::SingleKeyTranspositionTable::data_()'],['../classboardstate_1_1DualKeyTranspositionTable.html#ac639955ee69815e4c2281afe19d57152',1,'boardstate::DualKeyTranspositionTable::data_()']]],
+  ['data_5f_1',['data_',['../classmoveselection_1_1ResultDepthCounts.html#a05a1d55c66c927066732315c46119b41',1,'moveselection::ResultDepthCounts::data_()'],['../classboardstate_1_1SingleKeyTranspositionTable.html#a355c700822369dde743af7b73624e8c4',1,'boardstate::SingleKeyTranspositionTable::data_()'],['../structboardstate_1_1TranspositionTable.html#a6481acd44ba17934cc0e9f7ad64e3dd8',1,'boardstate::TranspositionTable::data_()'],['../classboardstate_1_1DualKeyTranspositionTable.html#a24df951be2a79f0c599ded5e33ee499e',1,'boardstate::DualKeyTranspositionTable::data_()']]],
   ['data_5fcolumn_5fcolors_2',['data_column_colors',['../classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#ab53b83ac221c0c2710233b939056d0fa',1,'xiangqipy::game_summary_plotters::SearchResultsByTypePlotter']]],
   ['data_5fcolumns_3',['data_columns',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a18a24e7e087764a41f6bb4234ee7b66a',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
   ['dec_5fhook_4',['dec_hook',['../namespacexiangqipy_1_1game__summary__io.html#a7d882e81ad5f3acd948dbc2d1f862fae',1,'xiangqipy::game_summary_io']]],
@@ -18,7 +18,7 @@ var searchData=
   ['display_5fwhose_5fturn_15',['display_whose_turn',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a90a2dbe978c48812d23caacf83a6880e',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],
   ['display_5fwinner_16',['display_winner',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a3c30270fe4f8b6f58c756cab3d7b7f9c',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],
   ['draw_17',['DRAW',['../classxiangqipy_1_1enums_1_1GameState.html#acff422cac327786cbad072f056b0b9d7',1,'xiangqipy::enums::GameState']]],
-  ['dualkeytranspositiontable_18',['DualKeyTranspositionTable',['../classboardstate_1_1DualKeyTranspositionTable.html',1,'boardstate']]],
-  ['dualkeytranspositiontableentry_19',['DualKeyTranspositionTableEntry',['../structboardstate_1_1DualKeyTranspositionTableEntry.html',1,'boardstate']]],
+  ['dualkeyminimaxcalcresult_18',['DualKeyMinimaxCalcResult',['../structboardstate_1_1DualKeyMinimaxCalcResult.html',1,'boardstate']]],
+  ['dualkeytranspositiontable_19',['DualKeyTranspositionTable',['../classboardstate_1_1DualKeyTranspositionTable.html',1,'boardstate']]],
   ['dualzobristtracker_20',['DualZobristTracker',['../classboardstate_1_1DualZobristTracker.html',1,'boardstate::DualZobristTracker&lt; KeyType &gt;'],['../classboardstate_1_1DualZobristTracker.html#a48fb59c49bb236b1fb430db4d1570e68',1,'boardstate::DualZobristTracker::DualZobristTracker(ZobristCalculator&lt; KeyType &gt; primary_calculator, ZobristCalculator&lt; KeyType &gt; confirmation_calculator)'],['../classboardstate_1_1DualZobristTracker.html#a36e0c495339026e9df70a3889eb3f1c4',1,'boardstate::DualZobristTracker::DualZobristTracker(uint32_t zkeys_seed)'],['../classboardstate_1_1DualZobristTracker.html#ae0bfd39d0edbfe9973b8e81c69b0559b',1,'boardstate::DualZobristTracker::DualZobristTracker()']]]
 ];

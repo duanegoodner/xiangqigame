@@ -1,6 +1,6 @@
 <map id="moveselection::TranspositionTableSearchResult" name="moveselection::TranspositionTableSearchResult">
-<area shape="rect" id="node1" title="Container for storing a moveselection::TranspositionTableEntry retrieved by a call to boardstate::Sin..." alt="" coords="283,815,495,936"/>
-<area shape="rect" id="node2" href="$structmoveselection_1_1TranspositionTableEntry.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search&#45;related info obtained fro..." alt="" coords="206,601,418,737"/>
+<area shape="rect" id="node1" title="Container for storing a moveselection::MinimaxCalcResult retrieved by a call to boardstate::SingleZob..." alt="" coords="283,815,495,936"/>
+<area shape="rect" id="node2" href="$structmoveselection_1_1MinimaxCalcResult.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search&#45;related info obtained fro..." alt="" coords="207,601,417,737"/>
 <area shape="rect" id="node3" title=" " alt="" coords="70,233,109,311"/>
 <area shape="rect" id="node5" href="$structmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="213,447,411,539"/>
 <area shape="rect" id="node4" title=" " alt="" coords="435,454,586,531"/>

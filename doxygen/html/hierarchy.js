@@ -22,12 +22,15 @@ var hierarchy =
     [ "BoardStateSummarizer< SingleZobristTracker< KeyType >, KeyType >", "classBoardStateSummarizer.html", [
       [ "boardstate::SingleZobristTracker< KeyType >", "classboardstate_1_1SingleZobristTracker.html", null ]
     ] ],
+    [ "BoardStateSummarizer< ZobristTracker< KeyType >, KeyType >", "classBoardStateSummarizer.html", [
+      [ "boardstate::ZobristTracker< KeyType >", "classboardstate_1_1ZobristTracker.html", null ]
+    ] ],
     [ "piecepoints::BPOPointsEKeys", "classpiecepoints_1_1BPOPointsEKeys.html", null ],
     [ "piecepoints::BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html", null ],
     [ "gameboard::CastleEdges", "structgameboard_1_1CastleEdges.html", null ],
     [ "moveselection::CollisionInfo", "structmoveselection_1_1CollisionInfo.html", null ],
+    [ "boardstate::DualKeyMinimaxCalcResult< KeyType >", "structboardstate_1_1DualKeyMinimaxCalcResult.html", null ],
     [ "boardstate::DualKeyTranspositionTable< KeyType >", "classboardstate_1_1DualKeyTranspositionTable.html", null ],
-    [ "boardstate::DualKeyTranspositionTableEntry< KeyType >", "structboardstate_1_1DualKeyTranspositionTableEntry.html", null ],
     [ "moveselection::EqualScoreMoves", "structmoveselection_1_1EqualScoreMoves.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.EqualScoreMoves", "classxiangqipy_1_1core__dataclass__mirrors_1_1EqualScoreMoves.html", null ],
     [ "Exception", "classException.html", [
@@ -47,6 +50,7 @@ var hierarchy =
     [ "JsonUtility< NlohmannJsonUtility >", "classJsonUtility.html", [
       [ "jsonio::NlohmannJsonUtility", "classjsonio_1_1NlohmannJsonUtility.html", null ]
     ] ],
+    [ "moveselection::MinimaxCalcResult", "structmoveselection_1_1MinimaxCalcResult.html", null ],
     [ "gameboard::Move", "structgameboard_1_1Move.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.Move", "classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html", null ],
     [ "gameboard::MoveCalculator", "classgameboard_1_1MoveCalculator.html", null ],
@@ -90,7 +94,8 @@ var hierarchy =
     [ "msgspec.Struct", null, [
       [ "xiangqipy.game_summary.GameSummary", "classxiangqipy_1_1game__summary_1_1GameSummary.html", null ]
     ] ],
-    [ "moveselection::TranspositionTableEntry", "structmoveselection_1_1TranspositionTableEntry.html", null ],
+    [ "boardstate::TranspositionTable< KeyType >", "structboardstate_1_1TranspositionTable.html", null ],
+    [ "boardstate::TranspositionTableEntry< KeyType >", "classboardstate_1_1TranspositionTableEntry.html", null ],
     [ "moveselection::TranspositionTableSearchResult", "structmoveselection_1_1TranspositionTableSearchResult.html", null ],
     [ "moveselection::TranspositionTableSize", "structmoveselection_1_1TranspositionTableSize.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.TranspositionTableSize", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize.html", null ],
@@ -98,6 +103,7 @@ var hierarchy =
     [ "xiangqipy.command_input.XiangqiGameCommand", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html", null ],
     [ "xiangqipy.command_input.XiangqiGameCommandLine", "classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine.html", null ],
     [ "boardstate::ZobristCalculator< KeyType >", "classboardstate_1_1ZobristCalculator.html", null ],
+    [ "boardstate::ZobristComponent< KeyType >", "classboardstate_1_1ZobristComponent.html", null ],
     [ "ABC", null, [
       [ "xiangqipy.game_summary_plotters.GameSummaryPlotter", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html", [
         [ "xiangqipy.game_summary_plotters.EvalScorePlotter", "classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html", null ],
