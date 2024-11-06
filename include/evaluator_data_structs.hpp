@@ -148,7 +148,6 @@ public:
       int search_depth,
       EqualScoreMoves &similar_moves
   ) {
-    // result_depth_counts[result_type][search_depth]++;
     result_depth_counts_.IncrementDataAt(result_type, search_depth);
     num_nodes_++;
     set_similar_moves(similar_moves);
@@ -159,7 +158,6 @@ public:
   }
 
   void RecordTrTableHit(
-      // MinimaxResultType result_type,
       TranspositionTableSearchResult &tr_table_search_result,
       int remaining_search_depth
   ) {
