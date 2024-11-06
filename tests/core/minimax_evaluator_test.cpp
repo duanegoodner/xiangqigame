@@ -67,6 +67,8 @@ protected:
   const int standard_search_depth = 4;
 };
 
+
+
 TEST_F(MinimaxEvaluatorTest, TestConstructorsWithDefaultPiecePositionPoints) {
   GameBoard starting_board;
   MinimaxMoveEvaluator<GameBoard, SingleZobristTracker<uint64_t>, PiecePositionPoints>
