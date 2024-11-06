@@ -18,11 +18,11 @@ public:
         ->ImplementGetAllSpacesOccupiedBy(color);
   }
 
-  PieceColor GetColor(BoardSpace space) {
+  PieceColor GetColor(const BoardSpace &space) {
     return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetColor(space);
   }
 
-  PieceType GetType(BoardSpace space) {
+  PieceType GetType(const BoardSpace &space) {
     return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementGetType(space);
   }
 
@@ -32,15 +32,15 @@ public:
     );
   };
 
-  ExecutedMove ExecuteMove(Move move) {
+  ExecutedMove ExecuteMove(const Move& move) {
     return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementExecuteMove(move);
   }
 
-  void UndoMove(ExecutedMove executed_move) {
+  void UndoMove(const ExecutedMove &executed_move) {
     static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementUndoMove(executed_move);
   }
 
-  void AttachMoveCallback(function<void(ExecutedMove)> callback) {
+  void AttachMoveCallback(function<void(const ExecutedMove&)> callback) {
     static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementAttachMoveCallback(callback
     );
   }

@@ -46,13 +46,13 @@ const size_t kNumResultTypes{7};
 
 //! Data structure that holds a moveselection::EqualScoreMoves and other search-related
 //! info obtained from a call to moveselection::MinimaxMoveEvaluator.MinimaxRec.
-struct TranspositionTableEntry {
-  TranspositionTableEntry()
+struct MinimaxCalcResult {
+  MinimaxCalcResult()
       : remaining_search_depth{}
       , result_type{}
       , similar_moves{} {}
 
-  TranspositionTableEntry(int depth, MinimaxResultType type, EqualScoreMoves moves)
+  MinimaxCalcResult(int depth, MinimaxResultType type, EqualScoreMoves moves)
       : remaining_search_depth(depth)
       , result_type(type)
       , similar_moves(std::move(moves)) {}
@@ -65,10 +65,10 @@ struct TranspositionTableEntry {
   MoveCollection moves() { return similar_moves.moves(); }
 };
 
-//! Container for storing a moveselection::TranspositionTableEntry retrieved by a call to
+//! Container for storing a moveselection::MinimaxCalcResult retrieved by a call to
 //! boardstate::SingleZobristTracker.ImplementGetTrData.
 struct TranspositionTableSearchResult {
-  TranspositionTableEntry table_entry;
+  MinimaxCalcResult table_entry;
   bool found;
   bool known_collision;
 
@@ -148,7 +148,6 @@ public:
       int search_depth,
       EqualScoreMoves &similar_moves
   ) {
-    // result_depth_counts[result_type][search_depth]++;
     result_depth_counts_.IncrementDataAt(result_type, search_depth);
     num_nodes_++;
     set_similar_moves(similar_moves);
@@ -159,7 +158,6 @@ public:
   }
 
   void RecordTrTableHit(
-      // MinimaxResultType result_type,
       TranspositionTableSearchResult &tr_table_search_result,
       int remaining_search_depth
   ) {
