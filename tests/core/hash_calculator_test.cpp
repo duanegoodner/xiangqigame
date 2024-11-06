@@ -145,6 +145,10 @@ protected:
   }
 };
 
+TEST_F(ZobristTrackerTest, DefaultConstructor) {
+  ZobristTracker<uint64_t> tracker_064_default{};
+}
+
 TEST_F(ZobristTrackerTest, InitFromComponent) {
 
   ZobristTracker<uint64_t> tracker_064_single{component_064_single};
