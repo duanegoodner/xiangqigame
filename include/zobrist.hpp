@@ -78,24 +78,6 @@ public:
     return zarray_[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
   }
 
-  //! Collects all keys into a std::vector (typically used for entropy calc).
-  std::vector<KeyType> KeysVector() const {
-    std::vector<KeyType> keys_vector;
-
-    for (const auto &team : zarray) {
-      for (const auto &piece_zarray : team) {
-        for (const auto &rank : piece_zarray) {
-          for (KeyType key : rank) {
-            keys_vector.push_back(key);
-          }
-        }
-      }
-    }
-    keys_vector.push_back(turn_key);
-
-    return keys_vector;
-  }
-
   KeyType board_state() const { return board_state_; }
   GameZarray_t zarray() const { return zarray_; }
   KeyType turn_key() const { return turn_key_; }
@@ -139,8 +121,8 @@ public:
       : primary_calculator_{ZobristCalculator<KeyType>()}
       , confirmation_calculators_{} {
 
-    for (auto index = 0; index < NumConfKeys; ++index) {
-      confirmation_calculators_[index] = ZobristCalculator<KeyType>();
+    for (auto i = 0; i < NumConfKeys; ++i) {
+      confirmation_calculators_[i] = ZobristCalculator<KeyType>();
     }
   }
 
@@ -150,9 +132,9 @@ public:
   )
       : primary_calculator_{ZobristCalculator<KeyType>{primary_seed}}
       , confirmation_calculators_{} {
-    for (auto index = 0; index < NumConfKeys; ++index) {
-      confirmation_calculators_[index] =
-          ZobristCalculator<KeyType>{confirmation_seeds[index]};
+    for (auto i = 0; i < NumConfKeys; ++i) {
+      confirmation_calculators_[i] =
+          ZobristCalculator<KeyType>{confirmation_seeds[i]};
     }
   }
 
