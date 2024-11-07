@@ -262,7 +262,7 @@ class PlayerSummary:
                 [
                     self.max_search_depth,
                     self.zobrist_key_size,
-                    self.zkeys_seed,
+                    # self.zkeys_seed,
                     nodes_per_move,
                     time_per_move_s,
                     time_per_node_ns,
@@ -278,7 +278,7 @@ class PlayerSummary:
                 index=[
                     "search_depth",
                     "zobrist_key_size",
-                    "zkeys_seed",
+                    # "zkeys_seed",
                     "nodes_per_move",
                     "time_per_move_s",
                     "time_per_node_ns",
