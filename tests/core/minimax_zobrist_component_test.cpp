@@ -115,10 +115,10 @@ TEST_F(MinimaxWithZobristComponentTest, RedStartingMoveSelection) {
       PiecePositionPoints>
       red_evaluator{PieceColor::kRed, standard_search_depth, starting_game_board};
 
-    auto allowed_moves = starting_game_board.CalcFinalMovesOf(PieceColor::kRed);
-    auto red_selected_move = red_evaluator.SelectMove(allowed_moves);
-    
-    EXPECT_TRUE(
+  auto allowed_moves = starting_game_board.CalcFinalMovesOf(PieceColor::kRed);
+  auto red_selected_move = red_evaluator.SelectMove(allowed_moves);
+
+  EXPECT_TRUE(
       (red_selected_move.start == BoardSpace{9, 1} &&
        red_selected_move.end == BoardSpace{7, 2}) ||
       (red_selected_move.start == BoardSpace{9, 7} &&
@@ -126,7 +126,13 @@ TEST_F(MinimaxWithZobristComponentTest, RedStartingMoveSelection) {
   );
 }
 
-TEST_F(MinimaxWithZobristComponentTest, PlayGame) { PlayGame<uint64_t, 1>(2, 3); }
+TEST_F(MinimaxWithZobristComponentTest, PlayGameSingleConfKey) {
+  PlayGame<uint64_t, 1>(2, 3);
+}
+
+TEST_F(MinimaxWithZobristComponentTest, PlayGameNoConfKey) {
+  PlayGame<uint64_t, 0>(2, 3);
+}
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
