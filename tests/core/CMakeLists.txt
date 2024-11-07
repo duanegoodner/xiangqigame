@@ -94,4 +94,36 @@ target_link_libraries(
     GTest::gtest_main
 )
 
+add_executable(
+    zobrist_calculator_test zobrist_calculator_test.cpp
+)
+target_link_libraries(
+    zobrist_calculator_test PRIVATE hash_calculator
+    utility_functs
+    game_board
+    GTest::gtest_main
+)
+
+add_executable(
+    zobrist_component_test zobrist_component_test.cpp
+)
+target_link_libraries(
+    zobrist_component_test PRIVATE hash_calculator
+    utility_functs
+    game_board
+    GTest::gtest_main
+)
+
+add_executable(
+    transposition_table_test transposition_table_test.cpp
+)
+target_link_libraries(
+    transposition_table_test PRIVATE
+    hash_calculator
+    utility_functs
+    game_board
+    GTest::gtest_main
+)
+
+
 

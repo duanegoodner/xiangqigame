@@ -3,6 +3,9 @@
 #pragma once
 
 #include <array>
+#include <board_data_structs.hpp>
+#include <key_generator.hpp>
+#include <move_data_structs.hpp>
 #include <vector>
 
 namespace boardstate {
@@ -11,8 +14,9 @@ namespace boardstate {
 template <typename KeyType>
 class ZobristCalculator {
 public:
-  typedef array<array<KeyType, kNumFiles>, kNumRanks> PieceZarray_t;
-  typedef array<PieceZarray_t, kNumPieceTypeVals> TeamZarray_t;
+  typedef array<array<KeyType, gameboard::kNumFiles>, gameboard::kNumRanks>
+      PieceZarray_t;
+  typedef array<PieceZarray_t, gameboard::kNumPieceTypeVals> TeamZarray_t;
   typedef array<TeamZarray_t, 2> GameZarray_t;
 
   ZobristCalculator(uint32_t seed)
@@ -28,22 +32,22 @@ public:
   ZobristCalculator()
       : ZobristCalculator(random_device{}()) {}
 
-  void FullBoardStateCalc(const BoardMap_t &board_map) {
+  void FullBoardStateCalc(const gameboard::BoardMap_t &board_map) {
     board_state_ = 0;
-    for (size_t rank = 0; rank < kNumRanks; rank++) {
-      for (size_t file = 0; file < kNumFiles; file++) {
+    for (size_t rank = 0; rank < gameboard::kNumRanks; rank++) {
+      for (size_t file = 0; file < gameboard::kNumFiles; file++) {
         if (board_map[rank][file].piece_color != 0) {
           board_state_ = board_state_ ^ GetHashValueAt(
                                             board_map[rank][file].piece_color,
                                             board_map[rank][file].piece_type,
-                                            BoardSpace{(int)rank, (int)file}
+                                            gameboard::BoardSpace{(int)rank, (int)file}
                                         );
         }
       }
     }
   }
 
-  void UpdateBoardState(const ExecutedMove &executed_move) {
+  void UpdateBoardState(const gameboard::ExecutedMove &executed_move) {
     board_state_ = board_state_ ^ GetHashValueAt(
                                       executed_move.moving_piece.piece_color,
                                       executed_move.moving_piece.piece_type,
@@ -51,7 +55,7 @@ public:
                                   );
 
     // if capture piece, remove from board
-    if (executed_move.destination_piece.piece_color != PieceColor::kNul) {
+    if (executed_move.destination_piece.piece_color != gameboard::PieceColor::kNul) {
       board_state_ = board_state_ ^ GetHashValueAt(
                                         executed_move.destination_piece.piece_color,
                                         executed_move.destination_piece.piece_type,
@@ -120,25 +124,30 @@ private:
   };
 };
 
-template <typename KeyType>
+// template <typename KeyType>
+template <typename KeyType, size_t NumCalculators>
 class ZobristComponent {
 public:
-  explicit ZobristComponent(const std::vector<ZobristCalculator<KeyType>> &calculators)
+  explicit ZobristComponent(
+      const std::array<ZobristCalculator<KeyType>, NumCalculators> &calculators
+  )
       : calculators_(calculators) {}
 
-  ZobristComponent(int num_calculators)
+  ZobristComponent()
       : calculators_{} {
-    for (auto index = 0; index < num_calculators; ++index) {
-      calculators_.emplace_back();
+    for (auto index = 0; index < NumCalculators; ++index) {
+      //   calculators_.emplace_back();
+      calculators_[index] = ZobristCalculator<KeyType>();
     }
   }
 
-  ZobristComponent(std::vector<uint32_t> seeds)
+  //   ZobristComponent(std::vector<uint32_t> seeds)
+  ZobristComponent(std::array<uint32_t, NumCalculators> seeds)
       : calculators_{} {
-        for (auto seed : seeds) {
-            calculators_.emplace_back(seed);
-        }
-      }
+    for (auto index = 0; index < seeds.size(); ++index) {
+      calculators_[index] = ZobristCalculator<KeyType>{seeds[index]};
+    }
+  }
 
   void UpdateBoardStates(const ExecutedMove &executed_move) {
     for (auto &calculator : calculators_) {
@@ -148,37 +157,66 @@ public:
 
   void FullBoardStateCalc(const BoardMap_t &board_map) {
     for (auto &calculator : calculators_) {
-        calculator.FullBoardStateCalc(board_map);
+      calculator.FullBoardStateCalc(board_map);
     }
   }
 
-  std::vector<KeyType> GetAllBoardStates() {
-    std::vector<KeyType> states;
-    for (const auto &calculator : calculators_) {
-      states.push_back(calculator.board_state());
+  std::array<KeyType, NumCalculators> GetAllBoardStates() {
+    std::array<KeyType, NumCalculators> states;
+    for (auto i = 0; i < calculators_.size(); ++i) {
+      states[i] = calculators_[i].board_state();
     }
     return states;
   }
 
-  KeyType GetPrimaryBoardState() {
-    return calculators_.front().board_state();
-  }
+  KeyType GetPrimaryBoardState() { return calculators_[0].board_state(); }
 
-  std::vector<uint32_t> seeds() const {
-    std::vector<uint32_t> seeds;
-    for (const auto &calculator : calculators_) {
-      seeds.push_back(calculator.seed());
+  std::array<uint32_t, NumCalculators> seeds() const {
+    std::array<uint32_t, NumCalculators> seeds;
+    for (auto i = 0; i < NumCalculators; ++i) {
+      seeds[i] = calculators_[i].seed();
     }
-    return seeds;
   }
 
   std::string primary_board_state_hex_str() const {
-    return boardstate::IntToHexString(calculators_.front().board_state());
+    return boardstate::IntToHexString(calculators_[0].board_state());
   }
 
   // Other methods as needed...
 private:
-  std::vector<ZobristCalculator<KeyType>> calculators_;
+  std::array<ZobristCalculator<KeyType>, NumCalculators> calculators_;
+};
+
+template <typename KeyType, size_t NumConfirmationKeys>
+class TranspositionTableEntry {
+public:
+  TranspositionTableEntry(
+      moveselection::MinimaxCalcResult calc_result,
+      std::array<KeyType, NumConfirmationKeys> confirmation_keys
+  )
+      : calc_result_{calc_result}
+      , confirmation_keys_{confirmation_keys} {}
+
+  moveselection::MinimaxCalcResult calc_result() { return calc_result_; }
+
+  std::array<KeyType, NumConfirmationKeys> confirmation_keys() {
+    return confirmation_keys_;
+  }
+  
+  bool ConfirmationKeysMatchExpected(
+      std::array<KeyType, NumConfirmationKeys> expected_keys
+  ) {
+    for (auto i = 0; i < NumConfirmationKeys; ++i) {
+      if (expected_keys[i] != confirmation_keys_[i]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+private:
+  moveselection::MinimaxCalcResult calc_result_;
+  std::array<KeyType, NumConfirmationKeys> confirmation_keys_;
 };
 
 } // namespace boardstate

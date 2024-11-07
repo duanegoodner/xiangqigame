@@ -372,77 +372,77 @@ private:
   DualKeyTranspositionTable<KeyType> transposition_table_;
 };
 
-template <typename KeyType>
-class ZobristTracker : public BoardStateSummarizer<ZobristTracker<KeyType>, KeyType> {
-public:
-  explicit ZobristTracker(ZobristComponent<KeyType> zobrist_component)
-      : zobrist_component_{std::move(zobrist_component)} {}
+// template <typename KeyType>
+// class ZobristTracker : public BoardStateSummarizer<ZobristTracker<KeyType>, KeyType> {
+// public:
+//   explicit ZobristTracker(ZobristComponent<KeyType> zobrist_component)
+//       : zobrist_component_{std::move(zobrist_component)} {}
 
-  ZobristTracker(int num_calculators)
-      : ZobristTracker(ZobristComponent<KeyType>(num_calculators)) {}
+//   ZobristTracker(int num_calculators)
+//       : ZobristTracker(ZobristComponent<KeyType>(num_calculators)) {}
 
-  ZobristTracker(std::vector<uint32_t> seeds)
-      : ZobristTracker(ZobristComponent<KeyType>(seeds)) {}
+//   ZobristTracker(std::vector<uint32_t> seeds)
+//       : ZobristTracker(ZobristComponent<KeyType>(seeds)) {}
 
-  ZobristTracker()
-      : ZobristTracker(2) {}
+//   ZobristTracker()
+//       : ZobristTracker(2) {}
 
-  KeyType ImplementGetState() { return zobrist_component_.GetPrimaryBoardState(); }
+//   KeyType ImplementGetState() { return zobrist_component_.GetPrimaryBoardState(); }
 
-  void ImplementUpdateBoardState(const ExecutedMove &executed_move) {
-    zobrist_component_.UpdateBoardStates(executed_move);
-  }
+//   void ImplementUpdateBoardState(const ExecutedMove &executed_move) {
+//     zobrist_component_.UpdateBoardStates(executed_move);
+//   }
 
-  void ImplementFullBoardStateCalc(const BoardMap_t &board_map) {
-    zobrist_component_.FullBoardStateCalc(board_map);
-  }
+//   void ImplementFullBoardStateCalc(const BoardMap_t &board_map) {
+//     zobrist_component_.FullBoardStateCalc(board_map);
+//   }
 
-  void ImplementRecordTrData(
-      int search_depth,
-      MinimaxResultType result_type,
-      EqualScoreMoves &similar_move
-  ) {
-    transposition_table_.RecordData(
-        zobrist_component_.GetPrimaryBoardState(),
-        search_depth,
-        result_type,
-        similar_move
-    );
-  }
+//   void ImplementRecordTrData(
+//       int search_depth,
+//       MinimaxResultType result_type,
+//       EqualScoreMoves &similar_move
+//   ) {
+//     transposition_table_.RecordData(
+//         zobrist_component_.GetPrimaryBoardState(),
+//         search_depth,
+//         result_type,
+//         similar_move
+//     );
+//   }
 
-  TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
-    return transposition_table_.GetDataAt(
-        zobrist_component_.GetPrimaryBoardState(),
-        search_depth
-    );
-  }
+//   TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
+//     return transposition_table_.GetDataAt(
+//         zobrist_component_.GetPrimaryBoardState(),
+//         search_depth
+//     );
+//   }
 
-  TranspositionTableSearchResult ImplementGetTrData(
-      int search_depth,
-      const std::vector<KeyType> &expected_keys
-  ) {
-    return transposition_table_.GetDataAt(
-        zobrist_component_.GetPrimaryBoardState(),
-        search_depth,
-        expected_keys
-    );
-  }
+//   TranspositionTableSearchResult ImplementGetTrData(
+//       int search_depth,
+//       const std::vector<KeyType> &expected_keys
+//   ) {
+//     return transposition_table_.GetDataAt(
+//         zobrist_component_.GetPrimaryBoardState(),
+//         search_depth,
+//         expected_keys
+//     );
+//   }
 
-  moveselection::TranspositionTableSize ImplementGetTrTableSize() {
-    moveselection::TranspositionTableSize result{
-        transposition_table_.num_entries(),
-        transposition_table_.num_states()
-    };
-    return result;
-  }
+//   moveselection::TranspositionTableSize ImplementGetTrTableSize() {
+//     moveselection::TranspositionTableSize result{
+//         transposition_table_.num_entries(),
+//         transposition_table_.num_states()
+//     };
+//     return result;
+//   }
 
-  const std::string board_state_hex_str() {
-    return IntToHexString(ImplementGetState());
-  }
+//   const std::string board_state_hex_str() {
+//     return IntToHexString(ImplementGetState());
+//   }
 
-private:
-  ZobristComponent<KeyType> zobrist_component_;
-  TranspositionTable<KeyType> transposition_table_;
-};
+// private:
+//   ZobristComponent<KeyType> zobrist_component_;
+//   TranspositionTable<KeyType> transposition_table_;
+// };
 
 } // namespace boardstate
