@@ -20,41 +20,41 @@ protected:
   template <typename KeyType, size_t NumCalculators>
   CalcFullBoardStateResult<KeyType, NumCalculators> TestCalcFullBoardState() {
     boardstate::ZobristComponent<KeyType, NumCalculators> zobrist_component{};
-    auto board_states_array_initial = zobrist_component.GetAllBoardStates();
-    auto primary_board_state_initial = zobrist_component.GetPrimaryBoardState();
+    auto confirmation_states_initial = zobrist_component.confirmation_board_states();
+    auto primary_board_state_initial = zobrist_component.primary_board_state();
     zobrist_component.FullBoardStateCalc(board_map);
-    auto board_states_array_final = zobrist_component.GetAllBoardStates();
-    auto primary_board_state_final = zobrist_component.GetPrimaryBoardState();
+    auto confirmation_states_final = zobrist_component.confirmation_board_states();
+    auto primary_board_state_final = zobrist_component.primary_board_state();
 
-    EXPECT_EQ(board_states_array_initial.size(), NumCalculators);
+    EXPECT_EQ(confirmation_states_initial.size(), NumCalculators);
     EXPECT_EQ(primary_board_state_initial, 0);
-    EXPECT_EQ(board_states_array_final.size(), NumCalculators);
+    EXPECT_EQ(confirmation_states_final.size(), NumCalculators);
     EXPECT_NE(primary_board_state_final, 0);
 
     return CalcFullBoardStateResult<KeyType, NumCalculators>{
-        board_states_array_initial,
+        confirmation_states_initial,
         primary_board_state_initial,
-        board_states_array_final,
+        confirmation_states_final,
         primary_board_state_final
     };
   }
 };
 
 TEST_F(ZobristComponentTest, DefaultInit) {
-  boardstate::ZobristComponent<uint64_t, 2> component{};
+  boardstate::ZobristComponent<uint64_t, 1> component{};
 }
 
-TEST_F(ZobristComponentTest, InitFromArrayOfCalculators) {
-  std::array<boardstate::ZobristCalculator<uint64_t>, 2> calculators{
+TEST_F(ZobristComponentTest, InitFromCalculators) {
+  boardstate::ZobristComponent<uint64_t, 1> component{
       zobrist_calculator_064_a,
-      zobrist_calculator_064_b
+      std::array<boardstate::ZobristCalculator<uint64_t>, 1>{zobrist_calculator_064_b}
   };
-  boardstate::ZobristComponent<uint64_t, 2> component{calculators};
 }
 
-TEST_F(ZobristComponentTest, InitFromArrayOfSeeds) {
-  std::array<uint32_t, 2> seeds{1234, 5678};
-  boardstate::ZobristComponent<uint64_t, 2> component{seeds};
+TEST_F(ZobristComponentTest, InitFromASeeds) {
+  uint32_t primary_seed{1234};
+  std::array<uint32_t, 1> seeds{5678};
+  boardstate::ZobristComponent<uint64_t, 1> component{primary_seed, seeds};
 }
 
 TEST_F(ZobristComponentTest, CalcFullBoardState) {
