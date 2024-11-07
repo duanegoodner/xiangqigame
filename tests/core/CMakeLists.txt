@@ -65,6 +65,16 @@ target_link_libraries(
     utility_functs
     GTest::gtest_main)
 
+add_executable(minimax_zobrist_component_test minimax_zobrist_component_test.cpp)
+target_link_libraries(
+    minimax_zobrist_component_test PRIVATE
+    minimax_evaluator
+    piece_moves
+    piece_position_points
+    game_board
+    utility_functs
+    GTest::gtest_main)
+
 add_executable(
     key_generator_test
     key_generator_test.cpp)

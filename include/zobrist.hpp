@@ -125,13 +125,12 @@ private:
 };
 
 // template <typename KeyType>
-template <typename KeyType, size_t NumConfCalculators>
+template <typename KeyType, size_t NumConfKeys>
 class ZobristComponent {
 public:
   explicit ZobristComponent(
       const ZobristCalculator<KeyType> primary_calculator,
-      const std::array<ZobristCalculator<KeyType>, NumConfCalculators>
-          &confirmation_calculators
+      const std::array<ZobristCalculator<KeyType>, NumConfKeys> &confirmation_calculators
   )
       : primary_calculator_{primary_calculator}
       , confirmation_calculators_(confirmation_calculators) {}
@@ -140,18 +139,18 @@ public:
       : primary_calculator_{ZobristCalculator<KeyType>()}
       , confirmation_calculators_{} {
 
-    for (auto index = 0; index < NumConfCalculators; ++index) {
+    for (auto index = 0; index < NumConfKeys; ++index) {
       confirmation_calculators_[index] = ZobristCalculator<KeyType>();
     }
   }
 
   ZobristComponent(
       uint32_t primary_seed,
-      std::array<uint32_t, NumConfCalculators> confirmation_seeds
+      std::array<uint32_t, NumConfKeys> confirmation_seeds
   )
       : primary_calculator_{ZobristCalculator<KeyType>{primary_seed}}
       , confirmation_calculators_{} {
-    for (auto index = 0; index < NumConfCalculators; ++index) {
+    for (auto index = 0; index < NumConfKeys; ++index) {
       confirmation_calculators_[index] =
           ZobristCalculator<KeyType>{confirmation_seeds[index]};
     }
@@ -173,9 +172,9 @@ public:
 
   KeyType primary_board_state() { return primary_calculator_.board_state(); }
 
-  std::array<KeyType, NumConfCalculators> confirmation_board_states() {
-    std::array<KeyType, NumConfCalculators> confirmation_states;
-    for (auto i = 0; i < NumConfCalculators; ++i) {
+  std::array<KeyType, NumConfKeys> confirmation_board_states() {
+    std::array<KeyType, NumConfKeys> confirmation_states;
+    for (auto i = 0; i < NumConfKeys; ++i) {
       confirmation_states[i] = confirmation_calculators_[i].board_state();
     }
     return confirmation_states;
@@ -183,9 +182,9 @@ public:
 
   KeyType primary_calculator_seed() { return primary_calculator_.seed(); }
 
-  std::array<uint32_t, NumConfCalculators> confirmation_calculator_seeds() const {
-    std::array<uint32_t, NumConfCalculators> seeds;
-    for (auto i = 0; i < NumConfCalculators; ++i) {
+  std::array<uint32_t, NumConfKeys> confirmation_calculator_seeds() const {
+    std::array<uint32_t, NumConfKeys> seeds;
+    for (auto i = 0; i < NumConfKeys; ++i) {
       seeds[i] = confirmation_calculators_[i].seed();
     }
   }
@@ -196,29 +195,25 @@ public:
 
 private:
   ZobristCalculator<KeyType> primary_calculator_;
-  std::array<ZobristCalculator<KeyType>, NumConfCalculators> confirmation_calculators_;
+  std::array<ZobristCalculator<KeyType>, NumConfKeys> confirmation_calculators_;
 };
 
-template <typename KeyType, size_t NumConfirmationKeys>
-class TranspositionTableEntry {
+template <typename KeyType, size_t NumConfKeys>
+class TranspositionTableEntryNew {
 public:
-  TranspositionTableEntry(
+  TranspositionTableEntryNew(
       moveselection::MinimaxCalcResult calc_result,
-      std::array<KeyType, NumConfirmationKeys> confirmation_keys
+      std::array<KeyType, NumConfKeys> confirmation_keys
   )
       : calc_result_{calc_result}
       , confirmation_keys_{confirmation_keys} {}
 
   moveselection::MinimaxCalcResult calc_result() { return calc_result_; }
 
-  std::array<KeyType, NumConfirmationKeys> confirmation_keys() {
-    return confirmation_keys_;
-  }
+  std::array<KeyType, NumConfKeys> confirmation_keys() { return confirmation_keys_; }
 
-  bool ConfirmationKeysMatchExpected(
-      std::array<KeyType, NumConfirmationKeys> expected_keys
-  ) {
-    for (auto i = 0; i < NumConfirmationKeys; ++i) {
+  bool ConfirmationKeysMatchExpected(std::array<KeyType, NumConfKeys> expected_keys) {
+    for (auto i = 0; i < NumConfKeys; ++i) {
       if (expected_keys[i] != confirmation_keys_[i]) {
         return false;
       }
@@ -228,16 +223,16 @@ public:
 
 private:
   moveselection::MinimaxCalcResult calc_result_;
-  std::array<KeyType, NumConfirmationKeys> confirmation_keys_;
+  std::array<KeyType, NumConfKeys> confirmation_keys_;
 };
 
-template <typename KeyType, size_t NumConfirmationKeys>
-class TranspositionTable {
+template <typename KeyType, size_t NumConfKeys>
+class TranspositionTableNew {
 public:
   moveselection::TranspositionTableSearchResult GetDataAt(
       KeyType primary_board_state,
       int remaining_search_depth,
-      std::array<KeyType, NumConfirmationKeys> expected_keys
+      std::array<KeyType, NumConfKeys> expected_keys
   ) {
     moveselection::TranspositionTableSearchResult result{};
     auto tr_table_entry_it = data_.find(primary_board_state);
@@ -249,7 +244,7 @@ public:
         result.table_entry = tr_table_entry.calc_result();
       }
       if (result.found and
-          !tr_table_entry.ConfirmationKeysMatchExpectedKeys(expected_keys)) {
+          !tr_table_entry.ConfirmationKeysMatchExpected(expected_keys)) {
         result.known_collision = true;
       }
     }
@@ -261,23 +256,89 @@ public:
       int search_depth,
       moveselection::MinimaxResultType result_type,
       moveselection::EqualScoreMoves &similar_moves,
-      std::array<KeyType, NumConfirmationKeys> &confirmation_keys
+      const std::array<KeyType, NumConfKeys> &confirmation_keys
   ) {
     data_.insert_or_assign(
         primary_board_state,
-        TranspositionTableEntry<KeyType, NumConfirmationKeys>{
+        TranspositionTableEntryNew<KeyType, NumConfKeys>{
             moveselection::MinimaxCalcResult{search_depth, result_type, similar_moves},
             confirmation_keys
         }
     );
   }
 
-  size_t num_entries() {return data_.size();}
-  size_t num_states() {return data_.size(); }
+  size_t num_entries() { return data_.size(); }
+  size_t num_states() { return data_.size(); }
 
 private:
-  std::unordered_map<KeyType, TranspositionTableEntry<KeyType, NumConfirmationKeys>>
-      data_;
+  std::unordered_map<KeyType, TranspositionTableEntryNew<KeyType, NumConfKeys>> data_;
+};
+
+template <typename KeyType, size_t NumConfKeys>
+class ZobristTracker
+    : public BoardStateSummarizer<ZobristTracker<KeyType, NumConfKeys>, KeyType> {
+public:
+  explicit ZobristTracker(ZobristComponent<KeyType, NumConfKeys> zobrist_component)
+      : zobrist_component_{std::move(zobrist_component)}
+      , transposition_table_{} {}
+
+  explicit ZobristTracker(
+      uint32_t primary_seed,
+      std::array<uint32_t, NumConfKeys> confirmation_seeds
+  )
+      : ZobristTracker(
+            ZobristComponent<KeyType, NumConfKeys>{primary_seed, confirmation_seeds}
+        ) {}
+  
+  ZobristTracker() : zobrist_component_{}, transposition_table_{} {}
+
+  KeyType ImplementGetState() { return zobrist_component_.primary_board_state(); }
+
+  void ImplementUpdateBoardState(const ExecutedMove &executed_move) {
+    zobrist_component_.UpdateBoardStates(executed_move);
+  }
+
+  void ImplementFullBoardStateCalc(const BoardMap_t &board_map) {
+    zobrist_component_.FullBoardStateCalc(board_map);
+  }
+
+  void ImplementRecordTrData(
+      int search_depth,
+      moveselection::MinimaxResultType result_type,
+      moveselection::EqualScoreMoves &similar_moves
+  ) {
+    transposition_table_.RecordData(
+        zobrist_component_.primary_board_state(),
+        search_depth,
+        result_type,
+        similar_moves,
+        zobrist_component_.confirmation_board_states()
+    );
+  }
+
+  moveselection::TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
+    return transposition_table_.GetDataAt(
+        zobrist_component_.primary_board_state(),
+        search_depth,
+        zobrist_component_.confirmation_board_states()
+    );
+  }
+
+  moveselection::TranspositionTableSize ImplementGetTrTableSize() {
+    moveselection::TranspositionTableSize result{
+        transposition_table_.num_entries(),
+        transposition_table_.num_states()
+    };
+    return result;
+  }
+
+  const std::string board_state_hex_str() {
+    return IntToHexString(zobrist_component_.primary_board_state());
+  }
+
+private:
+  ZobristComponent<KeyType, NumConfKeys> zobrist_component_;
+  TranspositionTableNew<KeyType, NumConfKeys> transposition_table_;
 };
 
 } // namespace boardstate
