@@ -8,11 +8,10 @@
 
 #include <board_data_structs.hpp>
 #include <game_board.hpp>
-#include <hash_calculator.hpp>
 #include <move_evaluators.hpp>
-#include <zobrist.hpp>
 #include <piece_position_points.hpp>
 #include <string>
+#include <zobrist.hpp>
 
 namespace py = pybind11;
 using namespace py::literals;
@@ -22,7 +21,7 @@ using namespace piecepoints;
 
 template <typename KeyType, size_t NumConfKeys>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
-  py::class_<MinimaxMoveEvaluator<
+  py::class_<moveselection::MinimaxMoveEvaluator<
       GameBoard,
       ZobristTracker<KeyType, NumConfKeys>,
       PiecePositionPoints>>(m, class_name.c_str())
@@ -32,43 +31,55 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           "starting_search_depth"_a,
           "game_board"_a
       )
-        .def(
-            py::init<PieceColor, int, GameBoard &, uint32_t>(),
-            "evaluating_player"_a,
-            "starting_search_depth"_a,
-            "game_board"_a,
-            "zkeys_seed"_a
-        )
+      .def(
+          py::init<PieceColor, int, GameBoard &, uint32_t>(),
+          "evaluating_player"_a,
+          "starting_search_depth"_a,
+          "game_board"_a,
+          "zkeys_seed"_a
+      )
       .def(
           "select_move",
-          &MinimaxMoveEvaluator<GameBoard, ZobristTracker<KeyType, NumConfKeys>, PiecePositionPoints>::
-              SelectMove,
+          &moveselection::MinimaxMoveEvaluator<
+              GameBoard,
+              ZobristTracker<KeyType, NumConfKeys>,
+              PiecePositionPoints>::SelectMove,
           "allowed_moves"_a
       )
       .def_property_readonly(
           "search_summaries",
-          &MinimaxMoveEvaluator<GameBoard, ZobristTracker<KeyType, NumConfKeys>, PiecePositionPoints>::
-              search_summaries
+          &moveselection::MinimaxMoveEvaluator<
+              GameBoard,
+              ZobristTracker<KeyType, NumConfKeys>,
+              PiecePositionPoints>::search_summaries
       )
       .def(
           "starting_search_depth",
-          &MinimaxMoveEvaluator<GameBoard, ZobristTracker<KeyType, NumConfKeys>, PiecePositionPoints>::
-              StartingSearchDepth
+          &moveselection::MinimaxMoveEvaluator<
+              GameBoard,
+              ZobristTracker<KeyType, NumConfKeys>,
+              PiecePositionPoints>::StartingSearchDepth
       )
       .def(
           "zobrist_key_size_bits",
-          &MinimaxMoveEvaluator<GameBoard, ZobristTracker<KeyType, NumConfKeys>, PiecePositionPoints>::
-              KeySizeBits
+          &moveselection::MinimaxMoveEvaluator<
+              GameBoard,
+              ZobristTracker<KeyType, NumConfKeys>,
+              PiecePositionPoints>::KeySizeBits
       )
       .def_property_readonly(
           "zkeys_seed",
-          &MinimaxMoveEvaluator<GameBoard, ZobristTracker<KeyType, NumConfKeys>, PiecePositionPoints>::
-              zkeys_seed
+          &moveselection::MinimaxMoveEvaluator<
+              GameBoard,
+              ZobristTracker<KeyType, NumConfKeys>,
+              PiecePositionPoints>::zkeys_seed
       )
       .def_property_readonly(
           "board_state_hex_str",
-          &MinimaxMoveEvaluator<GameBoard, ZobristTracker<KeyType, NumConfKeys>, PiecePositionPoints>::
-              board_state_hex_str
+          &moveselection::MinimaxMoveEvaluator<
+              GameBoard,
+              ZobristTracker<KeyType, NumConfKeys>,
+              PiecePositionPoints>::board_state_hex_str
       );
 }
 
@@ -96,9 +107,9 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def("size", &MoveCollection::Size)
       .def("ContainsMove", &MoveCollection::ContainsMove);
 
-  py::class_<EqualScoreMoves>(m, "EqualScoreMoves")
-      .def_readonly("shared_score", &EqualScoreMoves::shared_score)
-      .def_readonly("similar_moves", &EqualScoreMoves::similar_moves);
+  py::class_<moveselection::EqualScoreMoves>(m, "EqualScoreMoves")
+      .def_readonly("shared_score", &moveselection::EqualScoreMoves::shared_score)
+      .def_readonly("similar_moves", &moveselection::EqualScoreMoves::similar_moves);
 
   py::class_<ExecutedMove>(m, "ExecutedMove")
       .def(
@@ -131,18 +142,18 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
   m.def("size_of_points_type", &size_of_points_type);
   m.def("is_signed_points_type", &is_signed_points_type);
 
-  py::enum_<MinimaxResultType>(m, "MinimaxResultType")
-      .value("Unknown", kUnknown)
-      .value("TrTableHit", kTrTableHit)
+  py::enum_<moveselection::MinimaxResultType>(m, "MinimaxResultType")
+      .value("Unknown", moveselection::kUnknown)
+      .value("TrTableHit", moveselection::kTrTableHit)
       //   .value("TrTableHitEvaluatorLoses", kTrTableHitEvaluatorLoses)
       //   .value("TrTableHitEvaluatorWins", kTrTableHitEvaluatorWins)
-      .value("EvaluatorLoses", kEvaluatorLoses)
-      .value("EvaluatorWins", kEvaluatorWins)
-      .value("Draw", kDraw)
-      .value("FullyEvaluatedNode", kFullyEvaluatedNode)
-      .value("StandardLeaf", kStandardLeaf)
-      .value("AlphaPrune", kAlphaPrune)
-      .value("BetaPrune", kBetaPrune)
+      .value("EvaluatorLoses", moveselection::kEvaluatorLoses)
+      .value("EvaluatorWins", moveselection::kEvaluatorWins)
+      .value("Draw", moveselection::kDraw)
+      .value("FullyEvaluatedNode", moveselection::kFullyEvaluatedNode)
+      .value("StandardLeaf", moveselection::kStandardLeaf)
+      .value("AlphaPrune", moveselection::kAlphaPrune)
+      .value("BetaPrune", moveselection::kBetaPrune)
       .export_values();
 
   py::class_<GameBoard>(m, "GameBoard")
@@ -160,43 +171,61 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
 
   m.def("opponent_of", &opponent_of);
 
-  py::class_<RandomMoveEvaluator<GameBoard>>(m, "RandomMoveEvaluator")
+  py::class_<moveselection::RandomMoveEvaluator<GameBoard>>(m, "RandomMoveEvaluator")
       .def(py::init<PieceColor, GameBoard &>(), "evaluating_player"_a, "game_board"_a)
-      .def("select_move", &RandomMoveEvaluator<GameBoard>::SelectMove);
+      .def("select_move", &moveselection::RandomMoveEvaluator<GameBoard>::SelectMove);
 
-  py::class_<TranspositionTableSize>(m, "TranspositionTableSize")
-      .def_readonly("num_entries", &TranspositionTableSize::num_entries)
-      .def_readonly("num_states", &TranspositionTableSize::num_states);
+  py::class_<moveselection::TranspositionTableSize>(m, "TranspositionTableSize")
+      .def_readonly("num_entries", &moveselection::TranspositionTableSize::num_entries)
+      .def_readonly("num_states", &moveselection::TranspositionTableSize::num_states);
 
-  py::class_<SearchSummary>(m, "SearchSummary")
+  py::class_<moveselection::SearchSummary>(m, "SearchSummary")
       //   .def(py::init<int>()) // Constructor, as needed for initialization
       .def_property_readonly(
           "num_nodes",
-          &SearchSummary::num_nodes
+          &moveselection::SearchSummary::num_nodes
       ) // Read-only access to fields
-      .def_property_readonly("time", &SearchSummary::time)
-      .def("get_result_depth_counts", &SearchSummary::GetResultDepthCounts)
-      .def("get_transposition_table_hits", &SearchSummary::GetTranspositionTableHits)
-      .def_property_readonly("similar_moves", &SearchSummary::similar_moves)
-      .def_property_readonly("selected_move", &SearchSummary::selected_move)
+      .def_property_readonly("time", &moveselection::SearchSummary::time)
+      .def(
+          "get_result_depth_counts",
+          &moveselection::SearchSummary::GetResultDepthCounts
+      )
+      .def(
+          "get_transposition_table_hits",
+          &moveselection::SearchSummary::GetTranspositionTableHits
+      )
+      .def_property_readonly(
+          "similar_moves",
+          &moveselection::SearchSummary::similar_moves
+      )
+      .def_property_readonly(
+          "selected_move",
+          &moveselection::SearchSummary::selected_move
+      )
       .def_property_readonly(
           "returned_illegal_move",
-          &SearchSummary::returned_illegal_move
+          &moveselection::SearchSummary::returned_illegal_move
       )
-      .def_property_readonly("num_collisions", &SearchSummary::num_collisions)
+      .def_property_readonly(
+          "num_collisions",
+          &moveselection::SearchSummary::num_collisions
+      )
       .def_property_readonly(
           "tr_table_size_initial",
-          &SearchSummary::tr_table_size_initial
+          &moveselection::SearchSummary::tr_table_size_initial
       )
-      .def_property_readonly("tr_table_size_final", &SearchSummary::tr_table_size_final);
+      .def_property_readonly(
+          "tr_table_size_final",
+          &moveselection::SearchSummary::tr_table_size_final
+      );
 
-  py::class_<SearchSummaries>(m, "SearchSummaries")
+  py::class_<moveselection::SearchSummaries>(m, "SearchSummaries")
       .def(py::init<>()) // Constructor, as needed for initialization
       .def_readonly(
           "first_searches",
-          &SearchSummaries::first_searches
+          &moveselection::SearchSummaries::first_searches
       ) // Read-only vectors and maps
-      .def_readonly("extra_searches", &SearchSummaries::extra_searches);
+      .def_readonly("extra_searches", &moveselection::SearchSummaries::extra_searches);
 
   bind_minimax_move_evaluator<uint32_t, 0>(m, "MinimaxMoveEvaluator32");
   bind_minimax_move_evaluator<uint64_t, 0>(m, "MinimaxMoveEvaluator64");

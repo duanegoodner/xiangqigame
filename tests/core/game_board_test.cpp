@@ -1,5 +1,5 @@
 #include <game_board.hpp>
-#include <hash_calculator.hpp>
+#include <zobrist.hpp>
 #include <move_calculator.hpp>
 
 #include <gtest/gtest.h>
@@ -127,8 +127,8 @@ TEST_F(GameBoardTest, CorrectNumberAvailableMoves) {
 // }
 
 TEST_F(GameBoardTest, ExecuteMoveWithAttachedSingleZobristTrackers) {
-  auto red_hash_calculator = boardstate::SingleZobristTracker<uint64_t>(1234);
-  auto black_hash_calculator = boardstate::SingleZobristTracker<uint64_t>(12345);
+  auto red_hash_calculator = boardstate::ZobristTracker<uint64_t, 0>(1234);
+  auto black_hash_calculator = boardstate::ZobristTracker<uint64_t, 0>(5678);
   // gb_.ImplementAttachSingleZobristTracker(&red_hash_calculator, 0);
   // gb_.ImplementAttachSingleZobristTracker(&black_hash_calculator, 1);
   auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};

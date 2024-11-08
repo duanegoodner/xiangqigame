@@ -93,6 +93,17 @@ target_link_libraries(
         GTest::gtest_main)
 
 add_executable(
+    zobrist_tracker_test
+    zobrist_tracker_test.cpp)
+target_link_libraries(
+    zobrist_tracker_test PRIVATE
+    utility_functs
+    game_board
+    GTest::gtest_main)
+
+
+
+add_executable(
     json_utility_test json_utility_test.cpp
 )
 target_link_libraries(
