@@ -198,9 +198,9 @@ private:
 };
 
 template <typename KeyType, size_t NumConfKeys>
-class TranspositionTableEntryNew {
+class TranspositionTableEntry {
 public:
-  TranspositionTableEntryNew(
+  TranspositionTableEntry(
       moveselection::MinimaxCalcResult calc_result,
       std::array<KeyType, NumConfKeys> confirmation_keys
   )
@@ -259,7 +259,7 @@ public:
   ) {
     data_.insert_or_assign(
         primary_board_state,
-        TranspositionTableEntryNew<KeyType, NumConfKeys>{
+        TranspositionTableEntry<KeyType, NumConfKeys>{
             moveselection::MinimaxCalcResult{search_depth, result_type, similar_moves},
             confirmation_keys
         }
@@ -270,7 +270,7 @@ public:
   size_t num_states() { return data_.size(); }
 
 private:
-  std::unordered_map<KeyType, TranspositionTableEntryNew<KeyType, NumConfKeys>> data_;
+  std::unordered_map<KeyType, TranspositionTableEntry<KeyType, NumConfKeys>> data_;
 };
 
 template <typename KeyType, size_t NumConfKeys>
