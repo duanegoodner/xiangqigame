@@ -29,9 +29,7 @@ public:
     }
   }
 
-  void StartPruner() {
-    purger_thread_ = std::thread(&Player::PruneEntries, this);
-  }
+  void StartPruner() { purger_thread_ = std::thread(&Player::PruneEntries, this); }
 
   void EvaluateNode() {
 
@@ -66,17 +64,22 @@ public:
 
   void PruneEntries() {
     while (keep_running_) {
-      std::this_thread::sleep_for(std::chrono::microseconds(1));
+      std::this_thread::sleep_for(std::chrono::microseconds(5));
       std::lock_guard<std::shared_mutex> lock(global_mutex_);
-      for (auto it = transposition_table_.begin(); it != transposition_table_.end();) {
+      if (!transposition_table_.empty()) {
+        std::uniform_int_distribution<size_t> distribution(
+            0,
+            transposition_table_.size() - 1
+        );
+        auto it = transposition_table_.begin();
+        std::advance(it, distribution(rng_));
+
         if (it->second % 7 == 0) {
-          std::cout << name_ << " found something to purge!!!!!" << std::endl;
+          std::cout << name_ << " found something to prune!!!!!" << std::endl;
           std::cout << name_ << " purging (" << it->first << ", " << it->second << ")"
                     << std::endl;
           std::cout << std::endl;
           it = transposition_table_.erase(it);
-        } else {
-          ++it;
         }
       }
     }
