@@ -135,16 +135,16 @@ class EqualScoreMoves:
     """
 
     shared_score: PointsT
-    similar_moves: MoveCollection
+    move_collection: MoveCollection
 
     @classmethod
-    def from_core_similar_moves(
-        cls, core_similar_moves: bindings.EqualScoreMoves
+    def from_core_equal_score_moves(
+        cls, core_equal_score_moves: bindings.EqualScoreMoves
     ):
         return cls(
-            shared_score=core_similar_moves.shared_score,
-            similar_moves=MoveCollection.from_core_move_collection(
-                core_move_collection=core_similar_moves.similar_moves
+            shared_score=core_equal_score_moves.shared_score,
+            move_collection=MoveCollection.from_core_move_collection(
+                core_move_collection=core_equal_score_moves.move_collection
             ),
         )
 
@@ -203,7 +203,7 @@ class SearchSummary:
     time: datetime.timedelta
     result_depth_counts: np.ndarray
     transposition_table_hits: np.ndarray
-    similar_moves: EqualScoreMoves
+    equal_score_moves: EqualScoreMoves
     selected_move: Move
     returned_illegal_move: bool
     num_collisions: int
@@ -223,8 +223,8 @@ class SearchSummary:
             transposition_table_hits=np.array(
                 core_search_summary.get_transposition_table_hits()
             ),
-            similar_moves=EqualScoreMoves.from_core_similar_moves(
-                core_similar_moves=core_search_summary.similar_moves
+            equal_score_moves=EqualScoreMoves.from_core_equal_score_moves(
+                core_equal_score_moves=core_search_summary.equal_score_moves
             ),
             selected_move=Move.from_core_move(
                 core_move=core_search_summary.selected_move

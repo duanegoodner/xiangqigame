@@ -51,19 +51,19 @@ struct MinimaxCalcResult {
   MinimaxCalcResult()
       : remaining_search_depth{}
       , result_type{}
-      , similar_moves{} {}
+      , equal_score_moves{} {}
 
   MinimaxCalcResult(int depth, MinimaxResultType type, EqualScoreMoves moves)
       : remaining_search_depth(depth)
       , result_type(type)
-      , similar_moves(std::move(moves)) {}
+      , equal_score_moves(std::move(moves)) {}
 
   int remaining_search_depth;
   MinimaxResultType result_type;
-  EqualScoreMoves similar_moves;
+  EqualScoreMoves equal_score_moves;
 
-  Points_t Score() { return similar_moves.shared_score; }
-  MoveCollection moves() { return similar_moves.move_collection(); }
+  Points_t Score() { return equal_score_moves.shared_score; }
+  MoveCollection moves() { return equal_score_moves.move_collection(); }
 };
 
 //! Container for storing a moveselection::MinimaxCalcResult retrieved by a call to
@@ -88,7 +88,7 @@ struct TranspositionTableSearchResult {
     return true;
   }
 
-  EqualScoreMoves score_and_moves() { return minimax_calc_result.similar_moves; }
+  EqualScoreMoves score_and_moves() { return minimax_calc_result.equal_score_moves; }
 };
 
 struct TranspositionTableSize {
@@ -147,11 +147,11 @@ public:
   void RecordNodeInfo(
       MinimaxResultType result_type,
       int search_depth,
-      EqualScoreMoves &similar_moves
+      EqualScoreMoves &equal_score_moves
   ) {
     result_depth_counts_.IncrementDataAt(result_type, search_depth);
     num_nodes_++;
-    set_similar_moves(similar_moves);
+    set_equal_score_moves(equal_score_moves);
   }
 
   void UpdateTranspositionTableHits(MinimaxResultType result_type, int search_depth) {
@@ -165,7 +165,7 @@ public:
     RecordNodeInfo(
         MinimaxResultType::kTrTableHit,
         remaining_search_depth,
-        tr_table_search_result.minimax_calc_result.similar_moves
+        tr_table_search_result.minimax_calc_result.equal_score_moves
     );
     UpdateTranspositionTableHits(
         tr_table_search_result.minimax_calc_result.result_type,
@@ -182,9 +182,9 @@ public:
   void set_time(std::chrono::duration<double, std::nano> search_time) {
     time_ = search_time;
   }
-  EqualScoreMoves similar_moves() { return similar_moves_; }
-  void set_similar_moves(EqualScoreMoves similar_moves) {
-    similar_moves_ = similar_moves;
+  EqualScoreMoves equal_score_moves() { return equal_score_moves_; }
+  void set_equal_score_moves(EqualScoreMoves equal_score_moves) {
+    equal_score_moves_ = equal_score_moves;
   }
 
   Move selected_move() { return selected_move_; }
@@ -207,7 +207,7 @@ private:
   std::chrono::duration<double, std::nano> time_;
   ResultDepthCounts result_depth_counts_;
   ResultDepthCounts transposition_table_hits_;
-  EqualScoreMoves similar_moves_;
+  EqualScoreMoves equal_score_moves_;
   Move selected_move_;
   bool returned_illegal_move_;
   int num_collisions_;

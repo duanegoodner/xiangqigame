@@ -109,7 +109,7 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
 
   py::class_<moveselection::EqualScoreMoves>(m, "EqualScoreMoves")
       .def_readonly("shared_score", &moveselection::EqualScoreMoves::shared_score)
-      .def_property_readonly("similar_moves", &moveselection::EqualScoreMoves::move_collection);
+      .def_property_readonly("move_collection", &moveselection::EqualScoreMoves::move_collection);
 
   py::class_<ExecutedMove>(m, "ExecutedMove")
       .def(
@@ -195,8 +195,8 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
           &moveselection::SearchSummary::GetTranspositionTableHits
       )
       .def_property_readonly(
-          "similar_moves",
-          &moveselection::SearchSummary::similar_moves
+          "equal_score_moves",
+          &moveselection::SearchSummary::equal_score_moves
       )
       .def_property_readonly(
           "selected_move",
