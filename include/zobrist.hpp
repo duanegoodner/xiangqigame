@@ -201,13 +201,13 @@ template <typename KeyType, size_t NumConfKeys>
 class TranspositionTableEntry {
 public:
   TranspositionTableEntry(
-      moveselection::MinimaxCalcResult calc_result,
+      moveselection::MinimaxCalcResult minimax_calc_result,
       std::array<KeyType, NumConfKeys> confirmation_keys
   )
-      : calc_result_{calc_result}
+      : minimax_calc_result_{minimax_calc_result}
       , confirmation_keys_{confirmation_keys} {}
 
-  moveselection::MinimaxCalcResult calc_result() { return calc_result_; }
+  moveselection::MinimaxCalcResult minimax_calc_result() { return minimax_calc_result_; }
 
   std::array<KeyType, NumConfKeys> confirmation_keys() { return confirmation_keys_; }
 
@@ -221,7 +221,7 @@ public:
   }
 
 private:
-  moveselection::MinimaxCalcResult calc_result_;
+  moveselection::MinimaxCalcResult minimax_calc_result_;
   std::array<KeyType, NumConfKeys> confirmation_keys_;
 };
 
@@ -237,10 +237,10 @@ public:
     auto tr_table_entry_it = data_.find(primary_board_state);
     if (tr_table_entry_it != data_.end()) {
       auto tr_table_entry = tr_table_entry_it->second;
-      if (tr_table_entry.calc_result().remaining_search_depth >=
+      if (tr_table_entry.minimax_calc_result().remaining_search_depth >=
           remaining_search_depth) {
         result.found = true;
-        result.table_entry = tr_table_entry.calc_result();
+        result.minimax_calc_result = tr_table_entry.minimax_calc_result();
       }
       if (result.found and
           !tr_table_entry.ConfirmationKeysMatchExpected(expected_keys)) {

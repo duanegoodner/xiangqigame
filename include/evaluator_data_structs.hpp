@@ -68,11 +68,11 @@ struct MinimaxCalcResult {
 //! Container for storing a moveselection::MinimaxCalcResult retrieved by a call to
 //! boardstate::SingleZobristSummarizer.ImplementGetTrData.
 struct TranspositionTableSearchResult {
-  MinimaxCalcResult table_entry;
+  MinimaxCalcResult minimax_calc_result;
   bool found;
   bool known_collision;
 
-  MoveCollection moves() { return table_entry.moves(); }
+  MoveCollection moves() { return minimax_calc_result.moves(); }
 
   bool IsConsistentWith(MoveCollection &allowed_moves) {
     if (allowed_moves.IsEmpty() and moves().IsEmpty()) {
@@ -87,7 +87,7 @@ struct TranspositionTableSearchResult {
     return true;
   }
 
-  EqualScoreMoves score_and_moves() { return table_entry.similar_moves; }
+  EqualScoreMoves score_and_moves() { return minimax_calc_result.similar_moves; }
 };
 
 struct TranspositionTableSize {
@@ -164,10 +164,10 @@ public:
     RecordNodeInfo(
         MinimaxResultType::kTrTableHit,
         remaining_search_depth,
-        tr_table_search_result.table_entry.similar_moves
+        tr_table_search_result.minimax_calc_result.similar_moves
     );
     UpdateTranspositionTableHits(
-        tr_table_search_result.table_entry.result_type,
+        tr_table_search_result.minimax_calc_result.result_type,
         remaining_search_depth
     );
     if (tr_table_search_result.known_collision) {
