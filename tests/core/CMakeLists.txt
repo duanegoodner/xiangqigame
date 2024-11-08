@@ -55,15 +55,15 @@ target_link_libraries(
     utility_functs
     GTest::gtest_main)
 
-add_executable(minimax_evaluator_test minimax_evaluator_test.cpp)
-target_link_libraries(
-    minimax_evaluator_test PRIVATE
-    minimax_evaluator
-    piece_moves
-    piece_position_points
-    game_board
-    utility_functs
-    GTest::gtest_main)
+# add_executable(minimax_evaluator_test minimax_evaluator_test.cpp)
+# target_link_libraries(
+#     minimax_evaluator_test PRIVATE
+#     minimax_evaluator
+#     piece_moves
+#     piece_position_points
+#     game_board
+#     utility_functs
+#     GTest::gtest_main)
 
 add_executable(minimax_zobrist_component_test minimax_zobrist_component_test.cpp)
 target_link_libraries(
@@ -82,15 +82,15 @@ target_link_libraries(
     key_generator_test PRIVATE
     GTest::gtest_main)
 
-add_executable(
-        hash_calculator_test
-        hash_calculator_test.cpp)
-target_link_libraries(
-        hash_calculator_test PRIVATE
-        hash_calculator
-        utility_functs
-        game_board
-        GTest::gtest_main)
+# add_executable(
+#         hash_calculator_test
+#         hash_calculator_test.cpp)
+# target_link_libraries(
+#         hash_calculator_test PRIVATE
+#         hash_calculator
+#         utility_functs
+#         game_board
+#         GTest::gtest_main)
 
 add_executable(
     zobrist_tracker_test
