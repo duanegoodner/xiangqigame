@@ -7,59 +7,73 @@
 #include <thread>
 #include <unordered_map>
 
-class Worker {
+class Player {
 private:
   std::string name_;
   std::unordered_map<uint32_t, uint32_t> transposition_table_;
-  std::unordered_map<uint32_t, std::shared_mutex> mutex_map_;
   std::shared_mutex global_mutex_;
   std::mt19937 rng_;
   std::thread purger_thread_;
   std::atomic<bool> keep_running_;
 
 public:
-  Worker(std::string name)
+  Player(std::string name)
       : name_{name}
       , rng_(std::random_device{}())
       , keep_running_(true) {}
 
-  ~Worker() {
+  ~Player() {
     Stop();
     if (purger_thread_.joinable()) {
       purger_thread_.join();
     }
   }
 
-  void StartPurger() { purger_thread_ = std::thread(&Worker::PurgeEntries, this); }
-
-  void AddEntries() {
-    std::lock_guard<std::shared_mutex> lock(global_mutex_);
-    
-    std::cout << name_ << " beginning to add block of entries -------" << std::endl;
-    for (auto i = 0; i < 5; ++i) {
-      auto key = (uint32_t)rng_();
-      auto value = (uint32_t)rng_() % 10;
-      std::cout << name_ << " adding (" << key << ", " << value << std::endl; 
-      transposition_table_.insert_or_assign(key, value);
-      if (mutex_map_.find(key) == mutex_map_.end()) {
-        mutex_map_.try_emplace(key);
-      }
-    }
-    std::cout << name_ << " done adding block of entries -------" << std::endl;
-    std::cout << std::endl; 
+  void StartPruner() {
+    purger_thread_ = std::thread(&Player::PruneEntries, this);
   }
 
-  void PurgeEntries() {
+  void EvaluateNode() {
+
+    std::this_thread::sleep_for(std::chrono::microseconds(25));
+    auto board_state = (uint32_t)rng_() % 200;
+    auto current_result = (uint32_t)rng_() % 42;
+    auto transposition_table_it = transposition_table_.find(board_state);
+    if (transposition_table_it != transposition_table_.end()) {
+      auto previous_result = transposition_table_it->second;
+      if (current_result <= previous_result) {
+        std::cout << name_ << " kept (" << board_state << ", " << previous_result
+                  << " instead of writing (" << board_state << ", " << current_result
+                  << ")" << std::endl;
+        return;
+      }
+    }
+    transposition_table_.insert_or_assign(board_state, current_result);
+    std::cout << name_ << " added (" << board_state << ", " << current_result << ")"
+              << std::endl;
+  }
+
+  void EvaluateNodes() {
+    std::lock_guard<std::shared_mutex> lock(global_mutex_);
+
+    std::cout << name_ << " beginning to add block of entries -------" << std::endl;
+    for (auto i = 0; i < 5; ++i) {
+      EvaluateNode();
+    }
+    std::cout << name_ << " done adding block of entries -------" << std::endl;
+    std::cout << std::endl;
+  }
+
+  void PruneEntries() {
     while (keep_running_) {
       std::this_thread::sleep_for(std::chrono::microseconds(1));
       std::lock_guard<std::shared_mutex> lock(global_mutex_);
       for (auto it = transposition_table_.begin(); it != transposition_table_.end();) {
-        std::unique_lock<std::shared_mutex> lock(mutex_map_[it->first]);
         if (it->second % 7 == 0) {
           std::cout << name_ << " found something to purge!!!!!" << std::endl;
           std::cout << name_ << " purging (" << it->first << ", " << it->second << ")"
                     << std::endl;
-          std::cout <<std::endl;
+          std::cout << std::endl;
           it = transposition_table_.erase(it);
         } else {
           ++it;
@@ -78,46 +92,43 @@ public:
 
 class Manager {
 private:
-  Worker &worker1_;
-  Worker &worker2_;
-  std::mt19937 rng_; // Use a separate RNG for the manager
+  Player &player1_;
+  Player &player2_;
 
 public:
-  Manager(Worker &w1, Worker &w2)
-      : worker1_(w1)
-      , worker2_(w2)
-      , rng_(std::random_device{}()) {}
+  Manager(Player &e1, Player &e2)
+      : player1_(e1)
+      , player2_(e2) {}
 
-  void ManageEntries() {
+  void ManageEvaluators() {
     uint32_t turn_number = 0;
-    while (worker1_.GetTableSize() <= 15 && worker2_.GetTableSize() <= 15) {
-      //   int value = rng_();
+    while (player1_.GetTableSize() <= 15 && player2_.GetTableSize() <= 15) {
       if (turn_number % 2 == 0) {
-        worker1_.AddEntries();
+        player1_.EvaluateNodes();
       } else {
-        worker2_.AddEntries();
+        player2_.EvaluateNodes();
       }
       turn_number++;
       std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
 
-    worker1_.Stop();
-    worker2_.Stop();
+    player1_.Stop();
+    player2_.Stop();
   }
 };
 
 int main() {
-  Worker worker1{"Worker-1"}, worker2{"Worker-2"};
-  Manager manager(worker1, worker2);
+  Player player1{"Player-1"}, player2{"Player-2"};
+  Manager manager(player1, player2);
 
-  worker1.StartPurger();
-  worker2.StartPurger();
+  player1.StartPruner();
+  player2.StartPruner();
 
-  manager.ManageEntries();
+  manager.ManageEvaluators();
 
   std::cout << "Final sizes of transposition tables: "
-            << "Worker 1 = " << worker1.GetTableSize() << ", "
-            << "Worker 2 = " << worker2.GetTableSize() << std::endl;
+            << "Player 1 = " << player1.GetTableSize() << ", "
+            << "Player 2 = " << player2.GetTableSize() << std::endl;
 
   return 0;
 }
