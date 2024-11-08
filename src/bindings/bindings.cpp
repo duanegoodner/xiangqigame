@@ -109,7 +109,7 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
 
   py::class_<moveselection::EqualScoreMoves>(m, "EqualScoreMoves")
       .def_readonly("shared_score", &moveselection::EqualScoreMoves::shared_score)
-      .def_readonly("similar_moves", &moveselection::EqualScoreMoves::similar_moves);
+      .def_property_readonly("similar_moves", &moveselection::EqualScoreMoves::move_collection);
 
   py::class_<ExecutedMove>(m, "ExecutedMove")
       .def(

@@ -16,11 +16,12 @@ namespace moveselection {
 
 //! Holds a gameboard::MoveCollection in which all gameboard::Move have the same value
 //! (as perceived by a MoveEvaluator), and the value of the shared score.
-struct EqualScoreMoves {
+class EqualScoreMoves {
+  public:
   Points_t shared_score;
-  MoveCollection similar_moves;
+  MoveCollection move_collection_;
 
-  MoveCollection moves() { return similar_moves; }
+  MoveCollection move_collection() { return move_collection_; }
 };
 
 //! A gameboard::Move, and an associated score calculated by a MoveEvaluator.
@@ -62,7 +63,7 @@ struct MinimaxCalcResult {
   EqualScoreMoves similar_moves;
 
   Points_t Score() { return similar_moves.shared_score; }
-  MoveCollection moves() { return similar_moves.moves(); }
+  MoveCollection moves() { return similar_moves.move_collection(); }
 };
 
 //! Container for storing a moveselection::MinimaxCalcResult retrieved by a call to

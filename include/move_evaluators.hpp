@@ -569,8 +569,8 @@ private:
     std::chrono::duration<double, std::nano> search_time = search_end - search_start;
     search_summary.set_time(search_time);
     auto selected_move_index =
-        utility_functs::random((size_t)0, minimax_result.similar_moves.moves.size() - 1);
-    auto selected_move = minimax_result.similar_moves.moves[selected_move_index];
+        utility_functs::random((size_t)0, minimax_result.move_collection().moves.size() - 1);
+    auto selected_move = minimax_result.move_collection().moves[selected_move_index];
     search_summary.SetSelectedMove(selected_move);
     auto tr_table_size = hash_calculator_.GetTrTableSize();
     search_summary.set_tr_table_size_final(tr_table_size);
