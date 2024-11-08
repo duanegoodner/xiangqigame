@@ -35,13 +35,13 @@ protected:
     GameBoard game_board;
     moveselection::MinimaxMoveEvaluator<
         GameBoard,
-        boardstate::ZobristTracker<KeyType, NumConfKeys>,
+        boardstate::ZobristSummarizer<KeyType, NumConfKeys>,
         PiecePositionPoints>
         red_evaluator{PieceColor::kRed, red_search_depth, game_board};
 
     moveselection::MinimaxMoveEvaluator<
         GameBoard,
-        boardstate::ZobristTracker<KeyType, NumConfKeys>,
+        boardstate::ZobristSummarizer<KeyType, NumConfKeys>,
         PiecePositionPoints>
         black_evaluator{PieceColor::kBlk, black_search_depth, game_board};
 
@@ -80,7 +80,7 @@ protected:
 TEST_F(MinimaxWithZobristComponentTest, InitWithPlayerDefaultPiecePositionPoints) {
   moveselection::MinimaxMoveEvaluator<
       GameBoard,
-      boardstate::ZobristTracker<uint64_t, 1>,
+      boardstate::ZobristSummarizer<uint64_t, 1>,
       PiecePositionPoints>
       red_evaluator{PieceColor::kRed, standard_search_depth, starting_game_board};
 }
@@ -88,7 +88,7 @@ TEST_F(MinimaxWithZobristComponentTest, InitWithPlayerDefaultPiecePositionPoints
 TEST_F(MinimaxWithZobristComponentTest, InitWithImportedPiecePositionPoints) {
   moveselection::MinimaxMoveEvaluator<
       GameBoard,
-      boardstate::ZobristTracker<uint64_t, 1>,
+      boardstate::ZobristSummarizer<uint64_t, 1>,
       PiecePositionPoints>
       red_evaluator{
           PieceColor::kRed,
@@ -101,7 +101,7 @@ TEST_F(MinimaxWithZobristComponentTest, InitWithImportedPiecePositionPoints) {
 TEST_F(MinimaxWithZobristComponentTest, BoardStateHexStr) {
   moveselection::MinimaxMoveEvaluator<
       GameBoard,
-      boardstate::ZobristTracker<uint64_t, 1>,
+      boardstate::ZobristSummarizer<uint64_t, 1>,
       PiecePositionPoints>
       red_evaluator{PieceColor::kRed, standard_search_depth, starting_game_board};
 
@@ -111,7 +111,7 @@ TEST_F(MinimaxWithZobristComponentTest, BoardStateHexStr) {
 TEST_F(MinimaxWithZobristComponentTest, ReadZKeysSeed) {
     moveselection::MinimaxMoveEvaluator<
       GameBoard,
-      boardstate::ZobristTracker<uint64_t, 1>,
+      boardstate::ZobristSummarizer<uint64_t, 1>,
       PiecePositionPoints>
       red_evaluator{PieceColor::kRed, standard_search_depth, starting_game_board};
 
@@ -121,7 +121,7 @@ TEST_F(MinimaxWithZobristComponentTest, ReadZKeysSeed) {
 TEST_F(MinimaxWithZobristComponentTest, InitWithZKeysSeed) {
     moveselection::MinimaxMoveEvaluator<
       GameBoard,
-      boardstate::ZobristTracker<uint64_t, 1>,
+      boardstate::ZobristSummarizer<uint64_t, 1>,
       PiecePositionPoints>
       red_evaluator{PieceColor::kRed, standard_search_depth, starting_game_board, 1234};
 
@@ -131,7 +131,7 @@ TEST_F(MinimaxWithZobristComponentTest, InitWithZKeysSeed) {
 TEST_F(MinimaxWithZobristComponentTest, RedStartingMoveSelection) {
   moveselection::MinimaxMoveEvaluator<
       GameBoard,
-      boardstate::ZobristTracker<uint64_t, 1>,
+      boardstate::ZobristSummarizer<uint64_t, 1>,
       PiecePositionPoints>
       red_evaluator{PieceColor::kRed, standard_search_depth, starting_game_board};
 

@@ -23,7 +23,7 @@ template <typename KeyType, size_t NumConfKeys>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
   py::class_<moveselection::MinimaxMoveEvaluator<
       GameBoard,
-      ZobristTracker<KeyType, NumConfKeys>,
+      ZobristSummarizer<KeyType, NumConfKeys>,
       PiecePositionPoints>>(m, class_name.c_str())
       .def(
           py::init<PieceColor, int, GameBoard &>(),
@@ -42,7 +42,7 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           "select_move",
           &moveselection::MinimaxMoveEvaluator<
               GameBoard,
-              ZobristTracker<KeyType, NumConfKeys>,
+              ZobristSummarizer<KeyType, NumConfKeys>,
               PiecePositionPoints>::SelectMove,
           "allowed_moves"_a
       )
@@ -50,35 +50,35 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           "search_summaries",
           &moveselection::MinimaxMoveEvaluator<
               GameBoard,
-              ZobristTracker<KeyType, NumConfKeys>,
+              ZobristSummarizer<KeyType, NumConfKeys>,
               PiecePositionPoints>::search_summaries
       )
       .def(
           "starting_search_depth",
           &moveselection::MinimaxMoveEvaluator<
               GameBoard,
-              ZobristTracker<KeyType, NumConfKeys>,
+              ZobristSummarizer<KeyType, NumConfKeys>,
               PiecePositionPoints>::StartingSearchDepth
       )
       .def(
           "zobrist_key_size_bits",
           &moveselection::MinimaxMoveEvaluator<
               GameBoard,
-              ZobristTracker<KeyType, NumConfKeys>,
+              ZobristSummarizer<KeyType, NumConfKeys>,
               PiecePositionPoints>::KeySizeBits
       )
       .def_property_readonly(
           "zkeys_seed",
           &moveselection::MinimaxMoveEvaluator<
               GameBoard,
-              ZobristTracker<KeyType, NumConfKeys>,
+              ZobristSummarizer<KeyType, NumConfKeys>,
               PiecePositionPoints>::zkeys_seed
       )
       .def_property_readonly(
           "board_state_hex_str",
           &moveselection::MinimaxMoveEvaluator<
               GameBoard,
-              ZobristTracker<KeyType, NumConfKeys>,
+              ZobristSummarizer<KeyType, NumConfKeys>,
               PiecePositionPoints>::board_state_hex_str
       );
 }

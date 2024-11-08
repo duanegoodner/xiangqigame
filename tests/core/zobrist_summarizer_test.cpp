@@ -4,7 +4,7 @@
 #include <string>
 #include <zobrist.hpp>
 
-class ZobristTrackerTest : public ::testing::Test {
+class ZobristSummarizerTest : public ::testing::Test {
 protected:
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
 
@@ -13,29 +13,29 @@ protected:
   boardstate::ZobristComponent<__uint128_t, 1> zobrist_component_128_1{};
 };
 
-TEST_F(ZobristTrackerTest, DefaultInit) {
-  boardstate::ZobristTracker<uint32_t, 1> zobrist_tracker_032_1{};
-  boardstate::ZobristTracker<uint64_t, 1> zobrist_tracker_064_1{};
-  boardstate::ZobristTracker<__uint128_t, 1> zobrist_tracker_128_1{};
+TEST_F(ZobristSummarizerTest, DefaultInit) {
+  boardstate::ZobristSummarizer<uint32_t, 1> zobrist_tracker_032_1{};
+  boardstate::ZobristSummarizer<uint64_t, 1> zobrist_tracker_064_1{};
+  boardstate::ZobristSummarizer<__uint128_t, 1> zobrist_tracker_128_1{};
 }
 
-TEST_F(ZobristTrackerTest, InitWithExistingComponent) {
-  boardstate::ZobristTracker<uint64_t, 1> zobrist_tracker_064_1{zobrist_component_064_1};
-  boardstate::ZobristTracker<uint64_t, 0> zobrist_tracker_064_0{zobrist_tracker_064_0};
-  boardstate::ZobristTracker<__uint128_t, 1> zobrist_tracker_128_1{
+TEST_F(ZobristSummarizerTest, InitWithExistingComponent) {
+  boardstate::ZobristSummarizer<uint64_t, 1> zobrist_tracker_064_1{zobrist_component_064_1};
+  boardstate::ZobristSummarizer<uint64_t, 0> zobrist_tracker_064_0{zobrist_tracker_064_0};
+  boardstate::ZobristSummarizer<__uint128_t, 1> zobrist_tracker_128_1{
       zobrist_component_128_1
   };
 }
 
-TEST_F(ZobristTrackerTest, InitFromSeed) {
-  boardstate::ZobristTracker<uint64_t, 1> zobrist_tracker_064_1{20241031};
-  boardstate::ZobristTracker<uint64_t, 0> zobrist_component_064_0{20241030};
-  boardstate::ZobristTracker<__uint128_t, 1> zobrist_tracker_128_1{20241029};
+TEST_F(ZobristSummarizerTest, InitFromSeed) {
+  boardstate::ZobristSummarizer<uint64_t, 1> zobrist_tracker_064_1{20241031};
+  boardstate::ZobristSummarizer<uint64_t, 0> zobrist_component_064_0{20241030};
+  boardstate::ZobristSummarizer<__uint128_t, 1> zobrist_tracker_128_1{20241029};
 }
 
-TEST_F(ZobristTrackerTest, ExecuteAndUndoMove64) {
+TEST_F(ZobristSummarizerTest, ExecuteAndUndoMove64) {
 
-  boardstate::ZobristTracker<uint64_t, 1> zobrist_tracker_064_1{};
+  boardstate::ZobristSummarizer<uint64_t, 1> zobrist_tracker_064_1{};
 
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};
@@ -55,9 +55,9 @@ TEST_F(ZobristTrackerTest, ExecuteAndUndoMove64) {
   EXPECT_EQ(initial_state, final_state);
 }
 
-TEST_F(ZobristTrackerTest, RecordAndReadData) {
+TEST_F(ZobristSummarizerTest, RecordAndReadData) {
 
-  boardstate::ZobristTracker<uint64_t, 1> zobrist_tracker_064_1{};
+  boardstate::ZobristSummarizer<uint64_t, 1> zobrist_tracker_064_1{};
 
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};

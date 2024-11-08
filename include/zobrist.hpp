@@ -12,7 +12,7 @@
 
 namespace boardstate {
 
-//! Container for all of the hash keys needed to run a boardstate::SingleZobristTracker.
+//! Container for all of the hash keys needed to run a boardstate::SingleZobristSummarizer.
 template <typename KeyType>
 class ZobristCalculator {
 public:
@@ -274,25 +274,25 @@ private:
 };
 
 template <typename KeyType, size_t NumConfKeys>
-class ZobristTracker
-    : public BoardStateSummarizer<ZobristTracker<KeyType, NumConfKeys>, KeyType> {
+class ZobristSummarizer
+    : public BoardStateSummarizer<ZobristSummarizer<KeyType, NumConfKeys>, KeyType> {
 public:
-  explicit ZobristTracker(ZobristComponent<KeyType, NumConfKeys> zobrist_component)
+  explicit ZobristSummarizer(ZobristComponent<KeyType, NumConfKeys> zobrist_component)
       : zobrist_component_{std::move(zobrist_component)}
       , transposition_table_{} {}
 
-  explicit ZobristTracker(
+  explicit ZobristSummarizer(
       uint32_t primary_seed,
       std::array<uint32_t, NumConfKeys> confirmation_seeds
   )
-      : ZobristTracker(
+      : ZobristSummarizer(
             ZobristComponent<KeyType, NumConfKeys>{primary_seed, confirmation_seeds}
         ) {}
 
-  explicit ZobristTracker(uint32_t prng_seed)
-      : ZobristTracker(ZobristComponent<KeyType, NumConfKeys>{prng_seed}) {}
+  explicit ZobristSummarizer(uint32_t prng_seed)
+      : ZobristSummarizer(ZobristComponent<KeyType, NumConfKeys>{prng_seed}) {}
 
-  ZobristTracker()
+  ZobristSummarizer()
       : zobrist_component_{}
       , transposition_table_{} {}
 

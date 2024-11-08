@@ -66,7 +66,7 @@ struct MinimaxCalcResult {
 };
 
 //! Container for storing a moveselection::MinimaxCalcResult retrieved by a call to
-//! boardstate::SingleZobristTracker.ImplementGetTrData.
+//! boardstate::SingleZobristSummarizer.ImplementGetTrData.
 struct TranspositionTableSearchResult {
   MinimaxCalcResult table_entry;
   bool found;
