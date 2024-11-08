@@ -7,7 +7,6 @@ target_link_libraries(
     move_calculator
     minimax_evaluator
     piece_moves
-    hash_calculator
     utility_functs)
 
 target_include_directories(
