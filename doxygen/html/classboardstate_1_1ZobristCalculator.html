@@ -152,7 +152,7 @@ $(document).ready(function(){initNavTree('classboardstate_1_1ZobristCalculator.h
 </div><!--header-->
 <div class="contents">
 
-<p>Container for all of the hash keys needed to run a <a class="el" href="classboardstate_1_1SingleZobristTracker.html" title="Tracks board state using one boardstate::ZobristCalculator and a Implements BoardStateSummarizer inte...">boardstate::SingleZobristTracker</a>.  
+<p>Container for all of the hash keys needed to run a boardstate::SingleZobristSummarizer.  
  <a href="classboardstate_1_1ZobristCalculator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>&gt;</code></p>
@@ -161,7 +161,7 @@ Collaboration diagram for boardstate::ZobristCalculator&lt; KeyType &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classboardstate_1_1ZobristCalculator__coll__graph.png" border="0" usemap="#aboardstate_1_1ZobristCalculator_3_01KeyType_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aboardstate_1_1ZobristCalculator_3_01KeyType_01_4_coll__map" id="aboardstate_1_1ZobristCalculator_3_01KeyType_01_4_coll__map">
-<area shape="rect" title="Container for all of the hash keys needed to run a boardstate::SingleZobristTracker." alt="" coords="154,160,366,399"/>
+<area shape="rect" title="Container for all of the hash keys needed to run a boardstate::SingleZobristSummarizer." alt="" coords="154,160,366,384"/>
 <area shape="rect" title=" " alt="" coords="5,5,197,83"/>
 <area shape="rect" title=" " alt="" coords="222,5,298,83"/>
 <area shape="rect" title=" " alt="" coords="347,5,421,83"/>
@@ -170,11 +170,11 @@ Collaboration diagram for boardstate::ZobristCalculator&lt; KeyType &gt;:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a78dbebe5940c61f79abeab51f04b6b72"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; KeyType, kNumFiles &gt;, kNumRanks &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#a78dbebe5940c61f79abeab51f04b6b72">PieceZarray_t</a></td></tr>
-<tr class="separator:a78dbebe5940c61f79abeab51f04b6b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae650f6eb023a3f1fcdca8c37130f7144"><td class="memItemLeft" align="right" valign="top">typedef array&lt; <a class="el" href="classboardstate_1_1ZobristCalculator.html#a78dbebe5940c61f79abeab51f04b6b72">PieceZarray_t</a>, kNumPieceTypeVals &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#ae650f6eb023a3f1fcdca8c37130f7144">TeamZarray_t</a></td></tr>
-<tr class="separator:ae650f6eb023a3f1fcdca8c37130f7144"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada06743fb8cb759ab30b6ffa45b98505"><td class="memItemLeft" align="right" valign="top">typedef array&lt; <a class="el" href="classboardstate_1_1ZobristCalculator.html#ae650f6eb023a3f1fcdca8c37130f7144">TeamZarray_t</a>, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#ada06743fb8cb759ab30b6ffa45b98505">GameZarray_t</a></td></tr>
+<tr class="memitem:a3cdbcb01a52c73de7b13ec0911c5f3f1"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; KeyType, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">gameboard::kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">gameboard::kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#a3cdbcb01a52c73de7b13ec0911c5f3f1">PieceZarray_t</a></td></tr>
+<tr class="separator:a3cdbcb01a52c73de7b13ec0911c5f3f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49e85fc7878355d6109ce5bafedf8683"><td class="memItemLeft" align="right" valign="top">typedef array&lt; <a class="el" href="classboardstate_1_1ZobristCalculator.html#a3cdbcb01a52c73de7b13ec0911c5f3f1">PieceZarray_t</a>, <a class="el" href="namespacegameboard.html#aeb2a36261e130fe53dbde981e8b74ff6">gameboard::kNumPieceTypeVals</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#a49e85fc7878355d6109ce5bafedf8683">TeamZarray_t</a></td></tr>
+<tr class="separator:a49e85fc7878355d6109ce5bafedf8683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada06743fb8cb759ab30b6ffa45b98505"><td class="memItemLeft" align="right" valign="top">typedef array&lt; <a class="el" href="classboardstate_1_1ZobristCalculator.html#a49e85fc7878355d6109ce5bafedf8683">TeamZarray_t</a>, 2 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#ada06743fb8cb759ab30b6ffa45b98505">GameZarray_t</a></td></tr>
 <tr class="separator:ada06743fb8cb759ab30b6ffa45b98505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -183,15 +183,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a356ae75632f1a2b4ddc0e4316784684d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69fb42e9aa69986be5fbde88258bb45e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#a69fb42e9aa69986be5fbde88258bb45e">ZobristCalculator</a> ()</td></tr>
 <tr class="separator:a69fb42e9aa69986be5fbde88258bb45e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a268b62ad547698dabf69f2ca8231b4ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#a268b62ad547698dabf69f2ca8231b4ea">FullBoardStateCalc</a> (const BoardMap_t &amp;board_map)</td></tr>
-<tr class="separator:a268b62ad547698dabf69f2ca8231b4ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af66e2030615cd43d39682dbf63c6940a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#af66e2030615cd43d39682dbf63c6940a">UpdateBoardState</a> (const ExecutedMove &amp;executed_move)</td></tr>
-<tr class="separator:af66e2030615cd43d39682dbf63c6940a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd7d26dbda090b9330daf603d1989b22"><td class="memItemLeft" align="right" valign="top">KeyType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#abd7d26dbda090b9330daf603d1989b22">GetHashValueAt</a> (PieceColor color, PieceType piece_type, BoardSpace space)</td></tr>
+<tr class="memitem:a530aa483c496214d98b4fa8ca996164b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#a530aa483c496214d98b4fa8ca996164b">FullBoardStateCalc</a> (const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a> &amp;board_map)</td></tr>
+<tr class="separator:a530aa483c496214d98b4fa8ca996164b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aa6c756b69fd482bdd88d4e8a3ff9aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#a4aa6c756b69fd482bdd88d4e8a3ff9aa">UpdateBoardState</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">gameboard::ExecutedMove</a> &amp;executed_move)</td></tr>
+<tr class="separator:a4aa6c756b69fd482bdd88d4e8a3ff9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd7d26dbda090b9330daf603d1989b22"><td class="memItemLeft" align="right" valign="top">KeyType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#abd7d26dbda090b9330daf603d1989b22">GetHashValueAt</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color, <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a> piece_type, <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> space)</td></tr>
 <tr class="separator:abd7d26dbda090b9330daf603d1989b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0f09b65b463b2af7f1620ffaf06590b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; KeyType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#aa0f09b65b463b2af7f1620ffaf06590b">KeysVector</a> () const</td></tr>
-<tr class="memdesc:aa0f09b65b463b2af7f1620ffaf06590b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Collects all keys into a std::vector (typically used for entropy calc).  <br /></td></tr>
-<tr class="separator:aa0f09b65b463b2af7f1620ffaf06590b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab246ddd4acd43b5319dd076bbea9d30e"><td class="memItemLeft" align="right" valign="top">KeyType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#ab246ddd4acd43b5319dd076bbea9d30e">board_state</a> () const</td></tr>
 <tr class="separator:ab246ddd4acd43b5319dd076bbea9d30e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd538f94a45c7339161d8efe602115e3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classboardstate_1_1ZobristCalculator.html#ada06743fb8cb759ab30b6ffa45b98505">GameZarray_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html#abd538f94a45c7339161d8efe602115e3">zarray</a> () const</td></tr>
@@ -219,9 +216,9 @@ Private Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename KeyType&gt;<br />
-class boardstate::ZobristCalculator&lt; KeyType &gt;</div><p>Container for all of the hash keys needed to run a <a class="el" href="classboardstate_1_1SingleZobristTracker.html" title="Tracks board state using one boardstate::ZobristCalculator and a Implements BoardStateSummarizer inte...">boardstate::SingleZobristTracker</a>. </p>
+class boardstate::ZobristCalculator&lt; KeyType &gt;</div><p>Container for all of the hash keys needed to run a boardstate::SingleZobristSummarizer. </p>
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00012">12</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00017">17</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="ada06743fb8cb759ab30b6ffa45b98505" name="ada06743fb8cb759ab30b6ffa45b98505"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ada06743fb8cb759ab30b6ffa45b98505">&#9670;&#160;</a></span>GameZarray_t</h2>
@@ -232,17 +229,17 @@ class boardstate::ZobristCalculator&lt; KeyType &gt;</div><p>Container for all o
 template&lt;typename KeyType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef array&lt;<a class="el" href="classboardstate_1_1ZobristCalculator.html#ae650f6eb023a3f1fcdca8c37130f7144">TeamZarray_t</a>, 2&gt; <a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator</a>&lt; KeyType &gt;::GameZarray_t</td>
+          <td class="memname">typedef array&lt;<a class="el" href="classboardstate_1_1ZobristCalculator.html#a49e85fc7878355d6109ce5bafedf8683">TeamZarray_t</a>, 2&gt; <a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator</a>&lt; KeyType &gt;::GameZarray_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00016">16</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00022">22</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a78dbebe5940c61f79abeab51f04b6b72" name="a78dbebe5940c61f79abeab51f04b6b72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78dbebe5940c61f79abeab51f04b6b72">&#9670;&#160;</a></span>PieceZarray_t</h2>
+<a id="a3cdbcb01a52c73de7b13ec0911c5f3f1" name="a3cdbcb01a52c73de7b13ec0911c5f3f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cdbcb01a52c73de7b13ec0911c5f3f1">&#9670;&#160;</a></span>PieceZarray_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -250,17 +247,17 @@ template&lt;typename KeyType &gt; </div>
 template&lt;typename KeyType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef array&lt;array&lt;KeyType, kNumFiles&gt;, kNumRanks&gt; <a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator</a>&lt; KeyType &gt;::PieceZarray_t</td>
+          <td class="memname">typedef array&lt;array&lt;KeyType, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">gameboard::kNumFiles</a>&gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">gameboard::kNumRanks</a>&gt; <a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator</a>&lt; KeyType &gt;::PieceZarray_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00014">14</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00020">20</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ae650f6eb023a3f1fcdca8c37130f7144" name="ae650f6eb023a3f1fcdca8c37130f7144"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae650f6eb023a3f1fcdca8c37130f7144">&#9670;&#160;</a></span>TeamZarray_t</h2>
+<a id="a49e85fc7878355d6109ce5bafedf8683" name="a49e85fc7878355d6109ce5bafedf8683"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49e85fc7878355d6109ce5bafedf8683">&#9670;&#160;</a></span>TeamZarray_t</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -268,12 +265,12 @@ template&lt;typename KeyType &gt; </div>
 template&lt;typename KeyType &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">typedef array&lt;<a class="el" href="classboardstate_1_1ZobristCalculator.html#a78dbebe5940c61f79abeab51f04b6b72">PieceZarray_t</a>, kNumPieceTypeVals&gt; <a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator</a>&lt; KeyType &gt;::TeamZarray_t</td>
+          <td class="memname">typedef array&lt;<a class="el" href="classboardstate_1_1ZobristCalculator.html#a3cdbcb01a52c73de7b13ec0911c5f3f1">PieceZarray_t</a>, <a class="el" href="namespacegameboard.html#aeb2a36261e130fe53dbde981e8b74ff6">gameboard::kNumPieceTypeVals</a>&gt; <a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator</a>&lt; KeyType &gt;::TeamZarray_t</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00015">15</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00021">21</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -304,7 +301,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00018">18</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00024">24</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -333,7 +330,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00028">28</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00034">34</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -363,7 +360,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00095">95</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00083">83</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -393,12 +390,12 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00106">106</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00094">94</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a268b62ad547698dabf69f2ca8231b4ea" name="a268b62ad547698dabf69f2ca8231b4ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a268b62ad547698dabf69f2ca8231b4ea">&#9670;&#160;</a></span>FullBoardStateCalc()</h2>
+<a id="a530aa483c496214d98b4fa8ca996164b" name="a530aa483c496214d98b4fa8ca996164b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a530aa483c496214d98b4fa8ca996164b">&#9670;&#160;</a></span>FullBoardStateCalc()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -411,7 +408,7 @@ template&lt;typename KeyType &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator</a>&lt; KeyType &gt;::FullBoardStateCalc </td>
           <td>(</td>
-          <td class="paramtype">const BoardMap_t &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a> &amp;&#160;</td>
           <td class="paramname"><em>board_map</em></td><td>)</td>
           <td></td>
         </tr>
@@ -423,7 +420,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00031">31</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00037">37</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -441,19 +438,19 @@ template&lt;typename KeyType &gt; </div>
         <tr>
           <td class="memname">KeyType <a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator</a>&lt; KeyType &gt;::GetHashValueAt </td>
           <td>(</td>
-          <td class="paramtype">PieceColor&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>color</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">PieceType&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a>&#160;</td>
           <td class="paramname"><em>piece_type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">BoardSpace&#160;</td>
+          <td class="paramtype"><a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a>&#160;</td>
           <td class="paramname"><em>space</em>&#160;</td>
         </tr>
         <tr>
@@ -469,38 +466,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00073">73</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
-
-</div>
-</div>
-<a id="aa0f09b65b463b2af7f1620ffaf06590b" name="aa0f09b65b463b2af7f1620ffaf06590b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0f09b65b463b2af7f1620ffaf06590b">&#9670;&#160;</a></span>KeysVector()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename KeyType &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; KeyType &gt; <a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator</a>&lt; KeyType &gt;::KeysVector </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Collects all keys into a std::vector (typically used for entropy calc). </p>
-
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00078">78</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00079">79</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -529,7 +495,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00098">98</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00086">86</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -558,12 +524,12 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00097">97</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00085">85</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
-<a id="af66e2030615cd43d39682dbf63c6940a" name="af66e2030615cd43d39682dbf63c6940a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af66e2030615cd43d39682dbf63c6940a">&#9670;&#160;</a></span>UpdateBoardState()</h2>
+<a id="a4aa6c756b69fd482bdd88d4e8a3ff9aa" name="a4aa6c756b69fd482bdd88d4e8a3ff9aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4aa6c756b69fd482bdd88d4e8a3ff9aa">&#9670;&#160;</a></span>UpdateBoardState()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -576,7 +542,7 @@ template&lt;typename KeyType &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator</a>&lt; KeyType &gt;::UpdateBoardState </td>
           <td>(</td>
-          <td class="paramtype">const ExecutedMove &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgameboard_1_1ExecutedMove.html">gameboard::ExecutedMove</a> &amp;&#160;</td>
           <td class="paramname"><em>executed_move</em></td><td>)</td>
           <td></td>
         </tr>
@@ -588,7 +554,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00046">46</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00052">52</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -617,7 +583,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00096">96</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00084">84</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -644,7 +610,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00104">104</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00092">92</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -670,7 +636,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00103">103</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00091">91</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -696,7 +662,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00102">102</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00090">90</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -722,7 +688,7 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00101">101</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00089">89</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -735,7 +701,7 @@ template&lt;typename KeyType &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceboardstate.html">boardstate</a></li><li class="navelem"><a class="el" href="classboardstate_1_1ZobristCalculator.html">ZobristCalculator</a></li>
-    <li class="footer">Generated on Wed Nov 6 2024 17:33:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Nov 8 2024 03:06:29 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -1,7 +1,7 @@
 var namespacemoveselection =
 [
     [ "CollisionInfo", "structmoveselection_1_1CollisionInfo.html", "structmoveselection_1_1CollisionInfo" ],
-    [ "EqualScoreMoves", "structmoveselection_1_1EqualScoreMoves.html", "structmoveselection_1_1EqualScoreMoves" ],
+    [ "EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
     [ "MinimaxCalcResult", "structmoveselection_1_1MinimaxCalcResult.html", "structmoveselection_1_1MinimaxCalcResult" ],
     [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
     [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],

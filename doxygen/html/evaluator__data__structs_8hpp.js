@@ -1,6 +1,6 @@
 var evaluator__data__structs_8hpp =
 [
-    [ "moveselection::EqualScoreMoves", "structmoveselection_1_1EqualScoreMoves.html", "structmoveselection_1_1EqualScoreMoves" ],
+    [ "moveselection::EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
     [ "moveselection::ScoredMove", "structmoveselection_1_1ScoredMove.html", "structmoveselection_1_1ScoredMove" ],
     [ "moveselection::MinimaxCalcResult", "structmoveselection_1_1MinimaxCalcResult.html", "structmoveselection_1_1MinimaxCalcResult" ],
     [ "moveselection::TranspositionTableSearchResult", "structmoveselection_1_1TranspositionTableSearchResult.html", "structmoveselection_1_1TranspositionTableSearchResult" ],

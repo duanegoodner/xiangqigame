@@ -193,16 +193,15 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="evaluator__data__structs_8hpp__dep__incl.png" border="0" usemap="#ainclude_2evaluator__data__structs_8hppdep" alt=""/></div>
 <map name="ainclude_2evaluator__data__structs_8hppdep" id="ainclude_2evaluator__data__structs_8hppdep">
-<area shape="rect" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="455,5,625,45"/>
-<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="372,93,572,133"/>
-<area shape="rect" href="move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="433,181,647,207"/>
-<area shape="rect" href="game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="207,262,390,287"/>
-<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="269,445,456,471"/>
-<area shape="rect" href="piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="518,255,685,295"/>
-<area shape="rect" href="move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="709,255,899,295"/>
-<area shape="rect" href="hash__calculator_8hpp.html" title="Class templates for boardstate::SingleZobristTracker and its supporting class boardstate::ZobristCalc..." alt="" coords="5,357,208,383"/>
-<area shape="rect" href="game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="283,350,442,390"/>
-<area shape="rect" href="piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="568,343,739,397"/>
+<area shape="rect" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="257,5,427,45"/>
+<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="174,93,374,133"/>
+<area shape="rect" href="move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="235,181,449,207"/>
+<area shape="rect" href="game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="61,262,244,287"/>
+<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="189,357,375,383"/>
+<area shape="rect" href="piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="320,255,487,295"/>
+<area shape="rect" href="move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="511,255,701,295"/>
+<area shape="rect" href="game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="5,350,164,390"/>
+<area shape="rect" href="piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="399,343,570,397"/>
 </map>
 </div>
 </div>
@@ -210,17 +209,17 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1EqualScoreMoves.html">moveselection::EqualScoreMoves</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds a <a class="el" href="structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects.">gameboard::MoveCollection</a> in which all <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a> have the same value (as perceived by a <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a>), and the value of the shared score.  <a href="structmoveselection_1_1EqualScoreMoves.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">moveselection::EqualScoreMoves</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds a <a class="el" href="structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects.">gameboard::MoveCollection</a> in which all <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a> have the same value (as perceived by a <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a>), and the value of the shared score.  <a href="classmoveselection_1_1EqualScoreMoves.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1ScoredMove.html">moveselection::ScoredMove</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a>, and an associated score calculated by a <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a>.  <a href="structmoveselection_1_1ScoredMove.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data structure that holds a <a class="el" href="structmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a...">moveselection::EqualScoreMoves</a> and other search-related info obtained from a call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad084c0263a813449171c681b59ab9a96">moveselection::MinimaxMoveEvaluator.MinimaxRec</a>.  <a href="structmoveselection_1_1MinimaxCalcResult.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data structure that holds a <a class="el" href="classmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a...">moveselection::EqualScoreMoves</a> and other search-related info obtained from a call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad084c0263a813449171c681b59ab9a96">moveselection::MinimaxMoveEvaluator.MinimaxRec</a>.  <a href="structmoveselection_1_1MinimaxCalcResult.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html">moveselection::TranspositionTableSearchResult</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for storing a <a class="el" href="structmoveselection_1_1MinimaxCalcResult.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search-related info obtained fro...">moveselection::MinimaxCalcResult</a> retrieved by a call to <a class="el" href="classboardstate_1_1SingleZobristTracker.html#a1e2a0cbbf513968fbc250b0044acdc0c">boardstate::SingleZobristTracker.ImplementGetTrData</a>.  <a href="structmoveselection_1_1TranspositionTableSearchResult.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for storing a <a class="el" href="structmoveselection_1_1MinimaxCalcResult.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search-related info obtained fro...">moveselection::MinimaxCalcResult</a> retrieved by a call to boardstate::SingleZobristSummarizer.ImplementGetTrData.  <a href="structmoveselection_1_1TranspositionTableSearchResult.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1TranspositionTableSize.html">moveselection::TranspositionTableSize</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -282,7 +281,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="evaluator__data__structs_8hpp.html">evaluator_data_structs.hpp</a></li>
-    <li class="footer">Generated on Wed Nov 6 2024 17:33:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Nov 8 2024 03:06:29 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

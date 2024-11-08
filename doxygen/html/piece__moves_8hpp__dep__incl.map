@@ -1,11 +1,10 @@
 <map id="include/piece_moves.hpp" name="include/piece_moves.hpp">
-<area shape="rect" id="node1" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="320,5,507,31"/>
-<area shape="rect" id="node2" href="$move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="245,167,453,192"/>
-<area shape="rect" id="node8" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="323,79,504,119"/>
-<area shape="rect" id="node9" href="$piece__moves_8cpp.html" title="Implements all methods and some supporting constants for PieceMoves class." alt="" coords="528,79,691,119"/>
-<area shape="rect" id="node3" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="154,247,337,273"/>
-<area shape="rect" id="node7" href="$move__calculator_8cpp.html" title="Acts as linkage point for move_calculator.hpp (where full implementation is located)" alt="" coords="361,240,546,280"/>
-<area shape="rect" id="node4" href="$hash__calculator_8hpp.html" title="Class templates for boardstate::SingleZobristTracker and its supporting class boardstate::ZobristCalc..." alt="" coords="5,335,208,361"/>
-<area shape="rect" id="node5" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="83,416,269,441"/>
-<area shape="rect" id="node6" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="283,328,442,368"/>
+<area shape="rect" id="node1" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="272,5,459,31"/>
+<area shape="rect" id="node2" href="$move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="197,167,405,192"/>
+<area shape="rect" id="node7" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="275,79,456,119"/>
+<area shape="rect" id="node8" href="$piece__moves_8cpp.html" title="Implements all methods and some supporting constants for PieceMoves class." alt="" coords="480,79,643,119"/>
+<area shape="rect" id="node3" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="106,247,289,273"/>
+<area shape="rect" id="node6" href="$move__calculator_8cpp.html" title="Acts as linkage point for move_calculator.hpp (where full implementation is located)" alt="" coords="313,240,498,280"/>
+<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="5,335,192,361"/>
+<area shape="rect" id="node5" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="217,328,375,368"/>
 </map>

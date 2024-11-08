@@ -16,6 +16,7 @@ var searchData=
   ['points_5fspec_5fschema_5fpath_13',['points_spec_schema_path',['../my__schemas_8cpp.html#afbf8859c1660d75d9187fb928a86cb2b',1,'my_schemas.cpp']]],
   ['pointst_14',['PointsT',['../classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer.html#ac93b212492ef7504473a075cfddfd060',1,'xiangqipy::core_dataclass_mirrors::PointsTypeDeterminer']]],
   ['position_5fpoints_5ficga_5f2004_15',['position_points_icga_2004',['../namespacexiangqipy_1_1piece__points.html#ae65df668000f4303dcec8f0819a9c6ab',1,'xiangqipy::piece_points']]],
-  ['primary_5fcalculator_5f_16',['primary_calculator_',['../classboardstate_1_1DualZobristTracker.html#af9dc3d638bdb0261e87e421c5fd3a134',1,'boardstate::DualZobristTracker']]],
-  ['prng_5f_17',['prng_',['../classboardstate_1_1PseudoRandomKeyGenerator.html#ae30a2b91d59161a046c03f09ef30f75c',1,'boardstate::PseudoRandomKeyGenerator']]]
+  ['primary_5fcalculator_5f_16',['primary_calculator_',['../classboardstate_1_1ZobristComponent.html#af69fc3f967d6e844cc36ffac5e2bca87',1,'boardstate::ZobristComponent']]],
+  ['prng_5f_17',['prng_',['../classboardstate_1_1PseudoRandomKeyGenerator.html#ae30a2b91d59161a046c03f09ef30f75c',1,'boardstate::PseudoRandomKeyGenerator']]],
+  ['prng_5fseed_5f_18',['prng_seed_',['../classboardstate_1_1ZobristComponent.html#a317cb43b562c0f83aa59cde84f48df3f',1,'boardstate::ZobristComponent']]]
 ];

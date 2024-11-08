@@ -1,18 +1,13 @@
 var annotated_dup =
 [
     [ "boardstate", "namespaceboardstate.html", [
-      [ "DualKeyMinimaxCalcResult", "structboardstate_1_1DualKeyMinimaxCalcResult.html", "structboardstate_1_1DualKeyMinimaxCalcResult" ],
-      [ "DualKeyTranspositionTable", "classboardstate_1_1DualKeyTranspositionTable.html", "classboardstate_1_1DualKeyTranspositionTable" ],
-      [ "DualZobristTracker", "classboardstate_1_1DualZobristTracker.html", "classboardstate_1_1DualZobristTracker" ],
       [ "PseudoRandomKeyGenerator", "classboardstate_1_1PseudoRandomKeyGenerator.html", "classboardstate_1_1PseudoRandomKeyGenerator" ],
       [ "RandomKeyGenerator", "classboardstate_1_1RandomKeyGenerator.html", "classboardstate_1_1RandomKeyGenerator" ],
-      [ "SingleKeyTranspositionTable", "classboardstate_1_1SingleKeyTranspositionTable.html", "classboardstate_1_1SingleKeyTranspositionTable" ],
-      [ "SingleZobristTracker", "classboardstate_1_1SingleZobristTracker.html", "classboardstate_1_1SingleZobristTracker" ],
-      [ "TranspositionTable", "structboardstate_1_1TranspositionTable.html", "structboardstate_1_1TranspositionTable" ],
       [ "TranspositionTableEntry", "classboardstate_1_1TranspositionTableEntry.html", "classboardstate_1_1TranspositionTableEntry" ],
+      [ "TranspositionTableNew", "classboardstate_1_1TranspositionTableNew.html", "classboardstate_1_1TranspositionTableNew" ],
       [ "ZobristCalculator", "classboardstate_1_1ZobristCalculator.html", "classboardstate_1_1ZobristCalculator" ],
       [ "ZobristComponent", "classboardstate_1_1ZobristComponent.html", "classboardstate_1_1ZobristComponent" ],
-      [ "ZobristTracker", "classboardstate_1_1ZobristTracker.html", "classboardstate_1_1ZobristTracker" ]
+      [ "ZobristSummarizer", "classboardstate_1_1ZobristSummarizer.html", "classboardstate_1_1ZobristSummarizer" ]
     ] ],
     [ "gameboard", "namespacegameboard.html", [
       [ "BoardDirection", "structgameboard_1_1BoardDirection.html", "structgameboard_1_1BoardDirection" ],
@@ -31,7 +26,7 @@ var annotated_dup =
     ] ],
     [ "moveselection", "namespacemoveselection.html", [
       [ "CollisionInfo", "structmoveselection_1_1CollisionInfo.html", "structmoveselection_1_1CollisionInfo" ],
-      [ "EqualScoreMoves", "structmoveselection_1_1EqualScoreMoves.html", "structmoveselection_1_1EqualScoreMoves" ],
+      [ "EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
       [ "MinimaxCalcResult", "structmoveselection_1_1MinimaxCalcResult.html", "structmoveselection_1_1MinimaxCalcResult" ],
       [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
       [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],

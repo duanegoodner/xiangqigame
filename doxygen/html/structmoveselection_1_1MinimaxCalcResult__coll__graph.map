@@ -1,7 +1,7 @@
 <map id="moveselection::MinimaxCalcResult" name="moveselection::MinimaxCalcResult">
 <area shape="rect" id="node1" title="Data structure that holds a moveselection::EqualScoreMoves and other search&#45;related info obtained fro..." alt="" coords="206,601,416,737"/>
 <area shape="rect" id="node2" title=" " alt="" coords="69,233,108,311"/>
-<area shape="rect" id="node4" href="$structmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="212,447,410,539"/>
+<area shape="rect" id="node4" href="$classmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="212,447,410,539"/>
 <area shape="rect" id="node3" title=" " alt="" coords="434,454,585,531"/>
 <area shape="rect" id="node5" href="$structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects." alt="" coords="208,160,414,384"/>
 <area shape="rect" id="node6" title=" " alt="" coords="231,5,391,97"/>

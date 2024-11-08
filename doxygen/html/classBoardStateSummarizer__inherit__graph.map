@@ -1,9 +1,5 @@
 <map id="BoardStateSummarizer&lt; ConcreteBoardStateSummarizer, KeyType &gt;" name="BoardStateSummarizer&lt; ConcreteBoardStateSummarizer, KeyType &gt;">
-<area shape="rect" id="node1" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="266,5,517,185"/>
-<area shape="rect" id="node2" href="$classBoardStateSummarizer.html" title=" " alt="" coords="64,263,247,443"/>
-<area shape="rect" id="node4" href="$classBoardStateSummarizer.html" title=" " alt="" coords="300,263,483,443"/>
-<area shape="rect" id="node6" href="$classBoardStateSummarizer.html" title=" " alt="" coords="539,263,737,443"/>
-<area shape="rect" id="node3" href="$classboardstate_1_1DualZobristTracker.html" title=" " alt="" coords="5,492,247,848"/>
-<area shape="rect" id="node5" href="$classboardstate_1_1SingleZobristTracker.html" title="Tracks board state using one boardstate::ZobristCalculator and a Implements BoardStateSummarizer inte..." alt="" coords="271,536,512,804"/>
-<area shape="rect" id="node7" href="$classboardstate_1_1ZobristTracker.html" title=" " alt="" coords="536,536,777,804"/>
+<area shape="rect" id="node1" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="5,5,256,185"/>
+<area shape="rect" id="node2" href="$classBoardStateSummarizer.html" title=" " alt="" coords="41,277,221,472"/>
+<area shape="rect" id="node3" href="$classboardstate_1_1ZobristSummarizer.html" title=" " alt="" coords="10,521,251,789"/>
 </map>

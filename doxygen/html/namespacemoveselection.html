@@ -155,11 +155,11 @@ $(document).ready(function(){initNavTree('namespacemoveselection.html',''); init
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1CollisionInfo.html">CollisionInfo</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds a <a class="el" href="structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects.">gameboard::MoveCollection</a> in which all <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a> have the same value (as perceived by a <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a>), and the value of the shared score.  <a href="structmoveselection_1_1EqualScoreMoves.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds a <a class="el" href="structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects.">gameboard::MoveCollection</a> in which all <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a> have the same value (as perceived by a <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a>), and the value of the shared score.  <a href="classmoveselection_1_1EqualScoreMoves.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">MinimaxCalcResult</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data structure that holds a <a class="el" href="structmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a...">moveselection::EqualScoreMoves</a> and other search-related info obtained from a call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad084c0263a813449171c681b59ab9a96">moveselection::MinimaxMoveEvaluator.MinimaxRec</a>.  <a href="structmoveselection_1_1MinimaxCalcResult.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data structure that holds a <a class="el" href="classmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a...">moveselection::EqualScoreMoves</a> and other search-related info obtained from a call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad084c0263a813449171c681b59ab9a96">moveselection::MinimaxMoveEvaluator.MinimaxRec</a>.  <a href="structmoveselection_1_1MinimaxCalcResult.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">MinimaxMoveEvaluator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a> interface, and selects move::Move using Minimax algorithm; uses <a class="el" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,...">SpaceInfoProvider</a>, <a class="el" href="classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateSummarizer</a>, and <a class="el" href="classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific...">PieceValueProvider</a> interfaces.  <a href="classmoveselection_1_1MinimaxMoveEvaluator.html#details">More...</a><br /></td></tr>
@@ -180,7 +180,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores data collected during a single call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a915db2cf8efbcf62b40c8b329bcc666f">moveselection::MinimaxMoveEvaluator.ImplementSelectMove</a>.  <a href="classmoveselection_1_1SearchSummary.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html">TranspositionTableSearchResult</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for storing a <a class="el" href="structmoveselection_1_1MinimaxCalcResult.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search-related info obtained fro...">moveselection::MinimaxCalcResult</a> retrieved by a call to <a class="el" href="classboardstate_1_1SingleZobristTracker.html#a1e2a0cbbf513968fbc250b0044acdc0c">boardstate::SingleZobristTracker.ImplementGetTrData</a>.  <a href="structmoveselection_1_1TranspositionTableSearchResult.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for storing a <a class="el" href="structmoveselection_1_1MinimaxCalcResult.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search-related info obtained fro...">moveselection::MinimaxCalcResult</a> retrieved by a call to boardstate::SingleZobristSummarizer.ImplementGetTrData.  <a href="structmoveselection_1_1TranspositionTableSearchResult.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1TranspositionTableSize.html">TranspositionTableSize</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -232,7 +232,7 @@ Variables</h2></td></tr>
 <p>Array of vectors for storing counts of <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">moveselection::MinimaxResultType</a> for each posible remaining search depth. </p>
 <p>Outer (array) index -&gt; moveslection::MinimaxResultType; inner (vector) index -&gt; remaining search depth when result was obtained. </p>
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00103">103</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00104">104</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -262,7 +262,7 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="acdb529ae14e6752318706ace995061edaf54182497e4f5d7092bee94582bf3f79" name="acdb529ae14e6752318706ace995061edaf54182497e4f5d7092bee94582bf3f79"></a>kMax&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00032">32</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00033">33</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -279,7 +279,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00045">45</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00046">46</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -289,7 +289,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li>
-    <li class="footer">Generated on Wed Nov 6 2024 17:33:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Nov 8 2024 03:06:29 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

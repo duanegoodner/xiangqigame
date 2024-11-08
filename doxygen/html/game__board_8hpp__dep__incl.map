@@ -1,6 +1,5 @@
 <map id="include/game_board.hpp" name="include/game_board.hpp">
-<area shape="rect" id="node1" title="Definition of gameboard::GameBoard class." alt="" coords="154,5,337,31"/>
-<area shape="rect" id="node2" href="$hash__calculator_8hpp.html" title="Class templates for boardstate::SingleZobristTracker and its supporting class boardstate::ZobristCalc..." alt="" coords="5,86,208,111"/>
-<area shape="rect" id="node3" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="83,167,269,192"/>
-<area shape="rect" id="node4" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="283,79,442,119"/>
+<area shape="rect" id="node1" title="Definition of gameboard::GameBoard class." alt="" coords="106,5,289,31"/>
+<area shape="rect" id="node2" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="5,86,192,111"/>
+<area shape="rect" id="node3" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="217,79,375,119"/>
 </map>

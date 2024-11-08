@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: boardstate::TranspositionTableEntry&lt; KeyType &gt; Class Template Reference</title>
+  <title>Xiangiqgame: boardstate::TranspositionTableEntry&lt; KeyType, NumConfKeys &gt; Class Template Reference</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -146,75 +146,71 @@ $(document).ready(function(){initNavTree('classboardstate_1_1TranspositionTableE
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classboardstate_1_1TranspositionTableEntry-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">boardstate::TranspositionTableEntry&lt; KeyType &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">boardstate::TranspositionTableEntry&lt; KeyType, NumConfKeys &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Collaboration diagram for boardstate::TranspositionTableEntry&lt; KeyType &gt;:</div>
+Collaboration diagram for boardstate::TranspositionTableEntry&lt; KeyType, NumConfKeys &gt;:</div>
 <div class="dyncontent">
-<div class="center"><img src="classboardstate_1_1TranspositionTableEntry__coll__graph.png" border="0" usemap="#aboardstate_1_1TranspositionTableEntry_3_01KeyType_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="aboardstate_1_1TranspositionTableEntry_3_01KeyType_01_4_coll__map" id="aboardstate_1_1TranspositionTableEntry_3_01KeyType_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="282,800,545,965"/>
+<div class="center"><img src="classboardstate_1_1TranspositionTableEntry__coll__graph.png" border="0" usemap="#aboardstate_1_1TranspositionTableEntry_3_01KeyType_00_01NumConfKeys_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="aboardstate_1_1TranspositionTableEntry_3_01KeyType_00_01NumConfKeys_01_4_coll__map" id="aboardstate_1_1TranspositionTableEntry_3_01KeyType_00_01NumConfKeys_01_4_coll__map">
+<area shape="rect" title=" " alt="" coords="299,800,573,936"/>
 <area shape="rect" href="structmoveselection_1_1MinimaxCalcResult.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search&#45;related info obtained fro..." alt="" coords="207,601,417,737"/>
 <area shape="rect" title=" " alt="" coords="70,233,109,311"/>
-<area shape="rect" href="structmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="213,447,411,539"/>
+<area shape="rect" href="classmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="213,447,411,539"/>
 <area shape="rect" title=" " alt="" coords="435,454,586,531"/>
 <area shape="rect" href="structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects." alt="" coords="209,160,415,384"/>
 <area shape="rect" title=" " alt="" coords="232,5,392,97"/>
-<area shape="rect" title=" " alt="" coords="441,631,588,708"/>
+<area shape="rect" title=" " alt="" coords="441,631,681,708"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0b769a9966b8a2bb891486ed64c6d9cd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a0b769a9966b8a2bb891486ed64c6d9cd">TranspositionTableEntry</a> (<a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">MinimaxCalcResult</a> <a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a4308916966ccfe4b26b4c042e07f0d1a">calc_result</a>, std::vector&lt; KeyType &gt; <a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a76c2a871fe317a958fa4536a21625f9e">confirmation_keys</a>)</td></tr>
-<tr class="separator:a0b769a9966b8a2bb891486ed64c6d9cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4308916966ccfe4b26b4c042e07f0d1a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a4308916966ccfe4b26b4c042e07f0d1a">calc_result</a> ()</td></tr>
-<tr class="separator:a4308916966ccfe4b26b4c042e07f0d1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76c2a871fe317a958fa4536a21625f9e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; KeyType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a76c2a871fe317a958fa4536a21625f9e">confirmation_keys</a> ()</td></tr>
-<tr class="separator:a76c2a871fe317a958fa4536a21625f9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a725d8cdbd237e95ceb33191d1ca1bd26"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a725d8cdbd237e95ceb33191d1ca1bd26">HasConfirmationKeys</a> ()</td></tr>
-<tr class="separator:a725d8cdbd237e95ceb33191d1ca1bd26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46618f2ad32ee4e135189e7d6ab4070d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a46618f2ad32ee4e135189e7d6ab4070d">num_confirmation_keys</a> ()</td></tr>
-<tr class="separator:a46618f2ad32ee4e135189e7d6ab4070d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf4aff2fa7f3081001735dd7b5cdeb3a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#aaf4aff2fa7f3081001735dd7b5cdeb3a">ConfirmationKeysMatchExpected</a> (std::vector&lt; KeyType &gt; expected_keys)</td></tr>
-<tr class="separator:aaf4aff2fa7f3081001735dd7b5cdeb3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8080c9f4f6a047a618963462ee745365"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a8080c9f4f6a047a618963462ee745365">TranspositionTableEntry</a> (<a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a> <a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a83ae2e3a251831403c229d77e0fb775b">minimax_calc_result</a>, std::array&lt; KeyType, NumConfKeys &gt; <a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a0abd328ac60d216af932ba711c2df82c">confirmation_keys</a>)</td></tr>
+<tr class="separator:a8080c9f4f6a047a618963462ee745365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83ae2e3a251831403c229d77e0fb775b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a83ae2e3a251831403c229d77e0fb775b">minimax_calc_result</a> ()</td></tr>
+<tr class="separator:a83ae2e3a251831403c229d77e0fb775b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0abd328ac60d216af932ba711c2df82c"><td class="memItemLeft" align="right" valign="top">std::array&lt; KeyType, NumConfKeys &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a0abd328ac60d216af932ba711c2df82c">confirmation_keys</a> ()</td></tr>
+<tr class="separator:a0abd328ac60d216af932ba711c2df82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbadaf217ada0b7a24698ad935d55744"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#afbadaf217ada0b7a24698ad935d55744">ConfirmationKeysMatchExpected</a> (std::array&lt; KeyType, NumConfKeys &gt; expected_keys)</td></tr>
+<tr class="separator:afbadaf217ada0b7a24698ad935d55744"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a5283a10e1ba23547f8a43520bb651cb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a5283a10e1ba23547f8a43520bb651cb8">calc_result_</a></td></tr>
-<tr class="separator:a5283a10e1ba23547f8a43520bb651cb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad929196b27ffdf2f66d88e4005f7e48d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; KeyType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#ad929196b27ffdf2f66d88e4005f7e48d">confirmation_keys_</a></td></tr>
-<tr class="separator:ad929196b27ffdf2f66d88e4005f7e48d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79002170b2f2b2bde97c379bf508c607"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#a79002170b2f2b2bde97c379bf508c607">minimax_calc_result_</a></td></tr>
+<tr class="separator:a79002170b2f2b2bde97c379bf508c607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af72f29d8faed82401ff58ca2a8aa6277"><td class="memItemLeft" align="right" valign="top">std::array&lt; KeyType, NumConfKeys &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html#af72f29d8faed82401ff58ca2a8aa6277">confirmation_keys_</a></td></tr>
+<tr class="separator:af72f29d8faed82401ff58ca2a8aa6277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename KeyType&gt;<br />
-class boardstate::TranspositionTableEntry&lt; KeyType &gt;</div>
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00067">67</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename KeyType, size_t NumConfKeys&gt;<br />
+class boardstate::TranspositionTableEntry&lt; KeyType, NumConfKeys &gt;</div>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00201">201</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0b769a9966b8a2bb891486ed64c6d9cd" name="a0b769a9966b8a2bb891486ed64c6d9cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b769a9966b8a2bb891486ed64c6d9cd">&#9670;&#160;</a></span>TranspositionTableEntry()</h2>
+<a id="a8080c9f4f6a047a618963462ee745365" name="a8080c9f4f6a047a618963462ee745365"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8080c9f4f6a047a618963462ee745365">&#9670;&#160;</a></span>TranspositionTableEntry()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename KeyType &gt; </div>
+template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType &gt;::TranspositionTableEntry </td>
+          <td class="memname"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType, NumConfKeys &gt;::TranspositionTableEntry </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">MinimaxCalcResult</a>&#160;</td>
-          <td class="paramname"><em>calc_result</em>, </td>
+          <td class="paramtype"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a>&#160;</td>
+          <td class="paramname"><em>minimax_calc_result</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::vector&lt; KeyType &gt;&#160;</td>
+          <td class="paramtype">std::array&lt; KeyType, NumConfKeys &gt;&#160;</td>
           <td class="paramname"><em>confirmation_keys</em>&#160;</td>
         </tr>
         <tr>
@@ -230,24 +226,24 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00069">69</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00203">203</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4308916966ccfe4b26b4c042e07f0d1a" name="a4308916966ccfe4b26b4c042e07f0d1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4308916966ccfe4b26b4c042e07f0d1a">&#9670;&#160;</a></span>calc_result()</h2>
+<a id="a0abd328ac60d216af932ba711c2df82c" name="a0abd328ac60d216af932ba711c2df82c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0abd328ac60d216af932ba711c2df82c">&#9670;&#160;</a></span>confirmation_keys()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename KeyType &gt; </div>
+template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a> <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType &gt;::calc_result </td>
+          <td class="memname">std::array&lt; KeyType, NumConfKeys &gt; <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType, NumConfKeys &gt;::confirmation_keys </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -260,54 +256,25 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00076">76</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00212">212</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a76c2a871fe317a958fa4536a21625f9e" name="a76c2a871fe317a958fa4536a21625f9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76c2a871fe317a958fa4536a21625f9e">&#9670;&#160;</a></span>confirmation_keys()</h2>
+<a id="afbadaf217ada0b7a24698ad935d55744" name="afbadaf217ada0b7a24698ad935d55744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbadaf217ada0b7a24698ad935d55744">&#9670;&#160;</a></span>ConfirmationKeysMatchExpected()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename KeyType &gt; </div>
+template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; KeyType &gt; <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType &gt;::confirmation_keys </td>
+          <td class="memname">bool <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType, NumConfKeys &gt;::ConfirmationKeysMatchExpected </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00078">78</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
-
-</div>
-</div>
-<a id="aaf4aff2fa7f3081001735dd7b5cdeb3a" name="aaf4aff2fa7f3081001735dd7b5cdeb3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf4aff2fa7f3081001735dd7b5cdeb3a">&#9670;&#160;</a></span>ConfirmationKeysMatchExpected()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename KeyType &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType &gt;::ConfirmationKeysMatchExpected </td>
-          <td>(</td>
-          <td class="paramtype">std::vector&lt; KeyType &gt;&#160;</td>
+          <td class="paramtype">std::array&lt; KeyType, NumConfKeys &gt;&#160;</td>
           <td class="paramname"><em>expected_keys</em></td><td>)</td>
           <td></td>
         </tr>
@@ -319,23 +286,23 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00084">84</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00214">214</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a725d8cdbd237e95ceb33191d1ca1bd26" name="a725d8cdbd237e95ceb33191d1ca1bd26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a725d8cdbd237e95ceb33191d1ca1bd26">&#9670;&#160;</a></span>HasConfirmationKeys()</h2>
+<a id="a83ae2e3a251831403c229d77e0fb775b" name="a83ae2e3a251831403c229d77e0fb775b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83ae2e3a251831403c229d77e0fb775b">&#9670;&#160;</a></span>minimax_calc_result()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename KeyType &gt; </div>
+template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType &gt;::HasConfirmationKeys </td>
+          <td class="memname"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a> <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType, NumConfKeys &gt;::minimax_calc_result </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -348,53 +315,24 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00080">80</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a46618f2ad32ee4e135189e7d6ab4070d" name="a46618f2ad32ee4e135189e7d6ab4070d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46618f2ad32ee4e135189e7d6ab4070d">&#9670;&#160;</a></span>num_confirmation_keys()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename KeyType &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType &gt;::num_confirmation_keys </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00082">82</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00210">210</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a5283a10e1ba23547f8a43520bb651cb8" name="a5283a10e1ba23547f8a43520bb651cb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5283a10e1ba23547f8a43520bb651cb8">&#9670;&#160;</a></span>calc_result_</h2>
+<a id="af72f29d8faed82401ff58ca2a8aa6277" name="af72f29d8faed82401ff58ca2a8aa6277"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af72f29d8faed82401ff58ca2a8aa6277">&#9670;&#160;</a></span>confirmation_keys_</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename KeyType &gt; </div>
+template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a> <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType &gt;::calc_result_</td>
+          <td class="memname">std::array&lt;KeyType, NumConfKeys&gt; <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType, NumConfKeys &gt;::confirmation_keys_</td>
         </tr>
       </table>
   </td>
@@ -404,23 +342,23 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00098">98</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00225">225</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad929196b27ffdf2f66d88e4005f7e48d" name="ad929196b27ffdf2f66d88e4005f7e48d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad929196b27ffdf2f66d88e4005f7e48d">&#9670;&#160;</a></span>confirmation_keys_</h2>
+<a id="a79002170b2f2b2bde97c379bf508c607" name="a79002170b2f2b2bde97c379bf508c607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79002170b2f2b2bde97c379bf508c607">&#9670;&#160;</a></span>minimax_calc_result_</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename KeyType &gt; </div>
+template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;KeyType&gt; <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType &gt;::confirmation_keys_</td>
+          <td class="memname"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a> <a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry</a>&lt; KeyType, NumConfKeys &gt;::minimax_calc_result_</td>
         </tr>
       </table>
   </td>
@@ -430,12 +368,12 @@ template&lt;typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="hash__calculator_8hpp_source.html#l00099">99</a> of file <a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00224">224</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="hash__calculator_8hpp_source.html">hash_calculator.hpp</a></li>
+<li>include/<a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -443,7 +381,7 @@ template&lt;typename KeyType &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceboardstate.html">boardstate</a></li><li class="navelem"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html">TranspositionTableEntry</a></li>
-    <li class="footer">Generated on Wed Nov 6 2024 17:33:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Nov 8 2024 03:06:29 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

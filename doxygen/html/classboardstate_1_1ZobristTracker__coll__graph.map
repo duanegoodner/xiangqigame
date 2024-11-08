@@ -1,7 +1,0 @@
-<map id="boardstate::ZobristTracker&lt; KeyType &gt;" name="boardstate::ZobristTracker&lt; KeyType &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="247,505,489,759"/>
-<area shape="rect" id="node2" href="$classBoardStateSummarizer.html" title=" " alt="" coords="31,263,230,443"/>
-<area shape="rect" id="node3" href="$classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="5,5,256,185"/>
-<area shape="rect" id="node4" title=" " alt="" coords="255,314,481,391"/>
-<area shape="rect" id="node5" title=" " alt="" coords="506,307,649,399"/>
-</map>
