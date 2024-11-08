@@ -55,9 +55,9 @@ target_link_libraries(
     utility_functs
     GTest::gtest_main)
 
-add_executable(minimax_evaluator_test minimax_evaluator_test.cpp)
+add_executable(minimax_zobrist_component_test minimax_zobrist_component_test.cpp)
 target_link_libraries(
-    minimax_evaluator_test PRIVATE
+    minimax_zobrist_component_test PRIVATE
     minimax_evaluator
     piece_moves
     piece_position_points
@@ -73,14 +73,15 @@ target_link_libraries(
     GTest::gtest_main)
 
 add_executable(
-        hash_calculator_test
-        hash_calculator_test.cpp)
+    zobrist_summarizer_test
+    zobrist_summarizer_test.cpp)
 target_link_libraries(
-        hash_calculator_test PRIVATE
-        hash_calculator
-        utility_functs
-        game_board
-        GTest::gtest_main)
+    zobrist_summarizer_test PRIVATE
+    utility_functs
+    game_board
+    GTest::gtest_main)
+
+
 
 add_executable(
     json_utility_test json_utility_test.cpp
@@ -93,5 +94,36 @@ target_link_libraries(
     utility_functs
     GTest::gtest_main
 )
+
+add_executable(
+    zobrist_calculator_test zobrist_calculator_test.cpp
+)
+target_link_libraries(
+    zobrist_calculator_test PRIVATE
+    utility_functs
+    game_board
+    GTest::gtest_main
+)
+
+add_executable(
+    zobrist_component_test zobrist_component_test.cpp
+)
+target_link_libraries(
+    zobrist_component_test PRIVATE 
+    utility_functs
+    game_board
+    GTest::gtest_main
+)
+
+add_executable(
+    transposition_table_test transposition_table_test.cpp
+)
+target_link_libraries(
+    transposition_table_test PRIVATE
+    utility_functs
+    game_board
+    GTest::gtest_main
+)
+
 
 

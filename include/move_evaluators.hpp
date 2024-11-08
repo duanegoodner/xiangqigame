@@ -122,8 +122,7 @@ private:
       , starting_search_depth_{starting_search_depth}
       , game_board_{game_board}
       , game_position_points_{game_position_points}
-      // , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
-      , hash_calculator_{ConcreteBoardStateSummarizer{}}
+      , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
       , num_move_selections_{0}
       , search_summaries_{} {
     game_board_.AttachMoveCallback(std::bind(
@@ -570,8 +569,8 @@ private:
     std::chrono::duration<double, std::nano> search_time = search_end - search_start;
     search_summary.set_time(search_time);
     auto selected_move_index =
-        utility_functs::random((size_t)0, minimax_result.similar_moves.moves.size() - 1);
-    auto selected_move = minimax_result.similar_moves.moves[selected_move_index];
+        utility_functs::random((size_t)0, minimax_result.move_collection().moves.size() - 1);
+    auto selected_move = minimax_result.move_collection().moves[selected_move_index];
     search_summary.SetSelectedMove(selected_move);
     auto tr_table_size = hash_calculator_.GetTrTableSize();
     search_summary.set_tr_table_size_final(tr_table_size);

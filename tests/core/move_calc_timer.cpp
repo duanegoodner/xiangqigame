@@ -1,6 +1,5 @@
 #include <chrono>
 #include <game_board.hpp>
-#include <hash_calculator.hpp>
 #include <iostream>
 
 using namespace std::chrono;
