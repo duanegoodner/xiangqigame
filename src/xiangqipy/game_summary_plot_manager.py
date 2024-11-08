@@ -218,8 +218,8 @@ if __name__ == "__main__":
         Path(__file__).parent.parent.parent
         / "data"
         / "game_summaries"
-        / "20241107170457084716-test"
-        / "20241107170457084716.json"
+        / "20241107170959466017-test"
+        / "20241107170959466017.json"
     )
 
     my_game_summary = import_game_summary(path=my_game_summary_path)
