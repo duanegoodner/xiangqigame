@@ -1,0 +1,3 @@
+add_executable(gist_tr_table_purging gist_tr_table_purging.cpp)
+
+# add_executable(gist_thread_control gist_thread_control.cpp)
