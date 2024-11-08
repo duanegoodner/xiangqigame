@@ -32,13 +32,13 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           "starting_search_depth"_a,
           "game_board"_a
       )
-      //   .def(
-      //       py::init<PieceColor, int, GameBoard &, uint32_t>(),
-      //       "evaluating_player"_a,
-      //       "starting_search_depth"_a,
-      //       "game_board"_a,
-      //       "zkeys_seed"_a
-      //   )
+        .def(
+            py::init<PieceColor, int, GameBoard &, uint32_t>(),
+            "evaluating_player"_a,
+            "starting_search_depth"_a,
+            "game_board"_a,
+            "zkeys_seed"_a
+        )
       .def(
           "select_move",
           &MinimaxMoveEvaluator<GameBoard, ZobristTracker<KeyType, NumConfKeys>, PiecePositionPoints>::
@@ -60,11 +60,11 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           &MinimaxMoveEvaluator<GameBoard, ZobristTracker<KeyType, NumConfKeys>, PiecePositionPoints>::
               KeySizeBits
       )
-    //   .def_property_readonly(
-    //       "zkeys_seed",
-    //       &MinimaxMoveEvaluator<GameBoard, ZobristTracker<KeyType, NumConfKeys>, PiecePositionPoints>::
-    //           zkeys_seed
-    //   )
+      .def_property_readonly(
+          "zkeys_seed",
+          &MinimaxMoveEvaluator<GameBoard, ZobristTracker<KeyType, NumConfKeys>, PiecePositionPoints>::
+              zkeys_seed
+      )
       .def_property_readonly(
           "board_state_hex_str",
           &MinimaxMoveEvaluator<GameBoard, ZobristTracker<KeyType, NumConfKeys>, PiecePositionPoints>::

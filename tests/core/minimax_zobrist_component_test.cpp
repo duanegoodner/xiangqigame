@@ -108,6 +108,26 @@ TEST_F(MinimaxWithZobristComponentTest, BoardStateHexStr) {
   std::cout << red_evaluator.board_state_hex_str() << std::endl;
 }
 
+TEST_F(MinimaxWithZobristComponentTest, ReadZKeysSeed) {
+    moveselection::MinimaxMoveEvaluator<
+      GameBoard,
+      boardstate::ZobristTracker<uint64_t, 1>,
+      PiecePositionPoints>
+      red_evaluator{PieceColor::kRed, standard_search_depth, starting_game_board};
+
+      std::cout << "zkeys_seed() = " << red_evaluator.zkeys_seed() << std::endl;
+}
+
+TEST_F(MinimaxWithZobristComponentTest, InitWithZKeysSeed) {
+    moveselection::MinimaxMoveEvaluator<
+      GameBoard,
+      boardstate::ZobristTracker<uint64_t, 1>,
+      PiecePositionPoints>
+      red_evaluator{PieceColor::kRed, standard_search_depth, starting_game_board, 1234};
+
+      EXPECT_EQ(red_evaluator.zkeys_seed(), 1234);
+}
+
 TEST_F(MinimaxWithZobristComponentTest, RedStartingMoveSelection) {
   moveselection::MinimaxMoveEvaluator<
       GameBoard,

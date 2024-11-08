@@ -31,7 +31,7 @@ class PlayerInput:
     strength: int
     key_size: int
     num_zobrist_states: int
-    # zkeys_seed: int | None = None
+    zkeys_seed: int | None = None
 
 
 class PlayerCommandInterpreter:
@@ -63,7 +63,7 @@ class PlayerCommandInterpreter:
         algo_input: str,
         strength_input: int,
         key_size_input: int,
-        # zkeys_seed: int,
+        zkeys_seed: int,
         number_zobrist_states: int,
     ):
         self.player_input = player_input
@@ -109,7 +109,7 @@ class PlayerCommandInterpreter:
             algo=algo,
             strength=strength,
             key_size=key_size,
-            # zkeys_seed=self.zkeys_seed,
+            zkeys_seed=self.zkeys_seed,
             num_zobrist_states=num_zobrist_states,
         )
 

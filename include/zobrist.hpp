@@ -6,6 +6,8 @@
 #include <board_data_structs.hpp>
 #include <key_generator.hpp>
 #include <move_data_structs.hpp>
+#include <optional>
+#include <random>
 #include <vector>
 
 namespace boardstate {
@@ -126,16 +128,28 @@ public:
     }
   }
 
-  ZobristComponent(
+  explicit ZobristComponent(
       uint32_t primary_seed,
       std::array<uint32_t, NumConfKeys> confirmation_seeds
   )
       : primary_calculator_{ZobristCalculator<KeyType>{primary_seed}}
       , confirmation_calculators_{} {
     for (auto i = 0; i < NumConfKeys; ++i) {
-      confirmation_calculators_[i] =
-          ZobristCalculator<KeyType>{confirmation_seeds[i]};
+      confirmation_calculators_[i] = ZobristCalculator<KeyType>{confirmation_seeds[i]};
     }
+  }
+
+  explicit ZobristComponent(std::mt19937 prng)
+      : primary_calculator_{(uint32_t)prng()}
+      , confirmation_calculators_{} {
+    for (auto i = 0; i < NumConfKeys; i++) {
+      confirmation_calculators_[i] = ZobristCalculator<KeyType>((uint32_t)prng());
+    }
+  }
+
+  explicit ZobristComponent(uint32_t prng_seed)
+      : ZobristComponent(std::mt19937{prng_seed}) {
+    prng_seed_ = prng_seed;
   }
 
   void UpdateBoardStates(const ExecutedMove &executed_move) {
@@ -175,9 +189,12 @@ public:
     return boardstate::IntToHexString(primary_calculator_.board_state());
   }
 
+  uint32_t prng_seed() { return prng_seed_.value_or(0); }
+
 private:
   ZobristCalculator<KeyType> primary_calculator_;
   std::array<ZobristCalculator<KeyType>, NumConfKeys> confirmation_calculators_;
+  std::optional<uint32_t> prng_seed_;
 };
 
 template <typename KeyType, size_t NumConfKeys>
@@ -271,8 +288,13 @@ public:
       : ZobristTracker(
             ZobristComponent<KeyType, NumConfKeys>{primary_seed, confirmation_seeds}
         ) {}
-  
-  ZobristTracker() : zobrist_component_{}, transposition_table_{} {}
+
+  explicit ZobristTracker(uint32_t prng_seed)
+      : ZobristTracker(ZobristComponent<KeyType, NumConfKeys>{prng_seed}) {}
+
+  ZobristTracker()
+      : zobrist_component_{}
+      , transposition_table_{} {}
 
   KeyType ImplementGetState() { return zobrist_component_.primary_board_state(); }
 
@@ -317,6 +339,8 @@ public:
   const std::string board_state_hex_str() {
     return IntToHexString(zobrist_component_.primary_board_state());
   }
+
+  uint32_t zkeys_seed() { return zobrist_component_.prng_seed(); }
 
 private:
   ZobristComponent<KeyType, NumConfKeys> zobrist_component_;

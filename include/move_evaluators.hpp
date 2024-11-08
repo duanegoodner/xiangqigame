@@ -122,8 +122,7 @@ private:
       , starting_search_depth_{starting_search_depth}
       , game_board_{game_board}
       , game_position_points_{game_position_points}
-      // , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
-      , hash_calculator_{ConcreteBoardStateSummarizer{}}
+      , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
       , num_move_selections_{0}
       , search_summaries_{} {
     game_board_.AttachMoveCallback(std::bind(
