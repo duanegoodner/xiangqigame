@@ -9,7 +9,7 @@ var classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary =
     [ "returned_illegal_move", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a7ad456bad01f704c3c2bb1e257ec74e0", null ],
     [ "selected_move", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a20a048d2450118c6f566690052c5f175", null ],
     [ "time", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#aa1c565acd76fce355df47ac125c648ae", null ],
-    [ "tr_table_size_final", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a1251d3e85fb63a0392562b9a154c6d45", null ],
-    [ "tr_table_size_initial", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#addbab954aaf7c0de516a430542d0632b", null ],
+    [ "tr_table_size_final", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a8eb065b7043ed8700cedb65c9f033181", null ],
+    [ "tr_table_size_initial", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a1af7130c2d298069b74c4b699e440e32", null ],
     [ "transposition_table_hits", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a0a5ee38e4b23414871e7b82ec8f018b0", null ]
 ];

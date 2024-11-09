@@ -10,6 +10,5 @@ var namespacexiangqipy_1_1core__dataclass__mirrors =
     [ "PointsTypeDeterminer", "classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer.html", "classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer" ],
     [ "SearchSummaries", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummaries.html", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummaries" ],
     [ "SearchSummary", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary" ],
-    [ "TranspositionTableSize", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize.html", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize" ],
     [ "TranspositionTableSizesAtEvents", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents.html", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents" ]
 ];

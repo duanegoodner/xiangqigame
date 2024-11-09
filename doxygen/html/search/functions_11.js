@@ -3,7 +3,7 @@ var searchData=
   ['random_0',['random',['../namespaceutility__functs.html#a754117eda4e493add56b6ce4899826a9',1,'utility_functs']]],
   ['randommoveevaluator_1',['RandomMoveEvaluator',['../classmoveselection_1_1RandomMoveEvaluator.html#a69b94792d3d265d5ddb69840e256a273',1,'moveselection::RandomMoveEvaluator']]],
   ['ratemove_2',['RateMove',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ad60e3db49acd90848644eb0fafd8a287',1,'moveselection::MinimaxMoveEvaluator']]],
-  ['recorddata_3',['RecordData',['../classboardstate_1_1TranspositionTableNew.html#a064df615eb615abcb6e49a6ebe752739',1,'boardstate::TranspositionTableNew']]],
+  ['recorddata_3',['RecordData',['../classboardstate_1_1TranspositionTable.html#a834784f9ea52a20c8af6a57e432bf285',1,'boardstate::TranspositionTable']]],
   ['recordnodeinfo_4',['RecordNodeInfo',['../classmoveselection_1_1SearchSummary.html#ab3efde8ad374d2f9cec2fb5aacb03d4c',1,'moveselection::SearchSummary']]],
   ['recordtrdata_5',['RecordTrData',['../classBoardStateSummarizer.html#ab2187a1c6c4d96b603b18177c7d920e6',1,'BoardStateSummarizer']]],
   ['recordtrtablehit_6',['RecordTrTableHit',['../classmoveselection_1_1SearchSummary.html#a42e91f2b0146be44a5d877b049216ebb',1,'moveselection::SearchSummary']]],

@@ -183,10 +183,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a84715e2b24d1eb7fcec28c15bfa89f1e"><td class="memItemLeft" align="right" valign="top">pd.DataFrame|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a84715e2b24d1eb7fcec28c15bfa89f1e">first_searches_by_type</a> (self)</td></tr>
 <tr class="memdesc:a84715e2b24d1eb7fcec28c15bfa89f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dataframe with row -&gt; move number, col -&gt; xiangqi_bindings.MinimaxResultType.  <br /></td></tr>
 <tr class="separator:a84715e2b24d1eb7fcec28c15bfa89f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a33815929c774f01db241350b350f4e54"><td class="memItemLeft" align="right" valign="top">cdm.TranspositionTableSize&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a33815929c774f01db241350b350f4e54">tr_table_size_first_illegal_move_request</a> (self)</td></tr>
-<tr class="separator:a33815929c774f01db241350b350f4e54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3efcc257793bf431ffa90db39285952e"><td class="memItemLeft" align="right" valign="top">cdm.TranspositionTableSize&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a3efcc257793bf431ffa90db39285952e">tr_table_size_end_game</a> (self)</td></tr>
-<tr class="separator:a3efcc257793bf431ffa90db39285952e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25e7b21f128be16b20255d41281558a3"><td class="memItemLeft" align="right" valign="top">int|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a25e7b21f128be16b20255d41281558a3">tr_table_size_first_illegal_move_request</a> (self)</td></tr>
+<tr class="separator:a25e7b21f128be16b20255d41281558a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d2c6d6469a75f06ef5bb20d27451b9d"><td class="memItemLeft" align="right" valign="top">int|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a5d2c6d6469a75f06ef5bb20d27451b9d">tr_table_size_end_game</a> (self)</td></tr>
+<tr class="separator:a5d2c6d6469a75f06ef5bb20d27451b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23c8e410a65a9a53a923020f7722a929"><td class="memItemLeft" align="right" valign="top">cdm.TranspositionTableSizesAtEvents&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a23c8e410a65a9a53a923020f7722a929">tr_table_sizes_at_events</a> (self)</td></tr>
 <tr class="separator:a23c8e410a65a9a53a923020f7722a929"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5dce0c4b56c0d7b46eecbc622d8d5ff5"><td class="memItemLeft" align="right" valign="top">pd.DataFrame|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a5dce0c4b56c0d7b46eecbc622d8d5ff5">first_search_stats</a> (self)</td></tr>
@@ -222,9 +222,9 @@ Static Public Attributes</h2></td></tr>
 <div class="textblock"><p>Data container for data from one <a class="el" href="classxiangqipy_1_1game__interfaces_1_1Player.html" title="Can take a turn in a Game.">xiangqipy.game_interfaces.Player</a> in a Game. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">color</td><td>xiangi_bindings.PieceColoar: color of Player the summary belongs to. </td></tr>
-    <tr><td class="paramname">player_type</td><td>xiangipy.enums.PlayerType: type of the Player. </td></tr>
-    <tr><td class="paramname">move_evaluator_type</td><td><a class="el" href="classxiangqipy_1_1enums_1_1EvaluatorType.html" title="Enum indicating type of core MoveEvaluator used for a Player.">xiangqipy.enums.EvaluatorType</a>: type of Player's move evaluator. </td></tr>
+    <tr><td class="paramname">color</td><td>xiangi_bindings.PieceColoar: color of <a class="el" href="classPlayer.html">Player</a> the summary belongs to. </td></tr>
+    <tr><td class="paramname">player_type</td><td>xiangipy.enums.PlayerType: type of the <a class="el" href="classPlayer.html">Player</a>. </td></tr>
+    <tr><td class="paramname">move_evaluator_type</td><td><a class="el" href="classxiangqipy_1_1enums_1_1EvaluatorType.html" title="Enum indicating type of core MoveEvaluator used for a Player.">xiangqipy.enums.EvaluatorType</a>: type of <a class="el" href="classPlayer.html">Player</a>'s move evaluator. </td></tr>
     <tr><td class="paramname">max_search_depth</td><td>int: maximum depth that a Minimax move evaluator will search. </td></tr>
     <tr><td class="paramname">search_summaries</td><td><a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummaries.html" title="A Python SearchSummaries.">xiangqipy.core_dataclass_mirrors.SearchSummaries</a>: </td></tr>
   </table>
@@ -251,7 +251,7 @@ Static Public Attributes</h2></td></tr>
 
 <p>Dataframe with row -&gt; move number; cols -&gt; number of nodes explored, total time for move selection, average time per node, and minimax evaluation score of the selected move. </p>
 
-<p class="definition">Definition at line <a class="el" href="player__summary_8py_source.html#l00154">154</a> of file <a class="el" href="player__summary_8py_source.html">player_summary.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="player__summary_8py_source.html#l00148">148</a> of file <a class="el" href="player__summary_8py_source.html">player_summary.py</a>.</p>
 
 </div>
 </div>
@@ -378,18 +378,18 @@ Static Public Attributes</h2></td></tr>
 
 <p>Pandas Series with mean &amp; max nodes per move, mean &amp; max time per move, and number of illegal move requests. </p>
 
-<p class="definition">Definition at line <a class="el" href="player__summary_8py_source.html#l00237">237</a> of file <a class="el" href="player__summary_8py_source.html">player_summary.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="player__summary_8py_source.html#l00231">231</a> of file <a class="el" href="player__summary_8py_source.html">player_summary.py</a>.</p>
 
 </div>
 </div>
-<a id="a3efcc257793bf431ffa90db39285952e" name="a3efcc257793bf431ffa90db39285952e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3efcc257793bf431ffa90db39285952e">&#9670;&#160;</a></span>tr_table_size_end_game()</h2>
+<a id="a5d2c6d6469a75f06ef5bb20d27451b9d" name="a5d2c6d6469a75f06ef5bb20d27451b9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d2c6d6469a75f06ef5bb20d27451b9d">&#9670;&#160;</a></span>tr_table_size_end_game()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"> cdm.TranspositionTableSize xiangqipy.player_summary.PlayerSummary.tr_table_size_end_game </td>
+          <td class="memname"> int | None xiangqipy.player_summary.PlayerSummary.tr_table_size_end_game </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -398,18 +398,18 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="player__summary_8py_source.html#l00138">138</a> of file <a class="el" href="player__summary_8py_source.html">player_summary.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="player__summary_8py_source.html#l00136">136</a> of file <a class="el" href="player__summary_8py_source.html">player_summary.py</a>.</p>
 
 </div>
 </div>
-<a id="a33815929c774f01db241350b350f4e54" name="a33815929c774f01db241350b350f4e54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33815929c774f01db241350b350f4e54">&#9670;&#160;</a></span>tr_table_size_first_illegal_move_request()</h2>
+<a id="a25e7b21f128be16b20255d41281558a3" name="a25e7b21f128be16b20255d41281558a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25e7b21f128be16b20255d41281558a3">&#9670;&#160;</a></span>tr_table_size_first_illegal_move_request()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"> cdm.TranspositionTableSize xiangqipy.player_summary.PlayerSummary.tr_table_size_first_illegal_move_request </td>
+          <td class="memname"> int | None xiangqipy.player_summary.PlayerSummary.tr_table_size_first_illegal_move_request </td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname"><em>self</em></td><td>)</td>
@@ -438,7 +438,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="player__summary_8py_source.html#l00147">147</a> of file <a class="el" href="player__summary_8py_source.html">player_summary.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="player__summary_8py_source.html#l00141">141</a> of file <a class="el" href="player__summary_8py_source.html">player_summary.py</a>.</p>
 
 </div>
 </div>
@@ -636,7 +636,7 @@ Static Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacexiangqipy.html">xiangqipy</a></li><li class="navelem"><a class="el" href="namespacexiangqipy_1_1player__summary.html">player_summary</a></li><li class="navelem"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a></li>
-    <li class="footer">Generated on Fri Nov 8 2024 03:06:30 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Nov 9 2024 03:07:21 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

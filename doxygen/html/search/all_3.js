@@ -16,7 +16,7 @@ var searchData=
   ['blacknetpoints_13',['BlackNetPoints',['../classpiecepoints_1_1BPOPointsEKeys.html#a634b8178977601612c247026d1cc7fbc',1,'piecepoints::BPOPointsEKeys']]],
   ['board_5fdata_5fstructs_2ehpp_14',['board_data_structs.hpp',['../board__data__structs_8hpp.html',1,'']]],
   ['board_5fmap_5f_15',['board_map_',['../classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8',1,'gameboard::GameBoard']]],
-  ['board_5fstate_16',['board_state',['../structmoveselection_1_1CollisionInfo.html#afc786008d2ad78c311254f6d6181e43e',1,'moveselection::CollisionInfo::board_state()'],['../classboardstate_1_1ZobristCalculator.html#ab246ddd4acd43b5319dd076bbea9d30e',1,'boardstate::ZobristCalculator::board_state() const']]],
+  ['board_5fstate_16',['board_state',['../classboardstate_1_1ZobristCalculator.html#ab246ddd4acd43b5319dd076bbea9d30e',1,'boardstate::ZobristCalculator']]],
   ['board_5fstate_5f_17',['board_state_',['../classboardstate_1_1ZobristCalculator.html#a0b0ddafb88d6d97fb69b97715279349c',1,'boardstate::ZobristCalculator']]],
   ['board_5fstate_5fhex_5fstr_18',['board_state_hex_str',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ac6f9bfa2e56a664feb178575fff89f07',1,'moveselection::MinimaxMoveEvaluator::board_state_hex_str()'],['../classboardstate_1_1ZobristSummarizer.html#a68f4c51a624b44b10e7d53d17e39ea83',1,'boardstate::ZobristSummarizer::board_state_hex_str()']]],
   ['board_5fstate_5fsummarizer_5finterface_2ehpp_19',['board_state_summarizer_interface.hpp',['../board__state__summarizer__interface_8hpp.html',1,'']]],

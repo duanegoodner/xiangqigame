@@ -8,6 +8,5 @@ var searchData=
   ['black_5fposition_5f_5',['black_position_',['../classpiecepoints_1_1BPOPointsSKeys.html#a2853ef5ac7565f8354521b5ca2ad33c8',1,'piecepoints::BPOPointsSKeys::black_position_()'],['../classpiecepoints_1_1BPOPointsEKeys.html#aaadfcd90d2c403ae6879453fa3224b19',1,'piecepoints::BPOPointsEKeys::black_position_()']]],
   ['black_5fwon_6',['BLACK_WON',['../classxiangqipy_1_1enums_1_1GameState.html#a5a7461c170f311c10f953d4973e74934',1,'xiangqipy::enums::GameState']]],
   ['board_5fmap_5f_7',['board_map_',['../classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8',1,'gameboard::GameBoard']]],
-  ['board_5fstate_8',['board_state',['../structmoveselection_1_1CollisionInfo.html#afc786008d2ad78c311254f6d6181e43e',1,'moveselection::CollisionInfo']]],
-  ['board_5fstate_5f_9',['board_state_',['../classboardstate_1_1ZobristCalculator.html#a0b0ddafb88d6d97fb69b97715279349c',1,'boardstate::ZobristCalculator']]]
+  ['board_5fstate_5f_8',['board_state_',['../classboardstate_1_1ZobristCalculator.html#a0b0ddafb88d6d97fb69b97715279349c',1,'boardstate::ZobristCalculator']]]
 ];

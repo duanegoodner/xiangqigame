@@ -8,10 +8,10 @@ var classboardstate_1_1ZobristSummarizer =
     [ "ImplementFullBoardStateCalc", "classboardstate_1_1ZobristSummarizer.html#a19dd7afbb0ea48e16eb0a91d62926838", null ],
     [ "ImplementGetState", "classboardstate_1_1ZobristSummarizer.html#a97f62c339c0d760b3dad3c81ee2528ac", null ],
     [ "ImplementGetTrData", "classboardstate_1_1ZobristSummarizer.html#a6833f8956113d4c2adb22f2bc5613ca8", null ],
-    [ "ImplementGetTrTableSize", "classboardstate_1_1ZobristSummarizer.html#ac77f8fb1cd974c2def132f81f9e42da3", null ],
+    [ "ImplementGetTrTableSize", "classboardstate_1_1ZobristSummarizer.html#ac1d6108f07d6e6ce5f65fe9cc77b4473", null ],
     [ "ImplementRecordTrData", "classboardstate_1_1ZobristSummarizer.html#a5dc56c591e1a354cfe807f1f3631e26f", null ],
     [ "ImplementUpdateBoardState", "classboardstate_1_1ZobristSummarizer.html#a64b1a8b85379c221006afc7fd51db25c", null ],
     [ "zkeys_seed", "classboardstate_1_1ZobristSummarizer.html#abc0b17620846ee52af476f23c59f8932", null ],
-    [ "transposition_table_", "classboardstate_1_1ZobristSummarizer.html#a058a11fa19b723cdc68b55d645f9fac8", null ],
+    [ "transposition_table_", "classboardstate_1_1ZobristSummarizer.html#ae6e39ec364c15b774988081abbd1c78c", null ],
     [ "zobrist_component_", "classboardstate_1_1ZobristSummarizer.html#a5d24014c6f6b0e557fae00c916d2902a", null ]
 ];

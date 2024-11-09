@@ -1,6 +1,5 @@
 var namespacemoveselection =
 [
-    [ "CollisionInfo", "structmoveselection_1_1CollisionInfo.html", "structmoveselection_1_1CollisionInfo" ],
     [ "EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
     [ "MinimaxCalcResult", "structmoveselection_1_1MinimaxCalcResult.html", "structmoveselection_1_1MinimaxCalcResult" ],
     [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
@@ -10,7 +9,6 @@ var namespacemoveselection =
     [ "SearchSummaries", "structmoveselection_1_1SearchSummaries.html", "structmoveselection_1_1SearchSummaries" ],
     [ "SearchSummary", "classmoveselection_1_1SearchSummary.html", "classmoveselection_1_1SearchSummary" ],
     [ "TranspositionTableSearchResult", "structmoveselection_1_1TranspositionTableSearchResult.html", "structmoveselection_1_1TranspositionTableSearchResult" ],
-    [ "TranspositionTableSize", "structmoveselection_1_1TranspositionTableSize.html", "structmoveselection_1_1TranspositionTableSize" ],
     [ "ResultDepthCountsData_t", "namespacemoveselection.html#aa4c456c3f118a94017483880ff42991b", null ],
     [ "MinimaxResultType", "namespacemoveselection.html#acdb529ae14e6752318706ace995061ed", [
       [ "kUnknown", "namespacemoveselection.html#acdb529ae14e6752318706ace995061edadef73b774725d74259cc49e9fe97e6dd", null ],

@@ -167,10 +167,10 @@ Collaboration diagram for moveselection::SearchSummaries:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a94396fe38c271cb1bc404d29799a9ebc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummaries.html#a94396fe38c271cb1bc404d29799a9ebc">NewFirstSearch</a> (int search_depth, <a class="el" href="structmoveselection_1_1TranspositionTableSize.html">TranspositionTableSize</a> tr_table_size_initial)</td></tr>
-<tr class="separator:a94396fe38c271cb1bc404d29799a9ebc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a536671fbdde15571141fd9b06b47cef4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummaries.html#a536671fbdde15571141fd9b06b47cef4">NewExtraSearch</a> (int search_depth, int search_number, <a class="el" href="structmoveselection_1_1TranspositionTableSize.html">TranspositionTableSize</a> tr_table_size_current)</td></tr>
-<tr class="separator:a536671fbdde15571141fd9b06b47cef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a812c41b2b5176539117978dfa2dc1a05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummaries.html#a812c41b2b5176539117978dfa2dc1a05">NewFirstSearch</a> (int search_depth, int tr_table_size_initial)</td></tr>
+<tr class="separator:a812c41b2b5176539117978dfa2dc1a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d4a94f6dbb3f7d92298d9d354757024"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummaries.html#a7d4a94f6dbb3f7d92298d9d354757024">NewExtraSearch</a> (int search_depth, int search_number, int tr_table_size_current)</td></tr>
+<tr class="separator:a7d4a94f6dbb3f7d92298d9d354757024"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -185,8 +185,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00225">225</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a536671fbdde15571141fd9b06b47cef4" name="a536671fbdde15571141fd9b06b47cef4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a536671fbdde15571141fd9b06b47cef4">&#9670;&#160;</a></span>NewExtraSearch()</h2>
+<a id="a7d4a94f6dbb3f7d92298d9d354757024" name="a7d4a94f6dbb3f7d92298d9d354757024"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d4a94f6dbb3f7d92298d9d354757024">&#9670;&#160;</a></span>NewExtraSearch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -209,7 +209,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structmoveselection_1_1TranspositionTableSize.html">TranspositionTableSize</a>&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>tr_table_size_current</em>&#160;</td>
         </tr>
         <tr>
@@ -229,8 +229,8 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a94396fe38c271cb1bc404d29799a9ebc" name="a94396fe38c271cb1bc404d29799a9ebc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94396fe38c271cb1bc404d29799a9ebc">&#9670;&#160;</a></span>NewFirstSearch()</h2>
+<a id="a812c41b2b5176539117978dfa2dc1a05" name="a812c41b2b5176539117978dfa2dc1a05"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a812c41b2b5176539117978dfa2dc1a05">&#9670;&#160;</a></span>NewFirstSearch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -247,7 +247,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structmoveselection_1_1TranspositionTableSize.html">TranspositionTableSize</a>&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>tr_table_size_initial</em>&#160;</td>
         </tr>
         <tr>
@@ -309,7 +309,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li><li class="navelem"><a class="el" href="structmoveselection_1_1SearchSummaries.html">SearchSummaries</a></li>
-    <li class="footer">Generated on Fri Nov 8 2024 03:06:29 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Nov 9 2024 03:07:21 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -3,8 +3,8 @@ var annotated_dup =
     [ "boardstate", "namespaceboardstate.html", [
       [ "PseudoRandomKeyGenerator", "classboardstate_1_1PseudoRandomKeyGenerator.html", "classboardstate_1_1PseudoRandomKeyGenerator" ],
       [ "RandomKeyGenerator", "classboardstate_1_1RandomKeyGenerator.html", "classboardstate_1_1RandomKeyGenerator" ],
+      [ "TranspositionTable", "classboardstate_1_1TranspositionTable.html", "classboardstate_1_1TranspositionTable" ],
       [ "TranspositionTableEntry", "classboardstate_1_1TranspositionTableEntry.html", "classboardstate_1_1TranspositionTableEntry" ],
-      [ "TranspositionTableNew", "classboardstate_1_1TranspositionTableNew.html", "classboardstate_1_1TranspositionTableNew" ],
       [ "ZobristCalculator", "classboardstate_1_1ZobristCalculator.html", "classboardstate_1_1ZobristCalculator" ],
       [ "ZobristComponent", "classboardstate_1_1ZobristComponent.html", "classboardstate_1_1ZobristComponent" ],
       [ "ZobristSummarizer", "classboardstate_1_1ZobristSummarizer.html", "classboardstate_1_1ZobristSummarizer" ]
@@ -25,7 +25,6 @@ var annotated_dup =
       [ "NlohmannJsonUtility", "classjsonio_1_1NlohmannJsonUtility.html", "classjsonio_1_1NlohmannJsonUtility" ]
     ] ],
     [ "moveselection", "namespacemoveselection.html", [
-      [ "CollisionInfo", "structmoveselection_1_1CollisionInfo.html", "structmoveselection_1_1CollisionInfo" ],
       [ "EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
       [ "MinimaxCalcResult", "structmoveselection_1_1MinimaxCalcResult.html", "structmoveselection_1_1MinimaxCalcResult" ],
       [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
@@ -34,8 +33,7 @@ var annotated_dup =
       [ "ScoredMove", "structmoveselection_1_1ScoredMove.html", "structmoveselection_1_1ScoredMove" ],
       [ "SearchSummaries", "structmoveselection_1_1SearchSummaries.html", "structmoveselection_1_1SearchSummaries" ],
       [ "SearchSummary", "classmoveselection_1_1SearchSummary.html", "classmoveselection_1_1SearchSummary" ],
-      [ "TranspositionTableSearchResult", "structmoveselection_1_1TranspositionTableSearchResult.html", "structmoveselection_1_1TranspositionTableSearchResult" ],
-      [ "TranspositionTableSize", "structmoveselection_1_1TranspositionTableSize.html", "structmoveselection_1_1TranspositionTableSize" ]
+      [ "TranspositionTableSearchResult", "structmoveselection_1_1TranspositionTableSearchResult.html", "structmoveselection_1_1TranspositionTableSearchResult" ]
     ] ],
     [ "piecepoints", "namespacepiecepoints.html", [
       [ "BPOPointsEKeys", "classpiecepoints_1_1BPOPointsEKeys.html", "classpiecepoints_1_1BPOPointsEKeys" ],
@@ -61,7 +59,6 @@ var annotated_dup =
         [ "PointsTypeDeterminer", "classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer.html", "classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer" ],
         [ "SearchSummaries", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummaries.html", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummaries" ],
         [ "SearchSummary", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary" ],
-        [ "TranspositionTableSize", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize.html", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize" ],
         [ "TranspositionTableSizesAtEvents", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents.html", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents" ]
       ] ],
       [ "enums", "namespacexiangqipy_1_1enums.html", [
@@ -123,7 +120,10 @@ var annotated_dup =
     [ "BoardStateSummarizer", "classBoardStateSummarizer.html", "classBoardStateSummarizer" ],
     [ "Exception", "classException.html", null ],
     [ "JsonUtility", "classJsonUtility.html", "classJsonUtility" ],
+    [ "Manager", "classManager.html", "classManager" ],
     [ "MoveEvaluator", "classMoveEvaluator.html", "classMoveEvaluator" ],
     [ "PieceValueProvider", "classPieceValueProvider.html", "classPieceValueProvider" ],
-    [ "SpaceInfoProvider", "classSpaceInfoProvider.html", "classSpaceInfoProvider" ]
+    [ "Player", "classPlayer.html", "classPlayer" ],
+    [ "SpaceInfoProvider", "classSpaceInfoProvider.html", "classSpaceInfoProvider" ],
+    [ "Worker", "classWorker.html", "classWorker" ]
 ];

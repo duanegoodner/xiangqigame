@@ -16,5 +16,7 @@ var searchData=
   ['result_5ftype_13',['result_type',['../structmoveselection_1_1MinimaxCalcResult.html#a0533104d5005cbe7b1dd911cca737589',1,'moveselection::MinimaxCalcResult']]],
   ['returned_5fillegal_5fmove_14',['returned_illegal_move',['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a7ad456bad01f704c3c2bb1e257ec74e0',1,'xiangqipy::core_dataclass_mirrors::SearchSummary']]],
   ['returned_5fillegal_5fmove_5f_15',['returned_illegal_move_',['../classmoveselection_1_1SearchSummary.html#aec98baa34c66eb9c85b52b70c5d47ccb',1,'moveselection::SearchSummary']]],
-  ['run_5fkwargs_16',['run_kwargs',['../classxiangqipy_1_1command__input_1_1RunKwargsInterpreter.html#a7acaef8f49d508ef1ee2fd0dc1fd20d6',1,'xiangqipy::command_input::RunKwargsInterpreter']]]
+  ['rng_5f_16',['rng_',['../classPlayer.html#a84bb93bf8be91deb2e32a1b7c7029e29',1,'Player']]],
+  ['run_5fkwargs_17',['run_kwargs',['../classxiangqipy_1_1command__input_1_1RunKwargsInterpreter.html#a7acaef8f49d508ef1ee2fd0dc1fd20d6',1,'xiangqipy::command_input::RunKwargsInterpreter']]],
+  ['run_5fpruner_5f_18',['run_pruner_',['../classWorker.html#a3cd683cf8118d0b3905c2c62ff79c463',1,'Worker']]]
 ];

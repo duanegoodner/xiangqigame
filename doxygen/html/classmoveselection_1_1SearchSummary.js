@@ -1,6 +1,6 @@
 var classmoveselection_1_1SearchSummary =
 [
-    [ "SearchSummary", "classmoveselection_1_1SearchSummary.html#ac09ccbc69a6772220acda0ccf024e3ec", null ],
+    [ "SearchSummary", "classmoveselection_1_1SearchSummary.html#a0e319774750dcde6cc4d974ee1d05fa5", null ],
     [ "equal_score_moves", "classmoveselection_1_1SearchSummary.html#a4d9028e4b7afa8cd0dc20d2bae8645cc", null ],
     [ "GetResultDepthCounts", "classmoveselection_1_1SearchSummary.html#a869d14d03ab6abf5688b8dfe66ae30ab", null ],
     [ "GetTranspositionTableHits", "classmoveselection_1_1SearchSummary.html#aa7264774347ac17608e80be74617a325", null ],
@@ -13,11 +13,11 @@ var classmoveselection_1_1SearchSummary =
     [ "set_equal_score_moves", "classmoveselection_1_1SearchSummary.html#a43e47ebe686501775ab9fba59ad361d1", null ],
     [ "set_returned_illegal_move", "classmoveselection_1_1SearchSummary.html#a02d1608177f330975e7a01c5d5a3479a", null ],
     [ "set_time", "classmoveselection_1_1SearchSummary.html#a14fdc122ed2b721036773773b49f98ac", null ],
-    [ "set_tr_table_size_final", "classmoveselection_1_1SearchSummary.html#ae5d63bd7f763b468ecfc6f25136569f0", null ],
+    [ "set_tr_table_size_final", "classmoveselection_1_1SearchSummary.html#aa580d99a17ac1b04231d316d2c973bb9", null ],
     [ "SetSelectedMove", "classmoveselection_1_1SearchSummary.html#aebecc89334baf04db5848bbcacd05596", null ],
     [ "time", "classmoveselection_1_1SearchSummary.html#af137634fa000ec713c08add22b062c47", null ],
-    [ "tr_table_size_final", "classmoveselection_1_1SearchSummary.html#aa9ab4a3930c9f632bee0009067380b28", null ],
-    [ "tr_table_size_initial", "classmoveselection_1_1SearchSummary.html#ac0b61cc3d696af146cb1e88e6c867ba5", null ],
+    [ "tr_table_size_final", "classmoveselection_1_1SearchSummary.html#a1e7e27789c26af2bf8ceb3248d1694a4", null ],
+    [ "tr_table_size_initial", "classmoveselection_1_1SearchSummary.html#a17ae407a1c6e509eaace30163368e9f7", null ],
     [ "UpdateTranspositionTableHits", "classmoveselection_1_1SearchSummary.html#a62f64dc3adc1d3b05439cfb92f3d159a", null ],
     [ "equal_score_moves_", "classmoveselection_1_1SearchSummary.html#a4a09113f1793ed4635ae33e959128ac8", null ],
     [ "num_collisions_", "classmoveselection_1_1SearchSummary.html#a04707896ea90fdcbd0300c9f511ace3d", null ],
@@ -26,7 +26,7 @@ var classmoveselection_1_1SearchSummary =
     [ "returned_illegal_move_", "classmoveselection_1_1SearchSummary.html#aec98baa34c66eb9c85b52b70c5d47ccb", null ],
     [ "selected_move_", "classmoveselection_1_1SearchSummary.html#aa5e305f84de44cd656cefd2245be4807", null ],
     [ "time_", "classmoveselection_1_1SearchSummary.html#aca46c5117d23ceb67f8dbdc722649b71", null ],
-    [ "tr_table_size_final_", "classmoveselection_1_1SearchSummary.html#a5fdbaabcd7877a018433a3c49f09a7d9", null ],
-    [ "tr_table_size_initial_", "classmoveselection_1_1SearchSummary.html#ad7ae71ba111a046dc85e2b852471721e", null ],
+    [ "tr_table_size_final_", "classmoveselection_1_1SearchSummary.html#a4ec3445890042a42d4c5f30901148445", null ],
+    [ "tr_table_size_initial_", "classmoveselection_1_1SearchSummary.html#a3a244cee3be4825016f4ea918176c2f1", null ],
     [ "transposition_table_hits_", "classmoveselection_1_1SearchSummary.html#ac970df793d70ed93038df1a18cab6e5a", null ]
 ];

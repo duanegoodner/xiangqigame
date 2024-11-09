@@ -5,7 +5,7 @@ var searchData=
   ['piecereader_2',['PieceReader',['../classxiangqipy_1_1piece__info__extractor_1_1PieceReader.html',1,'xiangqipy::piece_info_extractor']]],
   ['piecevalueprovider_3',['PieceValueProvider',['../classPieceValueProvider.html',1,'']]],
   ['piecevalueprovider_3c_20piecepositionpoints_20_3e_4',['PieceValueProvider&lt; PiecePositionPoints &gt;',['../classPieceValueProvider.html',1,'']]],
-  ['player_5',['Player',['../classxiangqipy_1_1game__interfaces_1_1Player.html',1,'xiangqipy::game_interfaces']]],
+  ['player_5',['Player',['../classPlayer.html',1,'Player'],['../classxiangqipy_1_1game__interfaces_1_1Player.html',1,'xiangqipy.game_interfaces.Player']]],
   ['playercommandinterpreter_6',['PlayerCommandInterpreter',['../classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html',1,'xiangqipy::command_input']]],
   ['playerinput_7',['PlayerInput',['../classxiangqipy_1_1command__input_1_1PlayerInput.html',1,'xiangqipy::command_input']]],
   ['playersummaries_8',['PlayerSummaries',['../classxiangqipy_1_1game__summary_1_1PlayerSummaries.html',1,'xiangqipy::game_summary']]],

@@ -20,8 +20,9 @@ var searchData=
   ['moves_5fsince_5flast_5fcapture_17',['moves_since_last_capture',['../structgameboard_1_1ExecutedMove.html#acda0ac0e4e99d8e136dc6a3796a43774',1,'gameboard::ExecutedMove']]],
   ['moves_5fsince_5flast_5fcapture_5f_18',['moves_since_last_capture_',['../classgameboard_1_1GameBoard.html#aa61e3705bfc5101736893d4835d84074',1,'gameboard::GameBoard']]],
   ['moving_5fpiece_19',['moving_piece',['../structgameboard_1_1ExecutedMove.html#a44ceb980865ffab0c3bdef27feb1ef61',1,'gameboard::ExecutedMove::moving_piece()'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1ExecutedMove.html#a9fee39b361c0396c5a071562849c53da',1,'xiangqipy.core_dataclass_mirrors.ExecutedMove.moving_piece()']]],
-  ['my_5fgame_5fsummary_20',['my_game_summary',['../namespacexiangqipy_1_1game__summary__plot__manager.html#a5a794464764027de0a775be99b7c1a0f',1,'xiangqipy::game_summary_plot_manager']]],
-  ['my_5fgame_5fsummary_5fpath_21',['my_game_summary_path',['../namespacexiangqipy_1_1game__summary__plot__manager.html#a38ce69a5697fc2991aee77c6af5c3411',1,'xiangqipy::game_summary_plot_manager']]],
-  ['my_5fint_22',['my_int',['../namespacexiangqipy_1_1game__summary__io.html#a94c56e55ffaca28b12c61d6225d252c0',1,'xiangqipy::game_summary_io']]],
-  ['my_5fpiece_5fcolor_23',['my_piece_color',['../namespacexiangqipy_1_1game__summary__io.html#a8233bc364f0bbebe500a8c3aeaa3db97',1,'xiangqipy::game_summary_io']]]
+  ['mutex_5fmap_5f_20',['mutex_map_',['../classWorker.html#a955bd96191844796544af46799f9a46c',1,'Worker']]],
+  ['my_5fgame_5fsummary_21',['my_game_summary',['../namespacexiangqipy_1_1game__summary__plot__manager.html#a5a794464764027de0a775be99b7c1a0f',1,'xiangqipy::game_summary_plot_manager']]],
+  ['my_5fgame_5fsummary_5fpath_22',['my_game_summary_path',['../namespacexiangqipy_1_1game__summary__plot__manager.html#a38ce69a5697fc2991aee77c6af5c3411',1,'xiangqipy::game_summary_plot_manager']]],
+  ['my_5fint_23',['my_int',['../namespacexiangqipy_1_1game__summary__io.html#a94c56e55ffaca28b12c61d6225d252c0',1,'xiangqipy::game_summary_io']]],
+  ['my_5fpiece_5fcolor_24',['my_piece_color',['../namespacexiangqipy_1_1game__summary__io.html#a8233bc364f0bbebe500a8c3aeaa3db97',1,'xiangqipy::game_summary_io']]]
 ];

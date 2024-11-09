@@ -1,14 +1,13 @@
 <map id="xiangqipy.core_dataclass_mirrors.SearchSummary" name="xiangqipy.core_dataclass_mirrors.SearchSummary">
-<area shape="rect" id="node1" title="A Python SearchSummary." alt="" coords="405,605,637,712"/>
-<area shape="rect" id="node2" title=" " alt="" coords="156,5,195,83"/>
-<area shape="rect" id="node10" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1BoardSpace.html" title="A Python BoardSpace." alt="" coords="74,167,277,259"/>
-<area shape="rect" id="node12" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize.html" title=" " alt="" coords="223,291,450,397"/>
-<area shape="rect" id="node3" title=" " alt="" coords="480,436,561,513"/>
-<area shape="rect" id="node4" title=" " alt="" coords="585,436,624,513"/>
-<area shape="rect" id="node5" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1EqualScoreMoves.html" title="A Ptyhon EqualScoreMoves." alt="" coords="698,421,893,528"/>
-<area shape="rect" id="node6" title=" " alt="" coords="693,175,764,252"/>
-<area shape="rect" id="node7" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1MoveCollection.html" title="A Python MoveCollection." alt="" coords="789,160,1015,267"/>
-<area shape="rect" id="node8" title=" " alt="" coords="879,5,925,83"/>
-<area shape="rect" id="node9" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html" title="A Python Move." alt="" coords="83,429,268,521"/>
-<area shape="rect" id="node11" title=" " alt="" coords="946,436,997,513"/>
+<area shape="rect" id="node1" title="A Python SearchSummary." alt="" coords="250,557,482,664"/>
+<area shape="rect" id="node2" title=" " alt="" coords="31,5,69,83"/>
+<area shape="rect" id="node10" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1BoardSpace.html" title="A Python BoardSpace." alt="" coords="75,167,278,259"/>
+<area shape="rect" id="node3" title=" " alt="" coords="288,388,369,465"/>
+<area shape="rect" id="node4" title=" " alt="" coords="393,388,432,465"/>
+<area shape="rect" id="node5" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1EqualScoreMoves.html" title="A Ptyhon EqualScoreMoves." alt="" coords="506,373,701,480"/>
+<area shape="rect" id="node6" title=" " alt="" coords="491,175,561,252"/>
+<area shape="rect" id="node7" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1MoveCollection.html" title="A Python MoveCollection." alt="" coords="586,160,813,267"/>
+<area shape="rect" id="node8" title=" " alt="" coords="677,5,722,83"/>
+<area shape="rect" id="node9" href="$classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html" title="A Python Move." alt="" coords="79,381,264,473"/>
+<area shape="rect" id="node11" title=" " alt="" coords="754,388,805,465"/>
 </map>

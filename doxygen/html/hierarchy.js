@@ -22,7 +22,6 @@ var hierarchy =
     [ "piecepoints::BPOPointsEKeys", "classpiecepoints_1_1BPOPointsEKeys.html", null ],
     [ "piecepoints::BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html", null ],
     [ "gameboard::CastleEdges", "structgameboard_1_1CastleEdges.html", null ],
-    [ "moveselection::CollisionInfo", "structmoveselection_1_1CollisionInfo.html", null ],
     [ "moveselection::EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.EqualScoreMoves", "classxiangqipy_1_1core__dataclass__mirrors_1_1EqualScoreMoves.html", null ],
     [ "Exception", "classException.html", [
@@ -42,6 +41,7 @@ var hierarchy =
     [ "JsonUtility< NlohmannJsonUtility >", "classJsonUtility.html", [
       [ "jsonio::NlohmannJsonUtility", "classjsonio_1_1NlohmannJsonUtility.html", null ]
     ] ],
+    [ "Manager", "classManager.html", null ],
     [ "moveselection::MinimaxCalcResult", "structmoveselection_1_1MinimaxCalcResult.html", null ],
     [ "gameboard::Move", "structgameboard_1_1Move.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.Move", "classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html", null ],
@@ -61,6 +61,7 @@ var hierarchy =
     [ "PieceValueProvider< PiecePositionPoints >", "classPieceValueProvider.html", [
       [ "piecepoints::PiecePositionPoints", "structpiecepoints_1_1PiecePositionPoints.html", null ]
     ] ],
+    [ "Player", "classPlayer.html", null ],
     [ "xiangqipy.command_input.PlayerCommandInterpreter", "classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html", null ],
     [ "xiangqipy.command_input.PlayerInput", "classxiangqipy_1_1command__input_1_1PlayerInput.html", null ],
     [ "xiangqipy.game_summary.PlayerSummaries", "classxiangqipy_1_1game__summary_1_1PlayerSummaries.html", null ],
@@ -85,12 +86,11 @@ var hierarchy =
     [ "msgspec.Struct", null, [
       [ "xiangqipy.game_summary.GameSummary", "classxiangqipy_1_1game__summary_1_1GameSummary.html", null ]
     ] ],
+    [ "boardstate::TranspositionTable< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTable.html", null ],
     [ "boardstate::TranspositionTableEntry< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTableEntry.html", null ],
-    [ "boardstate::TranspositionTableNew< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTableNew.html", null ],
     [ "moveselection::TranspositionTableSearchResult", "structmoveselection_1_1TranspositionTableSearchResult.html", null ],
-    [ "moveselection::TranspositionTableSize", "structmoveselection_1_1TranspositionTableSize.html", null ],
-    [ "xiangqipy.core_dataclass_mirrors.TranspositionTableSize", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSize.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.TranspositionTableSizesAtEvents", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents.html", null ],
+    [ "Worker", "classWorker.html", null ],
     [ "xiangqipy.command_input.XiangqiGameCommand", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html", null ],
     [ "xiangqipy.command_input.XiangqiGameCommandLine", "classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine.html", null ],
     [ "boardstate::ZobristCalculator< KeyType >", "classboardstate_1_1ZobristCalculator.html", null ],

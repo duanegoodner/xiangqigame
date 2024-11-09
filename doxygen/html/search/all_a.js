@@ -15,7 +15,7 @@ var searchData=
   ['implementgetcolor_12',['ImplementGetColor',['../classgameboard_1_1GameBoard.html#ad38da011b7a2009355a4c44f9001960e',1,'gameboard::GameBoard']]],
   ['implementgetstate_13',['ImplementGetState',['../classboardstate_1_1ZobristSummarizer.html#a97f62c339c0d760b3dad3c81ee2528ac',1,'boardstate::ZobristSummarizer']]],
   ['implementgettrdata_14',['ImplementGetTrData',['../classboardstate_1_1ZobristSummarizer.html#a6833f8956113d4c2adb22f2bc5613ca8',1,'boardstate::ZobristSummarizer']]],
-  ['implementgettrtablesize_15',['ImplementGetTrTableSize',['../classboardstate_1_1ZobristSummarizer.html#ac77f8fb1cd974c2def132f81f9e42da3',1,'boardstate::ZobristSummarizer']]],
+  ['implementgettrtablesize_15',['ImplementGetTrTableSize',['../classboardstate_1_1ZobristSummarizer.html#ac1d6108f07d6e6ce5f65fe9cc77b4473',1,'boardstate::ZobristSummarizer']]],
   ['implementgettype_16',['ImplementGetType',['../classgameboard_1_1GameBoard.html#a9d0347950a9e006f1fbac86ecd8d0d10',1,'gameboard::GameBoard']]],
   ['implementgetvalueofpieceatposition_17',['ImplementGetValueOfPieceAtPosition',['../structpiecepoints_1_1PiecePositionPoints.html#a1bdc82de02dc76be90573ac4eefbd53a',1,'piecepoints::PiecePositionPoints']]],
   ['implementimport_18',['ImplementImport',['../classjsonio_1_1NlohmannJsonUtility.html#a6eebcf3534ce94ba8e5bfec80024f01f',1,'jsonio::NlohmannJsonUtility::ImplementImport(T &amp;object, const string file_path)'],['../classjsonio_1_1NlohmannJsonUtility.html#a851b97e006703f078dbe5730ba0615b8',1,'jsonio::NlohmannJsonUtility::ImplementImport(piecepoints::BPOPointsSKeys &amp;bpo_points, const string file_path)']]],
