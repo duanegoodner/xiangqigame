@@ -255,12 +255,12 @@ public:
       if (tr_table_entry.remaining_search_depth() >=
           remaining_search_depth) {
         tr_table_entry.set_last_access_index(access_index);
-        result.found = true;
-        result.minimax_calc_result = tr_table_entry.minimax_calc_result();
+        result.set_found(true);
+        result.set_minimax_calc_result(tr_table_entry.minimax_calc_result());
       }
-      if (result.found and
+      if (result.found() and
           !tr_table_entry.ConfirmationKeysMatchExpected(expected_keys)) {
-        result.known_collision = true;
+        result.set_known_collision(true);
       }
     }
     return result;

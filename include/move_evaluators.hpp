@@ -512,7 +512,7 @@ private:
     if (use_transposition_table) {
       auto tr_table_search_result =
           hash_calculator_.GetTrData(remaining_search_depth, num_move_selections_);
-      if (tr_table_search_result.found &&
+      if (tr_table_search_result.found() &&
           tr_table_search_result.IsConsistentWith(allowed_moves)) {
         return HandleTrTableHit(
             search_summary,

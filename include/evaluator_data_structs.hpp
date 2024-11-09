@@ -17,7 +17,7 @@ namespace moveselection {
 //! Holds a gameboard::MoveCollection in which all gameboard::Move have the same value
 //! (as perceived by a MoveEvaluator), and the value of the shared score.
 class EqualScoreMoves {
-  public:
+public:
   Points_t shared_score;
   MoveCollection move_collection_;
 
@@ -48,7 +48,7 @@ const size_t kNumResultTypes{7};
 //! Data structure that holds a moveselection::EqualScoreMoves and other search-related
 //! info obtained from a call to moveselection::MinimaxMoveEvaluator.MinimaxRec.
 class MinimaxCalcResult {
-  public:
+public:
   MinimaxCalcResult()
       : remaining_search_depth_{}
       , result_type_{}
@@ -60,27 +60,22 @@ class MinimaxCalcResult {
       , equal_score_moves_{std::move(moves)} {}
 
   Points_t Score() { return equal_score_moves_.shared_score; }
-  EqualScoreMoves equal_score_moves() {return equal_score_moves_; }
+  EqualScoreMoves equal_score_moves() { return equal_score_moves_; }
   MoveCollection moves() { return equal_score_moves_.move_collection(); }
-  MinimaxResultType result_type() {return result_type_;}
-  int remaining_search_depth() {return remaining_search_depth_; }
+  MinimaxResultType result_type() { return result_type_; }
+  int remaining_search_depth() { return remaining_search_depth_; }
 
-
-  private:
+private:
   int remaining_search_depth_;
   MinimaxResultType result_type_;
   EqualScoreMoves equal_score_moves_;
-
 };
 
 //! Container for storing a moveselection::MinimaxCalcResult retrieved by a call to
 //! boardstate::SingleZobristSummarizer.ImplementGetTrData.
-struct TranspositionTableSearchResult {
-  MinimaxCalcResult minimax_calc_result;
-  bool found;
-  bool known_collision;
-
-  MoveCollection moves() { return minimax_calc_result.moves(); }
+class TranspositionTableSearchResult {
+public:
+  MoveCollection moves() { return minimax_calc_result_.moves(); }
 
   bool IsConsistentWith(MoveCollection &allowed_moves) {
     if (allowed_moves.IsEmpty() and moves().IsEmpty()) {
@@ -95,9 +90,25 @@ struct TranspositionTableSearchResult {
     return true;
   }
 
-  EqualScoreMoves score_and_moves() { return minimax_calc_result.equal_score_moves(); }
+  bool found() { return found_; }
+  void set_found(bool status) { found_ = status; }
 
-  
+  bool known_collision() { return known_collision_; }
+  void set_known_collision(bool status) { known_collision_ = status; }
+
+  MinimaxCalcResult minimax_calc_result() { return minimax_calc_result_; }
+  void set_minimax_calc_result(MinimaxCalcResult result) {
+    minimax_calc_result_ = result;
+  }
+
+  EqualScoreMoves score_and_moves() { return minimax_calc_result_.equal_score_moves(); }
+
+  MinimaxResultType result_type() { return minimax_calc_result_.result_type();}
+
+private:
+  MinimaxCalcResult minimax_calc_result_;
+  bool found_;
+  bool known_collision_;
 };
 
 // struct TranspositionTableSize {
@@ -174,13 +185,13 @@ public:
     RecordNodeInfo(
         MinimaxResultType::kTrTableHit,
         remaining_search_depth,
-        tr_table_search_result.minimax_calc_result.equal_score_moves()
+        tr_table_search_result.score_and_moves()
     );
     UpdateTranspositionTableHits(
-        tr_table_search_result.minimax_calc_result.result_type(),
+        tr_table_search_result.result_type(),
         remaining_search_depth
     );
-    if (tr_table_search_result.known_collision) {
+    if (tr_table_search_result.known_collision()) {
       num_collisions_++;
     }
   }
@@ -235,10 +246,7 @@ struct SearchSummaries {
   std::vector<SearchSummary> first_searches;
   std::map<int, SearchSummary> extra_searches;
 
-  SearchSummary &NewFirstSearch(
-      int search_depth,
-      int tr_table_size_initial
-  ) {
+  SearchSummary &NewFirstSearch(int search_depth, int tr_table_size_initial) {
     first_searches.emplace_back(SearchSummary(search_depth, tr_table_size_initial));
     return first_searches.back();
   }

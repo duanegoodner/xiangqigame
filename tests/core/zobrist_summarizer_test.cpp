@@ -90,5 +90,5 @@ TEST_F(ZobristSummarizerTest, RecordAndReadData) {
   auto retrieved_data =
       zobrist_tracker_064_1.GetTrData(dummy_search_depth, dummy_access_index_at_read);
   
-  EXPECT_TRUE(retrieved_data.found);
+  EXPECT_TRUE(retrieved_data.found());
 }
