@@ -46,7 +46,7 @@ public:
     );
   }
 
-  moveselection::TranspositionTableSize GetTrTableSize() {
+  int GetTrTableSize() {
     return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetTrTableSize();
   }
 };

@@ -226,7 +226,7 @@ private:
 };
 
 template <typename KeyType, size_t NumConfKeys>
-class TranspositionTableNew {
+class TranspositionTable {
 public:
   moveselection::TranspositionTableSearchResult GetDataAt(
       KeyType primary_board_state,
@@ -266,8 +266,9 @@ public:
     );
   }
 
-  size_t num_entries() { return data_.size(); }
-  size_t num_states() { return data_.size(); }
+  size_t size() {return data_.size(); }
+  // size_t num_entries() { return data_.size(); }
+  // size_t num_states() { return data_.size(); }
 
 private:
   std::unordered_map<KeyType, TranspositionTableEntry<KeyType, NumConfKeys>> data_;
@@ -328,12 +329,12 @@ public:
     );
   }
 
-  moveselection::TranspositionTableSize ImplementGetTrTableSize() {
-    moveselection::TranspositionTableSize result{
-        transposition_table_.num_entries(),
-        transposition_table_.num_states()
-    };
-    return result;
+  int ImplementGetTrTableSize() {
+    // moveselection::TranspositionTableSize result{
+    //     transposition_table_.num_entries(),
+    //     transposition_table_.num_states()
+    // };
+    return transposition_table_.size();
   }
 
   const std::string board_state_hex_str() {
@@ -344,7 +345,7 @@ public:
 
 private:
   ZobristComponent<KeyType, NumConfKeys> zobrist_component_;
-  TranspositionTableNew<KeyType, NumConfKeys> transposition_table_;
+  TranspositionTable<KeyType, NumConfKeys> transposition_table_;
 };
 
 } // namespace boardstate

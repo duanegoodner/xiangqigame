@@ -99,9 +99,9 @@ private:
   Player &player2_;
 
 public:
-  Manager(Player &e1, Player &e2)
-      : player1_(e1)
-      , player2_(e2) {}
+  Manager(Player &p1, Player &p2)
+      : player1_(p1)
+      , player2_(p2) {}
 
   void ManageEvaluators() {
     uint32_t turn_number = 0;
