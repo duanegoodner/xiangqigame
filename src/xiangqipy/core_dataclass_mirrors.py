@@ -149,23 +149,23 @@ class EqualScoreMoves:
         )
 
 
-@dataclass
-class TranspositionTableSize:
-    num_entries: int | None
-    num_states: int | None
-
-    @classmethod
-    def from_core_transposition_table_size(cls, core_transposition_table_size):
-        return cls(
-            num_entries=core_transposition_table_size.num_entries,
-            num_states=core_transposition_table_size.num_states,
-        )
+# @dataclass
+# class TranspositionTableSize:
+#     num_entries: int | None
+#     num_states: int | None
+#
+#     @classmethod
+#     def from_core_transposition_table_size(cls, core_transposition_table_size):
+#         return cls(
+#             num_entries=core_transposition_table_size.num_entries,
+#             num_states=core_transposition_table_size.num_states,
+#         )
 
 
 @dataclass
 class TranspositionTableSizesAtEvents:
-    first_illegal_move_request: TranspositionTableSize | None
-    end_game: TranspositionTableSize | None
+    first_illegal_move_request: int | None
+    end_game: int | None
 
 
 @dataclass
@@ -207,8 +207,8 @@ class SearchSummary:
     selected_move: Move
     returned_illegal_move: bool
     num_collisions: int
-    tr_table_size_initial: TranspositionTableSize
-    tr_table_size_final: TranspositionTableSize
+    tr_table_size_initial: int
+    tr_table_size_final: int
 
     @classmethod
     def from_core_search_summary(
@@ -231,12 +231,8 @@ class SearchSummary:
             ),
             returned_illegal_move=core_search_summary.returned_illegal_move,
             num_collisions=core_search_summary.num_collisions,
-            tr_table_size_initial=TranspositionTableSize.from_core_transposition_table_size(
-                core_transposition_table_size=core_search_summary.tr_table_size_initial
-            ),
-            tr_table_size_final=TranspositionTableSize.from_core_transposition_table_size(
-                core_transposition_table_size=core_search_summary.tr_table_size_final
-            ),
+            tr_table_size_initial=core_search_summary.tr_table_size_initial,
+            tr_table_size_final=core_search_summary.tr_table_size_final,
         )
 
     @property

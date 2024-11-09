@@ -13,7 +13,7 @@ import xiangqi_bindings as bindings
 
 import xiangqipy.core_dataclass_mirrors as cdm
 from xiangqipy.enums import PlayerType, EvaluatorType
-from xiangqipy.core_dataclass_mirrors import PointsT, TranspositionTableSize
+from xiangqipy.core_dataclass_mirrors import PointsT
 
 
 @dataclass
@@ -126,22 +126,16 @@ class PlayerSummary:
     @property
     def tr_table_size_first_illegal_move_request(
         self,
-    ) -> cdm.TranspositionTableSize:
+    ) -> int | None:
         if self.has_search_summaries and self.search_summaries.extra_searches:
             return self.search_summaries.extra_searches[
                 min(self.search_summaries.extra_searches)
             ].tr_table_size_initial
-        else:
-            return TranspositionTableSize(num_entries=None, num_states=None)
 
     @property
-    def tr_table_size_end_game(self) -> cdm.TranspositionTableSize:
+    def tr_table_size_end_game(self) -> int | None:
         if self.has_search_summaries:
             return self.search_summaries.first_searches[-1].tr_table_size_final
-        else:
-            return cdm.TranspositionTableSize(
-                num_entries=None, num_states=None
-            )
 
     @property
     def tr_table_sizes_at_events(self) -> cdm.TranspositionTableSizesAtEvents:
@@ -190,12 +184,12 @@ class PlayerSummary:
         )
 
         tr_table_num_states = [
-            search_summary.tr_table_size_final.num_states
+            search_summary.tr_table_size_final
             for search_summary in self.search_summaries.first_searches
         ]
 
         tr_table_num_entries = [
-            search_summary.tr_table_size_final.num_entries
+            search_summary.tr_table_size_final
             for search_summary in self.search_summaries.first_searches
         ]
 
@@ -270,10 +264,10 @@ class PlayerSummary:
                     num_collisions,
                     collisions_per_move,
                     collisions_per_node,
-                    self.tr_table_size_first_illegal_move_request.num_states,
-                    self.tr_table_size_first_illegal_move_request.num_entries,
-                    self.tr_table_size_end_game.num_states,
-                    self.tr_table_size_end_game.num_entries,
+                    self.tr_table_size_first_illegal_move_request,
+                    self.tr_table_size_first_illegal_move_request,
+                    self.tr_table_size_end_game,
+                    self.tr_table_size_end_game,
                 ],
                 index=[
                     "search_depth",
