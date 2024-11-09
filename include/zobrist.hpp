@@ -231,6 +231,8 @@ public:
     return true;
   }
 
+  int remaining_search_depth() { return minimax_calc_result_.remaining_search_depth(); }
+
 private:
   moveselection::MinimaxCalcResult minimax_calc_result_;
   std::array<KeyType, NumConfKeys> confirmation_keys_;
@@ -250,7 +252,7 @@ public:
     auto tr_table_entry_it = data_.find(primary_board_state);
     if (tr_table_entry_it != data_.end()) {
       auto tr_table_entry = tr_table_entry_it->second;
-      if (tr_table_entry.minimax_calc_result().remaining_search_depth >=
+      if (tr_table_entry.remaining_search_depth() >=
           remaining_search_depth) {
         tr_table_entry.set_last_access_index(access_index);
         result.found = true;

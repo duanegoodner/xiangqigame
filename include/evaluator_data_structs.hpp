@@ -47,23 +47,30 @@ const size_t kNumResultTypes{7};
 
 //! Data structure that holds a moveselection::EqualScoreMoves and other search-related
 //! info obtained from a call to moveselection::MinimaxMoveEvaluator.MinimaxRec.
-struct MinimaxCalcResult {
+class MinimaxCalcResult {
+  public:
   MinimaxCalcResult()
-      : remaining_search_depth{}
-      , result_type{}
-      , equal_score_moves{} {}
+      : remaining_search_depth_{}
+      , result_type_{}
+      , equal_score_moves_{} {}
 
   MinimaxCalcResult(int depth, MinimaxResultType type, EqualScoreMoves moves)
-      : remaining_search_depth(depth)
-      , result_type(type)
-      , equal_score_moves(std::move(moves)) {}
+      : remaining_search_depth_{depth}
+      , result_type_{type}
+      , equal_score_moves_{std::move(moves)} {}
 
-  int remaining_search_depth;
-  MinimaxResultType result_type;
-  EqualScoreMoves equal_score_moves;
+  Points_t Score() { return equal_score_moves_.shared_score; }
+  EqualScoreMoves equal_score_moves() {return equal_score_moves_; }
+  MoveCollection moves() { return equal_score_moves_.move_collection(); }
+  MinimaxResultType result_type() {return result_type_;}
+  int remaining_search_depth() {return remaining_search_depth_; }
 
-  Points_t Score() { return equal_score_moves.shared_score; }
-  MoveCollection moves() { return equal_score_moves.move_collection(); }
+
+  private:
+  int remaining_search_depth_;
+  MinimaxResultType result_type_;
+  EqualScoreMoves equal_score_moves_;
+
 };
 
 //! Container for storing a moveselection::MinimaxCalcResult retrieved by a call to
@@ -88,7 +95,9 @@ struct TranspositionTableSearchResult {
     return true;
   }
 
-  EqualScoreMoves score_and_moves() { return minimax_calc_result.equal_score_moves; }
+  EqualScoreMoves score_and_moves() { return minimax_calc_result.equal_score_moves(); }
+
+  
 };
 
 // struct TranspositionTableSize {
@@ -147,7 +156,7 @@ public:
   void RecordNodeInfo(
       MinimaxResultType result_type,
       int search_depth,
-      EqualScoreMoves &equal_score_moves
+      const EqualScoreMoves &equal_score_moves
   ) {
     result_depth_counts_.IncrementDataAt(result_type, search_depth);
     num_nodes_++;
@@ -165,10 +174,10 @@ public:
     RecordNodeInfo(
         MinimaxResultType::kTrTableHit,
         remaining_search_depth,
-        tr_table_search_result.minimax_calc_result.equal_score_moves
+        tr_table_search_result.minimax_calc_result.equal_score_moves()
     );
     UpdateTranspositionTableHits(
-        tr_table_search_result.minimax_calc_result.result_type,
+        tr_table_search_result.minimax_calc_result.result_type(),
         remaining_search_depth
     );
     if (tr_table_search_result.known_collision) {
