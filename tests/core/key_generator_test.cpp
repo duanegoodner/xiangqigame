@@ -1,4 +1,3 @@
-// #include <common.hpp>
 #include <gtest/gtest.h>
 #include <key_generator.hpp>
 #include <random>
@@ -23,7 +22,7 @@ TEST_F(PseudoRandomKeyGeneratorTest, ConstructorWithSeed) {
 //! Output is really 32 bits, but uses std::uint_fast32_t which is 64-bit int on 64-bit
 //! systems. When value is stored in a 64 bit int, still only uses lower 32 bits.
 TEST_F(PseudoRandomKeyGeneratorTest, CheckMt19937OutputSize) {
-  std::mt19937 gen_{1234};
+  std::mt19937 gen_{12345};
   auto my_num = gen_();
   boardstate::PrintHex(my_num);
   auto output_size = sizeof(my_num);

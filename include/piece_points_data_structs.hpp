@@ -5,6 +5,7 @@
 
 #include <board_data_structs.hpp>
 #include <game_piece.hpp>
+#include <integer_types.hpp>
 #include <string>
 #include <unordered_map>
 
@@ -12,7 +13,7 @@ using namespace std;
 
 namespace piecepoints {
 
-typedef int Points_t;
+// typedef int Points_t;
 inline size_t size_of_points_type() { return sizeof(Points_t); }
 inline bool is_signed_points_type() { return numeric_limits<Points_t>::is_signed; }
 

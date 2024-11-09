@@ -6,6 +6,7 @@
 #include <array>
 #include <cassert>
 #include <game_piece.hpp>
+#include <integer_types.hpp>
 #include <random>
 #include <vector>
 
@@ -13,7 +14,6 @@ using namespace std;
 
 namespace gameboard {
 
-typedef int BoardIdx_t;
 const BoardIdx_t kNumRanks = 10;
 const BoardIdx_t kNumFiles = 9;
 

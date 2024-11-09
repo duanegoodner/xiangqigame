@@ -4,7 +4,9 @@
 #pragma once
 
 #include <board_data_structs.hpp>
+#include <board_state_summarizer_interface.hpp>
 #include <chrono>
+#include <integer_types.hpp>
 #include <map>
 #include <move_data_structs.hpp>
 #include <piece_points_bpo.hpp>
@@ -13,6 +15,7 @@ using namespace gameboard;
 using namespace piecepoints;
 
 namespace moveselection {
+
 
 //! Holds a gameboard::MoveCollection in which all gameboard::Move have the same value
 //! (as perceived by a MoveEvaluator), and the value of the shared score.
@@ -30,7 +33,7 @@ struct ScoredMove {
   Points_t score;
 };
 
-enum MinimaxResultType : size_t {
+enum MinimaxResultType : uint16_t {
   kUnknown = 0,
   kTrTableHit = 1,
   kEvaluatorLoses = 4,
@@ -43,7 +46,7 @@ enum MinimaxResultType : size_t {
   kMin = kUnknown,
   kMax = kBetaPrune
 };
-const size_t kNumResultTypes{7};
+const uint16_t kNumResultTypes{7};
 
 //! Data structure that holds a moveselection::EqualScoreMoves and other search-related
 //! info obtained from a call to moveselection::MinimaxMoveEvaluator.MinimaxRec.
@@ -54,7 +57,7 @@ public:
       , result_type_{}
       , equal_score_moves_{} {}
 
-  MinimaxCalcResult(int depth, MinimaxResultType type, EqualScoreMoves moves)
+  MinimaxCalcResult(DepthType depth, MinimaxResultType type, EqualScoreMoves moves)
       : remaining_search_depth_{depth}
       , result_type_{type}
       , equal_score_moves_{std::move(moves)} {}
@@ -63,10 +66,10 @@ public:
   EqualScoreMoves equal_score_moves() { return equal_score_moves_; }
   MoveCollection moves() { return equal_score_moves_.move_collection(); }
   MinimaxResultType result_type() { return result_type_; }
-  int remaining_search_depth() { return remaining_search_depth_; }
+  DepthType remaining_search_depth() { return remaining_search_depth_; }
 
 private:
-  int remaining_search_depth_;
+  DepthType remaining_search_depth_;
   MinimaxResultType result_type_;
   EqualScoreMoves equal_score_moves_;
 };
@@ -127,13 +130,13 @@ typedef std::array<std::vector<int>, MinimaxResultType::kMax + 1>
 //! array of vectors.
 class ResultDepthCounts {
 public:
-  ResultDepthCounts(int max_search_depth) {
+  ResultDepthCounts(DepthType max_search_depth) {
     for (auto &vec : data_) {
       vec.resize(max_search_depth + 1);
     }
   }
 
-  void IncrementDataAt(MinimaxResultType result_type, int search_depth) {
+  void IncrementDataAt(MinimaxResultType result_type, DepthType search_depth) {
     data_[result_type][search_depth]++;
   }
 
@@ -155,7 +158,7 @@ private:
 //! moveseelection::ResultDepthCounts  for all other search result types.
 class SearchSummary {
 public:
-  SearchSummary(int max_search_depth, int tr_table_size_initial)
+  SearchSummary(DepthType max_search_depth, size_t tr_table_size_initial)
       : num_nodes_{}
       , result_depth_counts_{ResultDepthCounts(max_search_depth)}
       , transposition_table_hits_(ResultDepthCounts(max_search_depth))
@@ -166,7 +169,7 @@ public:
 
   void RecordNodeInfo(
       MinimaxResultType result_type,
-      int search_depth,
+      DepthType search_depth,
       const EqualScoreMoves &equal_score_moves
   ) {
     result_depth_counts_.IncrementDataAt(result_type, search_depth);
@@ -174,13 +177,13 @@ public:
     set_equal_score_moves(equal_score_moves);
   }
 
-  void UpdateTranspositionTableHits(MinimaxResultType result_type, int search_depth) {
+  void UpdateTranspositionTableHits(MinimaxResultType result_type, DepthType search_depth) {
     transposition_table_hits_.IncrementDataAt(result_type, search_depth);
   }
 
   void RecordTrTableHit(
       TranspositionTableSearchResult &tr_table_search_result,
-      int remaining_search_depth
+      DepthType remaining_search_depth
   ) {
     RecordNodeInfo(
         MinimaxResultType::kTrTableHit,
@@ -196,7 +199,7 @@ public:
     }
   }
 
-  int num_nodes() { return num_nodes_; }
+  size_t num_nodes() { return num_nodes_; }
   std::chrono::duration<double, std::nano> time() { return time_; }
 
   void set_time(std::chrono::duration<double, std::nano> search_time) {
@@ -213,26 +216,26 @@ public:
   ResultDepthCountsData_t GetTranspositionTableHits() {
     return transposition_table_hits_.data();
   }
-  int tr_table_size_initial() { return tr_table_size_initial_; }
-  int tr_table_size_final() { return tr_table_size_final_; }
-  void set_tr_table_size_final(int tr_table_size_final) {
+  size_t tr_table_size_initial() { return tr_table_size_initial_; }
+  size_t tr_table_size_final() { return tr_table_size_final_; }
+  void set_tr_table_size_final(size_t tr_table_size_final) {
     tr_table_size_final_ = tr_table_size_final;
   }
   void set_returned_illegal_move(bool status) { returned_illegal_move_ = status; }
   bool returned_illegal_move() { return returned_illegal_move_; }
-  int num_collisions() { return num_collisions_; }
+  size_t num_collisions() { return num_collisions_; }
 
 private:
-  int num_nodes_;
+  size_t num_nodes_;
   std::chrono::duration<double, std::nano> time_;
   ResultDepthCounts result_depth_counts_;
   ResultDepthCounts transposition_table_hits_;
   EqualScoreMoves equal_score_moves_;
   Move selected_move_;
   bool returned_illegal_move_;
-  int num_collisions_;
-  int tr_table_size_initial_;
-  int tr_table_size_final_;
+  size_t num_collisions_;
+  size_t tr_table_size_initial_;
+  size_t tr_table_size_final_;
 };
 
 //! Stores a moveselection::SearchSummary for each
@@ -244,17 +247,17 @@ private:
 //! the second search is stored in moveselection::SearchSummaries.extra_searches.
 struct SearchSummaries {
   std::vector<SearchSummary> first_searches;
-  std::map<int, SearchSummary> extra_searches;
+  std::map<MoveCountType, SearchSummary> extra_searches;
 
-  SearchSummary &NewFirstSearch(int search_depth, int tr_table_size_initial) {
+  SearchSummary &NewFirstSearch(DepthType search_depth, size_t tr_table_size_initial) {
     first_searches.emplace_back(SearchSummary(search_depth, tr_table_size_initial));
     return first_searches.back();
   }
 
   SearchSummary &NewExtraSearch(
-      int search_depth,
-      int search_number,
-      int tr_table_size_current
+      DepthType search_depth,
+      MoveCountType search_number,
+      size_t tr_table_size_current
   ) {
     auto new_search_entry = extra_searches.emplace(
         search_number,
