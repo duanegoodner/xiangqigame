@@ -5,13 +5,10 @@ import xiangqi_bindings as bindings
 if __name__ == "__main__":
 
     full_batch_summary_032bit = bt.FullBatchSummary(
-        batch_id="20241023153411705876"
+        batch_dir="20241108173153768315-BATCH-2-R-d3-k064-B-d3-k064"
     )
     full_batch_summary_064bit = bt.FullBatchSummary(
-        batch_id="20241023153611738579"
-    )
-    full_batch_summary_128bit = bt.FullBatchSummary(
-        batch_id="20241023153811028455"
+        batch_dir="20241108173157830386-BATCH-2-R-d3-k064-B-d3-k064"
     )
 
     batch_ids = [

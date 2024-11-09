@@ -149,19 +149,6 @@ class EqualScoreMoves:
         )
 
 
-# @dataclass
-# class TranspositionTableSize:
-#     num_entries: int | None
-#     num_states: int | None
-#
-#     @classmethod
-#     def from_core_transposition_table_size(cls, core_transposition_table_size):
-#         return cls(
-#             num_entries=core_transposition_table_size.num_entries,
-#             num_states=core_transposition_table_size.num_states,
-#         )
-
-
 @dataclass
 class TranspositionTableSizesAtEvents:
     first_illegal_move_request: int | None
