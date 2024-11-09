@@ -276,7 +276,7 @@ private:
       int remaining_search_depth
   ) {
     auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
-    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result, num_move_selections_);
     search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
     return result;
   }
@@ -312,7 +312,8 @@ private:
       int remaining_search_depth
   ) {
     auto result = EvaluateNonWinLeaf(cur_player, result_type);
-    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    hash_calculator_
+        .RecordTrData(remaining_search_depth, result_type, result, num_move_selections_);
     search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
 
     return result;
@@ -361,7 +362,8 @@ private:
       result_type = MinimaxResultType::kFullyEvaluatedNode;
     }
     EqualScoreMoves result{best_eval, best_moves};
-    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    hash_calculator_
+        .RecordTrData(remaining_search_depth, result_type, result, num_move_selections_);
     search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
     return result;
   }
@@ -508,7 +510,8 @@ private:
     // Check if result for current board state is in transposition table
     // (unless this is a second search in which case we don't use transposition table)
     if (use_transposition_table) {
-      auto tr_table_search_result = hash_calculator_.GetTrData(remaining_search_depth);
+      auto tr_table_search_result =
+          hash_calculator_.GetTrData(remaining_search_depth, num_move_selections_);
       if (tr_table_search_result.found &&
           tr_table_search_result.IsConsistentWith(allowed_moves)) {
         return HandleTrTableHit(
@@ -568,8 +571,10 @@ private:
     auto search_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::nano> search_time = search_end - search_start;
     search_summary.set_time(search_time);
-    auto selected_move_index =
-        utility_functs::random((size_t)0, minimax_result.move_collection().moves.size() - 1);
+    auto selected_move_index = utility_functs::random(
+        (size_t)0,
+        minimax_result.move_collection().moves.size() - 1
+    );
     auto selected_move = minimax_result.move_collection().moves[selected_move_index];
     search_summary.SetSelectedMove(selected_move);
     auto tr_table_size = hash_calculator_.GetTrTableSize();

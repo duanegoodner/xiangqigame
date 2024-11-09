@@ -3,16 +3,21 @@
 #pragma once
 
 #include <array>
+#include <atomic>
 #include <board_data_structs.hpp>
+#include <chrono>
 #include <key_generator.hpp>
 #include <move_data_structs.hpp>
+#include <mutex>
 #include <optional>
 #include <random>
+#include <shared_mutex>
 #include <vector>
 
 namespace boardstate {
 
-//! Container for all of the hash keys needed to run a boardstate::SingleZobristSummarizer.
+//! Container for all of the hash keys needed to run a
+//! boardstate::SingleZobristSummarizer.
 template <typename KeyType>
 class ZobristCalculator {
 public:
@@ -202,14 +207,20 @@ class TranspositionTableEntry {
 public:
   TranspositionTableEntry(
       moveselection::MinimaxCalcResult minimax_calc_result,
-      std::array<KeyType, NumConfKeys> confirmation_keys
+      std::array<KeyType, NumConfKeys> confirmation_keys,
+      int last_access_index
   )
       : minimax_calc_result_{minimax_calc_result}
-      , confirmation_keys_{confirmation_keys} {}
+      , confirmation_keys_{confirmation_keys}
+      , last_access_index_{last_access_index} {}
 
   moveselection::MinimaxCalcResult minimax_calc_result() { return minimax_calc_result_; }
 
   std::array<KeyType, NumConfKeys> confirmation_keys() { return confirmation_keys_; }
+
+  void set_last_access_index(int last_access_index) {
+    last_access_index_ = last_access_index;
+  }
 
   bool ConfirmationKeysMatchExpected(std::array<KeyType, NumConfKeys> expected_keys) {
     for (auto i = 0; i < NumConfKeys; ++i) {
@@ -223,6 +234,7 @@ public:
 private:
   moveselection::MinimaxCalcResult minimax_calc_result_;
   std::array<KeyType, NumConfKeys> confirmation_keys_;
+  int last_access_index_;
 };
 
 template <typename KeyType, size_t NumConfKeys>
@@ -231,7 +243,8 @@ public:
   moveselection::TranspositionTableSearchResult GetDataAt(
       KeyType primary_board_state,
       int remaining_search_depth,
-      std::array<KeyType, NumConfKeys> expected_keys
+      std::array<KeyType, NumConfKeys> expected_keys,
+      int access_index
   ) {
     moveselection::TranspositionTableSearchResult result{};
     auto tr_table_entry_it = data_.find(primary_board_state);
@@ -239,6 +252,7 @@ public:
       auto tr_table_entry = tr_table_entry_it->second;
       if (tr_table_entry.minimax_calc_result().remaining_search_depth >=
           remaining_search_depth) {
+        tr_table_entry.set_last_access_index(access_index);
         result.found = true;
         result.minimax_calc_result = tr_table_entry.minimax_calc_result();
       }
@@ -255,20 +269,20 @@ public:
       int search_depth,
       moveselection::MinimaxResultType result_type,
       moveselection::EqualScoreMoves &similar_moves,
-      const std::array<KeyType, NumConfKeys> &confirmation_keys
+      const std::array<KeyType, NumConfKeys> &confirmation_keys,
+      int access_index
   ) {
     data_.insert_or_assign(
         primary_board_state,
         TranspositionTableEntry<KeyType, NumConfKeys>{
             moveselection::MinimaxCalcResult{search_depth, result_type, similar_moves},
-            confirmation_keys
+            confirmation_keys,
+            access_index
         }
     );
   }
 
-  size_t size() {return data_.size(); }
-  // size_t num_entries() { return data_.size(); }
-  // size_t num_states() { return data_.size(); }
+  size_t size() { return data_.size(); }
 
 private:
   std::unordered_map<KeyType, TranspositionTableEntry<KeyType, NumConfKeys>> data_;
@@ -310,32 +324,32 @@ public:
   void ImplementRecordTrData(
       int search_depth,
       moveselection::MinimaxResultType result_type,
-      moveselection::EqualScoreMoves &similar_moves
+      moveselection::EqualScoreMoves &similar_moves,
+      int access_index
   ) {
     transposition_table_.RecordData(
         zobrist_component_.primary_board_state(),
         search_depth,
         result_type,
         similar_moves,
-        zobrist_component_.confirmation_board_states()
+        zobrist_component_.confirmation_board_states(),
+        access_index
     );
   }
 
-  moveselection::TranspositionTableSearchResult ImplementGetTrData(int search_depth) {
+  moveselection::TranspositionTableSearchResult ImplementGetTrData(
+      int search_depth,
+      int access_index
+  ) {
     return transposition_table_.GetDataAt(
         zobrist_component_.primary_board_state(),
         search_depth,
-        zobrist_component_.confirmation_board_states()
+        zobrist_component_.confirmation_board_states(),
+        access_index
     );
   }
 
-  int ImplementGetTrTableSize() {
-    // moveselection::TranspositionTableSize result{
-    //     transposition_table_.num_entries(),
-    //     transposition_table_.num_states()
-    // };
-    return transposition_table_.size();
-  }
+  int ImplementGetTrTableSize() { return transposition_table_.size(); }
 
   const std::string board_state_hex_str() {
     return IntToHexString(zobrist_component_.primary_board_state());

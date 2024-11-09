@@ -34,15 +34,20 @@ public:
   void RecordTrData(
       int search_depth,
       moveselection::MinimaxResultType result_type,
-      moveselection::EqualScoreMoves &similar_moves
+      moveselection::EqualScoreMoves &similar_moves,
+      int access_index
   ) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)
-        ->ImplementRecordTrData(search_depth, result_type, similar_moves);
+        ->ImplementRecordTrData(search_depth, result_type, similar_moves, access_index);
   }
 
-  moveselection::TranspositionTableSearchResult GetTrData(int search_depth) {
+  moveselection::TranspositionTableSearchResult GetTrData(
+      int search_depth,
+      int access_index
+  ) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetTrData(
-        search_depth
+        search_depth,
+        access_index
     );
   }
 
