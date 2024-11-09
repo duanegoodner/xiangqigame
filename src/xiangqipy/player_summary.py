@@ -13,7 +13,7 @@ import xiangqi_bindings as bindings
 
 import xiangqipy.core_dataclass_mirrors as cdm
 from xiangqipy.enums import PlayerType, EvaluatorType
-from xiangqipy.core_dataclass_mirrors import PointsT, TranspositionTableSize
+from xiangqipy.core_dataclass_mirrors import PointsT
 
 
 @dataclass
@@ -126,22 +126,16 @@ class PlayerSummary:
     @property
     def tr_table_size_first_illegal_move_request(
         self,
-    ) -> cdm.TranspositionTableSize:
+    ) -> int | None:
         if self.has_search_summaries and self.search_summaries.extra_searches:
             return self.search_summaries.extra_searches[
                 min(self.search_summaries.extra_searches)
             ].tr_table_size_initial
-        else:
-            return TranspositionTableSize(num_entries=None, num_states=None)
 
     @property
-    def tr_table_size_end_game(self) -> cdm.TranspositionTableSize:
+    def tr_table_size_end_game(self) -> int | None:
         if self.has_search_summaries:
             return self.search_summaries.first_searches[-1].tr_table_size_final
-        else:
-            return cdm.TranspositionTableSize(
-                num_entries=None, num_states=None
-            )
 
     @property
     def tr_table_sizes_at_events(self) -> cdm.TranspositionTableSizesAtEvents:
@@ -189,13 +183,13 @@ class PlayerSummary:
             dtype=PointsT,
         )
 
-        tr_table_num_states = [
-            search_summary.tr_table_size_final.num_states
-            for search_summary in self.search_summaries.first_searches
-        ]
+        # tr_table_size = [
+        #     search_summary.tr_table_size_final
+        #     for search_summary in self.search_summaries.first_searches
+        # ]
 
-        tr_table_num_entries = [
-            search_summary.tr_table_size_final.num_entries
+        tr_table_size = [
+            search_summary.tr_table_size_final
             for search_summary in self.search_summaries.first_searches
         ]
 
@@ -221,8 +215,8 @@ class PlayerSummary:
                 "search_time_s": search_time_s,
                 "mean_time_per_node_ns": mean_time_per_node_ns,
                 "eval_score": eval_score,
-                "tr_table_num_states": tr_table_num_states,
-                "tr_table_num_entries": tr_table_num_entries,
+                "tr_table_size": tr_table_size,
+                # "tr_table_num_entries": tr_table_num_entries,
                 "returned_illegal_move": returned_illegal_move,
                 "num_collisions": num_collisions,
                 # "cumulative_illegal_moves": cumulative_illegal_moves,
@@ -270,10 +264,10 @@ class PlayerSummary:
                     num_collisions,
                     collisions_per_move,
                     collisions_per_node,
-                    self.tr_table_size_first_illegal_move_request.num_states,
-                    self.tr_table_size_first_illegal_move_request.num_entries,
-                    self.tr_table_size_end_game.num_states,
-                    self.tr_table_size_end_game.num_entries,
+                    # self.tr_table_size_first_illegal_move_request,
+                    self.tr_table_size_first_illegal_move_request,
+                    # self.tr_table_size_end_game,
+                    self.tr_table_size_end_game,
                 ],
                 index=[
                     "search_depth",
@@ -286,9 +280,9 @@ class PlayerSummary:
                     "num_collisions",
                     "collisions_per_move",
                     "collisions_per_node",
-                    "tr_table_num_states_first_illegal_move_request",
-                    "tr_table_num_entries_first_illegal_move_request",
-                    "tr_table_num_states_end_game",
-                    "tr_table_num_entries_end_game",
+                    # "tr_table_num_states_first_illegal_move_request",
+                    "tr_table_size_first_illegal_move_request",
+                    # "tr_table_num_states_end_game",
+                    "tr_table_size_end_game",
                 ],
             )

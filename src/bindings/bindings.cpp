@@ -175,9 +175,9 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def(py::init<PieceColor, GameBoard &>(), "evaluating_player"_a, "game_board"_a)
       .def("select_move", &moveselection::RandomMoveEvaluator<GameBoard>::SelectMove);
 
-  py::class_<moveselection::TranspositionTableSize>(m, "TranspositionTableSize")
-      .def_readonly("num_entries", &moveselection::TranspositionTableSize::num_entries)
-      .def_readonly("num_states", &moveselection::TranspositionTableSize::num_states);
+//   py::class_<moveselection::TranspositionTableSize>(m, "TranspositionTableSize")
+//       .def_readonly("num_entries", &moveselection::TranspositionTableSize::num_entries)
+//       .def_readonly("num_states", &moveselection::TranspositionTableSize::num_states);
 
   py::class_<moveselection::SearchSummary>(m, "SearchSummary")
       //   .def(py::init<int>()) // Constructor, as needed for initialization

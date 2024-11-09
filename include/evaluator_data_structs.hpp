@@ -91,10 +91,10 @@ struct TranspositionTableSearchResult {
   EqualScoreMoves score_and_moves() { return minimax_calc_result.equal_score_moves; }
 };
 
-struct TranspositionTableSize {
-  uint64_t num_entries;
-  uint64_t num_states;
-};
+// struct TranspositionTableSize {
+//   uint64_t num_entries;
+//   uint64_t num_states;
+// };
 
 //! Array of vectors for storing counts of moveselection::MinimaxResultType for each
 //! posible remaining search depth. Outer (array) index ->
@@ -123,10 +123,10 @@ private:
   ResultDepthCountsData_t data_;
 };
 
-struct CollisionInfo {
-  TranspositionTableSize tr_table_size;
-  std::string board_state;
-};
+// struct CollisionInfo {
+//   TranspositionTableSize tr_table_size;
+//   std::string board_state;
+// };
 
 //! Stores data collected during a single call to
 //! moveselection::MinimaxMoveEvaluator.ImplementSelectMove. Includes total number of
@@ -135,7 +135,7 @@ struct CollisionInfo {
 //! moveseelection::ResultDepthCounts  for all other search result types.
 class SearchSummary {
 public:
-  SearchSummary(int max_search_depth, TranspositionTableSize tr_table_size_initial)
+  SearchSummary(int max_search_depth, int tr_table_size_initial)
       : num_nodes_{}
       , result_depth_counts_{ResultDepthCounts(max_search_depth)}
       , transposition_table_hits_(ResultDepthCounts(max_search_depth))
@@ -193,9 +193,9 @@ public:
   ResultDepthCountsData_t GetTranspositionTableHits() {
     return transposition_table_hits_.data();
   }
-  TranspositionTableSize tr_table_size_initial() { return tr_table_size_initial_; }
-  TranspositionTableSize tr_table_size_final() { return tr_table_size_final_; }
-  void set_tr_table_size_final(TranspositionTableSize tr_table_size_final) {
+  int tr_table_size_initial() { return tr_table_size_initial_; }
+  int tr_table_size_final() { return tr_table_size_final_; }
+  void set_tr_table_size_final(int tr_table_size_final) {
     tr_table_size_final_ = tr_table_size_final;
   }
   void set_returned_illegal_move(bool status) { returned_illegal_move_ = status; }
@@ -211,8 +211,8 @@ private:
   Move selected_move_;
   bool returned_illegal_move_;
   int num_collisions_;
-  TranspositionTableSize tr_table_size_initial_;
-  TranspositionTableSize tr_table_size_final_;
+  int tr_table_size_initial_;
+  int tr_table_size_final_;
 };
 
 //! Stores a moveselection::SearchSummary for each
@@ -228,7 +228,7 @@ struct SearchSummaries {
 
   SearchSummary &NewFirstSearch(
       int search_depth,
-      TranspositionTableSize tr_table_size_initial
+      int tr_table_size_initial
   ) {
     first_searches.emplace_back(SearchSummary(search_depth, tr_table_size_initial));
     return first_searches.back();
@@ -237,7 +237,7 @@ struct SearchSummaries {
   SearchSummary &NewExtraSearch(
       int search_depth,
       int search_number,
-      TranspositionTableSize tr_table_size_current
+      int tr_table_size_current
   ) {
     auto new_search_entry = extra_searches.emplace(
         search_number,

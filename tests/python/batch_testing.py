@@ -276,7 +276,8 @@ if __name__ == "__main__":
 
     multi_batch_summary = MultiBatchSummary(
         batch_dirs=[
-            "20241030235307679434-BATCH-2-R-d7-k064-B-d3-k064",
+            "20241108173153768315-BATCH-2-R-d3-k064-B-d3-k064",
+            "20241108173157830386-BATCH-2-R-d3-k064-B-d3-k064"
         ]
     )
 

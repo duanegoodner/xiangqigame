@@ -5,12 +5,8 @@ import batch_testing as bt
 
 if __name__ == "__main__":
     test_abbreviations = [
-        "2-R-d7-k064-B-d3-k064",
-        "2-R-d8-k064-B-d3-k064",
-        "2-R-d3-k064-B-d7-k064",
-        "2-R-d3-k064-B-d8-k064",
-        "2-R-d7-k064-B-d7-k064",
-        "2-R-d8-k064-B-d8-k064",
+        "2-R-d3-k064-B-d3-k064",
+        "2-R-d3-k064-B-d3-k064",
     ]
     test_conditions = [
         bt.BatchTestConditions.from_abbreviation(
