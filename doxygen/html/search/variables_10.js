@@ -19,7 +19,7 @@ var searchData=
   ['pointst_16',['PointsT',['../classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer.html#ac93b212492ef7504473a075cfddfd060',1,'xiangqipy::core_dataclass_mirrors::PointsTypeDeterminer']]],
   ['position_5fpoints_5ficga_5f2004_17',['position_points_icga_2004',['../namespacexiangqipy_1_1piece__points.html#ae65df668000f4303dcec8f0819a9c6ab',1,'xiangqipy::piece_points']]],
   ['primary_5fcalculator_5f_18',['primary_calculator_',['../classboardstate_1_1ZobristComponent.html#af69fc3f967d6e844cc36ffac5e2bca87',1,'boardstate::ZobristComponent']]],
-  ['prng_5f_19',['prng_',['../classboardstate_1_1PseudoRandomKeyGenerator.html#ae30a2b91d59161a046c03f09ef30f75c',1,'boardstate::PseudoRandomKeyGenerator::prng_()'],['../classWorker.html#ac15a77de5e50800f902c732d3cfd39aa',1,'Worker::prng_()']]],
+  ['prng_5f_19',['prng_',['../classboardstate_1_1PseudoRandomKeyGenerator.html#ae30a2b91d59161a046c03f09ef30f75c',1,'boardstate::PseudoRandomKeyGenerator']]],
   ['prng_5fseed_5f_20',['prng_seed_',['../classboardstate_1_1ZobristComponent.html#a317cb43b562c0f83aa59cde84f48df3f',1,'boardstate::ZobristComponent']]],
   ['purger_5fthread_5f_21',['purger_thread_',['../classPlayer.html#ad40245cb6caa464a037f8b8deb27ceec',1,'Player']]]
 ];

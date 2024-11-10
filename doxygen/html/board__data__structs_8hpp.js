@@ -3,7 +3,6 @@ var board__data__structs_8hpp =
     [ "gameboard::CastleEdges", "structgameboard_1_1CastleEdges.html", "structgameboard_1_1CastleEdges" ],
     [ "gameboard::BoardDirection", "structgameboard_1_1BoardDirection.html", "structgameboard_1_1BoardDirection" ],
     [ "gameboard::BoardSpace", "structgameboard_1_1BoardSpace.html", "structgameboard_1_1BoardSpace" ],
-    [ "BoardIdx_t", "board__data__structs_8hpp.html#a568951e681950d2439ca397e18fefbe0", null ],
     [ "BoardMap_t", "board__data__structs_8hpp.html#aab2a12a4ad1333460ff7d6d910c6160d", null ],
     [ "BoardMapInt_t", "board__data__structs_8hpp.html#a2e9a3466821b60dadcb183d4c8175133", null ],
     [ "Castle_t", "board__data__structs_8hpp.html#a3930c18039797b276764917d1ea8fcac", null ],

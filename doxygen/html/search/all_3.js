@@ -21,7 +21,7 @@ var searchData=
   ['board_5fstate_5fhex_5fstr_18',['board_state_hex_str',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ac6f9bfa2e56a664feb178575fff89f07',1,'moveselection::MinimaxMoveEvaluator::board_state_hex_str()'],['../classboardstate_1_1ZobristSummarizer.html#a68f4c51a624b44b10e7d53d17e39ea83',1,'boardstate::ZobristSummarizer::board_state_hex_str()']]],
   ['board_5fstate_5fsummarizer_5finterface_2ehpp_19',['board_state_summarizer_interface.hpp',['../board__state__summarizer__interface_8hpp.html',1,'']]],
   ['boarddirection_20',['BoardDirection',['../structgameboard_1_1BoardDirection.html',1,'gameboard']]],
-  ['boardidx_5ft_21',['BoardIdx_t',['../namespacegameboard.html#a568951e681950d2439ca397e18fefbe0',1,'gameboard']]],
+  ['boardidx_5ft_21',['BoardIdx_t',['../integer__types_8hpp.html#a2258c68b832be754aa2dd28acbc5cd63',1,'integer_types.hpp']]],
   ['boardmap_5ft_22',['BoardMap_t',['../namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d',1,'gameboard']]],
   ['boardmapint_5ft_23',['BoardMapInt_t',['../namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133',1,'gameboard']]],
   ['boardspace_24',['BoardSpace',['../structgameboard_1_1BoardSpace.html',1,'gameboard::BoardSpace'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1BoardSpace.html',1,'xiangqipy.core_dataclass_mirrors.BoardSpace']]],

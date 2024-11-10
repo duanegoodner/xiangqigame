@@ -10,7 +10,6 @@ var namespacegameboard =
     [ "MoveCalculator", "classgameboard_1_1MoveCalculator.html", "classgameboard_1_1MoveCalculator" ],
     [ "MoveCollection", "structgameboard_1_1MoveCollection.html", "structgameboard_1_1MoveCollection" ],
     [ "PieceMoves", "classgameboard_1_1PieceMoves.html", "classgameboard_1_1PieceMoves" ],
-    [ "BoardIdx_t", "namespacegameboard.html#a568951e681950d2439ca397e18fefbe0", null ],
     [ "BoardMap_t", "namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d", null ],
     [ "BoardMapInt_t", "namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133", null ],
     [ "Castle_t", "namespacegameboard.html#a3930c18039797b276764917d1ea8fcac", null ],

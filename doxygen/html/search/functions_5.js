@@ -4,7 +4,7 @@ var searchData=
   ['enc_5fhook_1',['enc_hook',['../namespacexiangqipy_1_1game__summary__io.html#a41ff5f9044c6f215390ddac59120057b',1,'xiangqipy::game_summary_io']]],
   ['encode_5fpiece_2',['encode_piece',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#aab88d0fe44a7d1c93ae88361d2afe3d6',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],
   ['ends_5fwith_3',['ends_with',['../namespaceutility__functs.html#a76030e832abd25bf223040fc3b59945b',1,'utility_functs']]],
-  ['equal_5fscore_5fmoves_4',['equal_score_moves',['../classmoveselection_1_1SearchSummary.html#a4d9028e4b7afa8cd0dc20d2bae8645cc',1,'moveselection::SearchSummary']]],
+  ['equal_5fscore_5fmoves_4',['equal_score_moves',['../classmoveselection_1_1MinimaxCalcResult.html#abb80d9d36695878b9645429e25d4a4c7',1,'moveselection::MinimaxCalcResult::equal_score_moves()'],['../classmoveselection_1_1SearchSummary.html#a4d9028e4b7afa8cd0dc20d2bae8645cc',1,'moveselection::SearchSummary::equal_score_moves()']]],
   ['evaluateendofgameleaf_5',['EvaluateEndOfGameLeaf',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a062024c5b53db2679b335eb28350d5e8',1,'moveselection::MinimaxMoveEvaluator']]],
   ['evaluatenode_6',['EvaluateNode',['../classPlayer.html#a3d26e3d0ee5af408743726ee18bb2905',1,'Player']]],
   ['evaluatenodes_7',['EvaluateNodes',['../classPlayer.html#a30306100f011fad79026291a7b66ea47',1,'Player']]],

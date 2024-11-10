@@ -26,14 +26,14 @@ var annotated_dup =
     ] ],
     [ "moveselection", "namespacemoveselection.html", [
       [ "EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
-      [ "MinimaxCalcResult", "structmoveselection_1_1MinimaxCalcResult.html", "structmoveselection_1_1MinimaxCalcResult" ],
+      [ "MinimaxCalcResult", "classmoveselection_1_1MinimaxCalcResult.html", "classmoveselection_1_1MinimaxCalcResult" ],
       [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
       [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],
       [ "ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", "classmoveselection_1_1ResultDepthCounts" ],
       [ "ScoredMove", "structmoveselection_1_1ScoredMove.html", "structmoveselection_1_1ScoredMove" ],
       [ "SearchSummaries", "structmoveselection_1_1SearchSummaries.html", "structmoveselection_1_1SearchSummaries" ],
       [ "SearchSummary", "classmoveselection_1_1SearchSummary.html", "classmoveselection_1_1SearchSummary" ],
-      [ "TranspositionTableSearchResult", "structmoveselection_1_1TranspositionTableSearchResult.html", "structmoveselection_1_1TranspositionTableSearchResult" ]
+      [ "TranspositionTableSearchResult", "classmoveselection_1_1TranspositionTableSearchResult.html", "classmoveselection_1_1TranspositionTableSearchResult" ]
     ] ],
     [ "piecepoints", "namespacepiecepoints.html", [
       [ "BPOPointsEKeys", "classpiecepoints_1_1BPOPointsEKeys.html", "classpiecepoints_1_1BPOPointsEKeys" ],
@@ -118,12 +118,15 @@ var annotated_dup =
       ] ]
     ] ],
     [ "BoardStateSummarizer", "classBoardStateSummarizer.html", "classBoardStateSummarizer" ],
+    [ "Child", "classChild.html", "classChild" ],
     [ "Exception", "classException.html", null ],
     [ "JsonUtility", "classJsonUtility.html", "classJsonUtility" ],
     [ "Manager", "classManager.html", "classManager" ],
     [ "MoveEvaluator", "classMoveEvaluator.html", "classMoveEvaluator" ],
+    [ "Parent", "classParent.html", "classParent" ],
     [ "PieceValueProvider", "classPieceValueProvider.html", "classPieceValueProvider" ],
     [ "Player", "classPlayer.html", "classPlayer" ],
+    [ "Resource", "classResource.html", "classResource" ],
     [ "SpaceInfoProvider", "classSpaceInfoProvider.html", "classSpaceInfoProvider" ],
-    [ "Worker", "classWorker.html", "classWorker" ]
+    [ "TranspositionTable", "classTranspositionTable.html", "classTranspositionTable" ]
 ];

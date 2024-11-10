@@ -1,7 +1,7 @@
 <map id="boardstate::ZobristSummarizer&lt; KeyType, NumConfKeys &gt;" name="boardstate::ZobristSummarizer&lt; KeyType, NumConfKeys &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="233,535,474,788"/>
-<area shape="rect" id="node2" href="$classBoardStateSummarizer.html" title=" " alt="" coords="41,277,221,472"/>
-<area shape="rect" id="node3" href="$classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="5,5,256,185"/>
-<area shape="rect" id="node4" title=" " alt="" coords="245,329,461,421"/>
-<area shape="rect" id="node5" title=" " alt="" coords="486,329,693,421"/>
+<area shape="rect" id="node1" title=" " alt="" coords="227,564,479,832"/>
+<area shape="rect" id="node2" href="$classBoardStateSummarizer.html" title=" " alt="" coords="40,292,221,501"/>
+<area shape="rect" id="node3" href="$classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="5,5,256,200"/>
+<area shape="rect" id="node4" title=" " alt="" coords="245,351,461,443"/>
+<area shape="rect" id="node5" title=" " alt="" coords="486,351,693,443"/>
 </map>

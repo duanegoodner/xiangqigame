@@ -155,7 +155,9 @@ $(document).ready(function(){initNavTree('evaluator__data__structs_8hpp.html',''
 <p>Data structs used by moveselection::MinimaxEvaluator.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;<a class="el" href="integer__types_8hpp_source.html">integer_types.hpp</a>&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &lt;<a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="piece__points__bpo_8hpp_source.html">piece_points_bpo.hpp</a>&gt;</code><br />
@@ -164,28 +166,31 @@ Include dependency graph for evaluator_data_structs.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="evaluator__data__structs_8hpp__incl.png" border="0" usemap="#ainclude_2evaluator__data__structs_8hpp" alt=""/></div>
 <map name="ainclude_2evaluator__data__structs_8hpp" id="ainclude_2evaluator__data__structs_8hpp">
-<area shape="rect" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="636,5,806,45"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="278,240,452,265"/>
-<area shape="rect" title=" " alt="" coords="826,93,893,119"/>
-<area shape="rect" title=" " alt="" coords="917,93,968,119"/>
-<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="152,167,327,192"/>
-<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="640,93,802,119"/>
-<area shape="rect" title=" " alt="" coords="421,313,477,339"/>
-<area shape="rect" title=" " alt="" coords="240,313,309,339"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="35,313,164,339"/>
-<area shape="rect" title=" " alt="" coords="501,313,573,339"/>
-<area shape="rect" title=" " alt="" coords="334,313,396,339"/>
-<area shape="rect" title=" " alt="" coords="54,387,116,412"/>
-<area shape="rect" title=" " alt="" coords="1033,387,1092,412"/>
-<area shape="rect" title=" " alt="" coords="140,387,264,412"/>
-<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="1034,313,1221,339"/>
-<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1085,240,1280,265"/>
-<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="402,167,621,192"/>
-<area shape="rect" title=" " alt="" coords="646,167,722,192"/>
-<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="568,240,703,265"/>
-<area shape="rect" title=" " alt="" coords="1246,313,1319,339"/>
-<area shape="rect" title=" " alt="" coords="813,313,960,339"/>
-<area shape="rect" title=" " alt="" coords="699,313,788,339"/>
+<area shape="rect" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1409,5,1580,45"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="1075,255,1250,280"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="1467,328,1605,353"/>
+<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="1468,93,1652,133"/>
+<area shape="rect" title=" " alt="" coords="1676,101,1743,126"/>
+<area shape="rect" title=" " alt="" coords="1767,101,1817,126"/>
+<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="1227,181,1402,207"/>
+<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="468,101,631,126"/>
+<area shape="rect" title=" " alt="" coords="1051,328,1107,353"/>
+<area shape="rect" title=" " alt="" coords="1219,328,1288,353"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1313,328,1442,353"/>
+<area shape="rect" title=" " alt="" coords="904,328,976,353"/>
+<area shape="rect" title=" " alt="" coords="1131,328,1194,353"/>
+<area shape="rect" title=" " alt="" coords="1346,401,1409,427"/>
+<area shape="rect" title=" " alt="" coords="545,401,604,427"/>
+<area shape="rect" title=" " alt="" coords="878,401,1002,427"/>
+<area shape="rect" title=" " alt="" coords="1503,401,1569,427"/>
+<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="5,328,192,353"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="228,255,423,280"/>
+<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="912,181,1131,207"/>
+<area shape="rect" title=" " alt="" coords="435,181,511,207"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="769,255,903,280"/>
+<area shape="rect" title=" " alt="" coords="267,328,341,353"/>
+<area shape="rect" title=" " alt="" coords="365,328,512,353"/>
+<area shape="rect" title=" " alt="" coords="739,328,829,353"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -193,7 +198,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="evaluator__data__structs_8hpp__dep__incl.png" border="0" usemap="#ainclude_2evaluator__data__structs_8hppdep" alt=""/></div>
 <map name="ainclude_2evaluator__data__structs_8hppdep" id="ainclude_2evaluator__data__structs_8hppdep">
-<area shape="rect" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="257,5,427,45"/>
+<area shape="rect" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="189,5,359,45"/>
 <area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="174,93,374,133"/>
 <area shape="rect" href="move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="235,181,449,207"/>
 <area shape="rect" href="game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="61,262,244,287"/>
@@ -215,11 +220,11 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1ScoredMove.html">moveselection::ScoredMove</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a>, and an associated score calculated by a <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a>.  <a href="structmoveselection_1_1ScoredMove.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data structure that holds a <a class="el" href="classmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a...">moveselection::EqualScoreMoves</a> and other search-related info obtained from a call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad084c0263a813449171c681b59ab9a96">moveselection::MinimaxMoveEvaluator.MinimaxRec</a>.  <a href="structmoveselection_1_1MinimaxCalcResult.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data structure that holds a <a class="el" href="classmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a...">moveselection::EqualScoreMoves</a> and other search-related info obtained from a call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#adbebafb043bb7f8080eb41f344270116">moveselection::MinimaxMoveEvaluator.MinimaxRec</a>.  <a href="classmoveselection_1_1MinimaxCalcResult.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html">moveselection::TranspositionTableSearchResult</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for storing a <a class="el" href="structmoveselection_1_1MinimaxCalcResult.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search-related info obtained fro...">moveselection::MinimaxCalcResult</a> retrieved by a call to boardstate::SingleZobristSummarizer.ImplementGetTrData.  <a href="structmoveselection_1_1TranspositionTableSearchResult.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1TranspositionTableSearchResult.html">moveselection::TranspositionTableSearchResult</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for storing a <a class="el" href="classmoveselection_1_1MinimaxCalcResult.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search-related info obtained fro...">moveselection::MinimaxCalcResult</a> retrieved by a call to boardstate::SingleZobristSummarizer.ImplementGetTrData.  <a href="classmoveselection_1_1TranspositionTableSearchResult.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1ResultDepthCounts.html">moveselection::ResultDepthCounts</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for storing and updating data in a <a class="el" href="namespacemoveselection.html#aa4c456c3f118a94017483880ff42991b" title="Array of vectors for storing counts of moveselection::MinimaxResultType for each posible remaining se...">moveselection::ResultDepthCountsData_t</a> array of vectors.  <a href="classmoveselection_1_1ResultDepthCounts.html#details">More...</a><br /></td></tr>
@@ -239,33 +244,33 @@ Namespaces</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:aa4c456c3f118a94017483880ff42991b"><td class="memItemLeft" align="right" valign="top">typedef std::array&lt; std::vector&lt; int &gt;, MinimaxResultType::kMax+1 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemoveselection.html#aa4c456c3f118a94017483880ff42991b">moveselection::ResultDepthCountsData_t</a></td></tr>
-<tr class="memdesc:aa4c456c3f118a94017483880ff42991b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of vectors for storing counts of <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">moveselection::MinimaxResultType</a> for each posible remaining search depth.  <br /></td></tr>
+<tr class="memdesc:aa4c456c3f118a94017483880ff42991b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of vectors for storing counts of <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">moveselection::MinimaxResultType</a> for each posible remaining search depth.  <br /></td></tr>
 <tr class="separator:aa4c456c3f118a94017483880ff42991b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:acdb529ae14e6752318706ace995061ed"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">moveselection::MinimaxResultType</a> : size_t { <br />
-&#160;&#160;<a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061edadef73b774725d74259cc49e9fe97e6dd">moveselection::kUnknown</a> = 0
-, <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda552dd3cbc3a757459c0df9b2ae2edd27">moveselection::kTrTableHit</a> = 1
-, <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061edacf13d4e4d1a33bcd701f870b4d5103f3">moveselection::kEvaluatorLoses</a> = 4
-, <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda0fe64a6e73a77fefbfe91370bb0652d5">moveselection::kEvaluatorWins</a> = 5
+<tr class="memitem:a58787b0a19fd66a2c3161f7e37fbee1d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">moveselection::MinimaxResultType</a> : uint16_t { <br />
+&#160;&#160;<a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1dadef73b774725d74259cc49e9fe97e6dd">moveselection::kUnknown</a> = 0
+, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da552dd3cbc3a757459c0df9b2ae2edd27">moveselection::kTrTableHit</a> = 1
+, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1dacf13d4e4d1a33bcd701f870b4d5103f3">moveselection::kEvaluatorLoses</a> = 4
+, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da0fe64a6e73a77fefbfe91370bb0652d5">moveselection::kEvaluatorWins</a> = 5
 , <br />
-&#160;&#160;<a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda39391e47fa69eaa70726091d4f4e2298">moveselection::kDraw</a> = 6
-, <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda5fdab859498d9e51a5300bb6fe535a60">moveselection::kFullyEvaluatedNode</a> = 7
-, <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda65b563cc5a2a595f6f19adea98b99fa9">moveselection::kStandardLeaf</a> = 8
-, <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda71f7c72c022ad1322f406bdd0ca7be25">moveselection::kAlphaPrune</a> = 9
+&#160;&#160;<a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da39391e47fa69eaa70726091d4f4e2298">moveselection::kDraw</a> = 6
+, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da5fdab859498d9e51a5300bb6fe535a60">moveselection::kFullyEvaluatedNode</a> = 7
+, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da65b563cc5a2a595f6f19adea98b99fa9">moveselection::kStandardLeaf</a> = 8
+, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da71f7c72c022ad1322f406bdd0ca7be25">moveselection::kAlphaPrune</a> = 9
 , <br />
-&#160;&#160;<a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda0c1922f53a20c3978b37b675895a49aa">moveselection::kBetaPrune</a> = 10
-, <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda1ceae30bbee1b637dc47a380d0e4ad36">moveselection::kMin</a> = kUnknown
-, <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061edaf54182497e4f5d7092bee94582bf3f79">moveselection::kMax</a> = kBetaPrune
+&#160;&#160;<a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da0c1922f53a20c3978b37b675895a49aa">moveselection::kBetaPrune</a> = 10
+, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da1ceae30bbee1b637dc47a380d0e4ad36">moveselection::kMin</a> = kUnknown
+, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1daf54182497e4f5d7092bee94582bf3f79">moveselection::kMax</a> = kBetaPrune
 <br />
  }</td></tr>
-<tr class="separator:acdb529ae14e6752318706ace995061ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a58787b0a19fd66a2c3161f7e37fbee1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aacb89c689b18ae5eda93504dc317b1ae"><td class="memItemLeft" align="right" valign="top">const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemoveselection.html#aacb89c689b18ae5eda93504dc317b1ae">moveselection::kNumResultTypes</a> {7}</td></tr>
-<tr class="separator:aacb89c689b18ae5eda93504dc317b1ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d733843490cc4ef7c9db62d506b5a07"><td class="memItemLeft" align="right" valign="top">const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemoveselection.html#a8d733843490cc4ef7c9db62d506b5a07">moveselection::kNumResultTypes</a> {7}</td></tr>
+<tr class="separator:a8d733843490cc4ef7c9db62d506b5a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Data structs used by moveselection::MinimaxEvaluator. </p>
@@ -277,7 +282,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="evaluator__data__structs_8hpp.html">evaluator_data_structs.hpp</a></li>
-    <li class="footer">Generated on Sat Nov 9 2024 03:07:21 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sun Nov 10 2024 22:57:04 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

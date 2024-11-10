@@ -5,7 +5,6 @@ var piece__points__data__structs_8hpp =
     [ "GamePointsEMap_t", "piece__points__data__structs_8hpp.html#aace87c2b0a72b8e1390974932eea0974", null ],
     [ "GamePointsSMap_t", "piece__points__data__structs_8hpp.html#af83cc97d52c8bd385feedc7f66b4233c", null ],
     [ "PiecePointsArray_t", "piece__points__data__structs_8hpp.html#a7db0ad00c931e53d167da56472f15b70", null ],
-    [ "Points_t", "piece__points__data__structs_8hpp.html#a70d6ac023c4aade3434209ba7eb7db57", null ],
     [ "TeamBasePoints_t", "piece__points__data__structs_8hpp.html#a70c12c629ce81810a64a420a0ecaa86a", null ],
     [ "TeamPointsArray_t", "piece__points__data__structs_8hpp.html#ac9f72505daaa180dc8985a0a0f113bbe", null ],
     [ "TeamPointsEMap_t", "piece__points__data__structs_8hpp.html#a8a4ebc2e24254c0b7d3b022e399b53de", null ],

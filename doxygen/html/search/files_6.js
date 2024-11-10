@@ -10,6 +10,6 @@ var searchData=
   ['game_5fsummary_5fio_2epy_7',['game_summary_io.py',['../game__summary__io_8py.html',1,'']]],
   ['game_5fsummary_5fplot_5fmanager_2epy_8',['game_summary_plot_manager.py',['../game__summary__plot__manager_8py.html',1,'']]],
   ['game_5fsummary_5fplotters_2epy_9',['game_summary_plotters.py',['../game__summary__plotters_8py.html',1,'']]],
-  ['gist_5fthread_5fcontrol_2ecpp_10',['gist_thread_control.cpp',['../gist__thread__control_8cpp.html',1,'']]],
+  ['gist_5fclasses_5fshare_5fmutex_2ecpp_10',['gist_classes_share_mutex.cpp',['../gist__classes__share__mutex_8cpp.html',1,'']]],
   ['gist_5ftr_5ftable_5fpurging_2ecpp_11',['gist_tr_table_purging.cpp',['../gist__tr__table__purging_8cpp.html',1,'']]]
 ];

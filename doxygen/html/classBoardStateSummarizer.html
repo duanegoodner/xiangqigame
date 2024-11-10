@@ -159,9 +159,9 @@ Inheritance diagram for BoardStateSummarizer&lt; ConcreteBoardStateSummarizer, K
 <div class="dyncontent">
 <div class="center"><img src="classBoardStateSummarizer__inherit__graph.png" border="0" usemap="#aBoardStateSummarizer_3_01ConcreteBoardStateSummarizer_00_01KeyType_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="aBoardStateSummarizer_3_01ConcreteBoardStateSummarizer_00_01KeyType_01_4_inherit__map" id="aBoardStateSummarizer_3_01ConcreteBoardStateSummarizer_00_01KeyType_01_4_inherit__map">
-<area shape="rect" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="5,5,256,185"/>
-<area shape="rect" href="classBoardStateSummarizer.html" title=" " alt="" coords="41,277,221,472"/>
-<area shape="rect" href="classboardstate_1_1ZobristSummarizer.html" title=" " alt="" coords="10,521,251,789"/>
+<area shape="rect" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="6,5,257,200"/>
+<area shape="rect" href="classBoardStateSummarizer.html" title=" " alt="" coords="41,292,222,501"/>
+<area shape="rect" href="classboardstate_1_1ZobristSummarizer.html" title=" " alt="" coords="5,551,257,833"/>
 </map>
 </div>
 <div class="dynheader">
@@ -169,7 +169,7 @@ Collaboration diagram for BoardStateSummarizer&lt; ConcreteBoardStateSummarizer,
 <div class="dyncontent">
 <div class="center"><img src="classBoardStateSummarizer__coll__graph.png" border="0" usemap="#aBoardStateSummarizer_3_01ConcreteBoardStateSummarizer_00_01KeyType_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aBoardStateSummarizer_3_01ConcreteBoardStateSummarizer_00_01KeyType_01_4_coll__map" id="aBoardStateSummarizer_3_01ConcreteBoardStateSummarizer_00_01KeyType_01_4_coll__map">
-<area shape="rect" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="5,5,256,185"/>
+<area shape="rect" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="5,5,256,200"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -186,18 +186,20 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae5235006c3e65983722da90183a404cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91a1690d9c1cff23763cb40e8ac3bc9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBoardStateSummarizer.html#a2c867fea24073f4cc47dba41249ef48d">ZobristKey_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBoardStateSummarizer.html#a91a1690d9c1cff23763cb40e8ac3bc9b">GetState</a> ()</td></tr>
 <tr class="separator:a91a1690d9c1cff23763cb40e8ac3bc9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2187a1c6c4d96b603b18177c7d920e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBoardStateSummarizer.html#ab2187a1c6c4d96b603b18177c7d920e6">RecordTrData</a> (int search_depth, <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">moveselection::MinimaxResultType</a> result_type, <a class="el" href="classmoveselection_1_1EqualScoreMoves.html">moveselection::EqualScoreMoves</a> &amp;similar_moves)</td></tr>
-<tr class="separator:ab2187a1c6c4d96b603b18177c7d920e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c66e113ecf4cd730ab6e1ac526a49a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html">moveselection::TranspositionTableSearchResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBoardStateSummarizer.html#a7c66e113ecf4cd730ab6e1ac526a49a7">GetTrData</a> (int search_depth)</td></tr>
-<tr class="separator:a7c66e113ecf4cd730ab6e1ac526a49a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9c80c6638278c5fbf9636c14994b156"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBoardStateSummarizer.html#ab9c80c6638278c5fbf9636c14994b156">GetTrTableSize</a> ()</td></tr>
-<tr class="separator:ab9c80c6638278c5fbf9636c14994b156"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a607a35db40e1ae31ac8c1ab6510cd25c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBoardStateSummarizer.html#a607a35db40e1ae31ac8c1ab6510cd25c">RecordTrData</a> (<a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> search_depth, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">moveselection::MinimaxResultType</a> result_type, <a class="el" href="classmoveselection_1_1EqualScoreMoves.html">moveselection::EqualScoreMoves</a> &amp;similar_moves, <a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a> access_index)</td></tr>
+<tr class="separator:a607a35db40e1ae31ac8c1ab6510cd25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af64000d2f735b1e1d53b616df12d027e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1TranspositionTableSearchResult.html">moveselection::TranspositionTableSearchResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBoardStateSummarizer.html#af64000d2f735b1e1d53b616df12d027e">GetTrData</a> (<a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> search_depth, <a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a> access_index)</td></tr>
+<tr class="separator:af64000d2f735b1e1d53b616df12d027e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98f1361a2655d2e31ba367a84b7d5025"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBoardStateSummarizer.html#a98f1361a2655d2e31ba367a84b7d5025">GetTrTableSize</a> ()</td></tr>
+<tr class="separator:a98f1361a2655d2e31ba367a84b7d5025"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae41d20dbb96ef728bba9fde0afad4633"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBoardStateSummarizer.html#ae41d20dbb96ef728bba9fde0afad4633">UpdateMoveCounter</a> ()</td></tr>
+<tr class="separator:ae41d20dbb96ef728bba9fde0afad4633"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename ConcreteBoardStateSummarizer, typename KeyType&gt;<br />
 class BoardStateSummarizer&lt; ConcreteBoardStateSummarizer, KeyType &gt;</div><p>CRTP Interface with methods to calculate / read / update hash values representing a board state; and storing and retreiving data from completed calculations of scores associated with specific board states (concrete example = boardstate::SingleZobristSummarizer). </p>
 
-<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00015">15</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00016">16</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a2c867fea24073f4cc47dba41249ef48d" name="a2c867fea24073f4cc47dba41249ef48d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c867fea24073f4cc47dba41249ef48d">&#9670;&#160;</a></span>ZobristKey_t</h2>
@@ -213,7 +215,7 @@ template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00017">17</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00018">18</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -244,7 +246,7 @@ template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00018">18</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00019">19</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -273,12 +275,12 @@ template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00030">30</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00031">31</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a7c66e113ecf4cd730ab6e1ac526a49a7" name="a7c66e113ecf4cd730ab6e1ac526a49a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c66e113ecf4cd730ab6e1ac526a49a7">&#9670;&#160;</a></span>GetTrData()</h2>
+<a id="af64000d2f735b1e1d53b616df12d027e" name="af64000d2f735b1e1d53b616df12d027e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af64000d2f735b1e1d53b616df12d027e">&#9670;&#160;</a></span>GetTrData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -289,81 +291,16 @@ template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html">moveselection::TranspositionTableSearchResult</a> <a class="el" href="classBoardStateSummarizer.html">BoardStateSummarizer</a>&lt; ConcreteBoardStateSummarizer, KeyType &gt;::GetTrData </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1TranspositionTableSearchResult.html">moveselection::TranspositionTableSearchResult</a> <a class="el" href="classBoardStateSummarizer.html">BoardStateSummarizer</a>&lt; ConcreteBoardStateSummarizer, KeyType &gt;::GetTrData </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>search_depth</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00043">43</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ab9c80c6638278c5fbf9636c14994b156" name="ab9c80c6638278c5fbf9636c14994b156"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9c80c6638278c5fbf9636c14994b156">&#9670;&#160;</a></span>GetTrTableSize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int <a class="el" href="classBoardStateSummarizer.html">BoardStateSummarizer</a>&lt; ConcreteBoardStateSummarizer, KeyType &gt;::GetTrTableSize </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00049">49</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ab2187a1c6c4d96b603b18177c7d920e6" name="ab2187a1c6c4d96b603b18177c7d920e6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2187a1c6c4d96b603b18177c7d920e6">&#9670;&#160;</a></span>RecordTrData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classBoardStateSummarizer.html">BoardStateSummarizer</a>&lt; ConcreteBoardStateSummarizer, KeyType &gt;::RecordTrData </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td>
           <td class="paramname"><em>search_depth</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">moveselection::MinimaxResultType</a>&#160;</td>
-          <td class="paramname"><em>result_type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">moveselection::EqualScoreMoves</a> &amp;&#160;</td>
-          <td class="paramname"><em>similar_moves</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a>&#160;</td>
+          <td class="paramname"><em>access_index</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -378,7 +315,88 @@ template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00034">34</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00045">45</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a98f1361a2655d2e31ba367a84b7d5025" name="a98f1361a2655d2e31ba367a84b7d5025"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98f1361a2655d2e31ba367a84b7d5025">&#9670;&#160;</a></span>GetTrTableSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t <a class="el" href="classBoardStateSummarizer.html">BoardStateSummarizer</a>&lt; ConcreteBoardStateSummarizer, KeyType &gt;::GetTrTableSize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00055">55</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a607a35db40e1ae31ac8c1ab6510cd25c" name="a607a35db40e1ae31ac8c1ab6510cd25c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a607a35db40e1ae31ac8c1ab6510cd25c">&#9670;&#160;</a></span>RecordTrData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classBoardStateSummarizer.html">BoardStateSummarizer</a>&lt; ConcreteBoardStateSummarizer, KeyType &gt;::RecordTrData </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td>
+          <td class="paramname"><em>search_depth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">moveselection::MinimaxResultType</a>&#160;</td>
+          <td class="paramname"><em>result_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">moveselection::EqualScoreMoves</a> &amp;&#160;</td>
+          <td class="paramname"><em>similar_moves</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a>&#160;</td>
+          <td class="paramname"><em>access_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00035">35</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -408,7 +426,36 @@ template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00024">24</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00025">25</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ae41d20dbb96ef728bba9fde0afad4633" name="ae41d20dbb96ef728bba9fde0afad4633"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae41d20dbb96ef728bba9fde0afad4633">&#9670;&#160;</a></span>UpdateMoveCounter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classBoardStateSummarizer.html">BoardStateSummarizer</a>&lt; ConcreteBoardStateSummarizer, KeyType &gt;::UpdateMoveCounter </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="board__state__summarizer__interface_8hpp_source.html#l00059">59</a> of file <a class="el" href="board__state__summarizer__interface_8hpp_source.html">board_state_summarizer_interface.hpp</a>.</p>
 
 </div>
 </div>
@@ -421,7 +468,7 @@ template&lt;typename ConcreteBoardStateSummarizer , typename KeyType &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classBoardStateSummarizer.html">BoardStateSummarizer</a></li>
-    <li class="footer">Generated on Sat Nov 9 2024 03:07:21 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sun Nov 10 2024 22:57:04 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -8,7 +8,6 @@ var namespacepiecepoints =
     [ "GamePointsEMap_t", "namespacepiecepoints.html#aace87c2b0a72b8e1390974932eea0974", null ],
     [ "GamePointsSMap_t", "namespacepiecepoints.html#af83cc97d52c8bd385feedc7f66b4233c", null ],
     [ "PiecePointsArray_t", "namespacepiecepoints.html#a7db0ad00c931e53d167da56472f15b70", null ],
-    [ "Points_t", "namespacepiecepoints.html#a70d6ac023c4aade3434209ba7eb7db57", null ],
     [ "TeamBasePoints_t", "namespacepiecepoints.html#a70c12c629ce81810a64a420a0ecaa86a", null ],
     [ "TeamPointsArray_t", "namespacepiecepoints.html#ac9f72505daaa180dc8985a0a0f113bbe", null ],
     [ "TeamPointsEMap_t", "namespacepiecepoints.html#a8a4ebc2e24254c0b7d3b022e399b53de", null ],

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['manager_0',['Manager',['../classManager.html',1,'']]],
-  ['minimaxcalcresult_1',['MinimaxCalcResult',['../structmoveselection_1_1MinimaxCalcResult.html',1,'moveselection']]],
+  ['minimaxcalcresult_1',['MinimaxCalcResult',['../classmoveselection_1_1MinimaxCalcResult.html',1,'moveselection']]],
   ['minimaxmoveevaluator_2',['MinimaxMoveEvaluator',['../classmoveselection_1_1MinimaxMoveEvaluator.html',1,'moveselection']]],
   ['minimaxresulttypepy_3',['MinimaxResultTypePy',['../classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html',1,'xiangqipy::core_dataclass_mirrors']]],
   ['move_4',['Move',['../structgameboard_1_1Move.html',1,'gameboard::Move'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html',1,'xiangqipy.core_dataclass_mirrors.Move']]],

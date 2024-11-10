@@ -5,6 +5,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "evaluator_data_structs.hpp", "evaluator__data__structs_8hpp.html", "evaluator__data__structs_8hpp" ],
     [ "game_board.hpp", "game__board_8hpp.html", "game__board_8hpp" ],
     [ "game_piece.hpp", "game__piece_8hpp.html", "game__piece_8hpp" ],
+    [ "integer_types.hpp", "integer__types_8hpp.html", "integer__types_8hpp" ],
     [ "json_utility_interface.hpp", "json__utility__interface_8hpp.html", "json__utility__interface_8hpp" ],
     [ "json_utility_nlohmann.hpp", "json__utility__nlohmann_8hpp.html", "json__utility__nlohmann_8hpp" ],
     [ "key_generator.hpp", "key__generator_8hpp.html", "key__generator_8hpp" ],

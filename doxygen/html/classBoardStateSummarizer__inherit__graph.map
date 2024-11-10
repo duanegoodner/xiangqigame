@@ -1,5 +1,5 @@
 <map id="BoardStateSummarizer&lt; ConcreteBoardStateSummarizer, KeyType &gt;" name="BoardStateSummarizer&lt; ConcreteBoardStateSummarizer, KeyType &gt;">
-<area shape="rect" id="node1" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="5,5,256,185"/>
-<area shape="rect" id="node2" href="$classBoardStateSummarizer.html" title=" " alt="" coords="41,277,221,472"/>
-<area shape="rect" id="node3" href="$classboardstate_1_1ZobristSummarizer.html" title=" " alt="" coords="10,521,251,789"/>
+<area shape="rect" id="node1" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="6,5,257,200"/>
+<area shape="rect" id="node2" href="$classBoardStateSummarizer.html" title=" " alt="" coords="41,292,222,501"/>
+<area shape="rect" id="node3" href="$classboardstate_1_1ZobristSummarizer.html" title=" " alt="" coords="5,551,257,833"/>
 </map>

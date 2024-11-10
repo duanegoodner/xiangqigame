@@ -151,6 +151,7 @@ $(document).ready(function(){initNavTree('piece__points__data__structs_8hpp.html
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="game__piece_8hpp_source.html">game_piece.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="integer__types_8hpp_source.html">integer_types.hpp</a>&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;unordered_map&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -158,16 +159,18 @@ Include dependency graph for piece_points_data_structs.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="piece__points__data__structs_8hpp__incl.png" border="0" usemap="#ainclude_2piece__points__data__structs_8hpp" alt=""/></div>
 <map name="ainclude_2piece__points__data__structs_8hpp" id="ainclude_2piece__points__data__structs_8hpp">
-<area shape="rect" title=" " alt="" coords="349,5,504,45"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="151,93,326,119"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="414,167,543,192"/>
-<area shape="rect" title=" " alt="" coords="348,240,407,265"/>
-<area shape="rect" title=" " alt="" coords="519,240,643,265"/>
-<area shape="rect" title=" " alt="" coords="283,167,339,192"/>
-<area shape="rect" title=" " alt="" coords="5,167,75,192"/>
-<area shape="rect" title=" " alt="" coords="99,167,171,192"/>
-<area shape="rect" title=" " alt="" coords="195,167,258,192"/>
-<area shape="rect" title=" " alt="" coords="433,240,495,265"/>
+<area shape="rect" title=" " alt="" coords="453,5,607,45"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="281,93,456,119"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="5,167,135,192"/>
+<area shape="rect" title=" " alt="" coords="201,240,259,265"/>
+<area shape="rect" title=" " alt="" coords="432,240,556,265"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="618,167,757,192"/>
+<area shape="rect" title=" " alt="" coords="159,167,215,192"/>
+<area shape="rect" title=" " alt="" coords="239,167,309,192"/>
+<area shape="rect" title=" " alt="" coords="333,167,405,192"/>
+<area shape="rect" title=" " alt="" coords="429,167,492,192"/>
+<area shape="rect" title=" " alt="" coords="39,240,101,265"/>
+<area shape="rect" title=" " alt="" coords="654,240,721,265"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -201,8 +204,6 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a70d6ac023c4aade3434209ba7eb7db57"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiecepoints.html#a70d6ac023c4aade3434209ba7eb7db57">piecepoints::Points_t</a></td></tr>
-<tr class="separator:a70d6ac023c4aade3434209ba7eb7db57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7db0ad00c931e53d167da56472f15b70"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; int, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">gameboard::kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">gameboard::kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiecepoints.html#a7db0ad00c931e53d167da56472f15b70">piecepoints::PiecePointsArray_t</a></td></tr>
 <tr class="memdesc:a7db0ad00c931e53d167da56472f15b70"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of points values for single piece at each position on a <a class="el" href="classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8" title="2-D array of GamePiece objects.">gameboard::GameBoard.board_map_</a>.  <br /></td></tr>
 <tr class="separator:a7db0ad00c931e53d167da56472f15b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,9 +219,9 @@ Typedefs</h2></td></tr>
 <tr class="separator:aace87c2b0a72b8e1390974932eea0974"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af83cc97d52c8bd385feedc7f66b4233c"><td class="memItemLeft" align="right" valign="top">typedef unordered_map&lt; string, TeamPointsSMap_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiecepoints.html#af83cc97d52c8bd385feedc7f66b4233c">piecepoints::GamePointsSMap_t</a></td></tr>
 <tr class="separator:af83cc97d52c8bd385feedc7f66b4233c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70c12c629ce81810a64a420a0ecaa86a"><td class="memItemLeft" align="right" valign="top">typedef unordered_map&lt; <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">gameboard::PieceType</a>, Points_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiecepoints.html#a70c12c629ce81810a64a420a0ecaa86a">piecepoints::TeamBasePoints_t</a></td></tr>
+<tr class="memitem:a70c12c629ce81810a64a420a0ecaa86a"><td class="memItemLeft" align="right" valign="top">typedef unordered_map&lt; <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">gameboard::PieceType</a>, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiecepoints.html#a70c12c629ce81810a64a420a0ecaa86a">piecepoints::TeamBasePoints_t</a></td></tr>
 <tr class="separator:a70c12c629ce81810a64a420a0ecaa86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ca7d246b8a310704a6215eec810c60a"><td class="memItemLeft" align="right" valign="top">typedef unordered_map&lt; string, Points_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiecepoints.html#a4ca7d246b8a310704a6215eec810c60a">piecepoints::BasePointsSMap_t</a></td></tr>
+<tr class="memitem:a4ca7d246b8a310704a6215eec810c60a"><td class="memItemLeft" align="right" valign="top">typedef unordered_map&lt; string, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiecepoints.html#a4ca7d246b8a310704a6215eec810c60a">piecepoints::BasePointsSMap_t</a></td></tr>
 <tr class="separator:a4ca7d246b8a310704a6215eec810c60a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -242,7 +243,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="piece__points__data__structs_8hpp.html">piece_points_data_structs.hpp</a></li>
-    <li class="footer">Generated on Sat Nov 9 2024 03:07:21 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sun Nov 10 2024 22:57:04 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

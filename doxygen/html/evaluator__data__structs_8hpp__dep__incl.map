@@ -1,5 +1,5 @@
 <map id="include/evaluator_data_structs.hpp" name="include/evaluator_data_structs.hpp">
-<area shape="rect" id="node1" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="257,5,427,45"/>
+<area shape="rect" id="node1" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="189,5,359,45"/>
 <area shape="rect" id="node2" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="174,93,374,133"/>
 <area shape="rect" id="node3" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="235,181,449,207"/>
 <area shape="rect" id="node4" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="61,262,244,287"/>

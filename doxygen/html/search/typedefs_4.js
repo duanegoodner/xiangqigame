@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['methodptr_5ft_0',['MethodPtr_t',['../namespacegameboard.html#a12801a549cf55bdb95d21079da8c22ec',1,'gameboard']]]
+  ['json_0',['json',['../namespaceutility__functs.html#a1b1681858cc9dd922239b1602994f4ee',1,'utility_functs']]]
 ];

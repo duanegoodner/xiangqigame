@@ -146,14 +146,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____init_____8py.html",
-"classgameboard_1_1GameBoard.html#a297c7aff4cac6b939f5466529334337d",
-"classmoveselection_1_1SearchSummary.html#a4ec3445890042a42d4c5f30901148445",
-"classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a3dd5e224abed3011536e90bbebbf118b",
-"classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aeaeaf4632adbdfb8f00e0d4ee6cf373c",
-"command__input_8py.html#a46612d7349f393c16563cb108d447abb",
-"md_docs_03_running.html#autotoc_md32",
-"piece__moves_8hpp.html#a644d2a41a8bc51f116c291438f647358",
-"utility__functs_8hpp.html#ae16b7735beff90e61d39f48456d9a067"
+"classboardstate_1_1ZobristSummarizer.html#aa8579c4afdff85409a68e2f33e361eb6",
+"classmoveselection_1_1RandomMoveEvaluator.html#a69b94792d3d265d5ddb69840e256a273",
+"classxiangqipy_1_1core__dataclass__mirrors_1_1ExecutedMove.html#ac31887b51651c4607015f31940330ed2",
+"classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a84572293d3a12443ccf8eeb7725a0a86",
+"classxiangqipy_1_1players_1_1ScriptedPlayer.html",
+"gist__classes__share__mutex_8cpp_source.html",
+"namespaceutility__functs.html#ab6b690b5028447413647af99fb320e70",
+"structmoveselection_1_1SearchSummaries.html#aa236883fc6b5b34ba98fbab1e12b7871"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

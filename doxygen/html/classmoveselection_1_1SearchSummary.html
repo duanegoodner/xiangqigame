@@ -159,32 +159,33 @@ Collaboration diagram for moveselection::SearchSummary:</div>
 <div class="dyncontent">
 <div class="center"><img src="classmoveselection_1_1SearchSummary__coll__graph.png" border="0" usemap="#amoveselection_1_1SearchSummary_coll__map" alt="Collaboration graph"/></div>
 <map name="amoveselection_1_1SearchSummary_coll__map" id="amoveselection_1_1SearchSummary_coll__map">
-<area shape="rect" title="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator...." alt="" coords="383,748,616,1119"/>
-<area shape="rect" title=" " alt="" coords="577,13,616,90"/>
-<area shape="rect" href="classmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="485,535,684,627"/>
-<area shape="rect" href="structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa..." alt="" coords="722,211,903,362"/>
-<area shape="rect" title=" " alt="" coords="237,535,399,627"/>
-<area shape="rect" href="classmoveselection_1_1ResultDepthCounts.html" title="Container for storing and updating data in a moveselection::ResultDepthCountsData_t array of vectors." alt="" coords="5,520,212,641"/>
-<area shape="rect" title=" " alt="" coords="6,233,211,340"/>
-<area shape="rect" href="structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects." alt="" coords="927,175,1133,399"/>
-<area shape="rect" title=" " alt="" coords="950,5,1110,97"/>
-<area shape="rect" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end)." alt="" coords="708,542,848,619"/>
-<area shape="rect" title=" " alt="" coords="873,542,923,619"/>
+<area shape="rect" title="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator...." alt="" coords="380,719,613,1089"/>
+<area shape="rect" title=" " alt="" coords="5,498,65,575"/>
+<area shape="rect" title=" " alt="" coords="107,491,270,583"/>
+<area shape="rect" href="classmoveselection_1_1ResultDepthCounts.html" title="Container for storing and updating data in a moveselection::ResultDepthCountsData_t array of vectors." alt="" coords="295,476,501,597"/>
+<area shape="rect" title=" " alt="" coords="290,233,495,340"/>
+<area shape="rect" href="classmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="689,491,888,583"/>
+<area shape="rect" title=" " alt="" coords="699,13,737,90"/>
+<area shape="rect" href="structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa..." alt="" coords="519,211,701,362"/>
+<area shape="rect" href="structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects." alt="" coords="874,175,1079,399"/>
+<area shape="rect" title=" " alt="" coords="897,5,1057,97"/>
+<area shape="rect" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end)." alt="" coords="525,498,665,575"/>
+<area shape="rect" title=" " alt="" coords="911,498,962,575"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0e319774750dcde6cc4d974ee1d05fa5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a0e319774750dcde6cc4d974ee1d05fa5">SearchSummary</a> (int max_search_depth, int <a class="el" href="classmoveselection_1_1SearchSummary.html#a17ae407a1c6e509eaace30163368e9f7">tr_table_size_initial</a>)</td></tr>
-<tr class="separator:a0e319774750dcde6cc4d974ee1d05fa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3efde8ad374d2f9cec2fb5aacb03d4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#ab3efde8ad374d2f9cec2fb5aacb03d4c">RecordNodeInfo</a> (<a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> result_type, int search_depth, <a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> &amp;<a class="el" href="classmoveselection_1_1SearchSummary.html#a4d9028e4b7afa8cd0dc20d2bae8645cc">equal_score_moves</a>)</td></tr>
-<tr class="separator:ab3efde8ad374d2f9cec2fb5aacb03d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62f64dc3adc1d3b05439cfb92f3d159a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a62f64dc3adc1d3b05439cfb92f3d159a">UpdateTranspositionTableHits</a> (<a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a> result_type, int search_depth)</td></tr>
-<tr class="separator:a62f64dc3adc1d3b05439cfb92f3d159a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42e91f2b0146be44a5d877b049216ebb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a42e91f2b0146be44a5d877b049216ebb">RecordTrTableHit</a> (<a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html">TranspositionTableSearchResult</a> &amp;tr_table_search_result, int remaining_search_depth)</td></tr>
-<tr class="separator:a42e91f2b0146be44a5d877b049216ebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30a2f7de20e447c8cc64de1c7b41882d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a30a2f7de20e447c8cc64de1c7b41882d">num_nodes</a> ()</td></tr>
-<tr class="separator:a30a2f7de20e447c8cc64de1c7b41882d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d40a33f92ce0997bb0df61f75a64b23"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a9d40a33f92ce0997bb0df61f75a64b23">SearchSummary</a> (<a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> max_search_depth, size_t <a class="el" href="classmoveselection_1_1SearchSummary.html#a67df492c03f09317ae2e27e532c9fdd1">tr_table_size_initial</a>)</td></tr>
+<tr class="separator:a9d40a33f92ce0997bb0df61f75a64b23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a257fc5d343a517b2cefedb53e30d0b38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a257fc5d343a517b2cefedb53e30d0b38">RecordNodeInfo</a> (<a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> result_type, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> search_depth, const <a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> &amp;<a class="el" href="classmoveselection_1_1SearchSummary.html#a4d9028e4b7afa8cd0dc20d2bae8645cc">equal_score_moves</a>)</td></tr>
+<tr class="separator:a257fc5d343a517b2cefedb53e30d0b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5ceab6653a41430b7247a7dbf7cffad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#ab5ceab6653a41430b7247a7dbf7cffad">UpdateTranspositionTableHits</a> (<a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> result_type, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> search_depth)</td></tr>
+<tr class="separator:ab5ceab6653a41430b7247a7dbf7cffad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d819c5661ad5221529f628976268f43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a4d819c5661ad5221529f628976268f43">RecordTrTableHit</a> (<a class="el" href="classmoveselection_1_1TranspositionTableSearchResult.html">TranspositionTableSearchResult</a> &amp;tr_table_search_result, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth)</td></tr>
+<tr class="separator:a4d819c5661ad5221529f628976268f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3b4fc6c3718843d7edff8322cfade8f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#ae3b4fc6c3718843d7edff8322cfade8f">num_nodes</a> ()</td></tr>
+<tr class="separator:ae3b4fc6c3718843d7edff8322cfade8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af137634fa000ec713c08add22b062c47"><td class="memItemLeft" align="right" valign="top">std::chrono::duration&lt; double, std::nano &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#af137634fa000ec713c08add22b062c47">time</a> ()</td></tr>
 <tr class="separator:af137634fa000ec713c08add22b062c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14fdc122ed2b721036773773b49f98ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a14fdc122ed2b721036773773b49f98ac">set_time</a> (std::chrono::duration&lt; double, std::nano &gt; search_time)</td></tr>
@@ -201,23 +202,23 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a869d14d03ab6abf5688b8dfe66ae30ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7264774347ac17608e80be74617a325"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacemoveselection.html#aa4c456c3f118a94017483880ff42991b">ResultDepthCountsData_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#aa7264774347ac17608e80be74617a325">GetTranspositionTableHits</a> ()</td></tr>
 <tr class="separator:aa7264774347ac17608e80be74617a325"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17ae407a1c6e509eaace30163368e9f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a17ae407a1c6e509eaace30163368e9f7">tr_table_size_initial</a> ()</td></tr>
-<tr class="separator:a17ae407a1c6e509eaace30163368e9f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e7e27789c26af2bf8ceb3248d1694a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a1e7e27789c26af2bf8ceb3248d1694a4">tr_table_size_final</a> ()</td></tr>
-<tr class="separator:a1e7e27789c26af2bf8ceb3248d1694a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa580d99a17ac1b04231d316d2c973bb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#aa580d99a17ac1b04231d316d2c973bb9">set_tr_table_size_final</a> (int <a class="el" href="classmoveselection_1_1SearchSummary.html#a1e7e27789c26af2bf8ceb3248d1694a4">tr_table_size_final</a>)</td></tr>
-<tr class="separator:aa580d99a17ac1b04231d316d2c973bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67df492c03f09317ae2e27e532c9fdd1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a67df492c03f09317ae2e27e532c9fdd1">tr_table_size_initial</a> ()</td></tr>
+<tr class="separator:a67df492c03f09317ae2e27e532c9fdd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a967e5af7665895d871c3d9fe0f8f5da3"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a967e5af7665895d871c3d9fe0f8f5da3">tr_table_size_final</a> ()</td></tr>
+<tr class="separator:a967e5af7665895d871c3d9fe0f8f5da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83301b294a942dc8f75eb74be0c7f0f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a83301b294a942dc8f75eb74be0c7f0f7">set_tr_table_size_final</a> (size_t <a class="el" href="classmoveselection_1_1SearchSummary.html#a967e5af7665895d871c3d9fe0f8f5da3">tr_table_size_final</a>)</td></tr>
+<tr class="separator:a83301b294a942dc8f75eb74be0c7f0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02d1608177f330975e7a01c5d5a3479a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a02d1608177f330975e7a01c5d5a3479a">set_returned_illegal_move</a> (bool status)</td></tr>
 <tr class="separator:a02d1608177f330975e7a01c5d5a3479a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5f02b2a75f248998b7b6b0942d1565d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#ad5f02b2a75f248998b7b6b0942d1565d">returned_illegal_move</a> ()</td></tr>
 <tr class="separator:ad5f02b2a75f248998b7b6b0942d1565d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40c547c3757265a784b3a214980cc1e1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a40c547c3757265a784b3a214980cc1e1">num_collisions</a> ()</td></tr>
-<tr class="separator:a40c547c3757265a784b3a214980cc1e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af29cce82558bff8a8f1c208207491bce"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#af29cce82558bff8a8f1c208207491bce">num_collisions</a> ()</td></tr>
+<tr class="separator:af29cce82558bff8a8f1c208207491bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a9510b1a89562e863acc5ec60e9d0ec47"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a9510b1a89562e863acc5ec60e9d0ec47">num_nodes_</a></td></tr>
-<tr class="separator:a9510b1a89562e863acc5ec60e9d0ec47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bc2c6cb69cdc7d1e52e8e9375e973c8"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a3bc2c6cb69cdc7d1e52e8e9375e973c8">num_nodes_</a></td></tr>
+<tr class="separator:a3bc2c6cb69cdc7d1e52e8e9375e973c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca46c5117d23ceb67f8dbdc722649b71"><td class="memItemLeft" align="right" valign="top">std::chrono::duration&lt; double, std::nano &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#aca46c5117d23ceb67f8dbdc722649b71">time_</a></td></tr>
 <tr class="separator:aca46c5117d23ceb67f8dbdc722649b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60aa9ee0b3890461aa0af4d7feb3edb4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1ResultDepthCounts.html">ResultDepthCounts</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a60aa9ee0b3890461aa0af4d7feb3edb4">result_depth_counts_</a></td></tr>
@@ -230,21 +231,21 @@ Private Attributes</h2></td></tr>
 <tr class="separator:aa5e305f84de44cd656cefd2245be4807"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec98baa34c66eb9c85b52b70c5d47ccb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#aec98baa34c66eb9c85b52b70c5d47ccb">returned_illegal_move_</a></td></tr>
 <tr class="separator:aec98baa34c66eb9c85b52b70c5d47ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04707896ea90fdcbd0300c9f511ace3d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a04707896ea90fdcbd0300c9f511ace3d">num_collisions_</a></td></tr>
-<tr class="separator:a04707896ea90fdcbd0300c9f511ace3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a244cee3be4825016f4ea918176c2f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a3a244cee3be4825016f4ea918176c2f1">tr_table_size_initial_</a></td></tr>
-<tr class="separator:a3a244cee3be4825016f4ea918176c2f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ec3445890042a42d4c5f30901148445"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a4ec3445890042a42d4c5f30901148445">tr_table_size_final_</a></td></tr>
-<tr class="separator:a4ec3445890042a42d4c5f30901148445"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8edf67fe9bbff3c5b00de0a5d8d677cc"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a8edf67fe9bbff3c5b00de0a5d8d677cc">num_collisions_</a></td></tr>
+<tr class="separator:a8edf67fe9bbff3c5b00de0a5d8d677cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c73d3d5ef14bd446e2e5a54df31f480"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a0c73d3d5ef14bd446e2e5a54df31f480">tr_table_size_initial_</a></td></tr>
+<tr class="separator:a0c73d3d5ef14bd446e2e5a54df31f480"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a561d9532c359a19e4186038711777355"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1SearchSummary.html#a561d9532c359a19e4186038711777355">tr_table_size_final_</a></td></tr>
+<tr class="separator:a561d9532c359a19e4186038711777355"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stores data collected during a single call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a915db2cf8efbcf62b40c8b329bcc666f">moveselection::MinimaxMoveEvaluator.ImplementSelectMove</a>. </p>
-<p>Includes total number of nodes explored, a moveseelection::ResultDepthCounts object for <a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061eda552dd3cbc3a757459c0df9b2ae2edd27">moveselection::MinimaxResultType::kTrTableHit</a> search results, and another moveseelection::ResultDepthCounts for all other search result types. </p>
+<p>Includes total number of nodes explored, a moveseelection::ResultDepthCounts object for <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da552dd3cbc3a757459c0df9b2ae2edd27">moveselection::MinimaxResultType::kTrTableHit</a> search results, and another moveseelection::ResultDepthCounts for all other search result types. </p>
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00136">136</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00159">159</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0e319774750dcde6cc4d974ee1d05fa5" name="a0e319774750dcde6cc4d974ee1d05fa5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e319774750dcde6cc4d974ee1d05fa5">&#9670;&#160;</a></span>SearchSummary()</h2>
+<a id="a9d40a33f92ce0997bb0df61f75a64b23" name="a9d40a33f92ce0997bb0df61f75a64b23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d40a33f92ce0997bb0df61f75a64b23">&#9670;&#160;</a></span>SearchSummary()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -255,13 +256,13 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">moveselection::SearchSummary::SearchSummary </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td>
           <td class="paramname"><em>max_search_depth</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>tr_table_size_initial</em>&#160;</td>
         </tr>
         <tr>
@@ -277,7 +278,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00138">138</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00161">161</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -305,7 +306,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00185">185</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00208">208</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -332,7 +333,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00192">192</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00215">215</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -359,12 +360,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00193">193</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00216">216</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a40c547c3757265a784b3a214980cc1e1" name="a40c547c3757265a784b3a214980cc1e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40c547c3757265a784b3a214980cc1e1">&#9670;&#160;</a></span>num_collisions()</h2>
+<a id="af29cce82558bff8a8f1c208207491bce" name="af29cce82558bff8a8f1c208207491bce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af29cce82558bff8a8f1c208207491bce">&#9670;&#160;</a></span>num_collisions()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -373,7 +374,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int moveselection::SearchSummary::num_collisions </td>
+          <td class="memname">size_t moveselection::SearchSummary::num_collisions </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -386,12 +387,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00203">203</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00226">226</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a30a2f7de20e447c8cc64de1c7b41882d" name="a30a2f7de20e447c8cc64de1c7b41882d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30a2f7de20e447c8cc64de1c7b41882d">&#9670;&#160;</a></span>num_nodes()</h2>
+<a id="ae3b4fc6c3718843d7edff8322cfade8f" name="ae3b4fc6c3718843d7edff8322cfade8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3b4fc6c3718843d7edff8322cfade8f">&#9670;&#160;</a></span>num_nodes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -400,7 +401,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int moveselection::SearchSummary::num_nodes </td>
+          <td class="memname">size_t moveselection::SearchSummary::num_nodes </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -413,12 +414,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00179">179</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00202">202</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ab3efde8ad374d2f9cec2fb5aacb03d4c" name="ab3efde8ad374d2f9cec2fb5aacb03d4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3efde8ad374d2f9cec2fb5aacb03d4c">&#9670;&#160;</a></span>RecordNodeInfo()</h2>
+<a id="a257fc5d343a517b2cefedb53e30d0b38" name="a257fc5d343a517b2cefedb53e30d0b38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a257fc5d343a517b2cefedb53e30d0b38">&#9670;&#160;</a></span>RecordNodeInfo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -429,19 +430,19 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void moveselection::SearchSummary::RecordNodeInfo </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a>&#160;</td>
           <td class="paramname"><em>result_type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td>
           <td class="paramname"><em>search_depth</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> &amp;&#160;</td>
           <td class="paramname"><em>equal_score_moves</em>&#160;</td>
         </tr>
         <tr>
@@ -457,12 +458,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00147">147</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00170">170</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a42e91f2b0146be44a5d877b049216ebb" name="a42e91f2b0146be44a5d877b049216ebb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a42e91f2b0146be44a5d877b049216ebb">&#9670;&#160;</a></span>RecordTrTableHit()</h2>
+<a id="a4d819c5661ad5221529f628976268f43" name="a4d819c5661ad5221529f628976268f43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d819c5661ad5221529f628976268f43">&#9670;&#160;</a></span>RecordTrTableHit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -473,13 +474,13 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void moveselection::SearchSummary::RecordTrTableHit </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structmoveselection_1_1TranspositionTableSearchResult.html">TranspositionTableSearchResult</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classmoveselection_1_1TranspositionTableSearchResult.html">TranspositionTableSearchResult</a> &amp;&#160;</td>
           <td class="paramname"><em>tr_table_search_result</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td>
           <td class="paramname"><em>remaining_search_depth</em>&#160;</td>
         </tr>
         <tr>
@@ -495,7 +496,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00161">161</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00184">184</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -522,7 +523,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00202">202</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00225">225</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -549,7 +550,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00190">190</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00213">213</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -577,7 +578,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00186">186</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00209">209</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -605,7 +606,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00201">201</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00224">224</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -633,12 +634,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00182">182</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00205">205</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aa580d99a17ac1b04231d316d2c973bb9" name="aa580d99a17ac1b04231d316d2c973bb9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa580d99a17ac1b04231d316d2c973bb9">&#9670;&#160;</a></span>set_tr_table_size_final()</h2>
+<a id="a83301b294a942dc8f75eb74be0c7f0f7" name="a83301b294a942dc8f75eb74be0c7f0f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83301b294a942dc8f75eb74be0c7f0f7">&#9670;&#160;</a></span>set_tr_table_size_final()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -649,7 +650,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void moveselection::SearchSummary::set_tr_table_size_final </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>tr_table_size_final</em></td><td>)</td>
           <td></td>
         </tr>
@@ -661,7 +662,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00198">198</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00221">221</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -689,7 +690,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00191">191</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00214">214</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -716,12 +717,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00180">180</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00203">203</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a1e7e27789c26af2bf8ceb3248d1694a4" name="a1e7e27789c26af2bf8ceb3248d1694a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e7e27789c26af2bf8ceb3248d1694a4">&#9670;&#160;</a></span>tr_table_size_final()</h2>
+<a id="a967e5af7665895d871c3d9fe0f8f5da3" name="a967e5af7665895d871c3d9fe0f8f5da3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a967e5af7665895d871c3d9fe0f8f5da3">&#9670;&#160;</a></span>tr_table_size_final()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -730,7 +731,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int moveselection::SearchSummary::tr_table_size_final </td>
+          <td class="memname">size_t moveselection::SearchSummary::tr_table_size_final </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -743,12 +744,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00197">197</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00220">220</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a17ae407a1c6e509eaace30163368e9f7" name="a17ae407a1c6e509eaace30163368e9f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17ae407a1c6e509eaace30163368e9f7">&#9670;&#160;</a></span>tr_table_size_initial()</h2>
+<a id="a67df492c03f09317ae2e27e532c9fdd1" name="a67df492c03f09317ae2e27e532c9fdd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67df492c03f09317ae2e27e532c9fdd1">&#9670;&#160;</a></span>tr_table_size_initial()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -757,7 +758,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int moveselection::SearchSummary::tr_table_size_initial </td>
+          <td class="memname">size_t moveselection::SearchSummary::tr_table_size_initial </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -770,12 +771,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00196">196</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00219">219</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a62f64dc3adc1d3b05439cfb92f3d159a" name="a62f64dc3adc1d3b05439cfb92f3d159a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62f64dc3adc1d3b05439cfb92f3d159a">&#9670;&#160;</a></span>UpdateTranspositionTableHits()</h2>
+<a id="ab5ceab6653a41430b7247a7dbf7cffad" name="ab5ceab6653a41430b7247a7dbf7cffad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5ceab6653a41430b7247a7dbf7cffad">&#9670;&#160;</a></span>UpdateTranspositionTableHits()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -786,13 +787,13 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void moveselection::SearchSummary::UpdateTranspositionTableHits </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacemoveselection.html#acdb529ae14e6752318706ace995061ed">MinimaxResultType</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a>&#160;</td>
           <td class="paramname"><em>result_type</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td>
           <td class="paramname"><em>search_depth</em>&#160;</td>
         </tr>
         <tr>
@@ -808,7 +809,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00157">157</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00180">180</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -833,12 +834,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00210">210</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00233">233</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a04707896ea90fdcbd0300c9f511ace3d" name="a04707896ea90fdcbd0300c9f511ace3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04707896ea90fdcbd0300c9f511ace3d">&#9670;&#160;</a></span>num_collisions_</h2>
+<a id="a8edf67fe9bbff3c5b00de0a5d8d677cc" name="a8edf67fe9bbff3c5b00de0a5d8d677cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8edf67fe9bbff3c5b00de0a5d8d677cc">&#9670;&#160;</a></span>num_collisions_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -847,7 +848,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int moveselection::SearchSummary::num_collisions_</td>
+          <td class="memname">size_t moveselection::SearchSummary::num_collisions_</td>
         </tr>
       </table>
   </td>
@@ -857,12 +858,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00213">213</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00236">236</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a9510b1a89562e863acc5ec60e9d0ec47" name="a9510b1a89562e863acc5ec60e9d0ec47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9510b1a89562e863acc5ec60e9d0ec47">&#9670;&#160;</a></span>num_nodes_</h2>
+<a id="a3bc2c6cb69cdc7d1e52e8e9375e973c8" name="a3bc2c6cb69cdc7d1e52e8e9375e973c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bc2c6cb69cdc7d1e52e8e9375e973c8">&#9670;&#160;</a></span>num_nodes_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -871,7 +872,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int moveselection::SearchSummary::num_nodes_</td>
+          <td class="memname">size_t moveselection::SearchSummary::num_nodes_</td>
         </tr>
       </table>
   </td>
@@ -881,7 +882,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00206">206</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00229">229</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -905,7 +906,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00208">208</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00231">231</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -929,7 +930,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00212">212</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00235">235</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -953,7 +954,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00211">211</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00234">234</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -977,12 +978,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00207">207</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00230">230</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a4ec3445890042a42d4c5f30901148445" name="a4ec3445890042a42d4c5f30901148445"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ec3445890042a42d4c5f30901148445">&#9670;&#160;</a></span>tr_table_size_final_</h2>
+<a id="a561d9532c359a19e4186038711777355" name="a561d9532c359a19e4186038711777355"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a561d9532c359a19e4186038711777355">&#9670;&#160;</a></span>tr_table_size_final_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -991,7 +992,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int moveselection::SearchSummary::tr_table_size_final_</td>
+          <td class="memname">size_t moveselection::SearchSummary::tr_table_size_final_</td>
         </tr>
       </table>
   </td>
@@ -1001,12 +1002,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00215">215</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00238">238</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a3a244cee3be4825016f4ea918176c2f1" name="a3a244cee3be4825016f4ea918176c2f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a244cee3be4825016f4ea918176c2f1">&#9670;&#160;</a></span>tr_table_size_initial_</h2>
+<a id="a0c73d3d5ef14bd446e2e5a54df31f480" name="a0c73d3d5ef14bd446e2e5a54df31f480"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c73d3d5ef14bd446e2e5a54df31f480">&#9670;&#160;</a></span>tr_table_size_initial_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1015,7 +1016,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int moveselection::SearchSummary::tr_table_size_initial_</td>
+          <td class="memname">size_t moveselection::SearchSummary::tr_table_size_initial_</td>
         </tr>
       </table>
   </td>
@@ -1025,7 +1026,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00214">214</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00237">237</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +1050,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00209">209</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00232">232</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -1062,7 +1063,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li><li class="navelem"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a></li>
-    <li class="footer">Generated on Sat Nov 9 2024 03:07:21 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sun Nov 10 2024 22:57:04 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

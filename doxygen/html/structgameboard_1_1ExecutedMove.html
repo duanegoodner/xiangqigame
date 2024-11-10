@@ -159,13 +159,14 @@ Collaboration diagram for gameboard::ExecutedMove:</div>
 <div class="dyncontent">
 <div class="center"><img src="structgameboard_1_1ExecutedMove__coll__graph.png" border="0" usemap="#agameboard_1_1ExecutedMove_coll__map" alt="Collaboration graph"/></div>
 <map name="agameboard_1_1ExecutedMove_coll__map" id="agameboard_1_1ExecutedMove_coll__map">
-<area shape="rect" title="A change in the state of a gameboard::GameBoard represented by a gameboard::Move, and each of the gam..." alt="" coords="85,587,284,664"/>
-<area shape="rect" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end)." alt="" coords="114,410,254,487"/>
-<area shape="rect" href="structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa..." alt="" coords="62,160,243,311"/>
-<area shape="rect" title=" " alt="" coords="24,5,62,83"/>
-<area shape="rect" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor." alt="" coords="279,388,458,509"/>
-<area shape="rect" title=" " alt="" coords="269,197,356,274"/>
-<area shape="rect" title=" " alt="" coords="384,197,475,274"/>
+<area shape="rect" title="A change in the state of a gameboard::GameBoard represented by a gameboard::Move, and each of the gam..." alt="" coords="175,587,374,664"/>
+<area shape="rect" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end)." alt="" coords="26,410,166,487"/>
+<area shape="rect" href="structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa..." alt="" coords="5,160,187,311"/>
+<area shape="rect" title=" " alt="" coords="77,5,115,83"/>
+<area shape="rect" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor." alt="" coords="191,388,369,509"/>
+<area shape="rect" title=" " alt="" coords="223,197,310,274"/>
+<area shape="rect" title=" " alt="" coords="339,197,429,274"/>
+<area shape="rect" title=" " alt="" coords="399,410,473,487"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -183,8 +184,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a44ceb980865ffab0c3bdef27feb1ef61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae69400c9b93b659d6cfb904f6dc68c7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1GamePiece.html">gameboard::GamePiece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1ExecutedMove.html#ae69400c9b93b659d6cfb904f6dc68c7c">destination_piece</a></td></tr>
 <tr class="separator:ae69400c9b93b659d6cfb904f6dc68c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acda0ac0e4e99d8e136dc6a3796a43774"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1ExecutedMove.html#acda0ac0e4e99d8e136dc6a3796a43774">moves_since_last_capture</a></td></tr>
-<tr class="separator:acda0ac0e4e99d8e136dc6a3796a43774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad692495d0c5ef30a83bab6a9eaef3b2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1ExecutedMove.html#ad692495d0c5ef30a83bab6a9eaef3b2c">moves_since_last_capture</a></td></tr>
+<tr class="separator:ad692495d0c5ef30a83bab6a9eaef3b2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A change in the state of a <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a> represented by a <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a>, and each of the <a class="el" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor.">gameboard::GamePiece</a> objects located at the <b>start</b> and <b>end</b> locations of the <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">Move</a>. </p>
@@ -239,14 +240,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="acda0ac0e4e99d8e136dc6a3796a43774" name="acda0ac0e4e99d8e136dc6a3796a43774"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acda0ac0e4e99d8e136dc6a3796a43774">&#9670;&#160;</a></span>moves_since_last_capture</h2>
+<a id="ad692495d0c5ef30a83bab6a9eaef3b2c" name="ad692495d0c5ef30a83bab6a9eaef3b2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad692495d0c5ef30a83bab6a9eaef3b2c">&#9670;&#160;</a></span>moves_since_last_capture</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int gameboard::ExecutedMove::moves_since_last_capture</td>
+          <td class="memname"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a> gameboard::ExecutedMove::moves_since_last_capture</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -296,7 +297,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacegameboard.html">gameboard</a></li><li class="navelem"><a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a></li>
-    <li class="footer">Generated on Sat Nov 9 2024 03:07:21 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sun Nov 10 2024 22:57:04 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

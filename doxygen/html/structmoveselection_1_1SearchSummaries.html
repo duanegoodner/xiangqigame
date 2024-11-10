@@ -159,34 +159,34 @@ Collaboration diagram for moveselection::SearchSummaries:</div>
 <div class="dyncontent">
 <div class="center"><img src="structmoveselection_1_1SearchSummaries__coll__graph.png" border="0" usemap="#amoveselection_1_1SearchSummaries_coll__map" alt="Collaboration graph"/></div>
 <map name="amoveselection_1_1SearchSummaries_coll__map" id="amoveselection_1_1SearchSummaries_coll__map">
-<area shape="rect" title="Stores a moveselection::SearchSummary for each moveselection::MinimaxMoveEvaluator...." alt="" coords="73,160,317,252"/>
+<area shape="rect" title="Stores a moveselection::SearchSummary for each moveselection::MinimaxMoveEvaluator...." alt="" coords="89,160,333,252"/>
 <area shape="rect" title=" " alt="" coords="5,5,180,97"/>
-<area shape="rect" title=" " alt="" coords="205,5,391,97"/>
+<area shape="rect" title=" " alt="" coords="204,5,456,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a812c41b2b5176539117978dfa2dc1a05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummaries.html#a812c41b2b5176539117978dfa2dc1a05">NewFirstSearch</a> (int search_depth, int tr_table_size_initial)</td></tr>
-<tr class="separator:a812c41b2b5176539117978dfa2dc1a05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d4a94f6dbb3f7d92298d9d354757024"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummaries.html#a7d4a94f6dbb3f7d92298d9d354757024">NewExtraSearch</a> (int search_depth, int search_number, int tr_table_size_current)</td></tr>
-<tr class="separator:a7d4a94f6dbb3f7d92298d9d354757024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3287bed015e82503553452a49f8f088c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummaries.html#a3287bed015e82503553452a49f8f088c">NewFirstSearch</a> (<a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> search_depth, size_t tr_table_size_initial)</td></tr>
+<tr class="separator:a3287bed015e82503553452a49f8f088c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affb258157957acf8bea7501a577d772d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummaries.html#affb258157957acf8bea7501a577d772d">NewExtraSearch</a> (<a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> search_depth, <a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a> search_number, size_t tr_table_size_current)</td></tr>
+<tr class="separator:affb258157957acf8bea7501a577d772d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aa236883fc6b5b34ba98fbab1e12b7871"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummaries.html#aa236883fc6b5b34ba98fbab1e12b7871">first_searches</a></td></tr>
 <tr class="separator:aa236883fc6b5b34ba98fbab1e12b7871"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30ee77cf9e450e764688f0e4a3599c6a"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummaries.html#a30ee77cf9e450e764688f0e4a3599c6a">extra_searches</a></td></tr>
-<tr class="separator:a30ee77cf9e450e764688f0e4a3599c6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1ada45195c8d4a23ff2de7c8d4118a6"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a>, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmoveselection_1_1SearchSummaries.html#aa1ada45195c8d4a23ff2de7c8d4118a6">extra_searches</a></td></tr>
+<tr class="separator:aa1ada45195c8d4a23ff2de7c8d4118a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Stores a <a class="el" href="classmoveselection_1_1SearchSummary.html" title="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator....">moveselection::SearchSummary</a> for each <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a915db2cf8efbcf62b40c8b329bcc666f">moveselection::MinimaxMoveEvaluator.ImplementSelectMove</a> made for a particular player during a game. </p>
-<p>If a second call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a834b5a9fffcef4d3fe5596c13de43218">moveselection::MinimaxMoveEvaluator.RunMinimax</a> is needed (due to a hash collision causing in illegal move to be returned by the first call to to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a834b5a9fffcef4d3fe5596c13de43218">moveselection::MinimaxMoveEvaluator.RunMinimax</a>), a <a class="el" href="classmoveselection_1_1SearchSummary.html" title="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator....">moveselection::SearchSummary</a> for the second search is stored in <a class="el" href="structmoveselection_1_1SearchSummaries.html#a30ee77cf9e450e764688f0e4a3599c6a">moveselection::SearchSummaries.extra_searches</a>. </p>
+<p>If a second call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a834b5a9fffcef4d3fe5596c13de43218">moveselection::MinimaxMoveEvaluator.RunMinimax</a> is needed (due to a hash collision causing in illegal move to be returned by the first call to to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a834b5a9fffcef4d3fe5596c13de43218">moveselection::MinimaxMoveEvaluator.RunMinimax</a>), a <a class="el" href="classmoveselection_1_1SearchSummary.html" title="Stores data collected during a single call to moveselection::MinimaxMoveEvaluator....">moveselection::SearchSummary</a> for the second search is stored in <a class="el" href="structmoveselection_1_1SearchSummaries.html#aa1ada45195c8d4a23ff2de7c8d4118a6">moveselection::SearchSummaries.extra_searches</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00225">225</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00248">248</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a7d4a94f6dbb3f7d92298d9d354757024" name="a7d4a94f6dbb3f7d92298d9d354757024"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d4a94f6dbb3f7d92298d9d354757024">&#9670;&#160;</a></span>NewExtraSearch()</h2>
+<a id="affb258157957acf8bea7501a577d772d" name="affb258157957acf8bea7501a577d772d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affb258157957acf8bea7501a577d772d">&#9670;&#160;</a></span>NewExtraSearch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,19 +197,19 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp; moveselection::SearchSummaries::NewExtraSearch </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td>
           <td class="paramname"><em>search_depth</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a>&#160;</td>
           <td class="paramname"><em>search_number</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>tr_table_size_current</em>&#160;</td>
         </tr>
         <tr>
@@ -225,12 +225,12 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00237">237</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00257">257</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a812c41b2b5176539117978dfa2dc1a05" name="a812c41b2b5176539117978dfa2dc1a05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a812c41b2b5176539117978dfa2dc1a05">&#9670;&#160;</a></span>NewFirstSearch()</h2>
+<a id="a3287bed015e82503553452a49f8f088c" name="a3287bed015e82503553452a49f8f088c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3287bed015e82503553452a49f8f088c">&#9670;&#160;</a></span>NewFirstSearch()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -241,13 +241,13 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp; moveselection::SearchSummaries::NewFirstSearch </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td>
           <td class="paramname"><em>search_depth</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>tr_table_size_initial</em>&#160;</td>
         </tr>
         <tr>
@@ -263,24 +263,24 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00229">229</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00252">252</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a30ee77cf9e450e764688f0e4a3599c6a" name="a30ee77cf9e450e764688f0e4a3599c6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30ee77cf9e450e764688f0e4a3599c6a">&#9670;&#160;</a></span>extra_searches</h2>
+<a id="aa1ada45195c8d4a23ff2de7c8d4118a6" name="aa1ada45195c8d4a23ff2de7c8d4118a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1ada45195c8d4a23ff2de7c8d4118a6">&#9670;&#160;</a></span>extra_searches</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;int, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a>&gt; moveselection::SearchSummaries::extra_searches</td>
+          <td class="memname">std::map&lt;<a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a>, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a>&gt; moveselection::SearchSummaries::extra_searches</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00227">227</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00250">250</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -296,7 +296,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00226">226</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="evaluator__data__structs_8hpp_source.html#l00249">249</a> of file <a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -309,7 +309,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li><li class="navelem"><a class="el" href="structmoveselection_1_1SearchSummaries.html">SearchSummaries</a></li>
-    <li class="footer">Generated on Sat Nov 9 2024 03:07:21 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sun Nov 10 2024 22:57:04 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -24,5 +24,5 @@ var classgameboard_1_1GameBoard =
     [ "move_calculator_", "classgameboard_1_1GameBoard.html#a1e2d70154b962c74321f298f1908a69a", null ],
     [ "move_callbacks_", "classgameboard_1_1GameBoard.html#a8ea1791d8e940edca2ae367f6f4b0c9a", null ],
     [ "move_log_", "classgameboard_1_1GameBoard.html#a60fe6e8e76ed864050109524b4c136d5", null ],
-    [ "moves_since_last_capture_", "classgameboard_1_1GameBoard.html#aa61e3705bfc5101736893d4835d84074", null ]
+    [ "moves_since_last_capture_", "classgameboard_1_1GameBoard.html#aa5fed8245a5001b76c36f2875e796e4c", null ]
 ];

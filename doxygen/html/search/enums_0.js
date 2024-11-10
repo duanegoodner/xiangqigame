@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['minimaxresulttype_0',['MinimaxResultType',['../namespacemoveselection.html#acdb529ae14e6752318706ace995061ed',1,'moveselection']]]
+  ['minimaxresulttype_0',['MinimaxResultType',['../namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d',1,'moveselection']]]
 ];

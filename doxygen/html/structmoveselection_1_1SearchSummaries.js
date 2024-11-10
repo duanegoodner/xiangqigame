@@ -1,7 +1,7 @@
 var structmoveselection_1_1SearchSummaries =
 [
-    [ "NewExtraSearch", "structmoveselection_1_1SearchSummaries.html#a7d4a94f6dbb3f7d92298d9d354757024", null ],
-    [ "NewFirstSearch", "structmoveselection_1_1SearchSummaries.html#a812c41b2b5176539117978dfa2dc1a05", null ],
-    [ "extra_searches", "structmoveselection_1_1SearchSummaries.html#a30ee77cf9e450e764688f0e4a3599c6a", null ],
+    [ "NewExtraSearch", "structmoveselection_1_1SearchSummaries.html#affb258157957acf8bea7501a577d772d", null ],
+    [ "NewFirstSearch", "structmoveselection_1_1SearchSummaries.html#a3287bed015e82503553452a49f8f088c", null ],
+    [ "extra_searches", "structmoveselection_1_1SearchSummaries.html#aa1ada45195c8d4a23ff2de7c8d4118a6", null ],
     [ "first_searches", "structmoveselection_1_1SearchSummaries.html#aa236883fc6b5b34ba98fbab1e12b7871", null ]
 ];
