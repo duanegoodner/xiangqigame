@@ -218,6 +218,8 @@ public:
 
   std::array<KeyType, NumConfKeys> confirmation_keys() { return confirmation_keys_; }
 
+  MoveCountType last_access_index() { return last_access_index_; }
+
   void set_last_access_index(MoveCountType last_access_index) {
     last_access_index_ = last_access_index;
   }
@@ -231,9 +233,9 @@ public:
     return true;
   }
 
-  DepthType remaining_search_depth() { return minimax_calc_result_.remaining_search_depth(); }
-
-  MoveCountType Age(MoveCountType cur_access_index) { return cur_access_index - last_access_index_; }
+  DepthType remaining_search_depth() {
+    return minimax_calc_result_.remaining_search_depth();
+  }
 
 private:
   moveselection::MinimaxCalcResult minimax_calc_result_;
@@ -247,15 +249,15 @@ public:
   moveselection::TranspositionTableSearchResult GetDataAt(
       KeyType primary_board_state,
       DepthType remaining_search_depth,
-      std::array<KeyType, NumConfKeys> expected_keys,
-      MoveCountType access_index
+      std::array<KeyType, NumConfKeys> expected_keys
+      // MoveCountType access_index
   ) {
     moveselection::TranspositionTableSearchResult result{};
     auto tr_table_entry_it = data_.find(primary_board_state);
     if (tr_table_entry_it != data_.end()) {
       auto tr_table_entry = tr_table_entry_it->second;
       if (tr_table_entry.remaining_search_depth() >= remaining_search_depth) {
-        tr_table_entry.set_last_access_index(access_index);
+        tr_table_entry.set_last_access_index(move_counter_);
         result.set_found(true);
         result.set_minimax_calc_result(tr_table_entry.minimax_calc_result());
       }
@@ -272,23 +274,32 @@ public:
       DepthType search_depth,
       moveselection::MinimaxResultType result_type,
       moveselection::EqualScoreMoves &similar_moves,
-      const std::array<KeyType, NumConfKeys> &confirmation_keys,
-      MoveCountType access_index
+      const std::array<KeyType, NumConfKeys> &confirmation_keys
+      // MoveCountType access_index
   ) {
     data_.insert_or_assign(
         primary_board_state,
         TranspositionTableEntry<KeyType, NumConfKeys>{
             moveselection::MinimaxCalcResult{search_depth, result_type, similar_moves},
             confirmation_keys,
-            access_index
+            move_counter_
         }
     );
   }
 
   size_t size() { return data_.size(); }
 
+  void IncrementMoveCounter() { move_counter_++; }
+
 private:
   std::unordered_map<KeyType, TranspositionTableEntry<KeyType, NumConfKeys>> data_;
+  MoveCountType move_counter_;
+
+  MoveCountType NumMovesSinceLastUseOf(
+      const TranspositionTableEntry<KeyType, NumConfKeys> &tr_table_entry
+  ) {
+    return move_counter_ - tr_table_entry.last_access_index();
+  }
 };
 
 template <typename KeyType, size_t NumConfKeys>
@@ -335,8 +346,7 @@ public:
         search_depth,
         result_type,
         similar_moves,
-        zobrist_component_.confirmation_board_states(),
-        access_index
+        zobrist_component_.confirmation_board_states()
     );
   }
 
@@ -347,12 +357,13 @@ public:
     return transposition_table_.GetDataAt(
         zobrist_component_.primary_board_state(),
         search_depth,
-        zobrist_component_.confirmation_board_states(),
-        access_index
+        zobrist_component_.confirmation_board_states()
     );
   }
 
   size_t ImplementGetTrTableSize() { return transposition_table_.size(); }
+
+  void ImplementUpdateMoveCounter() { transposition_table_.IncrementMoveCounter(); }
 
   const std::string board_state_hex_str() {
     return IntToHexString(zobrist_component_.primary_board_state());

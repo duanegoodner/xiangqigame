@@ -236,7 +236,10 @@ private:
     return second_search_summary;
   }
 
-  inline void IncrementNumMoveSelections() { num_move_selections_++; }
+  inline void IncrementNumMoveSelections() {
+    num_move_selections_++;
+    hash_calculator_.UpdateMoveCounter();
+  }
 
   EqualScoreMoves HandleTrTableHit(
       SearchSummary &search_summary,
@@ -369,9 +372,13 @@ private:
     return result;
   }
 
-  inline void UpdateAlpha(Points_t &alpha, Points_t cur_eval) { alpha = max(alpha, cur_eval); }
+  inline void UpdateAlpha(Points_t &alpha, Points_t cur_eval) {
+    alpha = max(alpha, cur_eval);
+  }
 
-  inline void UpdateBeta(Points_t &beta, Points_t cur_eval) { beta = min(beta, cur_eval); }
+  inline void UpdateBeta(Points_t &beta, Points_t cur_eval) {
+    beta = min(beta, cur_eval);
+  }
 
   inline bool IsPrunableForEvaluator(
       Points_t &alpha,
@@ -444,8 +451,12 @@ private:
     }
   }
 
-  inline void
-  UpdatePruningParam(Points_t &alpha, Points_t &beta, Points_t cur_eval, PieceColor cur_player) {
+  inline void UpdatePruningParam(
+      Points_t &alpha,
+      Points_t &beta,
+      Points_t cur_eval,
+      PieceColor cur_player
+  ) {
     if (cur_player == evaluating_player_) {
       UpdateAlpha(alpha, cur_eval);
     } else {

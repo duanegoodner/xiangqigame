@@ -55,4 +55,9 @@ public:
   size_t GetTrTableSize() {
     return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetTrTableSize();
   }
+
+  void UpdateMoveCounter() {
+    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementUpdateMoveCounter(
+    );
+  }
 };
