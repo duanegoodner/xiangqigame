@@ -1,3 +1,3 @@
 add_executable(gist_tr_table_purging gist_tr_table_purging.cpp)
 
-# add_executable(gist_thread_control gist_thread_control.cpp)
+add_executable(gist_classes_share_mutex gist_classes_share_mutex.cpp)
