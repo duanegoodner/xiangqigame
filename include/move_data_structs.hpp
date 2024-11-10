@@ -90,7 +90,7 @@ struct ExecutedMove {
   Move spaces;
   gameboard::GamePiece moving_piece;
   gameboard::GamePiece destination_piece;
-  int moves_since_last_capture;
+  MoveCountType moves_since_last_capture;
 
   //! == operator overload; requires equality of pieces and space, but not
   //! moves_since_last capture.

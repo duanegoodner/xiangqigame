@@ -34,7 +34,7 @@ class MinimaxMoveEvaluator : public MoveEvaluator<MinimaxMoveEvaluator<
 public:
   MinimaxMoveEvaluator(
       PieceColor evaluating_player,
-      int starting_search_depth,
+      DepthType starting_search_depth,
       ConcreteSpaceInfoProvider &game_board,
       const ConcretePieceValueProvider &game_position_points
   )
@@ -48,7 +48,7 @@ public:
 
   MinimaxMoveEvaluator(
       PieceColor evaluating_player,
-      int starting_search_depth,
+      DepthType starting_search_depth,
       ConcreteSpaceInfoProvider &game_board,
       uint32_t zkey_seed
   )
@@ -62,7 +62,7 @@ public:
 
   MinimaxMoveEvaluator(
       PieceColor evaluating_player,
-      int starting_search_depth,
+      DepthType starting_search_depth,
       ConcreteSpaceInfoProvider &game_board
   )
       : MinimaxMoveEvaluator(
@@ -94,7 +94,7 @@ public:
     return search_summaries_;
   }
 
-  inline int StartingSearchDepth() { return starting_search_depth_; }
+  inline DepthType StartingSearchDepth() { return starting_search_depth_; }
 
   inline size_t KeySizeBits() {
     return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
@@ -113,7 +113,7 @@ public:
 private:
   explicit MinimaxMoveEvaluator(
       PieceColor evaluating_player,
-      int starting_search_depth,
+      DepthType starting_search_depth,
       ConcreteSpaceInfoProvider &game_board,
       const ConcretePieceValueProvider &game_position_points,
       uint32_t zkey_seed
@@ -137,8 +137,8 @@ private:
   ConcretePieceValueProvider game_position_points_;
   ConcreteBoardStateSummarizer hash_calculator_;
   ConcreteSpaceInfoProvider &game_board_;
-  int num_move_selections_;
-  int starting_search_depth_;
+  MoveCountType num_move_selections_;
+  DepthType starting_search_depth_;
   moveselection::SearchSummaries search_summaries_;
 
   Points_t GetPlayerTotal(PieceColor color) {
@@ -236,13 +236,16 @@ private:
     return second_search_summary;
   }
 
-  inline void IncrementNumMoveSelections() { num_move_selections_++; }
+  inline void IncrementNumMoveSelections() {
+    num_move_selections_++;
+    hash_calculator_.UpdateMoveCounter();
+  }
 
   EqualScoreMoves HandleTrTableHit(
       SearchSummary &search_summary,
       MinimaxResultType &result_type,
       TranspositionTableSearchResult &tr_table_search_result,
-      int remaining_search_depth
+      DepthType remaining_search_depth
   ) {
     result_type = MinimaxResultType::kTrTableHit;
     search_summary.RecordTrTableHit(tr_table_search_result, remaining_search_depth);
@@ -273,10 +276,11 @@ private:
       PieceColor cur_player,
       SearchSummary &search_summary,
       MinimaxResultType &result_type,
-      int remaining_search_depth
+      DepthType remaining_search_depth
   ) {
     auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
-    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    hash_calculator_
+        .RecordTrData(remaining_search_depth, result_type, result, num_move_selections_);
     search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
     return result;
   }
@@ -309,18 +313,19 @@ private:
       PieceColor cur_player,
       SearchSummary &search_summary,
       MinimaxResultType &result_type,
-      int remaining_search_depth
+      DepthType remaining_search_depth
   ) {
     auto result = EvaluateNonWinLeaf(cur_player, result_type);
-    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    hash_calculator_
+        .RecordTrData(remaining_search_depth, result_type, result, num_move_selections_);
     search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
 
     return result;
   }
 
   inline bool IsImprovement(
-      int cur_eval,
-      int previous_best_eval,
+      Points_t cur_eval,
+      Points_t previous_best_eval,
       PieceColor cur_player
   ) {
     if (cur_player == evaluating_player_) {
@@ -334,8 +339,8 @@ private:
       PieceColor cur_player,
       Move move,
       MoveCollection &best_moves,
-      int cur_eval,
-      int &previous_best_eval
+      Points_t cur_eval,
+      Points_t &previous_best_eval
   ) {
     if (cur_eval == previous_best_eval) {
       best_moves.Append(move);
@@ -348,9 +353,9 @@ private:
 
   EqualScoreMoves FinalizeNodeResult(
       MinimaxResultType &result_type,
-      int best_eval,
+      Points_t best_eval,
       MoveCollection best_moves,
-      int remaining_search_depth,
+      DepthType remaining_search_depth,
       SearchSummary &search_summary
   ) {
 
@@ -361,18 +366,23 @@ private:
       result_type = MinimaxResultType::kFullyEvaluatedNode;
     }
     EqualScoreMoves result{best_eval, best_moves};
-    hash_calculator_.RecordTrData(remaining_search_depth, result_type, result);
+    hash_calculator_
+        .RecordTrData(remaining_search_depth, result_type, result, num_move_selections_);
     search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
     return result;
   }
 
-  inline void UpdateAlpha(int &alpha, int cur_eval) { alpha = max(alpha, cur_eval); }
+  inline void UpdateAlpha(Points_t &alpha, Points_t cur_eval) {
+    alpha = max(alpha, cur_eval);
+  }
 
-  inline void UpdateBeta(int &beta, int cur_eval) { beta = min(beta, cur_eval); }
+  inline void UpdateBeta(Points_t &beta, Points_t cur_eval) {
+    beta = min(beta, cur_eval);
+  }
 
   inline bool IsPrunableForEvaluator(
-      int &alpha,
-      int &beta,
+      Points_t &alpha,
+      Points_t &beta,
       MinimaxResultType &result_type
   ) {
     bool is_prunable = (beta <= alpha);
@@ -383,8 +393,8 @@ private:
   }
 
   inline bool IsPrunableForEvaluatorOpponent(
-      int &alpha,
-      int &beta,
+      Points_t &alpha,
+      Points_t &beta,
       MinimaxResultType &result_type
   ) {
     bool is_prunable = (beta <= alpha);
@@ -395,8 +405,8 @@ private:
   }
 
   inline bool IsPrunable(
-      int &alpha,
-      int &beta,
+      Points_t &alpha,
+      Points_t &beta,
       MinimaxResultType &result_type,
       PieceColor cur_player
   ) {
@@ -407,13 +417,13 @@ private:
     }
   }
 
-  int RecursivelyVisitNodes(
+  Points_t RecursivelyVisitNodes(
       Move move,
       PieceColor cur_player,
       MoveCollection &allowed_moves,
-      int remaining_search_depth,
-      int alpha,
-      int beta,
+      DepthType remaining_search_depth,
+      Points_t alpha,
+      Points_t beta,
       SearchSummary &search_summary,
       bool use_transposition_table
   ) {
@@ -433,16 +443,20 @@ private:
     return cur_eval;
   }
 
-  inline int InitializedBestEval(PieceColor cur_player) {
+  inline Points_t InitializedBestEval(PieceColor cur_player) {
     if (cur_player == evaluating_player_) {
-      return numeric_limits<int>::min();
+      return numeric_limits<Points_t>::min();
     } else {
-      return numeric_limits<int>::max();
+      return numeric_limits<Points_t>::max();
     }
   }
 
-  inline void
-  UpdatePruningParam(int &alpha, int &beta, int cur_eval, PieceColor cur_player) {
+  inline void UpdatePruningParam(
+      Points_t &alpha,
+      Points_t &beta,
+      Points_t cur_eval,
+      PieceColor cur_player
+  ) {
     if (cur_player == evaluating_player_) {
       UpdateAlpha(alpha, cur_eval);
     } else {
@@ -453,9 +467,9 @@ private:
   EqualScoreMoves HandleInternalNode(
       PieceColor cur_player,
       MoveCollection &allowed_moves,
-      int &remaining_search_depth,
-      int &alpha,
-      int &beta,
+      DepthType &remaining_search_depth,
+      Points_t &alpha,
+      Points_t &beta,
       MinimaxResultType result_type,
       SearchSummary &search_summary,
       bool use_transposition_table
@@ -496,9 +510,9 @@ private:
 
   EqualScoreMoves MinimaxRec(
       MoveCollection &allowed_moves,
-      int remaining_search_depth,
-      int alpha,
-      int beta,
+      DepthType remaining_search_depth,
+      Points_t alpha,
+      Points_t beta,
       PieceColor cur_player,
       SearchSummary &search_summary,
       bool use_transposition_table
@@ -508,8 +522,9 @@ private:
     // Check if result for current board state is in transposition table
     // (unless this is a second search in which case we don't use transposition table)
     if (use_transposition_table) {
-      auto tr_table_search_result = hash_calculator_.GetTrData(remaining_search_depth);
-      if (tr_table_search_result.found &&
+      auto tr_table_search_result =
+          hash_calculator_.GetTrData(remaining_search_depth, num_move_selections_);
+      if (tr_table_search_result.found() &&
           tr_table_search_result.IsConsistentWith(allowed_moves)) {
         return HandleTrTableHit(
             search_summary,
@@ -568,8 +583,10 @@ private:
     auto search_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::nano> search_time = search_end - search_start;
     search_summary.set_time(search_time);
-    auto selected_move_index =
-        utility_functs::random((size_t)0, minimax_result.move_collection().moves.size() - 1);
+    auto selected_move_index = utility_functs::random(
+        (size_t)0,
+        minimax_result.move_collection().moves.size() - 1
+    );
     auto selected_move = minimax_result.move_collection().moves[selected_move_index];
     search_summary.SetSelectedMove(selected_move);
     auto tr_table_size = hash_calculator_.GetTrTableSize();

@@ -7,6 +7,23 @@
 #include <thread>
 #include <unordered_map>
 
+
+class TranspositionTable {
+  public:
+
+  private:
+  std::unordered_map<uint32_t, uint32_t> data_;
+
+};
+
+
+class MoveEvaluator {
+
+  
+
+};
+
+
 class Player {
 private:
   std::string name_;
@@ -92,6 +109,10 @@ public:
     return transposition_table_.size();
   }
 };
+
+
+
+
 
 class Manager {
 private:

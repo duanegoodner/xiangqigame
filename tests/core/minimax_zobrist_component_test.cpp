@@ -28,10 +28,10 @@ protected:
   }};
   GameBoard late_game_board_{kLateGameBoardMap};
 
-  const int standard_search_depth = 4;
+  const DepthType standard_search_depth = 4;
 
   template <typename KeyType, size_t NumConfKeys>
-  void PlayGame(int red_search_depth, int black_search_depth) {
+  void PlayGame(DepthType red_search_depth, DepthType black_search_depth) {
     GameBoard game_board;
     moveselection::MinimaxMoveEvaluator<
         GameBoard,

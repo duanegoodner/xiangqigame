@@ -4,6 +4,7 @@
 #pragma once
 
 #include <evaluator_data_structs.hpp>
+#include <integer_types.hpp>
 
 using namespace gameboard;
 
@@ -32,21 +33,31 @@ public:
   }
 
   void RecordTrData(
-      int search_depth,
+      DepthType search_depth,
       moveselection::MinimaxResultType result_type,
-      moveselection::EqualScoreMoves &similar_moves
+      moveselection::EqualScoreMoves &similar_moves,
+      MoveCountType access_index
   ) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)
-        ->ImplementRecordTrData(search_depth, result_type, similar_moves);
+        ->ImplementRecordTrData(search_depth, result_type, similar_moves, access_index);
   }
 
-  moveselection::TranspositionTableSearchResult GetTrData(int search_depth) {
+  moveselection::TranspositionTableSearchResult GetTrData(
+      DepthType search_depth,
+      MoveCountType access_index
+  ) {
     return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetTrData(
-        search_depth
+        search_depth,
+        access_index
     );
   }
 
-  int GetTrTableSize() {
+  size_t GetTrTableSize() {
     return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetTrTableSize();
+  }
+
+  void UpdateMoveCounter() {
+    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementUpdateMoveCounter(
+    );
   }
 };

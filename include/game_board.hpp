@@ -54,7 +54,7 @@ private:
   std::map<PieceColor, vector<ExecutedMove>> move_log_;
 
   //! Number of moves executed since last time a piece was captured. 
-  int moves_since_last_capture_; 
+  MoveCountType moves_since_last_capture_; 
 
   void UpdateStateTracker(const ExecutedMove &executed_move);
   void SetOccupantAt(const BoardSpace &space, GamePiece piece);
