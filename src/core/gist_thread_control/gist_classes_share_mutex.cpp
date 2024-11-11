@@ -2,7 +2,6 @@
 #include <mutex>
 #include <shared_mutex>
 #include <thread>
-#include <functional>
 
 class Resource {
 public:
@@ -22,19 +21,11 @@ class Child {
 public:
     Child() {}
 
-    // Provide a method that locks and allows operations to be performed on the resource
-    void withLockedResource(const std::function<void(Resource&)> &operation) {
+    // Template version that accepts any callable
+    template<typename Func>
+    void withLockedResource(Func&& operation) {
         std::unique_lock<std::shared_mutex> lock(mutex_);
         operation(resource_);
-    }
-
-    // These methods assume locking is handled elsewhere or are not exposed publicly if not needed
-    void accessResource() const {
-        resource_.read();
-    }
-
-    void modifyResource() {
-        resource_.write();
     }
 };
 

@@ -1,4 +1,7 @@
 
+//! @file zobrist.hpp
+//! Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker
+//! and supporting classes.
 
 #pragma once
 
@@ -16,8 +19,9 @@
 
 namespace boardstate {
 
-//! Container for all of the hash keys needed to run a
-//! boardstate::SingleZobristSummarizer.
+//! Uses Zobrist hashing to calculate a "reasonably unique" integer value
+//! for each board configuration encountered during a game. KeyType can be any unsigned
+//! integer type with a size = (n * 32 bits) where n is an integer >= 1.
 template <typename KeyType>
 class ZobristCalculator {
 public:
@@ -113,7 +117,9 @@ private:
   };
 };
 
-// template <typename KeyType>
+//! Container for one or more boardstate::ZobristCalculator objects.
+//! Using more than one boardstate::ZobristCalculator (i.e. NumConfKeys > 0) allows hash
+//! collisions to be detected.
 template <typename KeyType, size_t NumConfKeys>
 class ZobristComponent {
 public:
@@ -202,6 +208,10 @@ private:
   std::optional<uint32_t> prng_seed_;
 };
 
+//! Data structure to hold calculation results that get entered into a
+//! boardstate::TranspositionTable.
+//! When NumConfKeys > 0, also holds board state values calculated by objects in a
+//! boardstate::ZobristComponent.confirmation_calculators_.
 template <typename KeyType, size_t NumConfKeys>
 class TranspositionTableEntry {
 public:
@@ -243,6 +253,10 @@ private:
   MoveCountType last_access_index_;
 };
 
+//! Stores and manages key-value pairs consisting of a board_state (from a
+//! boardstate::ZobristComponent) and results of Minimax calculations performed by
+//! boardstate::MinimaxMoveEvaluator. Provides read/write access to
+//! moveselection::MinimaxMoveEvaluator via a boardstate::ZobristSummarizer.
 template <typename KeyType, size_t NumConfKeys>
 class TranspositionTable {
 public:
@@ -250,7 +264,6 @@ public:
       KeyType primary_board_state,
       DepthType remaining_search_depth,
       std::array<KeyType, NumConfKeys> expected_keys
-      // MoveCountType access_index
   ) {
     moveselection::TranspositionTableSearchResult result{};
     auto tr_table_entry_it = data_.find(primary_board_state);
@@ -275,7 +288,6 @@ public:
       moveselection::MinimaxResultType result_type,
       moveselection::EqualScoreMoves &similar_moves,
       const std::array<KeyType, NumConfKeys> &confirmation_keys
-      // MoveCountType access_index
   ) {
     data_.insert_or_assign(
         primary_board_state,
@@ -302,6 +314,10 @@ private:
   }
 };
 
+//! Implements the BoardStateSummarizer interface, providing a
+//! moveselection::MinimaxMoveEvaluator with "reasonably unique" hash values for each
+//! encountered board state, and the ability to read/write board_state-MinimaxResult
+//! pairs in a boardstate::TranspositionTable.
 template <typename KeyType, size_t NumConfKeys>
 class ZobristSummarizer
     : public BoardStateSummarizer<ZobristSummarizer<KeyType, NumConfKeys>, KeyType> {
