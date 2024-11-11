@@ -1,6 +1,8 @@
 //! @file json_utility_nlohmann.cpp
 //! Implementation of methods for jsonio::NlohmannJsonUtility.  
 
+#include <fstream>
+#include <iostream>
 #include <json_utility_nlohmann.hpp>
 #include <piece_points_bpo.hpp>
 
@@ -55,3 +57,26 @@ nlohmann::json jsonio::NlohmannJsonUtility::Serialize(piecepoints::BPOPointsSKey
     j["red_position_offsets"] = bpo_points.red_position_offsets_;
     return j;
   }
+
+  nlohmann::json jsonio::import_json(string file_path) {
+  ifstream input(file_path);
+  return nlohmann::json::parse(input);
+}
+
+bool jsonio::json_matches_schema(const nlohmann::json &imported_data, const nlohmann::json &schema) {
+  nlohmann::json_schema::json_validator validator;
+
+  try {
+    validator.set_root_schema(schema);
+  } catch (const exception &e) {
+    cerr << "Schema validation failed: " << e.what() << endl;
+    exit(1);
+  }
+
+  try {
+    auto data_validation_result = validator.validate(imported_data);
+    return true;
+  } catch (const exception &e) {
+    return false;
+  }
+}

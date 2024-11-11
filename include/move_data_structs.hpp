@@ -5,6 +5,7 @@
 
 #include <board_data_structs.hpp>
 #include <game_piece.hpp>
+#include <utility_functs.hpp>
 
 using namespace gameboard;
 
@@ -52,7 +53,7 @@ struct MoveCollection {
   }
 
   bool ContainsAnyMoveNotIn(const MoveCollection &other) const {
-    for (auto& entry : moves) {
+    for (auto &entry : moves) {
       if (!other.ContainsMove(entry)) {
         return true;
       }
@@ -60,7 +61,10 @@ struct MoveCollection {
     return false;
   }
 
-
+  Move SelectRandom() {
+    auto selected_move_index = utility_functs::random((size_t)0, moves.size() - 1);
+    return moves[selected_move_index];
+  }
 
   bool ContainsDestination(const gameboard::BoardSpace &space) {
     for (auto move : moves) {
