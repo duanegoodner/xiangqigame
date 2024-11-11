@@ -130,26 +130,6 @@ public:
       : primary_calculator_{primary_calculator}
       , confirmation_calculators_(confirmation_calculators) {}
 
-  ZobristComponent()
-      : primary_calculator_{ZobristCalculator<KeyType>()}
-      , confirmation_calculators_{} {
-
-    for (auto i = 0; i < NumConfKeys; ++i) {
-      confirmation_calculators_[i] = ZobristCalculator<KeyType>();
-    }
-  }
-
-  explicit ZobristComponent(
-      uint32_t primary_seed,
-      std::array<uint32_t, NumConfKeys> confirmation_seeds
-  )
-      : primary_calculator_{ZobristCalculator<KeyType>{primary_seed}}
-      , confirmation_calculators_{} {
-    for (auto i = 0; i < NumConfKeys; ++i) {
-      confirmation_calculators_[i] = ZobristCalculator<KeyType>{confirmation_seeds[i]};
-    }
-  }
-
   explicit ZobristComponent(std::mt19937 prng)
       : primary_calculator_{(uint32_t)prng()}
       , confirmation_calculators_{} {
@@ -158,7 +138,7 @@ public:
     }
   }
 
-  explicit ZobristComponent(uint32_t prng_seed)
+  explicit ZobristComponent(uint32_t prng_seed = std::random_device{}())
       : ZobristComponent(std::mt19937{prng_seed}) {
     prng_seed_ = prng_seed;
   }
