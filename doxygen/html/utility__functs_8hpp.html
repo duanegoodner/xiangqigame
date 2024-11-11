@@ -144,7 +144,6 @@ $(document).ready(function(){initNavTree('utility__functs_8hpp.html',''); initRe
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">utility_functs.hpp File Reference</div></div>
 </div><!--header-->
@@ -152,9 +151,9 @@ $(document).ready(function(){initNavTree('utility__functs_8hpp.html',''); initRe
 
 <p>Defiition of miscellaneous free functions (and implementation of those that are templates).  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;array&gt;</code><br />
+<div class="textblock"><code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;array&gt;</code><br />
 <code>#include &lt;config.hpp&gt;</code><br />
-<code>#include &lt;nlohmann/json.hpp&gt;</code><br />
 <code>#include &lt;random&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;unordered_map&gt;</code><br />
@@ -164,14 +163,14 @@ Include dependency graph for utility_functs.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="utility__functs_8hpp__incl.png" border="0" usemap="#ainclude_2utility__functs_8hpp" alt=""/></div>
 <map name="ainclude_2utility__functs_8hpp" id="ainclude_2utility__functs_8hpp">
-<area shape="rect" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="313,5,500,31"/>
-<area shape="rect" title=" " alt="" coords="5,79,61,104"/>
-<area shape="rect" title=" " alt="" coords="86,79,175,104"/>
-<area shape="rect" title=" " alt="" coords="200,79,347,104"/>
-<area shape="rect" title=" " alt="" coords="371,79,443,104"/>
-<area shape="rect" title=" " alt="" coords="467,79,525,104"/>
-<area shape="rect" title=" " alt="" coords="550,79,674,104"/>
-<area shape="rect" title=" " alt="" coords="698,79,761,104"/>
+<area shape="rect" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="252,5,439,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,91,104"/>
+<area shape="rect" title=" " alt="" coords="115,79,171,104"/>
+<area shape="rect" title=" " alt="" coords="195,79,285,104"/>
+<area shape="rect" title=" " alt="" coords="309,79,381,104"/>
+<area shape="rect" title=" " alt="" coords="405,79,464,104"/>
+<area shape="rect" title=" " alt="" coords="489,79,613,104"/>
+<area shape="rect" title=" " alt="" coords="637,79,699,104"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -179,22 +178,31 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="utility__functs_8hpp__dep__incl.png" border="0" usemap="#ainclude_2utility__functs_8hppdep" alt=""/></div>
 <map name="ainclude_2utility__functs_8hppdep" id="ainclude_2utility__functs_8hppdep">
-<area shape="rect" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="813,5,999,31"/>
-<area shape="rect" href="move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="205,357,420,383"/>
-<area shape="rect" href="game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="5,526,164,566"/>
-<area shape="rect" href="piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="685,519,855,573"/>
-<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="617,79,771,119"/>
-<area shape="rect" href="piece__points__bpo_8cpp.html" title="Implementation of methods that store piece points info in Base Point Offset form." alt="" coords="807,167,1005,207"/>
-<area shape="rect" href="my__schemas_8cpp.html" title="json validation gist, unused by rest of project, but keeping here for reference." alt="" coords="1079,79,1255,119"/>
-<area shape="rect" href="utility__functs_8cpp.html" title="Implementation of the non&#45;tempate functions defined in utility_functs.hpp." alt="" coords="1279,79,1442,119"/>
-<area shape="rect" href="game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="92,438,275,463"/>
-<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="219,533,406,559"/>
-<area shape="rect" href="piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="565,431,732,471"/>
-<area shape="rect" href="move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="351,431,541,471"/>
-<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="290,167,461,207"/>
-<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="485,167,631,207"/>
-<area shape="rect" href="json__utility__nlohmann_8cpp.html" title="Implementation of methods for jsonio::NlohmannJsonUtility." alt="" coords="511,255,682,309"/>
-<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="287,262,487,302"/>
+<area shape="rect" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="1253,5,1440,31"/>
+<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="462,86,687,111"/>
+<area shape="rect" href="move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="653,357,867,383"/>
+<area shape="rect" href="game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="121,526,279,566"/>
+<area shape="rect" href="piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="1437,519,1608,573"/>
+<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="1269,79,1424,119"/>
+<area shape="rect" href="piece__points__bpo_8cpp.html" title="Implementation of methods that store piece points info in Base Point Offset form." alt="" coords="1560,167,1757,207"/>
+<area shape="rect" href="utility__functs_8cpp.html" title="Implementation of the non&#45;tempate functions defined in utility_functs.hpp." alt="" coords="1832,79,1995,119"/>
+<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="855,167,1025,207"/>
+<area shape="rect" href="move__evaluator__interface_8hpp.html" title="Definition of MoveEvaluator interface." alt="" coords="536,262,715,302"/>
+<area shape="rect" href="piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="69,174,256,199"/>
+<area shape="rect" href="zobrist_8hpp.html" title=" " alt="" coords="459,357,605,383"/>
+<area shape="rect" href="move__data__structs_8cpp.html" title=" " alt="" coords="281,167,509,207"/>
+<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="840,262,1040,302"/>
+<area shape="rect" href="game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="359,438,542,463"/>
+<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="512,533,699,559"/>
+<area shape="rect" href="piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="1106,431,1273,471"/>
+<area shape="rect" href="move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="669,431,859,471"/>
+<area shape="rect" href="move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="143,357,351,383"/>
+<area shape="rect" href="move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="43,262,224,302"/>
+<area shape="rect" href="piece__moves_8cpp.html" title="Implements all methods and some supporting constants for PieceMoves class." alt="" coords="299,262,461,302"/>
+<area shape="rect" href="move__calculator_8cpp.html" title="Acts as linkage point for move_calculator.hpp (where full implementation is located)" alt="" coords="150,431,335,471"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1274,167,1419,207"/>
+<area shape="rect" href="json__utility__nlohmann_8cpp.html" title="Implementation of methods for jsonio::NlohmannJsonUtility." alt="" coords="1064,255,1235,309"/>
+<area shape="rect" href="my__schemas_8cpp.html" title="json validation gist, unused by rest of project, but keeping here for reference." alt="" coords="1259,262,1435,302"/>
 </map>
 </div>
 </div>
@@ -204,11 +212,6 @@ This graph shows which files directly or indirectly include this file:</div>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceutility__functs"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility__functs.html">utility_functs</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a1b1681858cc9dd922239b1602994f4ee"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility__functs.html#a1b1681858cc9dd922239b1602994f4ee">utility_functs::json</a> = nlohmann::json</td></tr>
-<tr class="separator:a1b1681858cc9dd922239b1602994f4ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -244,12 +247,8 @@ Functions</h2></td></tr>
 <tr class="memitem:ae16b7735beff90e61d39f48456d9a067"><td class="memTemplParams" colspan="2">template&lt;typename T , typename M &gt; </td></tr>
 <tr class="memitem:ae16b7735beff90e61d39f48456d9a067"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; T &gt;::const_iterator&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceutility__functs.html#ae16b7735beff90e61d39f48456d9a067">utility_functs::find_by_member</a> (const std::vector&lt; T &gt; &amp;vec, M T::*member, const M &amp;value)</td></tr>
 <tr class="separator:ae16b7735beff90e61d39f48456d9a067"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca0e7a98a98ae175c40f149c411fad38"><td class="memItemLeft" align="right" valign="top">json&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility__functs.html#aca0e7a98a98ae175c40f149c411fad38">utility_functs::import_json</a> (string file_path)</td></tr>
-<tr class="separator:aca0e7a98a98ae175c40f149c411fad38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa5d5f5bb0e778f50f196e0d881aa0bfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility__functs.html#aa5d5f5bb0e778f50f196e0d881aa0bfe">utility_functs::json_matches_schema</a> (const json &amp;json_object, const json &amp;schema)</td></tr>
-<tr class="separator:aa5d5f5bb0e778f50f196e0d881aa0bfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fe7e23b37727edf1509588253c3c673"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility__functs.html#a2fe7e23b37727edf1509588253c3c673">utility_functs::get_data_file_abs_path</a> (const std::string data_file)</td></tr>
-<tr class="separator:a2fe7e23b37727edf1509588253c3c673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81ab3698fe7c8de1bafb34d42ee22757"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceutility__functs.html#a81ab3698fe7c8de1bafb34d42ee22757">utility_functs::get_data_file_abs_path</a> (const std::string data_file)</td></tr>
+<tr class="separator:a81ab3698fe7c8de1bafb34d42ee22757"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defiition of miscellaneous free functions (and implementation of those that are templates). </p>
@@ -263,7 +262,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="utility__functs_8hpp.html">utility_functs.hpp</a></li>
-    <li class="footer">Generated on Sun Nov 10 2024 22:57:04 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Nov 11 2024 18:02:47 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -1,18 +1,27 @@
 <map id="include/utility_functs.hpp" name="include/utility_functs.hpp">
-<area shape="rect" id="node1" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="813,5,999,31"/>
-<area shape="rect" id="node2" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="205,357,420,383"/>
-<area shape="rect" id="node5" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="5,526,164,566"/>
-<area shape="rect" id="node7" href="$piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="685,519,855,573"/>
-<area shape="rect" id="node9" href="$piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="617,79,771,119"/>
-<area shape="rect" id="node14" href="$piece__points__bpo_8cpp.html" title="Implementation of methods that store piece points info in Base Point Offset form." alt="" coords="807,167,1005,207"/>
-<area shape="rect" id="node15" href="$my__schemas_8cpp.html" title="json validation gist, unused by rest of project, but keeping here for reference." alt="" coords="1079,79,1255,119"/>
-<area shape="rect" id="node16" href="$utility__functs_8cpp.html" title="Implementation of the non&#45;tempate functions defined in utility_functs.hpp." alt="" coords="1279,79,1442,119"/>
-<area shape="rect" id="node3" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="92,438,275,463"/>
-<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="219,533,406,559"/>
-<area shape="rect" id="node6" href="$piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="565,431,732,471"/>
-<area shape="rect" id="node8" href="$move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="351,431,541,471"/>
-<area shape="rect" id="node10" href="$evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="290,167,461,207"/>
-<area shape="rect" id="node12" href="$json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="485,167,631,207"/>
-<area shape="rect" id="node13" href="$json__utility__nlohmann_8cpp.html" title="Implementation of methods for jsonio::NlohmannJsonUtility." alt="" coords="511,255,682,309"/>
-<area shape="rect" id="node11" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="287,262,487,302"/>
+<area shape="rect" id="node1" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="1253,5,1440,31"/>
+<area shape="rect" id="node2" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="462,86,687,111"/>
+<area shape="rect" id="node5" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="653,357,867,383"/>
+<area shape="rect" id="node8" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="121,526,279,566"/>
+<area shape="rect" id="node10" href="$piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="1437,519,1608,573"/>
+<area shape="rect" id="node20" href="$piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="1269,79,1424,119"/>
+<area shape="rect" id="node24" href="$piece__points__bpo_8cpp.html" title="Implementation of methods that store piece points info in Base Point Offset form." alt="" coords="1560,167,1757,207"/>
+<area shape="rect" id="node25" href="$utility__functs_8cpp.html" title="Implementation of the non&#45;tempate functions defined in utility_functs.hpp." alt="" coords="1832,79,1995,119"/>
+<area shape="rect" id="node3" href="$evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="855,167,1025,207"/>
+<area shape="rect" id="node12" href="$move__evaluator__interface_8hpp.html" title="Definition of MoveEvaluator interface." alt="" coords="536,262,715,302"/>
+<area shape="rect" id="node13" href="$piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="69,174,256,199"/>
+<area shape="rect" id="node18" href="$zobrist_8hpp.html" title=" " alt="" coords="459,357,605,383"/>
+<area shape="rect" id="node19" href="$move__data__structs_8cpp.html" title=" " alt="" coords="281,167,509,207"/>
+<area shape="rect" id="node4" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="840,262,1040,302"/>
+<area shape="rect" id="node6" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="359,438,542,463"/>
+<area shape="rect" id="node7" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="512,533,699,559"/>
+<area shape="rect" id="node9" href="$piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="1106,431,1273,471"/>
+<area shape="rect" id="node11" href="$move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="669,431,859,471"/>
+<area shape="rect" id="node14" href="$move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="143,357,351,383"/>
+<area shape="rect" id="node16" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="43,262,224,302"/>
+<area shape="rect" id="node17" href="$piece__moves_8cpp.html" title="Implements all methods and some supporting constants for PieceMoves class." alt="" coords="299,262,461,302"/>
+<area shape="rect" id="node15" href="$move__calculator_8cpp.html" title="Acts as linkage point for move_calculator.hpp (where full implementation is located)" alt="" coords="150,431,335,471"/>
+<area shape="rect" id="node21" href="$json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1274,167,1419,207"/>
+<area shape="rect" id="node22" href="$json__utility__nlohmann_8cpp.html" title="Implementation of methods for jsonio::NlohmannJsonUtility." alt="" coords="1064,255,1235,309"/>
+<area shape="rect" id="node23" href="$my__schemas_8cpp.html" title="json validation gist, unused by rest of project, but keeping here for reference." alt="" coords="1259,262,1435,302"/>
 </map>

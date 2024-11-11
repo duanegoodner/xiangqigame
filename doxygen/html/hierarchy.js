@@ -70,6 +70,7 @@ var hierarchy =
     [ "xiangqipy.player_summary.PlayerSummary", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.PointsTypeDeterminer", "classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer.html", null ],
     [ "xiangqipy.piece_points.PositionPts", "classxiangqipy_1_1piece__points_1_1PositionPts.html", null ],
+    [ "moveselection::PreSearchMoveSorter< ConcreteSpaceInfoProvider, ConcretePieceValueProvider >", "classmoveselection_1_1PreSearchMoveSorter.html", null ],
     [ "boardstate::PseudoRandomKeyGenerator< IntType >", "classboardstate_1_1PseudoRandomKeyGenerator.html", null ],
     [ "boardstate::RandomKeyGenerator< IntType >", "classboardstate_1_1RandomKeyGenerator.html", null ],
     [ "xiangqipy.player_builder.RedAndBlackPlayersBuilder", "classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html", null ],

@@ -1,40 +1,42 @@
 <map id="src/core/game_board/game_board.cpp" name="src/core/game_board/game_board.cpp">
-<area shape="rect" id="node1" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="1494,5,1653,45"/>
-<area shape="rect" id="node2" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="643,577,818,603"/>
-<area shape="rect" id="node13" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="569,93,700,119"/>
-<area shape="rect" id="node31" title=" " alt="" coords="1801,497,1877,522"/>
-<area shape="rect" id="node32" href="$utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="1329,577,1463,603"/>
-<area shape="rect" id="node38" title=" " alt="" coords="2053,93,2133,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="395,651,451,676"/>
-<area shape="rect" id="node4" title=" " alt="" coords="621,651,691,676"/>
-<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="819,651,949,676"/>
-<area shape="rect" id="node9" href="$integer__types_8hpp.html" title=" " alt="" coords="2075,651,2213,676"/>
-<area shape="rect" id="node11" title=" " alt="" coords="973,651,1045,676"/>
-<area shape="rect" id="node12" title=" " alt="" coords="715,651,778,676"/>
-<area shape="rect" id="node6" title=" " alt="" coords="853,724,915,749"/>
-<area shape="rect" id="node7" title=" " alt="" coords="1452,724,1511,749"/>
-<area shape="rect" id="node8" title=" " alt="" coords="1071,724,1195,749"/>
-<area shape="rect" id="node10" title=" " alt="" coords="2111,724,2177,749"/>
-<area shape="rect" id="node14" title=" " alt="" coords="1449,247,1535,273"/>
-<area shape="rect" id="node15" href="$move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="344,247,501,273"/>
-<area shape="rect" id="node20" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="801,167,964,192"/>
-<area shape="rect" id="node16" title=" " alt="" coords="195,335,242,361"/>
-<area shape="rect" id="node17" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="318,335,527,361"/>
-<area shape="rect" id="node18" href="$piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="443,416,579,441"/>
-<area shape="rect" id="node19" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="870,497,1045,522"/>
-<area shape="rect" id="node21" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="1136,240,1320,280"/>
-<area shape="rect" id="node22" href="$evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1129,335,1327,361"/>
-<area shape="rect" id="node34" title=" " alt="" coords="699,247,757,273"/>
-<area shape="rect" id="node35" href="$move__evaluator__interface_8hpp.html" title="Definition of MoveEvaluator interface." alt="" coords="883,335,1104,361"/>
-<area shape="rect" id="node36" href="$piece__value__provider__interface_8hpp.html" title="Definition of PieceValueProvider CRTP interface." alt="" coords="531,489,693,529"/>
-<area shape="rect" id="node37" href="$space__info__provider__interface_8hpp.html" title="Definition of SpaceInfoProvider CRTP interface." alt="" coords="654,328,807,368"/>
-<area shape="rect" id="node23" title=" " alt="" coords="1071,416,1137,441"/>
-<area shape="rect" id="node24" title=" " alt="" coords="1161,416,1212,441"/>
-<area shape="rect" id="node25" href="$piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="1515,416,1677,441"/>
-<area shape="rect" id="node26" href="$json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="1864,651,2051,676"/>
-<area shape="rect" id="node27" href="$json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1544,577,1739,603"/>
-<area shape="rect" id="node30" href="$piece__points__data__structs_8hpp.html" title=" " alt="" coords="1171,497,1389,522"/>
-<area shape="rect" id="node28" title=" " alt="" coords="1715,651,1789,676"/>
-<area shape="rect" id="node29" title=" " alt="" coords="1544,651,1691,676"/>
-<area shape="rect" id="node33" title=" " alt="" coords="1329,651,1418,676"/>
+<area shape="rect" id="node1" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="1343,5,1502,45"/>
+<area shape="rect" id="node2" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="715,577,890,603"/>
+<area shape="rect" id="node13" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="476,93,607,119"/>
+<area shape="rect" id="node20" href="$utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="1145,577,1279,603"/>
+<area shape="rect" id="node35" title=" " alt="" coords="1445,504,1521,529"/>
+<area shape="rect" id="node40" title=" " alt="" coords="1643,93,1723,119"/>
+<area shape="rect" id="node3" title=" " alt="" coords="321,651,377,676"/>
+<area shape="rect" id="node4" title=" " alt="" coords="680,651,749,676"/>
+<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="965,651,1094,676"/>
+<area shape="rect" id="node9" href="$integer__types_8hpp.html" title=" " alt="" coords="2539,651,2677,676"/>
+<area shape="rect" id="node11" title=" " alt="" coords="865,651,937,676"/>
+<area shape="rect" id="node12" title=" " alt="" coords="774,651,837,676"/>
+<area shape="rect" id="node6" title=" " alt="" coords="998,724,1061,749"/>
+<area shape="rect" id="node7" title=" " alt="" coords="1669,724,1728,749"/>
+<area shape="rect" id="node8" title=" " alt="" coords="1345,724,1469,749"/>
+<area shape="rect" id="node10" title=" " alt="" coords="2575,724,2641,749"/>
+<area shape="rect" id="node14" title=" " alt="" coords="553,247,639,273"/>
+<area shape="rect" id="node15" href="$move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="243,247,400,273"/>
+<area shape="rect" id="node23" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="747,167,909,192"/>
+<area shape="rect" id="node16" title=" " alt="" coords="94,335,141,361"/>
+<area shape="rect" id="node17" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="217,335,426,361"/>
+<area shape="rect" id="node18" href="$piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="349,423,485,449"/>
+<area shape="rect" id="node19" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="942,504,1117,529"/>
+<area shape="rect" id="node21" title=" " alt="" coords="1169,651,1255,676"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1279,651,1369,676"/>
+<area shape="rect" id="node24" href="$board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="1144,240,1328,280"/>
+<area shape="rect" id="node25" href="$evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1137,335,1335,361"/>
+<area shape="rect" id="node36" title=" " alt="" coords="765,247,824,273"/>
+<area shape="rect" id="node37" href="$move__evaluator__interface_8hpp.html" title="Definition of MoveEvaluator interface." alt="" coords="891,335,1112,361"/>
+<area shape="rect" id="node38" href="$piece__value__provider__interface_8hpp.html" title="Definition of PieceValueProvider CRTP interface." alt="" coords="553,328,714,368"/>
+<area shape="rect" id="node39" href="$space__info__provider__interface_8hpp.html" title="Definition of SpaceInfoProvider CRTP interface." alt="" coords="611,416,765,456"/>
+<area shape="rect" id="node26" title=" " alt="" coords="1071,423,1137,449"/>
+<area shape="rect" id="node27" title=" " alt="" coords="1161,423,1212,449"/>
+<area shape="rect" id="node28" href="$piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="1675,423,1837,449"/>
+<area shape="rect" id="node29" href="$json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="2283,577,2469,603"/>
+<area shape="rect" id="node30" href="$json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1889,504,2084,529"/>
+<area shape="rect" id="node34" href="$piece__points__data__structs_8hpp.html" title=" " alt="" coords="1647,504,1865,529"/>
+<area shape="rect" id="node31" title=" " alt="" coords="1787,577,1861,603"/>
+<area shape="rect" id="node32" title=" " alt="" coords="1885,577,2088,603"/>
+<area shape="rect" id="node33" title=" " alt="" coords="2112,577,2259,603"/>
 </map>

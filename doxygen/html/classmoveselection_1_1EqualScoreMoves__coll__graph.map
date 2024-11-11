@@ -1,6 +1,6 @@
 <map id="moveselection::EqualScoreMoves" name="moveselection::EqualScoreMoves">
-<area shape="rect" id="node1" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="5,447,204,539"/>
-<area shape="rect" id="node2" title=" " alt="" coords="20,233,59,311"/>
-<area shape="rect" id="node3" href="$structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects." alt="" coords="83,160,289,384"/>
+<area shape="rect" id="node1" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a..." alt="" coords="5,461,204,553"/>
+<area shape="rect" id="node2" title=" " alt="" coords="20,241,59,318"/>
+<area shape="rect" id="node3" href="$structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects." alt="" coords="83,160,289,399"/>
 <area shape="rect" id="node4" title=" " alt="" coords="106,5,266,97"/>
 </map>

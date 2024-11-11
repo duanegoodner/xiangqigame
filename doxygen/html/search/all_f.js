@@ -4,7 +4,7 @@ var searchData=
   ['nearestneighborindex_1',['nearestNeighborIndex',['../keys__quality_8cpp.html#a828198839ba255226fece3c86283c837',1,'keys_quality.cpp']]],
   ['newextrasearch_2',['NewExtraSearch',['../structmoveselection_1_1SearchSummaries.html#affb258157957acf8bea7501a577d772d',1,'moveselection::SearchSummaries']]],
   ['newfirstsearch_3',['NewFirstSearch',['../structmoveselection_1_1SearchSummaries.html#a3287bed015e82503553452a49f8f088c',1,'moveselection::SearchSummaries']]],
-  ['nloh_5fjson_4',['nloh_json',['../utility__functs_8cpp.html#ab7dd67b88ec9143273b4aafdb9db7585',1,'nloh_json():&#160;utility_functs.cpp'],['../piece__points__bpo_8cpp.html#ab7dd67b88ec9143273b4aafdb9db7585',1,'nloh_json():&#160;piece_points_bpo.cpp']]],
+  ['nloh_5fjson_4',['nloh_json',['../piece__points__bpo_8cpp.html#ab7dd67b88ec9143273b4aafdb9db7585',1,'piece_points_bpo.cpp']]],
   ['nlohmannjsonutility_5',['NlohmannJsonUtility',['../classjsonio_1_1NlohmannJsonUtility.html',1,'jsonio']]],
   ['non_5fevaluating_5fplayer_5fline_5fcolors_6',['non_evaluating_player_line_colors',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aa0b7cc1041413388db523f77768a4c71',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
   ['notify_5fillegal_5fmove_7',['notify_illegal_move',['../classxiangqipy_1_1terminal__output_1_1InputRetrievalMessages.html#a3f2bea8fc41cce3101d389bb81a49444',1,'xiangqipy::terminal_output::InputRetrievalMessages']]],

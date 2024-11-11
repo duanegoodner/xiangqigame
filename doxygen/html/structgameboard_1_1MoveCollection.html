@@ -159,7 +159,7 @@ Collaboration diagram for gameboard::MoveCollection:</div>
 <div class="dyncontent">
 <div class="center"><img src="structgameboard_1_1MoveCollection__coll__graph.png" border="0" usemap="#agameboard_1_1MoveCollection_coll__map" alt="Collaboration graph"/></div>
 <map name="agameboard_1_1MoveCollection_coll__map" id="agameboard_1_1MoveCollection_coll__map">
-<area shape="rect" title="A container for multiple gameboard::Move objects." alt="" coords="5,160,211,384"/>
+<area shape="rect" title="A container for multiple gameboard::Move objects." alt="" coords="5,160,211,399"/>
 <area shape="rect" title=" " alt="" coords="28,5,188,97"/>
 </map>
 </div>
@@ -174,12 +174,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab764ede9a9fbf969dcab8f9ec82ac643"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40c1b1e41cb2452431b77b9c3cc0e4c1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1MoveCollection.html#a40c1b1e41cb2452431b77b9c3cc0e4c1">Size</a> () const</td></tr>
 <tr class="separator:a40c1b1e41cb2452431b77b9c3cc0e4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31f9486845d81a8a5202000084f5679c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1MoveCollection.html#a31f9486845d81a8a5202000084f5679c">IsEmpty</a> ()</td></tr>
-<tr class="separator:a31f9486845d81a8a5202000084f5679c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9e8f460dc13bcb7047067805d85363e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1MoveCollection.html#ae9e8f460dc13bcb7047067805d85363e">IsEmpty</a> () const</td></tr>
+<tr class="separator:ae9e8f460dc13bcb7047067805d85363e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e76a0f747731cb2de782a98bf4e5a96"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1MoveCollection.html#a4e76a0f747731cb2de782a98bf4e5a96">ContainsMove</a> (const <a class="el" href="structgameboard_1_1Move.html">Move</a> &amp;move) const</td></tr>
 <tr class="separator:a4e76a0f747731cb2de782a98bf4e5a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7367300c62e294af44edd407bc32295"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1MoveCollection.html#ae7367300c62e294af44edd407bc32295">ContainsAnyMoveNotIn</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;other)</td></tr>
-<tr class="separator:ae7367300c62e294af44edd407bc32295"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a650c8f3e7230838757549ff960bfec5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1MoveCollection.html#a650c8f3e7230838757549ff960bfec5b">ContainsAnyMoveNotIn</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;other) const</td></tr>
+<tr class="separator:a650c8f3e7230838757549ff960bfec5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36ec708aa3d1d9ea06ce4af851e58ca8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1Move.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1MoveCollection.html#a36ec708aa3d1d9ea06ce4af851e58ca8">SelectRandom</a> ()</td></tr>
+<tr class="separator:a36ec708aa3d1d9ea06ce4af851e58ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc5f5fb956ed77c23c460d7290d86ae7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1MoveCollection.html#acc5f5fb956ed77c23c460d7290d86ae7">ContainsDestination</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a> &amp;space)</td></tr>
 <tr class="separator:acc5f5fb956ed77c23c460d7290d86ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b1838b6ffa4126795a4803984fe2dfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgameboard_1_1MoveCollection.html#a5b1838b6ffa4126795a4803984fe2dfc">Append</a> (<a class="el" href="structgameboard_1_1Move.html">Move</a> move)</td></tr>
@@ -198,7 +200,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>A container for multiple <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a> objects. </p>
 <p>Typically used to either hold every <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a> that <em>could</em> be made given a particular state of a <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a>, or a collection of the <em>best</em> <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a> objects, as determined by a <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00030">30</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00031">31</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a17085c4aa8cccebb7f4a5585634f11d2" name="a17085c4aa8cccebb7f4a5585634f11d2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a17085c4aa8cccebb7f4a5585634f11d2">&#9670;&#160;</a></span>MoveCollection() <span class="overload">[1/3]</span></h2>
@@ -223,7 +225,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00032">32</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00033">33</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -251,7 +253,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00034">34</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00035">35</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -279,7 +281,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00036">36</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00037">37</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -308,7 +310,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00074">74</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00078">78</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -336,7 +338,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00078">78</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00082">82</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -364,12 +366,12 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00075">75</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00079">79</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ae7367300c62e294af44edd407bc32295" name="ae7367300c62e294af44edd407bc32295"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7367300c62e294af44edd407bc32295">&#9670;&#160;</a></span>ContainsAnyMoveNotIn()</h2>
+<a id="a650c8f3e7230838757549ff960bfec5b" name="a650c8f3e7230838757549ff960bfec5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a650c8f3e7230838757549ff960bfec5b">&#9670;&#160;</a></span>ContainsAnyMoveNotIn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -382,7 +384,7 @@ Public Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;&#160;</td>
           <td class="paramname"><em>other</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -392,7 +394,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00054">54</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00055">55</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -420,7 +422,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00065">65</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00069">69</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -448,12 +450,12 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00045">45</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00046">46</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a31f9486845d81a8a5202000084f5679c" name="a31f9486845d81a8a5202000084f5679c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31f9486845d81a8a5202000084f5679c">&#9670;&#160;</a></span>IsEmpty()</h2>
+<a id="ae9e8f460dc13bcb7047067805d85363e" name="ae9e8f460dc13bcb7047067805d85363e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9e8f460dc13bcb7047067805d85363e">&#9670;&#160;</a></span>IsEmpty()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -463,6 +465,33 @@ Public Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">bool gameboard::MoveCollection::IsEmpty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00044">44</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a36ec708aa3d1d9ea06ce4af851e58ca8" name="a36ec708aa3d1d9ea06ce4af851e58ca8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36ec708aa3d1d9ea06ce4af851e58ca8">&#9670;&#160;</a></span>SelectRandom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgameboard_1_1Move.html">Move</a> gameboard::MoveCollection::SelectRandom </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -475,7 +504,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00043">43</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00064">64</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -502,7 +531,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00041">41</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00042">42</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -519,7 +548,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00031">31</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__data__structs_8hpp_source.html#l00032">32</a> of file <a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -532,7 +561,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacegameboard.html">gameboard</a></li><li class="navelem"><a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a></li>
-    <li class="footer">Generated on Sun Nov 10 2024 22:57:04 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Nov 11 2024 18:02:47 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

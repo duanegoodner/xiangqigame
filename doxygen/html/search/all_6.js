@@ -32,6 +32,6 @@ var searchData=
   ['existsandpassescolortest_29',['ExistsAndPassesColorTest',['../classgameboard_1_1PieceMoves.html#a11321e41d2d6f9d05a10a4ed33845721',1,'gameboard::PieceMoves']]],
   ['export_30',['Export',['../classJsonUtility.html#ad8d163e77326c07d972e18550aff6ba4',1,'JsonUtility::Export(piecepoints::BPOPointsSKeys &amp;bpo_points, const string file_path)'],['../classJsonUtility.html#a1729d89b9bbfefaad0b139c7ca161cb8',1,'JsonUtility::Export(T &amp;object, const string file_path)']]],
   ['export_5fgame_5fsummary_31',['export_game_summary',['../namespacexiangqipy_1_1game__summary__io.html#a25ce12744b590c06e4c529192110e11c',1,'xiangqipy::game_summary_io']]],
-  ['exportserializedjson_32',['ExportSerializedJson',['../classjsonio_1_1NlohmannJsonUtility.html#a15e3044772d1e81ce2ce93de732c56a0',1,'jsonio::NlohmannJsonUtility']]],
+  ['exportserializedjson_32',['ExportSerializedJson',['../classjsonio_1_1NlohmannJsonUtility.html#a6d9cca24cd5cb118adb6b17f02faa751',1,'jsonio::NlohmannJsonUtility']]],
   ['extra_5fsearches_33',['extra_searches',['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummaries.html#afc0947d0abf57182c6dadb2d6ff2e1bb',1,'xiangqipy.core_dataclass_mirrors.SearchSummaries.extra_searches()'],['../structmoveselection_1_1SearchSummaries.html#aa1ada45195c8d4a23ff2de7c8d4118a6',1,'moveselection::SearchSummaries::extra_searches()']]]
 ];

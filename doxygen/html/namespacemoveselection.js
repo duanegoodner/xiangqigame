@@ -1,8 +1,16 @@
 var namespacemoveselection =
 [
+    [ "minimaxutils", "namespacemoveselection_1_1minimaxutils.html", [
+      [ "IsPrunableForEvaluator", "namespacemoveselection_1_1minimaxutils.html#abee7d87a94985fbfa988fda7787044e7", null ],
+      [ "IsPrunableForEvaluatorOpponent", "namespacemoveselection_1_1minimaxutils.html#ad792c605f74019ef9cc43120ca27df3c", null ],
+      [ "UpdateAlpha", "namespacemoveselection_1_1minimaxutils.html#ad1a8e867b5768220148ab7bb9362f5d4", null ],
+      [ "UpdateBeta", "namespacemoveselection_1_1minimaxutils.html#ae5daf167c5f94b8dc35faf4bdbfcefb4", null ],
+      [ "ValidateMove", "namespacemoveselection_1_1minimaxutils.html#af8f5372c781c8f3203e21ba882663241", null ]
+    ] ],
     [ "EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
     [ "MinimaxCalcResult", "classmoveselection_1_1MinimaxCalcResult.html", "classmoveselection_1_1MinimaxCalcResult" ],
     [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
+    [ "PreSearchMoveSorter", "classmoveselection_1_1PreSearchMoveSorter.html", "classmoveselection_1_1PreSearchMoveSorter" ],
     [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],
     [ "ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", "classmoveselection_1_1ResultDepthCounts" ],
     [ "ScoredMove", "structmoveselection_1_1ScoredMove.html", "structmoveselection_1_1ScoredMove" ],

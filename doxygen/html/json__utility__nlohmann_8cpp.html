@@ -148,34 +148,39 @@ $(document).ready(function(){initNavTree('json__utility__nlohmann_8cpp.html','')
 
 <p>Implementation of methods for <a class="el" href="classjsonio_1_1NlohmannJsonUtility.html" title="Implements JsonUtility interface; imports / exports objects from / to json files using the Nlohmann j...">jsonio::NlohmannJsonUtility</a>.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="json__utility__nlohmann_8hpp_source.html">json_utility_nlohmann.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;<a class="el" href="json__utility__nlohmann_8hpp_source.html">json_utility_nlohmann.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="piece__points__bpo_8hpp_source.html">piece_points_bpo.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for json_utility_nlohmann.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="json__utility__nlohmann_8cpp__incl.png" border="0" usemap="#asrc_2core_2json__utility__nlohmann_2json__utility__nlohmann_8cpp" alt=""/></div>
 <map name="asrc_2core_2json__utility__nlohmann_2json__utility__nlohmann_8cpp" id="asrc_2core_2json__utility__nlohmann_2json__utility__nlohmann_8cpp">
-<area shape="rect" title="Implementation of methods for jsonio::NlohmannJsonUtility." alt="" coords="373,5,544,60"/>
-<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="295,108,489,133"/>
-<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="453,181,616,207"/>
-<area shape="rect" title=" " alt="" coords="355,181,429,207"/>
-<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="43,255,229,280"/>
-<area shape="rect" title=" " alt="" coords="263,475,321,500"/>
-<area shape="rect" title=" " alt="" coords="355,401,501,427"/>
-<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="992,255,1211,280"/>
-<area shape="rect" title=" " alt="" coords="1198,475,1322,500"/>
-<area shape="rect" title=" " alt="" coords="497,255,573,280"/>
-<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="595,328,730,353"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="951,328,1126,353"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1099,401,1229,427"/>
-<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="1304,401,1443,427"/>
-<area shape="rect" title=" " alt="" coords="741,401,797,427"/>
-<area shape="rect" title=" " alt="" coords="1005,401,1075,427"/>
-<area shape="rect" title=" " alt="" coords="821,401,893,427"/>
-<area shape="rect" title=" " alt="" coords="918,401,981,427"/>
-<area shape="rect" title=" " alt="" coords="1111,475,1174,500"/>
-<area shape="rect" title=" " alt="" coords="1347,475,1413,500"/>
-<area shape="rect" title=" " alt="" coords="577,401,666,427"/>
+<area shape="rect" title="Implementation of methods for jsonio::NlohmannJsonUtility." alt="" coords="495,5,666,60"/>
+<area shape="rect" title=" " alt="" coords="5,181,79,207"/>
+<area shape="rect" title=" " alt="" coords="686,108,766,133"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="417,108,611,133"/>
+<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="674,181,837,207"/>
+<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="531,255,718,280"/>
+<area shape="rect" title=" " alt="" coords="671,475,730,500"/>
+<area shape="rect" title=" " alt="" coords="103,181,306,207"/>
+<area shape="rect" title=" " alt="" coords="330,181,477,207"/>
+<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="1341,255,1559,280"/>
+<area shape="rect" title=" " alt="" coords="1715,475,1839,500"/>
+<area shape="rect" title=" " alt="" coords="844,255,920,280"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="959,328,1093,353"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="1300,328,1475,353"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1609,401,1739,427"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="1446,401,1585,427"/>
+<area shape="rect" title=" " alt="" coords="1089,401,1145,427"/>
+<area shape="rect" title=" " alt="" coords="1353,401,1422,427"/>
+<area shape="rect" title=" " alt="" coords="1169,401,1241,427"/>
+<area shape="rect" title=" " alt="" coords="1265,401,1328,427"/>
+<area shape="rect" title=" " alt="" coords="1628,475,1691,500"/>
+<area shape="rect" title=" " alt="" coords="1482,475,1549,500"/>
+<area shape="rect" title=" " alt="" coords="763,401,849,427"/>
+<area shape="rect" title=" " alt="" coords="873,401,963,427"/>
 </map>
 </div>
 </div>
@@ -192,7 +197,7 @@ Include dependency graph for json_utility_nlohmann.cpp:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="dir_b83b3261c8f9de709a11f789ecd30fd7.html">json_utility_nlohmann</a></li><li class="navelem"><a class="el" href="json__utility__nlohmann_8cpp.html">json_utility_nlohmann.cpp</a></li>
-    <li class="footer">Generated on Sun Nov 10 2024 22:57:04 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Nov 11 2024 18:02:47 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

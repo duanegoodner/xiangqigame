@@ -14,5 +14,6 @@ var searchData=
   ['playertype_11',['PlayerType',['../classxiangqipy_1_1enums_1_1PlayerType.html',1,'xiangqipy::enums']]],
   ['pointstypedeterminer_12',['PointsTypeDeterminer',['../classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer.html',1,'xiangqipy::core_dataclass_mirrors']]],
   ['positionpts_13',['PositionPts',['../classxiangqipy_1_1piece__points_1_1PositionPts.html',1,'xiangqipy::piece_points']]],
-  ['pseudorandomkeygenerator_14',['PseudoRandomKeyGenerator',['../classboardstate_1_1PseudoRandomKeyGenerator.html',1,'boardstate']]]
+  ['presearchmovesorter_14',['PreSearchMoveSorter',['../classmoveselection_1_1PreSearchMoveSorter.html',1,'moveselection']]],
+  ['pseudorandomkeygenerator_15',['PseudoRandomKeyGenerator',['../classboardstate_1_1PseudoRandomKeyGenerator.html',1,'boardstate']]]
 ];

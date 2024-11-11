@@ -1,18 +1,21 @@
 <map id="include/move_calculator.hpp" name="include/move_calculator.hpp">
-<area shape="rect" id="node1" title="Definition of gameboard::MoveCalculator." alt="" coords="147,5,355,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,79,52,104"/>
-<area shape="rect" id="node3" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="273,299,448,324"/>
-<area shape="rect" id="node14" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="76,79,285,104"/>
-<area shape="rect" id="node15" href="$piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="361,152,497,177"/>
-<area shape="rect" id="node4" title=" " alt="" coords="37,372,93,397"/>
-<area shape="rect" id="node5" title=" " alt="" coords="463,372,533,397"/>
-<area shape="rect" id="node6" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="557,372,687,397"/>
-<area shape="rect" id="node10" href="$integer__types_8hpp.html" title=" " alt="" coords="117,372,255,397"/>
-<area shape="rect" id="node12" title=" " alt="" coords="279,372,351,397"/>
-<area shape="rect" id="node13" title=" " alt="" coords="376,372,439,397"/>
-<area shape="rect" id="node7" title=" " alt="" coords="505,445,568,471"/>
-<area shape="rect" id="node8" title=" " alt="" coords="593,445,651,471"/>
-<area shape="rect" id="node9" title=" " alt="" coords="676,445,800,471"/>
-<area shape="rect" id="node11" title=" " alt="" coords="153,445,219,471"/>
-<area shape="rect" id="node16" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="412,225,587,251"/>
+<area shape="rect" id="node1" title="Definition of gameboard::MoveCalculator." alt="" coords="180,5,388,31"/>
+<area shape="rect" id="node2" title=" " alt="" coords="129,79,175,104"/>
+<area shape="rect" id="node3" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="319,299,494,324"/>
+<area shape="rect" id="node14" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="251,79,461,104"/>
+<area shape="rect" id="node15" href="$piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="412,152,548,177"/>
+<area shape="rect" id="node4" title=" " alt="" coords="261,372,317,397"/>
+<area shape="rect" id="node5" title=" " alt="" coords="5,372,75,397"/>
+<area shape="rect" id="node6" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="342,372,471,397"/>
+<area shape="rect" id="node10" href="$integer__types_8hpp.html" title=" " alt="" coords="99,372,237,397"/>
+<area shape="rect" id="node12" title=" " alt="" coords="496,372,568,397"/>
+<area shape="rect" id="node13" title=" " alt="" coords="593,372,655,397"/>
+<area shape="rect" id="node7" title=" " alt="" coords="375,445,438,471"/>
+<area shape="rect" id="node8" title=" " alt="" coords="643,445,701,471"/>
+<area shape="rect" id="node9" title=" " alt="" coords="815,445,939,471"/>
+<area shape="rect" id="node11" title=" " alt="" coords="135,445,201,471"/>
+<area shape="rect" id="node16" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="445,225,619,251"/>
+<area shape="rect" id="node17" href="$utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="613,299,747,324"/>
+<area shape="rect" id="node18" title=" " alt="" coords="680,372,765,397"/>
+<area shape="rect" id="node19" title=" " alt="" coords="790,372,879,397"/>
 </map>

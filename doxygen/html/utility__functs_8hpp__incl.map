@@ -1,10 +1,10 @@
 <map id="include/utility_functs.hpp" name="include/utility_functs.hpp">
-<area shape="rect" id="node1" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="313,5,500,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,79,61,104"/>
-<area shape="rect" id="node3" title=" " alt="" coords="86,79,175,104"/>
-<area shape="rect" id="node4" title=" " alt="" coords="200,79,347,104"/>
-<area shape="rect" id="node5" title=" " alt="" coords="371,79,443,104"/>
-<area shape="rect" id="node6" title=" " alt="" coords="467,79,525,104"/>
-<area shape="rect" id="node7" title=" " alt="" coords="550,79,674,104"/>
-<area shape="rect" id="node8" title=" " alt="" coords="698,79,761,104"/>
+<area shape="rect" id="node1" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="252,5,439,31"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,79,91,104"/>
+<area shape="rect" id="node3" title=" " alt="" coords="115,79,171,104"/>
+<area shape="rect" id="node4" title=" " alt="" coords="195,79,285,104"/>
+<area shape="rect" id="node5" title=" " alt="" coords="309,79,381,104"/>
+<area shape="rect" id="node6" title=" " alt="" coords="405,79,464,104"/>
+<area shape="rect" id="node7" title=" " alt="" coords="489,79,613,104"/>
+<area shape="rect" id="node8" title=" " alt="" coords="637,79,699,104"/>
 </map>

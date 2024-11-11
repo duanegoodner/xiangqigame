@@ -2,13 +2,13 @@ var searchData=
 [
   ['random_0',['random',['../namespaceutility__functs.html#a754117eda4e493add56b6ce4899826a9',1,'utility_functs']]],
   ['randommoveevaluator_1',['RandomMoveEvaluator',['../classmoveselection_1_1RandomMoveEvaluator.html#a69b94792d3d265d5ddb69840e256a273',1,'moveselection::RandomMoveEvaluator']]],
-  ['ratemove_2',['RateMove',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ad60e3db49acd90848644eb0fafd8a287',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['ratemove_2',['RateMove',['../classmoveselection_1_1PreSearchMoveSorter.html#ae1f3969f9449ac1dcb59abaa223e4ebe',1,'moveselection::PreSearchMoveSorter']]],
   ['read_3',['read',['../classResource.html#aacd9831af56a8c5c279ed5c823072169',1,'Resource']]],
   ['recorddata_4',['RecordData',['../classboardstate_1_1TranspositionTable.html#a21b4c3318e9c7c8ba0ba97f1c11488b5',1,'boardstate::TranspositionTable']]],
   ['recordnodeinfo_5',['RecordNodeInfo',['../classmoveselection_1_1SearchSummary.html#a257fc5d343a517b2cefedb53e30d0b38',1,'moveselection::SearchSummary']]],
   ['recordtrdata_6',['RecordTrData',['../classBoardStateSummarizer.html#a607a35db40e1ae31ac8c1ab6510cd25c',1,'BoardStateSummarizer']]],
   ['recordtrtablehit_7',['RecordTrTableHit',['../classmoveselection_1_1SearchSummary.html#a4d819c5661ad5221529f628976268f43',1,'moveselection::SearchSummary']]],
-  ['recursivelyvisitnodes_8',['RecursivelyVisitNodes',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a7424d9c655fe4793763f9c7896abc97e',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['recursivelyvisitnodes_8',['RecursivelyVisitNodes',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a0f0b3c4558d673d1c9c09786a303530d',1,'moveselection::MinimaxMoveEvaluator']]],
   ['red_5fcastle_5fspaces_9',['red_castle_spaces',['../namespacegameboard.html#a5276c175a40d19b70dc764a7ff5a878f',1,'gameboard']]],
   ['rednetpoints_10',['RedNetPoints',['../classpiecepoints_1_1BPOPointsEKeys.html#aa0945f311d671e17883326d36b8ccb93',1,'piecepoints::BPOPointsEKeys']]],
   ['remaining_5fsearch_5fdepth_11',['remaining_search_depth',['../classmoveselection_1_1MinimaxCalcResult.html#a084ce31b66c61380ee16860dad45ed96',1,'moveselection::MinimaxCalcResult::remaining_search_depth()'],['../classboardstate_1_1TranspositionTableEntry.html#afe0c4df474b7d363a7de74ef1f8e1992',1,'boardstate::TranspositionTableEntry::remaining_search_depth()']]],
@@ -22,7 +22,7 @@ var searchData=
   ['resultdepthcounts_19',['ResultDepthCounts',['../classmoveselection_1_1ResultDepthCounts.html#ac83fc1b3c22d423aac3c191b2ea20c69',1,'moveselection::ResultDepthCounts']]],
   ['returned_5fillegal_5fmove_20',['returned_illegal_move',['../classmoveselection_1_1SearchSummary.html#ad5f02b2a75f248998b7b6b0942d1565d',1,'moveselection::SearchSummary']]],
   ['run_21',['run',['../namespacexiangqipy_1_1app.html#ac09777385f4e43af5903c4c664c70ae4',1,'xiangqipy::app']]],
-  ['runfirstsearch_22',['RunFirstSearch',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a8e7a417d56ed5de0a38f00e27e04ee26',1,'moveselection::MinimaxMoveEvaluator']]],
-  ['runminimax_23',['RunMinimax',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a834b5a9fffcef4d3fe5596c13de43218',1,'moveselection::MinimaxMoveEvaluator']]],
-  ['runsecondsearch_24',['RunSecondSearch',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a3bafbe5a9390fef3f656ca4c2b8b10bf',1,'moveselection::MinimaxMoveEvaluator']]]
+  ['runfirstsearch_22',['RunFirstSearch',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a7cb61d5b5a7de0a64fd60f41ea06c9e4',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['runsecondsearch_23',['RunSecondSearch',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ad79d67bba578e62591a8bef2c5789cb0',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['runtimedminimax_24',['RunTimedMinimax',['../classmoveselection_1_1MinimaxMoveEvaluator.html#af6333acb2ea3c67a68a8b3c55e352b0d',1,'moveselection::MinimaxMoveEvaluator']]]
 ];
