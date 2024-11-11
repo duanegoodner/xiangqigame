@@ -58,7 +58,7 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
           &moveselection::MinimaxMoveEvaluator<
               GameBoard,
               ZobristSummarizer<KeyType, NumConfKeys>,
-              PiecePositionPoints>::StartingSearchDepth
+              PiecePositionPoints>::starting_search_depth
       )
       .def(
           "zobrist_key_size_bits",

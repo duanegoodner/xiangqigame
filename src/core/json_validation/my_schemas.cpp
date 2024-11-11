@@ -6,10 +6,12 @@
 #include <iostream>
 #include <nlohmann/json-schema.hpp>
 #include <string>
-#include <utility_functs.hpp>
+#include <json_utility_interface.hpp>
+#include <json_utility_nlohmann.hpp>
 
 using nlohmann::json;
 using nlohmann::json_schema::json_validator;
+using namespace jsonio;
 
 static const std::string points_spec_ICGA_2004_path = utility_functs::get_data_file_abs_path(
   "ICGA_2004_bpo.json");
@@ -23,13 +25,13 @@ static const std::string raw_points_schema_path = utility_functs::get_data_file_
 int main() {
 
   auto points_spec_ICGA_2004 =
-      utility_functs::import_json(points_spec_ICGA_2004_path);
+      import_json(points_spec_ICGA_2004_path);
   auto points_spec_schema =
-      utility_functs::import_json(points_spec_schema_path);
+      import_json(points_spec_schema_path);
 
   auto raw_points_ICGA_2004 =
-      utility_functs::import_json(raw_points_ICGA_2004_path);
-  auto raw_points_schema = utility_functs::import_json(raw_points_schema_path);
+      import_json(raw_points_ICGA_2004_path);
+  auto raw_points_schema = import_json(raw_points_schema_path);
 
   json_validator spec_validator;
 

@@ -80,7 +80,7 @@ class TranspositionTableSearchResult {
 public:
   MoveCollection moves() { return minimax_calc_result_.moves(); }
 
-  bool IsConsistentWith(MoveCollection &allowed_moves) {
+  bool IsConsistentWith(const MoveCollection &allowed_moves) {
     if (allowed_moves.IsEmpty() and moves().IsEmpty()) {
       return false;
     }

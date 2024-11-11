@@ -19,137 +19,50 @@ using namespace gameboard;
 
 namespace moveselection {
 
-//! Implements MoveEvaluator interface, and selects move::Move using Minimax
-//! algorithm; uses SpaceInfoProvider, BoardStateSummarizer, and PieceValueProvider
-//! interfaces.
-template <
-    typename ConcreteSpaceInfoProvider,
-    typename ConcreteBoardStateSummarizer,
-    typename ConcretePieceValueProvider>
-class MinimaxMoveEvaluator : public MoveEvaluator<MinimaxMoveEvaluator<
-                                 ConcreteSpaceInfoProvider,
-                                 ConcreteBoardStateSummarizer,
-                                 ConcretePieceValueProvider>> {
+namespace minimaxutils {
+bool ValidateMove(SearchSummary &search_summary, const MoveCollection &allowed_moves);
 
+inline void UpdateAlpha(Points_t &alpha, Points_t cur_eval) {
+  alpha = max(alpha, cur_eval);
+}
+
+inline void UpdateBeta(Points_t &beta, Points_t cur_eval) { beta = min(beta, cur_eval); }
+
+inline bool IsPrunableForEvaluator(
+    Points_t &alpha,
+    Points_t &beta,
+    MinimaxResultType &result_type
+) {
+  bool is_prunable = (beta <= alpha);
+  if (is_prunable) {
+    result_type = MinimaxResultType::kAlphaPrune;
+  }
+  return is_prunable;
+}
+
+inline bool IsPrunableForEvaluatorOpponent(
+    Points_t &alpha,
+    Points_t &beta,
+    MinimaxResultType &result_type
+) {
+  bool is_prunable = (beta <= alpha);
+  if (is_prunable) {
+    result_type = MinimaxResultType::kBetaPrune;
+  }
+  return is_prunable;
+}
+
+} // namespace minimaxutils
+
+template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
+class PreSearchMoveSorter {
 public:
-  MinimaxMoveEvaluator(
-      PieceColor evaluating_player,
-      DepthType starting_search_depth,
+  PreSearchMoveSorter(
       ConcreteSpaceInfoProvider &game_board,
-      const ConcretePieceValueProvider &game_position_points
+      ConcretePieceValueProvider &game_position_points
   )
-      : MinimaxMoveEvaluator(
-            evaluating_player,
-            starting_search_depth,
-            game_board,
-            game_position_points,
-            std::random_device{}()
-        ) {}
-
-  MinimaxMoveEvaluator(
-      PieceColor evaluating_player,
-      DepthType starting_search_depth,
-      ConcreteSpaceInfoProvider &game_board,
-      uint32_t zkey_seed
-  )
-      : MinimaxMoveEvaluator(
-            evaluating_player,
-            starting_search_depth,
-            game_board,
-            ConcretePieceValueProvider(),
-            zkey_seed
-        ) {}
-
-  MinimaxMoveEvaluator(
-      PieceColor evaluating_player,
-      DepthType starting_search_depth,
-      ConcreteSpaceInfoProvider &game_board
-  )
-      : MinimaxMoveEvaluator(
-            evaluating_player,
-            starting_search_depth,
-            game_board,
-            ConcretePieceValueProvider(),
-            std::random_device{}()
-        ) {}
-
-  Move ImplementSelectMove(MoveCollection &allowed_moves) {
-
-    Move final_selected_move;
-
-    auto &first_search_summary = RunFirstSearch(allowed_moves);
-
-    if (ValidateMove(first_search_summary, allowed_moves)) {
-      final_selected_move = first_search_summary.selected_move();
-    } else {
-      auto &second_search_summary = RunSecondSearch(allowed_moves);
-      final_selected_move = second_search_summary.selected_move();
-    }
-
-    IncrementNumMoveSelections();
-    return final_selected_move;
-  }
-
-  inline const moveselection::SearchSummaries &search_summaries() {
-    return search_summaries_;
-  }
-
-  inline DepthType StartingSearchDepth() { return starting_search_depth_; }
-
-  inline size_t KeySizeBits() {
-    return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
-  }
-
-  const ConcreteBoardStateSummarizer &hash_calculator() const {
-    return hash_calculator_;
-  }
-
-  const uint32_t zkeys_seed() { return hash_calculator_.zkeys_seed(); }
-
-  const std::string board_state_hex_str() {
-    return hash_calculator_.board_state_hex_str();
-  }
-
-private:
-  explicit MinimaxMoveEvaluator(
-      PieceColor evaluating_player,
-      DepthType starting_search_depth,
-      ConcreteSpaceInfoProvider &game_board,
-      const ConcretePieceValueProvider &game_position_points,
-      uint32_t zkey_seed
-  )
-      : evaluating_player_{evaluating_player}
-      , starting_search_depth_{starting_search_depth}
-      , game_board_{game_board}
-      , game_position_points_{game_position_points}
-      , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
-      , num_move_selections_{0}
-      , search_summaries_{} {
-    game_board_.AttachMoveCallback(std::bind(
-        &ConcreteBoardStateSummarizer::UpdateBoardState,
-        &hash_calculator_,
-        std::placeholders::_1
-    ));
-    hash_calculator_.FullBoardStateCalc(game_board_.map());
-  }
-
-  PieceColor evaluating_player_;
-  ConcretePieceValueProvider game_position_points_;
-  ConcreteBoardStateSummarizer hash_calculator_;
-  ConcreteSpaceInfoProvider &game_board_;
-  MoveCountType num_move_selections_;
-  DepthType starting_search_depth_;
-  moveselection::SearchSummaries search_summaries_;
-
-  Points_t GetPlayerTotal(PieceColor color) {
-    Points_t pre_attack_total = 0;
-    for (auto space : game_board_.GetAllSpacesOccupiedBy(color)) {
-      auto piece_type = game_board_.GetType(space);
-      pre_attack_total +=
-          game_position_points_.GetValueOfPieceAtPosition(color, piece_type, space);
-    }
-    return pre_attack_total;
-  }
+      : game_board_{game_board}
+      , game_position_points_{game_position_points} {}
 
   ScoredMove RateMove(Move move, PieceColor cur_player) {
     auto piece_type = game_board_.GetType(move.start);
@@ -167,7 +80,7 @@ private:
 
     if (game_board_.GetColor(move.end) == opponent_of(cur_player)) {
       auto captured_piece_type = game_board_.GetType(move.end);
-      capture_val = GetValueOfPieceAtPosition(
+      capture_val = game_position_points_.GetValueOfPieceAtPosition(
           opponent_of(cur_player),
           captured_piece_type,
           move.end
@@ -179,17 +92,9 @@ private:
     return ScoredMove{move, (position_value_delta + capture_val)};
   }
 
-  Points_t GetValueOfPieceAtPosition(
-      PieceColor color,
-      PieceType piece_type,
-      BoardSpace space
-  ) {
-    return game_position_points_.GetValueOfPieceAtPosition(color, piece_type, space);
-  }
-
   std::vector<ScoredMove> GenerateRankedMoveList(
       PieceColor cur_player,
-      MoveCollection &cur_player_moves
+      const MoveCollection &cur_player_moves
   ) {
     vector<ScoredMove> rated_moves;
     for (auto cur_move : cur_player_moves.moves) {
@@ -206,32 +111,125 @@ private:
     return rated_moves;
   }
 
-  bool ValidateMove(SearchSummary &search_summary, MoveCollection &allowed_moves) {
-    bool is_selected_move_allowed =
-        allowed_moves.ContainsMove(search_summary.selected_move());
-    if (!is_selected_move_allowed) {
-      search_summary.set_returned_illegal_move(true);
-    }
-    return is_selected_move_allowed;
+private:
+  ConcreteSpaceInfoProvider &game_board_;
+  ConcretePieceValueProvider &game_position_points_;
+};
+
+//! Implements MoveEvaluator interface, and selects move::Move using Minimax
+//! algorithm; uses SpaceInfoProvider, BoardStateSummarizer, and PieceValueProvider
+//! interfaces.
+template <
+    typename ConcreteSpaceInfoProvider,
+    typename ConcreteBoardStateSummarizer,
+    typename ConcretePieceValueProvider>
+class MinimaxMoveEvaluator : public MoveEvaluator<MinimaxMoveEvaluator<
+                                 ConcreteSpaceInfoProvider,
+                                 ConcreteBoardStateSummarizer,
+                                 ConcretePieceValueProvider>> {
+
+public:
+  explicit MinimaxMoveEvaluator(
+      PieceColor evaluating_player,
+      DepthType starting_search_depth,
+      ConcreteSpaceInfoProvider &game_board,
+      uint32_t zkey_seed = std::random_device{}(),
+      const ConcretePieceValueProvider &game_position_points =
+          ConcretePieceValueProvider()
+  )
+      : evaluating_player_{evaluating_player}
+      , starting_search_depth_{starting_search_depth}
+      , game_board_{game_board}
+      , game_position_points_{game_position_points}
+      , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
+      , num_move_selections_{0}
+      , search_summaries_{}
+      , move_sorter_{PreSearchMoveSorter{game_board_, game_position_points_}} {
+    initialize_hash_calculator();
   }
 
-  SearchSummary &RunFirstSearch(MoveCollection &allowed_moves) {
+  Move ImplementSelectMove(MoveCollection &allowed_moves) {
+
+    auto final_selected_move = SelectValidMove(allowed_moves);
+    IncrementNumMoveSelections();
+    return final_selected_move;
+  }
+
+  inline const moveselection::SearchSummaries &search_summaries() {
+    return search_summaries_;
+  }
+
+  inline DepthType starting_search_depth() { return starting_search_depth_; }
+
+  inline size_t KeySizeBits() {
+    return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
+  }
+
+  const ConcreteBoardStateSummarizer &hash_calculator() const {
+    return hash_calculator_;
+  }
+
+  const uint32_t zkeys_seed() { return hash_calculator_.zkeys_seed(); }
+
+  const std::string board_state_hex_str() {
+    return hash_calculator_.board_state_hex_str();
+  }
+
+private:
+  PieceColor evaluating_player_;
+  ConcretePieceValueProvider game_position_points_;
+  ConcreteBoardStateSummarizer hash_calculator_;
+  ConcreteSpaceInfoProvider &game_board_;
+  MoveCountType num_move_selections_;
+  DepthType starting_search_depth_;
+  moveselection::SearchSummaries search_summaries_;
+  PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
+      move_sorter_;
+
+  void initialize_hash_calculator() {
+    game_board_.AttachMoveCallback(std::bind(
+        &ConcreteBoardStateSummarizer::UpdateBoardState,
+        &hash_calculator_,
+        std::placeholders::_1
+    ));
+    hash_calculator_.FullBoardStateCalc(game_board_.map());
+  }
+
+  Move SelectValidMove(const MoveCollection &allowed_moves) {
+    auto &first_search_summary = RunFirstSearch(allowed_moves);
+    if (minimaxutils::ValidateMove(first_search_summary, allowed_moves)) {
+      return first_search_summary.selected_move();
+    }
+    return RunSecondSearch(allowed_moves).selected_move();
+  }
+
+  Points_t GetPlayerTotal(PieceColor color) {
+    Points_t pre_attack_total = 0;
+    for (auto space : game_board_.GetAllSpacesOccupiedBy(color)) {
+      auto piece_type = game_board_.GetType(space);
+      pre_attack_total +=
+          game_position_points_.GetValueOfPieceAtPosition(color, piece_type, space);
+    }
+    return pre_attack_total;
+  }
+
+  SearchSummary &RunFirstSearch(const MoveCollection &allowed_moves) {
     auto &first_search_summary = search_summaries_.NewFirstSearch(
         starting_search_depth_,
         hash_calculator_.GetTrTableSize()
     );
-    RunMinimax(allowed_moves, first_search_summary);
+    GetMinimaxMoveAndStats(allowed_moves, first_search_summary);
 
     return first_search_summary;
   };
 
-  SearchSummary &RunSecondSearch(MoveCollection &allowed_moves) {
+  SearchSummary &RunSecondSearch(const MoveCollection &allowed_moves) {
     auto &second_search_summary = search_summaries_.NewExtraSearch(
         starting_search_depth_,
         num_move_selections_,
         hash_calculator_.GetTrTableSize()
     );
-    RunMinimax(allowed_moves, second_search_summary, false);
+    GetMinimaxMoveAndStats(allowed_moves, second_search_summary, false);
 
     return second_search_summary;
   }
@@ -372,38 +370,6 @@ private:
     return result;
   }
 
-  inline void UpdateAlpha(Points_t &alpha, Points_t cur_eval) {
-    alpha = max(alpha, cur_eval);
-  }
-
-  inline void UpdateBeta(Points_t &beta, Points_t cur_eval) {
-    beta = min(beta, cur_eval);
-  }
-
-  inline bool IsPrunableForEvaluator(
-      Points_t &alpha,
-      Points_t &beta,
-      MinimaxResultType &result_type
-  ) {
-    bool is_prunable = (beta <= alpha);
-    if (is_prunable) {
-      result_type = MinimaxResultType::kAlphaPrune;
-    }
-    return is_prunable;
-  }
-
-  inline bool IsPrunableForEvaluatorOpponent(
-      Points_t &alpha,
-      Points_t &beta,
-      MinimaxResultType &result_type
-  ) {
-    bool is_prunable = (beta <= alpha);
-    if (is_prunable) {
-      result_type = MinimaxResultType::kBetaPrune;
-    }
-    return is_prunable;
-  }
-
   inline bool IsPrunable(
       Points_t &alpha,
       Points_t &beta,
@@ -411,16 +377,16 @@ private:
       PieceColor cur_player
   ) {
     if (cur_player == evaluating_player_) {
-      return IsPrunableForEvaluator(alpha, beta, result_type);
+      return minimaxutils::IsPrunableForEvaluator(alpha, beta, result_type);
     } else {
-      return IsPrunableForEvaluatorOpponent(alpha, beta, result_type);
+      return minimaxutils::IsPrunableForEvaluatorOpponent(alpha, beta, result_type);
     }
   }
 
   Points_t RecursivelyVisitNodes(
       Move move,
       PieceColor cur_player,
-      MoveCollection &allowed_moves,
+      const MoveCollection &allowed_moves,
       DepthType remaining_search_depth,
       Points_t alpha,
       Points_t beta,
@@ -458,15 +424,15 @@ private:
       PieceColor cur_player
   ) {
     if (cur_player == evaluating_player_) {
-      UpdateAlpha(alpha, cur_eval);
+      minimaxutils::UpdateAlpha(alpha, cur_eval);
     } else {
-      UpdateBeta(beta, cur_eval);
+      minimaxutils::UpdateBeta(beta, cur_eval);
     }
   }
 
   EqualScoreMoves HandleInternalNode(
       PieceColor cur_player,
-      MoveCollection &allowed_moves,
+      const MoveCollection &allowed_moves,
       DepthType &remaining_search_depth,
       Points_t &alpha,
       Points_t &beta,
@@ -476,7 +442,7 @@ private:
   ) {
     auto max_eval = InitializedBestEval(cur_player);
     MoveCollection best_moves;
-    auto ranked_moves = GenerateRankedMoveList(cur_player, allowed_moves);
+    auto ranked_moves = move_sorter_.GenerateRankedMoveList(cur_player, allowed_moves);
 
     for (auto rated_move : ranked_moves) {
       auto cur_eval = RecursivelyVisitNodes(
@@ -509,7 +475,7 @@ private:
   }
 
   EqualScoreMoves MinimaxRec(
-      MoveCollection &allowed_moves,
+      const MoveCollection &allowed_moves,
       DepthType remaining_search_depth,
       Points_t alpha,
       Points_t beta,
@@ -564,12 +530,11 @@ private:
     );
   }
 
-  void RunMinimax(
-      MoveCollection &allowed_moves,
+  EqualScoreMoves RunTimedMinimax(
+      const MoveCollection &allowed_moves,
       SearchSummary &search_summary,
       bool use_transposition_table = true
   ) {
-
     auto search_start = std::chrono::high_resolution_clock::now();
     auto minimax_result = MinimaxRec(
         allowed_moves,
@@ -583,16 +548,20 @@ private:
     auto search_end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double, std::nano> search_time = search_end - search_start;
     search_summary.set_time(search_time);
-    auto selected_move_index = utility_functs::random(
-        (size_t)0,
-        minimax_result.move_collection().moves.size() - 1
-    );
-    auto selected_move = minimax_result.move_collection().moves[selected_move_index];
-    search_summary.SetSelectedMove(selected_move);
-    auto tr_table_size = hash_calculator_.GetTrTableSize();
-    search_summary.set_tr_table_size_final(tr_table_size);
 
-    // return selected_move;
+    return minimax_result;
+  }
+
+  void GetMinimaxMoveAndStats(
+      const MoveCollection &allowed_moves,
+      SearchSummary &search_summary,
+      bool use_transposition_table = true
+  ) {
+    auto minimax_result =
+        RunTimedMinimax(allowed_moves, search_summary, use_transposition_table);
+    auto selected_move = minimax_result.move_collection().SelectRandom();
+    search_summary.SetSelectedMove(selected_move);
+    search_summary.set_tr_table_size_final(hash_calculator_.GetTrTableSize());
   }
 };
 
