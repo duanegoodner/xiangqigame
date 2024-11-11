@@ -94,6 +94,7 @@ TEST_F(MinimaxWithZobristComponentTest, InitWithImportedPiecePositionPoints) {
           PieceColor::kRed,
           standard_search_depth,
           starting_game_board,
+          12345,
           imported_piece_points
       };
 }

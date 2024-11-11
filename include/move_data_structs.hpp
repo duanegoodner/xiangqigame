@@ -40,7 +40,7 @@ struct MoveCollection {
 
   size_t Size() const { return moves.size(); }
 
-  bool IsEmpty() { return moves.empty(); }
+  bool IsEmpty() const { return moves.empty(); }
 
   bool ContainsMove(const Move &move) const {
     for (auto entry : moves) {
@@ -51,7 +51,7 @@ struct MoveCollection {
     return false;
   }
 
-  bool ContainsAnyMoveNotIn(const MoveCollection &other) {
+  bool ContainsAnyMoveNotIn(const MoveCollection &other) const {
     for (auto& entry : moves) {
       if (!other.ContainsMove(entry)) {
         return true;

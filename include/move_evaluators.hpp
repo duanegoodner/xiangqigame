@@ -32,60 +32,27 @@ class MinimaxMoveEvaluator : public MoveEvaluator<MinimaxMoveEvaluator<
                                  ConcretePieceValueProvider>> {
 
 public:
-  MinimaxMoveEvaluator(
+  explicit MinimaxMoveEvaluator(
       PieceColor evaluating_player,
       DepthType starting_search_depth,
       ConcreteSpaceInfoProvider &game_board,
-      const ConcretePieceValueProvider &game_position_points
+      uint32_t zkey_seed = std::random_device{}(),
+      const ConcretePieceValueProvider &game_position_points =
+          ConcretePieceValueProvider()
   )
-      : MinimaxMoveEvaluator(
-            evaluating_player,
-            starting_search_depth,
-            game_board,
-            game_position_points,
-            std::random_device{}()
-        ) {}
-
-  MinimaxMoveEvaluator(
-      PieceColor evaluating_player,
-      DepthType starting_search_depth,
-      ConcreteSpaceInfoProvider &game_board,
-      uint32_t zkey_seed
-  )
-      : MinimaxMoveEvaluator(
-            evaluating_player,
-            starting_search_depth,
-            game_board,
-            ConcretePieceValueProvider(),
-            zkey_seed
-        ) {}
-
-  MinimaxMoveEvaluator(
-      PieceColor evaluating_player,
-      DepthType starting_search_depth,
-      ConcreteSpaceInfoProvider &game_board
-  )
-      : MinimaxMoveEvaluator(
-            evaluating_player,
-            starting_search_depth,
-            game_board,
-            ConcretePieceValueProvider(),
-            std::random_device{}()
-        ) {}
+      : evaluating_player_{evaluating_player}
+      , starting_search_depth_{starting_search_depth}
+      , game_board_{game_board}
+      , game_position_points_{game_position_points}
+      , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
+      , num_move_selections_{0}
+      , search_summaries_{} {
+    initialize_hash_calculator();
+  }
 
   Move ImplementSelectMove(MoveCollection &allowed_moves) {
 
-    Move final_selected_move;
-
-    auto &first_search_summary = RunFirstSearch(allowed_moves);
-
-    if (ValidateMove(first_search_summary, allowed_moves)) {
-      final_selected_move = first_search_summary.selected_move();
-    } else {
-      auto &second_search_summary = RunSecondSearch(allowed_moves);
-      final_selected_move = second_search_summary.selected_move();
-    }
-
+    auto final_selected_move = SelectValidMove(allowed_moves);
     IncrementNumMoveSelections();
     return final_selected_move;
   }
@@ -94,7 +61,7 @@ public:
     return search_summaries_;
   }
 
-  inline DepthType StartingSearchDepth() { return starting_search_depth_; }
+  inline DepthType starting_search_depth() { return starting_search_depth_; }
 
   inline size_t KeySizeBits() {
     return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
@@ -111,20 +78,15 @@ public:
   }
 
 private:
-  explicit MinimaxMoveEvaluator(
-      PieceColor evaluating_player,
-      DepthType starting_search_depth,
-      ConcreteSpaceInfoProvider &game_board,
-      const ConcretePieceValueProvider &game_position_points,
-      uint32_t zkey_seed
-  )
-      : evaluating_player_{evaluating_player}
-      , starting_search_depth_{starting_search_depth}
-      , game_board_{game_board}
-      , game_position_points_{game_position_points}
-      , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
-      , num_move_selections_{0}
-      , search_summaries_{} {
+  PieceColor evaluating_player_;
+  ConcretePieceValueProvider game_position_points_;
+  ConcreteBoardStateSummarizer hash_calculator_;
+  ConcreteSpaceInfoProvider &game_board_;
+  MoveCountType num_move_selections_;
+  DepthType starting_search_depth_;
+  moveselection::SearchSummaries search_summaries_;
+
+  void initialize_hash_calculator() {
     game_board_.AttachMoveCallback(std::bind(
         &ConcreteBoardStateSummarizer::UpdateBoardState,
         &hash_calculator_,
@@ -133,13 +95,13 @@ private:
     hash_calculator_.FullBoardStateCalc(game_board_.map());
   }
 
-  PieceColor evaluating_player_;
-  ConcretePieceValueProvider game_position_points_;
-  ConcreteBoardStateSummarizer hash_calculator_;
-  ConcreteSpaceInfoProvider &game_board_;
-  MoveCountType num_move_selections_;
-  DepthType starting_search_depth_;
-  moveselection::SearchSummaries search_summaries_;
+  Move SelectValidMove(const MoveCollection &allowed_moves) {
+    auto &first_search_summary = RunFirstSearch(allowed_moves);
+    if (ValidateMove(first_search_summary, allowed_moves)) {
+      return first_search_summary.selected_move();
+    }
+    return RunSecondSearch(allowed_moves).selected_move();
+  }
 
   Points_t GetPlayerTotal(PieceColor color) {
     Points_t pre_attack_total = 0;
@@ -189,7 +151,7 @@ private:
 
   std::vector<ScoredMove> GenerateRankedMoveList(
       PieceColor cur_player,
-      MoveCollection &cur_player_moves
+      const MoveCollection &cur_player_moves
   ) {
     vector<ScoredMove> rated_moves;
     for (auto cur_move : cur_player_moves.moves) {
@@ -206,7 +168,7 @@ private:
     return rated_moves;
   }
 
-  bool ValidateMove(SearchSummary &search_summary, MoveCollection &allowed_moves) {
+  bool ValidateMove(SearchSummary &search_summary, const MoveCollection &allowed_moves) {
     bool is_selected_move_allowed =
         allowed_moves.ContainsMove(search_summary.selected_move());
     if (!is_selected_move_allowed) {
@@ -215,7 +177,7 @@ private:
     return is_selected_move_allowed;
   }
 
-  SearchSummary &RunFirstSearch(MoveCollection &allowed_moves) {
+  SearchSummary &RunFirstSearch(const MoveCollection &allowed_moves) {
     auto &first_search_summary = search_summaries_.NewFirstSearch(
         starting_search_depth_,
         hash_calculator_.GetTrTableSize()
@@ -225,7 +187,7 @@ private:
     return first_search_summary;
   };
 
-  SearchSummary &RunSecondSearch(MoveCollection &allowed_moves) {
+  SearchSummary &RunSecondSearch(const MoveCollection &allowed_moves) {
     auto &second_search_summary = search_summaries_.NewExtraSearch(
         starting_search_depth_,
         num_move_selections_,
@@ -420,7 +382,7 @@ private:
   Points_t RecursivelyVisitNodes(
       Move move,
       PieceColor cur_player,
-      MoveCollection &allowed_moves,
+      const MoveCollection &allowed_moves,
       DepthType remaining_search_depth,
       Points_t alpha,
       Points_t beta,
@@ -466,7 +428,7 @@ private:
 
   EqualScoreMoves HandleInternalNode(
       PieceColor cur_player,
-      MoveCollection &allowed_moves,
+      const MoveCollection &allowed_moves,
       DepthType &remaining_search_depth,
       Points_t &alpha,
       Points_t &beta,
@@ -509,7 +471,7 @@ private:
   }
 
   EqualScoreMoves MinimaxRec(
-      MoveCollection &allowed_moves,
+      const MoveCollection &allowed_moves,
       DepthType remaining_search_depth,
       Points_t alpha,
       Points_t beta,
@@ -565,7 +527,7 @@ private:
   }
 
   void RunMinimax(
-      MoveCollection &allowed_moves,
+      const MoveCollection &allowed_moves,
       SearchSummary &search_summary,
       bool use_transposition_table = true
   ) {
@@ -591,8 +553,6 @@ private:
     search_summary.SetSelectedMove(selected_move);
     auto tr_table_size = hash_calculator_.GetTrTableSize();
     search_summary.set_tr_table_size_final(tr_table_size);
-
-    // return selected_move;
   }
 };
 
