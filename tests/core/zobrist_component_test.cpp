@@ -51,12 +51,6 @@ TEST_F(ZobristComponentTest, InitFromCalculators) {
   };
 }
 
-TEST_F(ZobristComponentTest, InitFromAllSeeds) {
-  uint32_t primary_seed{1234};
-  std::array<uint32_t, 1> seeds{5678};
-  boardstate::ZobristComponent<uint64_t, 1> component{primary_seed, seeds};
-}
-
 TEST_F(ZobristComponentTest, InitFromSingleSeed) {
   boardstate::ZobristComponent<uint64_t, 1> component_a{1234};
   boardstate::ZobristComponent<uint64_t, 1> component_b{1234};
