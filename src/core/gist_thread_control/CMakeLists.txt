@@ -4,6 +4,6 @@ add_executable(gist_classes_share_mutex gist_classes_share_mutex.cpp)
 
 add_executable(gist_purge_mutex_execute_around gist_purge_mutex_execute_around.cpp)
 
-add_executable(simpler_mutex simpler_mutex.cpp)
+add_executable(gist_simpler_mutex gist_simpler_mutex.cpp)
 
 add_executable(gist_simple_execute_around gist_simple_execute_around.cpp)
