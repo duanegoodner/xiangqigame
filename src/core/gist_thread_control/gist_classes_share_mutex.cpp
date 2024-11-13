@@ -3,6 +3,7 @@
 #include <shared_mutex>
 #include <thread>
 
+// Example Resource and OtherObject classes
 class Resource {
 public:
     void read() const {
@@ -14,41 +15,64 @@ public:
     }
 };
 
+class OtherObject {
+public:
+    void performAction() {
+        std::cout << "Performing action on other object." << std::endl;
+    }
+};
+
+// Child class providing locking mechanism
 class Child {
     mutable std::shared_mutex mutex_;
-    Resource resource_;
 
 public:
     Child() {}
 
-    // Template version that accepts any callable
-    template<typename Func>
-    void withLockedResource(Func&& operation) {
+    // Generalized template method that works with any object passed externally
+    template<typename Object, typename Func>
+    void withLockedResource(Object& object, Func&& operation) {
         std::unique_lock<std::shared_mutex> lock(mutex_);
-        operation(resource_);
+        operation(object); // Executes the passed function under lock
     }
 };
 
+// Parent class orchestrating operations
 class Parent {
     Child& child;
 
 public:
     explicit Parent(Child& c) : child(c) {}
 
-    void performComplexOperation() {
-        child.withLockedResource([](Resource &res) {
-            res.read();
-            res.write();
-        });
+    template<typename Object, typename Func>
+    void performOperation(Object& object, Func&& operation) {
+        child.withLockedResource(object, std::forward<Func>(operation));
     }
 };
 
 int main() {
     Child child;
     Parent parent(child);
+    Resource resource;
+    OtherObject otherObject;
 
-    std::thread parentThread(&Parent::performComplexOperation, &parent);
-    parentThread.join();
+    // Operation on Resource
+    std::thread resourceThread([&]() {
+        parent.performOperation(resource, [](Resource &res) {
+            res.write();
+            res.read();
+        });
+    });
+
+    // Operation on OtherObject
+    std::thread otherObjectThread([&]() {
+        parent.performOperation(otherObject, [](OtherObject &obj) {
+            obj.performAction();
+        });
+    });
+
+    resourceThread.join();
+    otherObjectThread.join();
 
     return 0;
 }
