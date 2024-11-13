@@ -51,11 +51,11 @@ public:
 };
 
 class TranspositionTableGuard {
-  mutable std::shared_mutex tr_table_mutex_;
+  mutable std::mutex tr_table_mutex_;
 
 public:
-  std::unique_lock<std::shared_mutex> GetExclusiveLock() {
-    return std::unique_lock<std::shared_mutex>(tr_table_mutex_);
+  std::unique_lock<std::mutex> GetExclusiveLock() {
+    return std::unique_lock<std::mutex>(tr_table_mutex_);
   }
 };
 

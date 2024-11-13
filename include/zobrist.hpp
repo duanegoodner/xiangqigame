@@ -15,6 +15,7 @@
 #include <optional>
 #include <random>
 #include <shared_mutex>
+#include <thread>
 #include <vector>
 
 namespace boardstate {
@@ -276,6 +277,7 @@ class TranspositionTable {
 private:
   std::unordered_map<KeyType, TranspositionTableEntry<KeyType, NumConfKeys>> data_;
   MoveCountType move_counter_;
+
 public:
   moveselection::TranspositionTableSearchResult GetDataAt(
       KeyType primary_board_state,
@@ -325,6 +327,68 @@ private:
       const TranspositionTableEntry<KeyType, NumConfKeys> &tr_table_entry
   ) {
     return move_counter_ - tr_table_entry.last_access_index();
+  }
+};
+
+//! Contains std::mutex that other classes lock before accessing TranspositionTable
+class TranspositionTableGuard {
+  mutable std::mutex tr_table_mutex_;
+
+public:
+  std::unique_lock<std::mutex> GetExclusiveLock() {
+    return std::unique_lock<std::mutex>(tr_table_mutex_);
+  }
+};
+
+//! Removes old entries from TranspositionTable to prevent excessive memory use.
+template <typename KeyType, size_t NumConfKeys>
+class TranspositionTablePruner {
+  TranspositionTable<KeyType, NumConfKeys> &tr_table_;
+  TranspositionTableGuard &tr_table_guard_;
+  std::thread pruning_thread_;
+  std::atomic<bool> keep_running_;
+  MoveCountType move_count_;
+
+public:
+  TranspositionTablePruner(
+      TranspositionTable<KeyType, NumConfKeys> &tr_table,
+      TranspositionTableGuard &tr_table_guard
+  )
+      : tr_table_{tr_table}
+      , tr_table_guard_{tr_table_guard}
+      , pruning_thread_{}
+      , keep_running_{true}
+      , move_count_{0} {}
+
+  ~TranspositionTablePruner() {
+    if (pruning_thread_.joinable()) {
+      pruning_thread_.join();
+    }
+  }
+
+  void Start() {
+    pruning_thread_ = std::thread(&TranspositionTablePruner::RepeatedlyPrune, this);
+  }
+
+  void Stop() { keep_running_ = false; }
+
+  void IncrementMoveCount() { move_count_++; }
+
+private:
+  void UnsafePruneEntry() {
+    // TODO: Implement me!
+  }
+
+  void ThreadSafePruneEntry() {
+    std::this_thread::sleep_for(std::chrono::microseconds(200));
+    auto lock = tr_table_guard_.GetExclusiveLock();
+    UnsafePruneEntry();
+  }
+
+  void RepeatedlyPrune() {
+    while (keep_running_) {
+      ThreadSafePruneEntry();
+    }
   }
 };
 
