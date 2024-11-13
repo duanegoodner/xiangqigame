@@ -1,5 +1,5 @@
 <map id="boardstate::TranspositionTableEntry&lt; KeyType, NumConfKeys &gt;" name="boardstate::TranspositionTableEntry&lt; KeyType, NumConfKeys &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="145,859,420,1039"/>
+<area shape="rect" id="node1" title="Data structure to hold calculation results that get entered into a boardstate::TranspositionTable." alt="" coords="145,859,420,1039"/>
 <area shape="rect" id="node2" href="$classmoveselection_1_1MinimaxCalcResult.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search&#45;related info obtained fro..." alt="" coords="177,616,388,796"/>
 <area shape="rect" id="node3" title=" " alt="" coords="6,469,81,546"/>
 <area shape="rect" id="node4" title=" " alt="" coords="203,469,354,546"/>

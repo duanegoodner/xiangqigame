@@ -150,13 +150,16 @@ $(document).ready(function(){initNavTree('classboardstate_1_1ZobristSummarizer.h
 </div><!--header-->
 <div class="contents">
 
+<p>Implements the <a class="el" href="classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateSummarizer</a> interface, providing a <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro...">moveselection::MinimaxMoveEvaluator</a> with "reasonably unique" hash values for each encountered board state, and the ability to read/write board_state-MinimaxResult pairs in a <a class="el" href="classboardstate_1_1TranspositionTable.html" title="Stores and manages key-value pairs consisting of a board_state (from a boardstate::ZobristComponent) ...">boardstate::TranspositionTable</a>.  
+ <a href="classboardstate_1_1ZobristSummarizer.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for boardstate::ZobristSummarizer&lt; KeyType, NumConfKeys &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classboardstate_1_1ZobristSummarizer__inherit__graph.png" border="0" usemap="#aboardstate_1_1ZobristSummarizer_3_01KeyType_00_01NumConfKeys_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="aboardstate_1_1ZobristSummarizer_3_01KeyType_00_01NumConfKeys_01_4_inherit__map" id="aboardstate_1_1ZobristSummarizer_3_01KeyType_00_01NumConfKeys_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,551,257,833"/>
+<area shape="rect" title="Implements the BoardStateSummarizer interface, providing a moveselection::MinimaxMoveEvaluator with &quot;..." alt="" coords="5,551,257,833"/>
 <area shape="rect" href="classBoardStateSummarizer.html" title=" " alt="" coords="41,292,222,501"/>
 <area shape="rect" href="classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="6,5,257,200"/>
 </map>
@@ -166,7 +169,7 @@ Collaboration diagram for boardstate::ZobristSummarizer&lt; KeyType, NumConfKeys
 <div class="dyncontent">
 <div class="center"><img src="classboardstate_1_1ZobristSummarizer__coll__graph.png" border="0" usemap="#aboardstate_1_1ZobristSummarizer_3_01KeyType_00_01NumConfKeys_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="aboardstate_1_1ZobristSummarizer_3_01KeyType_00_01NumConfKeys_01_4_coll__map" id="aboardstate_1_1ZobristSummarizer_3_01KeyType_00_01NumConfKeys_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="227,564,479,832"/>
+<area shape="rect" title="Implements the BoardStateSummarizer interface, providing a moveselection::MinimaxMoveEvaluator with &quot;..." alt="" coords="227,564,479,832"/>
 <area shape="rect" href="classBoardStateSummarizer.html" title=" " alt="" coords="40,292,221,501"/>
 <area shape="rect" href="classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="5,5,256,200"/>
 <area shape="rect" title=" " alt="" coords="245,351,461,443"/>
@@ -233,8 +236,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename KeyType, size_t NumConfKeys&gt;<br />
-class boardstate::ZobristSummarizer&lt; KeyType, NumConfKeys &gt;</div>
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00306">306</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+class boardstate::ZobristSummarizer&lt; KeyType, NumConfKeys &gt;</div><p>Implements the <a class="el" href="classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateSummarizer</a> interface, providing a <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro...">moveselection::MinimaxMoveEvaluator</a> with "reasonably unique" hash values for each encountered board state, and the ability to read/write board_state-MinimaxResult pairs in a <a class="el" href="classboardstate_1_1TranspositionTable.html" title="Stores and manages key-value pairs consisting of a board_state (from a boardstate::ZobristComponent) ...">boardstate::TranspositionTable</a>. </p>
+
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00336">336</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa41f7cdbe498bff92b2c59573e966193" name="aa41f7cdbe498bff92b2c59573e966193"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa41f7cdbe498bff92b2c59573e966193">&#9670;&#160;</a></span>ZobristSummarizer() <span class="overload">[1/4]</span></h2>
@@ -262,7 +266,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00309">309</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00339">339</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -302,7 +306,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00313">313</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00343">343</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -332,7 +336,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00321">321</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00351">351</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -361,7 +365,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00324">324</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00354">354</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -391,7 +395,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00368">368</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00398">398</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -421,7 +425,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00334">334</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00364">364</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -450,7 +454,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00328">328</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00358">358</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -490,7 +494,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00353">353</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00383">383</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -519,7 +523,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00364">364</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00394">394</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -571,7 +575,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00338">338</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00368">368</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -601,7 +605,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00330">330</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00360">360</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -630,7 +634,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00366">366</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00396">396</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -659,7 +663,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00372">372</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00402">402</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -686,7 +690,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00376">376</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00406">406</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -712,7 +716,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00375">375</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist_8hpp_source.html#l00405">405</a> of file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
 
 </div>
 </div>
@@ -725,7 +729,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceboardstate.html">boardstate</a></li><li class="navelem"><a class="el" href="classboardstate_1_1ZobristSummarizer.html">ZobristSummarizer</a></li>
-    <li class="footer">Generated on Mon Nov 11 2024 18:02:47 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Wed Nov 13 2024 19:07:02 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

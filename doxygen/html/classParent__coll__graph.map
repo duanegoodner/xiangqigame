@@ -1,6 +1,5 @@
 <map id="Parent" name="Parent">
-<area shape="rect" id="node1" title=" " alt="" coords="13,344,235,436"/>
-<area shape="rect" id="node2" href="$classChild.html" title=" " alt="" coords="34,160,214,281"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,13,120,90"/>
-<area shape="rect" id="node4" href="$classResource.html" title=" " alt="" coords="144,5,227,97"/>
+<area shape="rect" id="node1" title=" " alt="" coords="14,300,177,392"/>
+<area shape="rect" id="node2" href="$classChild.html" title=" " alt="" coords="5,145,185,237"/>
+<area shape="rect" id="node3" title=" " alt="" coords="38,5,153,83"/>
 </map>

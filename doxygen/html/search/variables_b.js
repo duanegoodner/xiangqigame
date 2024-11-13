@@ -6,7 +6,7 @@ var searchData=
   ['kblackriveredge_3',['kBlackRiverEdge',['../namespacegameboard.html#adfea0925fa61e4179c09e5293da07400',1,'gameboard']]],
   ['kblk_4',['kBlk',['../classxiangqipy_1_1game__summary_1_1PlayerSummaries.html#af7fd9450f03506adac902ff43a65c9a4',1,'xiangqipy::game_summary::PlayerSummaries']]],
   ['kbposchemapath_5',['kBPOSchemaPath',['../namespacepiecepoints.html#a25e1ef8495e45bed90a0cf6e1fad5eb9',1,'piecepoints']]],
-  ['keep_5frunning_5f_6',['keep_running_',['../classPlayer.html#a1ef39e71e7b5d021846a96b4e8cda246',1,'Player']]],
+  ['keep_5frunning_5f_6',['keep_running_',['../classTranspositionTablePruner.html#abd432f7f7c862ae9493adccc8c411798',1,'TranspositionTablePruner::keep_running_()'],['../classPlayer.html#a1ef39e71e7b5d021846a96b4e8cda246',1,'Player::keep_running_()']]],
   ['key_5fsize_7',['key_size',['../classxiangqipy_1_1command__input_1_1PlayerInput.html#a5e3919e7e48c1724a491d4f246d3fd59',1,'xiangqipy::command_input::PlayerInput']]],
   ['key_5fsize_5finput_8',['key_size_input',['../classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#a2a0387ad112cba1e2f3629d55e4d8caa',1,'xiangqipy::command_input::PlayerCommandInterpreter']]],
   ['khorsepaths_9',['kHorsePaths',['../namespacegameboard.html#a3c478eaf88e9be272d8f31828e5d7baf',1,'gameboard']]],

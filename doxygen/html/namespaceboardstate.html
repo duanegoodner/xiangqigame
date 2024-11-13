@@ -157,15 +157,19 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Template for class that generates random integer values of IntType.  <a href="classboardstate_1_1RandomKeyGenerator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTable.html">TranspositionTable</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores and manages key-value pairs consisting of a board_state (from a <a class="el" href="classboardstate_1_1ZobristComponent.html" title="Container for one or more boardstate::ZobristCalculator objects.">boardstate::ZobristComponent</a>) and results of Minimax calculations performed by boardstate::MinimaxMoveEvaluator.  <a href="classboardstate_1_1TranspositionTable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html">TranspositionTableEntry</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data structure to hold calculation results that get entered into a <a class="el" href="classboardstate_1_1TranspositionTable.html" title="Stores and manages key-value pairs consisting of a board_state (from a boardstate::ZobristComponent) ...">boardstate::TranspositionTable</a>.  <a href="classboardstate_1_1TranspositionTableEntry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html">ZobristCalculator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for all of the hash keys needed to run a boardstate::SingleZobristSummarizer.  <a href="classboardstate_1_1ZobristCalculator.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses Zobrist hashing to calculate a "reasonably unique" integer value for each board configuration encountered during a game.  <a href="classboardstate_1_1ZobristCalculator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristComponent.html">ZobristComponent</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for one or more <a class="el" href="classboardstate_1_1ZobristCalculator.html" title="Uses Zobrist hashing to calculate a &quot;reasonably unique&quot; integer value for each board configuration en...">boardstate::ZobristCalculator</a> objects.  <a href="classboardstate_1_1ZobristComponent.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristSummarizer.html">ZobristSummarizer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the <a class="el" href="classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateSummarizer</a> interface, providing a <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro...">moveselection::MinimaxMoveEvaluator</a> with "reasonably unique" hash values for each encountered board state, and the ability to read/write board_state-MinimaxResult pairs in a <a class="el" href="classboardstate_1_1TranspositionTable.html" title="Stores and manages key-value pairs consisting of a board_state (from a boardstate::ZobristComponent) ...">boardstate::TranspositionTable</a>.  <a href="classboardstate_1_1ZobristSummarizer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -228,7 +232,7 @@ template&lt;typename IntType &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceboardstate.html">boardstate</a></li>
-    <li class="footer">Generated on Mon Nov 11 2024 18:02:47 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Wed Nov 13 2024 19:07:02 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

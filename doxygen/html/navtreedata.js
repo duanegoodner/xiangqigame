@@ -146,14 +146,14 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____init_____8py.html",
-"classboardstate_1_1ZobristSummarizer.html#aa8579c4afdff85409a68e2f33e361eb6",
-"classmoveselection_1_1RandomMoveEvaluator.html#a69fdaf3024cf61c1b3a4472c1b52d35b",
-"classxiangqipy_1_1core__dataclass__mirrors_1_1ExecutedMove.html#af97f477146fe4998e891cc9e5a2fc625",
-"classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a87d4c2f950b8b47a7afcbea87616df46",
-"classxiangqipy_1_1players_1_1ScriptedPlayer.html#a3b46cf08f8ca426b343a27f70da49433",
-"gist__tr__table__purging_8cpp.html",
-"namespacepiecepoints.html#aace87c2b0a72b8e1390974932eea0974",
-"structgameboard_1_1MoveCollection.html#ad9463275bc7e0ace4598dcd487da8e3a"
+"classboardstate_1_1TranspositionTableEntry.html#a6a403c0cf232a6a49bce74284445ee3c",
+"classmoveselection_1_1MinimaxCalcResult.html#a49483dfe62fc71fda140bdc6c1b70c5d",
+"classpiecepoints_1_1BPOPointsSKeys.html#ab82738dd20e9f6af55f6ba73276b9b86",
+"classxiangqipy_1_1game_1_1Game.html#a9eae64d7de8077d97d4612ce2d091c95",
+"classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html#a3ba190ca37c7be29b050dda3d1e89bc7",
+"functions_func_r.html",
+"move__evaluators_8cpp.html#af8f5372c781c8f3203e21ba882663241",
+"piece__points__data__structs_8hpp.html#af44477d23e96e79a2c46c08e00e7accc"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

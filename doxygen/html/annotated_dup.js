@@ -121,13 +121,21 @@ var annotated_dup =
     [ "BoardStateSummarizer", "classBoardStateSummarizer.html", "classBoardStateSummarizer" ],
     [ "Child", "classChild.html", "classChild" ],
     [ "Exception", "classException.html", null ],
+    [ "GameManager", "classGameManager.html", "classGameManager" ],
     [ "JsonUtility", "classJsonUtility.html", "classJsonUtility" ],
     [ "Manager", "classManager.html", "classManager" ],
+    [ "MinimaxEvaluator", "classMinimaxEvaluator.html", "classMinimaxEvaluator" ],
+    [ "MinimaxMoveEvaluator", "classMinimaxMoveEvaluator.html", "classMinimaxMoveEvaluator" ],
     [ "MoveEvaluator", "classMoveEvaluator.html", "classMoveEvaluator" ],
+    [ "OtherObject", "classOtherObject.html", "classOtherObject" ],
     [ "Parent", "classParent.html", "classParent" ],
     [ "PieceValueProvider", "classPieceValueProvider.html", "classPieceValueProvider" ],
     [ "Player", "classPlayer.html", "classPlayer" ],
     [ "Resource", "classResource.html", "classResource" ],
     [ "SpaceInfoProvider", "classSpaceInfoProvider.html", "classSpaceInfoProvider" ],
-    [ "TranspositionTable", "classTranspositionTable.html", "classTranspositionTable" ]
+    [ "TranspositionTable", "classTranspositionTable.html", "classTranspositionTable" ],
+    [ "TranspositionTableGuard", "classTranspositionTableGuard.html", "classTranspositionTableGuard" ],
+    [ "TranspositionTablePruner", "classTranspositionTablePruner.html", "classTranspositionTablePruner" ],
+    [ "TranspositionTableSearchResult", "classTranspositionTableSearchResult.html", "classTranspositionTableSearchResult" ],
+    [ "ZobristManager", "classZobristManager.html", "classZobristManager" ]
 ];

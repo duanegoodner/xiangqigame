@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['zobristcalculator_0',['ZobristCalculator',['../classboardstate_1_1ZobristCalculator.html',1,'boardstate']]],
-  ['zobristcomponent_1',['ZobristComponent',['../classboardstate_1_1ZobristComponent.html',1,'boardstate']]],
-  ['zobristsummarizer_2',['ZobristSummarizer',['../classboardstate_1_1ZobristSummarizer.html',1,'boardstate']]]
+  ['xiangqigamecommand_0',['XiangqiGameCommand',['../classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html',1,'xiangqipy::command_input']]],
+  ['xiangqigamecommandline_1',['XiangqiGameCommandLine',['../classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine.html',1,'xiangqipy::command_input']]]
 ];

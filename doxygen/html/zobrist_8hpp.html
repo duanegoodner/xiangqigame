@@ -148,6 +148,9 @@ $(document).ready(function(){initNavTree('zobrist_8hpp.html',''); initResizable(
   <div class="headertitle"><div class="title">zobrist.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker and supporting classes.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;array&gt;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
 <code>#include &lt;<a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>&gt;</code><br />
@@ -164,7 +167,7 @@ Include dependency graph for zobrist.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="zobrist_8hpp__incl.png" border="0" usemap="#ainclude_2zobrist_8hpp" alt=""/></div>
 <map name="ainclude_2zobrist_8hpp" id="ainclude_2zobrist_8hpp">
-<area shape="rect" title=" " alt="" coords="795,5,941,31"/>
+<area shape="rect" title="Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker and supporting ..." alt="" coords="795,5,941,31"/>
 <area shape="rect" title=" " alt="" coords="261,225,317,251"/>
 <area shape="rect" title=" " alt="" coords="964,79,1031,104"/>
 <area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="285,152,459,177"/>
@@ -198,7 +201,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="zobrist_8hpp__dep__incl.png" border="0" usemap="#ainclude_2zobrist_8hppdep" alt=""/></div>
 <map name="ainclude_2zobrist_8hppdep" id="ainclude_2zobrist_8hppdep">
-<area shape="rect" title=" " alt="" coords="26,5,171,31"/>
+<area shape="rect" title="Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker and supporting ..." alt="" coords="26,5,171,31"/>
 <area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="5,79,192,104"/>
 </map>
 </div>
@@ -208,15 +211,19 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator&lt; KeyType &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for all of the hash keys needed to run a boardstate::SingleZobristSummarizer.  <a href="classboardstate_1_1ZobristCalculator.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses Zobrist hashing to calculate a "reasonably unique" integer value for each board configuration encountered during a game.  <a href="classboardstate_1_1ZobristCalculator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristComponent.html">boardstate::ZobristComponent&lt; KeyType, NumConfKeys &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for one or more <a class="el" href="classboardstate_1_1ZobristCalculator.html" title="Uses Zobrist hashing to calculate a &quot;reasonably unique&quot; integer value for each board configuration en...">boardstate::ZobristCalculator</a> objects.  <a href="classboardstate_1_1ZobristComponent.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTableEntry.html">boardstate::TranspositionTableEntry&lt; KeyType, NumConfKeys &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data structure to hold calculation results that get entered into a <a class="el" href="classboardstate_1_1TranspositionTable.html" title="Stores and manages key-value pairs consisting of a board_state (from a boardstate::ZobristComponent) ...">boardstate::TranspositionTable</a>.  <a href="classboardstate_1_1TranspositionTableEntry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1TranspositionTable.html">boardstate::TranspositionTable&lt; KeyType, NumConfKeys &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores and manages key-value pairs consisting of a board_state (from a <a class="el" href="classboardstate_1_1ZobristComponent.html" title="Container for one or more boardstate::ZobristCalculator objects.">boardstate::ZobristComponent</a>) and results of Minimax calculations performed by boardstate::MinimaxMoveEvaluator.  <a href="classboardstate_1_1TranspositionTable.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristSummarizer.html">boardstate::ZobristSummarizer&lt; KeyType, NumConfKeys &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the <a class="el" href="classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateSummarizer</a> interface, providing a <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro...">moveselection::MinimaxMoveEvaluator</a> with "reasonably unique" hash values for each encountered board state, and the ability to read/write board_state-MinimaxResult pairs in a <a class="el" href="classboardstate_1_1TranspositionTable.html" title="Stores and manages key-value pairs consisting of a board_state (from a boardstate::ZobristComponent) ...">boardstate::TranspositionTable</a>.  <a href="classboardstate_1_1ZobristSummarizer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -224,13 +231,17 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceboardstate"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceboardstate.html">boardstate</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-</div><!-- contents -->
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker and supporting classes. </p>
+
+<p class="definition">Definition in file <a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>.</p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="zobrist_8hpp.html">zobrist.hpp</a></li>
-    <li class="footer">Generated on Mon Nov 11 2024 18:02:47 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Wed Nov 13 2024 19:07:02 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -10,13 +10,12 @@ var searchData=
   ['red_5fposition_5foffsets_5f_7',['red_position_offsets_',['../classpiecepoints_1_1BPOPointsSKeys.html#aad6f97f1c6eb4af46850ec3ff2893973',1,'piecepoints::BPOPointsSKeys::red_position_offsets_()'],['../classpiecepoints_1_1BPOPointsEKeys.html#a34ca12928e97508f93656386fbf88688',1,'piecepoints::BPOPointsEKeys::red_position_offsets_()']]],
   ['red_5fwon_8',['RED_WON',['../classxiangqipy_1_1enums_1_1GameState.html#a70b0bd1ff3cc9303d5f0991413a7f025',1,'xiangqipy::enums::GameState']]],
   ['remaining_5fsearch_5fdepth_5f_9',['remaining_search_depth_',['../classmoveselection_1_1MinimaxCalcResult.html#aa4dca1e95bec62b02e8a12a259fe2671',1,'moveselection::MinimaxCalcResult']]],
-  ['resource_5f_10',['resource_',['../classChild.html#a10bff262a869be3d7b4471c3a8c4d831',1,'Child']]],
-  ['result_11',['result',['../namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb',1,'xiangqipy::command_input']]],
-  ['result_5fdepth_5fcounts_12',['result_depth_counts',['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a67c71ace6c7c2ba33441489729c35c5c',1,'xiangqipy::core_dataclass_mirrors::SearchSummary']]],
-  ['result_5fdepth_5fcounts_5f_13',['result_depth_counts_',['../classmoveselection_1_1SearchSummary.html#a60aa9ee0b3890461aa0af4d7feb3edb4',1,'moveselection::SearchSummary']]],
-  ['result_5ftype_5f_14',['result_type_',['../classmoveselection_1_1MinimaxCalcResult.html#a49483dfe62fc71fda140bdc6c1b70c5d',1,'moveselection::MinimaxCalcResult']]],
-  ['returned_5fillegal_5fmove_15',['returned_illegal_move',['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a7ad456bad01f704c3c2bb1e257ec74e0',1,'xiangqipy::core_dataclass_mirrors::SearchSummary']]],
-  ['returned_5fillegal_5fmove_5f_16',['returned_illegal_move_',['../classmoveselection_1_1SearchSummary.html#aec98baa34c66eb9c85b52b70c5d47ccb',1,'moveselection::SearchSummary']]],
-  ['rng_5f_17',['rng_',['../classPlayer.html#a84bb93bf8be91deb2e32a1b7c7029e29',1,'Player']]],
-  ['run_5fkwargs_18',['run_kwargs',['../classxiangqipy_1_1command__input_1_1RunKwargsInterpreter.html#a7acaef8f49d508ef1ee2fd0dc1fd20d6',1,'xiangqipy::command_input::RunKwargsInterpreter']]]
+  ['result_10',['result',['../namespacexiangqipy_1_1command__input.html#a46612d7349f393c16563cb108d447abb',1,'xiangqipy::command_input']]],
+  ['result_5fdepth_5fcounts_11',['result_depth_counts',['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a67c71ace6c7c2ba33441489729c35c5c',1,'xiangqipy::core_dataclass_mirrors::SearchSummary']]],
+  ['result_5fdepth_5fcounts_5f_12',['result_depth_counts_',['../classmoveselection_1_1SearchSummary.html#a60aa9ee0b3890461aa0af4d7feb3edb4',1,'moveselection::SearchSummary']]],
+  ['result_5ftype_5f_13',['result_type_',['../classmoveselection_1_1MinimaxCalcResult.html#a49483dfe62fc71fda140bdc6c1b70c5d',1,'moveselection::MinimaxCalcResult']]],
+  ['returned_5fillegal_5fmove_14',['returned_illegal_move',['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a7ad456bad01f704c3c2bb1e257ec74e0',1,'xiangqipy::core_dataclass_mirrors::SearchSummary']]],
+  ['returned_5fillegal_5fmove_5f_15',['returned_illegal_move_',['../classmoveselection_1_1SearchSummary.html#aec98baa34c66eb9c85b52b70c5d47ccb',1,'moveselection::SearchSummary']]],
+  ['rng_5f_16',['rng_',['../classMinimaxEvaluator.html#a23ec5a5f6ea5e2283cd31ea07f7a4e35',1,'MinimaxEvaluator::rng_()'],['../classPlayer.html#a84bb93bf8be91deb2e32a1b7c7029e29',1,'Player::rng_()']]],
+  ['run_5fkwargs_17',['run_kwargs',['../classxiangqipy_1_1command__input_1_1RunKwargsInterpreter.html#a7acaef8f49d508ef1ee2fd0dc1fd20d6',1,'xiangqipy::command_input::RunKwargsInterpreter']]]
 ];

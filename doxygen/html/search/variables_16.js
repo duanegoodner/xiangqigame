@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['y_5flabels_0',['y_labels',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a5e99cbc725009b18e5b1475bd3f41b11',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]]
+  ['whose_5fturn_0',['whose_turn',['../classxiangqipy_1_1game__summary_1_1GameSummary.html#af3d838beaee36f83eb6a9416d0a4cd31',1,'xiangqipy::game_summary::GameSummary']]],
+  ['winner_5f_1',['winner_',['../classGameManager.html#a9ae4fb327ef22f06250363ba2ef6adb7',1,'GameManager']]]
 ];
