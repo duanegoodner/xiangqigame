@@ -392,13 +392,13 @@ private:
   }
 };
 
-//! Implements the BoardStateSummarizer interface, providing a
+//! Implements the BoardStateCoordinator interface, providing a
 //! moveselection::MinimaxMoveEvaluator with "reasonably unique" hash values for each
 //! encountered board state, and the ability to read/write board_state-MinimaxResult
 //! pairs in a boardstate::TranspositionTable.
 template <typename KeyType, size_t NumConfKeys>
 class ZobristCoordinator
-    : public BoardStateSummarizer<ZobristCoordinator<KeyType, NumConfKeys>, KeyType> {
+    : public BoardStateCoordinator<ZobristCoordinator<KeyType, NumConfKeys>, KeyType> {
 public:
   explicit ZobristCoordinator(ZobristComponent<KeyType, NumConfKeys> zobrist_component)
       : zobrist_component_{std::move(zobrist_component)}

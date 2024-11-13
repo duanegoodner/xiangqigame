@@ -73,10 +73,10 @@ target_link_libraries(
     GTest::gtest_main)
 
 add_executable(
-    zobrist_summarizer_test
-    zobrist_summarizer_test.cpp)
+    zobrist_coordinator_test
+    zobrist_coordinator_test.cpp)
 target_link_libraries(
-    zobrist_summarizer_test PRIVATE
+    zobrist_coordinator_test PRIVATE
     utility_functs
     game_board
     GTest::gtest_main)

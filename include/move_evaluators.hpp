@@ -117,15 +117,15 @@ private:
 };
 
 //! Implements MoveEvaluator interface, and selects move::Move using Minimax
-//! algorithm; uses SpaceInfoProvider, BoardStateSummarizer, and PieceValueProvider
+//! algorithm; uses SpaceInfoProvider, BoardStateCoordinator, and PieceValueProvider
 //! interfaces.
 template <
     typename ConcreteSpaceInfoProvider,
-    typename ConcreteBoardStateSummarizer,
+    typename ConcreteBoardStateCoordinator,
     typename ConcretePieceValueProvider>
 class MinimaxMoveEvaluator : public MoveEvaluator<MinimaxMoveEvaluator<
                                  ConcreteSpaceInfoProvider,
-                                 ConcreteBoardStateSummarizer,
+                                 ConcreteBoardStateCoordinator,
                                  ConcretePieceValueProvider>> {
 
 public:
@@ -141,7 +141,7 @@ public:
       , starting_search_depth_{starting_search_depth}
       , game_board_{game_board}
       , game_position_points_{game_position_points}
-      , hash_calculator_{ConcreteBoardStateSummarizer{zkey_seed}}
+      , hash_calculator_{ConcreteBoardStateCoordinator{zkey_seed}}
       , num_move_selections_{0}
       , search_summaries_{}
       , move_sorter_{PreSearchMoveSorter{game_board_, game_position_points_}} {
@@ -162,10 +162,10 @@ public:
   inline DepthType starting_search_depth() { return starting_search_depth_; }
 
   inline size_t KeySizeBits() {
-    return 8 * sizeof(typename ConcreteBoardStateSummarizer::ZobristKey_t);
+    return 8 * sizeof(typename ConcreteBoardStateCoordinator::ZobristKey_t);
   }
 
-  const ConcreteBoardStateSummarizer &hash_calculator() const {
+  const ConcreteBoardStateCoordinator &hash_calculator() const {
     return hash_calculator_;
   }
 
@@ -178,7 +178,7 @@ public:
 private:
   PieceColor evaluating_player_;
   ConcretePieceValueProvider game_position_points_;
-  ConcreteBoardStateSummarizer hash_calculator_;
+  ConcreteBoardStateCoordinator hash_calculator_;
   ConcreteSpaceInfoProvider &game_board_;
   MoveCountType num_move_selections_;
   DepthType starting_search_depth_;
@@ -188,7 +188,7 @@ private:
 
   void initialize_hash_calculator() {
     game_board_.AttachMoveCallback(std::bind(
-        &ConcreteBoardStateSummarizer::UpdateBoardState,
+        &ConcreteBoardStateCoordinator::UpdateBoardState,
         &hash_calculator_,
         std::placeholders::_1
     ));

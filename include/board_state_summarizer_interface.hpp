@@ -1,5 +1,5 @@
 //! @file board_state_summarizer_interface.hpp
-//! Definition of BoardStateSummarizer
+//! Definition of BoardStateCoordinator
 
 #pragma once
 
@@ -12,24 +12,24 @@ using namespace gameboard;
 //! board state; and storing and retreiving data from completed calculations of scores
 //! associated with specific board states (concrete example =
 //! boardstate::SingleZobristCoordinator).
-template <typename ConcreteBoardStateSummarizer, typename KeyType>
-class BoardStateSummarizer {
+template <typename ConcreteBoardStateCoordinator, typename KeyType>
+class BoardStateCoordinator {
 public:
   typedef KeyType ZobristKey_t;
   void FullBoardStateCalc(const BoardMap_t &board_map) {
-    static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementFullBoardStateCalc(
+    static_cast<ConcreteBoardStateCoordinator *>(this)->ImplementFullBoardStateCalc(
         board_map
     );
   }
 
   void UpdateBoardState(const ExecutedMove &move) {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementUpdateBoardState(
+    return static_cast<ConcreteBoardStateCoordinator *>(this)->ImplementUpdateBoardState(
         move
     );
   }
 
   ZobristKey_t GetState() {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetState();
+    return static_cast<ConcreteBoardStateCoordinator *>(this)->ImplementGetState();
   }
 
   void RecordTrData(
@@ -38,7 +38,7 @@ public:
       moveselection::EqualScoreMoves &similar_moves,
       MoveCountType access_index
   ) {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)
+    return static_cast<ConcreteBoardStateCoordinator *>(this)
         ->ImplementRecordTrData(search_depth, result_type, similar_moves, access_index);
   }
 
@@ -46,18 +46,18 @@ public:
       DepthType search_depth,
       MoveCountType access_index
   ) {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetTrData(
+    return static_cast<ConcreteBoardStateCoordinator *>(this)->ImplementGetTrData(
         search_depth,
         access_index
     );
   }
 
   size_t GetTrTableSize() {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementGetTrTableSize();
+    return static_cast<ConcreteBoardStateCoordinator *>(this)->ImplementGetTrTableSize();
   }
 
   void UpdateMoveCounter() {
-    return static_cast<ConcreteBoardStateSummarizer *>(this)->ImplementUpdateMoveCounter(
+    return static_cast<ConcreteBoardStateCoordinator *>(this)->ImplementUpdateMoveCounter(
     );
   }
 };
