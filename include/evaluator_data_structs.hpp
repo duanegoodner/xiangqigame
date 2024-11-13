@@ -75,7 +75,7 @@ private:
 };
 
 //! Container for storing a moveselection::MinimaxCalcResult retrieved by a call to
-//! boardstate::SingleZobristSummarizer.ImplementGetTrData.
+//! boardstate::SingleZobristCoordinator.ImplementGetTrData.
 class TranspositionTableSearchResult {
 public:
   MoveCollection moves() { return minimax_calc_result_.moves(); }

@@ -4,7 +4,7 @@
 #include <string>
 #include <zobrist.hpp>
 
-class ZobristSummarizerTest : public ::testing::Test {
+class ZobristCoordinatorTest : public ::testing::Test {
 protected:
   BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
 
@@ -13,32 +13,32 @@ protected:
   boardstate::ZobristComponent<__uint128_t, 1> zobrist_component_128_1{};
 };
 
-TEST_F(ZobristSummarizerTest, DefaultInit) {
-  boardstate::ZobristSummarizer<uint32_t, 1> zobrist_tracker_032_1{};
-  boardstate::ZobristSummarizer<uint64_t, 1> zobrist_tracker_064_1{};
-  boardstate::ZobristSummarizer<__uint128_t, 1> zobrist_tracker_128_1{};
+TEST_F(ZobristCoordinatorTest, DefaultInit) {
+  boardstate::ZobristCoordinator<uint32_t, 1> zobrist_tracker_032_1{};
+  boardstate::ZobristCoordinator<uint64_t, 1> zobrist_tracker_064_1{};
+  boardstate::ZobristCoordinator<__uint128_t, 1> zobrist_tracker_128_1{};
 }
 
-TEST_F(ZobristSummarizerTest, InitWithExistingComponent) {
-  boardstate::ZobristSummarizer<uint64_t, 1> zobrist_tracker_064_1{
+TEST_F(ZobristCoordinatorTest, InitWithExistingComponent) {
+  boardstate::ZobristCoordinator<uint64_t, 1> zobrist_tracker_064_1{
       zobrist_component_064_1
   };
-  boardstate::ZobristSummarizer<uint64_t, 0> zobrist_tracker_064_0{zobrist_tracker_064_0
+  boardstate::ZobristCoordinator<uint64_t, 0> zobrist_tracker_064_0{zobrist_tracker_064_0
   };
-  boardstate::ZobristSummarizer<__uint128_t, 1> zobrist_tracker_128_1{
+  boardstate::ZobristCoordinator<__uint128_t, 1> zobrist_tracker_128_1{
       zobrist_component_128_1
   };
 }
 
-TEST_F(ZobristSummarizerTest, InitFromSeed) {
-  boardstate::ZobristSummarizer<uint64_t, 1> zobrist_tracker_064_1{20241031};
-  boardstate::ZobristSummarizer<uint64_t, 0> zobrist_component_064_0{20241030};
-  boardstate::ZobristSummarizer<__uint128_t, 1> zobrist_tracker_128_1{20241029};
+TEST_F(ZobristCoordinatorTest, InitFromSeed) {
+  boardstate::ZobristCoordinator<uint64_t, 1> zobrist_tracker_064_1{20241031};
+  boardstate::ZobristCoordinator<uint64_t, 0> zobrist_component_064_0{20241030};
+  boardstate::ZobristCoordinator<__uint128_t, 1> zobrist_tracker_128_1{20241029};
 }
 
-TEST_F(ZobristSummarizerTest, ExecuteAndUndoMove64) {
+TEST_F(ZobristCoordinatorTest, ExecuteAndUndoMove64) {
 
-  boardstate::ZobristSummarizer<uint64_t, 1> zobrist_tracker_064_1{};
+  boardstate::ZobristCoordinator<uint64_t, 1> zobrist_tracker_064_1{};
 
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};
@@ -58,9 +58,9 @@ TEST_F(ZobristSummarizerTest, ExecuteAndUndoMove64) {
   EXPECT_EQ(initial_state, final_state);
 }
 
-TEST_F(ZobristSummarizerTest, RecordAndReadData) {
+TEST_F(ZobristCoordinatorTest, RecordAndReadData) {
 
-  boardstate::ZobristSummarizer<uint64_t, 1> zobrist_tracker_064_1{};
+  boardstate::ZobristCoordinator<uint64_t, 1> zobrist_tracker_064_1{};
 
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};

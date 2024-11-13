@@ -271,7 +271,7 @@ public:
 //! Stores and manages key-value pairs consisting of a board_state (from a
 //! boardstate::ZobristComponent) and results of Minimax calculations performed by
 //! boardstate::MinimaxMoveEvaluator. Provides read/write access to
-//! moveselection::MinimaxMoveEvaluator via a boardstate::ZobristSummarizer.
+//! moveselection::MinimaxMoveEvaluator via a boardstate::ZobristCoordinator.
 template <typename KeyType, size_t NumConfKeys>
 class TranspositionTable {
 private:
@@ -397,25 +397,25 @@ private:
 //! encountered board state, and the ability to read/write board_state-MinimaxResult
 //! pairs in a boardstate::TranspositionTable.
 template <typename KeyType, size_t NumConfKeys>
-class ZobristSummarizer
-    : public BoardStateSummarizer<ZobristSummarizer<KeyType, NumConfKeys>, KeyType> {
+class ZobristCoordinator
+    : public BoardStateSummarizer<ZobristCoordinator<KeyType, NumConfKeys>, KeyType> {
 public:
-  explicit ZobristSummarizer(ZobristComponent<KeyType, NumConfKeys> zobrist_component)
+  explicit ZobristCoordinator(ZobristComponent<KeyType, NumConfKeys> zobrist_component)
       : zobrist_component_{std::move(zobrist_component)}
       , transposition_table_{} {}
 
-  explicit ZobristSummarizer(
+  explicit ZobristCoordinator(
       uint32_t primary_seed,
       std::array<uint32_t, NumConfKeys> confirmation_seeds
   )
-      : ZobristSummarizer(
+      : ZobristCoordinator(
             ZobristComponent<KeyType, NumConfKeys>{primary_seed, confirmation_seeds}
         ) {}
 
-  explicit ZobristSummarizer(uint32_t prng_seed)
-      : ZobristSummarizer(ZobristComponent<KeyType, NumConfKeys>{prng_seed}) {}
+  explicit ZobristCoordinator(uint32_t prng_seed)
+      : ZobristCoordinator(ZobristComponent<KeyType, NumConfKeys>{prng_seed}) {}
 
-  ZobristSummarizer()
+  ZobristCoordinator()
       : zobrist_component_{}
       , transposition_table_{} {}
 

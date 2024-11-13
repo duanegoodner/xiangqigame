@@ -11,7 +11,7 @@ using namespace gameboard;
 //! CRTP Interface with methods to calculate / read / update hash values representing a
 //! board state; and storing and retreiving data from completed calculations of scores
 //! associated with specific board states (concrete example =
-//! boardstate::SingleZobristSummarizer).
+//! boardstate::SingleZobristCoordinator).
 template <typename ConcreteBoardStateSummarizer, typename KeyType>
 class BoardStateSummarizer {
 public:
