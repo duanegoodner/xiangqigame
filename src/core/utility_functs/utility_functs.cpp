@@ -5,15 +5,6 @@
 #include <iostream>
 #include <string>
 #include <utility_functs.hpp>
-#include <nlohmann/json.hpp>
-#include <nlohmann/json-schema.hpp>
-
-
-// using namespace std;
-// using nloh_json = nlohmann::json;
-// using nlohmann::json_schema::json_validator;
-
-
 
 const std::string utility_functs::get_data_file_abs_path(const std::string data_file) {
   const std::string abs_path = string(DATA_DIR) + "/" + data_file;

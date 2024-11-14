@@ -9,7 +9,4 @@ target_link_libraries(
     piece_points_bpo
 )
 
-target_include_directories(
-    piece_position_points PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/move_evaluators)
 

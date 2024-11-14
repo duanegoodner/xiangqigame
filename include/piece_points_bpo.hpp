@@ -3,8 +3,8 @@
 
 #pragma once
 
-// #include <common.hpp>
 #include <json_utility_interface.hpp>
+#include <memory>
 #include <json_utility_nlohmann.hpp>
 #include <piece_points_data_structs.hpp>
 #include <string>

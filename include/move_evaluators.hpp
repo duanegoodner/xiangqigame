@@ -128,6 +128,16 @@ class MinimaxMoveEvaluator : public MoveEvaluator<MinimaxMoveEvaluator<
                                  ConcreteBoardStateCoordinator,
                                  ConcretePieceValueProvider>> {
 
+  PieceColor evaluating_player_;
+  ConcretePieceValueProvider game_position_points_;
+  ConcreteBoardStateCoordinator hash_calculator_;
+  ConcreteSpaceInfoProvider &game_board_;
+  MoveCountType num_move_selections_;
+  DepthType starting_search_depth_;
+  moveselection::SearchSummaries search_summaries_;
+  PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
+      move_sorter_;
+
 public:
   explicit MinimaxMoveEvaluator(
       PieceColor evaluating_player,
@@ -176,16 +186,6 @@ public:
   }
 
 private:
-  PieceColor evaluating_player_;
-  ConcretePieceValueProvider game_position_points_;
-  ConcreteBoardStateCoordinator hash_calculator_;
-  ConcreteSpaceInfoProvider &game_board_;
-  MoveCountType num_move_selections_;
-  DepthType starting_search_depth_;
-  moveselection::SearchSummaries search_summaries_;
-  PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
-      move_sorter_;
-
   void initialize_hash_calculator() {
     game_board_.AttachMoveCallback(std::bind(
         &ConcreteBoardStateCoordinator::UpdateBoardState,

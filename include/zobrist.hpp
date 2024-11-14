@@ -355,7 +355,6 @@ class TranspositionTablePruner {
   TranspositionTableGuard &tr_table_guard_;
   std::thread pruning_thread_;
   std::atomic<bool> keep_running_;
-  // MoveCountType move_count_;
 
 public:
   TranspositionTablePruner(const TranspositionTablePruner &) = delete;
@@ -368,9 +367,7 @@ public:
       : tr_table_{tr_table}
       , tr_table_guard_{tr_table_guard}
       , pruning_thread_{}
-      , keep_running_{true}
-      // , move_count_{0}
-      {}
+      , keep_running_{true} {}
 
   ~TranspositionTablePruner() {
     if (pruning_thread_.joinable()) {
