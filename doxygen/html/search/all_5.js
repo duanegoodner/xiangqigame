@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data_0',['data',['../classmoveselection_1_1ResultDepthCounts.html#aca9066cf4ae1c57f3b0644931b9f0f1f',1,'moveselection::ResultDepthCounts']]],
-  ['data_5f_1',['data_',['../classmoveselection_1_1ResultDepthCounts.html#a05a1d55c66c927066732315c46119b41',1,'moveselection::ResultDepthCounts::data_()'],['../classboardstate_1_1TranspositionTable.html#a47b6057e1e4a732d19d642493a250a6a',1,'boardstate::TranspositionTable::data_()'],['../classTranspositionTable.html#afda60ed8f01b3967a5db1e6462cc3ebb',1,'TranspositionTable::data_()']]],
+  ['data_5f_1',['data_',['../classmoveselection_1_1ResultDepthCounts.html#a05a1d55c66c927066732315c46119b41',1,'moveselection::ResultDepthCounts::data_()'],['../classboardstate_1_1TranspositionTable.html#a47b6057e1e4a732d19d642493a250a6a',1,'boardstate::TranspositionTable::data_()']]],
   ['data_5fcolumn_5fcolors_2',['data_column_colors',['../classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#ab53b83ac221c0c2710233b939056d0fa',1,'xiangqipy::game_summary_plotters::SearchResultsByTypePlotter']]],
   ['data_5fcolumns_3',['data_columns',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a18a24e7e087764a41f6bb4234ee7b66a',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
   ['dec_5fhook_4',['dec_hook',['../namespacexiangqipy_1_1game__summary__io.html#a7d882e81ad5f3acd948dbc2d1f862fae',1,'xiangqipy::game_summary_io']]],
@@ -18,7 +18,5 @@ var searchData=
   ['display_5fprev_5fmove_15',['display_prev_move',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#afb565e06f20756972d59b70cac385b5a',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],
   ['display_5fwhose_5fturn_16',['display_whose_turn',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a90a2dbe978c48812d23caacf83a6880e',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],
   ['display_5fwinner_17',['display_winner',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a3c30270fe4f8b6f58c756cab3d7b7f9c',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],
-  ['displaykeepexistingvaluemessage_18',['DisplayKeepExistingValueMessage',['../classMinimaxEvaluator.html#ad0d8ff1ff7d78202095c21d99d60d8aa',1,'MinimaxEvaluator']]],
-  ['displaywritenewvaluemessage_19',['DisplayWriteNewValueMessage',['../classMinimaxEvaluator.html#a4fb149b60e6be9be44385dc08d785335',1,'MinimaxEvaluator']]],
-  ['draw_20',['DRAW',['../classxiangqipy_1_1enums_1_1GameState.html#acff422cac327786cbad072f056b0b9d7',1,'xiangqipy::enums::GameState']]]
+  ['draw_18',['DRAW',['../classxiangqipy_1_1enums_1_1GameState.html#acff422cac327786cbad072f056b0b9d7',1,'xiangqipy::enums::GameState']]]
 ];

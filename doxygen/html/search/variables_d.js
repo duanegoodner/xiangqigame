@@ -21,9 +21,8 @@ var searchData=
   ['moves_5fsince_5flast_5fcapture_18',['moves_since_last_capture',['../structgameboard_1_1ExecutedMove.html#ad692495d0c5ef30a83bab6a9eaef3b2c',1,'gameboard::ExecutedMove']]],
   ['moves_5fsince_5flast_5fcapture_5f_19',['moves_since_last_capture_',['../classgameboard_1_1GameBoard.html#aa5fed8245a5001b76c36f2875e796e4c',1,'gameboard::GameBoard']]],
   ['moving_5fpiece_20',['moving_piece',['../structgameboard_1_1ExecutedMove.html#a44ceb980865ffab0c3bdef27feb1ef61',1,'gameboard::ExecutedMove::moving_piece()'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1ExecutedMove.html#a9fee39b361c0396c5a071562849c53da',1,'xiangqipy.core_dataclass_mirrors.ExecutedMove.moving_piece()']]],
-  ['mutex_5f_21',['mutex_',['../classChild.html#a5549058987e4cb9407ff3e49af29cb06',1,'Child::mutex_()'],['../classZobristManager.html#a4a47bbf70fd6d0466eadd6a35501d8f3',1,'ZobristManager::mutex_()'],['../classTranspositionTableGuard.html#ae94403f0aa8a5e4bfe517686a10043c3',1,'TranspositionTableGuard::mutex_()']]],
-  ['my_5fgame_5fsummary_22',['my_game_summary',['../namespacexiangqipy_1_1game__summary__plot__manager.html#a5a794464764027de0a775be99b7c1a0f',1,'xiangqipy::game_summary_plot_manager']]],
-  ['my_5fgame_5fsummary_5fpath_23',['my_game_summary_path',['../namespacexiangqipy_1_1game__summary__plot__manager.html#a38ce69a5697fc2991aee77c6af5c3411',1,'xiangqipy::game_summary_plot_manager']]],
-  ['my_5fint_24',['my_int',['../namespacexiangqipy_1_1game__summary__io.html#a94c56e55ffaca28b12c61d6225d252c0',1,'xiangqipy::game_summary_io']]],
-  ['my_5fpiece_5fcolor_25',['my_piece_color',['../namespacexiangqipy_1_1game__summary__io.html#a8233bc364f0bbebe500a8c3aeaa3db97',1,'xiangqipy::game_summary_io']]]
+  ['my_5fgame_5fsummary_21',['my_game_summary',['../namespacexiangqipy_1_1game__summary__plot__manager.html#a5a794464764027de0a775be99b7c1a0f',1,'xiangqipy::game_summary_plot_manager']]],
+  ['my_5fgame_5fsummary_5fpath_22',['my_game_summary_path',['../namespacexiangqipy_1_1game__summary__plot__manager.html#a38ce69a5697fc2991aee77c6af5c3411',1,'xiangqipy::game_summary_plot_manager']]],
+  ['my_5fint_23',['my_int',['../namespacexiangqipy_1_1game__summary__io.html#a94c56e55ffaca28b12c61d6225d252c0',1,'xiangqipy::game_summary_io']]],
+  ['my_5fpiece_5fcolor_24',['my_piece_color',['../namespacexiangqipy_1_1game__summary__io.html#a8233bc364f0bbebe500a8c3aeaa3db97',1,'xiangqipy::game_summary_io']]]
 ];

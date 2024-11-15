@@ -9,10 +9,5 @@ var searchData=
   ['game_5fsummary_2epy_6',['game_summary.py',['../game__summary_8py.html',1,'']]],
   ['game_5fsummary_5fio_2epy_7',['game_summary_io.py',['../game__summary__io_8py.html',1,'']]],
   ['game_5fsummary_5fplot_5fmanager_2epy_8',['game_summary_plot_manager.py',['../game__summary__plot__manager_8py.html',1,'']]],
-  ['game_5fsummary_5fplotters_2epy_9',['game_summary_plotters.py',['../game__summary__plotters_8py.html',1,'']]],
-  ['gist_5fclasses_5fshare_5fmutex_2ecpp_10',['gist_classes_share_mutex.cpp',['../gist__classes__share__mutex_8cpp.html',1,'']]],
-  ['gist_5fpurge_5fmutex_5fexecute_5faround_2ecpp_11',['gist_purge_mutex_execute_around.cpp',['../gist__purge__mutex__execute__around_8cpp.html',1,'']]],
-  ['gist_5fsimple_5fexecute_5faround_2ecpp_12',['gist_simple_execute_around.cpp',['../gist__simple__execute__around_8cpp.html',1,'']]],
-  ['gist_5fsimpler_5fmutex_2ecpp_13',['gist_simpler_mutex.cpp',['../gist__simpler__mutex_8cpp.html',1,'']]],
-  ['gist_5ftr_5ftable_5fpurging_2ecpp_14',['gist_tr_table_purging.cpp',['../gist__tr__table__purging_8cpp.html',1,'']]]
+  ['game_5fsummary_5fplotters_2epy_9',['game_summary_plotters.py',['../game__summary__plotters_8py.html',1,'']]]
 ];

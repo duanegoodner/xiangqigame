@@ -11,7 +11,5 @@ var searchData=
   ['display_5fplayer_5finfo_8',['display_player_info',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#afb98c60e2f8dab93be7507da5d058132',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],
   ['display_5fprev_5fmove_9',['display_prev_move',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#afb565e06f20756972d59b70cac385b5a',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],
   ['display_5fwhose_5fturn_10',['display_whose_turn',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a90a2dbe978c48812d23caacf83a6880e',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],
-  ['display_5fwinner_11',['display_winner',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a3c30270fe4f8b6f58c756cab3d7b7f9c',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],
-  ['displaykeepexistingvaluemessage_12',['DisplayKeepExistingValueMessage',['../classMinimaxEvaluator.html#ad0d8ff1ff7d78202095c21d99d60d8aa',1,'MinimaxEvaluator']]],
-  ['displaywritenewvaluemessage_13',['DisplayWriteNewValueMessage',['../classMinimaxEvaluator.html#a4fb149b60e6be9be44385dc08d785335',1,'MinimaxEvaluator']]]
+  ['display_5fwinner_11',['display_winner',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a3c30270fe4f8b6f58c756cab3d7b7f9c',1,'xiangqipy::terminal_output::TerminalStatusReporter']]]
 ];

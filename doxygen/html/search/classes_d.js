@@ -1,13 +1,10 @@
 var searchData=
 [
-  ['scoredmove_0',['ScoredMove',['../structmoveselection_1_1ScoredMove.html',1,'moveselection']]],
-  ['scriptedplayer_1',['ScriptedPlayer',['../classxiangqipy_1_1players_1_1ScriptedPlayer.html',1,'xiangqipy::players']]],
-  ['scriptedplayerwithretries_2',['ScriptedPlayerWithRetries',['../classxiangqipy_1_1players_1_1ScriptedPlayerWithRetries.html',1,'xiangqipy::players']]],
-  ['searchresultsbytypeplotter_3',['SearchResultsByTypePlotter',['../classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html',1,'xiangqipy::game_summary_plotters']]],
-  ['searchsummaries_4',['SearchSummaries',['../structmoveselection_1_1SearchSummaries.html',1,'moveselection::SearchSummaries'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummaries.html',1,'xiangqipy.core_dataclass_mirrors.SearchSummaries']]],
-  ['searchsummary_5',['SearchSummary',['../classmoveselection_1_1SearchSummary.html',1,'moveselection::SearchSummary'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html',1,'xiangqipy.core_dataclass_mirrors.SearchSummary']]],
-  ['searchtimeplotter_6',['SearchTimePlotter',['../classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html',1,'xiangqipy::game_summary_plotters']]],
-  ['singleplayerbuilder_7',['SinglePlayerBuilder',['../classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html',1,'xiangqipy::player_builder']]],
-  ['spaceinfoprovider_8',['SpaceInfoProvider',['../classSpaceInfoProvider.html',1,'']]],
-  ['spaceinfoprovider_3c_20gameboard_20_3e_9',['SpaceInfoProvider&lt; GameBoard &gt;',['../classSpaceInfoProvider.html',1,'']]]
+  ['terminalstatusreporter_0',['TerminalStatusReporter',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html',1,'xiangqipy::terminal_output']]],
+  ['transpositiontable_1',['TranspositionTable',['../classboardstate_1_1TranspositionTable.html',1,'boardstate']]],
+  ['transpositiontableentry_2',['TranspositionTableEntry',['../classboardstate_1_1TranspositionTableEntry.html',1,'boardstate']]],
+  ['transpositiontableguard_3',['TranspositionTableGuard',['../classboardstate_1_1TranspositionTableGuard.html',1,'boardstate']]],
+  ['transpositiontablepruner_4',['TranspositionTablePruner',['../classboardstate_1_1TranspositionTablePruner.html',1,'boardstate']]],
+  ['transpositiontablesearchresult_5',['TranspositionTableSearchResult',['../classmoveselection_1_1TranspositionTableSearchResult.html',1,'moveselection']]],
+  ['transpositiontablesizesatevents_6',['TranspositionTableSizesAtEvents',['../classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents.html',1,'xiangqipy::core_dataclass_mirrors']]]
 ];

@@ -12,7 +12,7 @@ var searchData=
   ['kcan_9',['kCan',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328',1,'gameboard']]],
   ['kcha_10',['kCha',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266',1,'gameboard']]],
   ['kdraw_11',['kDraw',['../namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da39391e47fa69eaa70726091d4f4e2298',1,'moveselection']]],
-  ['keep_5frunning_5f_12',['keep_running_',['../classPlayer.html#a1ef39e71e7b5d021846a96b4e8cda246',1,'Player::keep_running_()'],['../classTranspositionTablePruner.html#abd432f7f7c862ae9493adccc8c411798',1,'TranspositionTablePruner::keep_running_()'],['../classboardstate_1_1TranspositionTablePruner.html#abb464717cb55a3a0942df6471c9f0bf1',1,'boardstate::TranspositionTablePruner::keep_running_()']]],
+  ['keep_5frunning_5f_12',['keep_running_',['../classboardstate_1_1TranspositionTablePruner.html#abb464717cb55a3a0942df6471c9f0bf1',1,'boardstate::TranspositionTablePruner']]],
   ['kele_13',['kEle',['../namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a12e20fe9e463f0ac39de69fbe1d93283',1,'gameboard']]],
   ['kevaluatorloses_14',['kEvaluatorLoses',['../namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1dacf13d4e4d1a33bcd701f870b4d5103f3',1,'moveselection']]],
   ['kevaluatorwins_15',['kEvaluatorWins',['../namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da0fe64a6e73a77fefbfe91370bb0652d5',1,'moveselection']]],
