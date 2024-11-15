@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['finalizenoderesult_0',['FinalizeNodeResult',['../classmoveselection_1_1MinimaxMoveEvaluator.html#adaebb4b2b11e625c7da86327fb721999',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['finalizenoderesult_0',['FinalizeNodeResult',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a58255219536225ece2a54cf24e0f50b6',1,'moveselection::MinimaxMoveEvaluator']]],
   ['find_5fby_5fmember_1',['find_by_member',['../namespaceutility__functs.html#ae16b7735beff90e61d39f48456d9a067',1,'utility_functs']]],
   ['first_5fsearch_5fstats_2',['first_search_stats',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a5dce0c4b56c0d7b46eecbc622d8d5ff5',1,'xiangqipy::player_summary::PlayerSummary']]],
   ['first_5fsearches_5fby_5ftype_3',['first_searches_by_type',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a84715e2b24d1eb7fcec28c15bfa89f1e',1,'xiangqipy::player_summary::PlayerSummary']]],
@@ -16,7 +16,7 @@ var searchData=
   ['from_5fcore_5fmove_5fcollection_13',['from_core_move_collection',['../classxiangqipy_1_1core__dataclass__mirrors_1_1MoveCollection.html#a0ef37978768726f9dfdc50920acf71a8',1,'xiangqipy::core_dataclass_mirrors::MoveCollection']]],
   ['from_5fcore_5fsearch_5fsummaries_14',['from_core_search_summaries',['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummaries.html#aa0dcab625bc8c39b252d44ca5a0ada04',1,'xiangqipy::core_dataclass_mirrors::SearchSummaries']]],
   ['from_5fcore_5fsearch_5fsummary_15',['from_core_search_summary',['../classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#aeb423146d769c6b1332628919e56c7d4',1,'xiangqipy::core_dataclass_mirrors::SearchSummary']]],
-  ['fullboardstatecalc_16',['FullBoardStateCalc',['../classBoardStateSummarizer.html#a48261b48e067d1f6a671ac20f007e839',1,'BoardStateSummarizer::FullBoardStateCalc()'],['../classboardstate_1_1ZobristCalculator.html#a530aa483c496214d98b4fa8ca996164b',1,'boardstate::ZobristCalculator::FullBoardStateCalc()'],['../classboardstate_1_1ZobristComponent.html#ac504cf1f5d34e1631ab72cb8922c4e3d',1,'boardstate::ZobristComponent::FullBoardStateCalc(const BoardMap_t &amp;board_map)']]],
+  ['fullboardstatecalc_16',['FullBoardStateCalc',['../classBoardStateCoordinator.html#a0c3d4978e9370e5f12021751edb2cb9e',1,'BoardStateCoordinator::FullBoardStateCalc()'],['../classboardstate_1_1ZobristCalculator.html#a530aa483c496214d98b4fa8ca996164b',1,'boardstate::ZobristCalculator::FullBoardStateCalc()'],['../classboardstate_1_1ZobristComponent.html#ac504cf1f5d34e1631ab72cb8922c4e3d',1,'boardstate::ZobristComponent::FullBoardStateCalc(const BoardMap_t &amp;board_map)']]],
   ['fullboardstatecalcinternal_17',['FullBoardStateCalcInternal',['../classboardstate_1_1ZobristComponent.html#a9000ae06adb7cb38267a6efb9055893c',1,'boardstate::ZobristComponent']]],
   ['fullboardstatecalinternal_18',['FullBoardStateCalInternal',['../classboardstate_1_1ZobristCalculator.html#a7f5b657884de3c867a64eb10ed145d70',1,'boardstate::ZobristCalculator']]],
   ['fwddirection_19',['FwdDirection',['../classgameboard_1_1PieceMoves.html#a863d33ef5eeeb1be6a4d2e10013bdff3',1,'gameboard::PieceMoves']]]

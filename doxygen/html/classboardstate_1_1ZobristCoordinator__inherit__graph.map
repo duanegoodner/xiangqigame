@@ -1,0 +1,5 @@
+<map id="boardstate::ZobristCoordinator&lt; KeyType, NumConfKeys &gt;" name="boardstate::ZobristCoordinator&lt; KeyType, NumConfKeys &gt;">
+<area shape="rect" id="node1" title="Implements the BoardStateCoordinator interface, providing a moveselection::MinimaxMoveEvaluator with ..." alt="" coords="5,551,257,877"/>
+<area shape="rect" id="node2" href="$classBoardStateCoordinator.html" title=" " alt="" coords="36,292,227,501"/>
+<area shape="rect" id="node3" href="$classBoardStateCoordinator.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="8,5,255,200"/>
+</map>

@@ -6,11 +6,11 @@
 
 Relationships among classes and the organization of classes into namespaces can be viewed in the [UML diagram linked here](../../plantuml/xiangqigame_core.svg). Key things to note in this diagram are:
 - There five non-anonymous namespaces: gameboard, boardstate, piecepoints, moveslection, and jsonio
-- There are five anonymously namespaced classes: SpaceInfoProvider, PieceValueProvider, MoveEvaluator, JsonUtility, and BoardStateSummarizer.
+- There are five anonymously namespaced classes: SpaceInfoProvider, PieceValueProvider, MoveEvaluator, JsonUtility, and BoardStateCoordinator.
 - Each of the anonymously namespaced classes is a CRTP interface and is implemented by one or two concrete classes from exactly one of the 5 namespaces.
 - The concrete-to-interface class pairings are:
     - gameboard::GameBoard implements SpaceInfoProvider.
-    - boardstate::HashCalculator implements BoardStateSummarizer.
+    - boardstate::HashCalculator implements BoardStateCoordinator.
     - piecepoints::PiecePositionPoints implements PieceValueProvider.
     - moveselection::MinimaxMoveEvaluator and moveselection::RandomMoveEvaluator each implement MoveEvaluator.
     - jsonio::NlohmannJsonUtility implements JsonUtility.
@@ -42,10 +42,10 @@ Within the gameboard namespace, all [standard rules of Xiangi](https://en.wikipe
 
 
 
-### hashcalculator + BoardStateSummarizer
+### hashcalculator + BoardStateCoordinator
 Holds an integer that represents the current board state, and updates the value of this board state integer whenever the gameboard::GamePiece configuration of a gameboard::GameBoard changes. Provides a MoveEvaluator with fast access to storage and retrieval of calculation results in a data structrue that usese board state integer values as keys.
 
-hashcalculator::HashCalculator, our concrete BoardStateSummarizer, supports using either a 64-bit or 128-bit integer for its hashcalculator::HashCalculator.board_state_. The board state value is updated using a hashcalculator::ZobristKeys object combined with information from a gameboard::ExecutedMove. 
+hashcalculator::HashCalculator, our concrete BoardStateCoordinator, supports using either a 64-bit or 128-bit integer for its hashcalculator::HashCalculator.board_state_. The board state value is updated using a hashcalculator::ZobristKeys object combined with information from a gameboard::ExecutedMove. 
 
 
 

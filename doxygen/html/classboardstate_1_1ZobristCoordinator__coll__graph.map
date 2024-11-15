@@ -1,0 +1,10 @@
+<map id="boardstate::ZobristCoordinator&lt; KeyType, NumConfKeys &gt;" name="boardstate::ZobristCoordinator&lt; KeyType, NumConfKeys &gt;">
+<area shape="rect" id="node1" title="Implements the BoardStateCoordinator interface, providing a moveselection::MinimaxMoveEvaluator with ..." alt="" coords="467,564,719,847"/>
+<area shape="rect" id="node2" href="$classBoardStateCoordinator.html" title=" " alt="" coords="33,292,224,501"/>
+<area shape="rect" id="node3" href="$classBoardStateCoordinator.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="5,5,252,200"/>
+<area shape="rect" id="node4" title=" " alt="" coords="249,351,465,443"/>
+<area shape="rect" id="node5" title=" " alt="" coords="489,351,696,443"/>
+<area shape="rect" id="node6" href="$classboardstate_1_1TranspositionTableGuard.html" title="Contains std::mutex that other classes lock before accessing TranspositionTable." alt="" coords="720,329,927,465"/>
+<area shape="rect" id="node7" title=" " alt="" coords="791,64,855,141"/>
+<area shape="rect" id="node8" title=" " alt="" coords="951,351,1157,443"/>
+</map>

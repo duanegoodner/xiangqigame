@@ -12,7 +12,7 @@ var searchData=
   ['player_5fname_5f_9',['player_name_',['../classTranspositionTable.html#a75a30755d8d63744a9af64fe3837e96b',1,'TranspositionTable::player_name_()'],['../classTranspositionTablePruner.html#a66172ef84e413158ccf7ee5997c8e258',1,'TranspositionTablePruner::player_name_()'],['../classZobristManager.html#aea3d2da60a5033c540cc2e5c88d39ac1',1,'ZobristManager::player_name_()'],['../classMinimaxMoveEvaluator.html#aa74a47d7c736d29f13436a055ec9a7e5',1,'MinimaxMoveEvaluator::player_name_()']]],
   ['player_5fsummaries_10',['player_summaries',['../classxiangqipy_1_1game__summary_1_1GameSummary.html#a8fb83bf77bbe727af320a1929f869ca6',1,'xiangqipy::game_summary::GameSummary']]],
   ['player_5ftext_5flabels_11',['player_text_labels',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#abc287552e1c25477a3f2fcc65a589d5d',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
-  ['player_5ftype_12',['player_type',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a706b1ba5cede528a00dc0634bed0e3b3',1,'xiangqipy.player_summary.PlayerSummary.player_type()'],['../classxiangqipy_1_1command__input_1_1PlayerInput.html#af6b312f681c400ce76a999c05a2ababc',1,'xiangqipy.command_input.PlayerInput.player_type()']]],
+  ['player_5ftype_12',['player_type',['../classxiangqipy_1_1command__input_1_1PlayerInput.html#af6b312f681c400ce76a999c05a2ababc',1,'xiangqipy.command_input.PlayerInput.player_type()'],['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a706b1ba5cede528a00dc0634bed0e3b3',1,'xiangqipy.player_summary.PlayerSummary.player_type()']]],
   ['plot_5fmanager_13',['plot_manager',['../namespacexiangqipy_1_1game__summary__plot__manager.html#a0e922c6de3d44c1098d92c43e87e06e1',1,'xiangqipy::game_summary_plot_manager']]],
   ['points_5farray_14',['points_array',['../structpiecepoints_1_1PiecePositionPoints.html#a1562468626d164564d9631c657266b54',1,'piecepoints::PiecePositionPoints']]],
   ['points_5fspec_5ficga_5f2004_5fpath_15',['points_spec_ICGA_2004_path',['../my__schemas_8cpp.html#a017fd02b4332c3774dc64053599b7943',1,'my_schemas.cpp']]],
@@ -22,6 +22,6 @@ var searchData=
   ['primary_5fcalculator_5f_19',['primary_calculator_',['../classboardstate_1_1ZobristComponent.html#af69fc3f967d6e844cc36ffac5e2bca87',1,'boardstate::ZobristComponent']]],
   ['prng_5f_20',['prng_',['../classboardstate_1_1PseudoRandomKeyGenerator.html#ae30a2b91d59161a046c03f09ef30f75c',1,'boardstate::PseudoRandomKeyGenerator']]],
   ['prng_5fseed_5f_21',['prng_seed_',['../classboardstate_1_1ZobristComponent.html#a317cb43b562c0f83aa59cde84f48df3f',1,'boardstate::ZobristComponent']]],
-  ['pruning_5fthread_5f_22',['pruning_thread_',['../classTranspositionTablePruner.html#a71cabd47a5a90872520c1e8c8f4188af',1,'TranspositionTablePruner']]],
+  ['pruning_5fthread_5f_22',['pruning_thread_',['../classboardstate_1_1TranspositionTablePruner.html#a2e8082c3c8e44e06b5ed45e2b6db063b',1,'boardstate::TranspositionTablePruner::pruning_thread_()'],['../classTranspositionTablePruner.html#a71cabd47a5a90872520c1e8c8f4188af',1,'TranspositionTablePruner::pruning_thread_()']]],
   ['purger_5fthread_5f_23',['purger_thread_',['../classPlayer.html#ad40245cb6caa464a037f8b8deb27ceec',1,'Player']]]
 ];

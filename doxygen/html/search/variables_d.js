@@ -16,7 +16,7 @@ var searchData=
   ['move_5fevaluator_5ftype_13',['move_evaluator_type',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aa48f54b0d1d247c430064fad8d10a03a',1,'xiangqipy::player_summary::PlayerSummary']]],
   ['move_5flog_14',['move_log',['../classxiangqipy_1_1game__summary_1_1GameSummary.html#a1e846d2fef6802d7fbf813e56b6c71da',1,'xiangqipy::game_summary::GameSummary']]],
   ['move_5flog_5f_15',['move_log_',['../classgameboard_1_1GameBoard.html#a60fe6e8e76ed864050109524b4c136d5',1,'gameboard::GameBoard']]],
-  ['move_5fsorter_5f_16',['move_sorter_',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a40dfd8798d9c97210506671919adf683',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['move_5fsorter_5f_16',['move_sorter_',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ada31543f2049bdbd05ce7adc3bc75cf3',1,'moveselection::MinimaxMoveEvaluator']]],
   ['moves_17',['moves',['../structgameboard_1_1MoveCollection.html#a93e7b00791f7e132e29bd3827f37c6e0',1,'gameboard::MoveCollection::moves()'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1MoveCollection.html#ab201bd6a882f441adbf0eb09ba6fb2e0',1,'xiangqipy.core_dataclass_mirrors.MoveCollection.moves()']]],
   ['moves_5fsince_5flast_5fcapture_18',['moves_since_last_capture',['../structgameboard_1_1ExecutedMove.html#ad692495d0c5ef30a83bab6a9eaef3b2c',1,'gameboard::ExecutedMove']]],
   ['moves_5fsince_5flast_5fcapture_5f_19',['moves_since_last_capture_',['../classgameboard_1_1GameBoard.html#aa5fed8245a5001b76c36f2875e796e4c',1,'gameboard::GameBoard']]],

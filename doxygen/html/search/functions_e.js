@@ -9,5 +9,6 @@ var searchData=
   ['num_5fnodes_6',['num_nodes',['../classmoveselection_1_1SearchSummary.html#ae3b4fc6c3718843d7edff8322cfade8f',1,'moveselection::SearchSummary']]],
   ['num_5fplayers_5fwith_5fdata_7',['num_players_with_data',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a21e588a0239c288dfd03694110cf954a',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
   ['num_5fplayers_5fwith_5fminimax_5fdata_8',['num_players_with_minimax_data',['../classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a3893e4ce7e54f8deccd943b3457fedcc',1,'xiangqipy::game_summary_plot_manager::GameSummaryPlotManager']]],
-  ['nummovessincelastuseof_9',['NumMovesSinceLastUseOf',['../classboardstate_1_1TranspositionTable.html#a2e497d6cd4be914a8959772859c998d3',1,'boardstate::TranspositionTable']]]
+  ['numidlemovesat_9',['NumIdleMovesAt',['../classboardstate_1_1TranspositionTable.html#ad5acd3ae564168d7cafbc1c552d003ba',1,'boardstate::TranspositionTable']]],
+  ['nummovessincelastuseof_10',['NumMovesSinceLastUseOf',['../classboardstate_1_1TranspositionTable.html#a2e497d6cd4be914a8959772859c998d3',1,'boardstate::TranspositionTable']]]
 ];

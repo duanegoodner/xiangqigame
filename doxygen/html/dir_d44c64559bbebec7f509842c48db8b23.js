@@ -8,6 +8,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "integer_types.hpp", "integer__types_8hpp.html", "integer__types_8hpp" ],
     [ "json_utility_interface.hpp", "json__utility__interface_8hpp.html", "json__utility__interface_8hpp" ],
     [ "json_utility_nlohmann.hpp", "json__utility__nlohmann_8hpp.html", "json__utility__nlohmann_8hpp" ],
+    [ "json_validation.hpp", "json__validation_8hpp.html", "json__validation_8hpp" ],
     [ "key_generator.hpp", "key__generator_8hpp.html", "key__generator_8hpp" ],
     [ "move_calculator.hpp", "move__calculator_8hpp.html", "move__calculator_8hpp" ],
     [ "move_calculator_details.hpp", "move__calculator__details_8hpp.html", "move__calculator__details_8hpp" ],

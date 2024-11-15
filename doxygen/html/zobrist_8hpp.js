@@ -4,5 +4,7 @@ var zobrist_8hpp =
     [ "boardstate::ZobristComponent< KeyType, NumConfKeys >", "classboardstate_1_1ZobristComponent.html", "classboardstate_1_1ZobristComponent" ],
     [ "boardstate::TranspositionTableEntry< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTableEntry.html", "classboardstate_1_1TranspositionTableEntry" ],
     [ "boardstate::TranspositionTable< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTable.html", "classboardstate_1_1TranspositionTable" ],
-    [ "boardstate::ZobristSummarizer< KeyType, NumConfKeys >", "classboardstate_1_1ZobristSummarizer.html", "classboardstate_1_1ZobristSummarizer" ]
+    [ "boardstate::TranspositionTableGuard", "classboardstate_1_1TranspositionTableGuard.html", "classboardstate_1_1TranspositionTableGuard" ],
+    [ "boardstate::TranspositionTablePruner< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTablePruner.html", "classboardstate_1_1TranspositionTablePruner" ],
+    [ "boardstate::ZobristCoordinator< KeyType, NumConfKeys >", "classboardstate_1_1ZobristCoordinator.html", "classboardstate_1_1ZobristCoordinator" ]
 ];

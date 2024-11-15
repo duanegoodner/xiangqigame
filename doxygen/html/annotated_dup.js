@@ -5,9 +5,11 @@ var annotated_dup =
       [ "RandomKeyGenerator", "classboardstate_1_1RandomKeyGenerator.html", "classboardstate_1_1RandomKeyGenerator" ],
       [ "TranspositionTable", "classboardstate_1_1TranspositionTable.html", "classboardstate_1_1TranspositionTable" ],
       [ "TranspositionTableEntry", "classboardstate_1_1TranspositionTableEntry.html", "classboardstate_1_1TranspositionTableEntry" ],
+      [ "TranspositionTableGuard", "classboardstate_1_1TranspositionTableGuard.html", "classboardstate_1_1TranspositionTableGuard" ],
+      [ "TranspositionTablePruner", "classboardstate_1_1TranspositionTablePruner.html", "classboardstate_1_1TranspositionTablePruner" ],
       [ "ZobristCalculator", "classboardstate_1_1ZobristCalculator.html", "classboardstate_1_1ZobristCalculator" ],
       [ "ZobristComponent", "classboardstate_1_1ZobristComponent.html", "classboardstate_1_1ZobristComponent" ],
-      [ "ZobristSummarizer", "classboardstate_1_1ZobristSummarizer.html", "classboardstate_1_1ZobristSummarizer" ]
+      [ "ZobristCoordinator", "classboardstate_1_1ZobristCoordinator.html", "classboardstate_1_1ZobristCoordinator" ]
     ] ],
     [ "gameboard", "namespacegameboard.html", [
       [ "BoardDirection", "structgameboard_1_1BoardDirection.html", "structgameboard_1_1BoardDirection" ],
@@ -118,7 +120,7 @@ var annotated_dup =
         [ "TerminalStatusReporter", "classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html", "classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter" ]
       ] ]
     ] ],
-    [ "BoardStateSummarizer", "classBoardStateSummarizer.html", "classBoardStateSummarizer" ],
+    [ "BoardStateCoordinator", "classBoardStateCoordinator.html", "classBoardStateCoordinator" ],
     [ "Child", "classChild.html", "classChild" ],
     [ "Exception", "classException.html", null ],
     [ "GameManager", "classGameManager.html", "classGameManager" ],

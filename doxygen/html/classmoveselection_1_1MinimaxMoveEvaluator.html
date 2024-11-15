@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt; Class Template Reference</title>
+  <title>Xiangiqgame: moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt; Class Template Reference</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -147,151 +147,154 @@ $(document).ready(function(){initNavTree('classmoveselection_1_1MinimaxMoveEvalu
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classmoveselection_1_1MinimaxMoveEvaluator-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Implements <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a> interface, and selects move::Move using Minimax algorithm; uses <a class="el" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,...">SpaceInfoProvider</a>, <a class="el" href="classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateSummarizer</a>, and <a class="el" href="classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific...">PieceValueProvider</a> interfaces.  
+<p>Implements <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a> interface, and selects move::Move using Minimax algorithm; uses <a class="el" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,...">SpaceInfoProvider</a>, <a class="el" href="classBoardStateCoordinator.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateCoordinator</a>, and <a class="el" href="classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific...">PieceValueProvider</a> interfaces.  
  <a href="classmoveselection_1_1MinimaxMoveEvaluator.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;:</div>
+Inheritance diagram for moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;:</div>
 <div class="dyncontent">
-<div class="center"><img src="classmoveselection_1_1MinimaxMoveEvaluator__inherit__graph.png" border="0" usemap="#amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateSummarizer_00_01ConcretePieceValueProvider_01_4_inherit__map" alt="Inheritance graph"/></div>
-<map name="amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateSummarizer_00_01ConcretePieceValueProvider_01_4_inherit__map" id="amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateSummarizer_00_01ConcretePieceValueProvider_01_4_inherit__map">
-<area shape="rect" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="5,375,284,1024"/>
+<div class="center"><img src="classmoveselection_1_1MinimaxMoveEvaluator__inherit__graph.png" border="0" usemap="#amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateCoordinator_00_01ConcretePieceValueProvider_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateCoordinator_00_01ConcretePieceValueProvider_01_4_inherit__map" id="amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateCoordinator_00_01ConcretePieceValueProvider_01_4_inherit__map">
+<area shape="rect" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="5,375,284,1039"/>
 <area shape="rect" href="classMoveEvaluator.html" title=" " alt="" coords="5,204,284,325"/>
 <area shape="rect" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini..." alt="" coords="30,5,259,97"/>
 </map>
 </div>
 <div class="dynheader">
-Collaboration diagram for moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;:</div>
+Collaboration diagram for moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;:</div>
 <div class="dyncontent">
-<div class="center"><img src="classmoveselection_1_1MinimaxMoveEvaluator__coll__graph.png" border="0" usemap="#amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateSummarizer_00_01ConcretePieceValueProvider_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateSummarizer_00_01ConcretePieceValueProvider_01_4_coll__map" id="amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateSummarizer_00_01ConcretePieceValueProvider_01_4_coll__map">
-<area shape="rect" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="752,432,1031,979"/>
+<div class="center"><img src="classmoveselection_1_1MinimaxMoveEvaluator__coll__graph.png" border="0" usemap="#amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateCoordinator_00_01ConcretePieceValueProvider_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateCoordinator_00_01ConcretePieceValueProvider_01_4_coll__map" id="amoveselection_1_1MinimaxMoveEvaluator_3_01ConcreteSpaceInfoProvider_00_01ConcreteBoardStateCoordinator_00_01ConcretePieceValueProvider_01_4_coll__map">
+<area shape="rect" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="872,432,1151,979"/>
 <area shape="rect" href="classMoveEvaluator.html" title=" " alt="" coords="5,204,284,325"/>
 <area shape="rect" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini..." alt="" coords="30,5,259,97"/>
 <area shape="rect" title=" " alt="" coords="309,226,399,303"/>
 <area shape="rect" title=" " alt="" coords="423,226,629,303"/>
-<area shape="rect" title=" " alt="" coords="653,226,884,303"/>
-<area shape="rect" title=" " alt="" coords="908,226,1120,303"/>
-<area shape="rect" title=" " alt="" coords="1143,226,1218,303"/>
-<area shape="rect" href="structmoveselection_1_1SearchSummaries.html" title="Stores a moveselection::SearchSummary for each moveselection::MinimaxMoveEvaluator...." alt="" coords="1243,219,1487,311"/>
-<area shape="rect" title=" " alt="" coords="1159,5,1333,97"/>
-<area shape="rect" title=" " alt="" coords="1357,5,1609,97"/>
-<area shape="rect" title=" " alt="" coords="1511,211,1735,318"/>
+<area shape="rect" title=" " alt="" coords="653,226,881,303"/>
+<area shape="rect" title=" " alt="" coords="905,226,1117,303"/>
+<area shape="rect" title=" " alt="" coords="1141,226,1215,303"/>
+<area shape="rect" href="structmoveselection_1_1SearchSummaries.html" title="Stores a moveselection::SearchSummary for each moveselection::MinimaxMoveEvaluator...." alt="" coords="1240,219,1484,311"/>
+<area shape="rect" title=" " alt="" coords="1156,5,1331,97"/>
+<area shape="rect" title=" " alt="" coords="1355,5,1607,97"/>
+<area shape="rect" title=" " alt="" coords="1509,211,1733,318"/>
+<area shape="rect" title=" " alt="" coords="1757,226,1882,303"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a532c0ce8ec39b30cb2eba3d54f966d45"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a532c0ce8ec39b30cb2eba3d54f966d45">MinimaxMoveEvaluator</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> evaluating_player, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a0d35a3d964eac4bd787932b053c95343">starting_search_depth</a>, ConcreteSpaceInfoProvider &amp;game_board, uint32_t zkey_seed=std::random_device{}(), const ConcretePieceValueProvider &amp;game_position_points=ConcretePieceValueProvider())</td></tr>
-<tr class="separator:a532c0ce8ec39b30cb2eba3d54f966d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a915db2cf8efbcf62b40c8b329bcc666f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1Move.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a915db2cf8efbcf62b40c8b329bcc666f">ImplementSelectMove</a> (<a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves)</td></tr>
-<tr class="separator:a915db2cf8efbcf62b40c8b329bcc666f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78533ea0d72de43c76ae3d2797737eef"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a78533ea0d72de43c76ae3d2797737eef">search_summaries</a> ()</td></tr>
-<tr class="separator:a78533ea0d72de43c76ae3d2797737eef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d35a3d964eac4bd787932b053c95343"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a0d35a3d964eac4bd787932b053c95343">starting_search_depth</a> ()</td></tr>
-<tr class="separator:a0d35a3d964eac4bd787932b053c95343"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa49f98c887dcc14c0d39d3e0d269d3e2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#aa49f98c887dcc14c0d39d3e0d269d3e2">KeySizeBits</a> ()</td></tr>
-<tr class="separator:aa49f98c887dcc14c0d39d3e0d269d3e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7edb742d0ce69b9c81ab036cb0c262f5"><td class="memItemLeft" align="right" valign="top">const ConcreteBoardStateSummarizer &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a7edb742d0ce69b9c81ab036cb0c262f5">hash_calculator</a> () const</td></tr>
-<tr class="separator:a7edb742d0ce69b9c81ab036cb0c262f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04096db6e7e61a03c6fce7a328c85cb0"><td class="memItemLeft" align="right" valign="top">const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a04096db6e7e61a03c6fce7a328c85cb0">zkeys_seed</a> ()</td></tr>
-<tr class="separator:a04096db6e7e61a03c6fce7a328c85cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6f9bfa2e56a664feb178575fff89f07"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac6f9bfa2e56a664feb178575fff89f07">board_state_hex_str</a> ()</td></tr>
-<tr class="separator:ac6f9bfa2e56a664feb178575fff89f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classMoveEvaluator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMoveEvaluator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMoveEvaluator.html">MoveEvaluator&lt; MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt; &gt;</a></td></tr>
+<tr class="memitem:ac0571c1ec1068c2c38382d243cb88291"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac0571c1ec1068c2c38382d243cb88291">MinimaxMoveEvaluator</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> evaluating_player, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a417dd6b1bf38b9627b8118231e830684">starting_search_depth</a>, ConcreteSpaceInfoProvider &amp;game_board, uint32_t zkey_seed=std::random_device{}(), const ConcretePieceValueProvider &amp;game_position_points=ConcretePieceValueProvider())</td></tr>
+<tr class="separator:ac0571c1ec1068c2c38382d243cb88291"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3de4f234b69d03a6426bdc4a2bcc2cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1Move.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac3de4f234b69d03a6426bdc4a2bcc2cf">ImplementSelectMove</a> (<a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves)</td></tr>
+<tr class="separator:ac3de4f234b69d03a6426bdc4a2bcc2cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b65cc3bba6eb6f3fa64023a5ececed6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a5b65cc3bba6eb6f3fa64023a5ececed6">search_summaries</a> ()</td></tr>
+<tr class="separator:a5b65cc3bba6eb6f3fa64023a5ececed6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a417dd6b1bf38b9627b8118231e830684"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a417dd6b1bf38b9627b8118231e830684">starting_search_depth</a> ()</td></tr>
+<tr class="separator:a417dd6b1bf38b9627b8118231e830684"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf5454a2c156cc5db12c44dd5fcba1e1"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#acf5454a2c156cc5db12c44dd5fcba1e1">KeySizeBits</a> ()</td></tr>
+<tr class="separator:acf5454a2c156cc5db12c44dd5fcba1e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7bbe6fcef4790f3fe3a0125698a1245"><td class="memItemLeft" align="right" valign="top">const ConcreteBoardStateCoordinator &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac7bbe6fcef4790f3fe3a0125698a1245">hash_calculator</a> () const</td></tr>
+<tr class="separator:ac7bbe6fcef4790f3fe3a0125698a1245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13782baad0e9a2081118b8ecb341070a"><td class="memItemLeft" align="right" valign="top">const uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a13782baad0e9a2081118b8ecb341070a">zkeys_seed</a> ()</td></tr>
+<tr class="separator:a13782baad0e9a2081118b8ecb341070a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a818641aef9b737647121e8e2f47cd65d"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a818641aef9b737647121e8e2f47cd65d">board_state_hex_str</a> ()</td></tr>
+<tr class="separator:a818641aef9b737647121e8e2f47cd65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classMoveEvaluator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMoveEvaluator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMoveEvaluator.html">MoveEvaluator&lt; MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt; &gt;</a></td></tr>
 <tr class="memitem:a3d099b92a96225ad2a626bebbd3d151f inherit pub_methods_classMoveEvaluator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1Move.html">gameboard::Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMoveEvaluator.html#a3d099b92a96225ad2a626bebbd3d151f">SelectMove</a> (<a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves)</td></tr>
 <tr class="separator:a3d099b92a96225ad2a626bebbd3d151f inherit pub_methods_classMoveEvaluator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:aa38f21109b1de9a0211da41660b96128"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#aa38f21109b1de9a0211da41660b96128">initialize_hash_calculator</a> ()</td></tr>
-<tr class="separator:aa38f21109b1de9a0211da41660b96128"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a076cc993626f75bf3efbba2eac298b13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1Move.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a076cc993626f75bf3efbba2eac298b13">SelectValidMove</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves)</td></tr>
-<tr class="separator:a076cc993626f75bf3efbba2eac298b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa53e65c0138ec9ed751758ed454f681a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#aa53e65c0138ec9ed751758ed454f681a">GetPlayerTotal</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
-<tr class="separator:aa53e65c0138ec9ed751758ed454f681a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7cb61d5b5a7de0a64fd60f41ea06c9e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a7cb61d5b5a7de0a64fd60f41ea06c9e4">RunFirstSearch</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves)</td></tr>
-<tr class="separator:a7cb61d5b5a7de0a64fd60f41ea06c9e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad79d67bba578e62591a8bef2c5789cb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad79d67bba578e62591a8bef2c5789cb0">RunSecondSearch</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves)</td></tr>
-<tr class="separator:ad79d67bba578e62591a8bef2c5789cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f2188d2a811e778a8e060ce9247a06a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4f2188d2a811e778a8e060ce9247a06a">IncrementNumMoveSelections</a> ()</td></tr>
-<tr class="separator:a4f2188d2a811e778a8e060ce9247a06a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0e8db93e18e50d2a10104ada4b2307e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab0e8db93e18e50d2a10104ada4b2307e">HandleTrTableHit</a> (<a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type, <a class="el" href="classmoveselection_1_1TranspositionTableSearchResult.html">TranspositionTableSearchResult</a> &amp;tr_table_search_result, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth)</td></tr>
-<tr class="separator:ab0e8db93e18e50d2a10104ada4b2307e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a062024c5b53db2679b335eb28350d5e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a062024c5b53db2679b335eb28350d5e8">EvaluateEndOfGameLeaf</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type)</td></tr>
-<tr class="separator:a062024c5b53db2679b335eb28350d5e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb1d41504065afaa98286c5ca6031d0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#abb1d41504065afaa98286c5ca6031d0b">HandleEndOfGame</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth)</td></tr>
-<tr class="separator:abb1d41504065afaa98286c5ca6031d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c4d98fb3e5b84101ed9a922113fc438"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a7c4d98fb3e5b84101ed9a922113fc438">EvaluateNonWinLeaf</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type)</td></tr>
-<tr class="separator:a7c4d98fb3e5b84101ed9a922113fc438"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a974076ec2ee0c1d585a038ca055d1e84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a974076ec2ee0c1d585a038ca055d1e84">HandleLeaf</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth)</td></tr>
-<tr class="separator:a974076ec2ee0c1d585a038ca055d1e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af463b03397e369de990aadbddb197f52"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#af463b03397e369de990aadbddb197f52">IsImprovement</a> (<a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> cur_eval, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> previous_best_eval, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player)</td></tr>
-<tr class="separator:af463b03397e369de990aadbddb197f52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb18639f049c20922af3fad250d56bb0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#afb18639f049c20922af3fad250d56bb0">UpdateBestMoves</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="structgameboard_1_1Move.html">Move</a> move, <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;best_moves, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> cur_eval, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;previous_best_eval)</td></tr>
-<tr class="separator:afb18639f049c20922af3fad250d56bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adaebb4b2b11e625c7da86327fb721999"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#adaebb4b2b11e625c7da86327fb721999">FinalizeNodeResult</a> (<a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> best_eval, <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> best_moves, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary)</td></tr>
-<tr class="separator:adaebb4b2b11e625c7da86327fb721999"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd2558bb4f9ca89206497d7c20efde80"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#afd2558bb4f9ca89206497d7c20efde80">IsPrunable</a> (<a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;alpha, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;beta, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player)</td></tr>
-<tr class="separator:afd2558bb4f9ca89206497d7c20efde80"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f0b3c4558d673d1c9c09786a303530d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a0f0b3c4558d673d1c9c09786a303530d">RecursivelyVisitNodes</a> (<a class="el" href="structgameboard_1_1Move.html">Move</a> move, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> alpha, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> beta, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, bool use_transposition_table)</td></tr>
-<tr class="separator:a0f0b3c4558d673d1c9c09786a303530d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b72d5860697ee2a543b309baab351f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a7b72d5860697ee2a543b309baab351f0">InitializedBestEval</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player)</td></tr>
-<tr class="separator:a7b72d5860697ee2a543b309baab351f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9fc3aa09ae3b51b3b8ea1bbdecdbe715"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a9fc3aa09ae3b51b3b8ea1bbdecdbe715">UpdatePruningParam</a> (<a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;alpha, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;beta, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> cur_eval, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player)</td></tr>
-<tr class="separator:a9fc3aa09ae3b51b3b8ea1bbdecdbe715"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c87cce87f0982fdcf4f0d8d8a3643b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4c87cce87f0982fdcf4f0d8d8a3643b7">HandleInternalNode</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> &amp;remaining_search_depth, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;alpha, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;beta, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> result_type, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, bool use_transposition_table)</td></tr>
-<tr class="separator:a4c87cce87f0982fdcf4f0d8d8a3643b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53f0a634203fa29ad7e5c6198b8fb78c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a53f0a634203fa29ad7e5c6198b8fb78c">MinimaxRec</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> alpha, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> beta, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, bool use_transposition_table)</td></tr>
-<tr class="separator:a53f0a634203fa29ad7e5c6198b8fb78c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6333acb2ea3c67a68a8b3c55e352b0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#af6333acb2ea3c67a68a8b3c55e352b0d">RunTimedMinimax</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, bool use_transposition_table=true)</td></tr>
-<tr class="separator:af6333acb2ea3c67a68a8b3c55e352b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d7993295d1684078cb18391b3d333a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a0d7993295d1684078cb18391b3d333a2">GetMinimaxMoveAndStats</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, bool use_transposition_table=true)</td></tr>
-<tr class="separator:a0d7993295d1684078cb18391b3d333a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01014b5ade6fd719ed314d6e6302e437"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a01014b5ade6fd719ed314d6e6302e437">initialize_hash_calculator</a> ()</td></tr>
+<tr class="separator:a01014b5ade6fd719ed314d6e6302e437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb8c58d01b3a8fc254ffd0cc02d63913"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1Move.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#aeb8c58d01b3a8fc254ffd0cc02d63913">SelectValidMove</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves)</td></tr>
+<tr class="separator:aeb8c58d01b3a8fc254ffd0cc02d63913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51ad0228d1a6ced83eb92c0e98bf748f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a51ad0228d1a6ced83eb92c0e98bf748f">GetPlayerTotal</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
+<tr class="separator:a51ad0228d1a6ced83eb92c0e98bf748f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23047833e6ae6ee4e471f074f70a4474"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a23047833e6ae6ee4e471f074f70a4474">RunFirstSearch</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves)</td></tr>
+<tr class="separator:a23047833e6ae6ee4e471f074f70a4474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a906a794ec5abf63581bf53e776cb0428"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a906a794ec5abf63581bf53e776cb0428">RunSecondSearch</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves)</td></tr>
+<tr class="separator:a906a794ec5abf63581bf53e776cb0428"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81f6390e5f844ffd80d1d800ba3483a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a81f6390e5f844ffd80d1d800ba3483a1">IncrementNumMoveSelections</a> ()</td></tr>
+<tr class="separator:a81f6390e5f844ffd80d1d800ba3483a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdf74a02920f5037e16d90211cf25f92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#afdf74a02920f5037e16d90211cf25f92">HandleTrTableHit</a> (<a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type, <a class="el" href="classmoveselection_1_1TranspositionTableSearchResult.html">TranspositionTableSearchResult</a> &amp;tr_table_search_result, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth)</td></tr>
+<tr class="separator:afdf74a02920f5037e16d90211cf25f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0ec5457e7c4c4e559ac7f318c12ed86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ae0ec5457e7c4c4e559ac7f318c12ed86">EvaluateEndOfGameLeaf</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type)</td></tr>
+<tr class="separator:ae0ec5457e7c4c4e559ac7f318c12ed86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2381715ea1fc25cbf20dcab8a8509fdc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a2381715ea1fc25cbf20dcab8a8509fdc">HandleEndOfGame</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth)</td></tr>
+<tr class="separator:a2381715ea1fc25cbf20dcab8a8509fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0843f8055649e3af311ae10c439bc69"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac0843f8055649e3af311ae10c439bc69">EvaluateNonWinLeaf</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type)</td></tr>
+<tr class="separator:ac0843f8055649e3af311ae10c439bc69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48a6aab1be67dbc4af5790b73a661421"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a48a6aab1be67dbc4af5790b73a661421">HandleLeaf</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth)</td></tr>
+<tr class="separator:a48a6aab1be67dbc4af5790b73a661421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0384c261ed64a390c4d3059aab6b68d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac0384c261ed64a390c4d3059aab6b68d">IsImprovement</a> (<a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> cur_eval, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> previous_best_eval, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player)</td></tr>
+<tr class="separator:ac0384c261ed64a390c4d3059aab6b68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5094a1a36a8b1908824d1ff7eb2aaa99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a5094a1a36a8b1908824d1ff7eb2aaa99">UpdateBestMoves</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="structgameboard_1_1Move.html">Move</a> move, <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;best_moves, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> cur_eval, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;previous_best_eval)</td></tr>
+<tr class="separator:a5094a1a36a8b1908824d1ff7eb2aaa99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58255219536225ece2a54cf24e0f50b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a58255219536225ece2a54cf24e0f50b6">FinalizeNodeResult</a> (<a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> best_eval, <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> best_moves, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary)</td></tr>
+<tr class="separator:a58255219536225ece2a54cf24e0f50b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af75a2af945e5844a2007bff721ff3e94"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#af75a2af945e5844a2007bff721ff3e94">IsPrunable</a> (<a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;alpha, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;beta, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;result_type, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player)</td></tr>
+<tr class="separator:af75a2af945e5844a2007bff721ff3e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14c6eef581765b80a321c6fb06ea6112"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a14c6eef581765b80a321c6fb06ea6112">RecursivelyVisitNodes</a> (<a class="el" href="structgameboard_1_1Move.html">Move</a> move, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> alpha, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> beta, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, bool use_transposition_table)</td></tr>
+<tr class="separator:a14c6eef581765b80a321c6fb06ea6112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a201566e954eb553b8d01706af690ce44"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a201566e954eb553b8d01706af690ce44">InitializedBestEval</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player)</td></tr>
+<tr class="separator:a201566e954eb553b8d01706af690ce44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7962501358c0547e75b142d7e0a0626a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a7962501358c0547e75b142d7e0a0626a">UpdatePruningParam</a> (<a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;alpha, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;beta, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> cur_eval, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player)</td></tr>
+<tr class="separator:a7962501358c0547e75b142d7e0a0626a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a506d959fc5b332c2f8e2639739570fe5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a506d959fc5b332c2f8e2639739570fe5">HandleInternalNode</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> &amp;remaining_search_depth, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;alpha, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;beta, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> result_type, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, bool use_transposition_table)</td></tr>
+<tr class="separator:a506d959fc5b332c2f8e2639739570fe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacb906000c3547d501047b89a75634d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#aacb906000c3547d501047b89a75634d1">MinimaxRec</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> remaining_search_depth, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> alpha, <a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> beta, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> cur_player, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, bool use_transposition_table)</td></tr>
+<tr class="separator:aacb906000c3547d501047b89a75634d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5554040c08f2a519d400b05bd48e709"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ad5554040c08f2a519d400b05bd48e709">RunTimedMinimax</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, bool use_transposition_table=true)</td></tr>
+<tr class="separator:ad5554040c08f2a519d400b05bd48e709"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab4b8d1da9fc9036058c2d10496aab54a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab4b8d1da9fc9036058c2d10496aab54a">GetMinimaxMoveAndStats</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;allowed_moves, <a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;search_summary, bool use_transposition_table=true)</td></tr>
+<tr class="separator:ab4b8d1da9fc9036058c2d10496aab54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a05b0532a2e17f408c328c925d7e09172"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a05b0532a2e17f408c328c925d7e09172">evaluating_player_</a></td></tr>
-<tr class="separator:a05b0532a2e17f408c328c925d7e09172"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a279c7caee2b1c06b293f2fe4f4354daf"><td class="memItemLeft" align="right" valign="top">ConcretePieceValueProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a279c7caee2b1c06b293f2fe4f4354daf">game_position_points_</a></td></tr>
-<tr class="separator:a279c7caee2b1c06b293f2fe4f4354daf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab14a434d105381e3be6e23cff8ac37c7"><td class="memItemLeft" align="right" valign="top">ConcreteBoardStateSummarizer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ab14a434d105381e3be6e23cff8ac37c7">hash_calculator_</a></td></tr>
-<tr class="separator:ab14a434d105381e3be6e23cff8ac37c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4544225bd659713f8463c0415b512aed"><td class="memItemLeft" align="right" valign="top">ConcreteSpaceInfoProvider &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a4544225bd659713f8463c0415b512aed">game_board_</a></td></tr>
-<tr class="separator:a4544225bd659713f8463c0415b512aed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cbe44c07825dee958b09508095ed0cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a0cbe44c07825dee958b09508095ed0cf">num_move_selections_</a></td></tr>
-<tr class="separator:a0cbe44c07825dee958b09508095ed0cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c16d53101bc1ea77b8d0ee7b2083922"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a9c16d53101bc1ea77b8d0ee7b2083922">starting_search_depth_</a></td></tr>
-<tr class="separator:a9c16d53101bc1ea77b8d0ee7b2083922"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae691602ed173beb3246329f714611980"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ae691602ed173beb3246329f714611980">search_summaries_</a></td></tr>
-<tr class="separator:ae691602ed173beb3246329f714611980"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40dfd8798d9c97210506671919adf683"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1PreSearchMoveSorter.html">PreSearchMoveSorter</a>&lt; ConcreteSpaceInfoProvider, ConcretePieceValueProvider &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a40dfd8798d9c97210506671919adf683">move_sorter_</a></td></tr>
-<tr class="separator:a40dfd8798d9c97210506671919adf683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac887141f0db2f790260d8ce0b258a145"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac887141f0db2f790260d8ce0b258a145">evaluating_player_</a></td></tr>
+<tr class="separator:ac887141f0db2f790260d8ce0b258a145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0bbc2f862cf2474882ba80b7ff6f1de0"><td class="memItemLeft" align="right" valign="top">ConcretePieceValueProvider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a0bbc2f862cf2474882ba80b7ff6f1de0">game_position_points_</a></td></tr>
+<tr class="separator:a0bbc2f862cf2474882ba80b7ff6f1de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a340f592f4d0030a9e93825de1185ac1a"><td class="memItemLeft" align="right" valign="top">ConcreteBoardStateCoordinator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a340f592f4d0030a9e93825de1185ac1a">hash_calculator_</a></td></tr>
+<tr class="separator:a340f592f4d0030a9e93825de1185ac1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b3d7aacfec5f2a4b18e846e21a0027a"><td class="memItemLeft" align="right" valign="top">ConcreteSpaceInfoProvider &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a0b3d7aacfec5f2a4b18e846e21a0027a">game_board_</a></td></tr>
+<tr class="separator:a0b3d7aacfec5f2a4b18e846e21a0027a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1229573ca0b382e009f80cf102a7e24"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#af1229573ca0b382e009f80cf102a7e24">num_move_selections_</a></td></tr>
+<tr class="separator:af1229573ca0b382e009f80cf102a7e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf2af40421318ad30c62106391a56f2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#adf2af40421318ad30c62106391a56f2e">starting_search_depth_</a></td></tr>
+<tr class="separator:adf2af40421318ad30c62106391a56f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65d403825d19f01895e43675e63c419d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a65d403825d19f01895e43675e63c419d">search_summaries_</a></td></tr>
+<tr class="separator:a65d403825d19f01895e43675e63c419d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada31543f2049bdbd05ce7adc3bc75cf3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classmoveselection_1_1PreSearchMoveSorter.html">PreSearchMoveSorter</a>&lt; ConcreteSpaceInfoProvider, ConcretePieceValueProvider &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ada31543f2049bdbd05ce7adc3bc75cf3">move_sorter_</a></td></tr>
+<tr class="separator:ada31543f2049bdbd05ce7adc3bc75cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14acfef4f5700694b0a9c7362c03e7c4"><td class="memItemLeft" align="right" valign="top">std::atomic&lt; bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a14acfef4f5700694b0a9c7362c03e7c4">game_over_</a></td></tr>
+<tr class="separator:a14acfef4f5700694b0a9c7362c03e7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;typename ConcreteSpaceInfoProvider, typename ConcreteBoardStateSummarizer, typename ConcretePieceValueProvider&gt;<br />
-class moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;</div><p>Implements <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a> interface, and selects move::Move using Minimax algorithm; uses <a class="el" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,...">SpaceInfoProvider</a>, <a class="el" href="classBoardStateSummarizer.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateSummarizer</a>, and <a class="el" href="classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific...">PieceValueProvider</a> interfaces. </p>
+<div class="textblock"><div class="compoundTemplParams">template&lt;typename ConcreteSpaceInfoProvider, typename ConcreteBoardStateCoordinator, typename ConcretePieceValueProvider&gt;<br />
+class moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;</div><p>Implements <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a> interface, and selects move::Move using Minimax algorithm; uses <a class="el" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,...">SpaceInfoProvider</a>, <a class="el" href="classBoardStateCoordinator.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateCoordinator</a>, and <a class="el" href="classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific...">PieceValueProvider</a> interfaces. </p>
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00126">126</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00127">127</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a532c0ce8ec39b30cb2eba3d54f966d45" name="a532c0ce8ec39b30cb2eba3d54f966d45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a532c0ce8ec39b30cb2eba3d54f966d45">&#9670;&#160;</a></span>MinimaxMoveEvaluator()</h2>
+<a id="ac0571c1ec1068c2c38382d243cb88291" name="ac0571c1ec1068c2c38382d243cb88291"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0571c1ec1068c2c38382d243cb88291">&#9670;&#160;</a></span>MinimaxMoveEvaluator()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;<a class="el" href="classMinimaxMoveEvaluator.html">::MinimaxMoveEvaluator</a> </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;<a class="el" href="classMinimaxMoveEvaluator.html">::MinimaxMoveEvaluator</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>evaluating_player</em>, </td>
@@ -333,24 +336,24 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00132">132</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00144">144</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac6f9bfa2e56a664feb178575fff89f07" name="ac6f9bfa2e56a664feb178575fff89f07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac6f9bfa2e56a664feb178575fff89f07">&#9670;&#160;</a></span>board_state_hex_str()</h2>
+<a id="a818641aef9b737647121e8e2f47cd65d" name="a818641aef9b737647121e8e2f47cd65d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a818641aef9b737647121e8e2f47cd65d">&#9670;&#160;</a></span>board_state_hex_str()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::string <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::board_state_hex_str </td>
+          <td class="memname">const std::string <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::board_state_hex_str </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -363,23 +366,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00174">174</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00187">187</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a062024c5b53db2679b335eb28350d5e8" name="a062024c5b53db2679b335eb28350d5e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a062024c5b53db2679b335eb28350d5e8">&#9670;&#160;</a></span>EvaluateEndOfGameLeaf()</h2>
+<a id="ae0ec5457e7c4c4e559ac7f318c12ed86" name="ae0ec5457e7c4c4e559ac7f318c12ed86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0ec5457e7c4c4e559ac7f318c12ed86">&#9670;&#160;</a></span>EvaluateEndOfGameLeaf()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::EvaluateEndOfGameLeaf </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::EvaluateEndOfGameLeaf </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>cur_player</em>, </td>
@@ -403,23 +406,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00253">253</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00256">256</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a7c4d98fb3e5b84101ed9a922113fc438" name="a7c4d98fb3e5b84101ed9a922113fc438"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c4d98fb3e5b84101ed9a922113fc438">&#9670;&#160;</a></span>EvaluateNonWinLeaf()</h2>
+<a id="ac0843f8055649e3af311ae10c439bc69" name="ac0843f8055649e3af311ae10c439bc69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0843f8055649e3af311ae10c439bc69">&#9670;&#160;</a></span>EvaluateNonWinLeaf()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::EvaluateNonWinLeaf </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::EvaluateNonWinLeaf </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>cur_player</em>, </td>
@@ -443,23 +446,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00286">286</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00289">289</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="adaebb4b2b11e625c7da86327fb721999" name="adaebb4b2b11e625c7da86327fb721999"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adaebb4b2b11e625c7da86327fb721999">&#9670;&#160;</a></span>FinalizeNodeResult()</h2>
+<a id="a58255219536225ece2a54cf24e0f50b6" name="a58255219536225ece2a54cf24e0f50b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58255219536225ece2a54cf24e0f50b6">&#9670;&#160;</a></span>FinalizeNodeResult()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::FinalizeNodeResult </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::FinalizeNodeResult </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">MinimaxResultType</a> &amp;&#160;</td>
           <td class="paramname"><em>result_type</em>, </td>
@@ -501,23 +504,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00352">352</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00355">355</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a0d7993295d1684078cb18391b3d333a2" name="a0d7993295d1684078cb18391b3d333a2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d7993295d1684078cb18391b3d333a2">&#9670;&#160;</a></span>GetMinimaxMoveAndStats()</h2>
+<a id="ab4b8d1da9fc9036058c2d10496aab54a" name="ab4b8d1da9fc9036058c2d10496aab54a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab4b8d1da9fc9036058c2d10496aab54a">&#9670;&#160;</a></span>GetMinimaxMoveAndStats()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::GetMinimaxMoveAndStats </td>
+          <td class="memname">void <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::GetMinimaxMoveAndStats </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;&#160;</td>
           <td class="paramname"><em>allowed_moves</em>, </td>
@@ -547,23 +550,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00555">555</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00558">558</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aa53e65c0138ec9ed751758ed454f681a" name="aa53e65c0138ec9ed751758ed454f681a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa53e65c0138ec9ed751758ed454f681a">&#9670;&#160;</a></span>GetPlayerTotal()</h2>
+<a id="a51ad0228d1a6ced83eb92c0e98bf748f" name="a51ad0228d1a6ced83eb92c0e98bf748f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ad0228d1a6ced83eb92c0e98bf748f">&#9670;&#160;</a></span>GetPlayerTotal()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::GetPlayerTotal </td>
+          <td class="memname"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::GetPlayerTotal </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>color</em></td><td>)</td>
@@ -577,23 +580,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00206">206</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00209">209</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="abb1d41504065afaa98286c5ca6031d0b" name="abb1d41504065afaa98286c5ca6031d0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb1d41504065afaa98286c5ca6031d0b">&#9670;&#160;</a></span>HandleEndOfGame()</h2>
+<a id="a2381715ea1fc25cbf20dcab8a8509fdc" name="a2381715ea1fc25cbf20dcab8a8509fdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2381715ea1fc25cbf20dcab8a8509fdc">&#9670;&#160;</a></span>HandleEndOfGame()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::HandleEndOfGame </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::HandleEndOfGame </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>cur_player</em>, </td>
@@ -629,23 +632,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00273">273</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00276">276</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a4c87cce87f0982fdcf4f0d8d8a3643b7" name="a4c87cce87f0982fdcf4f0d8d8a3643b7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c87cce87f0982fdcf4f0d8d8a3643b7">&#9670;&#160;</a></span>HandleInternalNode()</h2>
+<a id="a506d959fc5b332c2f8e2639739570fe5" name="a506d959fc5b332c2f8e2639739570fe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a506d959fc5b332c2f8e2639739570fe5">&#9670;&#160;</a></span>HandleInternalNode()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::HandleInternalNode </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::HandleInternalNode </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>cur_player</em>, </td>
@@ -705,23 +708,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00433">433</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00436">436</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a974076ec2ee0c1d585a038ca055d1e84" name="a974076ec2ee0c1d585a038ca055d1e84"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a974076ec2ee0c1d585a038ca055d1e84">&#9670;&#160;</a></span>HandleLeaf()</h2>
+<a id="a48a6aab1be67dbc4af5790b73a661421" name="a48a6aab1be67dbc4af5790b73a661421"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48a6aab1be67dbc4af5790b73a661421">&#9670;&#160;</a></span>HandleLeaf()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::HandleLeaf </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::HandleLeaf </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>cur_player</em>, </td>
@@ -757,23 +760,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00310">310</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00313">313</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ab0e8db93e18e50d2a10104ada4b2307e" name="ab0e8db93e18e50d2a10104ada4b2307e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0e8db93e18e50d2a10104ada4b2307e">&#9670;&#160;</a></span>HandleTrTableHit()</h2>
+<a id="afdf74a02920f5037e16d90211cf25f92" name="afdf74a02920f5037e16d90211cf25f92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdf74a02920f5037e16d90211cf25f92">&#9670;&#160;</a></span>HandleTrTableHit()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::HandleTrTableHit </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::HandleTrTableHit </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp;&#160;</td>
           <td class="paramname"><em>search_summary</em>, </td>
@@ -809,23 +812,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00242">242</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00245">245</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a7edb742d0ce69b9c81ab036cb0c262f5" name="a7edb742d0ce69b9c81ab036cb0c262f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7edb742d0ce69b9c81ab036cb0c262f5">&#9670;&#160;</a></span>hash_calculator()</h2>
+<a id="ac7bbe6fcef4790f3fe3a0125698a1245" name="ac7bbe6fcef4790f3fe3a0125698a1245"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7bbe6fcef4790f3fe3a0125698a1245">&#9670;&#160;</a></span>hash_calculator()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const ConcreteBoardStateSummarizer &amp; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::hash_calculator </td>
+          <td class="memname">const ConcreteBoardStateCoordinator &amp; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::hash_calculator </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -838,23 +841,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00168">168</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00181">181</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a915db2cf8efbcf62b40c8b329bcc666f" name="a915db2cf8efbcf62b40c8b329bcc666f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a915db2cf8efbcf62b40c8b329bcc666f">&#9670;&#160;</a></span>ImplementSelectMove()</h2>
+<a id="ac3de4f234b69d03a6426bdc4a2bcc2cf" name="ac3de4f234b69d03a6426bdc4a2bcc2cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3de4f234b69d03a6426bdc4a2bcc2cf">&#9670;&#160;</a></span>ImplementSelectMove()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structgameboard_1_1Move.html">Move</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::ImplementSelectMove </td>
+          <td class="memname"><a class="el" href="structgameboard_1_1Move.html">Move</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::ImplementSelectMove </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;&#160;</td>
           <td class="paramname"><em>allowed_moves</em></td><td>)</td>
@@ -868,23 +871,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00151">151</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00164">164</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a4f2188d2a811e778a8e060ce9247a06a" name="a4f2188d2a811e778a8e060ce9247a06a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f2188d2a811e778a8e060ce9247a06a">&#9670;&#160;</a></span>IncrementNumMoveSelections()</h2>
+<a id="a81f6390e5f844ffd80d1d800ba3483a1" name="a81f6390e5f844ffd80d1d800ba3483a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81f6390e5f844ffd80d1d800ba3483a1">&#9670;&#160;</a></span>IncrementNumMoveSelections()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::IncrementNumMoveSelections </td>
+          <td class="memname">void <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::IncrementNumMoveSelections </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -897,23 +900,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00237">237</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00240">240</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aa38f21109b1de9a0211da41660b96128" name="aa38f21109b1de9a0211da41660b96128"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa38f21109b1de9a0211da41660b96128">&#9670;&#160;</a></span>initialize_hash_calculator()</h2>
+<a id="a01014b5ade6fd719ed314d6e6302e437" name="a01014b5ade6fd719ed314d6e6302e437"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01014b5ade6fd719ed314d6e6302e437">&#9670;&#160;</a></span>initialize_hash_calculator()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::initialize_hash_calculator </td>
+          <td class="memname">void <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::initialize_hash_calculator </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -926,23 +929,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00189">189</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00192">192</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a7b72d5860697ee2a543b309baab351f0" name="a7b72d5860697ee2a543b309baab351f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b72d5860697ee2a543b309baab351f0">&#9670;&#160;</a></span>InitializedBestEval()</h2>
+<a id="a201566e954eb553b8d01706af690ce44" name="a201566e954eb553b8d01706af690ce44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a201566e954eb553b8d01706af690ce44">&#9670;&#160;</a></span>InitializedBestEval()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::InitializedBestEval </td>
+          <td class="memname"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::InitializedBestEval </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>cur_player</em></td><td>)</td>
@@ -956,23 +959,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00412">412</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00415">415</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="af463b03397e369de990aadbddb197f52" name="af463b03397e369de990aadbddb197f52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af463b03397e369de990aadbddb197f52">&#9670;&#160;</a></span>IsImprovement()</h2>
+<a id="ac0384c261ed64a390c4d3059aab6b68d" name="ac0384c261ed64a390c4d3059aab6b68d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0384c261ed64a390c4d3059aab6b68d">&#9670;&#160;</a></span>IsImprovement()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::IsImprovement </td>
+          <td class="memname">bool <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::IsImprovement </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a>&#160;</td>
           <td class="paramname"><em>cur_eval</em>, </td>
@@ -1002,23 +1005,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00324">324</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00327">327</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="afd2558bb4f9ca89206497d7c20efde80" name="afd2558bb4f9ca89206497d7c20efde80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd2558bb4f9ca89206497d7c20efde80">&#9670;&#160;</a></span>IsPrunable()</h2>
+<a id="af75a2af945e5844a2007bff721ff3e94" name="af75a2af945e5844a2007bff721ff3e94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af75a2af945e5844a2007bff721ff3e94">&#9670;&#160;</a></span>IsPrunable()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::IsPrunable </td>
+          <td class="memname">bool <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::IsPrunable </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;&#160;</td>
           <td class="paramname"><em>alpha</em>, </td>
@@ -1054,23 +1057,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00373">373</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00376">376</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="aa49f98c887dcc14c0d39d3e0d269d3e2" name="aa49f98c887dcc14c0d39d3e0d269d3e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa49f98c887dcc14c0d39d3e0d269d3e2">&#9670;&#160;</a></span>KeySizeBits()</h2>
+<a id="acf5454a2c156cc5db12c44dd5fcba1e1" name="acf5454a2c156cc5db12c44dd5fcba1e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf5454a2c156cc5db12c44dd5fcba1e1">&#9670;&#160;</a></span>KeySizeBits()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">size_t <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::KeySizeBits </td>
+          <td class="memname">size_t <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::KeySizeBits </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1083,23 +1086,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00164">164</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00177">177</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a53f0a634203fa29ad7e5c6198b8fb78c" name="a53f0a634203fa29ad7e5c6198b8fb78c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53f0a634203fa29ad7e5c6198b8fb78c">&#9670;&#160;</a></span>MinimaxRec()</h2>
+<a id="aacb906000c3547d501047b89a75634d1" name="aacb906000c3547d501047b89a75634d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacb906000c3547d501047b89a75634d1">&#9670;&#160;</a></span>MinimaxRec()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::MinimaxRec </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::MinimaxRec </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;&#160;</td>
           <td class="paramname"><em>allowed_moves</em>, </td>
@@ -1153,23 +1156,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00477">477</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00480">480</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a0f0b3c4558d673d1c9c09786a303530d" name="a0f0b3c4558d673d1c9c09786a303530d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f0b3c4558d673d1c9c09786a303530d">&#9670;&#160;</a></span>RecursivelyVisitNodes()</h2>
+<a id="a14c6eef581765b80a321c6fb06ea6112" name="a14c6eef581765b80a321c6fb06ea6112"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14c6eef581765b80a321c6fb06ea6112">&#9670;&#160;</a></span>RecursivelyVisitNodes()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::RecursivelyVisitNodes </td>
+          <td class="memname"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::RecursivelyVisitNodes </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structgameboard_1_1Move.html">Move</a>&#160;</td>
           <td class="paramname"><em>move</em>, </td>
@@ -1229,23 +1232,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00386">386</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00389">389</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a7cb61d5b5a7de0a64fd60f41ea06c9e4" name="a7cb61d5b5a7de0a64fd60f41ea06c9e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7cb61d5b5a7de0a64fd60f41ea06c9e4">&#9670;&#160;</a></span>RunFirstSearch()</h2>
+<a id="a23047833e6ae6ee4e471f074f70a4474" name="a23047833e6ae6ee4e471f074f70a4474"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23047833e6ae6ee4e471f074f70a4474">&#9670;&#160;</a></span>RunFirstSearch()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::RunFirstSearch </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::RunFirstSearch </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;&#160;</td>
           <td class="paramname"><em>allowed_moves</em></td><td>)</td>
@@ -1259,23 +1262,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00216">216</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00219">219</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad79d67bba578e62591a8bef2c5789cb0" name="ad79d67bba578e62591a8bef2c5789cb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad79d67bba578e62591a8bef2c5789cb0">&#9670;&#160;</a></span>RunSecondSearch()</h2>
+<a id="a906a794ec5abf63581bf53e776cb0428" name="a906a794ec5abf63581bf53e776cb0428"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a906a794ec5abf63581bf53e776cb0428">&#9670;&#160;</a></span>RunSecondSearch()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::RunSecondSearch </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1SearchSummary.html">SearchSummary</a> &amp; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::RunSecondSearch </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;&#160;</td>
           <td class="paramname"><em>allowed_moves</em></td><td>)</td>
@@ -1289,23 +1292,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00226">226</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00229">229</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="af6333acb2ea3c67a68a8b3c55e352b0d" name="af6333acb2ea3c67a68a8b3c55e352b0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6333acb2ea3c67a68a8b3c55e352b0d">&#9670;&#160;</a></span>RunTimedMinimax()</h2>
+<a id="ad5554040c08f2a519d400b05bd48e709" name="ad5554040c08f2a519d400b05bd48e709"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5554040c08f2a519d400b05bd48e709">&#9670;&#160;</a></span>RunTimedMinimax()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::RunTimedMinimax </td>
+          <td class="memname"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::RunTimedMinimax </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;&#160;</td>
           <td class="paramname"><em>allowed_moves</em>, </td>
@@ -1335,23 +1338,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00533">533</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00536">536</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a78533ea0d72de43c76ae3d2797737eef" name="a78533ea0d72de43c76ae3d2797737eef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78533ea0d72de43c76ae3d2797737eef">&#9670;&#160;</a></span>search_summaries()</h2>
+<a id="a5b65cc3bba6eb6f3fa64023a5ececed6" name="a5b65cc3bba6eb6f3fa64023a5ececed6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b65cc3bba6eb6f3fa64023a5ececed6">&#9670;&#160;</a></span>search_summaries()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a> &amp; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::search_summaries </td>
+          <td class="memname">const <a class="el" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a> &amp; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::search_summaries </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1364,23 +1367,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00158">158</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00171">171</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a076cc993626f75bf3efbba2eac298b13" name="a076cc993626f75bf3efbba2eac298b13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a076cc993626f75bf3efbba2eac298b13">&#9670;&#160;</a></span>SelectValidMove()</h2>
+<a id="aeb8c58d01b3a8fc254ffd0cc02d63913" name="aeb8c58d01b3a8fc254ffd0cc02d63913"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb8c58d01b3a8fc254ffd0cc02d63913">&#9670;&#160;</a></span>SelectValidMove()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structgameboard_1_1Move.html">Move</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::SelectValidMove </td>
+          <td class="memname"><a class="el" href="structgameboard_1_1Move.html">Move</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::SelectValidMove </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> &amp;&#160;</td>
           <td class="paramname"><em>allowed_moves</em></td><td>)</td>
@@ -1394,23 +1397,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00198">198</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00201">201</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a0d35a3d964eac4bd787932b053c95343" name="a0d35a3d964eac4bd787932b053c95343"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d35a3d964eac4bd787932b053c95343">&#9670;&#160;</a></span>starting_search_depth()</h2>
+<a id="a417dd6b1bf38b9627b8118231e830684" name="a417dd6b1bf38b9627b8118231e830684"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a417dd6b1bf38b9627b8118231e830684">&#9670;&#160;</a></span>starting_search_depth()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::starting_search_depth </td>
+          <td class="memname"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::starting_search_depth </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1423,23 +1426,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00162">162</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00175">175</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="afb18639f049c20922af3fad250d56bb0" name="afb18639f049c20922af3fad250d56bb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb18639f049c20922af3fad250d56bb0">&#9670;&#160;</a></span>UpdateBestMoves()</h2>
+<a id="a5094a1a36a8b1908824d1ff7eb2aaa99" name="a5094a1a36a8b1908824d1ff7eb2aaa99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5094a1a36a8b1908824d1ff7eb2aaa99">&#9670;&#160;</a></span>UpdateBestMoves()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::UpdateBestMoves </td>
+          <td class="memname">void <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::UpdateBestMoves </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>cur_player</em>, </td>
@@ -1481,23 +1484,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00336">336</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00339">339</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a9fc3aa09ae3b51b3b8ea1bbdecdbe715" name="a9fc3aa09ae3b51b3b8ea1bbdecdbe715"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fc3aa09ae3b51b3b8ea1bbdecdbe715">&#9670;&#160;</a></span>UpdatePruningParam()</h2>
+<a id="a7962501358c0547e75b142d7e0a0626a" name="a7962501358c0547e75b142d7e0a0626a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7962501358c0547e75b142d7e0a0626a">&#9670;&#160;</a></span>UpdatePruningParam()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::UpdatePruningParam </td>
+          <td class="memname">void <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::UpdatePruningParam </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a> &amp;&#160;</td>
           <td class="paramname"><em>alpha</em>, </td>
@@ -1533,23 +1536,23 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00420">420</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00423">423</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a04096db6e7e61a03c6fce7a328c85cb0" name="a04096db6e7e61a03c6fce7a328c85cb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04096db6e7e61a03c6fce7a328c85cb0">&#9670;&#160;</a></span>zkeys_seed()</h2>
+<a id="a13782baad0e9a2081118b8ecb341070a" name="a13782baad0e9a2081118b8ecb341070a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13782baad0e9a2081118b8ecb341070a">&#9670;&#160;</a></span>zkeys_seed()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const uint32_t <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::zkeys_seed </td>
+          <td class="memname">const uint32_t <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::zkeys_seed </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -1562,206 +1565,24 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00172">172</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a05b0532a2e17f408c328c925d7e09172" name="a05b0532a2e17f408c328c925d7e09172"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05b0532a2e17f408c328c925d7e09172">&#9670;&#160;</a></span>evaluating_player_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::evaluating_player_</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00179">179</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a4544225bd659713f8463c0415b512aed" name="a4544225bd659713f8463c0415b512aed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4544225bd659713f8463c0415b512aed">&#9670;&#160;</a></span>game_board_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ConcreteSpaceInfoProvider&amp; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::game_board_</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00182">182</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a279c7caee2b1c06b293f2fe4f4354daf" name="a279c7caee2b1c06b293f2fe4f4354daf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a279c7caee2b1c06b293f2fe4f4354daf">&#9670;&#160;</a></span>game_position_points_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ConcretePieceValueProvider <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::game_position_points_</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00180">180</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ab14a434d105381e3be6e23cff8ac37c7" name="ab14a434d105381e3be6e23cff8ac37c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab14a434d105381e3be6e23cff8ac37c7">&#9670;&#160;</a></span>hash_calculator_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">ConcreteBoardStateSummarizer <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::hash_calculator_</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00181">181</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a40dfd8798d9c97210506671919adf683" name="a40dfd8798d9c97210506671919adf683"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40dfd8798d9c97210506671919adf683">&#9670;&#160;</a></span>move_sorter_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classmoveselection_1_1PreSearchMoveSorter.html">PreSearchMoveSorter</a>&lt;ConcreteSpaceInfoProvider, ConcretePieceValueProvider&gt; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::move_sorter_</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00187">187</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a0cbe44c07825dee958b09508095ed0cf" name="a0cbe44c07825dee958b09508095ed0cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0cbe44c07825dee958b09508095ed0cf">&#9670;&#160;</a></span>num_move_selections_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::num_move_selections_</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00183">183</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ae691602ed173beb3246329f714611980" name="ae691602ed173beb3246329f714611980"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae691602ed173beb3246329f714611980">&#9670;&#160;</a></span>search_summaries_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::search_summaries_</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
 <p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00185">185</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a9c16d53101bc1ea77b8d0ee7b2083922" name="a9c16d53101bc1ea77b8d0ee7b2083922"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c16d53101bc1ea77b8d0ee7b2083922">&#9670;&#160;</a></span>starting_search_depth_</h2>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ac887141f0db2f790260d8ce0b258a145" name="ac887141f0db2f790260d8ce0b258a145"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac887141f0db2f790260d8ce0b258a145">&#9670;&#160;</a></span>evaluating_player_</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSummarizer , typename ConcretePieceValueProvider &gt; </div>
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider &gt;::starting_search_depth_</td>
+          <td class="memname"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::evaluating_player_</td>
         </tr>
       </table>
   </td>
@@ -1771,7 +1592,215 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00184">184</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00132">132</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0b3d7aacfec5f2a4b18e846e21a0027a" name="a0b3d7aacfec5f2a4b18e846e21a0027a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b3d7aacfec5f2a4b18e846e21a0027a">&#9670;&#160;</a></span>game_board_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConcreteSpaceInfoProvider&amp; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::game_board_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00135">135</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a14acfef4f5700694b0a9c7362c03e7c4" name="a14acfef4f5700694b0a9c7362c03e7c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14acfef4f5700694b0a9c7362c03e7c4">&#9670;&#160;</a></span>game_over_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic&lt;bool&gt; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::game_over_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00141">141</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a0bbc2f862cf2474882ba80b7ff6f1de0" name="a0bbc2f862cf2474882ba80b7ff6f1de0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0bbc2f862cf2474882ba80b7ff6f1de0">&#9670;&#160;</a></span>game_position_points_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConcretePieceValueProvider <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::game_position_points_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00133">133</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a340f592f4d0030a9e93825de1185ac1a" name="a340f592f4d0030a9e93825de1185ac1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a340f592f4d0030a9e93825de1185ac1a">&#9670;&#160;</a></span>hash_calculator_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConcreteBoardStateCoordinator <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::hash_calculator_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00134">134</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ada31543f2049bdbd05ce7adc3bc75cf3" name="ada31543f2049bdbd05ce7adc3bc75cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada31543f2049bdbd05ce7adc3bc75cf3">&#9670;&#160;</a></span>move_sorter_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmoveselection_1_1PreSearchMoveSorter.html">PreSearchMoveSorter</a>&lt;ConcreteSpaceInfoProvider, ConcretePieceValueProvider&gt; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::move_sorter_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00140">140</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="af1229573ca0b382e009f80cf102a7e24" name="af1229573ca0b382e009f80cf102a7e24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1229573ca0b382e009f80cf102a7e24">&#9670;&#160;</a></span>num_move_selections_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::num_move_selections_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00136">136</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a65d403825d19f01895e43675e63c419d" name="a65d403825d19f01895e43675e63c419d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65d403825d19f01895e43675e63c419d">&#9670;&#160;</a></span>search_summaries_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::search_summaries_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00138">138</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
+
+</div>
+</div>
+<a id="adf2af40421318ad30c62106391a56f2e" name="adf2af40421318ad30c62106391a56f2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf2af40421318ad30c62106391a56f2e">&#9670;&#160;</a></span>starting_search_depth_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateCoordinator , typename ConcretePieceValueProvider &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator</a>&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;::starting_search_depth_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__evaluators_8hpp_source.html#l00137">137</a> of file <a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>.</p>
 
 </div>
 </div>
@@ -1784,7 +1813,7 @@ template&lt;typename ConcreteSpaceInfoProvider , typename ConcreteBoardStateSumm
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li><li class="navelem"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">MinimaxMoveEvaluator</a></li>
-    <li class="footer">Generated on Wed Nov 13 2024 19:07:02 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Nov 15 2024 01:52:32 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

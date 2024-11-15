@@ -153,6 +153,7 @@ $(document).ready(function(){initNavTree('piece__points__bpo_8hpp.html',''); ini
 <p>Definitions of classes used for storing piece points in Base Points Offset form.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;<a class="el" href="json__utility__interface_8hpp_source.html">json_utility_interface.hpp</a>&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;<a class="el" href="json__utility__nlohmann_8hpp_source.html">json_utility_nlohmann.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="piece__points__data__structs_8hpp_source.html">piece_points_data_structs.hpp</a>&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
@@ -164,28 +165,28 @@ Include dependency graph for piece_points_bpo.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="piece__points__bpo_8hpp__incl.png" border="0" usemap="#ainclude_2piece__points__bpo_8hpp" alt=""/></div>
 <map name="ainclude_2piece__points__bpo_8hpp" id="ainclude_2piece__points__bpo_8hpp">
-<area shape="rect" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="886,5,1041,45"/>
-<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="551,167,738,192"/>
-<area shape="rect" title=" " alt="" coords="771,313,830,339"/>
-<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="417,93,611,119"/>
-<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="1441,93,1659,119"/>
-<area shape="rect" title=" " alt="" coords="1815,313,1939,339"/>
-<area shape="rect" title=" " alt="" coords="1965,93,2041,119"/>
-<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="1043,167,1177,192"/>
-<area shape="rect" title=" " alt="" coords="5,167,79,192"/>
-<area shape="rect" title=" " alt="" coords="103,167,306,192"/>
-<area shape="rect" title=" " alt="" coords="330,167,477,192"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="1400,167,1575,192"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1709,240,1839,265"/>
-<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="1546,240,1685,265"/>
-<area shape="rect" title=" " alt="" coords="1373,240,1429,265"/>
-<area shape="rect" title=" " alt="" coords="1453,240,1522,265"/>
-<area shape="rect" title=" " alt="" coords="1189,240,1261,265"/>
-<area shape="rect" title=" " alt="" coords="1285,240,1348,265"/>
-<area shape="rect" title=" " alt="" coords="1728,313,1791,339"/>
-<area shape="rect" title=" " alt="" coords="1582,313,1649,339"/>
-<area shape="rect" title=" " alt="" coords="914,240,999,265"/>
-<area shape="rect" title=" " alt="" coords="1024,240,1113,265"/>
+<area shape="rect" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="561,5,715,45"/>
+<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="309,167,495,192"/>
+<area shape="rect" title=" " alt="" coords="189,313,247,339"/>
+<area shape="rect" title=" " alt="" coords="1382,93,1459,119"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="189,93,383,119"/>
+<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="857,93,1075,119"/>
+<area shape="rect" title=" " alt="" coords="1063,313,1187,339"/>
+<area shape="rect" title=" " alt="" coords="1484,93,1560,119"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="571,167,705,192"/>
+<area shape="rect" title=" " alt="" coords="40,167,113,192"/>
+<area shape="rect" title=" " alt="" coords="138,167,285,192"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="816,167,991,192"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="964,240,1093,265"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="1169,240,1307,265"/>
+<area shape="rect" title=" " alt="" coords="694,240,750,265"/>
+<area shape="rect" title=" " alt="" coords="870,240,939,265"/>
+<area shape="rect" title=" " alt="" coords="774,240,846,265"/>
+<area shape="rect" title=" " alt="" coords="607,240,669,265"/>
+<area shape="rect" title=" " alt="" coords="976,313,1039,339"/>
+<area shape="rect" title=" " alt="" coords="1211,313,1278,339"/>
+<area shape="rect" title=" " alt="" coords="331,240,417,265"/>
+<area shape="rect" title=" " alt="" coords="441,240,531,265"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -194,14 +195,14 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="piece__points__bpo_8hpp__dep__incl.png" border="0" usemap="#ainclude_2piece__points__bpo_8hppdep" alt=""/></div>
 <map name="ainclude_2piece__points__bpo_8hppdep" id="ainclude_2piece__points__bpo_8hppdep">
 <area shape="rect" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="657,5,811,45"/>
-<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="389,93,559,133"/>
+<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="425,93,595,133"/>
 <area shape="rect" href="piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="479,357,645,397"/>
 <area shape="rect" href="piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="587,445,758,500"/>
 <area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="772,93,917,133"/>
 <area shape="rect" href="json__utility__nlohmann_8cpp.html" title="Implementation of methods for jsonio::NlohmannJsonUtility." alt="" coords="721,181,891,236"/>
 <area shape="rect" href="piece__points__bpo_8cpp.html" title="Implementation of methods that store piece points info in Base Point Offset form." alt="" coords="942,93,1139,133"/>
-<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateSummarizer." alt="" coords="341,189,541,229"/>
-<area shape="rect" href="move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="333,284,548,309"/>
+<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateCoordinator." alt="" coords="290,189,490,229"/>
+<area shape="rect" href="move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="316,284,531,309"/>
 <area shape="rect" href="game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="220,365,403,390"/>
 <area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="357,460,543,485"/>
 <area shape="rect" href="move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="5,357,196,397"/>
@@ -249,7 +250,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="piece__points__bpo_8hpp.html">piece_points_bpo.hpp</a></li>
-    <li class="footer">Generated on Wed Nov 13 2024 19:07:02 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Nov 15 2024 01:52:32 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -15,9 +15,9 @@ var hierarchy =
     [ "gameboard::BoardDirection", "structgameboard_1_1BoardDirection.html", null ],
     [ "gameboard::BoardSpace", "structgameboard_1_1BoardSpace.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.BoardSpace", "classxiangqipy_1_1core__dataclass__mirrors_1_1BoardSpace.html", null ],
-    [ "BoardStateSummarizer< ConcreteBoardStateSummarizer, KeyType >", "classBoardStateSummarizer.html", null ],
-    [ "BoardStateSummarizer< ZobristSummarizer< KeyType, NumConfKeys >, KeyType >", "classBoardStateSummarizer.html", [
-      [ "boardstate::ZobristSummarizer< KeyType, NumConfKeys >", "classboardstate_1_1ZobristSummarizer.html", null ]
+    [ "BoardStateCoordinator< ConcreteBoardStateCoordinator, KeyType >", "classBoardStateCoordinator.html", null ],
+    [ "BoardStateCoordinator< ZobristCoordinator< KeyType, NumConfKeys >, KeyType >", "classBoardStateCoordinator.html", [
+      [ "boardstate::ZobristCoordinator< KeyType, NumConfKeys >", "classboardstate_1_1ZobristCoordinator.html", null ]
     ] ],
     [ "piecepoints::BPOPointsEKeys", "classpiecepoints_1_1BPOPointsEKeys.html", null ],
     [ "piecepoints::BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html", null ],
@@ -53,8 +53,8 @@ var hierarchy =
     [ "gameboard::MoveCollection", "structgameboard_1_1MoveCollection.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.MoveCollection", "classxiangqipy_1_1core__dataclass__mirrors_1_1MoveCollection.html", null ],
     [ "MoveEvaluator< ConcreteMoveEvaluator >", "classMoveEvaluator.html", null ],
-    [ "MoveEvaluator< MinimaxMoveEvaluator< ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider > >", "classMoveEvaluator.html", [
-      [ "moveselection::MinimaxMoveEvaluator< ConcreteSpaceInfoProvider, ConcreteBoardStateSummarizer, ConcretePieceValueProvider >", "classmoveselection_1_1MinimaxMoveEvaluator.html", null ]
+    [ "MoveEvaluator< MinimaxMoveEvaluator< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider > >", "classMoveEvaluator.html", [
+      [ "moveselection::MinimaxMoveEvaluator< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider >", "classmoveselection_1_1MinimaxMoveEvaluator.html", null ]
     ] ],
     [ "MoveEvaluator< RandomMoveEvaluator< ConcreteSpaceInfoProvider > >", "classMoveEvaluator.html", [
       [ "moveselection::RandomMoveEvaluator< ConcreteSpaceInfoProvider >", "classmoveselection_1_1RandomMoveEvaluator.html", null ]
@@ -97,7 +97,9 @@ var hierarchy =
     [ "boardstate::TranspositionTable< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTable.html", null ],
     [ "TranspositionTable", "classTranspositionTable.html", null ],
     [ "boardstate::TranspositionTableEntry< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTableEntry.html", null ],
+    [ "boardstate::TranspositionTableGuard", "classboardstate_1_1TranspositionTableGuard.html", null ],
     [ "TranspositionTableGuard", "classTranspositionTableGuard.html", null ],
+    [ "boardstate::TranspositionTablePruner< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTablePruner.html", null ],
     [ "TranspositionTablePruner", "classTranspositionTablePruner.html", null ],
     [ "moveselection::TranspositionTableSearchResult", "classmoveselection_1_1TranspositionTableSearchResult.html", null ],
     [ "TranspositionTableSearchResult", "classTranspositionTableSearchResult.html", null ],

@@ -1,10 +1,11 @@
 <map id="TranspositionTablePruner" name="TranspositionTablePruner">
-<area shape="rect" id="node1" title=" " alt="" coords="262,689,482,928"/>
-<area shape="rect" id="node2" href="$classTranspositionTableGuard.html" title=" " alt="" coords="237,505,507,627"/>
-<area shape="rect" id="node3" href="$classTranspositionTable.html" title=" " alt="" coords="86,160,253,428"/>
-<area shape="rect" id="node4" title=" " alt="" coords="110,5,290,97"/>
-<area shape="rect" id="node5" title=" " alt="" coords="11,13,69,90"/>
-<area shape="rect" id="node6" title=" " alt="" coords="315,255,429,333"/>
-<area shape="rect" id="node7" title=" " alt="" coords="532,527,596,605"/>
-<area shape="rect" id="node8" title=" " alt="" coords="633,527,759,605"/>
+<area shape="rect" id="node1" title=" " alt="" coords="261,675,481,913"/>
+<area shape="rect" id="node2" href="$classTranspositionTableGuard.html" title=" " alt="" coords="235,491,506,612"/>
+<area shape="rect" id="node3" href="$classTranspositionTable.html" title=" " alt="" coords="85,160,251,428"/>
+<area shape="rect" id="node4" title=" " alt="" coords="109,5,289,97"/>
+<area shape="rect" id="node5" title=" " alt="" coords="9,13,68,90"/>
+<area shape="rect" id="node6" title=" " alt="" coords="457,255,572,333"/>
+<area shape="rect" id="node7" title=" " alt="" coords="336,255,400,333"/>
+<area shape="rect" id="node8" title=" " alt="" coords="531,513,595,590"/>
+<area shape="rect" id="node9" title=" " alt="" coords="632,513,757,590"/>
 </map>
