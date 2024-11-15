@@ -15,6 +15,7 @@
 #include <optional>
 #include <random>
 #include <shared_mutex>
+#include <thread>
 #include <vector>
 
 namespace boardstate {
@@ -270,12 +271,12 @@ public:
 //! Stores and manages key-value pairs consisting of a board_state (from a
 //! boardstate::ZobristComponent) and results of Minimax calculations performed by
 //! boardstate::MinimaxMoveEvaluator. Provides read/write access to
-//! moveselection::MinimaxMoveEvaluator via a boardstate::ZobristSummarizer.
+//! moveselection::MinimaxMoveEvaluator via a boardstate::ZobristCoordinator.
 template <typename KeyType, size_t NumConfKeys>
 class TranspositionTable {
-private:
   std::unordered_map<KeyType, TranspositionTableEntry<KeyType, NumConfKeys>> data_;
   MoveCountType move_counter_;
+
 public:
   moveselection::TranspositionTableSearchResult GetDataAt(
       KeyType primary_board_state,
@@ -320,6 +321,11 @@ public:
 
   void IncrementMoveCounter() { move_counter_++; }
 
+  MoveCountType NumIdleMovesAt(KeyType board_state) {
+    auto tr_table_entry_it = data_.at(board_state);
+    return NumMovesSinceLastUseOf(tr_table_entry_it->second);
+  }
+
 private:
   MoveCountType NumMovesSinceLastUseOf(
       const TranspositionTableEntry<KeyType, NumConfKeys> &tr_table_entry
@@ -328,32 +334,108 @@ private:
   }
 };
 
-//! Implements the BoardStateSummarizer interface, providing a
+//! Contains std::mutex that other classes lock before accessing TranspositionTable
+class TranspositionTableGuard {
+  mutable std::mutex tr_table_mutex_;
+
+public:
+  TranspositionTableGuard() = default;
+  TranspositionTableGuard(const TranspositionTableGuard &) = delete;
+  TranspositionTableGuard &operator=(const TranspositionTableGuard &) = delete;
+
+  std::unique_lock<std::mutex> GetExclusiveLock() {
+    return std::unique_lock<std::mutex>(tr_table_mutex_);
+  }
+};
+
+//! Removes old entries from TranspositionTable to prevent excessive memory use.
+template <typename KeyType, size_t NumConfKeys>
+class TranspositionTablePruner {
+  TranspositionTable<KeyType, NumConfKeys> &tr_table_;
+  TranspositionTableGuard &tr_table_guard_;
+  std::thread pruning_thread_;
+  std::atomic<bool> keep_running_;
+
+public:
+  TranspositionTablePruner(const TranspositionTablePruner &) = delete;
+  TranspositionTablePruner &operator=(const TranspositionTablePruner &) = delete;
+
+  TranspositionTablePruner(
+      TranspositionTable<KeyType, NumConfKeys> &tr_table,
+      TranspositionTableGuard &tr_table_guard
+  )
+      : tr_table_{tr_table}
+      , tr_table_guard_{tr_table_guard}
+      , pruning_thread_{}
+      , keep_running_{true} {}
+
+  ~TranspositionTablePruner() {
+    if (pruning_thread_.joinable()) {
+      pruning_thread_.join();
+    }
+  }
+
+  void Start() {
+    pruning_thread_ = std::thread(&TranspositionTablePruner::RepeatedlyPrune, this);
+  }
+
+  void Stop() { keep_running_ = false; }
+
+  // void IncrementMoveCounter() { move_count_++; }
+
+private:
+  void UnsafePruneEntry() {
+    // TODO: Implement me!
+    std::cout << "Pruning!" << std::endl;
+  }
+
+  void ThreadSafePruneEntry() {
+    std::this_thread::sleep_for(std::chrono::microseconds(200));
+    auto lock = tr_table_guard_.GetExclusiveLock();
+    UnsafePruneEntry();
+  }
+
+  void RepeatedlyPrune() {
+    while (keep_running_) {
+      ThreadSafePruneEntry();
+    }
+  }
+};
+
+//! Implements the BoardStateCoordinator interface, providing a
 //! moveselection::MinimaxMoveEvaluator with "reasonably unique" hash values for each
 //! encountered board state, and the ability to read/write board_state-MinimaxResult
 //! pairs in a boardstate::TranspositionTable.
 template <typename KeyType, size_t NumConfKeys>
-class ZobristSummarizer
-    : public BoardStateSummarizer<ZobristSummarizer<KeyType, NumConfKeys>, KeyType> {
-public:
-  explicit ZobristSummarizer(ZobristComponent<KeyType, NumConfKeys> zobrist_component)
-      : zobrist_component_{std::move(zobrist_component)}
-      , transposition_table_{} {}
+class ZobristCoordinator
+    : public BoardStateCoordinator<ZobristCoordinator<KeyType, NumConfKeys>, KeyType> {
+  ZobristComponent<KeyType, NumConfKeys> zobrist_component_;
+  TranspositionTable<KeyType, NumConfKeys> tr_table_;
+  TranspositionTableGuard tr_table_guard_;
+  TranspositionTablePruner<KeyType, NumConfKeys> tr_table_pruner_;
 
-  explicit ZobristSummarizer(
+public:
+  ZobristCoordinator(const ZobristCoordinator &) = delete;
+  ZobristCoordinator &operator=(const ZobristCoordinator &) = delete;
+
+  explicit ZobristCoordinator(ZobristComponent<KeyType, NumConfKeys> zobrist_component)
+      : zobrist_component_{std::move(zobrist_component)}
+      , tr_table_{}
+      , tr_table_guard_{}
+      , tr_table_pruner_{TranspositionTablePruner{tr_table_, tr_table_guard_}} {
+        // tr_table_pruner_.Start();
+      }
+
+  explicit ZobristCoordinator(
       uint32_t primary_seed,
       std::array<uint32_t, NumConfKeys> confirmation_seeds
   )
-      : ZobristSummarizer(
+      : ZobristCoordinator(
             ZobristComponent<KeyType, NumConfKeys>{primary_seed, confirmation_seeds}
         ) {}
 
-  explicit ZobristSummarizer(uint32_t prng_seed)
-      : ZobristSummarizer(ZobristComponent<KeyType, NumConfKeys>{prng_seed}) {}
-
-  ZobristSummarizer()
-      : zobrist_component_{}
-      , transposition_table_{} {}
+  explicit ZobristCoordinator(uint32_t prng_seed = (uint32_t)std::random_device{}())
+      : ZobristCoordinator(ZobristComponent<KeyType, NumConfKeys>{prng_seed}) {}
 
   KeyType ImplementGetState() { return zobrist_component_.primary_board_state(); }
 
@@ -371,7 +453,7 @@ public:
       moveselection::EqualScoreMoves &similar_moves,
       MoveCountType access_index
   ) {
-    transposition_table_.RecordData(
+    tr_table_.RecordData(
         zobrist_component_.primary_board_state(),
         search_depth,
         result_type,
@@ -384,26 +466,25 @@ public:
       DepthType search_depth,
       MoveCountType access_index
   ) {
-    return transposition_table_.GetDataAt(
+    return tr_table_.GetDataAt(
         zobrist_component_.primary_board_state(),
         search_depth,
         zobrist_component_.confirmation_board_states()
     );
   }
 
-  size_t ImplementGetTrTableSize() { return transposition_table_.size(); }
+  size_t ImplementGetTrTableSize() { return tr_table_.size(); }
 
-  void ImplementUpdateMoveCounter() { transposition_table_.IncrementMoveCounter(); }
+  void ImplementUpdateMoveCounter() {
+    // tr_table_pruner_.IncrementMoveCounter();
+    tr_table_.IncrementMoveCounter();
+  }
 
   const std::string board_state_hex_str() {
     return IntToHexString(zobrist_component_.primary_board_state());
   }
 
   uint32_t zkeys_seed() { return zobrist_component_.prng_seed(); }
-
-private:
-  ZobristComponent<KeyType, NumConfKeys> zobrist_component_;
-  TranspositionTable<KeyType, NumConfKeys> transposition_table_;
 };
 
 } // namespace boardstate

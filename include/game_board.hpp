@@ -47,7 +47,7 @@ private:
   MoveCalculator move_calculator_;
 
   //! Stores functions that are called after any change in board config to keep
-  //! boardstate::SingleZobristSummarizer objects updated.
+  //! boardstate::SingleZobristCoordinator objects updated.
   vector<function<void(const ExecutedMove&)>> move_callbacks_;
 
   //! Vectors of all moves that have been executed (and not un-done) by each player.

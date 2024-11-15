@@ -11,12 +11,9 @@ add_executable(piece_position_points_test piece_position_points_test.cpp)
 target_link_libraries(
     piece_position_points_test PRIVATE
     piece_position_points
+    nlohmann_json
     utility_functs
     GTest::gtest_main)
-target_include_directories(
-    piece_position_points_test PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
-    ${PROJECT_SOURCE_DIR}/src/core/move_evaluators)
 
 add_executable(
     move_calculator_test
@@ -43,6 +40,7 @@ add_executable(move_calc_time move_calc_timer.cpp)
 target_link_libraries(
     move_calc_time PRIVATE
     game_board
+    nlohmann_json
     move_calculator
     piece_moves
     utility_functs
@@ -73,10 +71,22 @@ target_link_libraries(
     GTest::gtest_main)
 
 add_executable(
-    zobrist_summarizer_test
-    zobrist_summarizer_test.cpp)
+    transposition_table_pruner_test
+    transposition_table_pruner_test.cpp)
 target_link_libraries(
-    zobrist_summarizer_test PRIVATE
+    transposition_table_pruner_test PRIVATE
+    json_utility_nlohmann
+    minimax_evaluator
+    piece_moves
+    piece_position_points
+    game_board
+    GTest::gtest_main)
+
+add_executable(
+    zobrist_coordinator_test
+    zobrist_coordinator_test.cpp)
+target_link_libraries(
+    zobrist_coordinator_test PRIVATE
     utility_functs
     game_board
     GTest::gtest_main)
@@ -102,6 +112,7 @@ target_link_libraries(
     zobrist_calculator_test PRIVATE
     utility_functs
     game_board
+    nlohmann_json
     GTest::gtest_main
 )
 

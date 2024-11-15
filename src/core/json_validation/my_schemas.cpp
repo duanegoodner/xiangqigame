@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <iostream>
 #include <nlohmann/json-schema.hpp>
+#include <json_validation.hpp>
 #include <string>
 #include <json_utility_interface.hpp>
 #include <json_utility_nlohmann.hpp>

@@ -119,18 +119,18 @@ TEST_F(GameBoardTest, CorrectNumberAvailableMoves) {
   auto red_moves = gb_.CalcFinalMovesOf(PieceColor::kRed);
 }
 
-// TEST_F(GameBoardTest, AttachSingleZobristSummarizers) {
-//   auto red_hash_calculator = SingleZobristSummarizer();
-//   auto black_hash_calculator = SingleZobristSummarizer();
-//   gb_.ImplementAttachSingleZobristSummarizer(&red_hash_calculator, 0);
-//   gb_.ImplementAttachSingleZobristSummarizer(&black_hash_calculator, 1);
+// TEST_F(GameBoardTest, AttachSingleZobristCoordinators) {
+//   auto red_hash_calculator = SingleZobristCoordinator();
+//   auto black_hash_calculator = SingleZobristCoordinator();
+//   gb_.ImplementAttachSingleZobristCoordinator(&red_hash_calculator, 0);
+//   gb_.ImplementAttachSingleZobristCoordinator(&black_hash_calculator, 1);
 // }
 
-TEST_F(GameBoardTest, ExecuteMoveWithAttachedSingleZobristSummarizers) {
-  auto red_hash_calculator = boardstate::ZobristSummarizer<uint64_t, 0>(1234);
-  auto black_hash_calculator = boardstate::ZobristSummarizer<uint64_t, 0>(5678);
-  // gb_.ImplementAttachSingleZobristSummarizer(&red_hash_calculator, 0);
-  // gb_.ImplementAttachSingleZobristSummarizer(&black_hash_calculator, 1);
+TEST_F(GameBoardTest, ExecuteMoveWithAttachedSingleZobristCoordinators) {
+  auto red_hash_calculator = boardstate::ZobristCoordinator<uint64_t, 0>(1234);
+  auto black_hash_calculator = boardstate::ZobristCoordinator<uint64_t, 0>(5678);
+  // gb_.ImplementAttachSingleZobristCoordinator(&red_hash_calculator, 0);
+  // gb_.ImplementAttachSingleZobristCoordinator(&black_hash_calculator, 1);
   auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};
   auto actual_executed_move = gb_.ExecuteMove(actual_move);
   gb_.UndoMove(actual_executed_move);

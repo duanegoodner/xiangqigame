@@ -5,13 +5,9 @@
 
 #include <fstream>
 #include <json_utility_interface.hpp>
-#include <nlohmann/json-schema.hpp>
 #include <nlohmann/json.hpp>
-// #include <nlohmann/json_fwd.hpp>
 #include <piece_points_bpo.hpp>
 #include <string>
-
-// using namespace std;
 
 namespace jsonio {
 
@@ -44,8 +40,5 @@ private:
   );
   nlohmann::json Serialize(piecepoints::BPOPointsSKeys &bpo_points);
 };
-
-nlohmann::json import_json(std::string file_path);
-bool json_matches_schema(const nlohmann::json &json_object, const nlohmann::json &schema);
 
 } // namespace jsonio
