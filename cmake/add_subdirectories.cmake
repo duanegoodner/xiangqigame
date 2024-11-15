@@ -1,18 +1,24 @@
-add_subdirectory(src/core/game_board)
-# add_subdirectory(src/core/hash_calculator)
-# add_subdirectory(src/core/json_interface)
-# add_subdirectory(src/core/json_io)
-add_subdirectory(src/core/gist_thread_control)
-add_subdirectory(src/core/json_utility_nlohmann)
-add_subdirectory(src/core/json_validation)
-add_subdirectory(src/core/move_evaluators)
-add_subdirectory(src/core/move_calculator)
-add_subdirectory(src/core/piece_moves)
-add_subdirectory(src/core/piece_position_points)
-add_subdirectory(src/core/piece_points_bpo)
-add_subdirectory(src/core/utility_functs)
+add_subdirectory(${SOURCE_CODE_DIR}/game_board)
+
+add_subdirectory(${SOURCE_CODE_DIR}/json_utility_nlohmann)
+add_subdirectory(${SOURCE_CODE_DIR}/json_validation)
+add_subdirectory(${SOURCE_CODE_DIR}/move_evaluators)
+add_subdirectory(${SOURCE_CODE_DIR}/move_calculator)
+add_subdirectory(${SOURCE_CODE_DIR}/piece_moves)
+add_subdirectory(${SOURCE_CODE_DIR}/piece_position_points)
+add_subdirectory(${SOURCE_CODE_DIR}/piece_points_bpo)
+add_subdirectory(${SOURCE_CODE_DIR}/utility_functs)
 add_subdirectory(src/bindings)
-add_subdirectory(tests/core)
+
+
+if(BUILD_TESTS)
+    add_subdirectory(tests/core)
+endif()
+
+if(BUILD_PROTOTYPES)
+    add_subdirectory(prototypes)
+endif()
+
 
 if(NOT SKBUILD)
     add_subdirectory(src/data)
