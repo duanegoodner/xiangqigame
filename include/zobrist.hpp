@@ -386,6 +386,7 @@ public:
 private:
   void UnsafePruneEntry() {
     // TODO: Implement me!
+    std::cout << "Pruning!" << std::endl;
   }
 
   void ThreadSafePruneEntry() {
@@ -421,7 +422,9 @@ public:
       : zobrist_component_{std::move(zobrist_component)}
       , tr_table_{}
       , tr_table_guard_{}
-      , tr_table_pruner_{TranspositionTablePruner{tr_table_, tr_table_guard_}} {}
+      , tr_table_pruner_{TranspositionTablePruner{tr_table_, tr_table_guard_}} {
+        // tr_table_pruner_.Start();
+      }
 
   explicit ZobristCoordinator(
       uint32_t primary_seed,

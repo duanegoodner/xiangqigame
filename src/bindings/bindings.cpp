@@ -109,7 +109,10 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
 
   py::class_<moveselection::EqualScoreMoves>(m, "EqualScoreMoves")
       .def_readonly("shared_score", &moveselection::EqualScoreMoves::shared_score)
-      .def_property_readonly("move_collection", &moveselection::EqualScoreMoves::move_collection);
+      .def_property_readonly(
+          "move_collection",
+          &moveselection::EqualScoreMoves::move_collection
+      );
 
   py::class_<ExecutedMove>(m, "ExecutedMove")
       .def(
@@ -173,11 +176,17 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
 
   py::class_<moveselection::RandomMoveEvaluator<GameBoard>>(m, "RandomMoveEvaluator")
       .def(py::init<PieceColor, GameBoard &>(), "evaluating_player"_a, "game_board"_a)
-      .def("select_move", &moveselection::RandomMoveEvaluator<GameBoard>::SelectMove);
+      .def(
+          "select_move",
+          &moveselection::RandomMoveEvaluator<GameBoard>::SelectMove,
+          "allowed_moves"_a
+      );
 
-//   py::class_<moveselection::TranspositionTableSize>(m, "TranspositionTableSize")
-//       .def_readonly("num_entries", &moveselection::TranspositionTableSize::num_entries)
-//       .def_readonly("num_states", &moveselection::TranspositionTableSize::num_states);
+  //   py::class_<moveselection::TranspositionTableSize>(m, "TranspositionTableSize")
+  //       .def_readonly("num_entries",
+  //       &moveselection::TranspositionTableSize::num_entries)
+  //       .def_readonly("num_states",
+  //       &moveselection::TranspositionTableSize::num_states);
 
   py::class_<moveselection::SearchSummary>(m, "SearchSummary")
       //   .def(py::init<int>()) // Constructor, as needed for initialization

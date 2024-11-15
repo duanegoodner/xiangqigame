@@ -5,6 +5,38 @@
 #include <utility_functs.hpp>
 #include <zobrist.hpp>
 
+class RandomEvaluatorTest : public ::testing::Test {
+protected:
+  static bool moveComparator(const Move &lhs, const Move &rhs) {
+    if (lhs.start.rank != rhs.start.rank)
+      return lhs.start.rank < rhs.start.rank;
+    if (lhs.start.file != rhs.start.file)
+      return lhs.start.file < rhs.start.file;
+    if (lhs.end.rank != rhs.end.rank)
+      return lhs.end.rank < rhs.end.rank;
+    return lhs.end.file < rhs.end.file;
+  }
+};
+
+// Red selects starting move 10 times. If choice is random, we can be
+// almost certain that the number of unique selected Moves will be > 5.
+TEST_F(RandomEvaluatorTest, TestStartingMoveSelection) {
+  int num_first_move_selections = 10;
+
+  GameBoard starting_board;
+  moveselection::RandomMoveEvaluator<GameBoard> red_evaluator{PieceColor::kRed, starting_board};
+
+  std::set<Move, bool (*)(const Move &, const Move &)> move_set(moveComparator);
+
+  auto allowed_moves = starting_board.CalcFinalMovesOf(gameboard::PieceColor::kRed);
+
+  for (auto idx = 0; idx < num_first_move_selections; idx++) {
+    auto red_selected_move = red_evaluator.SelectMove(allowed_moves);
+    move_set.insert(red_selected_move);
+  }
+  EXPECT_TRUE(move_set.size() > 5);
+}
+
 class MinimaxWithZobristComponentTest : public ::testing::Test {
 protected:
   const string points_spec_path =

@@ -62,7 +62,8 @@ class Player(abc.ABC):
 
     @property
     def zkeys_seed(self) -> int | None:
-        return self._move_evaluator.zkeys_seed
+        if self._evaluator_type == EvaluatorType.MINIMAX:
+            return self._move_evaluator.zkeys_seed
 
     @property
     def zobrist_key_size(self) -> int | None:

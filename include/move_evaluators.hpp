@@ -4,6 +4,7 @@
 #pragma once
 
 #include <array>
+#include <atomic>
 #include <board_data_structs.hpp>
 #include <board_state_summarizer_interface.hpp>
 #include <evaluator_data_structs.hpp>
@@ -137,6 +138,7 @@ class MinimaxMoveEvaluator : public MoveEvaluator<MinimaxMoveEvaluator<
   moveselection::SearchSummaries search_summaries_;
   PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
       move_sorter_;
+  std::atomic<bool> game_over_;
 
 public:
   explicit MinimaxMoveEvaluator(
@@ -154,7 +156,8 @@ public:
       , hash_calculator_{ConcreteBoardStateCoordinator{zkey_seed}}
       , num_move_selections_{0}
       , search_summaries_{}
-      , move_sorter_{PreSearchMoveSorter{game_board_, game_position_points_}} {
+      , move_sorter_{PreSearchMoveSorter{game_board_, game_position_points_}}
+      , game_over_{false} {
     initialize_hash_calculator();
   }
 
