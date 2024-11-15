@@ -10,18 +10,23 @@ message(STATUS "SKBUILD_STATE = ${SKBUILD_STATE}")
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-SET(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
-# enable gprof
-# SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
-# SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
-# SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
+option(BUILD_PROTOTYPES "Build prototype executables" OFF)
+option(BUILD_TESTS "Build core tests" OFF)
+option(ENABLE_PROFILING "Enable gprof" OFF)
+
+if (ENABLE_PROFILING)
+  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
+  SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
+  SET(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} -pg")
+endif()
 
 SET(SOURCE_CODE_DIR ${PROJECT_SOURCE_DIR}/src/core)
 SET(DATA_SOURCE_DIR ${PROJECT_SOURCE_DIR}/src/data)
 SET(CMAKE_UTIL_DIR ${PROJECT_SOURCE_DIR}/cmake)
 
-# fetch packages early b/c have problems if find python after fetching pybind11
+# fetch packages early b/c have problems if fetch Pybind11 before finding Python
 include("${CMAKE_UTIL_DIR}/fetch_packages.cmake")
 
 # find python now, so we can use it for reading toml
