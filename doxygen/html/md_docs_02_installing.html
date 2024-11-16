@@ -146,9 +146,9 @@ $(document).ready(function(){initNavTree('md_docs_02_installing.html',''); initR
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Xiangqigame can be installed natively (preferably in a virtual environment or conda environment), or in a Docker container.</p>
-<h1><a class="anchor" id="autotoc_md6"></a>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Native Installation</h1>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Requirements</h2>
 <ul>
 <li>A C++ compiler that supports the C++ 20 standard</li>
@@ -156,7 +156,7 @@ Requirements</h2>
 <li>Python 3.10+</li>
 <li>Anaconda or Miniconda (recommended)</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Procedure</h2>
 <div class="fragment"><div class="line">git clone https://github.com/duanegoodner/xiangqigame</div>
 <div class="line">cd xiangqigame</div>
@@ -165,20 +165,20 @@ Procedure</h2>
 <div class="line">pip install .</div>
 <div class="line">play_xiangqi</div>
 </div><!-- fragment --><p> The above commands clone a copy of xiangqigame to the local machine, create and activate a conda environment, install xiangqigame into the newly created conda environment, and confirm the installation by running <code>play_xiangqi</code>. This procedure is demonstrated in the following terminal recording.</p>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 Native Installation Demo</h2>
 <div class="image">
 <img src="native_install.gif" alt=""/>
 </div>
-    <h1><a class="anchor" id="autotoc_md10"></a>
+    <h1><a class="anchor" id="autotoc_md12"></a>
 Docker Installation</h1>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Requirements</h2>
 <ul>
 <li>Docker 18.06+</li>
 <li>Docker Compose 1.25.0+</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Procedure</h2>
 <p>For initial Docker set up and installation, run the following:</p>
 <div class="fragment"><div class="line">git clone https://github.com/duanegoodner/xiangqigame</div>
@@ -187,17 +187,17 @@ Procedure</h2>
 <div class="line">docker compose up -d</div>
 <div class="line">docker exec -it cpyenv /bin/zsh  # This command will take you to a prompt inside container &#39;cpyenv&#39;</div>
 <div class="line">pip install .</div>
-</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md15"></a>
 Stopping the Docker Container</h2>
 <p>When you are done using the <code>cpyenv</code> container, run <code>exit</code> from the terminal prompt in the container to exit the container get back to a local terminal prompt in the <code>./xiangqigame/.devcontainer</code> directory. Then run <code>docker compose down</code> to stop the container.</p>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Re-Starting the Docker Container</h2>
 <p>To re-start the container, run the following from the <code>xiangqigame/.devcontainer</code> directory:</p>
 <div class="fragment"><div class="line">docker compose build  # not necessary if cpyenv exists, but will execute very fast in that case </div>
 <div class="line">docker compose up -d</div>
 <div class="line">docker exec -it cpyenv /bin/zsh  # This command will take you to a prompt inside container &#39;cpyenv&#39;</div>
 <div class="line">pip install .</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
 Demo</h2>
 <p>The full docker install procedure, including container shutdown, is demonstrated in the following terminal recording.</p>
 <div class="image">
@@ -215,7 +215,7 @@ Demo</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Nov 15 2024 23:02:14 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Nov 16 2024 05:05:34 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

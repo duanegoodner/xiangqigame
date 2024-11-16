@@ -16,7 +16,7 @@ var searchData=
   ['cmap_13',['cmap',['../classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#afd9e09a9cab4c56e65c16a15e704b8e0',1,'xiangqipy::game_summary_plotters::SearchResultsByTypePlotter']]],
   ['color_14',['color',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a5270ede5cae30217a56a5869ff72248c',1,'xiangqipy.player_summary.PlayerSummary.color()'],['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aed7001413f156056645e9a5e7be0b50b',1,'xiangqipy.player_summary.PlayerSummary.color()']]],
   ['command_5finput_2epy_15',['command_input.py',['../command__input_8py.html',1,'']]],
-  ['components_16',['Components',['../md_docs_06_components.html',1,'']]],
+  ['components_16',['Components',['../md_docs_05_components.html',1,'']]],
   ['concat_17',['Concat',['../structgameboard_1_1MoveCollection.html#a21b3893e457553fcc002e9a3ca9b749c',1,'gameboard::MoveCollection::Concat(MoveCollection other)'],['../structgameboard_1_1MoveCollection.html#a1012e96b7a6eb39502fc61c9b8f4b7bc',1,'gameboard::MoveCollection::Concat(vector&lt; Move &gt; other_moves)']]],
   ['confirmation_5fboard_5fstates_18',['confirmation_board_states',['../classboardstate_1_1ZobristComponent.html#af10b178419a9b5e406efcfe559f33aa0',1,'boardstate::ZobristComponent']]],
   ['confirmation_5fboard_5fstates_5finternal_19',['confirmation_board_states_internal',['../classboardstate_1_1ZobristComponent.html#aa55932551bb00283aa7e6f924476d2f7',1,'boardstate::ZobristComponent']]],
