@@ -4,6 +4,6 @@
 
 | Previous          |                              Next |
 |:------------------|----------------------------------:|
-| [Components](05_components.md) | [Game Data](07_game_data.md) |
+| [Components](05_components.md) | [Engine Data](07_game_data.md) |
 
 </div>
