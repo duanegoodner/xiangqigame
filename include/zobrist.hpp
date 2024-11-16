@@ -18,6 +18,7 @@
 #include <thread>
 #include <vector>
 
+//! Calculate / manage board state and associate Minimax results. 
 namespace boardstate {
 
 //! Uses Zobrist hashing to calculate a "reasonably unique" integer value

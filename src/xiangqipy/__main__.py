@@ -1,5 +1,4 @@
 """
-@file __main__.py
 Provides the entry point to play a Game.
 """
 

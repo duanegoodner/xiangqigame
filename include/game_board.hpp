@@ -12,6 +12,7 @@
 using namespace std;
 using namespace gameboard;
 
+//! Tracking piece positions and determining legal moves.
 namespace gameboard {
 
 extern const BoardMapInt_t kStartingBoard;

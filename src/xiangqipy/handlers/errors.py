@@ -1,5 +1,4 @@
 """
-@file errors.py
 Handles case where ScriptedPlayer has no moves remaining in list but Game is
 not finished.
 """

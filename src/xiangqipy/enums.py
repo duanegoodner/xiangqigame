@@ -1,6 +1,4 @@
 """
-@file enums.py
-
 Enums that are only used on the Python side of the app.
 """
 

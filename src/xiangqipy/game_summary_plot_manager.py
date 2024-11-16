@@ -1,6 +1,4 @@
 """
-@file game_summary_plot_manager.py
-
 Contains the GameSummaryPlotManager class.
 """
 

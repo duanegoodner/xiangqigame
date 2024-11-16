@@ -1,6 +1,4 @@
 """
-@file game_output_generator.py
-
 Contains the GameOutputGenerator class.
 """
 

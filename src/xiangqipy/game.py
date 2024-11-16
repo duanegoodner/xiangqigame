@@ -1,6 +1,4 @@
 """
-@file game.py
-
 Contains Game class.
 """
 

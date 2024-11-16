@@ -18,8 +18,10 @@
 
 using namespace gameboard;
 
+//! Selecting a move to execute.
 namespace moveselection {
 
+//! Free functions used by moveselection::MinimaxMoveEvaluator.
 namespace minimaxutils {
 bool ValidateMove(SearchSummary &search_summary, const MoveCollection &allowed_moves);
 
@@ -55,6 +57,9 @@ inline bool IsPrunableForEvaluatorOpponent(
 
 } // namespace minimaxutils
 
+//! Sorts moves based on points changed induce by single move; used by
+//! MinimaxMoveEvaluator for pre-sorting to increase likelihood of alpha/beta pruning
+//! during recursive search.
 template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
 class PreSearchMoveSorter {
 public:

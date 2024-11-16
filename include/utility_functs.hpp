@@ -11,6 +11,7 @@
 #include <unordered_map>
 #include <vector>
 
+//! Free functions that don't clearly belong in any other namespace. 
 namespace utility_functs {
 
 // using json = nlohmann::json;

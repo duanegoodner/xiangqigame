@@ -1,6 +1,4 @@
 """
-@file game_summary.py
-
 GameSummary class and its component classes.
 """
 

@@ -1,6 +1,4 @@
 """
-@file move_translator.py
-
 Contains functions used to convert algebraic board notation into
 integer indices array notation.
 """

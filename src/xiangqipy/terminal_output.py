@@ -1,6 +1,4 @@
 """
-@file terminal_output.py
-
 Classes for terminal UI output including board representation and, messages
 requesting info, and status messages.
 """

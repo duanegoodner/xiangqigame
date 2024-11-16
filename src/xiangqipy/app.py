@@ -1,6 +1,4 @@
 """
-@file app.py
-
 Contains a single function, run(), that does everything needed to play a Game.
 """
 from pathlib import Path

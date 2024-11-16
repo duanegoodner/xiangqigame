@@ -1,6 +1,4 @@
 """
-@file piece_info_extractor.py
-
 No longer used, but keep for reference: PieceReader for converting int to
 PieceType.
 """

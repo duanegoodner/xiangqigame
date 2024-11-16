@@ -1,6 +1,4 @@
 """
-@file command_input.py
-
 Contains classes for collecting command line input, and converting to a form
 that will be convenient for instantiating all of the objects needed to play a
 Game.

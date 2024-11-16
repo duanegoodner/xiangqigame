@@ -10,6 +10,7 @@
 using namespace gameboard;
 using namespace std;
 
+//! Providing position-dependent values of pieces to objects in moveselection namespace. 
 namespace piecepoints {
 
 //! Holds a piecepoints::GamePointsArray_t of points values, and exposes a method for

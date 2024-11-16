@@ -1,6 +1,4 @@
 """
-@file core_dataclass_mirrors.py
-
 Contains classes that mirror the structure of some core C++ classes,
 primarily to facilitate easy IO of a GameSummary with msgspec.
 """

@@ -1,6 +1,4 @@
 """
-@file piece_points.py
-
 No longer used, but keep for reference: classes for handling piece points.
 """
 

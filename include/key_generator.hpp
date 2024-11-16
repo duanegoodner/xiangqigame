@@ -12,6 +12,7 @@
 
 namespace boardstate {
 
+//! Generates pseudorandom integers. 
 template <typename IntType>
 class PseudoRandomKeyGenerator {
 public:
@@ -46,8 +47,7 @@ private:
   std::mt19937 prng_;
 };
 
-//! Template for class that generates random integer values of IntType.
-//! Uses std::random_device to build ints in 32-bit blocks.
+//! Generates random integers (not pseudorandom) using std::random_device.
 template <typename IntType>
 class RandomKeyGenerator {
 public:

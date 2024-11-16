@@ -1,7 +1,5 @@
 """
-@file game_summary_plotters.py
-
-Contains the GameSummaryPlotter abstract base class, and 
+Contains the GameSummaryPlotter abstract base class, and
 multiple subclasses that implement it.
 
 Each sub-class plots a different portion of data from a GameSummary.

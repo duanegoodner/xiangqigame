@@ -1,6 +1,4 @@
 """
-@file game_interfaces.py
-
 Python abstract classes used by a Game.
 """
 

@@ -1,6 +1,4 @@
 """
-@file signals.py
-
 Handlers for signals received when Game is running in terminal UI.
 """
 

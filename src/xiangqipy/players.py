@@ -1,6 +1,4 @@
 """
-@file players.py
-
 Implementations of Player, and Exceptions for notifying specific Player types
 of illegal proposed Move.
 
