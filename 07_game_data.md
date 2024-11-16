@@ -7,7 +7,6 @@
 
 | Previous          |                              Next |
 |:------------------|----------------------------------:|
-| [Running](04_notation.md) | [Components](06_components.md) |
-
+| [MinimaxDetails](06_minimax_details.md) |          |
 
 </div>

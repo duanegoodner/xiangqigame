@@ -59,6 +59,6 @@ Although castles and rivers are not marked on our simple text game board, the co
 
 | Previous          |                              Next |
 |:------------------|----------------------------------:|
-| [Running](03_running.md) | [AI Engine Data](05_game_data.md) |
+| [Running](03_running.md) | [Components](05_components.md) |
 
 </div>

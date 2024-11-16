@@ -53,7 +53,7 @@ boardstate::ZobristCoordinator, our concrete BoardStateCoordinator, supports usi
 
 | Previous          |                              Next |
 |:------------------|----------------------------------:|
-| [Running](05_game_data.md) |                          |
+| [Running](04_notation.md) | [Minimax Details](06_minimax_details.md) |
 
 </div>
 
