@@ -151,10 +151,14 @@ $(document).ready(function(){initNavTree('namespacemoveselection.html',''); init
   <div class="headertitle"><div class="title">moveselection Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Selecting a move to execute.  
+<a href="namespacemoveselection.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacemoveselection_1_1minimaxutils"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemoveselection_1_1minimaxutils.html">minimaxutils</a></td></tr>
+<tr class="memdesc:namespacemoveselection_1_1minimaxutils"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free functions used by <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro...">moveselection::MinimaxMoveEvaluator</a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -169,6 +173,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a> interface, and selects move::Move using Minimax algorithm; uses <a class="el" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,...">SpaceInfoProvider</a>, <a class="el" href="classBoardStateCoordinator.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateCoordinator</a>, and <a class="el" href="classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific...">PieceValueProvider</a> interfaces.  <a href="classmoveselection_1_1MinimaxMoveEvaluator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1PreSearchMoveSorter.html">PreSearchMoveSorter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts moves based on points changed induce by single move; used by <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro...">MinimaxMoveEvaluator</a> for pre-sorting to increase likelihood of alpha/beta pruning during recursive search.  <a href="classmoveselection_1_1PreSearchMoveSorter.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html">RandomMoveEvaluator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements gameboard::MoveEvaluator interface.  <a href="classmoveselection_1_1RandomMoveEvaluator.html#details">More...</a><br /></td></tr>
@@ -220,7 +225,9 @@ Variables</h2></td></tr>
 <tr class="memitem:a8d733843490cc4ef7c9db62d506b5a07"><td class="memItemLeft" align="right" valign="top">const uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemoveselection.html#a8d733843490cc4ef7c9db62d506b5a07">kNumResultTypes</a> {7}</td></tr>
 <tr class="separator:a8d733843490cc4ef7c9db62d506b5a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Selecting a move to execute. </p>
+</div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="aa4c456c3f118a94017483880ff42991b" name="aa4c456c3f118a94017483880ff42991b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa4c456c3f118a94017483880ff42991b">&#9670;&#160;</a></span>ResultDepthCountsData_t</h2>
 
@@ -293,7 +300,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li>
-    <li class="footer">Generated on Sat Nov 16 2024 05:18:36 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Nov 16 2024 05:54:45 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

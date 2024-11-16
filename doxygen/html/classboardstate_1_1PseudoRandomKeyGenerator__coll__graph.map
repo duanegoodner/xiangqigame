@@ -1,5 +1,5 @@
 <map id="boardstate::PseudoRandomKeyGenerator&lt; IntType &gt;" name="boardstate::PseudoRandomKeyGenerator&lt; IntType &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,243,281"/>
+<area shape="rect" id="node1" title="Generates pseudorandom integers." alt="" coords="5,145,243,281"/>
 <area shape="rect" id="node2" title=" " alt="" coords="21,5,115,83"/>
 <area shape="rect" id="node3" title=" " alt="" coords="140,5,220,83"/>
 </map>

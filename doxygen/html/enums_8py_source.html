@@ -146,51 +146,49 @@ $(document).ready(function(){initNavTree('enums_8py_source.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <a href="enums_8py.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno"><a class="line" href="namespacexiangqipy_1_1enums.html">    1</a></span><span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="stringliteral">@file enums.py</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="stringliteral">Enums that are only used on the Python side of the app.</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="stringliteral">Enums that are only used on the Python side of the app.</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">from</span> enum <span class="keyword">import</span> Enum, auto</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">from</span> enum <span class="keyword">import</span> Enum, auto</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html">   10</a></span><span class="keyword">class </span><a class="code hl_class" href="classxiangqipy_1_1enums_1_1GameState.html">GameState</a>(Enum):</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html">    8</a></span><span class="keyword">class </span><a class="code hl_class" href="classxiangqipy_1_1enums_1_1GameState.html">GameState</a>(Enum):</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="stringliteral">    Enum indicating state of game: </span><span class="keywordflow">is</span> either unfinished, <span class="keywordflow">or</span> a particular player has won.</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="stringliteral">    Enum indicating state of game: </span><span class="keywordflow">is</span> either unfinished, <span class="keywordflow">or</span> a particular player has won.</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#a653ebd6d7d3f5b0c8897a760d4d8bc9c">   14</a></span><span class="stringliteral">    UNFINISHED = auto()</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#a70b0bd1ff3cc9303d5f0991413a7f025">   15</a></span><span class="stringliteral">    RED_WON = auto()</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#a5a7461c170f311c10f953d4973e74934">   16</a></span><span class="stringliteral">    BLACK_WON = auto()</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#acff422cac327786cbad072f056b0b9d7">   17</a></span><span class="stringliteral">    DRAW = auto()</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html">   20</a></span><span class="stringliteral"></span><span class="keyword">class </span><a class="code hl_class" href="classxiangqipy_1_1enums_1_1PlayerType.html">PlayerType</a>(Enum):</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="stringliteral">    Enum indicating type of player: Human, AI, </span><span class="keywordflow">or</span> Scripted.</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    Scripted players are primarily used <span class="keywordflow">for</span> testing specific move sequences.</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html#aca45f307735b8626a467a422775f4955">   25</a></span><span class="stringliteral">    HUMAN = auto()</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html#a017eb3ffee56f9930aa4f67961815503">   26</a></span><span class="stringliteral">    AI = auto()</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html#a8a5f557b2f9dd764b0bf695429e42107">   27</a></span><span class="stringliteral">    SCRIPTED = auto()</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html">   30</a></span><span class="stringliteral"></span><span class="keyword">class </span><a class="code hl_class" href="classxiangqipy_1_1enums_1_1EvaluatorType.html">EvaluatorType</a>(Enum):</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#a653ebd6d7d3f5b0c8897a760d4d8bc9c">   12</a></span><span class="stringliteral">    UNFINISHED = auto()</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#a70b0bd1ff3cc9303d5f0991413a7f025">   13</a></span><span class="stringliteral">    RED_WON = auto()</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#a5a7461c170f311c10f953d4973e74934">   14</a></span><span class="stringliteral">    BLACK_WON = auto()</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1GameState.html#acff422cac327786cbad072f056b0b9d7">   15</a></span><span class="stringliteral">    DRAW = auto()</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html">   18</a></span><span class="stringliteral"></span><span class="keyword">class </span><a class="code hl_class" href="classxiangqipy_1_1enums_1_1PlayerType.html">PlayerType</a>(Enum):</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="stringliteral">    Enum indicating type of player: Human, AI, </span><span class="keywordflow">or</span> Scripted.</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    Scripted players are primarily used <span class="keywordflow">for</span> testing specific move sequences.</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html#aca45f307735b8626a467a422775f4955">   23</a></span><span class="stringliteral">    HUMAN = auto()</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html#a017eb3ffee56f9930aa4f67961815503">   24</a></span><span class="stringliteral">    AI = auto()</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1PlayerType.html#a8a5f557b2f9dd764b0bf695429e42107">   25</a></span><span class="stringliteral">    SCRIPTED = auto()</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html">   28</a></span><span class="stringliteral"></span><span class="keyword">class </span><a class="code hl_class" href="classxiangqipy_1_1enums_1_1EvaluatorType.html">EvaluatorType</a>(Enum):</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="stringliteral">    Enum indicating type of core MoveEvaluator used </span><span class="keywordflow">for</span> a Player.</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="stringliteral">    Enum indicating type of core MoveEvaluator used </span><span class="keywordflow">for</span> a Player.</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="stringliteral">&quot;&quot;&quot;</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#a40386eb4edde7f36d3534e324df37528">   34</a></span><span class="stringliteral">    NULL = auto()</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#aef2c8be5590e83c6050656d4a536aad4">   35</a></span><span class="stringliteral">    MINIMAX = auto()</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#ae15cd4373e9d8ed4e98f2fe9f134e6c4">   36</a></span><span class="stringliteral">    RANDOM = auto()</span></div>
-<div class="ttc" id="aclassxiangqipy_1_1enums_1_1EvaluatorType_html"><div class="ttname"><a href="classxiangqipy_1_1enums_1_1EvaluatorType.html">xiangqipy.enums.EvaluatorType</a></div><div class="ttdoc">Enum indicating type of core MoveEvaluator used for a Player.</div><div class="ttdef"><b>Definition:</b> <a href="enums_8py_source.html#l00030">enums.py:30</a></div></div>
-<div class="ttc" id="aclassxiangqipy_1_1enums_1_1GameState_html"><div class="ttname"><a href="classxiangqipy_1_1enums_1_1GameState.html">xiangqipy.enums.GameState</a></div><div class="ttdoc">Enum indicating state of game: is either unfinished, or a particular player has won.</div><div class="ttdef"><b>Definition:</b> <a href="enums_8py_source.html#l00010">enums.py:10</a></div></div>
-<div class="ttc" id="aclassxiangqipy_1_1enums_1_1PlayerType_html"><div class="ttname"><a href="classxiangqipy_1_1enums_1_1PlayerType.html">xiangqipy.enums.PlayerType</a></div><div class="ttdoc">Enum indicating type of player: Human, AI, or Scripted.</div><div class="ttdef"><b>Definition:</b> <a href="enums_8py_source.html#l00020">enums.py:20</a></div></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#a40386eb4edde7f36d3534e324df37528">   32</a></span><span class="stringliteral">    NULL = auto()</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#aef2c8be5590e83c6050656d4a536aad4">   33</a></span><span class="stringliteral">    MINIMAX = auto()</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#ae15cd4373e9d8ed4e98f2fe9f134e6c4">   34</a></span><span class="stringliteral">    RANDOM = auto()</span></div>
+<div class="ttc" id="aclassxiangqipy_1_1enums_1_1EvaluatorType_html"><div class="ttname"><a href="classxiangqipy_1_1enums_1_1EvaluatorType.html">xiangqipy.enums.EvaluatorType</a></div><div class="ttdoc">Enum indicating type of core MoveEvaluator used for a Player.</div><div class="ttdef"><b>Definition:</b> <a href="enums_8py_source.html#l00028">enums.py:28</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1enums_1_1GameState_html"><div class="ttname"><a href="classxiangqipy_1_1enums_1_1GameState.html">xiangqipy.enums.GameState</a></div><div class="ttdoc">Enum indicating state of game: is either unfinished, or a particular player has won.</div><div class="ttdef"><b>Definition:</b> <a href="enums_8py_source.html#l00008">enums.py:8</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1enums_1_1PlayerType_html"><div class="ttname"><a href="classxiangqipy_1_1enums_1_1PlayerType.html">xiangqipy.enums.PlayerType</a></div><div class="ttdoc">Enum indicating type of player: Human, AI, or Scripted.</div><div class="ttdef"><b>Definition:</b> <a href="enums_8py_source.html#l00018">enums.py:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_46e67b79a66d4e1bea97ac4ccddce80e.html">xiangqipy</a></li><li class="navelem"><a class="el" href="enums_8py.html">enums.py</a></li>
-    <li class="footer">Generated on Sat Nov 16 2024 05:18:36 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Nov 16 2024 05:54:45 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>
