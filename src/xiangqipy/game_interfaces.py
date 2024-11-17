@@ -56,7 +56,7 @@ class Player(abc.ABC):
     @property
     def max_search_depth(self) -> int | None:
         if self._evaluator_type == EvaluatorType.MINIMAX:
-            return self._move_evaluator.starting_search_depth()
+            return self._move_evaluator.search_depth()
 
     @property
     def zkeys_seed(self) -> int | None:
