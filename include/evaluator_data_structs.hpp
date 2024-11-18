@@ -49,7 +49,7 @@ enum MinimaxResultType : uint16_t {
 const uint16_t kNumResultTypes{7};
 
 //! Data structure that holds a moveselection::EqualScoreMoves and other search-related
-//! info obtained from a call to moveselection::MinimaxMoveEvaluator.MinimaxRec.
+//! info obtained from a call to moveselection::MinimaxMoveEvaluator.MinimaxRecursive.
 class MinimaxCalcResult {
 public:
   MinimaxCalcResult()

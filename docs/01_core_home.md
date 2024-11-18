@@ -15,8 +15,7 @@ The AI utilizes the Minimax algorithm enhanced by Alpha-Beta pruning to select m
 
 ## Architecture
 
-Major components of the AI engine are isolated from each other by interface classes that employ the Curiously Recurring Template Pattern (CRTP). This approach allows for compile time polymorphism and avoids the runtime overhead associated with more traditional virtual class interfaces. This overhead difference can be significant for methods that are called with high frequency.
-
+The AI engine is designed around a plug-in architecture, enabling easy integration and swapping of components without affecting the core functionality. Major components are isolated from each other by interface classes that employ the Curiously Recurring Template Pattern (CRTP). This approach allows for compile time polymorphism and avoids the runtime overhead associated with more traditional virtual class interfaces.
 
 ## Integration with Python
 
@@ -29,6 +28,8 @@ The C++ core is integrated with an outer Python layer using [pybind11](https://g
 
 ## Engine Settings and Data Collection
 
+This project prioritizes the ability to explore inner-workings of the AI engine with flexible engine settings and in-game data collection.
+
 ### AI engine parameters that can be modified via the command line interface:
 - Minimax search depth
 - Bit size of keys used for Zobrist hashing
@@ -37,9 +38,10 @@ The C++ core is integrated with an outer Python layer using [pybind11](https://g
 ### Data collected each time an AI player selectes a move include:
 - Total search time
 - Number of nodes explored in the game tree
-- How the Minimax algorithm terminated at each node
+- Minimax algorithm termination mode at each node
 - Number of transposition table hash collisions
 - Minimax evaluation score of the selectedmove
+
 
 
 

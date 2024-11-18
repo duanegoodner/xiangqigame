@@ -139,7 +139,7 @@ class MinimaxMoveEvaluator : public MoveEvaluator<MinimaxMoveEvaluator<
   ConcreteBoardStateCoordinator hash_calculator_;
   ConcreteSpaceInfoProvider &game_board_;
   MoveCountType num_move_selections_;
-  DepthType starting_search_depth_;
+  DepthType search_depth_;
   moveselection::SearchSummaries search_summaries_;
   PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
       move_sorter_;
@@ -148,14 +148,14 @@ class MinimaxMoveEvaluator : public MoveEvaluator<MinimaxMoveEvaluator<
 public:
   explicit MinimaxMoveEvaluator(
       PieceColor evaluating_player,
-      DepthType starting_search_depth,
+      DepthType search_depth,
       ConcreteSpaceInfoProvider &game_board,
       uint32_t zkey_seed = std::random_device{}(),
       const ConcretePieceValueProvider &game_position_points =
           ConcretePieceValueProvider()
   )
       : evaluating_player_{evaluating_player}
-      , starting_search_depth_{starting_search_depth}
+      , search_depth_{search_depth}
       , game_board_{game_board}
       , game_position_points_{game_position_points}
       , hash_calculator_{ConcreteBoardStateCoordinator{zkey_seed}}
@@ -177,7 +177,7 @@ public:
     return search_summaries_;
   }
 
-  inline DepthType starting_search_depth() { return starting_search_depth_; }
+  inline DepthType search_depth() { return search_depth_; }
 
   inline size_t KeySizeBits() {
     return 8 * sizeof(typename ConcreteBoardStateCoordinator::ZobristKey_t);
@@ -223,7 +223,7 @@ private:
 
   SearchSummary &RunFirstSearch(const MoveCollection &allowed_moves) {
     auto &first_search_summary = search_summaries_.NewFirstSearch(
-        starting_search_depth_,
+        search_depth_,
         hash_calculator_.GetTrTableSize()
     );
     GetMinimaxMoveAndStats(allowed_moves, first_search_summary);
@@ -233,7 +233,7 @@ private:
 
   SearchSummary &RunSecondSearch(const MoveCollection &allowed_moves) {
     auto &second_search_summary = search_summaries_.NewExtraSearch(
-        starting_search_depth_,
+        search_depth_,
         num_move_selections_,
         hash_calculator_.GetTrTableSize()
     );
@@ -251,10 +251,10 @@ private:
       SearchSummary &search_summary,
       MinimaxResultType &result_type,
       TranspositionTableSearchResult &tr_table_search_result,
-      DepthType remaining_search_depth
+      DepthType search_depth
   ) {
     result_type = MinimaxResultType::kTrTableHit;
-    search_summary.RecordTrTableHit(tr_table_search_result, remaining_search_depth);
+    search_summary.RecordTrTableHit(tr_table_search_result, search_depth);
     return tr_table_search_result.score_and_moves();
   }
 
@@ -282,12 +282,12 @@ private:
       PieceColor cur_player,
       SearchSummary &search_summary,
       MinimaxResultType &result_type,
-      DepthType remaining_search_depth
+      DepthType search_depth
   ) {
     auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
     hash_calculator_
-        .RecordTrData(remaining_search_depth, result_type, result, num_move_selections_);
-    search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
+        .RecordTrData(search_depth, result_type, result, num_move_selections_);
+    search_summary.RecordNodeInfo(result_type, search_depth, result);
     return result;
   }
 
@@ -319,12 +319,12 @@ private:
       PieceColor cur_player,
       SearchSummary &search_summary,
       MinimaxResultType &result_type,
-      DepthType remaining_search_depth
+      DepthType search_depth
   ) {
     auto result = EvaluateNonWinLeaf(cur_player, result_type);
     hash_calculator_
-        .RecordTrData(remaining_search_depth, result_type, result, num_move_selections_);
-    search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
+        .RecordTrData(search_depth, result_type, result, num_move_selections_);
+    search_summary.RecordNodeInfo(result_type, search_depth, result);
 
     return result;
   }
@@ -361,7 +361,7 @@ private:
       MinimaxResultType &result_type,
       Points_t best_eval,
       MoveCollection best_moves,
-      DepthType remaining_search_depth,
+      DepthType search_depth,
       SearchSummary &search_summary
   ) {
 
@@ -373,8 +373,8 @@ private:
     }
     EqualScoreMoves result{best_eval, best_moves};
     hash_calculator_
-        .RecordTrData(remaining_search_depth, result_type, result, num_move_selections_);
-    search_summary.RecordNodeInfo(result_type, remaining_search_depth, result);
+        .RecordTrData(search_depth, result_type, result, num_move_selections_);
+    search_summary.RecordNodeInfo(result_type, search_depth, result);
     return result;
   }
 
@@ -395,7 +395,7 @@ private:
       Move move,
       PieceColor cur_player,
       const MoveCollection &allowed_moves,
-      DepthType remaining_search_depth,
+      DepthType search_depth,
       Points_t alpha,
       Points_t beta,
       SearchSummary &search_summary,
@@ -403,9 +403,9 @@ private:
   ) {
     auto executed_move = game_board_.ExecuteMove(move);
     auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(cur_player));
-    auto cur_eval = MinimaxRec(
+    auto cur_eval = MinimaxRecursive(
                         new_allowed_moves,
-                        remaining_search_depth - 1,
+                        search_depth - 1,
                         alpha,
                         beta,
                         opponent_of(cur_player),
@@ -441,7 +441,7 @@ private:
   EqualScoreMoves HandleInternalNode(
       PieceColor cur_player,
       const MoveCollection &allowed_moves,
-      DepthType &remaining_search_depth,
+      DepthType &search_depth,
       Points_t &alpha,
       Points_t &beta,
       MinimaxResultType result_type,
@@ -457,7 +457,7 @@ private:
           rated_move.move,
           cur_player,
           allowed_moves,
-          remaining_search_depth,
+          search_depth,
           alpha,
           beta,
           search_summary,
@@ -477,14 +477,14 @@ private:
         result_type,
         max_eval,
         best_moves,
-        remaining_search_depth,
+        search_depth,
         search_summary
     );
   }
 
-  EqualScoreMoves MinimaxRec(
+  EqualScoreMoves MinimaxRecursive(
       const MoveCollection &allowed_moves,
-      DepthType remaining_search_depth,
+      DepthType search_depth,
       Points_t alpha,
       Points_t beta,
       PieceColor cur_player,
@@ -497,14 +497,14 @@ private:
     // (unless this is a second search in which case we don't use transposition table)
     if (use_transposition_table) {
       auto tr_table_search_result =
-          hash_calculator_.GetTrData(remaining_search_depth, num_move_selections_);
+          hash_calculator_.GetTrData(search_depth, num_move_selections_);
       if (tr_table_search_result.found() &&
           tr_table_search_result.IsConsistentWith(allowed_moves)) {
         return HandleTrTableHit(
             search_summary,
             result_type,
             tr_table_search_result,
-            remaining_search_depth
+            search_depth
         );
       }
     }
@@ -515,21 +515,21 @@ private:
           cur_player,
           search_summary,
           result_type,
-          remaining_search_depth
+          search_depth
       );
     }
 
     // If remaining search depth is zero, treat node as "normal" leaf (not end of game,
     // just end of search)
-    if (remaining_search_depth == 0) {
-      return HandleLeaf(cur_player, search_summary, result_type, remaining_search_depth);
+    if (search_depth == 0) {
+      return HandleLeaf(cur_player, search_summary, result_type, search_depth);
     }
 
     // If not end-of-game, nor end-of-search, treat node as internal node.
     return HandleInternalNode(
         cur_player,
         allowed_moves,
-        remaining_search_depth,
+        search_depth,
         alpha,
         beta,
         result_type,
@@ -544,9 +544,9 @@ private:
       bool use_transposition_table = true
   ) {
     auto search_start = std::chrono::high_resolution_clock::now();
-    auto minimax_result = MinimaxRec(
+    auto minimax_result = MinimaxRecursive(
         allowed_moves,
-        starting_search_depth_,
+        search_depth_,
         numeric_limits<Points_t>::min(),
         numeric_limits<Points_t>::max(),
         evaluating_player_,

@@ -28,13 +28,13 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
       .def(
           py::init<PieceColor, int, GameBoard &>(),
           "evaluating_player"_a,
-          "starting_search_depth"_a,
+          "search_depth"_a,
           "game_board"_a
       )
       .def(
           py::init<PieceColor, int, GameBoard &, uint32_t>(),
           "evaluating_player"_a,
-          "starting_search_depth"_a,
+          "search_depth"_a,
           "game_board"_a,
           "zkeys_seed"_a
       )
@@ -54,11 +54,11 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
               PiecePositionPoints>::search_summaries
       )
       .def(
-          "starting_search_depth",
+          "search_depth",
           &moveselection::MinimaxMoveEvaluator<
               GameBoard,
               ZobristCoordinator<KeyType, NumConfKeys>,
-              PiecePositionPoints>::starting_search_depth
+              PiecePositionPoints>::search_depth
       )
       .def(
           "zobrist_key_size_bits",

@@ -18,6 +18,9 @@ from xiangqipy.player_summary import PlayerSummary
 class PlayerSummaries:
     """
     A data container for holding one PlayerSummary for each player in a Game.
+
+    @param kRed PlayerSummary: summary data for red player
+    @param kBlk PlayerSummary: summary data for black player
     """
 
     kRed: PlayerSummary

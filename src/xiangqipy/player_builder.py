@@ -51,32 +51,32 @@ class SinglePlayerBuilder:
             },
             MinimaxMoveEvaluator32: {
                 "evaluating_player": self._color,
-                "starting_search_depth": self.player_input.strength,
+                "search_depth": self.player_input.strength,
                 "game_board": self._game_board,
             },
             MinimaxMoveEvaluator64: {
                 "evaluating_player": self._color,
-                "starting_search_depth": self.player_input.strength,
+                "search_depth": self.player_input.strength,
                 "game_board": self._game_board,
             },
             MinimaxMoveEvaluator128: {
                 "evaluating_player": self._color,
-                "starting_search_depth": self.player_input.strength,
+                "search_depth": self.player_input.strength,
                 "game_board": self._game_board,
             },
             MinimaxMoveEvaluator32Dual: {
                 "evaluating_player": self._color,
-                "starting_search_depth": self.player_input.strength,
+                "search_depth": self.player_input.strength,
                 "game_board": self._game_board,
             },
             MinimaxMoveEvaluator64Dual: {
                 "evaluating_player": self._color,
-                "starting_search_depth": self.player_input.strength,
+                "search_depth": self.player_input.strength,
                 "game_board": self._game_board,
             },
             MinimaxMoveEvaluator128Dual: {
                 "evaluating_player": self._color,
-                "starting_search_depth": self.player_input.strength,
+                "search_depth": self.player_input.strength,
                 "game_board": self._game_board,
             },
         }
