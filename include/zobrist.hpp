@@ -137,6 +137,82 @@ private:
 //! Using more than one boardstate::ZobristCalculator (i.e. NumConfKeys > 0) allows hash
 //! collisions to be detected.
 template <typename KeyType, size_t NumConfKeys>
+class ZobristComponentNew {
+private:
+  const ZobristCalculator<KeyType>& primary_calculator_;
+  const std::array<ZobristCalculator<KeyType>, NumConfKeys>& confirmation_calculators_;
+
+public:
+  //! Constructs ZobristComponent from existing ZobristCalculator objects
+  explicit ZobristComponentNew(
+      const ZobristCalculator<KeyType>& primary_calculator,
+      const std::array<ZobristCalculator<KeyType>, NumConfKeys> &confirmation_calculators
+  )
+      : primary_calculator_{primary_calculator}
+      , confirmation_calculators_(confirmation_calculators) {}
+
+  // Getters
+  KeyType primary_board_state() { return primary_calculator_.board_state(); }
+  std::array<KeyType, NumConfKeys> confirmation_board_states() {
+    return confirmation_board_states_internal();
+  }
+  KeyType primary_calculator_seed() { return primary_calculator_.seed(); }
+  std::array<uint32_t, NumConfKeys> confirmation_calculator_seeds() const {
+    return confirmation_calculator_seeds_internal();
+  }
+  std::string primary_board_state_hex_str() const {
+    return boardstate::IntToHexString(primary_calculator_.board_state());
+  }
+  // uint32_t prng_seed() { return prng_seed_.value_or(0); }
+
+  // Calculation methods
+  void UpdateBoardStates(const ExecutedMove &executed_move) {
+    UpdateBoardStatesInternal(executed_move);
+  }
+
+  void FullBoardStateCalc(const BoardMap_t &board_map) {
+    FullBoardStateCalcInternal(board_map);
+  }
+
+private:
+
+  // Internal getters
+  std::array<KeyType, NumConfKeys> confirmation_board_states_internal() {
+    std::array<KeyType, NumConfKeys> confirmation_states;
+    for (auto i = 0; i < NumConfKeys; ++i) {
+      confirmation_states[i] = confirmation_calculators_[i].board_state();
+    }
+    return confirmation_states;
+  }
+
+  std::array<uint32_t, NumConfKeys> confirmation_calculator_seeds_internal() const {
+    std::array<uint32_t, NumConfKeys> seeds;
+    for (auto i = 0; i < NumConfKeys; ++i) {
+      seeds[i] = confirmation_calculators_[i].seed();
+    }
+  }
+
+  // Internal calculation methods
+  void UpdateBoardStatesInternal(const ExecutedMove &executed_move) {
+    primary_calculator_.UpdateBoardState(executed_move);
+    for (auto &calculator : confirmation_calculators_) {
+      calculator.UpdateBoardState(executed_move);
+    }
+  }
+
+  void FullBoardStateCalcInternal(const BoardMap_t &board_map) {
+    primary_calculator_.FullBoardStateCalc(board_map);
+    for (auto &calculator : confirmation_calculators_) {
+      calculator.FullBoardStateCalc(board_map);
+    }
+  }
+};
+
+
+//! Container for one or more boardstate::ZobristCalculator objects.
+//! Using more than one boardstate::ZobristCalculator (i.e. NumConfKeys > 0) allows hash
+//! collisions to be detected.
+template <typename KeyType, size_t NumConfKeys>
 class ZobristComponent {
 private:
   ZobristCalculator<KeyType> primary_calculator_;
@@ -279,6 +355,8 @@ class TranspositionTable {
   MoveCountType move_counter_;
 
 public:
+  TranspositionTable() = default;
+  
   moveselection::TranspositionTableSearchResult GetDataAt(
       KeyType primary_board_state,
       DepthType remaining_search_depth,

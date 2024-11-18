@@ -19,6 +19,30 @@ using namespace boardstate;
 using namespace gameboard;
 using namespace piecepoints;
 
+template <typename KeyType>
+void bind_zobrist_calculator(py::module_ &m, const std::string &class_name) {
+  py::class_<ZobristCalculator<KeyType>>(m, class_name.c_str())
+      .def(py::init<uint32_t>(), "seed"_a);
+}
+
+template <typename KeyType, size_t NumConfKeys>
+void bind_zobrist_component_new(py::module_ &m, const std::string &class_name) {
+  py::class_<ZobristComponentNew<KeyType, NumConfKeys>>(m, class_name.c_str())
+      .def(
+          py::init<
+              ZobristCalculator<KeyType> &,
+              std::array<ZobristCalculator<KeyType>, NumConfKeys> &>(),
+          "primary_calculator"_a,
+          "confirmation_calculators"_a
+      );
+}
+
+template <typename KeyType, size_t NumConfKeys>
+void bind_transposition_table(py::module_ &m, const std::string &class_name) {
+  py::class_<TranspositionTable<KeyType, NumConfKeys>>(m, class_name.c_str())
+      .def(py::init<>());
+}
+
 template <typename KeyType, size_t NumConfKeys>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
   py::class_<moveselection::MinimaxMoveEvaluator<
@@ -84,6 +108,8 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
 }
 
 PYBIND11_MODULE(xiangqi_bindings, m) {
+
+  py::class_<PiecePositionPoints>(m, "PiecePositionPoints").def(py::init<>());
 
   py::class_<BoardSpace>(m, "BoardSpace")
       .def(py::init<int, int>(), "rank"_a, "file"_a)
@@ -235,6 +261,14 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
           &moveselection::SearchSummaries::first_searches
       ) // Read-only vectors and maps
       .def_readonly("extra_searches", &moveselection::SearchSummaries::extra_searches);
+
+  bind_zobrist_calculator<uint32_t>(m, "ZobristCalculator32");
+  bind_zobrist_calculator<uint64_t>(m, "ZobristCalculator64");
+  bind_zobrist_calculator<__uint128_t>(m, "ZobristCalculator128");
+
+  bind_zobrist_component_new<uint32_t, 1>(m, "ZobristComponentNew32");
+  bind_zobrist_component_new<uint64_t, 1>(m, "ZobristComponentNew64");
+  bind_zobrist_component_new<__uint128_t, 1>(m, "ZobristComponentNew128");
 
   bind_minimax_move_evaluator<uint32_t, 0>(m, "MinimaxMoveEvaluator32");
   bind_minimax_move_evaluator<uint64_t, 0>(m, "MinimaxMoveEvaluator64");
