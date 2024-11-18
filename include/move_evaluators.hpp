@@ -403,7 +403,7 @@ private:
   ) {
     auto executed_move = game_board_.ExecuteMove(move);
     auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(cur_player));
-    auto cur_eval = MinimaxRec(
+    auto cur_eval = MinimaxRecursive(
                         new_allowed_moves,
                         search_depth - 1,
                         alpha,
@@ -482,7 +482,7 @@ private:
     );
   }
 
-  EqualScoreMoves MinimaxRec(
+  EqualScoreMoves MinimaxRecursive(
       const MoveCollection &allowed_moves,
       DepthType search_depth,
       Points_t alpha,
@@ -544,7 +544,7 @@ private:
       bool use_transposition_table = true
   ) {
     auto search_start = std::chrono::high_resolution_clock::now();
-    auto minimax_result = MinimaxRec(
+    auto minimax_result = MinimaxRecursive(
         allowed_moves,
         search_depth_,
         numeric_limits<Points_t>::min(),
