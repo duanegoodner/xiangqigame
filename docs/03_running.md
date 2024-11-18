@@ -51,11 +51,9 @@ options:
 
 ### Terminal Recording of Game with Default Settings
 
-The terminal recording below shows a game run using the command:
-```
-play_xiangqi -rst 5 -bst 5 -s -d game_01
-```
-![game_01_demo](demos/gifs/game_01.gif)
+The terminal recording below shows a terminal recording of a game that results from running `play_xiangqi` with default settings.
+
+![default_game_demo](doxygen/resources/xiangqigame_default.gif)
 
 ### Additional Example Games
 
