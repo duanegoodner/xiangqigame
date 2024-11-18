@@ -49,70 +49,58 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Running", "md_docs_03_running.html", [
-      [ "The play_xiangqi Command", "md_docs_03_running.html#autotoc_md19", null ],
-      [ "Example Games", "md_docs_03_running.html#autotoc_md20", [
-        [ "Game #1:", "md_docs_03_running.html#autotoc_md21", [
-          [ "Settings", "md_docs_03_running.html#autotoc_md22", null ],
-          [ "Terminal Recording", "md_docs_03_running.html#autotoc_md23", null ],
-          [ "Minimax Data", "md_docs_03_running.html#autotoc_md24", null ],
-          [ "Synopsis", "md_docs_03_running.html#autotoc_md25", null ]
-        ] ],
-        [ "Game #2:", "md_docs_03_running.html#autotoc_md26", [
-          [ "Terminal Recording", "md_docs_03_running.html#autotoc_md27", null ],
-          [ "Minimax Data", "md_docs_03_running.html#autotoc_md28", null ],
-          [ "Synopsis", "md_docs_03_running.html#autotoc_md29", null ]
-        ] ],
-        [ "Game #3:", "md_docs_03_running.html#autotoc_md30", [
-          [ "Terminal Recording", "md_docs_03_running.html#autotoc_md31", null ],
-          [ "Minimax Data", "md_docs_03_running.html#autotoc_md32", null ],
-          [ "Synopsis", "md_docs_03_running.html#autotoc_md33", null ]
-        ] ],
-        [ "Game #4:", "md_docs_03_running.html#autotoc_md34", [
-          [ "Terminal Recording", "md_docs_03_running.html#autotoc_md35", null ],
-          [ "Minimax Data", "md_docs_03_running.html#autotoc_md36", null ],
-          [ "Synopsis", "md_docs_03_running.html#autotoc_md37", null ]
-        ] ],
-        [ "Game #5:", "md_docs_03_running.html#autotoc_md38", [
-          [ "Terminal Recording", "md_docs_03_running.html#autotoc_md39", null ],
-          [ "Minimax Data", "md_docs_03_running.html#autotoc_md40", null ],
-          [ "Synopsis", "md_docs_03_running.html#autotoc_md41", null ]
-        ] ],
-        [ "Game #6", "md_docs_03_running.html#autotoc_md42", [
-          [ "Terminal Recording", "md_docs_03_running.html#autotoc_md43", null ],
-          [ "Minimax Data", "md_docs_03_running.html#autotoc_md44", null ],
-          [ "Synopsis", "md_docs_03_running.html#autotoc_md45", null ]
-        ] ],
-        [ "Game #7", "md_docs_03_running.html#autotoc_md46", [
-          [ "Terminal Recording", "md_docs_03_running.html#autotoc_md47", null ],
-          [ "Minimax Data", "md_docs_03_running.html#autotoc_md48", null ],
-          [ "Synopsis", "md_docs_03_running.html#autotoc_md49", null ]
-        ] ]
+      [ "The play_xiangqi Command", "md_docs_03_running.html#autotoc_md19", [
+        [ "Terminal Recording of Game with Default Settings", "md_docs_03_running.html#autotoc_md20", null ],
+        [ "Additional Example Games", "md_docs_03_running.html#autotoc_md21", null ]
       ] ]
     ] ],
     [ "Terminal Game Board and Notation", "md_docs_04_notation.html", [
-      [ "Piece Notation", "md_docs_04_notation.html#autotoc_md51", [
-        [ "Board Space Notation", "md_docs_04_notation.html#autotoc_md54", null ],
-        [ "Move Notation", "md_docs_04_notation.html#autotoc_md55", null ],
-        [ "Board Features", "md_docs_04_notation.html#autotoc_md56", [
-          [ "First character (piece type)", "md_docs_04_notation.html#autotoc_md52", null ],
-          [ "Second character (piece color)", "md_docs_04_notation.html#autotoc_md53", null ],
-          [ "River Edges", "md_docs_04_notation.html#autotoc_md57", null ],
-          [ "Castle Spaces", "md_docs_04_notation.html#autotoc_md58", null ]
+      [ "Piece Notation", "md_docs_04_notation.html#autotoc_md23", [
+        [ "Board Space Notation", "md_docs_04_notation.html#autotoc_md26", null ],
+        [ "Move Notation", "md_docs_04_notation.html#autotoc_md27", null ],
+        [ "Board Features", "md_docs_04_notation.html#autotoc_md28", [
+          [ "First character (piece type)", "md_docs_04_notation.html#autotoc_md24", null ],
+          [ "Second character (piece color)", "md_docs_04_notation.html#autotoc_md25", null ],
+          [ "River Edges", "md_docs_04_notation.html#autotoc_md29", null ],
+          [ "Castle Spaces", "md_docs_04_notation.html#autotoc_md30", null ]
         ] ]
       ] ]
     ] ],
     [ "Components", "md_docs_05_components.html", [
-      [ "UML Diagram", "md_docs_05_components.html#autotoc_md60", null ],
-      [ "Components", "md_docs_05_components.html#autotoc_md61", [
-        [ "JsonIO", "md_docs_05_components.html#autotoc_md62", null ],
-        [ "PiecePoints", "md_docs_05_components.html#autotoc_md63", null ],
-        [ "GameBoard", "md_docs_05_components.html#autotoc_md64", null ],
-        [ "BoardState", "md_docs_05_components.html#autotoc_md65", null ],
-        [ "MoveEvaluator", "md_docs_05_components.html#autotoc_md66", null ]
+      [ "UML Diagram", "md_docs_05_components.html#autotoc_md32", null ],
+      [ "Components", "md_docs_05_components.html#autotoc_md33", [
+        [ "JsonIO", "md_docs_05_components.html#autotoc_md34", null ],
+        [ "PiecePoints", "md_docs_05_components.html#autotoc_md35", null ],
+        [ "GameBoard", "md_docs_05_components.html#autotoc_md36", null ],
+        [ "BoardState", "md_docs_05_components.html#autotoc_md37", null ],
+        [ "MoveEvaluator", "md_docs_05_components.html#autotoc_md38", null ]
       ] ]
     ] ],
-    [ "Minimax Details", "md_docs_06_minimax_details.html", null ],
-    [ "AI Engine Data", "md_docs_07_game_data.html", null ],
+    [ "Minimax Details", "md_docs_06_minimax_details.html", [
+      [ "Algorithm Termination Modes", "md_docs_06_minimax_details.html#autotoc_md40", null ],
+      [ "Points Assignment", "md_docs_06_minimax_details.html#autotoc_md41", null ],
+      [ "Pre-Search Sorting of Available Moves", "md_docs_06_minimax_details.html#autotoc_md42", null ],
+      [ "Zobrist Coordinator", "md_docs_06_minimax_details.html#autotoc_md43", null ],
+      [ "Performance", "md_docs_06_minimax_details.html#autotoc_md44", null ],
+      [ "Possible Improvements", "md_docs_06_minimax_details.html#autotoc_md45", [
+        [ "A Smarter Evaluator", "md_docs_06_minimax_details.html#autotoc_md46", null ],
+        [ "Speed Improvements", "md_docs_06_minimax_details.html#autotoc_md47", null ],
+        [ "Reduce Python Responsibilities", "md_docs_06_minimax_details.html#autotoc_md48", null ]
+      ] ]
+    ] ],
+    [ "AI Engine Data", "md_docs_07_game_data.html", [
+      [ "GameSummary", "md_docs_07_game_data.html#autotoc_md50", [
+        [ "Auto-saving Game Summary Data", "md_docs_07_game_data.html#autotoc_md51", null ],
+        [ "Auto-generating Plots", "md_docs_07_game_data.html#autotoc_md52", [
+          [ "Minimax Node Counts by Search  Result Type", "md_docs_07_game_data.html#autotoc_md53", null ],
+          [ "Move Selection Time", "md_docs_07_game_data.html#autotoc_md54", null ],
+          [ "Minimax Evaluation Scores", "md_docs_07_game_data.html#autotoc_md55", null ],
+          [ "Data from Additional Games", "md_docs_07_game_data.html#autotoc_md56", null ]
+        ] ],
+        [ "Additional / Custom Analysis of GameSummary Data", "md_docs_07_game_data.html#autotoc_md57", null ]
+      ] ]
+    ] ],
+    [ "Example Games", "md_docs_08_example_games.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -151,13 +139,13 @@ var NAVTREEINDEX =
 [
 "____init_____8py.html",
 "classboardstate_1_1ZobristCoordinator.html#a45572ae707decd032c77c9c216c83b2e",
-"classmoveselection_1_1MinimaxMoveEvaluator.html#afdf74a02920f5037e16d90211cf25f92",
+"classmoveselection_1_1MinimaxMoveEvaluator.html#af844893fcc25facf7313df2da0427485",
 "classxiangqipy_1_1core__dataclass__mirrors_1_1BoardSpace.html#a65019c92f1e797804d9867a0f9d7531c",
 "classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html",
 "classxiangqipy_1_1players_1_1IllegalMoveInMoveList.html#a161e0c283043b872ed5ed421fd425f3f",
 "game__summary__io_8py.html#a7d882e81ad5f3acd948dbc2d1f862fae",
-"namespacemoveselection_1_1minimaxutils.html#af8f5372c781c8f3203e21ba882663241",
-"structgameboard_1_1MoveCollection.html#a40c1b1e41cb2452431b77b9c3cc0e4c1"
+"namespacepiecepoints.html#a70c12c629ce81810a64a420a0ecaa86a",
+"structgameboard_1_1MoveCollection.html#ab764ede9a9fbf969dcab8f9ec82ac643"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

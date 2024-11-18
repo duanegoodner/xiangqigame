@@ -6,5 +6,6 @@ var searchData=
   ['04_5fnotation_2emd_3',['04_notation.md',['../04__notation_8md.html',1,'']]],
   ['05_5fcomponents_2emd_4',['05_components.md',['../05__components_8md.html',1,'']]],
   ['06_5fminimax_5fdetails_2emd_5',['06_minimax_details.md',['../06__minimax__details_8md.html',1,'']]],
-  ['07_5fgame_5fdata_2emd_6',['07_game_data.md',['../07__game__data_8md.html',1,'']]]
+  ['07_5fgame_5fdata_2emd_6',['07_game_data.md',['../07__game__data_8md.html',1,'']]],
+  ['08_5fexample_5fgames_2emd_7',['08_example_games.md',['../08__example__games_8md.html',1,'']]]
 ];

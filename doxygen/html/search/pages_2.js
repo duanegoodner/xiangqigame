@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['installing_0',['Installing',['../md_docs_02_installing.html',1,'']]]
+  ['example_20games_0',['Example Games',['../md_docs_08_example_games.html',1,'']]]
 ];

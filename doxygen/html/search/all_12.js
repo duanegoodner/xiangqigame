@@ -14,7 +14,7 @@ var searchData=
   ['recordnodeinfo_11',['RecordNodeInfo',['../classmoveselection_1_1SearchSummary.html#a257fc5d343a517b2cefedb53e30d0b38',1,'moveselection::SearchSummary']]],
   ['recordtrdata_12',['RecordTrData',['../classBoardStateCoordinator.html#acede2332f3806b09948c228195532419',1,'BoardStateCoordinator']]],
   ['recordtrtablehit_13',['RecordTrTableHit',['../classmoveselection_1_1SearchSummary.html#a4d819c5661ad5221529f628976268f43',1,'moveselection::SearchSummary']]],
-  ['recursivelyvisitnodes_14',['RecursivelyVisitNodes',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a14c6eef581765b80a321c6fb06ea6112',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['recursivelyvisitnodes_14',['RecursivelyVisitNodes',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ad917df1c6484f1c5d8b5915f0f7f11f0',1,'moveselection::MinimaxMoveEvaluator']]],
   ['red_5fbase_5foffsets_5f_15',['red_base_offsets_',['../classpiecepoints_1_1BPOPointsSKeys.html#abc4cd8479032e35f3765a5198b36af50',1,'piecepoints::BPOPointsSKeys::red_base_offsets_()'],['../classpiecepoints_1_1BPOPointsEKeys.html#a2c9162482904800688603f109ae56fde',1,'piecepoints::BPOPointsEKeys::red_base_offsets_()']]],
   ['red_5fcastle_5fspaces_16',['red_castle_spaces',['../namespacegameboard.html#a5276c175a40d19b70dc764a7ff5a878f',1,'gameboard']]],
   ['red_5fplayer_5finput_17',['red_player_input',['../classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#abd110c99743fd5c416e7128981259e60',1,'xiangqipy::command_input::XiangqiGameCommand']]],

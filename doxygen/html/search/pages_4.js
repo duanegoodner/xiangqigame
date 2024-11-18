@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['running_0',['Running',['../md_docs_03_running.html',1,'']]]
+  ['minimax_20details_0',['Minimax Details',['../md_docs_06_minimax_details.html',1,'']]]
 ];

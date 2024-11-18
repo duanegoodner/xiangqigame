@@ -145,11 +145,36 @@ $(document).ready(function(){initNavTree('md_docs_07_game_data.html',''); initRe
   <div class="headertitle"><div class="title">AI Engine Data </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><div class="section_buttons"></div><div class="section_buttons"><table class="markdownTable">
+<div class="textblock"><h1><a class="anchor" id="autotoc_md50"></a>
+GameSummary</h1>
+<p>The return value of <a class="el" href="namespacexiangqipy_1_1app.html#ac09777385f4e43af5903c4c664c70ae4" title="Collects command line args, instantiates everything needed for a Game, runs the Game,...">xiangqipy.app.run</a> is a <a class="el" href="classxiangqipy_1_1game__summary_1_1GameSummary.html" title="Holds summary info of a xiangqipy.game.Game; implements msgspec.Struct for json IO.">xiangqipy.game_summary.GameSummary</a> object containing a variety of data for each move selection performed by any <a class="el" href="classxiangqipy_1_1players_1_1AIPlayer.html" title="Proposed moves selected using an implementation of core MoveEvaluator.">xiangqipy.players.AIPlayer</a> that used a Minimax evaluator during the game.</p>
+<h2><a class="anchor" id="autotoc_md51"></a>
+Auto-saving Game Summary Data</h2>
+<p>When the <code>-s</code> or <code>--save_summary</code> is passed to the <code>play_xiangqi</code> command, the summary object from the ensuing game is serialized and saved in a <code>.json</code> file. The default path of this file is <code>xiangqigame/data/game_summaries/&lt;game-id&gt;-&lt;suffix&gt;/&lt;game-id&gt;.json</code> where the <code>game-id</code> is auto-generated using a timestamp, and <code>suffix</code> is an optional identifier / comment string passed to <code>play_xiangqi</code> with the <code>-d</code> or <code>--output_dir_suffix</code> argument.</p>
+<h2><a class="anchor" id="autotoc_md52"></a>
+Auto-generating Plots</h2>
+<p>Using the <code>-s</code> or <code>--save_summary</code> option with the <code>play_xiangqi</code> command also causes and a standard set of of plots based on parts of the summary object's data to be generated and saved to a <code>.png</code> file. An example of these auto-generated plots is shown below.</p>
+<p><img src="doxygen/resources/auto_gen_plots_example.png" alt="auto_gen_plots_example" class="inline"/></p>
+<h3><a class="anchor" id="autotoc_md53"></a>
+Minimax Node Counts by Search  Result Type</h3>
+<p>Plots in the "Minimax Node Counts by Search Result" block show the number of nodes evaluated vs. move number, with data grouped or "stacked" by the Minimax termination mode. In these plots, we see that standard leaf nodes (i.e. those where the Minimax algorithm reached its maximum search depth) are most prevalent, followed by transposition table hits. Both players also detected end-of-game nodes throughout the game.</p>
+<h3><a class="anchor" id="autotoc_md54"></a>
+Move Selection Time</h3>
+<p>The "Move Selection Time" section of plots show the total time for move selection as well as the mean evaluation time per node vs move number for each player. We can see that search time for each tracks closely with the number of nodes evaluated. Also, the mean evaluation time per node is ~10 - 20 ns for most moves, with the exception of move #29 where the red player appears to have encountered a transposition table hit for the root node.</p>
+<h3><a class="anchor" id="autotoc_md55"></a>
+Minimax Evaluation Scores</h3>
+<p>The "Minimax Evaluation Scores" plots show the Minimax evaluation score of each move selected during the game. Based on these plots, it appears that the black player held a moderate advantage during the middle portion of the game, but red established the stronger position during the final ~10 moves and ultimately won the game.</p>
+<h3><a class="anchor" id="autotoc_md56"></a>
+Data from Additional Games</h3>
+<p>Additional examples of auto-generated game summary plots are on the <a class="el" href="md_docs_08_example_games.html">example games page</a></p>
+<h2><a class="anchor" id="autotoc_md57"></a>
+Additional / Custom Analysis of GameSummary Data</h2>
+<p>The data in a <a class="el" href="classxiangqipy_1_1game__summary_1_1GameSummary.html" title="Holds summary info of a xiangqipy.game.Game; implements msgspec.Struct for json IO.">xiangqipy.game_summary.GameSummary</a> contains information beyond that shown in the default auto-generated plots, and can be used to gain further understanding of the inner-workings of our AI engine. Summary data stored in <code>.json</code> form can be re-imported to Python using <a class="el" href="namespacexiangqipy_1_1game__summary__io.html#a169730ff8c31dbd436a1e7df1e26bebb">xiangqipy.game_summary_io.import_game_summary</a>, as is done for the analyses performed by several modules in <code>tests/python</code>.</p>
+<div class="section_buttons"></div><div class="section_buttons"><table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadLeft">Previous   </th><th class="markdownTableHeadRight">Next    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyLeft"><a class="el" href="md_docs_06_minimax_details.html">MinimaxDetails</a>   </td><td class="markdownTableBodyRight"></td></tr>
+<td class="markdownTableBodyLeft"><a class="el" href="md_docs_06_minimax_details.html">Minimax Details</a>   </td><td class="markdownTableBodyRight"><a class="el" href="md_docs_08_example_games.html">Example Games</a>   </td></tr>
 </table>
 </div><div class="section_buttons"></div> </div></div><!-- contents -->
 </div><!-- PageDoc -->
@@ -157,7 +182,7 @@ $(document).ready(function(){initNavTree('md_docs_07_game_data.html',''); initRe
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Nov 16 2024 05:54:45 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Nov 18 2024 06:46:36 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -145,7 +145,7 @@ $(document).ready(function(){initNavTree('md_docs_05_components.html',''); initR
   <div class="headertitle"><div class="title">Components </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md60"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md32"></a>
 UML Diagram</h1>
 <p>Relationships among classes and the organization of classes into namespaces can be viewed in the <a href="../../plantuml/xiangqigame_core.svg">UML diagram linked here</a>. Key things to note in this diagram are:</p><ul>
 <li>There five namespaces: gameboard, boardstate, piecepoints, moveslection, and jsonio</li>
@@ -160,16 +160,16 @@ UML Diagram</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md61"></a>
+<h1><a class="anchor" id="autotoc_md33"></a>
 Components</h1>
 <p>Each namespace, combined with the interface class it is paired with, can be considered a component of the AI engine. The primary responsibilities of each component are described below. In general, the class structure aims to prevent the engine's highest level concept - move selection - from coupling with implementation details of lower level components.</p>
-<h2><a class="anchor" id="autotoc_md62"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 JsonIO</h2>
 <p><b>JsonUtilityInterface + jsonio namespace</b>: Imports .json files to C++ objects such as a piecepoints::BPOPositionPoints. Currently, the sole implementation of the <a class="el" href="classJsonUtility.html" title="CRTP interface with methods of importing / exporting objects from / to json files (concrete example =...">JsonUtility</a> interface uses the <a href="https://github.com/nlohmann/json">Nlohmann json library</a>. The interface keeps the rest of the codebase isolated from the details of the external library. If we ever want to use an additional json library and/or replace the Nlohmann, having the JsonInterface would simplify the integration process.</p>
-<h2><a class="anchor" id="autotoc_md63"></a>
+<h2><a class="anchor" id="autotoc_md35"></a>
 PiecePoints</h2>
 <p><b><a class="el" href="classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific...">PieceValueProvider</a> + piecepoints namespace</b>: Informs some implementations of a <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a> with the value associated with having a particular piece located at a particular <a class="el" href="structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa...">gameboard::BoardSpace</a>.</p>
-<h2><a class="anchor" id="autotoc_md64"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 GameBoard</h2>
 <p><b><a class="el" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,...">SpaceInfoProvider</a> + gameboard namespace</b>: Tracks the <a class="el" href="structgameboard_1_1BoardSpace.html" title="A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa...">gameboard::BoardSpace</a> locations of <a class="el" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor.">gameboard::GamePiece</a> objects, and determines which moves of <a class="el" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor.">gameboard::GamePiece</a> objects are allowed. Our concrete implementation of SpaceInforProvider, <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a>, accomplishes these tasks with the help of its <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a>. With the help of its <a class="el" href="classgameboard_1_1GameBoard.html#abccbc49237b8fc46091df6e2d7fdafe8" title="2-D array of GamePiece objects.">gameboard::GameBoard.board_map_</a> and a <a class="el" href="classgameboard_1_1MoveCalculator.html" title="Calculates legal gameboard::Move objects for of a gameboard::GameBoard with a particular state.">gameboard::MoveCalculator</a>.</p>
 <p>Within the gameboard namespace, all <a href="https://en.wikipedia.org/wiki/Xiangqi#Rules">standard rules of Xiangi</a> are implemented, execept for some of the rules related to repeated moves. Specifically:</p><ul>
@@ -177,11 +177,11 @@ GameBoard</h2>
 <li>Triple repeat move patterns with a periods of 2, 3, and 4 ARE prohibited (ABABAB, ABCABCABC, and ABCDABCDABCD are prohibited).</li>
 <li>Triple repeat patterns with a period longer than 4 are NOT prohibited (ABCDEABCDEABCDE, and anything else of the form [X]ABCD[X]ABCD[X] is NOT prohibited).</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md65"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 BoardState</h2>
 <p><b><a class="el" href="classBoardStateCoordinator.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateCoordinator</a> + boardstate namespace</b>: Maintains an integer that represents the current board state, and updates the value of this board state integer whenever the <a class="el" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor.">gameboard::GamePiece</a> configuration of a <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a> changes. Provides a <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a> with fast access to storage and retrieval of calculation results in a data structrue that usese board state integer values as keys.</p>
 <p><a class="el" href="classboardstate_1_1ZobristCoordinator.html" title="Implements the BoardStateCoordinator interface, providing a moveselection::MinimaxMoveEvaluator with ...">boardstate::ZobristCoordinator</a>, our concrete <a class="el" href="classBoardStateCoordinator.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateCoordinator</a>, supports using either a 32-bit, 64-bit, or 128-bit integer for its hashcalculator::HashCalculator.board_state_. The board state value is updated using a hashcalculator::ZobristKeys object combined with information from a <a class="el" href="structgameboard_1_1ExecutedMove.html" title="A change in the state of a gameboard::GameBoard represented by a gameboard::Move, and each of the gam...">gameboard::ExecutedMove</a>.</p>
-<h2><a class="anchor" id="autotoc_md66"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 MoveEvaluator</h2>
 <p><b><a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a> + moveselection namespace</b>: Selects a <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a> to execute. The <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro...">moveselection::MinimaxMoveEvaluator</a> implementation uses the recursive Minimax algorithm with the value of a particular board configuration determined based on piece- and position- dependent points obtained from a <a class="el" href="classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific...">PieceValueProvider</a>. This act of move selection represents the highest level concept on the C++ side of the project.</p>
 <div class="section_buttons"></div><div class="section_buttons"><table class="markdownTable">
@@ -196,7 +196,7 @@ MoveEvaluator</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Nov 16 2024 05:54:45 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Nov 18 2024 06:46:36 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

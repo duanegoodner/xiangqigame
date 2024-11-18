@@ -7,7 +7,7 @@ var searchData=
   ['recordnodeinfo_4',['RecordNodeInfo',['../classmoveselection_1_1SearchSummary.html#a257fc5d343a517b2cefedb53e30d0b38',1,'moveselection::SearchSummary']]],
   ['recordtrdata_5',['RecordTrData',['../classBoardStateCoordinator.html#acede2332f3806b09948c228195532419',1,'BoardStateCoordinator']]],
   ['recordtrtablehit_6',['RecordTrTableHit',['../classmoveselection_1_1SearchSummary.html#a4d819c5661ad5221529f628976268f43',1,'moveselection::SearchSummary']]],
-  ['recursivelyvisitnodes_7',['RecursivelyVisitNodes',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a14c6eef581765b80a321c6fb06ea6112',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['recursivelyvisitnodes_7',['RecursivelyVisitNodes',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ad917df1c6484f1c5d8b5915f0f7f11f0',1,'moveselection::MinimaxMoveEvaluator']]],
   ['red_5fcastle_5fspaces_8',['red_castle_spaces',['../namespacegameboard.html#a5276c175a40d19b70dc764a7ff5a878f',1,'gameboard']]],
   ['rednetpoints_9',['RedNetPoints',['../classpiecepoints_1_1BPOPointsEKeys.html#aa0945f311d671e17883326d36b8ccb93',1,'piecepoints::BPOPointsEKeys']]],
   ['remaining_5fsearch_5fdepth_10',['remaining_search_depth',['../classmoveselection_1_1MinimaxCalcResult.html#a084ce31b66c61380ee16860dad45ed96',1,'moveselection::MinimaxCalcResult::remaining_search_depth()'],['../classboardstate_1_1TranspositionTableEntry.html#afe0c4df474b7d363a7de74ef1f8e1992',1,'boardstate::TranspositionTableEntry::remaining_search_depth()']]],

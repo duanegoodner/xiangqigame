@@ -154,7 +154,7 @@ Core Algorithm</h2>
 <p>The AI utilizes the Minimax algorithm enhanced by Alpha-Beta pruning to select moves. A transposition table based on Zobrist hashing is implemented for storage / retrieval of board state evaulation results and prevents re-calculation of previously seen board states.</p>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Architecture</h2>
-<p>Major components of the AI engine are isolated from each other by interface classes that employ the Curiously Recurring Template Pattern (CRTP). This approach allows for compile time polymorphism and avoids the runtime overhead associated with more traditional virtual class interfaces. This overhead difference can be significant for methods that are called with high frequency.</p>
+<p>The AI engine is designed around a plug-in architecture, enabling easy integration and swapping of components without affecting the core functionality. Major components are isolated from each other by interface classes that employ the Curiously Recurring Template Pattern (CRTP). This approach allows for compile time polymorphism and avoids the runtime overhead associated with more traditional virtual class interfaces.</p>
 <h2><a class="anchor" id="autotoc_md3"></a>
 Integration with Python</h2>
 <p>The C++ core is integrated with an outer Python layer using <a href="https://github.com/pybind/pybind11">pybind11</a>. The Python layer:</p><ul>
@@ -165,6 +165,7 @@ Integration with Python</h2>
 </ul>
 <h2><a class="anchor" id="autotoc_md4"></a>
 Engine Settings and Data Collection</h2>
+<p>This project prioritizes the ability to explore inner-workings of the AI engine with flexible engine settings and in-game data collection.</p>
 <h3><a class="anchor" id="autotoc_md5"></a>
 AI engine parameters that can be modified via the command line interface:</h3>
 <ul>
@@ -177,7 +178,7 @@ Data collected each time an AI player selectes a move include:</h3>
 <ul>
 <li>Total search time</li>
 <li>Number of nodes explored in the game tree</li>
-<li>How the Minimax algorithm terminated at each node</li>
+<li>Minimax algorithm termination mode at each node</li>
 <li>Number of transposition table hash collisions</li>
 <li>Minimax evaluation score of the selectedmove</li>
 </ul>
@@ -193,7 +194,7 @@ Data collected each time an AI player selectes a move include:</h3>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Nov 16 2024 05:54:45 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Nov 18 2024 06:46:36 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>
