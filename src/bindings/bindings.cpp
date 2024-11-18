@@ -44,6 +44,18 @@ void bind_transposition_table(py::module_ &m, const std::string &class_name) {
 }
 
 template <typename KeyType, size_t NumConfKeys>
+void bind_transposition_table_pruner(py::module_ &m, const std::string &class_name) {
+  py::class_<TranspositionTablePruner<KeyType, NumConfKeys>>(m, class_name.c_str())
+      .def(
+          py::init<
+              TranspositionTable<KeyType, NumConfKeys> &,
+              TranspositionTableGuard &>(),
+          "tr_table"_a,
+          "tr_table_guard"_a
+      );
+}
+
+template <typename KeyType, size_t NumConfKeys>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
   py::class_<moveselection::MinimaxMoveEvaluator<
       GameBoard,
@@ -262,6 +274,8 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       ) // Read-only vectors and maps
       .def_readonly("extra_searches", &moveselection::SearchSummaries::extra_searches);
 
+  py::class_<TranspositionTableGuard>(m, "TranspositionTableGuard").def(py::init<>());
+
   bind_zobrist_calculator<uint32_t>(m, "ZobristCalculator32");
   bind_zobrist_calculator<uint64_t>(m, "ZobristCalculator64");
   bind_zobrist_calculator<__uint128_t>(m, "ZobristCalculator128");
@@ -269,6 +283,14 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
   bind_zobrist_component_new<uint32_t, 1>(m, "ZobristComponentNew32");
   bind_zobrist_component_new<uint64_t, 1>(m, "ZobristComponentNew64");
   bind_zobrist_component_new<__uint128_t, 1>(m, "ZobristComponentNew128");
+
+  bind_transposition_table<uint32_t, 1>(m, "TranspositionTable32");
+  bind_transposition_table<uint64_t, 1>(m, "TranspositionTable64");
+  bind_transposition_table<__uint128_t, 1>(m, "TranspositionTable128");
+
+  bind_transposition_table_pruner<uint32_t, 1>(m, "TranspositionTablePruner32");
+  bind_transposition_table_pruner<uint64_t, 1>(m, "TranspositionTablePruner64");
+  bind_transposition_table_pruner<__uint128_t, 1>(m, "TranspositionTablePruner128");
 
   bind_minimax_move_evaluator<uint32_t, 0>(m, "MinimaxMoveEvaluator32");
   bind_minimax_move_evaluator<uint64_t, 0>(m, "MinimaxMoveEvaluator64");
