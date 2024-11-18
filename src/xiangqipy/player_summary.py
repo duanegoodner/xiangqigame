@@ -24,6 +24,7 @@ class PlayerSummary:
     @param move_evaluator_type xiangqipy.enums.EvaluatorType: type of Player's move evaluator.
     @param max_search_depth int: maximum depth that a Minimax move evaluator will search.
     @param search_summaries xiangqipy.core_dataclass_mirrors.SearchSummaries:
+    container with summary data of each Move selected by Player.
     """
 
     color: bindings.PieceColor
@@ -36,14 +37,26 @@ class PlayerSummary:
 
     @property
     def has_search_summaries(self) -> bool:
+        """
+        Property indicating if PlayerSummary object has search summaries.
+
+        Expect to be True for MinimaxMoveEvaluators, False otherwise.
+        """
         return self.search_summaries is not None
 
     @property
     def player_move_count(self) -> int:
+        """
+        Number of moves selected by Player during Game.
+        """
         return len(self.search_summaries.first_searches)
 
     @property
     def game_move_numbers(self) -> List[int]:
+        """
+        Converts Players' move numbers in to overall Game Move numbers
+        (red = odd ints, black = even ints).
+        """
         if self.color == bindings.PieceColor.kRed:
             return list(range(1, 2 * self.player_move_count, 2))
         if self.color == bindings.PieceColor.kBlk:
@@ -85,6 +98,12 @@ class PlayerSummary:
     def first_searches_by_type(self) -> pd.DataFrame | None:
         """
         Dataframe with row -> move number, col -> xiangqi_bindings.MinimaxResultType.
+
+        Named 'first_searches...' in constrast to 'extra_searches...' or
+        'second_searches...' which would occur if first_search of
+        MinimaxMoveEvaluator.select_move returns an illegal move. After fixing bug
+        that was allowing moves that violated repeated move rule to be returned
+        by first search, have never recorded any second searches.
         """
         if not self.has_search_summaries:
             return None
@@ -125,6 +144,11 @@ class PlayerSummary:
     def tr_table_size_first_illegal_move_request(
         self,
     ) -> int | None:
+        """
+        Transposition table size the first time any illegal move was returned
+        by first search. This has been NaN after fixing first search's repeat
+        move rule bug.
+        """
         if self.has_search_summaries and self.search_summaries.extra_searches:
             return self.search_summaries.extra_searches[
                 min(self.search_summaries.extra_searches)
@@ -132,11 +156,18 @@ class PlayerSummary:
 
     @property
     def tr_table_size_end_game(self) -> int | None:
+        """
+        Size of transposition table at end of game.
+        """
         if self.has_search_summaries:
             return self.search_summaries.first_searches[-1].tr_table_size_final
 
     @property
     def tr_table_sizes_at_events(self) -> cdm.TranspositionTableSizesAtEvents:
+        """
+        Transposition table size at first illegal move and end of game wrapped
+        into single convenience property.
+        """
         return cdm.TranspositionTableSizesAtEvents(
             first_illegal_move_request=self.tr_table_size_first_illegal_move_request,
             end_game=self.tr_table_size_end_game,
@@ -180,11 +211,6 @@ class PlayerSummary:
             ],
             dtype=PointsT,
         )
-
-        # tr_table_size = [
-        #     search_summary.tr_table_size_final
-        #     for search_summary in self.search_summaries.first_searches
-        # ]
 
         tr_table_size = [
             search_summary.tr_table_size_final
