@@ -19,15 +19,15 @@ def zobrist_calculator_constructors() -> dict[
     int,
     Callable[
         ...,
-        bindings.ZobristCalculatorB032
-        | bindings.ZobristCalculatorB064
-        | bindings.ZobristCalculatorB128,
+        bindings.ZobristCalculatorB032C1
+        | bindings.ZobristCalculatorB064C1
+        | bindings.ZobristCalculatorB128C1,
     ],
 ]:
     return {
-        32: bindings.ZobristCalculatorB032,
-        64: bindings.ZobristCalculatorB064,
-        128: bindings.ZobristCalculatorB128,
+        32: bindings.ZobristCalculatorB032C1,
+        64: bindings.ZobristCalculatorB064C1,
+        128: bindings.ZobristCalculatorB128C1,
     }
 
 
@@ -36,15 +36,15 @@ def zobrist_component_constructors() -> dict[
     int,
     Callable[
         ...,
-        bindings.ZobristComponentNewB032
-        | bindings.ZobristComponentNewB064
-        | bindings.ZobristComponentNewB128,
+        bindings.ZobristComponentNewB032C1
+        | bindings.ZobristComponentNewB064C1
+        | bindings.ZobristComponentNewB128C1,
     ],
 ]:
     return {
-        32: bindings.ZobristComponentNewB032,
-        64: bindings.ZobristComponentNewB064,
-        128: bindings.ZobristComponentNewB128,
+        32: bindings.ZobristComponentNewB032C1,
+        64: bindings.ZobristComponentNewB064C1,
+        128: bindings.ZobristComponentNewB128C1,
     }
 
 
@@ -53,15 +53,15 @@ def transposition_table_constructors() -> dict[
     int,
     Callable[
         ...,
-        bindings.TranspositionTableB032
-        | bindings.TranspositionTableB064
-        | bindings.TranspositionTableB128,
+        bindings.TranspositionTableB032C1
+        | bindings.TranspositionTableB064C1
+        | bindings.TranspositionTableB128C1,
     ],
 ]:
     return {
-        32: bindings.TranspositionTableB032,
-        64: bindings.TranspositionTableB064,
-        128: bindings.TranspositionTableB128,
+        32: bindings.TranspositionTableB032C1,
+        64: bindings.TranspositionTableB064C1,
+        128: bindings.TranspositionTableB128C1,
     }
 
 
@@ -70,15 +70,15 @@ def transposition_table_pruner_constructors() -> dict[
     int,
     Callable[
         ...,
-        bindings.TranspositionTablePrunerB032
-        | bindings.TranspositionTablePrunerB064
-        | bindings.TranspositionTablePrunerB128,
+        bindings.TranspositionTablePrunerB032C1
+        | bindings.TranspositionTablePrunerB064C1
+        | bindings.TranspositionTablePrunerB128C1,
     ],
 ]:
     return {
-        32: bindings.TranspositionTablePrunerB032,
-        64: bindings.TranspositionTablePrunerB064,
-        128: bindings.TranspositionTablePrunerB128,
+        32: bindings.TranspositionTablePrunerB032C1,
+        64: bindings.TranspositionTablePrunerB064C1,
+        128: bindings.TranspositionTablePrunerB128C1,
     }
 
 
@@ -87,15 +87,15 @@ def zobrist_coordinator_constructors() -> dict[
     int,
     Callable[
         ...,
-        bindings.ZobristCoordinatorNewB032
-        | bindings.ZobristCoordinatorNewB064
-        | bindings.ZobristCoordinatorNewB128,
+        bindings.ZobristCoordinatorNewB032C1
+        | bindings.ZobristCoordinatorNewB064C1
+        | bindings.ZobristCoordinatorNewB128C1,
     ],
 ]:
     return {
-        32: bindings.ZobristCoordinatorNewB032,
-        64: bindings.ZobristCoordinatorNewB064,
-        128: bindings.ZobristCoordinatorNewB128,
+        32: bindings.ZobristCoordinatorNewB032C1,
+        64: bindings.ZobristCoordinatorNewB064C1,
+        128: bindings.ZobristCoordinatorNewB128C1,
     }
 
 
@@ -104,9 +104,9 @@ def zobrist_components(
     zobrist_calculator_constructors, zobrist_component_constructors
 ) -> dict[
     int,
-    bindings.ZobristComponentNewB032
-    | bindings.ZobristComponentNewB064
-    | bindings.ZobristComponentNewB128,
+    bindings.ZobristComponentNewB032C1
+    | bindings.ZobristComponentNewB064C1
+    | bindings.ZobristComponentNewB128C1,
 ]:
     result = {}
     for (
@@ -121,17 +121,17 @@ def zobrist_components(
         )
 
     return {
-        32: bindings.ZobristComponentNewB032(
-            primary_calculator=bindings.ZobristCalculatorB032(),
-            confirmation_calculators=[bindings.ZobristCalculatorB032()],
+        32: bindings.ZobristComponentNewB032C1(
+            primary_calculator=bindings.ZobristCalculatorB032C1(),
+            confirmation_calculators=[bindings.ZobristCalculatorB032C1()],
         ),
-        64: bindings.ZobristComponentNewB064(
-            primary_calculator=bindings.ZobristCalculatorB064(),
-            confirmation_calculators=[bindings.ZobristCalculatorB064()],
+        64: bindings.ZobristComponentNewB064C1(
+            primary_calculator=bindings.ZobristCalculatorB064C1(),
+            confirmation_calculators=[bindings.ZobristCalculatorB064C1()],
         ),
-        128: bindings.ZobristComponentNewB128(
-            primary_calculator=bindings.ZobristCalculatorB128(),
-            confirmation_calculators=[bindings.ZobristCalculatorB128()],
+        128: bindings.ZobristComponentNewB128C1(
+            primary_calculator=bindings.ZobristCalculatorB128C1(),
+            confirmation_calculators=[bindings.ZobristCalculatorB128C1()],
         ),
     }
 
@@ -170,9 +170,9 @@ def zobrist_coordinators(
     transposition_table_pruner_constructors,
 ) -> dict[
     int,
-    bindings.ZobristCoordinatorNewB032
-    | bindings.ZobristCoordinatorNewB064
-    | bindings.ZobristCoordinatorNewB128,
+    bindings.ZobristCoordinatorNewB032C1
+    | bindings.ZobristCoordinatorNewB064C1
+    | bindings.ZobristCoordinatorNewB128C1,
 ]:
     result = {}
     for (
@@ -200,15 +200,15 @@ def minimax_move_evaluator_constructors() -> dict[
     int,
     Callable[
         ...,
-        bindings.MinimaxMoveEvaluatorNewB032
-        | bindings.MinimaxMoveEvaluatorNewB064
-        | bindings.MinimaxMoveEvaluatorNewB128,
+        bindings.MinimaxMoveEvaluatorNewB032C1
+        | bindings.MinimaxMoveEvaluatorNewB064C1
+        | bindings.MinimaxMoveEvaluatorNewB128C1,
     ],
 ]:
     return {
-        32: bindings.MinimaxMoveEvaluatorNewB032,
-        64: bindings.MinimaxMoveEvaluatorNewB064,
-        128: bindings.MinimaxMoveEvaluatorNewB128,
+        32: bindings.MinimaxMoveEvaluatorNewB032C1,
+        64: bindings.MinimaxMoveEvaluatorNewB064C1,
+        128: bindings.MinimaxMoveEvaluatorNewB128C1,
     }
 
 

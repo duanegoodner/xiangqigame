@@ -378,27 +378,27 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
   bind_minimax_move_evaluator<__uint128_t, 1>(m, "MinimaxMoveEvaluator128Dual");
 
   // Components for dependency injection
-  bind_zobrist_calculator<uint32_t>(m, "ZobristCalculatorB032");
-  bind_zobrist_calculator<uint64_t>(m, "ZobristCalculatorB064");
-  bind_zobrist_calculator<__uint128_t>(m, "ZobristCalculatorB128");
+  bind_zobrist_calculator<uint32_t>(m, "ZobristCalculatorB032C1");
+  bind_zobrist_calculator<uint64_t>(m, "ZobristCalculatorB064C1");
+  bind_zobrist_calculator<__uint128_t>(m, "ZobristCalculatorB128C1");
 
-  bind_zobrist_component_new<uint32_t, 1>(m, "ZobristComponentNewB032");
-  bind_zobrist_component_new<uint64_t, 1>(m, "ZobristComponentNewB064");
-  bind_zobrist_component_new<__uint128_t, 1>(m, "ZobristComponentNewB128");
+  bind_zobrist_component_new<uint32_t, 1>(m, "ZobristComponentNewB032C1");
+  bind_zobrist_component_new<uint64_t, 1>(m, "ZobristComponentNewB064C1");
+  bind_zobrist_component_new<__uint128_t, 1>(m, "ZobristComponentNewB128C1");
 
-  bind_transposition_table<uint32_t, 1>(m, "TranspositionTableB032");
-  bind_transposition_table<uint64_t, 1>(m, "TranspositionTableB064");
-  bind_transposition_table<__uint128_t, 1>(m, "TranspositionTableB128");
+  bind_transposition_table<uint32_t, 1>(m, "TranspositionTableB032C1");
+  bind_transposition_table<uint64_t, 1>(m, "TranspositionTableB064C1");
+  bind_transposition_table<__uint128_t, 1>(m, "TranspositionTableB128C1");
 
-  bind_transposition_table_pruner<uint32_t, 1>(m, "TranspositionTablePrunerB032");
-  bind_transposition_table_pruner<uint64_t, 1>(m, "TranspositionTablePrunerB064");
-  bind_transposition_table_pruner<__uint128_t, 1>(m, "TranspositionTablePrunerB128");
+  bind_transposition_table_pruner<uint32_t, 1>(m, "TranspositionTablePrunerB032C1");
+  bind_transposition_table_pruner<uint64_t, 1>(m, "TranspositionTablePrunerB064C1");
+  bind_transposition_table_pruner<__uint128_t, 1>(m, "TranspositionTablePrunerB128C1");
 
-  bind_zobrist_coordinator_new<uint32_t, 1>(m, "ZobristCoordinatorNewB032");
-  bind_zobrist_coordinator_new<uint64_t, 1>(m, "ZobristCoordinatorNewB064");
-  bind_zobrist_coordinator_new<__uint128_t, 1>(m, "ZobristCoordinatorNewB128");
+  bind_zobrist_coordinator_new<uint32_t, 1>(m, "ZobristCoordinatorNewB032C1");
+  bind_zobrist_coordinator_new<uint64_t, 1>(m, "ZobristCoordinatorNewB064C1");
+  bind_zobrist_coordinator_new<__uint128_t, 1>(m, "ZobristCoordinatorNewB128C1");
 
-  bind_minimax_move_evaluator_new<uint32_t, 1>(m, "MinimaxMoveEvaluatorNewB032");
-  bind_minimax_move_evaluator_new<uint64_t, 1>(m, "MinimaxMoveEvaluatorNewB064");
-  bind_minimax_move_evaluator_new<__uint128_t, 1>(m, "MinimaxMoveEvaluatorNewB128");
+  bind_minimax_move_evaluator_new<uint32_t, 1>(m, "MinimaxMoveEvaluatorNewB032C1");
+  bind_minimax_move_evaluator_new<uint64_t, 1>(m, "MinimaxMoveEvaluatorNewB064C1");
+  bind_minimax_move_evaluator_new<__uint128_t, 1>(m, "MinimaxMoveEvaluatorNewB128C1");
 }
