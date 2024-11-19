@@ -144,7 +144,7 @@ TEST_F(ZobristCoordinatorNewTest, ExecuteAndUndoMove) {
 
 TEST_F(ZobristCoordinatorNewTest, RecordAndReadData) {
 
-   boardstate::ZobristCoordinatorNew<uint64_t, 1>
+  boardstate::ZobristCoordinatorNew<uint64_t, 1>
       coordinator{zobrist_component_, tr_table_, tr_table_guard_, tr_table_pruner_};
 
   auto start = BoardSpace{6, 0};
@@ -172,10 +172,8 @@ TEST_F(ZobristCoordinatorNewTest, RecordAndReadData) {
   );
 
   int dummy_access_index_at_read = 1;
-  auto retrieved_data = coordinator.GetTrData(
-      dummy_search_depth,
-      dummy_access_index_at_read
-  );
+  auto retrieved_data =
+      coordinator.GetTrData(dummy_search_depth, dummy_access_index_at_read);
 
   EXPECT_TRUE(retrieved_data.found());
 }
