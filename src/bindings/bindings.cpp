@@ -378,9 +378,9 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
   bind_minimax_move_evaluator<__uint128_t, 1>(m, "MinimaxMoveEvaluator128Dual");
 
   // Components for dependency injection
-  bind_zobrist_calculator<uint32_t>(m, "ZobristCalculatorB032C1");
-  bind_zobrist_calculator<uint64_t>(m, "ZobristCalculatorB064C1");
-  bind_zobrist_calculator<__uint128_t>(m, "ZobristCalculatorB128C1");
+  bind_zobrist_calculator<uint32_t>(m, "ZobristCalculatorB032");
+  bind_zobrist_calculator<uint64_t>(m, "ZobristCalculatorB064");
+  bind_zobrist_calculator<__uint128_t>(m, "ZobristCalculatorB128");
 
   bind_zobrist_component_new<uint32_t, 1>(m, "ZobristComponentNewB032C1");
   bind_zobrist_component_new<uint64_t, 1>(m, "ZobristComponentNewB064C1");

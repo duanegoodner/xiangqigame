@@ -19,15 +19,15 @@ def zobrist_calculator_constructors() -> dict[
     int,
     Callable[
         ...,
-        bindings.ZobristCalculatorB032C1
-        | bindings.ZobristCalculatorB064C1
-        | bindings.ZobristCalculatorB128C1,
+        bindings.ZobristCalculatorB032
+        | bindings.ZobristCalculatorB064
+        | bindings.ZobristCalculatorB128,
     ],
 ]:
     return {
-        32: bindings.ZobristCalculatorB032C1,
-        64: bindings.ZobristCalculatorB064C1,
-        128: bindings.ZobristCalculatorB128C1,
+        32: bindings.ZobristCalculatorB032,
+        64: bindings.ZobristCalculatorB064,
+        128: bindings.ZobristCalculatorB128,
     }
 
 
@@ -122,16 +122,16 @@ def zobrist_components(
 
     return {
         32: bindings.ZobristComponentNewB032C1(
-            primary_calculator=bindings.ZobristCalculatorB032C1(),
-            confirmation_calculators=[bindings.ZobristCalculatorB032C1()],
+            primary_calculator=bindings.ZobristCalculatorB032(),
+            confirmation_calculators=[bindings.ZobristCalculatorB032()],
         ),
         64: bindings.ZobristComponentNewB064C1(
-            primary_calculator=bindings.ZobristCalculatorB064C1(),
-            confirmation_calculators=[bindings.ZobristCalculatorB064C1()],
+            primary_calculator=bindings.ZobristCalculatorB064(),
+            confirmation_calculators=[bindings.ZobristCalculatorB064()],
         ),
         128: bindings.ZobristComponentNewB128C1(
-            primary_calculator=bindings.ZobristCalculatorB128C1(),
-            confirmation_calculators=[bindings.ZobristCalculatorB128C1()],
+            primary_calculator=bindings.ZobristCalculatorB128(),
+            confirmation_calculators=[bindings.ZobristCalculatorB128()],
         ),
     }
 
