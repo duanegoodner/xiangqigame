@@ -18,7 +18,7 @@
 #include <thread>
 #include <vector>
 
-//! Calculate / manage board state and associate Minimax results. 
+//! Calculate / manage board state and associate Minimax results.
 namespace boardstate {
 
 //! Uses Zobrist hashing to calculate a "reasonably unique" integer value
@@ -139,14 +139,15 @@ private:
 template <typename KeyType, size_t NumConfKeys>
 class ZobristComponentNew {
 private:
-  const ZobristCalculator<KeyType>& primary_calculator_;
-  const std::array<ZobristCalculator<KeyType>, NumConfKeys>& confirmation_calculators_;
+  ZobristCalculator<KeyType> &primary_calculator_;
+  std::array<ZobristCalculator<KeyType>, NumConfKeys> &confirmation_calculators_;
+  std::optional<uint32_t> prng_seed_;
 
 public:
   //! Constructs ZobristComponent from existing ZobristCalculator objects
   explicit ZobristComponentNew(
-      const ZobristCalculator<KeyType>& primary_calculator,
-      const std::array<ZobristCalculator<KeyType>, NumConfKeys> &confirmation_calculators
+      ZobristCalculator<KeyType> &primary_calculator,
+      std::array<ZobristCalculator<KeyType>, NumConfKeys> &confirmation_calculators
   )
       : primary_calculator_{primary_calculator}
       , confirmation_calculators_(confirmation_calculators) {}
@@ -163,7 +164,7 @@ public:
   std::string primary_board_state_hex_str() const {
     return boardstate::IntToHexString(primary_calculator_.board_state());
   }
-  // uint32_t prng_seed() { return prng_seed_.value_or(0); }
+  uint32_t prng_seed() { return prng_seed_.value_or(0); }
 
   // Calculation methods
   void UpdateBoardStates(const ExecutedMove &executed_move) {
@@ -175,7 +176,6 @@ public:
   }
 
 private:
-
   // Internal getters
   std::array<KeyType, NumConfKeys> confirmation_board_states_internal() {
     std::array<KeyType, NumConfKeys> confirmation_states;
@@ -207,7 +207,6 @@ private:
     }
   }
 };
-
 
 //! Container for one or more boardstate::ZobristCalculator objects.
 //! Using more than one boardstate::ZobristCalculator (i.e. NumConfKeys > 0) allows hash
@@ -356,7 +355,7 @@ class TranspositionTable {
 
 public:
   TranspositionTable() = default;
-  
+
   moveselection::TranspositionTableSearchResult GetDataAt(
       KeyType primary_board_state,
       DepthType remaining_search_depth,
@@ -502,8 +501,8 @@ public:
       , tr_table_{}
       , tr_table_guard_{}
       , tr_table_pruner_{TranspositionTablePruner{tr_table_, tr_table_guard_}} {
-        // tr_table_pruner_.Start();
-      }
+    // tr_table_pruner_.Start();
+  }
 
   explicit ZobristCoordinator(
       uint32_t primary_seed,
@@ -515,6 +514,86 @@ public:
 
   explicit ZobristCoordinator(uint32_t prng_seed = (uint32_t)std::random_device{}())
       : ZobristCoordinator(ZobristComponent<KeyType, NumConfKeys>{prng_seed}) {}
+
+  KeyType ImplementGetState() { return zobrist_component_.primary_board_state(); }
+
+  void ImplementUpdateBoardState(const ExecutedMove &executed_move) {
+    zobrist_component_.UpdateBoardStates(executed_move);
+  }
+
+  void ImplementFullBoardStateCalc(const BoardMap_t &board_map) {
+    zobrist_component_.FullBoardStateCalc(board_map);
+  }
+
+  void ImplementRecordTrData(
+      DepthType search_depth,
+      moveselection::MinimaxResultType result_type,
+      moveselection::EqualScoreMoves &similar_moves,
+      MoveCountType access_index
+  ) {
+    tr_table_.RecordData(
+        zobrist_component_.primary_board_state(),
+        search_depth,
+        result_type,
+        similar_moves,
+        zobrist_component_.confirmation_board_states()
+    );
+  }
+
+  moveselection::TranspositionTableSearchResult ImplementGetTrData(
+      DepthType search_depth,
+      MoveCountType access_index
+  ) {
+    return tr_table_.GetDataAt(
+        zobrist_component_.primary_board_state(),
+        search_depth,
+        zobrist_component_.confirmation_board_states()
+    );
+  }
+
+  size_t ImplementGetTrTableSize() { return tr_table_.size(); }
+
+  void ImplementUpdateMoveCounter() {
+    // tr_table_pruner_.IncrementMoveCounter();
+    tr_table_.IncrementMoveCounter();
+  }
+
+  const std::string board_state_hex_str() {
+    return IntToHexString(zobrist_component_.primary_board_state());
+  }
+
+  uint32_t zkeys_seed() { return zobrist_component_.prng_seed(); }
+};
+
+//! Implements the BoardStateCoordinator interface, providing a
+//! moveselection::MinimaxMoveEvaluator with "reasonably unique" hash values for each
+//! encountered board state, and the ability to read/write board_state-MinimaxResult
+//! pairs in a boardstate::TranspositionTable.
+template <typename KeyType, size_t NumConfKeys>
+class ZobristCoordinatorNew : public BoardStateCoordinator<
+                                  ZobristCoordinatorNew<KeyType, NumConfKeys>,
+                                  KeyType> {
+  ZobristComponentNew<KeyType, NumConfKeys> &zobrist_component_;
+  TranspositionTable<KeyType, NumConfKeys> &tr_table_;
+  TranspositionTableGuard &tr_table_guard_;
+  TranspositionTablePruner<KeyType, NumConfKeys> &tr_table_pruner_;
+
+public:
+  ZobristCoordinatorNew(const ZobristCoordinatorNew &) = delete;
+  ZobristCoordinatorNew &operator=(const ZobristCoordinatorNew &) = delete;
+
+  explicit ZobristCoordinatorNew(
+      ZobristComponentNew<KeyType, NumConfKeys> &zobrist_component,
+      TranspositionTable<KeyType, NumConfKeys> &tr_table,
+      TranspositionTableGuard &tr_table_guard,
+      TranspositionTablePruner<KeyType, NumConfKeys> &tr_table_pruner
+  )
+      : zobrist_component_{zobrist_component}
+      , tr_table_{tr_table}
+      , tr_table_guard_{tr_table_guard}
+      , tr_table_pruner_{tr_table_pruner} {
+    // tr_table_pruner_.Start();
+  }
 
   KeyType ImplementGetState() { return zobrist_component_.primary_board_state(); }
 

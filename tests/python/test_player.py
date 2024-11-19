@@ -1,8 +1,8 @@
 from unittest import mock
 
 import pytest
-from xiangqigame.players import AIPlayer, HumanPlayer
-from xiangqigame_core import GameBoard, PieceColor, RandomMoveEvaluator
+from xiangqipy.players import AIPlayer, HumanPlayer
+from xiangqi_bindings import GameBoard, PieceColor, RandomMoveEvaluator
 
 # from xiangqigame_fixtures import starting_game_board
 
