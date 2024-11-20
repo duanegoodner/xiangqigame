@@ -1,2 +1,4 @@
+add_subdirectory(concepts_dep_injection)
+# add_subdirectory(crtp_with_concepts)
 add_subdirectory(ks_testing)
 add_subdirectory(tr_table_threaded_pruning)
