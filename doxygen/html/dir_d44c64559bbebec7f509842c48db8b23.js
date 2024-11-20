@@ -10,6 +10,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "json_utility_nlohmann.hpp", "json__utility__nlohmann_8hpp.html", "json__utility__nlohmann_8hpp" ],
     [ "json_validation.hpp", "json__validation_8hpp.html", "json__validation_8hpp" ],
     [ "key_generator.hpp", "key__generator_8hpp.html", "key__generator_8hpp" ],
+    [ "minimax_evaluator_factory.hpp", "minimax__evaluator__factory_8hpp.html", "minimax__evaluator__factory_8hpp" ],
     [ "move_calculator.hpp", "move__calculator_8hpp.html", "move__calculator_8hpp" ],
     [ "move_calculator_details.hpp", "move__calculator__details_8hpp.html", "move__calculator__details_8hpp" ],
     [ "move_data_structs.hpp", "move__data__structs_8hpp.html", "move__data__structs_8hpp" ],
@@ -20,6 +21,8 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "piece_points_data_structs.hpp", "piece__points__data__structs_8hpp.html", "piece__points__data__structs_8hpp" ],
     [ "piece_position_points.hpp", "piece__position__points_8hpp.html", "piece__position__points_8hpp" ],
     [ "piece_value_provider_interface.hpp", "piece__value__provider__interface_8hpp.html", "piece__value__provider__interface_8hpp" ],
+    [ "player_interface.hpp", "player__interface_8hpp.html", "player__interface_8hpp" ],
+    [ "players.hpp", "players_8hpp.html", "players_8hpp" ],
     [ "space_info_provider_interface.hpp", "space__info__provider__interface_8hpp.html", "space__info__provider__interface_8hpp" ],
     [ "utility_functs.hpp", "utility__functs_8hpp.html", "utility__functs_8hpp" ],
     [ "zobrist.hpp", "zobrist_8hpp.html", "zobrist_8hpp" ]

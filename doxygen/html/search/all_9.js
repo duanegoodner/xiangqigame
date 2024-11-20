@@ -1,18 +1,19 @@
 var searchData=
 [
   ['handle_5finteractive_5feof_0',['handle_interactive_eof',['../namespacexiangqipy_1_1handlers_1_1errors.html#a300ecaa8799799759551621bdfce3ed2',1,'xiangqipy::handlers::errors']]],
-  ['handleendofgame_1',['HandleEndOfGame',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ab8a8112578a972c18cc7a45207d142ce',1,'moveselection::MinimaxMoveEvaluator']]],
-  ['handleinternalnode_2',['HandleInternalNode',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a7af7a44898567705d567c14ade82f584',1,'moveselection::MinimaxMoveEvaluator']]],
-  ['handleleaf_3',['HandleLeaf',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a6ef2d0094cf9f7fd49e56296252f7675',1,'moveselection::MinimaxMoveEvaluator']]],
-  ['handletrtablehit_4',['HandleTrTableHit',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ad3b6ed6b00d0ab48acf93ef16316332c',1,'moveselection::MinimaxMoveEvaluator']]],
+  ['handleendofgame_1',['HandleEndOfGame',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ab8a8112578a972c18cc7a45207d142ce',1,'moveselection::MinimaxMoveEvaluator::HandleEndOfGame()'],['../classmoveselection_1_1MinimaxMoveEvaluatorNew.html#aadff68376117128d87156532d7c2feb6',1,'moveselection::MinimaxMoveEvaluatorNew::HandleEndOfGame()']]],
+  ['handleinternalnode_2',['HandleInternalNode',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a7af7a44898567705d567c14ade82f584',1,'moveselection::MinimaxMoveEvaluator::HandleInternalNode()'],['../classmoveselection_1_1MinimaxMoveEvaluatorNew.html#ac99054fe2a44e0b59bee2641ffb97398',1,'moveselection::MinimaxMoveEvaluatorNew::HandleInternalNode()']]],
+  ['handleleaf_3',['HandleLeaf',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a6ef2d0094cf9f7fd49e56296252f7675',1,'moveselection::MinimaxMoveEvaluator::HandleLeaf()'],['../classmoveselection_1_1MinimaxMoveEvaluatorNew.html#a34a144d44b4c59e4b15404f6c399511d',1,'moveselection::MinimaxMoveEvaluatorNew::HandleLeaf(PieceColor cur_player, SearchSummary &amp;search_summary, MinimaxResultType &amp;result_type, DepthType search_depth)']]],
+  ['handletrtablehit_4',['HandleTrTableHit',['../classmoveselection_1_1MinimaxMoveEvaluatorNew.html#a39023dd0e7e7711a8fbd484749db280c',1,'moveselection::MinimaxMoveEvaluatorNew::HandleTrTableHit()'],['../classmoveselection_1_1MinimaxMoveEvaluator.html#ad3b6ed6b00d0ab48acf93ef16316332c',1,'moveselection::MinimaxMoveEvaluator::HandleTrTableHit()']]],
   ['has_5fdata_5',['has_data',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a7f019dd6f66fd96202f8a46f6daf6981',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
   ['has_5fminimax_5fdata_6',['has_minimax_data',['../classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html#a2ccdfda51db304bc6bb8705bd76f06d4',1,'xiangqipy::game_summary_plot_manager::GameSummaryPlotManager']]],
   ['has_5fsearch_5fsummaries_7',['has_search_summaries',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a94f0fa899f0e4908d6d6c260c76dc071',1,'xiangqipy::player_summary::PlayerSummary']]],
-  ['hash_5fcalculator_8',['hash_calculator',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ac7bbe6fcef4790f3fe3a0125698a1245',1,'moveselection::MinimaxMoveEvaluator']]],
-  ['hash_5fcalculator_5f_9',['hash_calculator_',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a340f592f4d0030a9e93825de1185ac1a',1,'moveselection::MinimaxMoveEvaluator']]],
-  ['hasrepeatingpattern_10',['hasRepeatingPattern',['../namespaceutility__functs.html#ab6b690b5028447413647af99fb320e70',1,'utility_functs']]],
-  ['horse_5fposition_5ficga_5f2004_11',['horse_position_icga_2004',['../namespacexiangqipy_1_1piece__points.html#a4a209111aaf6ef030349eaeb8c42f2a5',1,'xiangqipy::piece_points']]],
-  ['horsemoves_12',['HorseMoves',['../classgameboard_1_1PieceMoves.html#a8ae87252fe0d0cbcdd3842c3b591ab70',1,'gameboard::PieceMoves']]],
-  ['human_13',['HUMAN',['../classxiangqipy_1_1enums_1_1PlayerType.html#aca45f307735b8626a467a422775f4955',1,'xiangqipy::enums::PlayerType']]],
-  ['humanplayer_14',['HumanPlayer',['../classxiangqipy_1_1players_1_1HumanPlayer.html',1,'xiangqipy::players']]]
+  ['hash_3c_20moveselection_3a_3aminimaxtemplatespecs_20_3e_8',['hash&lt; moveselection::MinimaxTemplateSpecs &gt;',['../structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4.html',1,'std']]],
+  ['hash_5fcalculator_9',['hash_calculator',['../classmoveselection_1_1MinimaxMoveEvaluator.html#ac7bbe6fcef4790f3fe3a0125698a1245',1,'moveselection::MinimaxMoveEvaluator::hash_calculator()'],['../classmoveselection_1_1MinimaxMoveEvaluatorNew.html#aec9a886c158e9ee993b8c937147b6c9c',1,'moveselection::MinimaxMoveEvaluatorNew::hash_calculator()']]],
+  ['hash_5fcalculator_5f_10',['hash_calculator_',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a340f592f4d0030a9e93825de1185ac1a',1,'moveselection::MinimaxMoveEvaluator::hash_calculator_()'],['../classmoveselection_1_1MinimaxMoveEvaluatorNew.html#aca8065e5f82a49c6c46f1699d66e8ec4',1,'moveselection::MinimaxMoveEvaluatorNew::hash_calculator_()']]],
+  ['hasrepeatingpattern_11',['hasRepeatingPattern',['../namespaceutility__functs.html#ab6b690b5028447413647af99fb320e70',1,'utility_functs']]],
+  ['horse_5fposition_5ficga_5f2004_12',['horse_position_icga_2004',['../namespacexiangqipy_1_1piece__points.html#a4a209111aaf6ef030349eaeb8c42f2a5',1,'xiangqipy::piece_points']]],
+  ['horsemoves_13',['HorseMoves',['../classgameboard_1_1PieceMoves.html#a8ae87252fe0d0cbcdd3842c3b591ab70',1,'gameboard::PieceMoves']]],
+  ['human_14',['HUMAN',['../classxiangqipy_1_1enums_1_1EvaluatorTypeNew.html#ad5718ec5eee9ba514caca659afbfa980',1,'xiangqipy.enums.EvaluatorTypeNew.HUMAN()'],['../classxiangqipy_1_1enums_1_1PlayerType.html#aca45f307735b8626a467a422775f4955',1,'xiangqipy.enums.PlayerType.HUMAN()']]],
+  ['humanplayer_15',['HumanPlayer',['../classxiangqipy_1_1players_1_1HumanPlayer.html',1,'xiangqipy::players']]]
 ];

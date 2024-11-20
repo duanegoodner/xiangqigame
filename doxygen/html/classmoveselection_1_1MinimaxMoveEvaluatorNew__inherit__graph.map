@@ -1,0 +1,5 @@
+<map id="moveselection::MinimaxMoveEvaluatorNew&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;" name="moveselection::MinimaxMoveEvaluatorNew&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;">
+<area shape="rect" id="node1" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="5,375,300,1039"/>
+<area shape="rect" id="node2" href="$classMoveEvaluator.html" title=" " alt="" coords="5,204,300,325"/>
+<area shape="rect" id="node3" href="$classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini..." alt="" coords="38,5,267,97"/>
+</map>

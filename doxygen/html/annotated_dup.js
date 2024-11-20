@@ -9,7 +9,9 @@ var annotated_dup =
       [ "TranspositionTablePruner", "classboardstate_1_1TranspositionTablePruner.html", "classboardstate_1_1TranspositionTablePruner" ],
       [ "ZobristCalculator", "classboardstate_1_1ZobristCalculator.html", "classboardstate_1_1ZobristCalculator" ],
       [ "ZobristComponent", "classboardstate_1_1ZobristComponent.html", "classboardstate_1_1ZobristComponent" ],
-      [ "ZobristCoordinator", "classboardstate_1_1ZobristCoordinator.html", "classboardstate_1_1ZobristCoordinator" ]
+      [ "ZobristComponentNew", "classboardstate_1_1ZobristComponentNew.html", "classboardstate_1_1ZobristComponentNew" ],
+      [ "ZobristCoordinator", "classboardstate_1_1ZobristCoordinator.html", "classboardstate_1_1ZobristCoordinator" ],
+      [ "ZobristCoordinatorNew", "classboardstate_1_1ZobristCoordinatorNew.html", "classboardstate_1_1ZobristCoordinatorNew" ]
     ] ],
     [ "gameboard", "namespacegameboard.html", [
       [ "BoardDirection", "structgameboard_1_1BoardDirection.html", "structgameboard_1_1BoardDirection" ],
@@ -30,6 +32,8 @@ var annotated_dup =
       [ "EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
       [ "MinimaxCalcResult", "classmoveselection_1_1MinimaxCalcResult.html", "classmoveselection_1_1MinimaxCalcResult" ],
       [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
+      [ "MinimaxMoveEvaluatorNew", "classmoveselection_1_1MinimaxMoveEvaluatorNew.html", "classmoveselection_1_1MinimaxMoveEvaluatorNew" ],
+      [ "MinimaxTemplateSpecs", "structmoveselection_1_1MinimaxTemplateSpecs.html", "structmoveselection_1_1MinimaxTemplateSpecs" ],
       [ "PreSearchMoveSorter", "classmoveselection_1_1PreSearchMoveSorter.html", "classmoveselection_1_1PreSearchMoveSorter" ],
       [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],
       [ "ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", "classmoveselection_1_1ResultDepthCounts" ],
@@ -43,7 +47,21 @@ var annotated_dup =
       [ "BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html", "classpiecepoints_1_1BPOPointsSKeys" ],
       [ "PiecePositionPoints", "structpiecepoints_1_1PiecePositionPoints.html", "structpiecepoints_1_1PiecePositionPoints" ]
     ] ],
+    [ "std", "namespacestd.html", [
+      [ "hash< moveselection::MinimaxTemplateSpecs >", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4.html", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4" ]
+    ] ],
     [ "xiangqipy", "namespacexiangqipy.html", [
+      [ "app_new", "namespacexiangqipy_1_1app__new.html", [
+        [ "MoveEvaluatorBuilder", "classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder.html", "classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder" ],
+        [ "PlayerInputNew", "classxiangqipy_1_1app__new_1_1PlayerInputNew.html", "classxiangqipy_1_1app__new_1_1PlayerInputNew" ],
+        [ "PlayerRunArgs", "classxiangqipy_1_1app__new_1_1PlayerRunArgs.html", "classxiangqipy_1_1app__new_1_1PlayerRunArgs" ],
+        [ "RunKwargsInterpreterNew", "classxiangqipy_1_1app__new_1_1RunKwargsInterpreterNew.html", "classxiangqipy_1_1app__new_1_1RunKwargsInterpreterNew" ],
+        [ "XiangqiGameCommandNew", "classxiangqipy_1_1app__new_1_1XiangqiGameCommandNew.html", "classxiangqipy_1_1app__new_1_1XiangqiGameCommandNew" ]
+      ] ],
+      [ "binding_type_unions", "namespacexiangqipy_1_1binding__type__unions.html", [
+        [ "MinimaxEvaluatorComponentTypes", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorComponentTypes.html", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorComponentTypes" ],
+        [ "MinimaxEvaluatorSpecs", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorSpecs.html", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorSpecs" ]
+      ] ],
       [ "command_input", "namespacexiangqipy_1_1command__input.html", [
         [ "PlayerCommandInterpreter", "classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html", "classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter" ],
         [ "PlayerInput", "classxiangqipy_1_1command__input_1_1PlayerInput.html", "classxiangqipy_1_1command__input_1_1PlayerInput" ],
@@ -66,6 +84,7 @@ var annotated_dup =
       ] ],
       [ "enums", "namespacexiangqipy_1_1enums.html", [
         [ "EvaluatorType", "classxiangqipy_1_1enums_1_1EvaluatorType.html", "classxiangqipy_1_1enums_1_1EvaluatorType" ],
+        [ "EvaluatorTypeNew", "classxiangqipy_1_1enums_1_1EvaluatorTypeNew.html", "classxiangqipy_1_1enums_1_1EvaluatorTypeNew" ],
         [ "GameState", "classxiangqipy_1_1enums_1_1GameState.html", "classxiangqipy_1_1enums_1_1GameState" ],
         [ "PlayerType", "classxiangqipy_1_1enums_1_1PlayerType.html", "classxiangqipy_1_1enums_1_1PlayerType" ]
       ] ],
@@ -120,10 +139,13 @@ var annotated_dup =
         [ "TerminalStatusReporter", "classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html", "classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter" ]
       ] ]
     ] ],
+    [ "AIPlayer", "classAIPlayer.html", "classAIPlayer" ],
     [ "BoardStateCoordinator", "classBoardStateCoordinator.html", "classBoardStateCoordinator" ],
     [ "Exception", "classException.html", null ],
+    [ "IllegalMoveException", "classIllegalMoveException.html", "classIllegalMoveException" ],
     [ "JsonUtility", "classJsonUtility.html", "classJsonUtility" ],
     [ "MoveEvaluator", "classMoveEvaluator.html", "classMoveEvaluator" ],
     [ "PieceValueProvider", "classPieceValueProvider.html", "classPieceValueProvider" ],
+    [ "Player", "classPlayer.html", "classPlayer" ],
     [ "SpaceInfoProvider", "classSpaceInfoProvider.html", "classSpaceInfoProvider" ]
 ];

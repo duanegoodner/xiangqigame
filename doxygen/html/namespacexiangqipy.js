@@ -6,6 +6,8 @@ var namespacexiangqipy =
     [ "app", "namespacexiangqipy_1_1app.html", [
       [ "run", "namespacexiangqipy_1_1app.html#ac09777385f4e43af5903c4c664c70ae4", null ]
     ] ],
+    [ "app_new", "namespacexiangqipy_1_1app__new.html", "namespacexiangqipy_1_1app__new" ],
+    [ "binding_type_unions", "namespacexiangqipy_1_1binding__type__unions.html", "namespacexiangqipy_1_1binding__type__unions" ],
     [ "command_input", "namespacexiangqipy_1_1command__input.html", "namespacexiangqipy_1_1command__input" ],
     [ "core_dataclass_mirrors", "namespacexiangqipy_1_1core__dataclass__mirrors.html", "namespacexiangqipy_1_1core__dataclass__mirrors" ],
     [ "enums", "namespacexiangqipy_1_1enums.html", "namespacexiangqipy_1_1enums" ],
@@ -37,6 +39,10 @@ var namespacexiangqipy =
     [ "piece_info_extractor", "namespacexiangqipy_1_1piece__info__extractor.html", "namespacexiangqipy_1_1piece__info__extractor" ],
     [ "piece_points", "namespacexiangqipy_1_1piece__points.html", "namespacexiangqipy_1_1piece__points" ],
     [ "player_builder", "namespacexiangqipy_1_1player__builder.html", "namespacexiangqipy_1_1player__builder" ],
+    [ "player_builder_new", "namespacexiangqipy_1_1player__builder__new.html", [
+      [ "build_xiangqi_command_new", "namespacexiangqipy_1_1player__builder__new.html#a2dea2af6515843eb7815db8fd4bbd41c", null ],
+      [ "collect_items_if_key_startswith", "namespacexiangqipy_1_1player__builder__new.html#a6ae81643c208265b2a3806580e81c0f6", null ]
+    ] ],
     [ "player_summary", "namespacexiangqipy_1_1player__summary.html", "namespacexiangqipy_1_1player__summary" ],
     [ "players", "namespacexiangqipy_1_1players.html", "namespacexiangqipy_1_1players" ],
     [ "terminal_output", "namespacexiangqipy_1_1terminal__output.html", "namespacexiangqipy_1_1terminal__output" ]

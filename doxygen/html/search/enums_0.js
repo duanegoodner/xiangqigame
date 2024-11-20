@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['minimaxresulttype_0',['MinimaxResultType',['../namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d',1,'moveselection']]]
+  ['evaluatortype_0',['EvaluatorType',['../player__interface_8hpp.html#a5d4e21805d7d1e7c31f650cce00a05f0',1,'player_interface.hpp']]]
 ];

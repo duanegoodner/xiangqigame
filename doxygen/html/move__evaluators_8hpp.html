@@ -210,13 +210,16 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="move__evaluators_8hpp__dep__incl.png" border="0" usemap="#ainclude_2move__evaluators_8hppdep" alt=""/></div>
 <map name="ainclude_2move__evaluators_8hppdep" id="ainclude_2move__evaluators_8hppdep">
-<area shape="rect" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="235,5,449,31"/>
-<area shape="rect" href="game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="61,86,244,111"/>
-<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="189,181,375,207"/>
-<area shape="rect" href="piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="320,79,487,119"/>
-<area shape="rect" href="move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="511,79,701,119"/>
-<area shape="rect" href="game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="5,174,164,214"/>
-<area shape="rect" href="piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="399,167,570,221"/>
+<area shape="rect" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="489,5,704,31"/>
+<area shape="rect" href="game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="239,86,421,111"/>
+<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="471,181,658,207"/>
+<area shape="rect" href="minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="497,79,697,119"/>
+<area shape="rect" href="piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="720,79,887,119"/>
+<area shape="rect" href="move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="911,79,1101,119"/>
+<area shape="rect" href="player__interface_8hpp.html" title=" " alt="" coords="5,181,212,207"/>
+<area shape="rect" href="players_8hpp.html" title=" " alt="" coords="105,269,254,295"/>
+<area shape="rect" href="game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="288,174,447,214"/>
+<area shape="rect" href="piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="718,167,889,221"/>
 </map>
 </div>
 </div>
@@ -229,6 +232,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a> interface, and selects move::Move using Minimax algorithm; uses <a class="el" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,...">SpaceInfoProvider</a>, <a class="el" href="classBoardStateCoordinator.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateCoordinator</a>, and <a class="el" href="classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific...">PieceValueProvider</a> interfaces.  <a href="classmoveselection_1_1MinimaxMoveEvaluator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorNew.html">moveselection::MinimaxMoveEvaluatorNew&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a> interface, and selects move::Move using Minimax algorithm; uses <a class="el" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,...">SpaceInfoProvider</a>, <a class="el" href="classBoardStateCoordinator.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateCoordinator</a>, and <a class="el" href="classPieceValueProvider.html" title="CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific...">PieceValueProvider</a> interfaces.  <a href="classmoveselection_1_1MinimaxMoveEvaluatorNew.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html">moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements gameboard::MoveEvaluator interface.  <a href="classmoveselection_1_1RandomMoveEvaluator.html#details">More...</a><br /></td></tr>
@@ -266,7 +272,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="move__evaluators_8hpp.html">move_evaluators.hpp</a></li>
-    <li class="footer">Generated on Mon Nov 18 2024 07:10:42 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Wed Nov 20 2024 22:54:41 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -1,5 +1,6 @@
 var classboardstate_1_1TranspositionTable =
 [
+    [ "TranspositionTable", "classboardstate_1_1TranspositionTable.html#a27763f8d18ca104ca1415e5c6cc06565", null ],
     [ "GetDataAt", "classboardstate_1_1TranspositionTable.html#abb36c42831c672db6d6081718332df7b", null ],
     [ "IncrementMoveCounter", "classboardstate_1_1TranspositionTable.html#a0bf33b0e5d58a5af93213167aa4655dc", null ],
     [ "NumIdleMovesAt", "classboardstate_1_1TranspositionTable.html#ad5acd3ae564168d7cafbc1c552d003ba", null ],

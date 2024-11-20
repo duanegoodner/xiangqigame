@@ -4,6 +4,8 @@ var dir_46e67b79a66d4e1bea97ac4ccddce80e =
     [ "__init__.py", "____init_____8py.html", null ],
     [ "__main__.py", "____main_____8py.html", "____main_____8py" ],
     [ "app.py", "app_8py.html", "app_8py" ],
+    [ "app_new.py", "app__new_8py.html", "app__new_8py" ],
+    [ "binding_type_unions.py", "binding__type__unions_8py.html", "binding__type__unions_8py" ],
     [ "command_input.py", "command__input_8py.html", "command__input_8py" ],
     [ "core_dataclass_mirrors.py", "core__dataclass__mirrors_8py.html", "core__dataclass__mirrors_8py" ],
     [ "enums.py", "enums_8py.html", "enums_8py" ],
@@ -18,6 +20,7 @@ var dir_46e67b79a66d4e1bea97ac4ccddce80e =
     [ "piece_info_extractor.py", "piece__info__extractor_8py.html", "piece__info__extractor_8py" ],
     [ "piece_points.py", "piece__points_8py.html", "piece__points_8py" ],
     [ "player_builder.py", "player__builder_8py.html", "player__builder_8py" ],
+    [ "player_builder_new.py", "player__builder__new_8py.html", "player__builder__new_8py" ],
     [ "player_summary.py", "player__summary_8py.html", "player__summary_8py" ],
     [ "players.py", "players_8py.html", "players_8py" ],
     [ "terminal_output.py", "terminal__output_8py.html", "terminal__output_8py" ]

@@ -5,6 +5,7 @@ var namespaces_dup =
     [ "jsonio", "namespacejsonio.html", "namespacejsonio" ],
     [ "moveselection", "namespacemoveselection.html", "namespacemoveselection" ],
     [ "piecepoints", "namespacepiecepoints.html", "namespacepiecepoints" ],
+    [ "std", "namespacestd.html", "namespacestd" ],
     [ "utility_functs", "namespaceutility__functs.html", [
       [ "array_plus_const", "namespaceutility__functs.html#a991fee6c060b152f519b14b7a16e57ed", null ],
       [ "ends_with", "namespaceutility__functs.html#a76030e832abd25bf223040fc3b59945b", null ],

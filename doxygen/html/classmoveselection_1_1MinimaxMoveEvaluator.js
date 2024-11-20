@@ -1,6 +1,7 @@
 var classmoveselection_1_1MinimaxMoveEvaluator =
 [
     [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html#ace6132b16438b23e0692d8b6fd0976a4", null ],
+    [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html#ac79bcddefb5581c998a86761bf34ad84", null ],
     [ "board_state_hex_str", "classmoveselection_1_1MinimaxMoveEvaluator.html#a818641aef9b737647121e8e2f47cd65d", null ],
     [ "EvaluateEndOfGameLeaf", "classmoveselection_1_1MinimaxMoveEvaluator.html#ae0ec5457e7c4c4e559ac7f318c12ed86", null ],
     [ "EvaluateNonWinLeaf", "classmoveselection_1_1MinimaxMoveEvaluator.html#ac0843f8055649e3af311ae10c439bc69", null ],

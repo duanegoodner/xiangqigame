@@ -203,8 +203,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="zobrist_8hpp__dep__incl.png" border="0" usemap="#ainclude_2zobrist_8hppdep" alt=""/></div>
 <map name="ainclude_2zobrist_8hppdep" id="ainclude_2zobrist_8hppdep">
-<area shape="rect" title="Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker and supporting ..." alt="" coords="26,5,171,31"/>
-<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="5,79,192,104"/>
+<area shape="rect" title="Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker and supporting ..." alt="" coords="141,5,286,31"/>
+<area shape="rect" href="minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="5,79,205,119"/>
+<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="229,86,416,111"/>
 </map>
 </div>
 </div>
@@ -214,6 +215,9 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculator.html">boardstate::ZobristCalculator&lt; KeyType &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses Zobrist hashing to calculate a "reasonably unique" integer value for each board configuration encountered during a game.  <a href="classboardstate_1_1ZobristCalculator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristComponentNew.html">boardstate::ZobristComponentNew&lt; KeyType, NumConfKeys &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for one or more <a class="el" href="classboardstate_1_1ZobristCalculator.html" title="Uses Zobrist hashing to calculate a &quot;reasonably unique&quot; integer value for each board configuration en...">boardstate::ZobristCalculator</a> objects.  <a href="classboardstate_1_1ZobristComponentNew.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristComponent.html">boardstate::ZobristComponent&lt; KeyType, NumConfKeys &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Container for one or more <a class="el" href="classboardstate_1_1ZobristCalculator.html" title="Uses Zobrist hashing to calculate a &quot;reasonably unique&quot; integer value for each board configuration en...">boardstate::ZobristCalculator</a> objects.  <a href="classboardstate_1_1ZobristComponent.html#details">More...</a><br /></td></tr>
@@ -233,6 +237,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinator.html">boardstate::ZobristCoordinator&lt; KeyType, NumConfKeys &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the <a class="el" href="classBoardStateCoordinator.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateCoordinator</a> interface, providing a <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro...">moveselection::MinimaxMoveEvaluator</a> with "reasonably unique" hash values for each encountered board state, and the ability to read/write board_state-MinimaxResult pairs in a <a class="el" href="classboardstate_1_1TranspositionTable.html" title="Stores and manages key-value pairs consisting of a board_state (from a boardstate::ZobristComponent) ...">boardstate::TranspositionTable</a>.  <a href="classboardstate_1_1ZobristCoordinator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorNew.html">boardstate::ZobristCoordinatorNew&lt; KeyType, NumConfKeys &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements the <a class="el" href="classBoardStateCoordinator.html" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ...">BoardStateCoordinator</a> interface, providing a <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro...">moveselection::MinimaxMoveEvaluator</a> with "reasonably unique" hash values for each encountered board state, and the ability to read/write board_state-MinimaxResult pairs in a <a class="el" href="classboardstate_1_1TranspositionTable.html" title="Stores and manages key-value pairs consisting of a board_state (from a boardstate::ZobristComponent) ...">boardstate::TranspositionTable</a>.  <a href="classboardstate_1_1ZobristCoordinatorNew.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -250,7 +257,7 @@ Namespaces</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="zobrist_8hpp.html">zobrist.hpp</a></li>
-    <li class="footer">Generated on Mon Nov 18 2024 07:10:42 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Wed Nov 20 2024 22:54:41 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

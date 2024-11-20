@@ -2,6 +2,7 @@ var move__evaluators_8hpp =
 [
     [ "moveselection::PreSearchMoveSorter< ConcreteSpaceInfoProvider, ConcretePieceValueProvider >", "classmoveselection_1_1PreSearchMoveSorter.html", "classmoveselection_1_1PreSearchMoveSorter" ],
     [ "moveselection::MinimaxMoveEvaluator< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider >", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
+    [ "moveselection::MinimaxMoveEvaluatorNew< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider >", "classmoveselection_1_1MinimaxMoveEvaluatorNew.html", "classmoveselection_1_1MinimaxMoveEvaluatorNew" ],
     [ "moveselection::RandomMoveEvaluator< ConcreteSpaceInfoProvider >", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],
     [ "IsPrunableForEvaluator", "move__evaluators_8hpp.html#abee7d87a94985fbfa988fda7787044e7", null ],
     [ "IsPrunableForEvaluatorOpponent", "move__evaluators_8hpp.html#ad792c605f74019ef9cc43120ca27df3c", null ],

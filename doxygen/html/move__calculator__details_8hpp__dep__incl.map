@@ -1,8 +1,10 @@
 <map id="include/move_calculator_details.hpp" name="include/move_calculator_details.hpp">
-<area shape="rect" id="node1" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="211,5,392,45"/>
-<area shape="rect" id="node2" href="$move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="197,93,405,119"/>
-<area shape="rect" id="node3" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="106,174,289,199"/>
-<area shape="rect" id="node6" href="$move__calculator_8cpp.html" title="Acts as linkage point for move_calculator.hpp (where full implementation is located)" alt="" coords="313,167,498,207"/>
-<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="5,262,192,287"/>
-<area shape="rect" id="node5" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="217,255,375,295"/>
+<area shape="rect" id="node1" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="329,5,510,45"/>
+<area shape="rect" id="node2" href="$move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="315,93,523,119"/>
+<area shape="rect" id="node3" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="224,174,407,199"/>
+<area shape="rect" id="node8" href="$move__calculator_8cpp.html" title="Acts as linkage point for move_calculator.hpp (where full implementation is located)" alt="" coords="431,167,616,207"/>
+<area shape="rect" id="node4" href="$player__interface_8hpp.html" title=" " alt="" coords="5,262,212,287"/>
+<area shape="rect" id="node5" href="$players_8hpp.html" title=" " alt="" coords="105,343,254,368"/>
+<area shape="rect" id="node6" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="287,262,474,287"/>
+<area shape="rect" id="node7" href="$game__board_8cpp.html" title="Implements gameboard::GameBoard and a few related constants." alt="" coords="499,255,657,295"/>
 </map>

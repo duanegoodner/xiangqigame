@@ -19,6 +19,9 @@ var hierarchy =
     [ "BoardStateCoordinator< ZobristCoordinator< KeyType, NumConfKeys >, KeyType >", "classBoardStateCoordinator.html", [
       [ "boardstate::ZobristCoordinator< KeyType, NumConfKeys >", "classboardstate_1_1ZobristCoordinator.html", null ]
     ] ],
+    [ "BoardStateCoordinator< ZobristCoordinatorNew< KeyType, NumConfKeys >, KeyType >", "classBoardStateCoordinator.html", [
+      [ "boardstate::ZobristCoordinatorNew< KeyType, NumConfKeys >", "classboardstate_1_1ZobristCoordinatorNew.html", null ]
+    ] ],
     [ "piecepoints::BPOPointsEKeys", "classpiecepoints_1_1BPOPointsEKeys.html", null ],
     [ "piecepoints::BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html", null ],
     [ "gameboard::CastleEdges", "structgameboard_1_1CastleEdges.html", null ],
@@ -36,12 +39,14 @@ var hierarchy =
     [ "gameboard::GamePiece", "structgameboard_1_1GamePiece.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.GamePiece", "classxiangqipy_1_1core__dataclass__mirrors_1_1GamePiece.html", null ],
     [ "xiangqipy.game_summary_plot_manager.GameSummaryPlotManager", "classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html", null ],
+    [ "std::hash< moveselection::MinimaxTemplateSpecs >", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4.html", null ],
     [ "xiangqipy.terminal_output.InputRetrievalMessages", "classxiangqipy_1_1terminal__output_1_1InputRetrievalMessages.html", null ],
     [ "JsonUtility< ConcreteJsonUtility >", "classJsonUtility.html", null ],
     [ "JsonUtility< NlohmannJsonUtility >", "classJsonUtility.html", [
       [ "jsonio::NlohmannJsonUtility", "classjsonio_1_1NlohmannJsonUtility.html", null ]
     ] ],
     [ "moveselection::MinimaxCalcResult", "classmoveselection_1_1MinimaxCalcResult.html", null ],
+    [ "moveselection::MinimaxTemplateSpecs", "structmoveselection_1_1MinimaxTemplateSpecs.html", null ],
     [ "gameboard::Move", "structgameboard_1_1Move.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.Move", "classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html", null ],
     [ "gameboard::MoveCalculator", "classgameboard_1_1MoveCalculator.html", null ],
@@ -51,17 +56,27 @@ var hierarchy =
     [ "MoveEvaluator< MinimaxMoveEvaluator< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider > >", "classMoveEvaluator.html", [
       [ "moveselection::MinimaxMoveEvaluator< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider >", "classmoveselection_1_1MinimaxMoveEvaluator.html", null ]
     ] ],
+    [ "MoveEvaluator< MinimaxMoveEvaluatorNew< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider > >", "classMoveEvaluator.html", [
+      [ "moveselection::MinimaxMoveEvaluatorNew< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider >", "classmoveselection_1_1MinimaxMoveEvaluatorNew.html", null ]
+    ] ],
     [ "MoveEvaluator< RandomMoveEvaluator< ConcreteSpaceInfoProvider > >", "classMoveEvaluator.html", [
       [ "moveselection::RandomMoveEvaluator< ConcreteSpaceInfoProvider >", "classmoveselection_1_1RandomMoveEvaluator.html", null ]
     ] ],
+    [ "xiangqipy.app_new.MoveEvaluatorBuilder", "classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder.html", null ],
     [ "gameboard::PieceMoves", "classgameboard_1_1PieceMoves.html", null ],
     [ "xiangqipy.piece_info_extractor.PieceReader", "classxiangqipy_1_1piece__info__extractor_1_1PieceReader.html", null ],
     [ "PieceValueProvider< ConcretePieceValueProvider >", "classPieceValueProvider.html", null ],
     [ "PieceValueProvider< PiecePositionPoints >", "classPieceValueProvider.html", [
       [ "piecepoints::PiecePositionPoints", "structpiecepoints_1_1PiecePositionPoints.html", null ]
     ] ],
+    [ "Player< ConcretePlayer >", "classPlayer.html", null ],
+    [ "Player< AIPlayer >", "classPlayer.html", [
+      [ "AIPlayer< ConcreteMoveEvaluator >", "classAIPlayer.html", null ]
+    ] ],
     [ "xiangqipy.command_input.PlayerCommandInterpreter", "classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html", null ],
     [ "xiangqipy.command_input.PlayerInput", "classxiangqipy_1_1command__input_1_1PlayerInput.html", null ],
+    [ "xiangqipy.app_new.PlayerInputNew", "classxiangqipy_1_1app__new_1_1PlayerInputNew.html", null ],
+    [ "xiangqipy.app_new.PlayerRunArgs", "classxiangqipy_1_1app__new_1_1PlayerRunArgs.html", null ],
     [ "xiangqipy.game_summary.PlayerSummaries", "classxiangqipy_1_1game__summary_1_1PlayerSummaries.html", null ],
     [ "xiangqipy.player_summary.PlayerSummary", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.PointsTypeDeterminer", "classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer.html", null ],
@@ -72,6 +87,10 @@ var hierarchy =
     [ "xiangqipy.player_builder.RedAndBlackPlayersBuilder", "classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html", null ],
     [ "moveselection::ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", null ],
     [ "xiangqipy.command_input.RunKwargsInterpreter", "classxiangqipy_1_1command__input_1_1RunKwargsInterpreter.html", null ],
+    [ "xiangqipy.app_new.RunKwargsInterpreterNew", "classxiangqipy_1_1app__new_1_1RunKwargsInterpreterNew.html", null ],
+    [ "std::runtime_error", null, [
+      [ "IllegalMoveException", "classIllegalMoveException.html", null ]
+    ] ],
     [ "moveselection::ScoredMove", "structmoveselection_1_1ScoredMove.html", null ],
     [ "moveselection::SearchSummaries", "structmoveselection_1_1SearchSummaries.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.SearchSummaries", "classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummaries.html", null ],
@@ -93,8 +112,10 @@ var hierarchy =
     [ "xiangqipy.core_dataclass_mirrors.TranspositionTableSizesAtEvents", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents.html", null ],
     [ "xiangqipy.command_input.XiangqiGameCommand", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html", null ],
     [ "xiangqipy.command_input.XiangqiGameCommandLine", "classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine.html", null ],
+    [ "xiangqipy.app_new.XiangqiGameCommandNew", "classxiangqipy_1_1app__new_1_1XiangqiGameCommandNew.html", null ],
     [ "boardstate::ZobristCalculator< KeyType >", "classboardstate_1_1ZobristCalculator.html", null ],
     [ "boardstate::ZobristComponent< KeyType, NumConfKeys >", "classboardstate_1_1ZobristComponent.html", null ],
+    [ "boardstate::ZobristComponentNew< KeyType, NumConfKeys >", "classboardstate_1_1ZobristComponentNew.html", null ],
     [ "ABC", null, [
       [ "xiangqipy.game_summary_plotters.GameSummaryPlotter", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html", [
         [ "xiangqipy.game_summary_plotters.EvalScorePlotter", "classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html", null ],
@@ -105,7 +126,12 @@ var hierarchy =
     [ "Enum", null, [
       [ "xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy", "classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html", null ],
       [ "xiangqipy.enums.EvaluatorType", "classxiangqipy_1_1enums_1_1EvaluatorType.html", null ],
+      [ "xiangqipy.enums.EvaluatorTypeNew", "classxiangqipy_1_1enums_1_1EvaluatorTypeNew.html", null ],
       [ "xiangqipy.enums.GameState", "classxiangqipy_1_1enums_1_1GameState.html", null ],
       [ "xiangqipy.enums.PlayerType", "classxiangqipy_1_1enums_1_1PlayerType.html", null ]
+    ] ],
+    [ "NamedTuple", null, [
+      [ "xiangqipy.binding_type_unions.MinimaxEvaluatorComponentTypes", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorComponentTypes.html", null ],
+      [ "xiangqipy.binding_type_unions.MinimaxEvaluatorSpecs", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorSpecs.html", null ]
     ] ]
 ];

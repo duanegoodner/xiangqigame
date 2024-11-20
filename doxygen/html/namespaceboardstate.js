@@ -8,7 +8,9 @@ var namespaceboardstate =
     [ "TranspositionTablePruner", "classboardstate_1_1TranspositionTablePruner.html", "classboardstate_1_1TranspositionTablePruner" ],
     [ "ZobristCalculator", "classboardstate_1_1ZobristCalculator.html", "classboardstate_1_1ZobristCalculator" ],
     [ "ZobristComponent", "classboardstate_1_1ZobristComponent.html", "classboardstate_1_1ZobristComponent" ],
+    [ "ZobristComponentNew", "classboardstate_1_1ZobristComponentNew.html", "classboardstate_1_1ZobristComponentNew" ],
     [ "ZobristCoordinator", "classboardstate_1_1ZobristCoordinator.html", "classboardstate_1_1ZobristCoordinator" ],
+    [ "ZobristCoordinatorNew", "classboardstate_1_1ZobristCoordinatorNew.html", "classboardstate_1_1ZobristCoordinatorNew" ],
     [ "IntToHexString", "namespaceboardstate.html#add5893a9fca7208b917bf0f4b03bfa74", null ],
     [ "PrintHex", "namespaceboardstate.html#ae1270479dcef9a3a2cc86aa7456c8154", null ]
 ];

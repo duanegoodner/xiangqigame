@@ -10,6 +10,8 @@ var namespacemoveselection =
     [ "EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
     [ "MinimaxCalcResult", "classmoveselection_1_1MinimaxCalcResult.html", "classmoveselection_1_1MinimaxCalcResult" ],
     [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
+    [ "MinimaxMoveEvaluatorNew", "classmoveselection_1_1MinimaxMoveEvaluatorNew.html", "classmoveselection_1_1MinimaxMoveEvaluatorNew" ],
+    [ "MinimaxTemplateSpecs", "structmoveselection_1_1MinimaxTemplateSpecs.html", "structmoveselection_1_1MinimaxTemplateSpecs" ],
     [ "PreSearchMoveSorter", "classmoveselection_1_1PreSearchMoveSorter.html", "classmoveselection_1_1PreSearchMoveSorter" ],
     [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],
     [ "ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", "classmoveselection_1_1ResultDepthCounts" ],

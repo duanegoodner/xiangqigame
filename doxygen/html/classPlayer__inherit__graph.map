@@ -1,0 +1,5 @@
+<map id="Player&lt; ConcretePlayer &gt;" name="Player&lt; ConcretePlayer &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="23,5,251,141"/>
+<area shape="rect" id="node2" href="$classPlayer.html" title=" " alt="" coords="23,204,251,340"/>
+<area shape="rect" id="node3" href="$classAIPlayer.html" title=" " alt="" coords="5,389,268,613"/>
+</map>

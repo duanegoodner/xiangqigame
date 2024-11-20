@@ -1,5 +1,5 @@
 <map id="boardstate::TranspositionTable&lt; KeyType, NumConfKeys &gt;" name="boardstate::TranspositionTable&lt; KeyType, NumConfKeys &gt;">
-<area shape="rect" id="node1" title="Stores and manages key&#45;value pairs consisting of a board_state (from a boardstate::ZobristComponent) ..." alt="" coords="107,175,347,340"/>
+<area shape="rect" id="node1" title="Stores and manages key&#45;value pairs consisting of a board_state (from a boardstate::ZobristComponent) ..." alt="" coords="107,175,347,355"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,260,112"/>
 <area shape="rect" id="node3" title=" " alt="" coords="285,20,359,97"/>
 </map>
