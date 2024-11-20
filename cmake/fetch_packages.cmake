@@ -36,16 +36,29 @@ FetchContent_Declare(
     URL https://github.com/boostorg/math/archive/refs/tags/boost-1.86.0.tar.gz
 )
 
-# FetchContent_Declare(
-#   boost_multiprecision
-#   URL https://github.com/boostorg/multiprecision/archive/refs/tags/Boost_1_86_0.tar.gz
-# )
-
 FetchContent_GetProperties(boost_math)
 if(NOT boost_math_POPULATED)
     FetchContent_Populate(boost_math)
     set(BOOST_MATH_INCLUDE_DIR ${boost_math_SOURCE_DIR}/include)
 endif()
+
+FetchContent_Declare(
+    boost_utility
+    URL https://github.com/boostorg/utility/archive/refs/tags/boost-1.86.0.tar.gz
+)
+
+FetchContent_GetProperties(boost_utility)
+if(NOT boost_utility_POPULATED)
+    FetchContent_Populate(boost_utility)
+    set(BOOST_UTILITY_INCLUDE_DIR ${boost_utility_SOURCE_DIR}/include)
+endif()
+
+
+
+# FetchContent_Declare(
+#   boost_multiprecision
+#   URL https://github.com/boostorg/multiprecision/archive/refs/tags/Boost_1_86_0.tar.gz
+# )
 
 # FetchContent_GetProperties(boost_multiprecision)
 # if(NOT boost_multiprecision_POPULATED)

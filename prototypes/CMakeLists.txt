@@ -1,9 +1,2 @@
-add_executable(gist_tr_table_purging gist_tr_table_purging.cpp)
-
-add_executable(gist_classes_share_mutex gist_classes_share_mutex.cpp)
-
-add_executable(gist_purge_mutex_execute_around gist_purge_mutex_execute_around.cpp)
-
-add_executable(gist_simpler_mutex gist_simpler_mutex.cpp)
-
-add_executable(gist_simple_execute_around gist_simple_execute_around.cpp)
+add_subdirectory(ks_testing)
+add_subdirectory(tr_table_threaded_pruning)

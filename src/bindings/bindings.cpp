@@ -204,6 +204,13 @@ void bind_minimax_move_evaluator_new(py::module_ &m, const std::string &class_na
 
 PYBIND11_MODULE(xiangqi_bindings, m) {
 
+  // Define key types and their corresponding names as a tuple
+  const std::tuple<std::string, size_t> key_types[] = {
+      {"uint32_t", sizeof(uint32_t)},
+      {"uint64_t", sizeof(uint64_t)},
+      {"__uint128_t", sizeof(__uint128_t)}
+  };
+
   py::class_<PiecePositionPoints>(m, "PiecePositionPoints").def(py::init<>());
 
   py::class_<moveselection::PreSearchMoveSorter<GameBoard, PiecePositionPoints>>(
@@ -313,12 +320,6 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
           "allowed_moves"_a
       );
 
-  //   py::class_<moveselection::TranspositionTableSize>(m, "TranspositionTableSize")
-  //       .def_readonly("num_entries",
-  //       &moveselection::TranspositionTableSize::num_entries)
-  //       .def_readonly("num_states",
-  //       &moveselection::TranspositionTableSize::num_states);
-
   py::class_<moveselection::SearchSummary>(m, "SearchSummary")
       //   .def(py::init<int>()) // Constructor, as needed for initialization
       .def_property_readonly(
@@ -382,22 +383,37 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
   bind_zobrist_calculator<uint64_t>(m, "ZobristCalculatorB064");
   bind_zobrist_calculator<__uint128_t>(m, "ZobristCalculatorB128");
 
+  bind_zobrist_component_new<uint32_t, 0>(m, "ZobristComponentNewB032C0");
+  bind_zobrist_component_new<uint64_t, 0>(m, "ZobristComponentNewB064C0");
+  bind_zobrist_component_new<__uint128_t, 0>(m, "ZobristComponentNewB128C0");
   bind_zobrist_component_new<uint32_t, 1>(m, "ZobristComponentNewB032C1");
   bind_zobrist_component_new<uint64_t, 1>(m, "ZobristComponentNewB064C1");
   bind_zobrist_component_new<__uint128_t, 1>(m, "ZobristComponentNewB128C1");
 
+  bind_transposition_table<uint32_t, 0>(m, "TranspositionTableB032C0");
+  bind_transposition_table<uint64_t, 0>(m, "TranspositionTableB064C0");
+  bind_transposition_table<__uint128_t, 0>(m, "TranspositionTableB128C0");
   bind_transposition_table<uint32_t, 1>(m, "TranspositionTableB032C1");
   bind_transposition_table<uint64_t, 1>(m, "TranspositionTableB064C1");
   bind_transposition_table<__uint128_t, 1>(m, "TranspositionTableB128C1");
 
+  bind_transposition_table_pruner<uint32_t, 0>(m, "TranspositionTablePrunerB032C0");
+  bind_transposition_table_pruner<uint64_t, 0>(m, "TranspositionTablePrunerB064C0");
+  bind_transposition_table_pruner<__uint128_t, 0>(m, "TranspositionTablePrunerB128C0");
   bind_transposition_table_pruner<uint32_t, 1>(m, "TranspositionTablePrunerB032C1");
   bind_transposition_table_pruner<uint64_t, 1>(m, "TranspositionTablePrunerB064C1");
   bind_transposition_table_pruner<__uint128_t, 1>(m, "TranspositionTablePrunerB128C1");
 
+  bind_zobrist_coordinator_new<uint32_t, 0>(m, "ZobristCoordinatorNewB032C0");
+  bind_zobrist_coordinator_new<uint64_t, 0>(m, "ZobristCoordinatorNewB064C0");
+  bind_zobrist_coordinator_new<__uint128_t, 0>(m, "ZobristCoordinatorNewB128C0");
   bind_zobrist_coordinator_new<uint32_t, 1>(m, "ZobristCoordinatorNewB032C1");
   bind_zobrist_coordinator_new<uint64_t, 1>(m, "ZobristCoordinatorNewB064C1");
   bind_zobrist_coordinator_new<__uint128_t, 1>(m, "ZobristCoordinatorNewB128C1");
 
+  bind_minimax_move_evaluator_new<uint32_t, 0>(m, "MinimaxMoveEvaluatorNewB032C0");
+  bind_minimax_move_evaluator_new<uint64_t, 0>(m, "MinimaxMoveEvaluatorNewB064C0");
+  bind_minimax_move_evaluator_new<__uint128_t, 0>(m, "MinimaxMoveEvaluatorNewB128C0");
   bind_minimax_move_evaluator_new<uint32_t, 1>(m, "MinimaxMoveEvaluatorNewB032C1");
   bind_minimax_move_evaluator_new<uint64_t, 1>(m, "MinimaxMoveEvaluatorNewB064C1");
   bind_minimax_move_evaluator_new<__uint128_t, 1>(m, "MinimaxMoveEvaluatorNewB128C1");

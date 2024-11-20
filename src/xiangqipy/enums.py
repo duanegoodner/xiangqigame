@@ -32,3 +32,11 @@ class EvaluatorType(Enum):
     NULL = auto()
     MINIMAX = auto()
     RANDOM = auto()
+
+class EvaluatorTypeNew(Enum):
+    """
+    Enum indicating type of core MoveEvaluator used for a Player.
+    """
+    HUMAN = auto()
+    MINIMAX = auto()
+    RANDOM = auto()

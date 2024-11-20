@@ -15,7 +15,7 @@ from xiangqi_bindings import (
     MinimaxMoveEvaluator128,
 )
 
-from xiangqipy.enums import EvaluatorType, PlayerType
+from xiangqipy.enums import EvaluatorType, PlayerType, EvaluatorTypeNew
 
 
 @dataclass
@@ -23,13 +23,13 @@ class PlayerInput:
     """
     Container for info collected from command line for specific player.
     """
-
     player_type: PlayerType
     algo: EvaluatorType
     strength: int
     key_size: int
     num_zobrist_states: int
     zkeys_seed: int | None = None
+
 
 
 class PlayerCommandInterpreter:
@@ -122,7 +122,6 @@ class XiangqiGameCommand:
     black_player_input: PlayerInput
     save_summary: bool = False
     output_dir_suffix: str = ""
-
 
 @dataclass
 class RunKwargsInterpreter:
