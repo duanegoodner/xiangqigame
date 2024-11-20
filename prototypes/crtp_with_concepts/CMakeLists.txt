@@ -1,0 +1,1 @@
+add_executable(crtp_with_concepts crtp_with_concepts.cpp)

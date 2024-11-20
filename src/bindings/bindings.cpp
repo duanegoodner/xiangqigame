@@ -10,6 +10,7 @@
 #include <game_board.hpp>
 #include <move_evaluators.hpp>
 #include <piece_position_points.hpp>
+#include <random>
 #include <string>
 #include <zobrist.hpp>
 
@@ -18,6 +19,58 @@ using namespace py::literals;
 using namespace boardstate;
 using namespace gameboard;
 using namespace piecepoints;
+
+template <typename KeyType>
+void bind_zobrist_calculator(py::module_ &m, const std::string &class_name) {
+  py::class_<ZobristCalculator<KeyType>>(m, class_name.c_str())
+      .def(py::init<uint32_t>(), py::arg("seed") = std::random_device{}());
+}
+
+template <typename KeyType, size_t NumConfKeys>
+void bind_zobrist_component_new(py::module_ &m, const std::string &class_name) {
+  py::class_<ZobristComponentNew<KeyType, NumConfKeys>>(m, class_name.c_str())
+      .def(
+          py::init<
+              ZobristCalculator<KeyType> &,
+              std::array<ZobristCalculator<KeyType>, NumConfKeys> &>(),
+          "primary_calculator"_a,
+          "confirmation_calculators"_a
+      );
+}
+
+template <typename KeyType, size_t NumConfKeys>
+void bind_transposition_table(py::module_ &m, const std::string &class_name) {
+  py::class_<TranspositionTable<KeyType, NumConfKeys>>(m, class_name.c_str())
+      .def(py::init<>());
+}
+
+template <typename KeyType, size_t NumConfKeys>
+void bind_transposition_table_pruner(py::module_ &m, const std::string &class_name) {
+  py::class_<TranspositionTablePruner<KeyType, NumConfKeys>>(m, class_name.c_str())
+      .def(
+          py::init<
+              TranspositionTable<KeyType, NumConfKeys> &,
+              TranspositionTableGuard &>(),
+          "tr_table"_a,
+          "tr_table_guard"_a
+      );
+}
+
+template <typename KeyType, size_t NumConfKeys>
+void bind_zobrist_coordinator_new(py::module_ &m, const std::string &class_name) {
+  py::class_<ZobristCoordinatorNew<KeyType, NumConfKeys>>(m, class_name.c_str())
+      .def(
+          py::init<
+              ZobristComponentNew<KeyType, NumConfKeys> &,
+              TranspositionTable<KeyType, NumConfKeys> &,
+              TranspositionTableGuard &,
+              TranspositionTablePruner<KeyType, NumConfKeys> &>(),
+          "zobrist_component"_a,
+          "tr_table"_a,
+          "tr_table_guard"_a,
+          "tr_table_pruner"_a
+      );
+}
 
 template <typename KeyType, size_t NumConfKeys>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
@@ -83,7 +136,92 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
       );
 }
 
+template <typename KeyType, size_t NumConfKeys>
+void bind_minimax_move_evaluator_new(py::module_ &m, const std::string &class_name) {
+  py::class_<moveselection::MinimaxMoveEvaluatorNew<
+      GameBoard,
+      ZobristCoordinatorNew<KeyType, NumConfKeys>,
+      PiecePositionPoints>>(m, class_name.c_str())
+      .def(
+          py::init<
+              PieceColor,
+              DepthType,
+              GameBoard &,
+              PiecePositionPoints &,
+              ZobristCoordinatorNew<KeyType, NumConfKeys> &,
+              moveselection::PreSearchMoveSorter<GameBoard, PiecePositionPoints> &>(),
+          "evaluating_player"_a,
+          "search_depth"_a,
+          "game_board"_a,
+          "game_position_points"_a,
+          "hash_calculator"_a,
+          "move_sorter"_a
+      )
+      .def(
+          "select_move",
+          &moveselection::MinimaxMoveEvaluatorNew<
+              GameBoard,
+              ZobristCoordinatorNew<KeyType, NumConfKeys>,
+              PiecePositionPoints>::SelectMove,
+          "allowed_moves"_a
+      )
+      .def_property_readonly(
+          "search_summaries",
+          &moveselection::MinimaxMoveEvaluatorNew<
+              GameBoard,
+              ZobristCoordinatorNew<KeyType, NumConfKeys>,
+              PiecePositionPoints>::search_summaries
+      )
+      .def(
+          "search_depth",
+          &moveselection::MinimaxMoveEvaluatorNew<
+              GameBoard,
+              ZobristCoordinatorNew<KeyType, NumConfKeys>,
+              PiecePositionPoints>::search_depth
+      )
+      .def(
+          "zobrist_key_size_bits",
+          &moveselection::MinimaxMoveEvaluatorNew<
+              GameBoard,
+              ZobristCoordinatorNew<KeyType, NumConfKeys>,
+              PiecePositionPoints>::KeySizeBits
+      )
+      .def_property_readonly(
+          "zkeys_seed",
+          &moveselection::MinimaxMoveEvaluatorNew<
+              GameBoard,
+              ZobristCoordinatorNew<KeyType, NumConfKeys>,
+              PiecePositionPoints>::zkeys_seed
+      )
+      .def_property_readonly(
+          "board_state_hex_str",
+          &moveselection::MinimaxMoveEvaluatorNew<
+              GameBoard,
+              ZobristCoordinatorNew<KeyType, NumConfKeys>,
+              PiecePositionPoints>::board_state_hex_str
+      );
+}
+
 PYBIND11_MODULE(xiangqi_bindings, m) {
+
+  // Define key types and their corresponding names as a tuple
+  const std::tuple<std::string, size_t> key_types[] = {
+      {"uint32_t", sizeof(uint32_t)},
+      {"uint64_t", sizeof(uint64_t)},
+      {"__uint128_t", sizeof(__uint128_t)}
+  };
+
+  py::class_<PiecePositionPoints>(m, "PiecePositionPoints").def(py::init<>());
+
+  py::class_<moveselection::PreSearchMoveSorter<GameBoard, PiecePositionPoints>>(
+      m,
+      "PreSearchMoveSorter"
+  )
+      .def(
+          py::init<GameBoard &, PiecePositionPoints &>(),
+          "game_board"_a,
+          "game_position_points"_a
+      );
 
   py::class_<BoardSpace>(m, "BoardSpace")
       .def(py::init<int, int>(), "rank"_a, "file"_a)
@@ -182,12 +320,6 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
           "allowed_moves"_a
       );
 
-  //   py::class_<moveselection::TranspositionTableSize>(m, "TranspositionTableSize")
-  //       .def_readonly("num_entries",
-  //       &moveselection::TranspositionTableSize::num_entries)
-  //       .def_readonly("num_states",
-  //       &moveselection::TranspositionTableSize::num_states);
-
   py::class_<moveselection::SearchSummary>(m, "SearchSummary")
       //   .def(py::init<int>()) // Constructor, as needed for initialization
       .def_property_readonly(
@@ -236,10 +368,53 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       ) // Read-only vectors and maps
       .def_readonly("extra_searches", &moveselection::SearchSummaries::extra_searches);
 
+  py::class_<TranspositionTableGuard>(m, "TranspositionTableGuard").def(py::init<>());
+
+  //   Evaluators without dependency injection (except GameBoard)
   bind_minimax_move_evaluator<uint32_t, 0>(m, "MinimaxMoveEvaluator32");
   bind_minimax_move_evaluator<uint64_t, 0>(m, "MinimaxMoveEvaluator64");
   bind_minimax_move_evaluator<__uint128_t, 0>(m, "MinimaxMoveEvaluator128");
   bind_minimax_move_evaluator<uint32_t, 1>(m, "MinimaxMoveEvaluator32Dual");
   bind_minimax_move_evaluator<uint64_t, 1>(m, "MinimaxMoveEvaluator64Dual");
   bind_minimax_move_evaluator<__uint128_t, 1>(m, "MinimaxMoveEvaluator128Dual");
+
+  // Components for dependency injection
+  bind_zobrist_calculator<uint32_t>(m, "ZobristCalculatorB032");
+  bind_zobrist_calculator<uint64_t>(m, "ZobristCalculatorB064");
+  bind_zobrist_calculator<__uint128_t>(m, "ZobristCalculatorB128");
+
+  bind_zobrist_component_new<uint32_t, 0>(m, "ZobristComponentNewB032C0");
+  bind_zobrist_component_new<uint64_t, 0>(m, "ZobristComponentNewB064C0");
+  bind_zobrist_component_new<__uint128_t, 0>(m, "ZobristComponentNewB128C0");
+  bind_zobrist_component_new<uint32_t, 1>(m, "ZobristComponentNewB032C1");
+  bind_zobrist_component_new<uint64_t, 1>(m, "ZobristComponentNewB064C1");
+  bind_zobrist_component_new<__uint128_t, 1>(m, "ZobristComponentNewB128C1");
+
+  bind_transposition_table<uint32_t, 0>(m, "TranspositionTableB032C0");
+  bind_transposition_table<uint64_t, 0>(m, "TranspositionTableB064C0");
+  bind_transposition_table<__uint128_t, 0>(m, "TranspositionTableB128C0");
+  bind_transposition_table<uint32_t, 1>(m, "TranspositionTableB032C1");
+  bind_transposition_table<uint64_t, 1>(m, "TranspositionTableB064C1");
+  bind_transposition_table<__uint128_t, 1>(m, "TranspositionTableB128C1");
+
+  bind_transposition_table_pruner<uint32_t, 0>(m, "TranspositionTablePrunerB032C0");
+  bind_transposition_table_pruner<uint64_t, 0>(m, "TranspositionTablePrunerB064C0");
+  bind_transposition_table_pruner<__uint128_t, 0>(m, "TranspositionTablePrunerB128C0");
+  bind_transposition_table_pruner<uint32_t, 1>(m, "TranspositionTablePrunerB032C1");
+  bind_transposition_table_pruner<uint64_t, 1>(m, "TranspositionTablePrunerB064C1");
+  bind_transposition_table_pruner<__uint128_t, 1>(m, "TranspositionTablePrunerB128C1");
+
+  bind_zobrist_coordinator_new<uint32_t, 0>(m, "ZobristCoordinatorNewB032C0");
+  bind_zobrist_coordinator_new<uint64_t, 0>(m, "ZobristCoordinatorNewB064C0");
+  bind_zobrist_coordinator_new<__uint128_t, 0>(m, "ZobristCoordinatorNewB128C0");
+  bind_zobrist_coordinator_new<uint32_t, 1>(m, "ZobristCoordinatorNewB032C1");
+  bind_zobrist_coordinator_new<uint64_t, 1>(m, "ZobristCoordinatorNewB064C1");
+  bind_zobrist_coordinator_new<__uint128_t, 1>(m, "ZobristCoordinatorNewB128C1");
+
+  bind_minimax_move_evaluator_new<uint32_t, 0>(m, "MinimaxMoveEvaluatorNewB032C0");
+  bind_minimax_move_evaluator_new<uint64_t, 0>(m, "MinimaxMoveEvaluatorNewB064C0");
+  bind_minimax_move_evaluator_new<__uint128_t, 0>(m, "MinimaxMoveEvaluatorNewB128C0");
+  bind_minimax_move_evaluator_new<uint32_t, 1>(m, "MinimaxMoveEvaluatorNewB032C1");
+  bind_minimax_move_evaluator_new<uint64_t, 1>(m, "MinimaxMoveEvaluatorNewB064C1");
+  bind_minimax_move_evaluator_new<__uint128_t, 1>(m, "MinimaxMoveEvaluatorNewB128C1");
 }

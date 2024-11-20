@@ -1,0 +1,1 @@
+add_executable(concepts_dep_injection concepts_dep_injection.cpp)
