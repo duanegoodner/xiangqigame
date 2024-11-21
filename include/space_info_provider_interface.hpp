@@ -4,6 +4,7 @@
 #pragma once
 
 #include <board_data_structs.hpp>
+#include <concepts>
 
 using namespace gameboard;
 
@@ -32,7 +33,7 @@ public:
     );
   };
 
-  ExecutedMove ExecuteMove(const Move& move) {
+  ExecutedMove ExecuteMove(const Move &move) {
     return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementExecuteMove(move);
   }
 
@@ -40,7 +41,7 @@ public:
     static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementUndoMove(executed_move);
   }
 
-  void AttachMoveCallback(function<void(const ExecutedMove&)> callback) {
+  void AttachMoveCallback(function<void(const ExecutedMove &)> callback) {
     static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementAttachMoveCallback(callback
     );
   }
@@ -49,3 +50,4 @@ public:
     return static_cast<ConcreteSpaceInfoProvider *>(this)->ImplementIsDraw();
   }
 };
+

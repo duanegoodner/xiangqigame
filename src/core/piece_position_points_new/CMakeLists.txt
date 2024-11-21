@@ -1,0 +1,3 @@
+add_library(piece_position_points_new piece_position_points_new.cpp)
+
+target_link_libraries(piece_position_points_new PRIVATE utility_functs piece_points_bpo)

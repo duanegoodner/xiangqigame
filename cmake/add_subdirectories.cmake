@@ -1,4 +1,5 @@
 add_subdirectory(${SOURCE_CODE_DIR}/game_board)
+add_subdirectory(${SOURCE_CODE_DIR}/game_board_new)
 
 add_subdirectory(${SOURCE_CODE_DIR}/json_utility_nlohmann)
 add_subdirectory(${SOURCE_CODE_DIR}/json_validation)
@@ -6,6 +7,7 @@ add_subdirectory(${SOURCE_CODE_DIR}/move_evaluators)
 add_subdirectory(${SOURCE_CODE_DIR}/move_calculator)
 add_subdirectory(${SOURCE_CODE_DIR}/piece_moves)
 add_subdirectory(${SOURCE_CODE_DIR}/piece_position_points)
+add_subdirectory(${SOURCE_CODE_DIR}/piece_position_points_new)
 add_subdirectory(${SOURCE_CODE_DIR}/piece_points_bpo)
 add_subdirectory(${SOURCE_CODE_DIR}/utility_functs)
 add_subdirectory(src/bindings)
