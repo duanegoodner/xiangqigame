@@ -1157,7 +1157,7 @@ public:
       ConcreteSpaceInfoProvider &game_board,
       ConcretePieceValueProvider &game_position_points,
       ConcreteBoardStateCoordinator &hash_calculator,
-      PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
+      PreSearchMoveSorterUsingConcepts<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
           &move_sorter
   )
       : evaluating_player_{evaluating_player}

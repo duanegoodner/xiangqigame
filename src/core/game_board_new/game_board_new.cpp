@@ -1,5 +1,6 @@
 #include <board_data_structs.hpp>
 #include <game_board_new.hpp>
+#include <piece_moves.hpp>
 #include <stdexcept>
 #include <utility_functs.hpp>
 
