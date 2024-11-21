@@ -565,6 +565,75 @@ public:
   uint32_t zkeys_seed() { return zobrist_component_.prng_seed(); }
 };
 
+template <typename KeyType, size_t NumConfKeys>
+class ZobristCoordinatorForConcept {
+  ZobristComponentNew<KeyType, NumConfKeys> &zobrist_component_;
+  TranspositionTable<KeyType, NumConfKeys> &tr_table_;
+  TranspositionTableGuard &tr_table_guard_;
+  TranspositionTablePruner<KeyType, NumConfKeys> &tr_table_pruner_;
+
+public:
+  ZobristCoordinatorForConcept(const ZobristCoordinatorNew &) = delete;
+  ZobristCoordinatorForConcept &operator=(const ZobristCoordinatorNew &) = delete;
+
+  explicit ZobristCoordinatorForConcept(
+      ZobristComponentNew<KeyType, NumConfKeys> &zobrist_component,
+      TranspositionTable<KeyType, NumConfKeys> &tr_table,
+      TranspositionTableGuard &tr_table_guard,
+      TranspositionTablePruner<KeyType, NumConfKeys> &tr_table_pruner
+  )
+      : zobrist_component_{zobrist_component}
+      , tr_table_{tr_table}
+      , tr_table_guard_{tr_table_guard}
+      , tr_table_pruner_{tr_table_pruner} {
+    // tr_table_pruner_.Start();
+  }
+
+  KeyType GetState() { return zobrist_component_.primary_board_state(); }
+  void UpdateBoardState(const ExecutedMove &executed_move) {
+    zobrist_component_.UpdateBoardStates(executed_move);
+  }
+  void FullBoardStateCalc(const BoardMap_t &board_map) {
+    zobrist_component_.FullBoardStateCalc(board_map);
+  }
+  void RecordTrData(
+      DepthType search_depth,
+      moveselection::MinimaxResultType result_type,
+      moveselection::EqualScoreMoves &similar_moves,
+      MoveCountType access_index
+  ) {
+    tr_table_.RecordData(
+        zobrist_component_.primary_board_state(),
+        search_depth,
+        result_type,
+        similar_moves,
+        zobrist_component_.confirmation_board_states()
+    );
+  }
+  moveselection::TranspositionTableSearchResult GetTrData(
+      DepthType search_depth,
+      MoveCountType access_index
+  ) {
+    return tr_table_.GetDataAt(
+        zobrist_component_.primary_board_state(),
+        search_depth,
+        zobrist_component_.confirmation_board_states()
+    );
+  }
+  size_t GetTrTableSize() { return tr_table_.size(); }
+
+  void UpdateMoveCounter() {
+    // tr_table_pruner_.IncrementMoveCounter();
+    tr_table_.IncrementMoveCounter();
+  }
+
+  const std::string board_state_hex_str() {
+    return IntToHexString(zobrist_component_.primary_board_state());
+  }
+
+  uint32_t zkeys_seed() { return zobrist_component_.prng_seed(); }
+};
+
 //! Implements the BoardStateCoordinator interface, providing a
 //! moveselection::MinimaxMoveEvaluator with "reasonably unique" hash values for each
 //! encountered board state, and the ability to read/write board_state-MinimaxResult
