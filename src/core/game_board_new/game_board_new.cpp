@@ -1,5 +1,5 @@
 #include <board_data_structs.hpp>
-#include <game_board_new.hpp>
+#include <game_board_for_concepts.hpp>
 #include <piece_moves.hpp>
 #include <stdexcept>
 #include <utility_functs.hpp>
@@ -35,27 +35,27 @@ const int kMaxMovesWithoutCapture = 120;
 
 //! Initializes a gameboard::GameBoard from array of pieces represented as integers.
 //! @param starting_board An array of integers representing pieces on the board.
-GameBoardNew::GameBoardNew(const BoardMapInt_t starting_board)
+GameBoardForConcepts::GameBoardForConcepts(const BoardMapInt_t starting_board)
     : board_map_{int_board_to_game_pieces(starting_board)}
     , move_calculator_{MoveCalculator()}
     , moves_since_last_capture_{} {}
 
-GameBoardNew::GameBoardNew()
-    : GameBoardNew(kStartingBoard) {}
+GameBoardForConcepts::GameBoardForConcepts()
+    : GameBoardForConcepts(kStartingBoard) {}
 
-std::vector<BoardSpace> GameBoardNew::GetAllSpacesOccupiedBy(PieceColor color) const {
+std::vector<BoardSpace> GameBoardForConcepts::GetAllSpacesOccupiedBy(PieceColor color) const {
   return get_all_spaces_occupied_by(board_map_, color);
 }
 
-PieceColor GameBoardNew::GetColor(const BoardSpace &space) const {
+PieceColor GameBoardForConcepts::GetColor(const BoardSpace &space) const {
   return get_color(board_map_, space);
 }
 
-PieceType GameBoardNew::GetType(const BoardSpace &space) const {
+PieceType GameBoardForConcepts::GetType(const BoardSpace &space) const {
   return get_type(board_map_, space);
 }
 
-MoveCollection GameBoardNew::CalcFinalMovesOf(PieceColor color) {
+MoveCollection GameBoardForConcepts::CalcFinalMovesOf(PieceColor color) {
   auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
   MoveCollection validated_moves{};
 
@@ -81,14 +81,14 @@ MoveCollection GameBoardNew::CalcFinalMovesOf(PieceColor color) {
   return validated_moves;
 }
 
-bool GameBoardNew::IsInCheck(PieceColor color) {
+bool GameBoardForConcepts::IsInCheck(PieceColor color) {
   auto gen_position = get_general_position(board_map_, color);
   auto opponent_moves =
       move_calculator_.CalcAllMovesNoCheckTest(opponent_of(color), board_map_);
   return opponent_moves.ContainsDestination(gen_position);
 }
 
-ExecutedMove GameBoardNew::ExecuteMove(const Move &move) {
+ExecutedMove GameBoardForConcepts::ExecuteMove(const Move &move) {
   auto moving_piece = GetOccupantAt(move.start);
   auto destination_piece = GetOccupantAt(move.end);
   SetOccupantAt(move.end, moving_piece);
@@ -107,11 +107,11 @@ ExecutedMove GameBoardNew::ExecuteMove(const Move &move) {
   return executed_move;
 };
 
-bool GameBoardNew::IsCaptureMove(const ExecutedMove &executed_move) const {
+bool GameBoardForConcepts::IsCaptureMove(const ExecutedMove &executed_move) const {
   return executed_move.destination_piece != PieceColor::kNul;
 }
 
-void GameBoardNew::UndoMove(const ExecutedMove &executed_move) {
+void GameBoardForConcepts::UndoMove(const ExecutedMove &executed_move) {
   SetOccupantAt(executed_move.spaces.start, executed_move.moving_piece);
   SetOccupantAt(executed_move.spaces.end, executed_move.destination_piece);
   UpdateStateTracker(executed_move);
@@ -119,42 +119,42 @@ void GameBoardNew::UndoMove(const ExecutedMove &executed_move) {
   RemoveFromMoveLog(executed_move);
 };
 
-GamePiece GameBoardNew::GetOccupantAt(const BoardSpace &space) const {
+GamePiece GameBoardForConcepts::GetOccupantAt(const BoardSpace &space) const {
   return board_map_[space.rank][space.file];
 };
 
-const BoardMap_t &GameBoardNew::map() const { return board_map_; }
+const BoardMap_t &GameBoardForConcepts::map() const { return board_map_; }
 
-void GameBoardNew::AttachMoveCallback(
+void GameBoardForConcepts::AttachMoveCallback(
     const std::function<void(const ExecutedMove &)> &callback
 ) {
   move_callbacks_.emplace_back(callback);
 }
 
-bool GameBoardNew::IsDraw() {
+bool GameBoardForConcepts::IsDraw() {
   return moves_since_last_capture_ >= kMaxMovesWithoutCapture;
 }
 
-const std::map<PieceColor, std::vector<ExecutedMove>> &GameBoardNew::move_log() const {
+const std::map<PieceColor, std::vector<ExecutedMove>> &GameBoardForConcepts::move_log() const {
   return move_log_;
 }
 
-void GameBoardNew::UpdateStateTracker(const ExecutedMove &executed_move) {
+void GameBoardForConcepts::UpdateStateTracker(const ExecutedMove &executed_move) {
   for (const auto &callback : move_callbacks_) {
     callback(executed_move);
   }
 };
 
-void GameBoardNew::SetOccupantAt(const BoardSpace &space, GamePiece piece) {
+void GameBoardForConcepts::SetOccupantAt(const BoardSpace &space, GamePiece piece) {
   board_map_[space.rank][space.file] = piece;
 }
 
-void GameBoardNew::AddToMoveLog(const ExecutedMove &executed_move) {
+void GameBoardForConcepts::AddToMoveLog(const ExecutedMove &executed_move) {
   auto piece_color = executed_move.moving_piece.piece_color;
   move_log_[piece_color].push_back(executed_move);
 };
 
-void GameBoardNew::RemoveFromMoveLog(const ExecutedMove &executed_move) {
+void GameBoardForConcepts::RemoveFromMoveLog(const ExecutedMove &executed_move) {
   auto piece_color = executed_move.moving_piece.piece_color;
   auto last_move_by_color = move_log_[piece_color].back();
   if (!(executed_move == last_move_by_color)) {
@@ -163,7 +163,7 @@ void GameBoardNew::RemoveFromMoveLog(const ExecutedMove &executed_move) {
   move_log_[piece_color].pop_back();
 }
 
-bool GameBoardNew::ViolatesRepeatRule(PieceColor color) {
+bool GameBoardForConcepts::ViolatesRepeatRule(PieceColor color) {
   for (auto period_length : kRepeatPeriodsToCheck) {
     auto lookback_length = (kRepeatPeriodsMaxAllowed + 1) * period_length;
     if (utility_functs::hasRepeatingPattern(

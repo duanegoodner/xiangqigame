@@ -1,4 +1,4 @@
-#include <game_board_new.hpp>
+#include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <move_evaluator_concept.hpp>
 #include <move_evaluators.hpp>
@@ -23,7 +23,7 @@ protected:
 TEST_F(RandomEvaluatorConceptTest, CompliesWithMoveEvaluatorConcept) {
   static_assert(
       MoveEvaluatorConcept<
-          moveselection::RandomMoveEvaluatorForConcept<gameboard::GameBoardNew>>,
+          moveselection::RandomMoveEvaluatorForConcept<gameboard::GameBoardForConcepts>>,
       "RandomMoveEvaluatorForConcept must comply with MoveEvaluatorConcept."
   );
 }
@@ -33,7 +33,7 @@ TEST_F(RandomEvaluatorConceptTest, CompliesWithMoveEvaluatorConcept) {
 TEST_F(RandomEvaluatorConceptTest, TestStartingMoveSelection) {
   int num_first_move_selections = 10;
 
-  gameboard::GameBoardNew starting_board;
+  gameboard::GameBoardForConcepts starting_board;
   moveselection::RandomMoveEvaluatorForConcept red_evaluator{
       PieceColor::kRed,
       starting_board
@@ -53,7 +53,7 @@ TEST_F(RandomEvaluatorConceptTest, TestStartingMoveSelection) {
 class MinimaxEvaluatorConceptTest : public ::testing::Test {
 protected:
   piecepoints::PiecePositionPointsNew piece_position_points_{};
-  gameboard::GameBoardNew starting_game_board_;
+  gameboard::GameBoardForConcepts starting_game_board_;
 
   boardstate::ZobristCalculator<uint64_t> red_primary_calculator_{};
   boardstate::ZobristCalculator<uint64_t> black_primary_calculator_{};
@@ -102,12 +102,12 @@ protected:
       black_tr_table_pruner_
   };
 
-  moveselection::PreSearchMoveSorterUsingConcepts<
-      gameboard::GameBoardNew,
+  moveselection::PreSearchMoveSorterForConcepts<
+      gameboard::GameBoardForConcepts,
       piecepoints::PiecePositionPointsNew>
       red_move_sorter_{starting_game_board_, piece_position_points_};
-  moveselection::PreSearchMoveSorterUsingConcepts<
-      gameboard::GameBoardNew,
+  moveselection::PreSearchMoveSorterForConcepts<
+      gameboard::GameBoardForConcepts,
       piecepoints::PiecePositionPointsNew>
       black_move_sorter_{starting_game_board_, piece_position_points_};
 
@@ -125,16 +125,16 @@ protected:
       {5, 0, 0, 0, 0, 0, 0, 0, 0},
       {0, 0, 0, 0, -1, 0, 0, 0, 0},
   }};
-  gameboard::GameBoardNew late_game_board_{kLateGameBoardMap};
+  gameboard::GameBoardForConcepts late_game_board_{kLateGameBoardMap};
 
   const DepthType standard_search_depth = 4;
 
   template <typename KeyType, size_t NumConfKeys>
   void PlayGame(DepthType red_search_depth, DepthType black_search_depth) {
-    gameboard::GameBoardNew game_board;
+    gameboard::GameBoardForConcepts game_board;
     moveselection::MinimaxMoveEvaluatorForConcept<
         uint64_t,
-        gameboard::GameBoardNew,
+        gameboard::GameBoardForConcepts,
         boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
         piecepoints::PiecePositionPointsNew>
         red_evaluator{
@@ -148,7 +148,7 @@ protected:
 
     moveselection::MinimaxMoveEvaluatorForConcept<
         uint64_t,
-        gameboard::GameBoardNew,
+        gameboard::GameBoardForConcepts,
         boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
         piecepoints::PiecePositionPointsNew>
         black_evaluator{
@@ -195,7 +195,7 @@ protected:
 TEST_F(MinimaxEvaluatorConceptTest, Init) {
   moveselection::MinimaxMoveEvaluatorForConcept<
       uint64_t,
-      gameboard::GameBoardNew,
+      gameboard::GameBoardForConcepts,
       boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
       piecepoints::PiecePositionPointsNew>
       red_evaluator{
@@ -211,7 +211,7 @@ TEST_F(MinimaxEvaluatorConceptTest, Init) {
 TEST_F(MinimaxEvaluatorConceptTest, BoardStateHexStr) {
   moveselection::MinimaxMoveEvaluatorForConcept<
       uint64_t,
-      gameboard::GameBoardNew,
+      gameboard::GameBoardForConcepts,
       boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
       piecepoints::PiecePositionPointsNew>
       red_evaluator{
@@ -228,7 +228,7 @@ TEST_F(MinimaxEvaluatorConceptTest, BoardStateHexStr) {
 TEST_F(MinimaxEvaluatorConceptTest, RedStartingMoveSelection) {
   moveselection::MinimaxMoveEvaluatorForConcept<
       uint64_t,
-      gameboard::GameBoardNew,
+      gameboard::GameBoardForConcepts,
       boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
       piecepoints::PiecePositionPointsNew>
       red_evaluator{

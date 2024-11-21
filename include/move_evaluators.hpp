@@ -130,13 +130,13 @@ private:
 //! MinimaxMoveEvaluator for pre-sorting to increase likelihood of alpha/beta pruning
 //! during recursive search; uses SpaceInfoProviderConcept and PieceValueProviderConcept.
 template <typename SpaceInfoProviderConcept, typename PieceValueProviderConcept>
-class PreSearchMoveSorterUsingConcepts {
+class PreSearchMoveSorterForConcepts {
 private:
   SpaceInfoProviderConcept &game_board_;
   PieceValueProviderConcept &game_position_points_;
 
 public:
-  PreSearchMoveSorterUsingConcepts(
+  PreSearchMoveSorterForConcepts(
       SpaceInfoProviderConcept &game_board,
       PieceValueProviderConcept &game_position_points
   )
@@ -1146,7 +1146,7 @@ class MinimaxMoveEvaluatorForConcept {
   MoveCountType num_move_selections_;
   DepthType search_depth_;
   moveselection::SearchSummaries search_summaries_;
-  PreSearchMoveSorterUsingConcepts<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
+  PreSearchMoveSorterForConcepts<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
       &move_sorter_;
   std::atomic<bool> game_over_;
 
@@ -1157,7 +1157,7 @@ public:
       ConcreteSpaceInfoProvider &game_board,
       ConcretePieceValueProvider &game_position_points,
       ConcreteBoardStateCoordinator &hash_calculator,
-      PreSearchMoveSorterUsingConcepts<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
+      PreSearchMoveSorterForConcepts<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
           &move_sorter
   )
       : evaluating_player_{evaluating_player}

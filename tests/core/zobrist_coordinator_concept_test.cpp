@@ -31,7 +31,7 @@ TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
       BoardStateCoordinatorConcept<
           boardstate::ZobristCoordinatorForConcept<uint64_t, 0>,
           uint64_t>,
-      "GameBoardNew must satisfy SpaceInfoProviderConcept"
+      "GameBoardForConcepts must satisfy SpaceInfoProviderConcept"
   );
 }
 

@@ -1,11 +1,11 @@
-#include <game_board_new.hpp>
+#include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <space_info_provider_new_concept.hpp>
 #include <type_traits>
 
-class GameBoardNewTest : public ::testing::Test {
+class GameBoardForConceptsTest : public ::testing::Test {
 protected:
-  gameboard::GameBoardNew gb_;
+  gameboard::GameBoardForConcepts gb_;
   const gameboard::BoardMapInt_t kRepeatMoveTestBoard{{
       {0, 0, 0, 1, 0, 0, 0, 0, 0},
       {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -33,15 +33,15 @@ protected:
   }};
 };
 
-TEST_F(GameBoardNewTest, SatisfiesSpaceInfoProviderConcept) {
+TEST_F(GameBoardForConceptsTest, SatisfiesSpaceInfoProviderConcept) {
   static_assert(
-      SpaceInfoProviderConcept<gameboard::GameBoardNew>,
-      "GameBoardNew must satisfy SpaceInfoProviderConcept"
+      SpaceInfoProviderConcept<gameboard::GameBoardForConcepts>,
+      "GameBoardForConcepts must satisfy SpaceInfoProviderConcept"
   );
 }
 
-TEST_F(GameBoardNewTest, DetectsDraw) {
-  GameBoardNew draw_game_board{kDrawTestBoard};
+TEST_F(GameBoardForConceptsTest, DetectsDraw) {
+  GameBoardForConcepts draw_game_board{kDrawTestBoard};
 
   for (auto round_trip = 0; round_trip < 10; ++round_trip) {
     for (auto idx = 0; idx < 6; ++idx) {
@@ -63,13 +63,13 @@ TEST_F(GameBoardNewTest, DetectsDraw) {
   std::cout << draw_game_board.IsDraw() << std::endl;
 }
 
-TEST_F(GameBoardNewTest, GetsCorrectOccupants) {
+TEST_F(GameBoardForConceptsTest, GetsCorrectOccupants) {
   EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{0, 0}), 5);
   EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{1, 0}), 0);
   EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{9, 7}), -4);
 }
 
-TEST_F(GameBoardNewTest, ExecuteAndUndoActualMove) {
+TEST_F(GameBoardForConceptsTest, ExecuteAndUndoActualMove) {
   auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};
   auto actual_executed_move = gb_.ExecuteMove(actual_move);
   EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{6, 2}), 0);
@@ -79,23 +79,23 @@ TEST_F(GameBoardNewTest, ExecuteAndUndoActualMove) {
   EXPECT_EQ(gb_.GetOccupantAt(BoardSpace{5, 2}), 0);
 }
 
-TEST_F(GameBoardNewTest, CorrecNumSpacesOccupiedByBlack) {
+TEST_F(GameBoardForConceptsTest, CorrecNumSpacesOccupiedByBlack) {
   auto black_spaces = gb_.GetAllSpacesOccupiedBy(PieceColor::kBlk);
   EXPECT_EQ(black_spaces.size(), 16);
 }
 
-TEST_F(GameBoardNewTest, CorrecNumSpacesOccupiedByRed) {
+TEST_F(GameBoardForConceptsTest, CorrecNumSpacesOccupiedByRed) {
   auto red_spaces = gb_.GetAllSpacesOccupiedBy(PieceColor::kRed);
   EXPECT_EQ(red_spaces.size(), 16);
 }
 
-TEST_F(GameBoardNewTest, CorrectNumberAvailableMoves) {
+TEST_F(GameBoardForConceptsTest, CorrectNumberAvailableMoves) {
   auto black_moves = gb_.CalcFinalMovesOf(PieceColor::kBlk);
   auto red_moves = gb_.CalcFinalMovesOf(PieceColor::kRed);
 }
 
-TEST_F(GameBoardNewTest, ProhibitsTripleRepeatMovePeriod_02) {
-  GameBoardNew late_game_board(kRepeatMoveTestBoard);
+TEST_F(GameBoardForConceptsTest, ProhibitsTripleRepeatMovePeriod_02) {
+  GameBoardForConcepts late_game_board(kRepeatMoveTestBoard);
   auto red_king_position_a = BoardSpace{9, 4};
   auto red_king_position_b = BoardSpace{9, 3};
 
@@ -116,8 +116,8 @@ TEST_F(GameBoardNewTest, ProhibitsTripleRepeatMovePeriod_02) {
   EXPECT_TRUE(avail_moves_c.Size() == 0);
 }
 
-TEST_F(GameBoardNewTest, ProhibitsTripleRepeatMovePeriod_03) {
-  GameBoardNew late_game_board(kRepeatMoveTestBoard);
+TEST_F(GameBoardForConceptsTest, ProhibitsTripleRepeatMovePeriod_03) {
+  GameBoardForConcepts late_game_board(kRepeatMoveTestBoard);
   auto red_king_position_a = BoardSpace{9, 4};
   auto red_king_position_b = BoardSpace{9, 3};
   auto red_king_position_c = BoardSpace{9, 5};

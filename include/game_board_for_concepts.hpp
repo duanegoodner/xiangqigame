@@ -15,10 +15,10 @@ extern const int kMaxMovesWithoutCapture;
 
 //! Must comply with SpaceInfoProviderConcept; stores piece positions, and exposes
 //! methods for calculating, executing, an un-doing moves..
-class GameBoardNew {
+class GameBoardForConcepts {
 public:
-  GameBoardNew();
-  GameBoardNew(const BoardMapInt_t starting_board);
+  GameBoardForConcepts();
+  GameBoardForConcepts(const BoardMapInt_t starting_board);
   std::vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color) const;
   PieceColor GetColor(const BoardSpace &space) const;
   PieceType GetType(const BoardSpace &space) const;
