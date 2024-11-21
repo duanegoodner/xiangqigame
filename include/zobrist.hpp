@@ -566,15 +566,15 @@ public:
 };
 
 template <typename KeyType, size_t NumConfKeys>
-class ZobristCoordinatorForConcept {
+class ZobristCoordinatorForConcept {  
   ZobristComponentNew<KeyType, NumConfKeys> &zobrist_component_;
   TranspositionTable<KeyType, NumConfKeys> &tr_table_;
   TranspositionTableGuard &tr_table_guard_;
   TranspositionTablePruner<KeyType, NumConfKeys> &tr_table_pruner_;
 
 public:
-  ZobristCoordinatorForConcept(const ZobristCoordinatorNew &) = delete;
-  ZobristCoordinatorForConcept &operator=(const ZobristCoordinatorNew &) = delete;
+  ZobristCoordinatorForConcept(const ZobristCoordinatorForConcept &) = delete;
+  ZobristCoordinatorForConcept &operator=(const ZobristCoordinatorForConcept &) = delete;
 
   explicit ZobristCoordinatorForConcept(
       ZobristComponentNew<KeyType, NumConfKeys> &zobrist_component,
