@@ -1,27 +1,27 @@
 #include <piece_points_bpo.hpp>
-#include <piece_position_points_new.hpp>
+#include <piece_position_points_for_concepts.hpp>
 #include <unordered_map>
 #include <utility_functs.hpp>
 
 
 namespace piecepoints {
 
-PiecePositionPointsNew::PiecePositionPointsNew()
+PiecePositionPointsForConcepts::PiecePositionPointsForConcepts()
     : points_array{BPOPointsSKeys(kICGABPOPath).ToGamePointsArray()} {}
 
-PiecePositionPointsNew::PiecePositionPointsNew(GamePointsArray_t game_points_array)
+PiecePositionPointsForConcepts::PiecePositionPointsForConcepts(GamePointsArray_t game_points_array)
     : points_array{game_points_array} {}
 
-PiecePositionPointsNew::PiecePositionPointsNew(BPOPointsEKeys& bpo_points_ekeys)
+PiecePositionPointsForConcepts::PiecePositionPointsForConcepts(BPOPointsEKeys& bpo_points_ekeys)
     : points_array{bpo_points_ekeys.ToGamePointsArray()} {}
 
-PiecePositionPointsNew::PiecePositionPointsNew(BPOPointsSKeys& bpo_points_skeys)
+PiecePositionPointsForConcepts::PiecePositionPointsForConcepts(BPOPointsSKeys& bpo_points_skeys)
     : points_array{bpo_points_skeys.ToGamePointsArray()} {}
 
-PiecePositionPointsNew::PiecePositionPointsNew(string json_file)
+PiecePositionPointsForConcepts::PiecePositionPointsForConcepts(string json_file)
     : points_array{BPOPointsSKeys(json_file).ToGamePointsArray()} {}
 
-TeamPointsEMap_t PiecePositionPointsNew::TeamPointsArrayToEMap(TeamPointsArray_t team_array) {
+TeamPointsEMap_t PiecePositionPointsForConcepts::TeamPointsArrayToEMap(TeamPointsArray_t team_array) {
   TeamPointsEMap_t team_map;
   for (auto piece_idx = 0; piece_idx < gameboard::kNumPieceTypeVals; piece_idx++) {
     team_map[static_cast<gameboard::PieceType>(piece_idx)] = team_array[piece_idx];
@@ -29,7 +29,7 @@ TeamPointsEMap_t PiecePositionPointsNew::TeamPointsArrayToEMap(TeamPointsArray_t
   return team_map;
 }
 
-GamePointsEMap_t PiecePositionPointsNew::PointsArraytoEMap() {
+GamePointsEMap_t PiecePositionPointsForConcepts::PointsArraytoEMap() {
   GamePointsEMap_t pts_map;
   for (auto zcolor_idx = 0; zcolor_idx < points_array.size(); zcolor_idx++) {
     pts_map[gameboard::GetPieceColorOf(zcolor_idx)] = TeamPointsArrayToEMap(points_array[zcolor_idx]);
@@ -37,7 +37,7 @@ GamePointsEMap_t PiecePositionPointsNew::PointsArraytoEMap() {
   return pts_map;
 }
 
-GamePointsSMap_t PiecePositionPointsNew::PointsArrayToSmap() {
+GamePointsSMap_t PiecePositionPointsForConcepts::PointsArrayToSmap() {
   auto e_map = PointsArraytoEMap();
   GamePointsSMap_t game_string_map;
 

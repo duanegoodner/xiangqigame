@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <move_evaluator_concept.hpp>
 #include <move_evaluators.hpp>
-#include <piece_position_points_new.hpp>
+#include <piece_position_points_for_concepts.hpp>
 #include <type_traits>
 #include <utility_functs.hpp>
 #include <zobrist.hpp>
@@ -52,7 +52,7 @@ TEST_F(RandomEvaluatorConceptTest, TestStartingMoveSelection) {
 
 class MinimaxEvaluatorConceptTest : public ::testing::Test {
 protected:
-  piecepoints::PiecePositionPointsNew piece_position_points_{};
+  piecepoints::PiecePositionPointsForConcepts piece_position_points_{};
   gameboard::GameBoardForConcepts starting_game_board_;
 
   boardstate::ZobristCalculator<uint64_t> red_primary_calculator_{};
@@ -90,25 +90,25 @@ protected:
   };
 
   boardstate::ZobristCoordinatorForConcept<uint64_t, 1> red_zobrist_coordinator_{
-      red_zobrist_component_,
-      red_tr_table_,
-      red_tr_table_guard_,
-      red_tr_table_pruner_
+    //   red_zobrist_component_,
+    //   red_tr_table_,
+    //   red_tr_table_guard_,
+    //   red_tr_table_pruner_
   };
   boardstate::ZobristCoordinatorForConcept<uint64_t, 1> black_zobrist_coordinator_{
-      black_zobrist_component_,
-      black_tr_table_,
-      black_tr_table_guard_,
-      black_tr_table_pruner_
+    //   black_zobrist_component_,
+    //   black_tr_table_,
+    //   black_tr_table_guard_,
+    //   black_tr_table_pruner_
   };
 
   moveselection::PreSearchMoveSorterForConcepts<
       gameboard::GameBoardForConcepts,
-      piecepoints::PiecePositionPointsNew>
+      piecepoints::PiecePositionPointsForConcepts>
       red_move_sorter_{starting_game_board_, piece_position_points_};
   moveselection::PreSearchMoveSorterForConcepts<
       gameboard::GameBoardForConcepts,
-      piecepoints::PiecePositionPointsNew>
+      piecepoints::PiecePositionPointsForConcepts>
       black_move_sorter_{starting_game_board_, piece_position_points_};
 
   DepthType default_search_depth_{4};
@@ -136,7 +136,7 @@ protected:
         uint64_t,
         gameboard::GameBoardForConcepts,
         boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
-        piecepoints::PiecePositionPointsNew>
+        piecepoints::PiecePositionPointsForConcepts>
         red_evaluator{
             PieceColor::kRed,
             red_search_depth,
@@ -150,7 +150,7 @@ protected:
         uint64_t,
         gameboard::GameBoardForConcepts,
         boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
-        piecepoints::PiecePositionPointsNew>
+        piecepoints::PiecePositionPointsForConcepts>
         black_evaluator{
             PieceColor::kBlk,
             black_search_depth,
@@ -197,7 +197,7 @@ TEST_F(MinimaxEvaluatorConceptTest, Init) {
       uint64_t,
       gameboard::GameBoardForConcepts,
       boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
-      piecepoints::PiecePositionPointsNew>
+      piecepoints::PiecePositionPointsForConcepts>
       red_evaluator{
           PieceColor::kRed,
           default_search_depth_,
@@ -213,7 +213,7 @@ TEST_F(MinimaxEvaluatorConceptTest, BoardStateHexStr) {
       uint64_t,
       gameboard::GameBoardForConcepts,
       boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
-      piecepoints::PiecePositionPointsNew>
+      piecepoints::PiecePositionPointsForConcepts>
       red_evaluator{
           PieceColor::kRed,
           default_search_depth_,
@@ -230,7 +230,7 @@ TEST_F(MinimaxEvaluatorConceptTest, RedStartingMoveSelection) {
       uint64_t,
       gameboard::GameBoardForConcepts,
       boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
-      piecepoints::PiecePositionPointsNew>
+      piecepoints::PiecePositionPointsForConcepts>
       red_evaluator{
           PieceColor::kRed,
           default_search_depth_,

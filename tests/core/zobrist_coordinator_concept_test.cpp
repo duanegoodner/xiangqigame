@@ -18,12 +18,12 @@ protected:
       primary_calculator_,
       confirmation_calculators_
   };
-  boardstate::TranspositionTable<uint64_t, 1> tr_table_{};
-  boardstate::TranspositionTableGuard tr_table_guard_{};
-  boardstate::TranspositionTablePruner<uint64_t, 1> tr_table_pruner_{
-      tr_table_,
-      tr_table_guard_
-  };
+//   boardstate::TranspositionTable<uint64_t, 1> tr_table_{};
+//   boardstate::TranspositionTableGuard tr_table_guard_{};
+//   boardstate::TranspositionTablePruner<uint64_t, 1> tr_table_pruner_{
+//       tr_table_,
+//       tr_table_guard_
+//   };
 };
 
 TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
@@ -37,12 +37,12 @@ TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
 
 TEST_F(ZobristCoordinatorConceptTest, Init) {
   boardstate::ZobristCoordinatorForConcept<uint64_t, 1>
-      coordinator_{zobrist_component_, tr_table_, tr_table_guard_, tr_table_pruner_};
+      coordinator_{};
 }
 
 TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
   boardstate::ZobristCoordinatorForConcept<uint64_t, 1>
-      coordinator{zobrist_component_, tr_table_, tr_table_guard_, tr_table_pruner_};
+      coordinator{};
 
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};
@@ -65,7 +65,7 @@ TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
 TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
 
   boardstate::ZobristCoordinatorForConcept<uint64_t, 1>
-      coordinator{zobrist_component_, tr_table_, tr_table_guard_, tr_table_pruner_};
+      coordinator{};
 
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};

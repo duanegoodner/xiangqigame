@@ -1,11 +1,11 @@
 #include <gtest/gtest.h>
 #include <piece_points_bpo.hpp>
-#include <piece_position_points_new.hpp>
+#include <piece_position_points_for_concepts.hpp>
 #include <piece_value_provider_new_concept.hpp>
 #include <type_traits>
 #include <utility_functs.hpp>
 
-class PiecePositionPointsNewTest : public ::testing::Test {
+class PiecePositionPointsForConceptsTest : public ::testing::Test {
 protected:
   const string points_spec_path =
       utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
@@ -17,27 +17,27 @@ protected:
       bpo_points_skeys.ToGamePointsArray();
 };
 
-TEST_F(PiecePositionPointsNewTest, SatisfiesPieceValueProviderConcept) {
+TEST_F(PiecePositionPointsForConceptsTest, SatisfiesPieceValueProviderConcept) {
   static_assert(
-      PieceValueProviderConcept<piecepoints::PiecePositionPointsNew>,
-      "PiecePositionPointsNew must satisfy PieceValueProviderConcept"
+      PieceValueProviderConcept<piecepoints::PiecePositionPointsForConcepts>,
+      "PiecePositionPointsForConcepts must satisfy PieceValueProviderConcept"
   );
 }
 
-TEST_F(PiecePositionPointsNewTest, InitFromGamePointsArray) {
-  piecepoints::PiecePositionPointsNew piece_points{game_points_array};
+TEST_F(PiecePositionPointsForConceptsTest, InitFromGamePointsArray) {
+  piecepoints::PiecePositionPointsForConcepts piece_points{game_points_array};
 }
 
-TEST_F(PiecePositionPointsNewTest, InitFromBPOExternal) {
-  piecepoints::PiecePositionPointsNew piece_points{bpo_points_skeys};
+TEST_F(PiecePositionPointsForConceptsTest, InitFromBPOExternal) {
+  piecepoints::PiecePositionPointsForConcepts piece_points{bpo_points_skeys};
 }
 
-TEST_F(PiecePositionPointsNewTest, InitFromBPOEKeys) {
-  piecepoints::PiecePositionPointsNew piece_points{bpo_points_ekeys};
+TEST_F(PiecePositionPointsForConceptsTest, InitFromBPOEKeys) {
+  piecepoints::PiecePositionPointsForConcepts piece_points{bpo_points_ekeys};
 }
 
-TEST_F(PiecePositionPointsNewTest, SpotCheckBlackValues) {
-  piecepoints::PiecePositionPointsNew piece_points{game_points_array};
+TEST_F(PiecePositionPointsForConceptsTest, SpotCheckBlackValues) {
+  piecepoints::PiecePositionPointsForConcepts piece_points{game_points_array};
   gameboard::BoardSpace black_cannon_space{9, 4};
   gameboard::BoardSpace black_advisor_space{0, 0};
   gameboard::BoardSpace black_horse_space{0, 1};
@@ -63,7 +63,7 @@ TEST_F(PiecePositionPointsNewTest, SpotCheckBlackValues) {
   EXPECT_EQ(black_horse_0_1, 270 - 4);
 }
 
-TEST_F(PiecePositionPointsNewTest, RedPointsFlippedWRTBlack) {
+TEST_F(PiecePositionPointsForConceptsTest, RedPointsFlippedWRTBlack) {
   for (auto piece_type_index = 0; piece_type_index < gameboard::kNumPieceTypeVals;
        piece_type_index++) {
     for (auto rank = 0; rank < gameboard::kNumRanks; rank++) {
@@ -73,9 +73,9 @@ TEST_F(PiecePositionPointsNewTest, RedPointsFlippedWRTBlack) {
   }
 }
 
-TEST_F(PiecePositionPointsNewTest, ConvertGamePointsArrayToSMap) {
-  piecepoints::PiecePositionPointsNew piece_position_points =
-      piecepoints::PiecePositionPointsNew(game_points_array);
+TEST_F(PiecePositionPointsForConceptsTest, ConvertGamePointsArrayToSMap) {
+  piecepoints::PiecePositionPointsForConcepts piece_position_points =
+      piecepoints::PiecePositionPointsForConcepts(game_points_array);
   auto s_map = piece_position_points.PointsArrayToSmap();
 
   // confirm corresponding PiecePointsArray_t arrays in s_map and
@@ -92,8 +92,8 @@ TEST_F(PiecePositionPointsNewTest, ConvertGamePointsArrayToSMap) {
   }
 }
 
-TEST_F(PiecePositionPointsNewTest, InitFromFile) {
-  auto piece_points = piecepoints::PiecePositionPointsNew(points_spec_path);
+TEST_F(PiecePositionPointsForConceptsTest, InitFromFile) {
+  auto piece_points = piecepoints::PiecePositionPointsForConcepts(points_spec_path);
 }
 
 int main(int argc, char **argv) {
