@@ -6,7 +6,7 @@
 
 class ZobristCoordinatorTest : public ::testing::Test {
 protected:
-  BoardMap_t board_map = int_board_to_game_pieces(kStartingBoard);
+  BoardMap_t board_map = int_board_to_game_pieces(kStandardInitialBoard);
 
   boardstate::ZobristComponent<uint64_t, 1> zobrist_component_064_1{};
   boardstate::ZobristComponent<uint64_t, 0> zobrist_component_064_0{};
@@ -98,7 +98,7 @@ TEST_F(ZobristCoordinatorTest, RecordAndReadData) {
 
 class ZobristCoordinatorNewTest : public ::testing::Test {
 protected:
-  BoardMap_t board_map_ = int_board_to_game_pieces(kStartingBoard);
+  BoardMap_t board_map_ = int_board_to_game_pieces(kStandardInitialBoard);
   boardstate::ZobristCalculator<uint64_t> primary_calculator_{};
   std::array<boardstate::ZobristCalculator<uint64_t>, 1> confirmation_calculators_{
       boardstate::ZobristCalculator<uint64_t>()

@@ -15,7 +15,7 @@ using namespace gameboard;
 //! Tracking piece positions and determining legal moves.
 namespace gameboard {
 
-extern const BoardMapInt_t kStartingBoard;
+extern const BoardMapInt_t kStandardInitialBoard;
 extern const int kRepeatPeriodsToCheck[3];
 extern const int kRepeatPeriodsMaxAllowed;
 extern const int kMaxMovesWithoutCapture;

@@ -15,7 +15,7 @@ namespace gameboard {
 //! Starting board represented as 2-D array of integers.
 //! Can be converted to array of GamePiece objects by
 //! board_utilities::int_board_to_game_pieces.
-const BoardMapInt_t kStartingBoard = {{
+const BoardMapInt_t kStandardInitialBoard = {{
     {5, 4, 3, 2, 1, 2, 3, 4, 5},
     {0, 0, 0, 0, 0, 0, 0, 0, 0},
     {0, 6, 0, 0, 0, 0, 0, 6, 0},
@@ -47,7 +47,7 @@ GameBoard::GameBoard(const BoardMapInt_t starting_board)
     , moves_since_last_capture_{} {}
 
 GameBoard::GameBoard()
-    : GameBoard(kStartingBoard) {}
+    : GameBoard(kStandardInitialBoard) {}
 
 vector<BoardSpace> GameBoard::ImplementGetAllSpacesOccupiedBy(PieceColor color) const {
   return get_all_spaces_occupied_by(board_map_, color);

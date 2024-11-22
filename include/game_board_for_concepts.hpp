@@ -2,13 +2,14 @@
 
 #include <board_data_structs.hpp>
 #include <functional>
+#include <memory>
 #include <map>
 #include <move_calculator.hpp>
 #include <move_data_structs.hpp>
 
 namespace gameboard {
 
-extern const BoardMapInt_t kStartingBoard;
+extern const BoardMapInt_t kStandardInitialBoard;
 extern const int kRepeatPeriodsToCheck[3];
 extern const int kRepeatPeriodsMaxAllowed;
 extern const int kMaxMovesWithoutCapture;
@@ -17,8 +18,8 @@ extern const int kMaxMovesWithoutCapture;
 //! methods for calculating, executing, an un-doing moves..
 class GameBoardForConcepts {
 public:
-  GameBoardForConcepts();
-  GameBoardForConcepts(const BoardMapInt_t starting_board);
+  // GameBoardForConcepts();
+  GameBoardForConcepts(const BoardMapInt_t starting_board = kStandardInitialBoard);
   std::vector<BoardSpace> GetAllSpacesOccupiedBy(PieceColor color) const;
   PieceColor GetColor(const BoardSpace &space) const;
   PieceType GetType(const BoardSpace &space) const;
@@ -56,5 +57,14 @@ private:
   void RemoveFromMoveLog(const ExecutedMove &executed_move);
   bool ViolatesRepeatRule(PieceColor color);
 };
+
+// class GameBoardBuilder {
+// public:
+//   std::shared_ptr<GameBoardForConcepts> build() {
+//     return std::make_shared<>
+//   }
+// };
+
+
 
 } // namespace gameboard
