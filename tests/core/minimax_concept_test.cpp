@@ -54,62 +54,8 @@ class MinimaxEvaluatorConceptTest : public ::testing::Test {
 protected:
   piecepoints::PiecePositionPointsForConcepts piece_position_points_{};
   gameboard::GameBoardForConcepts starting_game_board_;
-
-  boardstate::ZobristCalculator<uint64_t> red_primary_calculator_{};
-  boardstate::ZobristCalculator<uint64_t> black_primary_calculator_{};
-
-  std::array<boardstate::ZobristCalculator<uint64_t>, 1> red_confirmation_calculators_{
-      boardstate::ZobristCalculator<uint64_t>()
-  };
-  std::array<boardstate::ZobristCalculator<uint64_t>, 1> black_confirmation_calculators_{
-      boardstate::ZobristCalculator<uint64_t>()
-  };
-
-  boardstate::ZobristComponentNew<uint64_t, 1> red_zobrist_component_{
-      red_primary_calculator_,
-      red_confirmation_calculators_
-  };
-  boardstate::ZobristComponentNew<uint64_t, 1> black_zobrist_component_{
-      black_primary_calculator_,
-      black_confirmation_calculators_
-  };
-
-  boardstate::TranspositionTable<uint64_t, 1> red_tr_table_{};
-  boardstate::TranspositionTable<uint64_t, 1> black_tr_table_{};
-
-  boardstate::TranspositionTableGuard red_tr_table_guard_{};
-  boardstate::TranspositionTableGuard black_tr_table_guard_{};
-
-  boardstate::TranspositionTablePruner<uint64_t, 1> red_tr_table_pruner_{
-      red_tr_table_,
-      red_tr_table_guard_
-  };
-  boardstate::TranspositionTablePruner<uint64_t, 1> black_tr_table_pruner_{
-      black_tr_table_,
-      black_tr_table_guard_
-  };
-
-  boardstate::ZobristCoordinatorForConcept<uint64_t, 1> red_zobrist_coordinator_{
-    //   red_zobrist_component_,
-    //   red_tr_table_,
-    //   red_tr_table_guard_,
-    //   red_tr_table_pruner_
-  };
-  boardstate::ZobristCoordinatorForConcept<uint64_t, 1> black_zobrist_coordinator_{
-    //   black_zobrist_component_,
-    //   black_tr_table_,
-    //   black_tr_table_guard_,
-    //   black_tr_table_pruner_
-  };
-
-  moveselection::PreSearchMoveSorterForConcepts<
-      gameboard::GameBoardForConcepts,
-      piecepoints::PiecePositionPointsForConcepts>
-      red_move_sorter_{starting_game_board_, piece_position_points_};
-  moveselection::PreSearchMoveSorterForConcepts<
-      gameboard::GameBoardForConcepts,
-      piecepoints::PiecePositionPointsForConcepts>
-      black_move_sorter_{starting_game_board_, piece_position_points_};
+  boardstate::ZobristCoordinatorForConcept<uint64_t, 1> red_zobrist_coordinator_{};
+  boardstate::ZobristCoordinatorForConcept<uint64_t, 1> black_zobrist_coordinator_{};
 
   DepthType default_search_depth_{4};
 
@@ -142,8 +88,7 @@ protected:
             red_search_depth,
             game_board,
             piece_position_points_,
-            red_zobrist_coordinator_,
-            red_move_sorter_
+            red_zobrist_coordinator_
         };
 
     moveselection::MinimaxMoveEvaluatorForConcept<
@@ -156,8 +101,7 @@ protected:
             black_search_depth,
             game_board,
             piece_position_points_,
-            black_zobrist_coordinator_,
-            black_move_sorter_
+            black_zobrist_coordinator_
         };
 
     PieceColor losing_player{};
@@ -203,8 +147,7 @@ TEST_F(MinimaxEvaluatorConceptTest, Init) {
           default_search_depth_,
           starting_game_board_,
           piece_position_points_,
-          red_zobrist_coordinator_,
-          red_move_sorter_
+          red_zobrist_coordinator_
       };
 }
 
@@ -219,8 +162,7 @@ TEST_F(MinimaxEvaluatorConceptTest, BoardStateHexStr) {
           default_search_depth_,
           starting_game_board_,
           piece_position_points_,
-          black_zobrist_coordinator_,
-          black_move_sorter_
+          black_zobrist_coordinator_
       };
   std::cout << red_evaluator.board_state_hex_str() << std::endl;
 }
@@ -236,8 +178,7 @@ TEST_F(MinimaxEvaluatorConceptTest, RedStartingMoveSelection) {
           default_search_depth_,
           starting_game_board_,
           piece_position_points_,
-          red_zobrist_coordinator_,
-          red_move_sorter_
+          red_zobrist_coordinator_
       };
 
   auto allowed_moves = starting_game_board_.CalcFinalMovesOf(PieceColor::kRed);

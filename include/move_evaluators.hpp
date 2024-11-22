@@ -1147,7 +1147,7 @@ class MinimaxMoveEvaluatorForConcept {
   DepthType search_depth_;
   moveselection::SearchSummaries search_summaries_;
   PreSearchMoveSorterForConcepts<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
-      &move_sorter_;
+      move_sorter_;
   std::atomic<bool> game_over_;
 
 public:
@@ -1156,9 +1156,7 @@ public:
       DepthType search_depth,
       ConcreteSpaceInfoProvider &game_board,
       ConcretePieceValueProvider &game_position_points,
-      ConcreteBoardStateCoordinator &hash_calculator,
-      PreSearchMoveSorterForConcepts<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
-          &move_sorter
+      ConcreteBoardStateCoordinator &hash_calculator
   )
       : evaluating_player_{evaluating_player}
       , search_depth_{search_depth}
@@ -1167,7 +1165,7 @@ public:
       , hash_calculator_{hash_calculator}
       , num_move_selections_{0}
       , search_summaries_{}
-      , move_sorter_{move_sorter}
+      , move_sorter_{game_board_, game_position_points_}
       , game_over_{false} {
     initialize_hash_calculator();
   }
@@ -1185,9 +1183,9 @@ public:
 
   inline DepthType search_depth() { return search_depth_; }
 
-  // inline size_t KeySizeBits() {
-  //   return 8 * sizeof(typename ConcreteBoardStateCoordinator::ZobristKey_t);
-  // }
+  inline size_t KeySizeBits() {
+    return 8 * sizeof(KeyType);
+  }
 
   const ConcreteBoardStateCoordinator &hash_calculator() const {
     return hash_calculator_;
@@ -1595,6 +1593,11 @@ public:
 private:
   PieceColor evaluating_player_;
   ConcreteSpaceInfoProvider &game_board_;
+};
+
+
+class MinimaxBuilder {
+  
 };
 
 } // namespace moveselection
