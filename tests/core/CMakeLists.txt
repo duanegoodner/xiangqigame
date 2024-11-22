@@ -47,7 +47,7 @@ target_link_libraries(
 add_executable(game_board_concept_test game_board_concept_test.cpp)
 target_link_libraries(
     game_board_concept_test PRIVATE
-    game_board_new
+    game_board_for_concepts
     move_calculator
     piece_moves
     utility_functs
@@ -86,7 +86,7 @@ target_link_libraries(
     minimax_evaluator
     piece_moves
     piece_position_points_new
-    game_board_new
+    game_board_for_concepts
     utility_functs
     GTest::gtest_main)
 
