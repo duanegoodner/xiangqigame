@@ -1,0 +1,3 @@
+add_library(piece_position_points_for_concepts piece_position_points_for_concepts.cpp)
+
+target_link_libraries(piece_position_points_for_concepts PRIVATE utility_functs piece_points_bpo)

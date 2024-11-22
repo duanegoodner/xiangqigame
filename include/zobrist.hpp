@@ -587,19 +587,6 @@ public:
   explicit ZobristCoordinatorForConcept(uint32_t prng_seed = (uint32_t)std::random_device{}())
       : ZobristCoordinatorForConcept(ZobristComponent<KeyType, NumConfKeys>{prng_seed}) {}
   
-  // explicit ZobristCoordinatorForConcept(
-  //     ZobristComponentNew<KeyType, NumConfKeys> &zobrist_component
-      // TranspositionTable<KeyType, NumConfKeys> tr_table,
-      // TranspositionTableGuard tr_table_guard,
-      // TranspositionTablePruner<KeyType, NumConfKeys> tr_table_pruner
-  // )
-  //     : zobrist_component_{zobrist_component}
-  //     , tr_table_{}
-  //     , tr_table_guard_{}
-  //     , tr_table_pruner_{tr_table_, tr_table_guard_} {
-    // tr_table_pruner_.Start();
-  // }
-
   KeyType GetState() { return zobrist_component_.primary_board_state(); }
   void UpdateBoardState(const ExecutedMove &executed_move) {
     zobrist_component_.UpdateBoardStates(executed_move);

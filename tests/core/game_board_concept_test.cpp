@@ -1,5 +1,6 @@
 #include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
+#include <shared_ptr_builder_tests.hpp>
 #include <space_info_provider_new_concept.hpp>
 #include <type_traits>
 
@@ -8,37 +9,16 @@ protected:
   gameboard::GameBoardBuilder builder_;
 };
 
-TEST_F(GameBoardBuilderTest, BuilderReturnsValidSharedPtr) {
-  auto game_board = builder_.build();
-  ASSERT_NE(game_board, nullptr) << "Builder should not return nullptr";
+// Define the type pairing for the builder and the objects it builds
+using GameBoardBuilderTestTypes = ::testing::Types<
+    BuilderObjectPair<gameboard::GameBoardBuilder, gameboard::GameBoardForConcepts>>;
 
-  // Initial reference count should be 1
-  ASSERT_EQ(game_board.use_count(), 1) << "Initial use count should be 1";
-}
+INSTANTIATE_TYPED_TEST_SUITE_P(
+    GameBoardBuilderTestInstance,
+    SharedPtrBuilderTest,
+    GameBoardBuilderTestTypes
+);
 
-TEST_F(GameBoardBuilderTest, SharedPtrCopyIncreasesRefCount) {
-  auto game_board = builder_.build();
-  {
-    auto game_board_copy = game_board; // Copy the shared_ptr
-    EXPECT_EQ(game_board.use_count(), 2) << "Use count should be 2 after copy";
-  }
-  // game_board_copy goes out of scope
-  EXPECT_EQ(game_board.use_count(), 1)
-      << "Use count should return to 1 after copy is destroyed";
-}
-
-TEST_F(GameBoardBuilderTest, SharedPtrMoveDoesNotIncreaseRefCount) {
-  auto game_board = builder_.build();
-  {
-    auto game_board_moved = std::move(game_board); // Move the shared_ptr
-    EXPECT_EQ(game_board_moved.use_count(), 1) << "Use count should remain 1 after move";
-    EXPECT_EQ(game_board, nullptr) << "Original shared_ptr should be null after move";
-  }
-  EXPECT_EQ(game_board, nullptr)
-      << "game_board should still be in scope (with value = null)";
-  // game_board_moved goes out of scope, should trigger destruction if no other owners
-  // exist
-}
 
 TEST_F(GameBoardBuilderTest, CreatesValidGameBoard) {
   auto game_board = builder_.build();
@@ -100,8 +80,8 @@ protected:
   std::shared_ptr<GameBoardForConcepts> starting_board_ = builder_.build();
   std::shared_ptr<GameBoardForConcepts> repeat_move_test_board_ =
       builder_.build(kRepeatMoveTestBoard);
-  std::shared_ptr<GameBoardForConcepts> draw_test_board_ = builder_.build(kDrawTestBoard);
-
+  std::shared_ptr<GameBoardForConcepts> draw_test_board_ =
+      builder_.build(kDrawTestBoard);
 };
 
 TEST_F(GameBoardForConceptsTest, SatisfiesSpaceInfoProviderConcept) {
@@ -206,9 +186,13 @@ TEST_F(GameBoardForConceptsTest, ProhibitsTripleRepeatMovePeriod_03) {
 
     if (cycles < 2) {
       repeat_move_test_board_->ExecuteMove(move_y);
-      EXPECT_TRUE(repeat_move_test_board_->CalcFinalMovesOf(PieceColor::kRed).Size() > 0);
+      EXPECT_TRUE(
+          repeat_move_test_board_->CalcFinalMovesOf(PieceColor::kRed).Size() > 0
+      );
       repeat_move_test_board_->ExecuteMove(move_z);
-      EXPECT_TRUE(repeat_move_test_board_->CalcFinalMovesOf(PieceColor::kRed).Size() > 0);
+      EXPECT_TRUE(
+          repeat_move_test_board_->CalcFinalMovesOf(PieceColor::kRed).Size() > 0
+      );
     }
   }
 

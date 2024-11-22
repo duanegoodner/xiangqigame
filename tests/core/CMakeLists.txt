@@ -1,5 +1,18 @@
 enable_testing()
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+add_executable(
+    game_board_concept_using_typed_test_suite
+    game_board_concept_using_typed_test_suite.cpp)
+target_link_libraries(
+    game_board_concept_using_typed_test_suite PRIVATE
+    game_board_for_concepts
+    move_calculator
+    piece_moves
+    utility_functs
+    GTest::gtest_main)
+
 add_executable(piece_moves_test piece_moves_test.cpp)
 target_link_libraries(
     piece_moves_test PRIVATE
@@ -18,7 +31,7 @@ target_link_libraries(
 add_executable(piece_position_points_concept_test piece_position_points_concept_test.cpp)
 target_link_libraries(
     piece_position_points_concept_test PRIVATE
-    piece_position_points_new
+    piece_position_points_for_concepts
     nlohmann_json
     utility_functs
     GTest::gtest_main)
@@ -80,15 +93,15 @@ target_link_libraries(
     utility_functs
     GTest::gtest_main)
 
-add_executable(minimax_concept_test minimax_concept_test.cpp)
-target_link_libraries(
-    minimax_concept_test PRIVATE
-    minimax_evaluator
-    piece_moves
-    piece_position_points_new
-    game_board_for_concepts
-    utility_functs
-    GTest::gtest_main)
+# add_executable(minimax_concept_test minimax_concept_test.cpp)
+# target_link_libraries(
+#     minimax_concept_test PRIVATE
+#     minimax_evaluator
+#     piece_moves
+#     piece_position_points_for_concepts
+#     game_board_for_concepts
+#     utility_functs
+#     GTest::gtest_main)
 
 add_executable(
     key_generator_test
