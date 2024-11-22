@@ -2,8 +2,8 @@
 
 #include <board_data_structs.hpp>
 #include <functional>
-#include <memory>
 #include <map>
+#include <memory>
 #include <move_calculator.hpp>
 #include <move_data_structs.hpp>
 
@@ -58,13 +58,11 @@ private:
   bool ViolatesRepeatRule(PieceColor color);
 };
 
-// class GameBoardBuilder {
-// public:
-//   std::shared_ptr<GameBoardForConcepts> build() {
-//     return std::make_shared<>
-//   }
-// };
-
-
+class GameBoardBuilder {
+public:
+  std::shared_ptr<GameBoardForConcepts> build(
+      const BoardMapInt_t starting_board = kStandardInitialBoard
+  );
+};
 
 } // namespace gameboard

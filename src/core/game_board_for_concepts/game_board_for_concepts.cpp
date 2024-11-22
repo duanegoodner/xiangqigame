@@ -1,5 +1,6 @@
 #include <board_data_structs.hpp>
 #include <game_board_for_concepts.hpp>
+#include <memory>
 #include <piece_moves.hpp>
 #include <stdexcept>
 #include <utility_functs.hpp>
@@ -43,7 +44,8 @@ GameBoardForConcepts::GameBoardForConcepts(const BoardMapInt_t starting_board)
 // GameBoardForConcepts::GameBoardForConcepts()
 //     : GameBoardForConcepts(kStandardInitialBoard) {}
 
-std::vector<BoardSpace> GameBoardForConcepts::GetAllSpacesOccupiedBy(PieceColor color) const {
+std::vector<BoardSpace> GameBoardForConcepts::GetAllSpacesOccupiedBy(PieceColor color
+) const {
   return get_all_spaces_occupied_by(board_map_, color);
 }
 
@@ -135,7 +137,8 @@ bool GameBoardForConcepts::IsDraw() {
   return moves_since_last_capture_ >= kMaxMovesWithoutCapture;
 }
 
-const std::map<PieceColor, std::vector<ExecutedMove>> &GameBoardForConcepts::move_log() const {
+const std::map<PieceColor, std::vector<ExecutedMove>> &GameBoardForConcepts::move_log(
+) const {
   return move_log_;
 }
 
@@ -175,6 +178,12 @@ bool GameBoardForConcepts::ViolatesRepeatRule(PieceColor color) {
     }
   }
   return false;
+}
+
+std::shared_ptr<GameBoardForConcepts> GameBoardBuilder::build(
+    const BoardMapInt_t starting_board
+) {
+  return std::make_shared<GameBoardForConcepts>(starting_board);
 }
 
 } // namespace gameboard
