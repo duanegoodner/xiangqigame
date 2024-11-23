@@ -54,8 +54,8 @@ class MinimaxEvaluatorConceptTest : public ::testing::Test {
 protected:
   piecepoints::PiecePositionPointsForConcepts piece_position_points_{};
   gameboard::GameBoardForConcepts starting_game_board_;
-  boardstate::ZobristCoordinatorForConcept<uint64_t, 1> red_zobrist_coordinator_{};
-  boardstate::ZobristCoordinatorForConcept<uint64_t, 1> black_zobrist_coordinator_{};
+  boardstate::ZobristCoordinatorForConcepts<uint64_t, 1> red_zobrist_coordinator_{};
+  boardstate::ZobristCoordinatorForConcepts<uint64_t, 1> black_zobrist_coordinator_{};
 
   DepthType default_search_depth_{4};
 
@@ -81,7 +81,7 @@ protected:
     moveselection::MinimaxMoveEvaluatorForConcept<
         uint64_t,
         gameboard::GameBoardForConcepts,
-        boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
+        boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
         piecepoints::PiecePositionPointsForConcepts>
         red_evaluator{
             PieceColor::kRed,
@@ -94,7 +94,7 @@ protected:
     moveselection::MinimaxMoveEvaluatorForConcept<
         uint64_t,
         gameboard::GameBoardForConcepts,
-        boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
+        boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
         piecepoints::PiecePositionPointsForConcepts>
         black_evaluator{
             PieceColor::kBlk,
@@ -140,7 +140,7 @@ TEST_F(MinimaxEvaluatorConceptTest, Init) {
   moveselection::MinimaxMoveEvaluatorForConcept<
       uint64_t,
       gameboard::GameBoardForConcepts,
-      boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
+      boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
       piecepoints::PiecePositionPointsForConcepts>
       red_evaluator{
           PieceColor::kRed,
@@ -155,7 +155,7 @@ TEST_F(MinimaxEvaluatorConceptTest, BoardStateHexStr) {
   moveselection::MinimaxMoveEvaluatorForConcept<
       uint64_t,
       gameboard::GameBoardForConcepts,
-      boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
+      boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
       piecepoints::PiecePositionPointsForConcepts>
       red_evaluator{
           PieceColor::kRed,
@@ -171,7 +171,7 @@ TEST_F(MinimaxEvaluatorConceptTest, RedStartingMoveSelection) {
   moveselection::MinimaxMoveEvaluatorForConcept<
       uint64_t,
       gameboard::GameBoardForConcepts,
-      boardstate::ZobristCoordinatorForConcept<uint64_t, 1>,
+      boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
       piecepoints::PiecePositionPointsForConcepts>
       red_evaluator{
           PieceColor::kRed,

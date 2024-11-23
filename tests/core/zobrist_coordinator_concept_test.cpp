@@ -6,12 +6,12 @@
 #include <shared_ptr_builder_tests.hpp>
 #include <string>
 #include <type_traits>
-#include <zobrist.hpp>
+#include <zobrist_for_concepts.hpp>
 
 //! Check shared_ptr behavior of pointer returned by ZobristCoordinatorBuilder
 using ZobristCoorinatorBuilderTestTypes = ::testing::Types<BuilderObjectPair<
     boardstate::ZobristCoordinatorBuilder<uint64_t, 1>,
-    boardstate::ZobristCoordinatorForConcept<uint64_t, 1>>>;
+    boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>>>;
 INSTANTIATE_TYPED_TEST_SUITE_P(
     ZobristCoordinatorBuilderTestInstance,
     SharedPtrBuilderTest,
@@ -21,7 +21,7 @@ INSTANTIATE_TYPED_TEST_SUITE_P(
 class ZobristCoordinatorConceptTest : public ::testing::Test {
 protected:
   boardstate::ZobristCoordinatorBuilder<uint64_t, 1> builder_;
-  std::shared_ptr<boardstate::ZobristCoordinatorForConcept<uint64_t, 1>> coordinator_ =
+  std::shared_ptr<boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>> coordinator_ =
       builder_.build();
   BoardMap_t board_map_ = int_board_to_game_pieces(kStandardInitialBoard);
 };
@@ -29,7 +29,7 @@ protected:
 TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
   static_assert(
       BoardStateCoordinatorConcept<
-          boardstate::ZobristCoordinatorForConcept<uint64_t, 0>,
+          boardstate::ZobristCoordinatorForConcepts<uint64_t, 0>,
           uint64_t>,
       "GameBoardForConcepts must satisfy SpaceInfoProviderConcept"
   );
@@ -57,7 +57,7 @@ TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
 
 TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
 
-//   boardstate::ZobristCoordinatorForConcept<uint64_t, 1>
+//   boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>
 //       coordinator{};
 
   auto start = BoardSpace{6, 0};
