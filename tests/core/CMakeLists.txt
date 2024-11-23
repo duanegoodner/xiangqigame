@@ -21,6 +21,7 @@ target_link_libraries(
 add_executable(piece_position_points_concept_test piece_position_points_concept_test.cpp)
 target_link_libraries(
     piece_position_points_concept_test PRIVATE
+    builders
     piece_position_points_for_concepts
     nlohmann_json
     utility_functs

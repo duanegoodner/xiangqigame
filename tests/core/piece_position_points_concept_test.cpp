@@ -1,3 +1,4 @@
+#include <builders.hpp>
 #include <gtest/gtest.h>
 #include <piece_points_bpo.hpp>
 #include <piece_position_points_for_concepts.hpp>

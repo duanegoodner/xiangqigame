@@ -60,12 +60,6 @@ GamePointsSMap_t PiecePositionPointsForConcepts::PointsArrayToSmap() {
   return game_string_map;
 }
 
-std::shared_ptr<PiecePositionPointsForConcepts> PiecePositionPointsBuilder::build(
-    std::string json_file
-) {
-  piecepoints::BPOPointsSKeys bpo_points_skeys{json_file};
-  auto game_points_array = bpo_points_skeys.ToGamePointsArray();
-  return std::make_shared<PiecePositionPointsForConcepts>(game_points_array);
-}
+
 
 } // namespace piecepoints

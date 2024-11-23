@@ -29,21 +29,6 @@ struct PiecePositionPointsForConcepts {
   GamePointsSMap_t PointsArrayToSmap();
 };
 
-class PiecePositionPointsBuilder {
-public:
-  std::shared_ptr<PiecePositionPointsForConcepts> build(
-      std::string json_file = piecepoints::kICGABPOPath
-  );
 
-  // Don't need any of these .build() overloads for now, but declare them so we remember
-  // that we might want to implement them at some point.
-  std::shared_ptr<PiecePositionPointsForConcepts> build(
-      GamePointsArray_t game_points_array
-  );
-  std::shared_ptr<PiecePositionPointsForConcepts> build(BPOPointsEKeys &bpo_points_ekeys
-  );
-  std::shared_ptr<PiecePositionPointsForConcepts> build(BPOPointsSKeys &bpo_points_skeys
-  );
-};
 
 } // namespace piecepoints
