@@ -1,3 +1,4 @@
+#include <builders.hpp>
 #include <board_state_coordinator_concept.hpp>
 #include <concepts>
 #include <game_board.hpp>

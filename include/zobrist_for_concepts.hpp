@@ -4,6 +4,7 @@
 #include <atomic>
 #include <board_data_structs.hpp>
 #include <chrono>
+#include <evaluator_data_structs.hpp>
 #include <key_generator.hpp>
 #include <move_data_structs.hpp>
 #include <mutex>
@@ -466,24 +467,6 @@ public:
   uint32_t zkeys_seed() { return zobrist_component_.prng_seed(); }
 };
 
-template <typename KeyType, size_t NumConfKeys>
-class ZobristCoordinatorBuilder {
-public:
-  std::shared_ptr<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>> build(
-      uint32_t prng_seed
-  ) {
-    ZobristComponentForConcepts<KeyType, NumConfKeys> zobrist_component{prng_seed};
-    return std::make_shared<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>>(
-        zobrist_component
-    );
-  }
-  std::shared_ptr<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>> build() {
-    auto prng_seed = (uint32_t)std::random_device{}();
-    ZobristComponentForConcepts<KeyType, NumConfKeys> zobrist_component{prng_seed};
-    return std::make_shared<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>>(
-        zobrist_component
-    );
-  }
-};
+
 
 }
