@@ -91,3 +91,8 @@ TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
 
   EXPECT_TRUE(retrieved_data.found());
 }
+
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}

@@ -1,4 +1,4 @@
-#pragma <once>
+#pragma once
 
 #include <board_data_structs.hpp>
 #include <game_piece.hpp>

@@ -2,6 +2,7 @@
 
 #include <game_board_for_concepts.hpp>
 #include <memory>
+#include <move_evaluators_for_concepts.hpp>
 #include <piece_position_points_for_concepts.hpp>
 #include <zobrist_for_concepts.hpp>
 
@@ -56,3 +57,31 @@ public:
   }
 };
 } // namespace boardstate
+
+namespace moveselection {
+
+class RandomMoveEvalutorBuilder {
+public:
+  template <SpaceInfoProviderConcept G>
+  std::unique_ptr<RandomMoveEvaluatorForConcept<G>> build(
+      gameboard::PieceColor evaluating_player,
+      std::shared_ptr<G> game_board
+  ) {
+    return std::make_unique<RandomMoveEvaluatorForConcept<G>>(
+        evaluating_player,
+        game_board
+    );
+  }
+};
+
+// class MinimaxMoveEvaluatorBuilder {
+// public:
+//   template <
+//       typename KeyType,
+//       SpaceInfoProviderConcept G,
+//       BoardStateCoordinatorConcept<KeyType> H,
+//       PieceValueProviderConcept P>
+//       std::unique_ptr<MinimaxMoveEvaluatorForConcept<KeyType, G, H, P>> build()
+// }
+
+} // namespace moveselection
