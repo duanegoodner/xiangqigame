@@ -2,16 +2,6 @@ enable_testing()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-add_executable(
-    game_board_concept_using_typed_test_suite
-    game_board_concept_using_typed_test_suite.cpp)
-target_link_libraries(
-    game_board_concept_using_typed_test_suite PRIVATE
-    game_board_for_concepts
-    move_calculator
-    piece_moves
-    utility_functs
-    GTest::gtest_main)
 
 add_executable(piece_moves_test piece_moves_test.cpp)
 target_link_libraries(
@@ -60,6 +50,7 @@ target_link_libraries(
 add_executable(game_board_concept_test game_board_concept_test.cpp)
 target_link_libraries(
     game_board_concept_test PRIVATE
+    builders
     game_board_for_concepts
     move_calculator
     piece_moves

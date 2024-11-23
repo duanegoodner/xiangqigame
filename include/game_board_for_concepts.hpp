@@ -58,11 +58,4 @@ private:
   bool ViolatesRepeatRule(PieceColor color);
 };
 
-class GameBoardBuilder {
-public:
-  std::shared_ptr<GameBoardForConcepts> build(
-      const BoardMapInt_t starting_board = kStandardInitialBoard
-  );
-};
-
 } // namespace gameboard

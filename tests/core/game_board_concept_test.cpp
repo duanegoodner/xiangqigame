@@ -1,3 +1,4 @@
+#include <builders.hpp>
 #include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <shared_ptr_builder_tests.hpp>
