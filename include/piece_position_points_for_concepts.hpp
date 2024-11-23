@@ -12,11 +12,7 @@ namespace piecepoints {
 //! accessing element correspondig to specific gameboard::PieceType located at a specific
 //! gameboard::BoardSpace.
 struct PiecePositionPointsForConcepts {
-  // PiecePositionPointsForConcepts();
   PiecePositionPointsForConcepts(GamePointsArray_t &game_points_array);
-  // PiecePositionPointsForConcepts(BPOPointsEKeys &bpo_points_ekeys);
-  // PiecePositionPointsForConcepts(BPOPointsSKeys &bpo_points_skeys);
-  // PiecePositionPointsForConcepts(string json_file);
 
   // define in header to force inlining
   inline Points_t GetValueOfPieceAtPosition(

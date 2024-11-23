@@ -4,21 +4,21 @@
 #include <space_info_provider_new_concept.hpp>
 #include <type_traits>
 
-class GameBoardBuilderTest : public ::testing::Test {
-protected:
-  gameboard::GameBoardBuilder builder_;
-};
 
-// Define the type pairing for the builder and the objects it builds
+// Run our standard test suite for a Builder that has .build() -> shared_ptr
 using GameBoardBuilderTestTypes = ::testing::Types<
     BuilderObjectPair<gameboard::GameBoardBuilder, gameboard::GameBoardForConcepts>>;
-
 INSTANTIATE_TYPED_TEST_SUITE_P(
     GameBoardBuilderTestInstance,
     SharedPtrBuilderTest,
     GameBoardBuilderTestTypes
 );
 
+//! Tests specific to a GameBoardBuilder (beyone those in the generic Builder suite)
+class GameBoardBuilderTest : public ::testing::Test {
+protected:
+  gameboard::GameBoardBuilder builder_;
+};
 
 TEST_F(GameBoardBuilderTest, CreatesValidGameBoard) {
   auto game_board = builder_.build();

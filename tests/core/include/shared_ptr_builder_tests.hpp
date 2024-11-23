@@ -1,7 +1,15 @@
 #pragma once
 
+#include <concepts>
 #include <gtest/gtest.h>
 #include <memory>
+
+
+// Concept to ensure the builder has a build method returning a std::shared_ptr<ObjectType>
+template<typename Builder, typename Object>
+concept BuilderConcept = requires(Builder b) {
+    { b.build() } -> std::same_as<std::shared_ptr<Object>>;
+};
 
 // Struct to encapsulate both builder and object types
 template <typename BuilderType, typename ObjectType>
@@ -10,11 +18,12 @@ struct BuilderObjectPair {
   using Object = ObjectType;
 };
 
-// Template test fixture modified to use a single parameter
+// Test fixture template using the BuilderConcept
 template <typename T>
+requires BuilderConcept<typename T::Builder, typename T::Object>
 class SharedPtrBuilderTest : public ::testing::Test {
 protected:
-  typename T::Builder builder_; // Access the builder type from the template parameter
+    typename T::Builder builder_;  // Access the builder type from the template parameter
 };
 
 TYPED_TEST_SUITE_P(SharedPtrBuilderTest);
