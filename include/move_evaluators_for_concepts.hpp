@@ -146,7 +146,7 @@ public:
       DepthType search_depth,
       std::shared_ptr<G> game_board,
       std::shared_ptr<P> game_position_points,
-      std::shared_ptr<H> &hash_calculator
+      std::shared_ptr<H> hash_calculator
   )
       : evaluating_player_{evaluating_player}
       , search_depth_{search_depth}

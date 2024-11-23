@@ -39,7 +39,7 @@ TEST_F(RandomEvaluatorConceptTest, CompliesWithMoveEvaluatorConcept) {
 // Red selects starting move 10 times. If choice is random, we can be
 // almost certain that the number of unique selected Moves will be > 5.
 TEST_F(RandomEvaluatorConceptTest, TestStartingMoveSelection) {
-  
+
   int num_first_move_selections = 10;
   std::set<Move, bool (*)(const Move &, const Move &)> move_set(moveComparator);
 
@@ -52,93 +52,127 @@ TEST_F(RandomEvaluatorConceptTest, TestStartingMoveSelection) {
   EXPECT_TRUE(move_set.size() > 5);
 }
 
-// class MinimaxEvaluatorConceptTest : public ::testing::Test {
-// protected:
-//   piecepoints::PiecePositionPointsForConcepts piece_position_points_{};
-//   gameboard::GameBoardForConcepts starting_game_board_;
-//   boardstate::ZobristCoordinatorForConcepts<uint64_t, 1> red_zobrist_coordinator_{};
-//   boardstate::ZobristCoordinatorForConcepts<uint64_t, 1> black_zobrist_coordinator_{};
+class MinimaxEvaluatorConceptTest : public ::testing::Test {
+protected:
+  const BoardMapInt_t kLateGameBoardMap{{
+      {0, 0, 0, 1, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 5},
+      {5, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, -1, 0, 0, 0, 0},
+  }};
 
-//   DepthType default_search_depth_{4};
+  gameboard::GameBoardBuilder game_board_builder_;
+  boardstate::ZobristCoordinatorBuilder<uint64_t, 1> zobrist_coordinator_builder_;
+  piecepoints::PiecePositionPointsBuilder piece_position_points_builder_;
+  std::shared_ptr<PiecePositionPointsForConcepts> game_position_points_ =
+      piece_position_points_builder_.build();
 
-//   const BoardMapInt_t kLateGameBoardMap{{
-//       {0, 0, 0, 1, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 5},
-//       {5, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, -1, 0, 0, 0, 0},
-//   }};
-//   gameboard::GameBoardForConcepts late_game_board_{kLateGameBoardMap};
+  moveselection::MinimaxMoveEvaluatorBuilder minimax_evaluator_builder_;
 
-//   const DepthType standard_search_depth = 4;
+  DepthType default_search_depth_{4};
 
-//   template <typename KeyType, size_t NumConfKeys>
-//   void PlayGame(DepthType red_search_depth, DepthType black_search_depth) {
-//     gameboard::GameBoardForConcepts game_board;
-//     moveselection::MinimaxMoveEvaluatorForConcept<
-//         uint64_t,
-//         gameboard::GameBoardForConcepts,
-//         boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
-//         piecepoints::PiecePositionPointsForConcepts>
-//         red_evaluator{
-//             PieceColor::kRed,
-//             red_search_depth,
-//             game_board,
-//             piece_position_points_,
-//             red_zobrist_coordinator_
-//         };
+  template <typename KeyType, size_t NumConfKeys>
+  void PlayGame(DepthType red_search_depth, DepthType black_search_depth) {
+    std::shared_ptr<gameboard::GameBoardForConcepts> game_board =
+        game_board_builder_.build();
 
-//     moveselection::MinimaxMoveEvaluatorForConcept<
-//         uint64_t,
-//         gameboard::GameBoardForConcepts,
-//         boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
-//         piecepoints::PiecePositionPointsForConcepts>
-//         black_evaluator{
-//             PieceColor::kBlk,
-//             black_search_depth,
-//             game_board,
-//             piece_position_points_,
-//             black_zobrist_coordinator_
-//         };
+    std::shared_ptr<boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>>
+        red_zobrist_coordinator = zobrist_coordinator_builder_.build();
+    std::shared_ptr<boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>>
+        black_zobrist_coordinator = zobrist_coordinator_builder_.build();
 
-//     PieceColor losing_player{};
+    std::unique_ptr<moveselection::MinimaxMoveEvaluatorForConcept<
+        KeyType,
+        gameboard::GameBoardForConcepts,
+        boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
+        piecepoints::PiecePositionPointsForConcepts>>
+        red_evaluator = minimax_evaluator_builder_.build<
+            KeyType,
+            gameboard::GameBoardForConcepts,
+            boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
+            piecepoints::PiecePositionPointsForConcepts>(
+            gameboard::PieceColor::kRed,
+            red_search_depth,
+            game_board,
+            game_position_points_,
+            red_zobrist_coordinator
+        );
 
-//     while (true) {
-//       auto red_moves = game_board.CalcFinalMovesOf(PieceColor::kRed);
-//       if (red_moves.Size() == 0) {
-//         std::cout << "Red has no available moves" << std::endl;
-//         losing_player = PieceColor::kRed;
-//         break;
-//       }
-//       auto red_selected_move = red_evaluator.SelectMove(red_moves);
-//       auto red_executed_move = game_board.ExecuteMove(red_selected_move);
+    std::unique_ptr<moveselection::MinimaxMoveEvaluatorForConcept<
+        KeyType,
+        gameboard::GameBoardForConcepts,
+        boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
+        piecepoints::PiecePositionPointsForConcepts>>
+        black_evaluator = minimax_evaluator_builder_.build<
+            KeyType,
+            gameboard::GameBoardForConcepts,
+            boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
+            piecepoints::PiecePositionPointsForConcepts>(
+            gameboard::PieceColor::kRed,
+            black_search_depth,
+            game_board,
+            game_position_points_,
+            black_zobrist_coordinator
+        );
 
-//       auto black_moves = game_board.CalcFinalMovesOf(PieceColor::kBlk);
-//       if (black_moves.Size() == 0) {
-//         std::cout << "Black has no available moves" << std::endl;
-//         losing_player = PieceColor::kBlk;
-//         break;
-//       }
+    PieceColor losing_player{};
 
-//       auto black_selected_move = black_evaluator.SelectMove(black_moves);
-//       auto black_executed_move = game_board.ExecuteMove(black_selected_move);
-//     }
+    while (true) {
+      auto red_moves = game_board->CalcFinalMovesOf(PieceColor::kRed);
+      if (red_moves.Size() == 0) {
+        std::cout << "Red has no available moves" << std::endl;
+        losing_player = PieceColor::kRed;
+        break;
+      }
+      auto red_selected_move = red_evaluator->SelectMove(red_moves);
+      auto red_executed_move = game_board->ExecuteMove(red_selected_move);
 
-//     if (red_search_depth < black_search_depth) {
-//       EXPECT_TRUE(losing_player == PieceColor::kRed);
-//     }
-//     if (black_search_depth < red_search_depth) {
-//       EXPECT_TRUE(losing_player == PieceColor::kBlk);
-//     }
-//   }
-// };
+      auto black_moves = game_board->CalcFinalMovesOf(PieceColor::kBlk);
+      if (black_moves.Size() == 0) {
+        std::cout << "Black has no available moves" << std::endl;
+        losing_player = PieceColor::kBlk;
+        break;
+      }
+
+      auto black_selected_move = black_evaluator->SelectMove(black_moves);
+      auto black_executed_move = game_board->ExecuteMove(black_selected_move);
+    }
+
+    if (red_search_depth < black_search_depth) {
+      EXPECT_TRUE(losing_player == PieceColor::kRed);
+    }
+    if (black_search_depth < red_search_depth) {
+      EXPECT_TRUE(losing_player == PieceColor::kBlk);
+    }
+  }
+};
 
 // TEST_F(MinimaxEvaluatorConceptTest, Init) {
+//   std::shared_ptr<gameboard::GameBoardForConcepts> game_board =
+//       game_board_builder_.build();
+
+//   std::unique_ptr<moveselection::MinimaxMoveEvaluatorForConcept<
+//       uint64_t,
+//       gameboard::GameBoardForConcepts,
+//       boardstate::ZobristCalculatorForConcepts<uint64_t, 1>,
+//       piecepoints::PiecePositionPointsForConcepts>> red_evaluator = minimax_evaluator_builder_.build<
+//           uint64_t,
+//           gameboard::GameBoardForConcepts,
+//           boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
+//           piecepoints::PiecePositionPointsForConcepts>(
+//           gameboard::PieceColor::kRed,
+//           default_search_depth_,
+//           game_board,
+//           game_position_points_,
+//           red_zobrist_coordinator
+//       );
+
 //   moveselection::MinimaxMoveEvaluatorForConcept<
 //       uint64_t,
 //       gameboard::GameBoardForConcepts,
