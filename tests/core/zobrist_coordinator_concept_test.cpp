@@ -3,27 +3,27 @@
 #include <game_board.hpp>
 #include <gtest/gtest.h>
 #include <nlohmann/json.hpp>
+#include <shared_ptr_builder_tests.hpp>
 #include <string>
 #include <type_traits>
 #include <zobrist.hpp>
 
+//! Check shared_ptr behavior of pointer returned by ZobristCoordinatorBuilder
+using ZobristCoorinatorBuilderTestTypes = ::testing::Types<BuilderObjectPair<
+    boardstate::ZobristCoordinatorBuilder<uint64_t, 1>,
+    boardstate::ZobristCoordinatorForConcept<uint64_t, 1>>>;
+INSTANTIATE_TYPED_TEST_SUITE_P(
+    ZobristCoordinatorBuilderTestInstance,
+    SharedPtrBuilderTest,
+    ZobristCoorinatorBuilderTestTypes
+);
+
 class ZobristCoordinatorConceptTest : public ::testing::Test {
 protected:
+  boardstate::ZobristCoordinatorBuilder<uint64_t, 1> builder_;
+  std::shared_ptr<boardstate::ZobristCoordinatorForConcept<uint64_t, 1>> coordinator_ =
+      builder_.build();
   BoardMap_t board_map_ = int_board_to_game_pieces(kStandardInitialBoard);
-  boardstate::ZobristCalculator<uint64_t> primary_calculator_{};
-  std::array<boardstate::ZobristCalculator<uint64_t>, 1> confirmation_calculators_{
-      boardstate::ZobristCalculator<uint64_t>()
-  };
-  boardstate::ZobristComponentNew<uint64_t, 1> zobrist_component_{
-      primary_calculator_,
-      confirmation_calculators_
-  };
-//   boardstate::TranspositionTable<uint64_t, 1> tr_table_{};
-//   boardstate::TranspositionTableGuard tr_table_guard_{};
-//   boardstate::TranspositionTablePruner<uint64_t, 1> tr_table_pruner_{
-//       tr_table_,
-//       tr_table_guard_
-//   };
 };
 
 TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
@@ -35,15 +35,8 @@ TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
   );
 }
 
-TEST_F(ZobristCoordinatorConceptTest, Init) {
-  boardstate::ZobristCoordinatorForConcept<uint64_t, 1>
-      coordinator_{};
-}
 
 TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
-  boardstate::ZobristCoordinatorForConcept<uint64_t, 1>
-      coordinator{};
-
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};
   auto move = Move{start, end};
@@ -51,12 +44,12 @@ TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
   auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
 
-  coordinator.FullBoardStateCalc(board_map_);
-  auto initial_state = coordinator.GetState();
-  coordinator.UpdateBoardState(executed_move);
-  auto post_move_state = coordinator.GetState();
-  coordinator.UpdateBoardState(executed_move);
-  auto final_state = coordinator.GetState();
+  coordinator_->FullBoardStateCalc(board_map_);
+  auto initial_state =  coordinator_->GetState();
+   coordinator_->UpdateBoardState(executed_move);
+  auto post_move_state = coordinator_->GetState();
+   coordinator_->UpdateBoardState(executed_move);
+  auto final_state =  coordinator_->GetState();
 
   EXPECT_NE(initial_state, post_move_state);
   EXPECT_EQ(initial_state, final_state);
@@ -64,8 +57,8 @@ TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
 
 TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
 
-  boardstate::ZobristCoordinatorForConcept<uint64_t, 1>
-      coordinator{};
+//   boardstate::ZobristCoordinatorForConcept<uint64_t, 1>
+//       coordinator{};
 
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};
@@ -74,8 +67,8 @@ TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
   auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
 
-  coordinator.FullBoardStateCalc(board_map_);
-  auto initial_state = coordinator.GetState();
+  coordinator_->FullBoardStateCalc(board_map_);
+  auto initial_state = coordinator_->GetState();
 
   MoveCollection dummy_move_collection{};
   dummy_move_collection.Append(move);
@@ -84,7 +77,7 @@ TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
   int dummy_search_depth = 1;
   int dummy_access_index_at_write = 0;
 
-  coordinator.RecordTrData(
+  coordinator_->RecordTrData(
       dummy_search_depth,
       moveselection::MinimaxResultType::kFullyEvaluatedNode,
       dummy_equal_score_moves,
@@ -93,7 +86,7 @@ TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
 
   int dummy_access_index_at_read = 1;
   auto retrieved_data =
-      coordinator.GetTrData(dummy_search_depth, dummy_access_index_at_read);
+      coordinator_->GetTrData(dummy_search_depth, dummy_access_index_at_read);
 
   EXPECT_TRUE(retrieved_data.found());
 }

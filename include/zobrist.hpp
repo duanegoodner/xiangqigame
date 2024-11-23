@@ -566,7 +566,7 @@ public:
 };
 
 template <typename KeyType, size_t NumConfKeys>
-class ZobristCoordinatorForConcept {  
+class ZobristCoordinatorForConcept {
   ZobristComponent<KeyType, NumConfKeys> zobrist_component_;
   TranspositionTable<KeyType, NumConfKeys> tr_table_;
   TranspositionTableGuard tr_table_guard_;
@@ -576,7 +576,9 @@ public:
   ZobristCoordinatorForConcept(const ZobristCoordinatorForConcept &) = delete;
   ZobristCoordinatorForConcept &operator=(const ZobristCoordinatorForConcept &) = delete;
 
-  explicit ZobristCoordinatorForConcept(ZobristComponent<KeyType, NumConfKeys> zobrist_component)
+  explicit ZobristCoordinatorForConcept(
+      ZobristComponent<KeyType, NumConfKeys> zobrist_component
+  )
       : zobrist_component_{std::move(zobrist_component)}
       , tr_table_{}
       , tr_table_guard_{}
@@ -584,9 +586,6 @@ public:
     // tr_table_pruner_.Start();
   }
 
-  explicit ZobristCoordinatorForConcept(uint32_t prng_seed = (uint32_t)std::random_device{}())
-      : ZobristCoordinatorForConcept(ZobristComponent<KeyType, NumConfKeys>{prng_seed}) {}
-  
   KeyType GetState() { return zobrist_component_.primary_board_state(); }
   void UpdateBoardState(const ExecutedMove &executed_move) {
     zobrist_component_.UpdateBoardStates(executed_move);
@@ -630,6 +629,26 @@ public:
   }
 
   uint32_t zkeys_seed() { return zobrist_component_.prng_seed(); }
+};
+
+template <typename KeyType, size_t NumConfKeys>
+class ZobristCoordinatorBuilder {
+public:
+  std::shared_ptr<ZobristCoordinatorForConcept<KeyType, NumConfKeys>> build(
+      uint32_t prng_seed
+  ) {
+    ZobristComponent<KeyType, NumConfKeys> zobrist_component{prng_seed};
+    return std::make_shared<ZobristCoordinatorForConcept<KeyType, NumConfKeys>>(
+        zobrist_component
+    );
+  }
+  std::shared_ptr<ZobristCoordinatorForConcept<KeyType, NumConfKeys>> build() {
+    auto prng_seed = (uint32_t)std::random_device{}();
+    ZobristComponent<KeyType, NumConfKeys> zobrist_component{prng_seed};
+    return std::make_shared<ZobristCoordinatorForConcept<KeyType, NumConfKeys>>(
+        zobrist_component
+    );
+  }
 };
 
 //! Implements the BoardStateCoordinator interface, providing a
