@@ -1,6 +1,7 @@
 #pragma once
 
 #include <board_data_structs.hpp>
+#include <board_state_tracker_concept.hpp>
 #include <functional>
 #include <map>
 #include <memory>

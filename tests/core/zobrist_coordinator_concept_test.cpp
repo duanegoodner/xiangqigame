@@ -1,5 +1,6 @@
-#include <builders.hpp>
 #include <board_state_coordinator_concept.hpp>
+#include <board_state_tracker_concept.hpp>
+#include <builders.hpp>
 #include <concepts>
 #include <game_board.hpp>
 #include <gtest/gtest.h>
@@ -32,10 +33,16 @@ TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
       BoardStateCoordinatorConcept<
           boardstate::ZobristCoordinatorForConcepts<uint64_t, 0>,
           uint64_t>,
-      "GameBoardForConcepts must satisfy SpaceInfoProviderConcept"
+      "ZobristCoordinatorForConcepts must satisfy BoardStateCoordinatorConcept"
   );
 }
 
+TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateTrackerConcept) {
+  static_assert(
+      BoardStateTrackerConcept<boardstate::ZobristCoordinatorForConcepts<uint64_t, 0>>,
+      "ZobristCoordinatorForConcepts must satisfy BoardStateTrackerConcept"
+  );
+}
 
 TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
   auto start = BoardSpace{6, 0};
@@ -46,11 +53,11 @@ TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
 
   coordinator_->FullBoardStateCalc(board_map_);
-  auto initial_state =  coordinator_->GetState();
-   coordinator_->UpdateBoardState(executed_move);
+  auto initial_state = coordinator_->GetState();
+  coordinator_->UpdateBoardState(executed_move);
   auto post_move_state = coordinator_->GetState();
-   coordinator_->UpdateBoardState(executed_move);
-  auto final_state =  coordinator_->GetState();
+  coordinator_->UpdateBoardState(executed_move);
+  auto final_state = coordinator_->GetState();
 
   EXPECT_NE(initial_state, post_move_state);
   EXPECT_EQ(initial_state, final_state);
@@ -58,8 +65,8 @@ TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
 
 TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
 
-//   boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>
-//       coordinator{};
+  //   boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>
+  //       coordinator{};
 
   auto start = BoardSpace{6, 0};
   auto end = BoardSpace{5, 0};

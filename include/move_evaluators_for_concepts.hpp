@@ -58,26 +58,30 @@ inline bool IsPrunableForEvaluatorOpponent(
 //! Sorts moves based on points changed induce by single move; used by
 //! MinimaxMoveEvaluator for pre-sorting to increase likelihood of alpha/beta pruning
 //! during recursive search; uses SpaceInfoProviderConcept and PieceValueProviderConcept.
-template <typename SpaceInfoProviderConcept, typename PieceValueProviderConcept>
+template <SpaceInfoProviderConcept G, PieceValueProviderConcept P>
 class PreSearchMoveSorterForConcepts {
 private:
-  SpaceInfoProviderConcept &game_board_;
-  PieceValueProviderConcept &game_position_points_;
+  //   SpaceInfoProviderConcept &game_board_;
+  //   PieceValueProviderConcept &game_position_points_;
+  std::shared_ptr<G> game_board_;
+  std::shared_ptr<P> game_position_points_;
 
 public:
   PreSearchMoveSorterForConcepts(
-      SpaceInfoProviderConcept &game_board,
-      PieceValueProviderConcept &game_position_points
+      //   SpaceInfoProviderConcept &game_board,
+      //   PieceValueProviderConcept &game_position_points
+      std::shared_ptr<G> game_board,
+      std::shared_ptr<P> game_position_points
   )
       : game_board_{game_board}
       , game_position_points_{game_position_points} {}
 
   ScoredMove RateMove(Move move, PieceColor cur_player) {
-    auto piece_type = game_board_.GetType(move.start);
+    auto piece_type = game_board_->GetType(move.start);
 
     auto end_points = game_position_points_
-                          .GetValueOfPieceAtPosition(cur_player, piece_type, move.end);
-    auto start_points = game_position_points_.GetValueOfPieceAtPosition(
+                          ->GetValueOfPieceAtPosition(cur_player, piece_type, move.end);
+    auto start_points = game_position_points_->GetValueOfPieceAtPosition(
         cur_player,
         piece_type,
         move.start
@@ -86,9 +90,9 @@ public:
 
     Points_t capture_val;
 
-    if (game_board_.GetColor(move.end) == opponent_of(cur_player)) {
-      auto captured_piece_type = game_board_.GetType(move.end);
-      capture_val = game_position_points_.GetValueOfPieceAtPosition(
+    if (game_board_->GetColor(move.end) == opponent_of(cur_player)) {
+      auto captured_piece_type = game_board_->GetType(move.end);
+      capture_val = game_position_points_->GetValueOfPieceAtPosition(
           opponent_of(cur_player),
           captured_piece_type,
           move.end
@@ -186,9 +190,12 @@ public:
 private:
   void initialize_hash_calculator() {
     game_board_->AttachMoveCallback(
-        std::bind(&H::UpdateBoardState, &hash_calculator_, std::placeholders::_1)
+        // std::bind(&H::UpdateBoardState, hash_calculator_.get(), std::placeholders::_1)
+        [this](const gameboard::ExecutedMove& move) {
+        hash_calculator_->UpdateBoardState(move);
+    }
     );
-    hash_calculator_->FullBoardStateCalc(game_board_.map());
+    hash_calculator_->FullBoardStateCalc(game_board_->map());
   }
 
   Move SelectValidMove(const MoveCollection &allowed_moves) {
