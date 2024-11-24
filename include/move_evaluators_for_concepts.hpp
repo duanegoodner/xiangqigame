@@ -190,10 +190,11 @@ public:
 private:
   void initialize_hash_calculator() {
     game_board_->AttachMoveCallback(
+        hash_calculator_.UpdateBoardState
         // std::bind(&H::UpdateBoardState, hash_calculator_.get(), std::placeholders::_1)
-        [this](const gameboard::ExecutedMove& move) {
-        hash_calculator_->UpdateBoardState(move);
-    }
+    //     [this](const gameboard::ExecutedMove& move) {
+    //     hash_calculator_->UpdateBoardState(move);
+    // }
     );
     hash_calculator_->FullBoardStateCalc(game_board_->map());
   }

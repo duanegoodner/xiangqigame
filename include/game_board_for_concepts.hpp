@@ -31,7 +31,8 @@ public:
   void UndoMove(const ExecutedMove &executed_move);
   GamePiece GetOccupantAt(const BoardSpace &space) const;
   const BoardMap_t &map() const;
-  void AttachMoveCallback(const std::function<void(const ExecutedMove &)> &callback);
+  // void AttachMoveCallback(const std::function<void(const ExecutedMove &)> &callback);
+  void AttachMoveCallBack(void (*callback)(const ExecutedMove &));
   bool IsDraw();
   const std::map<PieceColor, std::vector<ExecutedMove>> &move_log() const;
 
@@ -44,7 +45,8 @@ private:
 
   //! Stores functions that are called after any change in board config to keep
   //! boardstate::SingleZobristCoordinator objects updated.
-  std::vector<function<void(const ExecutedMove &)>> move_callbacks_;
+  // std::vector<function<void(const ExecutedMove &)>> move_callbacks_;
+  std::vector<void (*)(const ExecutedMove&)> move_callbacks_;
 
   //! Vectors of all moves that have been executed (and not un-done) by each player.
   std::map<PieceColor, std::vector<ExecutedMove>> move_log_;

@@ -14,7 +14,7 @@ concept SpaceInfoProviderConcept = requires(
     gameboard::BoardSpace &space,
     gameboard::Move &move,
     gameboard::ExecutedMove &executed_move,
-    function<void(const ExecutedMove &)> callback
+    void (*callback)
 ) {
   {
     t.GetAllSpacesOccupiedBy(color)
