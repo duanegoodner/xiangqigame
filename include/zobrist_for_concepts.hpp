@@ -14,7 +14,6 @@
 #include <thread>
 #include <vector>
 
-
 namespace boardstate {
 //! Uses Zobrist hashing to calculate a "reasonably unique" integer value
 //! for each board configuration encountered during a game. KeyType can be any unsigned
@@ -61,6 +60,8 @@ public:
     UpdateBoardStateInternal(executed_move);
   }
 
+  //! @todo Consider making GetHashValueAt private. Currenltly, only external callers are
+  //! test classes.
   KeyType GetHashValueAt(PieceColor color, PieceType piece_type, BoardSpace space) {
     return zarray_[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
   }
@@ -129,20 +130,23 @@ private:
 };
 
 //! Container for one or more boardstate::ZobristCalculatorForConcepts objects.
-//! Using more than one boardstate::ZobristCalculatorForConcepts (i.e. NumConfKeys > 0) allows hash
-//! collisions to be detected.
+//! Using more than one boardstate::ZobristCalculatorForConcepts (i.e. NumConfKeys > 0)
+//! allows hash collisions to be detected.
 template <typename KeyType, size_t NumConfKeys>
 class ZobristComponentForConcepts {
 private:
   ZobristCalculatorForConcepts<KeyType> primary_calculator_;
-  std::array<ZobristCalculatorForConcepts<KeyType>, NumConfKeys> confirmation_calculators_;
+  std::array<ZobristCalculatorForConcepts<KeyType>, NumConfKeys>
+      confirmation_calculators_;
   std::optional<uint32_t> prng_seed_;
 
 public:
-  //! Constructs ZobristComponentForConcepts from existing ZobristCalculatorForConcepts objects
+  //! Constructs ZobristComponentForConcepts from existing ZobristCalculatorForConcepts
+  //! objects
   explicit ZobristComponentForConcepts(
       const ZobristCalculatorForConcepts<KeyType> primary_calculator,
-      const std::array<ZobristCalculatorForConcepts<KeyType>, NumConfKeys> &confirmation_calculators
+      const std::array<ZobristCalculatorForConcepts<KeyType>, NumConfKeys>
+          &confirmation_calculators
   )
       : primary_calculator_{primary_calculator}
       , confirmation_calculators_(confirmation_calculators) {}
@@ -177,13 +181,14 @@ public:
   }
 
 private:
-  //! Constructs ZobristComponentForConcepts from a std::mt19937 pseudorandom number generator.
-  //! Used as a helper to public constructor (via delegation).
+  //! Constructs ZobristComponentForConcepts from a std::mt19937 pseudorandom number
+  //! generator. Used as a helper to public constructor (via delegation).
   explicit ZobristComponentForConcepts(std::mt19937 prng)
       : primary_calculator_{(uint32_t)prng()}
       , confirmation_calculators_{} {
     for (auto i = 0; i < NumConfKeys; i++) {
-      confirmation_calculators_[i] = ZobristCalculatorForConcepts<KeyType>((uint32_t)prng());
+      confirmation_calculators_[i] =
+          ZobristCalculatorForConcepts<KeyType>((uint32_t)prng());
     }
   }
 
@@ -264,14 +269,14 @@ public:
   }
 };
 
-
 //! Stores and manages key-value pairs consisting of a board_state (from a
 //! boardstate::ZobristComponent) and results of Minimax calculations performed by
 //! boardstate::MinimaxMoveEvaluator. Provides read/write access to
 //! moveselection::MinimaxMoveEvaluator via a boardstate::ZobristCoordinator.
 template <typename KeyType, size_t NumConfKeys>
 class TranspositionTableForConcepts {
-  std::unordered_map<KeyType, TranspositionTableEntryForConcepts<KeyType, NumConfKeys>> data_;
+  std::unordered_map<KeyType, TranspositionTableEntryForConcepts<KeyType, NumConfKeys>>
+      data_;
   MoveCountType move_counter_;
 
 public:
@@ -333,21 +338,25 @@ private:
   }
 };
 
-//! Contains std::mutex that other classes lock before accessing TranspositionTableForConcepts
+//! Contains std::mutex that other classes lock before accessing
+//! TranspositionTableForConcepts
 class TranspositionTableGuardForConcepts {
   mutable std::mutex tr_table_mutex_;
 
 public:
   TranspositionTableGuardForConcepts() = default;
-  TranspositionTableGuardForConcepts(const TranspositionTableGuardForConcepts &) = delete;
-  TranspositionTableGuardForConcepts &operator=(const TranspositionTableGuardForConcepts &) = delete;
+  TranspositionTableGuardForConcepts(const TranspositionTableGuardForConcepts &) =
+      delete;
+  TranspositionTableGuardForConcepts &operator=(const TranspositionTableGuardForConcepts
+                                                    &) = delete;
 
   std::unique_lock<std::mutex> GetExclusiveLock() {
     return std::unique_lock<std::mutex>(tr_table_mutex_);
   }
 };
 
-//! Removes old entries from TranspositionTableForConcepts to prevent excessive memory use.
+//! Removes old entries from TranspositionTableForConcepts to prevent excessive memory
+//! use.
 template <typename KeyType, size_t NumConfKeys>
 class TranspositionTablePrunerForConcepts {
   TranspositionTableForConcepts<KeyType, NumConfKeys> &tr_table_;
@@ -356,8 +365,10 @@ class TranspositionTablePrunerForConcepts {
   std::atomic<bool> keep_running_;
 
 public:
-  TranspositionTablePrunerForConcepts(const TranspositionTablePrunerForConcepts &) = delete;
-  TranspositionTablePrunerForConcepts &operator=(const TranspositionTablePrunerForConcepts &) = delete;
+  TranspositionTablePrunerForConcepts(const TranspositionTablePrunerForConcepts &) =
+      delete;
+  TranspositionTablePrunerForConcepts &
+  operator=(const TranspositionTablePrunerForConcepts &) = delete;
 
   TranspositionTablePrunerForConcepts(
       TranspositionTableForConcepts<KeyType, NumConfKeys> &tr_table,
@@ -375,7 +386,8 @@ public:
   }
 
   void Start() {
-    pruning_thread_ = std::thread(&TranspositionTablePrunerForConcepts::RepeatedlyPrune, this);
+    pruning_thread_ =
+        std::thread(&TranspositionTablePrunerForConcepts::RepeatedlyPrune, this);
   }
 
   void Stop() { keep_running_ = false; }
@@ -410,7 +422,8 @@ class ZobristCoordinatorForConcepts {
 
 public:
   ZobristCoordinatorForConcepts(const ZobristCoordinatorForConcepts &) = delete;
-  ZobristCoordinatorForConcepts &operator=(const ZobristCoordinatorForConcepts &) = delete;
+  ZobristCoordinatorForConcepts &operator=(const ZobristCoordinatorForConcepts &) =
+      delete;
 
   explicit ZobristCoordinatorForConcepts(
       ZobristComponentForConcepts<KeyType, NumConfKeys> zobrist_component
@@ -418,7 +431,8 @@ public:
       : zobrist_component_{std::move(zobrist_component)}
       , tr_table_{}
       , tr_table_guard_{}
-      , tr_table_pruner_{TranspositionTablePrunerForConcepts{tr_table_, tr_table_guard_}} {
+      , tr_table_pruner_{TranspositionTablePrunerForConcepts{tr_table_, tr_table_guard_}
+        } {
     // tr_table_pruner_.Start();
   }
 
@@ -467,6 +481,4 @@ public:
   uint32_t zkeys_seed() { return zobrist_component_.prng_seed(); }
 };
 
-
-
-}
+} // namespace boardstate
