@@ -9,9 +9,9 @@
 
 namespace gameboard {
 
+template <BoardStateCalculatorConcept BC, BoardStateCalculatorConcept RC>
 class GameBoardBuilder {
 public:
-  template <BoardStateCalculatorConcept BC, BoardStateCalculatorConcept RC>
   std::shared_ptr<GameBoardForConcepts<RC, BC>> build(
       std::vector<std::shared_ptr<RC>> red_z_calculators,
       std::vector<std::shared_ptr<BC>> black_z_calculators,

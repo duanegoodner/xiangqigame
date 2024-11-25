@@ -21,28 +21,29 @@
 //! Tests specific to a GameBoardBuilder (beyone those in the generic Builder suite)
 class GameBoardBuilderTest : public ::testing::Test {
 protected:
-  gameboard::GameBoardBuilder builder_;
+  gameboard::GameBoardBuilder<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>,
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>
+      builder_;
+
+  std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>> zcalc_r1_ =
+      std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>> zcalc_r2_ =
+      std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>> zcalc_b1_ =
+      std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>> zcalc_b2_ =
+      std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+
+  std::vector<std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>>>
+      red_z_calculators_{zcalc_r1_, zcalc_r2_};
+  std::vector<std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>>>
+      black_z_calculators_{zcalc_b1_, zcalc_b2_};
 };
 
 TEST_F(GameBoardBuilderTest, CreatesValidGameBoard) {
 
-  auto zcalc_r1 = std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
-  auto zcalc_r2 = std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
-
-  auto zcalc_b1 = std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
-  auto zcalc_b2 = std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
-
-  std::vector<std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>>>
-      red_z_calculators{zcalc_r1, zcalc_r2};
-  std::vector<std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>>>
-      black_z_calculators{zcalc_b1, zcalc_b2};
-
-  auto game_board = builder_.build<
-      boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>(
-      red_z_calculators,
-      black_z_calculators
-  );
+  auto game_board = builder_.build(red_z_calculators_, black_z_calculators_);
 
   const auto &actual_board_map = game_board->map();
   auto expected_initial_board =
@@ -57,10 +58,14 @@ TEST_F(GameBoardBuilderTest, CreatesValidGameBoard) {
 }
 
 TEST_F(GameBoardBuilderTest, SharedPtrBehavior) {
-  std::shared_ptr<GameBoardForConcepts> game_board_outer_scope_ptr;
+  std::shared_ptr<gameboard::GameBoardForConcepts<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>,
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>>
+      game_board_outer_scope_ptr;
 
   {
-    auto game_board_inner_scope_ptr = builder_.build();
+    auto game_board_inner_scope_ptr =
+        builder_.build(red_z_calculators_, black_z_calculators_);
     auto move_log_obtained_from_inner_scope = game_board_inner_scope_ptr->move_log();
 
     game_board_outer_scope_ptr = game_board_inner_scope_ptr;
