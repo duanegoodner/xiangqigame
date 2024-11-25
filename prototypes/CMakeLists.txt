@@ -2,4 +2,5 @@
 # add_subdirectory(crtp_with_concepts)
 # add_subdirectory(ks_testing)
 # add_subdirectory(tr_table_threaded_pruning)
-add_subdirectory(zobrist_callbacks_for_gameboard)
+# add_subdirectory(zobrist_callbacks_for_gameboard)
+add_subdirectory(shared_ptr_method_passing)
