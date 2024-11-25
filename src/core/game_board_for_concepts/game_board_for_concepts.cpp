@@ -41,9 +41,6 @@ GameBoardForConcepts::GameBoardForConcepts(const BoardMapInt_t starting_board)
     , move_calculator_{MoveCalculator()}
     , moves_since_last_capture_{} {}
 
-// GameBoardForConcepts::GameBoardForConcepts()
-//     : GameBoardForConcepts(kStandardInitialBoard) {}
-
 std::vector<BoardSpace> GameBoardForConcepts::GetAllSpacesOccupiedBy(PieceColor color
 ) const {
   return get_all_spaces_occupied_by(board_map_, color);

@@ -48,6 +48,8 @@ private:
   // std::vector<function<void(const ExecutedMove &)>> move_callbacks_;
   std::vector<void (*)(const ExecutedMove&)> move_callbacks_;
 
+  
+
   //! Vectors of all moves that have been executed (and not un-done) by each player.
   std::map<PieceColor, std::vector<ExecutedMove>> move_log_;
 
