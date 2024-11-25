@@ -20,57 +20,6 @@ using namespace boardstate;
 using namespace gameboard;
 using namespace piecepoints;
 
-template <typename KeyType>
-void bind_zobrist_calculator(py::module_ &m, const std::string &class_name) {
-  py::class_<ZobristCalculator<KeyType>>(m, class_name.c_str())
-      .def(py::init<uint32_t>(), py::arg("seed") = std::random_device{}());
-}
-
-template <typename KeyType, size_t NumConfKeys>
-void bind_zobrist_component_new(py::module_ &m, const std::string &class_name) {
-  py::class_<ZobristComponentNew<KeyType, NumConfKeys>>(m, class_name.c_str())
-      .def(
-          py::init<
-              ZobristCalculator<KeyType> &,
-              std::array<ZobristCalculator<KeyType>, NumConfKeys> &>(),
-          "primary_calculator"_a,
-          "confirmation_calculators"_a
-      );
-}
-
-template <typename KeyType, size_t NumConfKeys>
-void bind_transposition_table(py::module_ &m, const std::string &class_name) {
-  py::class_<TranspositionTable<KeyType, NumConfKeys>>(m, class_name.c_str())
-      .def(py::init<>());
-}
-
-template <typename KeyType, size_t NumConfKeys>
-void bind_transposition_table_pruner(py::module_ &m, const std::string &class_name) {
-  py::class_<TranspositionTablePruner<KeyType, NumConfKeys>>(m, class_name.c_str())
-      .def(
-          py::init<
-              TranspositionTable<KeyType, NumConfKeys> &,
-              TranspositionTableGuard &>(),
-          "tr_table"_a,
-          "tr_table_guard"_a
-      );
-}
-
-template <typename KeyType, size_t NumConfKeys>
-void bind_zobrist_coordinator_new(py::module_ &m, const std::string &class_name) {
-  py::class_<ZobristCoordinatorNew<KeyType, NumConfKeys>>(m, class_name.c_str())
-      .def(
-          py::init<
-              ZobristComponentNew<KeyType, NumConfKeys> &,
-              TranspositionTable<KeyType, NumConfKeys> &,
-              TranspositionTableGuard &,
-              TranspositionTablePruner<KeyType, NumConfKeys> &>(),
-          "zobrist_component"_a,
-          "tr_table"_a,
-          "tr_table_guard"_a,
-          "tr_table_pruner"_a
-      );
-}
 
 template <typename KeyType, size_t NumConfKeys>
 void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) {
@@ -377,44 +326,3 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
   bind_minimax_move_evaluator<uint32_t, 1>(m, "MinimaxMoveEvaluator32Dual");
   bind_minimax_move_evaluator<uint64_t, 1>(m, "MinimaxMoveEvaluator64Dual");
   bind_minimax_move_evaluator<__uint128_t, 1>(m, "MinimaxMoveEvaluator128Dual");
-
-  // Components for dependency injection
-  bind_zobrist_calculator<uint32_t>(m, "ZobristCalculatorB032");
-  bind_zobrist_calculator<uint64_t>(m, "ZobristCalculatorB064");
-  bind_zobrist_calculator<__uint128_t>(m, "ZobristCalculatorB128");
-
-  bind_zobrist_component_new<uint32_t, 0>(m, "ZobristComponentNewB032C0");
-  bind_zobrist_component_new<uint64_t, 0>(m, "ZobristComponentNewB064C0");
-  bind_zobrist_component_new<__uint128_t, 0>(m, "ZobristComponentNewB128C0");
-  bind_zobrist_component_new<uint32_t, 1>(m, "ZobristComponentNewB032C1");
-  bind_zobrist_component_new<uint64_t, 1>(m, "ZobristComponentNewB064C1");
-  bind_zobrist_component_new<__uint128_t, 1>(m, "ZobristComponentNewB128C1");
-
-  bind_transposition_table<uint32_t, 0>(m, "TranspositionTableB032C0");
-  bind_transposition_table<uint64_t, 0>(m, "TranspositionTableB064C0");
-  bind_transposition_table<__uint128_t, 0>(m, "TranspositionTableB128C0");
-  bind_transposition_table<uint32_t, 1>(m, "TranspositionTableB032C1");
-  bind_transposition_table<uint64_t, 1>(m, "TranspositionTableB064C1");
-  bind_transposition_table<__uint128_t, 1>(m, "TranspositionTableB128C1");
-
-  bind_transposition_table_pruner<uint32_t, 0>(m, "TranspositionTablePrunerB032C0");
-  bind_transposition_table_pruner<uint64_t, 0>(m, "TranspositionTablePrunerB064C0");
-  bind_transposition_table_pruner<__uint128_t, 0>(m, "TranspositionTablePrunerB128C0");
-  bind_transposition_table_pruner<uint32_t, 1>(m, "TranspositionTablePrunerB032C1");
-  bind_transposition_table_pruner<uint64_t, 1>(m, "TranspositionTablePrunerB064C1");
-  bind_transposition_table_pruner<__uint128_t, 1>(m, "TranspositionTablePrunerB128C1");
-
-  bind_zobrist_coordinator_new<uint32_t, 0>(m, "ZobristCoordinatorNewB032C0");
-  bind_zobrist_coordinator_new<uint64_t, 0>(m, "ZobristCoordinatorNewB064C0");
-  bind_zobrist_coordinator_new<__uint128_t, 0>(m, "ZobristCoordinatorNewB128C0");
-  bind_zobrist_coordinator_new<uint32_t, 1>(m, "ZobristCoordinatorNewB032C1");
-  bind_zobrist_coordinator_new<uint64_t, 1>(m, "ZobristCoordinatorNewB064C1");
-  bind_zobrist_coordinator_new<__uint128_t, 1>(m, "ZobristCoordinatorNewB128C1");
-
-  bind_minimax_move_evaluator_new<uint32_t, 0>(m, "MinimaxMoveEvaluatorNewB032C0");
-  bind_minimax_move_evaluator_new<uint64_t, 0>(m, "MinimaxMoveEvaluatorNewB064C0");
-  bind_minimax_move_evaluator_new<__uint128_t, 0>(m, "MinimaxMoveEvaluatorNewB128C0");
-  bind_minimax_move_evaluator_new<uint32_t, 1>(m, "MinimaxMoveEvaluatorNewB032C1");
-  bind_minimax_move_evaluator_new<uint64_t, 1>(m, "MinimaxMoveEvaluatorNewB064C1");
-  bind_minimax_move_evaluator_new<__uint128_t, 1>(m, "MinimaxMoveEvaluatorNewB128C1");
-}
