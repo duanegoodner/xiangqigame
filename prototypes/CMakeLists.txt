@@ -5,3 +5,4 @@
 # add_subdirectory(zobrist_callbacks_for_gameboard)
 add_subdirectory(shared_ptr_method_passing)
 add_subdirectory(array_vs_vector)
+add_subdirectory(heap_vs_stack_read_speeds)
