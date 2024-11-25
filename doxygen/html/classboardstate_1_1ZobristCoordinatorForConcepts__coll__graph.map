@@ -1,0 +1,8 @@
+<map id="boardstate::ZobristCoordinatorForConcepts&lt; KeyType, NumConfKeys &gt;" name="boardstate::ZobristCoordinatorForConcepts&lt; KeyType, NumConfKeys &gt;">
+<area shape="rect" id="node1" title=" " alt="" coords="305,373,592,627"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,182,228,274"/>
+<area shape="rect" id="node3" title=" " alt="" coords="252,182,475,274"/>
+<area shape="rect" id="node4" href="$classboardstate_1_1TranspositionTableGuardForConcepts.html" title="Contains std::mutex that other classes lock before accessing TranspositionTableForConcepts." alt="" coords="499,145,715,311"/>
+<area shape="rect" id="node5" title=" " alt="" coords="575,5,639,83"/>
+<area shape="rect" id="node6" title=" " alt="" coords="739,175,923,281"/>
+</map>

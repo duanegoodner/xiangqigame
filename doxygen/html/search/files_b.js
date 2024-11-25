@@ -9,11 +9,14 @@ var searchData=
   ['piece_5fpoints_5fdata_5fstructs_2ehpp_6',['piece_points_data_structs.hpp',['../piece__points__data__structs_8hpp.html',1,'']]],
   ['piece_5fposition_5fpoints_2ecpp_7',['piece_position_points.cpp',['../piece__position__points_8cpp.html',1,'']]],
   ['piece_5fposition_5fpoints_2ehpp_8',['piece_position_points.hpp',['../piece__position__points_8hpp.html',1,'']]],
-  ['piece_5fvalue_5fprovider_5finterface_2ehpp_9',['piece_value_provider_interface.hpp',['../piece__value__provider__interface_8hpp.html',1,'']]],
-  ['player_5fbuilder_2epy_10',['player_builder.py',['../player__builder_8py.html',1,'']]],
-  ['player_5fbuilder_5fnew_2epy_11',['player_builder_new.py',['../player__builder__new_8py.html',1,'']]],
-  ['player_5finterface_2ehpp_12',['player_interface.hpp',['../player__interface_8hpp.html',1,'']]],
-  ['player_5fsummary_2epy_13',['player_summary.py',['../player__summary_8py.html',1,'']]],
-  ['players_2ehpp_14',['players.hpp',['../players_8hpp.html',1,'']]],
-  ['players_2epy_15',['players.py',['../players_8py.html',1,'']]]
+  ['piece_5fposition_5fpoints_5ffor_5fconcepts_2ecpp_9',['piece_position_points_for_concepts.cpp',['../piece__position__points__for__concepts_8cpp.html',1,'']]],
+  ['piece_5fposition_5fpoints_5ffor_5fconcepts_2ehpp_10',['piece_position_points_for_concepts.hpp',['../piece__position__points__for__concepts_8hpp.html',1,'']]],
+  ['piece_5fvalue_5fprovider_5finterface_2ehpp_11',['piece_value_provider_interface.hpp',['../piece__value__provider__interface_8hpp.html',1,'']]],
+  ['piece_5fvalue_5fprovider_5fnew_5fconcept_2ehpp_12',['piece_value_provider_new_concept.hpp',['../piece__value__provider__new__concept_8hpp.html',1,'']]],
+  ['player_5fbuilder_2epy_13',['player_builder.py',['../player__builder_8py.html',1,'']]],
+  ['player_5fbuilder_5fnew_2epy_14',['player_builder_new.py',['../player__builder__new_8py.html',1,'']]],
+  ['player_5finterface_2ehpp_15',['player_interface.hpp',['../player__interface_8hpp.html',1,'']]],
+  ['player_5fsummary_2epy_16',['player_summary.py',['../player__summary_8py.html',1,'']]],
+  ['players_2ehpp_17',['players.hpp',['../players_8hpp.html',1,'']]],
+  ['players_2epy_18',['players.py',['../players_8py.html',1,'']]]
 ];

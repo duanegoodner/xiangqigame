@@ -5,12 +5,20 @@ var annotated_dup =
       [ "RandomKeyGenerator", "classboardstate_1_1RandomKeyGenerator.html", "classboardstate_1_1RandomKeyGenerator" ],
       [ "TranspositionTable", "classboardstate_1_1TranspositionTable.html", "classboardstate_1_1TranspositionTable" ],
       [ "TranspositionTableEntry", "classboardstate_1_1TranspositionTableEntry.html", "classboardstate_1_1TranspositionTableEntry" ],
+      [ "TranspositionTableEntryForConcepts", "classboardstate_1_1TranspositionTableEntryForConcepts.html", "classboardstate_1_1TranspositionTableEntryForConcepts" ],
+      [ "TranspositionTableForConcepts", "classboardstate_1_1TranspositionTableForConcepts.html", "classboardstate_1_1TranspositionTableForConcepts" ],
       [ "TranspositionTableGuard", "classboardstate_1_1TranspositionTableGuard.html", "classboardstate_1_1TranspositionTableGuard" ],
+      [ "TranspositionTableGuardForConcepts", "classboardstate_1_1TranspositionTableGuardForConcepts.html", "classboardstate_1_1TranspositionTableGuardForConcepts" ],
       [ "TranspositionTablePruner", "classboardstate_1_1TranspositionTablePruner.html", "classboardstate_1_1TranspositionTablePruner" ],
+      [ "TranspositionTablePrunerForConcepts", "classboardstate_1_1TranspositionTablePrunerForConcepts.html", "classboardstate_1_1TranspositionTablePrunerForConcepts" ],
       [ "ZobristCalculator", "classboardstate_1_1ZobristCalculator.html", "classboardstate_1_1ZobristCalculator" ],
+      [ "ZobristCalculatorForConcepts", "classboardstate_1_1ZobristCalculatorForConcepts.html", "classboardstate_1_1ZobristCalculatorForConcepts" ],
       [ "ZobristComponent", "classboardstate_1_1ZobristComponent.html", "classboardstate_1_1ZobristComponent" ],
+      [ "ZobristComponentForConcepts", "classboardstate_1_1ZobristComponentForConcepts.html", "classboardstate_1_1ZobristComponentForConcepts" ],
       [ "ZobristComponentNew", "classboardstate_1_1ZobristComponentNew.html", "classboardstate_1_1ZobristComponentNew" ],
       [ "ZobristCoordinator", "classboardstate_1_1ZobristCoordinator.html", "classboardstate_1_1ZobristCoordinator" ],
+      [ "ZobristCoordinatorBuilder", "classboardstate_1_1ZobristCoordinatorBuilder.html", "classboardstate_1_1ZobristCoordinatorBuilder" ],
+      [ "ZobristCoordinatorForConcepts", "classboardstate_1_1ZobristCoordinatorForConcepts.html", "classboardstate_1_1ZobristCoordinatorForConcepts" ],
       [ "ZobristCoordinatorNew", "classboardstate_1_1ZobristCoordinatorNew.html", "classboardstate_1_1ZobristCoordinatorNew" ]
     ] ],
     [ "gameboard", "namespacegameboard.html", [
@@ -19,6 +27,8 @@ var annotated_dup =
       [ "CastleEdges", "structgameboard_1_1CastleEdges.html", "structgameboard_1_1CastleEdges" ],
       [ "ExecutedMove", "structgameboard_1_1ExecutedMove.html", "structgameboard_1_1ExecutedMove" ],
       [ "GameBoard", "classgameboard_1_1GameBoard.html", "classgameboard_1_1GameBoard" ],
+      [ "GameBoardBuilder", "classgameboard_1_1GameBoardBuilder.html", "classgameboard_1_1GameBoardBuilder" ],
+      [ "GameBoardForConcepts", "classgameboard_1_1GameBoardForConcepts.html", "classgameboard_1_1GameBoardForConcepts" ],
       [ "GamePiece", "structgameboard_1_1GamePiece.html", "structgameboard_1_1GamePiece" ],
       [ "Move", "structgameboard_1_1Move.html", "structgameboard_1_1Move" ],
       [ "MoveCalculator", "classgameboard_1_1MoveCalculator.html", "classgameboard_1_1MoveCalculator" ],
@@ -32,10 +42,15 @@ var annotated_dup =
       [ "EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
       [ "MinimaxCalcResult", "classmoveselection_1_1MinimaxCalcResult.html", "classmoveselection_1_1MinimaxCalcResult" ],
       [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
+      [ "MinimaxMoveEvaluatorBuilder", "classmoveselection_1_1MinimaxMoveEvaluatorBuilder.html", "classmoveselection_1_1MinimaxMoveEvaluatorBuilder" ],
+      [ "MinimaxMoveEvaluatorForConcept", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept" ],
       [ "MinimaxMoveEvaluatorNew", "classmoveselection_1_1MinimaxMoveEvaluatorNew.html", "classmoveselection_1_1MinimaxMoveEvaluatorNew" ],
       [ "MinimaxTemplateSpecs", "structmoveselection_1_1MinimaxTemplateSpecs.html", "structmoveselection_1_1MinimaxTemplateSpecs" ],
       [ "PreSearchMoveSorter", "classmoveselection_1_1PreSearchMoveSorter.html", "classmoveselection_1_1PreSearchMoveSorter" ],
+      [ "PreSearchMoveSorterForConcepts", "classmoveselection_1_1PreSearchMoveSorterForConcepts.html", "classmoveselection_1_1PreSearchMoveSorterForConcepts" ],
       [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],
+      [ "RandomMoveEvaluatorForConcept", "classmoveselection_1_1RandomMoveEvaluatorForConcept.html", "classmoveselection_1_1RandomMoveEvaluatorForConcept" ],
+      [ "RandomMoveEvalutorBuilder", "classmoveselection_1_1RandomMoveEvalutorBuilder.html", "classmoveselection_1_1RandomMoveEvalutorBuilder" ],
       [ "ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", "classmoveselection_1_1ResultDepthCounts" ],
       [ "ScoredMove", "structmoveselection_1_1ScoredMove.html", "structmoveselection_1_1ScoredMove" ],
       [ "SearchSummaries", "structmoveselection_1_1SearchSummaries.html", "structmoveselection_1_1SearchSummaries" ],
@@ -45,7 +60,9 @@ var annotated_dup =
     [ "piecepoints", "namespacepiecepoints.html", [
       [ "BPOPointsEKeys", "classpiecepoints_1_1BPOPointsEKeys.html", "classpiecepoints_1_1BPOPointsEKeys" ],
       [ "BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html", "classpiecepoints_1_1BPOPointsSKeys" ],
-      [ "PiecePositionPoints", "structpiecepoints_1_1PiecePositionPoints.html", "structpiecepoints_1_1PiecePositionPoints" ]
+      [ "PiecePositionPoints", "structpiecepoints_1_1PiecePositionPoints.html", "structpiecepoints_1_1PiecePositionPoints" ],
+      [ "PiecePositionPointsBuilder", "classpiecepoints_1_1PiecePositionPointsBuilder.html", "classpiecepoints_1_1PiecePositionPointsBuilder" ],
+      [ "PiecePositionPointsForConcepts", "structpiecepoints_1_1PiecePositionPointsForConcepts.html", "structpiecepoints_1_1PiecePositionPointsForConcepts" ]
     ] ],
     [ "std", "namespacestd.html", [
       [ "hash< moveselection::MinimaxTemplateSpecs >", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4.html", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4" ]

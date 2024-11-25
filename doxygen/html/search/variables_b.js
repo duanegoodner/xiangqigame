@@ -6,7 +6,7 @@ var searchData=
   ['kblackriveredge_3',['kBlackRiverEdge',['../namespacegameboard.html#adfea0925fa61e4179c09e5293da07400',1,'gameboard']]],
   ['kblk_4',['kBlk',['../classxiangqipy_1_1game__summary_1_1PlayerSummaries.html#af7fd9450f03506adac902ff43a65c9a4',1,'xiangqipy::game_summary::PlayerSummaries']]],
   ['kbposchemapath_5',['kBPOSchemaPath',['../namespacepiecepoints.html#a25e1ef8495e45bed90a0cf6e1fad5eb9',1,'piecepoints']]],
-  ['keep_5frunning_5f_6',['keep_running_',['../classboardstate_1_1TranspositionTablePruner.html#abb464717cb55a3a0942df6471c9f0bf1',1,'boardstate::TranspositionTablePruner']]],
+  ['keep_5frunning_5f_6',['keep_running_',['../classboardstate_1_1TranspositionTablePruner.html#abb464717cb55a3a0942df6471c9f0bf1',1,'boardstate::TranspositionTablePruner::keep_running_()'],['../classboardstate_1_1TranspositionTablePrunerForConcepts.html#a807f862c658c77147d58f197dc3dedba',1,'boardstate::TranspositionTablePrunerForConcepts::keep_running_()']]],
   ['key_5fsize_7',['key_size',['../classxiangqipy_1_1app__new_1_1PlayerRunArgs.html#a8430e4d24c45bd769b120aeba97845bb',1,'xiangqipy.app_new.PlayerRunArgs.key_size()'],['../classxiangqipy_1_1command__input_1_1PlayerInput.html#a5e3919e7e48c1724a491d4f246d3fd59',1,'xiangqipy.command_input.PlayerInput.key_size()']]],
   ['key_5fsize_5fbits_8',['key_size_bits',['../structmoveselection_1_1MinimaxTemplateSpecs.html#a25c2d7349688aae7855c1fee7d058dfc',1,'moveselection::MinimaxTemplateSpecs']]],
   ['key_5fsize_5finput_9',['key_size_input',['../classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#a2a0387ad112cba1e2f3629d55e4d8caa',1,'xiangqipy::command_input::PlayerCommandInterpreter']]],
@@ -29,5 +29,5 @@ var searchData=
   ['krepeatperiodsmaxallowed_26',['kRepeatPeriodsMaxAllowed',['../namespacegameboard.html#adc3c88bd024708e1e2b062c7c0df4afb',1,'gameboard']]],
   ['krepeatperiodstocheck_27',['kRepeatPeriodsToCheck',['../namespacegameboard.html#ab7f90d284c0b95bc54f4c5be7b4bce8e',1,'gameboard']]],
   ['ksidedirections_28',['kSideDirections',['../namespacegameboard.html#a9104a44ca09874ba0374bb2db2f63452',1,'gameboard']]],
-  ['kstartingboard_29',['kStartingBoard',['../namespacegameboard.html#a61c9cb4f6bae74d1541f537bff5a5c5b',1,'gameboard']]]
+  ['kstandardinitialboard_29',['kStandardInitialBoard',['../namespacegameboard.html#a0e0df9efca8bf056b54a1ba15035bece',1,'gameboard']]]
 ];

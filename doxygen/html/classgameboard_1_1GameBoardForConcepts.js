@@ -1,0 +1,27 @@
+var classgameboard_1_1GameBoardForConcepts =
+[
+    [ "GameBoardForConcepts", "classgameboard_1_1GameBoardForConcepts.html#a82cfddde9ad247d7feb74d8e7cab27b2", null ],
+    [ "AddToMoveLog", "classgameboard_1_1GameBoardForConcepts.html#a69a036150637b77b2c11b48ccfe7652d", null ],
+    [ "AttachMoveCallback", "classgameboard_1_1GameBoardForConcepts.html#a00bc6e3049e1b66b528068805c8f9ff0", null ],
+    [ "CalcFinalMovesOf", "classgameboard_1_1GameBoardForConcepts.html#a24d1585ca1a5c97efd1f7b4728bc00e6", null ],
+    [ "ExecuteMove", "classgameboard_1_1GameBoardForConcepts.html#a30f169385fc0429d409af25226e5e004", null ],
+    [ "GetAllSpacesOccupiedBy", "classgameboard_1_1GameBoardForConcepts.html#a1715e098813194968d81a9a2a1138cc1", null ],
+    [ "GetColor", "classgameboard_1_1GameBoardForConcepts.html#a409816a0c19b1be2edf557555bf533f5", null ],
+    [ "GetOccupantAt", "classgameboard_1_1GameBoardForConcepts.html#a310b18501f13e80cf1767e14455f398b", null ],
+    [ "GetType", "classgameboard_1_1GameBoardForConcepts.html#ab241eb6682e0d2d6faa9a50fdb369e5b", null ],
+    [ "IsCaptureMove", "classgameboard_1_1GameBoardForConcepts.html#afb4553fa14a9305fd4b82620f8432d40", null ],
+    [ "IsDraw", "classgameboard_1_1GameBoardForConcepts.html#a985ab68acba57005b686317964dd91b2", null ],
+    [ "IsInCheck", "classgameboard_1_1GameBoardForConcepts.html#a92a59da59647bff886cdaa6ebb333a2e", null ],
+    [ "map", "classgameboard_1_1GameBoardForConcepts.html#a05e6855743bf6920cd6e6b983eb8e1d0", null ],
+    [ "move_log", "classgameboard_1_1GameBoardForConcepts.html#ade573adebdfa16cdd40e9d76906f8486", null ],
+    [ "RemoveFromMoveLog", "classgameboard_1_1GameBoardForConcepts.html#ab1af1923bc6aabfee148dc0ebe5f3091", null ],
+    [ "SetOccupantAt", "classgameboard_1_1GameBoardForConcepts.html#a7052cbe304d9f3953b5942513d9e8b7c", null ],
+    [ "UndoMove", "classgameboard_1_1GameBoardForConcepts.html#ae6f3dc459a91c9df05e11d75f996020f", null ],
+    [ "UpdateStateTracker", "classgameboard_1_1GameBoardForConcepts.html#a7303f10411cd945c6a6575ef1fc39c73", null ],
+    [ "ViolatesRepeatRule", "classgameboard_1_1GameBoardForConcepts.html#a75bc305fcf6615233ea0b04d95d194fa", null ],
+    [ "board_map_", "classgameboard_1_1GameBoardForConcepts.html#ac1223dda25aa8044de2a36d8b125304a", null ],
+    [ "move_calculator_", "classgameboard_1_1GameBoardForConcepts.html#a0e036c62574e2e703d66285e731b7311", null ],
+    [ "move_callbacks_", "classgameboard_1_1GameBoardForConcepts.html#a3c4c256151e59d315c56c2c23811fc15", null ],
+    [ "move_log_", "classgameboard_1_1GameBoardForConcepts.html#a39280e2eed5b56e4306ca1c3ede0935d", null ],
+    [ "moves_since_last_capture_", "classgameboard_1_1GameBoardForConcepts.html#a56e7981df6e5a0643f758528b1aa131f", null ]
+];

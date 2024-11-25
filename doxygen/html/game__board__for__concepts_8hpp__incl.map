@@ -1,0 +1,27 @@
+<map id="include/game_board_for_concepts.hpp" name="include/game_board_for_concepts.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="429,5,584,45"/>
+<area shape="rect" id="node2" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="425,401,599,427"/>
+<area shape="rect" id="node13" href="$board__state__tracker__concept_8hpp.html" title=" " alt="" coords="202,93,353,133"/>
+<area shape="rect" id="node14" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="178,328,353,353"/>
+<area shape="rect" id="node19" title=" " alt="" coords="610,101,697,126"/>
+<area shape="rect" id="node20" title=" " alt="" coords="721,101,772,126"/>
+<area shape="rect" id="node21" title=" " alt="" coords="796,101,873,126"/>
+<area shape="rect" id="node22" href="$move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="428,101,585,126"/>
+<area shape="rect" id="node3" title=" " alt="" coords="601,475,657,500"/>
+<area shape="rect" id="node4" title=" " alt="" coords="681,475,751,500"/>
+<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="447,475,577,500"/>
+<area shape="rect" id="node9" href="$integer__types_8hpp.html" title=" " alt="" coords="775,475,913,500"/>
+<area shape="rect" id="node11" title=" " alt="" coords="264,475,336,500"/>
+<area shape="rect" id="node12" title=" " alt="" coords="361,475,423,500"/>
+<area shape="rect" id="node6" title=" " alt="" coords="481,548,543,573"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,548,64,573"/>
+<area shape="rect" id="node8" title=" " alt="" coords="251,548,375,573"/>
+<area shape="rect" id="node10" title=" " alt="" coords="811,548,877,573"/>
+<area shape="rect" id="node18" title=" " alt="" coords="201,181,281,207"/>
+<area shape="rect" id="node15" href="$utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="155,401,290,427"/>
+<area shape="rect" id="node16" title=" " alt="" coords="40,475,125,500"/>
+<area shape="rect" id="node17" title=" " alt="" coords="150,475,239,500"/>
+<area shape="rect" id="node23" title=" " alt="" coords="765,181,811,207"/>
+<area shape="rect" id="node24" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="479,181,689,207"/>
+<area shape="rect" id="node25" href="$piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="428,255,564,280"/>
+</map>

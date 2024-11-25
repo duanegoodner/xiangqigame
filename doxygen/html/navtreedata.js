@@ -112,6 +112,7 @@ var NAVTREE =
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
     ] ],
+    [ "Concepts", "concepts.html", "concepts" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -140,15 +141,17 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____init_____8py.html",
-"classboardstate_1_1ZobristComponent.html#a343cdfaeba641a3a25f57c27d73166f4",
-"classmoveselection_1_1EqualScoreMoves.html",
-"classmoveselection_1_1SearchSummary.html#a83301b294a942dc8f75eb74be0c7f0f7",
-"classxiangqipy_1_1command__input_1_1RunKwargsInterpreter.html#add74aa4f3ce507d3f27a9dec058e1aad",
-"classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html#a908520ade300294b502fe1a33e75dd7c",
-"classxiangqipy_1_1players_1_1AIPlayer.html#a5bbf8b599b7a8a5251e1424ab710258c",
-"game__board_8hpp.html#adb8f16318f29fd35c1bceddd4496efa9",
-"namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1da0fe64a6e73a77fefbfe91370bb0652d5",
-"structgameboard_1_1ExecutedMove.html"
+"classboardstate_1_1TranspositionTablePruner.html#a68b78ba99b7912c7d5a213a16771128b",
+"classboardstate_1_1ZobristCoordinator.html#a7c5f1d0a5ba9307896f2719af1ed924b",
+"classjsonio_1_1NlohmannJsonUtility.html#a6d9cca24cd5cb118adb6b17f02faa751",
+"classmoveselection_1_1MinimaxMoveEvaluatorNew.html#aa3225aa9f2a1bf10d6bfa4d6305d3c99",
+"classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder.html#af29e942339348bfdab2586c1b75b88f2",
+"classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a67c71ace6c7c2ba33441489729c35c5c",
+"classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#aea21d66fd4e3c5221fae89f08543815b",
+"command__input_8py.html",
+"md_docs_03_running.html",
+"namespacexiangqipy_1_1game__summary__plot__manager.html#a38ce69a5697fc2991aee77c6af5c3411",
+"structmoveselection_1_1SearchSummaries.html#aa1ada45195c8d4a23ff2de7c8d4118a6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

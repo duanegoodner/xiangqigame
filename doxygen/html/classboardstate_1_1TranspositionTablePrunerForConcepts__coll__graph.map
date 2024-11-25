@@ -1,0 +1,8 @@
+<map id="boardstate::TranspositionTablePrunerForConcepts&lt; KeyType, NumConfKeys &gt;" name="boardstate::TranspositionTablePrunerForConcepts&lt; KeyType, NumConfKeys &gt;">
+<area shape="rect" id="node1" title="Removes old entries from TranspositionTableForConcepts to prevent excessive memory use." alt="" coords="337,373,547,641"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,182,228,274"/>
+<area shape="rect" id="node3" href="$classboardstate_1_1TranspositionTableGuardForConcepts.html" title="Contains std::mutex that other classes lock before accessing TranspositionTableForConcepts." alt="" coords="253,145,469,311"/>
+<area shape="rect" id="node4" title=" " alt="" coords="329,5,393,83"/>
+<area shape="rect" id="node5" title=" " alt="" coords="493,189,557,267"/>
+<area shape="rect" id="node6" title=" " alt="" coords="601,189,726,267"/>
+</map>

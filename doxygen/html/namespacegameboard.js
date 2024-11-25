@@ -5,6 +5,8 @@ var namespacegameboard =
     [ "CastleEdges", "structgameboard_1_1CastleEdges.html", "structgameboard_1_1CastleEdges" ],
     [ "ExecutedMove", "structgameboard_1_1ExecutedMove.html", "structgameboard_1_1ExecutedMove" ],
     [ "GameBoard", "classgameboard_1_1GameBoard.html", "classgameboard_1_1GameBoard" ],
+    [ "GameBoardBuilder", "classgameboard_1_1GameBoardBuilder.html", "classgameboard_1_1GameBoardBuilder" ],
+    [ "GameBoardForConcepts", "classgameboard_1_1GameBoardForConcepts.html", "classgameboard_1_1GameBoardForConcepts" ],
     [ "GamePiece", "structgameboard_1_1GamePiece.html", "structgameboard_1_1GamePiece" ],
     [ "Move", "structgameboard_1_1Move.html", "structgameboard_1_1Move" ],
     [ "MoveCalculator", "classgameboard_1_1MoveCalculator.html", "classgameboard_1_1MoveCalculator" ],
@@ -60,5 +62,5 @@ var namespacegameboard =
     [ "kRepeatPeriodsMaxAllowed", "namespacegameboard.html#adc3c88bd024708e1e2b062c7c0df4afb", null ],
     [ "kRepeatPeriodsToCheck", "namespacegameboard.html#ab7f90d284c0b95bc54f4c5be7b4bce8e", null ],
     [ "kSideDirections", "namespacegameboard.html#a9104a44ca09874ba0374bb2db2f63452", null ],
-    [ "kStartingBoard", "namespacegameboard.html#a61c9cb4f6bae74d1541f537bff5a5c5b", null ]
+    [ "kStandardInitialBoard", "namespacegameboard.html#a0e0df9efca8bf056b54a1ba15035bece", null ]
 ];

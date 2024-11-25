@@ -9,7 +9,8 @@ var indexSectionsWithContent =
   6: "bcdgmprtz",
   7: "emp",
   8: "k",
-  9: "aceimrtx"
+  9: "aceimrtx",
+  10: "bmps"
 };
 
 var indexSectionNames =
@@ -23,7 +24,8 @@ var indexSectionNames =
   6: "typedefs",
   7: "enums",
   8: "enumvalues",
-  9: "pages"
+  9: "pages",
+  10: "concepts"
 };
 
 var indexSectionLabels =
@@ -37,6 +39,7 @@ var indexSectionLabels =
   6: "Typedefs",
   7: "Enumerations",
   8: "Enumerator",
-  9: "Pages"
+  9: "Pages",
+  10: "Concepts"
 };
 

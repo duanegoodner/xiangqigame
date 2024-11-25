@@ -1,0 +1,5 @@
+<map id="moveselection::PreSearchMoveSorterForConcepts&lt; G, P &gt;" name="moveselection::PreSearchMoveSorterForConcepts&lt; G, P &gt;">
+<area shape="rect" id="node1" title="Sorts moves based on points changed induce by single move; used by MinimaxMoveEvaluator for pre&#45;sorti..." alt="" coords="15,145,281,281"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,136,83"/>
+<area shape="rect" id="node3" title=" " alt="" coords="161,5,290,83"/>
+</map>
