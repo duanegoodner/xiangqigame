@@ -4,7 +4,7 @@
 
 class ZobristCalculatorTest : public ::testing::Test {
 protected:
-  gameboard::BoardMap_t board_map = int_board_to_game_pieces(gameboard::kStartingBoard);
+  gameboard::BoardMap_t board_map = int_board_to_game_pieces(gameboard::kStandardInitialBoard);
 
   template <typename KeyType>
   void ValidateZobristCalculator(

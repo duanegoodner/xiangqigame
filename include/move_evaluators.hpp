@@ -3,6 +3,10 @@
 
 #pragma once
 
+#include <board_state_coordinator_concept.hpp>
+#include <piece_value_provider_new_concept.hpp>
+#include <space_info_provider_new_concept.hpp>
+
 #include <array>
 #include <atomic>
 #include <board_data_structs.hpp>
@@ -166,13 +170,14 @@ public:
     initialize_hash_calculator();
   }
 
- explicit MinimaxMoveEvaluator(
+  explicit MinimaxMoveEvaluator(
       PieceColor evaluating_player,
       DepthType search_depth,
       ConcreteSpaceInfoProvider &game_board,
       const ConcretePieceValueProvider &game_position_points,
-      ConcreteBoardStateCoordinator& hash_calculator,
-      PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>& move_sorter
+      ConcreteBoardStateCoordinator &hash_calculator,
+      PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
+          &move_sorter
   )
       : evaluating_player_{evaluating_player}
       , search_depth_{search_depth}
@@ -531,12 +536,7 @@ private:
 
     // If no legal moves, node is an end-of-game leaf
     if (allowed_moves.moves.size() == 0) {
-      return HandleEndOfGame(
-          cur_player,
-          search_summary,
-          result_type,
-          search_depth
-      );
+      return HandleEndOfGame(cur_player, search_summary, result_type, search_depth);
     }
 
     // If remaining search depth is zero, treat node as "normal" leaf (not end of game,
@@ -601,9 +601,9 @@ template <
     typename ConcreteBoardStateCoordinator,
     typename ConcretePieceValueProvider>
 class MinimaxMoveEvaluatorNew : public MoveEvaluator<MinimaxMoveEvaluatorNew<
-                                 ConcreteSpaceInfoProvider,
-                                 ConcreteBoardStateCoordinator,
-                                 ConcretePieceValueProvider>> {
+                                    ConcreteSpaceInfoProvider,
+                                    ConcreteBoardStateCoordinator,
+                                    ConcretePieceValueProvider>> {
 
   PieceColor evaluating_player_;
   ConcretePieceValueProvider &game_position_points_;
@@ -617,14 +617,14 @@ class MinimaxMoveEvaluatorNew : public MoveEvaluator<MinimaxMoveEvaluatorNew<
   std::atomic<bool> game_over_;
 
 public:
-
- explicit MinimaxMoveEvaluatorNew(
+  explicit MinimaxMoveEvaluatorNew(
       PieceColor evaluating_player,
       DepthType search_depth,
       ConcreteSpaceInfoProvider &game_board,
       ConcretePieceValueProvider &game_position_points,
-      ConcreteBoardStateCoordinator& hash_calculator,
-      PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>& move_sorter
+      ConcreteBoardStateCoordinator &hash_calculator,
+      PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
+          &move_sorter
   )
       : evaluating_player_{evaluating_player}
       , search_depth_{search_depth}
@@ -983,12 +983,7 @@ private:
 
     // If no legal moves, node is an end-of-game leaf
     if (allowed_moves.moves.size() == 0) {
-      return HandleEndOfGame(
-          cur_player,
-          search_summary,
-          result_type,
-          search_depth
-      );
+      return HandleEndOfGame(cur_player, search_summary, result_type, search_depth);
     }
 
     // If remaining search depth is zero, treat node as "normal" leaf (not end of game,
@@ -1068,4 +1063,5 @@ private:
   PieceColor evaluating_player_;
   ConcreteSpaceInfoProvider &game_board_;
 };
+
 } // namespace moveselection

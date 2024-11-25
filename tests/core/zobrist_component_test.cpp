@@ -7,7 +7,7 @@ protected:
   boardstate::ZobristCalculator<uint64_t> zobrist_calculator_064_a{};
   boardstate::ZobristCalculator<uint64_t> zobrist_calculator_064_b{};
 
-  BoardMap_t board_map{int_board_to_game_pieces(kStartingBoard)};
+  BoardMap_t board_map{int_board_to_game_pieces(kStandardInitialBoard)};
 
   template <typename KeyType, size_t NumCalculators>
   struct CalcFullBoardStateResult {
@@ -80,7 +80,7 @@ protected:
       zobrist_calculator_064_b
   };
 
-  BoardMap_t board_map{int_board_to_game_pieces(kStartingBoard)};
+  BoardMap_t board_map{int_board_to_game_pieces(kStandardInitialBoard)};
 
   template <typename KeyType, size_t NumCalculators>
   struct CalcFullBoardStateResult {

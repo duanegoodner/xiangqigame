@@ -22,7 +22,7 @@ const BoardMapInt_t kFlyingBoard{{
 class MoveCalculatorTest : public ::testing::Test {
 
 protected:
-  BoardMap_t starting_board = int_board_to_game_pieces(kStartingBoard);
+  BoardMap_t starting_board = int_board_to_game_pieces(kStandardInitialBoard);
   BoardMap_t flying_board = int_board_to_game_pieces(kFlyingBoard);
   MoveCalculator mc_standard_;
   MoveCalculator mc_flying_;
@@ -92,7 +92,7 @@ TEST_F(MoveCalculatorTest, AllMovesNoCheckTest) {
 class BoardUtilitiesTest : public ::testing::Test {
 
 protected:
-  BoardMap_t starting_board = int_board_to_game_pieces(kStartingBoard);
+  BoardMap_t starting_board = int_board_to_game_pieces(kStandardInitialBoard);
   MoveCalculator mc_standard_;
   BoardUtilitiesTest()
       : mc_standard_{MoveCalculator()} {}

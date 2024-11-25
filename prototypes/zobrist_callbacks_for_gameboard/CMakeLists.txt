@@ -1,0 +1,1 @@
+add_executable(zobrist_callbacks_for_game_board zobrist_callbacks_for_gameboard.cpp)

@@ -1,3 +1,10 @@
+"""
+Work in progress; this will become app.py once C++ side of app moves to
+Builder with Dependency Injection pattern.
+
+See https://github.com/duanegoodner/xiangqigame/issues/94
+"""
+
 from dataclasses import dataclass
 from enums import EvaluatorTypeNew
 from pathlib import Path
@@ -128,8 +135,8 @@ class MoveEvaluatorBuilder:
         self.player_input = player_input
         self.game_board = game_board
 
-    @property
-    def zobrist_bit_size_label(self) -> str:
+    # @property
+    # def zobrist_bit_size_label(self) -> str:
 
 
 
