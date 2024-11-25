@@ -5,7 +5,7 @@
 #include <move_data_structs.hpp>
 
 
-template <typename T, typename KeyType>
+template <typename T>
 concept BoardStateCalculatorConcept = requires(
     T t,
     const gameboard::BoardMap_t &board_map,

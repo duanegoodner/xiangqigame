@@ -1,5 +1,6 @@
 #pragma once
 
+#include <board_state_calculator_concept.hpp>
 #include <game_board_for_concepts.hpp>
 #include <memory>
 #include <move_evaluators_for_concepts.hpp>
@@ -10,9 +11,18 @@ namespace gameboard {
 
 class GameBoardBuilder {
 public:
-  std::shared_ptr<GameBoardForConcepts> build(
+  template <BoardStateCalculatorConcept BC, BoardStateCalculatorConcept RC>
+  std::shared_ptr<GameBoardForConcepts<RC, BC>> build(
+      std::vector<std::shared_ptr<RC>> red_z_calculators,
+      std::vector<std::shared_ptr<BC>> black_z_calculators,
       const BoardMapInt_t starting_board = kStandardInitialBoard
-  );
+  ) {
+    return std::make_shared<GameBoardForConcepts<RC, BC>>(
+        starting_board,
+        red_z_calculators,
+        black_z_calculators
+    );
+  }
 };
 
 } // namespace gameboard

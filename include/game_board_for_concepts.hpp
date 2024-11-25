@@ -9,6 +9,7 @@
 #include <move_calculator.hpp>
 #include <move_data_structs.hpp>
 
+
 namespace gameboard {
 
 //! Starting board represented as 2-D array of integers.
@@ -40,6 +41,8 @@ const int kMaxMovesWithoutCapture = 120;
 
 //! Must comply with SpaceInfoProviderConcept; stores piece positions, and exposes
 //! methods for calculating, executing, an un-doing moves..
+
+template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
 class GameBoardForConcepts {
   //! 2-D array of GamePiece objects.
   BoardMap_t board_map_;
@@ -47,11 +50,12 @@ class GameBoardForConcepts {
   //! Encapsulates all calculations of allowed moves.
   MoveCalculator move_calculator_;
 
-  //! Stores functions that are called after any change in board config to keep
-  //! boardstate::SingleZobristCoordinator objects updated.
-  // std::vector<function<void(const ExecutedMove &)>> move_callbacks_;
+  //! Stores functions that are called after any change in board config
   std::vector<void (*)(const ExecutedMove &)> move_callbacks_;
+  // std::vector<function<void(const ExecutedMove &)>> move_callbacks_;
 
+  std::vector<std::shared_ptr<RC>> red_calculators_;
+  std::vector<std::shared_ptr<BC>> black_calculators_;
   //! Vectors of all moves that have been executed (and not un-done) by each player.
   std::map<PieceColor, std::vector<ExecutedMove>> move_log_;
 
@@ -61,8 +65,14 @@ class GameBoardForConcepts {
 public:
   //! Initializes a gameboard::GameBoard from array of pieces represented as integers.
   //! @param starting_board An array of integers representing pieces on the board.
-  GameBoardForConcepts(const BoardMapInt_t starting_board)
+  GameBoardForConcepts(
+      const BoardMapInt_t starting_board,
+      std::vector<std::shared_ptr<RC>> red_calclulators,
+      std::vector<std::shared_ptr<BC>> black_calculators
+  )
       : board_map_{int_board_to_game_pieces(starting_board)}
+      , red_calculators_{red_calclulators}
+      , black_calculators_{black_calculators}
       , move_calculator_{MoveCalculator()}
       , moves_since_last_capture_{} {}
 
