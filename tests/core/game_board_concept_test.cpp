@@ -2,7 +2,7 @@
 #include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>
-#include <shared_ptr_builder_tests.hpp>
+// #include <shared_ptr_builder_tests.hpp>
 #include <space_info_provider_new_concept.hpp>
 #include <type_traits>
 #include <zobrist_calculator_for_concepts.hpp>
@@ -101,18 +101,48 @@ protected:
       {0, 0, 0, 0, -1, 0, 0, 0, 0},
   }};
 
-  gameboard::GameBoardBuilder builder_;
+  gameboard::GameBoardBuilder<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>,
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>
+      builder_;
 
-  std::shared_ptr<GameBoardForConcepts> starting_board_ = builder_.build();
-  std::shared_ptr<GameBoardForConcepts> repeat_move_test_board_ =
-      builder_.build(kRepeatMoveTestBoard);
-  std::shared_ptr<GameBoardForConcepts> draw_test_board_ =
-      builder_.build(kDrawTestBoard);
+  std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>> zcalc_r1_ =
+      std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>> zcalc_r2_ =
+      std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>> zcalc_b1_ =
+      std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>> zcalc_b2_ =
+      std::make_shared<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+
+  std::vector<std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>>>
+      red_z_calculators_{zcalc_r1_, zcalc_r2_};
+  std::vector<std::shared_ptr<boardstate::ZobristCalculatorForConcepts<uint64_t>>>
+      black_z_calculators_{zcalc_b1_, zcalc_b2_};
+
+  std::shared_ptr<gameboard::GameBoardForConcepts<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>,
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>>
+      starting_board_ = builder_.build(red_z_calculators_, black_z_calculators_);
+
+  std::shared_ptr<gameboard::GameBoardForConcepts<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>,
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>>
+      draw_test_board_ =
+          builder_.build(red_z_calculators_, black_z_calculators_, kDrawTestBoard);
+
+  std::shared_ptr<gameboard::GameBoardForConcepts<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>,
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>>
+      repeat_move_test_board_ =
+          builder_.build(red_z_calculators_, black_z_calculators_, kRepeatMoveTestBoard);
 };
 
 TEST_F(GameBoardForConceptsTest, SatisfiesSpaceInfoProviderConcept) {
   static_assert(
-      SpaceInfoProviderConcept<gameboard::GameBoardForConcepts>,
+      SpaceInfoProviderConcept<gameboard::GameBoardForConcepts<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>,
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>>,
       "GameBoardForConcepts must satisfy SpaceInfoProviderConcept"
   );
 }
