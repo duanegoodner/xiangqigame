@@ -85,71 +85,71 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
       );
 }
 
-template <typename KeyType, size_t NumConfKeys>
-void bind_minimax_move_evaluator_new(py::module_ &m, const std::string &class_name) {
-  py::class_<moveselection::MinimaxMoveEvaluatorNew<
-      GameBoard,
-      ZobristCoordinatorNew<KeyType, NumConfKeys>,
-      PiecePositionPoints>>(m, class_name.c_str())
-      .def(
-          py::init<
-              PieceColor,
-              DepthType,
-              GameBoard &,
-              PiecePositionPoints &,
-              ZobristCoordinatorNew<KeyType, NumConfKeys> &,
-              moveselection::PreSearchMoveSorter<GameBoard, PiecePositionPoints> &>(),
-          "evaluating_player"_a,
-          "search_depth"_a,
-          "game_board"_a,
-          "game_position_points"_a,
-          "hash_calculator"_a,
-          "move_sorter"_a
-      )
-      .def(
-          "select_move",
-          &moveselection::MinimaxMoveEvaluatorNew<
-              GameBoard,
-              ZobristCoordinatorNew<KeyType, NumConfKeys>,
-              PiecePositionPoints>::SelectMove,
-          "allowed_moves"_a
-      )
-      .def_property_readonly(
-          "search_summaries",
-          &moveselection::MinimaxMoveEvaluatorNew<
-              GameBoard,
-              ZobristCoordinatorNew<KeyType, NumConfKeys>,
-              PiecePositionPoints>::search_summaries
-      )
-      .def(
-          "search_depth",
-          &moveselection::MinimaxMoveEvaluatorNew<
-              GameBoard,
-              ZobristCoordinatorNew<KeyType, NumConfKeys>,
-              PiecePositionPoints>::search_depth
-      )
-      .def(
-          "zobrist_key_size_bits",
-          &moveselection::MinimaxMoveEvaluatorNew<
-              GameBoard,
-              ZobristCoordinatorNew<KeyType, NumConfKeys>,
-              PiecePositionPoints>::KeySizeBits
-      )
-      .def_property_readonly(
-          "zkeys_seed",
-          &moveselection::MinimaxMoveEvaluatorNew<
-              GameBoard,
-              ZobristCoordinatorNew<KeyType, NumConfKeys>,
-              PiecePositionPoints>::zkeys_seed
-      )
-      .def_property_readonly(
-          "board_state_hex_str",
-          &moveselection::MinimaxMoveEvaluatorNew<
-              GameBoard,
-              ZobristCoordinatorNew<KeyType, NumConfKeys>,
-              PiecePositionPoints>::board_state_hex_str
-      );
-}
+// template <typename KeyType, size_t NumConfKeys>
+// void bind_minimax_move_evaluator_new(py::module_ &m, const std::string &class_name) {
+//   py::class_<moveselection::MinimaxMoveEvaluatorNew<
+//       GameBoard,
+//       ZobristCoordinatorNew<KeyType, NumConfKeys>,
+//       PiecePositionPoints>>(m, class_name.c_str())
+//       .def(
+//           py::init<
+//               PieceColor,
+//               DepthType,
+//               GameBoard &,
+//               PiecePositionPoints &,
+//               ZobristCoordinatorNew<KeyType, NumConfKeys> &,
+//               moveselection::PreSearchMoveSorter<GameBoard, PiecePositionPoints> &>(),
+//           "evaluating_player"_a,
+//           "search_depth"_a,
+//           "game_board"_a,
+//           "game_position_points"_a,
+//           "hash_calculator"_a,
+//           "move_sorter"_a
+//       )
+//       .def(
+//           "select_move",
+//           &moveselection::MinimaxMoveEvaluatorNew<
+//               GameBoard,
+//               ZobristCoordinatorNew<KeyType, NumConfKeys>,
+//               PiecePositionPoints>::SelectMove,
+//           "allowed_moves"_a
+//       )
+//       .def_property_readonly(
+//           "search_summaries",
+//           &moveselection::MinimaxMoveEvaluatorNew<
+//               GameBoard,
+//               ZobristCoordinatorNew<KeyType, NumConfKeys>,
+//               PiecePositionPoints>::search_summaries
+//       )
+//       .def(
+//           "search_depth",
+//           &moveselection::MinimaxMoveEvaluatorNew<
+//               GameBoard,
+//               ZobristCoordinatorNew<KeyType, NumConfKeys>,
+//               PiecePositionPoints>::search_depth
+//       )
+//       .def(
+//           "zobrist_key_size_bits",
+//           &moveselection::MinimaxMoveEvaluatorNew<
+//               GameBoard,
+//               ZobristCoordinatorNew<KeyType, NumConfKeys>,
+//               PiecePositionPoints>::KeySizeBits
+//       )
+//       .def_property_readonly(
+//           "zkeys_seed",
+//           &moveselection::MinimaxMoveEvaluatorNew<
+//               GameBoard,
+//               ZobristCoordinatorNew<KeyType, NumConfKeys>,
+//               PiecePositionPoints>::zkeys_seed
+//       )
+//       .def_property_readonly(
+//           "board_state_hex_str",
+//           &moveselection::MinimaxMoveEvaluatorNew<
+//               GameBoard,
+//               ZobristCoordinatorNew<KeyType, NumConfKeys>,
+//               PiecePositionPoints>::board_state_hex_str
+//       );
+// }
 
 PYBIND11_MODULE(xiangqi_bindings, m) {
 
