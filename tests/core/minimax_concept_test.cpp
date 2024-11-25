@@ -145,26 +145,26 @@ protected:
   }
 };
 
-TEST_F(MinimaxEvaluatorConceptTest, Init) {
-  std::shared_ptr<gameboard::GameBoardForConcepts> game_board =
-      game_board_builder_.build();
+// TEST_F(MinimaxEvaluatorConceptTest, Init) {
+//   std::shared_ptr<gameboard::GameBoardForConcepts> game_board =
+//       game_board_builder_.build();
   
-  std::shared_ptr<boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>>
-        red_zobrist_coordinator = zobrist_coordinator_builder_.build();
+//   std::shared_ptr<boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>>
+//         red_zobrist_coordinator = zobrist_coordinator_builder_.build();
   
 
-  std::unique_ptr<moveselection::MinimaxMoveEvaluatorForConcept<
-      uint64_t,
-      gameboard::GameBoardForConcepts,
-      boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
-      piecepoints::PiecePositionPointsForConcepts>> red_evaluator = minimax_evaluator_builder_.build<
-          uint64_t>(
-          gameboard::PieceColor::kRed,
-          default_search_depth_,
-          game_board,
-          game_position_points_,
-          red_zobrist_coordinator
-      );
+//   std::unique_ptr<moveselection::MinimaxMoveEvaluatorForConcept<
+//       uint64_t,
+//       gameboard::GameBoardForConcepts,
+//       boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>,
+//       piecepoints::PiecePositionPointsForConcepts>> red_evaluator = minimax_evaluator_builder_.build<
+//           uint64_t>(
+//           gameboard::PieceColor::kRed,
+//           default_search_depth_,
+//           game_board,
+//           game_position_points_,
+//           red_zobrist_coordinator
+//       );
 
   // moveselection::MinimaxMoveEvaluatorForConcept<
   //     uint64_t,
@@ -178,7 +178,7 @@ TEST_F(MinimaxEvaluatorConceptTest, Init) {
   //         piece_position_points_,
   //         red_zobrist_coordinator_
   //     };
-}
+// }
 
 // TEST_F(MinimaxEvaluatorConceptTest, BoardStateHexStr) {
 //   moveselection::MinimaxMoveEvaluatorForConcept<

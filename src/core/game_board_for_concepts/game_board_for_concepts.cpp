@@ -133,7 +133,7 @@ const BoardMap_t &GameBoardForConcepts::map() const { return board_map_; }
 //   move_callbacks_.emplace_back(callback);
 // }
 
-void GameBoardForConcepts::AttachMoveCallBack(void (*callback)(const ExecutedMove &)) {
+void GameBoardForConcepts::AttachMoveCallback(void (*callback)(const ExecutedMove &)) {
   move_callbacks_.push_back(callback);
 }
 

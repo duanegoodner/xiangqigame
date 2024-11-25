@@ -32,7 +32,7 @@ public:
   GamePiece GetOccupantAt(const BoardSpace &space) const;
   const BoardMap_t &map() const;
   // void AttachMoveCallback(const std::function<void(const ExecutedMove &)> &callback);
-  void AttachMoveCallBack(void (*callback)(const ExecutedMove &));
+  void AttachMoveCallback(void (*callback)(const ExecutedMove &));
   bool IsDraw();
   const std::map<PieceColor, std::vector<ExecutedMove>> &move_log() const;
 
