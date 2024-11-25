@@ -1,10 +1,5 @@
 var NAVTREEINDEX11 =
 {
-"structmoveselection_1_1SearchSummaries.html#aa1ada45195c8d4a23ff2de7c8d4118a6":[10,0,3,14,2],
-"structmoveselection_1_1SearchSummaries.html#aa236883fc6b5b34ba98fbab1e12b7871":[10,0,3,14,3],
-"structmoveselection_1_1SearchSummaries.html#aa236883fc6b5b34ba98fbab1e12b7871":[8,0,3,16,3],
-"structmoveselection_1_1SearchSummaries.html#affb258157957acf8bea7501a577d772d":[10,0,3,14,0],
-"structmoveselection_1_1SearchSummaries.html#affb258157957acf8bea7501a577d772d":[8,0,3,16,0],
 "structpiecepoints_1_1PiecePositionPoints.html":[10,0,4,2],
 "structpiecepoints_1_1PiecePositionPoints.html":[8,0,4,2],
 "structpiecepoints_1_1PiecePositionPoints.html#a062a67e6d29cdf2d1d7f4334c67c148d":[10,0,4,2,8],

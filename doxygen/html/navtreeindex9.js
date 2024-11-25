@@ -1,10 +1,5 @@
 var NAVTREEINDEX9 =
 {
-"md_docs_03_running.html":[2],
-"md_docs_03_running.html#autotoc_md19":[2,0],
-"md_docs_03_running.html#autotoc_md20":[2,0,0],
-"md_docs_03_running.html#autotoc_md21":[2,0,1],
-"md_docs_04_notation.html":[3],
 "md_docs_04_notation.html#autotoc_md23":[3,0],
 "md_docs_04_notation.html#autotoc_md24":[0],
 "md_docs_04_notation.html#autotoc_md25":[1],
@@ -249,5 +244,10 @@ var NAVTREEINDEX9 =
 "namespacexiangqipy_1_1game__summary__io.html#acf83b277c198dbcdc1dc1406978c6c5d":[8,0,7,11,5],
 "namespacexiangqipy_1_1game__summary__io.html#ae2953dcdf61acd7eec7a9ec87d1ede3f":[8,0,7,11,4],
 "namespacexiangqipy_1_1game__summary__plot__manager.html":[8,0,7,12],
-"namespacexiangqipy_1_1game__summary__plot__manager.html#a0e922c6de3d44c1098d92c43e87e06e1":[8,0,7,12,3]
+"namespacexiangqipy_1_1game__summary__plot__manager.html#a0e922c6de3d44c1098d92c43e87e06e1":[8,0,7,12,3],
+"namespacexiangqipy_1_1game__summary__plot__manager.html#a38ce69a5697fc2991aee77c6af5c3411":[8,0,7,12,2],
+"namespacexiangqipy_1_1game__summary__plot__manager.html#a5a794464764027de0a775be99b7c1a0f":[8,0,7,12,1],
+"namespacexiangqipy_1_1game__summary__plot__manager.html#abde405297b8d152d53e3e3d91670f9a4":[8,0,7,12,4],
+"namespacexiangqipy_1_1game__summary__plotters.html":[8,0,7,13],
+"namespacexiangqipy_1_1handlers.html":[8,0,7,14]
 };
