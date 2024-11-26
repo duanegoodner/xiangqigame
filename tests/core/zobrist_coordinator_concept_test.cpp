@@ -1,5 +1,5 @@
-#include <board_state_coordinator_concept.hpp>
-#include <board_state_tracker_concept.hpp>
+#include <concept_board_state_coordinator.hpp>
+// #include <concept_board_state_tracker.hpp>
 #include <builders.hpp>
 #include <concepts>
 #include <game_board.hpp>
@@ -37,31 +37,28 @@ TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
   );
 }
 
-TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateTrackerConcept) {
-  static_assert(
-      BoardStateTrackerConcept<boardstate::ZobristCoordinatorForConcepts<uint64_t, 0>>,
-      "ZobristCoordinatorForConcepts must satisfy BoardStateTrackerConcept"
-  );
-}
+//! @todo This test needs to be updated to have ZobristComponent and/or
+//! ZobristCalculators (actual or mocked) that have their state changed by moves.
+//! DO NOT DELETE. Keep old version of test commented out here as reminder of what
+//! updated test should do.
+// TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
+//   auto start = BoardSpace{6, 0};
+//   auto end = BoardSpace{5, 0};
+//   auto move = Move{start, end};
+//   auto moving_piece = GamePiece{PieceType::kSol, PieceColor::kRed};
+//   auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
+//   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
 
-TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
-  auto start = BoardSpace{6, 0};
-  auto end = BoardSpace{5, 0};
-  auto move = Move{start, end};
-  auto moving_piece = GamePiece{PieceType::kSol, PieceColor::kRed};
-  auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
-  auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
+//   coordinator_->FullBoardStateCalc(board_map_);
+//   auto initial_state = coordinator_->GetState();
+//   coordinator_->UpdateBoardState(executed_move);
+//   auto post_move_state = coordinator_->GetState();
+//   coordinator_->UpdateBoardState(executed_move);
+//   auto final_state = coordinator_->GetState();
 
-  coordinator_->FullBoardStateCalc(board_map_);
-  auto initial_state = coordinator_->GetState();
-  coordinator_->UpdateBoardState(executed_move);
-  auto post_move_state = coordinator_->GetState();
-  coordinator_->UpdateBoardState(executed_move);
-  auto final_state = coordinator_->GetState();
-
-  EXPECT_NE(initial_state, post_move_state);
-  EXPECT_EQ(initial_state, final_state);
-}
+//   EXPECT_NE(initial_state, post_move_state);
+//   EXPECT_EQ(initial_state, final_state);
+// }
 
 TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
 

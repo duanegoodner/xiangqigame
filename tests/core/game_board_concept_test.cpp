@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <memory>
 // #include <shared_ptr_builder_tests.hpp>
-#include <space_info_provider_new_concept.hpp>
+#include <concept_space_info_provider.hpp>
 #include <type_traits>
 #include <zobrist_calculator_for_concepts.hpp>
 

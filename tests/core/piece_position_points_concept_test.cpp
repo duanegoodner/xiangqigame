@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <piece_points_bpo.hpp>
 #include <piece_position_points_for_concepts.hpp>
-#include <piece_value_provider_new_concept.hpp>
+#include <concept_piece_value_provider.hpp>
 #include <shared_ptr_builder_tests.hpp>
 #include <type_traits>
 #include <utility_functs.hpp>

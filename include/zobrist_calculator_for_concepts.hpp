@@ -1,8 +1,7 @@
 #pragma once
 
-
 namespace boardstate {
-    //! Uses Zobrist hashing to calculate a "reasonably unique" integer value
+//! Uses Zobrist hashing to calculate a "reasonably unique" integer value
 //! for each board configuration encountered during a game. KeyType can be any unsigned
 //! integer type with a size = (n * 32 bits) where n is an integer >= 1.
 template <typename KeyType>
@@ -33,8 +32,8 @@ public:
 
   // Getters
   KeyType board_state() const { return board_state_; }
-  GameZarray_t zarray() const { return zarray_; }
-  KeyType turn_key() const { return turn_key_; }
+//   GameZarray_t zarray() const { return zarray_; }
+//   KeyType turn_key() const { return turn_key_; }
   uint32_t seed() const { return seed_; }
 
   // Calculation methods
@@ -45,12 +44,6 @@ public:
 
   void UpdateBoardState(const gameboard::ExecutedMove &executed_move) {
     UpdateBoardStateInternal(executed_move);
-  }
-
-  //! @todo Consider making GetHashValueAt private. Currenltly, only external callers are
-  //! test classes.
-  KeyType GetHashValueAt(PieceColor color, PieceType piece_type, BoardSpace space) {
-    return zarray_[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
   }
 
 private:
@@ -69,6 +62,10 @@ private:
       }
     }
     return game_zarray;
+  }
+
+  KeyType GetHashValueAt(PieceColor color, PieceType piece_type, BoardSpace space) {
+    return zarray_[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
   }
 
   // Calculation methods
@@ -112,7 +109,7 @@ private:
                                   );
 
     // change state now that its other player's turn
-    board_state_ = board_state_ ^ turn_key();
+    board_state_ = board_state_ ^ turn_key_;
   }
 };
-}
+} // namespace boardstate

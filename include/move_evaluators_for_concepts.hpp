@@ -1,8 +1,8 @@
 #pragma once
 
-#include <board_state_coordinator_concept.hpp>
-#include <piece_value_provider_new_concept.hpp>
-#include <space_info_provider_new_concept.hpp>
+#include <concept_board_state_coordinator.hpp>
+#include <concept_piece_value_provider.hpp>
+#include <concept_space_info_provider.hpp>
 
 #include <array>
 #include <atomic>

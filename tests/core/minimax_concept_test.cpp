@@ -1,7 +1,7 @@
 #include <builders.hpp>
 #include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
-#include <move_evaluator_concept.hpp>
+#include <concept_move_evaluator.hpp>
 #include <move_evaluators_for_concepts.hpp>
 #include <piece_position_points_for_concepts.hpp>
 #include <type_traits>

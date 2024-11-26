@@ -60,14 +60,14 @@ public:
   }
   uint32_t prng_seed() { return prng_seed_.value_or(0); }
 
-  // Calculation methods
-  void UpdateBoardStates(const ExecutedMove &executed_move) {
-    UpdateBoardStatesInternal(executed_move);
-  }
+  // // Calculation methods
+  // void UpdateBoardStates(const ExecutedMove &executed_move) {
+  //   UpdateBoardStatesInternal(executed_move);
+  // }
 
-  void FullBoardStateCalc(const BoardMap_t &board_map) {
-    FullBoardStateCalcInternal(board_map);
-  }
+  // void FullBoardStateCalc(const BoardMap_t &board_map) {
+  //   FullBoardStateCalcInternal(board_map);
+  // }
 
 private:
   //! Constructs ZobristComponentForConcepts from a std::mt19937 pseudorandom number
@@ -97,20 +97,20 @@ private:
     }
   }
 
-  // Internal calculation methods
-  void UpdateBoardStatesInternal(const ExecutedMove &executed_move) {
-    primary_calculator_.UpdateBoardState(executed_move);
-    for (auto &calculator : confirmation_calculators_) {
-      calculator.UpdateBoardState(executed_move);
-    }
-  }
+  // // Internal calculation methods
+  // void UpdateBoardStatesInternal(const ExecutedMove &executed_move) {
+  //   primary_calculator_.UpdateBoardState(executed_move);
+  //   for (auto &calculator : confirmation_calculators_) {
+  //     calculator.UpdateBoardState(executed_move);
+  //   }
+  // }
 
-  void FullBoardStateCalcInternal(const BoardMap_t &board_map) {
-    primary_calculator_.FullBoardStateCalc(board_map);
-    for (auto &calculator : confirmation_calculators_) {
-      calculator.FullBoardStateCalc(board_map);
-    }
-  }
+  // void FullBoardStateCalcInternal(const BoardMap_t &board_map) {
+  //   primary_calculator_.FullBoardStateCalc(board_map);
+  //   for (auto &calculator : confirmation_calculators_) {
+  //     calculator.FullBoardStateCalc(board_map);
+  //   }
+  // }
 };
 
 //! Data structure to hold calculation results that get entered into a
@@ -326,12 +326,12 @@ public:
   }
 
   KeyType GetState() { return zobrist_component_.primary_board_state(); }
-  void UpdateBoardState(const ExecutedMove &executed_move) {
-    zobrist_component_.UpdateBoardStates(executed_move);
-  }
-  void FullBoardStateCalc(const BoardMap_t &board_map) {
-    zobrist_component_.FullBoardStateCalc(board_map);
-  }
+  // void UpdateBoardState(const ExecutedMove &executed_move) {
+  //   zobrist_component_.UpdateBoardStates(executed_move);
+  // }
+  // void FullBoardStateCalc(const BoardMap_t &board_map) {
+  //   zobrist_component_.FullBoardStateCalc(board_map);
+  // }
   void RecordTrData(
       DepthType search_depth,
       moveselection::MinimaxResultType result_type,

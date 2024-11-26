@@ -16,8 +16,8 @@ concept BoardStateCoordinatorConcept = requires(
     moveselection::EqualScoreMoves &similar_moves,
     MoveCountType access_index
 ) {
-    {t.FullBoardStateCalc(board_map)} -> std::same_as<void>;
-    {t.UpdateBoardState(executed_move)} -> std::same_as<void>;
+    // {t.FullBoardStateCalc(board_map)} -> std::same_as<void>;
+    // {t.UpdateBoardState(executed_move)} -> std::same_as<void>;   
     {t.GetState()} -> std::same_as<KeyType>;
     {t.RecordTrData(search_depth, result_type, similar_moves, access_index)} -> std::same_as<void>;
     {t.GetTrData(search_depth, access_index)} -> std::same_as<moveselection::TranspositionTableSearchResult>;

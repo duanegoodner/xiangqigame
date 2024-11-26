@@ -13,16 +13,16 @@ protected:
     EXPECT_NE(0, zobrist_calculator.turn_key());
   }
 
-  template <typename KeyType>
-  void GetBlackAdvisor_0_3_HashValue(
-      boardstate::ZobristCalculator<KeyType> zobrist_calculator
-  ) {
-    auto sample_key_value = zobrist_calculator.GetHashValueAt(
-        PieceColor::kBlk,
-        PieceType::kAdv,
-        BoardSpace{0, 3}
-    );
-  }
+  // template <typename KeyType>
+  // void GetBlackAdvisor_0_3_HashValue(
+  //     boardstate::ZobristCalculator<KeyType> zobrist_calculator
+  // ) {
+  //   auto sample_key_value = zobrist_calculator.GetHashValueAt(
+  //       PieceColor::kBlk,
+  //       PieceType::kAdv,
+  //       BoardSpace{0, 3}
+  //   );
+  // }
 
   template <typename KeyType>
   void CalcFullBoardState(boardstate::ZobristCalculator<KeyType> zobrist_calculator) {
@@ -84,16 +84,16 @@ TEST_F(ZobristCalculatorTest, InitFromSeed) {
   ValidateZobristCalculator<__uint128_t>(zobrist_keys_128);
 }
 
-TEST_F(ZobristCalculatorTest, GetBlackAdvisor_0_3_HashValue) {
-  auto zobrist_keys_032 = boardstate::ZobristCalculator<uint32_t>{};
-  GetBlackAdvisor_0_3_HashValue(zobrist_keys_032);
+// TEST_F(ZobristCalculatorTest, GetBlackAdvisor_0_3_HashValue) {
+//   auto zobrist_keys_032 = boardstate::ZobristCalculator<uint32_t>{};
+//   GetBlackAdvisor_0_3_HashValue(zobrist_keys_032);
 
-  auto zobrist_keys_064 = boardstate::ZobristCalculator<uint64_t>{};
-  GetBlackAdvisor_0_3_HashValue(zobrist_keys_064);
+//   auto zobrist_keys_064 = boardstate::ZobristCalculator<uint64_t>{};
+//   GetBlackAdvisor_0_3_HashValue(zobrist_keys_064);
 
-  auto zobrist_keys_128 = boardstate::ZobristCalculator<__uint128_t>{};
-  GetBlackAdvisor_0_3_HashValue(zobrist_keys_128);
-}
+//   auto zobrist_keys_128 = boardstate::ZobristCalculator<__uint128_t>{};
+//   GetBlackAdvisor_0_3_HashValue(zobrist_keys_128);
+// }
 
 TEST_F(ZobristCalculatorTest, FullBoardStateCalc) {
   auto zobrist_keys_032 = boardstate::ZobristCalculator<uint32_t>{};

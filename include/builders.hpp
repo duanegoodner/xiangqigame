@@ -1,11 +1,25 @@
 #pragma once
 
-#include <board_state_calculator_concept.hpp>
+#include <concept_board_state_calculator.hpp>
 #include <game_board_for_concepts.hpp>
 #include <memory>
 #include <move_evaluators_for_concepts.hpp>
 #include <piece_position_points_for_concepts.hpp>
 #include <zobrist_for_concepts.hpp>
+
+namespace boardstate {
+
+template <typename KeyType>
+class ZobristCalculatorBuilder {
+public:
+  std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> build(
+      uint32_t seed = std::random_device{}()
+  ) {
+    return std::make_shared<ZobristCalculatorForConcepts<KeyType>>(seed);
+  }
+};
+
+} // namespace boardstate
 
 namespace gameboard {
 
@@ -17,6 +31,20 @@ public:
       std::vector<std::shared_ptr<BC>> black_z_calculators,
       const BoardMapInt_t starting_board = kStandardInitialBoard
   ) {
+
+    auto game_board = std::make_shared<GameBoardForConcepts<RC, BC>>(
+        red_z_calculators,
+        black_z_calculators,
+        starting_board
+    );
+
+    for (auto calculator : red_z_calculators) {
+      calculator->FullBoardStateCalc(game_board->map());
+    }
+    for (auto calculator : black_z_calculators) {
+      calculator->FullBoardStateCalc(game_board->map());
+    }
+
     return std::make_shared<GameBoardForConcepts<RC, BC>>(
         starting_board,
         red_z_calculators,
@@ -45,6 +73,8 @@ public:
   );
 };
 } // namespace piecepoints
+
+
 
 namespace boardstate {
 template <typename KeyType, size_t NumConfKeys>
