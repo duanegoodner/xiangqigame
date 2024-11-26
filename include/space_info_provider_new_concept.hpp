@@ -24,6 +24,6 @@ concept SpaceInfoProviderConcept = requires(
   {t.CalcFinalMovesOf(color)} -> std::same_as<gameboard::MoveCollection>;
   {t.ExecuteMove(move)} -> std::same_as<gameboard::ExecutedMove>;
   {t.UndoMove(executed_move)} -> std::same_as<void>;
-  {t.AttachMoveCallback(callback)} -> std::same_as<void>;
+  // {t.AttachMoveCallback(callback)} -> std::same_as<void>;
   {t.IsDraw()} -> std::same_as<bool>; 
 };

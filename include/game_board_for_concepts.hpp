@@ -51,7 +51,7 @@ class GameBoardForConcepts {
   MoveCalculator move_calculator_;
 
   //! Stores functions that are called after any change in board config
-  std::vector<void (*)(const ExecutedMove &)> move_callbacks_;
+  // std::vector<void (*)(const ExecutedMove &)> move_callbacks_;
   // std::vector<function<void(const ExecutedMove &)>> move_callbacks_;
 
   std::vector<std::shared_ptr<RC>> red_calculators_;
@@ -106,11 +106,6 @@ public:
     return GetOccupantAtInternal(space);
   }
 
-  // void AttachMoveCallback(const std::function<void(const ExecutedMove &)> &callback);
-  void AttachMoveCallback(void (*callback)(const ExecutedMove &)) {
-    AttachMoveCallbackInternal(callback);
-  }
-
 private:
   inline PieceColor GetColorInternal(const BoardSpace &space) const {
     return board_map_[space.rank][space.file].piece_color;
@@ -121,7 +116,6 @@ private:
   }
 
   inline vector<BoardSpace> GetAllSpacesOccupiedByInternal(
-      // const BoardMap_t &board_map,
       const PieceColor color
   ) const {
     vector<BoardSpace> occupied_spaces;
@@ -141,7 +135,6 @@ private:
   }
 
   inline BoardSpace GetGeneralPositionInternal(
-      // const BoardMap_t &board_map,
       const PieceColor color
   ) {
     auto castle =
@@ -221,10 +214,14 @@ private:
     moves_since_last_capture_ = executed_move.moves_since_last_capture;
     RemoveFromMoveLog(executed_move);
   };
-
+  
   void UpdateStateTracker(const ExecutedMove &executed_move) {
-    for (const auto &callback : move_callbacks_) {
-      callback(executed_move);
+
+    for (auto z_calculator : red_calculators_) {
+      z_calculator->UpdateBoardState(executed_move);
+    }
+    for (auto z_calculator : black_calculators_) {
+      z_calculator->UpdateBoardState(executed_move);
     }
   }
 
@@ -258,10 +255,6 @@ private:
       }
     }
     return false;
-  }
-
-  void AttachMoveCallbackInternal(void (*callback)(const ExecutedMove &)) {
-    move_callbacks_.push_back(callback);
   }
 
   bool IsDrawInternal() { return moves_since_last_capture_ >= kMaxMovesWithoutCapture; }
