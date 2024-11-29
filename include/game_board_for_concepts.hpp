@@ -66,9 +66,9 @@ public:
   //! Initializes a gameboard::GameBoard from array of pieces represented as integers.
   //! @param starting_board An array of integers representing pieces on the board.
   GameBoardForConcepts(
-      const BoardMapInt_t starting_board,
       std::vector<std::shared_ptr<RC>> red_calclulators,
-      std::vector<std::shared_ptr<BC>> black_calculators
+      std::vector<std::shared_ptr<BC>> black_calculators,
+      const BoardMapInt_t starting_board
   )
       : board_map_{int_board_to_game_pieces(starting_board)}
       , red_calculators_{red_calclulators}

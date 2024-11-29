@@ -26,5 +26,5 @@ concept SpaceInfoProviderConcept = requires(
   {t.UndoMove(executed_move)} -> std::same_as<void>;
   // {t.AttachMoveCallback(callback)} -> std::same_as<void>;
   {t.IsDraw()} -> std::same_as<bool>; 
-  {t.map()} -> std::same_as<gameboard::BoardMap_t&>;
+  {t.map()} -> std::same_as<const gameboard::BoardMap_t&>;
 };

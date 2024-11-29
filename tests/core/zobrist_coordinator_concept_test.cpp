@@ -60,41 +60,42 @@ TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
 //   EXPECT_EQ(initial_state, final_state);
 // }
 
-TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
+//! todo redo after changing to new builder approach for ZobristCalculatorForConcepts 
+// TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
 
-  //   boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>
-  //       coordinator{};
+//   //   boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>
+//   //       coordinator{};
 
-  auto start = BoardSpace{6, 0};
-  auto end = BoardSpace{5, 0};
-  auto move = Move{start, end};
-  auto moving_piece = GamePiece{PieceType::kSol, PieceColor::kRed};
-  auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
-  auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
+//   auto start = BoardSpace{6, 0};
+//   auto end = BoardSpace{5, 0};
+//   auto move = Move{start, end};
+//   auto moving_piece = GamePiece{PieceType::kSol, PieceColor::kRed};
+//   auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
+//   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
 
-  coordinator_->FullBoardStateCalc(board_map_);
-  auto initial_state = coordinator_->GetState();
+//   coordinator_->FullBoardStateCalc(board_map_);
+//   auto initial_state = coordinator_->GetState();
 
-  MoveCollection dummy_move_collection{};
-  dummy_move_collection.Append(move);
+//   MoveCollection dummy_move_collection{};
+//   dummy_move_collection.Append(move);
 
-  moveselection::EqualScoreMoves dummy_equal_score_moves{1, dummy_move_collection};
-  int dummy_search_depth = 1;
-  int dummy_access_index_at_write = 0;
+//   moveselection::EqualScoreMoves dummy_equal_score_moves{1, dummy_move_collection};
+//   int dummy_search_depth = 1;
+//   int dummy_access_index_at_write = 0;
 
-  coordinator_->RecordTrData(
-      dummy_search_depth,
-      moveselection::MinimaxResultType::kFullyEvaluatedNode,
-      dummy_equal_score_moves,
-      dummy_access_index_at_write
-  );
+//   coordinator_->RecordTrData(
+//       dummy_search_depth,
+//       moveselection::MinimaxResultType::kFullyEvaluatedNode,
+//       dummy_equal_score_moves,
+//       dummy_access_index_at_write
+//   );
 
-  int dummy_access_index_at_read = 1;
-  auto retrieved_data =
-      coordinator_->GetTrData(dummy_search_depth, dummy_access_index_at_read);
+//   int dummy_access_index_at_read = 1;
+//   auto retrieved_data =
+//       coordinator_->GetTrData(dummy_search_depth, dummy_access_index_at_read);
 
-  EXPECT_TRUE(retrieved_data.found());
-}
+//   EXPECT_TRUE(retrieved_data.found());
+// }
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

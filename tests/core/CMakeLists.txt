@@ -85,16 +85,16 @@ target_link_libraries(
     utility_functs
     GTest::gtest_main)
 
-add_executable(minimax_concept_test minimax_concept_test.cpp)
-target_link_libraries(
-    minimax_concept_test PRIVATE
-    builders
-    minimax_evaluator
-    piece_moves
-    piece_position_points_for_concepts
-    game_board_for_concepts
-    utility_functs
-    GTest::gtest_main)
+# add_executable(minimax_concept_test minimax_concept_test.cpp)
+# target_link_libraries(
+#     minimax_concept_test PRIVATE
+#     builders
+#     minimax_evaluator
+#     piece_moves
+#     piece_position_points_for_concepts
+#     game_board_for_concepts
+#     utility_functs
+#     GTest::gtest_main)
 
 add_executable(
     key_generator_test

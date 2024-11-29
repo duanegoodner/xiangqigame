@@ -44,12 +44,13 @@ public:
     for (auto calculator : black_z_calculators) {
       calculator->FullBoardStateCalc(game_board->map());
     }
+    return game_board;
 
-    return std::make_shared<GameBoardForConcepts<RC, BC>>(
-        starting_board,
-        red_z_calculators,
-        black_z_calculators
-    );
+    // return std::make_shared<GameBoardForConcepts<RC, BC>>(
+    //     red_z_calculators,
+    //     black_z_calculators,
+    //     starting_board
+    // );
   }
 };
 
