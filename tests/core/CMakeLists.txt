@@ -116,6 +116,28 @@ target_link_libraries(
     GTest::gtest_main)
 
 add_executable(
+    zobrist_calculator_concept_test
+    zobrist_calculator_concept_test.cpp)
+target_link_libraries(
+    zobrist_calculator_concept_test PRIVATE
+    nlohmann_json
+    utility_functs
+    game_board
+    GTest::gtest_main)
+
+add_executable(
+    zobrist_component_concept_test
+    zobrist_component_concept_test.cpp)
+target_link_libraries(
+    zobrist_component_concept_test PRIVATE
+    nlohmann_json
+    utility_functs
+    game_board
+    GTest::gtest_main)
+
+
+
+add_executable(
     zobrist_coordinator_test
     zobrist_coordinator_test.cpp)
 target_link_libraries(

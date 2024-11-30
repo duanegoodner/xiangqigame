@@ -1,5 +1,7 @@
 #pragma once
 
+#include <key_generator.hpp>
+
 namespace boardstate {
 //! Uses Zobrist hashing to calculate a "reasonably unique" integer value
 //! for each board configuration encountered during a game. KeyType can be any unsigned
@@ -18,6 +20,28 @@ private:
   KeyType board_state_;
 
 public:
+  static ::std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> Create(
+      uint32_t seed = std::random_device{}()
+  ) {
+    return std::shared_ptr<ZobristCalculatorForConcepts<KeyType>>(
+        new ZobristCalculatorForConcepts<KeyType>(seed)
+    );
+  }
+
+  // Getters
+  KeyType board_state() const { return board_state_; }
+  uint32_t seed() const { return seed_; }
+
+  // Calculation methods
+  void FullBoardStateCalc(const gameboard::BoardMap_t &board_map) {
+    FullBoardStateCalcInternal(board_map);
+  }
+
+  void UpdateBoardState(const gameboard::ExecutedMove &executed_move) {
+    UpdateBoardStateInternal(executed_move);
+  }
+
+private:
   //! Constructs a ZobristCalculatorForConcepts.
   //! @param seed Integer used as a seed for a PRNG that generates Zobrist key values.
   ZobristCalculatorForConcepts(uint32_t seed = std::random_device{}())
@@ -30,23 +54,6 @@ public:
     zarray_ = CreateGameZarray(key_generator);
   };
 
-  // Getters
-  KeyType board_state() const { return board_state_; }
-//   GameZarray_t zarray() const { return zarray_; }
-//   KeyType turn_key() const { return turn_key_; }
-  uint32_t seed() const { return seed_; }
-
-  // Calculation methods
-
-  void FullBoardStateCalc(const gameboard::BoardMap_t &board_map) {
-    FullBoardStateCalInternal(board_map);
-  }
-
-  void UpdateBoardState(const gameboard::ExecutedMove &executed_move) {
-    UpdateBoardStateInternal(executed_move);
-  }
-
-private:
   //! Static helper method for building 4-D array of Zobrist keys in constuctor.
   static const GameZarray_t CreateGameZarray(
       PseudoRandomKeyGenerator<KeyType> &key_generator
@@ -70,7 +77,7 @@ private:
 
   // Calculation methods
 
-  void FullBoardStateCalInternal(const gameboard::BoardMap_t &board_map) {
+  void FullBoardStateCalcInternal(const gameboard::BoardMap_t &board_map) {
     board_state_ = 0;
     for (size_t rank = 0; rank < gameboard::kNumRanks; rank++) {
       for (size_t file = 0; file < gameboard::kNumFiles; file++) {

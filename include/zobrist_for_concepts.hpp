@@ -6,6 +6,7 @@
 #include <chrono>
 #include <evaluator_data_structs.hpp>
 #include <key_generator.hpp>
+#include <memory>
 #include <move_data_structs.hpp>
 #include <mutex>
 #include <optional>
@@ -17,75 +18,85 @@
 
 namespace boardstate {
 
-
 //! Container for one or more boardstate::ZobristCalculatorForConcepts objects.
 //! Using more than one boardstate::ZobristCalculatorForConcepts (i.e. NumConfKeys > 0)
 //! allows hash collisions to be detected.
 template <typename KeyType, size_t NumConfKeys>
 class ZobristComponentForConcepts {
 private:
-  ZobristCalculatorForConcepts<KeyType> primary_calculator_;
-  std::array<ZobristCalculatorForConcepts<KeyType>, NumConfKeys>
+  std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> primary_calculator_;
+  std::array<std::shared_ptr<ZobristCalculatorForConcepts<KeyType>>, NumConfKeys>
       confirmation_calculators_;
   std::optional<uint32_t> prng_seed_;
 
 public:
-  //! Constructs ZobristComponentForConcepts from existing ZobristCalculatorForConcepts
-  //! objects
-  explicit ZobristComponentForConcepts(
-      const ZobristCalculatorForConcepts<KeyType> primary_calculator,
-      const std::array<ZobristCalculatorForConcepts<KeyType>, NumConfKeys>
-          &confirmation_calculators
-  )
-      : primary_calculator_{primary_calculator}
-      , confirmation_calculators_(confirmation_calculators) {}
+  static std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>>
+  CreateFromSeed(uint32_t prng_seed = std::random_device{}()) {
+    std::mt19937 prng{prng_seed};
+    auto primary_calculator =
+        ZobristCalculatorForConcepts<KeyType>::Create((uint32_t)prng());
+    std::array<std::shared_ptr<ZobristCalculatorForConcepts<KeyType>>, NumConfKeys>
+        confirmation_calculators;
+    for (auto idx = 0; idx < NumConfKeys; ++idx) {
+      confirmation_calculators[idx] =
+          ZobristCalculatorForConcepts<KeyType>::Create((uint32_t)prng());
+    }
 
-  //! Constructs ZobristComponentForConcepts using 32-bit unsigned in as a PRNG seed.
-  explicit ZobristComponentForConcepts(uint32_t prng_seed = std::random_device{}())
-      : ZobristComponentForConcepts(std::mt19937{prng_seed}) {
-    prng_seed_ = prng_seed;
+    return std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>>(
+        new ZobristComponentForConcepts<KeyType, NumConfKeys>(
+            primary_calculator,
+            confirmation_calculators,
+            prng_seed
+        )
+    );
+  }
+
+  static std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>>
+  CreateFromCalculators(
+      std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> primary_calculator,
+      std::array<std::shared_ptr<ZobristCalculatorForConcepts<KeyType>>, NumConfKeys>
+          confirmation_calculators
+  ) {
+    return std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>>(
+        new ZobristComponentForConcepts<KeyType, NumConfKeys>(
+            primary_calculator,
+            confirmation_calculators
+        )
+    );
   }
 
   // Getters
-  KeyType primary_board_state() { return primary_calculator_.board_state(); }
+  KeyType primary_board_state() { return primary_calculator_->board_state(); }
   std::array<KeyType, NumConfKeys> confirmation_board_states() {
     return confirmation_board_states_internal();
   }
-  KeyType primary_calculator_seed() { return primary_calculator_.seed(); }
+  KeyType primary_calculator_seed() { return primary_calculator_->seed(); }
   std::array<uint32_t, NumConfKeys> confirmation_calculator_seeds() const {
     return confirmation_calculator_seeds_internal();
   }
   std::string primary_board_state_hex_str() const {
-    return boardstate::IntToHexString(primary_calculator_.board_state());
+    return boardstate::IntToHexString(primary_calculator_->board_state());
   }
   uint32_t prng_seed() { return prng_seed_.value_or(0); }
 
-  // // Calculation methods
-  // void UpdateBoardStates(const ExecutedMove &executed_move) {
-  //   UpdateBoardStatesInternal(executed_move);
-  // }
-
-  // void FullBoardStateCalc(const BoardMap_t &board_map) {
-  //   FullBoardStateCalcInternal(board_map);
-  // }
-
 private:
-  //! Constructs ZobristComponentForConcepts from a std::mt19937 pseudorandom number
-  //! generator. Used as a helper to public constructor (via delegation).
-  explicit ZobristComponentForConcepts(std::mt19937 prng)
-      : primary_calculator_{(uint32_t)prng()}
-      , confirmation_calculators_{} {
-    for (auto i = 0; i < NumConfKeys; i++) {
-      confirmation_calculators_[i] =
-          ZobristCalculatorForConcepts<KeyType>((uint32_t)prng());
-    }
-  }
+  //! Constructs ZobristComponentForConcepts from existing ZobristCalculatorForConcepts
+  //! objects
+  explicit ZobristComponentForConcepts(
+      std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> primary_calculator,
+      std::array<std::shared_ptr<ZobristCalculatorForConcepts<KeyType>>, NumConfKeys>
+          confirmation_calculators,
+      uint32_t prng_seed = 0
+  )
+      : primary_calculator_{primary_calculator}
+      , confirmation_calculators_{confirmation_calculators}
+      , prng_seed_{prng_seed} {}
 
   // Internal getters
   std::array<KeyType, NumConfKeys> confirmation_board_states_internal() {
     std::array<KeyType, NumConfKeys> confirmation_states;
     for (auto i = 0; i < NumConfKeys; ++i) {
-      confirmation_states[i] = confirmation_calculators_[i].board_state();
+      confirmation_states[i] = confirmation_calculators_[i]->board_state();
     }
     return confirmation_states;
   }
@@ -96,21 +107,6 @@ private:
       seeds[i] = confirmation_calculators_[i].seed();
     }
   }
-
-  // // Internal calculation methods
-  // void UpdateBoardStatesInternal(const ExecutedMove &executed_move) {
-  //   primary_calculator_.UpdateBoardState(executed_move);
-  //   for (auto &calculator : confirmation_calculators_) {
-  //     calculator.UpdateBoardState(executed_move);
-  //   }
-  // }
-
-  // void FullBoardStateCalcInternal(const BoardMap_t &board_map) {
-  //   primary_calculator_.FullBoardStateCalc(board_map);
-  //   for (auto &calculator : confirmation_calculators_) {
-  //     calculator.FullBoardStateCalc(board_map);
-  //   }
-  // }
 };
 
 //! Data structure to hold calculation results that get entered into a
@@ -324,6 +320,8 @@ public:
         } {
     // tr_table_pruner_.Start();
   }
+
+
 
   KeyType GetState() { return zobrist_component_.primary_board_state(); }
   // void UpdateBoardState(const ExecutedMove &executed_move) {

@@ -9,15 +9,15 @@
 
 namespace boardstate {
 
-template <typename KeyType>
-class ZobristCalculatorBuilder {
-public:
-  std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> build(
-      uint32_t seed = std::random_device{}()
-  ) {
-    return std::make_shared<ZobristCalculatorForConcepts<KeyType>>(seed);
-  }
-};
+// template <typename KeyType>
+// class ZobristCalculatorBuilder {
+// public:
+//   std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> build(
+//       uint32_t seed = std::random_device{}()
+//   ) {
+//     return std::make_shared<ZobristCalculatorForConcepts<KeyType>>(seed);
+//   }
+// };
 
 } // namespace boardstate
 

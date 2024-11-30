@@ -50,10 +50,6 @@ class GameBoardForConcepts {
   //! Encapsulates all calculations of allowed moves.
   MoveCalculator move_calculator_;
 
-  //! Stores functions that are called after any change in board config
-  // std::vector<void (*)(const ExecutedMove &)> move_callbacks_;
-  // std::vector<function<void(const ExecutedMove &)>> move_callbacks_;
-
   std::vector<std::shared_ptr<RC>> red_calculators_;
   std::vector<std::shared_ptr<BC>> black_calculators_;
   //! Vectors of all moves that have been executed (and not un-done) by each player.
