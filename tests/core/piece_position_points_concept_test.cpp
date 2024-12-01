@@ -1,31 +1,31 @@
 #include <builders.hpp>
+#include <concept_piece_value_provider.hpp>
 #include <gtest/gtest.h>
 #include <piece_points_bpo.hpp>
 #include <piece_position_points_for_concepts.hpp>
-#include <concept_piece_value_provider.hpp>
-#include <shared_ptr_builder_tests.hpp>
+// #include <shared_ptr_builder_tests.hpp>
 #include <type_traits>
 #include <utility_functs.hpp>
 
-// Run our standard test suite for a Builder that has .build() -> shared_ptr
-using PiecePositionPointsBuilderTestTypes = ::testing::Types<BuilderObjectPair<
-    piecepoints::PiecePositionPointsBuilder,
-    piecepoints::PiecePositionPointsForConcepts>>;
-INSTANTIATE_TYPED_TEST_SUITE_P(
-    PiecePositionPointsBuilderTestInstance,
-    SharedPtrBuilderTest,
-    PiecePositionPointsBuilderTestTypes
-);
 
-//! Tests specific to a GameBoardBuilder (beyone those in the generic Builder suite)
-class PiecePositionPointsBuilderTest : public ::testing::Test {
+class PiecePositionPointsForConceptsTest : public ::testing::Test {
 protected:
-  piecepoints::PiecePositionPointsBuilder builder_;
+  std::shared_ptr<piecepoints::PiecePositionPointsForConcepts> piece_position_points_ =
+      PiecePositionPointsForConcepts::Create();
 };
 
-TEST_F(PiecePositionPointsBuilderTest, CreatesValidPiecePositionPoints) {
-  auto piece_position_points = builder_.build();
-  auto full_points_array = piece_position_points->points_array;
+TEST_F(PiecePositionPointsForConceptsTest, SatisfiesPieceValueProviderConcept) {
+  static_assert(
+      PieceValueProviderConcept<piecepoints::PiecePositionPointsForConcepts>,
+      "PiecePositionPointsForConcepts must satisfy PieceValueProviderConcept"
+  );
+}
+
+TEST_F(
+    PiecePositionPointsForConceptsTest,
+    FactoryMethodCreatesValidPiecePositionPoints
+) {
+  auto full_points_array = piece_position_points_->points_array;
   static_assert(
       std::is_same<decltype(full_points_array), piecepoints::GamePointsArray_t>::value,
       "The .points array should be the same as GamePointsArray_t."
@@ -43,29 +43,6 @@ TEST_F(PiecePositionPointsBuilderTest, CreatesValidPiecePositionPoints) {
       single_piece_array[0].size(),
       gameboard::kNumFiles
   ) << "Size of final dimension of points array should match number of files on board.";
-}
-
-class PiecePositionPointsForConceptsTest : public ::testing::Test {
-protected:
-  piecepoints::PiecePositionPointsBuilder builder_;
-  std::shared_ptr<piecepoints::PiecePositionPointsForConcepts> piece_position_points_ =
-      builder_.build();
-
-  // const string points_spec_path =
-  //     utility_functs::get_data_file_abs_path("ICGA_2004_bpo.json");
-  // const string raw_points_json_path =
-  //     utility_functs::get_data_file_abs_path("ICGA_2004_raw.json");
-  // piecepoints::BPOPointsSKeys bpo_points_skeys{points_spec_path};
-  // piecepoints::BPOPointsEKeys bpo_points_ekeys = bpo_points_skeys.ToBPOPointsEKeys();
-  // piecepoints::GamePointsArray_t game_points_array =
-  //     bpo_points_skeys.ToGamePointsArray();
-};
-
-TEST_F(PiecePositionPointsForConceptsTest, SatisfiesPieceValueProviderConcept) {
-  static_assert(
-      PieceValueProviderConcept<piecepoints::PiecePositionPointsForConcepts>,
-      "PiecePositionPointsForConcepts must satisfy PieceValueProviderConcept"
-  );
 }
 
 TEST_F(PiecePositionPointsForConceptsTest, SpotCheckBlackValues) {
