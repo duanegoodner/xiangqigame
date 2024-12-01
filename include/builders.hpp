@@ -7,54 +7,6 @@
 #include <piece_position_points_for_concepts.hpp>
 #include <zobrist_for_concepts.hpp>
 
-namespace boardstate {
-
-// template <typename KeyType>
-// class ZobristCalculatorBuilder {
-// public:
-//   std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> build(
-//       uint32_t seed = std::random_device{}()
-//   ) {
-//     return std::make_shared<ZobristCalculatorForConcepts<KeyType>>(seed);
-//   }
-// };
-
-} // namespace boardstate
-
-namespace gameboard {
-
-template <BoardStateCalculatorConcept BC, BoardStateCalculatorConcept RC>
-class GameBoardBuilder {
-public:
-  std::shared_ptr<GameBoardForConcepts<RC, BC>> build(
-      std::vector<std::shared_ptr<RC>> red_z_calculators,
-      std::vector<std::shared_ptr<BC>> black_z_calculators,
-      const BoardMapInt_t starting_board = kStandardInitialBoard
-  ) {
-
-    auto game_board = std::make_shared<GameBoardForConcepts<RC, BC>>(
-        red_z_calculators,
-        black_z_calculators,
-        starting_board
-    );
-
-    for (auto calculator : red_z_calculators) {
-      calculator->FullBoardStateCalc(game_board->map());
-    }
-    for (auto calculator : black_z_calculators) {
-      calculator->FullBoardStateCalc(game_board->map());
-    }
-    return game_board;
-
-    // return std::make_shared<GameBoardForConcepts<RC, BC>>(
-    //     red_z_calculators,
-    //     black_z_calculators,
-    //     starting_board
-    // );
-  }
-};
-
-} // namespace gameboard
 
 namespace piecepoints {
 class PiecePositionPointsBuilder {
@@ -74,30 +26,6 @@ public:
   );
 };
 } // namespace piecepoints
-
-
-
-namespace boardstate {
-template <typename KeyType, size_t NumConfKeys>
-class ZobristCoordinatorBuilder {
-public:
-  std::shared_ptr<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>> build(
-      uint32_t prng_seed
-  ) {
-    ZobristComponentForConcepts<KeyType, NumConfKeys> zobrist_component{prng_seed};
-    return std::make_shared<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>>(
-        zobrist_component
-    );
-  }
-  std::shared_ptr<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>> build() {
-    auto prng_seed = (uint32_t)std::random_device{}();
-    ZobristComponentForConcepts<KeyType, NumConfKeys> zobrist_component{prng_seed};
-    return std::make_shared<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>>(
-        zobrist_component
-    );
-  }
-};
-} // namespace boardstate
 
 namespace moveselection {
 

@@ -66,7 +66,8 @@ public:
         NumConfKeys>
         confirmation_calculators;
     for (auto idx = 0; idx < NumConfKeys; ++idx) {
-      confirmation_calculators[idx] = boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
+      confirmation_calculators[idx] =
+          boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
     }
     auto zobrist_component =
         boardstate::ZobristComponentForConcepts<KeyType, NumConfKeys>::
@@ -107,6 +108,8 @@ public:
     EXPECT_NE(zobrist_component_->primary_board_state(), 0);
     for (auto board_state : zobrist_component_->confirmation_board_states()) {
       EXPECT_NE(board_state, 0);
+      // confirm confirmation calculator's value for current state differs from primary
+      EXPECT_NE(board_state, zobrist_component_->primary_board_state());
     }
   }
 
@@ -137,12 +140,19 @@ public:
     auto final_primary_state = zobrist_component_->primary_board_state();
     auto final_confirmation_states = zobrist_component_->confirmation_board_states();
 
+    // confirm first call to UpdateBoardState caused state to change
     EXPECT_NE(initial_primary_state, post_move_primary_state);
+    // confirm second call (using same ExecutedMove)
     EXPECT_EQ(initial_primary_state, final_primary_state);
 
+    // perform same UpdateBoardState effect checks on confirmation calculators
     for (auto idx = 0; idx < NumConfKeys; ++idx) {
       EXPECT_NE(initial_confirmation_states[idx], post_move_confirmation_states[idx]);
       EXPECT_EQ(initial_confirmation_states[idx], final_confirmation_states[idx]);
+      
+      // also confirm confirmation state(s) differ from primary state
+      EXPECT_NE(initial_confirmation_states[idx], initial_primary_state);
+      EXPECT_NE(post_move_confirmation_states[idx], post_move_primary_state);
     }
   }
 
