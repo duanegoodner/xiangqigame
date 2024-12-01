@@ -65,8 +65,8 @@ public:
         std::shared_ptr<boardstate::ZobristCalculatorForConcepts<KeyType>>,
         NumConfKeys>
         confirmation_calculators;
-    for (auto calculator : confirmation_calculators) {
-      calculator = boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
+    for (auto idx = 0; idx < NumConfKeys; ++idx) {
+      confirmation_calculators[idx] = boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
     }
     auto zobrist_component =
         boardstate::ZobristComponentForConcepts<KeyType, NumConfKeys>::
