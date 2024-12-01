@@ -300,36 +300,26 @@ private:
 
 template <typename KeyType, size_t NumConfKeys>
 class ZobristCoordinatorForConcepts {
-  ZobristComponentForConcepts<KeyType, NumConfKeys> zobrist_component_;
+  std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>> zobrist_component_;
   TranspositionTableForConcepts<KeyType, NumConfKeys> tr_table_;
   TranspositionTableGuardForConcepts tr_table_guard_;
   TranspositionTablePrunerForConcepts<KeyType, NumConfKeys> tr_table_pruner_;
 
 public:
-  ZobristCoordinatorForConcepts(const ZobristCoordinatorForConcepts &) = delete;
-  ZobristCoordinatorForConcepts &operator=(const ZobristCoordinatorForConcepts &) =
-      delete;
+  // ZobristCoordinatorForConcepts(const ZobristCoordinatorForConcepts &) = delete;
+  // ZobristCoordinatorForConcepts &operator=(const ZobristCoordinatorForConcepts &) =
+  //     delete;
 
-  explicit ZobristCoordinatorForConcepts(
-      ZobristComponentForConcepts<KeyType, NumConfKeys> zobrist_component
-  )
-      : zobrist_component_{std::move(zobrist_component)}
-      , tr_table_{}
-      , tr_table_guard_{}
-      , tr_table_pruner_{TranspositionTablePrunerForConcepts{tr_table_, tr_table_guard_}
-        } {
-    // tr_table_pruner_.Start();
+  static std::shared_ptr<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>>
+  CreateFromZobristComponent(
+      std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>> zobrist_component
+  ) {
+    return std::shared_ptr<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>>(
+        new ZobristCoordinatorForConcepts<KeyType, NumConfKeys>(zobrist_component)
+    );
   }
 
-
-
-  KeyType GetState() { return zobrist_component_.primary_board_state(); }
-  // void UpdateBoardState(const ExecutedMove &executed_move) {
-  //   zobrist_component_.UpdateBoardStates(executed_move);
-  // }
-  // void FullBoardStateCalc(const BoardMap_t &board_map) {
-  //   zobrist_component_.FullBoardStateCalc(board_map);
-  // }
+  KeyType GetState() { return zobrist_component_->primary_board_state(); }
   void RecordTrData(
       DepthType search_depth,
       moveselection::MinimaxResultType result_type,
@@ -337,11 +327,11 @@ public:
       MoveCountType access_index
   ) {
     tr_table_.RecordData(
-        zobrist_component_.primary_board_state(),
+        zobrist_component_->primary_board_state(),
         search_depth,
         result_type,
         similar_moves,
-        zobrist_component_.confirmation_board_states()
+        zobrist_component_->confirmation_board_states()
     );
   }
   moveselection::TranspositionTableSearchResult GetTrData(
@@ -349,9 +339,9 @@ public:
       MoveCountType access_index
   ) {
     return tr_table_.GetDataAt(
-        zobrist_component_.primary_board_state(),
+        zobrist_component_->primary_board_state(),
         search_depth,
-        zobrist_component_.confirmation_board_states()
+        zobrist_component_->confirmation_board_states()
     );
   }
   size_t GetTrTableSize() { return tr_table_.size(); }
@@ -362,10 +352,23 @@ public:
   }
 
   const std::string board_state_hex_str() {
-    return IntToHexString(zobrist_component_.primary_board_state());
+    return IntToHexString(zobrist_component_->primary_board_state());
   }
 
-  uint32_t zkeys_seed() { return zobrist_component_.prng_seed(); }
+  uint32_t zkeys_seed() { return zobrist_component_->prng_seed(); }
+
+private:
+  ZobristCoordinatorForConcepts(
+      std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>>
+          zobrist_component
+  )
+      : zobrist_component_{zobrist_component}
+      , tr_table_{}
+      , tr_table_guard_{}
+      , tr_table_pruner_{TranspositionTablePrunerForConcepts{tr_table_, tr_table_guard_}
+        } {
+    // tr_table_pruner_.Start();
+  }
 };
 
 } // namespace boardstate

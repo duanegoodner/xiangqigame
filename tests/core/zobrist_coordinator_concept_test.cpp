@@ -1,31 +1,62 @@
+#include <board_map_fixture.hpp>
 #include <concept_board_state_coordinator.hpp>
 // #include <concept_board_state_tracker.hpp>
 #include <builders.hpp>
 #include <concepts>
 #include <game_board.hpp>
 #include <gtest/gtest.h>
+#include <memory>
 #include <nlohmann/json.hpp>
-#include <shared_ptr_builder_tests.hpp>
+// #include <shared_ptr_builder_tests.hpp>
 #include <string>
 #include <type_traits>
 #include <zobrist_for_concepts.hpp>
+#include <zobrist_component_with_exposed_calculators_fixture.hpp>
 
 //! Check shared_ptr behavior of pointer returned by ZobristCoordinatorBuilder
-using ZobristCoorinatorBuilderTestTypes = ::testing::Types<BuilderObjectPair<
-    boardstate::ZobristCoordinatorBuilder<uint64_t, 1>,
-    boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>>>;
-INSTANTIATE_TYPED_TEST_SUITE_P(
-    ZobristCoordinatorBuilderTestInstance,
-    SharedPtrBuilderTest,
-    ZobristCoorinatorBuilderTestTypes
-);
+// using ZobristCoorinatorBuilderTestTypes = ::testing::Types<BuilderObjectPair<
+//     boardstate::ZobristCoordinatorBuilder<uint64_t, 1>,
+//     boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>>>;
+// INSTANTIATE_TYPED_TEST_SUITE_P(
+//     ZobristCoordinatorBuilderTestInstance,
+//     SharedPtrBuilderTest,
+//     ZobristCoorinatorBuilderTestTypes
+// );
 
 class ZobristCoordinatorConceptTest : public ::testing::Test {
 protected:
-  boardstate::ZobristCoordinatorBuilder<uint64_t, 1> builder_;
-  std::shared_ptr<boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>> coordinator_ =
-      builder_.build();
-  BoardMap_t board_map_ = int_board_to_game_pieces(kStandardInitialBoard);
+  fixtures::BoardMapFixture board_map_fixture_;
+
+  template <typename KeyType, size_t NumConfKeys>
+  std::shared_ptr<boardstate::ZobristComponentForConcepts<KeyType, NumConfKeys>>
+  BuildComponentFromSeed() {
+    return boardstate::ZobristComponentForConcepts<KeyType, NumConfKeys>::CreateFromSeed(
+    );
+  }
+
+  template <typename KeyType, size_t NumConfKeys>
+  void TestCreateFromZobristComponent() {
+    auto zobrist_component = BuildComponentFromSeed<KeyType, NumConfKeys>();
+    auto zobrist_coordinator =
+        boardstate::ZobristCoordinatorForConcepts<KeyType, NumConfKeys>::
+            CreateFromZobristComponent(zobrist_component);
+  }
+
+  template <typename KeyType, size_t NumConfKeys>
+  void TestExecuteAndUndoMove() {
+    auto accessible_component =
+        fixtures::ZobristComponentWithExposedCalculators<KeyType, NumConfKeys>::Create();
+    accessible_component->TestCoordinatorExecuteAndUndoMove();
+  }
+
+  template <typename KeyType, size_t NumConfKeys>
+  void TestRecordAndReadData() {
+    auto accessible_component =
+        fixtures::ZobristComponentWithExposedCalculators<KeyType, NumConfKeys>::Create();
+    accessible_component->TestCoordinatorRecordAndReadData();
+  }
+
+
 };
 
 TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
@@ -37,30 +68,35 @@ TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
   );
 }
 
-//! @todo This test needs to be updated to have ZobristComponent and/or
-//! ZobristCalculators (actual or mocked) that have their state changed by moves.
-//! DO NOT DELETE. Keep old version of test commented out here as reminder of what
-//! updated test should do.
-// TEST_F(ZobristCoordinatorConceptTest, ExecuteAndUndoMove) {
-//   auto start = BoardSpace{6, 0};
-//   auto end = BoardSpace{5, 0};
-//   auto move = Move{start, end};
-//   auto moving_piece = GamePiece{PieceType::kSol, PieceColor::kRed};
-//   auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
-//   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
+TEST_F(ZobristCoordinatorConceptTest, TestCreateFromZobristComponent) {
+  TestCreateFromZobristComponent<uint32_t, 0>();
+  TestCreateFromZobristComponent<uint64_t, 0>();
+  TestCreateFromZobristComponent<__uint128_t, 0>();
+  TestCreateFromZobristComponent<uint32_t, 1>();
+  TestCreateFromZobristComponent<uint64_t, 1>();
+  TestCreateFromZobristComponent<__uint128_t, 1>();
+}
 
-//   coordinator_->FullBoardStateCalc(board_map_);
-//   auto initial_state = coordinator_->GetState();
-//   coordinator_->UpdateBoardState(executed_move);
-//   auto post_move_state = coordinator_->GetState();
-//   coordinator_->UpdateBoardState(executed_move);
-//   auto final_state = coordinator_->GetState();
+TEST_F(ZobristCoordinatorConceptTest, TestExecuteAndUndoMove) {
+  TestExecuteAndUndoMove<uint32_t, 0>();
+  TestExecuteAndUndoMove<uint64_t, 0>();
+  TestExecuteAndUndoMove<__uint128_t, 0>();
+  TestExecuteAndUndoMove<uint32_t, 1>();
+  TestExecuteAndUndoMove<uint64_t, 1>();
+  TestExecuteAndUndoMove<__uint128_t, 1>();
+}
 
-//   EXPECT_NE(initial_state, post_move_state);
-//   EXPECT_EQ(initial_state, final_state);
-// }
+TEST_F(ZobristCoordinatorConceptTest, TestRecordAndReadData) {
+  TestRecordAndReadData<uint32_t, 0>();
+  TestRecordAndReadData<uint64_t, 0>();
+  TestRecordAndReadData<__uint128_t, 0>();
+  TestRecordAndReadData<uint32_t, 1>();
+  TestRecordAndReadData<uint64_t, 1>();
+  TestRecordAndReadData<__uint128_t, 1>();
+}
 
-//! todo redo after changing to new builder approach for ZobristCalculatorForConcepts 
+
+//! todo redo after changing to new builder approach for ZobristCalculatorForConcepts
 // TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
 
 //   //   boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>

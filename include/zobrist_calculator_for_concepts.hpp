@@ -20,7 +20,7 @@ private:
   KeyType board_state_;
 
 public:
-  static ::std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> Create(
+  static std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> Create(
       uint32_t seed = std::random_device{}()
   ) {
     return std::shared_ptr<ZobristCalculatorForConcepts<KeyType>>(

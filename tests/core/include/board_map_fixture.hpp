@@ -1,3 +1,5 @@
+#pragma once
+
 #include <board_data_structs.hpp>
 #include <move_data_structs.hpp>
 
