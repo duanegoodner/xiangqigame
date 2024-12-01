@@ -45,14 +45,14 @@ protected:
   template <typename KeyType, size_t NumConfKeys>
   void TestExecuteAndUndoMove() {
     auto accessible_component =
-        fixtures::ZobristComponentWithExposedCalculators<KeyType, NumConfKeys>::Create();
+        fixtures::ZobristCoordinatorWithExposedCalculators<KeyType, NumConfKeys>::Create();
     accessible_component->TestCoordinatorExecuteAndUndoMove();
   }
 
   template <typename KeyType, size_t NumConfKeys>
   void TestRecordAndReadData() {
     auto accessible_component =
-        fixtures::ZobristComponentWithExposedCalculators<KeyType, NumConfKeys>::Create();
+        fixtures::ZobristCoordinatorWithExposedCalculators<KeyType, NumConfKeys>::Create();
     accessible_component->TestCoordinatorRecordAndReadData();
   }
 

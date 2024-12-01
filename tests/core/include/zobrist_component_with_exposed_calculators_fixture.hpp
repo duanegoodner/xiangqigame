@@ -9,7 +9,7 @@ namespace fixtures {
 //! ZobristCalculators) exposed so calculators' FullBoardStateCalc and UpdateBoardState
 //! methods can be called without attaching them to a GameBoard.
 template <typename KeyType, size_t NumConfKeys>
-class ZobristComponentWithExposedCalculators {
+class ZobristCoordinatorWithExposedCalculators {
 
   std::shared_ptr<boardstate::ZobristCalculatorForConcepts<KeyType>> primary_calculator_;
   std::array<
@@ -24,7 +24,7 @@ class ZobristComponentWithExposedCalculators {
   fixtures::BoardMapFixture board_map_fixture_;
 
 public:
-  ZobristComponentWithExposedCalculators(
+  ZobristCoordinatorWithExposedCalculators(
       std::shared_ptr<boardstate::ZobristCalculatorForConcepts<KeyType>>
           primary_calculator,
       std::array<
@@ -57,7 +57,7 @@ public:
     return zobrist_component_;
   }
 
-  static std::shared_ptr<ZobristComponentWithExposedCalculators<KeyType, NumConfKeys>>
+  static std::shared_ptr<ZobristCoordinatorWithExposedCalculators<KeyType, NumConfKeys>>
   Create() {
     auto primary_calculator =
         boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
@@ -76,7 +76,7 @@ public:
             CreateFromZobristComponent(zobrist_component);
 
     return std::make_shared<
-        ZobristComponentWithExposedCalculators<KeyType, NumConfKeys>>(
+        ZobristCoordinatorWithExposedCalculators<KeyType, NumConfKeys>>(
         primary_calculator,
         confirmation_calculators,
         zobrist_component,

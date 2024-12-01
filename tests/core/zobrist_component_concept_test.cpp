@@ -38,9 +38,9 @@ protected:
   }
 
   template <typename KeyType, size_t NumConfKeys>
-  void TestZobristComponentWithExposedCalculators() {
+  void TestZobristCoordinatorWithExposedCalculators() {
     auto zobrist_component_with_exposed_calculators =
-        fixtures::ZobristComponentWithExposedCalculators<KeyType, NumConfKeys>::Create();
+        fixtures::ZobristCoordinatorWithExposedCalculators<KeyType, NumConfKeys>::Create();
   }
 
   template <typename KeyType, size_t NumConfKeys>
@@ -68,7 +68,7 @@ protected:
 
     // crate object with ZobristComponent and its calculator epxposed
     auto accessible_component =
-        fixtures::ZobristComponentWithExposedCalculators<KeyType, NumConfKeys>::Create();
+        fixtures::ZobristCoordinatorWithExposedCalculators<KeyType, NumConfKeys>::Create();
     accessible_component->TestComponentFullBoardStateCalc();
   }
 
@@ -76,7 +76,7 @@ protected:
   void TestUpdateBoardState() {
     // crate object with ZobristComponent and its calculator epxposed
     auto accessible_component =
-        fixtures::ZobristComponentWithExposedCalculators<KeyType, NumConfKeys>::Create();
+        fixtures::ZobristCoordinatorWithExposedCalculators<KeyType, NumConfKeys>::Create();
     accessible_component->TestComponentUpdateBoardState();
   }
 };
