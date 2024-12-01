@@ -58,19 +58,6 @@ class GameBoardForConcepts {
   MoveCountType moves_since_last_capture_;
 
 public:
-  //! Initializes a gameboard::GameBoard from array of pieces represented as integers.
-  //! @param starting_board An array of integers representing pieces on the board.
-  GameBoardForConcepts(
-      std::vector<std::shared_ptr<RC>> red_calclulators,
-      std::vector<std::shared_ptr<BC>> black_calculators,
-      const BoardMapInt_t starting_board
-  )
-      : board_map_{int_board_to_game_pieces(starting_board)}
-      , red_calculators_{red_calclulators}
-      , black_calculators_{black_calculators}
-      , move_calculator_{MoveCalculator()}
-      , moves_since_last_capture_{} {}
-
   const BoardMap_t &map() const { return board_map_; }
   const std::map<PieceColor, std::vector<ExecutedMove>> &move_log() const {
     return move_log_;
@@ -116,6 +103,18 @@ public:
   }
 
 private:
+  //! Initializes a gameboard::GameBoard from array of pieces represented as integers.
+  //! @param starting_board An array of integers representing pieces on the board.
+  GameBoardForConcepts(
+      std::vector<std::shared_ptr<RC>> red_calclulators,
+      std::vector<std::shared_ptr<BC>> black_calculators,
+      const BoardMapInt_t starting_board
+  )
+      : board_map_{int_board_to_game_pieces(starting_board)}
+      , red_calculators_{red_calclulators}
+      , black_calculators_{black_calculators}
+      , move_calculator_{MoveCalculator()}
+      , moves_since_last_capture_{} {}
   inline PieceColor GetColorInternal(const BoardSpace &space) const {
     return board_map_[space.rank][space.file].piece_color;
   }
