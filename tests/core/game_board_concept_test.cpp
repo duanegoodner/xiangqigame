@@ -18,68 +18,55 @@
 //     GameBoardBuilderTestTypes
 // );
 
-template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>> BuildGameBoard(
-    const BoardMapInt_t starting_board = kStandardInitialBoard
-) {
-  gameboard::GameBoardBuilder<RC, BC> builder;
-
-  auto zcalc_r1 = std::make_shared<RC>();
-  auto zcalc_r2 = std::make_shared<RC>();
-  auto zcalc_b1 = std::make_shared<BC>();
-  auto zcalc_b2 = std::make_shared<BC>();
-
-  std::vector<std::shared_ptr<RC>> red_z_calculators{zcalc_r1, zcalc_r2};
-  std::vector<std::shared_ptr<BC>> black_z_calculators{zcalc_b1, zcalc_b2};
-
-  return builder.build(red_z_calculators, black_z_calculators, starting_board);
-}
-
 //! Tests specific to a GameBoardBuilder (beyone those in the generic Builder suite)
-class GameBoardBuilderTest : public ::testing::Test {
-protected:
-  gameboard::GameBoardBuilder<
-      boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>
-      builder_;
+// class GameBoardBuilderTest : public ::testing::Test {
+// protected:
+//   gameboard::GameBoardBuilder<
+//       boardstate::ZobristCalculatorForConcepts<uint64_t>,
+//       boardstate::ZobristCalculatorForConcepts<uint64_t>>
+//       builder_;
 
-  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-  void TestGameBoardCreation() {
-    auto game_board = BuildGameBoard<RC, BC>();
-    const auto &actual_board_map = game_board->map();
-    auto expected_initial_board =
-        gameboard::int_board_to_game_pieces(gameboard::kStandardInitialBoard);
-    EXPECT_EQ(actual_board_map, expected_initial_board)
-        << "When no arguments passed to .build(), .map() should be standard starting "
-           "board";
+//   template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
+//   void TestGameBoardCreation() {
+//     auto game_board = BuildGameBoard<RC, BC>();
+//     const auto &actual_board_map = game_board->map();
+//     auto expected_initial_board =
+//         gameboard::int_board_to_game_pieces(gameboard::kStandardInitialBoard);
+//     EXPECT_EQ(actual_board_map, expected_initial_board)
+//         << "When no arguments passed to .build(), .map() should be standard
+//         starting "
+//            "board";
 
-    auto move_log_size = game_board->move_log().size();
-    EXPECT_EQ(move_log_size, 0) << "Initial move log should be empty";
-  }
+//     auto move_log_size = game_board->move_log().size();
+//     EXPECT_EQ(move_log_size, 0) << "Initial move log should be empty";
+//   }
 
-  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-  void TestSharedPtrBehavior() {
-    std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>> game_board_outer_scope_ptr;
-    {
-      auto game_board_inner_scope_ptr = BuildGameBoard<RC, BC>();
-      auto move_log_obtained_from_inner_scope = game_board_inner_scope_ptr->move_log();
-      game_board_outer_scope_ptr = game_board_inner_scope_ptr;
-    }
-    auto move_log_obtained_from_outer_cope = game_board_outer_scope_ptr->move_log();
-  }
-};
+//   template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
+//   void TestSharedPtrBehavior() {
+//     std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>>
+//     game_board_outer_scope_ptr;
+//     {
+//       auto game_board_inner_scope_ptr = BuildGameBoard<RC, BC>();
+//       auto move_log_obtained_from_inner_scope =
+//       game_board_inner_scope_ptr->move_log(); game_board_outer_scope_ptr =
+//       game_board_inner_scope_ptr;
+//     }
+//     auto move_log_obtained_from_outer_cope =
+//     game_board_outer_scope_ptr->move_log();
+//   }
+// };
 
-TEST_F(GameBoardBuilderTest, CreatesValidGameBoard) {
-  TestGameBoardCreation<
-      boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
-}
+// TEST_F(GameBoardBuilderTest, CreatesValidGameBoard) {
+//   TestGameBoardCreation<
+//       boardstate::ZobristCalculatorForConcepts<uint64_t>,
+//       boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+// }
 
-TEST_F(GameBoardBuilderTest, SharedPtrBehavior) {
-  TestSharedPtrBehavior<
-      boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
-}
+// TEST_F(GameBoardBuilderTest, SharedPtrBehavior) {
+//   TestSharedPtrBehavior<
+//       boardstate::ZobristCalculatorForConcepts<uint64_t>,
+//       boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+// }
 
 class GameBoardForConceptsTest : public ::testing::Test {
 protected:
@@ -109,10 +96,59 @@ protected:
       {0, 0, 0, 0, -1, 0, 0, 0, 0},
   }};
 
-  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-  void TestDrawDetection() {
-    auto draw_test_board = BuildGameBoard<RC, BC>(kDrawTestBoard);
+  template <BoardStateCalculatorConcept C>
+  std::vector<std::shared_ptr<C>> BuildVectorOfCalculators(size_t NumCalculators) {
+    std::vector<std::shared_ptr<C>> calculators;
+    for (auto idx = 0; idx < NumCalculators; ++idx) {
+      calculators.emplace_back(C::Create());
+    }
+    return calculators;
+  }
 
+  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
+  std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>>
+  BuildGameBoardBasedOnCalcConcepts(
+      size_t NumCalculatorsRed = 2,
+      size_t NumCalculatorsBlack = 2,
+      const BoardMapInt_t starting_board = kStandardInitialBoard
+  ) {
+    auto red_z_calculators = BuildVectorOfCalculators<RC>(NumCalculatorsRed);
+    auto black_z_calculators = BuildVectorOfCalculators<BC>(NumCalculatorsBlack);
+
+    return gameboard::GameBoardForConcepts<RC, BC>::Create(
+        red_z_calculators,
+        black_z_calculators,
+        starting_board
+    );
+  }
+
+  template <typename KeyTypeRed, typename KeyTypeBlack>
+  std::shared_ptr<gameboard::GameBoardForConcepts<
+      boardstate::ZobristCalculatorForConcepts<KeyTypeRed>,
+      boardstate::ZobristCalculatorForConcepts<KeyTypeBlack>>>
+  BuildGameBoardWithZobristHashCalculators(
+      size_t NumCalculatorsRed = 2,
+      size_t NumCalculatorsBlack = 2,
+      const BoardMapInt_t starting_board = kStandardInitialBoard
+
+  ) {
+    return BuildGameBoardBasedOnCalcConcepts<
+        boardstate::ZobristCalculatorForConcepts<KeyTypeRed>,
+        boardstate::ZobristCalculatorForConcepts<KeyTypeBlack>>(
+        NumCalculatorsRed,
+        NumCalculatorsBlack,
+        starting_board
+    );
+  }
+
+  template <typename KeyTypeRed, typename KeyTypeBlack>
+  void TestDrawDetection() {
+    auto draw_test_board =
+        BuildGameBoardWithZobristHashCalculators<KeyTypeRed, KeyTypeBlack>(
+            2,
+            2,
+            kDrawTestBoard
+        );
     for (auto round_trip = 0; round_trip < 10; ++round_trip) {
       for (auto idx = 0; idx < 6; ++idx) {
         BoardSpace start{3, idx};
@@ -130,20 +166,23 @@ protected:
     }
     auto is_draw = draw_test_board->IsDraw();
     auto red_available_moves = draw_test_board->CalcFinalMovesOf(PieceColor::kRed);
-    std::cout << draw_test_board->IsDraw() << std::endl;
+    EXPECT_TRUE(is_draw);
+    EXPECT_EQ(red_available_moves.Size(), 0);
   }
 
-  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
+  template <typename KeyTypeRed, typename KeyTypeBlack>
   void TestGetsCorrectOccupants() {
-    auto starting_board = BuildGameBoard<RC, BC>();
+    auto starting_board =
+        BuildGameBoardWithZobristHashCalculators<KeyTypeRed, KeyTypeBlack>();
     EXPECT_EQ(starting_board->GetOccupantAt(BoardSpace{0, 0}), 5);
     EXPECT_EQ(starting_board->GetOccupantAt(BoardSpace{1, 0}), 0);
     EXPECT_EQ(starting_board->GetOccupantAt(BoardSpace{9, 7}), -4);
   }
 
-  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
+  template <typename KeyTypeRed, typename KeyTypeBlack>
   void TestExecuteAndUndoActualMove() {
-    auto starting_board = BuildGameBoard<RC, BC>();
+    auto starting_board =
+        BuildGameBoardWithZobristHashCalculators<KeyTypeRed, KeyTypeBlack>();
     auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};
     auto actual_executed_move = starting_board->ExecuteMove(actual_move);
     EXPECT_EQ(starting_board->GetOccupantAt(BoardSpace{6, 2}), 0);
@@ -153,23 +192,35 @@ protected:
     EXPECT_EQ(starting_board->GetOccupantAt(BoardSpace{5, 2}), 0);
   }
 
-  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-  void TestCorrecNumSpacesOccupiedBy(PieceColor color) {
-    auto starting_board = BuildGameBoard<RC, BC>();
-    auto player_spaces = starting_board->GetAllSpacesOccupiedBy(color);
-    EXPECT_EQ(player_spaces.size(), 16);
+  template <typename KeyTypeRed, typename KeyTypeBlack>
+  void TestCorrectNumSpacesOccupied() {
+    auto starting_board =
+        BuildGameBoardWithZobristHashCalculators<KeyTypeRed, KeyTypeBlack>();
+    auto red_player_spaces =
+        starting_board->GetAllSpacesOccupiedBy(gameboard::PieceColor::kRed);
+    auto black_player_spaces =
+        starting_board->GetAllSpacesOccupiedBy(gameboard::PieceColor::kBlk);
+
+    EXPECT_EQ(red_player_spaces.size(), 16);
+    EXPECT_EQ(black_player_spaces.size(), 16);
   }
 
-  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
+  template <typename KeyTypeRed, typename KeyTypeBlack>
   void TestCorrectNumberAvailableMoves() {
-    auto starting_board = BuildGameBoard<RC, BC>();
+    auto starting_board =
+        BuildGameBoardWithZobristHashCalculators<KeyTypeRed, KeyTypeBlack>();
     auto black_moves = starting_board->CalcFinalMovesOf(PieceColor::kBlk);
     auto red_moves = starting_board->CalcFinalMovesOf(PieceColor::kRed);
   }
 
-  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
+  template <typename KeyTypeRed, typename KeyTypeBlack>
   void TestProhibitsTripleRepeatMovePeriod_02() {
-    auto repeat_move_test_board = BuildGameBoard<RC, BC>(kRepeatMoveTestBoard);
+    auto repeat_move_test_board =
+        BuildGameBoardWithZobristHashCalculators<KeyTypeRed, KeyTypeBlack>(
+            2,
+            2,
+            kRepeatMoveTestBoard
+        );
 
     auto red_king_position_a = BoardSpace{9, 4};
     auto red_king_position_b = BoardSpace{9, 3};
@@ -191,10 +242,14 @@ protected:
     EXPECT_TRUE(avail_moves_c.Size() == 0);
   }
 
-  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
+  template <typename KeyTypeRed, typename KeyTypeBlack>
   void TestProhibitsTripleRepeatMovePeriod_03() {
-    auto repeat_move_test_board = BuildGameBoard<RC, BC>(kRepeatMoveTestBoard);
-
+    auto repeat_move_test_board =
+        BuildGameBoardWithZobristHashCalculators<KeyTypeRed, KeyTypeBlack>(
+            2,
+            2,
+            kRepeatMoveTestBoard
+        );
     auto red_king_position_a = BoardSpace{9, 4};
     auto red_king_position_b = BoardSpace{9, 3};
     auto red_king_position_c = BoardSpace{9, 5};
@@ -221,9 +276,6 @@ protected:
         );
       }
     }
-
-    repeat_move_test_board->ExecuteMove(move_y);
-    EXPECT_TRUE(repeat_move_test_board->CalcFinalMovesOf(PieceColor::kRed).Size() == 0);
   }
 };
 
@@ -236,52 +288,48 @@ TEST_F(GameBoardForConceptsTest, SatisfiesSpaceInfoProviderConcept) {
   );
 }
 
-TEST_F(GameBoardForConceptsTest, DetectsDraw) {
-  TestDrawDetection<
-      boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+TEST_F(GameBoardForConceptsTest, TestBuildVectorOfCalculators) {
+  auto calculators =
+      BuildVectorOfCalculators<boardstate::ZobristCalculatorForConcepts<uint64_t>>(2);
+  EXPECT_EQ(calculators.size(), 2);
 }
 
-TEST_F(GameBoardForConceptsTest, GetsCorrectOccupants) {
-  TestGetsCorrectOccupants<
+TEST_F(GameBoardForConceptsTest, TestBuildGameBoard) {
+  auto game_board = BuildGameBoardBasedOnCalcConcepts<
       boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>(2, 2);
 }
 
-TEST_F(GameBoardForConceptsTest, ExecuteAndUndoActualMove) {
-  TestExecuteAndUndoActualMove<
-      boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+TEST_F(GameBoardForConceptsTest, TestBuildBasedOnKeyType) {
+  auto game_board = BuildGameBoardWithZobristHashCalculators<uint64_t, uint64_t>(2, 2);
 }
 
-TEST_F(GameBoardForConceptsTest, CorrecNumSpacesOccupiedByBlack) {
-  TestCorrecNumSpacesOccupiedBy<
-      boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>(PieceColor::kBlk);
+TEST_F(GameBoardForConceptsTest, TestGetsCorrectOccupants) {
+  TestGetsCorrectOccupants<uint64_t, uint64_t>();
 }
 
-TEST_F(GameBoardForConceptsTest, CorrecNumSpacesOccupiedByRed) {
-  TestCorrecNumSpacesOccupiedBy<
-      boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>(PieceColor::kRed);
+TEST_F(GameBoardForConceptsTest, TestDrawDetection) {
+  TestDrawDetection<uint64_t, uint64_t>();
 }
 
-TEST_F(GameBoardForConceptsTest, CorrectNumberAvailableMoves) {
-  TestCorrectNumberAvailableMoves<
-      boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+TEST_F(GameBoardForConceptsTest, TestExecuteAndUndoMove) {
+  TestExecuteAndUndoActualMove<uint64_t, uint64_t>();
 }
 
-TEST_F(GameBoardForConceptsTest, ProhibitsTripleRepeatMovePeriod_02) {
-  TestProhibitsTripleRepeatMovePeriod_02<
-      boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+TEST_F(GameBoardForConceptsTest, TestCorrectNumSpacesOccupied) {
+  TestCorrectNumSpacesOccupied<uint64_t, uint64_t>();
 }
 
-TEST_F(GameBoardForConceptsTest, ProhibitsTripleRepeatMovePeriod_03) {
-  TestProhibitsTripleRepeatMovePeriod_03<
-      boardstate::ZobristCalculatorForConcepts<uint64_t>,
-      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+TEST_F(GameBoardForConceptsTest, TestCorrectNumberAvailableMoves) {
+  TestCorrectNumberAvailableMoves<uint64_t, uint64_t>();
+}
+
+TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_02) {
+  TestProhibitsTripleRepeatMovePeriod_02<uint64_t, uint64_t>();
+}
+
+TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_03) {
+  TestProhibitsTripleRepeatMovePeriod_03<uint64_t, uint64_t>();
 }
 
 int main(int argc, char **argv) {

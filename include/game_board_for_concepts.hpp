@@ -9,7 +9,6 @@
 #include <move_calculator.hpp>
 #include <move_data_structs.hpp>
 
-
 namespace gameboard {
 
 //! Starting board represented as 2-D array of integers.
@@ -77,6 +76,20 @@ public:
     return move_log_;
   }
 
+  static std::shared_ptr<GameBoardForConcepts<RC, BC>> Create(
+      std::vector<std::shared_ptr<RC>> red_calclulators,
+      std::vector<std::shared_ptr<BC>> black_calculators,
+      const BoardMapInt_t starting_board
+  ) {
+    return std::shared_ptr<GameBoardForConcepts<RC, BC>>(
+        new GameBoardForConcepts<RC, BC>(
+            red_calclulators,
+            black_calculators,
+            starting_board
+        )
+    );
+  }
+
   PieceColor GetColor(const BoardSpace &space) const { return GetColorInternal(space); }
   bool IsInCheck(PieceColor color) { return IsInCheckInternal(color); }
   ExecutedMove ExecuteMove(const Move &move) { return ExecuteMoveInternal(move); }
@@ -111,8 +124,7 @@ private:
     return board_map_[space.rank][space.file].piece_type;
   }
 
-  inline vector<BoardSpace> GetAllSpacesOccupiedByInternal(
-      const PieceColor color
+  inline vector<BoardSpace> GetAllSpacesOccupiedByInternal(const PieceColor color
   ) const {
     vector<BoardSpace> occupied_spaces;
     occupied_spaces.reserve(16);
@@ -130,9 +142,7 @@ private:
     return board_map_[space.rank][space.file];
   }
 
-  inline BoardSpace GetGeneralPositionInternal(
-      const PieceColor color
-  ) {
+  inline BoardSpace GetGeneralPositionInternal(const PieceColor color) {
     auto castle =
         (color == PieceColor::kRed) ? red_castle_spaces() : black_castle_spaces();
 
@@ -210,7 +220,7 @@ private:
     moves_since_last_capture_ = executed_move.moves_since_last_capture;
     RemoveFromMoveLog(executed_move);
   };
-  
+
   void UpdateStateTracker(const ExecutedMove &executed_move) {
 
     for (auto z_calculator : red_calculators_) {
