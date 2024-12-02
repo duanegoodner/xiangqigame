@@ -19,11 +19,14 @@ concept BoardStateCalculatorConcept = requires(
 };
 
 class NullBoardStateCalculator {
+
+public:
+  static std::shared_ptr<NullBoardStateCalculator> Create(uint32_t seed = 0) {
+    return std::shared_ptr<NullBoardStateCalculator>(new NullBoardStateCalculator());
+  }
   void FullBoardStateCalc(const gameboard::BoardMap_t &board_map) {}
   void UpdateBoardState(const gameboard::ExecutedMove &executed_move) {}
 
-public:
-  static std::shared_ptr<NullBoardStateCalculator> Create() {
-    return std::shared_ptr<NullBoardStateCalculator>(new NullBoardStateCalculator());
-  }
+private:
+  NullBoardStateCalculator() = default;
 };

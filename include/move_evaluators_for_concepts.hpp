@@ -571,11 +571,11 @@ class RandomMoveEvaluatorForConcept {
   std::shared_ptr<G> game_board_;
 
 public:
-  static std::shared_ptr<RandomMoveEvaluatorForConcept<G>> Create(
+  static std::unique_ptr<RandomMoveEvaluatorForConcept<G>> Create(
       gameboard::PieceColor evaluating_player,
       std::shared_ptr<G> game_board
   ) {
-    return std::shared_ptr<RandomMoveEvaluatorForConcept<G>>(
+    return std::unique_ptr<RandomMoveEvaluatorForConcept<G>>(
         new RandomMoveEvaluatorForConcept<G>(evaluating_player, game_board)
     );
   }

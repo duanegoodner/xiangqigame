@@ -66,7 +66,7 @@ public:
   static std::shared_ptr<GameBoardForConcepts<RC, BC>> Create(
       std::vector<std::shared_ptr<RC>> red_calclulators,
       std::vector<std::shared_ptr<BC>> black_calculators,
-      const BoardMapInt_t starting_board
+      const BoardMapInt_t starting_board = kStandardInitialBoard
   ) {
     return std::shared_ptr<GameBoardForConcepts<RC, BC>>(
         new GameBoardForConcepts<RC, BC>(

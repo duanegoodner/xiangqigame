@@ -66,6 +66,23 @@ protected:
   }
 };
 
+TEST_F(ZobristCalculatorConceptTest, NullCalculatorCompliesWithConcept) {
+  static_assert(
+      BoardStateCalculatorConcept<NullBoardStateCalculator>,
+      "NullBoardStateCalculator must comply with BoardStateCalculatorConcept"
+  );
+}
+
+TEST_F(ZobristCalculatorConceptTest, CreateNullCalculator) {
+  auto null_calculator = NullBoardStateCalculator::Create();
+}
+
+TEST_F(ZobristCalculatorConceptTest, ZobristCalculatorCompliesWithConcept) {
+  CheckComplianceWithConcept<uint32_t>();
+  CheckComplianceWithConcept<uint64_t>();
+  CheckComplianceWithConcept<__uint128_t>();
+}
+
 TEST_F(ZobristCalculatorConceptTest, CreateCalculator) {
   TestCreateMethod<uint32_t>();
   TestCreateMethod<uint64_t>();

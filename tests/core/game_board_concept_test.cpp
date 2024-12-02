@@ -1,8 +1,8 @@
 #include <builders.hpp>
+#include <concept_space_info_provider.hpp>
 #include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>
-#include <concept_space_info_provider.hpp>
 #include <type_traits>
 #include <zobrist_calculator_for_concepts.hpp>
 
@@ -215,6 +215,21 @@ protected:
       }
     }
   }
+
+  std::shared_ptr<gameboard::GameBoardForConcepts<
+      NullBoardStateCalculator,
+      NullBoardStateCalculator>>
+  BuildGameBoardWithNullBoardStateCalculators() {
+    std::vector<std::shared_ptr<NullBoardStateCalculator>> red_z_calculators;
+    std::vector<std::shared_ptr<NullBoardStateCalculator>> black_z_calculators;
+
+    red_z_calculators.emplace_back(NullBoardStateCalculator::Create());
+    black_z_calculators.emplace_back(NullBoardStateCalculator::Create());
+
+    return gameboard::GameBoardForConcepts<
+        NullBoardStateCalculator,
+        NullBoardStateCalculator>::Create(red_z_calculators, black_z_calculators);
+  }
 };
 
 TEST_F(GameBoardForConceptsTest, SatisfiesSpaceInfoProviderConcept) {
@@ -268,6 +283,22 @@ TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_02) {
 
 TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_03) {
   TestProhibitsTripleRepeatMovePeriod_03<uint64_t, uint64_t>();
+}
+
+TEST_F(GameBoardForConceptsTest, TestWithNullBoardStateCalculators) {
+
+  auto game_board = BuildGameBoardWithNullBoardStateCalculators();
+}
+
+TEST_F(GameBoardForConceptsTest, ExecuteMoveWithNullBoardStateCalculators) {
+  auto starting_board = BuildGameBoardWithNullBoardStateCalculators();
+  auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};
+  auto actual_executed_move = starting_board->ExecuteMove(actual_move);
+  EXPECT_EQ(starting_board->GetOccupantAt(BoardSpace{6, 2}), 0);
+  EXPECT_EQ(starting_board->GetOccupantAt(BoardSpace{5, 2}), -7);
+  starting_board->UndoMove(actual_executed_move);
+  EXPECT_EQ(starting_board->GetOccupantAt(BoardSpace{6, 2}), -7);
+  EXPECT_EQ(starting_board->GetOccupantAt(BoardSpace{5, 2}), 0);
 }
 
 int main(int argc, char **argv) {
