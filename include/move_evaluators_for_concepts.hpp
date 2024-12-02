@@ -11,6 +11,7 @@
 #include <evaluator_data_structs.hpp>
 #include <functional>
 #include <limits>
+#include <memory>
 #include <move_evaluator_interface.hpp>
 #include <piece_value_provider_interface.hpp>
 #include <space_info_provider_interface.hpp>
@@ -189,9 +190,7 @@ public:
 
 private:
   void initialize_hash_calculator() {
-    game_board_->AttachMoveCallback(
-        hash_calculator_.UpdateBoardState
-    );
+    game_board_->AttachMoveCallback(hash_calculator_.UpdateBoardState);
     hash_calculator_->FullBoardStateCalc(game_board_->map());
   }
 
@@ -572,6 +571,15 @@ class RandomMoveEvaluatorForConcept {
   std::shared_ptr<G> game_board_;
 
 public:
+  static std::shared_ptr<RandomMoveEvaluatorForConcept<G>> Create(
+      gameboard::PieceColor evaluating_player,
+      std::shared_ptr<G> game_board
+  ) {
+    return std::shared_ptr<RandomMoveEvaluatorForConcept<G>>(
+        new RandomMoveEvaluatorForConcept<G>(evaluating_player, game_board)
+    );
+  }
+
   RandomMoveEvaluatorForConcept(
       PieceColor evaluating_player,
       std::shared_ptr<G> game_board

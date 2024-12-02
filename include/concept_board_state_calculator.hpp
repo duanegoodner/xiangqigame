@@ -1,10 +1,9 @@
 #pragma once
 
-#include <concepts>
 #include <board_data_structs.hpp>
+#include <concepts>
 #include <memory>
 #include <move_data_structs.hpp>
-
 
 template <typename T>
 concept BoardStateCalculatorConcept = requires(
@@ -14,7 +13,17 @@ concept BoardStateCalculatorConcept = requires(
     uint32_t seed
 
 ) {
-    {t.FullBoardStateCalc(board_map)} -> std::same_as<void>;
-    {t.UpdateBoardState(executed_move)} -> std::same_as<void>;
-    {t.Create(seed)} -> std::same_as<std::shared_ptr<T>>;
+  { t.FullBoardStateCalc(board_map) } -> std::same_as<void>;
+  { t.UpdateBoardState(executed_move) } -> std::same_as<void>;
+  { t.Create(seed) } -> std::same_as<std::shared_ptr<T>>;
+};
+
+class NullBoardStateCalculator {
+  void FullBoardStateCalc(const gameboard::BoardMap_t &board_map) {}
+  void UpdateBoardState(const gameboard::ExecutedMove &executed_move) {}
+
+public:
+  static std::shared_ptr<NullBoardStateCalculator> Create() {
+    return std::shared_ptr<NullBoardStateCalculator>(new NullBoardStateCalculator());
+  }
 };

@@ -20,6 +20,8 @@ protected:
     return lhs.end.file < rhs.end.file;
   }
 
+  
+
   gameboard::GameBoardBuilder game_board_builder_;
   std::shared_ptr<GameBoardForConcepts> game_board_ = game_board_builder_.build();
   moveselection::RandomMoveEvalutorBuilder random_move_evalutor_builder_;

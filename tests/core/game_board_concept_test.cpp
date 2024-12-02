@@ -2,71 +2,9 @@
 #include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>
-// #include <shared_ptr_builder_tests.hpp>
 #include <concept_space_info_provider.hpp>
 #include <type_traits>
 #include <zobrist_calculator_for_concepts.hpp>
-
-//! @todo Create generic share_ptr test suite that can handle GameBoardForconcepts<RC,
-//! BC>
-// Run our standard test suite for a Builder that has .build() -> shared_ptr
-// using GameBoardBuilderTestTypes = ::testing::Types<
-//     BuilderObjectPair<gameboard::GameBoardBuilder, gameboard::GameBoardForConcepts>>;
-// INSTANTIATE_TYPED_TEST_SUITE_P(
-//     GameBoardBuilderTestInstance,
-//     SharedPtrBuilderTest,
-//     GameBoardBuilderTestTypes
-// );
-
-//! Tests specific to a GameBoardBuilder (beyone those in the generic Builder suite)
-// class GameBoardBuilderTest : public ::testing::Test {
-// protected:
-//   gameboard::GameBoardBuilder<
-//       boardstate::ZobristCalculatorForConcepts<uint64_t>,
-//       boardstate::ZobristCalculatorForConcepts<uint64_t>>
-//       builder_;
-
-//   template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-//   void TestGameBoardCreation() {
-//     auto game_board = BuildGameBoard<RC, BC>();
-//     const auto &actual_board_map = game_board->map();
-//     auto expected_initial_board =
-//         gameboard::int_board_to_game_pieces(gameboard::kStandardInitialBoard);
-//     EXPECT_EQ(actual_board_map, expected_initial_board)
-//         << "When no arguments passed to .build(), .map() should be standard
-//         starting "
-//            "board";
-
-//     auto move_log_size = game_board->move_log().size();
-//     EXPECT_EQ(move_log_size, 0) << "Initial move log should be empty";
-//   }
-
-//   template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-//   void TestSharedPtrBehavior() {
-//     std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>>
-//     game_board_outer_scope_ptr;
-//     {
-//       auto game_board_inner_scope_ptr = BuildGameBoard<RC, BC>();
-//       auto move_log_obtained_from_inner_scope =
-//       game_board_inner_scope_ptr->move_log(); game_board_outer_scope_ptr =
-//       game_board_inner_scope_ptr;
-//     }
-//     auto move_log_obtained_from_outer_cope =
-//     game_board_outer_scope_ptr->move_log();
-//   }
-// };
-
-// TEST_F(GameBoardBuilderTest, CreatesValidGameBoard) {
-//   TestGameBoardCreation<
-//       boardstate::ZobristCalculatorForConcepts<uint64_t>,
-//       boardstate::ZobristCalculatorForConcepts<uint64_t>>();
-// }
-
-// TEST_F(GameBoardBuilderTest, SharedPtrBehavior) {
-//   TestSharedPtrBehavior<
-//       boardstate::ZobristCalculatorForConcepts<uint64_t>,
-//       boardstate::ZobristCalculatorForConcepts<uint64_t>>();
-// }
 
 class GameBoardForConceptsTest : public ::testing::Test {
 protected:
