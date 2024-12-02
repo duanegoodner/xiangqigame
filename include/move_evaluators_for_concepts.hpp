@@ -580,6 +580,13 @@ public:
     );
   }
 
+  Move SelectMove(MoveCollection &allowed_moves) {
+    auto selected_move_index =
+        utility_functs::random((size_t)0, allowed_moves.moves.size() - 1);
+    return allowed_moves.moves[selected_move_index];
+  }
+
+  private:
   RandomMoveEvaluatorForConcept(
       PieceColor evaluating_player,
       std::shared_ptr<G> game_board
@@ -587,11 +594,6 @@ public:
       : evaluating_player_{evaluating_player}
       , game_board_{game_board} {}
 
-  Move SelectMove(MoveCollection &allowed_moves) {
-    auto selected_move_index =
-        utility_functs::random((size_t)0, allowed_moves.moves.size() - 1);
-    return allowed_moves.moves[selected_move_index];
-  }
 };
 
 } // namespace moveselection

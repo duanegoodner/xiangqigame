@@ -11,19 +11,19 @@
 
 namespace moveselection {
 
-class RandomMoveEvalutorBuilder {
-public:
-  template <SpaceInfoProviderConcept G>
-  std::unique_ptr<RandomMoveEvaluatorForConcept<G>> build(
-      gameboard::PieceColor evaluating_player,
-      std::shared_ptr<G> game_board
-  ) {
-    return std::make_unique<RandomMoveEvaluatorForConcept<G>>(
-        evaluating_player,
-        game_board
-    );
-  }
-};
+// class RandomMoveEvalutorBuilder {
+// public:
+//   template <SpaceInfoProviderConcept G>
+//   std::unique_ptr<RandomMoveEvaluatorForConcept<G>> build(
+//       gameboard::PieceColor evaluating_player,
+//       std::shared_ptr<G> game_board
+//   ) {
+//     return std::make_unique<RandomMoveEvaluatorForConcept<G>>(
+//         evaluating_player,
+//         game_board
+//     );
+//   }
+// };
 
 class MinimaxMoveEvaluatorBuilder {
 public:
