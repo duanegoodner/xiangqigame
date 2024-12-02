@@ -162,7 +162,7 @@ public:
       , search_summaries_{}
       , move_sorter_{game_board_, game_position_points_}
       , game_over_{false} {
-    initialize_hash_calculator();
+    // initialize_hash_calculator();
   }
 
   Move SelectMove(MoveCollection &allowed_moves) {
@@ -189,10 +189,10 @@ public:
   }
 
 private:
-  void initialize_hash_calculator() {
-    game_board_->AttachMoveCallback(hash_calculator_.UpdateBoardState);
-    hash_calculator_->FullBoardStateCalc(game_board_->map());
-  }
+  // void initialize_hash_calculator() {
+  //   game_board_->AttachMoveCallback(hash_calculator_.UpdateBoardState);
+  //   hash_calculator_->FullBoardStateCalc(game_board_->map());
+  // }
 
   Move SelectValidMove(const MoveCollection &allowed_moves) {
     auto &first_search_summary = RunFirstSearch(allowed_moves);
@@ -562,6 +562,9 @@ private:
     search_summary.set_tr_table_size_final(hash_calculator_.GetTrTableSize());
   }
 };
+
+
+
 
 //! Complies with MoveEvaluatorConcept. Randomly chooses one of legal moves
 //! available to moveselection::RandomMoveEvaluator.evaluating_player_.

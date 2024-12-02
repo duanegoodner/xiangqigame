@@ -45,6 +45,22 @@ protected:
 
   template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
   std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>>
+  BuildGameBoardWithEmptyZcalcVectors() {
+    return gameboard::GameBoardForConcepts<RC, BC>::CreateWithoutZCalculators();
+  }
+
+  template <typename RedKeyType, typename BlackKeyType>
+  std::shared_ptr<gameboard::GameBoardForConcepts<
+      boardstate::ZobristCalculatorForConcepts<RedKeyType>,
+      boardstate::ZobristCalculatorForConcepts<BlackKeyType>>>
+  BuilldForZobristCalculators() {
+    return BuildGameBoardWithEmptyZcalcVectors<
+        boardstate::ZobristCalculatorForConcepts<RedKeyType>,
+        boardstate::ZobristCalculatorForConcepts<BlackKeyType>>();
+  }
+
+  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
+  std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>>
   BuildGameBoardBasedOnCalcConcepts(
       size_t NumCalculatorsRed = 2,
       size_t NumCalculatorsBlack = 2,
@@ -220,15 +236,9 @@ protected:
       NullBoardStateCalculator,
       NullBoardStateCalculator>>
   BuildGameBoardWithNullBoardStateCalculators() {
-    std::vector<std::shared_ptr<NullBoardStateCalculator>> red_z_calculators;
-    std::vector<std::shared_ptr<NullBoardStateCalculator>> black_z_calculators;
-
-    red_z_calculators.emplace_back(NullBoardStateCalculator::Create());
-    black_z_calculators.emplace_back(NullBoardStateCalculator::Create());
-
     return gameboard::GameBoardForConcepts<
         NullBoardStateCalculator,
-        NullBoardStateCalculator>::Create(red_z_calculators, black_z_calculators);
+        NullBoardStateCalculator>::CreateWithoutZCalculators();
   }
 };
 
@@ -240,6 +250,20 @@ TEST_F(GameBoardForConceptsTest, SatisfiesSpaceInfoProviderConcept) {
       "GameBoardForConcepts must satisfy SpaceInfoProviderConcept"
   );
 }
+
+TEST_F(GameBoardForConceptsTest, BuildWithEmptyZCalcVectors) {
+  BuilldForZobristCalculators<uint64_t, uint64_t>();
+  BuilldForZobristCalculators<uint32_t, uint64_t>();
+  BuilldForZobristCalculators<__uint128_t, __uint128_t>();
+  BuildGameBoardWithEmptyZcalcVectors<
+      NullBoardStateCalculator,
+      NullBoardStateCalculator>();
+  BuildGameBoardWithEmptyZcalcVectors<
+      NullBoardStateCalculator,
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+}
+
+
 
 TEST_F(GameBoardForConceptsTest, TestBuildVectorOfCalculators) {
   auto calculators =

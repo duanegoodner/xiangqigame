@@ -77,6 +77,30 @@ public:
     );
   }
 
+  static ::shared_ptr<GameBoardForConcepts<RC, BC>> CreateWithoutZCalculators(
+      const BoardMapInt_t starting_board = kStandardInitialBoard
+  ) {
+    std::vector<std::shared_ptr<RC>> red_calculators;
+    std::vector<std::shared_ptr<BC>> black_calculators;
+    return std::shared_ptr<GameBoardForConcepts<RC, BC>>(
+        new GameBoardForConcepts<RC, BC>(
+            red_calculators,
+            black_calculators,
+            starting_board
+        )
+    );
+  }
+
+  template <BoardStateCalculatorConcept C>
+  void AttachCalculator(std::shared_ptr<C> calculator, PieceColor color) {
+    if (color == PieceColor::kRed) {
+      red_calculators_.emplace_back(calculator);
+    }
+    if (color == PieceColor::kBlk) {
+      black_calculators_.emplace_back(calculator);
+    }
+  }
+
   PieceColor GetColor(const BoardSpace &space) const { return GetColorInternal(space); }
   bool IsInCheck(PieceColor color) { return IsInCheckInternal(color); }
   ExecutedMove ExecuteMove(const Move &move) { return ExecuteMoveInternal(move); }

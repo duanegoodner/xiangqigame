@@ -11,20 +11,6 @@
 
 namespace moveselection {
 
-// class RandomMoveEvalutorBuilder {
-// public:
-//   template <SpaceInfoProviderConcept G>
-//   std::unique_ptr<RandomMoveEvaluatorForConcept<G>> build(
-//       gameboard::PieceColor evaluating_player,
-//       std::shared_ptr<G> game_board
-//   ) {
-//     return std::make_unique<RandomMoveEvaluatorForConcept<G>>(
-//         evaluating_player,
-//         game_board
-//     );
-//   }
-// };
-
 class MinimaxMoveEvaluatorBuilder {
 public:
   template <
@@ -39,6 +25,10 @@ public:
       std::shared_ptr<P> game_position_points,
       std::shared_ptr<H> hash_calculator
   ) {
+
+    
+
+
     return std::make_unique<MinimaxMoveEvaluatorForConcept<KeyType, G, H, P>>(
         evaluating_player,
         search_depth,
