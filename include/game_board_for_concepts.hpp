@@ -63,22 +63,8 @@ public:
     return move_log_;
   }
 
-  static std::shared_ptr<GameBoardForConcepts<RC, BC>> Create(
-      std::vector<std::shared_ptr<RC>> red_calclulators,
-      std::vector<std::shared_ptr<BC>> black_calculators,
-      const BoardMapInt_t starting_board = kStandardInitialBoard
-  ) {
-    return std::shared_ptr<GameBoardForConcepts<RC, BC>>(
-        new GameBoardForConcepts<RC, BC>(
-            red_calclulators,
-            black_calculators,
-            starting_board
-        )
-    );
-  }
-
-  static ::shared_ptr<GameBoardForConcepts<RC, BC>> CreateWithoutZCalculators(
-      const BoardMapInt_t starting_board = kStandardInitialBoard
+  static ::shared_ptr<GameBoardForConcepts<RC, BC>> Create(
+      const BoardMapInt_t &starting_board = kStandardInitialBoard
   ) {
     std::vector<std::shared_ptr<RC>> red_calculators;
     std::vector<std::shared_ptr<BC>> black_calculators;

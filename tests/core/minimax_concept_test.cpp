@@ -35,10 +35,7 @@ protected:
       black_z_calculators.emplace_back(BC::Create());
     }
 
-    return gameboard::GameBoardForConcepts<RC, BC>::Create(
-        red_z_calculators,
-        black_z_calculators
-    );
+    return gameboard::GameBoardForConcepts<RC, BC>::Create();
   }
 
   template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
