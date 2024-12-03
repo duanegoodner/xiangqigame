@@ -4,6 +4,7 @@
 #include <board_data_structs.hpp>
 #include <evaluator_data_structs.hpp>
 #include <integer_types.hpp>
+#include <memory>
 #include <move_data_structs.hpp>
 
 template <typename T, typename KeyType>

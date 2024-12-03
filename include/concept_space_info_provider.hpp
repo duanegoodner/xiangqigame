@@ -4,7 +4,6 @@
 #include <game_piece.hpp>
 #include <move_data_structs.hpp>
 #include <concepts>
-#include <functional>
 
 
 template <typename T>
@@ -13,9 +12,7 @@ concept SpaceInfoProviderConcept = requires(
     gameboard::PieceColor color,
     gameboard::BoardSpace &space,
     gameboard::Move &move,
-    gameboard::ExecutedMove &executed_move,
-    void (*callback)(const gameboard::ExecutedMove &)
-) {
+    gameboard::ExecutedMove &executed_move) {
   {
     t.GetAllSpacesOccupiedBy(color)
   } -> std::same_as<std::vector<gameboard::BoardSpace>>;
@@ -24,7 +21,6 @@ concept SpaceInfoProviderConcept = requires(
   {t.CalcFinalMovesOf(color)} -> std::same_as<gameboard::MoveCollection>;
   {t.ExecuteMove(move)} -> std::same_as<gameboard::ExecutedMove>;
   {t.UndoMove(executed_move)} -> std::same_as<void>;
-  // {t.AttachMoveCallback(callback)} -> std::same_as<void>;
   {t.IsDraw()} -> std::same_as<bool>; 
   {t.map()} -> std::same_as<const gameboard::BoardMap_t&>;
 };

@@ -1,4 +1,5 @@
 #include <builders.hpp>
+#include <concept_board_state_calculator_registry.hpp>
 #include <concept_space_info_provider.hpp>
 #include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
@@ -129,8 +130,6 @@ protected:
     for (auto idx = 0; idx < NumRedCalculatorsPerPlayer; ++idx) {
       EXPECT_NE(red_initial_board_states[idx], red_post_move_board_states[idx]);
     }
-    
-
   }
 };
 
@@ -140,6 +139,28 @@ TEST_F(GameBoardForConceptsTest, SatisfiesSpaceInfoProviderConcept) {
           boardstate::ZobristCalculatorForConcepts<uint64_t>,
           boardstate::ZobristCalculatorForConcepts<uint64_t>>>,
       "GameBoardForConcepts must satisfy SpaceInfoProviderConcept"
+  );
+}
+
+TEST_F(GameBoardForConceptsTest, SatisfiesBoardStateCalculatorRegistryConcept) {
+  static_assert(
+      BoardStateCalculatorRegistryConcept<
+          gameboard::GameBoardForConcepts<
+              boardstate::ZobristCalculatorForConcepts<uint64_t>,
+              boardstate::ZobristCalculatorForConcepts<uint64_t>>,
+          boardstate::ZobristCalculatorForConcepts<uint64_t>>,
+      "GameBoardForConcepts must satisfy SpaceInfoProviderConcept"
+  );
+}
+
+TEST_F(GameBoardForConceptsTest, SatisfiesProviderAndRegistryConcept) {
+  static_assert(
+      BoardStateProviderAndCalculatorRegistryConcept<
+          gameboard::GameBoardForConcepts<
+              boardstate::ZobristCalculatorForConcepts<uint64_t>,
+              boardstate::ZobristCalculatorForConcepts<uint64_t>>,
+          boardstate::ZobristCalculatorForConcepts<uint64_t>>,
+      "GameBoardForConcepts must satisfy BoardStateProviderAndCalculatorRegistryConcept"
   );
 }
 
