@@ -14,5 +14,5 @@ concept BoardStateCalculatorRegistryConcept =
     };
 
 template <typename T, typename C>
-concept BoardStateProviderAndCalculatorRegistryConcept =
+concept SpaceInfoProviderAndCalculatorRegistryConcept =
     SpaceInfoProviderConcept<T> && BoardStateCalculatorRegistryConcept<T, C>;

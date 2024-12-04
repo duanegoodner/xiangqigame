@@ -6,8 +6,11 @@ namespace boardstate {
 //! Uses Zobrist hashing to calculate a "reasonably unique" integer value
 //! for each board configuration encountered during a game. KeyType can be any unsigned
 //! integer type with a size = (n * 32 bits) where n is an integer >= 1.
-template <typename KeyType>
+template <typename K>
 class ZobristCalculatorForConcepts {
+public:
+  using KeyType = K;
+
 private:
   using PieceZarray_t =
       array<array<KeyType, gameboard::kNumFiles>, gameboard::kNumRanks>;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <concept_board_state_calculator.hpp>
+#include <concept_board_state_calculator_registry.hpp>
 #include <game_board_for_concepts.hpp>
 #include <memory>
 #include <move_evaluators_for_concepts.hpp>
@@ -14,6 +15,7 @@ namespace moveselection {
 class MinimaxMoveEvaluatorBuilder {
 public:
   template <
+      BoardStateCalculatorConcept C,
       typename KeyType,
       SpaceInfoProviderConcept G,
       BoardStateCoordinatorConcept<KeyType> H,
@@ -26,7 +28,7 @@ public:
       std::shared_ptr<H> hash_calculator
   ) {
 
-    
+
 
 
     return std::make_unique<MinimaxMoveEvaluatorForConcept<KeyType, G, H, P>>(

@@ -8,32 +8,32 @@ class ZobristComponentConceptTest : public ::testing::Test {
 protected:
   fixtures::BoardMapFixture board_map_fixture_;
 
-  template <typename KeyType, size_t NumConfKeys>
-  std::shared_ptr<boardstate::ZobristComponentForConcepts<KeyType, NumConfKeys>>
+  template <SingleBoardStateProviderConcept C, size_t NumConfKeys>
+  std::shared_ptr<boardstate::ZobristComponentForConcepts<C, NumConfKeys>>
   BuildComponentFromSeed() {
-    return boardstate::ZobristComponentForConcepts<KeyType, NumConfKeys>::CreateFromSeed(
+    return boardstate::ZobristComponentForConcepts<C, NumConfKeys>::CreateFromSeed(
     );
   }
 
-  template <typename KeyType, size_t NumConfKeys>
+  template <SingleBoardStateProviderConcept C, size_t NumConfKeys>
   void TestCreateFromSeed() {
     auto zobrist_component =
-        boardstate::ZobristComponentForConcepts<KeyType, NumConfKeys>::CreateFromSeed();
+        boardstate::ZobristComponentForConcepts<C, NumConfKeys>::CreateFromSeed();
   }
 
-  template <typename KeyType, size_t NumConfKeys>
+  template <SingleBoardStateProviderConcept C, size_t NumConfKeys>
   void TestCreateFromExistingCalculators() {
     auto primary_calculator =
-        boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
+        C::Create();
     std::array<
-        std::shared_ptr<boardstate::ZobristCalculatorForConcepts<KeyType>>,
+        std::shared_ptr<C>,
         NumConfKeys>
         confirmation_calculators;
     for (auto calculator : confirmation_calculators) {
-      calculator = boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
+      calculator = C::Create();
     }
     auto zobrist_component =
-        boardstate::ZobristComponentForConcepts<KeyType, NumConfKeys>::
+        boardstate::ZobristComponentForConcepts<C, NumConfKeys>::
             CreateFromCalculators(primary_calculator, confirmation_calculators);
   }
 
@@ -43,9 +43,9 @@ protected:
         fixtures::ZobristCoordinatorWithExposedCalculators<KeyType, NumConfKeys>::Create();
   }
 
-  template <typename KeyType, size_t NumConfKeys>
+  template <SingleBoardStateProviderConcept C, size_t NumConfKeys>
   void TestGetters() {
-    auto zobrist_component = BuildComponentFromSeed<KeyType, NumConfKeys>();
+    auto zobrist_component = BuildComponentFromSeed<C, NumConfKeys>();
     auto primary_board_state = zobrist_component->primary_board_state();
     auto confirmation_board_states = zobrist_component->confirmation_board_states();
     auto prng_seed = zobrist_component->prng_seed();
@@ -57,9 +57,9 @@ protected:
     EXPECT_NE(prng_seed, 0);
   }
 
-  template <typename KeyType, size_t NumConfKeys>
+  template <SingleBoardStateProviderConcept C, size_t NumConfKeys>
   void TestNumConfKeys() {
-    auto zobrist_component = BuildComponentFromSeed<KeyType, NumConfKeys>();
+    auto zobrist_component = BuildComponentFromSeed<C, NumConfKeys>();
     EXPECT_EQ(zobrist_component->confirmation_board_states().size(), NumConfKeys);
   }
 
@@ -82,39 +82,39 @@ protected:
 };
 
 TEST_F(ZobristComponentConceptTest, TestCreateFromSeed) {
-  TestCreateFromSeed<uint32_t, 0>();
-  TestCreateFromSeed<uint64_t, 0>();
-  TestCreateFromSeed<__uint128_t, 0>();
-  TestCreateFromSeed<uint32_t, 1>();
-  TestCreateFromSeed<uint64_t, 1>();
-  TestCreateFromSeed<__uint128_t, 1>();
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
 }
 
 TEST_F(ZobristComponentConceptTest, TestCreateFromExistingCalculators) {
-  TestCreateFromExistingCalculators<uint32_t, 0>();
-  TestCreateFromExistingCalculators<uint64_t, 0>();
-  TestCreateFromExistingCalculators<__uint128_t, 0>();
-  TestCreateFromExistingCalculators<uint32_t, 1>();
-  TestCreateFromExistingCalculators<uint64_t, 1>();
-  TestCreateFromExistingCalculators<__uint128_t, 1>();
+  TestCreateFromExistingCalculators<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
+  TestCreateFromExistingCalculators<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
+  TestCreateFromExistingCalculators<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
+  TestCreateFromExistingCalculators<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
+  TestCreateFromExistingCalculators<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
+  TestCreateFromExistingCalculators<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
 }
 
 TEST_F(ZobristComponentConceptTest, TestGetters) {
-  TestGetters<uint32_t, 0>();
-  TestGetters<uint64_t, 0>();
-  TestGetters<__uint128_t, 0>();
-  TestGetters<uint32_t, 1>();
-  TestGetters<uint64_t, 1>();
-  TestGetters<__uint128_t, 1>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
 }
 
 TEST_F(ZobristComponentConceptTest, TestNumConfKeys) {
-  TestNumConfKeys<uint32_t, 0>();
-  TestNumConfKeys<uint64_t, 0>();
-  TestNumConfKeys<__uint128_t, 0>();
-  TestNumConfKeys<uint32_t, 1>();
-  TestNumConfKeys<uint64_t, 1>();
-  TestNumConfKeys<__uint128_t, 1>();
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
 }
 
 TEST_F(ZobristComponentConceptTest, TesFullBoardStateCalc) {

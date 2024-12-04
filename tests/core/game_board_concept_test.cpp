@@ -155,12 +155,12 @@ TEST_F(GameBoardForConceptsTest, SatisfiesBoardStateCalculatorRegistryConcept) {
 
 TEST_F(GameBoardForConceptsTest, SatisfiesProviderAndRegistryConcept) {
   static_assert(
-      BoardStateProviderAndCalculatorRegistryConcept<
+      SpaceInfoProviderAndCalculatorRegistryConcept<
           gameboard::GameBoardForConcepts<
               boardstate::ZobristCalculatorForConcepts<uint64_t>,
               boardstate::ZobristCalculatorForConcepts<uint64_t>>,
           boardstate::ZobristCalculatorForConcepts<uint64_t>>,
-      "GameBoardForConcepts must satisfy BoardStateProviderAndCalculatorRegistryConcept"
+      "GameBoardForConcepts must satisfy SpaceInfoProviderAndCalculatorRegistryConcept"
   );
 }
 

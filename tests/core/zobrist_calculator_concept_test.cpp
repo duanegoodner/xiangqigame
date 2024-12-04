@@ -1,6 +1,7 @@
 #include <board_data_structs.hpp>
 #include <board_map_fixture.hpp>
 #include <concept_board_state_calculator.hpp>
+#include <concept_single_board_state_provider.hpp>
 #include <concepts>
 #include <gtest/gtest.h>
 #include <zobrist_calculator_for_concepts.hpp>
@@ -10,10 +11,19 @@ protected:
   fixtures::BoardMapFixture board_map_fixture_;
 
   template <typename KeyType>
-  void CheckComplianceWithConcept() {
+  void CheckComplianceWithBoardStateCalculatorConcept() {
     static_assert(
         BoardStateCalculatorConcept<boardstate::ZobristCalculatorForConcepts<KeyType>>,
         "ZobristCalculator must comply with BoardStateCalculatorConcept"
+    );
+  }
+
+  template <typename K>
+  void CheckComplianceWithSingleBoardStateProviderConcept() {
+    static_assert(
+        SingleBoardStateProviderConcept<
+            boardstate::ZobristCalculatorForConcepts<K>>,
+        "ZobristCalculator must comply with SingleBoardStateProviderConcept"
     );
   }
 
@@ -77,10 +87,19 @@ TEST_F(ZobristCalculatorConceptTest, CreateNullCalculator) {
   auto null_calculator = NullBoardStateCalculator::Create();
 }
 
-TEST_F(ZobristCalculatorConceptTest, ZobristCalculatorCompliesWithConcept) {
-  CheckComplianceWithConcept<uint32_t>();
-  CheckComplianceWithConcept<uint64_t>();
-  CheckComplianceWithConcept<__uint128_t>();
+TEST_F(
+    ZobristCalculatorConceptTest,
+    ZobristCalculatorCompliesWithBoardStateCalculatorConcept
+) {
+  CheckComplianceWithBoardStateCalculatorConcept<uint32_t>();
+  CheckComplianceWithBoardStateCalculatorConcept<uint64_t>();
+  CheckComplianceWithBoardStateCalculatorConcept<__uint128_t>();
+}
+
+TEST_F(ZobristCalculatorConceptTest, ZobristCalculatorCompliesWithSingleBoardStateProviderConcept) {
+  CheckComplianceWithSingleBoardStateProviderConcept<uint32_t>();
+  CheckComplianceWithSingleBoardStateProviderConcept<uint64_t>();
+  CheckComplianceWithSingleBoardStateProviderConcept<__uint128_t>();
 }
 
 TEST_F(ZobristCalculatorConceptTest, CreateCalculator) {

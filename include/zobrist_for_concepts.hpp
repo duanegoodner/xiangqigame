@@ -3,6 +3,8 @@
 #include <array>
 #include <atomic>
 #include <board_data_structs.hpp>
+#include <concept_single_board_state_provider.hpp>
+#include <concept_multi_board_state_provider.hpp>
 #include <chrono>
 #include <evaluator_data_structs.hpp>
 #include <key_generator.hpp>
@@ -21,29 +23,33 @@ namespace boardstate {
 //! Container for one or more boardstate::ZobristCalculatorForConcepts objects.
 //! Using more than one boardstate::ZobristCalculatorForConcepts (i.e. NumConfKeys > 0)
 //! allows hash collisions to be detected.
-template <typename KeyType, size_t NumConfKeys>
+template <SingleBoardStateProviderConcept C, size_t N>
 class ZobristComponentForConcepts {
+public:
+using KeyType = C::KeyType;
+static constexpr size_t NumConfKeys = N;
+
 private:
-  std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> primary_calculator_;
-  std::array<std::shared_ptr<ZobristCalculatorForConcepts<KeyType>>, NumConfKeys>
+  std::shared_ptr<C> primary_calculator_;
+  std::array<std::shared_ptr<C>, NumConfKeys>
       confirmation_calculators_;
   std::optional<uint32_t> prng_seed_;
 
 public:
-  static std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>>
+  static std::shared_ptr<ZobristComponentForConcepts<C, NumConfKeys>>
   CreateFromSeed(uint32_t prng_seed = std::random_device{}()) {
     std::mt19937 prng{prng_seed};
     auto primary_calculator =
-        ZobristCalculatorForConcepts<KeyType>::Create((uint32_t)prng());
-    std::array<std::shared_ptr<ZobristCalculatorForConcepts<KeyType>>, NumConfKeys>
+        ZobristCalculatorForConcepts<typename C::KeyType>::Create((uint32_t)prng());
+    std::array<std::shared_ptr<C>, NumConfKeys>
         confirmation_calculators;
     for (auto idx = 0; idx < NumConfKeys; ++idx) {
       confirmation_calculators[idx] =
-          ZobristCalculatorForConcepts<KeyType>::Create((uint32_t)prng());
+          ZobristCalculatorForConcepts<typename C::KeyType>::Create((uint32_t)prng());
     }
 
-    return std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>>(
-        new ZobristComponentForConcepts<KeyType, NumConfKeys>(
+    return std::shared_ptr<ZobristComponentForConcepts<C, NumConfKeys>>(
+        new ZobristComponentForConcepts<C, NumConfKeys>(
             primary_calculator,
             confirmation_calculators,
             prng_seed
@@ -51,14 +57,14 @@ public:
     );
   }
 
-  static std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>>
+  static std::shared_ptr<ZobristComponentForConcepts<C, NumConfKeys>>
   CreateFromCalculators(
-      std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> primary_calculator,
-      std::array<std::shared_ptr<ZobristCalculatorForConcepts<KeyType>>, NumConfKeys>
+      std::shared_ptr<C> primary_calculator,
+      std::array<std::shared_ptr<C>, NumConfKeys>
           confirmation_calculators
   ) {
-    return std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>>(
-        new ZobristComponentForConcepts<KeyType, NumConfKeys>(
+    return std::shared_ptr<ZobristComponentForConcepts<C, NumConfKeys>>(
+        new ZobristComponentForConcepts<C, NumConfKeys>(
             primary_calculator,
             confirmation_calculators
         )
@@ -66,11 +72,11 @@ public:
   }
 
   // Getters
-  KeyType primary_board_state() { return primary_calculator_->board_state(); }
-  std::array<KeyType, NumConfKeys> confirmation_board_states() {
+  C::KeyType primary_board_state() { return primary_calculator_->board_state(); }
+  std::array<typename C::KeyType, NumConfKeys> confirmation_board_states() {
     return confirmation_board_states_internal();
   }
-  KeyType primary_calculator_seed() { return primary_calculator_->seed(); }
+  C::KeyType primary_calculator_seed() { return primary_calculator_->seed(); }
   std::array<uint32_t, NumConfKeys> confirmation_calculator_seeds() const {
     return confirmation_calculator_seeds_internal();
   }
@@ -83,8 +89,8 @@ private:
   //! Constructs ZobristComponentForConcepts from existing ZobristCalculatorForConcepts
   //! objects
   explicit ZobristComponentForConcepts(
-      std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> primary_calculator,
-      std::array<std::shared_ptr<ZobristCalculatorForConcepts<KeyType>>, NumConfKeys>
+      std::shared_ptr<C> primary_calculator,
+      std::array<std::shared_ptr<C>, NumConfKeys>
           confirmation_calculators,
       uint32_t prng_seed = 0
   )
@@ -93,8 +99,8 @@ private:
       , prng_seed_{prng_seed} {}
 
   // Internal getters
-  std::array<KeyType, NumConfKeys> confirmation_board_states_internal() {
-    std::array<KeyType, NumConfKeys> confirmation_states;
+  std::array<typename C::KeyType, NumConfKeys> confirmation_board_states_internal() {
+    std::array<typename C::KeyType, NumConfKeys> confirmation_states;
     for (auto i = 0; i < NumConfKeys; ++i) {
       confirmation_states[i] = confirmation_calculators_[i]->board_state();
     }
@@ -298,24 +304,29 @@ private:
   }
 };
 
-template <typename KeyType, size_t NumConfKeys>
+template <MultiBoardStateProviderConcept M>
 class ZobristCoordinatorForConcepts {
-  std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>> zobrist_component_;
-  TranspositionTableForConcepts<KeyType, NumConfKeys> tr_table_;
+public:
+using KeyType = M::KeyType;
+using NumConfKeys = M::NumConfKeys;
+
+private:
+  std::shared_ptr<M> zobrist_component_;
+  TranspositionTableForConcepts<KeyType, M::NumConfKeys> tr_table_;
   TranspositionTableGuardForConcepts tr_table_guard_;
-  TranspositionTablePrunerForConcepts<KeyType, NumConfKeys> tr_table_pruner_;
+  TranspositionTablePrunerForConcepts<KeyType, M::NumConfKeys> tr_table_pruner_;
 
 public:
   // ZobristCoordinatorForConcepts(const ZobristCoordinatorForConcepts &) = delete;
   // ZobristCoordinatorForConcepts &operator=(const ZobristCoordinatorForConcepts &) =
   //     delete;
 
-  static std::shared_ptr<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>>
+  static std::shared_ptr<ZobristCoordinatorForConcepts<M>>
   CreateFromZobristComponent(
-      std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>> zobrist_component
+      std::shared_ptr<M> zobrist_component
   ) {
-    return std::shared_ptr<ZobristCoordinatorForConcepts<KeyType, NumConfKeys>>(
-        new ZobristCoordinatorForConcepts<KeyType, NumConfKeys>(zobrist_component)
+    return std::shared_ptr<ZobristCoordinatorForConcepts<M>>(
+        new ZobristCoordinatorForConcepts<M>(zobrist_component)
     );
   }
 
@@ -359,7 +370,7 @@ public:
 
 private:
   ZobristCoordinatorForConcepts(
-      std::shared_ptr<ZobristComponentForConcepts<KeyType, NumConfKeys>>
+      std::shared_ptr<M>
           zobrist_component
   )
       : zobrist_component_{zobrist_component}
