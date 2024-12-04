@@ -10,33 +10,25 @@ class ZobristCalculatorConceptTest : public ::testing::Test {
 protected:
   fixtures::BoardMapFixture board_map_fixture_;
 
-  template <typename KeyType>
+  template <typename CalculatorType>
   void CheckComplianceWithBoardStateCalculatorConcept() {
     static_assert(
-        BoardStateCalculatorConcept<boardstate::ZobristCalculatorForConcepts<KeyType>>,
+        BoardStateCalculatorConcept<CalculatorType>,
         "ZobristCalculator must comply with BoardStateCalculatorConcept"
     );
   }
 
-  template <typename K>
+  template <typename CalculatorType>
   void CheckComplianceWithSingleBoardStateProviderConcept() {
     static_assert(
-        SingleBoardStateProviderConcept<
-            boardstate::ZobristCalculatorForConcepts<K>>,
+        SingleBoardStateProviderConcept<CalculatorType>,
         "ZobristCalculator must comply with SingleBoardStateProviderConcept"
     );
   }
 
-  template <typename KeyType>
-  void TestCreateMethod() {
-    auto zobrist_calculator =
-        boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
-  }
-
-  template <typename KeyType>
+  template <SingleBoardStateProviderConcept C>
   void TestGetters() {
-    auto zobrist_calculator =
-        boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
+    auto zobrist_calculator = C::Create();
     auto initial_board_state = zobrist_calculator->board_state();
     auto seed = zobrist_calculator->seed();
 
@@ -44,20 +36,18 @@ protected:
     EXPECT_NE(seed, 0);
   }
 
-  template <typename KeyType>
+  template <BoardStateCalculatorConcept C>
   void TestFullBoardStateCalc() {
-    auto zobrist_calculator =
-        boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
+    auto zobrist_calculator = C::Create();
     auto starting_boardmap = board_map_fixture_.starting_boardmap();
     zobrist_calculator->FullBoardStateCalc(starting_boardmap);
 
     EXPECT_NE(zobrist_calculator->board_state(), 0);
   }
 
-  template <typename KeyType>
+  template <BoardStateCalculatorConcept C>
   void TestUpdateBoardState() {
-    auto zobrist_calculator =
-        boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
+    auto zobrist_calculator = C::Create();
     zobrist_calculator->FullBoardStateCalc(board_map_fixture_.starting_boardmap());
 
     gameboard::BoardSpace move_start{6, 0};
@@ -76,52 +66,53 @@ protected:
   }
 };
 
-TEST_F(ZobristCalculatorConceptTest, NullCalculatorCompliesWithConcept) {
-  static_assert(
-      BoardStateCalculatorConcept<NullBoardStateCalculator>,
-      "NullBoardStateCalculator must comply with BoardStateCalculatorConcept"
-  );
-}
-
-TEST_F(ZobristCalculatorConceptTest, CreateNullCalculator) {
-  auto null_calculator = NullBoardStateCalculator::Create();
-}
-
 TEST_F(
     ZobristCalculatorConceptTest,
     ZobristCalculatorCompliesWithBoardStateCalculatorConcept
 ) {
-  CheckComplianceWithBoardStateCalculatorConcept<uint32_t>();
-  CheckComplianceWithBoardStateCalculatorConcept<uint64_t>();
-  CheckComplianceWithBoardStateCalculatorConcept<__uint128_t>();
+  CheckComplianceWithBoardStateCalculatorConcept<NullBoardStateCalculator>();
+  CheckComplianceWithBoardStateCalculatorConcept<
+      boardstate::ZobristCalculatorForConcepts<uint32_t>>();
+  CheckComplianceWithBoardStateCalculatorConcept<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  CheckComplianceWithBoardStateCalculatorConcept<
+      boardstate::ZobristCalculatorForConcepts<__uint128_t>>();
 }
 
-TEST_F(ZobristCalculatorConceptTest, ZobristCalculatorCompliesWithSingleBoardStateProviderConcept) {
-  CheckComplianceWithSingleBoardStateProviderConcept<uint32_t>();
-  CheckComplianceWithSingleBoardStateProviderConcept<uint64_t>();
-  CheckComplianceWithSingleBoardStateProviderConcept<__uint128_t>();
+TEST_F(
+    ZobristCalculatorConceptTest,
+    ZobristCalculatorCompliesWithSingleBoardStateProviderConcept
+) {
+  CheckComplianceWithBoardStateCalculatorConcept<NullBoardStateCalculator>();
+  CheckComplianceWithSingleBoardStateProviderConcept<
+      boardstate::ZobristCalculatorForConcepts<uint32_t>>();
+  CheckComplianceWithSingleBoardStateProviderConcept<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  CheckComplianceWithSingleBoardStateProviderConcept<
+      boardstate::ZobristCalculatorForConcepts<__uint128_t>>();
 }
 
 TEST_F(ZobristCalculatorConceptTest, CreateCalculator) {
-  TestCreateMethod<uint32_t>();
-  TestCreateMethod<uint64_t>();
-  TestCreateMethod<__uint128_t>();
+  NullBoardStateCalculator::Create();
+  boardstate::ZobristCalculatorForConcepts<uint32_t>::Create();
+  boardstate::ZobristCalculatorForConcepts<uint64_t>::Create();
+  boardstate::ZobristCalculatorForConcepts<__uint128_t>::Create();
 }
 
 TEST_F(ZobristCalculatorConceptTest, TestGetters) {
-  TestGetters<uint32_t>();
-  TestGetters<uint64_t>();
-  TestGetters<__uint128_t>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<uint32_t>>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<__uint128_t>>();
 }
 
 TEST_F(ZobristCalculatorConceptTest, FullBoardStateCalc) {
-  TestFullBoardStateCalc<uint32_t>();
-  TestFullBoardStateCalc<uint64_t>();
-  TestFullBoardStateCalc<__uint128_t>();
+  TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<uint32_t>>();
+  TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<__uint128_t>>();
 }
 
 TEST_F(ZobristCalculatorConceptTest, UpdateBoardState) {
-  TestUpdateBoardState<uint32_t>();
-  TestUpdateBoardState<uint64_t>();
-  TestUpdateBoardState<__uint128_t>();
+  TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<uint32_t>>();
+  TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<__uint128_t>>();
 }

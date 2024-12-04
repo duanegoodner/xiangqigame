@@ -18,7 +18,7 @@ public:
       BoardStateCalculatorConcept C,
       typename KeyType,
       SpaceInfoProviderConcept G,
-      BoardStateCoordinatorConcept<KeyType> H,
+      BoardStateCoordinatorConcept H,
       PieceValueProviderConcept P>
   std::unique_ptr<MinimaxMoveEvaluatorForConcept<KeyType, G, H, P>> build(
       gameboard::PieceColor evaluating_player,

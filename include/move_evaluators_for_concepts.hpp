@@ -131,7 +131,7 @@ public:
 template <
     typename KeyType,
     SpaceInfoProviderConcept G,
-    BoardStateCoordinatorConcept<KeyType> H,
+    BoardStateCoordinatorConcept H,
     PieceValueProviderConcept P>
 class MinimaxMoveEvaluatorForConcept {
 

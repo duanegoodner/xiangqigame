@@ -4,35 +4,32 @@
 
 namespace boardstate {
 //! Uses Zobrist hashing to calculate a "reasonably unique" integer value
-//! for each board configuration encountered during a game. KeyType can be any unsigned
+//! for each board configuration encountered during a game. K can be any unsigned
 //! integer type with a size = (n * 32 bits) where n is an integer >= 1.
 template <typename K>
 class ZobristCalculatorForConcepts {
-public:
-  using KeyType = K;
-
 private:
-  using PieceZarray_t =
-      array<array<KeyType, gameboard::kNumFiles>, gameboard::kNumRanks>;
+  using PieceZarray_t = array<array<K, gameboard::kNumFiles>, gameboard::kNumRanks>;
   using TeamZarray_t = array<PieceZarray_t, gameboard::kNumPieceTypeVals>;
   using GameZarray_t = array<TeamZarray_t, 2>;
 
   GameZarray_t zarray_;
-  KeyType turn_key_;
+  K turn_key_;
   uint32_t seed_;
-  KeyType board_state_;
+  K board_state_;
 
 public:
-  static std::shared_ptr<ZobristCalculatorForConcepts<KeyType>> Create(
+  using KeyType = K;
+  static std::shared_ptr<ZobristCalculatorForConcepts<K>> Create(
       uint32_t seed = std::random_device{}()
   ) {
-    return std::shared_ptr<ZobristCalculatorForConcepts<KeyType>>(
-        new ZobristCalculatorForConcepts<KeyType>(seed)
+    return std::shared_ptr<ZobristCalculatorForConcepts<K>>(
+        new ZobristCalculatorForConcepts<K>(seed)
     );
   }
 
   // Getters
-  KeyType board_state() const { return board_state_; }
+  K board_state() const { return board_state_; }
   uint32_t seed() const { return seed_; }
 
   // Calculation methods
@@ -52,14 +49,13 @@ private:
       , turn_key_{}
       , board_state_{}
       , seed_{seed} {
-    PseudoRandomKeyGenerator<KeyType> key_generator{seed};
+    PseudoRandomKeyGenerator<K> key_generator{seed};
     turn_key_ = key_generator.GenerateKey();
     zarray_ = CreateGameZarray(key_generator);
   };
 
   //! Static helper method for building 4-D array of Zobrist keys in constuctor.
-  static const GameZarray_t CreateGameZarray(
-      PseudoRandomKeyGenerator<KeyType> &key_generator
+  static const GameZarray_t CreateGameZarray(PseudoRandomKeyGenerator<K> &key_generator
   ) {
     GameZarray_t game_zarray{};
     for (auto color_idx = 0; color_idx < 2; color_idx++) {
@@ -74,7 +70,7 @@ private:
     return game_zarray;
   }
 
-  KeyType GetHashValueAt(PieceColor color, PieceType piece_type, BoardSpace space) {
+  K GetHashValueAt(PieceColor color, PieceType piece_type, BoardSpace space) {
     return zarray_[GetZColorIndexOf(color)][piece_type][space.rank][space.file];
   }
 
