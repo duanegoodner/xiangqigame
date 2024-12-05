@@ -148,8 +148,7 @@ TEST_F(GameBoardForConceptsTest, SatisfiesBoardStateCalculatorRegistryConcept) {
       BoardStateCalculatorRegistryConcept<
           gameboard::GameBoardForConcepts<
               boardstate::ZobristCalculatorForConcepts<uint64_t>,
-              boardstate::ZobristCalculatorForConcepts<uint64_t>>,
-          boardstate::ZobristCalculatorForConcepts<uint64_t>>,
+              boardstate::ZobristCalculatorForConcepts<uint64_t>>>,
       "GameBoardForConcepts must satisfy SpaceInfoProviderConcept"
   );
 }
@@ -159,8 +158,7 @@ TEST_F(GameBoardForConceptsTest, SatisfiesProviderAndRegistryConcept) {
       SpaceInfoProviderAndCalculatorRegistryConcept<
           gameboard::GameBoardForConcepts<
               boardstate::ZobristCalculatorForConcepts<uint64_t>,
-              boardstate::ZobristCalculatorForConcepts<uint64_t>>,
-          boardstate::ZobristCalculatorForConcepts<uint64_t>>,
+              boardstate::ZobristCalculatorForConcepts<uint64_t>>>,
       "GameBoardForConcepts must satisfy SpaceInfoProviderAndCalculatorRegistryConcept"
   );
 }

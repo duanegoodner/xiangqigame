@@ -58,6 +58,9 @@ class GameBoardForConcepts {
   MoveCountType moves_since_last_capture_;
 
 public:
+  using CalculatorTypeRed = RC;
+  using CalculatorTypeBlack = BC;
+  
   const BoardMap_t &map() const { return board_map_; }
   const std::map<PieceColor, std::vector<ExecutedMove>> &move_log() const {
     return move_log_;

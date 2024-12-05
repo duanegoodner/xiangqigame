@@ -6,9 +6,9 @@
 #include <concept_space_info_provider.hpp>
 #include <concepts>
 
-template <typename T, typename C>
+template <typename T>
 concept SpaceInfoProviderAndCalculatorRegistryConcept =
-    SpaceInfoProviderConcept<T> && BoardStateCalculatorRegistryConcept<T, C>;
+    SpaceInfoProviderConcept<T> && BoardStateCalculatorRegistryConcept<T>;
 
 template <typename T>
 concept SingleBoardStateProviderAndBoardStateCalculatorConcept =
