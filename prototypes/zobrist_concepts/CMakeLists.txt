@@ -1,0 +1,3 @@
+add_executable(zobrist_concepts zobrist_concepts.cpp)
+
+target_include_directories(zobrist_concepts PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

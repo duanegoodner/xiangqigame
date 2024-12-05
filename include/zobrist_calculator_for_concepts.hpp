@@ -29,7 +29,7 @@ public:
   }
 
   // Getters
-  K board_state() const { return board_state_; }
+  KeyType board_state() const { return board_state_; }
   uint32_t seed() const { return seed_; }
 
   // Calculation methods

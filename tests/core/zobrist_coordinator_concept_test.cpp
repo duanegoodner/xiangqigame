@@ -19,7 +19,7 @@ protected:
   template <SingleBoardStateProviderConcept C, size_t NumConfKeys>
   std::shared_ptr<boardstate::ZobristComponentForConcepts<C, NumConfKeys>>
   BuildComponentFromSeed() {
-    return boardstate::ZobristComponentForConcepts<C, NumConfKeys>::CreateFromSeed();
+    return boardstate::ZobristComponentForConcepts<C, NumConfKeys>::Create();
   }
 
   template <SingleBoardStateProviderConcept C, size_t NumConfKeys>
