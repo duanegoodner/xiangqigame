@@ -38,7 +38,7 @@ protected:
       calculator = C::Create();
     }
     auto zobrist_component =
-        boardstate::ZobristComponentForConcepts<C, NumConfKeys>::CreateFromCalculators(
+        boardstate::ZobristComponentForConcepts<C, NumConfKeys>::Create(
             primary_calculator,
             confirmation_calculators
         );
@@ -107,91 +107,90 @@ TEST_F(ZobristComponentConceptTest, InstantiateZobristComponentForConcepts) {
   auto calculator = boardstate::ZobristComponentForConcepts<
       boardstate::ZobristCalculatorForConcepts<uint32_t>,
       1>::Create();
-  auto key_size = sizeof(boardstate::ZobristComponentForConcepts<boardstate::ZobristCalculatorForConcepts<uint32_t>,
-      1>::KeyType);
+  auto key_size = sizeof(boardstate::ZobristComponentForConcepts<
+                         boardstate::ZobristCalculatorForConcepts<uint32_t>,
+                         1>::KeyType);
   std::cout << "Size of Component::KeyType is " << key_size << std::endl;
 }
-
-
 
 TEST_F(ZobristComponentConceptTest, CheckSpecificComponentTypeCompliance) {
   static_assert(
       MultiBoardStateProviderConcept<boardstate::ZobristComponentForConcepts<
-          boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>>,
+          boardstate::ZobristCalculatorForConcepts<uint32_t>,
+          1>>,
       "ZobristComponent must comply with MultiBoardStateProviderConcept"
   );
 }
 
-// TEST_F(ZobristComponentConceptTest, CheckComplianceWithMultiBoardStateProviderConcept)
-// {
-//   CheckComplianceWithMultiBoardStateProviderConcept<
-//       boardstate::ZobristComponentForConcepts<
-//           boardstate::ZobristCalculatorForConcepts<uint32_t>,
-//           1>>();
-// }
+TEST_F(ZobristComponentConceptTest, CheckComplianceWithMultiBoardStateProviderConcept) {
+  CheckComplianceWithMultiBoardStateProviderConcept<
+      boardstate::ZobristComponentForConcepts<
+          boardstate::ZobristCalculatorForConcepts<uint32_t>,
+          1>>();
+}
 
-// TEST_F(ZobristComponentConceptTest, TestCreateFromSeed) {
-//   TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
-//   TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
-//   TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
-//   TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
-//   TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
-//   TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
-// }
+TEST_F(ZobristComponentConceptTest, TestCreateFromSeed) {
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
+  TestCreateFromSeed<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
+}
 
-// TEST_F(ZobristComponentConceptTest, TestCreateFromExistingCalculators) {
-//   TestCreateFromExistingCalculators<
-//       boardstate::ZobristCalculatorForConcepts<uint32_t>,
-//       0>();
-//   TestCreateFromExistingCalculators<
-//       boardstate::ZobristCalculatorForConcepts<uint64_t>,
-//       0>();
-//   TestCreateFromExistingCalculators<
-//       boardstate::ZobristCalculatorForConcepts<__uint128_t>,
-//       0>();
-//   TestCreateFromExistingCalculators<
-//       boardstate::ZobristCalculatorForConcepts<uint32_t>,
-//       1>();
-//   TestCreateFromExistingCalculators<
-//       boardstate::ZobristCalculatorForConcepts<uint64_t>,
-//       1>();
-//   TestCreateFromExistingCalculators<
-//       boardstate::ZobristCalculatorForConcepts<__uint128_t>,
-//       1>();
-// }
+TEST_F(ZobristComponentConceptTest, TestCreateFromExistingCalculators) {
+  TestCreateFromExistingCalculators<
+      boardstate::ZobristCalculatorForConcepts<uint32_t>,
+      0>();
+  TestCreateFromExistingCalculators<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>,
+      0>();
+  TestCreateFromExistingCalculators<
+      boardstate::ZobristCalculatorForConcepts<__uint128_t>,
+      0>();
+  TestCreateFromExistingCalculators<
+      boardstate::ZobristCalculatorForConcepts<uint32_t>,
+      1>();
+  TestCreateFromExistingCalculators<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>,
+      1>();
+  TestCreateFromExistingCalculators<
+      boardstate::ZobristCalculatorForConcepts<__uint128_t>,
+      1>();
+}
 
-// TEST_F(ZobristComponentConceptTest, TestGetters) {
-//   TestGetters<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
-//   TestGetters<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
-//   TestGetters<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
-//   TestGetters<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
-//   TestGetters<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
-//   TestGetters<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
-// }
+TEST_F(ZobristComponentConceptTest, TestGetters) {
+  TestGetters<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
+  TestGetters<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
+}
 
-// TEST_F(ZobristComponentConceptTest, TestNumConfKeys) {
-//   TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
-//   TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
-//   TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
-//   TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
-//   TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
-//   TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
-// }
+TEST_F(ZobristComponentConceptTest, TestNumConfKeys) {
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
+  TestNumConfKeys<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
+}
 
-// TEST_F(ZobristComponentConceptTest, TesFullBoardStateCalc) {
-//   TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
-//   TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
-//   TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
-//   TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
-//   TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
-//   TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
-// }
+TEST_F(ZobristComponentConceptTest, TesFullBoardStateCalc) {
+  TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
+  TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
+  TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
+  TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
+  TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
+  TestFullBoardStateCalc<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
+}
 
-// TEST_F(ZobristComponentConceptTest, TesUpdateBoardState) {
-//   TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
-//   TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
-//   TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
-//   TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
-//   TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
-//   TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
-// }
+TEST_F(ZobristComponentConceptTest, TesUpdateBoardState) {
+  TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
+  TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
+  TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
+  TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
+  TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
+  TestUpdateBoardState<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
+}

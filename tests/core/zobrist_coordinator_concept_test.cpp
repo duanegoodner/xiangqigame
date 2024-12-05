@@ -23,11 +23,11 @@ protected:
   }
 
   template <SingleBoardStateProviderConcept C, size_t NumConfKeys>
-  void TestCreateFromZobristComponent() {
+  void TestCreate() {
     auto zobrist_component = BuildComponentFromSeed<C, NumConfKeys>();
     auto zobrist_coordinator = boardstate::ZobristCoordinatorForConcepts<
         boardstate::ZobristComponentForConcepts<C, NumConfKeys>>::
-        CreateFromZobristComponent(zobrist_component);
+        Create(zobrist_component);
   }
 
   template <SingleBoardStateProviderConcept C, size_t NumConfKeys>
@@ -46,40 +46,33 @@ protected:
 
   template <SingleBoardStateProviderConcept C, size_t NumConfKeys>
   void TestSatisfiesBoardStateCoordinatorConcept() {
-    static_assert()
     // using CalculatorType = boardstate::ZobristCalculatorForConcepts<KeyType>;
-    // using ComponentType =
-    //     boardstate::ZobristComponentForConcepts<CalculatorType, NumConfKeys>;
-    // using CoordinatorType = boardstate::ZobristCoordinatorForConcepts<ComponentType>;
-    // static_assert(
-    //     BoardStateCoordinatorConcept<CoordinatorType>,
-    //     "ZobristCoordinatorForConcepts must satisfy BoardStateCoordinatorConcept"
-    // );
+    using ComponentType =
+        boardstate::ZobristComponentForConcepts<C, NumConfKeys>;
+    using CoordinatorType = boardstate::ZobristCoordinatorForConcepts<ComponentType>;
+    static_assert(
+        BoardStateCoordinatorConcept<CoordinatorType>,
+        "ZobristCoordinatorForConcepts must satisfy BoardStateCoordinatorConcept"
+    );
   }
 };
 
 TEST_F(ZobristCoordinatorConceptTest, SatisfiesBoardStateCoordinatorConcept) {
-  TestSatisfiesBoardStateCoordinatorConcept<uint64_t, 0>();
-  TestSatisfiesBoardStateCoordinatorConcept<uint32_t, 0>();
-  TestSatisfiesBoardStateCoordinatorConcept<__uint128_t, 0>();
-  TestSatisfiesBoardStateCoordinatorConcept<uint64_t, 1>();
-  TestSatisfiesBoardStateCoordinatorConcept<uint32_t, 1>();
-  TestSatisfiesBoardStateCoordinatorConcept<__uint128_t, 1>();
-  // static_assert(
-  //     BoardStateCoordinatorConcept<
-  //         boardstate::ZobristCoordinatorForConcepts<uint64_t, 0>,
-  //         uint64_t>,
-  //     "ZobristCoordinatorForConcepts must satisfy BoardStateCoordinatorConcept"
-  // );
+  TestSatisfiesBoardStateCoordinatorConcept<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
+  TestSatisfiesBoardStateCoordinatorConcept<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
+  TestSatisfiesBoardStateCoordinatorConcept<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
+  TestSatisfiesBoardStateCoordinatorConcept<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
+  TestSatisfiesBoardStateCoordinatorConcept<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
+  TestSatisfiesBoardStateCoordinatorConcept<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
 }
 
-TEST_F(ZobristCoordinatorConceptTest, TestCreateFromZobristComponent) {
-  TestCreateFromZobristComponent<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
-  TestCreateFromZobristComponent<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
-  TestCreateFromZobristComponent<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
-  TestCreateFromZobristComponent<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
-  TestCreateFromZobristComponent<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
-  TestCreateFromZobristComponent<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
+TEST_F(ZobristCoordinatorConceptTest, TestCreate) {
+  TestCreate<boardstate::ZobristCalculatorForConcepts<uint32_t>, 0>();
+  TestCreate<boardstate::ZobristCalculatorForConcepts<uint64_t>, 0>();
+  TestCreate<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 0>();
+  TestCreate<boardstate::ZobristCalculatorForConcepts<uint32_t>, 1>();
+  TestCreate<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
+  TestCreate<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
 }
 
 TEST_F(ZobristCoordinatorConceptTest, TestExecuteAndUndoMove) {
@@ -99,43 +92,6 @@ TEST_F(ZobristCoordinatorConceptTest, TestRecordAndReadData) {
   TestRecordAndReadData<boardstate::ZobristCalculatorForConcepts<uint64_t>, 1>();
   TestRecordAndReadData<boardstate::ZobristCalculatorForConcepts<__uint128_t>, 1>();
 }
-
-//! todo redo after changing to new builder approach for ZobristCalculatorForConcepts
-// TEST_F(ZobristCoordinatorConceptTest, RecordAndReadData) {
-
-//   //   boardstate::ZobristCoordinatorForConcepts<uint64_t, 1>
-//   //       coordinator{};
-
-//   auto start = BoardSpace{6, 0};
-//   auto end = BoardSpace{5, 0};
-//   auto move = Move{start, end};
-//   auto moving_piece = GamePiece{PieceType::kSol, PieceColor::kRed};
-//   auto destination_piece = GamePiece{PieceType::kNnn, PieceColor::kNul};
-//   auto executed_move = ExecutedMove{move, moving_piece, destination_piece};
-
-//   coordinator_->FullBoardStateCalc(board_map_);
-//   auto initial_state = coordinator_->GetState();
-
-//   MoveCollection dummy_move_collection{};
-//   dummy_move_collection.Append(move);
-
-//   moveselection::EqualScoreMoves dummy_equal_score_moves{1, dummy_move_collection};
-//   int dummy_search_depth = 1;
-//   int dummy_access_index_at_write = 0;
-
-//   coordinator_->RecordTrData(
-//       dummy_search_depth,
-//       moveselection::MinimaxResultType::kFullyEvaluatedNode,
-//       dummy_equal_score_moves,
-//       dummy_access_index_at_write
-//   );
-
-//   int dummy_access_index_at_read = 1;
-//   auto retrieved_data =
-//       coordinator_->GetTrData(dummy_search_depth, dummy_access_index_at_read);
-
-//   EXPECT_TRUE(retrieved_data.found());
-// }
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

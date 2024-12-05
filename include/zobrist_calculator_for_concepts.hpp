@@ -8,6 +8,8 @@ namespace boardstate {
 //! integer type with a size = (n * 32 bits) where n is an integer >= 1.
 template <typename K>
 class ZobristCalculatorForConcepts {
+
+
 private:
   using PieceZarray_t = array<array<K, gameboard::kNumFiles>, gameboard::kNumRanks>;
   using TeamZarray_t = array<PieceZarray_t, gameboard::kNumPieceTypeVals>;

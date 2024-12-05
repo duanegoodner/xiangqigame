@@ -6,18 +6,13 @@
 
 template <typename T>
 concept MultiBoardStateProviderConcept = requires(T t) {
-  // Assuming T defines a type alias 'KeyType' and a static constexpr 'NumConfKeys'
   typename T::KeyType;
-  
 
-
-  // Use SingleBoardStateProviderConcept on T::KeyType
-  // requires SingleBoardStateProviderConcept<typename T::KeyType>;
-
-  // Check that T::NumConfKeys is a size_t
-  requires std::is_same_v<decltype(T::NumConfKeys), size_t>;
+  requires std::unsigned_integral<typename T::KeyType>;
+  requires(sizeof(typename T::KeyType) * 8) % 32 == 0;
 
   { t.primary_board_state() } -> std::same_as<typename T::KeyType>;
+  requires std::same_as<std::remove_reference_t<decltype(T::NumConfKeys)>, const size_t>;
   {
     t.confirmation_board_states()
   } -> std::same_as<std::array<typename T::KeyType, T::NumConfKeys>>;

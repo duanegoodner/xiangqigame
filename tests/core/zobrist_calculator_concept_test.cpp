@@ -1,6 +1,7 @@
 #include <board_data_structs.hpp>
 #include <board_map_fixture.hpp>
 #include <concept_board_state_calculator.hpp>
+#include <concept_composite_concepts.hpp>
 #include <concept_single_board_state_provider.hpp>
 #include <concepts>
 #include <gtest/gtest.h>
@@ -22,6 +23,14 @@ protected:
   void CheckComplianceWithSingleBoardStateProviderConcept() {
     static_assert(
         SingleBoardStateProviderConcept<CalculatorType>,
+        "ZobristCalculator must comply with SingleBoardStateProviderConcept"
+    );
+  }
+
+  template <typename CalculatorType>
+  void CheckComplianceWithCompositeConcept() {
+    static_assert(
+        SingleBoardStateProviderAndBoardStateCalculatorConcept<CalculatorType>,
         "ZobristCalculator must comply with SingleBoardStateProviderConcept"
     );
   }
@@ -83,7 +92,18 @@ TEST_F(
     ZobristCalculatorConceptTest,
     ZobristCalculatorCompliesWithSingleBoardStateProviderConcept
 ) {
-  CheckComplianceWithBoardStateCalculatorConcept<NullBoardStateCalculator>();
+  // Not testing NullBoardStateCalculator here b/c it does not need to comply w/
+  // SingleBoardStateProviderConcept (will never build a
+  // MultiBoardStateProviderConcept w/ NullBoardStateCalculator)
+  CheckComplianceWithSingleBoardStateProviderConcept<
+      boardstate::ZobristCalculatorForConcepts<uint32_t>>();
+  CheckComplianceWithSingleBoardStateProviderConcept<
+      boardstate::ZobristCalculatorForConcepts<uint64_t>>();
+  CheckComplianceWithSingleBoardStateProviderConcept<
+      boardstate::ZobristCalculatorForConcepts<__uint128_t>>();
+}
+
+TEST_F(ZobristCalculatorConceptTest, CompliesWithCompositeConcept) {
   CheckComplianceWithSingleBoardStateProviderConcept<
       boardstate::ZobristCalculatorForConcepts<uint32_t>>();
   CheckComplianceWithSingleBoardStateProviderConcept<

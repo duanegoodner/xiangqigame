@@ -8,15 +8,18 @@ namespace fixtures {
 //! Contains ZobristCoordinator with its constituents (ZobristComponent and
 //! ZobristCalculators) exposed so calculators' FullBoardStateCalc and UpdateBoardState
 //! methods can be called without attaching them to a GameBoard.
-template <SingleBoardStateProviderConcept C, size_t NumConfKeys>
+template <SingleBoardStateProviderConcept C, size_t N>
 class ZobristCoordinatorWithExposedCalculators {
+public:
+  using KeyType = typename C::KeyType;
+  static size_t constexpr NumConfKeys = N;
 
+private:
   std::shared_ptr<C> primary_calculator_;
-  std::array<std::shared_ptr<C>, NumConfKeys> confirmation_calculators_;
-  std::shared_ptr<boardstate::ZobristComponentForConcepts<C, NumConfKeys>>
-      zobrist_component_;
+  std::array<std::shared_ptr<C>, N> confirmation_calculators_;
+  std::shared_ptr<boardstate::ZobristComponentForConcepts<C, N>> zobrist_component_;
   std::shared_ptr<boardstate::ZobristCoordinatorForConcepts<
-      boardstate::ZobristComponentForConcepts<C, NumConfKeys>>>
+      boardstate::ZobristComponentForConcepts<C, N>>>
       zobrist_coordinator_;
 
   fixtures::BoardMapFixture board_map_fixture_;
@@ -24,11 +27,10 @@ class ZobristCoordinatorWithExposedCalculators {
 public:
   ZobristCoordinatorWithExposedCalculators(
       std::shared_ptr<C> primary_calculator,
-      std::array<std::shared_ptr<C>, NumConfKeys> confirmation_calculators,
-      std::shared_ptr<boardstate::ZobristComponentForConcepts<C, NumConfKeys>>
-          zobrist_component,
+      std::array<std::shared_ptr<C>, N> confirmation_calculators,
+      std::shared_ptr<boardstate::ZobristComponentForConcepts<C, N>> zobrist_component,
       std::shared_ptr<boardstate::ZobristCoordinatorForConcepts<
-          boardstate::ZobristComponentForConcepts<C, NumConfKeys>>> zobrist_coordinator
+          boardstate::ZobristComponentForConcepts<C, N>>> zobrist_coordinator
   )
       : primary_calculator_{primary_calculator}
       , confirmation_calculators_{confirmation_calculators}
@@ -37,34 +39,31 @@ public:
 
   std::shared_ptr<C> primary_calculator() { return primary_calculator_; }
 
-  std::array<std::shared_ptr<C>, NumConfKeys> confirmation_calculators() {
+  std::array<std::shared_ptr<C>, N> confirmation_calculators() {
     return confirmation_calculators_;
   }
 
-  std::shared_ptr<boardstate::ZobristComponentForConcepts<C, NumConfKeys>>
-  zobrist_component() {
+  std::shared_ptr<boardstate::ZobristComponentForConcepts<C, N>> zobrist_component() {
     return zobrist_component_;
   }
 
-  static std::shared_ptr<boardstate::ZobristCoordinatorForConcepts<
-      boardstate::ZobristComponentForConcepts<C, NumConfKeys>>>
+  static std::shared_ptr<fixtures::ZobristCoordinatorWithExposedCalculators<C, N>>
   Create() {
     auto primary_calculator = C::Create();
-    std::array<std::shared_ptr<C>, NumConfKeys> confirmation_calculators;
-    for (auto idx = 0; idx < NumConfKeys; ++idx) {
+    std::array<std::shared_ptr<C>, N> confirmation_calculators;
+    for (auto idx = 0; idx < N; ++idx) {
       confirmation_calculators[idx] = C::Create();
     }
     auto zobrist_component =
-        boardstate::ZobristComponentForConcepts<C, NumConfKeys>::CreateFromCalculators(
+        boardstate::ZobristComponentForConcepts<C, N>::Create(
             primary_calculator,
             confirmation_calculators
         );
     auto zobrist_coordinator = boardstate::ZobristCoordinatorForConcepts<
-        boardstate::ZobristComponentForConcepts<C, NumConfKeys>>::
-        CreateFromZobristComponent(zobrist_component);
+        boardstate::ZobristComponentForConcepts<C, N>>::
+        Create(zobrist_component);
 
-    return std::make_shared<
-        ZobristCoordinatorWithExposedCalculators<C, NumConfKeys>>(
+    return std::make_shared<ZobristCoordinatorWithExposedCalculators<C, N>>(
         primary_calculator,
         confirmation_calculators,
         zobrist_component,

@@ -13,6 +13,4 @@ concept BoardStateCalculatorRegistryConcept =
       { t.AttachCalculator(calculator, color) } -> std::same_as<void>;
     };
 
-template <typename T, typename C>
-concept SpaceInfoProviderAndCalculatorRegistryConcept =
-    SpaceInfoProviderConcept<T> && BoardStateCalculatorRegistryConcept<T, C>;
+
