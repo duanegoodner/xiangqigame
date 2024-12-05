@@ -6,3 +6,6 @@
 add_subdirectory(shared_ptr_method_passing)
 add_subdirectory(array_vs_vector)
 add_subdirectory(heap_vs_stack_read_speeds)
+add_subdirectory(concept_mixing)
+add_subdirectory(concept_using_other_concept)
+add_subdirectory(zobrist_concepts)

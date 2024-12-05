@@ -2,7 +2,7 @@
 
 
 #include <board_data_structs.hpp>
-#include <board_state_tracker_concept.hpp>
+// #include <concept_board_state_tracker.hpp>
 #include <functional>
 #include <map>
 #include <memory>
@@ -12,7 +12,7 @@
 namespace gameboard
 {
 
-    /! Starting board represented as 2-D array of integers.
+//! Starting board represented as 2-D array of integers.
 //! Can be converted to array of GamePiece objects by
 //! board_utilities::int_board_to_game_pieces.
 const BoardMapInt_t kStandardInitialBoard = {{

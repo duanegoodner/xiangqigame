@@ -15,6 +15,11 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 option(BUILD_PROTOTYPES "Build prototype executables" OFF)
 option(BUILD_TESTS "Build core tests" OFF)
 option(ENABLE_PROFILING "Enable gprof" OFF)
+option(ENABLE_CONCEPT_ERROR_DETAIL "Verbose compiler errors for Concepts" ON)
+
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND ENABLE_CONCEPT_ERROR_DETAIL)
+    add_compile_options(-fconcepts-diagnostics-depth=5)
+endif()
 
 if (ENABLE_PROFILING)
   SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")

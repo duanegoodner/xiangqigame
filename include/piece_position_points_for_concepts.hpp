@@ -4,6 +4,7 @@
 #include <game_piece.hpp>
 #include <memory>
 #include <piece_points_bpo.hpp>
+#include <string>
 
 //! Providing position-dependent values of pieces to objects in moveselection namespace.
 namespace piecepoints {
@@ -12,7 +13,10 @@ namespace piecepoints {
 //! accessing element correspondig to specific gameboard::PieceType located at a specific
 //! gameboard::BoardSpace.
 struct PiecePositionPointsForConcepts {
-  PiecePositionPointsForConcepts(GamePointsArray_t &game_points_array);
+
+  static std::shared_ptr<PiecePositionPointsForConcepts> Create(
+      std::string json_file = piecepoints::kICGABPOPath
+  );
 
   // define in header to force inlining
   inline Points_t GetValueOfPieceAtPosition(
@@ -27,8 +31,9 @@ struct PiecePositionPointsForConcepts {
   static TeamPointsEMap_t TeamPointsArrayToEMap(TeamPointsArray_t team_array);
   GamePointsEMap_t PointsArrayToEMap();
   GamePointsSMap_t PointsArrayToSmap();
+
+private:
+  PiecePositionPointsForConcepts(GamePointsArray_t &game_points_array);
 };
-
-
 
 } // namespace piecepoints

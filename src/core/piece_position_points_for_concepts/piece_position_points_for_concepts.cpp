@@ -13,18 +13,15 @@ PiecePositionPointsForConcepts::PiecePositionPointsForConcepts(
 )
     : points_array{game_points_array} {}
 
-// PiecePositionPointsForConcepts::PiecePositionPointsForConcepts(
-//     BPOPointsEKeys &bpo_points_ekeys
-// )
-//     : points_array{bpo_points_ekeys.ToGamePointsArray()} {}
-
-// PiecePositionPointsForConcepts::PiecePositionPointsForConcepts(
-//     BPOPointsSKeys &bpo_points_skeys
-// )
-//     : points_array{bpo_points_skeys.ToGamePointsArray()} {}
-
-// PiecePositionPointsForConcepts::PiecePositionPointsForConcepts(string json_file)
-//     : points_array{BPOPointsSKeys(json_file).ToGamePointsArray()} {}
+std::shared_ptr<PiecePositionPointsForConcepts> PiecePositionPointsForConcepts::Create(
+    std::string json_file
+) {
+  piecepoints::BPOPointsSKeys bpo_points_skeys{json_file};
+  auto game_points_array = bpo_points_skeys.ToGamePointsArray();
+  return std::shared_ptr<PiecePositionPointsForConcepts>(
+      new PiecePositionPointsForConcepts(game_points_array)
+  );
+}
 
 TeamPointsEMap_t PiecePositionPointsForConcepts::TeamPointsArrayToEMap(
     TeamPointsArray_t team_array
@@ -59,7 +56,5 @@ GamePointsSMap_t PiecePositionPointsForConcepts::PointsArrayToSmap() {
   }
   return game_string_map;
 }
-
-
 
 } // namespace piecepoints

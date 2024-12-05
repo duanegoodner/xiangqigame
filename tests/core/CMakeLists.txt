@@ -21,7 +21,6 @@ target_link_libraries(
 add_executable(piece_position_points_concept_test piece_position_points_concept_test.cpp)
 target_link_libraries(
     piece_position_points_concept_test PRIVATE
-    builders
     piece_position_points_for_concepts
     nlohmann_json
     utility_functs
@@ -51,7 +50,6 @@ target_link_libraries(
 add_executable(game_board_concept_test game_board_concept_test.cpp)
 target_link_libraries(
     game_board_concept_test PRIVATE
-    builders
     game_board_for_concepts
     move_calculator
     piece_moves
@@ -88,8 +86,7 @@ target_link_libraries(
 add_executable(minimax_concept_test minimax_concept_test.cpp)
 target_link_libraries(
     minimax_concept_test PRIVATE
-    builders
-    minimax_evaluator
+    move_evaluators_for_concepts
     piece_moves
     piece_position_points_for_concepts
     game_board_for_concepts
@@ -114,6 +111,28 @@ target_link_libraries(
     piece_position_points
     game_board
     GTest::gtest_main)
+
+add_executable(
+    zobrist_calculator_concept_test
+    zobrist_calculator_concept_test.cpp)
+target_link_libraries(
+    zobrist_calculator_concept_test PRIVATE
+    nlohmann_json
+    utility_functs
+    game_board
+    GTest::gtest_main)
+
+add_executable(
+    zobrist_component_concept_test
+    zobrist_component_concept_test.cpp)
+target_link_libraries(
+    zobrist_component_concept_test PRIVATE
+    nlohmann_json
+    utility_functs
+    game_board
+    GTest::gtest_main)
+
+
 
 add_executable(
     zobrist_coordinator_test

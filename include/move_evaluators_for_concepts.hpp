@@ -1,8 +1,8 @@
 #pragma once
 
-#include <board_state_coordinator_concept.hpp>
-#include <piece_value_provider_new_concept.hpp>
-#include <space_info_provider_new_concept.hpp>
+#include <concept_board_state_coordinator.hpp>
+#include <concept_piece_value_provider.hpp>
+#include <concept_space_info_provider.hpp>
 
 #include <array>
 #include <atomic>
@@ -11,6 +11,7 @@
 #include <evaluator_data_structs.hpp>
 #include <functional>
 #include <limits>
+#include <memory>
 #include <move_evaluator_interface.hpp>
 #include <piece_value_provider_interface.hpp>
 #include <space_info_provider_interface.hpp>
@@ -130,7 +131,7 @@ public:
 template <
     typename KeyType,
     SpaceInfoProviderConcept G,
-    BoardStateCoordinatorConcept<KeyType> H,
+    BoardStateCoordinatorConcept H,
     PieceValueProviderConcept P>
 class MinimaxMoveEvaluatorForConcept {
 
@@ -149,8 +150,8 @@ public:
       PieceColor evaluating_player,
       DepthType search_depth,
       std::shared_ptr<G> game_board,
-      std::shared_ptr<P> game_position_points,
-      std::shared_ptr<H> hash_calculator
+      P game_position_points,
+      H hash_calculator
   )
       : evaluating_player_{evaluating_player}
       , search_depth_{search_depth}
@@ -161,7 +162,7 @@ public:
       , search_summaries_{}
       , move_sorter_{game_board_, game_position_points_}
       , game_over_{false} {
-    initialize_hash_calculator();
+    // initialize_hash_calculator();
   }
 
   Move SelectMove(MoveCollection &allowed_moves) {
@@ -188,12 +189,10 @@ public:
   }
 
 private:
-  void initialize_hash_calculator() {
-    game_board_->AttachMoveCallback(
-        hash_calculator_.UpdateBoardState
-    );
-    hash_calculator_->FullBoardStateCalc(game_board_->map());
-  }
+  // void initialize_hash_calculator() {
+  //   game_board_->AttachMoveCallback(hash_calculator_.UpdateBoardState);
+  //   hash_calculator_->FullBoardStateCalc(game_board_->map());
+  // }
 
   Move SelectValidMove(const MoveCollection &allowed_moves) {
     auto &first_search_summary = RunFirstSearch(allowed_moves);
@@ -564,6 +563,9 @@ private:
   }
 };
 
+
+
+
 //! Complies with MoveEvaluatorConcept. Randomly chooses one of legal moves
 //! available to moveselection::RandomMoveEvaluator.evaluating_player_.
 template <SpaceInfoProviderConcept G>
@@ -572,6 +574,22 @@ class RandomMoveEvaluatorForConcept {
   std::shared_ptr<G> game_board_;
 
 public:
+  static std::unique_ptr<RandomMoveEvaluatorForConcept<G>> Create(
+      gameboard::PieceColor evaluating_player,
+      std::shared_ptr<G> game_board
+  ) {
+    return std::unique_ptr<RandomMoveEvaluatorForConcept<G>>(
+        new RandomMoveEvaluatorForConcept<G>(evaluating_player, game_board)
+    );
+  }
+
+  Move SelectMove(MoveCollection &allowed_moves) {
+    auto selected_move_index =
+        utility_functs::random((size_t)0, allowed_moves.moves.size() - 1);
+    return allowed_moves.moves[selected_move_index];
+  }
+
+  private:
   RandomMoveEvaluatorForConcept(
       PieceColor evaluating_player,
       std::shared_ptr<G> game_board
@@ -579,11 +597,6 @@ public:
       : evaluating_player_{evaluating_player}
       , game_board_{game_board} {}
 
-  Move SelectMove(MoveCollection &allowed_moves) {
-    auto selected_move_index =
-        utility_functs::random((size_t)0, allowed_moves.moves.size() - 1);
-    return allowed_moves.moves[selected_move_index];
-  }
 };
 
 } // namespace moveselection
