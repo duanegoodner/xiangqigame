@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['methodptr_5ft_0',['MethodPtr_t',['../namespacegameboard.html#a12801a549cf55bdb95d21079da8c22ec',1,'gameboard']]],
-  ['movecounttype_1',['MoveCountType',['../integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77',1,'integer_types.hpp']]]
+  ['keytype_0',['KeyType',['../classboardstate_1_1ZobristCalculatorForConcepts.html#a2d994e6cb8f50df49bebc5098a853e41',1,'boardstate::ZobristCalculatorForConcepts::KeyType()'],['../classboardstate_1_1ZobristComponentForConcepts.html#a6c00053eae147f70b0298edfefac7909',1,'boardstate::ZobristComponentForConcepts::KeyType()'],['../classboardstate_1_1ZobristCoordinatorForConcepts.html#af0cc8e7b2f30890277011cd0c480d8d4',1,'boardstate::ZobristCoordinatorForConcepts::KeyType()']]]
 ];

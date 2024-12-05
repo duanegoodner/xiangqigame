@@ -146,7 +146,7 @@ $(document).ready(function(){initNavTree('conceptSpaceInfoProviderConcept.html',
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="space__info__provider__new__concept_8hpp_source.html">space_info_provider_new_concept.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="concept__space__info__provider_8hpp_source.html">concept_space_info_provider.hpp</a>&gt;</code></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptSpaceInfoProviderConcept.html">SpaceInfoProviderConcept</a> =  <span class="keyword">requires</span>(</div>
@@ -154,9 +154,7 @@ $(document).ready(function(){initNavTree('conceptSpaceInfoProviderConcept.html',
 <div class="line">    <a class="code hl_enumeration" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> color,</div>
 <div class="line">    <a class="code hl_struct" href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a> &amp;space,</div>
 <div class="line">    <a class="code hl_struct" href="structgameboard_1_1Move.html">gameboard::Move</a> &amp;move,</div>
-<div class="line">    <a class="code hl_struct" href="structgameboard_1_1ExecutedMove.html">gameboard::ExecutedMove</a> &amp;executed_move,</div>
-<div class="line">    void (*callback)(<span class="keyword">const</span> <a class="code hl_struct" href="structgameboard_1_1ExecutedMove.html">gameboard::ExecutedMove</a> &amp;)</div>
-<div class="line">) {</div>
+<div class="line">    <a class="code hl_struct" href="structgameboard_1_1ExecutedMove.html">gameboard::ExecutedMove</a> &amp;executed_move) {</div>
 <div class="line">  {</div>
 <div class="line">    t.GetAllSpacesOccupiedBy(color)</div>
 <div class="line">  } -&gt; std::same_as&lt;std::vector&lt;gameboard::BoardSpace&gt;&gt;;</div>
@@ -165,24 +163,24 @@ $(document).ready(function(){initNavTree('conceptSpaceInfoProviderConcept.html',
 <div class="line">  {t.CalcFinalMovesOf(color)} -&gt; std::same_as&lt;gameboard::MoveCollection&gt;;</div>
 <div class="line">  {t.ExecuteMove(move)} -&gt; std::same_as&lt;gameboard::ExecutedMove&gt;;</div>
 <div class="line">  {t.UndoMove(executed_move)} -&gt; std::same_as&lt;void&gt;;</div>
-<div class="line">  {t.AttachMoveCallback(callback)} -&gt; std::same_as&lt;void&gt;;</div>
 <div class="line">  {t.IsDraw()} -&gt; std::same_as&lt;bool&gt;; </div>
+<div class="line">  {t.map()} -&gt; std::same_as&lt;const gameboard::BoardMap_t&amp;&gt;;</div>
 <div class="line">}</div>
-<div class="ttc" id="aconceptSpaceInfoProviderConcept_html"><div class="ttname"><a href="conceptSpaceInfoProviderConcept.html">SpaceInfoProviderConcept</a></div><div class="ttdef"><b>Definition:</b> <a href="space__info__provider__new__concept_8hpp_source.html#l00011">space_info_provider_new_concept.hpp:11</a></div></div>
+<div class="ttc" id="aconceptSpaceInfoProviderConcept_html"><div class="ttname"><a href="conceptSpaceInfoProviderConcept.html">SpaceInfoProviderConcept</a></div><div class="ttdef"><b>Definition:</b> <a href="concept__space__info__provider_8hpp_source.html#l00010">concept_space_info_provider.hpp:10</a></div></div>
 <div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a></div><div class="ttdeci">PieceColor</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
 <div class="ttc" id="astructgameboard_1_1BoardSpace_html"><div class="ttname"><a href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a></div><div class="ttdoc">A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa...</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00051">board_data_structs.hpp:51</a></div></div>
 <div class="ttc" id="astructgameboard_1_1ExecutedMove_html"><div class="ttname"><a href="structgameboard_1_1ExecutedMove.html">gameboard::ExecutedMove</a></div><div class="ttdoc">A change in the state of a gameboard::GameBoard represented by a gameboard::Move, and each of the gam...</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00093">move_data_structs.hpp:93</a></div></div>
 <div class="ttc" id="astructgameboard_1_1Move_html"><div class="ttname"><a href="structgameboard_1_1Move.html">gameboard::Move</a></div><div class="ttdoc">A gameboard::BoardSpace pair (start and end).</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00018">move_data_structs.hpp:18</a></div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="space__info__provider__new__concept_8hpp_source.html#l00011">11</a> of file <a class="el" href="space__info__provider__new__concept_8hpp_source.html">space_info_provider_new_concept.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="concept__space__info__provider_8hpp_source.html#l00010">10</a> of file <a class="el" href="concept__space__info__provider_8hpp_source.html">concept_space_info_provider.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoProviderConcept</a></li>
-    <li class="footer">Generated on Mon Nov 25 2024 17:02:07 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Thu Dec 5 2024 06:52:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -15,11 +15,8 @@ var annotated_dup =
       [ "ZobristCalculatorForConcepts", "classboardstate_1_1ZobristCalculatorForConcepts.html", "classboardstate_1_1ZobristCalculatorForConcepts" ],
       [ "ZobristComponent", "classboardstate_1_1ZobristComponent.html", "classboardstate_1_1ZobristComponent" ],
       [ "ZobristComponentForConcepts", "classboardstate_1_1ZobristComponentForConcepts.html", "classboardstate_1_1ZobristComponentForConcepts" ],
-      [ "ZobristComponentNew", "classboardstate_1_1ZobristComponentNew.html", "classboardstate_1_1ZobristComponentNew" ],
       [ "ZobristCoordinator", "classboardstate_1_1ZobristCoordinator.html", "classboardstate_1_1ZobristCoordinator" ],
-      [ "ZobristCoordinatorBuilder", "classboardstate_1_1ZobristCoordinatorBuilder.html", "classboardstate_1_1ZobristCoordinatorBuilder" ],
-      [ "ZobristCoordinatorForConcepts", "classboardstate_1_1ZobristCoordinatorForConcepts.html", "classboardstate_1_1ZobristCoordinatorForConcepts" ],
-      [ "ZobristCoordinatorNew", "classboardstate_1_1ZobristCoordinatorNew.html", "classboardstate_1_1ZobristCoordinatorNew" ]
+      [ "ZobristCoordinatorForConcepts", "classboardstate_1_1ZobristCoordinatorForConcepts.html", "classboardstate_1_1ZobristCoordinatorForConcepts" ]
     ] ],
     [ "gameboard", "namespacegameboard.html", [
       [ "BoardDirection", "structgameboard_1_1BoardDirection.html", "structgameboard_1_1BoardDirection" ],
@@ -27,7 +24,6 @@ var annotated_dup =
       [ "CastleEdges", "structgameboard_1_1CastleEdges.html", "structgameboard_1_1CastleEdges" ],
       [ "ExecutedMove", "structgameboard_1_1ExecutedMove.html", "structgameboard_1_1ExecutedMove" ],
       [ "GameBoard", "classgameboard_1_1GameBoard.html", "classgameboard_1_1GameBoard" ],
-      [ "GameBoardBuilder", "classgameboard_1_1GameBoardBuilder.html", "classgameboard_1_1GameBoardBuilder" ],
       [ "GameBoardForConcepts", "classgameboard_1_1GameBoardForConcepts.html", "classgameboard_1_1GameBoardForConcepts" ],
       [ "GamePiece", "structgameboard_1_1GamePiece.html", "structgameboard_1_1GamePiece" ],
       [ "Move", "structgameboard_1_1Move.html", "structgameboard_1_1Move" ],
@@ -44,13 +40,11 @@ var annotated_dup =
       [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
       [ "MinimaxMoveEvaluatorBuilder", "classmoveselection_1_1MinimaxMoveEvaluatorBuilder.html", "classmoveselection_1_1MinimaxMoveEvaluatorBuilder" ],
       [ "MinimaxMoveEvaluatorForConcept", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept" ],
-      [ "MinimaxMoveEvaluatorNew", "classmoveselection_1_1MinimaxMoveEvaluatorNew.html", "classmoveselection_1_1MinimaxMoveEvaluatorNew" ],
       [ "MinimaxTemplateSpecs", "structmoveselection_1_1MinimaxTemplateSpecs.html", "structmoveselection_1_1MinimaxTemplateSpecs" ],
       [ "PreSearchMoveSorter", "classmoveselection_1_1PreSearchMoveSorter.html", "classmoveselection_1_1PreSearchMoveSorter" ],
       [ "PreSearchMoveSorterForConcepts", "classmoveselection_1_1PreSearchMoveSorterForConcepts.html", "classmoveselection_1_1PreSearchMoveSorterForConcepts" ],
       [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],
       [ "RandomMoveEvaluatorForConcept", "classmoveselection_1_1RandomMoveEvaluatorForConcept.html", "classmoveselection_1_1RandomMoveEvaluatorForConcept" ],
-      [ "RandomMoveEvalutorBuilder", "classmoveselection_1_1RandomMoveEvalutorBuilder.html", "classmoveselection_1_1RandomMoveEvalutorBuilder" ],
       [ "ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", "classmoveselection_1_1ResultDepthCounts" ],
       [ "ScoredMove", "structmoveselection_1_1ScoredMove.html", "structmoveselection_1_1ScoredMove" ],
       [ "SearchSummaries", "structmoveselection_1_1SearchSummaries.html", "structmoveselection_1_1SearchSummaries" ],
@@ -61,7 +55,6 @@ var annotated_dup =
       [ "BPOPointsEKeys", "classpiecepoints_1_1BPOPointsEKeys.html", "classpiecepoints_1_1BPOPointsEKeys" ],
       [ "BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html", "classpiecepoints_1_1BPOPointsSKeys" ],
       [ "PiecePositionPoints", "structpiecepoints_1_1PiecePositionPoints.html", "structpiecepoints_1_1PiecePositionPoints" ],
-      [ "PiecePositionPointsBuilder", "classpiecepoints_1_1PiecePositionPointsBuilder.html", "classpiecepoints_1_1PiecePositionPointsBuilder" ],
       [ "PiecePositionPointsForConcepts", "structpiecepoints_1_1PiecePositionPointsForConcepts.html", "structpiecepoints_1_1PiecePositionPointsForConcepts" ]
     ] ],
     [ "std", "namespacestd.html", [
@@ -162,6 +155,7 @@ var annotated_dup =
     [ "IllegalMoveException", "classIllegalMoveException.html", "classIllegalMoveException" ],
     [ "JsonUtility", "classJsonUtility.html", "classJsonUtility" ],
     [ "MoveEvaluator", "classMoveEvaluator.html", "classMoveEvaluator" ],
+    [ "NullBoardStateCalculator", "classNullBoardStateCalculator.html", "classNullBoardStateCalculator" ],
     [ "PieceValueProvider", "classPieceValueProvider.html", "classPieceValueProvider" ],
     [ "Player", "classPlayer.html", "classPlayer" ],
     [ "SpaceInfoProvider", "classSpaceInfoProvider.html", "classSpaceInfoProvider" ]

@@ -1,0 +1,4 @@
+<map id="boardstate::TranspositionTablePrunerForConcepts&lt; KeyType, NumConfKeys &gt;" name="boardstate::TranspositionTablePrunerForConcepts&lt; KeyType, NumConfKeys &gt;">
+<area shape="rect" id="node1" title="Removes old entries from TranspositionTableForConcepts to prevent excessive memory use." alt="" coords="13,5,224,317"/>
+<area shape="rect" id="node2" href="$classboardstate_1_1TranspositionTablePrunerForConcepts.html" title=" " alt="" coords="5,380,232,692"/>
+</map>

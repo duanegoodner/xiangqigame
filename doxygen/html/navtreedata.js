@@ -141,17 +141,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____init_____8py.html",
-"classboardstate_1_1TranspositionTablePruner.html#aa4fce9a7488143ab986758956109cff9",
-"classboardstate_1_1ZobristCoordinator.html#a959a1abccb8bc4eb6d9a58252e953ca6",
-"classjsonio_1_1NlohmannJsonUtility.html#aa6ee509fe467a915a56d48202747539b",
-"classmoveselection_1_1MinimaxMoveEvaluatorNew.html#aaaf8e9f0c6efb726e3e3a5efea7dda6d",
-"classxiangqipy_1_1app__new_1_1PlayerInputNew.html#a0743d0b9867305258c91f73b1547f2cc",
-"classxiangqipy_1_1core__dataclass__mirrors_1_1SearchSummary.html#a8eb065b7043ed8700cedb65c9f033181",
-"classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#afae591c50d61a02094352c25f04b7082",
-"conceptBoardStateTrackerConcept.html",
-"md_docs_04_notation.html#autotoc_md23",
-"namespacexiangqipy_1_1handlers_1_1errors.html",
-"structpiecepoints_1_1PiecePositionPoints.html"
+"classboardstate_1_1TranspositionTablePruner.html#aba5db7e713ccd9219aac4b0bd9bfdd59",
+"classboardstate_1_1ZobristCoordinatorForConcepts.html#aab2fd34aa956e6903c62570044166d8e",
+"classmoveselection_1_1MinimaxMoveEvaluator.html#a23047833e6ae6ee4e471f074f70a4474",
+"classmoveselection_1_1SearchSummary.html#ad5f02b2a75f248998b7b6b0942d1565d",
+"classxiangqipy_1_1core__dataclass__mirrors_1_1BoardSpace.html#a0a64b923ad2c07ce3fac97a21e417599",
+"classxiangqipy_1_1game__summary_1_1GameSummary.html#abf352897ca252e609ee194d733c0a208",
+"classxiangqipy_1_1players_1_1IllegalAIMove.html#aab0e36ff83d823a88ecbe3dd64d59d21",
+"functions_vars_y.html",
+"namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d",
+"signals_8py.html#ad952d4648d30a96308a474bf10668889"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

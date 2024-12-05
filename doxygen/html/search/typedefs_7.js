@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['teambasepoints_5ft_0',['TeamBasePoints_t',['../namespacepiecepoints.html#a70c12c629ce81810a64a420a0ecaa86a',1,'piecepoints']]],
-  ['teampointsarray_5ft_1',['TeamPointsArray_t',['../namespacepiecepoints.html#ac9f72505daaa180dc8985a0a0f113bbe',1,'piecepoints']]],
-  ['teampointsemap_5ft_2',['TeamPointsEMap_t',['../namespacepiecepoints.html#a8a4ebc2e24254c0b7d3b022e399b53de',1,'piecepoints']]],
-  ['teampointssmap_5ft_3',['TeamPointsSMap_t',['../namespacepiecepoints.html#a5e5b62b26a65d4f04b24443e62f003bc',1,'piecepoints']]],
-  ['teamzarray_5ft_4',['TeamZarray_t',['../classboardstate_1_1ZobristCalculator.html#ad63d15a8fc6e4e686ca2ad3e961a378e',1,'boardstate::ZobristCalculator::TeamZarray_t()'],['../classboardstate_1_1ZobristCalculatorForConcepts.html#a4d4a8a8a634ec03d5f381325b221c04f',1,'boardstate::ZobristCalculatorForConcepts::TeamZarray_t()']]]
+  ['piecedispatcharray_5ft_0',['PieceDispatchArray_t',['../namespacegameboard.html#a674308b4542167d49e6884d492d3d1b3',1,'gameboard']]],
+  ['piecepointsarray_5ft_1',['PiecePointsArray_t',['../namespacepiecepoints.html#a7db0ad00c931e53d167da56472f15b70',1,'piecepoints']]],
+  ['piecezarray_5ft_2',['PieceZarray_t',['../classboardstate_1_1ZobristCalculator.html#a74bcf6cf9417a77722a527a8c83c3b7e',1,'boardstate::ZobristCalculator::PieceZarray_t()'],['../classboardstate_1_1ZobristCalculatorForConcepts.html#ab98d7243179d2f4503680e28de27e15c',1,'boardstate::ZobristCalculatorForConcepts::PieceZarray_t()']]],
+  ['points_5ft_3',['Points_t',['../integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea',1,'integer_types.hpp']]]
 ];

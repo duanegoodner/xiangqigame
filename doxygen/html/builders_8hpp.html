@@ -148,7 +148,9 @@ $(document).ready(function(){initNavTree('builders_8hpp.html',''); initResizable
   <div class="headertitle"><div class="title">builders.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="concept__board__state__calculator_8hpp_source.html">concept_board_state_calculator.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="concept__board__state__calculator__registry_8hpp_source.html">concept_board_state_calculator_registry.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;<a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="piece__position__points__for__concepts_8hpp_source.html">piece_position_points_for_concepts.hpp</a>&gt;</code><br />
@@ -158,72 +160,67 @@ Include dependency graph for builders.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="builders_8hpp__incl.png" border="0" usemap="#ainclude_2builders_8hpp" alt=""/></div>
 <map name="ainclude_2builders_8hpp" id="ainclude_2builders_8hpp">
-<area shape="rect" title=" " alt="" coords="2326,5,2479,31"/>
-<area shape="rect" href="game__board__for__concepts_8hpp.html" title=" " alt="" coords="1536,86,1757,111"/>
-<area shape="rect" title=" " alt="" coords="3296,431,3373,456"/>
-<area shape="rect" href="move__evaluators__for__concepts_8hpp.html" title=" " alt="" coords="784,79,944,119"/>
-<area shape="rect" href="piece__position__points__for__concepts_8hpp.html" title=" " alt="" coords="2765,255,2928,295"/>
-<area shape="rect" href="zobrist__for__concepts_8hpp.html" title=" " alt="" coords="2311,174,2495,199"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="1683,504,1858,529"/>
-<area shape="rect" href="board__state__tracker__concept_8hpp.html" title=" " alt="" coords="1042,343,1193,383"/>
-<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="1421,431,1595,456"/>
-<area shape="rect" title=" " alt="" coords="749,431,835,456"/>
-<area shape="rect" title=" " alt="" coords="1420,350,1471,375"/>
-<area shape="rect" href="move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="1625,174,1783,199"/>
-<area shape="rect" title=" " alt="" coords="2069,577,2125,603"/>
-<area shape="rect" title=" " alt="" coords="1860,577,1929,603"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1706,577,1835,603"/>
-<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="119,577,257,603"/>
-<area shape="rect" title=" " alt="" coords="2801,577,2873,603"/>
-<area shape="rect" title=" " alt="" coords="2150,577,2213,603"/>
-<area shape="rect" title=" " alt="" coords="1739,651,1802,676"/>
-<area shape="rect" title=" " alt="" coords="2808,651,2867,676"/>
-<area shape="rect" title=" " alt="" coords="2189,651,2313,676"/>
-<area shape="rect" title=" " alt="" coords="155,651,221,676"/>
-<area shape="rect" title=" " alt="" coords="532,431,612,456"/>
-<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="2403,504,2538,529"/>
-<area shape="rect" title=" " alt="" coords="2288,577,2373,603"/>
-<area shape="rect" title=" " alt="" coords="2398,577,2487,603"/>
-<area shape="rect" title=" " alt="" coords="1537,262,1583,287"/>
-<area shape="rect" href="move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="1710,262,1919,287"/>
-<area shape="rect" href="piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="1687,350,1823,375"/>
-<area shape="rect" href="board__state__coordinator__concept_8hpp.html" title=" " alt="" coords="685,167,865,207"/>
-<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1162,262,1361,287"/>
-<area shape="rect" href="piece__value__provider__new__concept_8hpp.html" title=" " alt="" coords="195,343,357,383"/>
-<area shape="rect" href="space__info__provider__new__concept_8hpp.html" title=" " alt="" coords="610,343,763,383"/>
-<area shape="rect" title=" " alt="" coords="2147,262,2213,287"/>
-<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateCoordinator." alt="" coords="425,167,609,207"/>
-<area shape="rect" title=" " alt="" coords="241,174,300,199"/>
-<area shape="rect" href="move__evaluator__interface_8hpp.html" title="Definition of MoveEvaluator interface." alt="" coords="1279,174,1500,199"/>
-<area shape="rect" href="piece__value__provider__interface_8hpp.html" title="Definition of PieceValueProvider CRTP interface." alt="" coords="991,167,1153,207"/>
-<area shape="rect" href="space__info__provider__interface_8hpp.html" title="Definition of SpaceInfoProvider CRTP interface." alt="" coords="381,343,534,383"/>
-<area shape="rect" title=" " alt="" coords="1596,350,1663,375"/>
-<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="2715,350,2877,375"/>
-<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="3035,504,3221,529"/>
-<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="2849,431,3044,456"/>
-<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="2303,431,2521,456"/>
-<area shape="rect" title=" " alt="" coords="2647,431,2723,456"/>
-<area shape="rect" title=" " alt="" coords="2715,504,2789,529"/>
-<area shape="rect" title=" " alt="" coords="2813,504,2960,529"/>
-<area shape="rect" href="key__generator_8hpp.html" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="3102,262,3245,287"/>
-<area shape="rect" title=" " alt="" coords="3269,262,3333,287"/>
-<area shape="rect" title=" " alt="" coords="2440,262,2515,287"/>
-<area shape="rect" title=" " alt="" coords="2539,262,2653,287"/>
-<area shape="rect" title=" " alt="" coords="2677,262,2741,287"/>
-<area shape="rect" title=" " alt="" coords="3003,350,3061,375"/>
-<area shape="rect" title=" " alt="" coords="3085,350,3160,375"/>
-<area shape="rect" title=" " alt="" coords="3184,350,3264,375"/>
-<area shape="rect" title=" " alt="" coords="3288,350,3363,375"/>
-<area shape="rect" title=" " alt="" coords="3387,350,3479,375"/>
-</map>
-</div>
-</div><div class="textblock"><div class="dynheader">
-This graph shows which files directly or indirectly include this file:</div>
-<div class="dyncontent">
-<div class="center"><img src="builders_8hpp__dep__incl.png" border="0" usemap="#ainclude_2builders_8hppdep" alt=""/></div>
-<map name="ainclude_2builders_8hppdep" id="ainclude_2builders_8hppdep">
-<area shape="rect" title=" " alt="" coords="35,5,188,31"/>
-<area shape="rect" href="builders_8cpp.html" title=" " alt="" coords="5,79,217,104"/>
+<area shape="rect" title=" " alt="" coords="1251,5,1405,31"/>
+<area shape="rect" href="concept__board__state__calculator_8hpp.html" title=" " alt="" coords="1365,343,1523,383"/>
+<area shape="rect" title=" " alt="" coords="1213,431,1291,456"/>
+<area shape="rect" href="concept__board__state__calculator__registry_8hpp.html" title=" " alt="" coords="1416,255,1592,295"/>
+<area shape="rect" href="game__board__for__concepts_8hpp.html" title=" " alt="" coords="895,86,1116,111"/>
+<area shape="rect" href="move__evaluators__for__concepts_8hpp.html" title=" " alt="" coords="2023,79,2183,119"/>
+<area shape="rect" href="piece__position__points__for__concepts_8hpp.html" title=" " alt="" coords="315,255,477,295"/>
+<area shape="rect" href="zobrist__for__concepts_8hpp.html" title=" " alt="" coords="3188,174,3372,199"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="1674,504,1849,529"/>
+<area shape="rect" title=" " alt="" coords="2159,431,2239,456"/>
+<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="1523,431,1698,456"/>
+<area shape="rect" title=" " alt="" coords="2893,577,2949,603"/>
+<area shape="rect" title=" " alt="" coords="1681,577,1751,603"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1370,577,1499,603"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="2553,577,2692,603"/>
+<area shape="rect" title=" " alt="" coords="3213,577,3285,603"/>
+<area shape="rect" title=" " alt="" coords="1775,577,1838,603"/>
+<area shape="rect" title=" " alt="" coords="1407,651,1470,676"/>
+<area shape="rect" title=" " alt="" coords="389,651,448,676"/>
+<area shape="rect" title=" " alt="" coords="1259,651,1383,676"/>
+<area shape="rect" title=" " alt="" coords="2589,651,2656,676"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="1153,504,1287,529"/>
+<area shape="rect" title=" " alt="" coords="984,577,1069,603"/>
+<area shape="rect" title=" " alt="" coords="1094,577,1183,603"/>
+<area shape="rect" href="concept__space__info__provider_8hpp.html" title=" " alt="" coords="1547,343,1698,383"/>
+<area shape="rect" title=" " alt="" coords="1153,174,1239,199"/>
+<area shape="rect" title=" " alt="" coords="928,350,979,375"/>
+<area shape="rect" href="move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="869,174,1027,199"/>
+<area shape="rect" title=" " alt="" coords="705,262,751,287"/>
+<area shape="rect" href="move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="878,262,1087,287"/>
+<area shape="rect" href="piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="1003,350,1139,375"/>
+<area shape="rect" href="concept__board__state__coordinator_8hpp.html" title=" " alt="" coords="2207,167,2364,207"/>
+<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="2423,262,2622,287"/>
+<area shape="rect" href="concept__piece__value__provider_8hpp.html" title=" " alt="" coords="2459,343,2618,383"/>
+<area shape="rect" title=" " alt="" coords="2797,262,2864,287"/>
+<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateCoordinator." alt="" coords="2540,167,2724,207"/>
+<area shape="rect" title=" " alt="" coords="2073,174,2132,199"/>
+<area shape="rect" href="move__evaluator__interface_8hpp.html" title="Definition of MoveEvaluator interface." alt="" coords="1591,174,1812,199"/>
+<area shape="rect" href="piece__value__provider__interface_8hpp.html" title="Definition of PieceValueProvider CRTP interface." alt="" coords="1837,167,1998,207"/>
+<area shape="rect" href="space__info__provider__interface_8hpp.html" title="Definition of SpaceInfoProvider CRTP interface." alt="" coords="2078,343,2231,383"/>
+<area shape="rect" title=" " alt="" coords="2795,350,2861,375"/>
+<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="336,350,499,375"/>
+<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="195,504,381,529"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="245,431,440,456"/>
+<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="717,431,936,456"/>
+<area shape="rect" title=" " alt="" coords="566,431,642,456"/>
+<area shape="rect" title=" " alt="" coords="457,504,530,529"/>
+<area shape="rect" title=" " alt="" coords="555,504,701,529"/>
+<area shape="rect" href="concept__multi__board__state__provider_8hpp.html" title=" " alt="" coords="3142,255,3301,295"/>
+<area shape="rect" href="concept__single__board__state__provider_8hpp.html" title=" " alt="" coords="3189,343,3352,383"/>
+<area shape="rect" href="key__generator_8hpp.html" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="3531,350,3674,375"/>
+<area shape="rect" title=" " alt="" coords="3693,262,3757,287"/>
+<area shape="rect" title=" " alt="" coords="3781,262,3856,287"/>
+<area shape="rect" title=" " alt="" coords="3880,262,3995,287"/>
+<area shape="rect" title=" " alt="" coords="4019,262,4083,287"/>
+<area shape="rect" href="zobrist__calculator__for__concepts_8hpp.html" title=" " alt="" coords="3478,255,3618,295"/>
+<area shape="rect" title=" " alt="" coords="3242,431,3334,456"/>
+<area shape="rect" title=" " alt="" coords="3528,431,3587,456"/>
+<area shape="rect" title=" " alt="" coords="3611,431,3685,456"/>
+<area shape="rect" title=" " alt="" coords="3709,431,3789,456"/>
+<area shape="rect" title=" " alt="" coords="3813,431,3888,456"/>
 </map>
 </div>
 </div>
@@ -231,28 +228,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardBuilder.html">gameboard::GameBoardBuilder</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpiecepoints_1_1PiecePositionPointsBuilder.html">piecepoints::PiecePositionPointsBuilder</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorBuilder.html">boardstate::ZobristCoordinatorBuilder&lt; KeyType, NumConfKeys &gt;</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1RandomMoveEvalutorBuilder.html">moveselection::RandomMoveEvalutorBuilder</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorBuilder.html">moveselection::MinimaxMoveEvaluatorBuilder</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
-<tr class="memitem:namespacegameboard"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html">gameboard</a></td></tr>
-<tr class="memdesc:namespacegameboard"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tracking piece positions and determining legal moves. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespacepiecepoints"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepiecepoints.html">piecepoints</a></td></tr>
-<tr class="memdesc:namespacepiecepoints"><td class="mdescLeft">&#160;</td><td class="mdescRight">Providing position-dependent values of pieces to objects in moveselection namespace. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:namespaceboardstate"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceboardstate.html">boardstate</a></td></tr>
-<tr class="memdesc:namespaceboardstate"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate / manage board state and associate Minimax results. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacemoveselection"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemoveselection.html">moveselection</a></td></tr>
 <tr class="memdesc:namespacemoveselection"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selecting a move to execute. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -263,7 +243,7 @@ Namespaces</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="builders_8hpp.html">builders.hpp</a></li>
-    <li class="footer">Generated on Mon Nov 25 2024 17:02:07 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Thu Dec 5 2024 06:52:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

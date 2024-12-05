@@ -161,21 +161,21 @@ Collaboration diagram for moveselection::MinimaxMoveEvaluatorBuilder:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0c0100f6f414f8b0db0f98603037b978"><td class="memTemplParams" colspan="2">template&lt;typename KeyType , <a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoProviderConcept</a> G, <a class="el" href="conceptBoardStateCoordinatorConcept.html">BoardStateCoordinatorConcept</a>&lt; KeyType &gt; H, <a class="el" href="conceptPieceValueProviderConcept.html">PieceValueProviderConcept</a> P&gt; </td></tr>
-<tr class="memitem:a0c0100f6f414f8b0db0f98603037b978"><td class="memTemplItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html">MinimaxMoveEvaluatorForConcept</a>&lt; KeyType, G, H, P &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorBuilder.html#a0c0100f6f414f8b0db0f98603037b978">build</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> search_depth, std::shared_ptr&lt; G &gt; game_board, std::shared_ptr&lt; P &gt; game_position_points, std::shared_ptr&lt; H &gt; hash_calculator)</td></tr>
-<tr class="separator:a0c0100f6f414f8b0db0f98603037b978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a152018baa9bfca7426124eb7d433156a"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> C, typename KeyType , <a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoProviderConcept</a> G, <a class="el" href="conceptBoardStateCoordinatorConcept.html">BoardStateCoordinatorConcept</a> H, <a class="el" href="conceptPieceValueProviderConcept.html">PieceValueProviderConcept</a> P&gt; </td></tr>
+<tr class="memitem:a152018baa9bfca7426124eb7d433156a"><td class="memTemplItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html">MinimaxMoveEvaluatorForConcept</a>&lt; KeyType, G, H, P &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorBuilder.html#a152018baa9bfca7426124eb7d433156a">build</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> search_depth, std::shared_ptr&lt; G &gt; game_board, std::shared_ptr&lt; P &gt; game_position_points, std::shared_ptr&lt; H &gt; hash_calculator)</td></tr>
+<tr class="separator:a152018baa9bfca7426124eb7d433156a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="builders_8hpp_source.html#l00077">77</a> of file <a class="el" href="builders_8hpp_source.html">builders.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="builders_8hpp_source.html#l00015">15</a> of file <a class="el" href="builders_8hpp_source.html">builders.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0c0100f6f414f8b0db0f98603037b978" name="a0c0100f6f414f8b0db0f98603037b978"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c0100f6f414f8b0db0f98603037b978">&#9670;&#160;</a></span>build()</h2>
+<a id="a152018baa9bfca7426124eb7d433156a" name="a152018baa9bfca7426124eb7d433156a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a152018baa9bfca7426124eb7d433156a">&#9670;&#160;</a></span>build()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename KeyType , <a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoProviderConcept</a> G, <a class="el" href="conceptBoardStateCoordinatorConcept.html">BoardStateCoordinatorConcept</a>&lt; KeyType &gt; H, <a class="el" href="conceptPieceValueProviderConcept.html">PieceValueProviderConcept</a> P&gt; </div>
+template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> C, typename KeyType , <a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoProviderConcept</a> G, <a class="el" href="conceptBoardStateCoordinatorConcept.html">BoardStateCoordinatorConcept</a> H, <a class="el" href="conceptPieceValueProviderConcept.html">PieceValueProviderConcept</a> P&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -223,7 +223,7 @@ template&lt;typename KeyType , <a class="el" href="conceptSpaceInfoProviderConce
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="builders_8hpp_source.html#l00084">84</a> of file <a class="el" href="builders_8hpp_source.html">builders.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="builders_8hpp_source.html#l00023">23</a> of file <a class="el" href="builders_8hpp_source.html">builders.hpp</a>.</p>
 
 </div>
 </div>
@@ -236,7 +236,7 @@ template&lt;typename KeyType , <a class="el" href="conceptSpaceInfoProviderConce
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li><li class="navelem"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorBuilder.html">MinimaxMoveEvaluatorBuilder</a></li>
-    <li class="footer">Generated on Mon Nov 25 2024 17:02:07 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Thu Dec 5 2024 06:52:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

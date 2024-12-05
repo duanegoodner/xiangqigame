@@ -172,8 +172,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoard.html">GameBoard</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements <a class="el" href="classSpaceInfoProvider.html" title="CRTP interface with methods for obtaining information about gameboard::BoardSpace objects,...">SpaceInfoProvider</a> interface; stores piece positions, and exposes methods for calculating, executing, an un-doing moves.  <a href="classgameboard_1_1GameBoard.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardBuilder.html">GameBoardBuilder</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html">GameBoardForConcepts</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Must comply with SpaceInfoProviderConcept; stores piece positions, and exposes methods for calculating, executing, an un-doing moves.  <a href="classgameboard_1_1GameBoardForConcepts.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -273,7 +271,7 @@ Variables</h2></td></tr>
 <tr class="memitem:ae715c4cc954af711a8f9da82271d2aba"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structgameboard_1_1CastleEdges.html">CastleEdges</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ae715c4cc954af711a8f9da82271d2aba">kBlackCastleEdges</a> = {0, 2, 3, 5}</td></tr>
 <tr class="separator:ae715c4cc954af711a8f9da82271d2aba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e0df9efca8bf056b54a1ba15035bece"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a0e0df9efca8bf056b54a1ba15035bece">kStandardInitialBoard</a></td></tr>
-<tr class="memdesc:a0e0df9efca8bf056b54a1ba15035bece"><td class="mdescLeft">&#160;</td><td class="mdescRight">Can be converted to array of <a class="el" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor.">GamePiece</a> objects by board_utilities::int_board_to_game_pieces.  <br /></td></tr>
+<tr class="memdesc:a0e0df9efca8bf056b54a1ba15035bece"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starting board represented as 2-D array of integers.  <br /></td></tr>
 <tr class="separator:a0e0df9efca8bf056b54a1ba15035bece"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7f90d284c0b95bc54f4c5be7b4bce8e"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ab7f90d284c0b95bc54f4c5be7b4bce8e">kRepeatPeriodsToCheck</a> [3] = {2, 3, 4}</td></tr>
 <tr class="memdesc:ab7f90d284c0b95bc54f4c5be7b4bce8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Max allowed repetitions of prohibited move sequence lengths.  <br /></td></tr>
@@ -968,7 +966,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00016">16</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00039">39</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -1142,7 +1140,7 @@ Variables</h2></td></tr>
 <p>Repeated move sequence lengths forbidden under move repetition rules. </p>
 <p>If kRepeatPeriodsToCheck = {2, 3, 4} and kRepeatPeriodsMaxAllowed = 2, then the following sequences are probibited: ABABAB, ABCABCABC, ABCDABCDABCD, ABCDEABCDEABCDE, ABCDEFABCDEFABCDEF </p>
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00015">15</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00037">37</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -1160,7 +1158,7 @@ Variables</h2></td></tr>
 
 <p>Max allowed repetitions of prohibited move sequence lengths. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00014">14</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00031">31</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -1208,11 +1206,10 @@ Variables</h2></td></tr>
 <div class="line">    {-5, -4, -3, -2, -1, -2, -3, -4, -5},</div>
 <div class="line">}}</div>
 </div><!-- fragment -->
-<p>Can be converted to array of <a class="el" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor.">GamePiece</a> objects by board_utilities::int_board_to_game_pieces. </p>
-<p>Starting board represented as 2-D array of integers.</p>
+<p>Starting board represented as 2-D array of integers. </p>
 <p>Can be converted to array of <a class="el" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor.">GamePiece</a> objects by board_utilities::int_board_to_game_pieces. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00013">13</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00017">17</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -1222,7 +1219,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacegameboard.html">gameboard</a></li>
-    <li class="footer">Generated on Mon Nov 25 2024 17:02:07 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Thu Dec 5 2024 06:52:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

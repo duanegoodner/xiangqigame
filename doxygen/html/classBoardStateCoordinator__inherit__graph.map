@@ -1,7 +1,5 @@
 <map id="BoardStateCoordinator&lt; ConcreteBoardStateCoordinator, KeyType &gt;" name="BoardStateCoordinator&lt; ConcreteBoardStateCoordinator, KeyType &gt;">
-<area shape="rect" id="node1" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="131,5,377,200"/>
-<area shape="rect" id="node2" href="$classBoardStateCoordinator.html" title=" " alt="" coords="52,292,243,501"/>
-<area shape="rect" id="node4" href="$classBoardStateCoordinator.html" title=" " alt="" coords="297,292,488,501"/>
+<area shape="rect" id="node1" title="CRTP Interface with methods to calculate / read / update hash values representing a board state; and ..." alt="" coords="8,5,255,200"/>
+<area shape="rect" id="node2" href="$classBoardStateCoordinator.html" title=" " alt="" coords="36,292,227,501"/>
 <area shape="rect" id="node3" href="$classboardstate_1_1ZobristCoordinator.html" title="Implements the BoardStateCoordinator interface, providing a moveselection::MinimaxMoveEvaluator with ..." alt="" coords="5,551,257,877"/>
-<area shape="rect" id="node5" href="$classboardstate_1_1ZobristCoordinatorNew.html" title="Implements the BoardStateCoordinator interface, providing a moveselection::MinimaxMoveEvaluator with ..." alt="" coords="281,565,533,863"/>
 </map>

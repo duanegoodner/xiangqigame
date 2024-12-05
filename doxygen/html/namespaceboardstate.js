@@ -14,11 +14,8 @@ var namespaceboardstate =
     [ "ZobristCalculatorForConcepts", "classboardstate_1_1ZobristCalculatorForConcepts.html", "classboardstate_1_1ZobristCalculatorForConcepts" ],
     [ "ZobristComponent", "classboardstate_1_1ZobristComponent.html", "classboardstate_1_1ZobristComponent" ],
     [ "ZobristComponentForConcepts", "classboardstate_1_1ZobristComponentForConcepts.html", "classboardstate_1_1ZobristComponentForConcepts" ],
-    [ "ZobristComponentNew", "classboardstate_1_1ZobristComponentNew.html", "classboardstate_1_1ZobristComponentNew" ],
     [ "ZobristCoordinator", "classboardstate_1_1ZobristCoordinator.html", "classboardstate_1_1ZobristCoordinator" ],
-    [ "ZobristCoordinatorBuilder", "classboardstate_1_1ZobristCoordinatorBuilder.html", "classboardstate_1_1ZobristCoordinatorBuilder" ],
     [ "ZobristCoordinatorForConcepts", "classboardstate_1_1ZobristCoordinatorForConcepts.html", "classboardstate_1_1ZobristCoordinatorForConcepts" ],
-    [ "ZobristCoordinatorNew", "classboardstate_1_1ZobristCoordinatorNew.html", "classboardstate_1_1ZobristCoordinatorNew" ],
     [ "IntToHexString", "namespaceboardstate.html#add5893a9fca7208b917bf0f4b03bfa74", null ],
     [ "PrintHex", "namespaceboardstate.html#ae1270479dcef9a3a2cc86aa7456c8154", null ]
 ];

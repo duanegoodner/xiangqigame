@@ -1,0 +1,22 @@
+<map id="include/concept_board_state_calculator_registry.hpp" name="include/concept_board_state_calculator_registry.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="219,5,435,45"/>
+<area shape="rect" id="node2" href="$concept__board__state__calculator_8hpp.html" title=" " alt="" coords="307,93,465,133"/>
+<area shape="rect" id="node14" title=" " alt="" coords="173,181,253,207"/>
+<area shape="rect" id="node15" title=" " alt="" coords="527,181,605,207"/>
+<area shape="rect" id="node20" href="$concept__space__info__provider_8hpp.html" title=" " alt="" coords="81,93,232,133"/>
+<area shape="rect" id="node3" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="279,255,453,280"/>
+<area shape="rect" id="node16" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="277,181,452,207"/>
+<area shape="rect" id="node4" title=" " alt="" coords="609,328,665,353"/>
+<area shape="rect" id="node5" title=" " alt="" coords="331,328,401,353"/>
+<area shape="rect" id="node6" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="15,328,144,353"/>
+<area shape="rect" id="node10" href="$integer__types_8hpp.html" title=" " alt="" coords="169,328,307,353"/>
+<area shape="rect" id="node12" title=" " alt="" coords="425,328,497,353"/>
+<area shape="rect" id="node13" title=" " alt="" coords="521,328,584,353"/>
+<area shape="rect" id="node7" title=" " alt="" coords="5,401,68,427"/>
+<area shape="rect" id="node8" title=" " alt="" coords="93,401,151,427"/>
+<area shape="rect" id="node9" title=" " alt="" coords="176,401,300,427"/>
+<area shape="rect" id="node11" title=" " alt="" coords="325,401,391,427"/>
+<area shape="rect" id="node17" href="$utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="616,255,751,280"/>
+<area shape="rect" id="node18" title=" " alt="" coords="689,328,774,353"/>
+<area shape="rect" id="node19" title=" " alt="" coords="799,328,888,353"/>
+</map>

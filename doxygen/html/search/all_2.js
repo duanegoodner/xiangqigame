@@ -1,7 +1,7 @@
 var searchData=
 [
   ['add_5flegend_0',['add_legend',['../classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#a01414df8d5c1e6aa580b0669519ce7c5',1,'xiangqipy::game_summary_plotters::SearchResultsByTypePlotter']]],
-  ['addtomovelog_1',['AddToMoveLog',['../classgameboard_1_1GameBoard.html#a23b6465e9fa98b15296b7e406e8527ac',1,'gameboard::GameBoard::AddToMoveLog()'],['../classgameboard_1_1GameBoardForConcepts.html#a69a036150637b77b2c11b48ccfe7652d',1,'gameboard::GameBoardForConcepts::AddToMoveLog()']]],
+  ['addtomovelog_1',['AddToMoveLog',['../classgameboard_1_1GameBoard.html#a23b6465e9fa98b15296b7e406e8527ac',1,'gameboard::GameBoard::AddToMoveLog()'],['../classgameboard_1_1GameBoardForConcepts.html#ae20847e7ac928bde0debbaf6aaa8f47c',1,'gameboard::GameBoardForConcepts::AddToMoveLog()']]],
   ['advisor_5fposition_5ficga_5f2004_2',['advisor_position_icga_2004',['../namespacexiangqipy_1_1piece__points.html#ab136924ba9f6b14ac0e45ed8dd1d71fe',1,'xiangqipy::piece_points']]],
   ['advisormoves_3',['AdvisorMoves',['../classgameboard_1_1PieceMoves.html#a8b28920ec18c5f934d2b166666c6ab72',1,'gameboard::PieceMoves']]],
   ['ai_4',['AI',['../classxiangqipy_1_1enums_1_1PlayerType.html#a017eb3ffee56f9930aa4f67961815503',1,'xiangqipy::enums::PlayerType']]],
@@ -15,6 +15,7 @@ var searchData=
   ['app_5fnew_2epy_12',['app_new.py',['../app__new_8py.html',1,'']]],
   ['append_13',['Append',['../structgameboard_1_1MoveCollection.html#a5b1838b6ffa4126795a4803984fe2dfc',1,'gameboard::MoveCollection']]],
   ['array_5fplus_5fconst_14',['array_plus_const',['../namespaceutility__functs.html#a991fee6c060b152f519b14b7a16e57ed',1,'utility_functs']]],
-  ['attachmovecallback_15',['AttachMoveCallback',['../classgameboard_1_1GameBoardForConcepts.html#a00bc6e3049e1b66b528068805c8f9ff0',1,'gameboard::GameBoardForConcepts::AttachMoveCallback()'],['../classSpaceInfoProvider.html#a05eb1bc6534fc615a82e8cabbaba808a',1,'SpaceInfoProvider::AttachMoveCallback()']]],
-  ['axes_16',['axes',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]]
+  ['attachcalculator_15',['AttachCalculator',['../classgameboard_1_1GameBoardForConcepts.html#a7841c3681347139c8f0df64bf362e885',1,'gameboard::GameBoardForConcepts']]],
+  ['attachmovecallback_16',['AttachMoveCallback',['../classSpaceInfoProvider.html#a05eb1bc6534fc615a82e8cabbaba808a',1,'SpaceInfoProvider']]],
+  ['axes_17',['axes',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a03831bbe60c957b470ac8ce75014a7b6',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]]
 ];

@@ -1,6 +1,6 @@
 var classmoveselection_1_1MinimaxMoveEvaluatorForConcept =
 [
-    [ "MinimaxMoveEvaluatorForConcept", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#acf5863d41303850748ef04c68e36a907", null ],
+    [ "MinimaxMoveEvaluatorForConcept", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#a6c6aa120a476d856d90a07003d179833", null ],
     [ "board_state_hex_str", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#a8e1dfe61ad6eabc9eb8bf5de1bdb7720", null ],
     [ "EvaluateEndOfGameLeaf", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#a9180d964d0528343a621352bd2a31d80", null ],
     [ "EvaluateNonWinLeaf", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#ae9f50c07cee3ac28baa33a7251fb562a", null ],
@@ -13,7 +13,6 @@ var classmoveselection_1_1MinimaxMoveEvaluatorForConcept =
     [ "HandleTrTableHit", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#abfd7f4f01da434d15209d82fbd235935", null ],
     [ "hash_calculator", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#a745884b1573df7075d3c454f964b27dd", null ],
     [ "IncrementNumMoveSelections", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#a4a58d8447cd96e231ef09fa89c5b4bed", null ],
-    [ "initialize_hash_calculator", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#a2c60251e3cbacd8ef3a7bd40f3a6ae78", null ],
     [ "InitializedBestEval", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#a841c57221be73e7e40a2f828a82a7045", null ],
     [ "IsImprovement", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#ac83bf175c87c0aa2b4db4ada5f497329", null ],
     [ "IsPrunable", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html#ac975d75e3d01ea05a7a88d425d9c956e", null ],

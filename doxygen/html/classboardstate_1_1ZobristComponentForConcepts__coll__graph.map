@@ -1,6 +1,7 @@
-<map id="boardstate::ZobristComponentForConcepts&lt; KeyType, NumConfKeys &gt;" name="boardstate::ZobristComponentForConcepts&lt; KeyType, NumConfKeys &gt;">
-<area shape="rect" id="node1" title="Container for one or more boardstate::ZobristCalculatorForConcepts objects." alt="" coords="212,175,499,560"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,13,220,105"/>
-<area shape="rect" id="node3" title=" " alt="" coords="245,5,466,112"/>
-<area shape="rect" id="node4" title=" " alt="" coords="491,20,649,97"/>
+<map id="boardstate::ZobristComponentForConcepts&lt; C, N &gt;" name="boardstate::ZobristComponentForConcepts&lt; C, N &gt;">
+<area shape="rect" id="node1" title="Container for one or more boardstate::ZobristCalculatorForConcepts objects." alt="" coords="221,175,464,516"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,13,136,90"/>
+<area shape="rect" id="node3" title=" " alt="" coords="169,5,311,97"/>
+<area shape="rect" id="node4" title=" " alt="" coords="367,13,526,90"/>
+<area shape="rect" id="node5" title=" " alt="" coords="551,13,601,90"/>
 </map>

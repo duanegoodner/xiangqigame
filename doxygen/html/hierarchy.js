@@ -19,9 +19,6 @@ var hierarchy =
     [ "BoardStateCoordinator< ZobristCoordinator< KeyType, NumConfKeys >, KeyType >", "classBoardStateCoordinator.html", [
       [ "boardstate::ZobristCoordinator< KeyType, NumConfKeys >", "classboardstate_1_1ZobristCoordinator.html", null ]
     ] ],
-    [ "BoardStateCoordinator< ZobristCoordinatorNew< KeyType, NumConfKeys >, KeyType >", "classBoardStateCoordinator.html", [
-      [ "boardstate::ZobristCoordinatorNew< KeyType, NumConfKeys >", "classboardstate_1_1ZobristCoordinatorNew.html", null ]
-    ] ],
     [ "piecepoints::BPOPointsEKeys", "classpiecepoints_1_1BPOPointsEKeys.html", null ],
     [ "piecepoints::BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html", null ],
     [ "gameboard::CastleEdges", "structgameboard_1_1CastleEdges.html", null ],
@@ -35,8 +32,7 @@ var hierarchy =
     [ "gameboard::ExecutedMove", "structgameboard_1_1ExecutedMove.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.ExecutedMove", "classxiangqipy_1_1core__dataclass__mirrors_1_1ExecutedMove.html", null ],
     [ "xiangqipy.game.Game", "classxiangqipy_1_1game_1_1Game.html", null ],
-    [ "gameboard::GameBoardBuilder", "classgameboard_1_1GameBoardBuilder.html", null ],
-    [ "gameboard::GameBoardForConcepts", "classgameboard_1_1GameBoardForConcepts.html", null ],
+    [ "gameboard::GameBoardForConcepts< RC, BC >", "classgameboard_1_1GameBoardForConcepts.html", null ],
     [ "xiangqipy.game_output_generator.GameOutputGenerator", "classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html", null ],
     [ "gameboard::GamePiece", "structgameboard_1_1GamePiece.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.GamePiece", "classxiangqipy_1_1core__dataclass__mirrors_1_1GamePiece.html", null ],
@@ -60,15 +56,12 @@ var hierarchy =
     [ "MoveEvaluator< MinimaxMoveEvaluator< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider > >", "classMoveEvaluator.html", [
       [ "moveselection::MinimaxMoveEvaluator< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider >", "classmoveselection_1_1MinimaxMoveEvaluator.html", null ]
     ] ],
-    [ "MoveEvaluator< MinimaxMoveEvaluatorNew< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider > >", "classMoveEvaluator.html", [
-      [ "moveselection::MinimaxMoveEvaluatorNew< ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider >", "classmoveselection_1_1MinimaxMoveEvaluatorNew.html", null ]
-    ] ],
     [ "MoveEvaluator< RandomMoveEvaluator< ConcreteSpaceInfoProvider > >", "classMoveEvaluator.html", [
       [ "moveselection::RandomMoveEvaluator< ConcreteSpaceInfoProvider >", "classmoveselection_1_1RandomMoveEvaluator.html", null ]
     ] ],
     [ "xiangqipy.app_new.MoveEvaluatorBuilder", "classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder.html", null ],
+    [ "NullBoardStateCalculator", "classNullBoardStateCalculator.html", null ],
     [ "gameboard::PieceMoves", "classgameboard_1_1PieceMoves.html", null ],
-    [ "piecepoints::PiecePositionPointsBuilder", "classpiecepoints_1_1PiecePositionPointsBuilder.html", null ],
     [ "piecepoints::PiecePositionPointsForConcepts", "structpiecepoints_1_1PiecePositionPointsForConcepts.html", null ],
     [ "xiangqipy.piece_info_extractor.PieceReader", "classxiangqipy_1_1piece__info__extractor_1_1PieceReader.html", null ],
     [ "PieceValueProvider< ConcretePieceValueProvider >", "classPieceValueProvider.html", null ],
@@ -92,7 +85,6 @@ var hierarchy =
     [ "boardstate::PseudoRandomKeyGenerator< IntType >", "classboardstate_1_1PseudoRandomKeyGenerator.html", null ],
     [ "boardstate::RandomKeyGenerator< IntType >", "classboardstate_1_1RandomKeyGenerator.html", null ],
     [ "moveselection::RandomMoveEvaluatorForConcept< G >", "classmoveselection_1_1RandomMoveEvaluatorForConcept.html", null ],
-    [ "moveselection::RandomMoveEvalutorBuilder", "classmoveselection_1_1RandomMoveEvalutorBuilder.html", null ],
     [ "xiangqipy.player_builder.RedAndBlackPlayersBuilder", "classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html", null ],
     [ "moveselection::ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", null ],
     [ "xiangqipy.command_input.RunKwargsInterpreter", "classxiangqipy_1_1command__input_1_1RunKwargsInterpreter.html", null ],
@@ -117,22 +109,22 @@ var hierarchy =
     [ "boardstate::TranspositionTableEntry< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTableEntry.html", null ],
     [ "boardstate::TranspositionTableEntryForConcepts< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTableEntryForConcepts.html", null ],
     [ "boardstate::TranspositionTableForConcepts< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTableForConcepts.html", null ],
+    [ "boardstate::TranspositionTableForConcepts< KeyType, M::NumConfKeys >", "classboardstate_1_1TranspositionTableForConcepts.html", null ],
     [ "boardstate::TranspositionTableGuard", "classboardstate_1_1TranspositionTableGuard.html", null ],
     [ "boardstate::TranspositionTableGuardForConcepts", "classboardstate_1_1TranspositionTableGuardForConcepts.html", null ],
     [ "boardstate::TranspositionTablePruner< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTablePruner.html", null ],
     [ "boardstate::TranspositionTablePrunerForConcepts< KeyType, NumConfKeys >", "classboardstate_1_1TranspositionTablePrunerForConcepts.html", null ],
+    [ "boardstate::TranspositionTablePrunerForConcepts< KeyType, M::NumConfKeys >", "classboardstate_1_1TranspositionTablePrunerForConcepts.html", null ],
     [ "moveselection::TranspositionTableSearchResult", "classmoveselection_1_1TranspositionTableSearchResult.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.TranspositionTableSizesAtEvents", "classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents.html", null ],
     [ "xiangqipy.command_input.XiangqiGameCommand", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html", null ],
     [ "xiangqipy.command_input.XiangqiGameCommandLine", "classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine.html", null ],
     [ "xiangqipy.app_new.XiangqiGameCommandNew", "classxiangqipy_1_1app__new_1_1XiangqiGameCommandNew.html", null ],
     [ "boardstate::ZobristCalculator< KeyType >", "classboardstate_1_1ZobristCalculator.html", null ],
-    [ "boardstate::ZobristCalculatorForConcepts< KeyType >", "classboardstate_1_1ZobristCalculatorForConcepts.html", null ],
+    [ "boardstate::ZobristCalculatorForConcepts< K >", "classboardstate_1_1ZobristCalculatorForConcepts.html", null ],
     [ "boardstate::ZobristComponent< KeyType, NumConfKeys >", "classboardstate_1_1ZobristComponent.html", null ],
-    [ "boardstate::ZobristComponentForConcepts< KeyType, NumConfKeys >", "classboardstate_1_1ZobristComponentForConcepts.html", null ],
-    [ "boardstate::ZobristComponentNew< KeyType, NumConfKeys >", "classboardstate_1_1ZobristComponentNew.html", null ],
-    [ "boardstate::ZobristCoordinatorBuilder< KeyType, NumConfKeys >", "classboardstate_1_1ZobristCoordinatorBuilder.html", null ],
-    [ "boardstate::ZobristCoordinatorForConcepts< KeyType, NumConfKeys >", "classboardstate_1_1ZobristCoordinatorForConcepts.html", null ],
+    [ "boardstate::ZobristComponentForConcepts< C, N >", "classboardstate_1_1ZobristComponentForConcepts.html", null ],
+    [ "boardstate::ZobristCoordinatorForConcepts< M >", "classboardstate_1_1ZobristCoordinatorForConcepts.html", null ],
     [ "ABC", null, [
       [ "xiangqipy.game_summary_plotters.GameSummaryPlotter", "classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html", [
         [ "xiangqipy.game_summary_plotters.EvalScorePlotter", "classxiangqipy_1_1game__summary__plotters_1_1EvalScorePlotter.html", null ],

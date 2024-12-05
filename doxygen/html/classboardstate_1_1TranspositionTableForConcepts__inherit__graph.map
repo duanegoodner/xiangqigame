@@ -1,0 +1,4 @@
+<map id="boardstate::TranspositionTableForConcepts&lt; KeyType, NumConfKeys &gt;" name="boardstate::TranspositionTableForConcepts&lt; KeyType, NumConfKeys &gt;">
+<area shape="rect" id="node1" title="Stores and manages key&#45;value pairs consisting of a board_state (from a boardstate::ZobristComponent) ..." alt="" coords="5,5,252,215"/>
+<area shape="rect" id="node2" href="$classboardstate_1_1TranspositionTableForConcepts.html" title=" " alt="" coords="5,277,252,487"/>
+</map>

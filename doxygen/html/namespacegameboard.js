@@ -5,7 +5,6 @@ var namespacegameboard =
     [ "CastleEdges", "structgameboard_1_1CastleEdges.html", "structgameboard_1_1CastleEdges" ],
     [ "ExecutedMove", "structgameboard_1_1ExecutedMove.html", "structgameboard_1_1ExecutedMove" ],
     [ "GameBoard", "classgameboard_1_1GameBoard.html", "classgameboard_1_1GameBoard" ],
-    [ "GameBoardBuilder", "classgameboard_1_1GameBoardBuilder.html", "classgameboard_1_1GameBoardBuilder" ],
     [ "GameBoardForConcepts", "classgameboard_1_1GameBoardForConcepts.html", "classgameboard_1_1GameBoardForConcepts" ],
     [ "GamePiece", "structgameboard_1_1GamePiece.html", "structgameboard_1_1GamePiece" ],
     [ "Move", "structgameboard_1_1Move.html", "structgameboard_1_1Move" ],
