@@ -67,6 +67,8 @@ public:
     );
   }
 
+  
+
   // Getters
   C::KeyType primary_board_state() { return primary_calculator_->board_state(); }
   std::array<typename C::KeyType, N> confirmation_board_states() {
