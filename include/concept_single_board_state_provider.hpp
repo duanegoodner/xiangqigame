@@ -1,6 +1,7 @@
 #pragma once
 
 #include <concepts>
+#include <memory>
 #include <type_traits>
 
 template <typename T>
@@ -11,4 +12,5 @@ concept SingleBoardStateProviderConcept = requires(T t, uint32_t seed) {
   requires(sizeof(typename T::KeyType) * 8) % 32 == 0;
 
   { t.board_state() } -> std::same_as<typename T::KeyType>;
+  { t.Create(seed) } -> std::same_as<std::shared_ptr<T>>;
 };

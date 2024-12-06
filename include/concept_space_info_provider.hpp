@@ -12,7 +12,9 @@ concept SpaceInfoProviderConcept = requires(
     gameboard::PieceColor color,
     gameboard::BoardSpace &space,
     gameboard::Move &move,
-    gameboard::ExecutedMove &executed_move) {
+    gameboard::ExecutedMove &executed_move,
+    const gameboard::BoardMapInt_t &starting_board
+    ) {
   {
     t.GetAllSpacesOccupiedBy(color)
   } -> std::same_as<std::vector<gameboard::BoardSpace>>;
@@ -23,4 +25,5 @@ concept SpaceInfoProviderConcept = requires(
   {t.UndoMove(executed_move)} -> std::same_as<void>;
   {t.IsDraw()} -> std::same_as<bool>; 
   {t.map()} -> std::same_as<const gameboard::BoardMap_t&>;
+  {t.Create(starting_board)} -> std::same_as<std::shared_ptr<T>>;
 };

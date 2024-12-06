@@ -1,5 +1,4 @@
 #include <board_map_fixture.hpp>
-#include <builders.hpp>
 #include <concept_board_state_coordinator.hpp>
 #include <concept_single_board_state_provider.hpp>
 #include <concepts>

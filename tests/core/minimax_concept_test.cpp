@@ -84,35 +84,55 @@ TEST_F(RandomEvaluatorConceptTest, TestStartingMoveSelection) {
   EXPECT_TRUE(move_set.size() > 5);
 }
 
-// class MinimaxEvaluatorConceptTest : public ::testing::Test {
-// protected:
-//   const BoardMapInt_t kLateGameBoardMap{{
-//       {0, 0, 0, 1, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, 0, 0, 0, 0, 5},
-//       {5, 0, 0, 0, 0, 0, 0, 0, 0},
-//       {0, 0, 0, 0, -1, 0, 0, 0, 0},
-//   }};
+class MinimaxEvaluatorConceptTest : public ::testing::Test {
+protected:
+  const BoardMapInt_t kLateGameBoardMap{{
+      {0, 0, 0, 1, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0, 5},
+      {5, 0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 0, 0, 0, -1, 0, 0, 0, 0},
+  }};
 
-//   template <typename KeyType, size_t NumConfKeys>
-//   std::array<
-//       std::shared_ptr<boardstate::ZobristCalculatorForConcepts<KeyType>>,
-//       NumConfKeys>
-//   BuildConfirmationCalculators() {
-//     str::array<
-//         std::shared_ptr<boardstate::ZobristCalculatorForConcepts<KeyType>>,
-//         NumConfKeys>
-//         result;
-//     for (auto idx = 0; idx < NumConfKeys; ++idx) {
-//       result[idx] = boardstate::ZobristCalculatorForConcepts<KeyType>::Create();
-//     }
-//     return result;
-//   }
+  moveselection::MinimaxMoveEvaluatorBuilder minimax_builder_;
+
+  template <
+      size_t NumConfKeys,
+      SingleBoardStateProviderAndBoardStateCalculatorConcept C,
+      SpaceInfoProviderAndCalculatorRegistryConcept G>
+
+  void TestBuildMinimaxEvaluator(
+      gameboard::PieceColor evaluating_player,
+      DepthType search_depth
+  ) {
+
+    auto game_board = G::Create();
+
+    auto minimax_evaluator = minimax_builder_.Build<NumConfKeys, C, G>(
+        evaluating_player,
+        search_depth,
+        game_board
+    );
+  }
+};
+
+TEST_F(MinimaxEvaluatorConceptTest, TestBuildEvaluator) {
+  TestBuildMinimaxEvaluator<
+      1,
+      boardstate::ZobristCalculatorForConcepts<uint64_t>,
+      gameboard::GameBoardForConcepts<
+          boardstate::ZobristCalculatorForConcepts<uint64_t>,
+          boardstate::ZobristCalculatorForConcepts<uint64_t>>>(
+      gameboard::PieceColor::kRed,
+      5
+  );
+}
+
 
 //   gameboard::GameBoardBuilder game_board_builder_;
 //   boardstate::ZobristCoordinatorBuilder<uint64_t, 1> zobrist_coordinator_builder_;

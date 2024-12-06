@@ -11,8 +11,10 @@ concept BoardStateCalculatorRegistryConcept =
         T t,
         std::shared_ptr<typename T::CalculatorTypeRed> calculator_red,
         std::shared_ptr<typename T::CalculatorTypeBlack> calculator_black,
-        gameboard::PieceColor color
+        gameboard::PieceColor color,
+        const gameboard::BoardMapInt_t &starting_board
     ) {
       { t.AttachCalculator(calculator_red, color) } -> std::same_as<void>;
       { t.AttachCalculator(calculator_black, color)} -> std::same_as<void>;
+      {t.Create(starting_board)} -> std::same_as<std::shared_ptr<T>>;
     };

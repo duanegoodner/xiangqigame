@@ -129,7 +129,7 @@ public:
 //! algorithm; uses SpaceInfoProviderConcept, BoardStateCoordinatorConcept, and
 //! PieceValueProviderConcept interfaces.
 template <
-    typename KeyType,
+    // typename KeyType,
     SpaceInfoProviderConcept G,
     BoardStateCoordinatorConcept H,
     PieceValueProviderConcept P>
@@ -150,8 +150,8 @@ public:
       PieceColor evaluating_player,
       DepthType search_depth,
       std::shared_ptr<G> game_board,
-      P game_position_points,
-      H hash_calculator
+      std::shared_ptr<P> game_position_points,
+      std::shared_ptr<H> hash_calculator
   )
       : evaluating_player_{evaluating_player}
       , search_depth_{search_depth}
@@ -164,6 +164,8 @@ public:
       , game_over_{false} {
     // initialize_hash_calculator();
   }
+
+  using KeyType = H::KeyType;
 
   Move SelectMove(MoveCollection &allowed_moves) {
 
