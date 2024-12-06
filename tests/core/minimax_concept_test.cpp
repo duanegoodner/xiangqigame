@@ -20,6 +20,18 @@ protected:
     return lhs.end.file < rhs.end.file;
   }
 
+  using AllNullCalculatorGameBoardType = gameboard::
+      GameBoardForConcepts<NullBoardStateCalculator, NullBoardStateCalculator>;
+
+  std::shared_ptr<AllNullCalculatorGameBoardType> game_board_ =
+      AllNullCalculatorGameBoardType::Create();
+
+  using MoveEvaluatorFactoryType =
+      moveselection::RandomMoveEvaluatorFactory<AllNullCalculatorGameBoardType>;
+  using MoveEvaluatorType = MoveEvaluatorFactoryType::MoveEvaluatorType;
+
+  MoveEvaluatorFactoryType move_evaluator_factory_;
+
   template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
   std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>> BuildGameBoard(
       size_t NumRedCalculators,
@@ -46,7 +58,7 @@ protected:
       std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>> game_board
   ) {
     return moveselection::RandomMoveEvaluatorForConcept<
-        gameboard::GameBoardForConcepts<RC, BC>>::Create(color, game_board);
+        gameboard::GameBoardForConcepts<RC, BC>>::Create(game_board, color);
   }
 };
 
@@ -59,6 +71,11 @@ TEST_F(RandomEvaluatorConceptTest, CompliesWithMoveEvaluatorConcept) {
   );
 }
 
+TEST_F(RandomEvaluatorConceptTest, BuildRandomMoveEvaluator) {
+  auto red_evaluator =
+      move_evaluator_factory_.Create(game_board_, gameboard::PieceColor::kRed);
+}
+
 // Red selects starting move 10 times. If choice is random, we can be
 // almost certain that the number of unique selected Moves will be > 5.
 TEST_F(RandomEvaluatorConceptTest, TestStartingMoveSelection) {
@@ -66,19 +83,13 @@ TEST_F(RandomEvaluatorConceptTest, TestStartingMoveSelection) {
   int num_first_move_selections = 10;
   std::set<Move, bool (*)(const Move &, const Move &)> move_set(moveComparator);
 
-  auto game_board_ =
-      BuildGameBoard<NullBoardStateCalculator, NullBoardStateCalculator>(2, 2);
-
-  auto red_evaluator_ =
-      BuildRandomMoveEvaluator<NullBoardStateCalculator, NullBoardStateCalculator>(
-          gameboard::PieceColor::kRed,
-          game_board_
-      );
+  auto red_evaluator =
+      move_evaluator_factory_.Create(game_board_, gameboard::PieceColor::kRed);
 
   auto allowed_moves = game_board_->CalcFinalMovesOf(gameboard::PieceColor::kRed);
 
   for (auto idx = 0; idx < num_first_move_selections; idx++) {
-    auto red_selected_move = red_evaluator_->SelectMove(allowed_moves);
+    auto red_selected_move = red_evaluator->SelectMove(allowed_moves);
     move_set.insert(red_selected_move);
   }
   EXPECT_TRUE(move_set.size() > 5);
@@ -137,7 +148,7 @@ protected:
     using GameBoardType = gameboard::GameBoardForConcepts<
         boardstate::ZobristCalculatorForConcepts<KeyTypeRed>,
         boardstate::ZobristCalculatorForConcepts<KeyTypeBlack>>;
-    gameboard::GameBoardFactory<KeyTypeRed, KeyTypeBlack> game_board_factory;
+    // gameboard::GameBoardFactory<KeyTypeRed, KeyTypeBlack> game_board_factory;
 
     auto minimax_evaluator_red = example_red_evaluator_factory_.Create(
         example_game_board_,

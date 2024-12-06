@@ -12,12 +12,10 @@
 #include <zobrist_for_concepts.hpp>
 
 namespace gameboard {
-template <typename KeyTypeRed, typename KeyTypeBlack>
+template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
 class GameBoardFactory {
 public:
-  using GameBoardType = GameBoardForConcepts<
-      boardstate::ZobristCalculatorForConcepts<KeyTypeRed>,
-      boardstate::ZobristCalculatorForConcepts<KeyTypeBlack>>;
+  using GameBoardType = GameBoardForConcepts<RC, BC>;
   std::shared_ptr<GameBoardType> Create(
       const BoardMapInt_t &starting_board = kStandardInitialBoard
   ) {
@@ -84,6 +82,19 @@ public:
 
 namespace moveselection {
 
+template <SpaceInfoProviderConcept G>
+class RandomMoveEvaluatorFactory {
+public:
+  using MoveEvaluatorType = moveselection::RandomMoveEvaluatorForConcept<G>;
+
+  std::unique_ptr<MoveEvaluatorType> Create(
+      std::shared_ptr<G> game_board,
+      gameboard::PieceColor evaluating_player
+  ) {
+    return MoveEvaluatorType::Create(game_board, evaluating_player);
+  }
+};
+
 template <
     typename KeyType,
     size_t NumConfKeys,
@@ -96,12 +107,12 @@ public:
   using ZobristCoordinatorType = boardstate::
       ZobristCoordinatorFactory<KeyType, NumConfKeys, G>::ZobristCoordinatorType;
 
-  using MinimaxMoveEvaluatorType = moveselection::MinimaxMoveEvaluatorForConcept<
+  using MoveEvaluatorType = moveselection::MinimaxMoveEvaluatorForConcept<
       ZobristCoordinatorType,
       G,
       piecepoints::PiecePositionPointsForConcepts>;
 
-  std::unique_ptr<MinimaxMoveEvaluatorType> Create(
+  std::unique_ptr<MoveEvaluatorType> Create(
       std::shared_ptr<G> game_board,
       gameboard::PieceColor evaluating_player,
       DepthType search_depth,
@@ -111,7 +122,7 @@ public:
         zobrist_coordinator_factory_.Create(game_board, evaluating_player);
 
     auto game_position_points = piecepoints::PiecePositionPointsForConcepts::Create();
-    return std::make_unique<MinimaxMoveEvaluatorType>(
+    return std::make_unique<MoveEvaluatorType>(
         evaluating_player,
         search_depth,
         game_board,
@@ -119,50 +130,6 @@ public:
         zobrist_coordinator
     );
   }
-
-  // std::unique_ptr<MinimaxMoveEvaluatorForConcept<
-  //     G,
-  //     boardstate::ZobristCoordinatorForConcepts<
-  //         boardstate::ZobristComponentForConcepts<C, NumConfKeys>>,
-  //     piecepoints::PiecePositionPointsForConcepts>>
-  // Build(
-  //     gameboard::PieceColor evaluating_player,
-  //     DepthType search_depth,
-  //     std::shared_ptr<G> game_board,
-  //     std::string json_file = piecepoints::kICGABPOPath
-
-  // ) {
-
-  //   auto primary_calculator = C::Create();
-  //   std::array<std::shared_ptr<C>, NumConfKeys> confirmation_calculators;
-  //   for (auto idx = 0; idx < NumConfKeys; ++idx) {
-  //     confirmation_calculators[idx] = C::Create();
-  //   }
-
-  //   auto zobrist_component =
-  //       boardstate::ZobristComponentForConcepts<C, NumConfKeys>::Create(
-  //           primary_calculator,
-  //           confirmation_calculators
-  //       );
-
-  //   auto game_position_points = piecepoints::PiecePositionPointsForConcepts::Create();
-
-  //   auto zobrist_coordinator = boardstate::ZobristCoordinatorForConcepts<
-  //       boardstate::ZobristComponentForConcepts<C, NumConfKeys>>::
-  //       Create(zobrist_component);
-
-  //   return std::make_unique<MinimaxMoveEvaluatorForConcept<
-  //       G,
-  //       boardstate::ZobristCoordinatorForConcepts<
-  //           boardstate::ZobristComponentForConcepts<C, NumConfKeys>>,
-  //       piecepoints::PiecePositionPointsForConcepts>>(
-  //       evaluating_player,
-  //       search_depth,
-  //       game_board,
-  //       game_position_points,
-  //       zobrist_coordinator
-  //   );
-  // }
 };
 
 } // namespace moveselection
