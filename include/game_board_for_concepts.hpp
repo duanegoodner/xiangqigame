@@ -51,8 +51,9 @@ class GameBoardForConcepts {
 
   vector<function<void(const ExecutedMove &)>> move_callbacks_;
 
-  std::vector<std::shared_ptr<RC>> red_calculators_;
-  std::vector<std::shared_ptr<BC>> black_calculators_;
+  // std::vector<std::shared_ptr<RC>> red_calculators_;
+  // std::vector<std::shared_ptr<BC>> black_calculators_;
+
   //! Vectors of all moves that have been executed (and not un-done) by each player.
   std::map<PieceColor, std::vector<ExecutedMove>> move_log_;
 
@@ -60,8 +61,8 @@ class GameBoardForConcepts {
   MoveCountType moves_since_last_capture_;
 
 public:
-  using CalculatorTypeRed = RC;
-  using CalculatorTypeBlack = BC;
+  // using CalculatorTypeRed = RC;
+  // using CalculatorTypeBlack = BC;
 
   const BoardMap_t &map() const { return board_map_; }
   const std::map<PieceColor, std::vector<ExecutedMove>> &move_log() const {
@@ -71,12 +72,12 @@ public:
   static ::shared_ptr<GameBoardForConcepts<RC, BC>> Create(
       const BoardMapInt_t &starting_board = kStandardInitialBoard
   ) {
-    std::vector<std::shared_ptr<RC>> red_calculators;
-    std::vector<std::shared_ptr<BC>> black_calculators;
+    // std::vector<std::shared_ptr<RC>> red_calculators;
+    // std::vector<std::shared_ptr<BC>> black_calculators;
     return std::shared_ptr<GameBoardForConcepts<RC, BC>>(
         new GameBoardForConcepts<RC, BC>(
-            red_calculators,
-            black_calculators,
+            // red_calculators,
+            // black_calculators,
             starting_board
         )
     );
@@ -86,15 +87,15 @@ public:
     move_callbacks_.emplace_back(callback);
   }
 
-  template <BoardStateCalculatorConcept C>
-  void AttachCalculator(std::shared_ptr<C> calculator, PieceColor color) {
-    if (color == PieceColor::kRed) {
-      red_calculators_.emplace_back(calculator);
-    }
-    if (color == PieceColor::kBlk) {
-      black_calculators_.emplace_back(calculator);
-    }
-  }
+  // template <BoardStateCalculatorConcept C>
+  // void AttachCalculator(std::shared_ptr<C> calculator, PieceColor color) {
+  //   if (color == PieceColor::kRed) {
+  //     red_calculators_.emplace_back(calculator);
+  //   }
+  //   if (color == PieceColor::kBlk) {
+  //     black_calculators_.emplace_back(calculator);
+  //   }
+  // }
 
   PieceColor GetColor(const BoardSpace &space) const { return GetColorInternal(space); }
   bool IsInCheck(PieceColor color) { return IsInCheckInternal(color); }
@@ -125,15 +126,16 @@ private:
   //! Initializes a gameboard::GameBoard from array of pieces represented as integers.
   //! @param starting_board An array of integers representing pieces on the board.
   GameBoardForConcepts(
-      std::vector<std::shared_ptr<RC>> red_calclulators,
-      std::vector<std::shared_ptr<BC>> black_calculators,
+      // std::vector<std::shared_ptr<RC>> red_calclulators,
+      // std::vector<std::shared_ptr<BC>> black_calculators,
       const BoardMapInt_t starting_board
   )
       : board_map_{int_board_to_game_pieces(starting_board)}
-      , red_calculators_{red_calclulators}
-      , black_calculators_{black_calculators}
+      // , red_calculators_{red_calclulators}
+      // , black_calculators_{black_calculators}
       , move_calculator_{MoveCalculator()}
-      , moves_since_last_capture_{} {}
+      , moves_since_last_capture_{}
+      , move_callbacks_{} {}
   inline PieceColor GetColorInternal(const BoardSpace &space) const {
     return board_map_[space.rank][space.file].piece_color;
   }
