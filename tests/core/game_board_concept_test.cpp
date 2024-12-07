@@ -36,22 +36,17 @@ protected:
       {0, 0, 0, 0, -1, 0, 0, 0, 0},
   }};
 
-  std::shared_ptr<gameboard::GameBoardForConcepts<
-      NullBoardStateCalculator,
-      NullBoardStateCalculator>>
-      starting_board_null_zcalcs_ = gameboard::GameBoardForConcepts<
-          NullBoardStateCalculator,
-          NullBoardStateCalculator>::Create();
+  using NullCalculatorsGameBoardFactoryType =
+      gameboard::GameBoardFactory<NullBoardStateCalculator, NullBoardStateCalculator>;
+  using NullCalculatorsGameBoardType =
+      NullCalculatorsGameBoardFactoryType::GameBoardType;
 
-  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-  std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>> BuildGameBoard(
-      const BoardMapInt_t &starting_board = gameboard::kStandardInitialBoard
-  ) {
-    return gameboard::GameBoardForConcepts<RC, BC>::Create(starting_board);
-  }
+  NullCalculatorsGameBoardFactoryType null_calculators_gb_factory;
+  std::shared_ptr<NullCalculatorsGameBoardType> starting_board_null_zcalcs_ =
+      null_calculators_gb_factory.Create();
 
   template <typename RedKeyType, typename BlackKeyType>
-  void BuilldGameBoardForZobristCalculators(
+  void BuildGameBoardForZobristCalculators(
       const BoardMapInt_t &starting_board = gameboard::kStandardInitialBoard
   ) {
     using RedCalculatorType = boardstate::ZobristCalculatorForConcepts<RedKeyType>;
@@ -163,7 +158,7 @@ TEST_F(GameBoardForConceptsTest, TestCreateGameBoard) {
 }
 
 TEST_F(GameBoardForConceptsTest, TestBuildBasedOnKeyType) {
-  BuilldGameBoardForZobristCalculators<uint64_t, uint64_t>();
+  BuildGameBoardForZobristCalculators<uint64_t, uint64_t>();
 }
 
 TEST_F(GameBoardForConceptsTest, TestGetsCorrectOccupants) {
@@ -198,9 +193,6 @@ TEST_F(GameBoardForConceptsTest, TestDrawDetection) {
 }
 
 TEST_F(GameBoardForConceptsTest, TestExecuteAndUndoMove) {
-  // auto game_board = gameboard::
-  //     GameBoardForConcepts<NullBoardStateCalculator,
-  //     NullBoardStateCalculator>::Create();
   auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};
   auto actual_executed_move = starting_board_null_zcalcs_->ExecuteMove(actual_move);
   EXPECT_EQ(starting_board_null_zcalcs_->GetOccupantAt(BoardSpace{6, 2}), 0);
