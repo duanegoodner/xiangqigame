@@ -1,0 +1,1 @@
+add_executable(std_bind_method_refs std_bind_method_refs.cpp)

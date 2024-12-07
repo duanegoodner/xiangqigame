@@ -4,6 +4,7 @@
 #include <concept_board_state_calculator_registry.hpp>
 #include <concept_composite_concepts.hpp>
 #include <concept_single_board_state_provider.hpp>
+#include <functional>
 #include <game_board_for_concepts.hpp>
 #include <memory>
 #include <move_evaluators_for_concepts.hpp>
@@ -38,7 +39,12 @@ public:
   ) {
     auto new_calculator = ZobristCalculatorType::Create();
     new_calculator->FullBoardStateCalc(game_board->map());
-    game_board->AttachCalculator(new_calculator, color);
+    // game_board->AttachCalculator(new_calculator, color);
+    game_board->AttachMoveCallback(std::bind(
+        &ZobristCalculatorType::UpdateBoardState,
+        new_calculator,
+        std::placeholders::_1
+    ));
 
     return new_calculator;
   }

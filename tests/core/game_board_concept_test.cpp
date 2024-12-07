@@ -51,86 +51,82 @@ protected:
   }
 
   template <typename RedKeyType, typename BlackKeyType>
-  std::shared_ptr<gameboard::GameBoardForConcepts<
-      boardstate::ZobristCalculatorForConcepts<RedKeyType>,
-      boardstate::ZobristCalculatorForConcepts<BlackKeyType>>>
-  BuilldGameBoardForZobristCalculators(
+  void BuilldGameBoardForZobristCalculators(
       const BoardMapInt_t &starting_board = gameboard::kStandardInitialBoard
   ) {
-    return gameboard::GameBoardForConcepts<
-        boardstate::ZobristCalculatorForConcepts<RedKeyType>,
-        boardstate::ZobristCalculatorForConcepts<BlackKeyType>>::Create(starting_board);
+    using RedCalculatorType = boardstate::ZobristCalculatorForConcepts<RedKeyType>;
+    using BlackCalculatorType = boardstate::ZobristCalculatorForConcepts<BlackKeyType>;
+    using GameBoardFactoryType =
+        gameboard::GameBoardFactory<RedCalculatorType, BlackCalculatorType>;
+
+    GameBoardFactoryType game_board_factory;
+    auto game_board = game_board_factory.Create(starting_board);
   }
 
   template <typename RedKeyType, typename BlackKeyType>
-  std::shared_ptr<gameboard::GameBoardForConcepts<
-      boardstate::ZobristCalculatorForConcepts<RedKeyType>,
-      boardstate::ZobristCalculatorForConcepts<BlackKeyType>>>
-  BuildGameBoardWithAttachedZobristCalculators(
+  void BuildGameBoardWithAttachedZobristCalculators(
       size_t NumRedCalculators,
       size_t NumBlackCalculators
   ) {
-    auto game_board = BuilldGameBoardForZobristCalculators<RedKeyType, BlackKeyType>();
+    using RedCalculatorType = boardstate::ZobristCalculatorForConcepts<RedKeyType>;
+    using BlackCalculatorType = boardstate::ZobristCalculatorForConcepts<BlackKeyType>;
+    using GameBoardFactoryType =
+        gameboard::GameBoardFactory<RedCalculatorType, BlackCalculatorType>;
 
-    for (auto red_idx = 0; red_idx < NumRedCalculators; ++red_idx) {
-      auto new_z_calculator =
-          boardstate::ZobristCalculatorForConcepts<RedKeyType>::Create();
-      game_board->AttachCalculator(new_z_calculator, gameboard::PieceColor::kRed);
-    }
+    using GameBoardType = GameBoardFactoryType::GameBoardType;
 
-    for (auto black_idx = 0; black_idx < NumBlackCalculators; ++black_idx) {
-      auto new_z_calculator =
-          boardstate::ZobristCalculatorForConcepts<BlackKeyType>::Create();
-      game_board->AttachCalculator(new_z_calculator, gameboard::PieceColor::kBlk);
-    }
-    return game_board;
-  }
+    GameBoardFactoryType game_board_factory;
+    auto game_board = game_board_factory.Create();
 
-  template <typename KeyType>
-  std::vector<shared_ptr<boardstate::ZobristCalculatorForConcepts<KeyType>>>
-  BuildVectorOfZobristCalculators(size_t NumCalculators) {
-    std::vector<shared_ptr<boardstate::ZobristCalculatorForConcepts<KeyType>>>
-        zobrist_calculators;
-    for (auto idx = 0; idx < NumCalculators; ++idx) {
-      zobrist_calculators.emplace_back(
-          boardstate::ZobristCalculatorForConcepts<KeyType>::Create()
-      );
-    }
-    return zobrist_calculators;
+    boardstate::ZobristCalculatorFactory<RedKeyType, GameBoardType>
+        red_zobrist_calculator_factory;
+    boardstate::ZobristCalculatorFactory<BlackKeyType, GameBoardType>
+        black_zobrist_calculator_factory;
+
+    auto red_zobrist_calculator =
+        red_zobrist_calculator_factory.Create(game_board, gameboard::PieceColor::kRed);
+    auto black_zobrist_calculator =
+        black_zobrist_calculator_factory.Create(game_board, gameboard::PieceColor::kBlk);
   }
 
   template <typename RedKeyType, typename BlackKeyType>
   void TestExecuteUndoMoveWithZobristCalculatorsAttached(
       size_t NumRedCalculatorsPerPlayer
   ) {
-    auto game_board = BuilldGameBoardForZobristCalculators<RedKeyType, BlackKeyType>();
-    auto red_z_calculators =
-        BuildVectorOfZobristCalculators<RedKeyType>(NumRedCalculatorsPerPlayer);
-    for (auto calcluator : red_z_calculators) {
-      game_board->AttachCalculator(calcluator, PieceColor::kRed);
-      calcluator->FullBoardStateCalc(game_board->map());
-    }
+    using GameBoardFactoryType = gameboard::GameBoardFactory<
+        boardstate::ZobristCalculatorForConcepts<RedKeyType>,
+        boardstate::ZobristCalculatorForConcepts<BlackKeyType>>;
 
-    std::vector<RedKeyType> red_initial_board_states{};
-    for (auto calculator : red_z_calculators) {
-      red_initial_board_states.emplace_back(calculator->board_state());
-    }
+    using GameBoardType = GameBoardFactoryType::GameBoardType;
 
-    for (auto board_state : red_initial_board_states) {
-      EXPECT_NE(board_state, 0);
-    }
+    GameBoardFactoryType game_board_factory;
+    auto game_board = game_board_factory.Create();
+
+    boardstate::ZobristCalculatorFactory<RedKeyType, GameBoardType>
+        red_zobrist_calculator_factory;
+    boardstate::ZobristCalculatorFactory<BlackKeyType, GameBoardType>
+        black_zobrist_calculator_factory;
+
+    auto red_zobrist_calculator =
+        red_zobrist_calculator_factory.Create(game_board, gameboard::PieceColor::kRed);
+    auto black_zobrist_calculator =
+        black_zobrist_calculator_factory.Create(game_board, gameboard::PieceColor::kBlk);
+
+    auto red_initial_state = red_zobrist_calculator->board_state();
+    auto black_initial_state = black_zobrist_calculator->board_state();
+
+    EXPECT_NE(red_initial_state, 0);
+    EXPECT_NE(black_initial_state, 0);
+    EXPECT_NE(red_initial_state, black_initial_state);
 
     auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};
     auto actual_executed_move = game_board->ExecuteMove(actual_move);
 
-    std::vector<RedKeyType> red_post_move_board_states{};
-    for (auto calculator : red_z_calculators) {
-      red_post_move_board_states.emplace_back(calculator->board_state());
-    }
+    auto red_post_move_state = red_zobrist_calculator->board_state();
+    auto black_post_move_state = black_zobrist_calculator->board_state();
 
-    for (auto idx = 0; idx < NumRedCalculatorsPerPlayer; ++idx) {
-      EXPECT_NE(red_initial_board_states[idx], red_post_move_board_states[idx]);
-    }
+    EXPECT_NE(red_initial_state, red_post_move_state);
+    EXPECT_NE(black_initial_state, black_post_move_state);
   }
 };
 
@@ -145,20 +141,18 @@ TEST_F(GameBoardForConceptsTest, SatisfiesSpaceInfoProviderConcept) {
 
 TEST_F(GameBoardForConceptsTest, SatisfiesBoardStateCalculatorRegistryConcept) {
   static_assert(
-      BoardStateCalculatorRegistryConcept<
-          gameboard::GameBoardForConcepts<
-              boardstate::ZobristCalculatorForConcepts<uint64_t>,
-              boardstate::ZobristCalculatorForConcepts<uint64_t>>>,
+      BoardStateCalculatorRegistryConcept<gameboard::GameBoardForConcepts<
+          boardstate::ZobristCalculatorForConcepts<uint64_t>,
+          boardstate::ZobristCalculatorForConcepts<uint64_t>>>,
       "GameBoardForConcepts must satisfy SpaceInfoProviderConcept"
   );
 }
 
 TEST_F(GameBoardForConceptsTest, SatisfiesProviderAndRegistryConcept) {
   static_assert(
-      SpaceInfoProviderAndCalculatorRegistryConcept<
-          gameboard::GameBoardForConcepts<
-              boardstate::ZobristCalculatorForConcepts<uint64_t>,
-              boardstate::ZobristCalculatorForConcepts<uint64_t>>>,
+      SpaceInfoProviderAndCalculatorRegistryConcept<gameboard::GameBoardForConcepts<
+          boardstate::ZobristCalculatorForConcepts<uint64_t>,
+          boardstate::ZobristCalculatorForConcepts<uint64_t>>>,
       "GameBoardForConcepts must satisfy SpaceInfoProviderAndCalculatorRegistryConcept"
   );
 }
@@ -169,7 +163,7 @@ TEST_F(GameBoardForConceptsTest, TestCreateGameBoard) {
 }
 
 TEST_F(GameBoardForConceptsTest, TestBuildBasedOnKeyType) {
-  auto game_board = BuilldGameBoardForZobristCalculators<uint64_t, uint64_t>();
+  BuilldGameBoardForZobristCalculators<uint64_t, uint64_t>();
 }
 
 TEST_F(GameBoardForConceptsTest, TestGetsCorrectOccupants) {
@@ -289,8 +283,8 @@ TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_03) {
 }
 
 TEST_F(GameBoardForConceptsTest, TestAttachZobristCalculators) {
-  auto game_board =
-      BuildGameBoardWithAttachedZobristCalculators<uint64_t, uint64_t>(2, 2);
+
+  BuildGameBoardWithAttachedZobristCalculators<uint64_t, uint64_t>(2, 2);
 }
 
 TEST_F(GameBoardForConceptsTest, ExecuteAndUndoMoveWithZobristCalculatorsAttached) {

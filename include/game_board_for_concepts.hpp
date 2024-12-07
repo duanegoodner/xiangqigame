@@ -49,6 +49,8 @@ class GameBoardForConcepts {
   //! Encapsulates all calculations of allowed moves.
   MoveCalculator move_calculator_;
 
+  vector<function<void(const ExecutedMove &)>> move_callbacks_;
+
   std::vector<std::shared_ptr<RC>> red_calculators_;
   std::vector<std::shared_ptr<BC>> black_calculators_;
   //! Vectors of all moves that have been executed (and not un-done) by each player.
@@ -78,6 +80,10 @@ public:
             starting_board
         )
     );
+  }
+
+  void AttachMoveCallback(const function<void(const ExecutedMove &)> &callback) {
+    move_callbacks_.emplace_back(callback);
   }
 
   template <BoardStateCalculatorConcept C>
@@ -235,11 +241,15 @@ private:
 
   void UpdateStateTracker(const ExecutedMove &executed_move) {
 
-    for (auto z_calculator : red_calculators_) {
-      z_calculator->UpdateBoardState(executed_move);
-    }
-    for (auto z_calculator : black_calculators_) {
-      z_calculator->UpdateBoardState(executed_move);
+    // for (auto z_calculator : red_calculators_) {
+    //   z_calculator->UpdateBoardState(executed_move);
+    // }
+    // for (auto z_calculator : black_calculators_) {
+    //   z_calculator->UpdateBoardState(executed_move);
+    // }
+
+    for (const auto &callback : move_callbacks_) {
+      callback(executed_move);
     }
   }
 
