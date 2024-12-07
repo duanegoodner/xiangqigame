@@ -69,13 +69,13 @@ public:
     return move_log_;
   }
 
-  static ::shared_ptr<GameBoardForConcepts<RC, BC>> Create(
+  static std::shared_ptr<GameBoardForConcepts> Create(
       const BoardMapInt_t &starting_board = kStandardInitialBoard
   ) {
     // std::vector<std::shared_ptr<RC>> red_calculators;
     // std::vector<std::shared_ptr<BC>> black_calculators;
-    return std::shared_ptr<GameBoardForConcepts<RC, BC>>(
-        new GameBoardForConcepts<RC, BC>(
+    return std::shared_ptr<GameBoardForConcepts>(
+        new GameBoardForConcepts(
             // red_calculators,
             // black_calculators,
             starting_board
