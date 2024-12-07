@@ -36,8 +36,7 @@ protected:
       {0, 0, 0, 0, -1, 0, 0, 0, 0},
   }};
 
-  using NullCalculatorsGameBoardFactoryType =
-      gameboard::GameBoardFactory<NullBoardStateCalculator, NullBoardStateCalculator>;
+  using NullCalculatorsGameBoardFactoryType = gameboard::GameBoardFactory;
   using NullCalculatorsGameBoardType =
       NullCalculatorsGameBoardFactoryType::GameBoardType;
 
@@ -51,8 +50,7 @@ protected:
   ) {
     using RedCalculatorType = boardstate::ZobristCalculatorForConcepts<RedKeyType>;
     using BlackCalculatorType = boardstate::ZobristCalculatorForConcepts<BlackKeyType>;
-    using GameBoardFactoryType =
-        gameboard::GameBoardFactory<RedCalculatorType, BlackCalculatorType>;
+    using GameBoardFactoryType = gameboard::GameBoardFactory;
 
     GameBoardFactoryType game_board_factory;
     auto game_board = game_board_factory.Create(starting_board);
@@ -65,8 +63,7 @@ protected:
   ) {
     using RedCalculatorType = boardstate::ZobristCalculatorForConcepts<RedKeyType>;
     using BlackCalculatorType = boardstate::ZobristCalculatorForConcepts<BlackKeyType>;
-    using GameBoardFactoryType =
-        gameboard::GameBoardFactory<RedCalculatorType, BlackCalculatorType>;
+    using GameBoardFactoryType = gameboard::GameBoardFactory;
 
     using GameBoardType = GameBoardFactoryType::GameBoardType;
 
@@ -88,9 +85,7 @@ protected:
   void TestExecuteUndoMoveWithZobristCalculatorsAttached(
       size_t NumRedCalculatorsPerPlayer
   ) {
-    using GameBoardFactoryType = gameboard::GameBoardFactory<
-        boardstate::ZobristCalculatorForConcepts<RedKeyType>,
-        boardstate::ZobristCalculatorForConcepts<BlackKeyType>>;
+    using GameBoardFactoryType = gameboard::GameBoardFactory;
 
     using GameBoardType = GameBoardFactoryType::GameBoardType;
 
@@ -127,34 +122,27 @@ protected:
 
 TEST_F(GameBoardForConceptsTest, SatisfiesSpaceInfoProviderConcept) {
   static_assert(
-      SpaceInfoProviderConcept<gameboard::GameBoardForConcepts<
-          boardstate::ZobristCalculatorForConcepts<uint64_t>,
-          boardstate::ZobristCalculatorForConcepts<uint64_t>>>,
+      SpaceInfoProviderConcept<gameboard::GameBoardForConcepts>,
       "GameBoardForConcepts must satisfy SpaceInfoProviderConcept"
   );
 }
 
 TEST_F(GameBoardForConceptsTest, SatisfiesBoardStateCalculatorRegistryConcept) {
   static_assert(
-      BoardStateCalculatorRegistryConcept<gameboard::GameBoardForConcepts<
-          boardstate::ZobristCalculatorForConcepts<uint64_t>,
-          boardstate::ZobristCalculatorForConcepts<uint64_t>>>,
+      BoardStateCalculatorRegistryConcept<gameboard::GameBoardForConcepts>,
       "GameBoardForConcepts must satisfy BoardStateCalculatorRegistryConcept"
   );
 }
 
 TEST_F(GameBoardForConceptsTest, SatisfiesProviderAndRegistryConcept) {
   static_assert(
-      SpaceInfoProviderAndCalculatorRegistryConcept<gameboard::GameBoardForConcepts<
-          boardstate::ZobristCalculatorForConcepts<uint64_t>,
-          boardstate::ZobristCalculatorForConcepts<uint64_t>>>,
+      SpaceInfoProviderAndCalculatorRegistryConcept<gameboard::GameBoardForConcepts>,
       "GameBoardForConcepts must satisfy SpaceInfoProviderAndCalculatorRegistryConcept"
   );
 }
 
 TEST_F(GameBoardForConceptsTest, TestCreateGameBoard) {
-  auto game_board = gameboard::
-      GameBoardForConcepts<NullBoardStateCalculator, NullBoardStateCalculator>::Create();
+  auto game_board = gameboard::GameBoardForConcepts::Create();
 }
 
 TEST_F(GameBoardForConceptsTest, TestBuildBasedOnKeyType) {
@@ -168,9 +156,7 @@ TEST_F(GameBoardForConceptsTest, TestGetsCorrectOccupants) {
 }
 
 TEST_F(GameBoardForConceptsTest, TestDrawDetection) {
-  auto draw_test_board = gameboard::GameBoardForConcepts<
-      NullBoardStateCalculator,
-      NullBoardStateCalculator>::Create(kDrawTestBoard);
+  auto draw_test_board = gameboard::GameBoardForConcepts::Create(kDrawTestBoard);
   for (auto round_trip = 0; round_trip < 10; ++round_trip) {
     for (auto idx = 0; idx < 6; ++idx) {
       BoardSpace start{3, idx};
@@ -203,8 +189,7 @@ TEST_F(GameBoardForConceptsTest, TestExecuteAndUndoMove) {
 }
 
 TEST_F(GameBoardForConceptsTest, TestCorrectNumSpacesOccupied) {
-  auto game_board = gameboard::
-      GameBoardForConcepts<NullBoardStateCalculator, NullBoardStateCalculator>::Create();
+  auto game_board = gameboard::GameBoardForConcepts::Create();
   auto red_player_spaces =
       game_board->GetAllSpacesOccupiedBy(gameboard::PieceColor::kRed);
   auto black_player_spaces =
@@ -215,16 +200,13 @@ TEST_F(GameBoardForConceptsTest, TestCorrectNumSpacesOccupied) {
 }
 
 TEST_F(GameBoardForConceptsTest, TestCorrectNumberAvailableMoves) {
-  auto game_board = gameboard::
-      GameBoardForConcepts<NullBoardStateCalculator, NullBoardStateCalculator>::Create();
+  auto game_board = gameboard::GameBoardForConcepts::Create();
   auto black_moves = game_board->CalcFinalMovesOf(PieceColor::kBlk);
   auto red_moves = game_board->CalcFinalMovesOf(PieceColor::kRed);
 }
 
 TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_02) {
-  auto game_board = gameboard::GameBoardForConcepts<
-      NullBoardStateCalculator,
-      NullBoardStateCalculator>::Create(kRepeatMoveTestBoard);
+  auto game_board = gameboard::GameBoardForConcepts::Create(kRepeatMoveTestBoard);
   auto red_king_position_a = BoardSpace{9, 4};
   auto red_king_position_b = BoardSpace{9, 3};
 
@@ -246,9 +228,7 @@ TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_02) {
 }
 
 TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_03) {
-  auto game_board = gameboard::GameBoardForConcepts<
-      NullBoardStateCalculator,
-      NullBoardStateCalculator>::Create(kRepeatMoveTestBoard);
+  auto game_board = gameboard::GameBoardForConcepts::Create(kRepeatMoveTestBoard);
 
   auto red_king_position_a = BoardSpace{9, 4};
   auto red_king_position_b = BoardSpace{9, 3};

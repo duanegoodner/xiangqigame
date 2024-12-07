@@ -13,10 +13,10 @@
 #include <zobrist_for_concepts.hpp>
 
 namespace gameboard {
-template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
+// template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
 class GameBoardFactory {
 public:
-  using GameBoardType = GameBoardForConcepts<RC, BC>;
+  using GameBoardType = GameBoardForConcepts;
   std::shared_ptr<GameBoardType> Create(
       const BoardMapInt_t &starting_board = kStandardInitialBoard
   ) {

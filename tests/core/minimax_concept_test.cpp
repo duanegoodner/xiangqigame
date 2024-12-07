@@ -20,8 +20,7 @@ protected:
     return lhs.end.file < rhs.end.file;
   }
 
-  using AllNullCalculatorGameBoardType = gameboard::
-      GameBoardForConcepts<NullBoardStateCalculator, NullBoardStateCalculator>;
+  using AllNullCalculatorGameBoardType = gameboard::GameBoardForConcepts;
 
   std::shared_ptr<AllNullCalculatorGameBoardType> game_board_ =
       AllNullCalculatorGameBoardType::Create();
@@ -33,7 +32,7 @@ protected:
   MoveEvaluatorFactoryType move_evaluator_factory_;
 
   template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-  std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>> BuildGameBoard(
+  std::shared_ptr<gameboard::GameBoardForConcepts> BuildGameBoard(
       size_t NumRedCalculators,
       size_t NumBlackCalculators
   ) {
@@ -47,26 +46,25 @@ protected:
       black_z_calculators.emplace_back(BC::Create());
     }
 
-    return gameboard::GameBoardForConcepts<RC, BC>::Create();
+    return gameboard::GameBoardForConcepts::Create();
   }
 
   template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-  std::unique_ptr<moveselection::RandomMoveEvaluatorForConcept<
-      gameboard::GameBoardForConcepts<RC, BC>>>
+  std::unique_ptr<
+      moveselection::RandomMoveEvaluatorForConcept<gameboard::GameBoardForConcepts>>
   BuildRandomMoveEvaluator(
       gameboard::PieceColor color,
-      std::shared_ptr<gameboard::GameBoardForConcepts<RC, BC>> game_board
+      std::shared_ptr<gameboard::GameBoardForConcepts> game_board
   ) {
     return moveselection::RandomMoveEvaluatorForConcept<
-        gameboard::GameBoardForConcepts<RC, BC>>::Create(game_board, color);
+        gameboard::GameBoardForConcepts>::Create(game_board, color);
   }
 };
 
 TEST_F(RandomEvaluatorConceptTest, CompliesWithMoveEvaluatorConcept) {
   static_assert(
-      MoveEvaluatorConcept<moveselection::RandomMoveEvaluatorForConcept<
-          gameboard::
-              GameBoardForConcepts<NullBoardStateCalculator, NullBoardStateCalculator>>>,
+      MoveEvaluatorConcept<
+          moveselection::RandomMoveEvaluatorForConcept<gameboard::GameBoardForConcepts>>,
       "RandomMoveEvaluatorForConcept must comply with MoveEvaluatorConcept."
   );
 }
@@ -119,8 +117,7 @@ protected:
       boardstate::ZobristCalculatorForConcepts<ExampleKeyTypeRed>;
   using ExamplCalculatorTypeBlack =
       boardstate::ZobristCalculatorForConcepts<ExampleKeyTypeBlack>;
-  using ExampleGameBoardType = gameboard::
-      GameBoardForConcepts<ExampleCalculatorTypeRed, ExamplCalculatorTypeBlack>;
+  using ExampleGameBoardType = gameboard::GameBoardForConcepts;
 
   std::shared_ptr<ExampleGameBoardType> example_game_board_ =
       ExampleGameBoardType::Create();
@@ -145,9 +142,7 @@ protected:
       size_t NumConfKeysRed,
       size_t NumConfKeysBlack>
   void PlayGame(DepthType red_search_depth, DepthType black_search_depth) {
-    using GameBoardType = gameboard::GameBoardForConcepts<
-        boardstate::ZobristCalculatorForConcepts<KeyTypeRed>,
-        boardstate::ZobristCalculatorForConcepts<KeyTypeBlack>>;
+    using GameBoardType = gameboard::GameBoardForConcepts;
     // gameboard::GameBoardFactory<KeyTypeRed, KeyTypeBlack> game_board_factory;
 
     auto minimax_evaluator_red = example_red_evaluator_factory_.Create(
