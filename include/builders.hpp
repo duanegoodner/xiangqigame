@@ -16,11 +16,11 @@ namespace gameboard {
 // template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
 class GameBoardFactory {
 public:
-  using GameBoardType = GameBoardForConcepts;
-  std::shared_ptr<GameBoardType> Create(
+  // using GameBoardType = GameBoardForConcepts;
+  std::shared_ptr<GameBoardForConcepts> Create(
       const BoardMapInt_t &starting_board = kStandardInitialBoard
   ) {
-    return GameBoardType::Create(starting_board);
+    return GameBoardForConcepts::Create(starting_board);
   }
 };
 } // namespace gameboard

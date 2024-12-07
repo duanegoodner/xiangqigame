@@ -36,25 +36,9 @@ protected:
       {0, 0, 0, 0, -1, 0, 0, 0, 0},
   }};
 
-  using NullCalculatorsGameBoardFactoryType = gameboard::GameBoardFactory;
-  using NullCalculatorsGameBoardType =
-      NullCalculatorsGameBoardFactoryType::GameBoardType;
-
-  NullCalculatorsGameBoardFactoryType null_calculators_gb_factory;
-  std::shared_ptr<NullCalculatorsGameBoardType> starting_board_null_zcalcs_ =
-      null_calculators_gb_factory.Create();
-
-  template <typename RedKeyType, typename BlackKeyType>
-  void BuildGameBoardForZobristCalculators(
-      const BoardMapInt_t &starting_board = gameboard::kStandardInitialBoard
-  ) {
-    using RedCalculatorType = boardstate::ZobristCalculatorForConcepts<RedKeyType>;
-    using BlackCalculatorType = boardstate::ZobristCalculatorForConcepts<BlackKeyType>;
-    using GameBoardFactoryType = gameboard::GameBoardFactory;
-
-    GameBoardFactoryType game_board_factory;
-    auto game_board = game_board_factory.Create(starting_board);
-  }
+  gameboard::GameBoardFactory game_board_factory_;
+  std::shared_ptr<gameboard::GameBoardForConcepts> starting_game_board_ =
+      game_board_factory_.Create();
 
   template <typename RedKeyType, typename BlackKeyType>
   void BuildGameBoardWithAttachedZobristCalculators(
@@ -63,44 +47,40 @@ protected:
   ) {
     using RedCalculatorType = boardstate::ZobristCalculatorForConcepts<RedKeyType>;
     using BlackCalculatorType = boardstate::ZobristCalculatorForConcepts<BlackKeyType>;
-    using GameBoardFactoryType = gameboard::GameBoardFactory;
 
-    using GameBoardType = GameBoardFactoryType::GameBoardType;
-
-    GameBoardFactoryType game_board_factory;
-    auto game_board = game_board_factory.Create();
-
-    boardstate::ZobristCalculatorFactory<RedKeyType, GameBoardType>
+    boardstate::ZobristCalculatorFactory<RedKeyType, gameboard::GameBoardForConcepts>
         red_zobrist_calculator_factory;
-    boardstate::ZobristCalculatorFactory<BlackKeyType, GameBoardType>
+    boardstate::ZobristCalculatorFactory<BlackKeyType, gameboard::GameBoardForConcepts>
         black_zobrist_calculator_factory;
 
-    auto red_zobrist_calculator =
-        red_zobrist_calculator_factory.Create(game_board, gameboard::PieceColor::kRed);
-    auto black_zobrist_calculator =
-        black_zobrist_calculator_factory.Create(game_board, gameboard::PieceColor::kBlk);
+    auto red_zobrist_calculator = red_zobrist_calculator_factory.Create(
+        starting_game_board_,
+        gameboard::PieceColor::kRed
+    );
+    auto black_zobrist_calculator = black_zobrist_calculator_factory.Create(
+        starting_game_board_,
+        gameboard::PieceColor::kBlk
+    );
   }
 
   template <typename RedKeyType, typename BlackKeyType>
   void TestExecuteUndoMoveWithZobristCalculatorsAttached(
       size_t NumRedCalculatorsPerPlayer
   ) {
-    using GameBoardFactoryType = gameboard::GameBoardFactory;
 
-    using GameBoardType = GameBoardFactoryType::GameBoardType;
-
-    GameBoardFactoryType game_board_factory;
-    auto game_board = game_board_factory.Create();
-
-    boardstate::ZobristCalculatorFactory<RedKeyType, GameBoardType>
+    boardstate::ZobristCalculatorFactory<RedKeyType, gameboard::GameBoardForConcepts>
         red_zobrist_calculator_factory;
-    boardstate::ZobristCalculatorFactory<BlackKeyType, GameBoardType>
+    boardstate::ZobristCalculatorFactory<BlackKeyType, gameboard::GameBoardForConcepts>
         black_zobrist_calculator_factory;
 
-    auto red_zobrist_calculator =
-        red_zobrist_calculator_factory.Create(game_board, gameboard::PieceColor::kRed);
-    auto black_zobrist_calculator =
-        black_zobrist_calculator_factory.Create(game_board, gameboard::PieceColor::kBlk);
+    auto red_zobrist_calculator = red_zobrist_calculator_factory.Create(
+        starting_game_board_,
+        gameboard::PieceColor::kRed
+    );
+    auto black_zobrist_calculator = black_zobrist_calculator_factory.Create(
+        starting_game_board_,
+        gameboard::PieceColor::kBlk
+    );
 
     auto red_initial_state = red_zobrist_calculator->board_state();
     auto black_initial_state = black_zobrist_calculator->board_state();
@@ -110,7 +90,7 @@ protected:
     EXPECT_NE(red_initial_state, black_initial_state);
 
     auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};
-    auto actual_executed_move = game_board->ExecuteMove(actual_move);
+    auto actual_executed_move = starting_game_board_->ExecuteMove(actual_move);
 
     auto red_post_move_state = red_zobrist_calculator->board_state();
     auto black_post_move_state = black_zobrist_calculator->board_state();
@@ -142,21 +122,17 @@ TEST_F(GameBoardForConceptsTest, SatisfiesProviderAndRegistryConcept) {
 }
 
 TEST_F(GameBoardForConceptsTest, TestCreateGameBoard) {
-  auto game_board = gameboard::GameBoardForConcepts::Create();
-}
-
-TEST_F(GameBoardForConceptsTest, TestBuildBasedOnKeyType) {
-  BuildGameBoardForZobristCalculators<uint64_t, uint64_t>();
+  auto game_board = game_board_factory_.Create();
 }
 
 TEST_F(GameBoardForConceptsTest, TestGetsCorrectOccupants) {
-  EXPECT_EQ(starting_board_null_zcalcs_->GetOccupantAt(BoardSpace{0, 0}), 5);
-  EXPECT_EQ(starting_board_null_zcalcs_->GetOccupantAt(BoardSpace{1, 0}), 0);
-  EXPECT_EQ(starting_board_null_zcalcs_->GetOccupantAt(BoardSpace{9, 7}), -4);
+  EXPECT_EQ(starting_game_board_->GetOccupantAt(BoardSpace{0, 0}), 5);
+  EXPECT_EQ(starting_game_board_->GetOccupantAt(BoardSpace{1, 0}), 0);
+  EXPECT_EQ(starting_game_board_->GetOccupantAt(BoardSpace{9, 7}), -4);
 }
 
 TEST_F(GameBoardForConceptsTest, TestDrawDetection) {
-  auto draw_test_board = gameboard::GameBoardForConcepts::Create(kDrawTestBoard);
+  auto draw_test_board = game_board_factory_.Create(kDrawTestBoard);
   for (auto round_trip = 0; round_trip < 10; ++round_trip) {
     for (auto idx = 0; idx < 6; ++idx) {
       BoardSpace start{3, idx};
@@ -180,33 +156,31 @@ TEST_F(GameBoardForConceptsTest, TestDrawDetection) {
 
 TEST_F(GameBoardForConceptsTest, TestExecuteAndUndoMove) {
   auto actual_move = Move{BoardSpace{6, 2}, BoardSpace{5, 2}};
-  auto actual_executed_move = starting_board_null_zcalcs_->ExecuteMove(actual_move);
-  EXPECT_EQ(starting_board_null_zcalcs_->GetOccupantAt(BoardSpace{6, 2}), 0);
-  EXPECT_EQ(starting_board_null_zcalcs_->GetOccupantAt(BoardSpace{5, 2}), -7);
-  starting_board_null_zcalcs_->UndoMove(actual_executed_move);
-  EXPECT_EQ(starting_board_null_zcalcs_->GetOccupantAt(BoardSpace{6, 2}), -7);
-  EXPECT_EQ(starting_board_null_zcalcs_->GetOccupantAt(BoardSpace{5, 2}), 0);
+  auto actual_executed_move = starting_game_board_->ExecuteMove(actual_move);
+  EXPECT_EQ(starting_game_board_->GetOccupantAt(BoardSpace{6, 2}), 0);
+  EXPECT_EQ(starting_game_board_->GetOccupantAt(BoardSpace{5, 2}), -7);
+  starting_game_board_->UndoMove(actual_executed_move);
+  EXPECT_EQ(starting_game_board_->GetOccupantAt(BoardSpace{6, 2}), -7);
+  EXPECT_EQ(starting_game_board_->GetOccupantAt(BoardSpace{5, 2}), 0);
 }
 
 TEST_F(GameBoardForConceptsTest, TestCorrectNumSpacesOccupied) {
-  auto game_board = gameboard::GameBoardForConcepts::Create();
   auto red_player_spaces =
-      game_board->GetAllSpacesOccupiedBy(gameboard::PieceColor::kRed);
+      starting_game_board_->GetAllSpacesOccupiedBy(gameboard::PieceColor::kRed);
   auto black_player_spaces =
-      game_board->GetAllSpacesOccupiedBy(gameboard::PieceColor::kBlk);
+      starting_game_board_->GetAllSpacesOccupiedBy(gameboard::PieceColor::kBlk);
 
   EXPECT_EQ(red_player_spaces.size(), 16);
   EXPECT_EQ(black_player_spaces.size(), 16);
 }
 
 TEST_F(GameBoardForConceptsTest, TestCorrectNumberAvailableMoves) {
-  auto game_board = gameboard::GameBoardForConcepts::Create();
-  auto black_moves = game_board->CalcFinalMovesOf(PieceColor::kBlk);
-  auto red_moves = game_board->CalcFinalMovesOf(PieceColor::kRed);
+  auto black_moves = starting_game_board_->CalcFinalMovesOf(PieceColor::kBlk);
+  auto red_moves = starting_game_board_->CalcFinalMovesOf(PieceColor::kRed);
 }
 
 TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_02) {
-  auto game_board = gameboard::GameBoardForConcepts::Create(kRepeatMoveTestBoard);
+  auto game_board = game_board_factory_.Create(kRepeatMoveTestBoard);
   auto red_king_position_a = BoardSpace{9, 4};
   auto red_king_position_b = BoardSpace{9, 3};
 
@@ -228,7 +202,7 @@ TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_02) {
 }
 
 TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_03) {
-  auto game_board = gameboard::GameBoardForConcepts::Create(kRepeatMoveTestBoard);
+  auto game_board = game_board_factory_.Create(kRepeatMoveTestBoard);
 
   auto red_king_position_a = BoardSpace{9, 4};
   auto red_king_position_b = BoardSpace{9, 3};
@@ -255,7 +229,6 @@ TEST_F(GameBoardForConceptsTest, TestProhibitsTripleRepeatMovePeriod_03) {
 }
 
 TEST_F(GameBoardForConceptsTest, TestAttachZobristCalculators) {
-
   BuildGameBoardWithAttachedZobristCalculators<uint64_t, uint64_t>(2, 2);
 }
 
