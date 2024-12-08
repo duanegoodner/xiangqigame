@@ -24,7 +24,7 @@ protected:
 
 public:
   gameboard::BoardMap_t starting_boardmap() { return starting_boardmap_; }
-  gameboard::ExecutedMove GenerateExecutedMove(
+  gameboard::ExecutedMove GenerateOpeningExecutedMove(
       const BoardSpace &move_start,
       const BoardSpace &move_end
   ) {

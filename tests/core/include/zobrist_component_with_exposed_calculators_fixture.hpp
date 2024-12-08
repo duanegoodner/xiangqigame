@@ -107,7 +107,7 @@ public:
     // //  Generate an ExecutedMove to pass to UpdateBoardState methods
     gameboard::BoardSpace move_start{6, 0};
     gameboard::BoardSpace move_end{5, 0};
-    auto executed_move = board_map_fixture_.GenerateExecutedMove(move_start, move_end);
+    auto executed_move = board_map_fixture_.GenerateOpeningExecutedMove(move_start, move_end);
 
     // Get pre-move board states
     auto initial_primary_state = zobrist_component_->primary_board_state();
@@ -145,7 +145,7 @@ public:
   void TestCoordinatorExecuteAndUndoMove() {
     gameboard::BoardSpace move_start{6, 0};
     gameboard::BoardSpace move_end{5, 0};
-    auto executed_move = board_map_fixture_.GenerateExecutedMove(move_start, move_end);
+    auto executed_move = board_map_fixture_.GenerateOpeningExecutedMove(move_start, move_end);
     auto starting_board_map = board_map_fixture_.starting_boardmap();
     FullBoardStateCalc(starting_board_map);
 
@@ -162,7 +162,7 @@ public:
   void TestCoordinatorRecordAndReadData() {
     gameboard::BoardSpace move_start{6, 0};
     gameboard::BoardSpace move_end{5, 0};
-    auto executed_move = board_map_fixture_.GenerateExecutedMove(move_start, move_end);
+    auto executed_move = board_map_fixture_.GenerateOpeningExecutedMove(move_start, move_end);
 
     auto board_map = board_map_fixture_.starting_boardmap();
 

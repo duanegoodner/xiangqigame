@@ -1,5 +1,6 @@
 #include <board_data_structs.hpp>
 #include <board_map_fixture.hpp>
+#include <builders.hpp>
 #include <concept_board_state_calculator.hpp>
 #include <concept_composite_concepts.hpp>
 #include <concept_single_board_state_provider.hpp>
@@ -10,6 +11,7 @@
 class ZobristCalculatorConceptTest : public ::testing::Test {
 protected:
   fixtures::BoardMapFixture board_map_fixture_;
+  gameboard::BoardMap_t starting_board_map_ = board_map_fixture_.starting_boardmap();
 
   template <typename CalculatorType>
   void CheckComplianceWithBoardStateCalculatorConcept() {
@@ -48,21 +50,19 @@ protected:
   template <BoardStateCalculatorConcept C>
   void TestFullBoardStateCalc() {
     auto zobrist_calculator = C::Create();
-    auto starting_boardmap = board_map_fixture_.starting_boardmap();
-    zobrist_calculator->FullBoardStateCalc(starting_boardmap);
-
+    zobrist_calculator->FullBoardStateCalc(starting_board_map_);
     EXPECT_NE(zobrist_calculator->board_state(), 0);
   }
 
   template <BoardStateCalculatorConcept C>
   void TestUpdateBoardState() {
     auto zobrist_calculator = C::Create();
-    zobrist_calculator->FullBoardStateCalc(board_map_fixture_.starting_boardmap());
+    zobrist_calculator->FullBoardStateCalc(starting_board_map_);
 
     gameboard::BoardSpace move_start{6, 0};
     gameboard::BoardSpace move_end{5, 0};
 
-    auto executed_move = board_map_fixture_.GenerateExecutedMove(move_start, move_end);
+    auto executed_move = board_map_fixture_.GenerateOpeningExecutedMove(move_start, move_end);
 
     auto initial_state = zobrist_calculator->board_state();
     zobrist_calculator->UpdateBoardState(executed_move);

@@ -33,13 +33,9 @@ public:
   using ZobristCalculatorType = boardstate::ZobristCalculatorForConcepts<KeyType>;
   //! Creates a new ZobristCalculator, initializes its state using pre-existing
   //! GameBoard, and registers it with the GameBoard.
-  std::shared_ptr<ZobristCalculatorType> Create(
-      std::shared_ptr<G> game_board,
-      gameboard::PieceColor color
-  ) {
+  std::shared_ptr<ZobristCalculatorType> Create(std::shared_ptr<G> game_board) {
     auto new_calculator = ZobristCalculatorType::Create();
     new_calculator->FullBoardStateCalc(game_board->map());
-    // game_board->AttachCalculator(new_calculator, color);
     game_board->AttachMoveCallback(std::bind(
         &ZobristCalculatorType::UpdateBoardState,
         new_calculator,
@@ -50,39 +46,45 @@ public:
   }
 };
 
-template <
-    typename KeyType,
-    size_t NumConfKeys,
-    SpaceInfoProviderAndCalculatorRegistryConcept G>
-class ZobristCoordinatorFactory {
+template <typename KeyType, size_t NumConfKeys, BoardStateCalculatorRegistryConcept G>
+class ZobristComponentFactory {
 public:
   using ZobristCalculatorType = boardstate::ZobristCalculatorForConcepts<KeyType>;
   using ZobristComponentType =
       boardstate::ZobristComponentForConcepts<ZobristCalculatorType, NumConfKeys>;
-  using ZobristCoordinatorType =
-      boardstate::ZobristCoordinatorForConcepts<ZobristComponentType>;
 
-  std::shared_ptr<ZobristCoordinatorType> Create(
-      std::shared_ptr<G> game_board,
-      gameboard::PieceColor color
-  ) {
-
-    ZobristCalculatorFactory<KeyType, G> zobrist_calculator_factory;
-
-    auto primary_calculator = zobrist_calculator_factory.Create(game_board, color);
-
+  std::shared_ptr<ZobristComponentType> Create(std::shared_ptr<G> game_board) {
+    auto primary_calculator = zobrist_calcultor_factory_.Create(game_board);
     std::array<std::shared_ptr<ZobristCalculatorType>, NumConfKeys>
         confirmation_calculators;
     for (auto idx = 0; idx < NumConfKeys; ++idx) {
-      confirmation_calculators[idx] =
-          zobrist_calculator_factory.Create(game_board, color);
+      confirmation_calculators[idx] = zobrist_calcultor_factory_.Create(game_board);
     }
+    return ZobristComponentType::Create(primary_calculator, confirmation_calculators);
+  }
 
-    auto zobrist_component =
-        ZobristComponentType::Create(primary_calculator, confirmation_calculators);
+private:
+  ZobristCalculatorFactory<KeyType, G> zobrist_calcultor_factory_;
+};
+
+template <typename KeyType, size_t NumConfKeys, BoardStateCalculatorRegistryConcept G>
+class ZobristCoordinatorFactory {
+public:
+  using ZobristCalculatorType = ZobristCalculatorForConcepts<KeyType>;
+  using ZobristComponentFactoryType = ZobristComponentFactory<KeyType, NumConfKeys, G>;
+  using ZobristComponentType =
+      ZobristComponentForConcepts<ZobristCalculatorType, NumConfKeys>;
+  using ZobristCoordinatorType = ZobristCoordinatorForConcepts<ZobristComponentType>;
+
+  std::shared_ptr<ZobristCoordinatorType> Create(std::shared_ptr<G> game_board) {
+
+    auto zobrist_component = zobrist_component_factory_.Create(game_board);
 
     return ZobristCoordinatorType::Create(zobrist_component);
   }
+
+private:
+  ZobristComponentFactoryType zobrist_component_factory_;
 };
 } // namespace boardstate
 
@@ -124,8 +126,7 @@ public:
       DepthType search_depth,
       std::string json_file = piecepoints::kICGABPOPath
   ) {
-    auto zobrist_coordinator =
-        zobrist_coordinator_factory_.Create(game_board, evaluating_player);
+    auto zobrist_coordinator = zobrist_coordinator_factory_.Create(game_board);
 
     auto game_position_points = piecepoints::PiecePositionPointsForConcepts::Create();
     return std::make_unique<MoveEvaluatorType>(

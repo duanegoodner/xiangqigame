@@ -53,14 +53,10 @@ protected:
     boardstate::ZobristCalculatorFactory<BlackKeyType, gameboard::GameBoardForConcepts>
         black_zobrist_calculator_factory;
 
-    auto red_zobrist_calculator = red_zobrist_calculator_factory.Create(
-        starting_game_board_,
-        gameboard::PieceColor::kRed
-    );
-    auto black_zobrist_calculator = black_zobrist_calculator_factory.Create(
-        starting_game_board_,
-        gameboard::PieceColor::kBlk
-    );
+    auto red_zobrist_calculator =
+        red_zobrist_calculator_factory.Create(starting_game_board_);
+    auto black_zobrist_calculator =
+        black_zobrist_calculator_factory.Create(starting_game_board_);
   }
 
   template <typename RedKeyType, typename BlackKeyType>
@@ -73,14 +69,10 @@ protected:
     boardstate::ZobristCalculatorFactory<BlackKeyType, gameboard::GameBoardForConcepts>
         black_zobrist_calculator_factory;
 
-    auto red_zobrist_calculator = red_zobrist_calculator_factory.Create(
-        starting_game_board_,
-        gameboard::PieceColor::kRed
-    );
-    auto black_zobrist_calculator = black_zobrist_calculator_factory.Create(
-        starting_game_board_,
-        gameboard::PieceColor::kBlk
-    );
+    auto red_zobrist_calculator =
+        red_zobrist_calculator_factory.Create(starting_game_board_);
+    auto black_zobrist_calculator =
+        black_zobrist_calculator_factory.Create(starting_game_board_);
 
     auto red_initial_state = red_zobrist_calculator->board_state();
     auto black_initial_state = black_zobrist_calculator->board_state();
