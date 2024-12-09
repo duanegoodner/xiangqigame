@@ -132,7 +132,7 @@ template <
     BoardStateCoordinatorConcept H,
     SpaceInfoProviderConcept G,
     PieceValueProviderConcept P>
-class MinimaxMoveEvaluatorForConcept {
+class MinimaxMoveEvaluatorForConcepts {
 
   PieceColor evaluating_player_;
   std::shared_ptr<P> game_position_points_;
@@ -145,7 +145,7 @@ class MinimaxMoveEvaluatorForConcept {
   std::atomic<bool> game_over_;
 
 public:
-  explicit MinimaxMoveEvaluatorForConcept(
+  explicit MinimaxMoveEvaluatorForConcepts(
       PieceColor evaluating_player,
       DepthType search_depth,
       std::shared_ptr<G> game_board,

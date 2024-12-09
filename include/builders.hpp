@@ -139,7 +139,7 @@ public:
   using ZobristCoordinatorType = boardstate::
       ZobristCoordinatorFactory<KeyType, NumConfKeys, G>::ZobristCoordinatorType;
 
-  using MoveEvaluatorType = moveselection::MinimaxMoveEvaluatorForConcept<
+  using MoveEvaluatorType = moveselection::MinimaxMoveEvaluatorForConcepts<
       ZobristCoordinatorType,
       G,
       piecepoints::PiecePositionPointsForConcepts>;
