@@ -129,9 +129,8 @@ public:
 //! algorithm; uses SpaceInfoProviderConcept, BoardStateCoordinatorConcept, and
 //! PieceValueProviderConcept interfaces.
 template <
-    typename KeyType,
-    SpaceInfoProviderConcept G,
     BoardStateCoordinatorConcept H,
+    SpaceInfoProviderConcept G,
     PieceValueProviderConcept P>
 class MinimaxMoveEvaluatorForConcept {
 
@@ -150,8 +149,8 @@ public:
       PieceColor evaluating_player,
       DepthType search_depth,
       std::shared_ptr<G> game_board,
-      P game_position_points,
-      H hash_calculator
+      std::shared_ptr<P> game_position_points,
+      std::shared_ptr<H> hash_calculator
   )
       : evaluating_player_{evaluating_player}
       , search_depth_{search_depth}
@@ -164,6 +163,8 @@ public:
       , game_over_{false} {
     // initialize_hash_calculator();
   }
+
+  using KeyType = H::KeyType;
 
   Move SelectMove(MoveCollection &allowed_moves) {
 
@@ -185,7 +186,7 @@ public:
   const uint32_t zkeys_seed() { return hash_calculator_->zkeys_seed(); }
 
   const std::string board_state_hex_str() {
-    return hash_calculator_.board_state_hex_str();
+    return hash_calculator_->board_state_hex_str();
   }
 
 private:
@@ -559,12 +560,9 @@ private:
         RunTimedMinimax(allowed_moves, search_summary, use_transposition_table);
     auto selected_move = minimax_result.move_collection().SelectRandom();
     search_summary.SetSelectedMove(selected_move);
-    search_summary.set_tr_table_size_final(hash_calculator_.GetTrTableSize());
+    search_summary.set_tr_table_size_final(hash_calculator_->GetTrTableSize());
   }
 };
-
-
-
 
 //! Complies with MoveEvaluatorConcept. Randomly chooses one of legal moves
 //! available to moveselection::RandomMoveEvaluator.evaluating_player_.
@@ -575,8 +573,8 @@ class RandomMoveEvaluatorForConcept {
 
 public:
   static std::unique_ptr<RandomMoveEvaluatorForConcept<G>> Create(
-      gameboard::PieceColor evaluating_player,
-      std::shared_ptr<G> game_board
+      std::shared_ptr<G> game_board,
+      gameboard::PieceColor evaluating_player
   ) {
     return std::unique_ptr<RandomMoveEvaluatorForConcept<G>>(
         new RandomMoveEvaluatorForConcept<G>(evaluating_player, game_board)
@@ -589,14 +587,13 @@ public:
     return allowed_moves.moves[selected_move_index];
   }
 
-  private:
+private:
   RandomMoveEvaluatorForConcept(
       PieceColor evaluating_player,
       std::shared_ptr<G> game_board
   )
       : evaluating_player_{evaluating_player}
       , game_board_{game_board} {}
-
 };
 
 } // namespace moveselection

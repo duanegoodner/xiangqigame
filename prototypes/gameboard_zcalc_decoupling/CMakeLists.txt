@@ -1,0 +1,1 @@
+add_executable(gameboard_zcalc_decoupling gameboard_zcalc_decoupling.cpp)

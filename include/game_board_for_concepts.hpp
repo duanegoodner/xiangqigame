@@ -11,160 +11,81 @@
 
 namespace gameboard {
 
-//! Starting board represented as 2-D array of integers.
-//! Can be converted to array of GamePiece objects by
-//! board_utilities::int_board_to_game_pieces.
-const BoardMapInt_t kStandardInitialBoard = {{
-    {5, 4, 3, 2, 1, 2, 3, 4, 5},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 6, 0, 0, 0, 0, 0, 6, 0},
-    {7, 0, 7, 0, 7, 0, 7, 0, 7},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {-7, 0, -7, 0, -7, 0, -7, 0, -7},
-    {0, -6, 0, 0, 0, 0, 0, -6, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0, 0},
-    {-5, -4, -3, -2, -1, -2, -3, -4, -5},
-}};
-
-//! Max allowed repetitions of prohibited move sequence lengths.
-const int kRepeatPeriodsToCheck[3] = {2, 3, 4};
-
-//! Repeated move sequence lengths forbidden under move repetition rules.
-//! If kRepeatPeriodsToCheck = {2, 3, 4} and kRepeatPeriodsMaxAllowed = 2, then the
-//! following sequences are probibited:
-//! ABABAB, ABCABCABC, ABCDABCDABCD, ABCDEABCDEABCDE, ABCDEFABCDEFABCDEF
-const int kRepeatPeriodsMaxAllowed = 2;
-
-const int kMaxMovesWithoutCapture = 120;
+extern const BoardMapInt_t kStandardInitialBoard;
+extern const int kRepeatPeriodsToCheck[3];
+extern const int kRepeatPeriodsMaxAllowed;
+extern const int kMaxMovesWithoutCapture;
 
 //! Must comply with SpaceInfoProviderConcept; stores piece positions, and exposes
-//! methods for calculating, executing, an un-doing moves..
+//! methods for calculating, executing, an un-doing moves.
 
-template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
 class GameBoardForConcepts {
-  //! 2-D array of GamePiece objects.
   BoardMap_t board_map_;
-
-  //! Encapsulates all calculations of allowed moves.
   MoveCalculator move_calculator_;
-
-  std::vector<std::shared_ptr<RC>> red_calculators_;
-  std::vector<std::shared_ptr<BC>> black_calculators_;
-  //! Vectors of all moves that have been executed (and not un-done) by each player.
+  vector<function<void(const ExecutedMove &)>> move_callbacks_;
   std::map<PieceColor, std::vector<ExecutedMove>> move_log_;
-
-  //! Number of moves executed since last time a piece was captured.
   MoveCountType moves_since_last_capture_;
 
 public:
-  const BoardMap_t &map() const { return board_map_; }
-  const std::map<PieceColor, std::vector<ExecutedMove>> &move_log() const {
-    return move_log_;
-  }
-
-  static ::shared_ptr<GameBoardForConcepts<RC, BC>> Create(
+  static std::shared_ptr<GameBoardForConcepts> Create(
       const BoardMapInt_t &starting_board = kStandardInitialBoard
   ) {
-    std::vector<std::shared_ptr<RC>> red_calculators;
-    std::vector<std::shared_ptr<BC>> black_calculators;
-    return std::shared_ptr<GameBoardForConcepts<RC, BC>>(
-        new GameBoardForConcepts<RC, BC>(
-            red_calculators,
-            black_calculators,
-            starting_board
-        )
+    return std::shared_ptr<GameBoardForConcepts>(new GameBoardForConcepts(starting_board)
     );
   }
 
-  template <BoardStateCalculatorConcept C>
-  void AttachCalculator(std::shared_ptr<C> calculator, PieceColor color) {
-    if (color == PieceColor::kRed) {
-      red_calculators_.emplace_back(calculator);
-    }
-    if (color == PieceColor::kBlk) {
-      black_calculators_.emplace_back(calculator);
-    }
+  inline const BoardMap_t &map() const { return board_map_; }
+
+  inline const std::map<PieceColor, std::vector<ExecutedMove>> &move_log() const {
+    return move_log_;
   }
 
-  PieceColor GetColor(const BoardSpace &space) const { return GetColorInternal(space); }
-  bool IsInCheck(PieceColor color) { return IsInCheckInternal(color); }
-  ExecutedMove ExecuteMove(const Move &move) { return ExecuteMoveInternal(move); }
-  bool IsDraw() { return IsDrawInternal(); }
+  void AttachMoveCallback(const function<void(const ExecutedMove &)> &callback) {
+    move_callbacks_.emplace_back(callback);
+  }
 
-  std::vector<BoardSpace> GetAllSpacesOccupiedBy(const PieceColor color) const {
+  inline PieceColor GetColor(const BoardSpace &space) const {
+    return board_map_[space.rank][space.file].piece_color;
+  }
+
+  bool IsInCheck(PieceColor color) { return IsInCheckInternal(color); }
+
+  ExecutedMove ExecuteMove(const Move &move) { return ExecuteMoveInternal(move); }
+
+  inline bool IsDraw() { return moves_since_last_capture_ >= kMaxMovesWithoutCapture; }
+
+  inline std::vector<BoardSpace> GetAllSpacesOccupiedBy(const PieceColor color) const {
     return GetAllSpacesOccupiedByInternal(color);
   }
 
-  PieceType GetType(const BoardSpace &space) const { return GetTypeInternal(space); }
+  inline PieceType GetType(const BoardSpace &space) const {
+    return board_map_[space.rank][space.file].piece_type;
+  }
+
   MoveCollection CalcFinalMovesOf(PieceColor color) {
     return CalcFinalMovesOfInternal(color);
   }
 
-  bool IsCaptureMove(const ExecutedMove &executed_move) const {
-    return IsCaptureMoveInternal(executed_move);
+  inline bool IsCaptureMove(const ExecutedMove &executed_move) const {
+    return executed_move.destination_piece != PieceColor::kNul;
   }
 
   void UndoMove(const ExecutedMove &executed_move) {
     return UndoMoveInternal(executed_move);
   }
-  GamePiece GetOccupantAt(const BoardSpace &space) const {
-    return GetOccupantAtInternal(space);
+
+  inline GamePiece GetOccupantAt(const BoardSpace &space) const {
+    return board_map_[space.rank][space.file];
   }
 
 private:
   //! Initializes a gameboard::GameBoard from array of pieces represented as integers.
   //! @param starting_board An array of integers representing pieces on the board.
-  GameBoardForConcepts(
-      std::vector<std::shared_ptr<RC>> red_calclulators,
-      std::vector<std::shared_ptr<BC>> black_calculators,
-      const BoardMapInt_t starting_board
-  )
+  GameBoardForConcepts(const BoardMapInt_t starting_board)
       : board_map_{int_board_to_game_pieces(starting_board)}
-      , red_calculators_{red_calclulators}
-      , black_calculators_{black_calculators}
       , move_calculator_{MoveCalculator()}
-      , moves_since_last_capture_{} {}
-  inline PieceColor GetColorInternal(const BoardSpace &space) const {
-    return board_map_[space.rank][space.file].piece_color;
-  }
-
-  inline PieceType GetTypeInternal(const BoardSpace &space) const {
-    return board_map_[space.rank][space.file].piece_type;
-  }
-
-  inline vector<BoardSpace> GetAllSpacesOccupiedByInternal(const PieceColor color
-  ) const {
-    vector<BoardSpace> occupied_spaces;
-    occupied_spaces.reserve(16);
-    for (auto rank = 0; rank < kNumRanks; rank++) {
-      for (auto file = 0; file < kNumFiles; file++) {
-        if (GetColorInternal(BoardSpace{rank, file}) == color) {
-          occupied_spaces.emplace_back(BoardSpace{rank, file});
-        }
-      }
-    }
-    return occupied_spaces;
-  }
-
-  inline GamePiece GetOccupantAtInternal(const BoardSpace &space) const {
-    return board_map_[space.rank][space.file];
-  }
-
-  inline BoardSpace GetGeneralPositionInternal(const PieceColor color) {
-    auto castle =
-        (color == PieceColor::kRed) ? red_castle_spaces() : black_castle_spaces();
-
-    BoardSpace found_space;
-
-    for (BoardSpace board_space : castle) {
-      auto piece = board_map_[board_space.rank][board_space.file];
-      if (piece.piece_type == PieceType::kGen) {
-        found_space = board_space;
-      }
-    }
-    return found_space;
-  }
+      , moves_since_last_capture_{}
+      , move_callbacks_{} {}
 
   MoveCollection CalcFinalMovesOfInternal(PieceColor color) {
     auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
@@ -218,8 +139,18 @@ private:
     return executed_move;
   }
 
-  bool IsCaptureMoveInternal(const ExecutedMove &executed_move) const {
-    return executed_move.destination_piece != PieceColor::kNul;
+  inline std::vector<BoardSpace> GetAllSpacesOccupiedByInternal(const PieceColor color
+  ) const {
+    vector<BoardSpace> occupied_spaces;
+    occupied_spaces.reserve(16);
+    for (auto rank = 0; rank < kNumRanks; rank++) {
+      for (auto file = 0; file < kNumFiles; file++) {
+        if (GetColor(BoardSpace{rank, file}) == color) {
+          occupied_spaces.emplace_back(BoardSpace{rank, file});
+        }
+      }
+    }
+    return occupied_spaces;
   }
 
   void UndoMoveInternal(const ExecutedMove &executed_move) {
@@ -232,11 +163,8 @@ private:
 
   void UpdateStateTracker(const ExecutedMove &executed_move) {
 
-    for (auto z_calculator : red_calculators_) {
-      z_calculator->UpdateBoardState(executed_move);
-    }
-    for (auto z_calculator : black_calculators_) {
-      z_calculator->UpdateBoardState(executed_move);
+    for (const auto &callback : move_callbacks_) {
+      callback(executed_move);
     }
   }
 
@@ -271,8 +199,6 @@ private:
     }
     return false;
   }
-
-  bool IsDrawInternal() { return moves_since_last_capture_ >= kMaxMovesWithoutCapture; }
 };
 
 } // namespace gameboard

@@ -32,8 +32,8 @@ class ZobristComponentForConcepts {
 
 public:
   using KeyType = typename C::KeyType;
-  using NumConfKeys = N
-  // static constexpr size_t NumConfKeys = N;
+  static size_t constexpr NumConfKeys = N;
+
 public:
   static std::shared_ptr<ZobristComponentForConcepts<C, N>> Create(
       uint32_t prng_seed = std::random_device{}()
@@ -56,7 +56,7 @@ public:
     );
   }
 
-  static std::shared_ptr<ZobristComponentForConcepts<C, N>> CreateFromCalculators(
+  static std::shared_ptr<ZobristComponentForConcepts<C, N>> Create(
       std::shared_ptr<C> primary_calculator,
       std::array<std::shared_ptr<C>, N> confirmation_calculators
   ) {
@@ -304,7 +304,8 @@ template <MultiBoardStateProviderConcept M>
 class ZobristCoordinatorForConcepts {
 public:
   using KeyType = M::KeyType;
-  using NumConfKeys = M::NumConfKeys;
+  static size_t constexpr NumConfKeys = M::NumConfKeys;
+  // using NumConfKeys = M::NumConfKeys;
 
 private:
   std::shared_ptr<M> zobrist_component_;
@@ -317,7 +318,7 @@ public:
   // ZobristCoordinatorForConcepts &operator=(const ZobristCoordinatorForConcepts &) =
   //     delete;
 
-  static std::shared_ptr<ZobristCoordinatorForConcepts<M>> CreateFromZobristComponent(
+  static std::shared_ptr<ZobristCoordinatorForConcepts<M>> Create(
       std::shared_ptr<M> zobrist_component
   ) {
     return std::shared_ptr<ZobristCoordinatorForConcepts<M>>(

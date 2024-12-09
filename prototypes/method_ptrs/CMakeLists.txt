@@ -1,0 +1,1 @@
+add_executable(method_ptrs method_ptrs.cpp)
