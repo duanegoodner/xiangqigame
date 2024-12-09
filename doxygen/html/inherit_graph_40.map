@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classmoveselection_1_1MinimaxMoveEvaluatorBuilder.html" title=" " alt="" coords="5,5,224,45"/>
+<area shape="rect" id="node1" href="$classMoveEvaluator.html" title=" " alt="" coords="5,5,284,75"/>
+<area shape="rect" id="node2" href="$classmoveselection_1_1MinimaxMoveEvaluator.html" title="Implements MoveEvaluator interface, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="332,5,611,75"/>
 </map>

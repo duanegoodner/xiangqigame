@@ -7,7 +7,7 @@ var concepts =
     [ "MoveEvaluatorConcept", "conceptMoveEvaluatorConcept.html", null ],
     [ "MultiBoardStateProviderConcept", "conceptMultiBoardStateProviderConcept.html", null ],
     [ "PieceValueProviderConcept", "conceptPieceValueProviderConcept.html", null ],
-    [ "PseudoRandomlyGeneratedComponentConcept", "conceptPseudoRandomlyGeneratedComponentConcept.html", null ],
+    [ "SingleBoardStateProviderAndBoardStateCalculatorConcept", "conceptSingleBoardStateProviderAndBoardStateCalculatorConcept.html", null ],
     [ "SingleBoardStateProviderConcept", "conceptSingleBoardStateProviderConcept.html", null ],
     [ "SpaceInfoProviderAndCalculatorRegistryConcept", "conceptSpaceInfoProviderAndCalculatorRegistryConcept.html", null ],
     [ "SpaceInfoProviderConcept", "conceptSpaceInfoProviderConcept.html", null ],

@@ -150,32 +150,35 @@ $(document).ready(function(){initNavTree('concept__board__state__calculator__reg
 <div class="textblock"><code>#include &lt;<a class="el" href="concept__board__state__calculator_8hpp_source.html">concept_board_state_calculator.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="concept__space__info__provider_8hpp_source.html">concept_space_info_provider.hpp</a>&gt;</code><br />
 <code>#include &lt;concepts&gt;</code><br />
+<code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;<a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for concept_board_state_calculator_registry.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="concept__board__state__calculator__registry_8hpp__incl.png" border="0" usemap="#ainclude_2concept__board__state__calculator__registry_8hpp" alt=""/></div>
 <map name="ainclude_2concept__board__state__calculator__registry_8hpp" id="ainclude_2concept__board__state__calculator__registry_8hpp">
-<area shape="rect" title=" " alt="" coords="219,5,435,45"/>
-<area shape="rect" href="concept__board__state__calculator_8hpp.html" title=" " alt="" coords="307,93,465,133"/>
-<area shape="rect" title=" " alt="" coords="173,181,253,207"/>
-<area shape="rect" title=" " alt="" coords="527,181,605,207"/>
-<area shape="rect" href="concept__space__info__provider_8hpp.html" title=" " alt="" coords="81,93,232,133"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="279,255,453,280"/>
-<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="277,181,452,207"/>
-<area shape="rect" title=" " alt="" coords="609,328,665,353"/>
-<area shape="rect" title=" " alt="" coords="331,328,401,353"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="15,328,144,353"/>
-<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="169,328,307,353"/>
-<area shape="rect" title=" " alt="" coords="425,328,497,353"/>
-<area shape="rect" title=" " alt="" coords="521,328,584,353"/>
-<area shape="rect" title=" " alt="" coords="5,401,68,427"/>
-<area shape="rect" title=" " alt="" coords="93,401,151,427"/>
-<area shape="rect" title=" " alt="" coords="176,401,300,427"/>
-<area shape="rect" title=" " alt="" coords="325,401,391,427"/>
-<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="616,255,751,280"/>
-<area shape="rect" title=" " alt="" coords="689,328,774,353"/>
-<area shape="rect" title=" " alt="" coords="799,328,888,353"/>
+<area shape="rect" title=" " alt="" coords="432,5,648,45"/>
+<area shape="rect" href="concept__board__state__calculator_8hpp.html" title=" " alt="" coords="520,93,677,133"/>
+<area shape="rect" title=" " alt="" coords="521,181,601,207"/>
+<area shape="rect" title=" " alt="" coords="676,181,753,207"/>
+<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="322,181,497,207"/>
+<area shape="rect" href="concept__space__info__provider_8hpp.html" title=" " alt="" coords="243,93,394,133"/>
+<area shape="rect" title=" " alt="" coords="753,101,839,126"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="322,255,497,280"/>
+<area shape="rect" title=" " alt="" coords="600,328,656,353"/>
+<area shape="rect" title=" " alt="" coords="323,328,392,353"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="169,328,298,353"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="5,328,144,353"/>
+<area shape="rect" title=" " alt="" coords="416,328,488,353"/>
+<area shape="rect" title=" " alt="" coords="513,328,575,353"/>
+<area shape="rect" title=" " alt="" coords="202,401,265,427"/>
+<area shape="rect" title=" " alt="" coords="731,401,789,427"/>
+<area shape="rect" title=" " alt="" coords="485,401,609,427"/>
+<area shape="rect" title=" " alt="" coords="41,401,108,427"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="609,255,743,280"/>
+<area shape="rect" title=" " alt="" coords="896,328,981,353"/>
+<area shape="rect" title=" " alt="" coords="681,328,770,353"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -184,7 +187,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="concept__board__state__calculator__registry_8hpp__dep__incl.png" border="0" usemap="#ainclude_2concept__board__state__calculator__registry_8hppdep" alt=""/></div>
 <map name="ainclude_2concept__board__state__calculator__registry_8hppdep" id="ainclude_2concept__board__state__calculator__registry_8hppdep">
 <area shape="rect" title=" " alt="" coords="5,5,221,45"/>
-<area shape="rect" href="builders_8hpp.html" title=" " alt="" coords="37,93,190,119"/>
+<area shape="rect" href="builders_8hpp.html" title=" " alt="" coords="37,181,190,207"/>
+<area shape="rect" href="concept__composite__concepts_8hpp.html" title=" " alt="" coords="82,93,281,133"/>
 </map>
 </div>
 </div>
@@ -194,8 +198,6 @@ This graph shows which files directly or indirectly include this file:</div>
 Concepts</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptBoardStateCalculatorRegistryConcept.html">BoardStateCalculatorRegistryConcept</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">concept &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="conceptSpaceInfoProviderAndCalculatorRegistryConcept.html">SpaceInfoProviderAndCalculatorRegistryConcept</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -203,7 +205,7 @@ Concepts</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="concept__board__state__calculator__registry_8hpp.html">concept_board_state_calculator_registry.hpp</a></li>
-    <li class="footer">Generated on Thu Dec 5 2024 06:52:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Dec 9 2024 06:26:14 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

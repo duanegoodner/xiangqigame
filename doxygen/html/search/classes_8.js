@@ -4,7 +4,7 @@ var searchData=
   ['minimaxevaluatorcomponenttypes_1',['MinimaxEvaluatorComponentTypes',['../classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorComponentTypes.html',1,'xiangqipy::binding_type_unions']]],
   ['minimaxevaluatorspecs_2',['MinimaxEvaluatorSpecs',['../classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorSpecs.html',1,'xiangqipy::binding_type_unions']]],
   ['minimaxmoveevaluator_3',['MinimaxMoveEvaluator',['../classmoveselection_1_1MinimaxMoveEvaluator.html',1,'moveselection']]],
-  ['minimaxmoveevaluatorbuilder_4',['MinimaxMoveEvaluatorBuilder',['../classmoveselection_1_1MinimaxMoveEvaluatorBuilder.html',1,'moveselection']]],
+  ['minimaxmoveevaluatorfactory_4',['MinimaxMoveEvaluatorFactory',['../classmoveselection_1_1MinimaxMoveEvaluatorFactory.html',1,'moveselection']]],
   ['minimaxmoveevaluatorforconcept_5',['MinimaxMoveEvaluatorForConcept',['../classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html',1,'moveselection']]],
   ['minimaxresulttypepy_6',['MinimaxResultTypePy',['../classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html',1,'xiangqipy::core_dataclass_mirrors']]],
   ['minimaxtemplatespecs_7',['MinimaxTemplateSpecs',['../structmoveselection_1_1MinimaxTemplateSpecs.html',1,'moveselection']]],

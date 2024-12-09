@@ -153,22 +153,17 @@ $(document).ready(function(){initNavTree('concept__multi__board__state__provider
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="conceptMultiBoardStateProviderConcept.html">    8</a></span><span class="keyword">concept </span><a class="code hl_concept" href="conceptMultiBoardStateProviderConcept.html">MultiBoardStateProviderConcept</a> = <span class="keyword">requires</span>(T t) {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  <span class="comment">// Assuming T defines a type alias &#39;KeyType&#39; and a static constexpr &#39;NumConfKeys&#39;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  <span class="keyword">typename</span> T::KeyType;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  <span class="keyword">typename</span> T::KeyType;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <span class="keyword">requires</span> std::unsigned_integral&lt;typename T::KeyType&gt;;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>(<span class="keyword">typename</span> T::KeyType) * 8) % 32 == 0;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  <span class="comment">// Use SingleBoardStateProviderConcept on T::KeyType</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  <span class="comment">// requires SingleBoardStateProviderConcept&lt;typename T::KeyType&gt;;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  <span class="comment">// Check that T::NumConfKeys is a size_t</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  <span class="keyword">requires</span> std::is_same_v&lt;<span class="keyword">decltype</span>(T::NumConfKeys), <span class="keywordtype">size_t</span>&gt;;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  { t.primary_board_state() } -&gt; std::same_as&lt;typename T::KeyType&gt;;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    t.confirmation_board_states()</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  } -&gt; std::same_as&lt;std::array&lt;typename T::KeyType, T::NumConfKeys&gt;&gt;;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  { t.primary_board_state() } -&gt; std::same_as&lt;typename T::KeyType&gt;;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  <span class="keyword">requires</span> std::same_as&lt;std::remove_reference_t&lt;<span class="keyword">decltype</span>(T::NumConfKeys)&gt;, <span class="keyword">const</span> <span class="keywordtype">size_t</span>&gt;;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    t.confirmation_board_states()</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  } -&gt; std::same_as&lt;std::array&lt;typename T::KeyType, T::NumConfKeys&gt;&gt;;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>};</div>
 <div class="ttc" id="aconceptMultiBoardStateProviderConcept_html"><div class="ttname"><a href="conceptMultiBoardStateProviderConcept.html">MultiBoardStateProviderConcept</a></div><div class="ttdef"><b>Definition:</b> <a href="concept__multi__board__state__provider_8hpp_source.html#l00008">concept_multi_board_state_provider.hpp:8</a></div></div>
 <div class="ttc" id="aconcept__single__board__state__provider_8hpp_html"><div class="ttname"><a href="concept__single__board__state__provider_8hpp.html">concept_single_board_state_provider.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -177,7 +172,7 @@ $(document).ready(function(){initNavTree('concept__multi__board__state__provider
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="concept__multi__board__state__provider_8hpp.html">concept_multi_board_state_provider.hpp</a></li>
-    <li class="footer">Generated on Thu Dec 5 2024 06:52:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Dec 9 2024 06:26:14 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

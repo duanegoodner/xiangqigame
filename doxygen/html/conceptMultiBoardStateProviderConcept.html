@@ -150,18 +150,13 @@ $(document).ready(function(){initNavTree('conceptMultiBoardStateProviderConcept.
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptMultiBoardStateProviderConcept.html">MultiBoardStateProviderConcept</a> =  <span class="keyword">requires</span>(T t) {</div>
-<div class="line">  </div>
 <div class="line">  <span class="keyword">typename</span> T::KeyType;</div>
-<div class="line">  </div>
 <div class="line"> </div>
-<div class="line"> </div>
-<div class="line">  </div>
-<div class="line">  </div>
-<div class="line"> </div>
-<div class="line">  </div>
-<div class="line">  <span class="keyword">requires</span> std::is_same_v&lt;<span class="keyword">decltype</span>(T::NumConfKeys), <span class="keywordtype">size_t</span>&gt;;</div>
+<div class="line">  <span class="keyword">requires</span> std::unsigned_integral&lt;typename T::KeyType&gt;;</div>
+<div class="line">  <span class="keyword">requires</span>(<span class="keyword">sizeof</span>(<span class="keyword">typename</span> T::KeyType) * 8) % 32 == 0;</div>
 <div class="line"> </div>
 <div class="line">  { t.primary_board_state() } -&gt; std::same_as&lt;typename T::KeyType&gt;;</div>
+<div class="line">  <span class="keyword">requires</span> std::same_as&lt;std::remove_reference_t&lt;<span class="keyword">decltype</span>(T::NumConfKeys)&gt;, <span class="keyword">const</span> <span class="keywordtype">size_t</span>&gt;;</div>
 <div class="line">  {</div>
 <div class="line">    t.confirmation_board_states()</div>
 <div class="line">  } -&gt; std::same_as&lt;std::array&lt;typename T::KeyType, T::NumConfKeys&gt;&gt;;</div>
@@ -176,7 +171,7 @@ $(document).ready(function(){initNavTree('conceptMultiBoardStateProviderConcept.
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="conceptMultiBoardStateProviderConcept.html">MultiBoardStateProviderConcept</a></li>
-    <li class="footer">Generated on Thu Dec 5 2024 06:52:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Dec 9 2024 06:26:14 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

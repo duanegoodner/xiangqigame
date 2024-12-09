@@ -1,7 +1,7 @@
 var move__evaluators__for__concepts_8hpp =
 [
     [ "moveselection::PreSearchMoveSorterForConcepts< G, P >", "classmoveselection_1_1PreSearchMoveSorterForConcepts.html", "classmoveselection_1_1PreSearchMoveSorterForConcepts" ],
-    [ "moveselection::MinimaxMoveEvaluatorForConcept< KeyType, G, H, P >", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept" ],
+    [ "moveselection::MinimaxMoveEvaluatorForConcept< H, G, P >", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html", "classmoveselection_1_1MinimaxMoveEvaluatorForConcept" ],
     [ "moveselection::RandomMoveEvaluatorForConcept< G >", "classmoveselection_1_1RandomMoveEvaluatorForConcept.html", "classmoveselection_1_1RandomMoveEvaluatorForConcept" ],
     [ "IsPrunableForEvaluator", "move__evaluators__for__concepts_8hpp.html#a065bc2758e3eb5282ffba5d3dbb6da16", null ],
     [ "IsPrunableForEvaluatorOpponent", "move__evaluators__for__concepts_8hpp.html#a63a5bc4f5a6435696159265ae660b64c", null ],

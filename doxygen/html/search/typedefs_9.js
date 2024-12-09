@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['teambasepoints_5ft_0',['TeamBasePoints_t',['../namespacepiecepoints.html#a70c12c629ce81810a64a420a0ecaa86a',1,'piecepoints']]],
-  ['teampointsarray_5ft_1',['TeamPointsArray_t',['../namespacepiecepoints.html#ac9f72505daaa180dc8985a0a0f113bbe',1,'piecepoints']]],
-  ['teampointsemap_5ft_2',['TeamPointsEMap_t',['../namespacepiecepoints.html#a8a4ebc2e24254c0b7d3b022e399b53de',1,'piecepoints']]],
-  ['teampointssmap_5ft_3',['TeamPointsSMap_t',['../namespacepiecepoints.html#a5e5b62b26a65d4f04b24443e62f003bc',1,'piecepoints']]],
-  ['teamzarray_5ft_4',['TeamZarray_t',['../classboardstate_1_1ZobristCalculator.html#ad63d15a8fc6e4e686ca2ad3e961a378e',1,'boardstate::ZobristCalculator::TeamZarray_t()'],['../classboardstate_1_1ZobristCalculatorForConcepts.html#a65a62759d4d1de4f4aae6414c835d0f1',1,'boardstate::ZobristCalculatorForConcepts::TeamZarray_t()']]]
+  ['zobristcalculatortype_0',['ZobristCalculatorType',['../classboardstate_1_1ZobristCalculatorFactory.html#a2b7129a8b0e0cfe73b4f47a0341e992b',1,'boardstate::ZobristCalculatorFactory::ZobristCalculatorType()'],['../classboardstate_1_1ZobristComponentFactory.html#aa8974bf13ed92c51d58831fcd0550745',1,'boardstate::ZobristComponentFactory::ZobristCalculatorType()'],['../classboardstate_1_1ZobristCoordinatorFactory.html#a35594b8e088220282fb3499bac14bb44',1,'boardstate::ZobristCoordinatorFactory::ZobristCalculatorType()']]],
+  ['zobristcomponentfactorytype_1',['ZobristComponentFactoryType',['../classboardstate_1_1ZobristCoordinatorFactory.html#aeb9628fbf696677d90a517c3a240ae78',1,'boardstate::ZobristCoordinatorFactory']]],
+  ['zobristcomponenttype_2',['ZobristComponentType',['../classboardstate_1_1ZobristComponentFactory.html#a61fcc27b97034d4af7c32e4f9f90b294',1,'boardstate::ZobristComponentFactory::ZobristComponentType()'],['../classboardstate_1_1ZobristCoordinatorFactory.html#ae546efeadbb25ca79a23265fc26cff6b',1,'boardstate::ZobristCoordinatorFactory::ZobristComponentType()']]],
+  ['zobristcoordinatortype_3',['ZobristCoordinatorType',['../classboardstate_1_1ZobristCoordinatorFactory.html#a55dc27d7a530a523494715c063131b6c',1,'boardstate::ZobristCoordinatorFactory::ZobristCoordinatorType()'],['../classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#a670213b6ecc29a1c318f41cde0d5f113',1,'moveselection::MinimaxMoveEvaluatorFactory::ZobristCoordinatorType()']]],
+  ['zobristkey_5ft_4',['ZobristKey_t',['../classBoardStateCoordinator.html#a5d4a9aff02f4621e174873623b985801',1,'BoardStateCoordinator']]]
 ];

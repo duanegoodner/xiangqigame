@@ -174,8 +174,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a6f15661a874072afbf5908d7c86653f0"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcept.html">RandomMoveEvaluatorForConcept</a>&lt; G &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcept.html#a6f15661a874072afbf5908d7c86653f0">Create</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player, std::shared_ptr&lt; G &gt; game_board)</td></tr>
-<tr class="separator:a6f15661a874072afbf5908d7c86653f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33d475cb1a48a5ee9308b7c5d153b9f1"><td class="memItemLeft" align="right" valign="top">static std::unique_ptr&lt; <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcept.html">RandomMoveEvaluatorForConcept</a>&lt; G &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcept.html#a33d475cb1a48a5ee9308b7c5d153b9f1">Create</a> (std::shared_ptr&lt; G &gt; game_board, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player)</td></tr>
+<tr class="separator:a33d475cb1a48a5ee9308b7c5d153b9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -194,7 +194,7 @@ Private Attributes</h2></td></tr>
 class moveselection::RandomMoveEvaluatorForConcept&lt; G &gt;</div><p>Complies with MoveEvaluatorConcept. </p>
 <p>Randomly chooses one of legal moves available to <a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html#a69fdaf3024cf61c1b3a4472c1b52d35b">moveselection::RandomMoveEvaluator.evaluating_player_</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00572">572</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00570">570</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="abe7edbd7a81f198dbd491518f41e3cdc" name="abe7edbd7a81f198dbd491518f41e3cdc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abe7edbd7a81f198dbd491518f41e3cdc">&#9670;&#160;</a></span>RandomMoveEvaluatorForConcept()</h2>
@@ -232,13 +232,13 @@ template&lt;<a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoP
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00593">593</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00591">591</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a6f15661a874072afbf5908d7c86653f0" name="a6f15661a874072afbf5908d7c86653f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f15661a874072afbf5908d7c86653f0">&#9670;&#160;</a></span>Create()</h2>
+<a id="a33d475cb1a48a5ee9308b7c5d153b9f1" name="a33d475cb1a48a5ee9308b7c5d153b9f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33d475cb1a48a5ee9308b7c5d153b9f1">&#9670;&#160;</a></span>Create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -251,14 +251,14 @@ template&lt;<a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoP
         <tr>
           <td class="memname">static std::unique_ptr&lt; <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcept.html">RandomMoveEvaluatorForConcept</a>&lt; G &gt; &gt; <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcept.html">moveselection::RandomMoveEvaluatorForConcept</a>&lt; G &gt;::Create </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>&#160;</td>
-          <td class="paramname"><em>evaluating_player</em>, </td>
+          <td class="paramtype">std::shared_ptr&lt; G &gt;&#160;</td>
+          <td class="paramname"><em>game_board</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; G &gt;&#160;</td>
-          <td class="paramname"><em>game_board</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>&#160;</td>
+          <td class="paramname"><em>evaluating_player</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -273,7 +273,7 @@ template&lt;<a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoP
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00577">577</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00575">575</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -303,7 +303,7 @@ template&lt;<a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoP
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00586">586</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00584">584</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -330,7 +330,7 @@ template&lt;<a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoP
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00573">573</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00571">571</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -356,7 +356,7 @@ template&lt;<a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoP
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00574">574</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluators__for__concepts_8hpp_source.html#l00572">572</a> of file <a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -369,7 +369,7 @@ template&lt;<a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoP
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li><li class="navelem"><a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcept.html">RandomMoveEvaluatorForConcept</a></li>
-    <li class="footer">Generated on Thu Dec 5 2024 06:52:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Dec 9 2024 06:26:14 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

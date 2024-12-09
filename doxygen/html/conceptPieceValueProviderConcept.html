@@ -153,24 +153,26 @@ $(document).ready(function(){initNavTree('conceptPieceValueProviderConcept.html'
 <div class="line">    T t,</div>
 <div class="line">    <a class="code hl_enumeration" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> color,</div>
 <div class="line">    <a class="code hl_enumeration" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">gameboard::PieceType</a> piece_type,</div>
-<div class="line">    <a class="code hl_struct" href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a> &amp;space</div>
+<div class="line">    <a class="code hl_struct" href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a> &amp;space,</div>
+<div class="line">    std::string json_file</div>
 <div class="line">) {</div>
 <div class="line">  { t.GetValueOfPieceAtPosition(color, piece_type, space) } -&gt; std::same_as&lt;Points_t&gt;;</div>
+<div class="line">  { t.Create(json_file) } -&gt; std::same_as&lt;std::shared_ptr&lt;T&gt;&gt;;</div>
 <div class="line">}</div>
-<div class="ttc" id="aconceptPieceValueProviderConcept_html"><div class="ttname"><a href="conceptPieceValueProviderConcept.html">PieceValueProviderConcept</a></div><div class="ttdef"><b>Definition:</b> <a href="concept__piece__value__provider_8hpp_source.html#l00009">concept_piece_value_provider.hpp:9</a></div></div>
+<div class="ttc" id="aconceptPieceValueProviderConcept_html"><div class="ttname"><a href="conceptPieceValueProviderConcept.html">PieceValueProviderConcept</a></div><div class="ttdef"><b>Definition:</b> <a href="concept__piece__value__provider_8hpp_source.html#l00010">concept_piece_value_provider.hpp:10</a></div></div>
 <div class="ttc" id="anamespacegameboard_html_a8d35500d8e8b10edb726f8629fd25e76"><div class="ttname"><a href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">gameboard::PieceType</a></div><div class="ttdeci">PieceType</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00013">game_piece.hpp:13</a></div></div>
 <div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a></div><div class="ttdeci">PieceColor</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
 <div class="ttc" id="astructgameboard_1_1BoardSpace_html"><div class="ttname"><a href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a></div><div class="ttdoc">A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa...</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00051">board_data_structs.hpp:51</a></div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="concept__piece__value__provider_8hpp_source.html#l00009">9</a> of file <a class="el" href="concept__piece__value__provider_8hpp_source.html">concept_piece_value_provider.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="concept__piece__value__provider_8hpp_source.html#l00010">10</a> of file <a class="el" href="concept__piece__value__provider_8hpp_source.html">concept_piece_value_provider.hpp</a>.</p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="conceptPieceValueProviderConcept.html">PieceValueProviderConcept</a></li>
-    <li class="footer">Generated on Thu Dec 5 2024 06:52:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Dec 9 2024 06:26:14 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

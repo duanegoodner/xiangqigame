@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: gameboard::GameBoardForConcepts&lt; RC, BC &gt; Class Template Reference</title>
+  <title>Xiangiqgame: gameboard::GameBoardForConcepts Class Reference</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -144,10 +144,11 @@ $(document).ready(function(){initNavTree('classgameboard_1_1GameBoardForConcepts
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classgameboard_1_1GameBoardForConcepts-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">gameboard::GameBoardForConcepts&lt; RC, BC &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">gameboard::GameBoardForConcepts Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -156,150 +157,114 @@ $(document).ready(function(){initNavTree('classgameboard_1_1GameBoardForConcepts
 
 <p><code>#include &lt;<a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Collaboration diagram for gameboard::GameBoardForConcepts&lt; RC, BC &gt;:</div>
+Collaboration diagram for gameboard::GameBoardForConcepts:</div>
 <div class="dyncontent">
-<div class="center"><img src="classgameboard_1_1GameBoardForConcepts__coll__graph.png" border="0" usemap="#agameboard_1_1GameBoardForConcepts_3_01RC_00_01BC_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="agameboard_1_1GameBoardForConcepts_3_01RC_00_01BC_01_4_coll__map" id="agameboard_1_1GameBoardForConcepts_3_01RC_00_01BC_01_4_coll__map">
-<area shape="rect" title="Must comply with SpaceInfoProviderConcept; stores piece positions, and exposes methods for calculatin..." alt="" coords="545,520,806,1052"/>
+<div class="center"><img src="classgameboard_1_1GameBoardForConcepts__coll__graph.png" border="0" usemap="#agameboard_1_1GameBoardForConcepts_coll__map" alt="Collaboration graph"/></div>
+<map name="agameboard_1_1GameBoardForConcepts_coll__map" id="agameboard_1_1GameBoardForConcepts_coll__map">
+<area shape="rect" title="Must comply with SpaceInfoProviderConcept; stores piece positions, and exposes methods for calculatin..." alt="" coords="526,520,787,949"/>
 <area shape="rect" title=" " alt="" coords="5,329,217,421"/>
 <area shape="rect" href="classgameboard_1_1MoveCalculator.html" title="Calculates legal gameboard::Move objects for of a gameboard::GameBoard with a particular state." alt="" coords="241,292,489,457"/>
 <area shape="rect" title=" " alt="" coords="171,71,343,163"/>
 <area shape="rect" href="classgameboard_1_1PieceMoves.html" title="Implements piece type dependent move rules; used by gameboard::MoveCalculator." alt="" coords="367,5,576,229"/>
-<area shape="rect" title=" " alt="" coords="513,329,664,421"/>
-<area shape="rect" title=" " alt="" coords="688,329,839,421"/>
-<area shape="rect" title=" " alt="" coords="863,321,1031,428"/>
-<area shape="rect" title=" " alt="" coords="1055,336,1130,413"/>
+<area shape="rect" title=" " alt="" coords="513,329,801,421"/>
+<area shape="rect" title=" " alt="" coords="825,321,993,428"/>
+<area shape="rect" title=" " alt="" coords="1017,336,1091,413"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8d2634b8827e8d532913f8fe57470846"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a8d2634b8827e8d532913f8fe57470846">map</a> () const</td></tr>
-<tr class="separator:a8d2634b8827e8d532913f8fe57470846"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1969fc61215e031cd47217f560a5d02"><td class="memItemLeft" align="right" valign="top">const std::map&lt; <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>, std::vector&lt; <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ac1969fc61215e031cd47217f560a5d02">move_log</a> () const</td></tr>
-<tr class="separator:ac1969fc61215e031cd47217f560a5d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f6bda5db2a2110d0bd35015b83be0c5"><td class="memItemLeft" align="right" valign="top">static ::shared_ptr&lt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">GameBoardForConcepts</a>&lt; RC, BC &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a4f6bda5db2a2110d0bd35015b83be0c5">Create</a> (const <a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a> &amp;starting_board=<a class="el" href="namespacegameboard.html#a0e0df9efca8bf056b54a1ba15035bece">kStandardInitialBoard</a>)</td></tr>
-<tr class="separator:a4f6bda5db2a2110d0bd35015b83be0c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7841c3681347139c8f0df64bf362e885"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> C&gt; </td></tr>
-<tr class="memitem:a7841c3681347139c8f0df64bf362e885"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a7841c3681347139c8f0df64bf362e885">AttachCalculator</a> (std::shared_ptr&lt; C &gt; calculator, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
-<tr class="separator:a7841c3681347139c8f0df64bf362e885"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02d010b128f2dd6800f60ca90bd5d25c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a02d010b128f2dd6800f60ca90bd5d25c">GetColor</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space) const</td></tr>
-<tr class="separator:a02d010b128f2dd6800f60ca90bd5d25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee6969e8cc2b3f64dde4e36100b596f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#aee6969e8cc2b3f64dde4e36100b596f5">IsInCheck</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
-<tr class="separator:aee6969e8cc2b3f64dde4e36100b596f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a99c5825d8fae1f690e89356b2ca019"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a8a99c5825d8fae1f690e89356b2ca019">ExecuteMove</a> (const <a class="el" href="structgameboard_1_1Move.html">Move</a> &amp;move)</td></tr>
-<tr class="separator:a8a99c5825d8fae1f690e89356b2ca019"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bb6ab31bd4fd404a8c116ffdd6f1046"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a6bb6ab31bd4fd404a8c116ffdd6f1046">IsDraw</a> ()</td></tr>
-<tr class="separator:a6bb6ab31bd4fd404a8c116ffdd6f1046"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a991c97767719aef9cbb50c5d5523ab51"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a991c97767719aef9cbb50c5d5523ab51">GetAllSpacesOccupiedBy</a> (const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color) const</td></tr>
-<tr class="separator:a991c97767719aef9cbb50c5d5523ab51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4f6b911319abfafc1b7d4aa7db5b1c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ac4f6b911319abfafc1b7d4aa7db5b1c1">GetType</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space) const</td></tr>
-<tr class="separator:ac4f6b911319abfafc1b7d4aa7db5b1c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cbcc604b543b6ffe31d5eb54b97bca8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a9cbcc604b543b6ffe31d5eb54b97bca8">CalcFinalMovesOf</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
-<tr class="separator:a9cbcc604b543b6ffe31d5eb54b97bca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b80c08deead33dd7ea832861d041e48"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a4b80c08deead33dd7ea832861d041e48">IsCaptureMove</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move) const</td></tr>
-<tr class="separator:a4b80c08deead33dd7ea832861d041e48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81180da891194bff6be26cbfda4f4f6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a81180da891194bff6be26cbfda4f4f6a">UndoMove</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move)</td></tr>
-<tr class="separator:a81180da891194bff6be26cbfda4f4f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba69b64f8549d356e8e2c6bf00c78043"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#aba69b64f8549d356e8e2c6bf00c78043">GetOccupantAt</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space) const</td></tr>
-<tr class="separator:aba69b64f8549d356e8e2c6bf00c78043"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05e6855743bf6920cd6e6b983eb8e1d0"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a05e6855743bf6920cd6e6b983eb8e1d0">map</a> () const</td></tr>
+<tr class="separator:a05e6855743bf6920cd6e6b983eb8e1d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade573adebdfa16cdd40e9d76906f8486"><td class="memItemLeft" align="right" valign="top">const std::map&lt; <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>, std::vector&lt; <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ade573adebdfa16cdd40e9d76906f8486">move_log</a> () const</td></tr>
+<tr class="separator:ade573adebdfa16cdd40e9d76906f8486"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9219ef1008e1ad5d375dbef6c6c717ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a9219ef1008e1ad5d375dbef6c6c717ea">AttachMoveCallback</a> (const function&lt; void(const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;)&gt; &amp;callback)</td></tr>
+<tr class="separator:a9219ef1008e1ad5d375dbef6c6c717ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a409816a0c19b1be2edf557555bf533f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a409816a0c19b1be2edf557555bf533f5">GetColor</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space) const</td></tr>
+<tr class="separator:a409816a0c19b1be2edf557555bf533f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92a59da59647bff886cdaa6ebb333a2e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a92a59da59647bff886cdaa6ebb333a2e">IsInCheck</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
+<tr class="separator:a92a59da59647bff886cdaa6ebb333a2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30f169385fc0429d409af25226e5e004"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a30f169385fc0429d409af25226e5e004">ExecuteMove</a> (const <a class="el" href="structgameboard_1_1Move.html">Move</a> &amp;move)</td></tr>
+<tr class="separator:a30f169385fc0429d409af25226e5e004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a985ab68acba57005b686317964dd91b2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a985ab68acba57005b686317964dd91b2">IsDraw</a> ()</td></tr>
+<tr class="separator:a985ab68acba57005b686317964dd91b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3345952e6334c1a6824eedba39923c78"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a3345952e6334c1a6824eedba39923c78">GetAllSpacesOccupiedBy</a> (const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color) const</td></tr>
+<tr class="separator:a3345952e6334c1a6824eedba39923c78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab241eb6682e0d2d6faa9a50fdb369e5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ab241eb6682e0d2d6faa9a50fdb369e5b">GetType</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space) const</td></tr>
+<tr class="separator:ab241eb6682e0d2d6faa9a50fdb369e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24d1585ca1a5c97efd1f7b4728bc00e6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a24d1585ca1a5c97efd1f7b4728bc00e6">CalcFinalMovesOf</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
+<tr class="separator:a24d1585ca1a5c97efd1f7b4728bc00e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb4553fa14a9305fd4b82620f8432d40"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#afb4553fa14a9305fd4b82620f8432d40">IsCaptureMove</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move) const</td></tr>
+<tr class="separator:afb4553fa14a9305fd4b82620f8432d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6f3dc459a91c9df05e11d75f996020f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ae6f3dc459a91c9df05e11d75f996020f">UndoMove</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move)</td></tr>
+<tr class="separator:ae6f3dc459a91c9df05e11d75f996020f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a310b18501f13e80cf1767e14455f398b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a310b18501f13e80cf1767e14455f398b">GetOccupantAt</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space) const</td></tr>
+<tr class="separator:a310b18501f13e80cf1767e14455f398b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:affdb36ac4d998f8b96d593aa308700bc"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">GameBoardForConcepts</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#affdb36ac4d998f8b96d593aa308700bc">Create</a> (const <a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a> &amp;starting_board=<a class="el" href="namespacegameboard.html#a0e0df9efca8bf056b54a1ba15035bece">kStandardInitialBoard</a>)</td></tr>
+<tr class="separator:affdb36ac4d998f8b96d593aa308700bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a2a76f3f5d7aef34b74d16e03b91b96d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a2a76f3f5d7aef34b74d16e03b91b96d5">GameBoardForConcepts</a> (std::vector&lt; std::shared_ptr&lt; RC &gt; &gt; red_calclulators, std::vector&lt; std::shared_ptr&lt; BC &gt; &gt; black_calculators, const <a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a> starting_board)</td></tr>
-<tr class="memdesc:a2a76f3f5d7aef34b74d16e03b91b96d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a> from array of pieces represented as integers.  <br /></td></tr>
-<tr class="separator:a2a76f3f5d7aef34b74d16e03b91b96d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d07840aff3bd02b6c10ffe4e63fc7a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a3d07840aff3bd02b6c10ffe4e63fc7a0">GetColorInternal</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space) const</td></tr>
-<tr class="separator:a3d07840aff3bd02b6c10ffe4e63fc7a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a076c5b4020c5cc5dab0c4185cdbf862a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a076c5b4020c5cc5dab0c4185cdbf862a">GetTypeInternal</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space) const</td></tr>
-<tr class="separator:a076c5b4020c5cc5dab0c4185cdbf862a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e9901f1b504cd7fab343370dc73e409"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a1e9901f1b504cd7fab343370dc73e409">GetAllSpacesOccupiedByInternal</a> (const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color) const</td></tr>
-<tr class="separator:a1e9901f1b504cd7fab343370dc73e409"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67d9e38e5c6e4c81cd72b9e19eefc697"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a67d9e38e5c6e4c81cd72b9e19eefc697">GetOccupantAtInternal</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space) const</td></tr>
-<tr class="separator:a67d9e38e5c6e4c81cd72b9e19eefc697"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7458dea99041da709d6b3e572ebe1775"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a7458dea99041da709d6b3e572ebe1775">GetGeneralPositionInternal</a> (const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
-<tr class="separator:a7458dea99041da709d6b3e572ebe1775"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a024122d59297f9f49b5bf682a64573f1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a024122d59297f9f49b5bf682a64573f1">CalcFinalMovesOfInternal</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
-<tr class="separator:a024122d59297f9f49b5bf682a64573f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50d23baf3936df127c92eb9256d26664"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a50d23baf3936df127c92eb9256d26664">IsInCheckInternal</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
-<tr class="separator:a50d23baf3936df127c92eb9256d26664"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17fd1886ed8481e523983ca8b5ab3878"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a17fd1886ed8481e523983ca8b5ab3878">ExecuteMoveInternal</a> (const <a class="el" href="structgameboard_1_1Move.html">Move</a> &amp;move)</td></tr>
-<tr class="separator:a17fd1886ed8481e523983ca8b5ab3878"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af55a246d10d672131b7ac571ddc1a7da"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#af55a246d10d672131b7ac571ddc1a7da">IsCaptureMoveInternal</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move) const</td></tr>
-<tr class="separator:af55a246d10d672131b7ac571ddc1a7da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3edc74ff158ef50deb757d06dfeec313"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a3edc74ff158ef50deb757d06dfeec313">UndoMoveInternal</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move)</td></tr>
-<tr class="separator:a3edc74ff158ef50deb757d06dfeec313"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9fb809a1e456c32faa54c9875ad0730"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ae9fb809a1e456c32faa54c9875ad0730">UpdateStateTracker</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move)</td></tr>
-<tr class="separator:ae9fb809a1e456c32faa54c9875ad0730"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad445ed7ecc29d2f9587f8308e3654c39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ad445ed7ecc29d2f9587f8308e3654c39">SetOccupantAt</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space, <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> piece)</td></tr>
-<tr class="separator:ad445ed7ecc29d2f9587f8308e3654c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae20847e7ac928bde0debbaf6aaa8f47c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ae20847e7ac928bde0debbaf6aaa8f47c">AddToMoveLog</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move)</td></tr>
-<tr class="separator:ae20847e7ac928bde0debbaf6aaa8f47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada3fc2a84c0375e712b59e7bf49175a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ada3fc2a84c0375e712b59e7bf49175a0">RemoveFromMoveLog</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move)</td></tr>
-<tr class="separator:ada3fc2a84c0375e712b59e7bf49175a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59be9f43791ee1c634a7f3df0c6de6c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a59be9f43791ee1c634a7f3df0c6de6c3">ViolatesRepeatRule</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
-<tr class="separator:a59be9f43791ee1c634a7f3df0c6de6c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b4012090a54a45025c831dbecfb7df9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a1b4012090a54a45025c831dbecfb7df9">IsDrawInternal</a> ()</td></tr>
-<tr class="separator:a1b4012090a54a45025c831dbecfb7df9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6baf7e6d5d716702318b82283052dcee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a6baf7e6d5d716702318b82283052dcee">GameBoardForConcepts</a> (const <a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a> starting_board)</td></tr>
+<tr class="memdesc:a6baf7e6d5d716702318b82283052dcee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a> from array of pieces represented as integers.  <br /></td></tr>
+<tr class="separator:a6baf7e6d5d716702318b82283052dcee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e593878446e06d9e8b771b307ac4bed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a4e593878446e06d9e8b771b307ac4bed">CalcFinalMovesOfInternal</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
+<tr class="separator:a4e593878446e06d9e8b771b307ac4bed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a888c3c069ab6a29254f8fa84b2285987"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a888c3c069ab6a29254f8fa84b2285987">IsInCheckInternal</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
+<tr class="separator:a888c3c069ab6a29254f8fa84b2285987"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ce4924959d227d0f9a2bb1eaa6da925"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a8ce4924959d227d0f9a2bb1eaa6da925">ExecuteMoveInternal</a> (const <a class="el" href="structgameboard_1_1Move.html">Move</a> &amp;move)</td></tr>
+<tr class="separator:a8ce4924959d227d0f9a2bb1eaa6da925"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e0e0680939f198e796834c326d3dacc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a6e0e0680939f198e796834c326d3dacc">GetAllSpacesOccupiedByInternal</a> (const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color) const</td></tr>
+<tr class="separator:a6e0e0680939f198e796834c326d3dacc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6a89602a8c2f0c006c3d12494cd3f77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#af6a89602a8c2f0c006c3d12494cd3f77">UndoMoveInternal</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move)</td></tr>
+<tr class="separator:af6a89602a8c2f0c006c3d12494cd3f77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7303f10411cd945c6a6575ef1fc39c73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a7303f10411cd945c6a6575ef1fc39c73">UpdateStateTracker</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move)</td></tr>
+<tr class="separator:a7303f10411cd945c6a6575ef1fc39c73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7052cbe304d9f3953b5942513d9e8b7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a7052cbe304d9f3953b5942513d9e8b7c">SetOccupantAt</a> (const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;space, <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> piece)</td></tr>
+<tr class="separator:a7052cbe304d9f3953b5942513d9e8b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69a036150637b77b2c11b48ccfe7652d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a69a036150637b77b2c11b48ccfe7652d">AddToMoveLog</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move)</td></tr>
+<tr class="separator:a69a036150637b77b2c11b48ccfe7652d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1af1923bc6aabfee148dc0ebe5f3091"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ab1af1923bc6aabfee148dc0ebe5f3091">RemoveFromMoveLog</a> (const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;executed_move)</td></tr>
+<tr class="separator:ab1af1923bc6aabfee148dc0ebe5f3091"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75bc305fcf6615233ea0b04d95d194fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a75bc305fcf6615233ea0b04d95d194fa">ViolatesRepeatRule</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> color)</td></tr>
+<tr class="separator:a75bc305fcf6615233ea0b04d95d194fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:acc9462904ede2d09a6b32324a9c5896b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#acc9462904ede2d09a6b32324a9c5896b">board_map_</a></td></tr>
-<tr class="memdesc:acc9462904ede2d09a6b32324a9c5896b"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of <a class="el" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor.">GamePiece</a> objects.  <br /></td></tr>
-<tr class="separator:acc9462904ede2d09a6b32324a9c5896b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9ff36f3b3b46b144f3943c10082ec36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgameboard_1_1MoveCalculator.html">MoveCalculator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ac9ff36f3b3b46b144f3943c10082ec36">move_calculator_</a></td></tr>
-<tr class="memdesc:ac9ff36f3b3b46b144f3943c10082ec36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encapsulates all calculations of allowed moves.  <br /></td></tr>
-<tr class="separator:ac9ff36f3b3b46b144f3943c10082ec36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad74d9ebfb145c573dfcea7852170f2ed"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; RC &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ad74d9ebfb145c573dfcea7852170f2ed">red_calculators_</a></td></tr>
-<tr class="separator:ad74d9ebfb145c573dfcea7852170f2ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16d199ec5eee7fe1a95a3a3aff906288"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; BC &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a16d199ec5eee7fe1a95a3a3aff906288">black_calculators_</a></td></tr>
-<tr class="separator:a16d199ec5eee7fe1a95a3a3aff906288"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9528ad09c0d8f17843fa6ef90668d1b1"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>, std::vector&lt; <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a9528ad09c0d8f17843fa6ef90668d1b1">move_log_</a></td></tr>
-<tr class="memdesc:a9528ad09c0d8f17843fa6ef90668d1b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vectors of all moves that have been executed (and not un-done) by each player.  <br /></td></tr>
-<tr class="separator:a9528ad09c0d8f17843fa6ef90668d1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f8cb75138cb3795ad95928fb33585b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a2f8cb75138cb3795ad95928fb33585b5">moves_since_last_capture_</a></td></tr>
-<tr class="memdesc:a2f8cb75138cb3795ad95928fb33585b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of moves executed since last time a piece was captured.  <br /></td></tr>
-<tr class="separator:a2f8cb75138cb3795ad95928fb33585b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1223dda25aa8044de2a36d8b125304a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#ac1223dda25aa8044de2a36d8b125304a">board_map_</a></td></tr>
+<tr class="separator:ac1223dda25aa8044de2a36d8b125304a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e036c62574e2e703d66285e731b7311"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgameboard_1_1MoveCalculator.html">MoveCalculator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a0e036c62574e2e703d66285e731b7311">move_calculator_</a></td></tr>
+<tr class="separator:a0e036c62574e2e703d66285e731b7311"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ea830dbc0344c31353ddc5e76743172"><td class="memItemLeft" align="right" valign="top">vector&lt; function&lt; void(const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;)&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a9ea830dbc0344c31353ddc5e76743172">move_callbacks_</a></td></tr>
+<tr class="separator:a9ea830dbc0344c31353ddc5e76743172"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39280e2eed5b56e4306ca1c3ede0935d"><td class="memItemLeft" align="right" valign="top">std::map&lt; <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>, std::vector&lt; <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a39280e2eed5b56e4306ca1c3ede0935d">move_log_</a></td></tr>
+<tr class="separator:a39280e2eed5b56e4306ca1c3ede0935d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56e7981df6e5a0643f758528b1aa131f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a56e7981df6e5a0643f758528b1aa131f">moves_since_last_capture_</a></td></tr>
+<tr class="separator:a56e7981df6e5a0643f758528b1aa131f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt;<br />
-class gameboard::GameBoardForConcepts&lt; RC, BC &gt;</div><p>Must comply with SpaceInfoProviderConcept; stores piece positions, and exposes methods for calculating, executing, an un-doing moves. </p>
+<div class="textblock"><p>Must comply with SpaceInfoProviderConcept; stores piece positions, and exposes methods for calculating, executing, an un-doing moves. </p>
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00045">45</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00022">22</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a2a76f3f5d7aef34b74d16e03b91b96d5" name="a2a76f3f5d7aef34b74d16e03b91b96d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a76f3f5d7aef34b74d16e03b91b96d5">&#9670;&#160;</a></span>GameBoardForConcepts()</h2>
+<a id="a6baf7e6d5d716702318b82283052dcee" name="a6baf7e6d5d716702318b82283052dcee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6baf7e6d5d716702318b82283052dcee">&#9670;&#160;</a></span>GameBoardForConcepts()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;<a class="el" href="classgameboard_1_1GameBoardForConcepts.html">::GameBoardForConcepts</a> </td>
+          <td class="memname">gameboard::GameBoardForConcepts::GameBoardForConcepts </td>
           <td>(</td>
-          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; RC &gt; &gt;&#160;</td>
-          <td class="paramname"><em>red_calclulators</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; BC &gt; &gt;&#160;</td>
-          <td class="paramname"><em>black_calculators</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const <a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a>&#160;</td>
-          <td class="paramname"><em>starting_board</em>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>starting_board</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -317,24 +282,22 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00118">118</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00084">84</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae20847e7ac928bde0debbaf6aaa8f47c" name="ae20847e7ac928bde0debbaf6aaa8f47c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae20847e7ac928bde0debbaf6aaa8f47c">&#9670;&#160;</a></span>AddToMoveLog()</h2>
+<a id="a69a036150637b77b2c11b48ccfe7652d" name="a69a036150637b77b2c11b48ccfe7652d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69a036150637b77b2c11b48ccfe7652d">&#9670;&#160;</a></span>AddToMoveLog()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::AddToMoveLog </td>
+          <td class="memname">void gameboard::GameBoardForConcepts::AddToMoveLog </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;&#160;</td>
           <td class="paramname"><em>executed_move</em></td><td>)</td>
@@ -348,39 +311,25 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00247">247</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00175">175</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a7841c3681347139c8f0df64bf362e885" name="a7841c3681347139c8f0df64bf362e885"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7841c3681347139c8f0df64bf362e885">&#9670;&#160;</a></span>AttachCalculator()</h2>
+<a id="a9219ef1008e1ad5d375dbef6c6c717ea" name="a9219ef1008e1ad5d375dbef6c6c717ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9219ef1008e1ad5d375dbef6c6c717ea">&#9670;&#160;</a></span>AttachMoveCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> C&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::AttachCalculator </td>
+          <td class="memname">void gameboard::GameBoardForConcepts::AttachMoveCallback </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; C &gt;&#160;</td>
-          <td class="paramname"><em>calculator</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const function&lt; void(const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;)&gt; &amp;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
-          <td class="paramname"><em>color</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -390,23 +339,21 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00081">81</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00043">43</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a9cbcc604b543b6ffe31d5eb54b97bca8" name="a9cbcc604b543b6ffe31d5eb54b97bca8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cbcc604b543b6ffe31d5eb54b97bca8">&#9670;&#160;</a></span>CalcFinalMovesOf()</h2>
+<a id="a24d1585ca1a5c97efd1f7b4728bc00e6" name="a24d1585ca1a5c97efd1f7b4728bc00e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24d1585ca1a5c97efd1f7b4728bc00e6">&#9670;&#160;</a></span>CalcFinalMovesOf()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::CalcFinalMovesOf </td>
+          <td class="memname"><a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> gameboard::GameBoardForConcepts::CalcFinalMovesOf </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>color</em></td><td>)</td>
@@ -420,23 +367,21 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00100">100</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00065">65</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a024122d59297f9f49b5bf682a64573f1" name="a024122d59297f9f49b5bf682a64573f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a024122d59297f9f49b5bf682a64573f1">&#9670;&#160;</a></span>CalcFinalMovesOfInternal()</h2>
+<a id="a4e593878446e06d9e8b771b307ac4bed" name="a4e593878446e06d9e8b771b307ac4bed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e593878446e06d9e8b771b307ac4bed">&#9670;&#160;</a></span>CalcFinalMovesOfInternal()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::CalcFinalMovesOfInternal </td>
+          <td class="memname"><a class="el" href="structgameboard_1_1MoveCollection.html">MoveCollection</a> gameboard::GameBoardForConcepts::CalcFinalMovesOfInternal </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>color</em></td><td>)</td>
@@ -446,186 +391,6 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00169">169</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a4f6bda5db2a2110d0bd35015b83be0c5" name="a4f6bda5db2a2110d0bd35015b83be0c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f6bda5db2a2110d0bd35015b83be0c5">&#9670;&#160;</a></span>Create()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static ::shared_ptr&lt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">GameBoardForConcepts</a>&lt; RC, BC &gt; &gt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::Create </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a> &amp;&#160;</td>
-          <td class="paramname"><em>starting_board</em> = <code><a class="el" href="namespacegameboard.html#a0e0df9efca8bf056b54a1ba15035bece">kStandardInitialBoard</a></code></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00066">66</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a8a99c5825d8fae1f690e89356b2ca019" name="a8a99c5825d8fae1f690e89356b2ca019"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8a99c5825d8fae1f690e89356b2ca019">&#9670;&#160;</a></span>ExecuteMove()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::ExecuteMove </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgameboard_1_1Move.html">Move</a> &amp;&#160;</td>
-          <td class="paramname"><em>move</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00092">92</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a17fd1886ed8481e523983ca8b5ab3878" name="a17fd1886ed8481e523983ca8b5ab3878"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17fd1886ed8481e523983ca8b5ab3878">&#9670;&#160;</a></span>ExecuteMoveInternal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::ExecuteMoveInternal </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgameboard_1_1Move.html">Move</a> &amp;&#160;</td>
-          <td class="paramname"><em>move</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00202">202</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a991c97767719aef9cbb50c5d5523ab51" name="a991c97767719aef9cbb50c5d5523ab51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a991c97767719aef9cbb50c5d5523ab51">&#9670;&#160;</a></span>GetAllSpacesOccupiedBy()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &gt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::GetAllSpacesOccupiedBy </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
-          <td class="paramname"><em>color</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00095">95</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a1e9901f1b504cd7fab343370dc73e409" name="a1e9901f1b504cd7fab343370dc73e409"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e9901f1b504cd7fab343370dc73e409">&#9670;&#160;</a></span>GetAllSpacesOccupiedByInternal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">vector&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &gt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::GetAllSpacesOccupiedByInternal </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
-          <td class="paramname"><em>color</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00136">136</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a02d010b128f2dd6800f60ca90bd5d25c" name="a02d010b128f2dd6800f60ca90bd5d25c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02d010b128f2dd6800f60ca90bd5d25c">&#9670;&#160;</a></span>GetColor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::GetColor </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;&#160;</td>
-          <td class="paramname"><em>space</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -634,23 +399,77 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 
 </div>
 </div>
-<a id="a3d07840aff3bd02b6c10ffe4e63fc7a0" name="a3d07840aff3bd02b6c10ffe4e63fc7a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d07840aff3bd02b6c10ffe4e63fc7a0">&#9670;&#160;</a></span>GetColorInternal()</h2>
+<a id="affdb36ac4d998f8b96d593aa308700bc" name="affdb36ac4d998f8b96d593aa308700bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affdb36ac4d998f8b96d593aa308700bc">&#9670;&#160;</a></span>Create()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::GetColorInternal </td>
+          <td class="memname">static std::shared_ptr&lt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">GameBoardForConcepts</a> &gt; gameboard::GameBoardForConcepts::Create </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;&#160;</td>
-          <td class="paramname"><em>space</em></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">const <a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>starting_board</em> = <code><a class="el" href="namespacegameboard.html#a0e0df9efca8bf056b54a1ba15035bece">kStandardInitialBoard</a></code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00030">30</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a30f169385fc0429d409af25226e5e004" name="a30f169385fc0429d409af25226e5e004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30f169385fc0429d409af25226e5e004">&#9670;&#160;</a></span>ExecuteMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> gameboard::GameBoardForConcepts::ExecuteMove </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgameboard_1_1Move.html">Move</a> &amp;&#160;</td>
+          <td class="paramname"><em>move</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00053">53</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a8ce4924959d227d0f9a2bb1eaa6da925" name="a8ce4924959d227d0f9a2bb1eaa6da925"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ce4924959d227d0f9a2bb1eaa6da925">&#9670;&#160;</a></span>ExecuteMoveInternal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> gameboard::GameBoardForConcepts::ExecuteMoveInternal </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgameboard_1_1Move.html">Move</a> &amp;&#160;</td>
+          <td class="paramname"><em>move</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -660,56 +479,24 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00128">128</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00123">123</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a7458dea99041da709d6b3e572ebe1775" name="a7458dea99041da709d6b3e572ebe1775"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7458dea99041da709d6b3e572ebe1775">&#9670;&#160;</a></span>GetGeneralPositionInternal()</h2>
+<a id="a3345952e6334c1a6824eedba39923c78" name="a3345952e6334c1a6824eedba39923c78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3345952e6334c1a6824eedba39923c78">&#9670;&#160;</a></span>GetAllSpacesOccupiedBy()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::GetGeneralPositionInternal </td>
+          <td class="memname">std::vector&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &gt; gameboard::GameBoardForConcepts::GetAllSpacesOccupiedBy </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>color</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00154">154</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="aba69b64f8549d356e8e2c6bf00c78043" name="aba69b64f8549d356e8e2c6bf00c78043"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba69b64f8549d356e8e2c6bf00c78043">&#9670;&#160;</a></span>GetOccupantAt()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::GetOccupantAt </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;&#160;</td>
-          <td class="paramname"><em>space</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -720,265 +507,25 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00111">111</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00057">57</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a67d9e38e5c6e4c81cd72b9e19eefc697" name="a67d9e38e5c6e4c81cd72b9e19eefc697"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67d9e38e5c6e4c81cd72b9e19eefc697">&#9670;&#160;</a></span>GetOccupantAtInternal()</h2>
+<a id="a6e0e0680939f198e796834c326d3dacc" name="a6e0e0680939f198e796834c326d3dacc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e0e0680939f198e796834c326d3dacc">&#9670;&#160;</a></span>GetAllSpacesOccupiedByInternal()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::GetOccupantAtInternal </td>
+          <td class="memname">std::vector&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &gt; gameboard::GameBoardForConcepts::GetAllSpacesOccupiedByInternal </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;&#160;</td>
-          <td class="paramname"><em>space</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00150">150</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ac4f6b911319abfafc1b7d4aa7db5b1c1" name="ac4f6b911319abfafc1b7d4aa7db5b1c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4f6b911319abfafc1b7d4aa7db5b1c1">&#9670;&#160;</a></span>GetType()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::GetType </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;&#160;</td>
-          <td class="paramname"><em>space</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00099">99</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a076c5b4020c5cc5dab0c4185cdbf862a" name="a076c5b4020c5cc5dab0c4185cdbf862a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a076c5b4020c5cc5dab0c4185cdbf862a">&#9670;&#160;</a></span>GetTypeInternal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::GetTypeInternal </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;&#160;</td>
-          <td class="paramname"><em>space</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00132">132</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a4b80c08deead33dd7ea832861d041e48" name="a4b80c08deead33dd7ea832861d041e48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b80c08deead33dd7ea832861d041e48">&#9670;&#160;</a></span>IsCaptureMove()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::IsCaptureMove </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;&#160;</td>
-          <td class="paramname"><em>executed_move</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00104">104</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="af55a246d10d672131b7ac571ddc1a7da" name="af55a246d10d672131b7ac571ddc1a7da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af55a246d10d672131b7ac571ddc1a7da">&#9670;&#160;</a></span>IsCaptureMoveInternal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::IsCaptureMoveInternal </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;&#160;</td>
-          <td class="paramname"><em>executed_move</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00221">221</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a6bb6ab31bd4fd404a8c116ffdd6f1046" name="a6bb6ab31bd4fd404a8c116ffdd6f1046"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6bb6ab31bd4fd404a8c116ffdd6f1046">&#9670;&#160;</a></span>IsDraw()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::IsDraw </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00093">93</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a1b4012090a54a45025c831dbecfb7df9" name="a1b4012090a54a45025c831dbecfb7df9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b4012090a54a45025c831dbecfb7df9">&#9670;&#160;</a></span>IsDrawInternal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::IsDrawInternal </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00275">275</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="aee6969e8cc2b3f64dde4e36100b596f5" name="aee6969e8cc2b3f64dde4e36100b596f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee6969e8cc2b3f64dde4e36100b596f5">&#9670;&#160;</a></span>IsInCheck()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::IsInCheck </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>color</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00091">91</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a50d23baf3936df127c92eb9256d26664" name="a50d23baf3936df127c92eb9256d26664"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a50d23baf3936df127c92eb9256d26664">&#9670;&#160;</a></span>IsInCheckInternal()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::IsInCheckInternal </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
-          <td class="paramname"><em>color</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -988,25 +535,80 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00195">195</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00142">142</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a8d2634b8827e8d532913f8fe57470846" name="a8d2634b8827e8d532913f8fe57470846"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d2634b8827e8d532913f8fe57470846">&#9670;&#160;</a></span>map()</h2>
+<a id="a409816a0c19b1be2edf557555bf533f5" name="a409816a0c19b1be2edf557555bf533f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a409816a0c19b1be2edf557555bf533f5">&#9670;&#160;</a></span>GetColor()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::map </td>
+          <td class="memname"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a> gameboard::GameBoardForConcepts::GetColor </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;&#160;</td>
+          <td class="paramname"><em>space</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00047">47</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a310b18501f13e80cf1767e14455f398b" name="a310b18501f13e80cf1767e14455f398b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a310b18501f13e80cf1767e14455f398b">&#9670;&#160;</a></span>GetOccupantAt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a> gameboard::GameBoardForConcepts::GetOccupantAt </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;&#160;</td>
+          <td class="paramname"><em>space</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00077">77</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab241eb6682e0d2d6faa9a50fdb369e5b" name="ab241eb6682e0d2d6faa9a50fdb369e5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab241eb6682e0d2d6faa9a50fdb369e5b">&#9670;&#160;</a></span>GetType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">PieceType</a> gameboard::GameBoardForConcepts::GetType </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;&#160;</td>
+          <td class="paramname"><em>space</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
@@ -1021,19 +623,128 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 
 </div>
 </div>
-<a id="ac1969fc61215e031cd47217f560a5d02" name="ac1969fc61215e031cd47217f560a5d02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1969fc61215e031cd47217f560a5d02">&#9670;&#160;</a></span>move_log()</h2>
+<a id="afb4553fa14a9305fd4b82620f8432d40" name="afb4553fa14a9305fd4b82620f8432d40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb4553fa14a9305fd4b82620f8432d40">&#9670;&#160;</a></span>IsCaptureMove()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const std::map&lt; <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>, std::vector&lt; <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &gt; &gt; &amp; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::move_log </td>
+          <td class="memname">bool gameboard::GameBoardForConcepts::IsCaptureMove </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;&#160;</td>
+          <td class="paramname"><em>executed_move</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00069">69</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a985ab68acba57005b686317964dd91b2" name="a985ab68acba57005b686317964dd91b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a985ab68acba57005b686317964dd91b2">&#9670;&#160;</a></span>IsDraw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gameboard::GameBoardForConcepts::IsDraw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00055">55</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a92a59da59647bff886cdaa6ebb333a2e" name="a92a59da59647bff886cdaa6ebb333a2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92a59da59647bff886cdaa6ebb333a2e">&#9670;&#160;</a></span>IsInCheck()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gameboard::GameBoardForConcepts::IsInCheck </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
+          <td class="paramname"><em>color</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00051">51</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a888c3c069ab6a29254f8fa84b2285987" name="a888c3c069ab6a29254f8fa84b2285987"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a888c3c069ab6a29254f8fa84b2285987">&#9670;&#160;</a></span>IsInCheckInternal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gameboard::GameBoardForConcepts::IsInCheckInternal </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
+          <td class="paramname"><em>color</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00116">116</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a05e6855743bf6920cd6e6b983eb8e1d0" name="a05e6855743bf6920cd6e6b983eb8e1d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05e6855743bf6920cd6e6b983eb8e1d0">&#9670;&#160;</a></span>map()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> &amp; gameboard::GameBoardForConcepts::map </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1046,23 +757,48 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00062">62</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00037">37</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ada3fc2a84c0375e712b59e7bf49175a0" name="ada3fc2a84c0375e712b59e7bf49175a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada3fc2a84c0375e712b59e7bf49175a0">&#9670;&#160;</a></span>RemoveFromMoveLog()</h2>
+<a id="ade573adebdfa16cdd40e9d76906f8486" name="ade573adebdfa16cdd40e9d76906f8486"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade573adebdfa16cdd40e9d76906f8486">&#9670;&#160;</a></span>move_log()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::RemoveFromMoveLog </td>
+          <td class="memname">const std::map&lt; <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>, std::vector&lt; <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &gt; &gt; &amp; gameboard::GameBoardForConcepts::move_log </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00039">39</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab1af1923bc6aabfee148dc0ebe5f3091" name="ab1af1923bc6aabfee148dc0ebe5f3091"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1af1923bc6aabfee148dc0ebe5f3091">&#9670;&#160;</a></span>RemoveFromMoveLog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gameboard::GameBoardForConcepts::RemoveFromMoveLog </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;&#160;</td>
           <td class="paramname"><em>executed_move</em></td><td>)</td>
@@ -1076,23 +812,21 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00252">252</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00180">180</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ad445ed7ecc29d2f9587f8308e3654c39" name="ad445ed7ecc29d2f9587f8308e3654c39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad445ed7ecc29d2f9587f8308e3654c39">&#9670;&#160;</a></span>SetOccupantAt()</h2>
+<a id="a7052cbe304d9f3953b5942513d9e8b7c" name="a7052cbe304d9f3953b5942513d9e8b7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7052cbe304d9f3953b5942513d9e8b7c">&#9670;&#160;</a></span>SetOccupantAt()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::SetOccupantAt </td>
+          <td class="memname">void gameboard::GameBoardForConcepts::SetOccupantAt </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a> &amp;&#160;</td>
           <td class="paramname"><em>space</em>, </td>
@@ -1116,23 +850,21 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00243">243</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00171">171</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a81180da891194bff6be26cbfda4f4f6a" name="a81180da891194bff6be26cbfda4f4f6a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81180da891194bff6be26cbfda4f4f6a">&#9670;&#160;</a></span>UndoMove()</h2>
+<a id="ae6f3dc459a91c9df05e11d75f996020f" name="ae6f3dc459a91c9df05e11d75f996020f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6f3dc459a91c9df05e11d75f996020f">&#9670;&#160;</a></span>UndoMove()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::UndoMove </td>
+          <td class="memname">void gameboard::GameBoardForConcepts::UndoMove </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;&#160;</td>
           <td class="paramname"><em>executed_move</em></td><td>)</td>
@@ -1146,23 +878,21 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00108">108</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00073">73</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a3edc74ff158ef50deb757d06dfeec313" name="a3edc74ff158ef50deb757d06dfeec313"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3edc74ff158ef50deb757d06dfeec313">&#9670;&#160;</a></span>UndoMoveInternal()</h2>
+<a id="af6a89602a8c2f0c006c3d12494cd3f77" name="af6a89602a8c2f0c006c3d12494cd3f77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6a89602a8c2f0c006c3d12494cd3f77">&#9670;&#160;</a></span>UndoMoveInternal()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::UndoMoveInternal </td>
+          <td class="memname">void gameboard::GameBoardForConcepts::UndoMoveInternal </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;&#160;</td>
           <td class="paramname"><em>executed_move</em></td><td>)</td>
@@ -1176,23 +906,21 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00225">225</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00156">156</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ae9fb809a1e456c32faa54c9875ad0730" name="ae9fb809a1e456c32faa54c9875ad0730"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9fb809a1e456c32faa54c9875ad0730">&#9670;&#160;</a></span>UpdateStateTracker()</h2>
+<a id="a7303f10411cd945c6a6575ef1fc39c73" name="a7303f10411cd945c6a6575ef1fc39c73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7303f10411cd945c6a6575ef1fc39c73">&#9670;&#160;</a></span>UpdateStateTracker()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::UpdateStateTracker </td>
+          <td class="memname">void gameboard::GameBoardForConcepts::UpdateStateTracker </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;&#160;</td>
           <td class="paramname"><em>executed_move</em></td><td>)</td>
@@ -1206,23 +934,21 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00233">233</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00164">164</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a59be9f43791ee1c634a7f3df0c6de6c3" name="a59be9f43791ee1c634a7f3df0c6de6c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59be9f43791ee1c634a7f3df0c6de6c3">&#9670;&#160;</a></span>ViolatesRepeatRule()</h2>
+<a id="a75bc305fcf6615233ea0b04d95d194fa" name="a75bc305fcf6615233ea0b04d95d194fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75bc305fcf6615233ea0b04d95d194fa">&#9670;&#160;</a></span>ViolatesRepeatRule()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::ViolatesRepeatRule </td>
+          <td class="memname">bool gameboard::GameBoardForConcepts::ViolatesRepeatRule </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>&#160;</td>
           <td class="paramname"><em>color</em></td><td>)</td>
@@ -1236,24 +962,22 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00261">261</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00189">189</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a16d199ec5eee7fe1a95a3a3aff906288" name="a16d199ec5eee7fe1a95a3a3aff906288"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16d199ec5eee7fe1a95a3a3aff906288">&#9670;&#160;</a></span>black_calculators_</h2>
+<a id="ac1223dda25aa8044de2a36d8b125304a" name="ac1223dda25aa8044de2a36d8b125304a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1223dda25aa8044de2a36d8b125304a">&#9670;&#160;</a></span>board_map_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::shared_ptr&lt;BC&gt; &gt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::black_calculators_</td>
+          <td class="memname"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> gameboard::GameBoardForConcepts::board_map_</td>
         </tr>
       </table>
   </td>
@@ -1263,23 +987,21 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00053">53</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00023">23</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="acc9462904ede2d09a6b32324a9c5896b" name="acc9462904ede2d09a6b32324a9c5896b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acc9462904ede2d09a6b32324a9c5896b">&#9670;&#160;</a></span>board_map_</h2>
+<a id="a0e036c62574e2e703d66285e731b7311" name="a0e036c62574e2e703d66285e731b7311"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e036c62574e2e703d66285e731b7311">&#9670;&#160;</a></span>move_calculator_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::board_map_</td>
+          <td class="memname"><a class="el" href="classgameboard_1_1MoveCalculator.html">MoveCalculator</a> gameboard::GameBoardForConcepts::move_calculator_</td>
         </tr>
       </table>
   </td>
@@ -1289,25 +1011,21 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p>2-D array of <a class="el" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor.">GamePiece</a> objects. </p>
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00047">47</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00024">24</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="ac9ff36f3b3b46b144f3943c10082ec36" name="ac9ff36f3b3b46b144f3943c10082ec36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9ff36f3b3b46b144f3943c10082ec36">&#9670;&#160;</a></span>move_calculator_</h2>
+<a id="a9ea830dbc0344c31353ddc5e76743172" name="a9ea830dbc0344c31353ddc5e76743172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ea830dbc0344c31353ddc5e76743172">&#9670;&#160;</a></span>move_callbacks_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classgameboard_1_1MoveCalculator.html">MoveCalculator</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::move_calculator_</td>
+          <td class="memname">vector&lt;function&lt;void(const <a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a> &amp;)&gt; &gt; gameboard::GameBoardForConcepts::move_callbacks_</td>
         </tr>
       </table>
   </td>
@@ -1317,25 +1035,21 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p>Encapsulates all calculations of allowed moves. </p>
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00050">50</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00025">25</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a9528ad09c0d8f17843fa6ef90668d1b1" name="a9528ad09c0d8f17843fa6ef90668d1b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9528ad09c0d8f17843fa6ef90668d1b1">&#9670;&#160;</a></span>move_log_</h2>
+<a id="a39280e2eed5b56e4306ca1c3ede0935d" name="a39280e2eed5b56e4306ca1c3ede0935d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39280e2eed5b56e4306ca1c3ede0935d">&#9670;&#160;</a></span>move_log_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>, std::vector&lt;<a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a>&gt; &gt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::move_log_</td>
+          <td class="memname">std::map&lt;<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">PieceColor</a>, std::vector&lt;<a class="el" href="structgameboard_1_1ExecutedMove.html">ExecutedMove</a>&gt; &gt; gameboard::GameBoardForConcepts::move_log_</td>
         </tr>
       </table>
   </td>
@@ -1345,25 +1059,21 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p>Vectors of all moves that have been executed (and not un-done) by each player. </p>
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00055">55</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00026">26</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a2f8cb75138cb3795ad95928fb33585b5" name="a2f8cb75138cb3795ad95928fb33585b5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f8cb75138cb3795ad95928fb33585b5">&#9670;&#160;</a></span>moves_since_last_capture_</h2>
+<a id="a56e7981df6e5a0643f758528b1aa131f" name="a56e7981df6e5a0643f758528b1aa131f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56e7981df6e5a0643f758528b1aa131f">&#9670;&#160;</a></span>moves_since_last_capture_</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a> <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::moves_since_last_capture_</td>
+          <td class="memname"><a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a> gameboard::GameBoardForConcepts::moves_since_last_capture_</td>
         </tr>
       </table>
   </td>
@@ -1373,35 +1083,7 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 </table>
 </div><div class="memdoc">
 
-<p>Number of moves executed since last time a piece was captured. </p>
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00058">58</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
-
-</div>
-</div>
-<a id="ad74d9ebfb145c573dfcea7852170f2ed" name="ad74d9ebfb145c573dfcea7852170f2ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad74d9ebfb145c573dfcea7852170f2ed">&#9670;&#160;</a></span>red_calculators_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> RC, <a class="el" href="conceptBoardStateCalculatorConcept.html">BoardStateCalculatorConcept</a> BC&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;std::shared_ptr&lt;RC&gt; &gt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a>&lt; RC, BC &gt;::red_calculators_</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00052">52</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__board__for__concepts_8hpp_source.html#l00027">27</a> of file <a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -1414,7 +1096,7 @@ template&lt;<a class="el" href="conceptBoardStateCalculatorConcept.html">BoardSt
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacegameboard.html">gameboard</a></li><li class="navelem"><a class="el" href="classgameboard_1_1GameBoardForConcepts.html">GameBoardForConcepts</a></li>
-    <li class="footer">Generated on Thu Dec 5 2024 06:52:24 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Dec 9 2024 06:26:14 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>
