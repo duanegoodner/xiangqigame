@@ -33,6 +33,7 @@ class ZobristComponentForConcepts {
 public:
   using KeyType = typename C::KeyType;
   static size_t constexpr NumConfKeys = N;
+
 public:
   static std::shared_ptr<ZobristComponentForConcepts<C, N>> Create(
       uint32_t prng_seed = std::random_device{}()
@@ -66,8 +67,6 @@ public:
         )
     );
   }
-
-  
 
   // Getters
   C::KeyType primary_board_state() { return primary_calculator_->board_state(); }

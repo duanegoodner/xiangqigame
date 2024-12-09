@@ -54,9 +54,9 @@ protected:
         black_zobrist_calculator_factory;
 
     auto red_zobrist_calculator =
-        red_zobrist_calculator_factory.Create(starting_game_board_);
+        red_zobrist_calculator_factory.CreateRegisteredCalculator(starting_game_board_);
     auto black_zobrist_calculator =
-        black_zobrist_calculator_factory.Create(starting_game_board_);
+        black_zobrist_calculator_factory.CreateRegisteredCalculator(starting_game_board_);
   }
 
   template <typename RedKeyType, typename BlackKeyType>
@@ -70,9 +70,9 @@ protected:
         black_zobrist_calculator_factory;
 
     auto red_zobrist_calculator =
-        red_zobrist_calculator_factory.Create(starting_game_board_);
+        red_zobrist_calculator_factory.CreateRegisteredCalculator(starting_game_board_);
     auto black_zobrist_calculator =
-        black_zobrist_calculator_factory.Create(starting_game_board_);
+        black_zobrist_calculator_factory.CreateRegisteredCalculator(starting_game_board_);
 
     auto red_initial_state = red_zobrist_calculator->board_state();
     auto black_initial_state = black_zobrist_calculator->board_state();

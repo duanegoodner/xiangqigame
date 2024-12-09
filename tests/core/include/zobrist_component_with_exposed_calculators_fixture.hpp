@@ -54,14 +54,12 @@ public:
     for (auto idx = 0; idx < N; ++idx) {
       confirmation_calculators[idx] = C::Create();
     }
-    auto zobrist_component =
-        boardstate::ZobristComponentForConcepts<C, N>::Create(
-            primary_calculator,
-            confirmation_calculators
-        );
+    auto zobrist_component = boardstate::ZobristComponentForConcepts<C, N>::Create(
+        primary_calculator,
+        confirmation_calculators
+    );
     auto zobrist_coordinator = boardstate::ZobristCoordinatorForConcepts<
-        boardstate::ZobristComponentForConcepts<C, N>>::
-        Create(zobrist_component);
+        boardstate::ZobristComponentForConcepts<C, N>>::Create(zobrist_component);
 
     return std::make_shared<ZobristCoordinatorWithExposedCalculators<C, N>>(
         primary_calculator,
@@ -107,7 +105,8 @@ public:
     // //  Generate an ExecutedMove to pass to UpdateBoardState methods
     gameboard::BoardSpace move_start{6, 0};
     gameboard::BoardSpace move_end{5, 0};
-    auto executed_move = board_map_fixture_.GenerateOpeningExecutedMove(move_start, move_end);
+    auto executed_move =
+        board_map_fixture_.GenerateOpeningExecutedMove(move_start, move_end);
 
     // Get pre-move board states
     auto initial_primary_state = zobrist_component_->primary_board_state();
@@ -145,7 +144,8 @@ public:
   void TestCoordinatorExecuteAndUndoMove() {
     gameboard::BoardSpace move_start{6, 0};
     gameboard::BoardSpace move_end{5, 0};
-    auto executed_move = board_map_fixture_.GenerateOpeningExecutedMove(move_start, move_end);
+    auto executed_move =
+        board_map_fixture_.GenerateOpeningExecutedMove(move_start, move_end);
     auto starting_board_map = board_map_fixture_.starting_boardmap();
     FullBoardStateCalc(starting_board_map);
 
@@ -162,7 +162,8 @@ public:
   void TestCoordinatorRecordAndReadData() {
     gameboard::BoardSpace move_start{6, 0};
     gameboard::BoardSpace move_end{5, 0};
-    auto executed_move = board_map_fixture_.GenerateOpeningExecutedMove(move_start, move_end);
+    auto executed_move =
+        board_map_fixture_.GenerateOpeningExecutedMove(move_start, move_end);
 
     auto board_map = board_map_fixture_.starting_boardmap();
 

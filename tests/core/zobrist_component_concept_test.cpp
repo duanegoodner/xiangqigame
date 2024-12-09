@@ -7,7 +7,6 @@
 #include <memory>
 #include <vector>
 #include <zobrist_calculator_for_concepts.hpp>
-#include <zobrist_component_with_exposed_calculators_fixture.hpp>
 #include <zobrist_for_concepts.hpp>
 
 //! Base class that test suite class template will inherit from, so we can put
@@ -49,7 +48,7 @@ public:
   std::shared_ptr<ZobristComponentType> zobrist_component_unregistered_ =
       ZobristComponentType::Create();
   std::shared_ptr<ZobristComponentType> zobrist_component_registered_ =
-      zobrist_component_factory_.Create(game_board_);
+      zobrist_component_factory_.CreateRegisteredComponent(game_board_);
 
   void CheckComplianceWithMultiBoardStateProviderConcept() override {
     static_assert(
@@ -73,7 +72,8 @@ public:
   }
 
   void TestCreateWithBuilder() {
-    auto zobrist_component = zobrist_component_factory_.Create(game_board_);
+    auto zobrist_component =
+        zobrist_component_factory_.CreateRegisteredComponent(game_board_);
   }
 
   void TestGetters() {
@@ -145,11 +145,13 @@ public:
   //! static ZobristComponent::Build() method instead of using ZobristComponent created
   //! by ZobristComponentFactory.
   void TestUpdateBoardStateReversal() {
-    auto primary_calculator = zobrist_calculator_factory_.Create(game_board_);
+    auto primary_calculator =
+        zobrist_calculator_factory_.CreateRegisteredCalculator(game_board_);
     std::array<std::shared_ptr<ZobristCalculatorType>, NumConfKeys>
         confirmation_calculators;
     for (auto idx = 0; idx < NumConfKeys; ++idx) {
-      confirmation_calculators[idx] = zobrist_calculator_factory_.Create(game_board_);
+      confirmation_calculators[idx] =
+          zobrist_calculator_factory_.CreateRegisteredCalculator(game_board_);
     }
 
     // Create a ZobristComponent using our already initialized ZobristCalculator objects
