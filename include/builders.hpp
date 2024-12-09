@@ -12,16 +12,9 @@
 #include <string>
 #include <zobrist_for_concepts.hpp>
 
-namespace gameboard {
-class GameBoardFactory {
-public:
-  std::shared_ptr<GameBoardForConcepts> Create(
-      const BoardMapInt_t &starting_board = kStandardInitialBoard
-  ) {
-    return GameBoardForConcepts::Create(starting_board);
-  }
-};
-} // namespace gameboard
+// namespace gameboard {
+
+// } // namespace gameboard
 
 namespace boardstate {
 
