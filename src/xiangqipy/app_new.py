@@ -21,7 +21,6 @@ from xiangqipy.game_output_generator import GameOutputGenerator
 from xiangqipy.game_summary import GameSummary
 from xiangqipy.handlers.signals import set_signal_handlers
 from xiangqipy.player_builder import RedAndBlackPlayersBuilder
-import xiangqipy.binding_type_unions as btu
 
 
 @dataclass
@@ -135,17 +134,7 @@ class MoveEvaluatorBuilder:
         self.player_input = player_input
         self.game_board = game_board
 
-    # @property
-    # def zobrist_bit_size_label(self) -> str:
 
-
-
-def build_move_evaluator(
-    color: bindings.PieceColor,
-    player_input: PlayerInputNew,
-    game_board: bindings.GameBoard,
-) -> btu.MinimaxMoveEvaluatorType:
-    pass
 
 
 def run(custom_output_root: Path = None, **kwargs: dict) -> GameSummary:
