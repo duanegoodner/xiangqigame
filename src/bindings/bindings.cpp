@@ -8,6 +8,7 @@
 
 #include <board_data_structs.hpp>
 #include <game_board.hpp>
+#include <game_board_for_concepts.hpp>
 #include <move_evaluators.hpp>
 #include <piece_position_points.hpp>
 #include <random>
@@ -191,6 +192,19 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def_property_readonly("move_log", &GameBoard::move_log)
       .def_property_readonly("is_draw", &GameBoard::IsDraw)
       .def("GetColor", &GameBoard::GetColor, "space"_a);
+
+py::class_<GameBoardForConcepts>(m, "GameBoard")
+    //   .def(py::init<>())
+      .def("map", &GameBoardForConcepts::map)
+      .def("ExecuteMove", &GameBoardForConcepts::ExecuteMove, "move"_a)
+      .def("UndoMove", &GameBoardForConcepts::UndoMove, "executed_move"_a)
+      .def("GetAllSpacesOccupiedBy", &GameBoardForConcepts::GetAllSpacesOccupiedBy, "color"_a)
+      .def("CalcFinalMovesOf", &GameBoardForConcepts::CalcFinalMovesOf, "color"_a)
+      .def("IsInCheck", &GameBoardForConcepts::IsInCheck, "color"_a)
+      .def("GetType", &GameBoardForConcepts::GetType, "space"_a)
+      .def_property_readonly("move_log", &GameBoardForConcepts::move_log)
+      .def_property_readonly("is_draw", &GameBoardForConcepts::IsDraw)
+      .def("GetColor", &GameBoardForConcepts::GetColor, "space"_a);
 
   m.def("opponent_of", &opponent_of);
 
