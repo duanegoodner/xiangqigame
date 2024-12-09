@@ -73,10 +73,6 @@ var annotated_dup =
         [ "RunKwargsInterpreterNew", "classxiangqipy_1_1app__new_1_1RunKwargsInterpreterNew.html", "classxiangqipy_1_1app__new_1_1RunKwargsInterpreterNew" ],
         [ "XiangqiGameCommandNew", "classxiangqipy_1_1app__new_1_1XiangqiGameCommandNew.html", "classxiangqipy_1_1app__new_1_1XiangqiGameCommandNew" ]
       ] ],
-      [ "binding_type_unions", "namespacexiangqipy_1_1binding__type__unions.html", [
-        [ "MinimaxEvaluatorComponentTypes", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorComponentTypes.html", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorComponentTypes" ],
-        [ "MinimaxEvaluatorSpecs", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorSpecs.html", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorSpecs" ]
-      ] ],
       [ "command_input", "namespacexiangqipy_1_1command__input.html", [
         [ "PlayerCommandInterpreter", "classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html", "classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter" ],
         [ "PlayerInput", "classxiangqipy_1_1command__input_1_1PlayerInput.html", "classxiangqipy_1_1command__input_1_1PlayerInput" ],

@@ -143,9 +143,5 @@ var hierarchy =
       [ "xiangqipy.enums.EvaluatorTypeNew", "classxiangqipy_1_1enums_1_1EvaluatorTypeNew.html", null ],
       [ "xiangqipy.enums.GameState", "classxiangqipy_1_1enums_1_1GameState.html", null ],
       [ "xiangqipy.enums.PlayerType", "classxiangqipy_1_1enums_1_1PlayerType.html", null ]
-    ] ],
-    [ "NamedTuple", null, [
-      [ "xiangqipy.binding_type_unions.MinimaxEvaluatorComponentTypes", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorComponentTypes.html", null ],
-      [ "xiangqipy.binding_type_unions.MinimaxEvaluatorSpecs", "classxiangqipy_1_1binding__type__unions_1_1MinimaxEvaluatorSpecs.html", null ]
     ] ]
 ];

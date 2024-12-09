@@ -5,7 +5,6 @@ var dir_46e67b79a66d4e1bea97ac4ccddce80e =
     [ "__main__.py", "____main_____8py.html", "____main_____8py" ],
     [ "app.py", "app_8py.html", "app_8py" ],
     [ "app_new.py", "app__new_8py.html", "app__new_8py" ],
-    [ "binding_type_unions.py", "binding__type__unions_8py.html", "binding__type__unions_8py" ],
     [ "command_input.py", "command__input_8py.html", "command__input_8py" ],
     [ "core_dataclass_mirrors.py", "core__dataclass__mirrors_8py.html", "core__dataclass__mirrors_8py" ],
     [ "enums.py", "enums_8py.html", "enums_8py" ],

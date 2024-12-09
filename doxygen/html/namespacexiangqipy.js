@@ -7,7 +7,6 @@ var namespacexiangqipy =
       [ "run", "namespacexiangqipy_1_1app.html#ac09777385f4e43af5903c4c664c70ae4", null ]
     ] ],
     [ "app_new", "namespacexiangqipy_1_1app__new.html", "namespacexiangqipy_1_1app__new" ],
-    [ "binding_type_unions", "namespacexiangqipy_1_1binding__type__unions.html", "namespacexiangqipy_1_1binding__type__unions" ],
     [ "command_input", "namespacexiangqipy_1_1command__input.html", "namespacexiangqipy_1_1command__input" ],
     [ "core_dataclass_mirrors", "namespacexiangqipy_1_1core__dataclass__mirrors.html", "namespacexiangqipy_1_1core__dataclass__mirrors" ],
     [ "enums", "namespacexiangqipy_1_1enums.html", "namespacexiangqipy_1_1enums" ],
