@@ -32,24 +32,6 @@ protected:
   MoveEvaluatorFactoryType move_evaluator_factory_;
 
   template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-  std::shared_ptr<gameboard::GameBoardForConcepts> BuildGameBoard(
-      size_t NumRedCalculators,
-      size_t NumBlackCalculators
-  ) {
-    std::vector<std::shared_ptr<RC>> red_z_calculators;
-    std::vector<std::shared_ptr<RC>> black_z_calculators;
-
-    for (auto idx = 0; idx < NumRedCalculators; ++idx) {
-      red_z_calculators.emplace_back(RC::Create());
-    }
-    for (auto idx = 0; idx < NumBlackCalculators; ++idx) {
-      black_z_calculators.emplace_back(BC::Create());
-    }
-
-    return gameboard::GameBoardForConcepts::Create();
-  }
-
-  template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
   std::unique_ptr<
       moveselection::RandomMoveEvaluatorForConcept<gameboard::GameBoardForConcepts>>
   BuildRandomMoveEvaluator(
