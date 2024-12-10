@@ -3,6 +3,7 @@ enable_testing()
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 add_subdirectory(move_evaluator_random_for_concepts)
+add_subdirectory(move_evaluator_minimax_for_concepts)
 
 
 add_executable(piece_moves_test piece_moves_test.cpp)
@@ -81,14 +82,6 @@ target_link_libraries(
     piece_moves
     piece_position_points
     game_board
-    GTest::gtest_main)
-
-add_executable(minimax_concept_test minimax_concept_test.cpp)
-target_link_libraries(
-    minimax_concept_test PRIVATE
-    move_evaluators_for_concepts
-    piece_position_points_for_concepts
-    game_board_for_concepts
     GTest::gtest_main)
 
 add_executable(
