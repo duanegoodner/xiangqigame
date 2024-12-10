@@ -201,4 +201,17 @@ private:
   }
 };
 
+class GameBoardFactory {
+public:
+  std::shared_ptr<GameBoardForConcepts> Create(
+      const BoardMapInt_t &starting_board = kStandardInitialBoard
+  ) {
+    return GameBoardForConcepts::Create(starting_board);
+  }
+
+
+};
+
+
+
 } // namespace gameboard

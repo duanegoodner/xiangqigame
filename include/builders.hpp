@@ -12,16 +12,9 @@
 #include <string>
 #include <zobrist_for_concepts.hpp>
 
-namespace gameboard {
-class GameBoardFactory {
-public:
-  std::shared_ptr<GameBoardForConcepts> Create(
-      const BoardMapInt_t &starting_board = kStandardInitialBoard
-  ) {
-    return GameBoardForConcepts::Create(starting_board);
-  }
-};
-} // namespace gameboard
+// namespace gameboard {
+
+// } // namespace gameboard
 
 namespace boardstate {
 
@@ -124,7 +117,7 @@ namespace moveselection {
 template <SpaceInfoProviderConcept G>
 class RandomMoveEvaluatorFactory {
 public:
-  using MoveEvaluatorType = moveselection::RandomMoveEvaluatorForConcept<G>;
+  using MoveEvaluatorType = moveselection::RandomMoveEvaluatorForConcepts<G>;
 
   std::unique_ptr<MoveEvaluatorType> Create(
       std::shared_ptr<G> game_board,
@@ -146,7 +139,7 @@ public:
   using ZobristCoordinatorType = boardstate::
       ZobristCoordinatorFactory<KeyType, NumConfKeys, G>::ZobristCoordinatorType;
 
-  using MoveEvaluatorType = moveselection::MinimaxMoveEvaluatorForConcept<
+  using MoveEvaluatorType = moveselection::MinimaxMoveEvaluatorForConcepts<
       ZobristCoordinatorType,
       G,
       piecepoints::PiecePositionPointsForConcepts>;
