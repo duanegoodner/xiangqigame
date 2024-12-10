@@ -16,6 +16,7 @@
 #include <integer_types.hpp>
 #include <move_evaluators.hpp>
 #include <move_evaluators_for_concepts.hpp>
+#include <piece_points_bpo.hpp>
 #include <piece_position_points.hpp>
 #include <piece_position_points_for_concepts.hpp>
 #include <random>
@@ -181,10 +182,10 @@ void bind_minimax_move_evaluator_factory(py::module_ &m, const std::string &clas
               KeyType,
               NumConfKeys,
               GameBoardForConcepts>::Create,
-          "game_board"_a,
-          "evaluating_player"_a,
-          "search_depth"_a,
-          "json_file"_a
+          py::arg("game_board"),
+          py::arg("evaluating_player"),
+          py::arg("search_depth"),
+          py::arg("json_file") = kICGABPOPath
       );
 }
 
@@ -296,7 +297,7 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def_property_readonly("is_draw", &GameBoard::IsDraw)
       .def("GetColor", &GameBoard::GetColor, "space"_a);
 
-  py::class_<GameBoardForConcepts>(m, "GameBoard")
+  py::class_<GameBoardForConcepts>(m, "GameBoardForConcepts")
       //   .def(py::init<>())
       .def("map", &GameBoardForConcepts::map)
       .def("ExecuteMove", &GameBoardForConcepts::ExecuteMove, "move"_a)
@@ -314,7 +315,12 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def("GetColor", &GameBoardForConcepts::GetColor, "space"_a);
 
   py::class_<GameBoardFactory>(m, "GameBoardFactory")
-      .def("Create", &GameBoardFactory::Create, "starting_board"_a);
+      .def(py::init<>())
+      .def(
+          "create",
+          &GameBoardFactory::Create,
+          py::arg("starting_board") = kStandardInitialBoard
+      );
 
   m.def("opponent_of", &opponent_of);
 
@@ -324,6 +330,28 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
           "select_move",
           &moveselection::RandomMoveEvaluator<GameBoard>::SelectMove,
           "allowed_moves"_a
+      );
+  py::class_<moveselection::RandomMoveEvaluatorForConcepts<GameBoardForConcepts>>(
+      m,
+      "RandomMoveEvaluatorForConcepts"
+  )
+      .def(
+          "select_move",
+          &moveselection::RandomMoveEvaluatorForConcepts<
+              GameBoardForConcepts>::SelectMove,
+          "allowed_moves"_a
+      );
+
+  py::class_<moveselection::RandomMoveEvaluatorFactory<GameBoardForConcepts>>(
+      m,
+      "RandomMoveEvaluatorFactory"
+  )
+      .def(py::init<>())
+      .def(
+          "create",
+          &moveselection::RandomMoveEvaluatorFactory<GameBoardForConcepts>::Create,
+          "game_board"_a,
+          "evaluating_player"_a
       );
 
   py::class_<moveselection::SearchSummary>(m, "SearchSummary")
@@ -410,16 +438,21 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
   );
 
   bind_minimax_move_evaluator_factory<uint32_t, 0>(m, "MinimaxMoveEvaluatorFactory32");
-  bind_minimax_move_evaluator_factory<uint64_t, 0>(m, "MinimaxMoveEvaluatorFactory32");
+  bind_minimax_move_evaluator_factory<uint64_t, 0>(m, "MinimaxMoveEvaluatorFactory64");
   bind_minimax_move_evaluator_factory<__uint128_t, 0>(
       m,
-      "MinimaxMoveEvaluatorFactory32"
+      "MinimaxMoveEvaluatorFactory128"
   );
-  bind_minimax_move_evaluator_factory<uint32_t, 1>(m, "MinimaxMoveEvaluatorFactory32");
-  bind_minimax_move_evaluator_factory<uint64_t, 1>(m, "MinimaxMoveEvaluatorFactory32");
+  bind_minimax_move_evaluator_factory<uint32_t, 1>(
+      m,
+      "MinimaxMoveEvaluatorFactory32Dual"
+  );
+  bind_minimax_move_evaluator_factory<uint64_t, 1>(
+      m,
+      "MinimaxMoveEvaluatorFactory64Dual"
+  );
   bind_minimax_move_evaluator_factory<__uint128_t, 1>(
       m,
-      "MinimaxMoveEvaluatorFactory32"
+      "MinimaxMoveEvaluatorFactory128Dual"
   );
-
 }

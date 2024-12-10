@@ -567,17 +567,17 @@ private:
 //! Complies with MoveEvaluatorConcept. Randomly chooses one of legal moves
 //! available to moveselection::RandomMoveEvaluator.evaluating_player_.
 template <SpaceInfoProviderConcept G>
-class RandomMoveEvaluatorForConcept {
+class RandomMoveEvaluatorForConcepts {
   PieceColor evaluating_player_;
   std::shared_ptr<G> game_board_;
 
 public:
-  static std::unique_ptr<RandomMoveEvaluatorForConcept<G>> Create(
+  static std::unique_ptr<RandomMoveEvaluatorForConcepts<G>> Create(
       std::shared_ptr<G> game_board,
       gameboard::PieceColor evaluating_player
   ) {
-    return std::unique_ptr<RandomMoveEvaluatorForConcept<G>>(
-        new RandomMoveEvaluatorForConcept<G>(evaluating_player, game_board)
+    return std::unique_ptr<RandomMoveEvaluatorForConcepts<G>>(
+        new RandomMoveEvaluatorForConcepts<G>(evaluating_player, game_board)
     );
   }
 
@@ -588,7 +588,7 @@ public:
   }
 
 private:
-  RandomMoveEvaluatorForConcept(
+  RandomMoveEvaluatorForConcepts(
       PieceColor evaluating_player,
       std::shared_ptr<G> game_board
   )

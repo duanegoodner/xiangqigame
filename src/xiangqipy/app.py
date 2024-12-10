@@ -36,6 +36,7 @@ def run(custom_output_root: Path = None, **kwargs: Dict) -> GameSummary:
     xiangqi_command = run_kwargs_interpreter.interpret_command()
 
     game_board = bindings.GameBoard()
+    # game_board_new = bindings.GameBoardFactory().create()
     players = RedAndBlackPlayersBuilder(
         xiangqi_command=xiangqi_command, game_board=game_board
     ).build()

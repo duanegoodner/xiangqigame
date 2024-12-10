@@ -117,7 +117,7 @@ namespace moveselection {
 template <SpaceInfoProviderConcept G>
 class RandomMoveEvaluatorFactory {
 public:
-  using MoveEvaluatorType = moveselection::RandomMoveEvaluatorForConcept<G>;
+  using MoveEvaluatorType = moveselection::RandomMoveEvaluatorForConcepts<G>;
 
   std::unique_ptr<MoveEvaluatorType> Create(
       std::shared_ptr<G> game_board,
