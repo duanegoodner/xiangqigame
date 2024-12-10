@@ -123,7 +123,7 @@ public:
       std::shared_ptr<G> game_board,
       gameboard::PieceColor evaluating_player
   ) {
-    return MoveEvaluatorType::Create(game_board, evaluating_player);
+    return MoveEvaluatorType::Create(evaluating_player);
   }
 };
 

@@ -35,11 +35,11 @@ protected:
   std::unique_ptr<
       moveselection::RandomMoveEvaluatorForConcepts<gameboard::GameBoardForConcepts>>
   BuildRandomMoveEvaluator(
-      gameboard::PieceColor color,
-      std::shared_ptr<gameboard::GameBoardForConcepts> game_board
+      gameboard::PieceColor color
+      // std::shared_ptr<gameboard::GameBoardForConcepts> game_board
   ) {
     return moveselection::RandomMoveEvaluatorForConcepts<
-        gameboard::GameBoardForConcepts>::Create(game_board, color);
+        gameboard::GameBoardForConcepts>::Create(color);
   }
 };
 

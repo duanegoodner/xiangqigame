@@ -569,15 +569,16 @@ private:
 template <SpaceInfoProviderConcept G>
 class RandomMoveEvaluatorForConcepts {
   PieceColor evaluating_player_;
-  std::shared_ptr<G> game_board_;
+  // std::shared_ptr<G> game_board_;
 
 public:
   static std::unique_ptr<RandomMoveEvaluatorForConcepts<G>> Create(
-      std::shared_ptr<G> game_board,
+      // std::shared_ptr<G> game_board,
       gameboard::PieceColor evaluating_player
   ) {
     return std::unique_ptr<RandomMoveEvaluatorForConcepts<G>>(
-        new RandomMoveEvaluatorForConcepts<G>(evaluating_player, game_board)
+        // new RandomMoveEvaluatorForConcepts<G>(evaluating_player, game_board)
+        new RandomMoveEvaluatorForConcepts<G>(evaluating_player)
     );
   }
 
@@ -589,11 +590,11 @@ public:
 
 private:
   RandomMoveEvaluatorForConcepts(
-      PieceColor evaluating_player,
-      std::shared_ptr<G> game_board
+      PieceColor evaluating_player
+      // std::shared_ptr<G> game_board
   )
-      : evaluating_player_{evaluating_player}
-      , game_board_{game_board} {}
+      : evaluating_player_{evaluating_player} {}
+      // , game_board_{game_board} {}
 };
 
 } // namespace moveselection
