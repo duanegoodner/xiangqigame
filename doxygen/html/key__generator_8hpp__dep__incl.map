@@ -1,9 +1,9 @@
 <map id="include/key_generator.hpp" name="include/key_generator.hpp">
-<area shape="rect" id="node1" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="383,5,577,31"/>
-<area shape="rect" id="node2" href="$zobrist_8hpp.html" title="Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker and supporting ..." alt="" coords="217,86,362,111"/>
-<area shape="rect" id="node5" href="$zobrist__calculator__for__concepts_8hpp.html" title=" " alt="" coords="386,79,574,119"/>
-<area shape="rect" id="node6" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="507,167,650,207"/>
+<area shape="rect" id="node1" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="199,5,393,31"/>
+<area shape="rect" id="node2" href="$zobrist_8hpp.html" title="Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker and supporting ..." alt="" coords="33,86,178,111"/>
+<area shape="rect" id="node5" href="$zobrist__calculator__for__concepts_8hpp.html" title=" " alt="" coords="202,79,390,119"/>
+<area shape="rect" id="node6" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="345,167,487,207"/>
 <area shape="rect" id="node3" href="$minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="5,167,205,207"/>
-<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="229,174,416,199"/>
-<area shape="rect" id="node7" href="$builders_8hpp.html" title=" " alt="" coords="502,255,655,280"/>
+<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="227,328,413,353"/>
+<area shape="rect" id="node7" href="$builders_8hpp.html" title=" " alt="" coords="383,255,537,280"/>
 </map>

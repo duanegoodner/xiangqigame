@@ -154,76 +154,98 @@ $(document).ready(function(){initNavTree('bindings_8cpp.html',''); initResizable
 <code>#include &lt;pybind11/pybind11.h&gt;</code><br />
 <code>#include &lt;pybind11/stl.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="builders_8hpp_source.html">builders.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="concept__board__state__coordinator_8hpp_source.html">concept_board_state_coordinator.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="concept__piece__value__provider_8hpp_source.html">concept_piece_value_provider.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="concept__space__info__provider_8hpp_source.html">concept_space_info_provider.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="game__board_8hpp_source.html">game_board.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="game__board__for__concepts_8hpp_source.html">game_board_for_concepts.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="integer__types_8hpp_source.html">integer_types.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="move__evaluators_8hpp_source.html">move_evaluators.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="move__evaluators__for__concepts_8hpp_source.html">move_evaluators_for_concepts.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="piece__points__bpo_8hpp_source.html">piece_points_bpo.hpp</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="piece__position__points_8hpp_source.html">piece_position_points.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="piece__position__points__for__concepts_8hpp_source.html">piece_position_points_for_concepts.hpp</a>&gt;</code><br />
 <code>#include &lt;random&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;<a class="el" href="zobrist_8hpp_source.html">zobrist.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="zobrist__calculator__for__concepts_8hpp_source.html">zobrist_calculator_for_concepts.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for bindings.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="bindings_8cpp__incl.png" border="0" usemap="#asrc_2bindings_2bindings_8cpp" alt=""/></div>
 <map name="asrc_2bindings_2bindings_8cpp" id="asrc_2bindings_2bindings_8cpp">
-<area shape="rect" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="673,5,860,31"/>
-<area shape="rect" title=" " alt="" coords="179,79,322,104"/>
-<area shape="rect" title=" " alt="" coords="346,79,504,104"/>
-<area shape="rect" title=" " alt="" coords="529,79,644,104"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="1580,577,1755,603"/>
-<area shape="rect" title=" " alt="" coords="3366,724,3425,749"/>
-<area shape="rect" title=" " alt="" coords="512,651,584,676"/>
-<area shape="rect" href="game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="878,79,1009,104"/>
-<area shape="rect" href="move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="1798,152,1961,177"/>
-<area shape="rect" href="piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="1463,79,1654,104"/>
-<area shape="rect" href="zobrist_8hpp.html" title="Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker and supporting ..." alt="" coords="676,409,771,434"/>
-<area shape="rect" title=" " alt="" coords="1225,651,1281,676"/>
-<area shape="rect" title=" " alt="" coords="1633,651,1702,676"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="2440,651,2570,676"/>
-<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="2961,651,3100,676"/>
-<area shape="rect" title=" " alt="" coords="1059,651,1122,676"/>
-<area shape="rect" title=" " alt="" coords="2474,724,2536,749"/>
-<area shape="rect" title=" " alt="" coords="2811,724,2935,749"/>
-<area shape="rect" title=" " alt="" coords="2997,724,3064,749"/>
-<area shape="rect" title=" " alt="" coords="947,233,1034,258"/>
-<area shape="rect" href="move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="1160,233,1317,258"/>
-<area shape="rect" title=" " alt="" coords="1099,321,1146,346"/>
-<area shape="rect" href="move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="1222,321,1431,346"/>
-<area shape="rect" href="piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="1393,409,1529,434"/>
-<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="1858,497,2032,522"/>
-<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="1828,577,1963,603"/>
-<area shape="rect" title=" " alt="" coords="2006,651,2092,676"/>
-<area shape="rect" title=" " alt="" coords="1892,651,1982,676"/>
-<area shape="rect" href="concept__board__state__coordinator_8hpp.html" title=" " alt="" coords="2076,225,2233,265"/>
-<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="2191,321,2390,346"/>
-<area shape="rect" href="concept__piece__value__provider_8hpp.html" title=" " alt="" coords="2692,489,2851,529"/>
-<area shape="rect" href="concept__space__info__provider_8hpp.html" title=" " alt="" coords="2275,401,2426,441"/>
-<area shape="rect" title=" " alt="" coords="906,497,973,522"/>
-<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateCoordinator." alt="" coords="2257,225,2441,265"/>
-<area shape="rect" title=" " alt="" coords="1942,233,2001,258"/>
-<area shape="rect" href="move__evaluator__interface_8hpp.html" title="Definition of MoveEvaluator interface." alt="" coords="1896,321,2117,346"/>
-<area shape="rect" href="piece__value__provider__interface_8hpp.html" title="Definition of PieceValueProvider CRTP interface." alt="" coords="1558,313,1719,353"/>
-<area shape="rect" href="space__info__provider__interface_8hpp.html" title="Definition of SpaceInfoProvider CRTP interface." alt="" coords="2159,489,2312,529"/>
-<area shape="rect" title=" " alt="" coords="2388,577,2468,603"/>
-<area shape="rect" title=" " alt="" coords="2540,497,2617,522"/>
-<area shape="rect" title=" " alt="" coords="1149,497,1216,522"/>
-<area shape="rect" title=" " alt="" coords="2149,409,2200,434"/>
-<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="3045,409,3208,434"/>
-<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="3641,577,3828,603"/>
-<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="3372,497,3566,522"/>
-<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="3028,497,3246,522"/>
-<area shape="rect" title=" " alt="" coords="2927,497,3003,522"/>
-<area shape="rect" title=" " alt="" coords="3442,577,3515,603"/>
-<area shape="rect" title=" " alt="" coords="3270,577,3417,603"/>
-<area shape="rect" href="key__generator_8hpp.html" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="211,497,354,522"/>
-<area shape="rect" title=" " alt="" coords="480,497,544,522"/>
-<area shape="rect" title=" " alt="" coords="568,497,642,522"/>
-<area shape="rect" title=" " alt="" coords="666,497,781,522"/>
-<area shape="rect" title=" " alt="" coords="122,497,186,522"/>
-<area shape="rect" title=" " alt="" coords="353,577,412,603"/>
-<area shape="rect" title=" " alt="" coords="436,577,510,603"/>
-<area shape="rect" title=" " alt="" coords="33,577,113,603"/>
-<area shape="rect" title=" " alt="" coords="137,577,212,603"/>
-<area shape="rect" title=" " alt="" coords="236,577,328,603"/>
+<area shape="rect" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="3371,5,3558,31"/>
+<area shape="rect" title=" " alt="" coords="5,79,148,104"/>
+<area shape="rect" title=" " alt="" coords="172,79,331,104"/>
+<area shape="rect" title=" " alt="" coords="355,79,470,104"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="4539,577,4713,603"/>
+<area shape="rect" title=" " alt="" coords="5023,724,5082,749"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="6006,651,6145,676"/>
+<area shape="rect" title=" " alt="" coords="662,651,734,676"/>
+<area shape="rect" href="builders_8hpp.html" title=" " alt="" coords="2885,79,2988,104"/>
+<area shape="rect" href="concept__space__info__provider_8hpp.html" title=" " alt="" coords="3772,416,3923,456"/>
+<area shape="rect" href="game__board__for__concepts_8hpp.html" title=" " alt="" coords="3101,159,3322,185"/>
+<area shape="rect" href="move__evaluators__for__concepts_8hpp.html" title=" " alt="" coords="3811,152,3971,192"/>
+<area shape="rect" href="concept__board__state__coordinator_8hpp.html" title=" " alt="" coords="4595,240,4753,280"/>
+<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="5363,423,5526,449"/>
+<area shape="rect" href="concept__piece__value__provider_8hpp.html" title=" " alt="" coords="5129,416,5288,456"/>
+<area shape="rect" href="piece__position__points__for__concepts_8hpp.html" title=" " alt="" coords="3638,328,3801,368"/>
+<area shape="rect" href="zobrist__for__concepts_8hpp.html" title=" " alt="" coords="1666,247,1850,273"/>
+<area shape="rect" href="zobrist__calculator__for__concepts_8hpp.html" title=" " alt="" coords="660,328,800,368"/>
+<area shape="rect" href="game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="4042,79,4173,104"/>
+<area shape="rect" href="move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="4219,159,4382,185"/>
+<area shape="rect" href="piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="5017,79,5208,104"/>
+<area shape="rect" href="zobrist_8hpp.html" title="Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker and supporting ..." alt="" coords="1063,247,1157,273"/>
+<area shape="rect" title=" " alt="" coords="1873,651,1929,676"/>
+<area shape="rect" title=" " alt="" coords="4715,651,4785,676"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="4561,651,4691,676"/>
+<area shape="rect" title=" " alt="" coords="2265,651,2328,676"/>
+<area shape="rect" title=" " alt="" coords="4595,724,4657,749"/>
+<area shape="rect" title=" " alt="" coords="5827,724,5951,749"/>
+<area shape="rect" title=" " alt="" coords="6042,724,6109,749"/>
+<area shape="rect" href="concept__board__state__calculator__registry_8hpp.html" title=" " alt="" coords="2982,328,3158,368"/>
+<area shape="rect" title=" " alt="" coords="2697,504,2774,529"/>
+<area shape="rect" title=" " alt="" coords="3329,423,3416,449"/>
+<area shape="rect" href="concept__composite__concepts_8hpp.html" title=" " alt="" coords="2780,247,3021,273"/>
+<area shape="rect" href="concept__single__board__state__provider_8hpp.html" title=" " alt="" coords="2097,416,2259,456"/>
+<area shape="rect" href="concept__board__state__calculator_8hpp.html" title=" " alt="" coords="2950,416,3107,456"/>
+<area shape="rect" title=" " alt="" coords="3105,504,3185,529"/>
+<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="3697,504,3872,529"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="3688,577,3823,603"/>
+<area shape="rect" title=" " alt="" coords="3881,651,3966,676"/>
+<area shape="rect" title=" " alt="" coords="3767,651,3856,676"/>
+<area shape="rect" title=" " alt="" coords="1196,504,1288,529"/>
+<area shape="rect" title=" " alt="" coords="4201,423,4251,449"/>
+<area shape="rect" href="move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="4363,247,4521,273"/>
+<area shape="rect" title=" " alt="" coords="4180,335,4227,361"/>
+<area shape="rect" href="move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="4353,335,4563,361"/>
+<area shape="rect" href="piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="4275,423,4411,449"/>
+<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="4789,335,4988,361"/>
+<area shape="rect" title=" " alt="" coords="2435,335,2502,361"/>
+<area shape="rect" href="board__state__summarizer__interface_8hpp.html" title="Definition of BoardStateCoordinator." alt="" coords="4929,240,5113,280"/>
+<area shape="rect" title=" " alt="" coords="3705,247,3763,273"/>
+<area shape="rect" href="move__evaluator__interface_8hpp.html" title="Definition of MoveEvaluator interface." alt="" coords="3838,247,4059,273"/>
+<area shape="rect" href="piece__value__provider__interface_8hpp.html" title="Definition of PieceValueProvider CRTP interface." alt="" coords="5137,240,5299,280"/>
+<area shape="rect" href="space__info__provider__interface_8hpp.html" title="Definition of SpaceInfoProvider CRTP interface." alt="" coords="4084,240,4237,280"/>
+<area shape="rect" title=" " alt="" coords="1694,423,1761,449"/>
+<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="5406,577,5593,603"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="5347,504,5542,529"/>
+<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="5718,504,5937,529"/>
+<area shape="rect" title=" " alt="" coords="5247,504,5323,529"/>
+<area shape="rect" title=" " alt="" coords="5087,577,5160,603"/>
+<area shape="rect" title=" " alt="" coords="5185,577,5331,603"/>
+<area shape="rect" href="concept__multi__board__state__provider_8hpp.html" title=" " alt="" coords="1948,328,2107,368"/>
+<area shape="rect" href="key__generator_8hpp.html" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="817,423,960,449"/>
+<area shape="rect" title=" " alt="" coords="1166,335,1230,361"/>
+<area shape="rect" title=" " alt="" coords="1254,335,1329,361"/>
+<area shape="rect" title=" " alt="" coords="1353,335,1467,361"/>
+<area shape="rect" title=" " alt="" coords="1078,335,1142,361"/>
+<area shape="rect" title=" " alt="" coords="859,504,918,529"/>
+<area shape="rect" title=" " alt="" coords="942,504,1017,529"/>
+<area shape="rect" title=" " alt="" coords="1041,504,1121,529"/>
+<area shape="rect" title=" " alt="" coords="761,504,835,529"/>
 </map>
 </div>
 </div>
@@ -234,6 +256,12 @@ Functions</h2></td></tr>
 <tr class="memitem:a8e6a69d68b7adcf061f65c4d6d0a0410"><td class="memTemplParams" colspan="2">template&lt;typename KeyType , size_t NumConfKeys&gt; </td></tr>
 <tr class="memitem:a8e6a69d68b7adcf061f65c4d6d0a0410"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="bindings_8cpp.html#a8e6a69d68b7adcf061f65c4d6d0a0410">bind_minimax_move_evaluator</a> (py::module_ &amp;m, const std::string &amp;class_name)</td></tr>
 <tr class="separator:a8e6a69d68b7adcf061f65c4d6d0a0410"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a303041669f207718396a7624436a6235"><td class="memTemplParams" colspan="2">template&lt;typename KeyType , size_t NumConfKeys&gt; </td></tr>
+<tr class="memitem:a303041669f207718396a7624436a6235"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="bindings_8cpp.html#a303041669f207718396a7624436a6235">bind_minimax_move_evaluator_for_concepts</a> (py::module_ &amp;m, const std::string &amp;class_name)</td></tr>
+<tr class="separator:a303041669f207718396a7624436a6235"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bcebeb5d6183c77ce00269862e71da3"><td class="memTemplParams" colspan="2">template&lt;typename KeyType , size_t NumConfKeys&gt; </td></tr>
+<tr class="memitem:a6bcebeb5d6183c77ce00269862e71da3"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="bindings_8cpp.html#a6bcebeb5d6183c77ce00269862e71da3">bind_minimax_move_evaluator_factory</a> (py::module_ &amp;m, const std::string &amp;class_name)</td></tr>
+<tr class="separator:a6bcebeb5d6183c77ce00269862e71da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab827a46f488a3e357267cb2b789d55c5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bindings_8cpp.html#ab827a46f488a3e357267cb2b789d55c5">PYBIND11_MODULE</a> (xiangqi_bindings, m)</td></tr>
 <tr class="separator:ab827a46f488a3e357267cb2b789d55c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -270,7 +298,71 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bindings_8cpp_source.html#l00024">24</a> of file <a class="el" href="bindings_8cpp_source.html">bindings.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bindings_8cpp_source.html#l00035">35</a> of file <a class="el" href="bindings_8cpp_source.html">bindings.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6bcebeb5d6183c77ce00269862e71da3" name="a6bcebeb5d6183c77ce00269862e71da3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bcebeb5d6183c77ce00269862e71da3">&#9670;&#160;</a></span>bind_minimax_move_evaluator_factory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void bind_minimax_move_evaluator_factory </td>
+          <td>(</td>
+          <td class="paramtype">py::module_ &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>class_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="bindings_8cpp_source.html#l00173">173</a> of file <a class="el" href="bindings_8cpp_source.html">bindings.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a303041669f207718396a7624436a6235" name="a303041669f207718396a7624436a6235"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a303041669f207718396a7624436a6235">&#9670;&#160;</a></span>bind_minimax_move_evaluator_for_concepts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void bind_minimax_move_evaluator_for_concepts </td>
+          <td>(</td>
+          <td class="paramtype">py::module_ &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>class_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="bindings_8cpp_source.html#l00103">103</a> of file <a class="el" href="bindings_8cpp_source.html">bindings.cpp</a>.</p>
 
 </div>
 </div>
@@ -300,7 +392,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="bindings_8cpp_source.html#l00087">87</a> of file <a class="el" href="bindings_8cpp_source.html">bindings.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="bindings_8cpp_source.html#l00192">192</a> of file <a class="el" href="bindings_8cpp_source.html">bindings.cpp</a>.</p>
 
 </div>
 </div>
@@ -310,7 +402,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ea91a2a72b7cbbf988d2bd2cd1d23e49.html">bindings</a></li><li class="navelem"><a class="el" href="bindings_8cpp.html">bindings.cpp</a></li>
-    <li class="footer">Generated on Mon Dec 9 2024 14:32:39 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Tue Dec 10 2024 16:55:27 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

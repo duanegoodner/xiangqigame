@@ -1,5 +1,5 @@
-<map id="moveselection::MinimaxMoveEvaluatorForConcept&lt; H, G, P &gt;" name="moveselection::MinimaxMoveEvaluatorForConcept&lt; H, G, P &gt;">
-<area shape="rect" id="node1" title="Complies with MoveEvaluatorConcept, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="481,344,756,861"/>
+<map id="moveselection::MinimaxMoveEvaluatorForConcepts&lt; H, G, P &gt;" name="moveselection::MinimaxMoveEvaluatorForConcepts&lt; H, G, P &gt;">
+<area shape="rect" id="node1" title="Complies with MoveEvaluatorConcept, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="477,344,760,861"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,167,96,245"/>
 <area shape="rect" id="node3" title=" " alt="" coords="150,167,279,245"/>
 <area shape="rect" id="node4" title=" " alt="" coords="335,167,465,245"/>

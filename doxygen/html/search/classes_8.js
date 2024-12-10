@@ -3,7 +3,7 @@ var searchData=
   ['minimaxcalcresult_0',['MinimaxCalcResult',['../classmoveselection_1_1MinimaxCalcResult.html',1,'moveselection']]],
   ['minimaxmoveevaluator_1',['MinimaxMoveEvaluator',['../classmoveselection_1_1MinimaxMoveEvaluator.html',1,'moveselection']]],
   ['minimaxmoveevaluatorfactory_2',['MinimaxMoveEvaluatorFactory',['../classmoveselection_1_1MinimaxMoveEvaluatorFactory.html',1,'moveselection']]],
-  ['minimaxmoveevaluatorforconcept_3',['MinimaxMoveEvaluatorForConcept',['../classmoveselection_1_1MinimaxMoveEvaluatorForConcept.html',1,'moveselection']]],
+  ['minimaxmoveevaluatorforconcepts_3',['MinimaxMoveEvaluatorForConcepts',['../classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html',1,'moveselection']]],
   ['minimaxresulttypepy_4',['MinimaxResultTypePy',['../classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html',1,'xiangqipy::core_dataclass_mirrors']]],
   ['minimaxtemplatespecs_5',['MinimaxTemplateSpecs',['../structmoveselection_1_1MinimaxTemplateSpecs.html',1,'moveselection']]],
   ['move_6',['Move',['../structgameboard_1_1Move.html',1,'gameboard::Move'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html',1,'xiangqipy.core_dataclass_mirrors.Move']]],

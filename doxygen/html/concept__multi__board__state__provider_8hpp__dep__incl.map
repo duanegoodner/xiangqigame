@@ -1,5 +1,6 @@
 <map id="include/concept_multi_board_state_provider.hpp" name="include/concept_multi_board_state_provider.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,200,45"/>
-<area shape="rect" id="node2" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="31,93,174,133"/>
-<area shape="rect" id="node3" href="$builders_8hpp.html" title=" " alt="" coords="26,181,179,207"/>
+<area shape="rect" id="node1" title=" " alt="" coords="42,5,237,45"/>
+<area shape="rect" id="node2" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="68,93,211,133"/>
+<area shape="rect" id="node3" href="$builders_8hpp.html" title=" " alt="" coords="5,181,159,207"/>
+<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="46,255,233,280"/>
 </map>

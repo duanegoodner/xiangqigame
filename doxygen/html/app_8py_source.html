@@ -183,33 +183,34 @@ $(document).ready(function(){initNavTree('app_8py_source.html',''); initResizabl
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="stringliteral">    xiangqi_command = run_kwargs_interpreter.interpret_command()</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="stringliteral"></span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="stringliteral">    game_board = bindings.GameBoard()</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="stringliteral">    players = <a class="code hl_class" href="classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html">RedAndBlackPlayersBuilder</a>(</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="stringliteral">        xiangqi_command=xiangqi_command, game_board=game_board</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="stringliteral">    ).build()</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="stringliteral">    my_game = <a class="code hl_class" href="classxiangqipy_1_1game_1_1Game.html">Game</a>(players=players, game_board=game_board)</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="stringliteral">    game_summary = my_game.play()</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="stringliteral"></span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="stringliteral">    </span><span class="comment"># Optionally saves GameSummary and plots under /data/&lt;game-ID&gt;</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> xiangqi_command.save_summary:</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        output_generator = <a class="code hl_class" href="classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html">GameOutputGenerator</a>(</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            game_summary=game_summary,</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            output_dir_suffix=xiangqi_command.output_dir_suffix,</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            custom_output_root=custom_output_root,</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="comment"># game_collection_id=game_collection_id,</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        )</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        output_generator.generate_output()</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">return</span> game_summary</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="stringliteral">    </span><span class="comment"># game_board_new = bindings.GameBoardFactory().create()</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    players = <a class="code hl_class" href="classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html">RedAndBlackPlayersBuilder</a>(</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        xiangqi_command=xiangqi_command, game_board=game_board</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    ).build()</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    my_game = <a class="code hl_class" href="classxiangqipy_1_1game_1_1Game.html">Game</a>(players=players, game_board=game_board)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    game_summary = my_game.play()</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="comment"># Optionally saves GameSummary and plots under /data/&lt;game-ID&gt;</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">if</span> xiangqi_command.save_summary:</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        output_generator = <a class="code hl_class" href="classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html">GameOutputGenerator</a>(</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            game_summary=game_summary,</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            output_dir_suffix=xiangqi_command.output_dir_suffix,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            custom_output_root=custom_output_root,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="comment"># game_collection_id=game_collection_id,</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        )</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        output_generator.generate_output()</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> game_summary</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_function" href="namespacexiangqipy_1_1app.html#ac09777385f4e43af5903c4c664c70ae4">run</a>()</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keywordflow">if</span> __name__ == <span class="stringliteral">&quot;__main__&quot;</span>:</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_function" href="namespacexiangqipy_1_1app.html#ac09777385f4e43af5903c4c664c70ae4">run</a>()</div>
 <div class="ttc" id="aclassxiangqipy_1_1command__input_1_1RunKwargsInterpreter_html"><div class="ttname"><a href="classxiangqipy_1_1command__input_1_1RunKwargsInterpreter.html">xiangqipy.command_input.RunKwargsInterpreter</a></div><div class="ttdoc">Converts dictionary output by XiangqiGameCommandLine into a XiangqiGameCommand.</div><div class="ttdef"><b>Definition:</b> <a href="command__input_8py_source.html#l00127">command_input.py:127</a></div></div>
 <div class="ttc" id="aclassxiangqipy_1_1command__input_1_1XiangqiGameCommandLine_html"><div class="ttname"><a href="classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine.html">xiangqipy.command_input.XiangqiGameCommandLine</a></div><div class="ttdoc">Collects info from command line args out outputs as a dictionary.</div><div class="ttdef"><b>Definition:</b> <a href="command__input_8py_source.html#l00163">command_input.py:163</a></div></div>
 <div class="ttc" id="aclassxiangqipy_1_1game_1_1Game_html"><div class="ttname"><a href="classxiangqipy_1_1game_1_1Game.html">xiangqipy.game.Game</a></div><div class="ttdoc">Runs a game between two Players.</div><div class="ttdef"><b>Definition:</b> <a href="game_8py_source.html#l00018">game.py:18</a></div></div>
 <div class="ttc" id="aclassxiangqipy_1_1game__output__generator_1_1GameOutputGenerator_html"><div class="ttname"><a href="classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html">xiangqipy.game_output_generator.GameOutputGenerator</a></div><div class="ttdoc">Outputs GameSummary to .json file, and saves plots to a .png file.</div><div class="ttdef"><b>Definition:</b> <a href="game__output__generator_8py_source.html#l00012">game_output_generator.py:12</a></div></div>
-<div class="ttc" id="aclassxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder_html"><div class="ttname"><a href="classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html">xiangqipy.player_builder.RedAndBlackPlayersBuilder</a></div><div class="ttdoc">Builds two Player objects for a GameBoard based on XiangqiGameCommand.</div><div class="ttdef"><b>Definition:</b> <a href="player__builder_8py_source.html#l00146">player_builder.py:146</a></div></div>
+<div class="ttc" id="aclassxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder_html"><div class="ttname"><a href="classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html">xiangqipy.player_builder.RedAndBlackPlayersBuilder</a></div><div class="ttdoc">Builds two Player objects for a GameBoard based on XiangqiGameCommand.</div><div class="ttdef"><b>Definition:</b> <a href="player__builder_8py_source.html#l00153">player_builder.py:153</a></div></div>
 <div class="ttc" id="anamespacexiangqipy_1_1app_html_ac09777385f4e43af5903c4c664c70ae4"><div class="ttname"><a href="namespacexiangqipy_1_1app.html#ac09777385f4e43af5903c4c664c70ae4">xiangqipy.app.run</a></div><div class="ttdeci">GameSummary run(Path custom_output_root=None, **Dict kwargs)</div><div class="ttdoc">Collects command line args, instantiates everything needed for a Game, runs the Game,...</div><div class="ttdef"><b>Definition:</b> <a href="app_8py_source.html#l00019">app.py:19</a></div></div>
 <div class="ttc" id="anamespacexiangqipy_1_1command__input_html"><div class="ttname"><a href="namespacexiangqipy_1_1command__input.html">xiangqipy.command_input</a></div><div class="ttdoc">Contains classes for collecting command line input, and converting to a form that will be convenient ...</div><div class="ttdef"><b>Definition:</b> <a href="command__input_8py_source.html#l00001">command_input.py:1</a></div></div>
 <div class="ttc" id="anamespacexiangqipy_1_1game__output__generator_html"><div class="ttname"><a href="namespacexiangqipy_1_1game__output__generator.html">xiangqipy.game_output_generator</a></div><div class="ttdoc">Contains the GameOutputGenerator class.</div><div class="ttdef"><b>Definition:</b> <a href="game__output__generator_8py_source.html#l00001">game_output_generator.py:1</a></div></div>
@@ -223,7 +224,7 @@ $(document).ready(function(){initNavTree('app_8py_source.html',''); initResizabl
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_46e67b79a66d4e1bea97ac4ccddce80e.html">xiangqipy</a></li><li class="navelem"><a class="el" href="app_8py.html">app.py</a></li>
-    <li class="footer">Generated on Mon Dec 9 2024 14:32:39 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Tue Dec 10 2024 16:55:27 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

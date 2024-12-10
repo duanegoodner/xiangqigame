@@ -1,5 +1,7 @@
 var NAVTREEINDEX8 =
 {
+"functions_vars_n.html":[10,3,2,14],
+"functions_vars_o.html":[10,3,2,15],
 "functions_vars_p.html":[10,3,2,16],
 "functions_vars_r.html":[10,3,2,17],
 "functions_vars_s.html":[10,3,2,18],
@@ -247,7 +249,5 @@ var NAVTREEINDEX8 =
 "namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a43b285933641d3aac35909a5e69db9b3":[8,0,1,18,4],
 "namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76a9558e5892517799514bb2a7363620328":[8,0,1,18,6],
 "namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aa980f91549dc566f894454d2e2015ef3":[8,0,1,18,7],
-"namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266":[8,0,1,18,5],
-"namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438":[8,0,1,18,1],
-"namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4":[8,0,1,18,2]
+"namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaedcb62a9d463c21c60c39169d0de266":[8,0,1,18,5]
 };

@@ -1,5 +1,7 @@
 var NAVTREEINDEX9 =
 {
+"namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438":[8,0,1,18,1],
+"namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac2eeab7b32eb17ab3345b655f8fc77a4":[8,0,1,18,2],
 "namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76ac9e13349ba9f4cdf999c3ca466f6d597":[8,0,1,18,0],
 "namespacegameboard.html#a9104a44ca09874ba0374bb2db2f63452":[8,0,1,48],
 "namespacegameboard.html#a9638b1bf6a230b70ec0764d02f2041c5":[8,0,1,22],
@@ -247,7 +249,5 @@ var NAVTREEINDEX9 =
 "signals_8py.html#a4159506827e084a156764c676d2f1f49":[11,0,2,2,0,2,1],
 "signals_8py.html#a6dd79c4675b86c739bc85bf00cab55fe":[11,0,2,2,0,2,2],
 "signals_8py.html#a9651cc24a42f6f1f7ca238f1dd1824c6":[11,0,2,2,0,2,0],
-"signals_8py.html#ad952d4648d30a96308a474bf10668889":[11,0,2,2,0,2,4],
-"signals_8py_source.html":[11,0,2,2,0,2],
-"space__info__provider__interface_8hpp.html":[11,0,1,39]
+"signals_8py.html#ad952d4648d30a96308a474bf10668889":[11,0,2,2,0,2,4]
 };
