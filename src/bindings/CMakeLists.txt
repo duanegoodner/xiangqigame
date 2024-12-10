@@ -6,7 +6,7 @@ target_link_libraries(
     xiangqi_bindings PRIVATE
     game_board
     game_board_for_concepts
-    move_evaluators_for_concepts
+    move_evaluator_minimax_for_concepts
     piece_position_points
     piece_position_points_for_concepts
     piece_points_bpo
