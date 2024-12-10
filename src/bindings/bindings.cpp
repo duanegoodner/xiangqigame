@@ -16,7 +16,7 @@
 #include <integer_types.hpp>
 #include <move_evaluator_random_for_concepts.hpp>
 #include <move_evaluators.hpp>
-#include <move_evaluators_for_concepts.hpp>
+#include <move_evaluator_minimax_for_concepts.hpp>
 #include <piece_points_bpo.hpp>
 #include <piece_position_points.hpp>
 #include <piece_position_points_for_concepts.hpp>

@@ -7,7 +7,7 @@
 #include <functional>
 #include <game_board_for_concepts.hpp>
 #include <memory>
-#include <move_evaluators_for_concepts.hpp>
+#include <move_evaluator_minimax_for_concepts.hpp>
 #include <piece_position_points_for_concepts.hpp>
 #include <string>
 #include <zobrist_for_concepts.hpp>
