@@ -331,14 +331,13 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
           &moveselection::RandomMoveEvaluator<GameBoard>::SelectMove,
           "allowed_moves"_a
       );
-  py::class_<moveselection::RandomMoveEvaluatorForConcepts<GameBoardForConcepts>>(
+  py::class_<moveselection::RandomMoveEvaluatorForConcepts>(
       m,
       "RandomMoveEvaluatorForConcepts"
   )
       .def(
           "select_move",
-          &moveselection::RandomMoveEvaluatorForConcepts<
-              GameBoardForConcepts>::SelectMove,
+          &moveselection::RandomMoveEvaluatorForConcepts::SelectMove,
           "allowed_moves"_a
       );
 

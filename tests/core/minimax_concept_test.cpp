@@ -32,21 +32,17 @@ protected:
   MoveEvaluatorFactoryType move_evaluator_factory_;
 
   template <BoardStateCalculatorConcept RC, BoardStateCalculatorConcept BC>
-  std::unique_ptr<
-      moveselection::RandomMoveEvaluatorForConcepts<gameboard::GameBoardForConcepts>>
-  BuildRandomMoveEvaluator(
-      gameboard::PieceColor color
-      // std::shared_ptr<gameboard::GameBoardForConcepts> game_board
+  std::unique_ptr<moveselection::RandomMoveEvaluatorForConcepts>
+  BuildRandomMoveEvaluator(gameboard::PieceColor color
+                           // std::shared_ptr<gameboard::GameBoardForConcepts> game_board
   ) {
-    return moveselection::RandomMoveEvaluatorForConcepts<
-        gameboard::GameBoardForConcepts>::Create(color);
+    return moveselection::RandomMoveEvaluatorForConcepts::Create(color);
   }
 };
 
 TEST_F(RandomEvaluatorConceptTest, CompliesWithMoveEvaluatorConcept) {
   static_assert(
-      MoveEvaluatorConcept<
-          moveselection::RandomMoveEvaluatorForConcepts<gameboard::GameBoardForConcepts>>,
+      MoveEvaluatorConcept<moveselection::RandomMoveEvaluatorForConcepts>,
       "RandomMoveEvaluatorForConcepts must comply with MoveEvaluatorConcept."
   );
 }
