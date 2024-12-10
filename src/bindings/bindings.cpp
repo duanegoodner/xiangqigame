@@ -409,5 +409,17 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       "MinimaxMoveEvaluatorForConcepts128Dual"
   );
 
-  
+  bind_minimax_move_evaluator_factory<uint32_t, 0>(m, "MinimaxMoveEvaluatorFactory32");
+  bind_minimax_move_evaluator_factory<uint64_t, 0>(m, "MinimaxMoveEvaluatorFactory32");
+  bind_minimax_move_evaluator_factory<__uint128_t, 0>(
+      m,
+      "MinimaxMoveEvaluatorFactory32"
+  );
+  bind_minimax_move_evaluator_factory<uint32_t, 1>(m, "MinimaxMoveEvaluatorFactory32");
+  bind_minimax_move_evaluator_factory<uint64_t, 1>(m, "MinimaxMoveEvaluatorFactory32");
+  bind_minimax_move_evaluator_factory<__uint128_t, 1>(
+      m,
+      "MinimaxMoveEvaluatorFactory32"
+  );
+
 }
