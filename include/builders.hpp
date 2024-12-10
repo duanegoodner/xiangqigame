@@ -114,19 +114,6 @@ private:
 
 namespace moveselection {
 
-template <SpaceInfoProviderConcept G>
-class RandomMoveEvaluatorFactory {
-public:
-  using MoveEvaluatorType = moveselection::RandomMoveEvaluatorForConcepts;
-
-  std::unique_ptr<MoveEvaluatorType> Create(
-      std::shared_ptr<G> game_board,
-      gameboard::PieceColor evaluating_player
-  ) {
-    return MoveEvaluatorType::Create(evaluating_player);
-  }
-};
-
 template <
     typename KeyType,
     size_t NumConfKeys,
