@@ -20,6 +20,14 @@ protected:
       gameboard::GameBoardForConcepts::Create();
 
   moveselection::RandomMoveEvaluatorFactory move_evaluator_factory_;
+
+  gameboard::MoveCollection dummy_move_collection_{};
+  gameboard::Move move_a{{0, 0}, {0, 1}};
+  gameboard::Move move_b{{1, 0}, {1, 1}};
+  gameboard::Move move_c{{2, 0}, {2, 1}};
+
+  std::set<gameboard::Move, bool (*)(const gameboard::Move &, const gameboard::Move &)>
+      selected_move_set_{moveComparator};
 };
 
 TEST_F(RandomEvaluatorConceptTest, CompliesWithMoveEvaluatorConcept) {
@@ -29,8 +37,34 @@ TEST_F(RandomEvaluatorConceptTest, CompliesWithMoveEvaluatorConcept) {
   );
 }
 
-TEST_F(RandomEvaluatorConceptTest, BuildRandomMoveEvaluator) {
+TEST_F(RandomEvaluatorConceptTest, BuildFromStaticFactoryMethod) {
+  auto red_evaluator =
+      moveselection::RandomMoveEvaluatorForConcepts::Create(gameboard::PieceColor::kRed);
+}
+
+TEST_F(RandomEvaluatorConceptTest, BuildFromFactoryClass) {
   auto red_evaluator = move_evaluator_factory_.Create(gameboard::PieceColor::kRed);
+}
+
+TEST_F(RandomEvaluatorConceptTest, SelectsMoveIndexWithinAllowedRange) {
+
+  size_t num_selections = 100;
+
+  dummy_move_collection_.Append(move_a);
+  dummy_move_collection_.Append(move_b);
+  dummy_move_collection_.Append(move_c);
+
+  auto red_evaluator =
+      moveselection::RandomMoveEvaluatorForConcepts::Create(gameboard::PieceColor::kRed);
+
+  for (auto idx = 0; idx < num_selections; ++idx) {
+    auto selected_move = red_evaluator->SelectMove(dummy_move_collection_);
+    EXPECT_TRUE(
+        selected_move == move_a || selected_move == move_b || selected_move == move_c
+    );
+    selected_move_set_.insert(selected_move);
+  }
+  EXPECT_TRUE(selected_move_set_.size() == 3);
 }
 
 // Red selects starting move 10 times. If choice is random, we can be
@@ -38,7 +72,6 @@ TEST_F(RandomEvaluatorConceptTest, BuildRandomMoveEvaluator) {
 TEST_F(RandomEvaluatorConceptTest, TestStartingMoveSelection) {
 
   int num_first_move_selections = 10;
-  std::set<Move, bool (*)(const Move &, const Move &)> move_set(moveComparator);
 
   auto red_evaluator = move_evaluator_factory_.Create(gameboard::PieceColor::kRed);
 
@@ -46,7 +79,7 @@ TEST_F(RandomEvaluatorConceptTest, TestStartingMoveSelection) {
 
   for (auto idx = 0; idx < num_first_move_selections; idx++) {
     auto red_selected_move = red_evaluator->SelectMove(allowed_moves);
-    move_set.insert(red_selected_move);
+    selected_move_set_.insert(red_selected_move);
   }
-  EXPECT_TRUE(move_set.size() > 5);
+  EXPECT_TRUE(selected_move_set_.size() > 5);
 }

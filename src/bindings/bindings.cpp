@@ -14,6 +14,7 @@
 #include <game_board.hpp>
 #include <game_board_for_concepts.hpp>
 #include <integer_types.hpp>
+#include <move_evaluator_random_for_concepts.hpp>
 #include <move_evaluators.hpp>
 #include <move_evaluators_for_concepts.hpp>
 #include <piece_points_bpo.hpp>
@@ -341,15 +342,11 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
           "allowed_moves"_a
       );
 
-  py::class_<moveselection::RandomMoveEvaluatorFactory<GameBoardForConcepts>>(
-      m,
-      "RandomMoveEvaluatorFactory"
-  )
+  py::class_<moveselection::RandomMoveEvaluatorFactory>(m, "RandomMoveEvaluatorFactory")
       .def(py::init<>())
       .def(
           "create",
-          &moveselection::RandomMoveEvaluatorFactory<GameBoardForConcepts>::Create,
-          "game_board"_a,
+          &moveselection::RandomMoveEvaluatorFactory::Create,
           "evaluating_player"_a
       );
 
