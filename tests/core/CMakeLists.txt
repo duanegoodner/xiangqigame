@@ -55,7 +55,6 @@ target_link_libraries(
     game_board_for_concepts
     move_calculator
     piece_moves
-    utility_functs
     GTest::gtest_main)
 
 add_executable(move_calc_time move_calc_timer.cpp)
@@ -82,17 +81,14 @@ target_link_libraries(
     piece_moves
     piece_position_points
     game_board
-    utility_functs
     GTest::gtest_main)
 
 add_executable(minimax_concept_test minimax_concept_test.cpp)
 target_link_libraries(
     minimax_concept_test PRIVATE
     move_evaluators_for_concepts
-    piece_moves
     piece_position_points_for_concepts
     game_board_for_concepts
-    utility_functs
     GTest::gtest_main)
 
 add_executable(
@@ -119,9 +115,7 @@ add_executable(
     zobrist_calculator_concept_test.cpp)
 target_link_libraries(
     zobrist_calculator_concept_test PRIVATE
-    nlohmann_json
-    utility_functs
-    game_board
+    game_board_for_concepts
     GTest::gtest_main)
 
 add_executable(
@@ -129,12 +123,8 @@ add_executable(
     zobrist_component_concept_test.cpp)
 target_link_libraries(
     zobrist_component_concept_test PRIVATE
-    nlohmann_json
-    utility_functs
-    game_board
+    game_board_for_concepts
     GTest::gtest_main)
-
-
 
 add_executable(
     zobrist_coordinator_test
@@ -150,12 +140,8 @@ add_executable(
     zobrist_coordinator_concept_test.cpp)
 target_link_libraries(
     zobrist_coordinator_concept_test PRIVATE
-    nlohmann_json
-    utility_functs
-    game_board
+    game_board_for_concepts
     GTest::gtest_main)
-
-
 
 add_executable(
     json_utility_test json_utility_test.cpp

@@ -7,16 +7,11 @@
 #include <array>
 #include <atomic>
 #include <board_data_structs.hpp>
-#include <board_state_summarizer_interface.hpp>
 #include <evaluator_data_structs.hpp>
 #include <functional>
 #include <limits>
 #include <memory>
-#include <move_evaluator_interface.hpp>
-#include <piece_value_provider_interface.hpp>
-#include <space_info_provider_interface.hpp>
 #include <unordered_map>
-#include <utility_functs.hpp>
 
 using namespace gameboard;
 
@@ -563,8 +558,5 @@ private:
     search_summary.set_tr_table_size_final(hash_calculator_->GetTrTableSize());
   }
 };
-
-
-
 
 } // namespace moveselection

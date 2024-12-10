@@ -5,7 +5,6 @@
 #include <move_evaluators_for_concepts.hpp>
 #include <piece_position_points_for_concepts.hpp>
 #include <type_traits>
-#include <utility_functs.hpp>
 #include <zobrist_for_concepts.hpp>
 
 

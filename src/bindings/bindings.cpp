@@ -351,7 +351,6 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       );
 
   py::class_<moveselection::SearchSummary>(m, "SearchSummary")
-      //   .def(py::init<int>()) // Constructor, as needed for initialization
       .def_property_readonly(
           "num_nodes",
           &moveselection::SearchSummary::num_nodes

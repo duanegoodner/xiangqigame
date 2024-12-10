@@ -2,10 +2,9 @@
 #include <concept_board_state_coordinator.hpp>
 #include <concept_single_board_state_provider.hpp>
 #include <concepts>
-#include <game_board.hpp>
+#include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>
-#include <nlohmann/json.hpp>
 #include <string>
 #include <type_traits>
 #include <vector>

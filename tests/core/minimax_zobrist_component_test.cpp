@@ -1,8 +1,8 @@
 #include <game_board.hpp>
 #include <gtest/gtest.h>
+#include <move_data_structs.hpp>
 #include <move_evaluators.hpp>
 #include <piece_position_points.hpp>
-#include <utility_functs.hpp>
 #include <zobrist.hpp>
 
 class RandomEvaluatorTest : public ::testing::Test {
