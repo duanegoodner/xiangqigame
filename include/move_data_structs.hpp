@@ -19,7 +19,7 @@ struct Move {
   gameboard::BoardSpace start;
   gameboard::BoardSpace end;
 
-  bool operator==(const Move other) {
+  bool operator==(const Move &other) const {
     return (start == other.start) && (end == other.end);
   }
 };

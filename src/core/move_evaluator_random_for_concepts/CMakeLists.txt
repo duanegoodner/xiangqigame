@@ -5,5 +5,5 @@ add_library(
 
 target_link_libraries(
     move_evaluator_random_for_concepts PUBLIC
-    utility_functs game_board_for_concepts
+    game_board_for_concepts
     )

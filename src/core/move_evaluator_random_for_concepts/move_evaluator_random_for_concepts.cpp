@@ -3,6 +3,8 @@
 
 namespace moveselection {
 
+// RandomMoveEvaluatorForConcepts methods
+
 RandomMoveEvaluatorForConcepts::RandomMoveEvaluatorForConcepts(
     gameboard::PieceColor evaluating_player
 )
@@ -24,6 +26,8 @@ gameboard::Move RandomMoveEvaluatorForConcepts::SelectMove(
   auto selected_move_index = distr(prng_);
   return allowed_moves.moves[selected_move_index];
 }
+
+// RandomMoveEvaluator factory methods
 
 std::unique_ptr<RandomMoveEvaluatorForConcepts> RandomMoveEvaluatorFactory::Create(
     gameboard::PieceColor evaluating_player
