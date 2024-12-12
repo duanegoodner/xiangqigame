@@ -3,6 +3,7 @@
 #include <builders.hpp>
 #include <concept_multi_board_state_provider.hpp>
 #include <concept_single_board_state_provider.hpp>
+#include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>
 #include <vector>
@@ -37,10 +38,10 @@ class ZobristComponentTestSuite : public ZobristComponentTestSuiteBase {
 public:
   using ZobristCalculatorFactoryType =
       boardstate::ZobristCalculatorFactory<KeyType, gameboard::GameBoardForConcepts>;
-  using ZobristCalculatorType = ZobristCalculatorFactoryType::ZobristCalculatorType;
+  using ZobristCalculatorType = typename ZobristCalculatorFactoryType::ZobristCalculatorType;
   using ZobristComponentFactoryType = boardstate::
       ZobristComponentFactory<KeyType, NumConfKeys, gameboard::GameBoardForConcepts>;
-  using ZobristComponentType = ZobristComponentFactoryType::ZobristComponentType;
+  using ZobristComponentType = typename ZobristComponentFactoryType::ZobristComponentType;
 
   ZobristCalculatorFactoryType zobrist_calculator_factory_;
   ZobristComponentFactoryType zobrist_component_factory_;

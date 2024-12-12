@@ -14,8 +14,9 @@
 #include <game_board.hpp>
 #include <game_board_for_concepts.hpp>
 #include <integer_types.hpp>
+#include <move_evaluator_random_for_concepts.hpp>
 #include <move_evaluators.hpp>
-#include <move_evaluators_for_concepts.hpp>
+#include <move_evaluator_minimax_for_concepts.hpp>
 #include <piece_points_bpo.hpp>
 #include <piece_position_points.hpp>
 #include <piece_position_points_for_concepts.hpp>
@@ -95,99 +96,99 @@ void bind_minimax_move_evaluator(py::module_ &m, const std::string &class_name) 
       );
 }
 
-// template <
-//     BoardStateCoordinatorConcept H,
-//     SpaceInfoProviderConcept G,
-//     PieceValueProviderConcept P>
-template <typename KeyType, size_t NumConfKeys>
-void bind_minimax_move_evaluator_for_concepts(
-    py::module_ &m,
-    const std::string &class_name
-) {
-  using CalculatorType = ZobristCalculatorForConcepts<KeyType>;
-  using ComponentType = ZobristComponentForConcepts<CalculatorType, NumConfKeys>;
-  using CoordinatorType = ZobristCoordinatorForConcepts<ComponentType>;
-  py::class_<moveselection::MinimaxMoveEvaluatorForConcepts<
-      CoordinatorType,
-      GameBoardForConcepts,
-      PiecePositionPointsForConcepts>>(m, class_name.c_str())
-      .def(
-          py::init<
-              PieceColor,
-              DepthType,
-              std::shared_ptr<GameBoardForConcepts>,
-              std::shared_ptr<PiecePositionPointsForConcepts>,
-              std::shared_ptr<CoordinatorType>>(),
-          "evaluating_player"_a,
-          "search_depth"_a,
-          "game_board"_a,
-          "game_position_points"_a,
-          "hash_calculator"_a
-      )
-      .def(
-          "select_move",
-          &moveselection::MinimaxMoveEvaluatorForConcepts<
-              CoordinatorType,
-              GameBoardForConcepts,
-              PiecePositionPointsForConcepts>::SelectMove,
-          "allowed_moves"_a
-      )
-      .def(
-          "search_summaries",
-          &moveselection::MinimaxMoveEvaluatorForConcepts<
-              CoordinatorType,
-              GameBoardForConcepts,
-              PiecePositionPointsForConcepts>::search_summaries
-      )
-      .def(
-          "search_depth",
-          &moveselection::MinimaxMoveEvaluatorForConcepts<
-              CoordinatorType,
-              GameBoardForConcepts,
-              PiecePositionPointsForConcepts>::search_depth
-      )
-      .def(
-          "zobrist_key_size_bits",
-          &moveselection::MinimaxMoveEvaluatorForConcepts<
-              CoordinatorType,
-              GameBoardForConcepts,
-              PiecePositionPointsForConcepts>::KeySizeBits
-      )
-      .def_property_readonly(
-          "zkeys_seed",
-          &moveselection::MinimaxMoveEvaluatorForConcepts<
-              CoordinatorType,
-              GameBoardForConcepts,
-              PiecePositionPointsForConcepts>::zkeys_seed
-      )
-      .def_property_readonly(
-          "board_state_hex_str",
-          &moveselection::MinimaxMoveEvaluatorForConcepts<
-              CoordinatorType,
-              GameBoardForConcepts,
-              PiecePositionPointsForConcepts>::board_state_hex_str
-      );
-}
+// // template <
+// //     BoardStateCoordinatorConcept H,
+// //     SpaceInfoProviderConcept G,
+// //     PieceValueProviderConcept P>
+// template <typename KeyType, size_t NumConfKeys>
+// void bind_minimax_move_evaluator_for_concepts(
+//     py::module_ &m,
+//     const std::string &class_name
+// ) {
+//   using CalculatorType = ZobristCalculatorForConcepts<KeyType>;
+//   using ComponentType = ZobristComponentForConcepts<CalculatorType, NumConfKeys>;
+//   using CoordinatorType = ZobristCoordinatorForConcepts<ComponentType>;
+//   py::class_<moveselection::MinimaxMoveEvaluatorForConcepts<
+//       CoordinatorType,
+//       GameBoardForConcepts,
+//       PiecePositionPointsForConcepts>>(m, class_name.c_str())
+//       .def(
+//           py::init<
+//               PieceColor,
+//               DepthType,
+//               std::shared_ptr<GameBoardForConcepts>,
+//               std::shared_ptr<PiecePositionPointsForConcepts>,
+//               std::shared_ptr<CoordinatorType>>(),
+//           "evaluating_player"_a,
+//           "search_depth"_a,
+//           "game_board"_a,
+//           "game_position_points"_a,
+//           "hash_calculator"_a
+//       )
+//       .def(
+//           "select_move",
+//           &moveselection::MinimaxMoveEvaluatorForConcepts<
+//               CoordinatorType,
+//               GameBoardForConcepts,
+//               PiecePositionPointsForConcepts>::SelectMove,
+//           "allowed_moves"_a
+//       )
+//       .def(
+//           "search_summaries",
+//           &moveselection::MinimaxMoveEvaluatorForConcepts<
+//               CoordinatorType,
+//               GameBoardForConcepts,
+//               PiecePositionPointsForConcepts>::search_summaries
+//       )
+//       .def(
+//           "search_depth",
+//           &moveselection::MinimaxMoveEvaluatorForConcepts<
+//               CoordinatorType,
+//               GameBoardForConcepts,
+//               PiecePositionPointsForConcepts>::search_depth
+//       )
+//       .def(
+//           "zobrist_key_size_bits",
+//           &moveselection::MinimaxMoveEvaluatorForConcepts<
+//               CoordinatorType,
+//               GameBoardForConcepts,
+//               PiecePositionPointsForConcepts>::KeySizeBits
+//       )
+//       .def_property_readonly(
+//           "zkeys_seed",
+//           &moveselection::MinimaxMoveEvaluatorForConcepts<
+//               CoordinatorType,
+//               GameBoardForConcepts,
+//               PiecePositionPointsForConcepts>::zkeys_seed
+//       )
+//       .def_property_readonly(
+//           "board_state_hex_str",
+//           &moveselection::MinimaxMoveEvaluatorForConcepts<
+//               CoordinatorType,
+//               GameBoardForConcepts,
+//               PiecePositionPointsForConcepts>::board_state_hex_str
+//       );
+// }
 
-template <typename KeyType, size_t NumConfKeys>
-void bind_minimax_move_evaluator_factory(py::module_ &m, const std::string &class_name) {
-  py::class_<moveselection::MinimaxMoveEvaluatorFactory<
-      KeyType,
-      NumConfKeys,
-      gameboard::GameBoardForConcepts>>(m, class_name.c_str())
-      .def(py::init<>())
-      .def(
-          "create",
-          &moveselection::MinimaxMoveEvaluatorFactory<
-              KeyType,
-              NumConfKeys,
-              GameBoardForConcepts>::Create,
-          py::arg("game_board"),
-          py::arg("evaluating_player"),
-          py::arg("search_depth"),
-          py::arg("json_file") = kICGABPOPath
-      );
-}
+// template <typename KeyType, size_t NumConfKeys>
+// void bind_minimax_move_evaluator_factory(py::module_ &m, const std::string &class_name) {
+//   py::class_<moveselection::MinimaxMoveEvaluatorFactory<
+//       KeyType,
+//       NumConfKeys,
+//       gameboard::GameBoardForConcepts>>(m, class_name.c_str())
+//       .def(py::init<>())
+//       .def(
+//           "create",
+//           &moveselection::MinimaxMoveEvaluatorFactory<
+//               KeyType,
+//               NumConfKeys,
+//               GameBoardForConcepts>::Create,
+//           py::arg("game_board"),
+//           py::arg("evaluating_player"),
+//           py::arg("search_depth"),
+//           py::arg("json_file") = kICGABPOPath
+//       );
+// }
 
 PYBIND11_MODULE(xiangqi_bindings, m) {
 
@@ -297,30 +298,30 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
       .def_property_readonly("is_draw", &GameBoard::IsDraw)
       .def("GetColor", &GameBoard::GetColor, "space"_a);
 
-  py::class_<GameBoardForConcepts>(m, "GameBoardForConcepts")
-      //   .def(py::init<>())
-      .def("map", &GameBoardForConcepts::map)
-      .def("ExecuteMove", &GameBoardForConcepts::ExecuteMove, "move"_a)
-      .def("UndoMove", &GameBoardForConcepts::UndoMove, "executed_move"_a)
-      .def(
-          "GetAllSpacesOccupiedBy",
-          &GameBoardForConcepts::GetAllSpacesOccupiedBy,
-          "color"_a
-      )
-      .def("CalcFinalMovesOf", &GameBoardForConcepts::CalcFinalMovesOf, "color"_a)
-      .def("IsInCheck", &GameBoardForConcepts::IsInCheck, "color"_a)
-      .def("GetType", &GameBoardForConcepts::GetType, "space"_a)
-      .def_property_readonly("move_log", &GameBoardForConcepts::move_log)
-      .def_property_readonly("is_draw", &GameBoardForConcepts::IsDraw)
-      .def("GetColor", &GameBoardForConcepts::GetColor, "space"_a);
+//   py::class_<GameBoardForConcepts>(m, "GameBoardForConcepts")
+//       //   .def(py::init<>())
+//       .def("map", &GameBoardForConcepts::map)
+//       .def("ExecuteMove", &GameBoardForConcepts::ExecuteMove, "move"_a)
+//       .def("UndoMove", &GameBoardForConcepts::UndoMove, "executed_move"_a)
+//       .def(
+//           "GetAllSpacesOccupiedBy",
+//           &GameBoardForConcepts::GetAllSpacesOccupiedBy,
+//           "color"_a
+//       )
+//       .def("CalcFinalMovesOf", &GameBoardForConcepts::CalcFinalMovesOf, "color"_a)
+//       .def("IsInCheck", &GameBoardForConcepts::IsInCheck, "color"_a)
+//       .def("GetType", &GameBoardForConcepts::GetType, "space"_a)
+//       .def_property_readonly("move_log", &GameBoardForConcepts::move_log)
+//       .def_property_readonly("is_draw", &GameBoardForConcepts::IsDraw)
+//       .def("GetColor", &GameBoardForConcepts::GetColor, "space"_a);
 
-  py::class_<GameBoardFactory>(m, "GameBoardFactory")
-      .def(py::init<>())
-      .def(
-          "create",
-          &GameBoardFactory::Create,
-          py::arg("starting_board") = kStandardInitialBoard
-      );
+//   py::class_<GameBoardFactory>(m, "GameBoardFactory")
+//       .def(py::init<>())
+//       .def(
+//           "create",
+//           &GameBoardFactory::Create,
+//           py::arg("starting_board") = kStandardInitialBoard
+//       );
 
   m.def("opponent_of", &opponent_of);
 
@@ -331,31 +332,25 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
           &moveselection::RandomMoveEvaluator<GameBoard>::SelectMove,
           "allowed_moves"_a
       );
-  py::class_<moveselection::RandomMoveEvaluatorForConcepts<GameBoardForConcepts>>(
-      m,
-      "RandomMoveEvaluatorForConcepts"
-  )
-      .def(
-          "select_move",
-          &moveselection::RandomMoveEvaluatorForConcepts<
-              GameBoardForConcepts>::SelectMove,
-          "allowed_moves"_a
-      );
+//   py::class_<moveselection::RandomMoveEvaluatorForConcepts>(
+//       m,
+//       "RandomMoveEvaluatorForConcepts"
+//   )
+//       .def(
+//           "select_move",
+//           &moveselection::RandomMoveEvaluatorForConcepts::SelectMove,
+//           "allowed_moves"_a
+//       );
 
-  py::class_<moveselection::RandomMoveEvaluatorFactory<GameBoardForConcepts>>(
-      m,
-      "RandomMoveEvaluatorFactory"
-  )
-      .def(py::init<>())
-      .def(
-          "create",
-          &moveselection::RandomMoveEvaluatorFactory<GameBoardForConcepts>::Create,
-          "game_board"_a,
-          "evaluating_player"_a
-      );
+//   py::class_<moveselection::RandomMoveEvaluatorFactory>(m, "RandomMoveEvaluatorFactory")
+//       .def(py::init<>())
+//       .def(
+//           "create",
+//           &moveselection::RandomMoveEvaluatorFactory::Create,
+//           "evaluating_player"_a
+//       );
 
   py::class_<moveselection::SearchSummary>(m, "SearchSummary")
-      //   .def(py::init<int>()) // Constructor, as needed for initialization
       .def_property_readonly(
           "num_nodes",
           &moveselection::SearchSummary::num_nodes
@@ -412,47 +407,47 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
   bind_minimax_move_evaluator<uint64_t, 1>(m, "MinimaxMoveEvaluator64Dual");
   bind_minimax_move_evaluator<__uint128_t, 1>(m, "MinimaxMoveEvaluator128Dual");
 
-  bind_minimax_move_evaluator_for_concepts<uint32_t, 0>(
-      m,
-      "MinimaxMoveEvaluatorForConcepts32"
-  );
-  bind_minimax_move_evaluator_for_concepts<uint64_t, 0>(
-      m,
-      "MinimaxMoveEvaluatorForConcepts64"
-  );
-  bind_minimax_move_evaluator_for_concepts<__uint128_t, 0>(
-      m,
-      "MinimaxMoveEvaluatorForConcepts128"
-  );
-  bind_minimax_move_evaluator_for_concepts<uint32_t, 1>(
-      m,
-      "MinimaxMoveEvaluatorForConcepts32Dual"
-  );
-  bind_minimax_move_evaluator_for_concepts<uint64_t, 1>(
-      m,
-      "MinimaxMoveEvaluatorForConcepts64Dual"
-  );
-  bind_minimax_move_evaluator_for_concepts<__uint128_t, 1>(
-      m,
-      "MinimaxMoveEvaluatorForConcepts128Dual"
-  );
+//   bind_minimax_move_evaluator_for_concepts<uint32_t, 0>(
+//       m,
+//       "MinimaxMoveEvaluatorForConcepts32"
+//   );
+//   bind_minimax_move_evaluator_for_concepts<uint64_t, 0>(
+//       m,
+//       "MinimaxMoveEvaluatorForConcepts64"
+//   );
+//   bind_minimax_move_evaluator_for_concepts<__uint128_t, 0>(
+//       m,
+//       "MinimaxMoveEvaluatorForConcepts128"
+//   );
+//   bind_minimax_move_evaluator_for_concepts<uint32_t, 1>(
+//       m,
+//       "MinimaxMoveEvaluatorForConcepts32Dual"
+//   );
+//   bind_minimax_move_evaluator_for_concepts<uint64_t, 1>(
+//       m,
+//       "MinimaxMoveEvaluatorForConcepts64Dual"
+//   );
+//   bind_minimax_move_evaluator_for_concepts<__uint128_t, 1>(
+//       m,
+//       "MinimaxMoveEvaluatorForConcepts128Dual"
+//   );
 
-  bind_minimax_move_evaluator_factory<uint32_t, 0>(m, "MinimaxMoveEvaluatorFactory32");
-  bind_minimax_move_evaluator_factory<uint64_t, 0>(m, "MinimaxMoveEvaluatorFactory64");
-  bind_minimax_move_evaluator_factory<__uint128_t, 0>(
-      m,
-      "MinimaxMoveEvaluatorFactory128"
-  );
-  bind_minimax_move_evaluator_factory<uint32_t, 1>(
-      m,
-      "MinimaxMoveEvaluatorFactory32Dual"
-  );
-  bind_minimax_move_evaluator_factory<uint64_t, 1>(
-      m,
-      "MinimaxMoveEvaluatorFactory64Dual"
-  );
-  bind_minimax_move_evaluator_factory<__uint128_t, 1>(
-      m,
-      "MinimaxMoveEvaluatorFactory128Dual"
-  );
+//   bind_minimax_move_evaluator_factory<uint32_t, 0>(m, "MinimaxMoveEvaluatorFactory32");
+//   bind_minimax_move_evaluator_factory<uint64_t, 0>(m, "MinimaxMoveEvaluatorFactory64");
+//   bind_minimax_move_evaluator_factory<__uint128_t, 0>(
+//       m,
+//       "MinimaxMoveEvaluatorFactory128"
+//   );
+//   bind_minimax_move_evaluator_factory<uint32_t, 1>(
+//       m,
+//       "MinimaxMoveEvaluatorFactory32Dual"
+//   );
+//   bind_minimax_move_evaluator_factory<uint64_t, 1>(
+//       m,
+//       "MinimaxMoveEvaluatorFactory64Dual"
+//   );
+//   bind_minimax_move_evaluator_factory<__uint128_t, 1>(
+//       m,
+//       "MinimaxMoveEvaluatorFactory128Dual"
+//   );
 }

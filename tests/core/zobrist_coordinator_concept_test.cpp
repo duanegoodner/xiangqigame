@@ -2,10 +2,9 @@
 #include <concept_board_state_coordinator.hpp>
 #include <concept_single_board_state_provider.hpp>
 #include <concepts>
-#include <game_board.hpp>
+#include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>
-#include <nlohmann/json.hpp>
 #include <string>
 #include <type_traits>
 #include <vector>
@@ -34,13 +33,13 @@ class ZobristCoordinatorTestSuite : public ZobristCoordinatorTestSuiteBase {
 
   using CalculatorFactoryType =
       boardstate::ZobristCalculatorFactory<KeyType, gameboard::GameBoardForConcepts>;
-  using CalculatorType = CalculatorFactoryType::ZobristCalculatorType;
+  using CalculatorType = typename CalculatorFactoryType::ZobristCalculatorType;
   using ComponentFactoryType = boardstate::
       ZobristComponentFactory<KeyType, NumConfKeys, gameboard::GameBoardForConcepts>;
-  using ComponentType = ComponentFactoryType::ZobristComponentType;
+  using ComponentType = typename ComponentFactoryType::ZobristComponentType;
   using CoordinatorFactoryType = boardstate::
       ZobristCoordinatorFactory<KeyType, NumConfKeys, gameboard::GameBoardForConcepts>;
-  using CoordinatorType = CoordinatorFactoryType::ZobristCoordinatorType;
+  using CoordinatorType = typename CoordinatorFactoryType::ZobristCoordinatorType;
 
 public:
   void TestSatisfiesBoardStateCoordinatorConcept() {

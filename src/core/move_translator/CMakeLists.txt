@@ -1,0 +1,1 @@
+add_library(move_translator move_translator.cpp)

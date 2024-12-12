@@ -7,16 +7,11 @@
 #include <array>
 #include <atomic>
 #include <board_data_structs.hpp>
-#include <board_state_summarizer_interface.hpp>
 #include <evaluator_data_structs.hpp>
 #include <functional>
 #include <limits>
 #include <memory>
-#include <move_evaluator_interface.hpp>
-#include <piece_value_provider_interface.hpp>
-#include <space_info_provider_interface.hpp>
 #include <unordered_map>
-#include <utility_functs.hpp>
 
 using namespace gameboard;
 
@@ -164,7 +159,7 @@ public:
     // initialize_hash_calculator();
   }
 
-  using KeyType = H::KeyType;
+  using KeyType = typename H::KeyType;
 
   Move SelectMove(MoveCollection &allowed_moves) {
 
@@ -562,38 +557,6 @@ private:
     search_summary.SetSelectedMove(selected_move);
     search_summary.set_tr_table_size_final(hash_calculator_->GetTrTableSize());
   }
-};
-
-//! Complies with MoveEvaluatorConcept. Randomly chooses one of legal moves
-//! available to moveselection::RandomMoveEvaluator.evaluating_player_.
-template <SpaceInfoProviderConcept G>
-class RandomMoveEvaluatorForConcepts {
-  PieceColor evaluating_player_;
-  std::shared_ptr<G> game_board_;
-
-public:
-  static std::unique_ptr<RandomMoveEvaluatorForConcepts<G>> Create(
-      std::shared_ptr<G> game_board,
-      gameboard::PieceColor evaluating_player
-  ) {
-    return std::unique_ptr<RandomMoveEvaluatorForConcepts<G>>(
-        new RandomMoveEvaluatorForConcepts<G>(evaluating_player, game_board)
-    );
-  }
-
-  Move SelectMove(MoveCollection &allowed_moves) {
-    auto selected_move_index =
-        utility_functs::random((size_t)0, allowed_moves.moves.size() - 1);
-    return allowed_moves.moves[selected_move_index];
-  }
-
-private:
-  RandomMoveEvaluatorForConcepts(
-      PieceColor evaluating_player,
-      std::shared_ptr<G> game_board
-  )
-      : evaluating_player_{evaluating_player}
-      , game_board_{game_board} {}
 };
 
 } // namespace moveselection

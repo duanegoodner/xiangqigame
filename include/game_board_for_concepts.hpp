@@ -2,7 +2,6 @@
 
 #include <board_data_structs.hpp>
 #include <concept_board_state_calculator.hpp>
-// #include <concept_board_state_tracker.hpp>
 #include <functional>
 #include <map>
 #include <memory>

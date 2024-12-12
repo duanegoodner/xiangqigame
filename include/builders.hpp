@@ -7,7 +7,7 @@
 #include <functional>
 #include <game_board_for_concepts.hpp>
 #include <memory>
-#include <move_evaluators_for_concepts.hpp>
+#include <move_evaluator_minimax_for_concepts.hpp>
 #include <piece_position_points_for_concepts.hpp>
 #include <string>
 #include <zobrist_for_concepts.hpp>
@@ -114,19 +114,6 @@ private:
 
 namespace moveselection {
 
-template <SpaceInfoProviderConcept G>
-class RandomMoveEvaluatorFactory {
-public:
-  using MoveEvaluatorType = moveselection::RandomMoveEvaluatorForConcepts<G>;
-
-  std::unique_ptr<MoveEvaluatorType> Create(
-      std::shared_ptr<G> game_board,
-      gameboard::PieceColor evaluating_player
-  ) {
-    return MoveEvaluatorType::Create(game_board, evaluating_player);
-  }
-};
-
 template <
     typename KeyType,
     size_t NumConfKeys,
@@ -136,7 +123,7 @@ class MinimaxMoveEvaluatorFactory {
       zobrist_coordinator_factory_;
 
 public:
-  using ZobristCoordinatorType = boardstate::
+  using ZobristCoordinatorType = typename boardstate::
       ZobristCoordinatorFactory<KeyType, NumConfKeys, G>::ZobristCoordinatorType;
 
   using MoveEvaluatorType = moveselection::MinimaxMoveEvaluatorForConcepts<

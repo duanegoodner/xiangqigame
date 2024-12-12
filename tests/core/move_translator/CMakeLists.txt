@@ -1,0 +1,4 @@
+add_executable(move_translator_test move_translator_test.cpp)
+target_link_libraries(move_translator_test PRIVATE GTest::gtest_main move_translator)
+
+# add_executable(move_translator_gist move_translator_gist.cpp)
