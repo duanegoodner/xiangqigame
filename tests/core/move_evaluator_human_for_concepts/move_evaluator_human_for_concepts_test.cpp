@@ -27,21 +27,31 @@ class HumanMoveEvaluatorTest : public ::testing::Test {
 protected:
   moveselection::HumanMoveEvaluatorFactory human_move_evaluator_factory_;
 
+  // will append a move to this, and use as allowed_moves in tests
   gameboard::MoveCollection dummy_allowed_moves_;
 
+  // algebraic string representation of a legal opening move by red horse
   std::string red_horse_move_input_str_{"b1, c3"};
 
+  // these two items will have value assigned in Setup()
+  gameboard::Move red_horse_game_board_move_;
   std::istringstream red_horse_move_input_stream_;
 
   void SetUp() override {
+    // Add our test string to the stream the will be used as input
     red_horse_move_input_stream_.str(red_horse_move_input_str_);
+
+    // Use tools from movetranslation namesapace to convert our test input to a
+    // gameboard::Move
     auto parsed_red_horse_move = movetranslation::Tokenize(red_horse_move_input_str_);
-    
-    auto red_horse_move_tokens =
-        movetranslation::Tokenize(red_horse_move_input_str_);
-    auto red_horse_algebraic_move = movetranslation::AlgebraicMove::Create(red_horse_move_tokens);
-    auto red_horse_game_board_move = red_horse_algebraic_move.ToGameBoardMove();
-    dummy_allowed_moves_.Append(red_horse_game_board_move);
+    auto red_horse_move_tokens = movetranslation::Tokenize(red_horse_move_input_str_);
+    auto red_horse_algebraic_move =
+        movetranslation::AlgebraicMove::Create(red_horse_move_tokens);
+    red_horse_game_board_move_ = red_horse_algebraic_move.ToGameBoardMove();
+
+    // add our gameboard::Move to the MoveCollection that tests will treat as allowed
+    // moves.
+    dummy_allowed_moves_.Append(red_horse_game_board_move_);
   }
 };
 
@@ -70,6 +80,8 @@ TEST_F(HumanMoveEvaluatorTest, TestSelectMoveWithIstringStreamInput) {
   );
 
   auto result = human_move_evaluator_red->SelectMove(dummy_allowed_moves_);
+
+  EXPECT_EQ(result, red_horse_game_board_move_);
 }
 
 int main(int argc, char **argv) {
