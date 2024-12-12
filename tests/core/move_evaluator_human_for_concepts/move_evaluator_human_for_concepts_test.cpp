@@ -26,14 +26,20 @@ TEST_F(InputRetrievalMessagesTest, TestNotifyIllegalMove) {
 class HumanMoveEvaluatorTest : public ::testing::Test {
 protected:
   moveselection::HumanMoveEvaluatorFactory human_move_evaluator_factory_;
+
   gameboard::MoveCollection dummy_allowed_moves_;
 
   std::string red_horse_algebraic_move_{"b1, c3"};
+  std::vector<std::string> red_horse_parsed_move_ =
+      movetranslation::ParseAlgebraicMove(red_horse_algebraic_move_);
+  gameboard::Move red_horse_move_ =
+      movetranslation::ConvertParsedInputToMove(red_horse_parsed_move_);
+
   std::istringstream red_horse_opening_move_input_;
 
   void SetUp() override {
     red_horse_opening_move_input_.str(red_horse_algebraic_move_);
-    auto parsed_red_horse_move = movetranslation::ParseInput(red_horse_algebraic_move_);
+    auto parsed_red_horse_move = movetranslation::ParseAlgebraicMove(red_horse_algebraic_move_);
     auto red_horse_move =
         movetranslation::ConvertParsedInputToMove(parsed_red_horse_move);
     dummy_allowed_moves_.Append(red_horse_move);
@@ -41,18 +47,24 @@ protected:
 };
 
 TEST_F(HumanMoveEvaluatorTest, TestCreateWithStaticFactoryMethod) {
-  auto human_move_evaluator_red = moveselection::HumanMoveEvaluatorForConcepts::Create(
-      gameboard::PieceColor::kRed,
-      std::cin
-  );
+  auto human_move_evaluator_red =
+      moveselection::HumanMoveEvaluatorForConcepts::Create(gameboard::PieceColor::kRed);
 }
 
 TEST_F(HumanMoveEvaluatorTest, TestCreateWithFactoryClass) {
   auto human_move_evaluator_red =
-      human_move_evaluator_factory_.Create(gameboard::PieceColor::kRed, std::cin);
+      human_move_evaluator_factory_.Create(gameboard::PieceColor::kRed);
 }
 
 TEST_F(HumanMoveEvaluatorTest, TestCreateWithIstringStreamInput) {
+  auto human_move_evaluator_red = human_move_evaluator_factory_.Create(
+      gameboard::PieceColor::kRed,
+      red_horse_opening_move_input_
+  );
+}
+
+TEST_F(HumanMoveEvaluatorTest, TestSelectMoveWithIstringStreamInput) {
+
   auto human_move_evaluator_red = human_move_evaluator_factory_.Create(
       gameboard::PieceColor::kRed,
       red_horse_opening_move_input_

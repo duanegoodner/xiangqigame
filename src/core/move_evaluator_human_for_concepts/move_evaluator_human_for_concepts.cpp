@@ -66,7 +66,7 @@ std::vector<std::string> HumanMoveEvaluatorForConcepts::GetSyntacticallyValidInp
   while (valid_input.size() == 0) {
     io_messages_.DisplayInputPrompt();
     auto raw_input = movetranslation::GetInput(input_stream);
-    auto parsed_input = movetranslation::ParseInput(raw_input);
+    auto parsed_input = movetranslation::ParseAlgebraicMove(raw_input);
     if (movetranslation::IsValidAlgebraicPair(parsed_input)) {
       valid_input = parsed_input;
     } else {

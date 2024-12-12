@@ -28,7 +28,7 @@ class HumanMoveEvaluatorForConcepts {
 public:
   static std::unique_ptr<HumanMoveEvaluatorForConcepts> Create(
       gameboard::PieceColor evaluating_player,
-      std::istream &input_stream
+      std::istream &input_stream = std::cin
 
   );
 
@@ -47,7 +47,7 @@ class HumanMoveEvaluatorFactory {
 public:
   std::unique_ptr<HumanMoveEvaluatorForConcepts> Create(
       gameboard::PieceColor evaluating_player,
-      std::istream &input_stream
+      std::istream &input_stream = std::cin
   );
 };
 } // namespace moveselection

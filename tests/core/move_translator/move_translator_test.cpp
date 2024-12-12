@@ -32,13 +32,13 @@ TEST_F(MoveTranslatorTest, TestGetInput) {
   EXPECT_EQ(invalid_input, invalid_input_b_);
 }
 
-TEST_F(MoveTranslatorTest, TestParseInput) {
-  auto valid_parsed_input = movetranslation::ParseInput(valid_input_a_);
+TEST_F(MoveTranslatorTest, TestParseAlgebraicMove) {
+  auto valid_parsed_input = movetranslation::ParseAlgebraicMove(valid_input_a_);
   EXPECT_EQ(valid_parsed_input.size(), 2);
   EXPECT_EQ(valid_parsed_input[0], "b1");
   EXPECT_EQ(valid_parsed_input[1], "c3");
 
-  auto invalid_parsed_input = movetranslation::ParseInput(invalid_input_b_);
+  auto invalid_parsed_input = movetranslation::ParseAlgebraicMove(invalid_input_b_);
   EXPECT_EQ(invalid_parsed_input.size(), 1);
   EXPECT_EQ(invalid_parsed_input[0], "b1c3");
 }
@@ -79,6 +79,14 @@ TEST_F(MoveTranslatorTest, TestConvertParsedInputToMove) {
 TEST_F(MoveTranslatorTest, TestConvertMoveToInputString) {
   auto computed_input_string = movetranslation::ConvertMoveToInputString(move_a_);
   EXPECT_EQ(computed_input_string, valid_input_a_);
+}
+
+TEST_F(MoveTranslatorTest, TestAlgebraicMoveToGameBoardMove) {
+  auto game_board_move = movetranslation::AlgebraicMoveToGameBoardMove(valid_input_a_);
+}
+
+TEST_F(MoveTranslatorTest, BadAlgebraicMoveToGameBoardMove) {
+  auto result = movetranslation::ParseAlgebraicMove("1234");
 }
 
 int main(int argc, char **argv) {
