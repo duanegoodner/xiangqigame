@@ -26,6 +26,8 @@ public:
   //! Randomly selects move from collection of allowed moves.
   gameboard::Move SelectMove(gameboard::MoveCollection &allowed_moves);
 
+  void NotifyIllegalMove();
+
 private:
   //! Constructor is private to force use of static Create method.
   RandomMoveEvaluatorForConcepts(gameboard::PieceColor evaluating_player);

@@ -161,6 +161,10 @@ public:
 
   using KeyType = typename H::KeyType;
 
+  void NotifyIllegalMove() {
+    throw std::runtime_error("MinimaxMoveEvaluator selected an illegal move");
+  }
+
   Move SelectMove(MoveCollection &allowed_moves) {
 
     auto final_selected_move = SelectValidMove(allowed_moves);

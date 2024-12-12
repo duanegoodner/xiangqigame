@@ -27,6 +27,10 @@ gameboard::Move RandomMoveEvaluatorForConcepts::SelectMove(
   return allowed_moves.moves[selected_move_index];
 }
 
+void RandomMoveEvaluatorForConcepts::NotifyIllegalMove() {
+  throw std::runtime_error("RandomMoveEvaluator selected an illegal move");
+}
+
 // RandomMoveEvaluator factory methods
 
 std::unique_ptr<RandomMoveEvaluatorForConcepts> RandomMoveEvaluatorFactory::Create(
