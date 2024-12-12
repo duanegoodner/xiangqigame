@@ -33,8 +33,7 @@ gameboard::Move HumanMoveEvaluatorForConcepts::SelectMove(
   bool legal_move_proposed = false;
 
   while (!legal_move_proposed) {
-    auto parsed_input = GetSyntacticallyValidInput(input_stream_);
-    auto proposed_move = movetranslation::ConvertParsedInputToMove(parsed_input);
+    auto proposed_move = GetSyntacticallyValidMove(input_stream_);
     if (allowed_moves.ContainsMove(proposed_move)) {
       legal_move_proposed = true;
       legal_move = proposed_move;
@@ -58,23 +57,27 @@ std::unique_ptr<HumanMoveEvaluatorForConcepts> HumanMoveEvaluatorFactory::Create
   return HumanMoveEvaluatorForConcepts::Create(evaluating_player, input_stream);
 }
 
-std::vector<std::string> HumanMoveEvaluatorForConcepts::GetSyntacticallyValidInput(
+gameboard::Move HumanMoveEvaluatorForConcepts::GetSyntacticallyValidMove(
     std::istream &input_stream
 ) {
-  std::vector<std::string> valid_input;
+  gameboard::Move result;
 
-  while (valid_input.size() == 0) {
+  bool obtained_syntactically_valid_move = false;
+
+  while (!obtained_syntactically_valid_move) {
     io_messages_.DisplayInputPrompt();
     auto raw_input = movetranslation::GetInput(input_stream);
-    auto parsed_input = movetranslation::ParseAlgebraicMove(raw_input);
-    if (movetranslation::IsValidAlgebraicPair(parsed_input)) {
-      valid_input = parsed_input;
+    auto input_tokens = movetranslation::Tokenize(raw_input);
+    if (movetranslation::IsValidAlgebraicMove(input_tokens)) {
+      obtained_syntactically_valid_move = true;
+      auto algebraic_move = movetranslation::AlgebraicMove::Create(input_tokens);
+      result = algebraic_move.ToGameBoardMove();
     } else {
       io_messages_.NotifyInvalidInput();
     }
   }
 
-  return valid_input;
+  return result;
 }
 
 } // namespace moveselection

@@ -159,7 +159,7 @@ public:
     // initialize_hash_calculator();
   }
 
-  using KeyType = H::KeyType;
+  using KeyType = typename H::KeyType;
 
   Move SelectMove(MoveCollection &allowed_moves) {
 

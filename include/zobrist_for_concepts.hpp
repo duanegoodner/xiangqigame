@@ -69,11 +69,11 @@ public:
   }
 
   // Getters
-  C::KeyType primary_board_state() { return primary_calculator_->board_state(); }
+  typename C::KeyType primary_board_state() { return primary_calculator_->board_state(); }
   std::array<typename C::KeyType, N> confirmation_board_states() {
     return confirmation_board_states_internal();
   }
-  C::KeyType primary_calculator_seed() { return primary_calculator_->seed(); }
+  typename C::KeyType primary_calculator_seed() { return primary_calculator_->seed(); }
   std::array<uint32_t, N> confirmation_calculator_seeds() const {
     return confirmation_calculator_seeds_internal();
   }
@@ -303,7 +303,7 @@ private:
 template <MultiBoardStateProviderConcept M>
 class ZobristCoordinatorForConcepts {
 public:
-  using KeyType = M::KeyType;
+  using KeyType = typename M::KeyType;
   static size_t constexpr NumConfKeys = M::NumConfKeys;
   // using NumConfKeys = M::NumConfKeys;
 

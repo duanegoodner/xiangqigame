@@ -29,7 +29,6 @@ public:
   static std::unique_ptr<HumanMoveEvaluatorForConcepts> Create(
       gameboard::PieceColor evaluating_player,
       std::istream &input_stream = std::cin
-
   );
 
   gameboard::Move SelectMove(gameboard::MoveCollection &allowed_moves);
@@ -40,7 +39,7 @@ private:
       gameboard::PieceColor evaluating_player,
       std::istream &input_stream
   );
-  std::vector<std::string> GetSyntacticallyValidInput(std::istream &input_stream);
+  gameboard::Move GetSyntacticallyValidMove(std::istream &input_stream);
 };
 
 class HumanMoveEvaluatorFactory {

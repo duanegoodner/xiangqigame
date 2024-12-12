@@ -123,7 +123,7 @@ class MinimaxMoveEvaluatorFactory {
       zobrist_coordinator_factory_;
 
 public:
-  using ZobristCoordinatorType = boardstate::
+  using ZobristCoordinatorType = typename boardstate::
       ZobristCoordinatorFactory<KeyType, NumConfKeys, G>::ZobristCoordinatorType;
 
   using MoveEvaluatorType = moveselection::MinimaxMoveEvaluatorForConcepts<

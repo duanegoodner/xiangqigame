@@ -33,13 +33,13 @@ class ZobristCoordinatorTestSuite : public ZobristCoordinatorTestSuiteBase {
 
   using CalculatorFactoryType =
       boardstate::ZobristCalculatorFactory<KeyType, gameboard::GameBoardForConcepts>;
-  using CalculatorType = CalculatorFactoryType::ZobristCalculatorType;
+  using CalculatorType = typename CalculatorFactoryType::ZobristCalculatorType;
   using ComponentFactoryType = boardstate::
       ZobristComponentFactory<KeyType, NumConfKeys, gameboard::GameBoardForConcepts>;
-  using ComponentType = ComponentFactoryType::ZobristComponentType;
+  using ComponentType = typename ComponentFactoryType::ZobristComponentType;
   using CoordinatorFactoryType = boardstate::
       ZobristCoordinatorFactory<KeyType, NumConfKeys, gameboard::GameBoardForConcepts>;
-  using CoordinatorType = CoordinatorFactoryType::ZobristCoordinatorType;
+  using CoordinatorType = typename CoordinatorFactoryType::ZobristCoordinatorType;
 
 public:
   void TestSatisfiesBoardStateCoordinatorConcept() {

@@ -12,7 +12,7 @@ AlgebraicBoardSpace::AlgebraicBoardSpace(const std::string &value)
   std::string validation_string{"^[a-i](?:10|[1-9])$"};
   std::regex validation_pattern(validation_string);
   if (!std::regex_match(value_, validation_pattern)) {
-    throw std::invalid_argument(
+    throw InvalidAlgebraicSpaceException(
         "String '" + value_ + "' does not match the regex pattern '" +
         validation_string + "'"
     );
@@ -39,20 +39,29 @@ AlgebraicMove::AlgebraicMove(
     , end_{end} {}
 
 const AlgebraicMove AlgebraicMove::Create(
-    std::vector<AlgebraicBoardSpace> algebraic_board_spaces
+    const std::vector<AlgebraicBoardSpace> &algebraic_board_spaces
 ) {
   if (algebraic_board_spaces.size() < 2) {
-    throw InvalidVectorSizeException(
-        "Vector of AlgebraicBoardSpace objects can only be converted to an Algebraic "
-        "Move if it contains exaclyt 2 elements."
-    );
+    throw InvalidVectorSizeException("AlgebraicMove must consist of exactly 2 spaces.");
   }
   return AlgebraicMove{algebraic_board_spaces.at(0), algebraic_board_spaces.at(1)};
+}
+
+const AlgebraicMove AlgebraicMove::Create(const std::vector<std::string> &tokens) {
+  if (tokens.size() != 2) {
+    throw InvalidVectorSizeException("AlgebraicMove must consist of exactly 2 spaces.");
+  }
+
+  return AlgebraicMove{tokens.at(0), tokens.at(1)};
 }
 
 const AlgebraicBoardSpace AlgebraicMove::start() { return start_; }
 
 const AlgebraicBoardSpace AlgebraicMove::end() { return end_; }
+
+const gameboard::Move AlgebraicMove::ToGameBoardMove() {
+  return gameboard::Move{start_.ToGameBoardSpace(), end_.ToGameBoardSpace()};
+}
 
 // Free function implementations
 
@@ -89,27 +98,21 @@ const std::vector<std::string> Tokenize(const std::string &input) {
   return tokens;
 }
 
-const std::vector<AlgebraicBoardSpace> ConvertTokensToAlgebraicBoardSpaces(
-    const std::vector<std::string> &tokens
-) {
-  std::vector<AlgebraicBoardSpace> result;
+bool IsValidAlgebraicMove(const std::vector<std::string> &tokens) {
   for (auto &token : tokens) {
-    result.emplace_back(AlgebraicBoardSpace(token));
+    if (!IsValidAlgebraicBoardSpace(token)) {
+      std::cerr << "Token '" + token + "' is not a valid algebraic board space."
+                << std::endl;
+      return false;
+    }
   }
-  return result;
-}
 
-const std::vector<std::string> ParseAlgebraicMove(const std::string &algebraic_move) {
-  std::vector<std::string> parsed_input;
-
-  std::stringstream stream(algebraic_move);
-  std::string segment;
-
-  while (std::getline(stream, segment, ',')) {
-    auto trimmed_segment = Trim(segment);
-    parsed_input.emplace_back(trimmed_segment);
+  if (tokens.size() != 2) {
+    std::cerr << "AlgebraicMove consists of exactly 2 board spaces, but "
+              << tokens.size() << " values provided" << std::endl;
   }
-  return parsed_input;
+
+  return true;
 }
 
 bool IsValidAlgebraicBoardSpace(const std::string &algebraic_space) {
@@ -117,53 +120,4 @@ bool IsValidAlgebraicBoardSpace(const std::string &algebraic_space) {
   return std::regex_match(algebraic_space, pattern);
 }
 
-bool IsValidAlgebraicPair(const std::vector<std::string> &parsed_input) {
-  // Check if the input has exactly two elements
-  if (parsed_input.size() != 2) {
-    return false;
-  }
-
-  // Check each item in the parsed input against the regex
-  for (const auto &item : parsed_input) {
-    if (!IsValidAlgebraicBoardSpace(item)) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-const gameboard::BoardSpace AlgebraicSpaceToBoardSpace(const std::string &algebraic_space
-) {
-  char algebraic_column = algebraic_space[0];
-  auto file = algebraic_column - 'a';
-  auto algebraic_row = algebraic_space.substr(1);
-  auto rank = 10 - std::stoi(algebraic_row);
-  return gameboard::BoardSpace{rank, file};
-}
-
-const std::string BoardSpaceToAlgebraicSpace(const gameboard::BoardSpace &board_space) {
-  auto algebraic_column = (char)(board_space.file + 'a');
-  auto algebraic_row = std::to_string(10 - board_space.rank);
-  return algebraic_column + algebraic_row;
-}
-
-const gameboard::Move ConvertParsedInputToMove(
-    const std::vector<std::string> &parsed_input
-) {
-  auto move_start = AlgebraicSpaceToBoardSpace(parsed_input.at(0));
-  auto move_end = AlgebraicSpaceToBoardSpace(parsed_input.at(1));
-  return gameboard::Move{move_start, move_end};
-}
-
-const std::string ConvertMoveToInputString(const gameboard::Move &move) {
-  auto algebraic_space_start = BoardSpaceToAlgebraicSpace(move.start);
-  auto algebraic_space_end = BoardSpaceToAlgebraicSpace(move.end);
-  return algebraic_space_start + ", " + algebraic_space_end;
-}
-
-const gameboard::Move AlgebraicMoveToGameBoardMove(const std::string &algebraic_move) {
-  auto parsed_move = ParseAlgebraicMove(algebraic_move);
-  return ConvertParsedInputToMove(parsed_move);
-}
 } // namespace movetranslation

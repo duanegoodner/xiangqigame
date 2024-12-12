@@ -9,6 +9,12 @@
 
 namespace movetranslation {
 
+class InvalidAlgebraicSpaceException : public ::std::invalid_argument {
+public:
+  explicit InvalidAlgebraicSpaceException(const std::string &message)
+      : std::invalid_argument(message) {}
+};
+
 class InvalidVectorSizeException : public std::runtime_error {
 public:
   explicit InvalidVectorSizeException(const std::string &message)
@@ -31,30 +37,20 @@ class AlgebraicMove {
 public:
   AlgebraicMove(const AlgebraicBoardSpace &start, const AlgebraicBoardSpace &end);
   static const AlgebraicMove Create(
-      std::vector<AlgebraicBoardSpace> algebraic_board_spaces
+      const std::vector<AlgebraicBoardSpace> &algebraic_board_spaces
   );
+  static const AlgebraicMove Create(const std::vector<std::string> &tokens);
 
   const AlgebraicBoardSpace start();
   const AlgebraicBoardSpace end();
+  const gameboard::Move ToGameBoardMove();
 };
 
 const std::string GetInput(std::istream &input_stream);
 const std::string Trim(const std::string &str);
 const std::vector<std::string> Tokenize(const std::string &input);
-const std::vector<AlgebraicBoardSpace> ConvertTokensToAlgebraicBoardSpaces(
-    const std::vector<std::string> &tokens
-);
-
-const std::vector<std::string> ParseAlgebraicMove(const std::string &algebraic_move);
 bool IsValidAlgebraicBoardSpace(const std::string &algebraic_space);
-bool IsValidAlgebraicPair(const std::vector<std::string> &parsed_input);
-const gameboard::BoardSpace AlgebraicSpaceToBoardSpace(const std::string &algebraic_space
-);
-const std::string BoardSpaceToAlgebraicSpace(const gameboard::BoardSpace &board_space);
-const gameboard::Move ConvertParsedInputToMove(
-    const std::vector<std::string> &parsed_input
-);
-const std::string ConvertMoveToInputString(const gameboard::Move &move);
-const gameboard::Move AlgebraicMoveToGameBoardMove(const std::string &algebraic_move);
+bool IsValidAlgebraicMove(const std::vector<std::string> &tokens);
+// const std::vector<std::string> ParseAlgebraicMove(const std::string &algebraic_move);
 
 } // namespace movetranslation

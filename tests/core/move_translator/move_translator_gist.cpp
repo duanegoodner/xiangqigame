@@ -1,16 +1,14 @@
-#include <move_translator.hpp>
+#include <vector>
+#include <iostream>
+#include <ranges>
 
 int main() {
+    std::vector<int> vec = {10, 20, 30, 40, 50};
 
-  std::string input{"a1, b9, d5, q22"};
-  auto tokens = movetranslation::Tokenize(input);
-  auto algebraic_board_spaces =
-      movetranslation::ConvertTokensToAlgebraicBoardSpaces(tokens);
+    // Reference to avoid unnecessary copying
+    // for (auto& [index, value] : std::views::enumerate(vec)) {
+    //     std::cout << "Index: " << index << ", Value: " << value << '\n';
+    // }
 
-  std::cout << "The AlgebraicBoardSpace values are:" << std::endl;
-  for (auto &space : algebraic_board_spaces) {
-    std::cout << space.value() << std::endl;
-  }
-
-  return 0;
+    return 0;
 }
