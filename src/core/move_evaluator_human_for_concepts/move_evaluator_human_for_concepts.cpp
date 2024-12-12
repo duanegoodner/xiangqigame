@@ -33,7 +33,7 @@ gameboard::Move HumanMoveEvaluatorForConcepts::SelectMove(
   bool legal_move_proposed = false;
 
   while (!legal_move_proposed) {
-    auto parsed_input = GetSyntacticallyValidInput(std::cin);
+    auto parsed_input = GetSyntacticallyValidInput(input_stream_);
     auto proposed_move = movetranslation::ConvertParsedInputToMove(parsed_input);
     if (allowed_moves.ContainsMove(proposed_move)) {
       legal_move_proposed = true;

@@ -1,6 +1,7 @@
 #include <board_data_structs.hpp>
 #include <gtest/gtest.h>
 #include <move_translator.hpp>
+#include <sstream>
 
 class MoveTranslatorTest : public ::testing::Test {
 protected:
