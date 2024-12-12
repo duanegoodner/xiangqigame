@@ -168,6 +168,10 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1EqualScoreMoves.html">EqualScoreMoves</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds a <a class="el" href="structgameboard_1_1MoveCollection.html" title="A container for multiple gameboard::Move objects.">gameboard::MoveCollection</a> in which all <a class="el" href="structgameboard_1_1Move.html" title="A gameboard::BoardSpace pair (start and end).">gameboard::Move</a> have the same value (as perceived by a <a class="el" href="classMoveEvaluator.html" title="CRTP interface with a method for selecting a gameboard::Move (concrete examples = moveselection::Mini...">MoveEvaluator</a>), and the value of the shared score.  <a href="classmoveselection_1_1EqualScoreMoves.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1HumanMoveEvaluatorFactory.html">HumanMoveEvaluatorFactory</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1HumanMoveEvaluatorForConcepts.html">HumanMoveEvaluatorForConcepts</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxCalcResult.html">MinimaxCalcResult</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data structure that holds a <a class="el" href="classmoveselection_1_1EqualScoreMoves.html" title="Holds a gameboard::MoveCollection in which all gameboard::Move have the same value (as perceived by a...">moveselection::EqualScoreMoves</a> and other search-related info obtained from a call to <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#a0accf376c40fca7eb2d70b9d14660538">moveselection::MinimaxMoveEvaluator.MinimaxRecursive</a>.  <a href="classmoveselection_1_1MinimaxCalcResult.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -244,6 +248,7 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Selecting a move to execute. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Consider giving <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcepts.html" title="Complies with MoveEvaluatorConcept.">RandomMoveEvaluatorForConcepts</a> its own random generator that gets used during each call to SelectMove. </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="aa4c456c3f118a94017483880ff42991b" name="aa4c456c3f118a94017483880ff42991b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa4c456c3f118a94017483880ff42991b">&#9670;&#160;</a></span>ResultDepthCountsData_t</h2>
@@ -317,7 +322,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li>
-    <li class="footer">Generated on Tue Dec 10 2024 16:55:28 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Thu Dec 12 2024 22:20:57 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

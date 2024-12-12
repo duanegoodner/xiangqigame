@@ -15,6 +15,8 @@ var namespacemoveselection =
       [ "ValidateMove", "namespacemoveselection_1_1minimaxutils__forconcepts.html#aa0ebad4f8d615e14dbd053c82507a678", null ]
     ] ],
     [ "EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
+    [ "HumanMoveEvaluatorFactory", "classmoveselection_1_1HumanMoveEvaluatorFactory.html", "classmoveselection_1_1HumanMoveEvaluatorFactory" ],
+    [ "HumanMoveEvaluatorForConcepts", "classmoveselection_1_1HumanMoveEvaluatorForConcepts.html", "classmoveselection_1_1HumanMoveEvaluatorForConcepts" ],
     [ "MinimaxCalcResult", "classmoveselection_1_1MinimaxCalcResult.html", "classmoveselection_1_1MinimaxCalcResult" ],
     [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
     [ "MinimaxMoveEvaluatorFactory", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html", "classmoveselection_1_1MinimaxMoveEvaluatorFactory" ],

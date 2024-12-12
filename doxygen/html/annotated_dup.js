@@ -35,11 +35,16 @@ var annotated_dup =
       [ "MoveCollection", "structgameboard_1_1MoveCollection.html", "structgameboard_1_1MoveCollection" ],
       [ "PieceMoves", "classgameboard_1_1PieceMoves.html", "classgameboard_1_1PieceMoves" ]
     ] ],
+    [ "humanplayerio", "namespacehumanplayerio.html", [
+      [ "InputRetrievalMessages", "classhumanplayerio_1_1InputRetrievalMessages.html", "classhumanplayerio_1_1InputRetrievalMessages" ]
+    ] ],
     [ "jsonio", "namespacejsonio.html", [
       [ "NlohmannJsonUtility", "classjsonio_1_1NlohmannJsonUtility.html", "classjsonio_1_1NlohmannJsonUtility" ]
     ] ],
     [ "moveselection", "namespacemoveselection.html", [
       [ "EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", "classmoveselection_1_1EqualScoreMoves" ],
+      [ "HumanMoveEvaluatorFactory", "classmoveselection_1_1HumanMoveEvaluatorFactory.html", "classmoveselection_1_1HumanMoveEvaluatorFactory" ],
+      [ "HumanMoveEvaluatorForConcepts", "classmoveselection_1_1HumanMoveEvaluatorForConcepts.html", "classmoveselection_1_1HumanMoveEvaluatorForConcepts" ],
       [ "MinimaxCalcResult", "classmoveselection_1_1MinimaxCalcResult.html", "classmoveselection_1_1MinimaxCalcResult" ],
       [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
       [ "MinimaxMoveEvaluatorFactory", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html", "classmoveselection_1_1MinimaxMoveEvaluatorFactory" ],
@@ -55,6 +60,12 @@ var annotated_dup =
       [ "SearchSummaries", "structmoveselection_1_1SearchSummaries.html", "structmoveselection_1_1SearchSummaries" ],
       [ "SearchSummary", "classmoveselection_1_1SearchSummary.html", "classmoveselection_1_1SearchSummary" ],
       [ "TranspositionTableSearchResult", "classmoveselection_1_1TranspositionTableSearchResult.html", "classmoveselection_1_1TranspositionTableSearchResult" ]
+    ] ],
+    [ "movetranslation", "namespacemovetranslation.html", [
+      [ "AlgebraicBoardSpace", "classmovetranslation_1_1AlgebraicBoardSpace.html", "classmovetranslation_1_1AlgebraicBoardSpace" ],
+      [ "AlgebraicMove", "classmovetranslation_1_1AlgebraicMove.html", "classmovetranslation_1_1AlgebraicMove" ],
+      [ "InvalidAlgebraicSpaceException", "classmovetranslation_1_1InvalidAlgebraicSpaceException.html", "classmovetranslation_1_1InvalidAlgebraicSpaceException" ],
+      [ "InvalidVectorSizeException", "classmovetranslation_1_1InvalidVectorSizeException.html", "classmovetranslation_1_1InvalidVectorSizeException" ]
     ] ],
     [ "piecepoints", "namespacepiecepoints.html", [
       [ "BPOPointsEKeys", "classpiecepoints_1_1BPOPointsEKeys.html", "classpiecepoints_1_1BPOPointsEKeys" ],

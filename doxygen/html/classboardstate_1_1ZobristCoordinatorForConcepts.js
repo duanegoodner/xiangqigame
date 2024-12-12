@@ -1,6 +1,6 @@
 var classboardstate_1_1ZobristCoordinatorForConcepts =
 [
-    [ "KeyType", "classboardstate_1_1ZobristCoordinatorForConcepts.html#af0cc8e7b2f30890277011cd0c480d8d4", null ],
+    [ "KeyType", "classboardstate_1_1ZobristCoordinatorForConcepts.html#a961a1b700f6a861c0c34935085eb6e3b", null ],
     [ "ZobristCoordinatorForConcepts", "classboardstate_1_1ZobristCoordinatorForConcepts.html#aac542f27dee667fb7ee1dc2bc92e191f", null ],
     [ "board_state_hex_str", "classboardstate_1_1ZobristCoordinatorForConcepts.html#a44f613ccb011fa7a58ead4168269147c", null ],
     [ "Create", "classboardstate_1_1ZobristCoordinatorForConcepts.html#ad0d1a5750edfe5450e11bdd0947f16ef", null ],

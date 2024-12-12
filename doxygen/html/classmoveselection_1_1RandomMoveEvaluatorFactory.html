@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: moveselection::RandomMoveEvaluatorFactory&lt; G &gt; Class Template Reference</title>
+  <title>Xiangiqgame: moveselection::RandomMoveEvaluatorFactory Class Reference</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -143,99 +143,54 @@ $(document).ready(function(){initNavTree('classmoveselection_1_1RandomMoveEvalua
 
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classmoveselection_1_1RandomMoveEvaluatorFactory-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">moveselection::RandomMoveEvaluatorFactory&lt; G &gt; Class Template Reference</div></div>
+  <div class="headertitle"><div class="title">moveselection::RandomMoveEvaluatorFactory Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="builders_8hpp_source.html">builders.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="move__evaluator__random__for__concepts_8hpp_source.html">move_evaluator_random_for_concepts.hpp</a>&gt;</code></p>
 <div class="dynheader">
-Collaboration diagram for moveselection::RandomMoveEvaluatorFactory&lt; G &gt;:</div>
+Collaboration diagram for moveselection::RandomMoveEvaluatorFactory:</div>
 <div class="dyncontent">
-<div class="center"><img src="classmoveselection_1_1RandomMoveEvaluatorFactory__coll__graph.png" border="0" usemap="#amoveselection_1_1RandomMoveEvaluatorFactory_3_01G_01_4_coll__map" alt="Collaboration graph"/></div>
-<map name="amoveselection_1_1RandomMoveEvaluatorFactory_3_01G_01_4_coll__map" id="amoveselection_1_1RandomMoveEvaluatorFactory_3_01G_01_4_coll__map">
+<div class="center"><img src="classmoveselection_1_1RandomMoveEvaluatorFactory__coll__graph.png" border="0" usemap="#amoveselection_1_1RandomMoveEvaluatorFactory_coll__map" alt="Collaboration graph"/></div>
+<map name="amoveselection_1_1RandomMoveEvaluatorFactory_coll__map" id="amoveselection_1_1RandomMoveEvaluatorFactory_coll__map">
 <area shape="rect" title=" " alt="" coords="5,5,221,97"/>
 </map>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a28b2dd43d1848b6ef50128886dc5222b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1RandomMoveEvaluatorFactory.html#a28b2dd43d1848b6ef50128886dc5222b">MoveEvaluatorType</a> = <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcepts.html">moveselection::RandomMoveEvaluatorForConcepts</a>&lt; G &gt;</td></tr>
-<tr class="separator:a28b2dd43d1848b6ef50128886dc5222b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa7cfc8e1e840b05f8d98e665224f9e17"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorFactory.html#a28b2dd43d1848b6ef50128886dc5222b">MoveEvaluatorType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1RandomMoveEvaluatorFactory.html#aa7cfc8e1e840b05f8d98e665224f9e17">Create</a> (std::shared_ptr&lt; G &gt; game_board, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player)</td></tr>
-<tr class="separator:aa7cfc8e1e840b05f8d98e665224f9e17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f6bfeaca893e3434fca2463c5dcfd32"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcepts.html">RandomMoveEvaluatorForConcepts</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1RandomMoveEvaluatorFactory.html#a2f6bfeaca893e3434fca2463c5dcfd32">Create</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player)</td></tr>
+<tr class="separator:a2f6bfeaca893e3434fca2463c5dcfd32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoProviderConcept</a> G&gt;<br />
-class moveselection::RandomMoveEvaluatorFactory&lt; G &gt;</div>
-<p class="definition">Definition at line <a class="el" href="builders_8hpp_source.html#l00118">118</a> of file <a class="el" href="builders_8hpp_source.html">builders.hpp</a>.</p>
-</div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a28b2dd43d1848b6ef50128886dc5222b" name="a28b2dd43d1848b6ef50128886dc5222b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28b2dd43d1848b6ef50128886dc5222b">&#9670;&#160;</a></span>MoveEvaluatorType</h2>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="move__evaluator__random__for__concepts_8hpp_source.html#l00034">34</a> of file <a class="el" href="move__evaluator__random__for__concepts_8hpp_source.html">move_evaluator_random_for_concepts.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2f6bfeaca893e3434fca2463c5dcfd32" name="a2f6bfeaca893e3434fca2463c5dcfd32"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f6bfeaca893e3434fca2463c5dcfd32">&#9670;&#160;</a></span>Create()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoProviderConcept</a> G&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorFactory.html">moveselection::RandomMoveEvaluatorFactory</a>&lt; G &gt;::MoveEvaluatorType =  <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcepts.html">moveselection::RandomMoveEvaluatorForConcepts</a>&lt;G&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="builders_8hpp_source.html#l00120">120</a> of file <a class="el" href="builders_8hpp_source.html">builders.hpp</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa7cfc8e1e840b05f8d98e665224f9e17" name="aa7cfc8e1e840b05f8d98e665224f9e17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7cfc8e1e840b05f8d98e665224f9e17">&#9670;&#160;</a></span>Create()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;<a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoProviderConcept</a> G&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::unique_ptr&lt; <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorFactory.html#a28b2dd43d1848b6ef50128886dc5222b">MoveEvaluatorType</a> &gt; <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorFactory.html">moveselection::RandomMoveEvaluatorFactory</a>&lt; G &gt;::Create </td>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcepts.html">RandomMoveEvaluatorForConcepts</a> &gt; moveselection::RandomMoveEvaluatorFactory::Create </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; G &gt;&#160;</td>
-          <td class="paramname"><em>game_board</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>&#160;</td>
-          <td class="paramname"><em>evaluating_player</em>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>evaluating_player</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="builders_8hpp_source.html#l00122">122</a> of file <a class="el" href="builders_8hpp_source.html">builders.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="move__evaluator__random__for__concepts_8cpp_source.html#l00032">32</a> of file <a class="el" href="move__evaluator__random__for__concepts_8cpp_source.html">move_evaluator_random_for_concepts.cpp</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/<a class="el" href="builders_8hpp_source.html">builders.hpp</a></li>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>include/<a class="el" href="move__evaluator__random__for__concepts_8hpp_source.html">move_evaluator_random_for_concepts.hpp</a></li>
+<li>src/core/move_evaluator_random_for_concepts/<a class="el" href="move__evaluator__random__for__concepts_8cpp_source.html">move_evaluator_random_for_concepts.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -243,7 +198,7 @@ template&lt;<a class="el" href="conceptSpaceInfoProviderConcept.html">SpaceInfoP
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li><li class="navelem"><a class="el" href="classmoveselection_1_1RandomMoveEvaluatorFactory.html">RandomMoveEvaluatorFactory</a></li>
-    <li class="footer">Generated on Tue Dec 10 2024 16:55:28 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Thu Dec 12 2024 22:20:57 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

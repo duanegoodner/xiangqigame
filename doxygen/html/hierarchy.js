@@ -11,6 +11,8 @@ var hierarchy =
         [ "xiangqipy.players.ScriptedPlayerWithRetries", "classxiangqipy_1_1players_1_1ScriptedPlayerWithRetries.html", null ]
       ] ]
     ] ],
+    [ "movetranslation::AlgebraicBoardSpace", "classmovetranslation_1_1AlgebraicBoardSpace.html", null ],
+    [ "movetranslation::AlgebraicMove", "classmovetranslation_1_1AlgebraicMove.html", null ],
     [ "xiangqipy.piece_points.BasePoints", "classxiangqipy_1_1piece__points_1_1BasePoints.html", null ],
     [ "gameboard::BoardDirection", "structgameboard_1_1BoardDirection.html", null ],
     [ "gameboard::BoardSpace", "structgameboard_1_1BoardSpace.html", null ],
@@ -39,7 +41,13 @@ var hierarchy =
     [ "xiangqipy.core_dataclass_mirrors.GamePiece", "classxiangqipy_1_1core__dataclass__mirrors_1_1GamePiece.html", null ],
     [ "xiangqipy.game_summary_plot_manager.GameSummaryPlotManager", "classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html", null ],
     [ "std::hash< moveselection::MinimaxTemplateSpecs >", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4.html", null ],
+    [ "moveselection::HumanMoveEvaluatorFactory", "classmoveselection_1_1HumanMoveEvaluatorFactory.html", null ],
+    [ "moveselection::HumanMoveEvaluatorForConcepts", "classmoveselection_1_1HumanMoveEvaluatorForConcepts.html", null ],
+    [ "humanplayerio::InputRetrievalMessages", "classhumanplayerio_1_1InputRetrievalMessages.html", null ],
     [ "xiangqipy.terminal_output.InputRetrievalMessages", "classxiangqipy_1_1terminal__output_1_1InputRetrievalMessages.html", null ],
+    [ "std::invalid_argument", null, [
+      [ "movetranslation::InvalidAlgebraicSpaceException", "classmovetranslation_1_1InvalidAlgebraicSpaceException.html", null ]
+    ] ],
     [ "JsonUtility< ConcreteJsonUtility >", "classJsonUtility.html", null ],
     [ "JsonUtility< NlohmannJsonUtility >", "classJsonUtility.html", [
       [ "jsonio::NlohmannJsonUtility", "classjsonio_1_1NlohmannJsonUtility.html", null ]
@@ -85,14 +93,15 @@ var hierarchy =
     [ "moveselection::PreSearchMoveSorterForConcepts< G, P >", "classmoveselection_1_1PreSearchMoveSorterForConcepts.html", null ],
     [ "boardstate::PseudoRandomKeyGenerator< IntType >", "classboardstate_1_1PseudoRandomKeyGenerator.html", null ],
     [ "boardstate::RandomKeyGenerator< IntType >", "classboardstate_1_1RandomKeyGenerator.html", null ],
-    [ "moveselection::RandomMoveEvaluatorFactory< G >", "classmoveselection_1_1RandomMoveEvaluatorFactory.html", null ],
-    [ "moveselection::RandomMoveEvaluatorForConcepts< G >", "classmoveselection_1_1RandomMoveEvaluatorForConcepts.html", null ],
+    [ "moveselection::RandomMoveEvaluatorFactory", "classmoveselection_1_1RandomMoveEvaluatorFactory.html", null ],
+    [ "moveselection::RandomMoveEvaluatorForConcepts", "classmoveselection_1_1RandomMoveEvaluatorForConcepts.html", null ],
     [ "xiangqipy.player_builder.RedAndBlackPlayersBuilder", "classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html", null ],
     [ "moveselection::ResultDepthCounts", "classmoveselection_1_1ResultDepthCounts.html", null ],
     [ "xiangqipy.command_input.RunKwargsInterpreter", "classxiangqipy_1_1command__input_1_1RunKwargsInterpreter.html", null ],
     [ "xiangqipy.app_new.RunKwargsInterpreterNew", "classxiangqipy_1_1app__new_1_1RunKwargsInterpreterNew.html", null ],
     [ "std::runtime_error", null, [
-      [ "IllegalMoveException", "classIllegalMoveException.html", null ]
+      [ "IllegalMoveException", "classIllegalMoveException.html", null ],
+      [ "movetranslation::InvalidVectorSizeException", "classmovetranslation_1_1InvalidVectorSizeException.html", null ]
     ] ],
     [ "moveselection::ScoredMove", "structmoveselection_1_1ScoredMove.html", null ],
     [ "moveselection::SearchSummaries", "structmoveselection_1_1SearchSummaries.html", null ],

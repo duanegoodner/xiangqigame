@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['piecepoints_0',['piecepoints',['../namespacepiecepoints.html',1,'']]]
+  ['minimaxutils_0',['minimaxutils',['../namespacemoveselection_1_1minimaxutils.html',1,'moveselection']]],
+  ['minimaxutils_5fforconcepts_1',['minimaxutils_forconcepts',['../namespacemoveselection_1_1minimaxutils__forconcepts.html',1,'moveselection']]],
+  ['moveselection_2',['moveselection',['../namespacemoveselection.html',1,'']]],
+  ['movetranslation_3',['movetranslation',['../namespacemovetranslation.html',1,'']]]
 ];

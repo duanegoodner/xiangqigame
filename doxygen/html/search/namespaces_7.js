@@ -1,28 +1,4 @@
 var searchData=
 [
-  ['_5f_5fmain_5f_5f_0',['__main__',['../namespacexiangqipy_1_1____main____.html',1,'xiangqipy']]],
-  ['app_1',['app',['../namespacexiangqipy_1_1app.html',1,'xiangqipy']]],
-  ['app_5fnew_2',['app_new',['../namespacexiangqipy_1_1app__new.html',1,'xiangqipy']]],
-  ['command_5finput_3',['command_input',['../namespacexiangqipy_1_1command__input.html',1,'xiangqipy']]],
-  ['core_5fdataclass_5fmirrors_4',['core_dataclass_mirrors',['../namespacexiangqipy_1_1core__dataclass__mirrors.html',1,'xiangqipy']]],
-  ['enums_5',['enums',['../namespacexiangqipy_1_1enums.html',1,'xiangqipy']]],
-  ['errors_6',['errors',['../namespacexiangqipy_1_1handlers_1_1errors.html',1,'xiangqipy::handlers']]],
-  ['game_7',['game',['../namespacexiangqipy_1_1game.html',1,'xiangqipy']]],
-  ['game_5finterfaces_8',['game_interfaces',['../namespacexiangqipy_1_1game__interfaces.html',1,'xiangqipy']]],
-  ['game_5foutput_5fgenerator_9',['game_output_generator',['../namespacexiangqipy_1_1game__output__generator.html',1,'xiangqipy']]],
-  ['game_5fsummary_10',['game_summary',['../namespacexiangqipy_1_1game__summary.html',1,'xiangqipy']]],
-  ['game_5fsummary_5fio_11',['game_summary_io',['../namespacexiangqipy_1_1game__summary__io.html',1,'xiangqipy']]],
-  ['game_5fsummary_5fplot_5fmanager_12',['game_summary_plot_manager',['../namespacexiangqipy_1_1game__summary__plot__manager.html',1,'xiangqipy']]],
-  ['game_5fsummary_5fplotters_13',['game_summary_plotters',['../namespacexiangqipy_1_1game__summary__plotters.html',1,'xiangqipy']]],
-  ['handlers_14',['handlers',['../namespacexiangqipy_1_1handlers.html',1,'xiangqipy']]],
-  ['move_5ftranslator_15',['move_translator',['../namespacexiangqipy_1_1move__translator.html',1,'xiangqipy']]],
-  ['piece_5finfo_5fextractor_16',['piece_info_extractor',['../namespacexiangqipy_1_1piece__info__extractor.html',1,'xiangqipy']]],
-  ['piece_5fpoints_17',['piece_points',['../namespacexiangqipy_1_1piece__points.html',1,'xiangqipy']]],
-  ['player_5fbuilder_18',['player_builder',['../namespacexiangqipy_1_1player__builder.html',1,'xiangqipy']]],
-  ['player_5fbuilder_5fnew_19',['player_builder_new',['../namespacexiangqipy_1_1player__builder__new.html',1,'xiangqipy']]],
-  ['player_5fsummary_20',['player_summary',['../namespacexiangqipy_1_1player__summary.html',1,'xiangqipy']]],
-  ['players_21',['players',['../namespacexiangqipy_1_1players.html',1,'xiangqipy']]],
-  ['signals_22',['signals',['../namespacexiangqipy_1_1handlers_1_1signals.html',1,'xiangqipy::handlers']]],
-  ['terminal_5foutput_23',['terminal_output',['../namespacexiangqipy_1_1terminal__output.html',1,'xiangqipy']]],
-  ['xiangqipy_24',['xiangqipy',['../namespacexiangqipy.html',1,'']]]
+  ['utility_5ffuncts_0',['utility_functs',['../namespaceutility__functs.html',1,'']]]
 ];

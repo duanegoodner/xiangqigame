@@ -179,12 +179,12 @@ Collaboration diagram for boardstate::ZobristCoordinatorForConcepts&lt; M &gt;:<
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:af0cc8e7b2f30890277011cd0c480d8d4"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#af0cc8e7b2f30890277011cd0c480d8d4">KeyType</a> = M::KeyType</td></tr>
-<tr class="separator:af0cc8e7b2f30890277011cd0c480d8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a961a1b700f6a861c0c34935085eb6e3b"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#a961a1b700f6a861c0c34935085eb6e3b">KeyType</a> = typename M::KeyType</td></tr>
+<tr class="separator:a961a1b700f6a861c0c34935085eb6e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ace5ad90b4ee514587ddff552f68aad02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#af0cc8e7b2f30890277011cd0c480d8d4">KeyType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#ace5ad90b4ee514587ddff552f68aad02">GetState</a> ()</td></tr>
+<tr class="memitem:ace5ad90b4ee514587ddff552f68aad02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#a961a1b700f6a861c0c34935085eb6e3b">KeyType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#ace5ad90b4ee514587ddff552f68aad02">GetState</a> ()</td></tr>
 <tr class="separator:ace5ad90b4ee514587ddff552f68aad02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62d273ea93cf65209cdad396f66e811a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#a62d273ea93cf65209cdad396f66e811a">RecordTrData</a> (<a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> search_depth, <a class="el" href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">moveselection::MinimaxResultType</a> result_type, <a class="el" href="classmoveselection_1_1EqualScoreMoves.html">moveselection::EqualScoreMoves</a> &amp;similar_moves, <a class="el" href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a> access_index)</td></tr>
 <tr class="separator:a62d273ea93cf65209cdad396f66e811a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -218,11 +218,11 @@ Private Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a8b011467df621e0fe18a089c06f9721e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; M &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#a8b011467df621e0fe18a089c06f9721e">zobrist_component_</a></td></tr>
 <tr class="separator:a8b011467df621e0fe18a089c06f9721e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affd2c51363a90a8e2c125666c5bbae61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classboardstate_1_1TranspositionTableForConcepts.html">TranspositionTableForConcepts</a>&lt; <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#af0cc8e7b2f30890277011cd0c480d8d4">KeyType</a>, M::NumConfKeys &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#affd2c51363a90a8e2c125666c5bbae61">tr_table_</a></td></tr>
+<tr class="memitem:affd2c51363a90a8e2c125666c5bbae61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classboardstate_1_1TranspositionTableForConcepts.html">TranspositionTableForConcepts</a>&lt; <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#a961a1b700f6a861c0c34935085eb6e3b">KeyType</a>, M::NumConfKeys &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#affd2c51363a90a8e2c125666c5bbae61">tr_table_</a></td></tr>
 <tr class="separator:affd2c51363a90a8e2c125666c5bbae61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70662de9444f9d80a21880c72521038e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classboardstate_1_1TranspositionTableGuardForConcepts.html">TranspositionTableGuardForConcepts</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#a70662de9444f9d80a21880c72521038e">tr_table_guard_</a></td></tr>
 <tr class="separator:a70662de9444f9d80a21880c72521038e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef67e6480d17155ee38f5b6687312840"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classboardstate_1_1TranspositionTablePrunerForConcepts.html">TranspositionTablePrunerForConcepts</a>&lt; <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#af0cc8e7b2f30890277011cd0c480d8d4">KeyType</a>, M::NumConfKeys &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#aef67e6480d17155ee38f5b6687312840">tr_table_pruner_</a></td></tr>
+<tr class="memitem:aef67e6480d17155ee38f5b6687312840"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classboardstate_1_1TranspositionTablePrunerForConcepts.html">TranspositionTablePrunerForConcepts</a>&lt; <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#a961a1b700f6a861c0c34935085eb6e3b">KeyType</a>, M::NumConfKeys &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#aef67e6480d17155ee38f5b6687312840">tr_table_pruner_</a></td></tr>
 <tr class="separator:aef67e6480d17155ee38f5b6687312840"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -230,8 +230,8 @@ Private Attributes</h2></td></tr>
 class boardstate::ZobristCoordinatorForConcepts&lt; M &gt;</div>
 <p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00304">304</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="af0cc8e7b2f30890277011cd0c480d8d4" name="af0cc8e7b2f30890277011cd0c480d8d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0cc8e7b2f30890277011cd0c480d8d4">&#9670;&#160;</a></span>KeyType</h2>
+<a id="a961a1b700f6a861c0c34935085eb6e3b" name="a961a1b700f6a861c0c34935085eb6e3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a961a1b700f6a861c0c34935085eb6e3b">&#9670;&#160;</a></span>KeyType</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -239,7 +239,7 @@ class boardstate::ZobristCoordinatorForConcepts&lt; M &gt;</div>
 template&lt;<a class="el" href="conceptMultiBoardStateProviderConcept.html">MultiBoardStateProviderConcept</a> M&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html">boardstate::ZobristCoordinatorForConcepts</a>&lt; M &gt;::KeyType =  M::KeyType</td>
+          <td class="memname">using <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html">boardstate::ZobristCoordinatorForConcepts</a>&lt; M &gt;::KeyType =  typename M::KeyType</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -351,7 +351,7 @@ template&lt;<a class="el" href="conceptMultiBoardStateProviderConcept.html">Mult
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#af0cc8e7b2f30890277011cd0c480d8d4">KeyType</a> <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html">boardstate::ZobristCoordinatorForConcepts</a>&lt; M &gt;::GetState </td>
+          <td class="memname"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#a961a1b700f6a861c0c34935085eb6e3b">KeyType</a> <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html">boardstate::ZobristCoordinatorForConcepts</a>&lt; M &gt;::GetState </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -586,7 +586,7 @@ template&lt;<a class="el" href="conceptMultiBoardStateProviderConcept.html">Mult
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classboardstate_1_1TranspositionTableForConcepts.html">TranspositionTableForConcepts</a>&lt;<a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#af0cc8e7b2f30890277011cd0c480d8d4">KeyType</a>, M::NumConfKeys&gt; <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html">boardstate::ZobristCoordinatorForConcepts</a>&lt; M &gt;::tr_table_</td>
+          <td class="memname"><a class="el" href="classboardstate_1_1TranspositionTableForConcepts.html">TranspositionTableForConcepts</a>&lt;<a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#a961a1b700f6a861c0c34935085eb6e3b">KeyType</a>, M::NumConfKeys&gt; <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html">boardstate::ZobristCoordinatorForConcepts</a>&lt; M &gt;::tr_table_</td>
         </tr>
       </table>
   </td>
@@ -638,7 +638,7 @@ template&lt;<a class="el" href="conceptMultiBoardStateProviderConcept.html">Mult
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classboardstate_1_1TranspositionTablePrunerForConcepts.html">TranspositionTablePrunerForConcepts</a>&lt;<a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#af0cc8e7b2f30890277011cd0c480d8d4">KeyType</a>, M::NumConfKeys&gt; <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html">boardstate::ZobristCoordinatorForConcepts</a>&lt; M &gt;::tr_table_pruner_</td>
+          <td class="memname"><a class="el" href="classboardstate_1_1TranspositionTablePrunerForConcepts.html">TranspositionTablePrunerForConcepts</a>&lt;<a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html#a961a1b700f6a861c0c34935085eb6e3b">KeyType</a>, M::NumConfKeys&gt; <a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html">boardstate::ZobristCoordinatorForConcepts</a>&lt; M &gt;::tr_table_pruner_</td>
         </tr>
       </table>
   </td>
@@ -687,7 +687,7 @@ template&lt;<a class="el" href="conceptMultiBoardStateProviderConcept.html">Mult
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceboardstate.html">boardstate</a></li><li class="navelem"><a class="el" href="classboardstate_1_1ZobristCoordinatorForConcepts.html">ZobristCoordinatorForConcepts</a></li>
-    <li class="footer">Generated on Tue Dec 10 2024 16:55:28 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Thu Dec 12 2024 22:20:57 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

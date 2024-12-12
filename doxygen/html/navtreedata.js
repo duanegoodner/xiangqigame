@@ -101,6 +101,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Example Games", "md_docs_08_example_games.html", null ],
+    [ "Todo List", "todo.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -141,16 +142,17 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____init_____8py.html",
-"classboardstate_1_1TranspositionTablePruner.html#afc1a8bd2bc798b0fb1d6d15cad656506",
-"classboardstate_1_1ZobristCoordinatorFactory.html#ae546efeadbb25ca79a23265fc26cff6b",
-"classmoveselection_1_1MinimaxMoveEvaluator.html#a0accf376c40fca7eb2d70b9d14660538",
-"classmoveselection_1_1SearchSummary.html#a561d9532c359a19e4186038711777355",
-"classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine.html#a3c5753db0ba61c1fd75eeb0f9092d5f8",
-"classxiangqipy_1_1game__summary_1_1GameSummary.html#a31722162111806caa61f78bd2bce6a3e",
-"classxiangqipy_1_1players_1_1HumanPlayer.html#a8b7dc7d408afd445a2f7b4684bba38a7",
-"functions_vars_n.html",
-"namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76aaf25bb0af24cc97673ca751d01e89438",
-"signals_8py_source.html"
+"classboardstate_1_1TranspositionTablePrunerForConcepts.html",
+"classboardstate_1_1ZobristCoordinatorFactory.html#aeb9628fbf696677d90a517c3a240ae78",
+"classmoveselection_1_1HumanMoveEvaluatorForConcepts.html#a67311526d226f79055771c181e91e0c1",
+"classmoveselection_1_1RandomMoveEvaluatorForConcepts.html#ad4ed9957a6db6df76924a6b59e924f9c",
+"classxiangqipy_1_1app__new_1_1XiangqiGameCommandNew.html#ad4fbb5849c9c2fd590ed564ff906f8cc",
+"classxiangqipy_1_1game_1_1Game.html#abbd548b95ebab1c7381c655efd48ec8c",
+"classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html#a402e125a8e53c5137b8d623a4d83463f",
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da5fdab859498d9e51a5300bb6fe535a60",
+"move__calculator_8cpp.html",
+"namespacexiangqipy_1_1piece__points.html#a208ad687514f001fe8c57b5f8813f29c",
+"structpiecepoints_1_1PiecePositionPointsForConcepts.html#a0424f484c60ba77bbba21cfa493ff9f9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

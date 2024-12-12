@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['whose_5fturn_0',['whose_turn',['../classxiangqipy_1_1game__summary_1_1GameSummary.html#af3d838beaee36f83eb6a9416d0a4cd31',1,'xiangqipy::game_summary::GameSummary']]]
+  ['value_5f_0',['value_',['../classmovetranslation_1_1AlgebraicBoardSpace.html#aa6c014937e19ed62887ce53fac5a5a8a',1,'movetranslation::AlgebraicBoardSpace']]]
 ];
