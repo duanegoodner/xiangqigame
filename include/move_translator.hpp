@@ -28,6 +28,7 @@ public:
   AlgebraicBoardSpace(const std::string &value);
   const std::string value();
   gameboard::BoardSpace ToGameBoardSpace();
+  bool operator==(const AlgebraicBoardSpace &other) const;
 };
 
 class AlgebraicMove {
@@ -51,6 +52,5 @@ const std::string Trim(const std::string &str);
 const std::vector<std::string> Tokenize(const std::string &input);
 bool IsValidAlgebraicBoardSpace(const std::string &algebraic_space);
 bool IsValidAlgebraicMove(const std::vector<std::string> &tokens);
-// const std::vector<std::string> ParseAlgebraicMove(const std::string &algebraic_move);
 
 } // namespace movetranslation

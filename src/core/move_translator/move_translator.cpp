@@ -29,6 +29,10 @@ gameboard::BoardSpace AlgebraicBoardSpace::ToGameBoardSpace() {
 
 const std::string AlgebraicBoardSpace::value() { return value_; }
 
+bool AlgebraicBoardSpace::operator==(const AlgebraicBoardSpace &other) const {
+  return value_ == other.value_;
+}
+
 // AlgebraicMove implementation
 
 AlgebraicMove::AlgebraicMove(
