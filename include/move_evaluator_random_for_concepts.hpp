@@ -1,5 +1,6 @@
 #pragma once
 
+#include <base_move_evaluator.hpp>
 #include <game_piece.hpp>
 #include <memory>
 #include <move_data_structs.hpp>
@@ -13,7 +14,7 @@ namespace moveselection {
 
 //! Complies with MoveEvaluatorConcept. Randomly chooses one of legal moves
 //! available to moveselection::RandomMoveEvaluator.evaluating_player_.
-class RandomMoveEvaluatorForConcepts {
+class RandomMoveEvaluatorForConcepts : public MoveEvaluatorBase {
   gameboard::PieceColor evaluating_player_;
   std::mt19937_64 prng_;
 

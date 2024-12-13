@@ -1,5 +1,6 @@
 #pragma once
 
+#include <base_move_evaluator.hpp>
 #include <game_piece.hpp>
 #include <iostream>
 #include <memory>
@@ -20,7 +21,7 @@ public:
 } // namespace humanplayerio
 
 namespace moveselection {
-class HumanMoveEvaluatorForConcepts {
+class HumanMoveEvaluatorForConcepts : public MoveEvaluatorBase {
   gameboard::PieceColor evaluating_player_;
   humanplayerio::InputRetrievalMessages io_messages_;
   std::istream &input_stream_;
@@ -32,7 +33,7 @@ public:
   );
 
   gameboard::Move SelectMove(gameboard::MoveCollection &allowed_moves);
-  void IllegalMoveNotice();
+  void NotifyIllegalMove();
 
 private:
   HumanMoveEvaluatorForConcepts(

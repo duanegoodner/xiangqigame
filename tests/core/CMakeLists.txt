@@ -2,6 +2,7 @@ enable_testing()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+add_subdirectory(game)
 add_subdirectory(move_evaluator_random_for_concepts)
 add_subdirectory(move_evaluator_minimax_for_concepts)
 add_subdirectory(move_evaluator_human_for_concepts)
