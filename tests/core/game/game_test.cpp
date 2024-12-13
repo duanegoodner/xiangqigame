@@ -1,5 +1,6 @@
 #include <game.hpp>
 #include <game_board_for_concepts.hpp>
+#include <game_factory.hpp>
 #include <gtest/gtest.h>
 #include <memory>
 #include <move_evaluator_minimax_for_concepts.hpp>
@@ -18,30 +19,7 @@ template <
     size_t RedNumConfKeys,
     size_t BlackNumConfKeys>
 class GameTestSuiteTwoAI : public GameTestSuiteTwoAIBase {
-  using BlackZCalcType = boardstate::ZobristCalculatorForConcepts<BlackKeyType>;
-  using RedZCalcType = boardstate::ZobristCalculatorForConcepts<RedKeyType>;
-
-  using BlackZComponentType =
-      boardstate::ZobristComponentForConcepts<BlackZCalcType, BlackNumConfKeys>;
-  using RedZComponentType =
-      boardstate::ZobristComponentForConcepts<RedZCalcType, RedNumConfKeys>;
-
-  using BlackZCoordinatorType =
-      boardstate::ZobristCoordinatorForConcepts<BlackZComponentType>;
-  using RedZCoordinatorType =
-      boardstate::ZobristCoordinatorForConcepts<RedZComponentType>;
-
-  using BlackEvaluatorType = moveselection::MinimaxMoveEvaluatorForConcepts<
-      BlackZCoordinatorType,
-      gameboard::GameBoardForConcepts,
-      piecepoints::PiecePositionPointsForConcepts>;
-  using RedEvaluatorType = moveselection::MinimaxMoveEvaluatorForConcepts<
-      RedZCoordinatorType,
-      gameboard::GameBoardForConcepts,
-      piecepoints::PiecePositionPointsForConcepts>;
-
-  using GameType =
-      game::Game<gameboard::GameBoardForConcepts, RedEvaluatorType, BlackEvaluatorType>;
+  GameFactory game_factory_;
 };
 
 class GameTestTwoAI : public ::testing::Test {
