@@ -1,6 +1,7 @@
 var namespaces_dup =
 [
     [ "boardstate", "namespaceboardstate.html", "namespaceboardstate" ],
+    [ "game", "namespacegame.html", "namespacegame" ],
     [ "gameboard", "namespacegameboard.html", "namespacegameboard" ],
     [ "humanplayerio", "namespacehumanplayerio.html", "namespacehumanplayerio" ],
     [ "jsonio", "namespacejsonio.html", "namespacejsonio" ],

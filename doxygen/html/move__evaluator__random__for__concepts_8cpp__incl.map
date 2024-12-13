@@ -1,20 +1,21 @@
 <map id="src/core/move_evaluator_random_for_concepts/move_evaluator_random_for_concepts.cpp" name="src/core/move_evaluator_random_for_concepts/move_evaluator_random_for_concepts.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="18,5,283,60"/>
-<area shape="rect" id="node2" href="$integer__types_8hpp.html" title=" " alt="" coords="5,343,144,368"/>
-<area shape="rect" id="node4" href="$move__evaluator__random__for__concepts_8hpp.html" title=" " alt="" coords="197,108,382,148"/>
-<area shape="rect" id="node3" title=" " alt="" coords="41,416,108,441"/>
-<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="169,343,298,368"/>
-<area shape="rect" id="node9" title=" " alt="" coords="193,196,271,221"/>
-<area shape="rect" id="node10" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="295,196,470,221"/>
-<area shape="rect" id="node14" title=" " alt="" coords="416,343,488,368"/>
-<area shape="rect" id="node16" href="$utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="557,269,691,295"/>
-<area shape="rect" id="node6" title=" " alt="" coords="202,416,265,441"/>
-<area shape="rect" id="node7" title=" " alt="" coords="556,416,615,441"/>
-<area shape="rect" id="node8" title=" " alt="" coords="773,416,897,441"/>
-<area shape="rect" id="node11" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="295,269,470,295"/>
-<area shape="rect" id="node12" title=" " alt="" coords="512,343,568,368"/>
-<area shape="rect" id="node13" title=" " alt="" coords="323,343,392,368"/>
-<area shape="rect" id="node15" title=" " alt="" coords="593,343,655,368"/>
-<area shape="rect" id="node17" title=" " alt="" coords="680,343,765,368"/>
-<area shape="rect" id="node18" title=" " alt="" coords="790,343,879,368"/>
+<area shape="rect" id="node1" title=" " alt="" coords="30,5,295,60"/>
+<area shape="rect" id="node2" href="$integer__types_8hpp.html" title=" " alt="" coords="5,416,144,441"/>
+<area shape="rect" id="node4" href="$move__evaluator__random__for__concepts_8hpp.html" title=" " alt="" coords="159,108,345,148"/>
+<area shape="rect" id="node3" title=" " alt="" coords="41,489,108,515"/>
+<area shape="rect" id="node5" href="$base__move__evaluator_8hpp.html" title=" " alt="" coords="315,196,509,221"/>
+<area shape="rect" id="node6" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="298,269,473,295"/>
+<area shape="rect" id="node10" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="169,416,298,441"/>
+<area shape="rect" id="node14" title=" " alt="" coords="416,416,488,441"/>
+<area shape="rect" id="node16" href="$utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="585,343,719,368"/>
+<area shape="rect" id="node19" title=" " alt="" coords="213,196,291,221"/>
+<area shape="rect" id="node7" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="298,343,473,368"/>
+<area shape="rect" id="node8" title=" " alt="" coords="600,416,656,441"/>
+<area shape="rect" id="node9" title=" " alt="" coords="323,416,392,441"/>
+<area shape="rect" id="node15" title=" " alt="" coords="513,416,575,441"/>
+<area shape="rect" id="node11" title=" " alt="" coords="202,489,265,515"/>
+<area shape="rect" id="node12" title=" " alt="" coords="556,489,615,515"/>
+<area shape="rect" id="node13" title=" " alt="" coords="773,489,897,515"/>
+<area shape="rect" id="node17" title=" " alt="" coords="680,416,765,441"/>
+<area shape="rect" id="node18" title=" " alt="" coords="790,416,879,441"/>
 </map>

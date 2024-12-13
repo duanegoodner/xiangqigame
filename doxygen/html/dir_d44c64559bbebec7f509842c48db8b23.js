@@ -1,5 +1,7 @@
 var dir_d44c64559bbebec7f509842c48db8b23 =
 [
+    [ "base_move_evaluator.hpp", "base__move__evaluator_8hpp.html", "base__move__evaluator_8hpp" ],
+    [ "base_space_info_provider.hpp", "base__space__info__provider_8hpp.html", "base__space__info__provider_8hpp" ],
     [ "board_data_structs.hpp", "board__data__structs_8hpp.html", "board__data__structs_8hpp" ],
     [ "board_state_summarizer_interface.hpp", "board__state__summarizer__interface_8hpp.html", "board__state__summarizer__interface_8hpp" ],
     [ "builders.hpp", "builders_8hpp.html", "builders_8hpp" ],
@@ -15,9 +17,11 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "concept_space_info_provider.hpp", "concept__space__info__provider_8hpp.html", "concept__space__info__provider_8hpp" ],
     [ "concept_zobrist_component.hpp", "concept__zobrist__component_8hpp.html", "concept__zobrist__component_8hpp" ],
     [ "evaluator_data_structs.hpp", "evaluator__data__structs_8hpp.html", "evaluator__data__structs_8hpp" ],
+    [ "game.hpp", "game_8hpp.html", "game_8hpp" ],
     [ "game_board.hpp", "game__board_8hpp.html", "game__board_8hpp" ],
     [ "game_board_for_concepts.hpp", "game__board__for__concepts_8hpp.html", "game__board__for__concepts_8hpp" ],
     [ "game_board_template.hpp", "game__board__template_8hpp.html", null ],
+    [ "game_factory.hpp", "game__factory_8hpp.html", "game__factory_8hpp" ],
     [ "game_piece.hpp", "game__piece_8hpp.html", "game__piece_8hpp" ],
     [ "integer_types.hpp", "integer__types_8hpp.html", "integer__types_8hpp" ],
     [ "json_utility_interface.hpp", "json__utility__interface_8hpp.html", "json__utility__interface_8hpp" ],

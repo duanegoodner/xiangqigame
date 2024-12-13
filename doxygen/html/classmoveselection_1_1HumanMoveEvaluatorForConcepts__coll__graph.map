@@ -1,7 +1,8 @@
 <map id="moveselection::HumanMoveEvaluatorForConcepts" name="moveselection::HumanMoveEvaluatorForConcepts">
-<area shape="rect" id="node1" title=" " alt="" coords="97,359,364,509"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,197,96,274"/>
-<area shape="rect" id="node3" href="$classhumanplayerio_1_1InputRetrievalMessages.html" title=" " alt="" coords="121,175,341,296"/>
-<area shape="rect" id="node4" title=" " alt="" coords="201,5,260,83"/>
-<area shape="rect" id="node5" title=" " alt="" coords="365,197,451,274"/>
+<area shape="rect" id="node1" title=" " alt="" coords="215,359,482,509"/>
+<area shape="rect" id="node2" href="$classMoveEvaluatorBase.html" title=" " alt="" coords="5,182,193,289"/>
+<area shape="rect" id="node3" title=" " alt="" coords="218,197,309,274"/>
+<area shape="rect" id="node4" href="$classhumanplayerio_1_1InputRetrievalMessages.html" title=" " alt="" coords="333,175,553,296"/>
+<area shape="rect" id="node5" title=" " alt="" coords="414,5,473,83"/>
+<area shape="rect" id="node6" title=" " alt="" coords="577,197,664,274"/>
 </map>

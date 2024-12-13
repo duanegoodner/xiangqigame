@@ -19,6 +19,7 @@ var classmoveselection_1_1MinimaxMoveEvaluatorForConcepts =
     [ "IsPrunable", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a0dcf78a237573387bd6e214ae0d9c469", null ],
     [ "KeySizeBits", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a88cfd0d2a39c2883695dbb5fb8519595", null ],
     [ "MinimaxRecursive", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#ab53a7ef20a1ea5341bf31516f5db77d0", null ],
+    [ "NotifyIllegalMove", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#affec76e9815f0e2138d29517c4146548", null ],
     [ "RecursivelyVisitNodes", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a0d71240f5463d690390bb70486b88af5", null ],
     [ "RunFirstSearch", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a9cbc706cb07c00aa484440d55f541d73", null ],
     [ "RunSecondSearch", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a846b402ebd62370d3003461b411fa0bc", null ],

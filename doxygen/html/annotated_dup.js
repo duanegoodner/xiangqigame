@@ -21,6 +21,9 @@ var annotated_dup =
       [ "ZobristCoordinatorFactory", "classboardstate_1_1ZobristCoordinatorFactory.html", "classboardstate_1_1ZobristCoordinatorFactory" ],
       [ "ZobristCoordinatorForConcepts", "classboardstate_1_1ZobristCoordinatorForConcepts.html", "classboardstate_1_1ZobristCoordinatorForConcepts" ]
     ] ],
+    [ "game", "namespacegame.html", [
+      [ "Game", "classgame_1_1Game.html", "classgame_1_1Game" ]
+    ] ],
     [ "gameboard", "namespacegameboard.html", [
       [ "BoardDirection", "structgameboard_1_1BoardDirection.html", "structgameboard_1_1BoardDirection" ],
       [ "BoardSpace", "structgameboard_1_1BoardSpace.html", "structgameboard_1_1BoardSpace" ],
@@ -164,11 +167,14 @@ var annotated_dup =
     [ "AIPlayer", "classAIPlayer.html", "classAIPlayer" ],
     [ "BoardStateCoordinator", "classBoardStateCoordinator.html", "classBoardStateCoordinator" ],
     [ "Exception", "classException.html", null ],
+    [ "GameFactory", "classGameFactory.html", "classGameFactory" ],
     [ "IllegalMoveException", "classIllegalMoveException.html", "classIllegalMoveException" ],
     [ "JsonUtility", "classJsonUtility.html", "classJsonUtility" ],
     [ "MoveEvaluator", "classMoveEvaluator.html", "classMoveEvaluator" ],
+    [ "MoveEvaluatorBase", "classMoveEvaluatorBase.html", "classMoveEvaluatorBase" ],
     [ "NullBoardStateCalculator", "classNullBoardStateCalculator.html", "classNullBoardStateCalculator" ],
     [ "PieceValueProvider", "classPieceValueProvider.html", "classPieceValueProvider" ],
     [ "Player", "classPlayer.html", "classPlayer" ],
-    [ "SpaceInfoProvider", "classSpaceInfoProvider.html", "classSpaceInfoProvider" ]
+    [ "SpaceInfoProvider", "classSpaceInfoProvider.html", "classSpaceInfoProvider" ],
+    [ "SpaceInfoProviderBase", "classSpaceInfoProviderBase.html", "classSpaceInfoProviderBase" ]
 ];

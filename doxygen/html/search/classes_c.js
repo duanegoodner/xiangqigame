@@ -9,5 +9,6 @@ var searchData=
   ['searchtimeplotter_6',['SearchTimePlotter',['../classxiangqipy_1_1game__summary__plotters_1_1SearchTimePlotter.html',1,'xiangqipy::game_summary_plotters']]],
   ['singleplayerbuilder_7',['SinglePlayerBuilder',['../classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html',1,'xiangqipy::player_builder']]],
   ['spaceinfoprovider_8',['SpaceInfoProvider',['../classSpaceInfoProvider.html',1,'']]],
-  ['spaceinfoprovider_3c_20gameboard_20_3e_9',['SpaceInfoProvider&lt; GameBoard &gt;',['../classSpaceInfoProvider.html',1,'']]]
+  ['spaceinfoprovider_3c_20gameboard_20_3e_9',['SpaceInfoProvider&lt; GameBoard &gt;',['../classSpaceInfoProvider.html',1,'']]],
+  ['spaceinfoproviderbase_10',['SpaceInfoProviderBase',['../classSpaceInfoProviderBase.html',1,'']]]
 ];

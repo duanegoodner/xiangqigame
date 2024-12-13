@@ -12,5 +12,6 @@ var searchData=
   ['moveevaluator_9',['MoveEvaluator',['../classMoveEvaluator.html',1,'']]],
   ['moveevaluator_3c_20minimaxmoveevaluator_3c_20concretespaceinfoprovider_2c_20concreteboardstatecoordinator_2c_20concretepiecevalueprovider_20_3e_20_3e_10',['MoveEvaluator&lt; MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt; &gt;',['../classMoveEvaluator.html',1,'']]],
   ['moveevaluator_3c_20randommoveevaluator_3c_20concretespaceinfoprovider_20_3e_20_3e_11',['MoveEvaluator&lt; RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt; &gt;',['../classMoveEvaluator.html',1,'']]],
-  ['moveevaluatorbuilder_12',['MoveEvaluatorBuilder',['../classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder.html',1,'xiangqipy::app_new']]]
+  ['moveevaluatorbase_12',['MoveEvaluatorBase',['../classMoveEvaluatorBase.html',1,'']]],
+  ['moveevaluatorbuilder_13',['MoveEvaluatorBuilder',['../classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder.html',1,'xiangqipy::app_new']]]
 ];
