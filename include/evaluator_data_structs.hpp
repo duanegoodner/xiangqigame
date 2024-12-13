@@ -266,4 +266,6 @@ struct SearchSummaries {
     return new_search_entry.first->second;
   }
 };
+
+
 } // namespace moveselection

@@ -5,6 +5,7 @@
 #include <concept_space_info_provider.hpp>
 
 #include <array>
+#include <base_move_evaluator.hpp>
 #include <atomic>
 #include <board_data_structs.hpp>
 #include <evaluator_data_structs.hpp>
@@ -127,7 +128,7 @@ template <
     BoardStateCoordinatorConcept H,
     SpaceInfoProviderConcept G,
     PieceValueProviderConcept P>
-class MinimaxMoveEvaluatorForConcepts {
+class MinimaxMoveEvaluatorForConcepts : MoveEvaluatorBase {
 
   PieceColor evaluating_player_;
   std::shared_ptr<P> game_position_points_;
@@ -160,6 +161,10 @@ public:
   }
 
   using KeyType = typename H::KeyType;
+
+  void NotifyIllegalMove() {
+    throw std::runtime_error("MinimaxMoveEvaluator selected an illegal move");
+  }
 
   Move SelectMove(MoveCollection &allowed_moves) {
 

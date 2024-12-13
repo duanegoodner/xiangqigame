@@ -1,0 +1,3 @@
+add_executable(template_factory template_factory.cpp)
+
+target_include_directories(template_factory PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

@@ -7,8 +7,6 @@
 #include <type_traits>
 #include <zobrist_for_concepts.hpp>
 
-
-
 class MinimaxEvaluatorConceptTest : public ::testing::Test {
 protected:
   const BoardMapInt_t kLateGameBoardMap{{
@@ -34,6 +32,11 @@ protected:
   using ExamplCalculatorTypeBlack =
       boardstate::ZobristCalculatorForConcepts<ExampleKeyTypeBlack>;
   using ExampleGameBoardType = gameboard::GameBoardForConcepts;
+  using ExampleMoveEvaluatorFactoryType = moveselection::MinimaxMoveEvaluatorFactory<
+      ExampleKeyTypeRed,
+      example_num_conf_keys_red_,
+      ExampleGameBoardType>;
+  using ExampleMoveEvaluatorType = ExampleMoveEvaluatorFactoryType::MoveEvaluatorType;
 
   std::shared_ptr<ExampleGameBoardType> example_game_board_ =
       ExampleGameBoardType::Create();
@@ -59,7 +62,6 @@ protected:
       size_t NumConfKeysBlack>
   void PlayGame(DepthType red_search_depth, DepthType black_search_depth) {
     using GameBoardType = gameboard::GameBoardForConcepts;
-    // gameboard::GameBoardFactory<KeyTypeRed, KeyTypeBlack> game_board_factory;
 
     auto minimax_evaluator_red = example_red_evaluator_factory_.Create(
         example_game_board_,
@@ -103,6 +105,13 @@ protected:
     }
   }
 };
+
+TEST_F(MinimaxEvaluatorConceptTest, CompliesWithMoveEvaluatorConcept) {
+  static_assert(
+      MoveEvaluatorConcept<ExampleMoveEvaluatorType>,
+      "MinimaxMoveEvaluator must comply with MoveEvaluatorConcept"
+  );
+}
 
 TEST_F(MinimaxEvaluatorConceptTest, TestBuildEvaluator) {
   auto example_red_evaluator = example_red_evaluator_factory_.Create(

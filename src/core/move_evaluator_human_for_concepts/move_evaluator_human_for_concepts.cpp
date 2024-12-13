@@ -44,8 +44,8 @@ gameboard::Move HumanMoveEvaluatorForConcepts::SelectMove(
   return legal_move;
 }
 
-void HumanMoveEvaluatorForConcepts::IllegalMoveNotice() {
-  io_messages_.NotifyInvalidInput();
+void HumanMoveEvaluatorForConcepts::NotifyIllegalMove() {
+  io_messages_.NotifyIllegalMove();
 }
 
 // Factory methods

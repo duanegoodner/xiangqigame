@@ -108,7 +108,7 @@
     },
     "cmake.sourceDirectory": "/home/duane/workspace/project",
     "cmake.configureSettings": {
-        "BUILD_PROTOTYPES": "OFF",
+        "BUILD_PROTOTYPES": "ON",
         "BUILD_TESTS": "ON",
         "ENABLE_PROFILING": "OFF"
     }
