@@ -11,5 +11,6 @@ var searchData=
   ['hash_5fcalculator_8',['hash_calculator',['../classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a69b4ba8280d6ae7140b9de233e86e198',1,'moveselection::MinimaxMoveEvaluatorForConcepts::hash_calculator()'],['../classmoveselection_1_1MinimaxMoveEvaluator.html#ac7bbe6fcef4790f3fe3a0125698a1245',1,'moveselection::MinimaxMoveEvaluator::hash_calculator()']]],
   ['hasrepeatingpattern_9',['hasRepeatingPattern',['../namespaceutility__functs.html#ab6b690b5028447413647af99fb320e70',1,'utility_functs']]],
   ['horsemoves_10',['HorseMoves',['../classgameboard_1_1PieceMoves.html#a8ae87252fe0d0cbcdd3842c3b591ab70',1,'gameboard::PieceMoves']]],
-  ['humanmoveevaluatorforconcepts_11',['HumanMoveEvaluatorForConcepts',['../classmoveselection_1_1HumanMoveEvaluatorForConcepts.html#a36ec417f1929a7777b3f1c12bb8ea8ee',1,'moveselection::HumanMoveEvaluatorForConcepts']]]
+  ['humanmoveevaluatorfactory_11',['HumanMoveEvaluatorFactory',['../classmoveselection_1_1HumanMoveEvaluatorFactory.html#acf49cf48ff7fe110de1a45ecd1ae95d6',1,'moveselection::HumanMoveEvaluatorFactory']]],
+  ['humanmoveevaluatorforconcepts_12',['HumanMoveEvaluatorForConcepts',['../classmoveselection_1_1HumanMoveEvaluatorForConcepts.html#a36ec417f1929a7777b3f1c12bb8ea8ee',1,'moveselection::HumanMoveEvaluatorForConcepts']]]
 ];

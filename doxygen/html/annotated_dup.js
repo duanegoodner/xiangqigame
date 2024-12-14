@@ -166,6 +166,7 @@ var annotated_dup =
     ] ],
     [ "AIPlayer", "classAIPlayer.html", "classAIPlayer" ],
     [ "BoardStateCoordinator", "classBoardStateCoordinator.html", "classBoardStateCoordinator" ],
+    [ "EvaluatorFactoryBase", "classEvaluatorFactoryBase.html", "classEvaluatorFactoryBase" ],
     [ "Exception", "classException.html", null ],
     [ "GameFactory", "classGameFactory.html", "classGameFactory" ],
     [ "IllegalMoveException", "classIllegalMoveException.html", "classIllegalMoveException" ],

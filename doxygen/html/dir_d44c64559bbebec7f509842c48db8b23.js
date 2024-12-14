@@ -1,5 +1,6 @@
 var dir_d44c64559bbebec7f509842c48db8b23 =
 [
+    [ "base_evaluator_factory.hpp", "base__evaluator__factory_8hpp.html", "base__evaluator__factory_8hpp" ],
     [ "base_move_evaluator.hpp", "base__move__evaluator_8hpp.html", "base__move__evaluator_8hpp" ],
     [ "base_space_info_provider.hpp", "base__space__info__provider_8hpp.html", "base__space__info__provider_8hpp" ],
     [ "board_data_structs.hpp", "board__data__structs_8hpp.html", "board__data__structs_8hpp" ],

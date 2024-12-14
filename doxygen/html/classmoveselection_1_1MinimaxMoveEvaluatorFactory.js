@@ -1,7 +1,14 @@
 var classmoveselection_1_1MinimaxMoveEvaluatorFactory =
 [
-    [ "MoveEvaluatorType", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#a6e4786289a2bae5b99ccb727c7c87243", null ],
-    [ "ZobristCoordinatorType", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#a79caf5666e71a4dd0c8f09a12020762b", null ],
-    [ "Create", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#a677f2e112542320aa3f47c91e6bfb021", null ],
-    [ "zobrist_coordinator_factory_", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#ac40f452c4ce9ef31442c705303eb4206", null ]
+    [ "G", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#a76f219a87d77158b8692c187ee38fc5d", null ],
+    [ "MoveEvaluatorType", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#a11c389f86947ba3c4006717c527bbd45", null ],
+    [ "P", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#aed6e5aaa8806e2bb96e6e2be6363e7c2", null ],
+    [ "Z", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#a09c5864ecf72207745a668ea07f7b310", null ],
+    [ "ZobristCoordinatorType", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#aa82a33d2b3faea1e6167cc2800c1c3d9", null ],
+    [ "MinimaxMoveEvaluatorFactory", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#aee19909791aa2c921b1383428ca68b07", null ],
+    [ "Create", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#afc054042d3d0659ff3f22e9d00aa9029", null ],
+    [ "game_board_", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#a05132d6f5cb130bf20685ae7beff4e51", null ],
+    [ "json_file_", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#ae2d8a687da996665902cff8083ebfc4e", null ],
+    [ "search_depth_", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#ab68f00658812a211a5863b6f1bf0cd8e", null ],
+    [ "zobrist_coordinator_factory_", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#abd3c01faed0c4306cbbfcf37b45866f8", null ]
 ];

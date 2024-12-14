@@ -1,10 +1,10 @@
 <map id="include/concept_single_board_state_provider.hpp" name="include/concept_single_board_state_provider.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="257,5,452,45"/>
-<area shape="rect" id="node2" href="$builders_8hpp.html" title=" " alt="" coords="251,269,405,295"/>
-<area shape="rect" id="node4" href="$concept__composite__concepts_8hpp.html" title=" " alt="" coords="83,93,282,133"/>
-<area shape="rect" id="node7" href="$concept__multi__board__state__provider_8hpp.html" title=" " alt="" coords="417,93,612,133"/>
-<area shape="rect" id="node8" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="370,181,513,221"/>
-<area shape="rect" id="node3" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="292,343,479,368"/>
-<area shape="rect" id="node5" href="$game_8hpp.html" title=" " alt="" coords="103,189,241,214"/>
-<area shape="rect" id="node6" href="$game__factory_8hpp.html" title=" " alt="" coords="5,269,195,295"/>
+<area shape="rect" id="node1" title=" " alt="" coords="211,5,406,45"/>
+<area shape="rect" id="node2" href="$builders_8hpp.html" title=" " alt="" coords="195,269,348,295"/>
+<area shape="rect" id="node5" href="$concept__composite__concepts_8hpp.html" title=" " alt="" coords="5,181,204,221"/>
+<area shape="rect" id="node7" href="$concept__multi__board__state__provider_8hpp.html" title=" " alt="" coords="279,93,474,133"/>
+<area shape="rect" id="node8" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="312,181,455,221"/>
+<area shape="rect" id="node3" href="$game__factory_8hpp.html" title=" " alt="" coords="6,343,195,368"/>
+<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="255,343,442,368"/>
+<area shape="rect" id="node6" href="$game_8hpp.html" title=" " alt="" coords="31,269,170,295"/>
 </map>

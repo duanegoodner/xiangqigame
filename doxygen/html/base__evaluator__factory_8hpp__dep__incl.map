@@ -1,0 +1,10 @@
+<map id="include/base_evaluator_factory.hpp" name="include/base_evaluator_factory.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="300,5,473,45"/>
+<area shape="rect" id="node2" href="$builders_8hpp.html" title=" " alt="" coords="210,101,363,126"/>
+<area shape="rect" id="node3" href="$game__factory_8hpp.html" title=" " alt="" coords="5,196,195,221"/>
+<area shape="rect" id="node5" href="$move__evaluator__human__for__concepts_8hpp.html" title=" " alt="" coords="681,93,873,133"/>
+<area shape="rect" id="node7" href="$move__evaluator__random__for__concepts_8hpp.html" title=" " alt="" coords="388,93,585,133"/>
+<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="219,196,405,221"/>
+<area shape="rect" id="node6" href="$move__evaluator__human__for__concepts_8cpp.html" title=" " alt="" coords="719,181,979,236"/>
+<area shape="rect" id="node8" href="$move__evaluator__random__for__concepts_8cpp.html" title=" " alt="" coords="430,181,695,236"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="EvaluatorFactoryBase" name="EvaluatorFactoryBase">
+<area shape="rect" id="node1" title=" " alt="" coords="293,5,492,97"/>
+<area shape="rect" id="node2" href="$classmoveselection_1_1HumanMoveEvaluatorFactory.html" title=" " alt="" coords="5,182,244,289"/>
+<area shape="rect" id="node3" href="$classmoveselection_1_1MinimaxMoveEvaluatorFactory.html" title=" " alt="" coords="268,145,517,325"/>
+<area shape="rect" id="node4" href="$classmoveselection_1_1RandomMoveEvaluatorFactory.html" title=" " alt="" coords="542,189,758,281"/>
+</map>

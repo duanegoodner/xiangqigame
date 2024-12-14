@@ -15,7 +15,7 @@ var searchData=
   ['horse_5fposition_5ficga_5f2004_12',['horse_position_icga_2004',['../namespacexiangqipy_1_1piece__points.html#a4a209111aaf6ef030349eaeb8c42f2a5',1,'xiangqipy::piece_points']]],
   ['horsemoves_13',['HorseMoves',['../classgameboard_1_1PieceMoves.html#a8ae87252fe0d0cbcdd3842c3b591ab70',1,'gameboard::PieceMoves']]],
   ['human_14',['HUMAN',['../classxiangqipy_1_1enums_1_1PlayerType.html#aca45f307735b8626a467a422775f4955',1,'xiangqipy.enums.PlayerType.HUMAN()'],['../classxiangqipy_1_1enums_1_1EvaluatorTypeNew.html#ad5718ec5eee9ba514caca659afbfa980',1,'xiangqipy.enums.EvaluatorTypeNew.HUMAN()']]],
-  ['humanmoveevaluatorfactory_15',['HumanMoveEvaluatorFactory',['../classmoveselection_1_1HumanMoveEvaluatorFactory.html',1,'moveselection']]],
+  ['humanmoveevaluatorfactory_15',['HumanMoveEvaluatorFactory',['../classmoveselection_1_1HumanMoveEvaluatorFactory.html#acf49cf48ff7fe110de1a45ecd1ae95d6',1,'moveselection::HumanMoveEvaluatorFactory::HumanMoveEvaluatorFactory()'],['../classmoveselection_1_1HumanMoveEvaluatorFactory.html',1,'moveselection::HumanMoveEvaluatorFactory']]],
   ['humanmoveevaluatorforconcepts_16',['HumanMoveEvaluatorForConcepts',['../classmoveselection_1_1HumanMoveEvaluatorForConcepts.html#a36ec417f1929a7777b3f1c12bb8ea8ee',1,'moveselection::HumanMoveEvaluatorForConcepts::HumanMoveEvaluatorForConcepts()'],['../classmoveselection_1_1HumanMoveEvaluatorForConcepts.html',1,'moveselection::HumanMoveEvaluatorForConcepts']]],
   ['humanplayer_17',['HumanPlayer',['../classxiangqipy_1_1players_1_1HumanPlayer.html',1,'xiangqipy::players']]],
   ['humanplayerio_18',['humanplayerio',['../namespacehumanplayerio.html',1,'']]]

@@ -1,7 +1,7 @@
 <map id="include/concept_composite_concepts.hpp" name="include/concept_composite_concepts.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="170,5,369,45"/>
-<area shape="rect" id="node2" href="$builders_8hpp.html" title=" " alt="" coords="22,93,175,119"/>
-<area shape="rect" id="node4" href="$game_8hpp.html" title=" " alt="" coords="200,93,339,119"/>
-<area shape="rect" id="node5" href="$game__factory_8hpp.html" title=" " alt="" coords="248,167,437,192"/>
-<area shape="rect" id="node3" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="5,167,192,192"/>
+<area shape="rect" id="node1" title=" " alt="" coords="22,5,221,45"/>
+<area shape="rect" id="node2" href="$builders_8hpp.html" title=" " alt="" coords="215,93,369,119"/>
+<area shape="rect" id="node3" href="$game__factory_8hpp.html" title=" " alt="" coords="5,167,195,192"/>
+<area shape="rect" id="node5" href="$game_8hpp.html" title=" " alt="" coords="52,93,191,119"/>
+<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="219,167,405,192"/>
 </map>

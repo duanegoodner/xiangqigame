@@ -143,7 +143,8 @@ $(document).ready(function(){initNavTree('classGameFactory.html',''); initResiza
 
 <div class="header">
   <div class="summary">
-<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classGameFactory-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">GameFactory Class Reference</div></div>
 </div><!--header-->
@@ -155,21 +156,32 @@ Collaboration diagram for GameFactory:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGameFactory__coll__graph.png" border="0" usemap="#aGameFactory_coll__map" alt="Collaboration graph"/></div>
 <map name="aGameFactory_coll__map" id="aGameFactory_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,113,83"/>
+<area shape="rect" title=" " alt="" coords="157,189,290,267"/>
+<area shape="rect" title=" " alt="" coords="5,5,220,97"/>
+<area shape="rect" title=" " alt="" coords="244,5,424,97"/>
 </map>
 </div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a99ffd5316cb0d1eef4b0169a06f31ad5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgame_1_1Game.html">game::Game</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameFactory.html#a99ffd5316cb0d1eef4b0169a06f31ad5">Create</a> ()</td></tr>
-<tr class="separator:a99ffd5316cb0d1eef4b0169a06f31ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a30fc13a140ca3faf59fbb894c584649e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameFactory.html#a30fc13a140ca3faf59fbb894c584649e">GameFactory</a> (std::shared_ptr&lt; <a class="el" href="classEvaluatorFactoryBase.html">EvaluatorFactoryBase</a> &gt; red_evaluator_factory, std::shared_ptr&lt; <a class="el" href="classEvaluatorFactoryBase.html">EvaluatorFactoryBase</a> &gt; black_evaluator_factory, std::shared_ptr&lt; <a class="el" href="classgameboard_1_1GameBoardFactory.html">gameboard::GameBoardFactory</a> &gt; game_board_factory)</td></tr>
+<tr class="separator:a30fc13a140ca3faf59fbb894c584649e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a9eb93c8e3aaebcdd96543bdccd512076"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classEvaluatorFactoryBase.html">EvaluatorFactoryBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameFactory.html#a9eb93c8e3aaebcdd96543bdccd512076">red_evaluator_factory_</a></td></tr>
+<tr class="separator:a9eb93c8e3aaebcdd96543bdccd512076"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0692967d0aae087a573a8d9cbaa69d90"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classEvaluatorFactoryBase.html">EvaluatorFactoryBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameFactory.html#a0692967d0aae087a573a8d9cbaa69d90">black_evaluator_factory_</a></td></tr>
+<tr class="separator:a0692967d0aae087a573a8d9cbaa69d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15f63db7435cb713eb9c68b1f5ff75b7"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classgameboard_1_1GameBoardFactory.html">gameboard::GameBoardFactory</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameFactory.html#a15f63db7435cb713eb9c68b1f5ff75b7">game_board_factory_</a></td></tr>
+<tr class="separator:a15f63db7435cb713eb9c68b1f5ff75b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00010">10</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a99ffd5316cb0d1eef4b0169a06f31ad5" name="a99ffd5316cb0d1eef4b0169a06f31ad5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99ffd5316cb0d1eef4b0169a06f31ad5">&#9670;&#160;</a></span>Create()</h2>
+<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00013">13</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a30fc13a140ca3faf59fbb894c584649e" name="a30fc13a140ca3faf59fbb894c584649e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30fc13a140ca3faf59fbb894c584649e">&#9670;&#160;</a></span>GameFactory()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -178,10 +190,52 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classgame_1_1Game.html">game::Game</a> GameFactory::Create </td>
+          <td class="memname">GameFactory::GameFactory </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classEvaluatorFactoryBase.html">EvaluatorFactoryBase</a> &gt;&#160;</td>
+          <td class="paramname"><em>red_evaluator_factory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classEvaluatorFactoryBase.html">EvaluatorFactoryBase</a> &gt;&#160;</td>
+          <td class="paramname"><em>black_evaluator_factory</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classgameboard_1_1GameBoardFactory.html">gameboard::GameBoardFactory</a> &gt;&#160;</td>
+          <td class="paramname"><em>game_board_factory</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00019">19</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a0692967d0aae087a573a8d9cbaa69d90" name="a0692967d0aae087a573a8d9cbaa69d90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0692967d0aae087a573a8d9cbaa69d90">&#9670;&#160;</a></span>black_evaluator_factory_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classEvaluatorFactoryBase.html">EvaluatorFactoryBase</a>&gt; GameFactory::black_evaluator_factory_</td>
         </tr>
       </table>
   </td>
@@ -190,6 +244,56 @@ Private Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00015">15</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a15f63db7435cb713eb9c68b1f5ff75b7" name="a15f63db7435cb713eb9c68b1f5ff75b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15f63db7435cb713eb9c68b1f5ff75b7">&#9670;&#160;</a></span>game_board_factory_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classgameboard_1_1GameBoardFactory.html">gameboard::GameBoardFactory</a>&gt; GameFactory::game_board_factory_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00016">16</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a9eb93c8e3aaebcdd96543bdccd512076" name="a9eb93c8e3aaebcdd96543bdccd512076"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9eb93c8e3aaebcdd96543bdccd512076">&#9670;&#160;</a></span>red_evaluator_factory_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt;<a class="el" href="classEvaluatorFactoryBase.html">EvaluatorFactoryBase</a>&gt; GameFactory::red_evaluator_factory_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00014">14</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -202,7 +306,7 @@ Private Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classGameFactory.html">GameFactory</a></li>
-    <li class="footer">Generated on Fri Dec 13 2024 19:43:40 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Dec 14 2024 23:21:57 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

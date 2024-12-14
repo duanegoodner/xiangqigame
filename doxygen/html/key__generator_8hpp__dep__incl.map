@@ -4,6 +4,7 @@
 <area shape="rect" id="node5" href="$zobrist__calculator__for__concepts_8hpp.html" title=" " alt="" coords="202,79,390,119"/>
 <area shape="rect" id="node6" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="345,167,487,207"/>
 <area shape="rect" id="node3" href="$minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="5,167,205,207"/>
-<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="227,328,413,353"/>
+<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="201,328,388,353"/>
 <area shape="rect" id="node7" href="$builders_8hpp.html" title=" " alt="" coords="383,255,537,280"/>
+<area shape="rect" id="node8" href="$game__factory_8hpp.html" title=" " alt="" coords="412,328,601,353"/>
 </map>

@@ -1,6 +1,6 @@
 <map id="MoveEvaluatorBase" name="MoveEvaluatorBase">
 <area shape="rect" id="node1" title=" " alt="" coords="343,5,531,112"/>
-<area shape="rect" id="node2" href="$classmoveselection_1_1HumanMoveEvaluatorForConcepts.html" title=" " alt="" coords="5,395,272,575"/>
-<area shape="rect" id="node3" href="$classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html" title="Complies with MoveEvaluatorConcept, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="296,160,579,809"/>
-<area shape="rect" id="node4" href="$classmoveselection_1_1RandomMoveEvaluatorForConcepts.html" title="Complies with MoveEvaluatorConcept." alt="" coords="602,409,875,560"/>
+<area shape="rect" id="node2" href="$classmoveselection_1_1HumanMoveEvaluatorForConcepts.html" title=" " alt="" coords="5,387,272,567"/>
+<area shape="rect" id="node3" href="$classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html" title="Complies with MoveEvaluatorConcept, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="296,160,579,795"/>
+<area shape="rect" id="node4" href="$classmoveselection_1_1RandomMoveEvaluatorForConcepts.html" title="Complies with MoveEvaluatorConcept." alt="" coords="602,402,875,553"/>
 </map>

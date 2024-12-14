@@ -144,6 +144,7 @@ $(document).ready(function(){initNavTree('classmoveselection_1_1HumanMoveEvaluat
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classmoveselection_1_1HumanMoveEvaluatorFactory-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">moveselection::HumanMoveEvaluatorFactory Class Reference</div></div>
 </div><!--header-->
@@ -151,50 +152,127 @@ $(document).ready(function(){initNavTree('classmoveselection_1_1HumanMoveEvaluat
 
 <p><code>#include &lt;<a class="el" href="move__evaluator__human__for__concepts_8hpp_source.html">move_evaluator_human_for_concepts.hpp</a>&gt;</code></p>
 <div class="dynheader">
+Inheritance diagram for moveselection::HumanMoveEvaluatorFactory:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmoveselection_1_1HumanMoveEvaluatorFactory__inherit__graph.png" border="0" usemap="#amoveselection_1_1HumanMoveEvaluatorFactory_inherit__map" alt="Inheritance graph"/></div>
+<map name="amoveselection_1_1HumanMoveEvaluatorFactory_inherit__map" id="amoveselection_1_1HumanMoveEvaluatorFactory_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,145,244,252"/>
+<area shape="rect" href="classEvaluatorFactoryBase.html" title=" " alt="" coords="25,5,224,97"/>
+</map>
+</div>
+<div class="dynheader">
 Collaboration diagram for moveselection::HumanMoveEvaluatorFactory:</div>
 <div class="dyncontent">
 <div class="center"><img src="classmoveselection_1_1HumanMoveEvaluatorFactory__coll__graph.png" border="0" usemap="#amoveselection_1_1HumanMoveEvaluatorFactory_coll__map" alt="Collaboration graph"/></div>
 <map name="amoveselection_1_1HumanMoveEvaluatorFactory_coll__map" id="amoveselection_1_1HumanMoveEvaluatorFactory_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,215,97"/>
+<area shape="rect" title=" " alt="" coords="68,160,307,267"/>
+<area shape="rect" href="classEvaluatorFactoryBase.html" title=" " alt="" coords="5,5,204,97"/>
+<area shape="rect" title=" " alt="" coords="228,13,315,90"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8c9f58fa5dabc9fa0ee7f8b1b1e4542d"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classmoveselection_1_1HumanMoveEvaluatorForConcepts.html">HumanMoveEvaluatorForConcepts</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1HumanMoveEvaluatorFactory.html#a8c9f58fa5dabc9fa0ee7f8b1b1e4542d">Create</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player, std::istream &amp;input_stream=std::cin)</td></tr>
-<tr class="separator:a8c9f58fa5dabc9fa0ee7f8b1b1e4542d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf49cf48ff7fe110de1a45ecd1ae95d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1HumanMoveEvaluatorFactory.html#acf49cf48ff7fe110de1a45ecd1ae95d6">HumanMoveEvaluatorFactory</a> (std::istream &amp;input_stream=std::cin)</td></tr>
+<tr class="separator:acf49cf48ff7fe110de1a45ecd1ae95d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa48841dd3da3f0507f8a104996006a45"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1HumanMoveEvaluatorFactory.html#aa48841dd3da3f0507f8a104996006a45">Create</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player) override</td></tr>
+<tr class="separator:aa48841dd3da3f0507f8a104996006a45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classEvaluatorFactoryBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classEvaluatorFactoryBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classEvaluatorFactoryBase.html">EvaluatorFactoryBase</a></td></tr>
+<tr class="memitem:a1f9446836661f95a2593697669ab29af inherit pub_methods_classEvaluatorFactoryBase"><td class="memItemLeft" align="right" valign="top">virtual std::unique_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvaluatorFactoryBase.html#a1f9446836661f95a2593697669ab29af">Create</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player)=0</td></tr>
+<tr class="separator:a1f9446836661f95a2593697669ab29af inherit pub_methods_classEvaluatorFactoryBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24b51b0cf2d4f03749907d566e5ba9d1 inherit pub_methods_classEvaluatorFactoryBase"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEvaluatorFactoryBase.html#a24b51b0cf2d4f03749907d566e5ba9d1">~EvaluatorFactoryBase</a> ()=default</td></tr>
+<tr class="separator:a24b51b0cf2d4f03749907d566e5ba9d1 inherit pub_methods_classEvaluatorFactoryBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:aa38949d29cbff3d405715d88ac61e5e7"><td class="memItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1HumanMoveEvaluatorFactory.html#aa38949d29cbff3d405715d88ac61e5e7">input_stream_</a></td></tr>
+<tr class="separator:aa38949d29cbff3d405715d88ac61e5e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="move__evaluator__human__for__concepts_8hpp_source.html#l00046">46</a> of file <a class="el" href="move__evaluator__human__for__concepts_8hpp_source.html">move_evaluator_human_for_concepts.hpp</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8c9f58fa5dabc9fa0ee7f8b1b1e4542d" name="a8c9f58fa5dabc9fa0ee7f8b1b1e4542d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c9f58fa5dabc9fa0ee7f8b1b1e4542d">&#9670;&#160;</a></span>Create()</h2>
+<p class="definition">Definition at line <a class="el" href="move__evaluator__human__for__concepts_8hpp_source.html#l00047">47</a> of file <a class="el" href="move__evaluator__human__for__concepts_8hpp_source.html">move_evaluator_human_for_concepts.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="acf49cf48ff7fe110de1a45ecd1ae95d6" name="acf49cf48ff7fe110de1a45ecd1ae95d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf49cf48ff7fe110de1a45ecd1ae95d6">&#9670;&#160;</a></span>HumanMoveEvaluatorFactory()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::unique_ptr&lt; <a class="el" href="classmoveselection_1_1HumanMoveEvaluatorForConcepts.html">HumanMoveEvaluatorForConcepts</a> &gt; moveselection::HumanMoveEvaluatorFactory::Create </td>
+          <td class="memname">moveselection::HumanMoveEvaluatorFactory::HumanMoveEvaluatorFactory </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>&#160;</td>
-          <td class="paramname"><em>evaluating_player</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">std::istream &amp;&#160;</td>
-          <td class="paramname"><em>input_stream</em> = <code>std::cin</code>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>input_stream</em> = <code>std::cin</code></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
+<p class="definition">Definition at line <a class="el" href="move__evaluator__human__for__concepts_8hpp_source.html#l00051">51</a> of file <a class="el" href="move__evaluator__human__for__concepts_8hpp_source.html">move_evaluator_human_for_concepts.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa48841dd3da3f0507f8a104996006a45" name="aa48841dd3da3f0507f8a104996006a45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa48841dd3da3f0507f8a104996006a45">&#9670;&#160;</a></span>Create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unique_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt; moveselection::HumanMoveEvaluatorFactory::Create </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>&#160;</td>
+          <td class="paramname"><em>evaluating_player</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="classEvaluatorFactoryBase.html#a1f9446836661f95a2593697669ab29af">EvaluatorFactoryBase</a>.</p>
+
 <p class="definition">Definition at line <a class="el" href="move__evaluator__human__for__concepts_8cpp_source.html#l00053">53</a> of file <a class="el" href="move__evaluator__human__for__concepts_8cpp_source.html">move_evaluator_human_for_concepts.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa38949d29cbff3d405715d88ac61e5e7" name="aa38949d29cbff3d405715d88ac61e5e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa38949d29cbff3d405715d88ac61e5e7">&#9670;&#160;</a></span>input_stream_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::istream&amp; moveselection::HumanMoveEvaluatorFactory::input_stream_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="move__evaluator__human__for__concepts_8hpp_source.html#l00048">48</a> of file <a class="el" href="move__evaluator__human__for__concepts_8hpp_source.html">move_evaluator_human_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -208,7 +286,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li><li class="navelem"><a class="el" href="classmoveselection_1_1HumanMoveEvaluatorFactory.html">HumanMoveEvaluatorFactory</a></li>
-    <li class="footer">Generated on Fri Dec 13 2024 19:43:40 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Dec 14 2024 23:21:57 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

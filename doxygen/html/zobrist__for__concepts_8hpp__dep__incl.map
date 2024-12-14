@@ -1,5 +1,6 @@
 <map id="include/zobrist_for_concepts.hpp" name="include/zobrist_for_concepts.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="68,5,211,45"/>
-<area shape="rect" id="node2" href="$builders_8hpp.html" title=" " alt="" coords="5,93,159,119"/>
-<area shape="rect" id="node3" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="46,167,233,192"/>
+<area shape="rect" id="node1" title=" " alt="" coords="183,5,326,45"/>
+<area shape="rect" id="node2" href="$builders_8hpp.html" title=" " alt="" coords="121,93,274,119"/>
+<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="219,167,405,192"/>
+<area shape="rect" id="node3" href="$game__factory_8hpp.html" title=" " alt="" coords="5,167,195,192"/>
 </map>
