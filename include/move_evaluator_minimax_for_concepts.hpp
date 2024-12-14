@@ -128,7 +128,7 @@ template <
     BoardStateCoordinatorConcept H,
     SpaceInfoProviderConcept G,
     PieceValueProviderConcept P>
-class MinimaxMoveEvaluatorForConcepts : MoveEvaluatorBase {
+class MinimaxMoveEvaluatorForConcepts : public MoveEvaluatorBase {
 
   PieceColor evaluating_player_;
   std::shared_ptr<P> game_position_points_;
@@ -185,9 +185,9 @@ public:
 
   const uint32_t zkeys_seed() { return hash_calculator_->zkeys_seed(); }
 
-  const std::string board_state_hex_str() {
-    return hash_calculator_->board_state_hex_str();
-  }
+  // const std::string board_state_hex_str() {
+  //   return hash_calculator_->board_state_hex_str();
+  // }
 
 private:
   // void initialize_hash_calculator() {

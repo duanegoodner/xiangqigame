@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <base_evaluator_factory.hpp>
 #include <concept_board_state_calculator_registry.hpp>
 #include <concept_composite_concepts.hpp>
 #include <concept_single_board_state_provider.hpp>
@@ -114,11 +115,10 @@ private:
 
 namespace moveselection {
 
-template <
-    typename KeyType,
-    size_t NumConfKeys,
-    SpaceInfoProviderAndCalculatorRegistryConcept G>
-class MinimaxMoveEvaluatorFactory {
+template <typename KeyType, size_t NumConfKeys>
+class MinimaxMoveEvaluatorFactory : EvaluatorFactoryBase {
+  using P = piecepoints::PiecePositionPointsForConcepts;
+  using G = gameboard::GameBoardForConcepts;
   boardstate::ZobristCoordinatorFactory<KeyType, NumConfKeys, G>
       zobrist_coordinator_factory_;
 
@@ -126,21 +126,19 @@ public:
   using ZobristCoordinatorType = typename boardstate::
       ZobristCoordinatorFactory<KeyType, NumConfKeys, G>::ZobristCoordinatorType;
 
-  using MoveEvaluatorType = moveselection::MinimaxMoveEvaluatorForConcepts<
-      ZobristCoordinatorType,
-      G,
-      piecepoints::PiecePositionPointsForConcepts>;
+  using MoveEvaluatorType =
+      moveselection::MinimaxMoveEvaluatorForConcepts<ZobristCoordinatorType, G, P>;
 
-  std::unique_ptr<MoveEvaluatorType> Create(
+  std::unique_ptr<MoveEvaluatorBase> Create(
       std::shared_ptr<G> game_board,
       gameboard::PieceColor evaluating_player,
       DepthType search_depth,
-      std::string json_file = piecepoints::kICGABPOPath
-  ) {
+      const std::string &json_file = piecepoints::kICGABPOPath
+  ) override {
     auto zobrist_coordinator =
         zobrist_coordinator_factory_.CreateRegisteredCoordinator(game_board);
 
-    auto game_position_points = piecepoints::PiecePositionPointsForConcepts::Create();
+    auto game_position_points = P::Create();
     return std::make_unique<MoveEvaluatorType>(
         evaluating_player,
         search_depth,
