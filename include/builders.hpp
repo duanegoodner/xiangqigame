@@ -142,12 +142,7 @@ public:
   using MoveEvaluatorType =
       moveselection::MinimaxMoveEvaluatorForConcepts<ZobristCoordinatorType, G, P>;
 
-  std::unique_ptr<MoveEvaluatorBase> Create(
-      gameboard::PieceColor evaluating_player
-      // std::shared_ptr<G> game_board,
-      // gameboard::PieceColor evaluating_player,
-      // DepthType search_depth,
-      // const std::string &json_file = piecepoints::kICGABPOPath
+  std::unique_ptr<MoveEvaluatorBase> Create(gameboard::PieceColor evaluating_player
   ) override {
     auto zobrist_coordinator =
         zobrist_coordinator_factory_.CreateRegisteredCoordinator(game_board_);

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <base_evaluator_factory.hpp>
 #include <base_move_evaluator.hpp>
 #include <game_piece.hpp>
 #include <memory>
@@ -34,11 +35,11 @@ private:
   RandomMoveEvaluatorForConcepts(gameboard::PieceColor evaluating_player);
 };
 
-class RandomMoveEvaluatorFactory {
+class RandomMoveEvaluatorFactory : public EvaluatorFactoryBase{
 public:
-  std::unique_ptr<RandomMoveEvaluatorForConcepts> Create(
+  std::unique_ptr<MoveEvaluatorBase> Create(
       gameboard::PieceColor evaluating_player
-  );
+  ) override;
 };
 
 } // namespace moveselection
