@@ -9,10 +9,7 @@
 class EvaluatorFactoryBase {
 public:
   virtual std::unique_ptr<MoveEvaluatorBase> Create(
-      std::shared_ptr<gameboard::GameBoardForConcepts> game_board,
-      gameboard::PieceColor evaluating_player,
-      DepthType search_depth,
-      const std::string &json_file
+      gameboard::PieceColor evaluating_player
   ) = 0;
   virtual ~EvaluatorFactoryBase() = default;
 };

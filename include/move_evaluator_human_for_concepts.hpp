@@ -44,10 +44,12 @@ private:
 };
 
 class HumanMoveEvaluatorFactory {
+  std::istream &input_stream_;
+
 public:
+  HumanMoveEvaluatorFactory(std::istream &input_stream = std::cin) : input_stream_{input_stream} {}
   std::unique_ptr<HumanMoveEvaluatorForConcepts> Create(
-      gameboard::PieceColor evaluating_player,
-      std::istream &input_stream = std::cin
+      gameboard::PieceColor evaluating_player
   );
 };
 } // namespace moveselection
