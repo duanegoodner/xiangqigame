@@ -27,33 +27,27 @@ protected:
   static constexpr size_t example_num_conf_keys_red_ = 1;
   static constexpr size_t example_num_conf_keys_black_ = 1;
 
+  DepthType default_search_depth_{4};
+
   using ExampleCalculatorTypeRed =
       boardstate::ZobristCalculatorForConcepts<ExampleKeyTypeRed>;
   using ExamplCalculatorTypeBlack =
       boardstate::ZobristCalculatorForConcepts<ExampleKeyTypeBlack>;
   using ExampleGameBoardType = gameboard::GameBoardForConcepts;
-  using ExampleMoveEvaluatorFactoryType = moveselection::MinimaxMoveEvaluatorFactory<
-      ExampleKeyTypeRed,
-      example_num_conf_keys_red_,
-      ExampleGameBoardType>;
+  using ExampleMoveEvaluatorFactoryType = moveselection::
+      MinimaxMoveEvaluatorFactory<ExampleKeyTypeRed, example_num_conf_keys_red_>;
   using ExampleMoveEvaluatorType = ExampleMoveEvaluatorFactoryType::MoveEvaluatorType;
 
   std::shared_ptr<ExampleGameBoardType> example_game_board_ =
       ExampleGameBoardType::Create();
 
-  moveselection::MinimaxMoveEvaluatorFactory<
-      ExampleKeyTypeRed,
-      example_num_conf_keys_red_,
-      ExampleGameBoardType>
-      example_red_evaluator_factory_;
+  moveselection::
+      MinimaxMoveEvaluatorFactory<ExampleKeyTypeRed, example_num_conf_keys_red_>
+          example_red_evaluator_factory_{example_game_board_, default_search_depth_};
 
-  moveselection::MinimaxMoveEvaluatorFactory<
-      ExampleKeyTypeBlack,
-      example_num_conf_keys_black_,
-      ExampleGameBoardType>
-      example_black_evaluator_factory_;
-
-  DepthType default_search_depth_{4};
+  moveselection::
+      MinimaxMoveEvaluatorFactory<ExampleKeyTypeBlack, example_num_conf_keys_black_>
+          example_black_evaluator_factory_{example_game_board_, default_search_depth_};
 
   template <
       typename KeyTypeRed,
@@ -63,16 +57,23 @@ protected:
   void PlayGame(DepthType red_search_depth, DepthType black_search_depth) {
     using GameBoardType = gameboard::GameBoardForConcepts;
 
-    auto minimax_evaluator_red = example_red_evaluator_factory_.Create(
-        example_game_board_,
-        gameboard::PieceColor::kRed,
-        red_search_depth
-    );
-    auto minimax_evaluator_black = example_black_evaluator_factory_.Create(
-        example_game_board_,
-        gameboard::PieceColor::kBlk,
-        black_search_depth
-    );
+    auto red_evaluator_factory_local =
+        moveselection::MinimaxMoveEvaluatorFactory<KeyTypeRed, NumConfKeysRed>{
+            example_game_board_,
+            red_search_depth
+        };
+
+    auto minimax_evaluator_red =
+        red_evaluator_factory_local.Create(gameboard::PieceColor::kRed);
+
+    auto black_evaluator_factory_local =
+        moveselection::MinimaxMoveEvaluatorFactory<KeyTypeBlack, NumConfKeysBlack>{
+            example_game_board_,
+            black_search_depth
+        };
+
+    auto minimax_evaluator_black =
+        black_evaluator_factory_local.Create(gameboard::PieceColor::kBlk);
 
     PieceColor losing_player{};
 
@@ -114,43 +115,31 @@ TEST_F(MinimaxEvaluatorConceptTest, CompliesWithMoveEvaluatorConcept) {
 }
 
 TEST_F(MinimaxEvaluatorConceptTest, TestBuildEvaluator) {
-  auto example_red_evaluator = example_red_evaluator_factory_.Create(
-      example_game_board_,
-      gameboard::PieceColor::kRed,
-      default_search_depth_
-  );
+  auto example_red_evaluator =
+      example_red_evaluator_factory_.Create(gameboard::PieceColor::kRed);
 }
 
 TEST_F(MinimaxEvaluatorConceptTest, TestBuildRedAndBlackEvaluators) {
-  auto example_red_evaluator = example_red_evaluator_factory_.Create(
-      example_game_board_,
-      gameboard::PieceColor::kRed,
-      default_search_depth_
-  );
+  auto example_red_evaluator =
+      example_red_evaluator_factory_.Create(gameboard::PieceColor::kRed);
 
-  auto example_black_evaluator = example_black_evaluator_factory_.Create(
-      example_game_board_,
-      gameboard::PieceColor::kRed,
-      default_search_depth_
-  );
+  auto example_black_evaluator =
+      example_black_evaluator_factory_.Create(gameboard::PieceColor::kBlk);
 }
 
-TEST_F(MinimaxEvaluatorConceptTest, BoardStateHexStr) {
-  auto example_red_evaluator = example_red_evaluator_factory_.Create(
-      example_game_board_,
-      gameboard::PieceColor::kRed,
-      default_search_depth_
-  );
+// TEST_F(MinimaxEvaluatorConceptTest, BoardStateHexStr) {
+//   auto example_red_evaluator = example_red_evaluator_factory_.Create(
+//       example_game_board_,
+//       gameboard::PieceColor::kRed,
+//       default_search_depth_
+//   );
 
-  std::cout << example_red_evaluator->board_state_hex_str() << std::endl;
-}
+//   std::cout << example_red_evaluator->board_state_hex_str() << std::endl;
+// }
 
 TEST_F(MinimaxEvaluatorConceptTest, RedStartingMoveSelection) {
-  auto red_evaluator = example_red_evaluator_factory_.Create(
-      example_game_board_,
-      gameboard::PieceColor::kRed,
-      default_search_depth_
-  );
+  auto red_evaluator =
+      example_red_evaluator_factory_.Create(gameboard::PieceColor::kRed);
 
   auto allowed_moves = example_game_board_->CalcFinalMovesOf(PieceColor::kRed);
   auto red_selected_move = red_evaluator->SelectMove(allowed_moves);

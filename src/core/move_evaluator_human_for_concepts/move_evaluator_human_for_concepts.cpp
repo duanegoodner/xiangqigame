@@ -50,11 +50,10 @@ void HumanMoveEvaluatorForConcepts::NotifyIllegalMove() {
 
 // Factory methods
 
-std::unique_ptr<HumanMoveEvaluatorForConcepts> HumanMoveEvaluatorFactory::Create(
-    gameboard::PieceColor evaluating_player,
-    std::istream &input_stream
+std::unique_ptr<MoveEvaluatorBase> HumanMoveEvaluatorFactory::Create(
+    gameboard::PieceColor evaluating_player
 ) {
-  return HumanMoveEvaluatorForConcepts::Create(evaluating_player, input_stream);
+  return HumanMoveEvaluatorForConcepts::Create(evaluating_player, input_stream_);
 }
 
 gameboard::Move HumanMoveEvaluatorForConcepts::GetSyntacticallyValidMove(

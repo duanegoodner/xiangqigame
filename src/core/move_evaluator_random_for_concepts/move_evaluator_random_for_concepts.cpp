@@ -33,7 +33,7 @@ void RandomMoveEvaluatorForConcepts::NotifyIllegalMove() {
 
 // RandomMoveEvaluator factory methods
 
-std::unique_ptr<RandomMoveEvaluatorForConcepts> RandomMoveEvaluatorFactory::Create(
+std::unique_ptr<MoveEvaluatorBase> RandomMoveEvaluatorFactory::Create(
     gameboard::PieceColor evaluating_player
 ) {
   return RandomMoveEvaluatorForConcepts::Create(evaluating_player);

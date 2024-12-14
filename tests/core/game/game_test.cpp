@@ -13,25 +13,25 @@ public:
   virtual ~GameTestSuiteTwoAIBase() = default;
 };
 
-template <
-    typename RedKeyType,
-    typename BlackKeyType,
-    size_t RedNumConfKeys,
-    size_t BlackNumConfKeys>
-class GameTestSuiteTwoAI : public GameTestSuiteTwoAIBase {
-  GameFactory game_factory_;
-};
+// template <
+//     typename RedKeyType,
+//     typename BlackKeyType,
+//     size_t RedNumConfKeys,
+//     size_t BlackNumConfKeys>
+// class GameTestSuiteTwoAI : public GameTestSuiteTwoAIBase {
+//   GameFactory game_factory_;
+// };
 
-class GameTestTwoAI : public ::testing::Test {
-protected:
-  std::vector<std::shared_ptr<GameTestSuiteTwoAIBase>> test_suites_;
+// class GameTestTwoAI : public ::testing::Test {
+// protected:
+//   std::vector<std::shared_ptr<GameTestSuiteTwoAIBase>> test_suites_;
 
-  GameTestTwoAI() {
-    test_suites_.emplace_back(
-        std::make_shared<GameTestSuiteTwoAI<uint64_t, uint64_t, 1, 1>>()
-    );
-  }
-};
+//   GameTestTwoAI() {
+//     test_suites_.emplace_back(
+//         std::make_shared<GameTestSuiteTwoAI<uint64_t, uint64_t, 1, 1>>()
+//     );
+//   }
+// };
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

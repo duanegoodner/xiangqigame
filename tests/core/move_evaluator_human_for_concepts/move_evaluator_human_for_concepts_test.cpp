@@ -25,8 +25,6 @@ TEST_F(InputRetrievalMessagesTest, TestNotifyIllegalMove) {
 
 class HumanMoveEvaluatorTest : public ::testing::Test {
 protected:
-  moveselection::HumanMoveEvaluatorFactory human_move_evaluator_factory_;
-
   // will append a move to this, and use as allowed_moves in tests
   gameboard::MoveCollection dummy_allowed_moves_;
 
@@ -36,6 +34,11 @@ protected:
   // these two items will have value assigned in Setup()
   gameboard::Move red_horse_game_board_move_;
   std::istringstream red_horse_move_input_stream_;
+
+  moveselection::HumanMoveEvaluatorFactory factory_for_std_cin_;
+  moveselection::HumanMoveEvaluatorFactory factory_for_custom_input_stream_{
+      red_horse_move_input_stream_
+  };
 
   void SetUp() override {
     // Add our test string to the stream the will be used as input
@@ -62,22 +65,18 @@ TEST_F(HumanMoveEvaluatorTest, TestCreateWithStaticFactoryMethod) {
 
 TEST_F(HumanMoveEvaluatorTest, TestCreateWithFactoryClass) {
   auto human_move_evaluator_red =
-      human_move_evaluator_factory_.Create(gameboard::PieceColor::kRed);
+      factory_for_std_cin_.Create(gameboard::PieceColor::kRed);
 }
 
 TEST_F(HumanMoveEvaluatorTest, TestCreateWithIstringStreamInput) {
-  auto human_move_evaluator_red = human_move_evaluator_factory_.Create(
-      gameboard::PieceColor::kRed,
-      red_horse_move_input_stream_
-  );
+  auto human_move_evaluator_red =
+      factory_for_custom_input_stream_.Create(gameboard::PieceColor::kRed);
 }
 
 TEST_F(HumanMoveEvaluatorTest, TestSelectMoveWithIstringStreamInput) {
 
-  auto human_move_evaluator_red = human_move_evaluator_factory_.Create(
-      gameboard::PieceColor::kRed,
-      red_horse_move_input_stream_
-  );
+  auto human_move_evaluator_red =
+      factory_for_custom_input_stream_.Create(gameboard::PieceColor::kRed);
 
   auto result = human_move_evaluator_red->SelectMove(dummy_allowed_moves_);
 
