@@ -33,7 +33,7 @@ public:
       std::istream &input_stream = std::cin
   );
 
-  gameboard::Move SelectMove(gameboard::MoveCollection &allowed_moves);
+  gameboard::Move SelectMove(const gameboard::MoveCollection &allowed_moves);
   void NotifyIllegalMove();
 
 private:

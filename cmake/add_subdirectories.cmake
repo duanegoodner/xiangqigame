@@ -1,4 +1,5 @@
 
+add_subdirectory(${SOURCE_CODE_DIR}/game)
 add_subdirectory(${SOURCE_CODE_DIR}/game_board)
 add_subdirectory(${SOURCE_CODE_DIR}/game_board_for_concepts)
 

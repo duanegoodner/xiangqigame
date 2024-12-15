@@ -4,7 +4,7 @@
 
 class MoveEvaluatorBase {
 public:
-  virtual gameboard::Move SelectMove(gameboard::MoveCollection &allowed_moves) = 0;
+  virtual gameboard::Move SelectMove(const gameboard::MoveCollection &allowed_moves) = 0;
   virtual void NotifyIllegalMove() = 0;
   virtual ~MoveEvaluatorBase() = default;
 };

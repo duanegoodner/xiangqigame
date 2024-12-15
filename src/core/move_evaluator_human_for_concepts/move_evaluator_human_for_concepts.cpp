@@ -26,7 +26,7 @@ std::unique_ptr<HumanMoveEvaluatorForConcepts> HumanMoveEvaluatorForConcepts::Cr
 }
 
 gameboard::Move HumanMoveEvaluatorForConcepts::SelectMove(
-    gameboard::MoveCollection &allowed_moves
+    const gameboard::MoveCollection &allowed_moves
 ) {
 
   gameboard::Move legal_move;

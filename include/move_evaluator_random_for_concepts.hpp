@@ -26,7 +26,7 @@ public:
   );
 
   //! Randomly selects move from collection of allowed moves.
-  gameboard::Move SelectMove(gameboard::MoveCollection &allowed_moves);
+  gameboard::Move SelectMove(const gameboard::MoveCollection &allowed_moves);
 
   void NotifyIllegalMove();
 

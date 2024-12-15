@@ -20,7 +20,7 @@ std::unique_ptr<RandomMoveEvaluatorForConcepts> RandomMoveEvaluatorForConcepts::
 }
 
 gameboard::Move RandomMoveEvaluatorForConcepts::SelectMove(
-    gameboard::MoveCollection &allowed_moves
+    const gameboard::MoveCollection &allowed_moves
 ) {
   std::uniform_int_distribution<size_t> distr(0, allowed_moves.Size() - 1);
   auto selected_move_index = distr(prng_);
