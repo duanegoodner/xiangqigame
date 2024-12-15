@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['minimaxresulttype_0',['MinimaxResultType',['../namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d',1,'moveselection']]]
+  ['gamestate_0',['GameState',['../namespacegame.html#a397bae7c56aafd18e7ca3d06f16a864e',1,'game']]]
 ];

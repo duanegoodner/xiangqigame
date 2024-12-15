@@ -148,16 +148,23 @@ $(document).ready(function(){initNavTree('classgame_1_1Game.html',''); initResiz
 
 <p>This is the complete list of members for <a class="el" href="classgame_1_1Game.html">game::Game</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classgame_1_1Game.html#a00bfb6a49086f43b57e4b5842f28581b">black_evaluator_</a></td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classgame_1_1Game.html#a7285928d3ed03d2e872b0850e57a845a">Game</a>(std::shared_ptr&lt; SpaceInfoProviderBase &gt; game_board, std::shared_ptr&lt; MoveEvaluatorBase &gt; red_evaluator, std::shared_ptr&lt; MoveEvaluatorBase &gt; black_evaluator)</td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgame_1_1Game.html#aa710c54675fafaee460f74e84f30053c">ChangeWhoseTurn</a>()</td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classgame_1_1Game.html#a359858368e5914c5148e1702377636e9">Game</a>(std::shared_ptr&lt; SpaceInfoProviderBase &gt; game_board, std::unordered_map&lt; gameboard::PieceColor, std::unique_ptr&lt; MoveEvaluatorBase &gt; &gt; move_evaluators, gameboard::PieceColor whose_turn=gameboard::PieceColor::kRed)</td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classgame_1_1Game.html#adeadb646b4aea988c07bf4c048960202">game_board_</a></td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classgame_1_1Game.html#abc0ceb11fc7810f981a025223a57d1e2">red_evaluator_</a></td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classgame_1_1Game.html#a2c284260110cad7e418259fa26755ae3">game_state_</a></td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgame_1_1Game.html#a2a0ce3de2900373c7ff8456923cd6cf0">GetValidMove</a>(const gameboard::MoveCollection &amp;available_moves)</td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classgame_1_1Game.html#aad15041ab2d8dd5a58c0fa4d324ecf67">move_evaluators_</a></td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgame_1_1Game.html#ab8f77605f485c053fcde4efa29b84882">move_log_</a></td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classgame_1_1Game.html#a2ef4e1ff37f95a4ca30c963287e5ceef">Play</a>()</td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgame_1_1Game.html#a87fac3cf1c93044a12327ddba892da7a">PlayerTurn</a>(const gameboard::MoveCollection &amp;available_moves)</td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classgame_1_1Game.html#a6ceed8f9676d6c42419d698c0db17a0c">SetWinner</a>(gameboard::PieceColor)</td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classgame_1_1Game.html#a7019ec57ea5a33ac4418d55c87cc3195">whose_turn_</a></td><td class="entry"><a class="el" href="classgame_1_1Game.html">game::Game</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Dec 14 2024 23:21:57 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sun Dec 15 2024 05:51:05 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

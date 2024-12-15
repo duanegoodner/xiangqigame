@@ -22,6 +22,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "game_board.hpp", "game__board_8hpp.html", "game__board_8hpp" ],
     [ "game_board_for_concepts.hpp", "game__board__for__concepts_8hpp.html", "game__board__for__concepts_8hpp" ],
     [ "game_board_template.hpp", "game__board__template_8hpp.html", null ],
+    [ "game_data_structs.hpp", "game__data__structs_8hpp.html", "game__data__structs_8hpp" ],
     [ "game_factory.hpp", "game__factory_8hpp.html", "game__factory_8hpp" ],
     [ "game_piece.hpp", "game__piece_8hpp.html", "game__piece_8hpp" ],
     [ "integer_types.hpp", "integer__types_8hpp.html", "integer__types_8hpp" ],

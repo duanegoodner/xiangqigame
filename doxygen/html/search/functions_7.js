@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['game_0',['Game',['../classgame_1_1Game.html#a7285928d3ed03d2e872b0850e57a845a',1,'game::Game']]],
+  ['game_0',['Game',['../classgame_1_1Game.html#a359858368e5914c5148e1702377636e9',1,'game::Game']]],
   ['game_5fmove_5fnumbers_1',['game_move_numbers',['../classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aa84f60230af3ea395ccf32bb34ebefff',1,'xiangqipy::player_summary::PlayerSummary']]],
   ['gameboard_2',['GameBoard',['../classgameboard_1_1GameBoard.html#aa8eef08177dfcc7cf12c18448b098121',1,'gameboard::GameBoard::GameBoard()'],['../classgameboard_1_1GameBoard.html#ac230718b8e84e981101144e1e400a33c',1,'gameboard::GameBoard::GameBoard(const BoardMapInt_t starting_board)']]],
   ['gameboardforconcepts_3',['GameBoardForConcepts',['../classgameboard_1_1GameBoardForConcepts.html#a6baf7e6d5d716702318b82283052dcee',1,'gameboard::GameBoardForConcepts']]],
@@ -35,9 +35,10 @@ var searchData=
   ['getstate_32',['GetState',['../classboardstate_1_1ZobristCoordinatorForConcepts.html#ace5ad90b4ee514587ddff552f68aad02',1,'boardstate::ZobristCoordinatorForConcepts::GetState()'],['../classBoardStateCoordinator.html#aa92d9190a081fd75112f25a220e21ff0',1,'BoardStateCoordinator::GetState()']]],
   ['getsyntacticallyvalidmove_33',['GetSyntacticallyValidMove',['../classmoveselection_1_1HumanMoveEvaluatorForConcepts.html#af93768ad9641568147ff55d2353d29b6',1,'moveselection::HumanMoveEvaluatorForConcepts']]],
   ['gettranspositiontablehits_34',['GetTranspositionTableHits',['../classmoveselection_1_1SearchSummary.html#aa7264774347ac17608e80be74617a325',1,'moveselection::SearchSummary']]],
-  ['gettrdata_35',['GetTrData',['../classBoardStateCoordinator.html#a8a308ec6483b10eaf8d7ec3953aa8958',1,'BoardStateCoordinator::GetTrData()'],['../classboardstate_1_1ZobristCoordinatorForConcepts.html#a910daae2ace488acaba731c462d5d38e',1,'boardstate::ZobristCoordinatorForConcepts::GetTrData(DepthType search_depth, MoveCountType access_index)']]],
-  ['gettrtablesize_36',['GetTrTableSize',['../classboardstate_1_1ZobristCoordinatorForConcepts.html#a31eb7a903f4bf0a7b9f5ec43b5f7b922',1,'boardstate::ZobristCoordinatorForConcepts::GetTrTableSize()'],['../classBoardStateCoordinator.html#a40acd5a55c21c1b17a92c0413835b179',1,'BoardStateCoordinator::GetTrTableSize()']]],
-  ['gettype_37',['GetType',['../classSpaceInfoProvider.html#aa9559fca46a1124c81a8cc809915d948',1,'SpaceInfoProvider::GetType()'],['../classgameboard_1_1GameBoardForConcepts.html#ab241eb6682e0d2d6faa9a50fdb369e5b',1,'gameboard::GameBoardForConcepts::GetType()']]],
-  ['getvalueofpieceatposition_38',['GetValueOfPieceAtPosition',['../classPieceValueProvider.html#a4bec329bdc42d3aff4aa29779a32d258',1,'PieceValueProvider::GetValueOfPieceAtPosition()'],['../structpiecepoints_1_1PiecePositionPointsForConcepts.html#afa97ef901e7e93938260084fda4f36ce',1,'piecepoints::PiecePositionPointsForConcepts::GetValueOfPieceAtPosition()']]],
-  ['getzcolorindexof_39',['GetZColorIndexOf',['../namespacegameboard.html#a198cfa49e920216dd589daea2a74e974',1,'gameboard']]]
+  ['gettrdata_35',['GetTrData',['../classBoardStateCoordinator.html#a8a308ec6483b10eaf8d7ec3953aa8958',1,'BoardStateCoordinator::GetTrData()'],['../classboardstate_1_1ZobristCoordinatorForConcepts.html#a910daae2ace488acaba731c462d5d38e',1,'boardstate::ZobristCoordinatorForConcepts::GetTrData()']]],
+  ['gettrtablesize_36',['GetTrTableSize',['../classBoardStateCoordinator.html#a40acd5a55c21c1b17a92c0413835b179',1,'BoardStateCoordinator::GetTrTableSize()'],['../classboardstate_1_1ZobristCoordinatorForConcepts.html#a31eb7a903f4bf0a7b9f5ec43b5f7b922',1,'boardstate::ZobristCoordinatorForConcepts::GetTrTableSize()']]],
+  ['gettype_37',['GetType',['../classgameboard_1_1GameBoardForConcepts.html#ab241eb6682e0d2d6faa9a50fdb369e5b',1,'gameboard::GameBoardForConcepts::GetType()'],['../classSpaceInfoProvider.html#aa9559fca46a1124c81a8cc809915d948',1,'SpaceInfoProvider::GetType()']]],
+  ['getvalidmove_38',['GetValidMove',['../classgame_1_1Game.html#a2a0ce3de2900373c7ff8456923cd6cf0',1,'game::Game']]],
+  ['getvalueofpieceatposition_39',['GetValueOfPieceAtPosition',['../classPieceValueProvider.html#a4bec329bdc42d3aff4aa29779a32d258',1,'PieceValueProvider::GetValueOfPieceAtPosition()'],['../structpiecepoints_1_1PiecePositionPointsForConcepts.html#afa97ef901e7e93938260084fda4f36ce',1,'piecepoints::PiecePositionPointsForConcepts::GetValueOfPieceAtPosition()']]],
+  ['getzcolorindexof_40',['GetZColorIndexOf',['../namespacegameboard.html#a198cfa49e920216dd589daea2a74e974',1,'gameboard']]]
 ];

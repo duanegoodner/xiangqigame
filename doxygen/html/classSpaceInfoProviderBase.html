@@ -155,7 +155,7 @@ Collaboration diagram for SpaceInfoProviderBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSpaceInfoProviderBase__coll__graph.png" border="0" usemap="#aSpaceInfoProviderBase_coll__map" alt="Collaboration graph"/></div>
 <map name="aSpaceInfoProviderBase_coll__map" id="aSpaceInfoProviderBase_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,213,97"/>
+<area shape="rect" title=" " alt="" coords="5,5,213,141"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -165,6 +165,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a321505c88b2cdce5d673946ba740044b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4d2f0259097b7c97af3aff436dd86b4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpaceInfoProviderBase.html#aa4d2f0259097b7c97af3aff436dd86b4">map</a> ()=0</td></tr>
 <tr class="separator:aa4d2f0259097b7c97af3aff436dd86b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed3fedde97bba782e176f98e0aa7510c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpaceInfoProviderBase.html#aed3fedde97bba782e176f98e0aa7510c">IsDraw</a> ()=0</td></tr>
+<tr class="separator:aed3fedde97bba782e176f98e0aa7510c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a347cf687af73312593fa875d7431e258"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structgameboard_1_1MoveCollection.html">gameboard::MoveCollection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpaceInfoProviderBase.html#a347cf687af73312593fa875d7431e258">CalcFinalMovesOf</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>)=0</td></tr>
+<tr class="separator:a347cf687af73312593fa875d7431e258"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbdf82124cc6c2d62f6c78ce91980647"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structgameboard_1_1ExecutedMove.html">gameboard::ExecutedMove</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpaceInfoProviderBase.html#adbdf82124cc6c2d62f6c78ce91980647">ExecuteMove</a> (const <a class="el" href="structgameboard_1_1Move.html">Move</a> &amp;move)=0</td></tr>
+<tr class="separator:adbdf82124cc6c2d62f6c78ce91980647"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -196,6 +202,83 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a347cf687af73312593fa875d7431e258" name="a347cf687af73312593fa875d7431e258"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a347cf687af73312593fa875d7431e258">&#9670;&#160;</a></span>CalcFinalMovesOf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="structgameboard_1_1MoveCollection.html">gameboard::MoveCollection</a> SpaceInfoProviderBase::CalcFinalMovesOf </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adbdf82124cc6c2d62f6c78ce91980647" name="adbdf82124cc6c2d62f6c78ce91980647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbdf82124cc6c2d62f6c78ce91980647">&#9670;&#160;</a></span>ExecuteMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="structgameboard_1_1ExecutedMove.html">gameboard::ExecutedMove</a> SpaceInfoProviderBase::ExecuteMove </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgameboard_1_1Move.html">Move</a> &amp;&#160;</td>
+          <td class="paramname"><em>move</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aed3fedde97bba782e176f98e0aa7510c" name="aed3fedde97bba782e176f98e0aa7510c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed3fedde97bba782e176f98e0aa7510c">&#9670;&#160;</a></span>IsDraw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool SpaceInfoProviderBase::IsDraw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aa4d2f0259097b7c97af3aff436dd86b4" name="aa4d2f0259097b7c97af3aff436dd86b4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa4d2f0259097b7c97af3aff436dd86b4">&#9670;&#160;</a></span>map()</h2>
 
@@ -230,7 +313,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classSpaceInfoProviderBase.html">SpaceInfoProviderBase</a></li>
-    <li class="footer">Generated on Sat Dec 14 2024 23:21:57 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sun Dec 15 2024 05:51:05 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -144,6 +144,7 @@ $(document).ready(function(){initNavTree('classgame_1_1Game.html',''); initResiz
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classgame_1_1Game-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">game::Game Class Reference</div></div>
@@ -156,38 +157,55 @@ Collaboration diagram for game::Game:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgame_1_1Game__coll__graph.png" border="0" usemap="#agame_1_1Game_coll__map" alt="Collaboration graph"/></div>
 <map name="agame_1_1Game_coll__map" id="agame_1_1Game_coll__map">
-<area shape="rect" title=" " alt="" coords="183,175,289,252"/>
-<area shape="rect" title=" " alt="" coords="5,5,229,97"/>
-<area shape="rect" title=" " alt="" coords="254,5,458,97"/>
+<area shape="rect" title=" " alt="" coords="462,175,623,325"/>
+<area shape="rect" title=" " alt="" coords="5,13,229,105"/>
+<area shape="rect" title=" " alt="" coords="253,5,475,112"/>
+<area shape="rect" title=" " alt="" coords="499,20,594,97"/>
+<area shape="rect" title=" " alt="" coords="621,20,712,97"/>
+<area shape="rect" title=" " alt="" coords="736,13,896,105"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7285928d3ed03d2e872b0850e57a845a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#a7285928d3ed03d2e872b0850e57a845a">Game</a> (std::shared_ptr&lt; <a class="el" href="classSpaceInfoProviderBase.html">SpaceInfoProviderBase</a> &gt; game_board, std::shared_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt; red_evaluator, std::shared_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt; black_evaluator)</td></tr>
-<tr class="separator:a7285928d3ed03d2e872b0850e57a845a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a359858368e5914c5148e1702377636e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#a359858368e5914c5148e1702377636e9">Game</a> (std::shared_ptr&lt; <a class="el" href="classSpaceInfoProviderBase.html">SpaceInfoProviderBase</a> &gt; game_board, std::unordered_map&lt; <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>, std::unique_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt; &gt; move_evaluators, <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> whose_turn=<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00">gameboard::PieceColor::kRed</a>)</td></tr>
+<tr class="separator:a359858368e5914c5148e1702377636e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ef4e1ff37f95a4ca30c963287e5ceef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#a2ef4e1ff37f95a4ca30c963287e5ceef">Play</a> ()</td></tr>
+<tr class="separator:a2ef4e1ff37f95a4ca30c963287e5ceef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a2a0ce3de2900373c7ff8456923cd6cf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgameboard_1_1Move.html">gameboard::Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#a2a0ce3de2900373c7ff8456923cd6cf0">GetValidMove</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">gameboard::MoveCollection</a> &amp;available_moves)</td></tr>
+<tr class="separator:a2a0ce3de2900373c7ff8456923cd6cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87fac3cf1c93044a12327ddba892da7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#a87fac3cf1c93044a12327ddba892da7a">PlayerTurn</a> (const <a class="el" href="structgameboard_1_1MoveCollection.html">gameboard::MoveCollection</a> &amp;available_moves)</td></tr>
+<tr class="separator:a87fac3cf1c93044a12327ddba892da7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa710c54675fafaee460f74e84f30053c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#aa710c54675fafaee460f74e84f30053c">ChangeWhoseTurn</a> ()</td></tr>
+<tr class="separator:aa710c54675fafaee460f74e84f30053c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ceed8f9676d6c42419d698c0db17a0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#a6ceed8f9676d6c42419d698c0db17a0c">SetWinner</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>)</td></tr>
+<tr class="separator:a6ceed8f9676d6c42419d698c0db17a0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:adeadb646b4aea988c07bf4c048960202"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classSpaceInfoProviderBase.html">SpaceInfoProviderBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#adeadb646b4aea988c07bf4c048960202">game_board_</a></td></tr>
 <tr class="separator:adeadb646b4aea988c07bf4c048960202"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc0ceb11fc7810f981a025223a57d1e2"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#abc0ceb11fc7810f981a025223a57d1e2">red_evaluator_</a></td></tr>
-<tr class="separator:abc0ceb11fc7810f981a025223a57d1e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00bfb6a49086f43b57e4b5842f28581b"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#a00bfb6a49086f43b57e4b5842f28581b">black_evaluator_</a></td></tr>
-<tr class="separator:a00bfb6a49086f43b57e4b5842f28581b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad15041ab2d8dd5a58c0fa4d324ecf67"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>, std::unique_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#aad15041ab2d8dd5a58c0fa4d324ecf67">move_evaluators_</a></td></tr>
+<tr class="separator:aad15041ab2d8dd5a58c0fa4d324ecf67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c284260110cad7e418259fa26755ae3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegame.html#a397bae7c56aafd18e7ca3d06f16a864e">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#a2c284260110cad7e418259fa26755ae3">game_state_</a></td></tr>
+<tr class="separator:a2c284260110cad7e418259fa26755ae3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7019ec57ea5a33ac4418d55c87cc3195"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#a7019ec57ea5a33ac4418d55c87cc3195">whose_turn_</a></td></tr>
+<tr class="separator:a7019ec57ea5a33ac4418d55c87cc3195"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8f77605f485c053fcde4efa29b84882"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structgameboard_1_1ExecutedMove.html">gameboard::ExecutedMove</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#ab8f77605f485c053fcde4efa29b84882">move_log_</a></td></tr>
+<tr class="separator:ab8f77605f485c053fcde4efa29b84882"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00016">16</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00015">15</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a7285928d3ed03d2e872b0850e57a845a" name="a7285928d3ed03d2e872b0850e57a845a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7285928d3ed03d2e872b0850e57a845a">&#9670;&#160;</a></span>Game()</h2>
+<a id="a359858368e5914c5148e1702377636e9" name="a359858368e5914c5148e1702377636e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a359858368e5914c5148e1702377636e9">&#9670;&#160;</a></span>Game()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">game::Game::Game </td>
@@ -198,14 +216,14 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt;&#160;</td>
-          <td class="paramname"><em>red_evaluator</em>, </td>
+          <td class="paramtype">std::unordered_map&lt; <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>, std::unique_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt; &gt;&#160;</td>
+          <td class="paramname"><em>move_evaluators</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt;&#160;</td>
-          <td class="paramname"><em>black_evaluator</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>&#160;</td>
+          <td class="paramname"><em>whose_turn</em> = <code><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00">gameboard::PieceColor::kRed</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -213,20 +231,15 @@ Private Attributes</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00022">22</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00005">5</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a00bfb6a49086f43b57e4b5842f28581b" name="a00bfb6a49086f43b57e4b5842f28581b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00bfb6a49086f43b57e4b5842f28581b">&#9670;&#160;</a></span>black_evaluator_</h2>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa710c54675fafaee460f74e84f30053c" name="aa710c54675fafaee460f74e84f30053c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa710c54675fafaee460f74e84f30053c">&#9670;&#160;</a></span>ChangeWhoseTurn()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,7 +248,10 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a>&gt; game::Game::black_evaluator_</td>
+          <td class="memname">void game::Game::ChangeWhoseTurn </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -245,10 +261,114 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00019">19</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00017">17</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
 
 </div>
 </div>
+<a id="a2a0ce3de2900373c7ff8456923cd6cf0" name="a2a0ce3de2900373c7ff8456923cd6cf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a0ce3de2900373c7ff8456923cd6cf0">&#9670;&#160;</a></span>GetValidMove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structgameboard_1_1Move.html">gameboard::Move</a> game::Game::GetValidMove </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgameboard_1_1MoveCollection.html">gameboard::MoveCollection</a> &amp;&#160;</td>
+          <td class="paramname"><em>available_moves</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00027">27</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a2ef4e1ff37f95a4ca30c963287e5ceef" name="a2ef4e1ff37f95a4ca30c963287e5ceef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ef4e1ff37f95a4ca30c963287e5ceef">&#9670;&#160;</a></span>Play()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game::Game::Play </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00050">50</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a87fac3cf1c93044a12327ddba892da7a" name="a87fac3cf1c93044a12327ddba892da7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87fac3cf1c93044a12327ddba892da7a">&#9670;&#160;</a></span>PlayerTurn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game::Game::PlayerTurn </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structgameboard_1_1MoveCollection.html">gameboard::MoveCollection</a> &amp;&#160;</td>
+          <td class="paramname"><em>available_moves</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00044">44</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a6ceed8f9676d6c42419d698c0db17a0c" name="a6ceed8f9676d6c42419d698c0db17a0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ceed8f9676d6c42419d698c0db17a0c">&#9670;&#160;</a></span>SetWinner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game::Game::SetWinner </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>&#160;</td>
+          <td class="paramname"><em>color</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00019">19</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="adeadb646b4aea988c07bf4c048960202" name="adeadb646b4aea988c07bf4c048960202"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adeadb646b4aea988c07bf4c048960202">&#9670;&#160;</a></span>game_board_</h2>
 
@@ -269,12 +389,12 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00017">17</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00016">16</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 
 </div>
 </div>
-<a id="abc0ceb11fc7810f981a025223a57d1e2" name="abc0ceb11fc7810f981a025223a57d1e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc0ceb11fc7810f981a025223a57d1e2">&#9670;&#160;</a></span>red_evaluator_</h2>
+<a id="a2c284260110cad7e418259fa26755ae3" name="a2c284260110cad7e418259fa26755ae3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c284260110cad7e418259fa26755ae3">&#9670;&#160;</a></span>game_state_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -283,7 +403,31 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a>&gt; game::Game::red_evaluator_</td>
+          <td class="memname"><a class="el" href="namespacegame.html#a397bae7c56aafd18e7ca3d06f16a864e">GameState</a> game::Game::game_state_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00019">19</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+
+</div>
+</div>
+<a id="aad15041ab2d8dd5a58c0fa4d324ecf67" name="aad15041ab2d8dd5a58c0fa4d324ecf67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad15041ab2d8dd5a58c0fa4d324ecf67">&#9670;&#160;</a></span>move_evaluators_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::unordered_map&lt;<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>, std::unique_ptr&lt;<a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a>&gt; &gt; game::Game::move_evaluators_</td>
         </tr>
       </table>
   </td>
@@ -297,8 +441,57 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a id="ab8f77605f485c053fcde4efa29b84882" name="ab8f77605f485c053fcde4efa29b84882"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8f77605f485c053fcde4efa29b84882">&#9670;&#160;</a></span>move_log_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structgameboard_1_1ExecutedMove.html">gameboard::ExecutedMove</a>&gt; game::Game::move_log_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00021">21</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a7019ec57ea5a33ac4418d55c87cc3195" name="a7019ec57ea5a33ac4418d55c87cc3195"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7019ec57ea5a33ac4418d55c87cc3195">&#9670;&#160;</a></span>whose_turn_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> game::Game::whose_turn_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00020">20</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="game_8hpp_source.html">game.hpp</a></li>
+<li>src/core/game/<a class="el" href="game_8cpp_source.html">game.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -306,7 +499,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacegame.html">game</a></li><li class="navelem"><a class="el" href="classgame_1_1Game.html">Game</a></li>
-    <li class="footer">Generated on Sat Dec 14 2024 23:21:57 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sun Dec 15 2024 05:51:05 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>
