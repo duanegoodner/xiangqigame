@@ -44,7 +44,7 @@ private:
   gameboard::Move GetSyntacticallyValidMove(std::istream &input_stream);
 };
 
-class HumanMoveEvaluatorFactory : public EvaluatorFactoryBase {
+class HumanMoveEvaluatorFactory : public MoveEvaluatorFactoryBase {
   std::istream &input_stream_;
 
 public:

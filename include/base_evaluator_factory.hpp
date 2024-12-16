@@ -6,10 +6,10 @@
 #include <integer_types.hpp>
 #include <memory>
 
-class EvaluatorFactoryBase {
+class MoveEvaluatorFactoryBase {
 public:
   virtual std::unique_ptr<MoveEvaluatorBase> Create(
       gameboard::PieceColor evaluating_player
   ) = 0;
-  virtual ~EvaluatorFactoryBase() = default;
+  virtual ~MoveEvaluatorFactoryBase() = default;
 };

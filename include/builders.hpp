@@ -116,7 +116,7 @@ private:
 namespace moveselection {
 
 template <typename KeyType, size_t NumConfKeys>
-class MinimaxMoveEvaluatorFactory : public EvaluatorFactoryBase {
+class MinimaxMoveEvaluatorFactory : public MoveEvaluatorFactoryBase {
   using P = piecepoints::PiecePositionPointsForConcepts;
   using G = gameboard::GameBoardForConcepts;
   using Z = boardstate::ZobristCoordinatorFactory<KeyType, NumConfKeys, G>;

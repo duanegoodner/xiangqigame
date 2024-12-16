@@ -35,7 +35,7 @@ private:
   RandomMoveEvaluatorForConcepts(gameboard::PieceColor evaluating_player);
 };
 
-class RandomMoveEvaluatorFactory : public EvaluatorFactoryBase{
+class RandomMoveEvaluatorFactory : public MoveEvaluatorFactoryBase{
 public:
   std::unique_ptr<MoveEvaluatorBase> Create(
       gameboard::PieceColor evaluating_player
