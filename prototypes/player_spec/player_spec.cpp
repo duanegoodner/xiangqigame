@@ -106,8 +106,8 @@ struct EvaluatorFactoryInfo {
   std::istream &input_stream;
 
   EvaluatorFactoryInfo(
-      EvaluatorType evaluator_type,
-      MinimaxTypeInfo minimax_type_info,
+      EvaluatorType evaluator_type = EvaluatorType::kSimple,
+      MinimaxTypeInfo minimax_type_info = MinimaxTypeInfo{},
       size_t minimax_search_depth = 0,
       std::istream &input_stream = std::cin
   )
@@ -120,37 +120,45 @@ struct EvaluatorFactoryInfo {
 class EvaluatorFactoryRetriever {
   std::unordered_map<MinimaxTypeInfo, std::shared_ptr<FactoryBase>, MinimaxTypeInfoHash>
       minimax_factories_;
-  size_t minimax_search_depth_;
+  const EvaluatorFactoryInfo &evaluator_factory_info;
 
 public:
-  EvaluatorFactoryRetriever(size_t minimax_search_depth)
-      : minimax_search_depth_{minimax_search_depth}
+  EvaluatorFactoryRetriever(const EvaluatorFactoryInfo &evaluator_factory_info)
+      : evaluator_factory_info{evaluator_factory_info}
       , minimax_factories_{} {
     minimax_factories_.emplace(
         MinimaxTypeInfo{ZobristKeyType::k032, ZobristCalculatorCount::kOne},
-        std::make_shared<MinimaxEvaluatorFactory<uint32_t, 0>>(minimax_search_depth_)
+        std::make_shared<MinimaxEvaluatorFactory<uint32_t, 0>>(
+            evaluator_factory_info.minimax_search_depth
+        )
     );
     minimax_factories_.emplace(
         MinimaxTypeInfo{ZobristKeyType::k064, ZobristCalculatorCount::kOne},
-        std::make_shared<MinimaxEvaluatorFactory<uint32_t, 0>>(minimax_search_depth_)
+        std::make_shared<MinimaxEvaluatorFactory<uint32_t, 0>>(
+            evaluator_factory_info.minimax_search_depth
+        )
     );
     minimax_factories_.emplace(
         MinimaxTypeInfo{ZobristKeyType::k032, ZobristCalculatorCount::kTwo},
-        std::make_shared<MinimaxEvaluatorFactory<uint32_t, 1>>(minimax_search_depth_)
+        std::make_shared<MinimaxEvaluatorFactory<uint32_t, 1>>(
+            evaluator_factory_info.minimax_search_depth
+        )
     );
     minimax_factories_.emplace(
         MinimaxTypeInfo{ZobristKeyType::k064, ZobristCalculatorCount::kTwo},
-        std::make_shared<MinimaxEvaluatorFactory<uint32_t, 1>>(minimax_search_depth_)
+        std::make_shared<MinimaxEvaluatorFactory<uint32_t, 1>>(
+            evaluator_factory_info.minimax_search_depth
+        )
     );
   }
 
-  std::shared_ptr<FactoryBase> GetFactory(const EvaluatorFactoryInfo &factory_info) {
+  std::shared_ptr<FactoryBase> GetFactory() {
     std::shared_ptr<FactoryBase> factory;
 
-    if (factory_info.evaluator_type == EvaluatorType::kSimple) {
-      factory = std::make_shared<SimpleEvaluatorFactory>(factory_info.input_stream);
-    } else if (factory_info.evaluator_type == EvaluatorType::kMinimax) {
-      factory = minimax_factories_.at(factory_info.minimax_type_info);
+    if (evaluator_factory_info.evaluator_type == EvaluatorType::kSimple) {
+      factory = std::make_shared<SimpleEvaluatorFactory>(evaluator_factory_info.input_stream);
+    } else if (evaluator_factory_info.evaluator_type == EvaluatorType::kMinimax) {
+      factory = minimax_factories_.at(evaluator_factory_info.minimax_type_info);
     }
     return factory;
   }
@@ -164,9 +172,17 @@ int main() {
       4
   );
   auto factory_a_retriever =
-      EvaluatorFactoryRetriever{factory_a_info.minimax_search_depth};
-  auto factory_a = factory_a_retriever.GetFactory(factory_a_info);
+      EvaluatorFactoryRetriever{factory_a_info};
+  auto factory_a = factory_a_retriever.GetFactory();
   auto evaluator_a = factory_a->Create();
   evaluator_a->SelectItem();
+
+  auto factory_b_info = EvaluatorFactoryInfo(EvaluatorType::kSimple);
+  auto factory_b_retriever = EvaluatorFactoryRetriever{factory_b_info};
+  auto factory_b = factory_b_retriever.GetFactory();
+  auto evaluator_b = factory_b->Create();
+  evaluator_b->SelectItem();
+ 
+
   return 0;
 }
