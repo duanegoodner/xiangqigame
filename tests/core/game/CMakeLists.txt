@@ -1,3 +1,11 @@
 add_executable(game_test game_test.cpp)
 
-target_link_libraries(game_test PRIVATE GTest::gtest_main nlohmann_json utility_functs)
+target_link_libraries(
+    game_test PRIVATE
+    GTest::gtest_main
+    game
+    nlohmann_json
+    utility_functs
+    game_board_for_concepts
+    move_evaluator_minimax_for_concepts
+    piece_position_points_for_concepts)

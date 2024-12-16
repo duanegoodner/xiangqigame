@@ -1,5 +1,6 @@
 #pragma once
 
+#include <base_space_info_provider.hpp>
 #include <board_data_structs.hpp>
 #include <concept_board_state_calculator.hpp>
 #include <functional>
@@ -18,7 +19,7 @@ extern const int kMaxMovesWithoutCapture;
 //! Must comply with SpaceInfoProviderConcept; stores piece positions, and exposes
 //! methods for calculating, executing, an un-doing moves.
 
-class GameBoardForConcepts {
+class GameBoardForConcepts : public SpaceInfoProviderBase {
   BoardMap_t board_map_;
   MoveCalculator move_calculator_;
   vector<function<void(const ExecutedMove &)>> move_callbacks_;

@@ -12,4 +12,5 @@
 # add_subdirectory(zobrist_concepts)
 # add_subdirectory(method_ptrs)
 # add_subdirectory(std_bind_method_refs)
-add_subdirectory(template_factory)
+# add_subdirectory(template_factory)
+add_subdirectory(player_spec)

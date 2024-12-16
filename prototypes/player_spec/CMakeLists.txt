@@ -1,0 +1,1 @@
+add_executable(player_spec player_spec.cpp)

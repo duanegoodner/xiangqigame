@@ -48,9 +48,9 @@ class HumanMoveEvaluatorFactory : public EvaluatorFactoryBase {
   std::istream &input_stream_;
 
 public:
-  HumanMoveEvaluatorFactory(std::istream &input_stream = std::cin) : input_stream_{input_stream} {}
-  std::unique_ptr<MoveEvaluatorBase> Create(
-      gameboard::PieceColor evaluating_player
+  HumanMoveEvaluatorFactory(std::istream &input_stream = std::cin)
+      : input_stream_{input_stream} {}
+  std::unique_ptr<MoveEvaluatorBase> Create(gameboard::PieceColor evaluating_player
   ) override;
 };
 } // namespace moveselection
