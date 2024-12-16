@@ -77,6 +77,13 @@ struct MinimaxTypeInfo {
   ZobristKeyType zobrist_key_type;
   ZobristCalculatorCount zobrist_calculator_count;
 
+  MinimaxTypeInfo(
+      ZobristKeyType zobrist_key_type = ZobristKeyType::kNoKey,
+      ZobristCalculatorCount zobrist_calculator_count = ZobristCalculatorCount::kNoZCalcs
+  )
+      : zobrist_key_type{zobrist_key_type}
+      , zobrist_calculator_count{zobrist_calculator_count} {}
+
   bool operator==(const MinimaxTypeInfo &other) const {
     return zobrist_key_type == other.zobrist_key_type &&
            zobrist_calculator_count == other.zobrist_calculator_count;
@@ -94,23 +101,19 @@ struct MinimaxTypeInfoHash {
 
 struct EvaluatorFactoryInfo {
   EvaluatorType evaluator_type;
-  ZobristKeyType zobrist_key_type;
-  ZobristCalculatorCount zobrist_calculator_count;
+  MinimaxTypeInfo minimax_type_info;
   size_t minimax_search_depth;
   std::istream &input_stream;
 
   EvaluatorFactoryInfo(
       EvaluatorType evaluator_type,
-      ZobristKeyType zobrist_key_type = ZobristKeyType::kNoKey,
-      ZobristCalculatorCount zobrist_calculator_count =
-          ZobristCalculatorCount::kNoZCalcs,
+      MinimaxTypeInfo minimax_type_info,
       size_t minimax_search_depth = 0,
       std::istream &input_stream = std::cin
   )
       : evaluator_type{evaluator_type}
       , input_stream{input_stream}
-      , zobrist_key_type{zobrist_key_type}
-      , zobrist_calculator_count{zobrist_calculator_count}
+      , minimax_type_info{minimax_type_info}
       , minimax_search_depth{minimax_search_depth} {}
 };
 
@@ -147,11 +150,7 @@ public:
     if (factory_info.evaluator_type == EvaluatorType::kSimple) {
       factory = std::make_shared<SimpleEvaluatorFactory>(factory_info.input_stream);
     } else if (factory_info.evaluator_type == EvaluatorType::kMinimax) {
-      MinimaxTypeInfo minimax_type_info{
-          factory_info.zobrist_key_type,
-          factory_info.zobrist_calculator_count
-      };
-      factory = minimax_factories_.at(minimax_type_info);
+      factory = minimax_factories_.at(factory_info.minimax_type_info);
     }
     return factory;
   }
@@ -161,8 +160,7 @@ int main() {
 
   auto factory_a_info = EvaluatorFactoryInfo(
       EvaluatorType::kMinimax,
-      ZobristKeyType::k032,
-      ZobristCalculatorCount::kTwo,
+      MinimaxTypeInfo{ZobristKeyType::k032, ZobristCalculatorCount::kTwo},
       4
   );
   auto factory_a_retriever =
