@@ -48,7 +48,7 @@ var searchData=
   ['set_5fy_5faxes_45',['set_y_axes',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a4ca9f4bb978043f7ab8e743f92485e5d',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
   ['setoccupantat_46',['SetOccupantAt',['../classgameboard_1_1GameBoard.html#ad50fa543a73dbb38adf0874218b86725',1,'gameboard::GameBoard::SetOccupantAt()'],['../classgameboard_1_1GameBoardForConcepts.html#a7052cbe304d9f3953b5942513d9e8b7c',1,'gameboard::GameBoardForConcepts::SetOccupantAt()']]],
   ['setselectedmove_47',['SetSelectedMove',['../classmoveselection_1_1SearchSummary.html#aebecc89334baf04db5848bbcacd05596',1,'moveselection::SearchSummary']]],
-  ['setwinner_48',['SetWinner',['../classgame_1_1Game.html#a6ceed8f9676d6c42419d698c0db17a0c',1,'game::Game']]],
+  ['setwinner_48',['SetWinner',['../classgame_1_1Game.html#a8ae36bd6999f87ef90c9c89850716bbc',1,'game::Game']]],
   ['shared_5fscore_49',['shared_score',['../classmoveselection_1_1EqualScoreMoves.html#a957c26f9758003cb31895a512c0e5b3e',1,'moveselection::EqualScoreMoves::shared_score()'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1EqualScoreMoves.html#a833b438c41a419b7f13f502e01360e54',1,'xiangqipy.core_dataclass_mirrors.EqualScoreMoves.shared_score()']]],
   ['show_5fplot_50',['show_plot',['../namespacexiangqipy_1_1game__summary__plot__manager.html#abde405297b8d152d53e3e3d91670f9a4',1,'xiangqipy::game_summary_plot_manager']]],
   ['sig_5fint_5fexit_51',['sig_int_exit',['../namespacexiangqipy_1_1handlers_1_1signals.html#a6dd79c4675b86c739bc85bf00cab55fe',1,'xiangqipy::handlers::signals']]],

@@ -1,4 +1,4 @@
 <map id="moveselection::RandomMoveEvaluatorFactory" name="moveselection::RandomMoveEvaluatorFactory">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,221,237"/>
-<area shape="rect" id="node2" href="$classEvaluatorFactoryBase.html" title=" " alt="" coords="14,5,213,97"/>
+<area shape="rect" id="node1" title=" " alt="" coords="15,145,231,237"/>
+<area shape="rect" id="node2" href="$classMoveEvaluatorFactoryBase.html" title=" " alt="" coords="5,5,240,97"/>
 </map>

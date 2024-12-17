@@ -1,4 +1,4 @@
 <map id="moveselection::HumanMoveEvaluatorFactory" name="moveselection::HumanMoveEvaluatorFactory">
 <area shape="rect" id="node1" title=" " alt="" coords="5,145,244,252"/>
-<area shape="rect" id="node2" href="$classEvaluatorFactoryBase.html" title=" " alt="" coords="25,5,224,97"/>
+<area shape="rect" id="node2" href="$classMoveEvaluatorFactoryBase.html" title=" " alt="" coords="7,5,242,97"/>
 </map>

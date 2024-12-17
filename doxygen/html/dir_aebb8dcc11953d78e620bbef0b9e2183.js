@@ -3,6 +3,7 @@ var dir_aebb8dcc11953d78e620bbef0b9e2183 =
     [ "game", "dir_0130927f3d1a7a08b11c8881127d3514.html", "dir_0130927f3d1a7a08b11c8881127d3514" ],
     [ "game_board", "dir_a5046466f64221f0c373187083edec25.html", "dir_a5046466f64221f0c373187083edec25" ],
     [ "game_board_for_concepts", "dir_d93fa97a1fa8ffd7a8fdec609c62f9bd.html", "dir_d93fa97a1fa8ffd7a8fdec609c62f9bd" ],
+    [ "game_factory", "dir_1328dc91ec86acf6fb4b1ca3f33916cf.html", "dir_1328dc91ec86acf6fb4b1ca3f33916cf" ],
     [ "json_utility_nlohmann", "dir_b83b3261c8f9de709a11f789ecd30fd7.html", "dir_b83b3261c8f9de709a11f789ecd30fd7" ],
     [ "json_validation", "dir_f73c3987aef589f6f3b5b90a337abde5.html", "dir_f73c3987aef589f6f3b5b90a337abde5" ],
     [ "move_calculator", "dir_e97327b15501fa77d832ab59276f09d7.html", "dir_e97327b15501fa77d832ab59276f09d7" ],

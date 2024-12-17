@@ -1,8 +1,8 @@
 <map id="moveselection::MinimaxMoveEvaluatorFactory&lt; KeyType, NumConfKeys &gt;" name="moveselection::MinimaxMoveEvaluatorFactory&lt; KeyType, NumConfKeys &gt;">
-<area shape="rect" id="node1" title=" " alt="" coords="452,175,701,296"/>
-<area shape="rect" id="node2" href="$classEvaluatorFactoryBase.html" title=" " alt="" coords="5,5,204,97"/>
-<area shape="rect" id="node3" title=" " alt="" coords="227,5,451,97"/>
-<area shape="rect" id="node4" title=" " alt="" coords="475,5,678,97"/>
-<area shape="rect" id="node5" title=" " alt="" coords="702,13,777,90"/>
-<area shape="rect" id="node6" title=" " alt="" coords="820,13,893,90"/>
+<area shape="rect" id="node1" title=" " alt="" coords="489,175,738,296"/>
+<area shape="rect" id="node2" href="$classMoveEvaluatorFactoryBase.html" title=" " alt="" coords="5,5,240,97"/>
+<area shape="rect" id="node3" title=" " alt="" coords="264,5,488,97"/>
+<area shape="rect" id="node4" title=" " alt="" coords="512,5,715,97"/>
+<area shape="rect" id="node5" title=" " alt="" coords="739,13,813,90"/>
+<area shape="rect" id="node6" title=" " alt="" coords="857,13,930,90"/>
 </map>

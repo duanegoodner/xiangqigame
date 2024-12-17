@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classmoveselection_1_1MinimaxCalcResult.html" title="Data structure that holds a moveselection::EqualScoreMoves and other search&#45;related info obtained fro..." alt="" coords="5,5,216,45"/>
+<area shape="rect" id="node1" href="$classMoveEvaluatorBase.html" title=" " alt="" coords="5,85,157,110"/>
+<area shape="rect" id="node2" href="$classmoveselection_1_1HumanMoveEvaluatorForConcepts.html" title=" " alt="" coords="210,5,419,45"/>
+<area shape="rect" id="node3" href="$classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html" title="Complies with MoveEvaluatorConcept, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="205,70,424,125"/>
+<area shape="rect" id="node4" href="$classmoveselection_1_1RandomMoveEvaluatorForConcepts.html" title="Complies with MoveEvaluatorConcept." alt="" coords="207,149,423,189"/>
 </map>

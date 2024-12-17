@@ -1,0 +1,4 @@
+<map id="SpaceInfoProviderBase" name="SpaceInfoProviderBase">
+<area shape="rect" id="node1" title=" " alt="" coords="32,5,240,141"/>
+<area shape="rect" id="node2" href="$classgameboard_1_1GameBoardForConcepts.html" title="Must comply with SpaceInfoProviderConcept; stores piece positions, and exposes methods for calculatin..." alt="" coords="5,189,267,677"/>
+</map>

@@ -1,17 +1,18 @@
 <map id="include/concept_board_state_calculator.hpp" name="include/concept_board_state_calculator.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="251,5,419,45"/>
-<area shape="rect" id="node2" href="$concept__board__state__calculator__registry_8hpp.html" title=" " alt="" coords="227,93,443,133"/>
-<area shape="rect" id="node6" href="$concept__composite__concepts_8hpp.html" title=" " alt="" coords="91,189,289,229"/>
-<area shape="rect" id="node9" href="$game__board__for__concepts_8hpp.html" title=" " alt="" coords="467,93,622,133"/>
-<area shape="rect" id="node3" href="$builders_8hpp.html" title=" " alt="" coords="364,291,517,317"/>
-<area shape="rect" id="node4" href="$game__factory_8hpp.html" title=" " alt="" coords="219,387,409,412"/>
-<area shape="rect" id="node5" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="723,387,910,412"/>
-<area shape="rect" id="node7" href="$game_8hpp.html" title=" " alt="" coords="99,291,238,317"/>
-<area shape="rect" id="node8" href="$game_8cpp.html" title=" " alt="" coords="5,387,188,412"/>
-<area shape="rect" id="node10" href="$base__evaluator__factory_8hpp.html" title=" " alt="" coords="686,189,859,229"/>
-<area shape="rect" id="node15" href="$game__board__for__concepts_8cpp.html" title=" " alt="" coords="465,181,662,236"/>
-<area shape="rect" id="node11" href="$move__evaluator__human__for__concepts_8hpp.html" title=" " alt="" coords="946,284,1138,324"/>
-<area shape="rect" id="node13" href="$move__evaluator__random__for__concepts_8hpp.html" title=" " alt="" coords="662,284,859,324"/>
-<area shape="rect" id="node12" href="$move__evaluator__human__for__concepts_8cpp.html" title=" " alt="" coords="935,372,1195,427"/>
-<area shape="rect" id="node14" href="$move__evaluator__random__for__concepts_8cpp.html" title=" " alt="" coords="433,372,699,427"/>
+<area shape="rect" id="node1" title=" " alt="" coords="293,5,461,45"/>
+<area shape="rect" id="node2" href="$concept__board__state__calculator__registry_8hpp.html" title=" " alt="" coords="269,93,485,133"/>
+<area shape="rect" id="node7" href="$concept__composite__concepts_8hpp.html" title=" " alt="" coords="132,189,331,229"/>
+<area shape="rect" id="node10" href="$game__board__for__concepts_8hpp.html" title=" " alt="" coords="509,93,663,133"/>
+<area shape="rect" id="node3" href="$builders_8hpp.html" title=" " alt="" coords="889,291,1043,317"/>
+<area shape="rect" id="node4" href="$game__factory_8hpp.html" title=" " alt="" coords="213,387,402,412"/>
+<area shape="rect" id="node6" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="1001,387,1187,412"/>
+<area shape="rect" id="node5" href="$game__factory_8cpp.html" title=" " alt="" coords="224,475,391,515"/>
+<area shape="rect" id="node8" href="$game_8hpp.html" title=" " alt="" coords="133,291,271,317"/>
+<area shape="rect" id="node9" href="$game_8cpp.html" title=" " alt="" coords="5,387,188,412"/>
+<area shape="rect" id="node11" href="$base__evaluator__factory_8hpp.html" title=" " alt="" coords="479,189,653,229"/>
+<area shape="rect" id="node16" href="$game__board__for__concepts_8cpp.html" title=" " alt="" coords="778,181,975,236"/>
+<area shape="rect" id="node12" href="$move__evaluator__human__for__concepts_8hpp.html" title=" " alt="" coords="451,284,643,324"/>
+<area shape="rect" id="node14" href="$move__evaluator__random__for__concepts_8hpp.html" title=" " alt="" coords="667,284,865,324"/>
+<area shape="rect" id="node13" href="$move__evaluator__human__for__concepts_8cpp.html" title=" " alt="" coords="427,372,687,427"/>
+<area shape="rect" id="node15" href="$move__evaluator__random__for__concepts_8cpp.html" title=" " alt="" coords="711,372,976,427"/>
 </map>

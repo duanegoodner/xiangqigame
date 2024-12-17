@@ -4,7 +4,7 @@ var searchData=
   ['gameboard_1',['GameBoard',['../classgameboard_1_1GameBoard.html',1,'gameboard']]],
   ['gameboardfactory_2',['GameBoardFactory',['../classgameboard_1_1GameBoardFactory.html',1,'gameboard']]],
   ['gameboardforconcepts_3',['GameBoardForConcepts',['../classgameboard_1_1GameBoardForConcepts.html',1,'gameboard']]],
-  ['gamefactory_4',['GameFactory',['../classGameFactory.html',1,'']]],
+  ['gamefactory_4',['GameFactory',['../classgame_1_1GameFactory.html',1,'game']]],
   ['gameoutputgenerator_5',['GameOutputGenerator',['../classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html',1,'xiangqipy::game_output_generator']]],
   ['gamepiece_6',['GamePiece',['../structgameboard_1_1GamePiece.html',1,'gameboard::GamePiece'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1GamePiece.html',1,'xiangqipy.core_dataclass_mirrors.GamePiece']]],
   ['gamestate_7',['GameState',['../classxiangqipy_1_1enums_1_1GameState.html',1,'xiangqipy::enums']]],

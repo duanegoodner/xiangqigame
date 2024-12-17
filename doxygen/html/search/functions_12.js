@@ -31,7 +31,7 @@ var searchData=
   ['set_5fy_5faxes_28',['set_y_axes',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a4ca9f4bb978043f7ab8e743f92485e5d',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
   ['setoccupantat_29',['SetOccupantAt',['../classgameboard_1_1GameBoard.html#ad50fa543a73dbb38adf0874218b86725',1,'gameboard::GameBoard::SetOccupantAt()'],['../classgameboard_1_1GameBoardForConcepts.html#a7052cbe304d9f3953b5942513d9e8b7c',1,'gameboard::GameBoardForConcepts::SetOccupantAt()']]],
   ['setselectedmove_30',['SetSelectedMove',['../classmoveselection_1_1SearchSummary.html#aebecc89334baf04db5848bbcacd05596',1,'moveselection::SearchSummary']]],
-  ['setwinner_31',['SetWinner',['../classgame_1_1Game.html#a6ceed8f9676d6c42419d698c0db17a0c',1,'game::Game']]],
+  ['setwinner_31',['SetWinner',['../classgame_1_1Game.html#a8ae36bd6999f87ef90c9c89850716bbc',1,'game::Game']]],
   ['sig_5fint_5fexit_32',['sig_int_exit',['../namespacexiangqipy_1_1handlers_1_1signals.html#a6dd79c4675b86c739bc85bf00cab55fe',1,'xiangqipy::handlers::signals']]],
   ['size_33',['Size',['../structgameboard_1_1MoveCollection.html#a40c1b1e41cb2452431b77b9c3cc0e4c1',1,'gameboard::MoveCollection']]],
   ['size_34',['size',['../classboardstate_1_1TranspositionTable.html#a9df462cae5b48a0f61e01b76b0ead328',1,'boardstate::TranspositionTable::size()'],['../classboardstate_1_1TranspositionTableForConcepts.html#aa6a2b5bf76182ac9b6c96c54a77ed6e4',1,'boardstate::TranspositionTableForConcepts::size()'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1MoveCollection.html#afc075e34f6cfb35446ab01cebf5d89e9',1,'xiangqipy.core_dataclass_mirrors.MoveCollection.size()']]],

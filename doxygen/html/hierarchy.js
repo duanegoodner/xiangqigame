@@ -26,11 +26,8 @@ var hierarchy =
     [ "gameboard::CastleEdges", "structgameboard_1_1CastleEdges.html", null ],
     [ "moveselection::EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.EqualScoreMoves", "classxiangqipy_1_1core__dataclass__mirrors_1_1EqualScoreMoves.html", null ],
-    [ "EvaluatorFactoryBase", "classEvaluatorFactoryBase.html", [
-      [ "moveselection::HumanMoveEvaluatorFactory", "classmoveselection_1_1HumanMoveEvaluatorFactory.html", null ],
-      [ "moveselection::MinimaxMoveEvaluatorFactory< KeyType, NumConfKeys >", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html", null ],
-      [ "moveselection::RandomMoveEvaluatorFactory", "classmoveselection_1_1RandomMoveEvaluatorFactory.html", null ]
-    ] ],
+    [ "game::EvaluatorFactoryInfo", "structgame_1_1EvaluatorFactoryInfo.html", null ],
+    [ "game::EvaluatorFactoryRetriever", "classgame_1_1EvaluatorFactoryRetriever.html", null ],
     [ "Exception", "classException.html", [
       [ "xiangqipy.players.IllegalAIMove", "classxiangqipy_1_1players_1_1IllegalAIMove.html", null ],
       [ "xiangqipy.players.IllegalMoveInMoveList", "classxiangqipy_1_1players_1_1IllegalMoveInMoveList.html", null ],
@@ -41,8 +38,7 @@ var hierarchy =
     [ "game::Game", "classgame_1_1Game.html", null ],
     [ "xiangqipy.game.Game", "classxiangqipy_1_1game_1_1Game.html", null ],
     [ "gameboard::GameBoardFactory", "classgameboard_1_1GameBoardFactory.html", null ],
-    [ "gameboard::GameBoardForConcepts", "classgameboard_1_1GameBoardForConcepts.html", null ],
-    [ "GameFactory", "classGameFactory.html", null ],
+    [ "game::GameFactory", "classgame_1_1GameFactory.html", null ],
     [ "xiangqipy.game_output_generator.GameOutputGenerator", "classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html", null ],
     [ "gameboard::GamePiece", "structgameboard_1_1GamePiece.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.GamePiece", "classxiangqipy_1_1core__dataclass__mirrors_1_1GamePiece.html", null ],
@@ -59,6 +55,8 @@ var hierarchy =
     ] ],
     [ "moveselection::MinimaxCalcResult", "classmoveselection_1_1MinimaxCalcResult.html", null ],
     [ "moveselection::MinimaxTemplateSpecs", "structmoveselection_1_1MinimaxTemplateSpecs.html", null ],
+    [ "game::MinimaxTypeInfo", "structgame_1_1MinimaxTypeInfo.html", null ],
+    [ "game::MinimaxTypeInfoHash", "structgame_1_1MinimaxTypeInfoHash.html", null ],
     [ "gameboard::Move", "structgameboard_1_1Move.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.Move", "classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html", null ],
     [ "gameboard::MoveCalculator", "classgameboard_1_1MoveCalculator.html", null ],
@@ -77,6 +75,11 @@ var hierarchy =
       [ "moveselection::RandomMoveEvaluatorForConcepts", "classmoveselection_1_1RandomMoveEvaluatorForConcepts.html", null ]
     ] ],
     [ "xiangqipy.app_new.MoveEvaluatorBuilder", "classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder.html", null ],
+    [ "MoveEvaluatorFactoryBase", "classMoveEvaluatorFactoryBase.html", [
+      [ "moveselection::HumanMoveEvaluatorFactory", "classmoveselection_1_1HumanMoveEvaluatorFactory.html", null ],
+      [ "moveselection::MinimaxMoveEvaluatorFactory< KeyType, NumConfKeys >", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html", null ],
+      [ "moveselection::RandomMoveEvaluatorFactory", "classmoveselection_1_1RandomMoveEvaluatorFactory.html", null ]
+    ] ],
     [ "NullBoardStateCalculator", "classNullBoardStateCalculator.html", null ],
     [ "gameboard::PieceMoves", "classgameboard_1_1PieceMoves.html", null ],
     [ "piecepoints::PiecePositionPointsForConcepts", "structpiecepoints_1_1PiecePositionPointsForConcepts.html", null ],
@@ -119,7 +122,9 @@ var hierarchy =
     [ "SpaceInfoProvider< GameBoard >", "classSpaceInfoProvider.html", [
       [ "gameboard::GameBoard", "classgameboard_1_1GameBoard.html", null ]
     ] ],
-    [ "SpaceInfoProviderBase", "classSpaceInfoProviderBase.html", null ],
+    [ "SpaceInfoProviderBase", "classSpaceInfoProviderBase.html", [
+      [ "gameboard::GameBoardForConcepts", "classgameboard_1_1GameBoardForConcepts.html", null ]
+    ] ],
     [ "msgspec.Struct", null, [
       [ "xiangqipy.game_summary.GameSummary", "classxiangqipy_1_1game__summary_1_1GameSummary.html", null ]
     ] ],

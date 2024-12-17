@@ -22,7 +22,12 @@ var annotated_dup =
       [ "ZobristCoordinatorForConcepts", "classboardstate_1_1ZobristCoordinatorForConcepts.html", "classboardstate_1_1ZobristCoordinatorForConcepts" ]
     ] ],
     [ "game", "namespacegame.html", [
-      [ "Game", "classgame_1_1Game.html", "classgame_1_1Game" ]
+      [ "EvaluatorFactoryInfo", "structgame_1_1EvaluatorFactoryInfo.html", "structgame_1_1EvaluatorFactoryInfo" ],
+      [ "EvaluatorFactoryRetriever", "classgame_1_1EvaluatorFactoryRetriever.html", "classgame_1_1EvaluatorFactoryRetriever" ],
+      [ "Game", "classgame_1_1Game.html", "classgame_1_1Game" ],
+      [ "GameFactory", "classgame_1_1GameFactory.html", "classgame_1_1GameFactory" ],
+      [ "MinimaxTypeInfo", "structgame_1_1MinimaxTypeInfo.html", "structgame_1_1MinimaxTypeInfo" ],
+      [ "MinimaxTypeInfoHash", "structgame_1_1MinimaxTypeInfoHash.html", "structgame_1_1MinimaxTypeInfoHash" ]
     ] ],
     [ "gameboard", "namespacegameboard.html", [
       [ "BoardDirection", "structgameboard_1_1BoardDirection.html", "structgameboard_1_1BoardDirection" ],
@@ -166,13 +171,12 @@ var annotated_dup =
     ] ],
     [ "AIPlayer", "classAIPlayer.html", "classAIPlayer" ],
     [ "BoardStateCoordinator", "classBoardStateCoordinator.html", "classBoardStateCoordinator" ],
-    [ "EvaluatorFactoryBase", "classEvaluatorFactoryBase.html", "classEvaluatorFactoryBase" ],
     [ "Exception", "classException.html", null ],
-    [ "GameFactory", "classGameFactory.html", "classGameFactory" ],
     [ "IllegalMoveException", "classIllegalMoveException.html", "classIllegalMoveException" ],
     [ "JsonUtility", "classJsonUtility.html", "classJsonUtility" ],
     [ "MoveEvaluator", "classMoveEvaluator.html", "classMoveEvaluator" ],
     [ "MoveEvaluatorBase", "classMoveEvaluatorBase.html", "classMoveEvaluatorBase" ],
+    [ "MoveEvaluatorFactoryBase", "classMoveEvaluatorFactoryBase.html", "classMoveEvaluatorFactoryBase" ],
     [ "NullBoardStateCalculator", "classNullBoardStateCalculator.html", "classNullBoardStateCalculator" ],
     [ "PieceValueProvider", "classPieceValueProvider.html", "classPieceValueProvider" ],
     [ "Player", "classPlayer.html", "classPlayer" ],

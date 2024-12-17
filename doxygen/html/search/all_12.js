@@ -18,7 +18,7 @@ var searchData=
   ['recursivelyvisitnodes_15',['RecursivelyVisitNodes',['../classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a0d71240f5463d690390bb70486b88af5',1,'moveselection::MinimaxMoveEvaluatorForConcepts::RecursivelyVisitNodes()'],['../classmoveselection_1_1MinimaxMoveEvaluator.html#ad917df1c6484f1c5d8b5915f0f7f11f0',1,'moveselection::MinimaxMoveEvaluator::RecursivelyVisitNodes()']]],
   ['red_5fbase_5foffsets_5f_16',['red_base_offsets_',['../classpiecepoints_1_1BPOPointsSKeys.html#abc4cd8479032e35f3765a5198b36af50',1,'piecepoints::BPOPointsSKeys::red_base_offsets_()'],['../classpiecepoints_1_1BPOPointsEKeys.html#a2c9162482904800688603f109ae56fde',1,'piecepoints::BPOPointsEKeys::red_base_offsets_()']]],
   ['red_5fcastle_5fspaces_17',['red_castle_spaces',['../namespacegameboard.html#a5276c175a40d19b70dc764a7ff5a878f',1,'gameboard']]],
-  ['red_5fevaluator_5ffactory_5f_18',['red_evaluator_factory_',['../classGameFactory.html#a9eb93c8e3aaebcdd96543bdccd512076',1,'GameFactory']]],
+  ['red_5fevaluator_5ffactory_5finfo_5f_18',['red_evaluator_factory_info_',['../classgame_1_1GameFactory.html#ac2f68ef883e16130b40be86e4ef34c93',1,'game::GameFactory']]],
   ['red_5finput_19',['red_input',['../classxiangqipy_1_1app__new_1_1XiangqiGameCommandNew.html#ab105b020d338dd3b846d2864c4916059',1,'xiangqipy::app_new::XiangqiGameCommandNew']]],
   ['red_5fplayer_5finput_20',['red_player_input',['../classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#abd110c99743fd5c416e7128981259e60',1,'xiangqipy::command_input::XiangqiGameCommand']]],
   ['red_5fplayer_5frun_5fargs_21',['red_player_run_args',['../classxiangqipy_1_1app__new_1_1RunKwargsInterpreterNew.html#aa5131008f061c3b2ad936c80bc03e089',1,'xiangqipy::app_new::RunKwargsInterpreterNew']]],

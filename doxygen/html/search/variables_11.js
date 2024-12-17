@@ -6,7 +6,7 @@ var searchData=
   ['raw_5fpoints_5fschema_5fpath_3',['raw_points_schema_path',['../my__schemas_8cpp.html#a011e1f008f49feb99f0b30847b3bd903',1,'my_schemas.cpp']]],
   ['rd_5f_4',['rd_',['../classboardstate_1_1RandomKeyGenerator.html#aaf5ef04c51c534b2b487b6f837bd5eb7',1,'boardstate::RandomKeyGenerator']]],
   ['red_5fbase_5foffsets_5f_5',['red_base_offsets_',['../classpiecepoints_1_1BPOPointsSKeys.html#abc4cd8479032e35f3765a5198b36af50',1,'piecepoints::BPOPointsSKeys::red_base_offsets_()'],['../classpiecepoints_1_1BPOPointsEKeys.html#a2c9162482904800688603f109ae56fde',1,'piecepoints::BPOPointsEKeys::red_base_offsets_()']]],
-  ['red_5fevaluator_5ffactory_5f_6',['red_evaluator_factory_',['../classGameFactory.html#a9eb93c8e3aaebcdd96543bdccd512076',1,'GameFactory']]],
+  ['red_5fevaluator_5ffactory_5finfo_5f_6',['red_evaluator_factory_info_',['../classgame_1_1GameFactory.html#ac2f68ef883e16130b40be86e4ef34c93',1,'game::GameFactory']]],
   ['red_5finput_7',['red_input',['../classxiangqipy_1_1app__new_1_1XiangqiGameCommandNew.html#ab105b020d338dd3b846d2864c4916059',1,'xiangqipy::app_new::XiangqiGameCommandNew']]],
   ['red_5fplayer_5finput_8',['red_player_input',['../classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#abd110c99743fd5c416e7128981259e60',1,'xiangqipy::command_input::XiangqiGameCommand']]],
   ['red_5fposition_5foffsets_5f_9',['red_position_offsets_',['../classpiecepoints_1_1BPOPointsEKeys.html#a34ca12928e97508f93656386fbf88688',1,'piecepoints::BPOPointsEKeys::red_position_offsets_()'],['../classpiecepoints_1_1BPOPointsSKeys.html#aad6f97f1c6eb4af46850ec3ff2893973',1,'piecepoints::BPOPointsSKeys::red_position_offsets_()']]],
