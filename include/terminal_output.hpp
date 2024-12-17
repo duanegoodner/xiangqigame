@@ -8,10 +8,10 @@
 namespace terminalout {
 
 class PlayerInfoReporter {
-  game::PlayerSpec player_spec_;
+  const game::PlayerSpec &player_spec_;
 
 public:
-  PlayerInfoReporter(game::PlayerSpec player_spec);
+  PlayerInfoReporter(const game::PlayerSpec &player_spec);
   void DisplaySummaryStr() { std::cout << SummaryStr() << std::endl; }
 
 private:
@@ -25,6 +25,10 @@ private:
   std::string SearchDepthStr();
   std::string ZobristKeySizeStr();
   std::string SummaryStr();
+};
+
+class GameInfoReporter {
+
 };
 
 } // namespace terminalout

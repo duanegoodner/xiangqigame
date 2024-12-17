@@ -24,7 +24,7 @@ const std::unordered_map<game::ZobristKeyType, std::string>
         {game::ZobristKeyType::k128, "128"}
 };
 
-PlayerInfoReporter::PlayerInfoReporter(game::PlayerSpec player_spec)
+PlayerInfoReporter::PlayerInfoReporter(const game::PlayerSpec &player_spec)
     : player_spec_{player_spec} {}
 
 std::string PlayerInfoReporter::PlayerTypeStr() {
