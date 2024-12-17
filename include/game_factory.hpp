@@ -23,12 +23,12 @@ class EvaluatorFactoryRetriever {
       std::shared_ptr<MoveEvaluatorFactoryBase>,
       MinimaxTypeInfoHash>
       minimax_factories_;
-  const PlayerInfo &evaluator_factory_info_;
+  const PlayerSpec &evaluator_factory_info_;
   std::shared_ptr<gameboard::GameBoardForConcepts> game_board_;
 
 public:
   EvaluatorFactoryRetriever(
-      const PlayerInfo &evaluator_factory_info,
+      const PlayerSpec &evaluator_factory_info,
       std::shared_ptr<gameboard::GameBoardForConcepts> game_board
   );
 
@@ -37,13 +37,13 @@ public:
 
 class GameFactory {
   gameboard::GameBoardFactory game_board_factory_;
-  PlayerInfo red_evaluator_factory_info_;
-  PlayerInfo black_evaluator_factory_info_;
+  PlayerSpec red_evaluator_factory_info_;
+  PlayerSpec black_evaluator_factory_info_;
 
 public:
   GameFactory(
-      PlayerInfo red_evaluator_factory_info,
-      PlayerInfo black_evaluator_factory_info
+      PlayerSpec red_evaluator_factory_info,
+      PlayerSpec black_evaluator_factory_info
   )
       : red_evaluator_factory_info_{red_evaluator_factory_info}
       , black_evaluator_factory_info_{black_evaluator_factory_info}

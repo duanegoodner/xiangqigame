@@ -36,13 +36,13 @@ struct MinimaxTypeInfoHash {
   }
 };
 
-struct PlayerInfo {
+struct PlayerSpec {
   EvaluatorType evaluator_type;
   MinimaxTypeInfo minimax_type_info;
   size_t minimax_search_depth;
   std::istream &input_stream;
 
-  PlayerInfo(
+  PlayerSpec(
       EvaluatorType evaluator_type = EvaluatorType::kRandom,
       MinimaxTypeInfo minimax_type_info = MinimaxTypeInfo{},
       size_t minimax_search_depth = 0,

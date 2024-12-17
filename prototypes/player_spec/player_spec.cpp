@@ -99,13 +99,13 @@ struct MinimaxTypeInfoHash {
   }
 };
 
-struct PlayerInfo {
+struct PlayerSpec {
   EvaluatorType evaluator_type;
   MinimaxTypeInfo minimax_type_info;
   size_t minimax_search_depth;
   std::istream &input_stream;
 
-  PlayerInfo(
+  PlayerSpec(
       EvaluatorType evaluator_type = EvaluatorType::kSimple,
       MinimaxTypeInfo minimax_type_info = MinimaxTypeInfo{},
       size_t minimax_search_depth = 0,
@@ -120,10 +120,10 @@ struct PlayerInfo {
 class EvaluatorFactoryRetriever {
   std::unordered_map<MinimaxTypeInfo, std::shared_ptr<FactoryBase>, MinimaxTypeInfoHash>
       minimax_factories_;
-  const PlayerInfo &evaluator_factory_info;
+  const PlayerSpec &evaluator_factory_info;
 
 public:
-  EvaluatorFactoryRetriever(const PlayerInfo &evaluator_factory_info)
+  EvaluatorFactoryRetriever(const PlayerSpec &evaluator_factory_info)
       : evaluator_factory_info{evaluator_factory_info}
       , minimax_factories_{} {
     minimax_factories_.emplace(
@@ -166,7 +166,7 @@ public:
 
 int main() {
 
-  auto factory_a_info = PlayerInfo(
+  auto factory_a_info = PlayerSpec(
       EvaluatorType::kMinimax,
       MinimaxTypeInfo{ZobristKeyType::k032, ZobristCalculatorCount::kTwo},
       4
@@ -177,7 +177,7 @@ int main() {
   auto evaluator_a = factory_a->Create();
   evaluator_a->SelectItem();
 
-  auto factory_b_info = PlayerInfo(EvaluatorType::kSimple);
+  auto factory_b_info = PlayerSpec(EvaluatorType::kSimple);
   auto factory_b_retriever = EvaluatorFactoryRetriever{factory_b_info};
   auto factory_b = factory_b_retriever.GetFactory();
   auto evaluator_b = factory_b->Create();

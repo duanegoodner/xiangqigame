@@ -63,7 +63,7 @@ TEST_F(GameTest, BuildGameWithGameFactory) {
       game::ZobristKeyType::k064,
       game::ZobristCalculatorCount::kTwo
   };
-  auto evaluator_factory_info_red = game::PlayerInfo(
+  auto evaluator_factory_info_red = game::PlayerSpec(
       game::EvaluatorType::kMinimax,
       minimax_type_info_red,
       red_search_depth
@@ -73,7 +73,7 @@ TEST_F(GameTest, BuildGameWithGameFactory) {
       game::ZobristKeyType::k064,
       game::ZobristCalculatorCount::kTwo
   };
-  auto evaluator_factory_info_black = game::PlayerInfo(
+  auto evaluator_factory_info_black = game::PlayerSpec(
       game::EvaluatorType::kMinimax,
       minimax_type_info_black,
       black_search_depth
