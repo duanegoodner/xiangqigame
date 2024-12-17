@@ -1,6 +1,8 @@
+#include <chrono>
 #include <game.hpp>
 #include <game_board_for_concepts.hpp>
 #include <memory>
+#include <sstream>
 
 namespace game {
 
@@ -14,7 +16,8 @@ Game::Game(
     , move_evaluators_{std::move(move_evaluators)}
     , game_state_{GameState::kUnfinished}
     , whose_turn_{whose_turn}
-    , move_log_{} {}
+    , move_log_{}
+    , game_id_{GenerateGameID()} {}
 
 void Game::ChangeWhoseTurn() { whose_turn_ = opponent_of(whose_turn_); }
 
@@ -24,6 +27,20 @@ void Game::SetWinner(gameboard::PieceColor color) {
   } else if (color == gameboard::PieceColor::kBlk) {
     game_state_ = GameState::kBlkWon;
   }
+}
+
+std::string Game::GenerateGameID() {
+  auto now = std::chrono::system_clock::now();
+  auto time_now = std::chrono::system_clock::to_time_t(now);
+  auto duration = now.time_since_epoch();
+  auto musec =
+      std::chrono::duration_cast<std::chrono::microseconds>(duration).count() % 1000000;
+
+  std::ostringstream oss;
+  oss << std::put_time(std::localtime(&time_now), "%Y%m%d%H%M%S");
+  oss << std::setw(3) << std::setfill('0') << musec;
+
+  return oss.str();
 }
 
 gameboard::Move Game::GetValidMove(const gameboard::MoveCollection &available_moves) {
