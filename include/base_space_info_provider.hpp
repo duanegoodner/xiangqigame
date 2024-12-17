@@ -6,7 +6,7 @@
 class SpaceInfoProviderBase {
 public:
   virtual ~SpaceInfoProviderBase() = default;
-  virtual gameboard::BoardMap_t map() = 0;
+  virtual const gameboard::BoardMap_t& map() const = 0;
   virtual bool IsDraw() = 0;
   virtual gameboard::MoveCollection CalcFinalMovesOf(gameboard::PieceColor) = 0;
   virtual gameboard::ExecutedMove ExecuteMove(const Move &move) = 0;

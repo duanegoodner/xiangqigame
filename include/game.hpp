@@ -34,7 +34,7 @@ private:
   gameboard::Move GetValidMove(const gameboard::MoveCollection &available_moves);
   void PlayerTurn(const gameboard::MoveCollection &available_moves);
   void ChangeWhoseTurn();
-  void SetWinner(gameboard::PieceColor);
+  void SetWinner(gameboard::PieceColor color);
 };
 
 } // namespace game

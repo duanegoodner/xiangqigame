@@ -1,7 +1,9 @@
 #include <game.hpp>
 #include <game_board_for_concepts.hpp>
+#include <memory>
 
 namespace game {
+
 Game::Game(
     std::shared_ptr<SpaceInfoProviderBase> game_board,
     std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
@@ -52,7 +54,7 @@ void Game::Play() {
     auto available_moves = game_board_->CalcFinalMovesOf(whose_turn_);
     if (available_moves.Size() == 0) {
       if (game_board_->IsDraw()) {
-        game_state_ == GameState::kDraw;
+        game_state_ = GameState::kDraw;
       } else {
         SetWinner(gameboard::opponent_of(whose_turn_));
       }
