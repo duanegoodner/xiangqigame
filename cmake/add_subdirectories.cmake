@@ -3,6 +3,7 @@ add_subdirectory(${SOURCE_CODE_DIR}/game)
 add_subdirectory(${SOURCE_CODE_DIR}/game_board)
 add_subdirectory(${SOURCE_CODE_DIR}/game_board_for_concepts)
 
+add_subdirectory(${SOURCE_CODE_DIR}/game_factory)
 add_subdirectory(${SOURCE_CODE_DIR}/json_utility_nlohmann)
 add_subdirectory(${SOURCE_CODE_DIR}/json_validation)
 add_subdirectory(${SOURCE_CODE_DIR}/move_evaluators)

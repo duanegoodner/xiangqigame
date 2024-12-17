@@ -183,6 +183,7 @@ TEST_F(GameTest, InstantiateGame) {
   game.Play();
 }
 
+//! Builds a Game using helper classes implemented in this test file
 TEST_F(GameTest, BuildGameWithEvaluatorFactoryInfo) {
   std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
       evaluators;
@@ -221,6 +222,36 @@ TEST_F(GameTest, BuildGameWithEvaluatorFactoryInfo) {
 
   auto game = game::Game(game_board_, std::move(evaluators));
   game.Play();
+}
+
+TEST_F(GameTest, BuildGameWithGameFactory) {
+  DepthType red_search_depth{3};
+  DepthType black_search_depth{2};
+
+  auto minimax_type_info_red = game::MinimaxTypeInfo{
+      game::ZobristKeyType::k064,
+      game::ZobristCalculatorCount::kTwo
+  };
+  auto evaluator_factory_info_red = game::EvaluatorFactoryInfo(
+      game::EvaluatorType::kMinimax,
+      minimax_type_info_red,
+      red_search_depth
+  );
+
+  auto minimax_type_info_black = game::MinimaxTypeInfo{
+      game::ZobristKeyType::k064,
+      game::ZobristCalculatorCount::kTwo
+  };
+  auto evaluator_factory_info_black = game::EvaluatorFactoryInfo(
+      game::EvaluatorType::kMinimax,
+      minimax_type_info_black,
+      black_search_depth
+  );
+
+  auto game_factory =
+      game::GameFactory(evaluator_factory_info_red, evaluator_factory_info_black);
+  auto game = game_factory.Create();
+  game->Play();
 }
 
 int main(int argc, char **argv) {
