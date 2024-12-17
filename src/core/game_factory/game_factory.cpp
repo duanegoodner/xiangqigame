@@ -3,7 +3,7 @@
 namespace game {
 
 EvaluatorFactoryRetriever::EvaluatorFactoryRetriever(
-    const EvaluatorFactoryInfo &evaluator_factory_info,
+    const PlayerInfo &evaluator_factory_info,
     std::shared_ptr<gameboard::GameBoardForConcepts> game_board
 )
     : evaluator_factory_info_{evaluator_factory_info}
