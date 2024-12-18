@@ -14,26 +14,23 @@ class PlayerReporter {
 
 public:
   PlayerReporter(const game::PlayerSpec &player_spec);
-  void DisplaySummaryStr() { std::cout << SummaryStr() << std::endl; }
-
-private:
-  static const std::unordered_map<game::EvaluatorType, std::string>
-      evaluator_to_player_type_;
-  static const std::unordered_map<game::EvaluatorType, std::string> evaluator_names_;
-  static const std::unordered_map<game::ZobristKeyType, std::string> key_type_strings_;
 
   std::string PlayerTypeStr();
   std::string EvaluatorTypeStr();
   std::string SearchDepthStr();
   std::string ZobristKeySizeStr();
   std::string SummaryStr();
+
+private:
+  static const std::unordered_map<game::EvaluatorType, std::string>
+      evaluator_to_player_type_;
+  static const std::unordered_map<game::EvaluatorType, std::string> evaluator_names_;
+  static const std::unordered_map<game::ZobristKeyType, std::string> key_type_strings_;
 };
 
 class MoveReporter {
 public:
-  void ReportMoveCount(const game::GameStatus &game_status);
-  void ReportMostRecentMove(const game::GameStatus &game_status);
-  void ReportWhoseTurn(const game::GameStatus &game_status);
+  std::string MostRecentMoveStr(const game::GameStatus &game_status);
 };
 
 class GamePieceEncoder {
@@ -44,7 +41,6 @@ class GamePieceEncoder {
   static const std::string RESET_FORMAT;
 
   static const unordered_map<gameboard::PieceColor, std::string> disp_format_;
-  static const unordered_map<gameboard::PieceColor, std::string> disp_team_name_;
   static const unordered_map<gameboard::PieceColor, std::string> piece_color_to_code_;
   static const unordered_map<gameboard::PieceType, std::string> piece_type_to_code_;
 
@@ -56,9 +52,6 @@ class BoardMapEncoder {
   GamePieceEncoder game_piece_encoder_;
 
 public:
-  void DisplayBoardMap(const gameboard::BoardMap_t &board_map);
-
-private:
   std::string EncodeBoardMap(const gameboard::BoardMap_t &board_map);
 };
 
@@ -76,9 +69,8 @@ public:
 
   void ReportGameInfo(const game::GameStatus &game_status);
 
-
-
-  
+  private:
+  static const unordered_map<gameboard::PieceColor, std::string> disp_team_name_;
 };
 
 } // namespace terminalout

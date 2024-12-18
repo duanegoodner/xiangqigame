@@ -31,9 +31,9 @@ protected:
 };
 
 TEST_F(PlayerReporterTest, PlayerReporter) {
-  info_reporter_human_.DisplaySummaryStr();
-  info_reporter_minimax_.DisplaySummaryStr();
-  info_reporter_random_.DisplaySummaryStr();
+  std::cout << info_reporter_human_.SummaryStr() << std::endl;
+  std::cout << info_reporter_minimax_.SummaryStr() << std::endl;
+  std::cout << info_reporter_random_.SummaryStr() << std::endl;
 }
 
 class MoveReporterTest : public ::testing::Test {
@@ -59,9 +59,7 @@ TEST_F(MoveReporterTest, ReportGameSummary) {
 
   terminalout::MoveReporter game_status_reporter_;
 
-  game_status_reporter_.ReportMoveCount(game_status);
-  game_status_reporter_.ReportMostRecentMove(game_status);
-  game_status_reporter_.ReportWhoseTurn(game_status);
+  std::cout << game_status_reporter_.MostRecentMoveStr(game_status) << std::endl;
 }
 
 class GamePieceEncoderTest : public ::testing::Test {
@@ -96,7 +94,7 @@ protected:
 
 TEST_F(BoardMapEncoderTest, EncodeBoardMap) {
   auto board_map = game_board_->map();
-  board_map_endcoder_.DisplayBoardMap(board_map);
+  std::cout << board_map_endcoder_.EncodeBoardMap(board_map) << std::endl;
 }
 
 class GameTerminalReporterTest : public ::testing::Test {
@@ -142,7 +140,7 @@ TEST_F(GameTerminalReporterTest, ReportGameInfo) {
   game::GameStatus game_status_post_move{
       1,
       executed_move.spaces,
-      gameboard::PieceColor::kRed,
+      gameboard::PieceColor::kBlk,
       false,
       game_board_->map()
   };
