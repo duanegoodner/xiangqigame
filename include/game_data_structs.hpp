@@ -63,4 +63,5 @@ struct GameStatus {
   const gameboard::BoardMap_t &board_map;
 };
 
+
 } // namespace game

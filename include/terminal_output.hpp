@@ -9,11 +9,11 @@
 
 namespace terminalout {
 
-class PlayerInfoReporter {
+class PlayerReporter {
   const game::PlayerSpec &player_spec_;
 
 public:
-  PlayerInfoReporter(const game::PlayerSpec &player_spec);
+  PlayerReporter(const game::PlayerSpec &player_spec);
   void DisplaySummaryStr() { std::cout << SummaryStr() << std::endl; }
 
 private:
@@ -29,7 +29,7 @@ private:
   std::string SummaryStr();
 };
 
-class GameStatusReporter {
+class MoveReporter {
 public:
   void ReportMoveCount(const game::GameStatus &game_status);
   void ReportMostRecentMove(const game::GameStatus &game_status);
@@ -55,8 +55,30 @@ public:
 class BoardMapEncoder {
   GamePieceEncoder game_piece_encoder_;
 
-  public:
-  std::string FormatBoardOutput(const gameboard::BoardMap_t &board_map);
+public:
+  void DisplayBoardMap(const gameboard::BoardMap_t &board_map);
+
+private:
+  std::string EncodeBoardMap(const gameboard::BoardMap_t &board_map);
+};
+
+class GameTerminalReporter {
+  PlayerReporter red_player_reporter_;
+  PlayerReporter black_player_reporter_;
+  MoveReporter move_reporter_;
+  BoardMapEncoder board_map_encoder_;
+
+public:
+  GameTerminalReporter(
+      const game::PlayerSpec &player_spec_red,
+      const game::PlayerSpec &player_spec_black
+  );
+
+  void ReportGameInfo(const game::GameStatus &game_status);
+
+
+
+  
 };
 
 } // namespace terminalout

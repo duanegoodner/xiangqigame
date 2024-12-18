@@ -7,47 +7,47 @@ namespace terminalout {
 
 // Definition of static constexpr maps
 const std::unordered_map<game::EvaluatorType, std::string>
-    PlayerInfoReporter::evaluator_to_player_type_ = {
+    PlayerReporter::evaluator_to_player_type_ = {
         {game::EvaluatorType::kHuman, "Human"},
         {game::EvaluatorType::kMinimax, "AI"},
         {game::EvaluatorType::kRandom, "AI"}
 };
 
 const std::unordered_map<game::EvaluatorType, std::string>
-    PlayerInfoReporter::evaluator_names_ = {
+    PlayerReporter::evaluator_names_ = {
         {game::EvaluatorType::kHuman, ""},
         {game::EvaluatorType::kMinimax, "Minimax"},
         {game::EvaluatorType::kRandom, "Random"}
 };
 
 const std::unordered_map<game::ZobristKeyType, std::string>
-    PlayerInfoReporter::key_type_strings_ = {
+    PlayerReporter::key_type_strings_ = {
         {game::ZobristKeyType::k032, "32"},
         {game::ZobristKeyType::k064, "64"},
         {game::ZobristKeyType::k128, "128"}
 };
 
-PlayerInfoReporter::PlayerInfoReporter(const game::PlayerSpec &player_spec)
+PlayerReporter::PlayerReporter(const game::PlayerSpec &player_spec)
     : player_spec_{player_spec} {}
 
-std::string PlayerInfoReporter::PlayerTypeStr() {
+std::string PlayerReporter::PlayerTypeStr() {
   return "Player type = " + evaluator_to_player_type_.at(player_spec_.evaluator_type);
 }
 
-std::string PlayerInfoReporter::EvaluatorTypeStr() {
+std::string PlayerReporter::EvaluatorTypeStr() {
   return "Move Evaluator = " + evaluator_names_.at(player_spec_.evaluator_type);
 }
 
-std::string PlayerInfoReporter::SearchDepthStr() {
+std::string PlayerReporter::SearchDepthStr() {
   return "Max Search Depth = " + std::to_string(player_spec_.minimax_search_depth);
 }
 
-std::string PlayerInfoReporter::ZobristKeySizeStr() {
+std::string PlayerReporter::ZobristKeySizeStr() {
   return "Zobrist Key Size = " +
          key_type_strings_.at(player_spec_.minimax_type_info.zobrist_key_type);
 }
 
-std::string PlayerInfoReporter::SummaryStr() {
+std::string PlayerReporter::SummaryStr() {
   std::string result;
   if (player_spec_.evaluator_type == game::EvaluatorType::kMinimax) {
     return PlayerTypeStr() + ", " + EvaluatorTypeStr() + ", " + SearchDepthStr() + ", " +
@@ -63,11 +63,11 @@ std::string PlayerInfoReporter::SummaryStr() {
   return result;
 }
 
-void GameStatusReporter::ReportMoveCount(const game::GameStatus &game_status) {
+void MoveReporter::ReportMoveCount(const game::GameStatus &game_status) {
   std::cout << "Move count: " << game_status.move_count << std::endl;
 }
 
-void GameStatusReporter::ReportWhoseTurn(const game::GameStatus &game_status) {
+void MoveReporter::ReportWhoseTurn(const game::GameStatus &game_status) {
   std::cout << "Whose turn:" << std::endl;
   if (game_status.whose_turn == gameboard::PieceColor::kRed) {
     std::cout << "Red" << std::endl;
@@ -77,7 +77,7 @@ void GameStatusReporter::ReportWhoseTurn(const game::GameStatus &game_status) {
   }
 }
 
-void GameStatusReporter::ReportMostRecentMove(const game::GameStatus &game_status) {
+void MoveReporter::ReportMostRecentMove(const game::GameStatus &game_status) {
   std::cout << "Most recent move:" << std::endl;
   if (game_status.move_count == 0) {
     std::cout << "NA... No moves executed yet." << std::endl;
@@ -132,7 +132,7 @@ const std::string GamePieceEncoder::EncodeGamePiece(
          piece_color_to_code_.at(game_piece.piece_color) + RESET_FORMAT;
 }
 
-std::string BoardMapEncoder::FormatBoardOutput(const gameboard::BoardMap_t &board_map) {
+std::string BoardMapEncoder::EncodeBoardMap(const gameboard::BoardMap_t &board_map) {
   std::ostringstream board_output;
 
   board_output << "\t";
@@ -152,6 +152,29 @@ std::string BoardMapEncoder::FormatBoardOutput(const gameboard::BoardMap_t &boar
   }
 
   return board_output.str();
+}
+
+void BoardMapEncoder::DisplayBoardMap(const gameboard::BoardMap_t &board_map) {
+  auto encoded_board_map = EncodeBoardMap(board_map);
+  std::cout << encoded_board_map << std::endl;
+}
+
+GameTerminalReporter::GameTerminalReporter(
+    const game::PlayerSpec &player_spec_red,
+    const game::PlayerSpec &player_spec_black
+)
+    : red_player_reporter_{PlayerReporter{player_spec_red}}
+    , black_player_reporter_{PlayerReporter{player_spec_black}}
+    , move_reporter_{}
+    , board_map_encoder_{} {}
+
+void GameTerminalReporter::ReportGameInfo(const game::GameStatus &game_status) {
+    board_map_encoder_.DisplayBoardMap(game_status.board_map);
+    red_player_reporter_.DisplaySummaryStr();
+    black_player_reporter_.DisplaySummaryStr();
+    move_reporter_.ReportMoveCount(game_status);
+    move_reporter_.ReportMostRecentMove(game_status);
+    move_reporter_.ReportWhoseTurn(game_status);
 }
 
 } // namespace terminalout

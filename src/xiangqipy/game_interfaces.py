@@ -88,7 +88,7 @@ class Player(abc.ABC):
         )
 
 
-class GameStatusReporter(abc.ABC):
+class MoveReporter(abc.ABC):
     """
     Reports details of a Game.
     """

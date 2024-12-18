@@ -5,7 +5,7 @@
 #include <move_translator.hpp>
 #include <terminal_output.hpp>
 
-class PlayerInfoReporterTest : public ::testing::Test {
+class PlayerReporterTest : public ::testing::Test {
 protected:
   game::PlayerSpec player_spec_human_{game::EvaluatorType::kHuman};
   game::PlayerSpec player_spec_minimax_{
@@ -18,18 +18,18 @@ protected:
   };
   game::PlayerSpec player_spec_random_{game::EvaluatorType::kRandom};
 
-  terminalout::PlayerInfoReporter info_reporter_human_{player_spec_human_};
-  terminalout::PlayerInfoReporter info_reporter_minimax_{player_spec_minimax_};
-  terminalout::PlayerInfoReporter info_reporter_random_{player_spec_random_};
+  terminalout::PlayerReporter info_reporter_human_{player_spec_human_};
+  terminalout::PlayerReporter info_reporter_minimax_{player_spec_minimax_};
+  terminalout::PlayerReporter info_reporter_random_{player_spec_random_};
 };
 
-TEST_F(PlayerInfoReporterTest, PlayerInfoReporter) {
+TEST_F(PlayerReporterTest, PlayerReporter) {
   info_reporter_human_.DisplaySummaryStr();
   info_reporter_minimax_.DisplaySummaryStr();
   info_reporter_random_.DisplaySummaryStr();
 }
 
-class GameStatusReporterTest : public ::testing::Test {
+class MoveReporterTest : public ::testing::Test {
 protected:
   gameboard::BoardSpace most_recent_move_start_{9, 0};
   gameboard::BoardSpace most_recent_move_end_{8, 0};
@@ -40,7 +40,7 @@ protected:
       game_board_factory_.Create();
 };
 
-TEST_F(GameStatusReporterTest, ReportGameSummary) {
+TEST_F(MoveReporterTest, ReportGameSummary) {
   auto executed_move = game_board_->ExecuteMove(most_recent_move_);
   game::GameStatus game_status{
       1,
@@ -50,7 +50,7 @@ TEST_F(GameStatusReporterTest, ReportGameSummary) {
       game_board_->map()
   };
 
-  terminalout::GameStatusReporter game_status_reporter_;
+  terminalout::MoveReporter game_status_reporter_;
 
   game_status_reporter_.ReportMoveCount(game_status);
   game_status_reporter_.ReportMostRecentMove(game_status);
@@ -89,8 +89,50 @@ protected:
 
 TEST_F(BoardMapEncoderTest, EncodeBoardMap) {
   auto board_map = game_board_->map();
-  auto result = board_map_endcoder_.FormatBoardOutput(board_map);
-  std::cout << result << std::endl;
+  board_map_endcoder_.DisplayBoardMap(board_map);
+}
+
+class GameTerminalReporterTest : public ::testing::Test {
+protected:
+  game::PlayerSpec player_spec_red_{game::EvaluatorType::kHuman};
+  game::PlayerSpec player_spec_black_{
+      game::EvaluatorType::kMinimax,
+      game::MinimaxTypeInfo{
+          game::ZobristKeyType::k064,
+          game::ZobristCalculatorCount::kTwo
+      },
+      4
+  };
+
+  gameboard::BoardSpace move_start_{9, 0};
+  gameboard::BoardSpace move_end_{8, 0};
+  gameboard::Move move_{move_start_, move_end_};
+
+  gameboard::GameBoardFactory game_board_factory_;
+  std::shared_ptr<gameboard::GameBoardForConcepts> game_board_ =
+      game_board_factory_.Create();
+
+  terminalout::GameTerminalReporter game_reporter_{player_spec_red_, player_spec_black_};
+};
+
+TEST_F(GameTerminalReporterTest, ReportGameInfo) {
+  game::GameStatus game_status_initial{
+      0,
+      gameboard::Move{},
+      gameboard::PieceColor::kRed,
+      false,
+      game_board_->map()
+  };
+
+  game_reporter_.ReportGameInfo(game_status_initial);
+
+  auto executed_move = game_board_->ExecuteMove(move_);
+
+  game::GameStatus game_status_post_move {
+    1, executed_move.spaces, gameboard::PieceColor::kRed, false, game_board_->map()
+  };
+
+  game_reporter_.ReportGameInfo(game_status_post_move);
 }
 
 int main(int argc, char **argv) {
