@@ -19,7 +19,6 @@
 #include <vector>
 #include <zobrist_for_concepts.hpp>
 
-
 class GameTest : public ::testing::Test {
 protected:
   gameboard::GameBoardFactory game_board_factory_;
@@ -63,7 +62,8 @@ TEST_F(GameTest, BuildGameWithGameFactory) {
       game::ZobristKeyType::k064,
       game::ZobristCalculatorCount::kTwo
   };
-  auto evaluator_factory_info_red = game::EvaluatorFactoryInfo(
+  auto evaluator_factory_info_red = game::PlayerSpec(
+      gameboard::PieceColor::kRed,
       game::EvaluatorType::kMinimax,
       minimax_type_info_red,
       red_search_depth
@@ -73,7 +73,8 @@ TEST_F(GameTest, BuildGameWithGameFactory) {
       game::ZobristKeyType::k064,
       game::ZobristCalculatorCount::kTwo
   };
-  auto evaluator_factory_info_black = game::EvaluatorFactoryInfo(
+  auto evaluator_factory_info_black = game::PlayerSpec(
+      gameboard::PieceColor::kRed,
       game::EvaluatorType::kMinimax,
       minimax_type_info_black,
       black_search_depth

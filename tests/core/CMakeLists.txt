@@ -7,6 +7,7 @@ add_subdirectory(move_evaluator_random_for_concepts)
 add_subdirectory(move_evaluator_minimax_for_concepts)
 add_subdirectory(move_evaluator_human_for_concepts)
 add_subdirectory(move_translator)
+add_subdirectory(terminal_output)
 
 add_executable(piece_moves_test piece_moves_test.cpp)
 target_link_libraries(

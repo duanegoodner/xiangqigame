@@ -18,7 +18,7 @@ from xiangqi_bindings import (
     PieceColor,
     PieceType,
 )
-from xiangqipy.game_interfaces import GameStatusReporter
+from xiangqipy.game_interfaces import MoveReporter
 from xiangqipy.enums import GameState, EvaluatorType
 from xiangqipy.player_summary import PlayerSummary
 
@@ -39,7 +39,7 @@ class InputRetrievalMessages:
         print(self.illegal_move_msg)
 
 
-class TerminalStatusReporter(GameStatusReporter):
+class TerminalStatusReporter(MoveReporter):
     """
     Outputs a text-base game board with GamePiece locations in algebraic
     notation.

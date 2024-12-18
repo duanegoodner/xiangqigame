@@ -9,6 +9,7 @@
 #include <game_data_structs.hpp>
 #include <game_piece.hpp>
 #include <memory>
+#include <string>
 #include <unordered_map>
 
 namespace game {
@@ -19,6 +20,7 @@ class Game {
   GameState game_state_;
   gameboard::PieceColor whose_turn_;
   std::vector<gameboard::ExecutedMove> move_log_;
+  std::string game_id_;
 
 public:
   Game(
@@ -31,6 +33,7 @@ public:
   void Play();
 
 private:
+  std::string GenerateGameID();
   gameboard::Move GetValidMove(const gameboard::MoveCollection &available_moves);
   void PlayerTurn(const gameboard::MoveCollection &available_moves);
   void ChangeWhoseTurn();

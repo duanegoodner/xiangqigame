@@ -10,7 +10,7 @@ import xiangqi_bindings as bindings
 import xiangqipy.core_dataclass_mirrors as cdm
 import xiangqipy.terminal_output as msg
 from xiangqipy.enums import GameState
-from xiangqipy.game_interfaces import GameStatusReporter, Player
+from xiangqipy.game_interfaces import MoveReporter, Player
 from xiangqipy.game_summary import GameSummary, PlayerSummaries
 from xiangqipy.handlers.errors import handle_interactive_eof
 
@@ -26,7 +26,7 @@ class Game:
         self,
         players: Dict[bindings.PieceColor, Player],
         game_board: bindings.GameBoard,
-        status_reporter: GameStatusReporter = msg.TerminalStatusReporter(),
+        status_reporter: MoveReporter = msg.TerminalStatusReporter(),
         move_log: List[bindings.Move] = None,
     ):
         self._game_state = GameState.UNFINISHED
