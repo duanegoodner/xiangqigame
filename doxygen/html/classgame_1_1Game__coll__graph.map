@@ -1,8 +1,9 @@
 <map id="game::Game" name="game::Game">
-<area shape="rect" id="node1" title=" " alt="" coords="462,175,623,325"/>
+<area shape="rect" id="node1" title=" " alt="" coords="525,175,686,340"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,13,229,105"/>
 <area shape="rect" id="node3" title=" " alt="" coords="253,5,475,112"/>
 <area shape="rect" id="node4" title=" " alt="" coords="499,20,594,97"/>
 <area shape="rect" id="node5" title=" " alt="" coords="621,20,712,97"/>
 <area shape="rect" id="node6" title=" " alt="" coords="736,13,896,105"/>
+<area shape="rect" id="node7" title=" " alt="" coords="920,20,979,97"/>
 </map>

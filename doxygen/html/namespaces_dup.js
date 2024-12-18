@@ -9,6 +9,7 @@ var namespaces_dup =
     [ "movetranslation", "namespacemovetranslation.html", "namespacemovetranslation" ],
     [ "piecepoints", "namespacepiecepoints.html", "namespacepiecepoints" ],
     [ "std", "namespacestd.html", "namespacestd" ],
+    [ "terminalout", "namespaceterminalout.html", "namespaceterminalout" ],
     [ "utility_functs", "namespaceutility__functs.html", [
       [ "array_plus_const", "namespaceutility__functs.html#a991fee6c060b152f519b14b7a16e57ed", null ],
       [ "ends_with", "namespaceutility__functs.html#a76030e832abd25bf223040fc3b59945b", null ],

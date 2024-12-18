@@ -147,6 +147,8 @@ $(document).ready(function(){initNavTree('functions_e.html',''); initResizable()
 <h3><a id="index_e" name="index_e"></a>- e -</h3><ul>
 <li>ElephantMoves()&#160;:&#160;<a class="el" href="classgameboard_1_1PieceMoves.html#a0b4caef716a33644846356c61124d045">gameboard::PieceMoves</a></li>
 <li>encode_piece()&#160;:&#160;<a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#aab88d0fe44a7d1c93ae88361d2afe3d6">xiangqipy.terminal_output.TerminalStatusReporter</a></li>
+<li>EncodeBoardMap()&#160;:&#160;<a class="el" href="classterminalout_1_1BoardMapEncoder.html#a8433f293f15d575d5b8287aebc164357">terminalout::BoardMapEncoder</a></li>
+<li>EncodeGamePiece()&#160;:&#160;<a class="el" href="classterminalout_1_1GamePieceEncoder.html#aa5d611cdf7ad1eca7e794e4b2e519dee">terminalout::GamePieceEncoder</a></li>
 <li>end&#160;:&#160;<a class="el" href="structgameboard_1_1Move.html#a081f9df36eb132385a8082b19ee1e510">gameboard::Move</a>, <a class="el" href="classmovetranslation_1_1AlgebraicMove.html#a67fc431ffd3e0b44665588d4235e4bcf">movetranslation::AlgebraicMove</a>, <a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1Move.html#af4d72c66491b1008d320ef10d59dd8db">xiangqipy.core_dataclass_mirrors.Move</a></li>
 <li>end_&#160;:&#160;<a class="el" href="classmovetranslation_1_1AlgebraicMove.html#ae8abcf82538813f69ee144487c340b6b">movetranslation::AlgebraicMove</a></li>
 <li>end_game&#160;:&#160;<a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1TranspositionTableSizesAtEvents.html#a4488eadb20d4fdb1ddf1cc5bff121d8a">xiangqipy.core_dataclass_mirrors.TranspositionTableSizesAtEvents</a></li>
@@ -158,12 +160,14 @@ $(document).ready(function(){initNavTree('functions_e.html',''); initResizable()
 <li>evaluating_player_&#160;:&#160;<a class="el" href="classmoveselection_1_1HumanMoveEvaluatorForConcepts.html#a16f6a724564fc8090419c4b4dc8469ae">moveselection::HumanMoveEvaluatorForConcepts</a>, <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluator.html#ac887141f0db2f790260d8ce0b258a145">moveselection::MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt;</a>, <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a06d9c90c22d5fc765a12d75d1214236d">moveselection::MinimaxMoveEvaluatorForConcepts&lt; H, G, P &gt;</a>, <a class="el" href="classmoveselection_1_1RandomMoveEvaluator.html#a69fdaf3024cf61c1b3a4472c1b52d35b">moveselection::RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt;</a>, <a class="el" href="classmoveselection_1_1RandomMoveEvaluatorForConcepts.html#a9bb05df60db7beff5473402042974a81">moveselection::RandomMoveEvaluatorForConcepts</a></li>
 <li>evaluating_player_line_colors&#160;:&#160;<a class="el" href="classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#adc45fb3da91126f667b09df577147a26">xiangqipy.game_summary_plotters.GameSummaryPlotter</a></li>
 <li>evaluator_constructor_dispatch()&#160;:&#160;<a class="el" href="classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html#ae6b1d62484d7b888970d75e4511af91d">xiangqipy.player_builder.SinglePlayerBuilder</a></li>
-<li>evaluator_factory_info_&#160;:&#160;<a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html#a84a974e3779282c7dee8e8fbe7738c80">game::EvaluatorFactoryRetriever</a></li>
-<li>evaluator_type&#160;:&#160;<a class="el" href="structgame_1_1EvaluatorFactoryInfo.html#a3f5116926af1f5ad47782626cf1c90fb">game::EvaluatorFactoryInfo</a>, <a class="el" href="classPlayer.html#a021b6e4ad442c9799697a0565efd01da">Player&lt; ConcretePlayer &gt;</a>, <a class="el" href="classxiangqipy_1_1app__new_1_1PlayerInputNew.html#af9eee5318d180b7a9bdfe9f5861ded19">xiangqipy.app_new.PlayerInputNew</a></li>
+<li>evaluator_factory_info_&#160;:&#160;<a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html#a28fd935b4fdf2aa2da54e89545796fe7">game::EvaluatorFactoryRetriever</a></li>
+<li>evaluator_names_&#160;:&#160;<a class="el" href="classterminalout_1_1PlayerReporter.html#ad5d5053930e5574e4ed0fd72738e9108">terminalout::PlayerReporter</a></li>
+<li>evaluator_to_player_type_&#160;:&#160;<a class="el" href="classterminalout_1_1PlayerReporter.html#ae5c3ef9e0d748eb6c70d0fc898eafb48">terminalout::PlayerReporter</a></li>
+<li>evaluator_type&#160;:&#160;<a class="el" href="structgame_1_1PlayerSpec.html#a0b89ceacabb577a8fc88734f8f43cc09">game::PlayerSpec</a>, <a class="el" href="classPlayer.html#a021b6e4ad442c9799697a0565efd01da">Player&lt; ConcretePlayer &gt;</a>, <a class="el" href="classxiangqipy_1_1app__new_1_1PlayerInputNew.html#af9eee5318d180b7a9bdfe9f5861ded19">xiangqipy.app_new.PlayerInputNew</a></li>
 <li>evaluator_type_&#160;:&#160;<a class="el" href="classAIPlayer.html#ab0124f4b52a077a9f0191babc0518472">AIPlayer&lt; ConcreteMoveEvaluator &gt;</a></li>
-<li>EvaluatorFactoryInfo()&#160;:&#160;<a class="el" href="structgame_1_1EvaluatorFactoryInfo.html#a7b5a4923d58752b3154c7ccc9a385634">game::EvaluatorFactoryInfo</a></li>
-<li>EvaluatorFactoryRetriever()&#160;:&#160;<a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html#ab02f677ca7861a5d7544d0569b0538d6">game::EvaluatorFactoryRetriever</a></li>
+<li>EvaluatorFactoryRetriever()&#160;:&#160;<a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html#a80b2961cae2022dae078183769609d8a">game::EvaluatorFactoryRetriever</a></li>
 <li>EvaluatorLoses&#160;:&#160;<a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a176c899e93c8adfbd9cb1b00c75c7935">xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy</a></li>
+<li>EvaluatorTypeStr()&#160;:&#160;<a class="el" href="classterminalout_1_1PlayerReporter.html#a980693d6f1cbe6f82979f91c3db76960">terminalout::PlayerReporter</a></li>
 <li>EvaluatorWins&#160;:&#160;<a class="el" href="classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#acf7da36d1a29bb5c195d4756e31d1b0c">xiangqipy.core_dataclass_mirrors.MinimaxResultTypePy</a></li>
 <li>ExecuteMove()&#160;:&#160;<a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a30f169385fc0429d409af25226e5e004">gameboard::GameBoardForConcepts</a>, <a class="el" href="classSpaceInfoProvider.html#a407ac781b9100a332bcd44cbc6e301de">SpaceInfoProvider&lt; ConcreteSpaceInfoProvider &gt;</a>, <a class="el" href="classSpaceInfoProviderBase.html#adbdf82124cc6c2d62f6c78ce91980647">SpaceInfoProviderBase</a></li>
 <li>ExecuteMoveInternal()&#160;:&#160;<a class="el" href="classgameboard_1_1GameBoardForConcepts.html#a8ce4924959d227d0f9a2bb1eaa6da925">gameboard::GameBoardForConcepts</a></li>
@@ -177,7 +181,7 @@ $(document).ready(function(){initNavTree('functions_e.html',''); initResizable()
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Dec 17 2024 05:16:07 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Wed Dec 18 2024 21:07:32 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

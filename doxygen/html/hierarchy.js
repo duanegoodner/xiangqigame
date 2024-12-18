@@ -1,7 +1,7 @@
 var hierarchy =
 [
     [ "abc.ABC", null, [
-      [ "xiangqipy.game_interfaces.GameStatusReporter", "classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html", [
+      [ "xiangqipy.game_interfaces.MoveReporter", "classxiangqipy_1_1game__interfaces_1_1MoveReporter.html", [
         [ "xiangqipy.terminal_output.TerminalStatusReporter", "classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html", null ]
       ] ],
       [ "xiangqipy.game_interfaces.Player", "classxiangqipy_1_1game__interfaces_1_1Player.html", [
@@ -15,6 +15,7 @@ var hierarchy =
     [ "movetranslation::AlgebraicMove", "classmovetranslation_1_1AlgebraicMove.html", null ],
     [ "xiangqipy.piece_points.BasePoints", "classxiangqipy_1_1piece__points_1_1BasePoints.html", null ],
     [ "gameboard::BoardDirection", "structgameboard_1_1BoardDirection.html", null ],
+    [ "terminalout::BoardMapEncoder", "classterminalout_1_1BoardMapEncoder.html", null ],
     [ "gameboard::BoardSpace", "structgameboard_1_1BoardSpace.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.BoardSpace", "classxiangqipy_1_1core__dataclass__mirrors_1_1BoardSpace.html", null ],
     [ "BoardStateCoordinator< ConcreteBoardStateCoordinator, KeyType >", "classBoardStateCoordinator.html", null ],
@@ -26,7 +27,6 @@ var hierarchy =
     [ "gameboard::CastleEdges", "structgameboard_1_1CastleEdges.html", null ],
     [ "moveselection::EqualScoreMoves", "classmoveselection_1_1EqualScoreMoves.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.EqualScoreMoves", "classxiangqipy_1_1core__dataclass__mirrors_1_1EqualScoreMoves.html", null ],
-    [ "game::EvaluatorFactoryInfo", "structgame_1_1EvaluatorFactoryInfo.html", null ],
     [ "game::EvaluatorFactoryRetriever", "classgame_1_1EvaluatorFactoryRetriever.html", null ],
     [ "Exception", "classException.html", [
       [ "xiangqipy.players.IllegalAIMove", "classxiangqipy_1_1players_1_1IllegalAIMove.html", null ],
@@ -42,7 +42,10 @@ var hierarchy =
     [ "xiangqipy.game_output_generator.GameOutputGenerator", "classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html", null ],
     [ "gameboard::GamePiece", "structgameboard_1_1GamePiece.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.GamePiece", "classxiangqipy_1_1core__dataclass__mirrors_1_1GamePiece.html", null ],
+    [ "terminalout::GamePieceEncoder", "classterminalout_1_1GamePieceEncoder.html", null ],
+    [ "game::GameStatus", "structgame_1_1GameStatus.html", null ],
     [ "xiangqipy.game_summary_plot_manager.GameSummaryPlotManager", "classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html", null ],
+    [ "terminalout::GameTerminalReporter", "classterminalout_1_1GameTerminalReporter.html", null ],
     [ "std::hash< moveselection::MinimaxTemplateSpecs >", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4.html", null ],
     [ "humanplayerio::InputRetrievalMessages", "classhumanplayerio_1_1InputRetrievalMessages.html", null ],
     [ "xiangqipy.terminal_output.InputRetrievalMessages", "classxiangqipy_1_1terminal__output_1_1InputRetrievalMessages.html", null ],
@@ -80,6 +83,7 @@ var hierarchy =
       [ "moveselection::MinimaxMoveEvaluatorFactory< KeyType, NumConfKeys >", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html", null ],
       [ "moveselection::RandomMoveEvaluatorFactory", "classmoveselection_1_1RandomMoveEvaluatorFactory.html", null ]
     ] ],
+    [ "terminalout::MoveReporter", "classterminalout_1_1MoveReporter.html", null ],
     [ "NullBoardStateCalculator", "classNullBoardStateCalculator.html", null ],
     [ "gameboard::PieceMoves", "classgameboard_1_1PieceMoves.html", null ],
     [ "piecepoints::PiecePositionPointsForConcepts", "structpiecepoints_1_1PiecePositionPointsForConcepts.html", null ],
@@ -95,7 +99,9 @@ var hierarchy =
     [ "xiangqipy.command_input.PlayerCommandInterpreter", "classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html", null ],
     [ "xiangqipy.command_input.PlayerInput", "classxiangqipy_1_1command__input_1_1PlayerInput.html", null ],
     [ "xiangqipy.app_new.PlayerInputNew", "classxiangqipy_1_1app__new_1_1PlayerInputNew.html", null ],
+    [ "terminalout::PlayerReporter", "classterminalout_1_1PlayerReporter.html", null ],
     [ "xiangqipy.app_new.PlayerRunArgs", "classxiangqipy_1_1app__new_1_1PlayerRunArgs.html", null ],
+    [ "game::PlayerSpec", "structgame_1_1PlayerSpec.html", null ],
     [ "xiangqipy.game_summary.PlayerSummaries", "classxiangqipy_1_1game__summary_1_1PlayerSummaries.html", null ],
     [ "xiangqipy.player_summary.PlayerSummary", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html", null ],
     [ "xiangqipy.core_dataclass_mirrors.PointsTypeDeterminer", "classxiangqipy_1_1core__dataclass__mirrors_1_1PointsTypeDeterminer.html", null ],

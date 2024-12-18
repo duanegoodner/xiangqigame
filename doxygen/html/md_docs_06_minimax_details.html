@@ -160,7 +160,7 @@ Algorithm Termination Modes</h1>
 Points Assignment</h1>
 <p>Points values of non-leaf nodes, are determined based on the points values of their child nodes. For end-of-game leaf nodes, negative infinity is assigned if the node represents a loss for the evaluator, positive infinity is assigned for a win, and zero is assigned for a draw. When evaluating any other leaf node, we do the following:</p>
 <ul>
-<li>For each piece on the <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a>, look up the element in the evalutor's 4-D <a class="el" href="structpiecepoints_1_1PiecePositionPoints.html#a1562468626d164564d9631c657266b54">piecepoints::PiecePositionPoints.points_array</a> of integers corresponding to the piece's <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>, <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">gameboard::PieceType</a>, <a class="el" href="structgameboard_1_1BoardSpace.html#a08d5bd02bd1633a17913036f95a81826">gameboard::BoardSpace.rank</a>, and <a class="el" href="structgameboard_1_1BoardSpace.html#ac9af213d1a28426de0e03ec7f98c1dc1">gameboard::BoardSpace.file</a>.</li>
+<li>For each piece on the <a class="el" href="classgameboard_1_1GameBoard.html" title="Implements SpaceInfoProvider interface; stores piece positions, and exposes methods for calculating,...">gameboard::GameBoard</a>, look up the element in the evalutor's 4-D <a class="el" href="structpiecepoints_1_1PiecePositionPoints.html#a1562468626d164564d9631c657266b54">piecepoints::PiecePositionPoints.points_array</a> of integers corresponding to the piece's <a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a>, <a class="el" href="namespacegameboard.html#a8d35500d8e8b10edb726f8629fd25e76">gameboard::PieceType</a>, <a class="el" href="structgameboard_1_1BoardSpace.html#a60ecf2b038e2e78993b4867f574cf890">gameboard::BoardSpace.rank</a>, and <a class="el" href="structgameboard_1_1BoardSpace.html#a0c73cddc71742818833c39673adcd9a4">gameboard::BoardSpace.file</a>.</li>
 <li>Calculate the the "score" of the game state node as the sum of entries for each piece on the board</li>
 </ul>
 <p>The entries in <a class="el" href="structpiecepoints_1_1PiecePositionPoints.html#a1562468626d164564d9631c657266b54">piecepoints::PiecePositionPoints.points_array</a> are the same as those used in <a href="http://web.csie.ndhu.edu.tw/sjyen/Papers/2004CCC.pdf">Yen, Shi-Jim, et al. "Computer chinese chess." <em>ICGA journal</em> 27.1 (2004): 3-18.</a></p>
@@ -199,7 +199,7 @@ Reduce Python Responsibilities</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Dec 17 2024 05:16:06 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Wed Dec 18 2024 21:07:32 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

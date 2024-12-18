@@ -195,10 +195,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a></td></tr>
+<tr class="memitem:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; <a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#a52e1d35681eb7df62e3b53f484d54f06">kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a773be6f643f7d116502f5a147e082975">kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">BoardMap_t</a></td></tr>
 <tr class="memdesc:aab2a12a4ad1333460ff7d6d910c6160d"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of <a class="el" href="structgameboard_1_1GamePiece.html" title="A Xiangqi game piece described by its gameboard::PieceType and its gameboard::PieceColor.">gameboard::GamePiece</a> objects.  <br /></td></tr>
 <tr class="separator:aab2a12a4ad1333460ff7d6d910c6160d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e9a3466821b60dadcb183d4c8175133"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; int, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a></td></tr>
+<tr class="memitem:a2e9a3466821b60dadcb183d4c8175133"><td class="memItemLeft" align="right" valign="top">typedef array&lt; array&lt; int, <a class="el" href="namespacegameboard.html#a52e1d35681eb7df62e3b53f484d54f06">kNumFiles</a> &gt;, <a class="el" href="namespacegameboard.html#a773be6f643f7d116502f5a147e082975">kNumRanks</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">BoardMapInt_t</a></td></tr>
 <tr class="memdesc:a2e9a3466821b60dadcb183d4c8175133"><td class="mdescLeft">&#160;</td><td class="mdescRight">2-D array of integers; can be converted to <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d" title="2-D array of gameboard::GamePiece objects.">gameboard::BoardMap_t</a> using <a class="el" href="namespacegameboard.html#aa06ff448689c3fcec3968e33752e0d19">gameboard::int_board_to_game_pieces</a>.  <br /></td></tr>
 <tr class="separator:a2e9a3466821b60dadcb183d4c8175133"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3930c18039797b276764917d1ea8fcac"><td class="memItemLeft" align="right" valign="top">typedef array&lt; <a class="el" href="structgameboard_1_1BoardSpace.html">BoardSpace</a>, 9 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a3930c18039797b276764917d1ea8fcac">Castle_t</a></td></tr>
@@ -260,14 +260,14 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a5c4bd2ef24f756227318f6fd75eb4895"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="integer__types_8hpp.html#a2258c68b832be754aa2dd28acbc5cd63">BoardIdx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a> = 10</td></tr>
-<tr class="separator:a5c4bd2ef24f756227318f6fd75eb4895"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5e296086982321384dc034288cee600"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="integer__types_8hpp.html#a2258c68b832be754aa2dd28acbc5cd63">BoardIdx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a> = 9</td></tr>
-<tr class="separator:ad5e296086982321384dc034288cee600"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fffbf20f72f3d01b3a24bb59499425e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="integer__types_8hpp.html#a2258c68b832be754aa2dd28acbc5cd63">BoardIdx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a2fffbf20f72f3d01b3a24bb59499425e">kRedRiverEdge</a> = 5</td></tr>
-<tr class="separator:a2fffbf20f72f3d01b3a24bb59499425e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfea0925fa61e4179c09e5293da07400"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="integer__types_8hpp.html#a2258c68b832be754aa2dd28acbc5cd63">BoardIdx_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#adfea0925fa61e4179c09e5293da07400">kBlackRiverEdge</a> = 4</td></tr>
-<tr class="separator:adfea0925fa61e4179c09e5293da07400"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a773be6f643f7d116502f5a147e082975"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="integer__types_8hpp.html#a07b20043d333f811615ee3963808f36e">BoardIndexType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a773be6f643f7d116502f5a147e082975">kNumRanks</a> = 10</td></tr>
+<tr class="separator:a773be6f643f7d116502f5a147e082975"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52e1d35681eb7df62e3b53f484d54f06"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="integer__types_8hpp.html#a07b20043d333f811615ee3963808f36e">BoardIndexType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#a52e1d35681eb7df62e3b53f484d54f06">kNumFiles</a> = 9</td></tr>
+<tr class="separator:a52e1d35681eb7df62e3b53f484d54f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae641c913ae326de76e29d3cfe412d9e3"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="integer__types_8hpp.html#a07b20043d333f811615ee3963808f36e">BoardIndexType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ae641c913ae326de76e29d3cfe412d9e3">kRedRiverEdge</a> = 5</td></tr>
+<tr class="separator:ae641c913ae326de76e29d3cfe412d9e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae77de4f8b0444ef8741d1ed85ee66f36"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="integer__types_8hpp.html#a07b20043d333f811615ee3963808f36e">BoardIndexType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ae77de4f8b0444ef8741d1ed85ee66f36">kBlackRiverEdge</a> = 4</td></tr>
+<tr class="separator:ae77de4f8b0444ef8741d1ed85ee66f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8583f8680f6f904b8eb4a07ba892f98"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structgameboard_1_1CastleEdges.html">CastleEdges</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#af8583f8680f6f904b8eb4a07ba892f98">kRedCastleEdges</a> = {7, 9, 3, 5}</td></tr>
 <tr class="separator:af8583f8680f6f904b8eb4a07ba892f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae715c4cc954af711a8f9da82271d2aba"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="structgameboard_1_1CastleEdges.html">CastleEdges</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegameboard.html#ae715c4cc954af711a8f9da82271d2aba">kBlackCastleEdges</a> = {0, 2, 3, 5}</td></tr>
@@ -310,7 +310,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef array&lt;array&lt;<a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a>&gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a>&gt; <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a></td>
+          <td class="memname">typedef array&lt;array&lt;<a class="el" href="structgameboard_1_1GamePiece.html">GamePiece</a>, <a class="el" href="namespacegameboard.html#a52e1d35681eb7df62e3b53f484d54f06">kNumFiles</a>&gt;, <a class="el" href="namespacegameboard.html#a773be6f643f7d116502f5a147e082975">kNumRanks</a>&gt; <a class="el" href="namespacegameboard.html#aab2a12a4ad1333460ff7d6d910c6160d">gameboard::BoardMap_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -329,7 +329,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef array&lt;array&lt;int, <a class="el" href="namespacegameboard.html#ad5e296086982321384dc034288cee600">kNumFiles</a>&gt;, <a class="el" href="namespacegameboard.html#a5c4bd2ef24f756227318f6fd75eb4895">kNumRanks</a>&gt; <a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">gameboard::BoardMapInt_t</a></td>
+          <td class="memname">typedef array&lt;array&lt;int, <a class="el" href="namespacegameboard.html#a52e1d35681eb7df62e3b53f484d54f06">kNumFiles</a>&gt;, <a class="el" href="namespacegameboard.html#a773be6f643f7d116502f5a147e082975">kNumRanks</a>&gt; <a class="el" href="namespacegameboard.html#a2e9a3466821b60dadcb183d4c8175133">gameboard::BoardMapInt_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -918,14 +918,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="adfea0925fa61e4179c09e5293da07400" name="adfea0925fa61e4179c09e5293da07400"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfea0925fa61e4179c09e5293da07400">&#9670;&#160;</a></span>kBlackRiverEdge</h2>
+<a id="ae77de4f8b0444ef8741d1ed85ee66f36" name="ae77de4f8b0444ef8741d1ed85ee66f36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae77de4f8b0444ef8741d1ed85ee66f36">&#9670;&#160;</a></span>kBlackRiverEdge</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="integer__types_8hpp.html#a2258c68b832be754aa2dd28acbc5cd63">BoardIdx_t</a> gameboard::kBlackRiverEdge = 4</td>
+          <td class="memname">const <a class="el" href="integer__types_8hpp.html#a07b20043d333f811615ee3963808f36e">BoardIndexType</a> gameboard::kBlackRiverEdge = 4</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -972,14 +972,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ad5e296086982321384dc034288cee600" name="ad5e296086982321384dc034288cee600"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5e296086982321384dc034288cee600">&#9670;&#160;</a></span>kNumFiles</h2>
+<a id="a52e1d35681eb7df62e3b53f484d54f06" name="a52e1d35681eb7df62e3b53f484d54f06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52e1d35681eb7df62e3b53f484d54f06">&#9670;&#160;</a></span>kNumFiles</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="integer__types_8hpp.html#a2258c68b832be754aa2dd28acbc5cd63">BoardIdx_t</a> gameboard::kNumFiles = 9</td>
+          <td class="memname">const <a class="el" href="integer__types_8hpp.html#a07b20043d333f811615ee3963808f36e">BoardIndexType</a> gameboard::kNumFiles = 9</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1020,14 +1020,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a5c4bd2ef24f756227318f6fd75eb4895" name="a5c4bd2ef24f756227318f6fd75eb4895"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c4bd2ef24f756227318f6fd75eb4895">&#9670;&#160;</a></span>kNumRanks</h2>
+<a id="a773be6f643f7d116502f5a147e082975" name="a773be6f643f7d116502f5a147e082975"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a773be6f643f7d116502f5a147e082975">&#9670;&#160;</a></span>kNumRanks</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="integer__types_8hpp.html#a2258c68b832be754aa2dd28acbc5cd63">BoardIdx_t</a> gameboard::kNumRanks = 10</td>
+          <td class="memname">const <a class="el" href="integer__types_8hpp.html#a07b20043d333f811615ee3963808f36e">BoardIndexType</a> gameboard::kNumRanks = 10</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1111,14 +1111,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a2fffbf20f72f3d01b3a24bb59499425e" name="a2fffbf20f72f3d01b3a24bb59499425e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fffbf20f72f3d01b3a24bb59499425e">&#9670;&#160;</a></span>kRedRiverEdge</h2>
+<a id="ae641c913ae326de76e29d3cfe412d9e3" name="ae641c913ae326de76e29d3cfe412d9e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae641c913ae326de76e29d3cfe412d9e3">&#9670;&#160;</a></span>kRedRiverEdge</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="integer__types_8hpp.html#a2258c68b832be754aa2dd28acbc5cd63">BoardIdx_t</a> gameboard::kRedRiverEdge = 5</td>
+          <td class="memname">const <a class="el" href="integer__types_8hpp.html#a07b20043d333f811615ee3963808f36e">BoardIndexType</a> gameboard::kRedRiverEdge = 5</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1221,7 +1221,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacegameboard.html">gameboard</a></li>
-    <li class="footer">Generated on Tue Dec 17 2024 05:16:06 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Wed Dec 18 2024 21:07:32 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

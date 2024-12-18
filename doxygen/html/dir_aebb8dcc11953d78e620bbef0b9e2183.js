@@ -16,5 +16,6 @@ var dir_aebb8dcc11953d78e620bbef0b9e2183 =
     [ "piece_points_bpo", "dir_5e87e005afc30412df071a39cd4bcb8c.html", "dir_5e87e005afc30412df071a39cd4bcb8c" ],
     [ "piece_position_points", "dir_8f30742404063997096bb6be617a2d7d.html", "dir_8f30742404063997096bb6be617a2d7d" ],
     [ "piece_position_points_for_concepts", "dir_4f56790babfab547f61e9ede4641af47.html", "dir_4f56790babfab547f61e9ede4641af47" ],
+    [ "terminal_output", "dir_b53baf468628259d271a12ca6106ec13.html", "dir_b53baf468628259d271a12ca6106ec13" ],
     [ "utility_functs", "dir_5d65e9c3b4f26e5cdb0529f818228bef.html", "dir_5d65e9c3b4f26e5cdb0529f818228bef" ]
 ];

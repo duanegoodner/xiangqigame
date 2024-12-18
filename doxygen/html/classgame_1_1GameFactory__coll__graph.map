@@ -1,11 +1,12 @@
 <map id="game::GameFactory" name="game::GameFactory">
 <area shape="rect" id="node1" title=" " alt="" coords="133,499,287,591"/>
 <area shape="rect" id="node2" href="$classgameboard_1_1GameBoardFactory.html" title=" " alt="" coords="5,315,233,392"/>
-<area shape="rect" id="node3" href="$structgame_1_1EvaluatorFactoryInfo.html" title=" " alt="" coords="257,315,459,392"/>
-<area shape="rect" id="node4" title=" " alt="" coords="58,167,173,245"/>
-<area shape="rect" id="node5" href="$structgame_1_1MinimaxTypeInfo.html" title=" " alt="" coords="197,160,375,252"/>
-<area shape="rect" id="node6" title=" " alt="" coords="138,5,261,83"/>
-<area shape="rect" id="node7" title=" " alt="" coords="285,5,457,83"/>
-<area shape="rect" id="node8" title=" " alt="" coords="415,167,475,245"/>
-<area shape="rect" id="node9" title=" " alt="" coords="600,167,687,245"/>
+<area shape="rect" id="node3" href="$structgame_1_1PlayerSpec.html" title=" " alt="" coords="258,315,397,392"/>
+<area shape="rect" id="node4" title=" " alt="" coords="11,167,102,245"/>
+<area shape="rect" id="node5" title=" " alt="" coords="126,167,241,245"/>
+<area shape="rect" id="node6" href="$structgame_1_1MinimaxTypeInfo.html" title=" " alt="" coords="265,160,443,252"/>
+<area shape="rect" id="node7" title=" " alt="" coords="206,5,329,83"/>
+<area shape="rect" id="node8" title=" " alt="" coords="353,5,525,83"/>
+<area shape="rect" id="node9" title=" " alt="" coords="469,167,529,245"/>
+<area shape="rect" id="node10" title=" " alt="" coords="655,167,741,245"/>
 </map>

@@ -30,5 +30,6 @@ var searchData=
   ['zobristcoordinatorforconcepts_27',['ZobristCoordinatorForConcepts',['../classboardstate_1_1ZobristCoordinatorForConcepts.html',1,'boardstate::ZobristCoordinatorForConcepts&lt; M &gt;'],['../classboardstate_1_1ZobristCoordinatorForConcepts.html#aac542f27dee667fb7ee1dc2bc92e191f',1,'boardstate::ZobristCoordinatorForConcepts::ZobristCoordinatorForConcepts()']]],
   ['zobristcoordinatortype_28',['ZobristCoordinatorType',['../classboardstate_1_1ZobristCoordinatorFactory.html#a55dc27d7a530a523494715c063131b6c',1,'boardstate::ZobristCoordinatorFactory::ZobristCoordinatorType()'],['../classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#aa82a33d2b3faea1e6167cc2800c1c3d9',1,'moveselection::MinimaxMoveEvaluatorFactory::ZobristCoordinatorType()']]],
   ['zobristkey_5ft_29',['ZobristKey_t',['../classBoardStateCoordinator.html#a5d4a9aff02f4621e174873623b985801',1,'BoardStateCoordinator']]],
-  ['zobristkeytype_30',['ZobristKeyType',['../namespacegame.html#a559237671e2da77df194f7b85a0479d3',1,'game']]]
+  ['zobristkeysizestr_30',['ZobristKeySizeStr',['../classterminalout_1_1PlayerReporter.html#afb197d25efa62a704d1e33f86901c3a4',1,'terminalout::PlayerReporter']]],
+  ['zobristkeytype_31',['ZobristKeyType',['../namespacegame.html#a559237671e2da77df194f7b85a0479d3',1,'game']]]
 ];

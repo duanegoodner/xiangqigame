@@ -1,11 +1,12 @@
 var namespacegame =
 [
-    [ "EvaluatorFactoryInfo", "structgame_1_1EvaluatorFactoryInfo.html", "structgame_1_1EvaluatorFactoryInfo" ],
     [ "EvaluatorFactoryRetriever", "classgame_1_1EvaluatorFactoryRetriever.html", "classgame_1_1EvaluatorFactoryRetriever" ],
     [ "Game", "classgame_1_1Game.html", "classgame_1_1Game" ],
     [ "GameFactory", "classgame_1_1GameFactory.html", "classgame_1_1GameFactory" ],
+    [ "GameStatus", "structgame_1_1GameStatus.html", "structgame_1_1GameStatus" ],
     [ "MinimaxTypeInfo", "structgame_1_1MinimaxTypeInfo.html", "structgame_1_1MinimaxTypeInfo" ],
     [ "MinimaxTypeInfoHash", "structgame_1_1MinimaxTypeInfoHash.html", "structgame_1_1MinimaxTypeInfoHash" ],
+    [ "PlayerSpec", "structgame_1_1PlayerSpec.html", "structgame_1_1PlayerSpec" ],
     [ "EvaluatorType", "namespacegame.html#a8c93203a902146caddef660c90e21280", [
       [ "kRandom", "namespacegame.html#a8c93203a902146caddef660c90e21280adbb7c37a1a3b50bc322b3bb1a8654e9d", null ],
       [ "kMinimax", "namespacegame.html#a8c93203a902146caddef660c90e21280a44f1478de1e9660318efbe807ee753d1", null ],

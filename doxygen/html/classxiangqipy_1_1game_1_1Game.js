@@ -1,6 +1,6 @@
 var classxiangqipy_1_1game_1_1Game =
 [
-    [ "__init__", "classxiangqipy_1_1game_1_1Game.html#a1630263119e6f7d5c75e827165faf93c", null ],
+    [ "__init__", "classxiangqipy_1_1game_1_1Game.html#a61e608ba75eb4c444a1571f62521564d", null ],
     [ "_move_count", "classxiangqipy_1_1game_1_1Game.html#a85734b6fca6a11b4f728eb4dbd931683", null ],
     [ "change_whose_turn", "classxiangqipy_1_1game_1_1Game.html#af8632c181256e3b96fd1f35f6b998959", null ],
     [ "get_valid_move", "classxiangqipy_1_1game_1_1Game.html#a70c194244bd3f50e456b23bbdf12359a", null ],

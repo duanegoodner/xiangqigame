@@ -156,23 +156,24 @@ Collaboration diagram for game::EvaluatorFactoryRetriever:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgame_1_1EvaluatorFactoryRetriever__coll__graph.png" border="0" usemap="#agame_1_1EvaluatorFactoryRetriever_coll__map" alt="Collaboration graph"/></div>
 <map name="agame_1_1EvaluatorFactoryRetriever_coll__map" id="agame_1_1EvaluatorFactoryRetriever_coll__map">
-<area shape="rect" title=" " alt="" coords="295,513,531,605"/>
+<area shape="rect" title=" " alt="" coords="263,513,499,605"/>
 <area shape="rect" title=" " alt="" coords="5,315,288,436"/>
-<area shape="rect" href="structgame_1_1EvaluatorFactoryInfo.html" title=" " alt="" coords="313,337,514,414"/>
-<area shape="rect" title=" " alt="" coords="112,167,227,245"/>
-<area shape="rect" href="structgame_1_1MinimaxTypeInfo.html" title=" " alt="" coords="251,160,429,252"/>
-<area shape="rect" title=" " alt="" coords="192,5,315,83"/>
-<area shape="rect" title=" " alt="" coords="339,5,511,83"/>
-<area shape="rect" title=" " alt="" coords="469,167,529,245"/>
-<area shape="rect" title=" " alt="" coords="654,167,741,245"/>
-<area shape="rect" title=" " alt="" coords="539,329,741,421"/>
+<area shape="rect" href="structgame_1_1PlayerSpec.html" title=" " alt="" coords="312,337,451,414"/>
+<area shape="rect" title=" " alt="" coords="65,167,156,245"/>
+<area shape="rect" title=" " alt="" coords="180,167,295,245"/>
+<area shape="rect" href="structgame_1_1MinimaxTypeInfo.html" title=" " alt="" coords="319,160,497,252"/>
+<area shape="rect" title=" " alt="" coords="260,5,383,83"/>
+<area shape="rect" title=" " alt="" coords="407,5,579,83"/>
+<area shape="rect" title=" " alt="" coords="523,167,583,245"/>
+<area shape="rect" title=" " alt="" coords="709,167,795,245"/>
+<area shape="rect" title=" " alt="" coords="475,329,677,421"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab02f677ca7861a5d7544d0569b0538d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html#ab02f677ca7861a5d7544d0569b0538d6">EvaluatorFactoryRetriever</a> (const <a class="el" href="structgame_1_1EvaluatorFactoryInfo.html">EvaluatorFactoryInfo</a> &amp;evaluator_factory_info, std::shared_ptr&lt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a> &gt; game_board)</td></tr>
-<tr class="separator:ab02f677ca7861a5d7544d0569b0538d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80b2961cae2022dae078183769609d8a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html#a80b2961cae2022dae078183769609d8a">EvaluatorFactoryRetriever</a> (const <a class="el" href="structgame_1_1PlayerSpec.html">PlayerSpec</a> &amp;evaluator_factory_info, std::shared_ptr&lt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a> &gt; game_board)</td></tr>
+<tr class="separator:a80b2961cae2022dae078183769609d8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afeaab4897cbb19e11ef14c98fd105a3f"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classMoveEvaluatorFactoryBase.html">MoveEvaluatorFactoryBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html#afeaab4897cbb19e11ef14c98fd105a3f">GetFactory</a> ()</td></tr>
 <tr class="separator:afeaab4897cbb19e11ef14c98fd105a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -180,17 +181,17 @@ Public Member Functions</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a302ec54abb4bbdf57ef034d6aec92bdc"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="structgame_1_1MinimaxTypeInfo.html">MinimaxTypeInfo</a>, std::shared_ptr&lt; <a class="el" href="classMoveEvaluatorFactoryBase.html">MoveEvaluatorFactoryBase</a> &gt;, <a class="el" href="structgame_1_1MinimaxTypeInfoHash.html">MinimaxTypeInfoHash</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html#a302ec54abb4bbdf57ef034d6aec92bdc">minimax_factories_</a></td></tr>
 <tr class="separator:a302ec54abb4bbdf57ef034d6aec92bdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84a974e3779282c7dee8e8fbe7738c80"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structgame_1_1EvaluatorFactoryInfo.html">EvaluatorFactoryInfo</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html#a84a974e3779282c7dee8e8fbe7738c80">evaluator_factory_info_</a></td></tr>
-<tr class="separator:a84a974e3779282c7dee8e8fbe7738c80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28fd935b4fdf2aa2da54e89545796fe7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structgame_1_1PlayerSpec.html">PlayerSpec</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html#a28fd935b4fdf2aa2da54e89545796fe7">evaluator_factory_info_</a></td></tr>
+<tr class="separator:a28fd935b4fdf2aa2da54e89545796fe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10c0e357ef4512ab262be04c11480282"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classgameboard_1_1GameBoardForConcepts.html">gameboard::GameBoardForConcepts</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html#a10c0e357ef4512ab262be04c11480282">game_board_</a></td></tr>
 <tr class="separator:a10c0e357ef4512ab262be04c11480282"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00067">67</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00020">20</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ab02f677ca7861a5d7544d0569b0538d6" name="ab02f677ca7861a5d7544d0569b0538d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab02f677ca7861a5d7544d0569b0538d6">&#9670;&#160;</a></span>EvaluatorFactoryRetriever()</h2>
+<a id="a80b2961cae2022dae078183769609d8a" name="a80b2961cae2022dae078183769609d8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80b2961cae2022dae078183769609d8a">&#9670;&#160;</a></span>EvaluatorFactoryRetriever()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -198,7 +199,7 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">game::EvaluatorFactoryRetriever::EvaluatorFactoryRetriever </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structgame_1_1EvaluatorFactoryInfo.html">EvaluatorFactoryInfo</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structgame_1_1PlayerSpec.html">PlayerSpec</a> &amp;&#160;</td>
           <td class="paramname"><em>evaluator_factory_info</em>, </td>
         </tr>
         <tr>
@@ -240,8 +241,8 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a84a974e3779282c7dee8e8fbe7738c80" name="a84a974e3779282c7dee8e8fbe7738c80"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84a974e3779282c7dee8e8fbe7738c80">&#9670;&#160;</a></span>evaluator_factory_info_</h2>
+<a id="a28fd935b4fdf2aa2da54e89545796fe7" name="a28fd935b4fdf2aa2da54e89545796fe7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28fd935b4fdf2aa2da54e89545796fe7">&#9670;&#160;</a></span>evaluator_factory_info_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -250,7 +251,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="structgame_1_1EvaluatorFactoryInfo.html">EvaluatorFactoryInfo</a>&amp; game::EvaluatorFactoryRetriever::evaluator_factory_info_</td>
+          <td class="memname">const <a class="el" href="structgame_1_1PlayerSpec.html">PlayerSpec</a>&amp; game::EvaluatorFactoryRetriever::evaluator_factory_info_</td>
         </tr>
       </table>
   </td>
@@ -260,7 +261,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00073">73</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00026">26</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -284,7 +285,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00074">74</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00027">27</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -308,7 +309,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00072">72</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__factory_8hpp_source.html#l00025">25</a> of file <a class="el" href="game__factory_8hpp_source.html">game_factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -322,7 +323,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacegame.html">game</a></li><li class="navelem"><a class="el" href="classgame_1_1EvaluatorFactoryRetriever.html">EvaluatorFactoryRetriever</a></li>
-    <li class="footer">Generated on Tue Dec 17 2024 05:16:06 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Wed Dec 18 2024 21:07:32 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

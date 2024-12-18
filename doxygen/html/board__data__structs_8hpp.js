@@ -17,9 +17,9 @@ var board__data__structs_8hpp =
     [ "opponent_of", "board__data__structs_8hpp.html#a96f2b0bb2cc896e13f52854427e155d9", null ],
     [ "red_castle_spaces", "board__data__structs_8hpp.html#a5276c175a40d19b70dc764a7ff5a878f", null ],
     [ "kBlackCastleEdges", "board__data__structs_8hpp.html#ae715c4cc954af711a8f9da82271d2aba", null ],
-    [ "kBlackRiverEdge", "board__data__structs_8hpp.html#adfea0925fa61e4179c09e5293da07400", null ],
-    [ "kNumFiles", "board__data__structs_8hpp.html#ad5e296086982321384dc034288cee600", null ],
-    [ "kNumRanks", "board__data__structs_8hpp.html#a5c4bd2ef24f756227318f6fd75eb4895", null ],
+    [ "kBlackRiverEdge", "board__data__structs_8hpp.html#ae77de4f8b0444ef8741d1ed85ee66f36", null ],
+    [ "kNumFiles", "board__data__structs_8hpp.html#a52e1d35681eb7df62e3b53f484d54f06", null ],
+    [ "kNumRanks", "board__data__structs_8hpp.html#a773be6f643f7d116502f5a147e082975", null ],
     [ "kRedCastleEdges", "board__data__structs_8hpp.html#af8583f8680f6f904b8eb4a07ba892f98", null ],
-    [ "kRedRiverEdge", "board__data__structs_8hpp.html#a2fffbf20f72f3d01b3a24bb59499425e", null ]
+    [ "kRedRiverEdge", "board__data__structs_8hpp.html#ae641c913ae326de76e29d3cfe412d9e3", null ]
 ];

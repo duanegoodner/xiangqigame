@@ -16,5 +16,6 @@ var searchData=
   ['moveevaluator_3c_20randommoveevaluator_3c_20concretespaceinfoprovider_20_3e_20_3e_13',['MoveEvaluator&lt; RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt; &gt;',['../classMoveEvaluator.html',1,'']]],
   ['moveevaluatorbase_14',['MoveEvaluatorBase',['../classMoveEvaluatorBase.html',1,'']]],
   ['moveevaluatorbuilder_15',['MoveEvaluatorBuilder',['../classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder.html',1,'xiangqipy::app_new']]],
-  ['moveevaluatorfactorybase_16',['MoveEvaluatorFactoryBase',['../classMoveEvaluatorFactoryBase.html',1,'']]]
+  ['moveevaluatorfactorybase_16',['MoveEvaluatorFactoryBase',['../classMoveEvaluatorFactoryBase.html',1,'']]],
+  ['movereporter_17',['MoveReporter',['../classterminalout_1_1MoveReporter.html',1,'terminalout::MoveReporter'],['../classxiangqipy_1_1game__interfaces_1_1MoveReporter.html',1,'xiangqipy.game_interfaces.MoveReporter']]]
 ];

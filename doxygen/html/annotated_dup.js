@@ -22,12 +22,13 @@ var annotated_dup =
       [ "ZobristCoordinatorForConcepts", "classboardstate_1_1ZobristCoordinatorForConcepts.html", "classboardstate_1_1ZobristCoordinatorForConcepts" ]
     ] ],
     [ "game", "namespacegame.html", [
-      [ "EvaluatorFactoryInfo", "structgame_1_1EvaluatorFactoryInfo.html", "structgame_1_1EvaluatorFactoryInfo" ],
       [ "EvaluatorFactoryRetriever", "classgame_1_1EvaluatorFactoryRetriever.html", "classgame_1_1EvaluatorFactoryRetriever" ],
       [ "Game", "classgame_1_1Game.html", "classgame_1_1Game" ],
       [ "GameFactory", "classgame_1_1GameFactory.html", "classgame_1_1GameFactory" ],
+      [ "GameStatus", "structgame_1_1GameStatus.html", "structgame_1_1GameStatus" ],
       [ "MinimaxTypeInfo", "structgame_1_1MinimaxTypeInfo.html", "structgame_1_1MinimaxTypeInfo" ],
-      [ "MinimaxTypeInfoHash", "structgame_1_1MinimaxTypeInfoHash.html", "structgame_1_1MinimaxTypeInfoHash" ]
+      [ "MinimaxTypeInfoHash", "structgame_1_1MinimaxTypeInfoHash.html", "structgame_1_1MinimaxTypeInfoHash" ],
+      [ "PlayerSpec", "structgame_1_1PlayerSpec.html", "structgame_1_1PlayerSpec" ]
     ] ],
     [ "gameboard", "namespacegameboard.html", [
       [ "BoardDirection", "structgameboard_1_1BoardDirection.html", "structgameboard_1_1BoardDirection" ],
@@ -84,6 +85,13 @@ var annotated_dup =
     [ "std", "namespacestd.html", [
       [ "hash< moveselection::MinimaxTemplateSpecs >", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4.html", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4" ]
     ] ],
+    [ "terminalout", "namespaceterminalout.html", [
+      [ "BoardMapEncoder", "classterminalout_1_1BoardMapEncoder.html", "classterminalout_1_1BoardMapEncoder" ],
+      [ "GamePieceEncoder", "classterminalout_1_1GamePieceEncoder.html", "classterminalout_1_1GamePieceEncoder" ],
+      [ "GameTerminalReporter", "classterminalout_1_1GameTerminalReporter.html", "classterminalout_1_1GameTerminalReporter" ],
+      [ "MoveReporter", "classterminalout_1_1MoveReporter.html", "classterminalout_1_1MoveReporter" ],
+      [ "PlayerReporter", "classterminalout_1_1PlayerReporter.html", "classterminalout_1_1PlayerReporter" ]
+    ] ],
     [ "xiangqipy", "namespacexiangqipy.html", [
       [ "app_new", "namespacexiangqipy_1_1app__new.html", [
         [ "MoveEvaluatorBuilder", "classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder.html", "classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder" ],
@@ -122,7 +130,7 @@ var annotated_dup =
         [ "Game", "classxiangqipy_1_1game_1_1Game.html", "classxiangqipy_1_1game_1_1Game" ]
       ] ],
       [ "game_interfaces", "namespacexiangqipy_1_1game__interfaces.html", [
-        [ "GameStatusReporter", "classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html", "classxiangqipy_1_1game__interfaces_1_1GameStatusReporter" ],
+        [ "MoveReporter", "classxiangqipy_1_1game__interfaces_1_1MoveReporter.html", "classxiangqipy_1_1game__interfaces_1_1MoveReporter" ],
         [ "Player", "classxiangqipy_1_1game__interfaces_1_1Player.html", "classxiangqipy_1_1game__interfaces_1_1Player" ]
       ] ],
       [ "game_output_generator", "namespacexiangqipy_1_1game__output__generator.html", [

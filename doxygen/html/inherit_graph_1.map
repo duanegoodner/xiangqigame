@@ -1,6 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" title=" " alt="" coords="5,87,81,113"/>
-<area shape="rect" id="node2" href="$classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html" title="Reports details of a Game." alt="" coords="129,27,331,67"/>
+<area shape="rect" id="node2" href="$classxiangqipy_1_1game__interfaces_1_1MoveReporter.html" title="Reports details of a Game." alt="" coords="129,27,331,67"/>
 <area shape="rect" id="node4" href="$classxiangqipy_1_1game__interfaces_1_1Player.html" title="Can take a turn in a Game." alt="" coords="129,112,331,152"/>
 <area shape="rect" id="node3" href="$classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html" title="Outputs a text&#45;base game board with GamePiece locations in algebraic notation." alt="" coords="379,5,607,45"/>
 <area shape="rect" id="node5" href="$classxiangqipy_1_1players_1_1AIPlayer.html" title="Proposed moves selected using an implementation of core MoveEvaluator." alt="" coords="395,70,590,95"/>

@@ -159,7 +159,7 @@ Inheritance diagram for xiangqipy.terminal_output.TerminalStatusReporter:</div>
 <div class="center"><img src="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter__inherit__graph.png" border="0" usemap="#axiangqipy_8terminal__output_8TerminalStatusReporter_inherit__map" alt="Inheritance graph"/></div>
 <map name="axiangqipy_8terminal__output_8TerminalStatusReporter_inherit__map" id="axiangqipy_8terminal__output_8TerminalStatusReporter_inherit__map">
 <area shape="rect" title="Outputs a text&#45;base game board with GamePiece locations in algebraic notation." alt="" coords="5,271,233,553"/>
-<area shape="rect" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html" title="Reports details of a Game." alt="" coords="19,131,220,223"/>
+<area shape="rect" href="classxiangqipy_1_1game__interfaces_1_1MoveReporter.html" title="Reports details of a Game." alt="" coords="19,131,220,223"/>
 <area shape="rect" title=" " alt="" coords="79,5,159,83"/>
 </map>
 </div>
@@ -169,7 +169,7 @@ Collaboration diagram for xiangqipy.terminal_output.TerminalStatusReporter:</div
 <div class="center"><img src="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter__coll__graph.png" border="0" usemap="#axiangqipy_8terminal__output_8TerminalStatusReporter_coll__map" alt="Collaboration graph"/></div>
 <map name="axiangqipy_8terminal__output_8TerminalStatusReporter_coll__map" id="axiangqipy_8terminal__output_8TerminalStatusReporter_coll__map">
 <area shape="rect" title="Outputs a text&#45;base game board with GamePiece locations in algebraic notation." alt="" coords="103,331,331,569"/>
-<area shape="rect" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html" title="Reports details of a Game." alt="" coords="5,132,207,224"/>
+<area shape="rect" href="classxiangqipy_1_1game__interfaces_1_1MoveReporter.html" title="Reports details of a Game." alt="" coords="5,132,207,224"/>
 <area shape="rect" title=" " alt="" coords="66,5,146,83"/>
 <area shape="rect" title=" " alt="" coords="231,139,277,217"/>
 </map>
@@ -193,8 +193,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5d8c066bf9f47c9382b3f8a56b609ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7dd4a866da36af09620b33871f10184"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#aa7dd4a866da36af09620b33871f10184">report_game_info</a> (self, <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> red_player_summary, <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> black_player_summary, <a class="el" href="classxiangqipy_1_1enums_1_1GameState.html">GameState</a> game_state, GameBoard game_board, PieceColor whose_turn, bool is_in_check, int move_count, Move prev_move=None)</td></tr>
 <tr class="separator:aa7dd4a866da36af09620b33871f10184"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaef1caf75ee8440e858efae36ebb9790"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html#aaef1caf75ee8440e858efae36ebb9790">report_game_info</a> (self, <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> red_player_summary, <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> black_player_summary, <a class="el" href="classxiangqipy_1_1enums_1_1GameState.html">GameState</a> game_state, bindings.GameBoard game_board, bindings.PieceColor whose_turn, bool is_in_check, int move_count, bindings.Move prev_move=None)</td></tr>
-<tr class="separator:aaef1caf75ee8440e858efae36ebb9790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace2963ee4e3442dd85fdb27862fab31d"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1game__interfaces_1_1MoveReporter.html#ace2963ee4e3442dd85fdb27862fab31d">report_game_info</a> (self, <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> red_player_summary, <a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a> black_player_summary, <a class="el" href="classxiangqipy_1_1enums_1_1GameState.html">GameState</a> game_state, bindings.GameBoard game_board, bindings.PieceColor whose_turn, bool is_in_check, int move_count, bindings.Move prev_move=None)</td></tr>
+<tr class="separator:ace2963ee4e3442dd85fdb27862fab31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -600,7 +600,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Reimplemented from <a class="el" href="classxiangqipy_1_1game__interfaces_1_1GameStatusReporter.html#aaef1caf75ee8440e858efae36ebb9790">xiangqipy.game_interfaces.GameStatusReporter</a>.</p>
+<p>Reimplemented from <a class="el" href="classxiangqipy_1_1game__interfaces_1_1MoveReporter.html#ace2963ee4e3442dd85fdb27862fab31d">xiangqipy.game_interfaces.MoveReporter</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="terminal__output_8py_source.html#l00177">177</a> of file <a class="el" href="terminal__output_8py_source.html">terminal_output.py</a>.</p>
 
@@ -732,7 +732,7 @@ Static Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacexiangqipy.html">xiangqipy</a></li><li class="navelem"><a class="el" href="namespacexiangqipy_1_1terminal__output.html">terminal_output</a></li><li class="navelem"><a class="el" href="classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html">TerminalStatusReporter</a></li>
-    <li class="footer">Generated on Tue Dec 17 2024 05:16:07 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Wed Dec 18 2024 21:07:32 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

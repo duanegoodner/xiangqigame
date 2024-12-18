@@ -1,6 +1,7 @@
 var classmovetranslation_1_1AlgebraicMove =
 [
     [ "AlgebraicMove", "classmovetranslation_1_1AlgebraicMove.html#a8f719d7a6421e8edc5e64d2b637732be", null ],
+    [ "Create", "classmovetranslation_1_1AlgebraicMove.html#a304d16b4ae2dc8d1f1fc4b8f5f5e76f0", null ],
     [ "Create", "classmovetranslation_1_1AlgebraicMove.html#a58b112f7968faf20192dba3d96fefe05", null ],
     [ "Create", "classmovetranslation_1_1AlgebraicMove.html#ae07388fa73c1c87dc77a9a7dc2cd0aa1", null ],
     [ "end", "classmovetranslation_1_1AlgebraicMove.html#a67fc431ffd3e0b44665588d4235e4bcf", null ],

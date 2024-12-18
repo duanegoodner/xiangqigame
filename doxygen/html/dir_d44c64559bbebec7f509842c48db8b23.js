@@ -49,6 +49,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "player_interface.hpp", "player__interface_8hpp.html", "player__interface_8hpp" ],
     [ "players.hpp", "players_8hpp.html", "players_8hpp" ],
     [ "space_info_provider_interface.hpp", "space__info__provider__interface_8hpp.html", "space__info__provider__interface_8hpp" ],
+    [ "terminal_output.hpp", "terminal__output_8hpp.html", "terminal__output_8hpp" ],
     [ "utility_functs.hpp", "utility__functs_8hpp.html", "utility__functs_8hpp" ],
     [ "zobrist.hpp", "zobrist_8hpp.html", "zobrist_8hpp" ],
     [ "zobrist_calculator_for_concepts.hpp", "zobrist__calculator__for__concepts_8hpp.html", "zobrist__calculator__for__concepts_8hpp" ],
