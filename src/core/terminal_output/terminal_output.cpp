@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <game_board_for_concepts.hpp>
 #include <game_piece.hpp>
 #include <move_translator.hpp>
@@ -66,16 +67,16 @@ std::string PlayerReporter::SummaryStr() {
   return result;
 }
 
-std::string MoveReporter::MostRecentMoveStr(const game::GameStatus &game_status) {
-    std::string result;
-  if (!game_status.most_recent_move) {
-    result = "NA... No moves executed yet.";
+std::string MoveReporter::MostRecentMoveStr(
+    std::optional<gameboard::Move> most_recent_move
+) {
+  std::string result;
+  if (!most_recent_move) {
+    result = "None";
   } else {
-    auto algebraic_move =
-        movetranslation::AlgebraicMove::Create(*game_status.most_recent_move);
+    auto algebraic_move = movetranslation::AlgebraicMove::Create(*most_recent_move);
     auto algebraic_start = algebraic_move.start();
     auto algebraic_end = algebraic_move.end();
-    auto moving_team_piece_color = gameboard::opponent_of(game_status.whose_turn);
     result = algebraic_start.value() + ", " + algebraic_end.value();
   }
   return result;
@@ -153,15 +154,54 @@ const unordered_map<gameboard::PieceColor, std::string>
         {gameboard::PieceColor::kBlk, "Black"}
 };
 
-void GameTerminalReporter::ReportGameInfo(const game::GameStatus &game_status) {
-  std::cout << board_map_encoder_.EncodeBoardMap(game_status.board_map) << std::endl;
-  std::cout << disp_team_name_.at(gameboard::PieceColor::kRed) << "Player:" << std::endl;
+void GameTerminalReporter::ClearScreen() {
+#ifdef _WIN32
+  system("cls");
+#else
+  system("clear");
+#endif
+}
+
+void GameTerminalReporter::DisplayPlayersInfo() {
+  std::cout << disp_team_name_.at(gameboard::PieceColor::kRed)
+            << " Player:" << std::endl;
   std::cout << red_player_reporter_.SummaryStr() << std::endl;
-  std::cout << disp_team_name_.at(gameboard::PieceColor::kBlk) << "Player:" << std::endl;
+  std::cout << std::endl;
+  std::cout << disp_team_name_.at(gameboard::PieceColor::kBlk)
+            << " Player:" << std::endl;
   std::cout << black_player_reporter_.SummaryStr() << std::endl;
-  std::cout << game_status.move_count << std::endl;
-  std::cout << move_reporter_.MostRecentMoveStr(game_status) << std::endl;
-  std::cout << disp_team_name_.at(game_status.whose_turn) << std::endl;
+}
+
+void GameTerminalReporter::DisplayBoardMap(const gameboard::BoardMap_t &board_map) {
+  std::cout << board_map_encoder_.EncodeBoardMap(board_map) << std::endl;
+}
+
+void GameTerminalReporter::DisplayMoveInfo(const game::GameStatus &game_status) {
+  std::cout << "Move count: " << game_status.move_count << std::endl;
+  std::cout << std::endl;
+  std::cout << "Most recent move: "
+            << move_reporter_.MostRecentMoveStr(game_status.most_recent_move) << " ("
+            << disp_team_name_.at(gameboard::opponent_of(game_status.whose_turn)) << ")"
+            << std::endl;
+  std::cout << endl;
+  std::cout << "Whose turn: " << disp_team_name_.at(game_status.whose_turn) << std::endl;
+}
+
+void GameTerminalReporter::DisplayIfInCheck(const game::GameStatus &game_status) {
+  if (game_status.is_in_check) {
+    std::cout << disp_team_name_.at(game_status.whose_turn) << " is in check"
+              << std::endl;
+  }
+}
+
+void GameTerminalReporter::ReportGameInfo(const game::GameStatus &game_status) {
+  ClearScreen();
+  DisplayBoardMap(game_status.board_map);
+  DisplayPlayersInfo();
+  std::cout << std::endl;
+  DisplayMoveInfo(game_status);
+  std::cout << std::endl;
+  DisplayIfInCheck(game_status);
 }
 
 } // namespace terminalout

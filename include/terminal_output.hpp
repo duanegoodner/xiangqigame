@@ -3,6 +3,7 @@
 #include <game_data_structs.hpp>
 #include <iostream>
 #include <memory>
+#include <optional>
 #include <sstream>
 #include <string>
 #include <unordered_map>
@@ -30,7 +31,7 @@ private:
 
 class MoveReporter {
 public:
-  std::string MostRecentMoveStr(const game::GameStatus &game_status);
+  std::string MostRecentMoveStr(std::optional<gameboard::Move> most_recent_move);
 };
 
 class GamePieceEncoder {
@@ -71,6 +72,11 @@ public:
 
   private:
   static const unordered_map<gameboard::PieceColor, std::string> disp_team_name_;
+  void ClearScreen();
+  void DisplayBoardMap(const gameboard::BoardMap_t &board_map);
+  void DisplayPlayersInfo();
+  void DisplayMoveInfo(const game::GameStatus &game_status);
+  void DisplayIfInCheck(const game::GameStatus &game_status);
 };
 
 } // namespace terminalout

@@ -59,7 +59,7 @@ TEST_F(MoveReporterTest, ReportGameSummary) {
 
   terminalout::MoveReporter game_status_reporter_;
 
-  std::cout << game_status_reporter_.MostRecentMoveStr(game_status) << std::endl;
+  std::cout << game_status_reporter_.MostRecentMoveStr(game_status.most_recent_move) << std::endl;
 }
 
 class GamePieceEncoderTest : public ::testing::Test {
