@@ -7,8 +7,12 @@
 
 class PlayerReporterTest : public ::testing::Test {
 protected:
-  game::PlayerSpec player_spec_human_{game::EvaluatorType::kHuman};
+  game::PlayerSpec player_spec_human_{
+      gameboard::PieceColor::kRed,
+      game::EvaluatorType::kHuman
+  };
   game::PlayerSpec player_spec_minimax_{
+      gameboard::PieceColor::kRed,
       game::EvaluatorType::kMinimax,
       game::MinimaxTypeInfo{
           game::ZobristKeyType::k064,
@@ -16,7 +20,10 @@ protected:
       },
       4
   };
-  game::PlayerSpec player_spec_random_{game::EvaluatorType::kRandom};
+  game::PlayerSpec player_spec_random_{
+      gameboard::PieceColor::kRed,
+      game::EvaluatorType::kRandom
+  };
 
   terminalout::PlayerReporter info_reporter_human_{player_spec_human_};
   terminalout::PlayerReporter info_reporter_minimax_{player_spec_minimax_};
@@ -94,8 +101,12 @@ TEST_F(BoardMapEncoderTest, EncodeBoardMap) {
 
 class GameTerminalReporterTest : public ::testing::Test {
 protected:
-  game::PlayerSpec player_spec_red_{game::EvaluatorType::kHuman};
+  game::PlayerSpec player_spec_red_{
+      gameboard::PieceColor::kRed,
+      game::EvaluatorType::kHuman
+  };
   game::PlayerSpec player_spec_black_{
+      gameboard::PieceColor::kBlk,
       game::EvaluatorType::kMinimax,
       game::MinimaxTypeInfo{
           game::ZobristKeyType::k064,
@@ -128,8 +139,12 @@ TEST_F(GameTerminalReporterTest, ReportGameInfo) {
 
   auto executed_move = game_board_->ExecuteMove(move_);
 
-  game::GameStatus game_status_post_move {
-    1, executed_move.spaces, gameboard::PieceColor::kRed, false, game_board_->map()
+  game::GameStatus game_status_post_move{
+      1,
+      executed_move.spaces,
+      gameboard::PieceColor::kRed,
+      false,
+      game_board_->map()
   };
 
   game_reporter_.ReportGameInfo(game_status_post_move);
