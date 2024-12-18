@@ -26,6 +26,7 @@ class AlgebraicBoardSpace {
 
 public:
   AlgebraicBoardSpace(const std::string &value);
+  AlgebraicBoardSpace(const gameboard::BoardSpace &game_board_space);
   const std::string value();
   gameboard::BoardSpace ToGameBoardSpace();
   bool operator==(const AlgebraicBoardSpace &other) const;
@@ -41,6 +42,7 @@ public:
       const std::vector<AlgebraicBoardSpace> &algebraic_board_spaces
   );
   static const AlgebraicMove Create(const std::vector<std::string> &tokens);
+  static const AlgebraicMove Create(const gameboard::Move &game_board_move);
 
   const AlgebraicBoardSpace start();
   const AlgebraicBoardSpace end();

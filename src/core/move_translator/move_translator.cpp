@@ -2,6 +2,7 @@
 #include <move_translator.hpp>
 #include <regex>
 #include <sstream>
+#include <string>
 
 namespace movetranslation {
 
@@ -17,6 +18,12 @@ AlgebraicBoardSpace::AlgebraicBoardSpace(const std::string &value)
         validation_string + "'"
     );
   }
+}
+
+AlgebraicBoardSpace::AlgebraicBoardSpace(const gameboard::BoardSpace &game_board_space) {
+  char algebraic_column = (char)(game_board_space.file + 'a');
+  auto algebraic_row = std::to_string(10 - game_board_space.rank);
+  value_ = algebraic_column + algebraic_row;
 }
 
 gameboard::BoardSpace AlgebraicBoardSpace::ToGameBoardSpace() {
@@ -57,6 +64,12 @@ const AlgebraicMove AlgebraicMove::Create(const std::vector<std::string> &tokens
   }
 
   return AlgebraicMove{tokens.at(0), tokens.at(1)};
+}
+
+const AlgebraicMove AlgebraicMove::Create(const gameboard::Move &game_board_move) {
+  auto algebraic_start = AlgebraicBoardSpace(game_board_move.start);
+  auto algebraic_end = AlgebraicBoardSpace(game_board_move.end);
+  return AlgebraicMove(algebraic_start, algebraic_end);
 }
 
 const AlgebraicBoardSpace AlgebraicMove::start() { return start_; }

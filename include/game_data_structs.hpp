@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <move_data_structs.hpp>
 
 namespace game {
 enum GameState : int { kUnfinished = 0, kDraw = 1, kRedWon = 2, kBlkWon = 3 };
@@ -52,6 +53,14 @@ struct PlayerSpec {
       , input_stream{input_stream}
       , minimax_type_info{minimax_type_info}
       , minimax_search_depth{minimax_search_depth} {}
+};
+
+struct GameStatus {
+  size_t move_count;
+  gameboard::Move most_recent_move;
+  gameboard::PieceColor whose_turn;
+  bool is_in_check;
+  const gameboard::BoardMap_t &board_map;
 };
 
 } // namespace game
