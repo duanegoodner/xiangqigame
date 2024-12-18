@@ -66,18 +66,6 @@ std::string PlayerReporter::SummaryStr() {
   return result;
 }
 
-// void PlayerReporter::DisplaySummaryStr() {
-//   std::cout << SummaryStr() << "\n" << std::endl;
-// }
-
-// std::string PlayerReporter::ColorNameStr(gameboard::PieceColor color) {
-//   return disp_team_name_.at(color);
-// }
-
-// std::string MoveReporter::MoveCountStr(const game::GameStatus &game_status) {
-//   return std::to_string(game_status.move_count);
-// }
-
 std::string MoveReporter::MostRecentMoveStr(const game::GameStatus &game_status) {
     std::string result;
   if (game_status.move_count == 0) {
@@ -172,7 +160,6 @@ void GameTerminalReporter::ReportGameInfo(const game::GameStatus &game_status) {
   std::cout << disp_team_name_.at(gameboard::PieceColor::kBlk) << "Player:" << std::endl;
   std::cout << black_player_reporter_.SummaryStr() << std::endl;
   std::cout << game_status.move_count << std::endl;
-//   std::cout << move_reporter_.MoveCountStr(game_status) << std::endl;
   std::cout << move_reporter_.MostRecentMoveStr(game_status) << std::endl;
   std::cout << disp_team_name_.at(game_status.whose_turn) << std::endl;
 }

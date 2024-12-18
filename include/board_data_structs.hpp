@@ -14,25 +14,25 @@ using namespace std;
 
 namespace gameboard {
 
-const BoardIdx_t kNumRanks = 10;
-const BoardIdx_t kNumFiles = 9;
+const BoardIndexType kNumRanks = 10;
+const BoardIndexType kNumFiles = 9;
 
-const BoardIdx_t kRedRiverEdge = 5;
-const BoardIdx_t kBlackRiverEdge = 4;
+const BoardIndexType kRedRiverEdge = 5;
+const BoardIndexType kBlackRiverEdge = 4;
 
 //! Defines a castle feature in terms of its min / max rank and file.
 struct CastleEdges {
-  BoardIdx_t min_rank;
-  BoardIdx_t max_rank;
-  BoardIdx_t min_file;
-  BoardIdx_t max_file;
+  BoardIndexType min_rank;
+  BoardIndexType max_rank;
+  BoardIndexType min_file;
+  BoardIndexType max_file;
 };
 constexpr CastleEdges kRedCastleEdges = {7, 9, 3, 5};
 constexpr CastleEdges kBlackCastleEdges = {0, 2, 3, 5};
 
 //! Descirbes a direction on a gameboard::GameBoard.board_map_.
 struct BoardDirection {
-  BoardIdx_t rank, file;
+  BoardIndexType rank, file;
 };
 
 inline PieceColor opponent_of(PieceColor color) {
@@ -50,7 +50,7 @@ typedef array<array<int, kNumFiles>, kNumRanks> BoardMapInt_t;
 //! values of gameboard features: board size, river locations, and castle locations.
 struct BoardSpace {
 
-  BoardIdx_t rank, file;
+  BoardIndexType rank, file;
 
   bool IsOnBoard() const {
     return ((0 <= rank) && (rank < kNumRanks) && (0 <= file) && (file < kNumFiles));

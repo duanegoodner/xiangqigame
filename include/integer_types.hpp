@@ -4,5 +4,5 @@
 
 using DepthType = uint16_t;
 using MoveCountType = uint16_t;
-using BoardIdx_t = int;
+using BoardIndexType = int;
 using Points_t = int;
