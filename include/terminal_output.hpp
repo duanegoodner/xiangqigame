@@ -3,6 +3,7 @@
 #include <game_data_structs.hpp>
 #include <iostream>
 #include <memory>
+#include <sstream>
 #include <string>
 #include <unordered_map>
 
@@ -49,6 +50,13 @@ class GamePieceEncoder {
 
 public:
   const std::string EncodeGamePiece(const gameboard::GamePiece &game_piece);
+};
+
+class BoardMapEncoder {
+  GamePieceEncoder game_piece_encoder_;
+
+  public:
+  std::string FormatBoardOutput(const gameboard::BoardMap_t &board_map);
 };
 
 } // namespace terminalout

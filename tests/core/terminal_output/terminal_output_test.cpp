@@ -79,6 +79,20 @@ TEST_F(GamePieceEncoderTest, EncodeGamePieces) {
   std::cout << black_general_encoded << std::endl;
 }
 
+class BoardMapEncoderTest : public ::testing::Test {
+protected:
+  terminalout::BoardMapEncoder board_map_endcoder_;
+  gameboard::GameBoardFactory game_board_factory_;
+  std::shared_ptr<gameboard::GameBoardForConcepts> game_board_ =
+      game_board_factory_.Create();
+};
+
+TEST_F(BoardMapEncoderTest, EncodeBoardMap) {
+  auto board_map = game_board_->map();
+  auto result = board_map_endcoder_.FormatBoardOutput(board_map);
+  std::cout << result << std::endl;
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

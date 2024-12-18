@@ -132,4 +132,26 @@ const std::string GamePieceEncoder::EncodeGamePiece(
          piece_color_to_code_.at(game_piece.piece_color) + RESET_FORMAT;
 }
 
+std::string BoardMapEncoder::FormatBoardOutput(const gameboard::BoardMap_t &board_map) {
+  std::ostringstream board_output;
+
+  board_output << "\t";
+  for (char file = 'a'; file <= 'i'; ++file) {
+    board_output << "  " << file << "  ";
+  }
+  board_output << "\n\n\n";
+  // Board rows
+  for (size_t row = 0; row < board_map.size(); ++row) {
+    board_output << " " << 10 - row << "\t"; // Row labels (10 to 1)
+
+    for (const auto &piece : board_map[row]) {
+      board_output << "  " << game_piece_encoder_.EncodeGamePiece(piece) << " ";
+    }
+
+    board_output << "\n\n";
+  }
+
+  return board_output.str();
+}
+
 } // namespace terminalout
