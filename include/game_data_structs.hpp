@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <move_data_structs.hpp>
+#include <optional>
 
 namespace game {
 enum GameState : int { kUnfinished = 0, kDraw = 1, kRedWon = 2, kBlkWon = 3 };
@@ -60,7 +61,7 @@ struct PlayerSpec {
 
 struct GameStatus {
   size_t move_count;
-  gameboard::Move most_recent_move;
+  std::optional<gameboard::Move> most_recent_move;
   gameboard::PieceColor whose_turn;
   bool is_in_check;
   const gameboard::BoardMap_t &board_map;

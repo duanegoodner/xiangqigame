@@ -68,11 +68,11 @@ std::string PlayerReporter::SummaryStr() {
 
 std::string MoveReporter::MostRecentMoveStr(const game::GameStatus &game_status) {
     std::string result;
-  if (game_status.move_count == 0) {
+  if (!game_status.most_recent_move) {
     result = "NA... No moves executed yet.";
   } else {
     auto algebraic_move =
-        movetranslation::AlgebraicMove::Create(game_status.most_recent_move);
+        movetranslation::AlgebraicMove::Create(*game_status.most_recent_move);
     auto algebraic_start = algebraic_move.start();
     auto algebraic_end = algebraic_move.end();
     auto moving_team_piece_color = gameboard::opponent_of(game_status.whose_turn);
