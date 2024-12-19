@@ -11,11 +11,13 @@ Game::Game(
     std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
         move_evaluators,
     std::shared_ptr<GameReporterInterface> game_reporter,
+    bool report_during_game,
     gameboard::PieceColor whose_turn
 )
     : game_board_{game_board}
     , move_evaluators_{std::move(move_evaluators)}
     , game_reporter_{game_reporter}
+    , report_during_game_{report_during_game}
     , game_state_{GameState::kUnfinished}
     , whose_turn_{whose_turn}
     , move_log_{}
@@ -78,7 +80,10 @@ void Game::Play() {
         is_in_check,
         game_board_->map()
     };
-    game_reporter_->ReportGameInfo(cur_game_status);
+    if (report_during_game_) {
+      game_reporter_->ReportGameInfo(cur_game_status);
+    }
+
     auto available_moves = game_board_->CalcFinalMovesOf(whose_turn_);
     if (available_moves.Size() == 0) {
       if (game_board_->IsDraw()) {

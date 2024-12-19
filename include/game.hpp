@@ -22,6 +22,7 @@ class Game {
   std::shared_ptr<GameReporterInterface> game_reporter_;
   gameboard::PieceColor whose_turn_;
   std::vector<gameboard::ExecutedMove> move_log_;
+  bool report_during_game_;
   std::string game_id_;
 
 
@@ -31,6 +32,7 @@ public:
       std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
           move_evaluators,
       std::shared_ptr<GameReporterInterface> game_reporter,
+      bool report_during_game = true,
       gameboard::PieceColor whose_turn = gameboard::PieceColor::kRed
   );
 

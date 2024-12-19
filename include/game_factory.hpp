@@ -41,11 +41,17 @@ class GameFactory {
   gameboard::GameBoardFactory game_board_factory_;
   PlayerSpec red_player_spec_;
   PlayerSpec black_player_spec_;
+  bool report_during_game_;
 
 public:
-  GameFactory(PlayerSpec red_player_spec, PlayerSpec black_player_spec)
+  GameFactory(
+      PlayerSpec red_player_spec,
+      PlayerSpec black_player_spec,
+      bool report_during_game = true
+  )
       : red_player_spec_{red_player_spec}
       , black_player_spec_{black_player_spec}
+      , report_during_game_{report_during_game}
       , game_board_factory_{gameboard::GameBoardFactory{}} {}
 
   std::unique_ptr<Game> Create() {
@@ -75,7 +81,12 @@ public:
             black_player_spec_
         );
 
-    return std::make_unique<Game>(game_board, std::move(evaluators), game_reporter);
+    return std::make_unique<Game>(
+        game_board,
+        std::move(evaluators),
+        game_reporter,
+        report_during_game_
+    );
   }
 };
 
