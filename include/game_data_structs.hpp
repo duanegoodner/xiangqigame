@@ -67,5 +67,12 @@ struct GameStatus {
   const gameboard::BoardMap_t &board_map;
 };
 
+struct GameStatusNew {
+  const std::vector<gameboard::ExecutedMove> &move_log;
+  gameboard::PieceColor whose_turn;
+  bool is_in_check;
+  const gameboard::BoardMap_t &board_map;
+};
+
 
 } // namespace game

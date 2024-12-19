@@ -6,7 +6,7 @@
 
 namespace terminalout {
 
-// Definition of static constexpr maps
+// PlayerReporter implementation
 const std::unordered_map<game::EvaluatorType, std::string>
     PlayerReporter::evaluator_to_player_type_ = {
         {game::EvaluatorType::kHuman, "Human"},
@@ -51,8 +51,6 @@ std::string PlayerReporter::ZobristKeySizeStr() {
 std::string PlayerReporter::SummaryStr() {
   std::string result;
 
-  //   std::cout << disp_team_name_.at(player_spec_.color) << ":" << std::endl;
-
   if (player_spec_.evaluator_type == game::EvaluatorType::kMinimax) {
     return PlayerTypeStr() + ", " + EvaluatorTypeStr() + ", " + SearchDepthStr() + ", " +
            ZobristKeySizeStr();
@@ -66,6 +64,9 @@ std::string PlayerReporter::SummaryStr() {
   }
   return result;
 }
+
+
+// MoveReporter implementation
 
 std::string MoveReporter::MostRecentMoveStr(
     std::optional<gameboard::Move> most_recent_move
@@ -81,6 +82,7 @@ std::string MoveReporter::MostRecentMoveStr(
   }
   return result;
 }
+
 
 const std::string GamePieceEncoder::RED_TEXT_WHITE_BG = "\033[1;37;41m";
 const std::string GamePieceEncoder::BLACK_TEXT_WHITE_BG = "\033[1;30;47m";

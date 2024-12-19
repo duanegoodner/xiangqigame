@@ -70,13 +70,28 @@ public:
 
   void ReportGameInfo(const game::GameStatus &game_status);
 
-  private:
+private:
   static const unordered_map<gameboard::PieceColor, std::string> disp_team_name_;
   void ClearScreen();
   void DisplayBoardMap(const gameboard::BoardMap_t &board_map);
   void DisplayPlayersInfo();
   void DisplayMoveInfo(const game::GameStatus &game_status);
   void DisplayIfInCheck(const game::GameStatus &game_status);
+};
+
+class TerminalGameReporterNew {
+  PlayerReporter red_player_reporter_;
+  PlayerReporter black_player_reporter_;
+  MoveReporter move_reporter_;
+  BoardMapEncoder board_map_encoder_;
+
+public:
+  TerminalGameReporterNew(
+      const game::PlayerSpec &player_spec_red,
+      const game::PlayerSpec &player_spec_black
+  );
+
+  void ReportGameInfo(const game::GameStatusNew &game_status);
 };
 
 } // namespace terminalout
