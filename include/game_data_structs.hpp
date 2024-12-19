@@ -1,5 +1,6 @@
 #pragma once
 
+#include <evaluator_data_structs.hpp>
 #include <iostream>
 #include <move_data_structs.hpp>
 #include <optional>
@@ -67,5 +68,21 @@ struct GameStatus {
   const gameboard::BoardMap_t &board_map;
 };
 
+struct PlayerSummary {
+  PlayerSpec player_spec;
+  std::optional<moveselection::SearchSummaries> search_summaries;
+};
+
+struct PlayerSummaries {
+  PlayerSummary kRed;
+  PlayerSummary kBlk;
+};
+
+struct GameSummary {
+  std::string game_id;
+  game::GameState game_state;
+  std::vector<ExecutedMove> move_log;
+  PlayerSummaries player_summaries;
+};
 
 } // namespace game
