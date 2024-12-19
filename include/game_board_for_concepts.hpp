@@ -88,12 +88,16 @@ private:
       , move_callbacks_{} {}
 
   MoveCollection CalcFinalMovesOfInternal(PieceColor color) {
-    auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
+    
+    // initialize MoveCollection where we will store allowed moves
     MoveCollection validated_moves{};
 
+    // if board meets "draw" condition, no moves allowed, so return empty collection 
     if (IsDraw()) {
       return validated_moves;
     }
+
+    auto un_tested_moves = move_calculator_.CalcAllMovesNoCheckTest(color, board_map_);
 
     validated_moves.moves.reserve(un_tested_moves.moves.size());
 

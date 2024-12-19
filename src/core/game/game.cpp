@@ -10,10 +10,14 @@ Game::Game(
     std::shared_ptr<SpaceInfoProviderBase> game_board,
     std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
         move_evaluators,
+    std::shared_ptr<GameReporterInterface> game_reporter,
+    bool report_during_game,
     gameboard::PieceColor whose_turn
 )
     : game_board_{game_board}
     , move_evaluators_{std::move(move_evaluators)}
+    , game_reporter_{game_reporter}
+    , report_during_game_{report_during_game}
     , game_state_{GameState::kUnfinished}
     , whose_turn_{whose_turn}
     , move_log_{}
@@ -68,6 +72,18 @@ void Game::PlayerTurn(const gameboard::MoveCollection &available_moves) {
 
 void Game::Play() {
   while (game_state_ == GameState::kUnfinished) {
+    bool is_in_check = game_board_->IsInCheck(whose_turn_);
+    game::GameStatus cur_game_status{
+        game_state_,
+        move_log_,
+        whose_turn_,
+        is_in_check,
+        game_board_->map()
+    };
+    if (report_during_game_) {
+      game_reporter_->ReportGameInfo(cur_game_status);
+    }
+
     auto available_moves = game_board_->CalcFinalMovesOf(whose_turn_);
     if (available_moves.Size() == 0) {
       if (game_board_->IsDraw()) {
@@ -80,6 +96,15 @@ void Game::Play() {
     PlayerTurn(available_moves);
     ChangeWhoseTurn();
   }
+  bool is_in_check = game_board_->IsInCheck(whose_turn_);
+  game::GameStatus final_game_status{
+      game_state_,
+      move_log_,
+      whose_turn_,
+      is_in_check,
+      game_board_->map()
+  };
+  game_reporter_->ReportGameInfo(final_game_status);
 }
 
 } // namespace game

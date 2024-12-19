@@ -9,10 +9,12 @@
 #include <game.hpp>
 #include <game_board_for_concepts.hpp>
 #include <game_data_structs.hpp>
+#include <interface_game_reporter.hpp>
 #include <memory>
 #include <move_evaluator_human_for_concepts.hpp>
 #include <move_evaluator_minimax_for_concepts.hpp>
 #include <move_evaluator_random_for_concepts.hpp>
+#include <terminal_output.hpp>
 #include <unordered_map>
 
 namespace game {
@@ -37,16 +39,19 @@ public:
 
 class GameFactory {
   gameboard::GameBoardFactory game_board_factory_;
-  PlayerSpec red_evaluator_factory_info_;
-  PlayerSpec black_evaluator_factory_info_;
+  PlayerSpec red_player_spec_;
+  PlayerSpec black_player_spec_;
+  bool report_during_game_;
 
 public:
   GameFactory(
-      PlayerSpec red_evaluator_factory_info,
-      PlayerSpec black_evaluator_factory_info
+      PlayerSpec red_player_spec,
+      PlayerSpec black_player_spec,
+      bool report_during_game = true
   )
-      : red_evaluator_factory_info_{red_evaluator_factory_info}
-      , black_evaluator_factory_info_{black_evaluator_factory_info}
+      : red_player_spec_{red_player_spec}
+      , black_player_spec_{black_player_spec}
+      , report_during_game_{report_during_game}
       , game_board_factory_{gameboard::GameBoardFactory{}} {}
 
   std::unique_ptr<Game> Create() {
@@ -55,7 +60,7 @@ public:
         evaluators;
 
     auto evaluator_factory_retriever_red =
-        EvaluatorFactoryRetriever{red_evaluator_factory_info_, game_board};
+        EvaluatorFactoryRetriever{red_player_spec_, game_board};
     auto evalutor_factory_red = evaluator_factory_retriever_red.GetFactory();
     evaluators.emplace(
         gameboard::PieceColor::kRed,
@@ -63,14 +68,25 @@ public:
     );
 
     auto evaluator_factory_retriever_black =
-        EvaluatorFactoryRetriever{black_evaluator_factory_info_, game_board};
+        EvaluatorFactoryRetriever{black_player_spec_, game_board};
     auto evalutor_factory_black = evaluator_factory_retriever_black.GetFactory();
     evaluators.emplace(
         gameboard::PieceColor::kBlk,
         evalutor_factory_red->Create(gameboard::PieceColor::kBlk)
     );
 
-    return std::make_unique<Game>(game_board, std::move(evaluators));
+    std::shared_ptr<GameReporterInterface> game_reporter =
+        std::make_shared<terminalout::TerminalGameReporter>(
+            red_player_spec_,
+            black_player_spec_
+        );
+
+    return std::make_unique<Game>(
+        game_board,
+        std::move(evaluators),
+        game_reporter,
+        report_during_game_
+    );
   }
 };
 

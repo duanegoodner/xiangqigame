@@ -1,6 +1,7 @@
 #pragma once
 
 #include <game_data_structs.hpp>
+#include <interface_game_reporter.hpp>
 #include <iostream>
 #include <memory>
 #include <optional>
@@ -31,7 +32,7 @@ private:
 
 class MoveReporter {
 public:
-  std::string MostRecentMoveStr(std::optional<gameboard::Move> most_recent_move);
+  std::string MostRecentMoveStr(const std::vector<gameboard::ExecutedMove> &move_log);
 };
 
 class GamePieceEncoder {
@@ -56,27 +57,29 @@ public:
   std::string EncodeBoardMap(const gameboard::BoardMap_t &board_map);
 };
 
-class GameTerminalReporter {
+class TerminalGameReporter : public GameReporterInterface {
   PlayerReporter red_player_reporter_;
   PlayerReporter black_player_reporter_;
   MoveReporter move_reporter_;
   BoardMapEncoder board_map_encoder_;
 
 public:
-  GameTerminalReporter(
+  TerminalGameReporter(
       const game::PlayerSpec &player_spec_red,
       const game::PlayerSpec &player_spec_black
   );
 
   void ReportGameInfo(const game::GameStatus &game_status);
 
-  private:
+private:
   static const unordered_map<gameboard::PieceColor, std::string> disp_team_name_;
+  static const unordered_map<game::GameState, std::string> game_result_str_;
   void ClearScreen();
-  void DisplayBoardMap(const gameboard::BoardMap_t &board_map);
-  void DisplayPlayersInfo();
-  void DisplayMoveInfo(const game::GameStatus &game_status);
   void DisplayIfInCheck(const game::GameStatus &game_status);
+  void DisplayInfoNeededEveryMove(const game::GameStatus &game_status);
+  void DisplayInfoNeededMidGame(const game::GameStatus &game_status);
+  void DisplayInfoNeededEndGame(const game::GameStatus &game_status);
+
 };
 
 } // namespace terminalout

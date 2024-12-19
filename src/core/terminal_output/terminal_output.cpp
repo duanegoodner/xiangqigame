@@ -6,7 +6,7 @@
 
 namespace terminalout {
 
-// Definition of static constexpr maps
+// PlayerReporter implementation
 const std::unordered_map<game::EvaluatorType, std::string>
     PlayerReporter::evaluator_to_player_type_ = {
         {game::EvaluatorType::kHuman, "Human"},
@@ -51,8 +51,6 @@ std::string PlayerReporter::ZobristKeySizeStr() {
 std::string PlayerReporter::SummaryStr() {
   std::string result;
 
-  //   std::cout << disp_team_name_.at(player_spec_.color) << ":" << std::endl;
-
   if (player_spec_.evaluator_type == game::EvaluatorType::kMinimax) {
     return PlayerTypeStr() + ", " + EvaluatorTypeStr() + ", " + SearchDepthStr() + ", " +
            ZobristKeySizeStr();
@@ -67,14 +65,16 @@ std::string PlayerReporter::SummaryStr() {
   return result;
 }
 
+// MoveReporter implementation
+
 std::string MoveReporter::MostRecentMoveStr(
-    std::optional<gameboard::Move> most_recent_move
+    const std::vector<gameboard::ExecutedMove> &move_log
 ) {
   std::string result;
-  if (!most_recent_move) {
+  if (move_log.size() == 0) {
     result = "None";
   } else {
-    auto algebraic_move = movetranslation::AlgebraicMove::Create(*most_recent_move);
+    auto algebraic_move = movetranslation::AlgebraicMove::Create(move_log.back().spaces);
     auto algebraic_start = algebraic_move.start();
     auto algebraic_end = algebraic_move.end();
     result = algebraic_start.value() + ", " + algebraic_end.value();
@@ -139,7 +139,7 @@ std::string BoardMapEncoder::EncodeBoardMap(const gameboard::BoardMap_t &board_m
   return board_output.str();
 }
 
-GameTerminalReporter::GameTerminalReporter(
+TerminalGameReporter::TerminalGameReporter(
     const game::PlayerSpec &player_spec_red,
     const game::PlayerSpec &player_spec_black
 )
@@ -149,12 +149,19 @@ GameTerminalReporter::GameTerminalReporter(
     , board_map_encoder_{} {}
 
 const unordered_map<gameboard::PieceColor, std::string>
-    GameTerminalReporter::disp_team_name_ = {
+    TerminalGameReporter::disp_team_name_ = {
         {gameboard::PieceColor::kRed, "Red"},
         {gameboard::PieceColor::kBlk, "Black"}
 };
 
-void GameTerminalReporter::ClearScreen() {
+const unordered_map<game::GameState, std::string>
+    TerminalGameReporter::game_result_str_ = {
+        {game::GameState::kRedWon, "Red won the game."},
+        {game::GameState::kBlkWon, "Black won the game."},
+        {game::GameState::kDraw, "Game ended in a draw."}
+};
+
+void TerminalGameReporter::ClearScreen() {
 #ifdef _WIN32
   system("cls");
 #else
@@ -162,46 +169,52 @@ void GameTerminalReporter::ClearScreen() {
 #endif
 }
 
-void GameTerminalReporter::DisplayPlayersInfo() {
-  std::cout << disp_team_name_.at(gameboard::PieceColor::kRed)
-            << " Player:" << std::endl;
-  std::cout << red_player_reporter_.SummaryStr() << std::endl;
-  std::cout << std::endl;
-  std::cout << disp_team_name_.at(gameboard::PieceColor::kBlk)
-            << " Player:" << std::endl;
-  std::cout << black_player_reporter_.SummaryStr() << std::endl;
-}
-
-void GameTerminalReporter::DisplayBoardMap(const gameboard::BoardMap_t &board_map) {
-  std::cout << board_map_encoder_.EncodeBoardMap(board_map) << std::endl;
-}
-
-void GameTerminalReporter::DisplayMoveInfo(const game::GameStatus &game_status) {
-  std::cout << "Move count: " << game_status.move_count << std::endl;
-  std::cout << std::endl;
-  std::cout << "Most recent move: "
-            << move_reporter_.MostRecentMoveStr(game_status.most_recent_move) << " ("
-            << disp_team_name_.at(gameboard::opponent_of(game_status.whose_turn)) << ")"
-            << std::endl;
-  std::cout << endl;
-  std::cout << "Whose turn: " << disp_team_name_.at(game_status.whose_turn) << std::endl;
-}
-
-void GameTerminalReporter::DisplayIfInCheck(const game::GameStatus &game_status) {
+void TerminalGameReporter::DisplayIfInCheck(const game::GameStatus &game_status) {
   if (game_status.is_in_check) {
     std::cout << disp_team_name_.at(game_status.whose_turn) << " is in check"
               << std::endl;
   }
 }
 
-void GameTerminalReporter::ReportGameInfo(const game::GameStatus &game_status) {
-  ClearScreen();
-  DisplayBoardMap(game_status.board_map);
-  DisplayPlayersInfo();
-  std::cout << std::endl;
-  DisplayMoveInfo(game_status);
-  std::cout << std::endl;
+void TerminalGameReporter::DisplayInfoNeededEveryMove(const game::GameStatus &game_status
+) {
+  std::cout << board_map_encoder_.EncodeBoardMap(game_status.board_map) << "\n"
+            << disp_team_name_.at(gameboard::PieceColor::kRed) << " Player:" << "\n"
+            << red_player_reporter_.SummaryStr() << "\n\n"
+            << disp_team_name_.at(gameboard::PieceColor::kBlk) << " Player:" << "\n"
+            << black_player_reporter_.SummaryStr() << "\n\n"
+            << "Move count: " << std::to_string(game_status.move_log.size()) << "\n"
+            << std::endl;
+}
+
+void TerminalGameReporter::DisplayInfoNeededMidGame(const game::GameStatus &game_status
+) {
+  std::cout << "Most recent move: "
+            << move_reporter_.MostRecentMoveStr(game_status.move_log) << " ("
+            << disp_team_name_.at(gameboard::opponent_of(game_status.whose_turn)) << ")"
+            << "\n\n"
+            << "Whose turn: " << disp_team_name_.at(game_status.whose_turn) << "\n"
+            << std::endl;
   DisplayIfInCheck(game_status);
+}
+
+void TerminalGameReporter::DisplayInfoNeededEndGame(const game::GameStatus &game_status
+) {
+  std::cout << "Final move: " << move_reporter_.MostRecentMoveStr(game_status.move_log)
+            << " (" << disp_team_name_.at(gameboard::opponent_of(game_status.whose_turn))
+            << ")"
+            << "\n\n"
+            << game_result_str_.at(game_status.game_state) << std::endl;
+}
+
+void TerminalGameReporter::ReportGameInfo(const game::GameStatus &game_status) {
+  ClearScreen();
+  DisplayInfoNeededEveryMove(game_status);
+  if (game_status.game_state == game::GameState::kUnfinished) {
+    DisplayInfoNeededMidGame(game_status);
+  } else {
+    DisplayInfoNeededEndGame(game_status);
+  }
 }
 
 } // namespace terminalout

@@ -48,10 +48,15 @@ protected:
 };
 
 TEST_F(MoveReporterTest, ReportGameSummary) {
+  std::vector<gameboard::ExecutedMove> move_log;
+
   auto executed_move = game_board_->ExecuteMove(most_recent_move_);
+
+  move_log.emplace_back(executed_move);
+
   game::GameStatus game_status{
-      1,
-      most_recent_move_,
+      game::GameState::kUnfinished,
+      move_log,
       gameboard::PieceColor::kBlk,
       false,
       game_board_->map()
@@ -59,7 +64,7 @@ TEST_F(MoveReporterTest, ReportGameSummary) {
 
   terminalout::MoveReporter game_status_reporter_;
 
-  std::cout << game_status_reporter_.MostRecentMoveStr(game_status.most_recent_move) << std::endl;
+  std::cout << game_status_reporter_.MostRecentMoveStr(move_log) << std::endl;
 }
 
 class GamePieceEncoderTest : public ::testing::Test {
@@ -97,7 +102,7 @@ TEST_F(BoardMapEncoderTest, EncodeBoardMap) {
   std::cout << board_map_endcoder_.EncodeBoardMap(board_map) << std::endl;
 }
 
-class GameTerminalReporterTest : public ::testing::Test {
+class TerminalGameReporterTest : public ::testing::Test {
 protected:
   game::PlayerSpec player_spec_red_{
       gameboard::PieceColor::kRed,
@@ -121,13 +126,15 @@ protected:
   std::shared_ptr<gameboard::GameBoardForConcepts> game_board_ =
       game_board_factory_.Create();
 
-  terminalout::GameTerminalReporter game_reporter_{player_spec_red_, player_spec_black_};
+  terminalout::TerminalGameReporter game_reporter_{player_spec_red_, player_spec_black_};
 };
 
-TEST_F(GameTerminalReporterTest, ReportGameInfo) {
+TEST_F(TerminalGameReporterTest, ReportGameInfo) {
+  std::vector<gameboard::ExecutedMove> move_log;
+
   game::GameStatus game_status_initial{
-      .move_count = 0,
-      .most_recent_move = gameboard::Move{},
+      .game_state = game::GameState::kUnfinished,
+      .move_log = move_log,
       .whose_turn = gameboard::PieceColor::kRed,
       .is_in_check = false,
       .board_map = game_board_->map()
@@ -136,10 +143,11 @@ TEST_F(GameTerminalReporterTest, ReportGameInfo) {
   game_reporter_.ReportGameInfo(game_status_initial);
 
   auto executed_move = game_board_->ExecuteMove(move_);
+  move_log.emplace_back(executed_move);
 
   game::GameStatus game_status_post_move{
-      .move_count = 1,
-      .most_recent_move = executed_move.spaces,
+      .game_state = game::GameState::kUnfinished,
+      .move_log = move_log,
       .whose_turn = gameboard::PieceColor::kBlk,
       .is_in_check = false,
       .board_map = game_board_->map()
