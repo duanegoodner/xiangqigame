@@ -48,10 +48,14 @@ protected:
 };
 
 TEST_F(MoveReporterTest, ReportGameSummary) {
+  std::vector<gameboard::ExecutedMove> move_log;
+  
   auto executed_move = game_board_->ExecuteMove(most_recent_move_);
+
+  move_log.emplace_back(executed_move);
+
   game::GameStatus game_status{
-      1,
-      most_recent_move_,
+      move_log,
       gameboard::PieceColor::kBlk,
       false,
       game_board_->map()
@@ -59,7 +63,7 @@ TEST_F(MoveReporterTest, ReportGameSummary) {
 
   terminalout::MoveReporter game_status_reporter_;
 
-  std::cout << game_status_reporter_.MostRecentMoveStr(game_status.most_recent_move) << std::endl;
+  std::cout << game_status_reporter_.MostRecentMoveStr(move_log) << std::endl;
 }
 
 class GamePieceEncoderTest : public ::testing::Test {
@@ -125,9 +129,10 @@ protected:
 };
 
 TEST_F(TerminalGameReporterTest, ReportGameInfo) {
+  std::vector<gameboard::ExecutedMove> move_log;
+  
   game::GameStatus game_status_initial{
-      .move_count = 0,
-      .most_recent_move = gameboard::Move{},
+      .move_log = move_log,
       .whose_turn = gameboard::PieceColor::kRed,
       .is_in_check = false,
       .board_map = game_board_->map()
@@ -136,10 +141,10 @@ TEST_F(TerminalGameReporterTest, ReportGameInfo) {
   game_reporter_.ReportGameInfo(game_status_initial);
 
   auto executed_move = game_board_->ExecuteMove(move_);
+  move_log.emplace_back(executed_move);
 
   game::GameStatus game_status_post_move{
-      .move_count = 1,
-      .most_recent_move = executed_move.spaces,
+      .move_log = move_log,
       .whose_turn = gameboard::PieceColor::kBlk,
       .is_in_check = false,
       .board_map = game_board_->map()

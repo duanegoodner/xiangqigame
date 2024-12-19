@@ -69,13 +69,13 @@ std::string PlayerReporter::SummaryStr() {
 // MoveReporter implementation
 
 std::string MoveReporter::MostRecentMoveStr(
-    std::optional<gameboard::Move> most_recent_move
+    const std::vector<gameboard::ExecutedMove> &move_log
 ) {
   std::string result;
-  if (!most_recent_move) {
+  if (move_log.size() == 0) {
     result = "None";
   } else {
-    auto algebraic_move = movetranslation::AlgebraicMove::Create(*most_recent_move);
+    auto algebraic_move = movetranslation::AlgebraicMove::Create(move_log.back().spaces);
     auto algebraic_start = algebraic_move.start();
     auto algebraic_end = algebraic_move.end();
     result = algebraic_start.value() + ", " + algebraic_end.value();
@@ -179,10 +179,11 @@ void TerminalGameReporter::DisplayBoardMap(const gameboard::BoardMap_t &board_ma
 }
 
 void TerminalGameReporter::DisplayMoveInfo(const game::GameStatus &game_status) {
-  std::cout << "Move count: " << game_status.move_count << std::endl;
+  
+  std::cout << "Move count: " << game_status.move_log.size() << std::endl;
   std::cout << std::endl;
   std::cout << "Most recent move: "
-            << move_reporter_.MostRecentMoveStr(game_status.most_recent_move) << " ("
+            << move_reporter_.MostRecentMoveStr(game_status.move_log) << " ("
             << disp_team_name_.at(gameboard::opponent_of(game_status.whose_turn)) << ")"
             << std::endl;
   std::cout << endl;

@@ -60,14 +60,6 @@ struct PlayerSpec {
 };
 
 struct GameStatus {
-  size_t move_count;
-  std::optional<gameboard::Move> most_recent_move;
-  gameboard::PieceColor whose_turn;
-  bool is_in_check;
-  const gameboard::BoardMap_t &board_map;
-};
-
-struct GameStatusNew {
   const std::vector<gameboard::ExecutedMove> &move_log;
   gameboard::PieceColor whose_turn;
   bool is_in_check;
