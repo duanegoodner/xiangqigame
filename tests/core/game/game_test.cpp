@@ -8,6 +8,7 @@
 #include <game_piece.hpp>
 #include <gtest/gtest.h>
 #include <integer_types.hpp>
+#include <interface_game_reporter.hpp>
 #include <iostream>
 #include <memory>
 #include <move_evaluator_human_for_concepts.hpp>
@@ -15,6 +16,7 @@
 #include <move_evaluator_random_for_concepts.hpp>
 #include <optional>
 #include <piece_position_points_for_concepts.hpp>
+#include <terminal_output.hpp>
 #include <unordered_map>
 #include <vector>
 #include <zobrist_for_concepts.hpp>
@@ -25,6 +27,31 @@ protected:
   std::shared_ptr<gameboard::GameBoardForConcepts> game_board_ =
       game_board_factory_.Create();
   DepthType default_search_depth_{3};
+
+  DepthType search_depth_red_{3};
+  DepthType search_depth_black_{3};
+
+  game::MinimaxTypeInfo minimax_type_info_red_{
+      game::ZobristKeyType::k064,
+      game::ZobristCalculatorCount::kTwo
+  };
+  game::MinimaxTypeInfo minimax_type_info_black_{
+      game::ZobristKeyType::k064,
+      game::ZobristCalculatorCount::kTwo
+  };
+
+  game::PlayerSpec player_spec_red_{
+      gameboard::PieceColor::kRed,
+      game::EvaluatorType::kMinimax,
+      minimax_type_info_red_,
+      search_depth_red_
+  };
+  game::PlayerSpec player_spec_black_{
+      gameboard::PieceColor::kBlk,
+      game::EvaluatorType::kMinimax,
+      minimax_type_info_black_,
+      search_depth_black_
+  };
 };
 
 TEST_F(GameTest, InstantiateGame) {
@@ -49,7 +76,13 @@ TEST_F(GameTest, InstantiateGame) {
       black_evaluator_factory.Create(gameboard::PieceColor::kBlk)
   );
 
-  auto game = game::Game(game_board_, std::move(evaluators));
+  std::shared_ptr<GameReporterInterface> game_reporter =
+      std::make_shared<terminalout::TerminalGameReporter>(
+          player_spec_red_,
+          player_spec_black_
+      );
+
+  auto game = game::Game(game_board_, std::move(evaluators), game_reporter);
 
   game.Play();
 }

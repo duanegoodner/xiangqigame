@@ -1,6 +1,7 @@
 #pragma once
 
 #include <game_data_structs.hpp>
+#include <interface_game_reporter.hpp>
 #include <iostream>
 #include <memory>
 #include <optional>
@@ -56,7 +57,7 @@ public:
   std::string EncodeBoardMap(const gameboard::BoardMap_t &board_map);
 };
 
-class TerminalGameReporter {
+class TerminalGameReporter : public GameReporterInterface {
   PlayerReporter red_player_reporter_;
   PlayerReporter black_player_reporter_;
   MoveReporter move_reporter_;

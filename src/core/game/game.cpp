@@ -10,10 +10,12 @@ Game::Game(
     std::shared_ptr<SpaceInfoProviderBase> game_board,
     std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
         move_evaluators,
+    std::shared_ptr<GameReporterInterface> game_reporter,
     gameboard::PieceColor whose_turn
 )
     : game_board_{game_board}
     , move_evaluators_{std::move(move_evaluators)}
+    , game_reporter_{game_reporter}
     , game_state_{GameState::kUnfinished}
     , whose_turn_{whose_turn}
     , move_log_{}

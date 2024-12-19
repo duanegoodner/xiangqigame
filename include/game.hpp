@@ -8,6 +8,7 @@
 #include <concept_move_evaluator.hpp>
 #include <game_data_structs.hpp>
 #include <game_piece.hpp>
+#include <interface_game_reporter.hpp>
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -18,15 +19,18 @@ class Game {
   std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
       move_evaluators_;
   GameState game_state_;
+  std::shared_ptr<GameReporterInterface> game_reporter_;
   gameboard::PieceColor whose_turn_;
   std::vector<gameboard::ExecutedMove> move_log_;
   std::string game_id_;
+
 
 public:
   Game(
       std::shared_ptr<SpaceInfoProviderBase> game_board,
       std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
           move_evaluators,
+      std::shared_ptr<GameReporterInterface> game_reporter,
       gameboard::PieceColor whose_turn = gameboard::PieceColor::kRed
   );
 
