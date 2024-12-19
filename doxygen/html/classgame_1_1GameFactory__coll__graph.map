@@ -1,5 +1,5 @@
 <map id="game::GameFactory" name="game::GameFactory">
-<area shape="rect" id="node1" title=" " alt="" coords="133,499,287,591"/>
+<area shape="rect" id="node1" title=" " alt="" coords="237,484,391,576"/>
 <area shape="rect" id="node2" href="$classgameboard_1_1GameBoardFactory.html" title=" " alt="" coords="5,315,233,392"/>
 <area shape="rect" id="node3" href="$structgame_1_1PlayerSpec.html" title=" " alt="" coords="258,315,397,392"/>
 <area shape="rect" id="node4" title=" " alt="" coords="11,167,102,245"/>
@@ -9,4 +9,5 @@
 <area shape="rect" id="node8" title=" " alt="" coords="353,5,525,83"/>
 <area shape="rect" id="node9" title=" " alt="" coords="469,167,529,245"/>
 <area shape="rect" id="node10" title=" " alt="" coords="655,167,741,245"/>
+<area shape="rect" id="node11" title=" " alt="" coords="449,315,499,392"/>
 </map>

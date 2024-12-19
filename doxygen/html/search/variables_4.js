@@ -6,6 +6,6 @@ var searchData=
   ['default_5fposition_5fpoints_3',['DEFAULT_POSITION_POINTS',['../namespacexiangqipy_1_1piece__points.html#a7be59cbd5589a523ec84844f5e11bd24',1,'xiangqipy::piece_points']]],
   ['destination_5fpiece_4',['destination_piece',['../structgameboard_1_1ExecutedMove.html#ae69400c9b93b659d6cfb904f6dc68c7c',1,'gameboard::ExecutedMove::destination_piece()'],['../classxiangqipy_1_1core__dataclass__mirrors_1_1ExecutedMove.html#a50d78b1047d5600dc3fce1b598c155c6',1,'xiangqipy.core_dataclass_mirrors.ExecutedMove.destination_piece()']]],
   ['disp_5fformat_5f_5',['disp_format_',['../classterminalout_1_1GamePieceEncoder.html#ae6234dc94bb8766f7f66f299ac8e37da',1,'terminalout::GamePieceEncoder']]],
-  ['disp_5fteam_5fname_5f_6',['disp_team_name_',['../classterminalout_1_1GameTerminalReporter.html#a2af61dd6d970dcb7dd9d25a580646177',1,'terminalout::GameTerminalReporter']]],
+  ['disp_5fteam_5fname_5f_6',['disp_team_name_',['../classterminalout_1_1TerminalGameReporter.html#a65472b780b14a969ec9d42900d1fbb18',1,'terminalout::TerminalGameReporter']]],
   ['draw_7',['DRAW',['../classxiangqipy_1_1enums_1_1GameState.html#acff422cac327786cbad072f056b0b9d7',1,'xiangqipy::enums::GameState']]]
 ];

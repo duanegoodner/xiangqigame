@@ -13,7 +13,7 @@ var searchData=
   ['minimaxmoveevaluatorforconcepts_10',['MinimaxMoveEvaluatorForConcepts',['../classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#aaa0e9e53c43b4a90f279637199e1637a',1,'moveselection::MinimaxMoveEvaluatorForConcepts']]],
   ['minimaxrecursive_11',['MinimaxRecursive',['../classmoveselection_1_1MinimaxMoveEvaluator.html#a0accf376c40fca7eb2d70b9d14660538',1,'moveselection::MinimaxMoveEvaluator::MinimaxRecursive()'],['../classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#ab53a7ef20a1ea5341bf31516f5db77d0',1,'moveselection::MinimaxMoveEvaluatorForConcepts::MinimaxRecursive()']]],
   ['minimaxtypeinfo_12',['MinimaxTypeInfo',['../structgame_1_1MinimaxTypeInfo.html#ab615bb4251a38180a48f000e923c25ce',1,'game::MinimaxTypeInfo']]],
-  ['mostrecentmovestr_13',['MostRecentMoveStr',['../classterminalout_1_1MoveReporter.html#a442e826fb95f239ba088897a6174735c',1,'terminalout::MoveReporter']]],
+  ['mostrecentmovestr_13',['MostRecentMoveStr',['../classterminalout_1_1MoveReporter.html#a084001dada8cb642e5ccf9035c4ff31f',1,'terminalout::MoveReporter']]],
   ['move_5fcollection_14',['move_collection',['../classmoveselection_1_1EqualScoreMoves.html#aa5d148e7d7e21087f2dd8f1e1bd50b7f',1,'moveselection::EqualScoreMoves']]],
   ['move_5fcounts_15',['move_counts',['../classxiangqipy_1_1game__summary_1_1GameSummary.html#a16ed1f251a45a73ee8fc359212a12626',1,'xiangqipy::game_summary::GameSummary']]],
   ['move_5fevaluator_5ftranslator_16',['move_evaluator_translator',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#aae29f1c77cb181113823fbd565491e41',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],

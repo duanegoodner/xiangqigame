@@ -10,7 +10,7 @@ var searchData=
   ['changewhoseturn_7',['ChangeWhoseTurn',['../classgame_1_1Game.html#aa710c54675fafaee460f74e84f30053c',1,'game::Game']]],
   ['chariotmoves_8',['ChariotMoves',['../classgameboard_1_1PieceMoves.html#af96adc1a888d1580dae04c07c7de1244',1,'gameboard::PieceMoves']]],
   ['clear_5fscreen_9',['clear_screen',['../classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html#a7e2f8ed82244387d11abace2fd2c328e',1,'xiangqipy::terminal_output::TerminalStatusReporter']]],
-  ['clearscreen_10',['ClearScreen',['../classterminalout_1_1GameTerminalReporter.html#abfd05dc9738c35dd00a918826badc6fb',1,'terminalout::GameTerminalReporter']]],
+  ['clearscreen_10',['ClearScreen',['../classterminalout_1_1TerminalGameReporter.html#a4ef5079102a156d1a39029f57f11278a',1,'terminalout::TerminalGameReporter']]],
   ['collect_5fitems_5fif_5fkey_5fstartswith_11',['collect_items_if_key_startswith',['../namespacexiangqipy_1_1player__builder__new.html#a6ae81643c208265b2a3806580e81c0f6',1,'xiangqipy::player_builder_new']]],
   ['concat_12',['Concat',['../structgameboard_1_1MoveCollection.html#a1012e96b7a6eb39502fc61c9b8f4b7bc',1,'gameboard::MoveCollection::Concat(vector&lt; Move &gt; other_moves)'],['../structgameboard_1_1MoveCollection.html#a21b3893e457553fcc002e9a3ca9b749c',1,'gameboard::MoveCollection::Concat(MoveCollection other)']]],
   ['confirmation_5fboard_5fstates_13',['confirmation_board_states',['../classboardstate_1_1ZobristComponent.html#af10b178419a9b5e406efcfe559f33aa0',1,'boardstate::ZobristComponent::confirmation_board_states()'],['../classboardstate_1_1ZobristComponentForConcepts.html#ab83792f42deb4bdb1f3d7b22bdf07c2f',1,'boardstate::ZobristComponentForConcepts::confirmation_board_states()']]],

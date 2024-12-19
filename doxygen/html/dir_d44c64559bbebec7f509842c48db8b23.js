@@ -26,6 +26,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "game_factory.hpp", "game__factory_8hpp.html", "game__factory_8hpp" ],
     [ "game_piece.hpp", "game__piece_8hpp.html", "game__piece_8hpp" ],
     [ "integer_types.hpp", "integer__types_8hpp.html", "integer__types_8hpp" ],
+    [ "interface_game_reporter.hpp", "interface__game__reporter_8hpp.html", "interface__game__reporter_8hpp" ],
     [ "json_utility_interface.hpp", "json__utility__interface_8hpp.html", "json__utility__interface_8hpp" ],
     [ "json_utility_nlohmann.hpp", "json__utility__nlohmann_8hpp.html", "json__utility__nlohmann_8hpp" ],
     [ "json_validation.hpp", "json__validation_8hpp.html", "json__validation_8hpp" ],

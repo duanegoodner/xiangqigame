@@ -4,5 +4,5 @@ var terminal__output_8hpp =
     [ "terminalout::MoveReporter", "classterminalout_1_1MoveReporter.html", "classterminalout_1_1MoveReporter" ],
     [ "terminalout::GamePieceEncoder", "classterminalout_1_1GamePieceEncoder.html", "classterminalout_1_1GamePieceEncoder" ],
     [ "terminalout::BoardMapEncoder", "classterminalout_1_1BoardMapEncoder.html", "classterminalout_1_1BoardMapEncoder" ],
-    [ "terminalout::GameTerminalReporter", "classterminalout_1_1GameTerminalReporter.html", "classterminalout_1_1GameTerminalReporter" ]
+    [ "terminalout::TerminalGameReporter", "classterminalout_1_1TerminalGameReporter.html", "classterminalout_1_1TerminalGameReporter" ]
 ];
