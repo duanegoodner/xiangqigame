@@ -65,7 +65,6 @@ std::string PlayerReporter::SummaryStr() {
   return result;
 }
 
-
 // MoveReporter implementation
 
 std::string MoveReporter::MostRecentMoveStr(
@@ -82,7 +81,6 @@ std::string MoveReporter::MostRecentMoveStr(
   }
   return result;
 }
-
 
 const std::string GamePieceEncoder::RED_TEXT_WHITE_BG = "\033[1;37;41m";
 const std::string GamePieceEncoder::BLACK_TEXT_WHITE_BG = "\033[1;30;47m";
@@ -156,38 +154,19 @@ const unordered_map<gameboard::PieceColor, std::string>
         {gameboard::PieceColor::kBlk, "Black"}
 };
 
+const unordered_map<game::GameState, std::string>
+    TerminalGameReporter::game_result_str_ = {
+        {game::GameState::kRedWon, "Red won the game."},
+        {game::GameState::kBlkWon, "Black won the game."},
+        {game::GameState::kDraw, "Game ended in a draw."}
+};
+
 void TerminalGameReporter::ClearScreen() {
 #ifdef _WIN32
   system("cls");
 #else
   system("clear");
 #endif
-}
-
-void TerminalGameReporter::DisplayPlayersInfo() {
-  std::cout << disp_team_name_.at(gameboard::PieceColor::kRed)
-            << " Player:" << std::endl;
-  std::cout << red_player_reporter_.SummaryStr() << std::endl;
-  std::cout << std::endl;
-  std::cout << disp_team_name_.at(gameboard::PieceColor::kBlk)
-            << " Player:" << std::endl;
-  std::cout << black_player_reporter_.SummaryStr() << std::endl;
-}
-
-void TerminalGameReporter::DisplayBoardMap(const gameboard::BoardMap_t &board_map) {
-  std::cout << board_map_encoder_.EncodeBoardMap(board_map) << std::endl;
-}
-
-void TerminalGameReporter::DisplayMoveInfo(const game::GameStatus &game_status) {
-  
-  std::cout << "Move count: " << game_status.move_log.size() << std::endl;
-  std::cout << std::endl;
-  std::cout << "Most recent move: "
-            << move_reporter_.MostRecentMoveStr(game_status.move_log) << " ("
-            << disp_team_name_.at(gameboard::opponent_of(game_status.whose_turn)) << ")"
-            << std::endl;
-  std::cout << endl;
-  std::cout << "Whose turn: " << disp_team_name_.at(game_status.whose_turn) << std::endl;
 }
 
 void TerminalGameReporter::DisplayIfInCheck(const game::GameStatus &game_status) {
@@ -197,14 +176,45 @@ void TerminalGameReporter::DisplayIfInCheck(const game::GameStatus &game_status)
   }
 }
 
+void TerminalGameReporter::DisplayInfoNeededEveryMove(const game::GameStatus &game_status
+) {
+  std::cout << board_map_encoder_.EncodeBoardMap(game_status.board_map) << "\n"
+            << disp_team_name_.at(gameboard::PieceColor::kRed) << " Player:" << "\n"
+            << red_player_reporter_.SummaryStr() << "\n\n"
+            << disp_team_name_.at(gameboard::PieceColor::kBlk) << " Player:" << "\n"
+            << black_player_reporter_.SummaryStr() << "\n\n"
+            << "Move count: " << std::to_string(game_status.move_log.size()) << "\n"
+            << std::endl;
+}
+
+void TerminalGameReporter::DisplayInfoNeededMidGame(const game::GameStatus &game_status
+) {
+  std::cout << "Most recent move: "
+            << move_reporter_.MostRecentMoveStr(game_status.move_log) << " ("
+            << disp_team_name_.at(gameboard::opponent_of(game_status.whose_turn)) << ")"
+            << "\n\n"
+            << "Whose turn: " << disp_team_name_.at(game_status.whose_turn) << "\n"
+            << std::endl;
+  DisplayIfInCheck(game_status);
+}
+
+void TerminalGameReporter::DisplayInfoNeededEndGame(const game::GameStatus &game_status
+) {
+  std::cout << "Final move: " << move_reporter_.MostRecentMoveStr(game_status.move_log)
+            << " (" << disp_team_name_.at(gameboard::opponent_of(game_status.whose_turn))
+            << ")"
+            << "\n\n"
+            << game_result_str_.at(game_status.game_state) << std::endl;
+}
+
 void TerminalGameReporter::ReportGameInfo(const game::GameStatus &game_status) {
   ClearScreen();
-  DisplayBoardMap(game_status.board_map);
-  DisplayPlayersInfo();
-  std::cout << std::endl;
-  DisplayMoveInfo(game_status);
-  std::cout << std::endl;
-  DisplayIfInCheck(game_status);
+  DisplayInfoNeededEveryMove(game_status);
+  if (game_status.game_state == game::GameState::kUnfinished) {
+    DisplayInfoNeededMidGame(game_status);
+  } else {
+    DisplayInfoNeededEndGame(game_status);
+  }
 }
 
 } // namespace terminalout

@@ -49,12 +49,13 @@ protected:
 
 TEST_F(MoveReporterTest, ReportGameSummary) {
   std::vector<gameboard::ExecutedMove> move_log;
-  
+
   auto executed_move = game_board_->ExecuteMove(most_recent_move_);
 
   move_log.emplace_back(executed_move);
 
   game::GameStatus game_status{
+      game::GameState::kUnfinished,
       move_log,
       gameboard::PieceColor::kBlk,
       false,
@@ -130,8 +131,9 @@ protected:
 
 TEST_F(TerminalGameReporterTest, ReportGameInfo) {
   std::vector<gameboard::ExecutedMove> move_log;
-  
+
   game::GameStatus game_status_initial{
+      .game_state = game::GameState::kUnfinished,
       .move_log = move_log,
       .whose_turn = gameboard::PieceColor::kRed,
       .is_in_check = false,
@@ -144,6 +146,7 @@ TEST_F(TerminalGameReporterTest, ReportGameInfo) {
   move_log.emplace_back(executed_move);
 
   game::GameStatus game_status_post_move{
+      .game_state = game::GameState::kUnfinished,
       .move_log = move_log,
       .whose_turn = gameboard::PieceColor::kBlk,
       .is_in_check = false,

@@ -73,11 +73,13 @@ public:
 
 private:
   static const unordered_map<gameboard::PieceColor, std::string> disp_team_name_;
+  static const unordered_map<game::GameState, std::string> game_result_str_;
   void ClearScreen();
-  void DisplayBoardMap(const gameboard::BoardMap_t &board_map);
-  void DisplayPlayersInfo();
-  void DisplayMoveInfo(const game::GameStatus &game_status);
   void DisplayIfInCheck(const game::GameStatus &game_status);
+  void DisplayInfoNeededEveryMove(const game::GameStatus &game_status);
+  void DisplayInfoNeededMidGame(const game::GameStatus &game_status);
+  void DisplayInfoNeededEndGame(const game::GameStatus &game_status);
+
 };
 
 } // namespace terminalout
