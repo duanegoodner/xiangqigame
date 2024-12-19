@@ -139,7 +139,7 @@ std::string BoardMapEncoder::EncodeBoardMap(const gameboard::BoardMap_t &board_m
   return board_output.str();
 }
 
-GameTerminalReporter::GameTerminalReporter(
+TerminalGameReporter::TerminalGameReporter(
     const game::PlayerSpec &player_spec_red,
     const game::PlayerSpec &player_spec_black
 )
@@ -149,12 +149,12 @@ GameTerminalReporter::GameTerminalReporter(
     , board_map_encoder_{} {}
 
 const unordered_map<gameboard::PieceColor, std::string>
-    GameTerminalReporter::disp_team_name_ = {
+    TerminalGameReporter::disp_team_name_ = {
         {gameboard::PieceColor::kRed, "Red"},
         {gameboard::PieceColor::kBlk, "Black"}
 };
 
-void GameTerminalReporter::ClearScreen() {
+void TerminalGameReporter::ClearScreen() {
 #ifdef _WIN32
   system("cls");
 #else
@@ -162,7 +162,7 @@ void GameTerminalReporter::ClearScreen() {
 #endif
 }
 
-void GameTerminalReporter::DisplayPlayersInfo() {
+void TerminalGameReporter::DisplayPlayersInfo() {
   std::cout << disp_team_name_.at(gameboard::PieceColor::kRed)
             << " Player:" << std::endl;
   std::cout << red_player_reporter_.SummaryStr() << std::endl;
@@ -172,11 +172,11 @@ void GameTerminalReporter::DisplayPlayersInfo() {
   std::cout << black_player_reporter_.SummaryStr() << std::endl;
 }
 
-void GameTerminalReporter::DisplayBoardMap(const gameboard::BoardMap_t &board_map) {
+void TerminalGameReporter::DisplayBoardMap(const gameboard::BoardMap_t &board_map) {
   std::cout << board_map_encoder_.EncodeBoardMap(board_map) << std::endl;
 }
 
-void GameTerminalReporter::DisplayMoveInfo(const game::GameStatus &game_status) {
+void TerminalGameReporter::DisplayMoveInfo(const game::GameStatus &game_status) {
   std::cout << "Move count: " << game_status.move_count << std::endl;
   std::cout << std::endl;
   std::cout << "Most recent move: "
@@ -187,14 +187,14 @@ void GameTerminalReporter::DisplayMoveInfo(const game::GameStatus &game_status) 
   std::cout << "Whose turn: " << disp_team_name_.at(game_status.whose_turn) << std::endl;
 }
 
-void GameTerminalReporter::DisplayIfInCheck(const game::GameStatus &game_status) {
+void TerminalGameReporter::DisplayIfInCheck(const game::GameStatus &game_status) {
   if (game_status.is_in_check) {
     std::cout << disp_team_name_.at(game_status.whose_turn) << " is in check"
               << std::endl;
   }
 }
 
-void GameTerminalReporter::ReportGameInfo(const game::GameStatus &game_status) {
+void TerminalGameReporter::ReportGameInfo(const game::GameStatus &game_status) {
   ClearScreen();
   DisplayBoardMap(game_status.board_map);
   DisplayPlayersInfo();

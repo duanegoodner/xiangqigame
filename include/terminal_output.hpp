@@ -56,14 +56,14 @@ public:
   std::string EncodeBoardMap(const gameboard::BoardMap_t &board_map);
 };
 
-class GameTerminalReporter {
+class TerminalGameReporter {
   PlayerReporter red_player_reporter_;
   PlayerReporter black_player_reporter_;
   MoveReporter move_reporter_;
   BoardMapEncoder board_map_encoder_;
 
 public:
-  GameTerminalReporter(
+  TerminalGameReporter(
       const game::PlayerSpec &player_spec_red,
       const game::PlayerSpec &player_spec_black
   );

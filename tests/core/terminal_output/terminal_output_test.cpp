@@ -97,7 +97,7 @@ TEST_F(BoardMapEncoderTest, EncodeBoardMap) {
   std::cout << board_map_endcoder_.EncodeBoardMap(board_map) << std::endl;
 }
 
-class GameTerminalReporterTest : public ::testing::Test {
+class TerminalGameReporterTest : public ::testing::Test {
 protected:
   game::PlayerSpec player_spec_red_{
       gameboard::PieceColor::kRed,
@@ -121,10 +121,10 @@ protected:
   std::shared_ptr<gameboard::GameBoardForConcepts> game_board_ =
       game_board_factory_.Create();
 
-  terminalout::GameTerminalReporter game_reporter_{player_spec_red_, player_spec_black_};
+  terminalout::TerminalGameReporter game_reporter_{player_spec_red_, player_spec_black_};
 };
 
-TEST_F(GameTerminalReporterTest, ReportGameInfo) {
+TEST_F(TerminalGameReporterTest, ReportGameInfo) {
   game::GameStatus game_status_initial{
       .move_count = 0,
       .most_recent_move = gameboard::Move{},
