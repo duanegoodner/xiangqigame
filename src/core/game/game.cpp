@@ -70,6 +70,9 @@ void Game::PlayerTurn(const gameboard::MoveCollection &available_moves) {
 
 void Game::Play() {
   while (game_state_ == GameState::kUnfinished) {
+    bool is_in_check = game_board_->IsInCheck(whose_turn_);
+    game::GameStatus cur_game_status{move_log_, whose_turn_, is_in_check, game_board_->map()};
+    game_reporter_->ReportGameInfo(cur_game_status);
     auto available_moves = game_board_->CalcFinalMovesOf(whose_turn_);
     if (available_moves.Size() == 0) {
       if (game_board_->IsDraw()) {

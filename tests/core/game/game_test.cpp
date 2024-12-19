@@ -26,10 +26,9 @@ protected:
   gameboard::GameBoardFactory game_board_factory_;
   std::shared_ptr<gameboard::GameBoardForConcepts> game_board_ =
       game_board_factory_.Create();
-  DepthType default_search_depth_{3};
 
-  DepthType search_depth_red_{3};
-  DepthType search_depth_black_{3};
+  DepthType search_depth_red_{4};
+  DepthType search_depth_black_{4};
 
   game::MinimaxTypeInfo minimax_type_info_red_{
       game::ZobristKeyType::k064,
@@ -54,17 +53,17 @@ protected:
   };
 };
 
-TEST_F(GameTest, InstantiateGame) {
+TEST_F(GameTest, GameOnStack) {
   std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
       evaluators;
 
   moveselection::MinimaxMoveEvaluatorFactory<uint64_t, 1> red_evaluator_factory{
       game_board_,
-      default_search_depth_
+      search_depth_red_
   };
   moveselection::MinimaxMoveEvaluatorFactory<uint64_t, 1> black_evaluator_factory{
       game_board_,
-      default_search_depth_
+      search_depth_black_
   };
 
   evaluators.emplace(
@@ -87,34 +86,9 @@ TEST_F(GameTest, InstantiateGame) {
   game.Play();
 }
 
-TEST_F(GameTest, BuildGameWithGameFactory) {
-  DepthType red_search_depth{3};
-  DepthType black_search_depth{2};
-
-  auto minimax_type_info_red = game::MinimaxTypeInfo{
-      game::ZobristKeyType::k064,
-      game::ZobristCalculatorCount::kTwo
-  };
-  auto evaluator_factory_info_red = game::PlayerSpec(
-      gameboard::PieceColor::kRed,
-      game::EvaluatorType::kMinimax,
-      minimax_type_info_red,
-      red_search_depth
-  );
-
-  auto minimax_type_info_black = game::MinimaxTypeInfo{
-      game::ZobristKeyType::k064,
-      game::ZobristCalculatorCount::kTwo
-  };
-  auto evaluator_factory_info_black = game::PlayerSpec(
-      gameboard::PieceColor::kRed,
-      game::EvaluatorType::kMinimax,
-      minimax_type_info_black,
-      black_search_depth
-  );
-
+TEST_F(GameTest, GameInHeap) {
   auto game_factory =
-      game::GameFactory(evaluator_factory_info_red, evaluator_factory_info_black);
+      game::GameFactory(player_spec_red_, player_spec_black_);
   auto game = game_factory.Create();
   game->Play();
 }
