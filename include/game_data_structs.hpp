@@ -59,13 +59,32 @@ struct PlayerSpec {
       , minimax_search_depth{minimax_search_depth} {}
 };
 
-struct GameStatus {
-  size_t move_count;
-  std::optional<gameboard::Move> most_recent_move;
-  gameboard::PieceColor whose_turn;
-  bool is_in_check;
-  const gameboard::BoardMap_t &board_map;
-};
+class GameStatus {
+  size_t move_count_;
+  std::optional<gameboard::Move> most_recent_move_;
+  gameboard::PieceColor whose_turn_;
+  bool is_in_check_;
+  const gameboard::BoardMap_t &board_map_;
 
+public:
+  GameStatus(
+      size_t move_count,
+      std::optional<gameboard::Move> most_recent_move,
+      gameboard::PieceColor whose_turn,
+      bool is_in_check,
+      const gameboard::BoardMap_t &board_map
+  )
+      : move_count_(move_count)
+      , most_recent_move_(most_recent_move)
+      , whose_turn_(whose_turn)
+      , is_in_check_(is_in_check)
+      , board_map_(board_map) {}
+
+  size_t move_count() const { return move_count_; }
+  std::optional<gameboard::Move> most_recent_move() const { return most_recent_move_; }
+  gameboard::PieceColor whose_turn() const { return whose_turn_; }
+  bool is_in_check() const { return is_in_check_; }
+  const gameboard::BoardMap_t &board_map() const { return board_map_; }
+};
 
 } // namespace game

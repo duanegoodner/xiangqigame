@@ -177,26 +177,26 @@ void GameTerminalReporter::DisplayBoardMap(const gameboard::BoardMap_t &board_ma
 }
 
 void GameTerminalReporter::DisplayMoveInfo(const game::GameStatus &game_status) {
-  std::cout << "Move count: " << game_status.move_count << std::endl;
+  std::cout << "Move count: " << game_status.move_count() << std::endl;
   std::cout << std::endl;
   std::cout << "Most recent move: "
-            << move_reporter_.MostRecentMoveStr(game_status.most_recent_move) << " ("
-            << disp_team_name_.at(gameboard::opponent_of(game_status.whose_turn)) << ")"
+            << move_reporter_.MostRecentMoveStr(game_status.most_recent_move()) << " ("
+            << disp_team_name_.at(gameboard::opponent_of(game_status.whose_turn())) << ")"
             << std::endl;
   std::cout << endl;
-  std::cout << "Whose turn: " << disp_team_name_.at(game_status.whose_turn) << std::endl;
+  std::cout << "Whose turn: " << disp_team_name_.at(game_status.whose_turn()) << std::endl;
 }
 
 void GameTerminalReporter::DisplayIfInCheck(const game::GameStatus &game_status) {
-  if (game_status.is_in_check) {
-    std::cout << disp_team_name_.at(game_status.whose_turn) << " is in check"
+  if (game_status.is_in_check()) {
+    std::cout << disp_team_name_.at(game_status.whose_turn()) << " is in check"
               << std::endl;
   }
 }
 
 void GameTerminalReporter::ReportGameInfo(const game::GameStatus &game_status) {
   ClearScreen();
-  DisplayBoardMap(game_status.board_map);
+  DisplayBoardMap(game_status.board_map());
   DisplayPlayersInfo();
   std::cout << std::endl;
   DisplayMoveInfo(game_status);
