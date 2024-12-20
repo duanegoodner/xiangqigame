@@ -54,8 +54,7 @@ struct PlayerSpec {
       // std::istream &input_stream = std::cin
   )
       : color{color}
-      , evaluator_type{evaluator_type}
-      // , input_stream{input_stream}
+      , evaluator_type{evaluator_type} // , input_stream{input_stream}
       , minimax_type_info{minimax_type_info}
       , minimax_search_depth{minimax_search_depth} {}
 };
@@ -68,21 +67,13 @@ struct GameStatus {
   const gameboard::BoardMap_t &board_map;
 };
 
-struct PlayerSummary {
-  PlayerSpec player_spec;
-  std::optional<moveselection::SearchSummaries> search_summaries;
-};
-
-struct PlayerSummaries {
-  PlayerSummary kRed;
-  PlayerSummary kBlk;
-};
-
 struct GameSummary {
   std::string game_id;
   game::GameState game_state;
   std::vector<ExecutedMove> move_log;
-  PlayerSummaries player_summaries;
+  std::unordered_map<gameboard::PieceColor, PlayerSpec> player_specs;
+  std::unordered_map<gameboard::PieceColor, moveselection::SearchSummaries>
+      search_summaries;
 };
 
 } // namespace game

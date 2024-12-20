@@ -88,13 +88,13 @@ TEST_F(GameTest, GameOnStack) {
   auto game =
       game::Game(game_board_, player_specs, std::move(evaluators), game_reporter);
 
-  game.Play();
+  auto game_summary = game.Play();
 }
 
 TEST_F(GameTest, GameInHeap) {
   auto game_factory = game::GameFactory(player_spec_red_, player_spec_black_);
   auto game = game_factory.Create();
-  game->Play();
+  auto game_summary = game->Play();
 }
 
 int main(int argc, char **argv) {

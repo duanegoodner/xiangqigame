@@ -5,13 +5,14 @@
 #include <concept_space_info_provider.hpp>
 
 #include <array>
-#include <base_move_evaluator.hpp>
 #include <atomic>
+#include <base_move_evaluator.hpp>
 #include <board_data_structs.hpp>
 #include <evaluator_data_structs.hpp>
 #include <functional>
 #include <limits>
 #include <memory>
+#include <optional>
 #include <unordered_map>
 
 using namespace gameboard;
@@ -173,7 +174,8 @@ public:
     return final_selected_move;
   }
 
-  inline const moveselection::SearchSummaries &search_summaries() {
+  inline const std::optional<moveselection::SearchSummaries> search_summaries(
+  ) const override {
     return search_summaries_;
   }
 

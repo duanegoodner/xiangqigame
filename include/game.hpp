@@ -38,7 +38,7 @@ public:
       gameboard::PieceColor whose_turn = gameboard::PieceColor::kRed
   );
 
-  void Play();
+  GameSummary Play();
 
 private:
   std::string GenerateGameID();

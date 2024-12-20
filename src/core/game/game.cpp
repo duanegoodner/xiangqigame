@@ -2,6 +2,7 @@
 #include <game.hpp>
 #include <game_board_for_concepts.hpp>
 #include <memory>
+#include <move_evaluator_minimax_for_concepts.hpp>
 #include <sstream>
 
 namespace game {
@@ -72,11 +73,30 @@ void Game::PlayerTurn(const gameboard::MoveCollection &available_moves) {
   move_log_.emplace_back(executed_move);
 }
 
-// GameSummary GenerateGameSummary() {
+GameSummary Game::GenerateGameSummary() {
 
-// }
+  std::unordered_map<gameboard::PieceColor, moveselection::SearchSummaries>
+      search_summaries;
 
-void Game::Play() {
+  auto red_search_summaries =
+      move_evaluators_.at(gameboard::PieceColor::kRed)->search_summaries();
+  if (red_search_summaries.has_value()) {
+    search_summaries.emplace(gameboard::PieceColor::kRed, *red_search_summaries);
+  }
+
+  auto black_search_summaries =
+      move_evaluators_.at(gameboard::PieceColor::kBlk)->search_summaries();
+  if (black_search_summaries.has_value()) {
+    search_summaries.emplace(gameboard::PieceColor::kBlk, *black_search_summaries);
+  }
+
+  GameSummary
+      game_summary{game_id_, game_state_, move_log_, player_specs_, search_summaries};
+
+  return game_summary;
+}
+
+GameSummary Game::Play() {
   while (game_state_ == GameState::kUnfinished) {
     bool is_in_check = game_board_->IsInCheck(whose_turn_);
     game::GameStatus cur_game_status{
@@ -111,6 +131,8 @@ void Game::Play() {
       game_board_->map()
   };
   game_reporter_->ReportGameInfo(final_game_status);
+
+  return GenerateGameSummary();
 }
 
 } // namespace game
