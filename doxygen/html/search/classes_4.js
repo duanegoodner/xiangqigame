@@ -11,7 +11,7 @@ var searchData=
   ['gamereporterinterface_8',['GameReporterInterface',['../classGameReporterInterface.html',1,'']]],
   ['gamestate_9',['GameState',['../classxiangqipy_1_1enums_1_1GameState.html',1,'xiangqipy::enums']]],
   ['gamestatus_10',['GameStatus',['../structgame_1_1GameStatus.html',1,'game']]],
-  ['gamesummary_11',['GameSummary',['../classxiangqipy_1_1game__summary_1_1GameSummary.html',1,'xiangqipy::game_summary']]],
+  ['gamesummary_11',['GameSummary',['../structgame_1_1GameSummary.html',1,'game::GameSummary'],['../classxiangqipy_1_1game__summary_1_1GameSummary.html',1,'xiangqipy.game_summary.GameSummary']]],
   ['gamesummaryplotmanager_12',['GameSummaryPlotManager',['../classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html',1,'xiangqipy::game_summary_plot_manager']]],
   ['gamesummaryplotter_13',['GameSummaryPlotter',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html',1,'xiangqipy::game_summary_plotters']]]
 ];

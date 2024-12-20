@@ -144,16 +144,16 @@ var NAVTREEINDEX =
 "____init_____8py.html",
 "classboardstate_1_1TranspositionTablePruner.html#a2e8082c3c8e44e06b5ed45e2b6db063b",
 "classboardstate_1_1ZobristCoordinator.html#aaea5430ca15b0de60350ff543e36adb6",
-"classgameboard_1_1MoveCalculator.html#aefa86de436c2c931a302b541476030cf",
-"classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a69b4ba8280d6ae7140b9de233e86e198",
-"classpiecepoints_1_1BPOPointsEKeys.html#a634b8178977601612c247026d1cc7fbc",
-"classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine.html#a3c5753db0ba61c1fd75eeb0f9092d5f8",
-"classxiangqipy_1_1game__summary_1_1GameSummary.html#a31722162111806caa61f78bd2bce6a3e",
-"classxiangqipy_1_1players_1_1HumanPlayer.html#a8b7dc7d408afd445a2f7b4684bba38a7",
-"functions_vars_g.html",
-"move__evaluators_8hpp.html#ad1a8e867b5768220148ab7bb9362f5d4",
-"pages.html",
-"structpiecepoints_1_1PiecePositionPoints.html"
+"classgameboard_1_1MoveCalculator.html#a422c25179dd9af640644bf170218fc80",
+"classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a1fe355844527b7e5674ed1dd37bbc21e",
+"classmovetranslation_1_1InvalidVectorSizeException.html",
+"classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html#a3b82fd7a60a67e0fd9882b874a9955eb",
+"classxiangqipy_1_1game__output__generator_1_1GameOutputGenerator.html#ae763015ec4548a8e355520a026425456",
+"classxiangqipy_1_1players_1_1AIPlayer.html#a82cf81d11510c93f7f0624afb1dffa25",
+"functions_type.html",
+"move__evaluator__minimax__for__concepts_8hpp.html#ab345a4cc11074fff78fd863e553761c4",
+"namespacexiangqipy_1_1piece__points.html#ab136924ba9f6b14ac0e45ed8dd1d71fe",
+"structmoveselection_1_1MinimaxTemplateSpecs.html#a25c2d7349688aae7855c1fee7d058dfc"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

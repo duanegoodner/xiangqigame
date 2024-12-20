@@ -1,7 +1,7 @@
 <map id="include/concept_board_state_coordinator.hpp" name="include/concept_board_state_coordinator.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="574,5,745,45"/>
+<area shape="rect" id="node1" title=" " alt="" coords="570,5,741,45"/>
 <area shape="rect" id="node2" href="$game_8hpp.html" title=" " alt="" coords="53,101,191,126"/>
-<area shape="rect" id="node6" href="$move__evaluator__minimax__for__concepts_8hpp.html" title=" " alt="" coords="463,93,669,133"/>
+<area shape="rect" id="node6" href="$move__evaluator__minimax__for__concepts_8hpp.html" title=" " alt="" coords="359,93,565,133"/>
 <area shape="rect" id="node8" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="659,313,846,339"/>
 <area shape="rect" id="node10" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="921,101,1136,126"/>
 <area shape="rect" id="node3" href="$game__factory_8hpp.html" title=" " alt="" coords="157,313,346,339"/>

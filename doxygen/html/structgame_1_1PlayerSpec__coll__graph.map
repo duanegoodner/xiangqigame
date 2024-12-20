@@ -1,10 +1,9 @@
 <map id="game::PlayerSpec" name="game::PlayerSpec">
-<area shape="rect" id="node1" title=" " alt="" coords="252,315,391,392"/>
+<area shape="rect" id="node1" title=" " alt="" coords="180,315,319,392"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,167,96,245"/>
 <area shape="rect" id="node3" title=" " alt="" coords="120,167,235,245"/>
 <area shape="rect" id="node4" href="$structgame_1_1MinimaxTypeInfo.html" title=" " alt="" coords="259,160,437,252"/>
 <area shape="rect" id="node5" title=" " alt="" coords="200,5,323,83"/>
 <area shape="rect" id="node6" title=" " alt="" coords="347,5,519,83"/>
 <area shape="rect" id="node7" title=" " alt="" coords="463,167,523,245"/>
-<area shape="rect" id="node8" title=" " alt="" coords="649,167,735,245"/>
 </map>

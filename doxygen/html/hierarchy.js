@@ -47,6 +47,7 @@ var hierarchy =
       [ "terminalout::TerminalGameReporter", "classterminalout_1_1TerminalGameReporter.html", null ]
     ] ],
     [ "game::GameStatus", "structgame_1_1GameStatus.html", null ],
+    [ "game::GameSummary", "structgame_1_1GameSummary.html", null ],
     [ "xiangqipy.game_summary_plot_manager.GameSummaryPlotManager", "classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html", null ],
     [ "std::hash< moveselection::MinimaxTemplateSpecs >", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4.html", null ],
     [ "humanplayerio::InputRetrievalMessages", "classhumanplayerio_1_1InputRetrievalMessages.html", null ],

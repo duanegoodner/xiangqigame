@@ -4,6 +4,7 @@ var game__data__structs_8hpp =
     [ "game::MinimaxTypeInfoHash", "structgame_1_1MinimaxTypeInfoHash.html", "structgame_1_1MinimaxTypeInfoHash" ],
     [ "game::PlayerSpec", "structgame_1_1PlayerSpec.html", "structgame_1_1PlayerSpec" ],
     [ "game::GameStatus", "structgame_1_1GameStatus.html", "structgame_1_1GameStatus" ],
+    [ "game::GameSummary", "structgame_1_1GameSummary.html", "structgame_1_1GameSummary" ],
     [ "EvaluatorType", "game__data__structs_8hpp.html#a8c93203a902146caddef660c90e21280", [
       [ "kRandom", "game__data__structs_8hpp.html#a8c93203a902146caddef660c90e21280adbb7c37a1a3b50bc322b3bb1a8654e9d", null ],
       [ "kMinimax", "game__data__structs_8hpp.html#a8c93203a902146caddef660c90e21280a44f1478de1e9660318efbe807ee753d1", null ],

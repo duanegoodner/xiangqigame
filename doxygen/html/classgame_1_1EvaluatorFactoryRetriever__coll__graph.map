@@ -1,13 +1,13 @@
 <map id="game::EvaluatorFactoryRetriever" name="game::EvaluatorFactoryRetriever">
-<area shape="rect" id="node1" title=" " alt="" coords="263,513,499,605"/>
+<area shape="rect" id="node1" title=" " alt="" coords="337,499,573,591"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,315,288,436"/>
 <area shape="rect" id="node3" href="$structgame_1_1PlayerSpec.html" title=" " alt="" coords="312,337,451,414"/>
-<area shape="rect" id="node4" title=" " alt="" coords="65,167,156,245"/>
-<area shape="rect" id="node5" title=" " alt="" coords="180,167,295,245"/>
-<area shape="rect" id="node6" href="$structgame_1_1MinimaxTypeInfo.html" title=" " alt="" coords="319,160,497,252"/>
-<area shape="rect" id="node7" title=" " alt="" coords="260,5,383,83"/>
-<area shape="rect" id="node8" title=" " alt="" coords="407,5,579,83"/>
-<area shape="rect" id="node9" title=" " alt="" coords="523,167,583,245"/>
-<area shape="rect" id="node10" title=" " alt="" coords="709,167,795,245"/>
-<area shape="rect" id="node11" title=" " alt="" coords="475,329,677,421"/>
+<area shape="rect" id="node4" title=" " alt="" coords="137,167,228,245"/>
+<area shape="rect" id="node5" title=" " alt="" coords="252,167,367,245"/>
+<area shape="rect" id="node6" href="$structgame_1_1MinimaxTypeInfo.html" title=" " alt="" coords="391,160,569,252"/>
+<area shape="rect" id="node7" title=" " alt="" coords="332,5,455,83"/>
+<area shape="rect" id="node8" title=" " alt="" coords="479,5,651,83"/>
+<area shape="rect" id="node9" title=" " alt="" coords="595,167,655,245"/>
+<area shape="rect" id="node10" title=" " alt="" coords="475,337,562,414"/>
+<area shape="rect" id="node11" title=" " alt="" coords="587,329,789,421"/>
 </map>

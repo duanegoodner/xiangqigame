@@ -155,10 +155,10 @@ Inheritance diagram for MoveEvaluatorBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMoveEvaluatorBase__inherit__graph.png" border="0" usemap="#aMoveEvaluatorBase_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMoveEvaluatorBase_inherit__map" id="aMoveEvaluatorBase_inherit__map">
-<area shape="rect" title=" " alt="" coords="343,5,531,112"/>
-<area shape="rect" href="classmoveselection_1_1HumanMoveEvaluatorForConcepts.html" title=" " alt="" coords="5,387,272,567"/>
-<area shape="rect" href="classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html" title="Complies with MoveEvaluatorConcept, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="296,160,579,795"/>
-<area shape="rect" href="classmoveselection_1_1RandomMoveEvaluatorForConcepts.html" title="Complies with MoveEvaluatorConcept." alt="" coords="602,402,875,553"/>
+<area shape="rect" title=" " alt="" coords="343,5,531,127"/>
+<area shape="rect" href="classmoveselection_1_1HumanMoveEvaluatorForConcepts.html" title=" " alt="" coords="5,402,272,582"/>
+<area shape="rect" href="classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html" title="Complies with MoveEvaluatorConcept, and selects move::Move using Minimax algorithm; uses SpaceInfoPro..." alt="" coords="296,175,579,809"/>
+<area shape="rect" href="classmoveselection_1_1RandomMoveEvaluatorForConcepts.html" title="Complies with MoveEvaluatorConcept." alt="" coords="602,417,875,567"/>
 </map>
 </div>
 <div class="dynheader">
@@ -166,7 +166,7 @@ Collaboration diagram for MoveEvaluatorBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMoveEvaluatorBase__coll__graph.png" border="0" usemap="#aMoveEvaluatorBase_coll__map" alt="Collaboration graph"/></div>
 <map name="aMoveEvaluatorBase_coll__map" id="aMoveEvaluatorBase_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,193,112"/>
+<area shape="rect" title=" " alt="" coords="5,5,193,127"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -176,12 +176,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aed3c97b8a8698a6360b17eac59363f9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60b75c2c17653231356329ccf7641db5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMoveEvaluatorBase.html#a60b75c2c17653231356329ccf7641db5">NotifyIllegalMove</a> ()=0</td></tr>
 <tr class="separator:a60b75c2c17653231356329ccf7641db5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa84c104b7dfed1a7acf5aef8420e97d6"><td class="memItemLeft" align="right" valign="top">virtual const std::optional&lt; <a class="el" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMoveEvaluatorBase.html#aa84c104b7dfed1a7acf5aef8420e97d6">search_summaries</a> () const</td></tr>
+<tr class="separator:aa84c104b7dfed1a7acf5aef8420e97d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a371657d8cfad345a10633b6da1d9b34d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMoveEvaluatorBase.html#a371657d8cfad345a10633b6da1d9b34d">~MoveEvaluatorBase</a> ()=default</td></tr>
 <tr class="separator:a371657d8cfad345a10633b6da1d9b34d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="base__move__evaluator_8hpp_source.html#l00005">5</a> of file <a class="el" href="base__move__evaluator_8hpp_source.html">base_move_evaluator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="base__move__evaluator_8hpp_source.html#l00007">7</a> of file <a class="el" href="base__move__evaluator_8hpp_source.html">base_move_evaluator.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a371657d8cfad345a10633b6da1d9b34d" name="a371657d8cfad345a10633b6da1d9b34d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a371657d8cfad345a10633b6da1d9b34d">&#9670;&#160;</a></span>~MoveEvaluatorBase()</h2>
@@ -236,6 +238,35 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aa84c104b7dfed1a7acf5aef8420e97d6" name="aa84c104b7dfed1a7acf5aef8420e97d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa84c104b7dfed1a7acf5aef8420e97d6">&#9670;&#160;</a></span>search_summaries()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::optional&lt; <a class="el" href="structmoveselection_1_1SearchSummaries.html">moveselection::SearchSummaries</a> &gt; MoveEvaluatorBase::search_summaries </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#ac23d93a6566a7ce13c08d53a1a270168">moveselection::MinimaxMoveEvaluatorForConcepts&lt; H, G, P &gt;</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="base__move__evaluator_8hpp_source.html#l00011">11</a> of file <a class="el" href="base__move__evaluator_8hpp_source.html">base_move_evaluator.hpp</a>.</p>
+
+</div>
+</div>
 <a id="aed3c97b8a8698a6360b17eac59363f9a" name="aed3c97b8a8698a6360b17eac59363f9a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aed3c97b8a8698a6360b17eac59363f9a">&#9670;&#160;</a></span>SelectMove()</h2>
 
@@ -273,7 +304,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a></li>
-    <li class="footer">Generated on Thu Dec 19 2024 23:01:48 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Dec 20 2024 21:28:26 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

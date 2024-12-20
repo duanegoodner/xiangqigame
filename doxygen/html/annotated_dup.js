@@ -26,6 +26,7 @@ var annotated_dup =
       [ "Game", "classgame_1_1Game.html", "classgame_1_1Game" ],
       [ "GameFactory", "classgame_1_1GameFactory.html", "classgame_1_1GameFactory" ],
       [ "GameStatus", "structgame_1_1GameStatus.html", "structgame_1_1GameStatus" ],
+      [ "GameSummary", "structgame_1_1GameSummary.html", "structgame_1_1GameSummary" ],
       [ "MinimaxTypeInfo", "structgame_1_1MinimaxTypeInfo.html", "structgame_1_1MinimaxTypeInfo" ],
       [ "MinimaxTypeInfoHash", "structgame_1_1MinimaxTypeInfoHash.html", "structgame_1_1MinimaxTypeInfoHash" ],
       [ "PlayerSpec", "structgame_1_1PlayerSpec.html", "structgame_1_1PlayerSpec" ]

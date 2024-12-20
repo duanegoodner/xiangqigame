@@ -1,6 +1,6 @@
 <map id="moveselection::RandomMoveEvaluatorForConcepts" name="moveselection::RandomMoveEvaluatorForConcepts">
-<area shape="rect" id="node1" title="Complies with MoveEvaluatorConcept." alt="" coords="127,175,400,311"/>
-<area shape="rect" id="node2" href="$classMoveEvaluatorBase.html" title=" " alt="" coords="5,5,193,112"/>
-<area shape="rect" id="node3" title=" " alt="" coords="218,20,309,97"/>
-<area shape="rect" id="node4" title=" " alt="" coords="376,20,479,97"/>
+<area shape="rect" id="node1" title="Complies with MoveEvaluatorConcept." alt="" coords="127,189,400,325"/>
+<area shape="rect" id="node2" href="$classMoveEvaluatorBase.html" title=" " alt="" coords="5,5,193,127"/>
+<area shape="rect" id="node3" title=" " alt="" coords="218,27,309,105"/>
+<area shape="rect" id="node4" title=" " alt="" coords="376,27,479,105"/>
 </map>

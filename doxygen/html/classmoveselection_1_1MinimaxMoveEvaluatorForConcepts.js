@@ -24,7 +24,7 @@ var classmoveselection_1_1MinimaxMoveEvaluatorForConcepts =
     [ "RunSecondSearch", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a846b402ebd62370d3003461b411fa0bc", null ],
     [ "RunTimedMinimax", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a1fe355844527b7e5674ed1dd37bbc21e", null ],
     [ "search_depth", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#ae7715a5cb5aee9f406b32e3d48aa79dc", null ],
-    [ "search_summaries", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a4577458273f95d3823da0362f3363314", null ],
+    [ "search_summaries", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#ac23d93a6566a7ce13c08d53a1a270168", null ],
     [ "SelectMove", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#ae0823de0fc5d4cfa70eed6a4a51ca5c7", null ],
     [ "SelectValidMove", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a189ed7a2b712476d83e11cc8962f5075", null ],
     [ "UpdateBestMoves", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html#a3a7c110eef618d14de2a5a82c92ab10f", null ],
