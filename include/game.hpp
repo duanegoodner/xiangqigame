@@ -16,6 +16,7 @@
 namespace game {
 class Game {
   std::shared_ptr<SpaceInfoProviderBase> game_board_;
+  std::unordered_map<gameboard::PieceColor, PlayerSpec> player_specs_;
   std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
       move_evaluators_;
   GameState game_state_;
@@ -29,6 +30,7 @@ class Game {
 public:
   Game(
       std::shared_ptr<SpaceInfoProviderBase> game_board,
+      std::unordered_map<gameboard::PieceColor, PlayerSpec> player_specs,
       std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
           move_evaluators,
       std::shared_ptr<GameReporterInterface> game_reporter,
@@ -36,7 +38,7 @@ public:
       gameboard::PieceColor whose_turn = gameboard::PieceColor::kRed
   );
 
-  void Play();
+  GameSummary Play();
 
 private:
   std::string GenerateGameID();
@@ -44,6 +46,7 @@ private:
   void PlayerTurn(const gameboard::MoveCollection &available_moves);
   void ChangeWhoseTurn();
   void SetWinner(gameboard::PieceColor color);
+  GameSummary GenerateGameSummary();
 };
 
 } // namespace game

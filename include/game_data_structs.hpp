@@ -1,5 +1,6 @@
 #pragma once
 
+#include <evaluator_data_structs.hpp>
 #include <iostream>
 #include <move_data_structs.hpp>
 #include <optional>
@@ -43,18 +44,17 @@ struct PlayerSpec {
   EvaluatorType evaluator_type;
   MinimaxTypeInfo minimax_type_info;
   size_t minimax_search_depth;
-  std::istream &input_stream;
+  // std::istream &input_stream;
 
   PlayerSpec(
       gameboard::PieceColor color,
       EvaluatorType evaluator_type,
       MinimaxTypeInfo minimax_type_info = MinimaxTypeInfo{},
-      size_t minimax_search_depth = 0,
-      std::istream &input_stream = std::cin
+      size_t minimax_search_depth = 0
+      // std::istream &input_stream = std::cin
   )
       : color{color}
-      , evaluator_type{evaluator_type}
-      , input_stream{input_stream}
+      , evaluator_type{evaluator_type} // , input_stream{input_stream}
       , minimax_type_info{minimax_type_info}
       , minimax_search_depth{minimax_search_depth} {}
 };
@@ -67,5 +67,13 @@ struct GameStatus {
   const gameboard::BoardMap_t &board_map;
 };
 
+struct GameSummary {
+  std::string game_id;
+  game::GameState game_state;
+  std::vector<ExecutedMove> move_log;
+  std::unordered_map<gameboard::PieceColor, PlayerSpec> player_specs;
+  std::unordered_map<gameboard::PieceColor, moveselection::SearchSummaries>
+      search_summaries;
+};
 
 } // namespace game

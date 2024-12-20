@@ -27,8 +27,8 @@ protected:
   std::shared_ptr<gameboard::GameBoardForConcepts> game_board_ =
       game_board_factory_.Create();
 
-  DepthType search_depth_red_{4};
-  DepthType search_depth_black_{4};
+  DepthType search_depth_red_{3};
+  DepthType search_depth_black_{3};
 
   game::MinimaxTypeInfo minimax_type_info_red_{
       game::ZobristKeyType::k064,
@@ -54,6 +54,10 @@ protected:
 };
 
 TEST_F(GameTest, GameOnStack) {
+  std::unordered_map<gameboard::PieceColor, game::PlayerSpec> player_specs;
+  player_specs.emplace(gameboard::PieceColor::kRed, player_spec_red_);
+  player_specs.emplace(gameboard::PieceColor::kBlk, player_spec_black_);
+
   std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
       evaluators;
 
@@ -81,16 +85,16 @@ TEST_F(GameTest, GameOnStack) {
           player_spec_black_
       );
 
-  auto game = game::Game(game_board_, std::move(evaluators), game_reporter);
+  auto game =
+      game::Game(game_board_, player_specs, std::move(evaluators), game_reporter);
 
-  game.Play();
+  auto game_summary = game.Play();
 }
 
 TEST_F(GameTest, GameInHeap) {
-  auto game_factory =
-      game::GameFactory(player_spec_red_, player_spec_black_);
+  auto game_factory = game::GameFactory(player_spec_red_, player_spec_black_);
   auto game = game_factory.Create();
-  game->Play();
+  auto game_summary = game->Play();
 }
 
 int main(int argc, char **argv) {
