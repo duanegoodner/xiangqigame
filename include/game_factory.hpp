@@ -64,6 +64,12 @@ public:
 
   std::unique_ptr<Game> Create() {
     auto game_board = game_board_factory_.Create();
+    
+    std::unordered_map<gameboard::PieceColor, PlayerSpec> player_specs;
+    player_specs.emplace(gameboard::PieceColor::kRed, red_player_spec_);
+    player_specs.emplace(gameboard::PieceColor::kBlk, black_player_spec_);
+
+    
     std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
         evaluators;
 
@@ -91,6 +97,7 @@ public:
 
     return std::make_unique<Game>(
         game_board,
+        player_specs,
         std::move(evaluators),
         game_reporter,
         report_during_game_

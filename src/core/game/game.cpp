@@ -8,6 +8,7 @@ namespace game {
 
 Game::Game(
     std::shared_ptr<SpaceInfoProviderBase> game_board,
+    std::unordered_map<gameboard::PieceColor, PlayerSpec> player_specs,
     std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
         move_evaluators,
     std::shared_ptr<GameReporterInterface> game_reporter,
@@ -15,6 +16,7 @@ Game::Game(
     gameboard::PieceColor whose_turn
 )
     : game_board_{game_board}
+    , player_specs_{player_specs}
     , move_evaluators_{std::move(move_evaluators)}
     , game_reporter_{game_reporter}
     , report_during_game_{report_during_game}
@@ -69,6 +71,10 @@ void Game::PlayerTurn(const gameboard::MoveCollection &available_moves) {
   auto executed_move = game_board_->ExecuteMove(valid_move);
   move_log_.emplace_back(executed_move);
 }
+
+// GameSummary GenerateGameSummary() {
+
+// }
 
 void Game::Play() {
   while (game_state_ == GameState::kUnfinished) {
