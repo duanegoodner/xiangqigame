@@ -25,13 +25,15 @@ class EvaluatorFactoryRetriever {
       std::shared_ptr<MoveEvaluatorFactoryBase>,
       MinimaxTypeInfoHash>
       minimax_factories_;
-  const PlayerSpec &evaluator_factory_info_;
+  const PlayerSpec &player_spec_;
+  std::istream &input_stream_;
   std::shared_ptr<gameboard::GameBoardForConcepts> game_board_;
 
 public:
   EvaluatorFactoryRetriever(
-      const PlayerSpec &evaluator_factory_info,
-      std::shared_ptr<gameboard::GameBoardForConcepts> game_board
+      const PlayerSpec &player_spec,
+      std::shared_ptr<gameboard::GameBoardForConcepts> game_board,
+      std::istream &input_stream = std::cin
   );
 
   std::shared_ptr<MoveEvaluatorFactoryBase> GetFactory();
@@ -41,16 +43,22 @@ class GameFactory {
   gameboard::GameBoardFactory game_board_factory_;
   PlayerSpec red_player_spec_;
   PlayerSpec black_player_spec_;
+  std::istream &red_player_input_stream_;
+  std::istream &black_player_input_stream_;
   bool report_during_game_;
 
 public:
   GameFactory(
       PlayerSpec red_player_spec,
       PlayerSpec black_player_spec,
+      std::istream &red_player_input_stream = std::cin,
+      std::istream &black_player_input_stream = std::cin,
       bool report_during_game = true
   )
       : red_player_spec_{red_player_spec}
       , black_player_spec_{black_player_spec}
+      , red_player_input_stream_{red_player_input_stream}
+      , black_player_input_stream_{black_player_input_stream}
       , report_during_game_{report_during_game}
       , game_board_factory_{gameboard::GameBoardFactory{}} {}
 

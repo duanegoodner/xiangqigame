@@ -120,34 +120,34 @@ struct PlayerSpec {
 class EvaluatorFactoryRetriever {
   std::unordered_map<MinimaxTypeInfo, std::shared_ptr<FactoryBase>, MinimaxTypeInfoHash>
       minimax_factories_;
-  const PlayerSpec &evaluator_factory_info;
+  const PlayerSpec &player_spec;
 
 public:
-  EvaluatorFactoryRetriever(const PlayerSpec &evaluator_factory_info)
-      : evaluator_factory_info{evaluator_factory_info}
+  EvaluatorFactoryRetriever(const PlayerSpec &player_spec)
+      : player_spec{player_spec}
       , minimax_factories_{} {
     minimax_factories_.emplace(
         MinimaxTypeInfo{ZobristKeyType::k032, ZobristCalculatorCount::kOne},
         std::make_shared<MinimaxEvaluatorFactory<uint32_t, 0>>(
-            evaluator_factory_info.minimax_search_depth
+            player_spec.minimax_search_depth
         )
     );
     minimax_factories_.emplace(
         MinimaxTypeInfo{ZobristKeyType::k064, ZobristCalculatorCount::kOne},
         std::make_shared<MinimaxEvaluatorFactory<uint32_t, 0>>(
-            evaluator_factory_info.minimax_search_depth
+            player_spec.minimax_search_depth
         )
     );
     minimax_factories_.emplace(
         MinimaxTypeInfo{ZobristKeyType::k032, ZobristCalculatorCount::kTwo},
         std::make_shared<MinimaxEvaluatorFactory<uint32_t, 1>>(
-            evaluator_factory_info.minimax_search_depth
+            player_spec.minimax_search_depth
         )
     );
     minimax_factories_.emplace(
         MinimaxTypeInfo{ZobristKeyType::k064, ZobristCalculatorCount::kTwo},
         std::make_shared<MinimaxEvaluatorFactory<uint32_t, 1>>(
-            evaluator_factory_info.minimax_search_depth
+            player_spec.minimax_search_depth
         )
     );
   }
@@ -155,10 +155,10 @@ public:
   std::shared_ptr<FactoryBase> GetFactory() {
     std::shared_ptr<FactoryBase> factory;
 
-    if (evaluator_factory_info.evaluator_type == EvaluatorType::kSimple) {
-      factory = std::make_shared<SimpleEvaluatorFactory>(evaluator_factory_info.input_stream);
-    } else if (evaluator_factory_info.evaluator_type == EvaluatorType::kMinimax) {
-      factory = minimax_factories_.at(evaluator_factory_info.minimax_type_info);
+    if (player_spec.evaluator_type == EvaluatorType::kSimple) {
+      factory = std::make_shared<SimpleEvaluatorFactory>(player_spec.input_stream);
+    } else if (player_spec.evaluator_type == EvaluatorType::kMinimax) {
+      factory = minimax_factories_.at(player_spec.minimax_type_info);
     }
     return factory;
   }

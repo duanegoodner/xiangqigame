@@ -44,18 +44,18 @@ struct PlayerSpec {
   EvaluatorType evaluator_type;
   MinimaxTypeInfo minimax_type_info;
   size_t minimax_search_depth;
-  std::istream &input_stream;
+  // std::istream &input_stream;
 
   PlayerSpec(
       gameboard::PieceColor color,
       EvaluatorType evaluator_type,
       MinimaxTypeInfo minimax_type_info = MinimaxTypeInfo{},
-      size_t minimax_search_depth = 0,
-      std::istream &input_stream = std::cin
+      size_t minimax_search_depth = 0
+      // std::istream &input_stream = std::cin
   )
       : color{color}
       , evaluator_type{evaluator_type}
-      , input_stream{input_stream}
+      // , input_stream{input_stream}
       , minimax_type_info{minimax_type_info}
       , minimax_search_depth{minimax_search_depth} {}
 };
