@@ -9,5 +9,5 @@ target_link_libraries(
     utility_functs
     gameboard
     moveselection
-    terminal_output
+    terminalout
     )

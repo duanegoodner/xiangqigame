@@ -7,5 +7,5 @@ target_link_libraries(
     terminal_output_test PRIVATE
     GTest::gtest_main
     gameboard
-    terminal_output
+    terminalout
     )
