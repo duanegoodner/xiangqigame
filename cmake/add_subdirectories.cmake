@@ -2,7 +2,7 @@
 add_subdirectory(${SOURCE_CODE_DIR}/game)
 add_subdirectory(${SOURCE_CODE_DIR}/gameboard)
 add_subdirectory(${SOURCE_CODE_DIR}/jsonio)
-add_subdirectory(${SOURCE_CODE_DIR}/json_validation)
+add_subdirectory(${SOURCE_CODE_DIR}/jsonvalidation)
 add_subdirectory(${SOURCE_CODE_DIR}/move_evaluators)
 add_subdirectory(${SOURCE_CODE_DIR}/move_evaluator_human_for_concepts)
 add_subdirectory(${SOURCE_CODE_DIR}/move_evaluator_minimax_for_concepts)

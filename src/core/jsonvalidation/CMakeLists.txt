@@ -1,6 +1,6 @@
-add_library(json_validation json_validation.cpp)
+add_library(jsonvalidation json_validation.cpp)
 target_link_libraries(
-    json_validation PUBLIC
+    jsonvalidation PUBLIC
     nlohmann_json
     nlohmann_json_schema_validator)
 
@@ -15,7 +15,7 @@ target_link_libraries(
 add_executable(my_schemas my_schemas.cpp)
 target_link_libraries(
     my_schemas
-    json_validation
+    jsonvalidation
     utility_functs
     )
 
