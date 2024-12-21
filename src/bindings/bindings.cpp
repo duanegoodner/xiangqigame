@@ -13,7 +13,7 @@
 #include <concepts/space_info_provider.hpp>
 #include <gameboard/game_board.hpp>
 #include <gameboard/game_board_for_concepts.hpp>
-#include <integer_types.hpp>
+#include <utilities/integer_types.hpp>
 #include <moveselection/move_evaluator_random_for_concepts.hpp>
 #include <moveselection/move_evaluators.hpp>
 #include <moveselection/move_evaluator_minimax_for_concepts.hpp>

@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <moveselection/move_evaluators.hpp>
 #include <piecepoints/piece_position_points.hpp>
-#include <utility_functs.hpp>
+#include <utilities/utility_functs.hpp>
 #include <boardstate/zobrist.hpp>
 
 class TranspositionTablePrunerTest : public ::testing::Test {

@@ -3,7 +3,7 @@
 #include <memory>
 #include <gameboard/piece_moves.hpp>
 #include <stdexcept>
-#include <utility_functs.hpp>
+#include <utilities/utility_functs.hpp>
 
 namespace gameboard {
 

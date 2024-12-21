@@ -1,4 +1,4 @@
-//! @file space_info_provider_interface.hpp
+//! @file interfaces/space_info_provider_interface.hpp
 //! Definition of SpaceInfoProvider CRTP interface.
 
 #pragma once

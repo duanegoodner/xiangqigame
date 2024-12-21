@@ -1,4 +1,4 @@
-//! @file move_calculator_details.hpp
+//! @file gameboard/move_calculator_details.hpp
 //! Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method
 //! from gameboard::PieceMoves.
 

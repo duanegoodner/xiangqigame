@@ -1,12 +1,12 @@
 #pragma once
 
-#include <base_evaluator_factory.hpp>
-#include <base_move_evaluator.hpp>
+#include <interfaces/base_evaluator_factory.hpp>
+#include <interfaces/base_move_evaluator.hpp>
 #include <gameboard/game_piece.hpp>
 #include <memory>
 #include <gameboard/move_data_structs.hpp>
 #include <random>
-#include <utility_functs.hpp>
+#include <utilities/utility_functs.hpp>
 
 //! @todo Consider giving RandomMoveEvaluatorForConcepts its own random generator that
 //! gets used during each call to SelectMove.

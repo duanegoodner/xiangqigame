@@ -1,4 +1,4 @@
-//! @file piece_value_provider_interface.hpp
+//! @file interfaces/piece_value_provider_interface.hpp
 //! Definition of PieceValueProvider CRTP interface.
 
 #pragma once

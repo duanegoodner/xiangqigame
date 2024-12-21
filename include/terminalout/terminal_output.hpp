@@ -1,7 +1,7 @@
 #pragma once
 
 #include <game/game_data_structs.hpp>
-#include <interface_game_reporter.hpp>
+#include <interfaces/interface_game_reporter.hpp>
 #include <iostream>
 #include <memory>
 #include <optional>

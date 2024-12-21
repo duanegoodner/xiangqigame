@@ -4,9 +4,9 @@
 #pragma once
 
 #include <gameboard/board_data_structs.hpp>
-// #include <board_state_summarizer_interface.hpp>
+// #include <interfaces/board_state_summarizer_interface.hpp>
 #include <chrono>
-#include <integer_types.hpp>
+#include <utilities/integer_types.hpp>
 #include <map>
 #include <gameboard/move_data_structs.hpp>
 #include <piecepoints/base_position_offset.hpp>

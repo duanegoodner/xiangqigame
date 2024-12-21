@@ -1,20 +1,20 @@
 #pragma once
 
-#include <base_evaluator_factory.hpp>
-#include <base_move_evaluator.hpp>
-#include <base_space_info_provider.hpp>
+#include <interfaces/base_evaluator_factory.hpp>
+#include <interfaces/base_move_evaluator.hpp>
+#include <interfaces/base_space_info_provider.hpp>
 #include <builders.hpp>
 #include <concepts/composite_concepts.hpp>
 #include <concepts/move_evaluator.hpp>
 #include <game/game.hpp>
 #include <gameboard/game_board_for_concepts.hpp>
 #include <game/game_data_structs.hpp>
-#include <interface_game_reporter.hpp>
+#include <interfaces/interface_game_reporter.hpp>
 #include <memory>
 #include <moveselection/move_evaluator_human_for_concepts.hpp>
 #include <moveselection/move_evaluator_minimax_for_concepts.hpp>
 #include <moveselection/move_evaluator_random_for_concepts.hpp>
-#include <terminal_output.hpp>
+#include <terminalout/terminal_output.hpp>
 #include <unordered_map>
 
 namespace game {

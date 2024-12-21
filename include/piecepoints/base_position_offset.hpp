@@ -3,14 +3,14 @@
 
 #pragma once
 
-#include <json_utility_interface.hpp>
+#include <jsonio/json_utility_interface.hpp>
 #include <memory>
-#include <json_utility_nlohmann.hpp>
+#include <jsonio/json_utility_nlohmann.hpp>
 #include <piecepoints/piece_points_data_structs.hpp>
 #include <string>
 #include <typeinfo>
 #include <unordered_map>
-#include <utility_functs.hpp>
+#include <utilities/utility_functs.hpp>
 
 using namespace std;
 

@@ -4,7 +4,7 @@
 #include <piecepoints/base_position_offset.hpp>
 #include <piecepoints/piece_position_points.hpp>
 #include <unordered_map>
-#include <utility_functs.hpp>
+#include <utilities/utility_functs.hpp>
 
 using namespace std;
 using namespace gameboard;

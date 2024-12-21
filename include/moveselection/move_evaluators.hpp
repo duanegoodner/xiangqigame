@@ -10,15 +10,15 @@
 #include <array>
 #include <atomic>
 #include <gameboard/board_data_structs.hpp>
-#include <board_state_summarizer_interface.hpp>
+#include <interfaces/board_state_summarizer_interface.hpp>
 #include <moveselection/evaluator_data_structs.hpp>
 #include <functional>
 #include <limits>
-#include <move_evaluator_interface.hpp>
-#include <piece_value_provider_interface.hpp>
-#include <space_info_provider_interface.hpp>
+#include <interfaces/move_evaluator_interface.hpp>
+#include <interfaces/piece_value_provider_interface.hpp>
+#include <interfaces/space_info_provider_interface.hpp>
 #include <unordered_map>
-#include <utility_functs.hpp>
+#include <utilities/utility_functs.hpp>
 
 using namespace gameboard;
 

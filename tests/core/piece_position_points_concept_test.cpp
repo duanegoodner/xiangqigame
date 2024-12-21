@@ -5,7 +5,7 @@
 #include <piecepoints/piece_position_points_for_concepts.hpp>
 // #include <shared_ptr_builder_tests.hpp>
 #include <type_traits>
-#include <utility_functs.hpp>
+#include <utilities/utility_functs.hpp>
 
 
 class PiecePositionPointsForConceptsTest : public ::testing::Test {

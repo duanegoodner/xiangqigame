@@ -1,7 +1,7 @@
 #pragma once
 
-#include <base_evaluator_factory.hpp>
-#include <base_move_evaluator.hpp>
+#include <interfaces/base_evaluator_factory.hpp>
+#include <interfaces/base_move_evaluator.hpp>
 #include <gameboard/game_piece.hpp>
 #include <iostream>
 #include <memory>

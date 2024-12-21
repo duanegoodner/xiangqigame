@@ -6,7 +6,7 @@
 #include <array>
 #include <cassert>
 #include <gameboard/game_piece.hpp>
-#include <integer_types.hpp>
+#include <utilities/integer_types.hpp>
 #include <random>
 #include <vector>
 

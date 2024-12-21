@@ -1,14 +1,14 @@
 #pragma once
 
-#include <base_move_evaluator.hpp>
-#include <base_space_info_provider.hpp>
+#include <interfaces/base_move_evaluator.hpp>
+#include <interfaces/base_space_info_provider.hpp>
 #include <gameboard/board_data_structs.hpp>
 #include <concepts/board_state_coordinator.hpp>
 #include <concepts/composite_concepts.hpp>
 #include <concepts/move_evaluator.hpp>
 #include <game/game_data_structs.hpp>
 #include <gameboard/game_piece.hpp>
-#include <interface_game_reporter.hpp>
+#include <interfaces/interface_game_reporter.hpp>
 #include <memory>
 #include <string>
 #include <unordered_map>

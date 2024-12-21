@@ -5,7 +5,7 @@
 
 #include <gameboard/board_data_structs.hpp>
 #include <gameboard/game_piece.hpp>
-#include <integer_types.hpp>
+#include <utilities/integer_types.hpp>
 #include <string>
 #include <unordered_map>
 

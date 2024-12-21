@@ -1,6 +1,6 @@
 #pragma once
 
-#include <base_space_info_provider.hpp>
+#include <interfaces/base_space_info_provider.hpp>
 #include <gameboard/board_data_structs.hpp>
 #include <concepts/board_state_calculator.hpp>
 #include <functional>

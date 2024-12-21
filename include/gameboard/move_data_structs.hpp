@@ -5,7 +5,7 @@
 
 #include <gameboard/board_data_structs.hpp>
 #include <gameboard/game_piece.hpp>
-#include <utility_functs.hpp>
+#include <utilities/utility_functs.hpp>
 
 using namespace gameboard;
 

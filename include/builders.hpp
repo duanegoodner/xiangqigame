@@ -1,7 +1,7 @@
 #pragma once
 
 #include <array>
-#include <base_evaluator_factory.hpp>
+#include <interfaces/base_evaluator_factory.hpp>
 #include <concepts/board_state_calculator_registry.hpp>
 #include <concepts/composite_concepts.hpp>
 #include <concepts/single_board_state_provider.hpp>

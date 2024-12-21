@@ -1,4 +1,4 @@
-//! @file move_evaluator_interface.hpp
+//! @file interfaces/move_evaluator_interface.hpp
 //! Definition of MoveEvaluator interface.
 
 #pragma once

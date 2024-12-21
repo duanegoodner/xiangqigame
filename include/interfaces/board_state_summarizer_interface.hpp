@@ -1,10 +1,10 @@
-//! @file board_state_summarizer_interface.hpp
+//! @file interfaces/board_state_summarizer_interface.hpp
 //! Definition of BoardStateCoordinator
 
 #pragma once
 
 #include <moveselection/evaluator_data_structs.hpp>
-#include <integer_types.hpp>
+#include <utilities/integer_types.hpp>
 
 using namespace gameboard;
 

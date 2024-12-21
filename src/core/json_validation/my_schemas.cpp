@@ -5,10 +5,10 @@
 #include <iomanip>
 #include <iostream>
 #include <nlohmann/json-schema.hpp>
-#include <json_validation.hpp>
+#include <jsonvalidation/json_validation.hpp>
 #include <string>
-#include <json_utility_interface.hpp>
-#include <json_utility_nlohmann.hpp>
+#include <jsonio/json_utility_interface.hpp>
+#include <jsonio/json_utility_nlohmann.hpp>
 
 using nlohmann::json;
 using nlohmann::json_schema::json_validator;

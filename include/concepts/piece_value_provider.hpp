@@ -3,7 +3,7 @@
 #include <gameboard/board_data_structs.hpp>
 #include <concepts>
 #include <gameboard/game_piece.hpp>
-#include <integer_types.hpp>
+#include <utilities/integer_types.hpp>
 #include <string>
 
 template <typename T>

@@ -5,7 +5,7 @@
 
 #include <any>
 #include <gameboard/board_data_structs.hpp>
-#include <move_calculator_details.hpp>
+#include <gameboard/move_calculator_details.hpp>
 #include <gameboard/piece_moves.hpp>
 
 using namespace std;

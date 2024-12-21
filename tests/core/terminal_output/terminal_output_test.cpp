@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include <memory>
 #include <movetranslation/move_translator.hpp>
-#include <terminal_output.hpp>
+#include <terminalout/terminal_output.hpp>
 
 class PlayerReporterTest : public ::testing::Test {
 protected:

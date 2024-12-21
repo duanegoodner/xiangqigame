@@ -1,4 +1,4 @@
-//! @file json_utility_interface.hpp
+//! @file jsonio/json_utility_interface.hpp
 //! Definition of JsonUtility CRTP interface.
 
 #pragma once

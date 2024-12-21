@@ -3,7 +3,7 @@
 #include <concepts>
 #include <gameboard/board_data_structs.hpp>
 #include <moveselection/evaluator_data_structs.hpp>
-#include <integer_types.hpp>
+#include <utilities/integer_types.hpp>
 #include <memory>
 #include <gameboard/move_data_structs.hpp>
 

@@ -1,4 +1,4 @@
-//! @file utility_functs.hpp
+//! @file utilities/utility_functs.hpp
 //! Defiition of miscellaneous free functions (and implementation of those that are templates).  
 
 #pragma once

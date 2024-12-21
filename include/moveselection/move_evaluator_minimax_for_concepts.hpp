@@ -6,7 +6,7 @@
 
 #include <array>
 #include <atomic>
-#include <base_move_evaluator.hpp>
+#include <interfaces/base_move_evaluator.hpp>
 #include <gameboard/board_data_structs.hpp>
 #include <moveselection/evaluator_data_structs.hpp>
 #include <functional>

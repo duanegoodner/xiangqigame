@@ -2,7 +2,7 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include <piecepoints/base_position_offset.hpp>
-#include <utility_functs.hpp>
+#include <utilities/utility_functs.hpp>
 
 using namespace gameboard;
 using namespace piecepoints;
