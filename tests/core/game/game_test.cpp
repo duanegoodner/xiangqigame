@@ -1,7 +1,7 @@
 #include <interfaces/base_evaluator_factory.hpp>
 #include <interfaces/base_move_evaluator.hpp>
 #include <interfaces/base_space_info_provider.hpp>
-#include <builders.hpp>
+#include <boardstate/zobrist_factories.hpp>
 #include <game/game.hpp>
 #include <gameboard/game_board_for_concepts.hpp>
 #include <game/game_factory.hpp>
@@ -11,6 +11,7 @@
 #include <interfaces/interface_game_reporter.hpp>
 #include <iostream>
 #include <memory>
+#include <moveselection/minimax_evaluator_factory.hpp>
 #include <moveselection/move_evaluator_human_for_concepts.hpp>
 #include <moveselection/move_evaluator_minimax_for_concepts.hpp>
 #include <moveselection/move_evaluator_random_for_concepts.hpp>

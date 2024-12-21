@@ -7,7 +7,8 @@
 #include <pybind11/stl.h>
 
 #include <gameboard/board_data_structs.hpp>
-#include <builders.hpp>
+#include <boardstate/zobrist_factories.hpp>
+#include <moveselection/minimax_evaluator_factory.hpp>
 #include <concepts/board_state_coordinator.hpp>
 #include <concepts/piece_value_provider.hpp>
 #include <concepts/space_info_provider.hpp>

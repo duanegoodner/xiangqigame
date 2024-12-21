@@ -1,6 +1,6 @@
 #include <gameboard/board_data_structs.hpp>
 #include <board_map_fixture.hpp>
-#include <builders.hpp>
+#include <boardstate/zobrist_factories.hpp>
 #include <concepts/board_state_calculator.hpp>
 #include <concepts/composite_concepts.hpp>
 #include <concepts/single_board_state_provider.hpp>
