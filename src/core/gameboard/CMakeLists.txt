@@ -1,9 +1,9 @@
 
 add_library(
-    game_board gameboard.cpp)
+    gameboard gameboard.cpp)
 
 target_link_libraries(
-    game_board PUBLIC
+    gameboard PUBLIC
     move_calculator
     minimax_evaluator
     piece_moves
