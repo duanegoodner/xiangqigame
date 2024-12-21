@@ -1,6 +1,3 @@
-//! @file move_evaluators.hpp
-//! Definitions of concrete classes that implement the MoveEvaluator interface.
-
 #pragma once
 
 #include <concepts/board_state_coordinator.hpp>
@@ -9,24 +6,20 @@
 
 #include <array>
 #include <atomic>
+#include <base_move_evaluator.hpp>
 #include <gameboard/board_data_structs.hpp>
-#include <board_state_summarizer_interface.hpp>
-#include <evaluator_data_structs.hpp>
+#include <moveselection/evaluator_data_structs.hpp>
 #include <functional>
 #include <limits>
-#include <move_evaluator_interface.hpp>
-#include <piece_value_provider_interface.hpp>
-#include <space_info_provider_interface.hpp>
+#include <memory>
+#include <optional>
 #include <unordered_map>
-#include <utility_functs.hpp>
 
 using namespace gameboard;
 
-//! Selecting a move to execute.
 namespace moveselection {
 
-//! Free functions used by moveselection::MinimaxMoveEvaluator.
-namespace minimaxutils {
+namespace minimaxutils_forconcepts {
 bool ValidateMove(SearchSummary &search_summary, const MoveCollection &allowed_moves);
 
 inline void UpdateAlpha(Points_t &alpha, Points_t cur_eval) {
@@ -58,28 +51,35 @@ inline bool IsPrunableForEvaluatorOpponent(
   }
   return is_prunable;
 }
-
-} // namespace minimaxutils
+} // namespace minimaxutils_forconcepts
 
 //! Sorts moves based on points changed induce by single move; used by
 //! MinimaxMoveEvaluator for pre-sorting to increase likelihood of alpha/beta pruning
-//! during recursive search.
-template <typename ConcreteSpaceInfoProvider, typename ConcretePieceValueProvider>
-class PreSearchMoveSorter {
+//! during recursive search; uses SpaceInfoProviderConcept and PieceValueProviderConcept.
+template <SpaceInfoProviderConcept G, PieceValueProviderConcept P>
+class PreSearchMoveSorterForConcepts {
+private:
+  //   SpaceInfoProviderConcept &game_board_;
+  //   PieceValueProviderConcept &game_position_points_;
+  std::shared_ptr<G> game_board_;
+  std::shared_ptr<P> game_position_points_;
+
 public:
-  PreSearchMoveSorter(
-      ConcreteSpaceInfoProvider &game_board,
-      ConcretePieceValueProvider &game_position_points
+  PreSearchMoveSorterForConcepts(
+      //   SpaceInfoProviderConcept &game_board,
+      //   PieceValueProviderConcept &game_position_points
+      std::shared_ptr<G> game_board,
+      std::shared_ptr<P> game_position_points
   )
       : game_board_{game_board}
       , game_position_points_{game_position_points} {}
 
   ScoredMove RateMove(Move move, PieceColor cur_player) {
-    auto piece_type = game_board_.GetType(move.start);
+    auto piece_type = game_board_->GetType(move.start);
 
     auto end_points = game_position_points_
-                          .GetValueOfPieceAtPosition(cur_player, piece_type, move.end);
-    auto start_points = game_position_points_.GetValueOfPieceAtPosition(
+                          ->GetValueOfPieceAtPosition(cur_player, piece_type, move.end);
+    auto start_points = game_position_points_->GetValueOfPieceAtPosition(
         cur_player,
         piece_type,
         move.start
@@ -88,9 +88,9 @@ public:
 
     Points_t capture_val;
 
-    if (game_board_.GetColor(move.end) == opponent_of(cur_player)) {
-      auto captured_piece_type = game_board_.GetType(move.end);
-      capture_val = game_position_points_.GetValueOfPieceAtPosition(
+    if (game_board_->GetColor(move.end) == opponent_of(cur_player)) {
+      auto captured_piece_type = game_board_->GetType(move.end);
+      capture_val = game_position_points_->GetValueOfPieceAtPosition(
           opponent_of(cur_player),
           captured_piece_type,
           move.end
@@ -120,64 +120,34 @@ public:
     );
     return rated_moves;
   }
-
-private:
-  ConcreteSpaceInfoProvider &game_board_;
-  ConcretePieceValueProvider &game_position_points_;
 };
 
-//! Implements MoveEvaluator interface, and selects move::Move using Minimax
-//! algorithm; uses SpaceInfoProvider, BoardStateCoordinator, and PieceValueProvider
-//! interfaces.
+//! Complies with MoveEvaluatorConcept, and selects move::Move using Minimax
+//! algorithm; uses SpaceInfoProviderConcept, BoardStateCoordinatorConcept, and
+//! PieceValueProviderConcept interfaces.
 template <
-    typename ConcreteSpaceInfoProvider,
-    typename ConcreteBoardStateCoordinator,
-    typename ConcretePieceValueProvider>
-class MinimaxMoveEvaluator : public MoveEvaluator<MinimaxMoveEvaluator<
-                                 ConcreteSpaceInfoProvider,
-                                 ConcreteBoardStateCoordinator,
-                                 ConcretePieceValueProvider>> {
+    BoardStateCoordinatorConcept H,
+    SpaceInfoProviderConcept G,
+    PieceValueProviderConcept P>
+class MinimaxMoveEvaluatorForConcepts : public MoveEvaluatorBase {
 
   PieceColor evaluating_player_;
-  ConcretePieceValueProvider game_position_points_;
-  ConcreteBoardStateCoordinator hash_calculator_;
-  ConcreteSpaceInfoProvider &game_board_;
+  std::shared_ptr<P> game_position_points_;
+  std::shared_ptr<H> hash_calculator_;
+  std::shared_ptr<G> game_board_;
   MoveCountType num_move_selections_;
   DepthType search_depth_;
   moveselection::SearchSummaries search_summaries_;
-  PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
-      move_sorter_;
+  PreSearchMoveSorterForConcepts<G, P> move_sorter_;
   std::atomic<bool> game_over_;
 
 public:
-  explicit MinimaxMoveEvaluator(
+  explicit MinimaxMoveEvaluatorForConcepts(
       PieceColor evaluating_player,
       DepthType search_depth,
-      ConcreteSpaceInfoProvider &game_board,
-      uint32_t zkey_seed = std::random_device{}(),
-      const ConcretePieceValueProvider &game_position_points =
-          ConcretePieceValueProvider()
-  )
-      : evaluating_player_{evaluating_player}
-      , search_depth_{search_depth}
-      , game_board_{game_board}
-      , game_position_points_{game_position_points}
-      , hash_calculator_{ConcreteBoardStateCoordinator{zkey_seed}}
-      , num_move_selections_{0}
-      , search_summaries_{}
-      , move_sorter_{PreSearchMoveSorter{game_board_, game_position_points_}}
-      , game_over_{false} {
-    initialize_hash_calculator();
-  }
-
-  explicit MinimaxMoveEvaluator(
-      PieceColor evaluating_player,
-      DepthType search_depth,
-      ConcreteSpaceInfoProvider &game_board,
-      const ConcretePieceValueProvider &game_position_points,
-      ConcreteBoardStateCoordinator &hash_calculator,
-      PreSearchMoveSorter<ConcreteSpaceInfoProvider, ConcretePieceValueProvider>
-          &move_sorter
+      std::shared_ptr<G> game_board,
+      std::shared_ptr<P> game_position_points,
+      std::shared_ptr<H> hash_calculator
   )
       : evaluating_player_{evaluating_player}
       , search_depth_{search_depth}
@@ -186,51 +156,50 @@ public:
       , hash_calculator_{hash_calculator}
       , num_move_selections_{0}
       , search_summaries_{}
-      , move_sorter_{move_sorter}
+      , move_sorter_{game_board_, game_position_points_}
       , game_over_{false} {
-    initialize_hash_calculator();
+    // initialize_hash_calculator();
   }
 
-  Move ImplementSelectMove(MoveCollection &allowed_moves) {
+  using KeyType = typename H::KeyType;
+
+  void NotifyIllegalMove() {
+    throw std::runtime_error("MinimaxMoveEvaluator selected an illegal move");
+  }
+
+  Move SelectMove(const MoveCollection &allowed_moves) {
 
     auto final_selected_move = SelectValidMove(allowed_moves);
     IncrementNumMoveSelections();
     return final_selected_move;
   }
 
-  inline const moveselection::SearchSummaries &search_summaries() {
+  inline const std::optional<moveselection::SearchSummaries> search_summaries(
+  ) const override {
     return search_summaries_;
   }
 
   inline DepthType search_depth() { return search_depth_; }
 
-  inline size_t KeySizeBits() {
-    return 8 * sizeof(typename ConcreteBoardStateCoordinator::ZobristKey_t);
-  }
+  inline size_t KeySizeBits() { return 8 * sizeof(KeyType); }
 
-  const ConcreteBoardStateCoordinator &hash_calculator() const {
-    return hash_calculator_;
-  }
+  const H &hash_calculator() const { return hash_calculator_; }
 
-  const uint32_t zkeys_seed() { return hash_calculator_.zkeys_seed(); }
+  const uint32_t zkeys_seed() { return hash_calculator_->zkeys_seed(); }
 
-  const std::string board_state_hex_str() {
-    return hash_calculator_.board_state_hex_str();
-  }
+  // const std::string board_state_hex_str() {
+  //   return hash_calculator_->board_state_hex_str();
+  // }
 
 private:
-  void initialize_hash_calculator() {
-    game_board_.AttachMoveCallback(std::bind(
-        &ConcreteBoardStateCoordinator::UpdateBoardState,
-        &hash_calculator_,
-        std::placeholders::_1
-    ));
-    hash_calculator_.FullBoardStateCalc(game_board_.map());
-  }
+  // void initialize_hash_calculator() {
+  //   game_board_->AttachMoveCallback(hash_calculator_.UpdateBoardState);
+  //   hash_calculator_->FullBoardStateCalc(game_board_->map());
+  // }
 
   Move SelectValidMove(const MoveCollection &allowed_moves) {
     auto &first_search_summary = RunFirstSearch(allowed_moves);
-    if (minimaxutils::ValidateMove(first_search_summary, allowed_moves)) {
+    if (minimaxutils_forconcepts::ValidateMove(first_search_summary, allowed_moves)) {
       return first_search_summary.selected_move();
     }
     return RunSecondSearch(allowed_moves).selected_move();
@@ -238,10 +207,10 @@ private:
 
   Points_t GetPlayerTotal(PieceColor color) {
     Points_t pre_attack_total = 0;
-    for (auto space : game_board_.GetAllSpacesOccupiedBy(color)) {
-      auto piece_type = game_board_.GetType(space);
+    for (auto space : game_board_->GetAllSpacesOccupiedBy(color)) {
+      auto piece_type = game_board_->GetType(space);
       pre_attack_total +=
-          game_position_points_.GetValueOfPieceAtPosition(color, piece_type, space);
+          game_position_points_->GetValueOfPieceAtPosition(color, piece_type, space);
     }
     return pre_attack_total;
   }
@@ -249,7 +218,7 @@ private:
   SearchSummary &RunFirstSearch(const MoveCollection &allowed_moves) {
     auto &first_search_summary = search_summaries_.NewFirstSearch(
         search_depth_,
-        hash_calculator_.GetTrTableSize()
+        hash_calculator_->GetTrTableSize()
     );
     GetMinimaxMoveAndStats(allowed_moves, first_search_summary);
 
@@ -260,7 +229,7 @@ private:
     auto &second_search_summary = search_summaries_.NewExtraSearch(
         search_depth_,
         num_move_selections_,
-        hash_calculator_.GetTrTableSize()
+        hash_calculator_->GetTrTableSize()
     );
     GetMinimaxMoveAndStats(allowed_moves, second_search_summary, false);
 
@@ -269,7 +238,7 @@ private:
 
   inline void IncrementNumMoveSelections() {
     num_move_selections_++;
-    hash_calculator_.UpdateMoveCounter();
+    hash_calculator_->UpdateMoveCounter();
   }
 
   EqualScoreMoves HandleTrTableHit(
@@ -289,7 +258,7 @@ private:
   ) {
     auto empty_best_moves = MoveCollection();
 
-    if (game_board_.IsDraw()) {
+    if (game_board_->IsDraw()) {
       result_type = MinimaxResultType::kDraw;
       return EqualScoreMoves{0, empty_best_moves};
     }
@@ -311,7 +280,7 @@ private:
   ) {
     auto result = EvaluateEndOfGameLeaf(cur_player, result_type);
     hash_calculator_
-        .RecordTrData(search_depth, result_type, result, num_move_selections_);
+        ->RecordTrData(search_depth, result_type, result, num_move_selections_);
     search_summary.RecordNodeInfo(result_type, search_depth, result);
     return result;
   }
@@ -348,7 +317,7 @@ private:
   ) {
     auto result = EvaluateNonWinLeaf(cur_player, result_type);
     hash_calculator_
-        .RecordTrData(search_depth, result_type, result, num_move_selections_);
+        ->RecordTrData(search_depth, result_type, result, num_move_selections_);
     search_summary.RecordNodeInfo(result_type, search_depth, result);
 
     return result;
@@ -398,7 +367,7 @@ private:
     }
     EqualScoreMoves result{best_eval, best_moves};
     hash_calculator_
-        .RecordTrData(search_depth, result_type, result, num_move_selections_);
+        ->RecordTrData(search_depth, result_type, result, num_move_selections_);
     search_summary.RecordNodeInfo(result_type, search_depth, result);
     return result;
   }
@@ -410,9 +379,13 @@ private:
       PieceColor cur_player
   ) {
     if (cur_player == evaluating_player_) {
-      return minimaxutils::IsPrunableForEvaluator(alpha, beta, result_type);
+      return minimaxutils_forconcepts::IsPrunableForEvaluator(alpha, beta, result_type);
     } else {
-      return minimaxutils::IsPrunableForEvaluatorOpponent(alpha, beta, result_type);
+      return minimaxutils_forconcepts::IsPrunableForEvaluatorOpponent(
+          alpha,
+          beta,
+          result_type
+      );
     }
   }
 
@@ -426,8 +399,8 @@ private:
       SearchSummary &search_summary,
       bool use_transposition_table
   ) {
-    auto executed_move = game_board_.ExecuteMove(move);
-    auto new_allowed_moves = game_board_.CalcFinalMovesOf(opponent_of(cur_player));
+    auto executed_move = game_board_->ExecuteMove(move);
+    auto new_allowed_moves = game_board_->CalcFinalMovesOf(opponent_of(cur_player));
     auto cur_eval = MinimaxRecursive(
                         new_allowed_moves,
                         search_depth - 1,
@@ -438,7 +411,7 @@ private:
                         use_transposition_table
     )
                         .shared_score;
-    game_board_.UndoMove(executed_move);
+    game_board_->UndoMove(executed_move);
     return cur_eval;
   }
 
@@ -457,9 +430,9 @@ private:
       PieceColor cur_player
   ) {
     if (cur_player == evaluating_player_) {
-      minimaxutils::UpdateAlpha(alpha, cur_eval);
+      minimaxutils_forconcepts::UpdateAlpha(alpha, cur_eval);
     } else {
-      minimaxutils::UpdateBeta(beta, cur_eval);
+      minimaxutils_forconcepts::UpdateBeta(beta, cur_eval);
     }
   }
 
@@ -522,7 +495,7 @@ private:
     // (unless this is a second search in which case we don't use transposition table)
     if (use_transposition_table) {
       auto tr_table_search_result =
-          hash_calculator_.GetTrData(search_depth, num_move_selections_);
+          hash_calculator_->GetTrData(search_depth, num_move_selections_);
       if (tr_table_search_result.found() &&
           tr_table_search_result.IsConsistentWith(allowed_moves)) {
         return HandleTrTableHit(
@@ -589,32 +562,8 @@ private:
         RunTimedMinimax(allowed_moves, search_summary, use_transposition_table);
     auto selected_move = minimax_result.move_collection().SelectRandom();
     search_summary.SetSelectedMove(selected_move);
-    search_summary.set_tr_table_size_final(hash_calculator_.GetTrTableSize());
+    search_summary.set_tr_table_size_final(hash_calculator_->GetTrTableSize());
   }
-};
-
-//! Implements gameboard::MoveEvaluator interface. Randomly chooses one of legal moves
-//! available to moveselection::RandomMoveEvaluator.evaluating_player_.
-template <typename ConcreteSpaceInfoProvider>
-class RandomMoveEvaluator
-    : public MoveEvaluator<RandomMoveEvaluator<ConcreteSpaceInfoProvider>> {
-public:
-  RandomMoveEvaluator(
-      PieceColor evaluating_player,
-      ConcreteSpaceInfoProvider &game_board
-  )
-      : evaluating_player_{evaluating_player}
-      , game_board_{game_board} {}
-
-  Move ImplementSelectMove(MoveCollection &allowed_moves) {
-    auto selected_move_index =
-        utility_functs::random((size_t)0, allowed_moves.moves.size() - 1);
-    return allowed_moves.moves[selected_move_index];
-  }
-
-private:
-  PieceColor evaluating_player_;
-  ConcreteSpaceInfoProvider &game_board_;
 };
 
 } // namespace moveselection

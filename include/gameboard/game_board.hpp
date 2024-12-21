@@ -6,7 +6,7 @@
 #include <gameboard/board_data_structs.hpp>
 #include <functional>
 #include <gameboard/move_calculator.hpp>
-#include <move_evaluators.hpp>
+#include <moveselection/move_evaluators.hpp>
 #include <vector>
 
 using namespace std;

@@ -11,9 +11,9 @@
 #include <interface_game_reporter.hpp>
 #include <iostream>
 #include <memory>
-#include <move_evaluator_human_for_concepts.hpp>
-#include <move_evaluator_minimax_for_concepts.hpp>
-#include <move_evaluator_random_for_concepts.hpp>
+#include <moveselection/move_evaluator_human_for_concepts.hpp>
+#include <moveselection/move_evaluator_minimax_for_concepts.hpp>
+#include <moveselection/move_evaluator_random_for_concepts.hpp>
 #include <optional>
 #include <piecepoints/piece_position_points_for_concepts.hpp>
 #include <terminal_output.hpp>

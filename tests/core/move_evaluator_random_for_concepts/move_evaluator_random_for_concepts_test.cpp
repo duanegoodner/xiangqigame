@@ -2,7 +2,7 @@
 #include <gameboard/game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <gameboard/move_data_structs.hpp>
-#include <move_evaluator_random_for_concepts.hpp>
+#include <moveselection/move_evaluator_random_for_concepts.hpp>
 
 class RandomEvaluatorConceptTest : public ::testing::Test {
 protected:

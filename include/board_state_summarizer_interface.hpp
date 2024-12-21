@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <evaluator_data_structs.hpp>
+#include <moveselection/evaluator_data_structs.hpp>
 #include <integer_types.hpp>
 
 using namespace gameboard;

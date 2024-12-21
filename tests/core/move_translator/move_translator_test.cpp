@@ -1,6 +1,6 @@
 #include <gameboard/board_data_structs.hpp>
 #include <gtest/gtest.h>
-#include <move_translator.hpp>
+#include <movetranslation/move_translator.hpp>
 #include <ranges>
 #include <sstream>
 

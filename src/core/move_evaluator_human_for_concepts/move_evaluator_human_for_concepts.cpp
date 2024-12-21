@@ -1,8 +1,8 @@
 
 #include <iostream>
 #include <memory>
-#include <move_evaluator_human_for_concepts.hpp>
-#include <move_translator.hpp>
+#include <moveselection/move_evaluator_human_for_concepts.hpp>
+#include <movetranslation/move_translator.hpp>
 
 namespace moveselection {
 

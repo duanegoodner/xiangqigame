@@ -1,5 +1,5 @@
 #include <gameboard/board_data_structs.hpp>
-#include <move_translator.hpp>
+#include <movetranslation/move_translator.hpp>
 #include <regex>
 #include <sstream>
 #include <string>

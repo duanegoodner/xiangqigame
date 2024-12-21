@@ -11,9 +11,9 @@
 #include <game/game_data_structs.hpp>
 #include <interface_game_reporter.hpp>
 #include <memory>
-#include <move_evaluator_human_for_concepts.hpp>
-#include <move_evaluator_minimax_for_concepts.hpp>
-#include <move_evaluator_random_for_concepts.hpp>
+#include <moveselection/move_evaluator_human_for_concepts.hpp>
+#include <moveselection/move_evaluator_minimax_for_concepts.hpp>
+#include <moveselection/move_evaluator_random_for_concepts.hpp>
 #include <terminal_output.hpp>
 #include <unordered_map>
 

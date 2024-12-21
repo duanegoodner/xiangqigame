@@ -2,7 +2,7 @@
 #include <game/game_data_structs.hpp>
 #include <gtest/gtest.h>
 #include <memory>
-#include <move_translator.hpp>
+#include <movetranslation/move_translator.hpp>
 #include <terminal_output.hpp>
 
 class PlayerReporterTest : public ::testing::Test {

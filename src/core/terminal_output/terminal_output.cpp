@@ -1,7 +1,7 @@
 #include <cstdlib>
 #include <gameboard/game_board_for_concepts.hpp>
 #include <gameboard/game_piece.hpp>
-#include <move_translator.hpp>
+#include <movetranslation/move_translator.hpp>
 #include <terminal_output.hpp>
 
 namespace terminalout {

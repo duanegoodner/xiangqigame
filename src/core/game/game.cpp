@@ -2,7 +2,7 @@
 #include <game/game.hpp>
 #include <gameboard/game_board_for_concepts.hpp>
 #include <memory>
-#include <move_evaluator_minimax_for_concepts.hpp>
+#include <moveselection/move_evaluator_minimax_for_concepts.hpp>
 #include <sstream>
 
 namespace game {

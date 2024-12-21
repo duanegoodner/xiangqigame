@@ -6,7 +6,7 @@
 #include <chrono>
 #include <concepts/multi_board_state_provider.hpp>
 #include <concepts/single_board_state_provider.hpp>
-#include <evaluator_data_structs.hpp>
+#include <moveselection/evaluator_data_structs.hpp>
 #include <boardstate/key_generator.hpp>
 #include <memory>
 #include <gameboard/move_data_structs.hpp>

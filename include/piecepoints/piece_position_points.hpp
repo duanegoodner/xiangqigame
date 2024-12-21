@@ -4,7 +4,7 @@
 #pragma once
 
 #include <gameboard/board_data_structs.hpp>
-#include <move_evaluators.hpp>
+#include <moveselection/move_evaluators.hpp>
 #include <piecepoints/base_position_offset.hpp>
 
 using namespace gameboard;

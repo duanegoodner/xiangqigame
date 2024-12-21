@@ -14,9 +14,9 @@
 #include <gameboard/game_board.hpp>
 #include <gameboard/game_board_for_concepts.hpp>
 #include <integer_types.hpp>
-#include <move_evaluator_random_for_concepts.hpp>
-#include <move_evaluators.hpp>
-#include <move_evaluator_minimax_for_concepts.hpp>
+#include <moveselection/move_evaluator_random_for_concepts.hpp>
+#include <moveselection/move_evaluators.hpp>
+#include <moveselection/move_evaluator_minimax_for_concepts.hpp>
 #include <piecepoints/base_position_offset.hpp>
 #include <piecepoints/piece_position_points.hpp>
 #include <piecepoints/piece_position_points_for_concepts.hpp>

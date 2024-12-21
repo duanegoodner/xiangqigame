@@ -1,6 +1,6 @@
 #pragma once
 
-#include <evaluator_data_structs.hpp>
+#include <moveselection/evaluator_data_structs.hpp>
 #include <gameboard/move_data_structs.hpp>
 #include <optional>
 
