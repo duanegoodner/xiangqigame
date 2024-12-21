@@ -4,6 +4,6 @@ add_library(
 
     target_link_libraries(
         piece_points_bpo PUBLIC
-        json_utility_nlohmann
+        jsonio
         utility_functs
     )

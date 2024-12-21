@@ -99,7 +99,7 @@ add_executable(
     transposition_table_pruner_test.cpp)
 target_link_libraries(
     transposition_table_pruner_test PRIVATE
-    json_utility_nlohmann
+    jsonio
     minimax_evaluator
     # piece_moves
     piece_position_points
@@ -144,7 +144,7 @@ add_executable(
 )
 target_link_libraries(
     json_utility_test PRIVATE
-    json_utility_nlohmann
+    jsonio
     nlohmann_json::nlohmann_json
     piece_points_bpo
     utility_functs
