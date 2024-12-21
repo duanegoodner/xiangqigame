@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <functional>
 #include <map>
 #include <memory>

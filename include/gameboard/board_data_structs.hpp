@@ -1,4 +1,4 @@
-//! @file board_data_structs.hpp
+//! @file gameboard/board_data_structs.hpp
 //! Constants, typedefs, and simple structs used by gameboard::GameBoard.
 
 #pragma once

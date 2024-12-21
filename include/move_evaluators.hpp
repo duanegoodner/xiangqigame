@@ -9,7 +9,7 @@
 
 #include <array>
 #include <atomic>
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <board_state_summarizer_interface.hpp>
 #include <evaluator_data_structs.hpp>
 #include <functional>

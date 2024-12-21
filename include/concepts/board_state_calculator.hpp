@@ -1,6 +1,6 @@
 #pragma once
 
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <concepts>
 #include <memory>
 #include <move_data_structs.hpp>

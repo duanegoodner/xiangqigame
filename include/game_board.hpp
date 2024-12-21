@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <functional>
 #include <move_calculator.hpp>
 #include <move_evaluators.hpp>

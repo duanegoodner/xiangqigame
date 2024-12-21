@@ -1,4 +1,4 @@
-//! @file piece_points_bpo.hpp
+//! @file piecepoints/base_position_offset.hpp
 //! Definitions of classes used for storing piece points in Base Points Offset form.
 
 #pragma once

@@ -1,11 +1,11 @@
-//! @file piece_position_points.hpp
+//! @file piecepoints/piece_position_points.hpp
 //! Definition of piecepoints::PiecePositionPoints.
 
 #pragma once
 
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <move_evaluators.hpp>
-#include <piece_points_bpo.hpp>
+#include <piecepoints/base_position_offset.hpp>
 
 using namespace gameboard;
 using namespace std;

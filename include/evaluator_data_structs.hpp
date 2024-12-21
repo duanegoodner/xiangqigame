@@ -3,13 +3,13 @@
 
 #pragma once
 
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 // #include <board_state_summarizer_interface.hpp>
 #include <chrono>
 #include <integer_types.hpp>
 #include <map>
 #include <move_data_structs.hpp>
-#include <piece_points_bpo.hpp>
+#include <piecepoints/base_position_offset.hpp>
 
 using namespace gameboard;
 using namespace piecepoints;

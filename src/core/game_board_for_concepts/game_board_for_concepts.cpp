@@ -1,4 +1,4 @@
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <game_board_for_concepts.hpp>
 #include <memory>
 #include <piece_moves.hpp>

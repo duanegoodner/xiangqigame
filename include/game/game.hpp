@@ -2,7 +2,7 @@
 
 #include <base_move_evaluator.hpp>
 #include <base_space_info_provider.hpp>
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <concepts/board_state_coordinator.hpp>
 #include <concepts/composite_concepts.hpp>
 #include <concepts/move_evaluator.hpp>

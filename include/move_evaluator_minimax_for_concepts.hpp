@@ -7,7 +7,7 @@
 #include <array>
 #include <atomic>
 #include <base_move_evaluator.hpp>
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <evaluator_data_structs.hpp>
 #include <functional>
 #include <limits>

@@ -1,8 +1,8 @@
 //! @file piece_position_points.cpp
 //! Implementation of piecepoints::PiecePositionPoints. 
 
-#include <piece_points_bpo.hpp>
-#include <piece_position_points.hpp>
+#include <piecepoints/base_position_offset.hpp>
+#include <piecepoints/piece_position_points.hpp>
 #include <unordered_map>
 #include <utility_functs.hpp>
 

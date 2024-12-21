@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <piece_points_bpo.hpp>
+#include <piecepoints/base_position_offset.hpp>
 #include <unordered_map>
 #include <utility_functs.hpp>
 

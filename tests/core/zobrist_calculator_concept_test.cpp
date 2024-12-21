@@ -1,4 +1,4 @@
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <board_map_fixture.hpp>
 #include <builders.hpp>
 #include <concepts/board_state_calculator.hpp>

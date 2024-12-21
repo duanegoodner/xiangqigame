@@ -4,7 +4,7 @@
 #pragma once
 
 #include <any>
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <move_calculator_details.hpp>
 #include <piece_moves.hpp>
 

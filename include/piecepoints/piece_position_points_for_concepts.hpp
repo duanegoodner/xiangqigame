@@ -1,9 +1,9 @@
 #pragma once
 
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <game_piece.hpp>
 #include <memory>
-#include <piece_points_bpo.hpp>
+#include <piecepoints/base_position_offset.hpp>
 #include <string>
 
 //! Providing position-dependent values of pieces to objects in moveselection namespace.

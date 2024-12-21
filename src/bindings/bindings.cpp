@@ -6,7 +6,7 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <builders.hpp>
 #include <concepts/board_state_coordinator.hpp>
 #include <concepts/piece_value_provider.hpp>
@@ -17,9 +17,9 @@
 #include <move_evaluator_random_for_concepts.hpp>
 #include <move_evaluators.hpp>
 #include <move_evaluator_minimax_for_concepts.hpp>
-#include <piece_points_bpo.hpp>
-#include <piece_position_points.hpp>
-#include <piece_position_points_for_concepts.hpp>
+#include <piecepoints/base_position_offset.hpp>
+#include <piecepoints/piece_position_points.hpp>
+#include <piecepoints/piece_position_points_for_concepts.hpp>
 #include <random>
 #include <string>
 #include <zobrist.hpp>

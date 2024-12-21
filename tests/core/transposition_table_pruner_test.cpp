@@ -1,7 +1,7 @@
 #include <game_board.hpp>
 #include <gtest/gtest.h>
 #include <move_evaluators.hpp>
-#include <piece_position_points.hpp>
+#include <piecepoints/piece_position_points.hpp>
 #include <utility_functs.hpp>
 #include <zobrist.hpp>
 

@@ -4,7 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <json_utility_nlohmann.hpp>
-#include <piece_points_bpo.hpp>
+#include <piecepoints/base_position_offset.hpp>
 
 using namespace std;
 

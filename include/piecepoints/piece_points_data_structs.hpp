@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <game_piece.hpp>
 #include <integer_types.hpp>
 #include <string>

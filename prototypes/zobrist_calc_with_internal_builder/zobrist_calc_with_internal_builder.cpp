@@ -1,5 +1,5 @@
 #include <array>
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <game_piece.hpp>
 #include <key_generator.hpp>
 #include <memory>

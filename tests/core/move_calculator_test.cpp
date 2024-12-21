@@ -1,4 +1,4 @@
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <game_board.hpp>
 #include <gtest/gtest.h>
 #include <move_calculator.hpp>

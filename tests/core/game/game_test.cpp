@@ -15,7 +15,7 @@
 #include <move_evaluator_minimax_for_concepts.hpp>
 #include <move_evaluator_random_for_concepts.hpp>
 #include <optional>
-#include <piece_position_points_for_concepts.hpp>
+#include <piecepoints/piece_position_points_for_concepts.hpp>
 #include <terminal_output.hpp>
 #include <unordered_map>
 #include <vector>

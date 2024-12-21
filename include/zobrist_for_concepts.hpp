@@ -2,7 +2,7 @@
 
 #include <array>
 #include <atomic>
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <chrono>
 #include <concepts/multi_board_state_provider.hpp>
 #include <concepts/single_board_state_provider.hpp>

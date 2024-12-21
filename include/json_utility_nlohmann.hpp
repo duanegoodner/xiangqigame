@@ -6,7 +6,7 @@
 #include <fstream>
 #include <json_utility_interface.hpp>
 #include <nlohmann/json.hpp>
-#include <piece_points_bpo.hpp>
+#include <piecepoints/base_position_offset.hpp>
 #include <string>
 
 //! Importing / exporting objects from / to json files. 

@@ -1,8 +1,8 @@
 #include <builders.hpp>
 #include <concepts/piece_value_provider.hpp>
 #include <gtest/gtest.h>
-#include <piece_points_bpo.hpp>
-#include <piece_position_points_for_concepts.hpp>
+#include <piecepoints/base_position_offset.hpp>
+#include <piecepoints/piece_position_points_for_concepts.hpp>
 // #include <shared_ptr_builder_tests.hpp>
 #include <type_traits>
 #include <utility_functs.hpp>
