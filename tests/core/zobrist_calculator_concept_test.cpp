@@ -5,7 +5,7 @@
 #include <concepts/composite_concepts.hpp>
 #include <concepts/single_board_state_provider.hpp>
 #include <gtest/gtest.h>
-#include <zobrist_calculator_for_concepts.hpp>
+#include <boardstate/zobrist_calculator_for_concepts.hpp>
 
 class ZobristCalculatorTestSuiteBase {
 public:

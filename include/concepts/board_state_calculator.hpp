@@ -3,7 +3,7 @@
 #include <gameboard/board_data_structs.hpp>
 #include <concepts>
 #include <memory>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 
 template <typename T>
 concept BoardStateCalculatorConcept = requires(

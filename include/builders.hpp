@@ -6,12 +6,12 @@
 #include <concepts/composite_concepts.hpp>
 #include <concepts/single_board_state_provider.hpp>
 #include <functional>
-#include <game_board_for_concepts.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
 #include <memory>
 #include <move_evaluator_minimax_for_concepts.hpp>
 #include <piecepoints/piece_position_points_for_concepts.hpp>
 #include <string>
-#include <zobrist_for_concepts.hpp>
+#include <boardstate/zobrist_for_concepts.hpp>
 
 // namespace gameboard {
 

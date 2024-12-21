@@ -3,9 +3,9 @@
 #include <base_space_info_provider.hpp>
 #include <builders.hpp>
 #include <game/game.hpp>
-#include <game_board_for_concepts.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
 #include <game/game_factory.hpp>
-#include <game_piece.hpp>
+#include <gameboard/game_piece.hpp>
 #include <gtest/gtest.h>
 #include <integer_types.hpp>
 #include <interface_game_reporter.hpp>
@@ -19,7 +19,7 @@
 #include <terminal_output.hpp>
 #include <unordered_map>
 #include <vector>
-#include <zobrist_for_concepts.hpp>
+#include <boardstate/zobrist_for_concepts.hpp>
 
 class GameTest : public ::testing::Test {
 protected:

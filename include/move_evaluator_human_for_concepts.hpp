@@ -2,10 +2,10 @@
 
 #include <base_evaluator_factory.hpp>
 #include <base_move_evaluator.hpp>
-#include <game_piece.hpp>
+#include <gameboard/game_piece.hpp>
 #include <iostream>
 #include <memory>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <string>
 
 namespace humanplayerio {

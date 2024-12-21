@@ -1,7 +1,7 @@
 //! @file piece_moves.cpp
 //! Implements all methods and some supporting constants for PieceMoves class.
 
-#include <piece_moves.hpp>
+#include <gameboard/piece_moves.hpp>
 
 namespace gameboard {
 

@@ -1,10 +1,10 @@
-//! @file move_data_structs.hpp
+//! @file gameboard/move_data_structs.hpp
 //! Definitions and implementations of gameboard::Move and other move-related structs.
 
 #pragma once
 
 #include <gameboard/board_data_structs.hpp>
-#include <game_piece.hpp>
+#include <gameboard/game_piece.hpp>
 #include <utility_functs.hpp>
 
 using namespace gameboard;

@@ -1,4 +1,4 @@
-//! @file game_piece.hpp
+//! @file gameboard/game_piece.hpp
 //! Defines GamePiece and supporting constants and free functions.
 
 #pragma once

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <gameboard/board_data_structs.hpp>
-#include <game_piece.hpp>
+#include <gameboard/game_piece.hpp>
 #include <memory>
 #include <piecepoints/base_position_offset.hpp>
 #include <string>

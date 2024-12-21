@@ -1,7 +1,7 @@
 #include <concepts/move_evaluator.hpp>
-#include <game_board_for_concepts.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <move_evaluator_random_for_concepts.hpp>
 
 class RandomEvaluatorConceptTest : public ::testing::Test {

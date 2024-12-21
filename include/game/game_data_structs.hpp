@@ -2,7 +2,7 @@
 
 #include <evaluator_data_structs.hpp>
 #include <iostream>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <optional>
 
 namespace game {

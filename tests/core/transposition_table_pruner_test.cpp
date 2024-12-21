@@ -1,9 +1,9 @@
-#include <game_board.hpp>
+#include <gameboard/game_board.hpp>
 #include <gtest/gtest.h>
 #include <move_evaluators.hpp>
 #include <piecepoints/piece_position_points.hpp>
 #include <utility_functs.hpp>
-#include <zobrist.hpp>
+#include <boardstate/zobrist.hpp>
 
 class TranspositionTablePrunerTest : public ::testing::Test {
 protected:

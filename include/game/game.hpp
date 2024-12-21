@@ -7,7 +7,7 @@
 #include <concepts/composite_concepts.hpp>
 #include <concepts/move_evaluator.hpp>
 #include <game/game_data_structs.hpp>
-#include <game_piece.hpp>
+#include <gameboard/game_piece.hpp>
 #include <interface_game_reporter.hpp>
 #include <memory>
 #include <string>

@@ -1,4 +1,4 @@
-#include <game_board_for_concepts.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
 #include <game/game_data_structs.hpp>
 #include <gtest/gtest.h>
 #include <memory>

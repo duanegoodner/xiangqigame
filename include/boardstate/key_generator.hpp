@@ -1,4 +1,4 @@
-//! @file key_generator.hpp
+//! @file boardstate/key_generator.hpp
 //! Declaration of boardstate::KeyGenerator and implementation of its template methods.
 
 #pragma once

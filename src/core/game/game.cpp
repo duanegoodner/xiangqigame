@@ -1,6 +1,6 @@
 #include <chrono>
 #include <game/game.hpp>
-#include <game_board_for_concepts.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
 #include <memory>
 #include <move_evaluator_minimax_for_concepts.hpp>
 #include <sstream>

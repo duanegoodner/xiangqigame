@@ -11,8 +11,8 @@
 #include <concepts/board_state_coordinator.hpp>
 #include <concepts/piece_value_provider.hpp>
 #include <concepts/space_info_provider.hpp>
-#include <game_board.hpp>
-#include <game_board_for_concepts.hpp>
+#include <gameboard/game_board.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
 #include <integer_types.hpp>
 #include <move_evaluator_random_for_concepts.hpp>
 #include <move_evaluators.hpp>
@@ -22,9 +22,9 @@
 #include <piecepoints/piece_position_points_for_concepts.hpp>
 #include <random>
 #include <string>
-#include <zobrist.hpp>
-#include <zobrist_calculator_for_concepts.hpp>
-#include <zobrist_for_concepts.hpp>
+#include <boardstate/zobrist.hpp>
+#include <boardstate/zobrist_calculator_for_concepts.hpp>
+#include <boardstate/zobrist_for_concepts.hpp>
 
 namespace py = pybind11;
 using namespace py::literals;

@@ -1,4 +1,4 @@
-#include <piece_moves.hpp>
+#include <gameboard/piece_moves.hpp>
 
 #include <gtest/gtest.h>
 

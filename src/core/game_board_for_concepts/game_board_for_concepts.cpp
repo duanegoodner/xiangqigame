@@ -1,7 +1,7 @@
 #include <gameboard/board_data_structs.hpp>
-#include <game_board_for_concepts.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
 #include <memory>
-#include <piece_moves.hpp>
+#include <gameboard/piece_moves.hpp>
 #include <stdexcept>
 #include <utility_functs.hpp>
 

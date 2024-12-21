@@ -1,10 +1,10 @@
-//! @file piece_moves.hpp
+//! @file gameboard/piece_moves.hpp
 //! Definition of gameboard::PieceMoves and related constants.  
 
 #pragma once
 
 #include <gameboard/board_data_structs.hpp>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 
 using namespace gameboard;
 

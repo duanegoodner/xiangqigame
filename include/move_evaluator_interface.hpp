@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 
 
 //! CRTP interface with a method for selecting a gameboard::Move (concrete examples =

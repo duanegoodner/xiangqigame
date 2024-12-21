@@ -6,7 +6,7 @@
 
 #include <array>
 #include <gameboard/board_data_structs.hpp>
-#include <piece_moves.hpp>
+#include <gameboard/piece_moves.hpp>
 
 using namespace std;
 using namespace gameboard;

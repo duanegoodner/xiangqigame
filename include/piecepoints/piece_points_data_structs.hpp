@@ -4,7 +4,7 @@
 #pragma once
 
 #include <gameboard/board_data_structs.hpp>
-#include <game_piece.hpp>
+#include <gameboard/game_piece.hpp>
 #include <integer_types.hpp>
 #include <string>
 #include <unordered_map>

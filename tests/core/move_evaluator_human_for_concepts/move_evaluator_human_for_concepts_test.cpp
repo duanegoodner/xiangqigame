@@ -1,7 +1,7 @@
 #include <concepts/move_evaluator.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <move_evaluator_human_for_concepts.hpp>
 #include <move_translator.hpp>
 #include <sstream>

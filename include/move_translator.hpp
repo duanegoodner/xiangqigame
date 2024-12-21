@@ -2,7 +2,7 @@
 
 #include <gameboard/board_data_structs.hpp>
 #include <iostream>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <regex>
 #include <string>
 #include <vector>

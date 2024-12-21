@@ -1,5 +1,5 @@
 
-//! @file zobrist.hpp
+//! @file boardstate/zobrist.hpp
 //! Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker
 //! and supporting classes.
 
@@ -9,8 +9,8 @@
 #include <atomic>
 #include <gameboard/board_data_structs.hpp>
 #include <chrono>
-#include <key_generator.hpp>
-#include <move_data_structs.hpp>
+#include <boardstate/key_generator.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <mutex>
 #include <optional>
 #include <random>

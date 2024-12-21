@@ -5,7 +5,7 @@
 #include <concepts>
 #include <functional>
 #include <memory>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 
 template <typename T>
 concept BoardStateCalculatorRegistryConcept = requires(

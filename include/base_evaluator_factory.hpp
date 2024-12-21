@@ -1,8 +1,8 @@
 #pragma once
 
 #include <base_move_evaluator.hpp>
-#include <game_board_for_concepts.hpp>
-#include <game_piece.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
+#include <gameboard/game_piece.hpp>
 #include <integer_types.hpp>
 #include <memory>
 

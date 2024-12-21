@@ -1,6 +1,6 @@
-#include <game_board.hpp>
+#include <gameboard/game_board.hpp>
 #include <gtest/gtest.h>
-#include <zobrist.hpp>
+#include <boardstate/zobrist.hpp>
 
 class ZobristComponentTest : public ::testing::Test {
 protected:

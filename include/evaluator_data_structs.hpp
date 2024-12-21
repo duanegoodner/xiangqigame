@@ -8,7 +8,7 @@
 #include <chrono>
 #include <integer_types.hpp>
 #include <map>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <piecepoints/base_position_offset.hpp>
 
 using namespace gameboard;

@@ -1,11 +1,11 @@
 #include <builders.hpp>
 #include <concepts/move_evaluator.hpp>
-#include <game_board_for_concepts.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <move_evaluator_minimax_for_concepts.hpp>
 #include <piecepoints/piece_position_points_for_concepts.hpp>
 #include <type_traits>
-#include <zobrist_for_concepts.hpp>
+#include <boardstate/zobrist_for_concepts.hpp>
 
 class MinimaxEvaluatorConceptTest : public ::testing::Test {
 protected:

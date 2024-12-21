@@ -3,7 +3,7 @@
 #include <boost/functional/hash.hpp>
 #include <move_evaluators.hpp>
 #include <unordered_map.hpp>
-#include <zobrist.hpp>
+#include <boardstate/zobrist.hpp>
 
 namespace moveselection {
 struct MinimaxTemplateSpecs {

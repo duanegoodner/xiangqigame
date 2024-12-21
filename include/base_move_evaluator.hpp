@@ -1,7 +1,7 @@
 #pragma once
 
 #include <evaluator_data_structs.hpp>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <optional>
 
 class MoveEvaluatorBase {

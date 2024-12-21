@@ -1,8 +1,8 @@
 #pragma once
 
 #include <gameboard/board_data_structs.hpp>
-#include <game_piece.hpp>
-#include <move_data_structs.hpp>
+#include <gameboard/game_piece.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <concepts>
 
 

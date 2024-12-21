@@ -6,8 +6,8 @@
 #include <functional>
 #include <map>
 #include <memory>
-#include <move_calculator.hpp>
-#include <move_data_structs.hpp>
+#include <gameboard/move_calculator.hpp>
+#include <gameboard/move_data_structs.hpp>
 
 namespace gameboard {
 

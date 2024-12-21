@@ -1,4 +1,4 @@
-//! @file move_calculator.hpp
+//! @file gameboard/move_calculator.hpp
 //! Definition of gameboard::MoveCalculator.
 
 #pragma once
@@ -6,7 +6,7 @@
 #include <any>
 #include <gameboard/board_data_structs.hpp>
 #include <move_calculator_details.hpp>
-#include <piece_moves.hpp>
+#include <gameboard/piece_moves.hpp>
 
 using namespace std;
 using namespace gameboard;

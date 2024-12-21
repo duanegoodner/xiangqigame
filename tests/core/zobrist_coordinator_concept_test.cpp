@@ -2,14 +2,14 @@
 #include <concepts/board_state_coordinator.hpp>
 #include <concepts/single_board_state_provider.hpp>
 #include <concepts>
-#include <game_board_for_concepts.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>
 #include <string>
 #include <type_traits>
 #include <vector>
-#include <zobrist_calculator_for_concepts.hpp>
-#include <zobrist_for_concepts.hpp>
+#include <boardstate/zobrist_calculator_for_concepts.hpp>
+#include <boardstate/zobrist_for_concepts.hpp>
 
 class ZobristCoordinatorTestSuiteBase {
 public:

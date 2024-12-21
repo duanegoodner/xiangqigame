@@ -1,11 +1,11 @@
-//! @file game_board.hpp
+//! @file gameboard/game_board.hpp
 //! Definition of gameboard::GameBoard class
 
 #pragma once
 
 #include <gameboard/board_data_structs.hpp>
 #include <functional>
-#include <move_calculator.hpp>
+#include <gameboard/move_calculator.hpp>
 #include <move_evaluators.hpp>
 #include <vector>
 

@@ -7,16 +7,16 @@
 #include <concepts/multi_board_state_provider.hpp>
 #include <concepts/single_board_state_provider.hpp>
 #include <evaluator_data_structs.hpp>
-#include <key_generator.hpp>
+#include <boardstate/key_generator.hpp>
 #include <memory>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <mutex>
 #include <optional>
 #include <random>
 #include <shared_mutex>
 #include <thread>
 #include <vector>
-#include <zobrist_calculator_for_concepts.hpp>
+#include <boardstate/zobrist_calculator_for_concepts.hpp>
 
 namespace boardstate {
 

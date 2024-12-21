@@ -2,7 +2,7 @@
 //! Implements gameboard::GameBoard and a few related constants.
 
 #include <gameboard/board_data_structs.hpp>
-#include <game_board.hpp>
+#include <gameboard/game_board.hpp>
 #include <iostream>
 #include <typeinfo>
 #include <utility_functs.hpp>
