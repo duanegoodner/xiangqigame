@@ -19,7 +19,7 @@ target_link_libraries(
 add_executable(piece_position_points_test piece_position_points_test.cpp)
 target_link_libraries(
     piece_position_points_test PRIVATE
-    piece_position_points
+    piecepoints
     nlohmann_json
     utility_functs
     GTest::gtest_main)
@@ -27,7 +27,7 @@ target_link_libraries(
 add_executable(piece_position_points_concept_test piece_position_points_concept_test.cpp)
 target_link_libraries(
     piece_position_points_concept_test PRIVATE
-    piece_position_points_for_concepts
+    piecepoints
     nlohmann_json
     utility_functs
     GTest::gtest_main)
@@ -40,7 +40,7 @@ target_link_libraries(
     gameboard
     # move_calculator
     utility_functs
-    piece_position_points
+    piecepoints
     # piece_moves
     GTest::gtest_main)
 
@@ -74,7 +74,7 @@ target_link_libraries(
 add_executable(piece_points_bpo_test piece_points_bpo_test.cpp)
 target_link_libraries(
     piece_points_bpo_test PRIVATE
-    piece_points_bpo
+    piecepoints
     utility_functs
     GTest::gtest_main)
 
@@ -83,7 +83,7 @@ target_link_libraries(
     minimax_zobrist_component_test PRIVATE
     moveselection
     # piece_moves
-    piece_position_points
+    piecepoints
     gameboard
     GTest::gtest_main)
 
@@ -102,7 +102,7 @@ target_link_libraries(
     jsonio
     moveselection
     # piece_moves
-    piece_position_points
+    piecepoints
     gameboard
     GTest::gtest_main)
 
@@ -146,7 +146,7 @@ target_link_libraries(
     json_utility_test PRIVATE
     jsonio
     nlohmann_json::nlohmann_json
-    piece_points_bpo
+    piecepoints
     utility_functs
     GTest::gtest_main
 )

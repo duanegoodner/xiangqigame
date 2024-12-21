@@ -6,5 +6,5 @@ target_link_libraries(
     utility_functs
     gameboard
     moveselection
-    piece_position_points_for_concepts
+    piecepoints
     )

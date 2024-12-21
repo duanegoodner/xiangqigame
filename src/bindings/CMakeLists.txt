@@ -6,17 +6,15 @@ target_link_libraries(
     xiangqi_bindings PRIVATE
     gameboard
     moveselection
-    piece_position_points
-    piece_position_points_for_concepts
-    piece_points_bpo
+    piecepoints
     utility_functs
     )
 
 target_include_directories(
     xiangqi_bindings PRIVATE
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
-    ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
-    ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
+    # ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
+    # ${PROJECT_SOURCE_DIR}/src/core/move_evaluators
+    # ${PROJECT_SOURCE_DIR}/src/core/piece_points_bpo
     ${CMAKE_CURRENT_SOURCE_DIR})
 
 if(SKBUILD)
