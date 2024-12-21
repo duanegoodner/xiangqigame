@@ -4,7 +4,7 @@ target_link_libraries(
     game_test PRIVATE
     GTest::gtest_main
     game
-    game_factory
+    # game_factory
     nlohmann_json
     utility_functs
     game_board_for_concepts
