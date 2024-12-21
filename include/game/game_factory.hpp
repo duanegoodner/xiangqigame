@@ -6,9 +6,9 @@
 #include <builders.hpp>
 #include <concept_composite_concepts.hpp>
 #include <concept_move_evaluator.hpp>
-#include <game.hpp>
+#include <game/game.hpp>
 #include <game_board_for_concepts.hpp>
-#include <game_data_structs.hpp>
+#include <game/game_data_structs.hpp>
 #include <interface_game_reporter.hpp>
 #include <memory>
 #include <move_evaluator_human_for_concepts.hpp>

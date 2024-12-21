@@ -6,7 +6,7 @@
 #include <concept_board_state_coordinator.hpp>
 #include <concept_composite_concepts.hpp>
 #include <concept_move_evaluator.hpp>
-#include <game_data_structs.hpp>
+#include <game/game_data_structs.hpp>
 #include <game_piece.hpp>
 #include <interface_game_reporter.hpp>
 #include <memory>

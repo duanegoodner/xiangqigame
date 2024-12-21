@@ -2,9 +2,9 @@
 #include <base_move_evaluator.hpp>
 #include <base_space_info_provider.hpp>
 #include <builders.hpp>
-#include <game.hpp>
+#include <game/game.hpp>
 #include <game_board_for_concepts.hpp>
-#include <game_factory.hpp>
+#include <game/game_factory.hpp>
 #include <game_piece.hpp>
 #include <gtest/gtest.h>
 #include <integer_types.hpp>

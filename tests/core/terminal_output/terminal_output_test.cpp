@@ -1,5 +1,5 @@
 #include <game_board_for_concepts.hpp>
-#include <game_data_structs.hpp>
+#include <game/game_data_structs.hpp>
 #include <gtest/gtest.h>
 #include <memory>
 #include <move_translator.hpp>

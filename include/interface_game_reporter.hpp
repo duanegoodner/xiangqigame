@@ -1,6 +1,6 @@
 #pragma once
 
-#include <game_data_structs.hpp>
+#include <game/game_data_structs.hpp>
 
 class GameReporterInterface {
 public:

@@ -1,4 +1,4 @@
-#include <game_factory.hpp>
+#include <game/game_factory.hpp>
 
 namespace game {
 

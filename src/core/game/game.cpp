@@ -1,5 +1,5 @@
 #include <chrono>
-#include <game.hpp>
+#include <game/game.hpp>
 #include <game_board_for_concepts.hpp>
 #include <memory>
 #include <move_evaluator_minimax_for_concepts.hpp>
