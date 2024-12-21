@@ -3,5 +3,5 @@ target_link_libraries(
     move_evaluator_minimax_for_concepts_test PRIVATE
     move_evaluator_minimax_for_concepts
     piece_position_points_for_concepts
-    game_board_for_concepts
+    gameboard
     GTest::gtest_main)

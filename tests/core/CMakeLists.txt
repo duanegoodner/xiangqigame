@@ -38,7 +38,7 @@ add_executable(
 target_link_libraries(
     move_calculator_test PRIVATE
     gameboard
-    move_calculator
+    # move_calculator
     utility_functs
     piece_position_points
     piece_moves
@@ -48,7 +48,7 @@ add_executable(game_board_test game_board_test.cpp)
 target_link_libraries(
     game_board_test PRIVATE
     gameboard
-    move_calculator
+    # move_calculator
     piece_moves
     utility_functs
     GTest::gtest_main)
@@ -56,8 +56,8 @@ target_link_libraries(
 add_executable(game_board_concept_test game_board_concept_test.cpp)
 target_link_libraries(
     game_board_concept_test PRIVATE
-    game_board_for_concepts
-    move_calculator
+    gameboard
+    # move_calculator
     piece_moves
     GTest::gtest_main)
 
@@ -66,7 +66,7 @@ target_link_libraries(
     move_calc_time PRIVATE
     gameboard
     nlohmann_json
-    move_calculator
+    # move_calculator
     piece_moves
     utility_functs
     )
@@ -111,7 +111,7 @@ add_executable(
     zobrist_calculator_concept_test.cpp)
 target_link_libraries(
     zobrist_calculator_concept_test PRIVATE
-    game_board_for_concepts
+    gameboard
     GTest::gtest_main)
 
 add_executable(
@@ -119,7 +119,7 @@ add_executable(
     zobrist_component_concept_test.cpp)
 target_link_libraries(
     zobrist_component_concept_test PRIVATE
-    game_board_for_concepts
+    gameboard
     GTest::gtest_main)
 
 add_executable(
@@ -136,7 +136,7 @@ add_executable(
     zobrist_coordinator_concept_test.cpp)
 target_link_libraries(
     zobrist_coordinator_concept_test PRIVATE
-    game_board_for_concepts
+    gameboard
     GTest::gtest_main)
 
 add_executable(

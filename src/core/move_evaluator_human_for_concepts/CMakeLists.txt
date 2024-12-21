@@ -6,6 +6,6 @@ add_library(
 target_link_libraries(
     move_evaluator_human_for_concepts
     PUBLIC
-    game_board_for_concepts move_translator
+    gameboard move_translator
     )
 
