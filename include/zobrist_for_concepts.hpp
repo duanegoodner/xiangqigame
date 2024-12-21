@@ -4,7 +4,7 @@
 #include <atomic>
 #include <board_data_structs.hpp>
 #include <chrono>
-#include <concept_multi_board_state_provider.hpp>
+#include <concepts/multi_board_state_provider.hpp>
 #include <concepts/single_board_state_provider.hpp>
 #include <evaluator_data_structs.hpp>
 #include <key_generator.hpp>

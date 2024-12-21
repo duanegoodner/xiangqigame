@@ -6,7 +6,7 @@
 #include <json_utility_interface.hpp>
 #include <memory>
 #include <json_utility_nlohmann.hpp>
-#include <piece_points_data_structs.hpp>
+#include <piecepoints/piece_points_data_structs.hpp>
 #include <string>
 #include <typeinfo>
 #include <unordered_map>

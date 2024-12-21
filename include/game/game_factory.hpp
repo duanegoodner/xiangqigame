@@ -4,8 +4,8 @@
 #include <base_move_evaluator.hpp>
 #include <base_space_info_provider.hpp>
 #include <builders.hpp>
-#include <concept_composite_concepts.hpp>
-#include <concept_move_evaluator.hpp>
+#include <concepts/composite_concepts.hpp>
+#include <concepts/move_evaluator.hpp>
 #include <game/game.hpp>
 #include <game_board_for_concepts.hpp>
 #include <game/game_data_structs.hpp>

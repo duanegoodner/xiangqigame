@@ -1,5 +1,5 @@
 #include <builders.hpp>
-#include <concept_move_evaluator.hpp>
+#include <concepts/move_evaluator.hpp>
 #include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <move_evaluator_minimax_for_concepts.hpp>

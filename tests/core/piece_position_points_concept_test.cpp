@@ -1,5 +1,5 @@
 #include <builders.hpp>
-#include <concept_piece_value_provider.hpp>
+#include <concepts/piece_value_provider.hpp>
 #include <gtest/gtest.h>
 #include <piece_points_bpo.hpp>
 #include <piece_position_points_for_concepts.hpp>

@@ -2,7 +2,7 @@
 
 #include <base_space_info_provider.hpp>
 #include <board_data_structs.hpp>
-#include <concept_board_state_calculator.hpp>
+#include <concepts/board_state_calculator.hpp>
 #include <functional>
 #include <map>
 #include <memory>

@@ -3,7 +3,7 @@
 #include <array>
 #include <base_evaluator_factory.hpp>
 #include <concepts/board_state_calculator_registry.hpp>
-#include <concept_composite_concepts.hpp>
+#include <concepts/composite_concepts.hpp>
 #include <concepts/single_board_state_provider.hpp>
 #include <functional>
 #include <game_board_for_concepts.hpp>

@@ -1,5 +1,5 @@
 #include <builders.hpp>
-#include <concept_board_state_coordinator.hpp>
+#include <concepts/board_state_coordinator.hpp>
 #include <concepts/single_board_state_provider.hpp>
 #include <concepts>
 #include <game_board_for_concepts.hpp>

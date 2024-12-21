@@ -8,9 +8,9 @@
 
 #include <board_data_structs.hpp>
 #include <builders.hpp>
-#include <concept_board_state_coordinator.hpp>
-#include <concept_piece_value_provider.hpp>
-#include <concept_space_info_provider.hpp>
+#include <concepts/board_state_coordinator.hpp>
+#include <concepts/piece_value_provider.hpp>
+#include <concepts/space_info_provider.hpp>
 #include <game_board.hpp>
 #include <game_board_for_concepts.hpp>
 #include <integer_types.hpp>

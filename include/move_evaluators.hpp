@@ -3,9 +3,9 @@
 
 #pragma once
 
-#include <concept_board_state_coordinator.hpp>
-#include <concept_piece_value_provider.hpp>
-#include <concept_space_info_provider.hpp>
+#include <concepts/board_state_coordinator.hpp>
+#include <concepts/piece_value_provider.hpp>
+#include <concepts/space_info_provider.hpp>
 
 #include <array>
 #include <atomic>

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <concept_board_state_calculator.hpp>
-#include <concept_space_info_provider.hpp>
+#include <concepts/board_state_calculator.hpp>
+#include <concepts/space_info_provider.hpp>
 #include <concepts>
 #include <functional>
 #include <memory>

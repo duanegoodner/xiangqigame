@@ -1,7 +1,7 @@
 #include <builders.hpp>
 #include <concepts/board_state_calculator_registry.hpp>
-#include <concept_composite_concepts.hpp>
-#include <concept_space_info_provider.hpp>
+#include <concepts/composite_concepts.hpp>
+#include <concepts/space_info_provider.hpp>
 #include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>

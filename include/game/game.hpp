@@ -3,9 +3,9 @@
 #include <base_move_evaluator.hpp>
 #include <base_space_info_provider.hpp>
 #include <board_data_structs.hpp>
-#include <concept_board_state_coordinator.hpp>
-#include <concept_composite_concepts.hpp>
-#include <concept_move_evaluator.hpp>
+#include <concepts/board_state_coordinator.hpp>
+#include <concepts/composite_concepts.hpp>
+#include <concepts/move_evaluator.hpp>
 #include <game/game_data_structs.hpp>
 #include <game_piece.hpp>
 #include <interface_game_reporter.hpp>
