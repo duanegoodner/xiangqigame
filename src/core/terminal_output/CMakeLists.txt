@@ -1,3 +1,3 @@
 add_library(terminal_output terminal_output.cpp)
-target_link_libraries(terminal_output PUBLIC move_translator gameboard)
+target_link_libraries(terminal_output PUBLIC movetranslation gameboard)
 

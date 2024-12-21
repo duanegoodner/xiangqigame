@@ -9,7 +9,7 @@ add_library(
 target_link_libraries(
     moveselection PUBLIC
     gameboard
-    move_translator
+    movetranslation
     nlohmann_json
     utility_functs
     )
