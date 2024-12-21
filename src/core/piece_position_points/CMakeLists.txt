@@ -5,7 +5,7 @@ add_library(
 target_link_libraries(
     piece_position_points PRIVATE
     utility_functs
-    minimax_evaluator
+    moveselection
     piece_points_bpo
 )
 

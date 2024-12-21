@@ -5,7 +5,7 @@ pybind11_add_module(xiangqi_bindings bindings.cpp)
 target_link_libraries(
     xiangqi_bindings PRIVATE
     gameboard
-    move_evaluator_minimax_for_concepts
+    moveselection
     piece_position_points
     piece_position_points_for_concepts
     piece_points_bpo

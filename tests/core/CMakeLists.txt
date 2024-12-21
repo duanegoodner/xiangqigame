@@ -81,7 +81,7 @@ target_link_libraries(
 add_executable(minimax_zobrist_component_test minimax_zobrist_component_test.cpp)
 target_link_libraries(
     minimax_zobrist_component_test PRIVATE
-    minimax_evaluator
+    moveselection
     # piece_moves
     piece_position_points
     gameboard
@@ -100,7 +100,7 @@ add_executable(
 target_link_libraries(
     transposition_table_pruner_test PRIVATE
     jsonio
-    minimax_evaluator
+    moveselection
     # piece_moves
     piece_position_points
     gameboard
