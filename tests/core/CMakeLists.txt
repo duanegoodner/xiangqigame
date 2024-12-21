@@ -12,7 +12,7 @@ add_subdirectory(terminal_output)
 add_executable(piece_moves_test piece_moves_test.cpp)
 target_link_libraries(
     piece_moves_test PRIVATE
-    piece_moves
+    gameboard
     GTest::gtest_main
 )
 
@@ -41,7 +41,7 @@ target_link_libraries(
     # move_calculator
     utility_functs
     piece_position_points
-    piece_moves
+    # piece_moves
     GTest::gtest_main)
 
 add_executable(game_board_test game_board_test.cpp)
@@ -49,7 +49,7 @@ target_link_libraries(
     game_board_test PRIVATE
     gameboard
     # move_calculator
-    piece_moves
+    # piece_moves
     utility_functs
     GTest::gtest_main)
 
@@ -58,7 +58,7 @@ target_link_libraries(
     game_board_concept_test PRIVATE
     gameboard
     # move_calculator
-    piece_moves
+    # piece_moves
     GTest::gtest_main)
 
 add_executable(move_calc_time move_calc_timer.cpp)
@@ -67,7 +67,7 @@ target_link_libraries(
     gameboard
     nlohmann_json
     # move_calculator
-    piece_moves
+    # piece_moves
     utility_functs
     )
 
@@ -82,7 +82,7 @@ add_executable(minimax_zobrist_component_test minimax_zobrist_component_test.cpp
 target_link_libraries(
     minimax_zobrist_component_test PRIVATE
     minimax_evaluator
-    piece_moves
+    # piece_moves
     piece_position_points
     gameboard
     GTest::gtest_main)
@@ -101,7 +101,7 @@ target_link_libraries(
     transposition_table_pruner_test PRIVATE
     json_utility_nlohmann
     minimax_evaluator
-    piece_moves
+    # piece_moves
     piece_position_points
     gameboard
     GTest::gtest_main)
