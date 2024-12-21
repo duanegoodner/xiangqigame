@@ -2,7 +2,7 @@
 #include <board_map_fixture.hpp>
 #include <builders.hpp>
 #include <concept_multi_board_state_provider.hpp>
-#include <concept_single_board_state_provider.hpp>
+#include <concepts/single_board_state_provider.hpp>
 #include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>

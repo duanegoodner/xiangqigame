@@ -1,5 +1,5 @@
 #include <builders.hpp>
-#include <concept_board_state_calculator_registry.hpp>
+#include <concepts/board_state_calculator_registry.hpp>
 #include <concept_composite_concepts.hpp>
 #include <concept_space_info_provider.hpp>
 #include <game_board_for_concepts.hpp>

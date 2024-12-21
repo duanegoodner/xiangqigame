@@ -1,6 +1,6 @@
 #include <builders.hpp>
 #include <concept_board_state_coordinator.hpp>
-#include <concept_single_board_state_provider.hpp>
+#include <concepts/single_board_state_provider.hpp>
 #include <concepts>
 #include <game_board_for_concepts.hpp>
 #include <gtest/gtest.h>

@@ -3,7 +3,7 @@
 #include <builders.hpp>
 #include <concept_board_state_calculator.hpp>
 #include <concept_composite_concepts.hpp>
-#include <concept_single_board_state_provider.hpp>
+#include <concepts/single_board_state_provider.hpp>
 #include <gtest/gtest.h>
 #include <zobrist_calculator_for_concepts.hpp>
 

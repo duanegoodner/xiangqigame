@@ -1,7 +1,7 @@
 #pragma once
 
 #include <array>
-#include <concept_single_board_state_provider.hpp>
+#include <concepts/single_board_state_provider.hpp>
 #include <concepts>
 
 template <typename T>
