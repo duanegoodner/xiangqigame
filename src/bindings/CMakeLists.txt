@@ -7,7 +7,7 @@ target_link_libraries(
     gameboard
     moveselection
     piecepoints
-    utility_functs
+    utilities
     )
 
 target_include_directories(

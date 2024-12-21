@@ -8,5 +8,5 @@ target_link_libraries(
     nlohmann_json
     moveselection
     # piece_moves
-    utility_functs)
+    utilities)
 

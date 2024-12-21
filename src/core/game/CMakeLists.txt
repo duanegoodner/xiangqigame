@@ -3,7 +3,7 @@ target_link_libraries(
     game PUBLIC
     gameboard
     nlohmann_json
-    utility_functs
+    utilities
     gameboard
     moveselection
     piecepoints

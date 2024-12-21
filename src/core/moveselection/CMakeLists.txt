@@ -11,5 +11,5 @@ target_link_libraries(
     gameboard
     movetranslation
     nlohmann_json
-    utility_functs
+    utilities
     )

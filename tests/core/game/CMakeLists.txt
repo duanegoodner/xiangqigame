@@ -4,9 +4,8 @@ target_link_libraries(
     game_test PRIVATE
     GTest::gtest_main
     game
-    # game_factory
     nlohmann_json
-    utility_functs
+    utilities
     gameboard
     moveselection
     terminalout

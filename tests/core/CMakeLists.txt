@@ -21,7 +21,7 @@ target_link_libraries(
     piece_position_points_test PRIVATE
     piecepoints
     nlohmann_json
-    utility_functs
+    utilities
     GTest::gtest_main)
 
 add_executable(piece_position_points_concept_test piece_position_points_concept_test.cpp)
@@ -29,7 +29,7 @@ target_link_libraries(
     piece_position_points_concept_test PRIVATE
     piecepoints
     nlohmann_json
-    utility_functs
+    utilities
     GTest::gtest_main)
 
 add_executable(
@@ -39,7 +39,7 @@ target_link_libraries(
     move_calculator_test PRIVATE
     gameboard
     # move_calculator
-    utility_functs
+    utilities
     piecepoints
     # piece_moves
     GTest::gtest_main)
@@ -50,7 +50,7 @@ target_link_libraries(
     gameboard
     # move_calculator
     # piece_moves
-    utility_functs
+    utilities
     GTest::gtest_main)
 
 add_executable(game_board_concept_test game_board_concept_test.cpp)
@@ -68,14 +68,14 @@ target_link_libraries(
     nlohmann_json
     # move_calculator
     # piece_moves
-    utility_functs
+    utilities
     )
 
 add_executable(piece_points_bpo_test piece_points_bpo_test.cpp)
 target_link_libraries(
     piece_points_bpo_test PRIVATE
     piecepoints
-    utility_functs
+    utilities
     GTest::gtest_main)
 
 add_executable(minimax_zobrist_component_test minimax_zobrist_component_test.cpp)
@@ -127,7 +127,7 @@ add_executable(
     zobrist_coordinator_test.cpp)
 target_link_libraries(
     zobrist_coordinator_test PRIVATE
-    utility_functs
+    utilities
     gameboard
     GTest::gtest_main)
 
@@ -147,7 +147,7 @@ target_link_libraries(
     jsonio
     nlohmann_json::nlohmann_json
     piecepoints
-    utility_functs
+    utilities
     GTest::gtest_main
 )
 
@@ -156,7 +156,7 @@ add_executable(
 )
 target_link_libraries(
     zobrist_calculator_test PRIVATE
-    utility_functs
+    utilities
     gameboard
     nlohmann_json
     GTest::gtest_main
@@ -167,7 +167,7 @@ add_executable(
 )
 target_link_libraries(
     zobrist_component_test PRIVATE 
-    utility_functs
+    utilities
     gameboard
     GTest::gtest_main
 )
@@ -177,7 +177,7 @@ add_executable(
 )
 target_link_libraries(
     transposition_table_test PRIVATE
-    utility_functs
+    utilities
     gameboard
     GTest::gtest_main
 )
