@@ -22,6 +22,7 @@
 #include <vector>
 #include <boardstate/zobrist_for_concepts.hpp>
 
+
 class GameTest : public ::testing::Test {
 protected:
   gameboard::GameBoardFactory game_board_factory_;

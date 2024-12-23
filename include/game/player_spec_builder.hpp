@@ -7,9 +7,14 @@
 #include <gameboard/game_piece.hpp>
 #include <optional>
 #include <string>
+#include <unordered_set>
 #include <utilities/integer_types.hpp>
+#include <variant>
 
 namespace game {
+using PlayerInputType = std::unordered_map<
+    std::string,
+    std::variant<std::string, size_t, DepthType>>;
 
 class PlayerSpecBuilder {
   gameboard::PieceColor color_;
@@ -19,6 +24,30 @@ class PlayerSpecBuilder {
   DepthType minimax_search_depth_;
   PlayerInputTranslator input_translator_;
 
+  const std::unordered_set<std::string> allowed_keys_ = {
+      "color",
+      "evaluator_type",
+      "key_size_bits",
+      "num_zobrist_calculators",
+      "minimax_search_depth"
+  };
+
+  // Helper function to extract and set values from the input map
+  template <typename T, typename F>
+  void TrySetAttribute(
+      const PlayerInputType &input_map,
+      const std::string &key,
+      F setter
+  ) {
+    if (input_map.count(key) > 0) {
+      try {
+        setter(std::get<T>(input_map.at(key)));
+      } catch (const std::bad_variant_access &e) {
+        throw std::runtime_error("Invalid type for key: " + key);
+      }
+    }
+  }
+
 public:
   PlayerSpecBuilder()
       : color_{gameboard::PieceColor::kNul}
@@ -27,84 +56,52 @@ public:
       , zobrist_calculator_count_{ZobristCalculatorCount::kTwoZCalc}
       , minimax_search_depth_{4} {}
 
-  PlayerSpecBuilder &SetColor(gameboard::PieceColor color) {
-    color_ = color;
-    return *this;
-  }
-
-  PlayerSpecBuilder &SetColor(std::string color_str) {
-    auto translated_color = input_translator_.GetPieceColorFromString(color_str);
-    color_ = translated_color;
-    return *this;
-  }
-
-  PlayerSpecBuilder &SetEvaluatorType(EvaluatorType evaluator_type) {
-    evaluator_type_ = evaluator_type;
-    return *this;
-  }
-
-  PlayerSpecBuilder &SetZobristKeyType(ZobristKeyType zobrist_key_type) {
-    zobrist_key_type_ = zobrist_key_type;
-    return *this;
-  }
-
-  PlayerSpecBuilder &SetZobristKeyType(size_t key_size_bits) {
-    auto translated_key_type = input_translator_.GetZobristKeyTypeFromInt(key_size_bits);
-    zobrist_key_type_ = translated_key_type;
-    return *this;
-  }
-
-  PlayerSpecBuilder &SetEvaluatorType(std::string evaluator_type_str) {
-    auto translated_evaluator_type =
-        input_translator_.GetEvaluatorTypeFromString(evaluator_type_str);
-    evaluator_type_ = translated_evaluator_type;
-    return *this;
-  }
-
-  PlayerSpecBuilder &SetZobristCalculatorCount(
-      ZobristCalculatorCount zobrist_calculator_count
-  ) {
-    zobrist_calculator_count_ = zobrist_calculator_count;
-  }
-
-  PlayerSpecBuilder &SetZobristCalculatorCount(size_t zobrist_calculator_count) {
-    auto translated_count =
-        input_translator_.GetZobristCalculatorCountFromInt(zobrist_calculator_count);
-    zobrist_calculator_count_ = translated_count;
-  }
-
-  PlayerSpecBuilder &SetMinimaxSearchDepth(DepthType depth) {
-    minimax_search_depth_ = depth;
-    return *this;
-  }
-
-  PlayerSpecBuilder &SetMultipleAttributes(
-      std::unordered_map<std::string, std::any> player_input
-  ) {
-
-    auto color = std::any_cast<gameboard::PieceColor>(player_input.at("color"));
-    SetColor(color);
-
-    if (player_input.count("evaluator_type") > 0) {
-      auto evaluator_type_str =
-          std::any_cast<EvaluatorType>(player_input.at("evaluator_type"));
-      SetEvaluatorType(evaluator_type_str);
+  PlayerSpecBuilder &SetMultipleAttributes(const PlayerInputType &player_input) {
+    // Validate the presence of the required "color" key
+    if (player_input.count("color") == 0) {
+      throw std::runtime_error("Input validation failed: 'color' key is required.");
     }
 
-    if (player_input.count("key_size_bits") > 0) {
-        auto key_size_bits = std::any_cast<size_t>(player_input.at("key_size_bits"));
-        SetZobristKeyType(key_size_bits);
+    // Validate all keys are allowed
+    for (const auto &[key, _] : player_input) {
+      if (allowed_keys_.count(key) == 0) {
+        throw std::runtime_error(
+            "Input validation failed: Unrecognized key '" + key + "'."
+        );
+      }
     }
 
-    if (player_input.count("num_zobrist_calculators") > 0) {
-        auto num_calculators = std::any_cast<size_t>(player_input.at("num_zobrist_calculators"));
-        SetZobristCalculatorCount(num_calculators);
-    }
+    // Use helper function to handle each attribute
+    TrySetAttribute<std::string>(player_input, "color", [this](auto color_str) {
+      auto color = input_translator_.GetPieceColorFromString(color_str);
+      color_ = color;
+    });
 
-    if (player_input.count("minimax_search_depth") > 0) {
-        auto search_depth = std::any_cast<DepthType>(player_input.at("minimax_search_depth"));
-        SetMinimaxSearchDepth(search_depth);
-    }
+    TrySetAttribute<std::string>(
+        player_input,
+        "evaluator_type",
+        [this](auto evaluator_type_str) {
+          evaluator_type_ =
+              input_translator_.GetEvaluatorTypeFromString(evaluator_type_str);
+        }
+    );
+
+    TrySetAttribute<size_t>(player_input, "key_size_bits", [this](auto key_size_bits) {
+      zobrist_key_type_ = input_translator_.GetZobristKeyTypeFromInt(key_size_bits);
+    });
+
+    TrySetAttribute<size_t>(
+        player_input,
+        "num_zobrist_calculators",
+        [this](auto num_calculators) {
+          zobrist_calculator_count_ =
+              input_translator_.GetZobristCalculatorCountFromInt(num_calculators);
+        }
+    );
+
+    TrySetAttribute<DepthType>(player_input, "minimax_search_depth", [this](auto depth) {
+      minimax_search_depth_ = depth;
+    });
 
     return *this;
   }
