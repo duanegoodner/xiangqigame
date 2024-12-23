@@ -1,23 +1,23 @@
-#include <game_board_for_concepts.hpp>
-#include <game_data_structs.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
+#include <game/game_data_structs.hpp>
 #include <gtest/gtest.h>
 #include <memory>
-#include <move_translator.hpp>
-#include <terminal_output.hpp>
+#include <movetranslation/move_translator.hpp>
+#include <terminalout/terminal_output.hpp>
 
 class PlayerReporterTest : public ::testing::Test {
 protected:
   game::PlayerSpec player_spec_human_{
       gameboard::PieceColor::kRed,
-      game::EvaluatorType::kHuman
+      game::EvaluatorType::kHuman,
+      game::ZobristKeyType::kNoKey,
+      game::ZobristCalculatorCount::kNoZCalcs
   };
   game::PlayerSpec player_spec_minimax_{
       gameboard::PieceColor::kRed,
       game::EvaluatorType::kMinimax,
-      game::MinimaxTypeInfo{
-          game::ZobristKeyType::k064,
-          game::ZobristCalculatorCount::kTwo
-      },
+      game::ZobristKeyType::k064BitKey,
+      game::ZobristCalculatorCount::kTwoZCalc,
       4
   };
   game::PlayerSpec player_spec_random_{
@@ -106,15 +106,15 @@ class TerminalGameReporterTest : public ::testing::Test {
 protected:
   game::PlayerSpec player_spec_red_{
       gameboard::PieceColor::kRed,
-      game::EvaluatorType::kHuman
+      game::EvaluatorType::kHuman,
+      game::ZobristKeyType::kNoKey,
+      game::ZobristCalculatorCount::kNoZCalcs
   };
   game::PlayerSpec player_spec_black_{
       gameboard::PieceColor::kBlk,
       game::EvaluatorType::kMinimax,
-      game::MinimaxTypeInfo{
-          game::ZobristKeyType::k064,
-          game::ZobristCalculatorCount::kTwo
-      },
+      game::ZobristKeyType::k064BitKey,
+      game::ZobristCalculatorCount::kTwoZCalc,
       4
   };
 

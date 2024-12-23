@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include <piece_points_bpo.hpp>
-#include <piece_position_points.hpp>
-#include <utility_functs.hpp>
+#include <piecepoints/base_position_offset.hpp>
+#include <piecepoints/piece_position_points.hpp>
+#include <utilities/utility_functs.hpp>
 
 using namespace piecepoints;
 

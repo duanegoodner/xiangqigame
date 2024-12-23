@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <key_generator.hpp>
+#include <boardstate/key_generator.hpp>
 #include <random>
 
 class PseudoRandomKeyGeneratorTest : public ::testing::Test {

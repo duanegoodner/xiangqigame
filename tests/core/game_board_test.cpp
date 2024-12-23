@@ -1,6 +1,6 @@
-#include <game_board.hpp>
-#include <zobrist.hpp>
-#include <move_calculator.hpp>
+#include <gameboard/game_board.hpp>
+#include <boardstate/zobrist.hpp>
+#include <gameboard/move_calculator.hpp>
 
 #include <gtest/gtest.h>
 

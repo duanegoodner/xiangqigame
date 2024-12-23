@@ -1,9 +1,9 @@
 #include <array>
-#include <board_data_structs.hpp>
-#include <game_piece.hpp>
-#include <key_generator.hpp>
+#include <gameboard/board_data_structs.hpp>
+#include <gameboard/game_piece.hpp>
+#include <boardstate/key_generator.hpp>
 #include <memory>
-#include <move_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <random>
 
 template <typename KeyType>

@@ -1,7 +1,7 @@
 #pragma once
 
-#include <board_data_structs.hpp>
-#include <move_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 
 namespace fixtures {
 

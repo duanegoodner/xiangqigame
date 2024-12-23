@@ -1,14 +1,14 @@
 #include <array>
 #include <board_map_fixture.hpp>
-#include <builders.hpp>
-#include <concept_multi_board_state_provider.hpp>
-#include <concept_single_board_state_provider.hpp>
-#include <game_board_for_concepts.hpp>
+#include <boardstate/zobrist_factories.hpp>
+#include <concepts/multi_board_state_provider.hpp>
+#include <concepts/single_board_state_provider.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>
 #include <vector>
-#include <zobrist_calculator_for_concepts.hpp>
-#include <zobrist_for_concepts.hpp>
+#include <boardstate/zobrist_calculator_for_concepts.hpp>
+#include <boardstate/zobrist_for_concepts.hpp>
 
 //! Base class that test suite class template will inherit from, so we can put
 //! references/pointers to multiple instances in a conatainer to iterate over inside

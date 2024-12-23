@@ -1,11 +1,11 @@
-#include <board_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <board_map_fixture.hpp>
-#include <builders.hpp>
-#include <concept_board_state_calculator.hpp>
-#include <concept_composite_concepts.hpp>
-#include <concept_single_board_state_provider.hpp>
+#include <boardstate/zobrist_factories.hpp>
+#include <concepts/board_state_calculator.hpp>
+#include <concepts/composite_concepts.hpp>
+#include <concepts/single_board_state_provider.hpp>
 #include <gtest/gtest.h>
-#include <zobrist_calculator_for_concepts.hpp>
+#include <boardstate/zobrist_calculator_for_concepts.hpp>
 
 class ZobristCalculatorTestSuiteBase {
 public:

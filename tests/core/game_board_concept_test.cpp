@@ -1,12 +1,12 @@
-#include <builders.hpp>
-#include <concept_board_state_calculator_registry.hpp>
-#include <concept_composite_concepts.hpp>
-#include <concept_space_info_provider.hpp>
-#include <game_board_for_concepts.hpp>
+#include <boardstate/zobrist_factories.hpp>
+#include <concepts/board_state_calculator_registry.hpp>
+#include <concepts/composite_concepts.hpp>
+#include <concepts/space_info_provider.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>
 #include <type_traits>
-#include <zobrist_calculator_for_concepts.hpp>
+#include <boardstate/zobrist_calculator_for_concepts.hpp>
 
 class GameBoardForConceptsTest : public ::testing::Test {
 protected:

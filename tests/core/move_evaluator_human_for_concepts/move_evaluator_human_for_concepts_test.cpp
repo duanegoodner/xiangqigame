@@ -1,9 +1,9 @@
-#include <concept_move_evaluator.hpp>
+#include <concepts/move_evaluator.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
-#include <move_data_structs.hpp>
-#include <move_evaluator_human_for_concepts.hpp>
-#include <move_translator.hpp>
+#include <gameboard/move_data_structs.hpp>
+#include <moveselection/move_evaluator_human_for_concepts.hpp>
+#include <movetranslation/move_translator.hpp>
 #include <sstream>
 
 class InputRetrievalMessagesTest : public ::testing::Test {

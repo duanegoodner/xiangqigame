@@ -6,5 +6,6 @@ add_executable(
 target_link_libraries(
     move_evaluator_random_for_concepts_test PRIVATE
     GTest::gtest_main
-    move_evaluator_random_for_concepts
+    nlohmann_json
+    moveselection
     )

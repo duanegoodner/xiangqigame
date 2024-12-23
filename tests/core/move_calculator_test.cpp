@@ -1,8 +1,8 @@
-#include <board_data_structs.hpp>
-#include <game_board.hpp>
+#include <gameboard/board_data_structs.hpp>
+#include <gameboard/game_board.hpp>
 #include <gtest/gtest.h>
-#include <move_calculator.hpp>
-// #include <piece_moves.hpp>
+#include <gameboard/move_calculator.hpp>
+// #include <gameboard/piece_moves.hpp>
 
 using namespace gameboard;
 

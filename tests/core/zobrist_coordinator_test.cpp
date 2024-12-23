@@ -1,8 +1,8 @@
-#include <game_board.hpp>
+#include <gameboard/game_board.hpp>
 #include <gtest/gtest.h>
 #include <nlohmann/json.hpp>
 #include <string>
-#include <zobrist.hpp>
+#include <boardstate/zobrist.hpp>
 
 class ZobristCoordinatorTest : public ::testing::Test {
 protected:

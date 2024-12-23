@@ -1,2 +1,10 @@
-add_library(game game.cpp)
-target_link_libraries(game PUBLIC game_board_for_concepts)
+add_library(game game.cpp game_factory.cpp)
+target_link_libraries(
+    game PUBLIC
+    gameboard
+    nlohmann_json
+    utilities
+    gameboard
+    moveselection
+    piecepoints
+    )

@@ -6,25 +6,26 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
-#include <board_data_structs.hpp>
-#include <builders.hpp>
-#include <concept_board_state_coordinator.hpp>
-#include <concept_piece_value_provider.hpp>
-#include <concept_space_info_provider.hpp>
-#include <game_board.hpp>
-#include <game_board_for_concepts.hpp>
-#include <integer_types.hpp>
-#include <move_evaluator_random_for_concepts.hpp>
-#include <move_evaluators.hpp>
-#include <move_evaluator_minimax_for_concepts.hpp>
-#include <piece_points_bpo.hpp>
-#include <piece_position_points.hpp>
-#include <piece_position_points_for_concepts.hpp>
+#include <gameboard/board_data_structs.hpp>
+#include <boardstate/zobrist_factories.hpp>
+#include <moveselection/minimax_evaluator_factory.hpp>
+#include <concepts/board_state_coordinator.hpp>
+#include <concepts/piece_value_provider.hpp>
+#include <concepts/space_info_provider.hpp>
+#include <gameboard/game_board.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
+#include <utilities/integer_types.hpp>
+#include <moveselection/move_evaluator_random_for_concepts.hpp>
+#include <moveselection/move_evaluators.hpp>
+#include <moveselection/move_evaluator_minimax_for_concepts.hpp>
+#include <piecepoints/base_position_offset.hpp>
+#include <piecepoints/piece_position_points.hpp>
+#include <piecepoints/piece_position_points_for_concepts.hpp>
 #include <random>
 #include <string>
-#include <zobrist.hpp>
-#include <zobrist_calculator_for_concepts.hpp>
-#include <zobrist_for_concepts.hpp>
+#include <boardstate/zobrist.hpp>
+#include <boardstate/zobrist_calculator_for_concepts.hpp>
+#include <boardstate/zobrist_for_concepts.hpp>
 
 namespace py = pybind11;
 using namespace py::literals;

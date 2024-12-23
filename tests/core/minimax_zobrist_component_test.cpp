@@ -1,9 +1,9 @@
-#include <game_board.hpp>
+#include <gameboard/game_board.hpp>
 #include <gtest/gtest.h>
-#include <move_data_structs.hpp>
-#include <move_evaluators.hpp>
-#include <piece_position_points.hpp>
-#include <zobrist.hpp>
+#include <gameboard/move_data_structs.hpp>
+#include <moveselection/move_evaluators.hpp>
+#include <piecepoints/piece_position_points.hpp>
+#include <boardstate/zobrist.hpp>
 
 class RandomEvaluatorTest : public ::testing::Test {
 protected:

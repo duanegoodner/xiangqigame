@@ -1,25 +1,27 @@
-#include <base_evaluator_factory.hpp>
-#include <base_move_evaluator.hpp>
-#include <base_space_info_provider.hpp>
-#include <builders.hpp>
-#include <game.hpp>
-#include <game_board_for_concepts.hpp>
-#include <game_factory.hpp>
-#include <game_piece.hpp>
+#include <interfaces/base_evaluator_factory.hpp>
+#include <interfaces/base_move_evaluator.hpp>
+#include <interfaces/base_space_info_provider.hpp>
+#include <boardstate/zobrist_factories.hpp>
+#include <game/game.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
+#include <game/game_factory.hpp>
+#include <gameboard/game_piece.hpp>
 #include <gtest/gtest.h>
-#include <integer_types.hpp>
-#include <interface_game_reporter.hpp>
+#include <utilities/integer_types.hpp>
+#include <interfaces/interface_game_reporter.hpp>
 #include <iostream>
 #include <memory>
-#include <move_evaluator_human_for_concepts.hpp>
-#include <move_evaluator_minimax_for_concepts.hpp>
-#include <move_evaluator_random_for_concepts.hpp>
+#include <moveselection/minimax_evaluator_factory.hpp>
+#include <moveselection/move_evaluator_human_for_concepts.hpp>
+#include <moveselection/move_evaluator_minimax_for_concepts.hpp>
+#include <moveselection/move_evaluator_random_for_concepts.hpp>
 #include <optional>
-#include <piece_position_points_for_concepts.hpp>
-#include <terminal_output.hpp>
+#include <piecepoints/piece_position_points_for_concepts.hpp>
+#include <terminalout/terminal_output.hpp>
 #include <unordered_map>
 #include <vector>
-#include <zobrist_for_concepts.hpp>
+#include <boardstate/zobrist_for_concepts.hpp>
+
 
 class GameTest : public ::testing::Test {
 protected:
@@ -30,25 +32,27 @@ protected:
   DepthType search_depth_red_{3};
   DepthType search_depth_black_{3};
 
-  game::MinimaxTypeInfo minimax_type_info_red_{
-      game::ZobristKeyType::k064,
-      game::ZobristCalculatorCount::kTwo
-  };
-  game::MinimaxTypeInfo minimax_type_info_black_{
-      game::ZobristKeyType::k064,
-      game::ZobristCalculatorCount::kTwo
-  };
+//   game::MinimaxTypeInfo minimax_type_info_red_{
+//       game::ZobristKeyType::k064BitKey,
+//       game::ZobristCalculatorCount::kTwoZCalc
+//   };
+//   game::MinimaxTypeInfo minimax_type_info_black_{
+//       game::ZobristKeyType::k064BitKey,
+//       game::ZobristCalculatorCount::kTwoZCalc
+//   };
 
   game::PlayerSpec player_spec_red_{
       gameboard::PieceColor::kRed,
       game::EvaluatorType::kMinimax,
-      minimax_type_info_red_,
+      game::ZobristKeyType::k064BitKey,
+      game::ZobristCalculatorCount::kTwoZCalc,
       search_depth_red_
   };
   game::PlayerSpec player_spec_black_{
       gameboard::PieceColor::kBlk,
       game::EvaluatorType::kMinimax,
-      minimax_type_info_black_,
+      game::ZobristKeyType::k064BitKey,
+      game::ZobristCalculatorCount::kTwoZCalc,
       search_depth_black_
   };
 };

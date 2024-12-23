@@ -1,5 +1,5 @@
 #include <chrono>
-#include <game_board.hpp>
+#include <gameboard/game_board.hpp>
 #include <iostream>
 
 using namespace std::chrono;
