@@ -4,6 +4,7 @@
 #include <iostream>
 #include <moveselection/evaluator_data_structs.hpp>
 #include <optional>
+#include <utilities/integer_types.hpp>
 
 namespace game {
 enum GameState : int { kUnfinished = 0, kDraw = 1, kRedWon = 2, kBlkWon = 3 };
@@ -42,22 +43,19 @@ struct MinimaxTypeInfoHash {
 struct PlayerSpec {
   gameboard::PieceColor color;
   EvaluatorType evaluator_type;
-  // MinimaxTypeInfo minimax_type_info;
   ZobristKeyType zobrist_key_type;
   ZobristCalculatorCount zobrist_calculator_count;
-  size_t minimax_search_depth;
+  DepthType minimax_search_depth;
 
   PlayerSpec(
       gameboard::PieceColor color,
       EvaluatorType evaluator_type = EvaluatorType::kMinimax,
       ZobristKeyType zobrist_key_type = ZobristKeyType::k064BitKey,
       ZobristCalculatorCount zobrist_calculator_count = ZobristCalculatorCount::kTwoZCalc,
-
-      // MinimaxTypeInfo minimax_type_info = MinimaxTypeInfo{},
-      size_t minimax_search_depth = 0
+      DepthType minimax_search_depth = 0
   )
       : color{color}
-      , evaluator_type{evaluator_type} // , minimax_type_info{minimax_type_info}
+      , evaluator_type{evaluator_type}
       , zobrist_key_type{zobrist_key_type}
       , zobrist_calculator_count{zobrist_calculator_count}
       , minimax_search_depth{minimax_search_depth} {}
