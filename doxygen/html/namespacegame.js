@@ -3,11 +3,15 @@ var namespacegame =
     [ "EvaluatorFactoryRetriever", "classgame_1_1EvaluatorFactoryRetriever.html", "classgame_1_1EvaluatorFactoryRetriever" ],
     [ "Game", "classgame_1_1Game.html", "classgame_1_1Game" ],
     [ "GameFactory", "classgame_1_1GameFactory.html", "classgame_1_1GameFactory" ],
+    [ "GameRunner", "classgame_1_1GameRunner.html", "classgame_1_1GameRunner" ],
     [ "GameStatus", "structgame_1_1GameStatus.html", "structgame_1_1GameStatus" ],
     [ "GameSummary", "structgame_1_1GameSummary.html", "structgame_1_1GameSummary" ],
     [ "MinimaxTypeInfo", "structgame_1_1MinimaxTypeInfo.html", "structgame_1_1MinimaxTypeInfo" ],
     [ "MinimaxTypeInfoHash", "structgame_1_1MinimaxTypeInfoHash.html", "structgame_1_1MinimaxTypeInfoHash" ],
+    [ "PlayerInputTranslator", "classgame_1_1PlayerInputTranslator.html", "classgame_1_1PlayerInputTranslator" ],
     [ "PlayerSpec", "structgame_1_1PlayerSpec.html", "structgame_1_1PlayerSpec" ],
+    [ "PlayerSpecBuilder", "classgame_1_1PlayerSpecBuilder.html", "classgame_1_1PlayerSpecBuilder" ],
+    [ "PlayerInputType", "namespacegame.html#aa587b8756216edc19bb20ebb94227b14", null ],
     [ "EvaluatorType", "namespacegame.html#a8c93203a902146caddef660c90e21280", [
       [ "kRandom", "namespacegame.html#a8c93203a902146caddef660c90e21280adbb7c37a1a3b50bc322b3bb1a8654e9d", null ],
       [ "kMinimax", "namespacegame.html#a8c93203a902146caddef660c90e21280a44f1478de1e9660318efbe807ee753d1", null ],
@@ -21,13 +25,13 @@ var namespacegame =
     ] ],
     [ "ZobristCalculatorCount", "namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9b", [
       [ "kNoZCalcs", "namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba63053a3d6fa02372ac0d1c6ef3a9b099", null ],
-      [ "kOne", "namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba95161ab1a70c8dc35305e62d666eb388", null ],
-      [ "kTwo", "namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba490016a830a434832c94c288ddca8ecf", null ]
+      [ "kOneZCalc", "namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba22197005fc28e410420a265e4f5b4c54", null ],
+      [ "kTwoZCalc", "namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba2009eb34a51ea02a8706bc04ff056809", null ]
     ] ],
     [ "ZobristKeyType", "namespacegame.html#a559237671e2da77df194f7b85a0479d3", [
       [ "kNoKey", "namespacegame.html#a559237671e2da77df194f7b85a0479d3a467539f86103f13554fdbc2541179eca", null ],
-      [ "k032", "namespacegame.html#a559237671e2da77df194f7b85a0479d3a5ae4e5ada916251cbff4fcd9e7e7a268", null ],
-      [ "k064", "namespacegame.html#a559237671e2da77df194f7b85a0479d3acc6024343915ec58fdf48a7974e2d053", null ],
-      [ "k128", "namespacegame.html#a559237671e2da77df194f7b85a0479d3ab2069f9b4644b6189edaa6d98adbf499", null ]
+      [ "k032BitKey", "namespacegame.html#a559237671e2da77df194f7b85a0479d3a6156ba4a921ddcb8f14c4b8b1b707b41", null ],
+      [ "k064BitKey", "namespacegame.html#a559237671e2da77df194f7b85a0479d3a34516666a0b377c7911b81681a3309cd", null ],
+      [ "k128BitKey", "namespacegame.html#a559237671e2da77df194f7b85a0479d3a09f50d21b97df621b88303d9afe7a3ce", null ]
     ] ]
 ];

@@ -1,14 +1,14 @@
-<map id="include/piece_value_provider_interface.hpp" name="include/piece_value_provider_interface.hpp">
-<area shape="rect" id="node1" title="Definition of PieceValueProvider CRTP interface." alt="" coords="235,5,411,45"/>
-<area shape="rect" id="node2" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="235,93,410,119"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,167,61,192"/>
-<area shape="rect" id="node4" title=" " alt="" coords="85,167,155,192"/>
-<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="179,167,309,192"/>
-<area shape="rect" id="node9" href="$integer__types_8hpp.html" title=" " alt="" coords="333,167,472,192"/>
-<area shape="rect" id="node11" title=" " alt="" coords="496,167,568,192"/>
-<area shape="rect" id="node12" title=" " alt="" coords="593,167,655,192"/>
-<area shape="rect" id="node6" title=" " alt="" coords="89,240,151,265"/>
-<area shape="rect" id="node7" title=" " alt="" coords="176,240,235,265"/>
-<area shape="rect" id="node8" title=" " alt="" coords="259,240,383,265"/>
-<area shape="rect" id="node10" title=" " alt="" coords="408,240,475,265"/>
+<map id="include/interfaces/piece_value_provider_interface.hpp" name="include/interfaces/piece_value_provider_interface.hpp">
+<area shape="rect" id="node1" title="Definition of PieceValueProvider CRTP interface." alt="" coords="312,5,477,60"/>
+<area shape="rect" id="node2" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="308,108,481,148"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,196,61,221"/>
+<area shape="rect" id="node4" title=" " alt="" coords="85,196,155,221"/>
+<area shape="rect" id="node5" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="179,196,386,221"/>
+<area shape="rect" id="node9" href="$integer__types_8hpp.html" title=" " alt="" coords="411,196,603,221"/>
+<area shape="rect" id="node11" title=" " alt="" coords="627,196,699,221"/>
+<area shape="rect" id="node12" title=" " alt="" coords="723,196,786,221"/>
+<area shape="rect" id="node6" title=" " alt="" coords="159,269,222,295"/>
+<area shape="rect" id="node7" title=" " alt="" coords="247,269,305,295"/>
+<area shape="rect" id="node8" title=" " alt="" coords="330,269,454,295"/>
+<area shape="rect" id="node10" title=" " alt="" coords="479,269,545,295"/>
 </map>

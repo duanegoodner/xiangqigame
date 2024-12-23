@@ -1,21 +1,20 @@
 <map id="terminalout::TerminalGameReporter" name="terminalout::TerminalGameReporter">
-<area shape="rect" id="node1" title=" " alt="" coords="694,800,933,980"/>
-<area shape="rect" id="node2" href="$classGameReporterInterface.html" title=" " alt="" coords="157,587,368,679"/>
-<area shape="rect" id="node3" href="$classterminalout_1_1PlayerReporter.html" title=" " alt="" coords="392,557,595,708"/>
-<area shape="rect" id="node4" href="$structgame_1_1PlayerSpec.html" title=" " alt="" coords="252,373,391,451"/>
-<area shape="rect" id="node5" title=" " alt="" coords="5,175,96,252"/>
-<area shape="rect" id="node6" title=" " alt="" coords="120,175,235,252"/>
-<area shape="rect" id="node7" href="$structgame_1_1MinimaxTypeInfo.html" title=" " alt="" coords="259,167,437,259"/>
-<area shape="rect" id="node8" title=" " alt="" coords="200,5,323,83"/>
-<area shape="rect" id="node9" title=" " alt="" coords="347,5,519,83"/>
-<area shape="rect" id="node10" title=" " alt="" coords="463,175,523,252"/>
-<area shape="rect" id="node11" title=" " alt="" coords="415,359,591,465"/>
-<area shape="rect" id="node12" title=" " alt="" coords="52,359,228,465"/>
-<area shape="rect" id="node13" href="$classterminalout_1_1MoveReporter.html" title=" " alt="" coords="619,594,818,671"/>
-<area shape="rect" id="node14" href="$classterminalout_1_1BoardMapEncoder.html" title=" " alt="" coords="841,594,1065,671"/>
-<area shape="rect" id="node15" href="$classterminalout_1_1GamePieceEncoder.html" title=" " alt="" coords="785,373,1017,451"/>
-<area shape="rect" id="node16" title=" " alt="" coords="663,175,721,252"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1074,160,1302,267"/>
-<area shape="rect" id="node18" title=" " alt="" coords="780,160,1004,267"/>
-<area shape="rect" id="node19" title=" " alt="" coords="1271,579,1465,686"/>
+<area shape="rect" id="node1" title=" " alt="" coords="651,645,890,825"/>
+<area shape="rect" id="node2" href="$classGameReporterInterface.html" title=" " alt="" coords="141,432,352,524"/>
+<area shape="rect" id="node3" href="$classterminalout_1_1PlayerReporter.html" title=" " alt="" coords="376,403,579,553"/>
+<area shape="rect" id="node4" href="$structgame_1_1PlayerSpec.html" title=" " alt="" coords="328,219,467,296"/>
+<area shape="rect" id="node5" title=" " alt="" coords="172,20,263,97"/>
+<area shape="rect" id="node6" title=" " alt="" coords="287,20,401,97"/>
+<area shape="rect" id="node7" title=" " alt="" coords="425,20,548,97"/>
+<area shape="rect" id="node8" title=" " alt="" coords="573,20,745,97"/>
+<area shape="rect" id="node9" title=" " alt="" coords="5,20,80,97"/>
+<area shape="rect" id="node10" title=" " alt="" coords="491,204,667,311"/>
+<area shape="rect" id="node11" title=" " alt="" coords="128,204,304,311"/>
+<area shape="rect" id="node12" href="$classterminalout_1_1MoveReporter.html" title=" " alt="" coords="603,439,802,517"/>
+<area shape="rect" id="node13" href="$classterminalout_1_1BoardMapEncoder.html" title=" " alt="" coords="876,439,1100,517"/>
+<area shape="rect" id="node14" href="$classterminalout_1_1GamePieceEncoder.html" title=" " alt="" coords="927,219,1159,296"/>
+<area shape="rect" id="node15" title=" " alt="" coords="1029,20,1088,97"/>
+<area shape="rect" id="node16" title=" " alt="" coords="769,5,997,112"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1147,5,1371,112"/>
+<area shape="rect" id="node18" title=" " alt="" coords="1124,425,1319,531"/>
 </map>

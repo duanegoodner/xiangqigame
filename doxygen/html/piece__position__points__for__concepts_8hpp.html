@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: include/piece_position_points_for_concepts.hpp File Reference</title>
+  <title>Xiangiqgame: include/piecepoints/piece_position_points_for_concepts.hpp File Reference</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -148,52 +148,54 @@ $(document).ready(function(){initNavTree('piece__position__points__for__concepts
   <div class="headertitle"><div class="title">piece_position_points_for_concepts.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="game__piece_8hpp_source.html">game_piece.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="board__data__structs_8hpp_source.html">gameboard/board_data_structs.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="game__piece_8hpp_source.html">gameboard/game_piece.hpp</a>&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
-<code>#include &lt;<a class="el" href="piece__points__bpo_8hpp_source.html">piece_points_bpo.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="base__position__offset_8hpp_source.html">piecepoints/base_position_offset.hpp</a>&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for piece_position_points_for_concepts.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="piece__position__points__for__concepts_8hpp__incl.png" border="0" usemap="#ainclude_2piece__position__points__for__concepts_8hpp" alt=""/></div>
-<map name="ainclude_2piece__position__points__for__concepts_8hpp" id="ainclude_2piece__position__points__for__concepts_8hpp">
-<area shape="rect" title=" " alt="" coords="198,5,385,45"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="309,240,484,265"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="5,313,135,339"/>
-<area shape="rect" title=" " alt="" coords="1141,387,1199,412"/>
-<area shape="rect" title=" " alt="" coords="253,167,330,192"/>
-<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="674,93,837,119"/>
-<area shape="rect" title=" " alt="" coords="701,313,757,339"/>
-<area shape="rect" title=" " alt="" coords="322,313,391,339"/>
-<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="159,313,298,339"/>
-<area shape="rect" title=" " alt="" coords="415,313,487,339"/>
-<area shape="rect" title=" " alt="" coords="613,313,676,339"/>
-<area shape="rect" title=" " alt="" coords="39,387,101,412"/>
-<area shape="rect" title=" " alt="" coords="488,387,612,412"/>
-<area shape="rect" title=" " alt="" coords="195,387,262,412"/>
-<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="1527,240,1714,265"/>
-<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1221,167,1415,192"/>
-<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="354,167,573,192"/>
-<area shape="rect" title=" " alt="" coords="680,167,756,192"/>
-<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="727,240,861,265"/>
-<area shape="rect" title=" " alt="" coords="1429,240,1503,265"/>
-<area shape="rect" title=" " alt="" coords="1258,240,1405,265"/>
-<area shape="rect" title=" " alt="" coords="831,313,917,339"/>
-<area shape="rect" title=" " alt="" coords="941,313,1031,339"/>
+<div class="center"><img src="piece__position__points__for__concepts_8hpp__incl.png" border="0" usemap="#ainclude_2piecepoints_2piece__position__points__for__concepts_8hpp" alt=""/></div>
+<map name="ainclude_2piecepoints_2piece__position__points__for__concepts_8hpp" id="ainclude_2piecepoints_2piece__position__points__for__concepts_8hpp">
+<area shape="rect" title=" " alt="" coords="372,5,539,60"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="433,284,606,324"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="5,372,212,397"/>
+<area shape="rect" title=" " alt="" coords="1271,445,1330,471"/>
+<area shape="rect" title=" " alt="" coords="417,203,494,229"/>
+<area shape="rect" href="base__position__offset_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="791,108,981,148"/>
+<area shape="rect" title=" " alt="" coords="831,372,887,397"/>
+<area shape="rect" title=" " alt="" coords="453,372,522,397"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="237,372,429,397"/>
+<area shape="rect" title=" " alt="" coords="546,372,618,397"/>
+<area shape="rect" title=" " alt="" coords="744,372,807,397"/>
+<area shape="rect" title=" " alt="" coords="77,445,140,471"/>
+<area shape="rect" title=" " alt="" coords="619,445,743,471"/>
+<area shape="rect" title=" " alt="" coords="299,445,366,471"/>
+<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="1657,284,1795,324"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1367,196,1504,236"/>
+<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="519,196,701,236"/>
+<area shape="rect" title=" " alt="" coords="811,203,887,229"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="831,291,1019,317"/>
+<area shape="rect" title=" " alt="" coords="1560,291,1633,317"/>
+<area shape="rect" title=" " alt="" coords="1389,291,1535,317"/>
+<area shape="rect" title=" " alt="" coords="962,372,1047,397"/>
+<area shape="rect" title=" " alt="" coords="1072,372,1161,397"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="piece__position__points__for__concepts_8hpp__dep__incl.png" border="0" usemap="#ainclude_2piece__position__points__for__concepts_8hppdep" alt=""/></div>
-<map name="ainclude_2piece__position__points__for__concepts_8hppdep" id="ainclude_2piece__position__points__for__concepts_8hppdep">
-<area shape="rect" title=" " alt="" coords="219,5,405,45"/>
-<area shape="rect" href="builders_8hpp.html" title=" " alt="" coords="121,108,274,133"/>
-<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="219,196,405,221"/>
-<area shape="rect" href="piece__position__points__for__concepts_8cpp.html" title=" " alt="" coords="349,93,595,148"/>
-<area shape="rect" href="game__factory_8hpp.html" title=" " alt="" coords="5,196,195,221"/>
-<area shape="rect" href="game__factory_8cpp.html" title=" " alt="" coords="17,269,183,309"/>
+<div class="center"><img src="piece__position__points__for__concepts_8hpp__dep__incl.png" border="0" usemap="#ainclude_2piecepoints_2piece__position__points__for__concepts_8hppdep" alt=""/></div>
+<map name="ainclude_2piecepoints_2piece__position__points__for__concepts_8hppdep" id="ainclude_2piecepoints_2piece__position__points__for__concepts_8hppdep">
+<area shape="rect" title=" " alt="" coords="325,5,491,60"/>
+<area shape="rect" href="zobrist__factories_8hpp.html" title=" " alt="" coords="268,115,431,155"/>
+<area shape="rect" href="minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="124,211,356,251"/>
+<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="365,299,552,324"/>
+<area shape="rect" href="piece__position__points__for__concepts_8cpp.html" title=" " alt="" coords="506,108,673,163"/>
+<area shape="rect" href="game__factory_8hpp.html" title=" " alt="" coords="110,299,341,324"/>
+<area shape="rect" href="game__runner_8hpp.html" title=" " alt="" coords="5,379,232,405"/>
+<area shape="rect" href="game__factory_8cpp.html" title=" " alt="" coords="256,372,411,412"/>
 </map>
 </div>
 </div>
@@ -216,8 +218,8 @@ Namespaces</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="piece__position__points__for__concepts_8hpp.html">piece_position_points_for_concepts.hpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:26 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_475250b18ca042266cb03c6ae5b0bde6.html">piecepoints</a></li><li class="navelem"><a class="el" href="piece__position__points__for__concepts_8hpp.html">piece_position_points_for_concepts.hpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

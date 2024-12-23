@@ -21,7 +21,6 @@ var namespacemoveselection =
     [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
     [ "MinimaxMoveEvaluatorFactory", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html", "classmoveselection_1_1MinimaxMoveEvaluatorFactory" ],
     [ "MinimaxMoveEvaluatorForConcepts", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts" ],
-    [ "MinimaxTemplateSpecs", "structmoveselection_1_1MinimaxTemplateSpecs.html", "structmoveselection_1_1MinimaxTemplateSpecs" ],
     [ "PreSearchMoveSorter", "classmoveselection_1_1PreSearchMoveSorter.html", "classmoveselection_1_1PreSearchMoveSorter" ],
     [ "PreSearchMoveSorterForConcepts", "classmoveselection_1_1PreSearchMoveSorterForConcepts.html", "classmoveselection_1_1PreSearchMoveSorterForConcepts" ],
     [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],

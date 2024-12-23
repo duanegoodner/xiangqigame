@@ -1,4 +1,5 @@
-<map id="include/game_factory.hpp" name="include/game_factory.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,195,31"/>
-<area shape="rect" id="node2" href="$game__factory_8cpp.html" title=" " alt="" coords="17,79,183,119"/>
+<map id="include/game/game_factory.hpp" name="include/game/game_factory.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="110,5,341,31"/>
+<area shape="rect" id="node2" href="$game__runner_8hpp.html" title=" " alt="" coords="5,86,232,111"/>
+<area shape="rect" id="node3" href="$game__factory_8cpp.html" title=" " alt="" coords="256,79,411,119"/>
 </map>

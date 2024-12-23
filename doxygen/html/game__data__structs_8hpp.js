@@ -18,13 +18,13 @@ var game__data__structs_8hpp =
     ] ],
     [ "ZobristCalculatorCount", "game__data__structs_8hpp.html#af9dd5fc4285d36790679b0d273dd4a9b", [
       [ "kNoZCalcs", "game__data__structs_8hpp.html#af9dd5fc4285d36790679b0d273dd4a9ba63053a3d6fa02372ac0d1c6ef3a9b099", null ],
-      [ "kOne", "game__data__structs_8hpp.html#af9dd5fc4285d36790679b0d273dd4a9ba95161ab1a70c8dc35305e62d666eb388", null ],
-      [ "kTwo", "game__data__structs_8hpp.html#af9dd5fc4285d36790679b0d273dd4a9ba490016a830a434832c94c288ddca8ecf", null ]
+      [ "kOneZCalc", "game__data__structs_8hpp.html#af9dd5fc4285d36790679b0d273dd4a9ba22197005fc28e410420a265e4f5b4c54", null ],
+      [ "kTwoZCalc", "game__data__structs_8hpp.html#af9dd5fc4285d36790679b0d273dd4a9ba2009eb34a51ea02a8706bc04ff056809", null ]
     ] ],
     [ "ZobristKeyType", "game__data__structs_8hpp.html#a559237671e2da77df194f7b85a0479d3", [
       [ "kNoKey", "game__data__structs_8hpp.html#a559237671e2da77df194f7b85a0479d3a467539f86103f13554fdbc2541179eca", null ],
-      [ "k032", "game__data__structs_8hpp.html#a559237671e2da77df194f7b85a0479d3a5ae4e5ada916251cbff4fcd9e7e7a268", null ],
-      [ "k064", "game__data__structs_8hpp.html#a559237671e2da77df194f7b85a0479d3acc6024343915ec58fdf48a7974e2d053", null ],
-      [ "k128", "game__data__structs_8hpp.html#a559237671e2da77df194f7b85a0479d3ab2069f9b4644b6189edaa6d98adbf499", null ]
+      [ "k032BitKey", "game__data__structs_8hpp.html#a559237671e2da77df194f7b85a0479d3a6156ba4a921ddcb8f14c4b8b1b707b41", null ],
+      [ "k064BitKey", "game__data__structs_8hpp.html#a559237671e2da77df194f7b85a0479d3a34516666a0b377c7911b81681a3309cd", null ],
+      [ "k128BitKey", "game__data__structs_8hpp.html#a559237671e2da77df194f7b85a0479d3a09f50d21b97df621b88303d9afe7a3ce", null ]
     ] ]
 ];

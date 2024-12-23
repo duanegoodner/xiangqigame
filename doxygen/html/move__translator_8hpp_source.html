@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: include/move_translator.hpp Source File</title>
+  <title>Xiangiqgame: include/movetranslation/move_translator.hpp Source File</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -147,9 +147,9 @@ $(document).ready(function(){initNavTree('move__translator_8hpp_source.html','')
 <div class="contents">
 <a href="move__translator_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="board__data__structs_8hpp.html">board_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="board__data__structs_8hpp.html">gameboard/board_data_structs.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="move__data__structs_8hpp.html">move_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="move__data__structs_8hpp.html">gameboard/move_data_structs.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;regex&gt;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
@@ -159,13 +159,13 @@ $(document).ready(function(){initNavTree('move__translator_8hpp_source.html','')
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classmovetranslation_1_1InvalidAlgebraicSpaceException.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="classmovetranslation_1_1InvalidAlgebraicSpaceException.html">InvalidAlgebraicSpaceException</a> : <span class="keyword">public</span> ::std::invalid_argument {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classmovetranslation_1_1InvalidAlgebraicSpaceException.html#ace856a77ad4963543ddcb4831df407d5">   14</a></span>  <span class="keyword">explicit</span> <a class="code hl_function" href="classmovetranslation_1_1InvalidAlgebraicSpaceException.html#ace856a77ad4963543ddcb4831df407d5">InvalidAlgebraicSpaceException</a>(<span class="keyword">const</span> std::string &amp;message)</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>      : <a class="code hl_namespace" href="namespacestd.html">std</a>::invalid_argument(message) {}</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>      : std::invalid_argument(message) {}</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>};</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classmovetranslation_1_1InvalidVectorSizeException.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="classmovetranslation_1_1InvalidVectorSizeException.html">InvalidVectorSizeException</a> : <span class="keyword">public</span> std::runtime_error {</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classmovetranslation_1_1InvalidVectorSizeException.html#a3f2e72617217fa7d8fcb119d1ce2b55a">   20</a></span>  <span class="keyword">explicit</span> <a class="code hl_function" href="classmovetranslation_1_1InvalidVectorSizeException.html#a3f2e72617217fa7d8fcb119d1ce2b55a">InvalidVectorSizeException</a>(<span class="keyword">const</span> std::string &amp;message)</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>      : <a class="code hl_namespace" href="namespacestd.html">std</a>::runtime_error(message) {}</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>      : std::runtime_error(message) {}</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classmovetranslation_1_1AlgebraicBoardSpace.html">   24</a></span><span class="keyword">class </span><a class="code hl_class" href="classmovetranslation_1_1AlgebraicBoardSpace.html">AlgebraicBoardSpace</a> {</div>
@@ -227,7 +227,6 @@ $(document).ready(function(){initNavTree('move__translator_8hpp_source.html','')
 <div class="ttc" id="anamespacemovetranslation_html_a7f67abf13d7fd18647e31f66579b0fb0"><div class="ttname"><a href="namespacemovetranslation.html#a7f67abf13d7fd18647e31f66579b0fb0">movetranslation::Trim</a></div><div class="ttdeci">const std::string Trim(const std::string &amp;str)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00093">move_translator.cpp:93</a></div></div>
 <div class="ttc" id="anamespacemovetranslation_html_adbf378e0bb2b73ec98a7a83b63e584f2"><div class="ttname"><a href="namespacemovetranslation.html#adbf378e0bb2b73ec98a7a83b63e584f2">movetranslation::GetInput</a></div><div class="ttdeci">const std::string GetInput(std::istream &amp;input_stream)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00085">move_translator.cpp:85</a></div></div>
 <div class="ttc" id="anamespacemovetranslation_html_af6b25f6dad061c2a678b1dc00e62ac51"><div class="ttname"><a href="namespacemovetranslation.html#af6b25f6dad061c2a678b1dc00e62ac51">movetranslation::Tokenize</a></div><div class="ttdeci">const std::vector&lt; std::string &gt; Tokenize(const std::string &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00104">move_translator.cpp:104</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition:</b> <a href="minimax__evaluator__factory_8hpp_source.html#l00019">minimax_evaluator_factory.hpp:19</a></div></div>
 <div class="ttc" id="astructgameboard_1_1BoardSpace_html"><div class="ttname"><a href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a></div><div class="ttdoc">A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa...</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00051">board_data_structs.hpp:51</a></div></div>
 <div class="ttc" id="astructgameboard_1_1Move_html"><div class="ttname"><a href="structgameboard_1_1Move.html">gameboard::Move</a></div><div class="ttdoc">A gameboard::BoardSpace pair (start and end).</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00018">move_data_structs.hpp:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -235,8 +234,8 @@ $(document).ready(function(){initNavTree('move__translator_8hpp_source.html','')
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="move__translator_8hpp.html">move_translator.hpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:25 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_29eed9fc2bc583f961c2218164c30fab.html">movetranslation</a></li><li class="navelem"><a class="el" href="move__translator_8hpp.html">move_translator.hpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

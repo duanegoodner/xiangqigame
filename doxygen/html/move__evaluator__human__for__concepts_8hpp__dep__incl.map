@@ -1,6 +1,7 @@
-<map id="include/move_evaluator_human_for_concepts.hpp" name="include/move_evaluator_human_for_concepts.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="128,5,320,45"/>
-<area shape="rect" id="node2" href="$game__factory_8hpp.html" title=" " alt="" coords="5,108,195,133"/>
-<area shape="rect" id="node4" href="$move__evaluator__human__for__concepts_8cpp.html" title=" " alt="" coords="219,93,479,148"/>
-<area shape="rect" id="node3" href="$game__factory_8cpp.html" title=" " alt="" coords="17,196,183,236"/>
+<map id="include/moveselection/move_evaluator_human_for_concepts.hpp" name="include/moveselection/move_evaluator_human_for_concepts.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="249,5,433,60"/>
+<area shape="rect" id="node2" href="$game__factory_8hpp.html" title=" " alt="" coords="110,123,341,148"/>
+<area shape="rect" id="node5" href="$move__evaluator__human__for__concepts_8cpp.html" title=" " alt="" coords="365,108,549,163"/>
+<area shape="rect" id="node3" href="$game__runner_8hpp.html" title=" " alt="" coords="5,218,232,243"/>
+<area shape="rect" id="node4" href="$game__factory_8cpp.html" title=" " alt="" coords="256,211,411,251"/>
 </map>

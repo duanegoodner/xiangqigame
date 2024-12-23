@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: include/game.hpp Source File</title>
+  <title>Xiangiqgame: include/game/game.hpp Source File</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -147,15 +147,15 @@ $(document).ready(function(){initNavTree('game_8hpp_source.html',''); initResiza
 <div class="contents">
 <a href="game_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="base__move__evaluator_8hpp.html">base_move_evaluator.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="base__space__info__provider_8hpp.html">base_space_info_provider.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="board__data__structs_8hpp.html">board_data_structs.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;<a class="code" href="concept__board__state__coordinator_8hpp.html">concept_board_state_coordinator.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="concept__composite__concepts_8hpp.html">concept_composite_concepts.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="concept__move__evaluator_8hpp.html">concept_move_evaluator.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="game__data__structs_8hpp.html">game_data_structs.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="game__piece_8hpp.html">game_piece.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="interface__game__reporter_8hpp.html">interface_game_reporter.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="base__move__evaluator_8hpp.html">interfaces/base_move_evaluator.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="base__space__info__provider_8hpp.html">interfaces/base_space_info_provider.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="board__data__structs_8hpp.html">gameboard/board_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;<a class="code" href="board__state__coordinator_8hpp.html">concepts/board_state_coordinator.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="composite__concepts_8hpp.html">concepts/composite_concepts.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator_8hpp.html">concepts/move_evaluator.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="game__data__structs_8hpp.html">game/game_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="game__piece_8hpp.html">gameboard/game_piece.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="interface__game__reporter_8hpp.html">interfaces/interface_game_reporter.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
@@ -200,6 +200,7 @@ $(document).ready(function(){initNavTree('game_8hpp_source.html',''); initResiza
 <div class="ttc" id="abase__move__evaluator_8hpp_html"><div class="ttname"><a href="base__move__evaluator_8hpp.html">base_move_evaluator.hpp</a></div></div>
 <div class="ttc" id="abase__space__info__provider_8hpp_html"><div class="ttname"><a href="base__space__info__provider_8hpp.html">base_space_info_provider.hpp</a></div></div>
 <div class="ttc" id="aboard__data__structs_8hpp_html"><div class="ttname"><a href="board__data__structs_8hpp.html">board_data_structs.hpp</a></div><div class="ttdoc">Constants, typedefs, and simple structs used by gameboard::GameBoard.</div></div>
+<div class="ttc" id="aboard__state__coordinator_8hpp_html"><div class="ttname"><a href="board__state__coordinator_8hpp.html">board_state_coordinator.hpp</a></div></div>
 <div class="ttc" id="aclassgame_1_1Game_html"><div class="ttname"><a href="classgame_1_1Game.html">game::Game</a></div><div class="ttdef"><b>Definition:</b> <a href="game_8hpp_source.html#l00017">game.hpp:17</a></div></div>
 <div class="ttc" id="aclassgame_1_1Game_html_a112dee7c4c8ee10a1766a0a64e33bbae"><div class="ttname"><a href="classgame_1_1Game.html#a112dee7c4c8ee10a1766a0a64e33bbae">game::Game::player_specs_</a></div><div class="ttdeci">std::unordered_map&lt; gameboard::PieceColor, PlayerSpec &gt; player_specs_</div><div class="ttdef"><b>Definition:</b> <a href="game_8hpp_source.html#l00019">game.hpp:19</a></div></div>
 <div class="ttc" id="aclassgame_1_1Game_html_a2a0ce3de2900373c7ff8456923cd6cf0"><div class="ttname"><a href="classgame_1_1Game.html#a2a0ce3de2900373c7ff8456923cd6cf0">game::Game::GetValidMove</a></div><div class="ttdeci">gameboard::Move GetValidMove(const gameboard::MoveCollection &amp;available_moves)</div><div class="ttdef"><b>Definition:</b> <a href="game_8cpp_source.html#l00053">game.cpp:53</a></div></div>
@@ -217,17 +218,16 @@ $(document).ready(function(){initNavTree('game_8hpp_source.html',''); initResiza
 <div class="ttc" id="aclassgame_1_1Game_html_ac3e9338e66ec306d8c5c925ce6cbebdb"><div class="ttname"><a href="classgame_1_1Game.html#ac3e9338e66ec306d8c5c925ce6cbebdb">game::Game::Play</a></div><div class="ttdeci">GameSummary Play()</div><div class="ttdef"><b>Definition:</b> <a href="game_8cpp_source.html#l00099">game.cpp:99</a></div></div>
 <div class="ttc" id="aclassgame_1_1Game_html_adeadb646b4aea988c07bf4c048960202"><div class="ttname"><a href="classgame_1_1Game.html#adeadb646b4aea988c07bf4c048960202">game::Game::game_board_</a></div><div class="ttdeci">std::shared_ptr&lt; SpaceInfoProviderBase &gt; game_board_</div><div class="ttdef"><b>Definition:</b> <a href="game_8hpp_source.html#l00018">game.hpp:18</a></div></div>
 <div class="ttc" id="aclassgame_1_1Game_html_af6aebf387fe384cf7994e957c5ec975f"><div class="ttname"><a href="classgame_1_1Game.html#af6aebf387fe384cf7994e957c5ec975f">game::Game::GenerateGameSummary</a></div><div class="ttdeci">GameSummary GenerateGameSummary()</div><div class="ttdef"><b>Definition:</b> <a href="game_8cpp_source.html#l00076">game.cpp:76</a></div></div>
-<div class="ttc" id="aconcept__board__state__coordinator_8hpp_html"><div class="ttname"><a href="concept__board__state__coordinator_8hpp.html">concept_board_state_coordinator.hpp</a></div></div>
-<div class="ttc" id="aconcept__composite__concepts_8hpp_html"><div class="ttname"><a href="concept__composite__concepts_8hpp.html">concept_composite_concepts.hpp</a></div></div>
-<div class="ttc" id="aconcept__move__evaluator_8hpp_html"><div class="ttname"><a href="concept__move__evaluator_8hpp.html">concept_move_evaluator.hpp</a></div></div>
+<div class="ttc" id="acomposite__concepts_8hpp_html"><div class="ttname"><a href="composite__concepts_8hpp.html">composite_concepts.hpp</a></div></div>
 <div class="ttc" id="agame__data__structs_8hpp_html"><div class="ttname"><a href="game__data__structs_8hpp.html">game_data_structs.hpp</a></div></div>
 <div class="ttc" id="agame__piece_8hpp_html"><div class="ttname"><a href="game__piece_8hpp.html">game_piece.hpp</a></div><div class="ttdoc">Defines GamePiece and supporting constants and free functions.</div></div>
 <div class="ttc" id="ainterface__game__reporter_8hpp_html"><div class="ttname"><a href="interface__game__reporter_8hpp.html">interface_game_reporter.hpp</a></div></div>
+<div class="ttc" id="amove__evaluator_8hpp_html"><div class="ttname"><a href="move__evaluator_8hpp.html">move_evaluator.hpp</a></div></div>
 <div class="ttc" id="anamespacegame_html"><div class="ttname"><a href="namespacegame.html">game</a></div><div class="ttdef"><b>Definition:</b> <a href="game_8hpp_source.html#l00016">game.hpp:16</a></div></div>
-<div class="ttc" id="anamespacegame_html_a397bae7c56aafd18e7ca3d06f16a864e"><div class="ttname"><a href="namespacegame.html#a397bae7c56aafd18e7ca3d06f16a864e">game::GameState</a></div><div class="ttdeci">GameState</div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00009">game_data_structs.hpp:9</a></div></div>
+<div class="ttc" id="anamespacegame_html_a397bae7c56aafd18e7ca3d06f16a864e"><div class="ttname"><a href="namespacegame.html#a397bae7c56aafd18e7ca3d06f16a864e">game::GameState</a></div><div class="ttdeci">GameState</div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00010">game_data_structs.hpp:10</a></div></div>
 <div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a></div><div class="ttdeci">PieceColor</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
 <div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00">gameboard::kRed</a></div><div class="ttdeci">@ kRed</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
-<div class="ttc" id="astructgame_1_1GameSummary_html"><div class="ttname"><a href="structgame_1_1GameSummary.html">game::GameSummary</a></div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00070">game_data_structs.hpp:70</a></div></div>
+<div class="ttc" id="astructgame_1_1GameSummary_html"><div class="ttname"><a href="structgame_1_1GameSummary.html">game::GameSummary</a></div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00072">game_data_structs.hpp:72</a></div></div>
 <div class="ttc" id="astructgameboard_1_1MoveCollection_html"><div class="ttname"><a href="structgameboard_1_1MoveCollection.html">gameboard::MoveCollection</a></div><div class="ttdoc">A container for multiple gameboard::Move objects.</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00031">move_data_structs.hpp:31</a></div></div>
 <div class="ttc" id="astructgameboard_1_1Move_html"><div class="ttname"><a href="structgameboard_1_1Move.html">gameboard::Move</a></div><div class="ttdoc">A gameboard::BoardSpace pair (start and end).</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00018">move_data_structs.hpp:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -235,8 +235,8 @@ $(document).ready(function(){initNavTree('game_8hpp_source.html',''); initResiza
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="game_8hpp.html">game.hpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:25 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_f307a46daed1218fee22380d1eacedba.html">game</a></li><li class="navelem"><a class="el" href="game_8hpp.html">game.hpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

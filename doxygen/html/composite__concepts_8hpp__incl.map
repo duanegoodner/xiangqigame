@@ -1,0 +1,26 @@
+<map id="include/concepts/composite_concepts.hpp" name="include/concepts/composite_concepts.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="525,5,727,45"/>
+<area shape="rect" id="node2" href="$board__state__calculator_8hpp.html" title=" " alt="" coords="543,181,704,221"/>
+<area shape="rect" id="node14" title=" " alt="" coords="583,277,663,302"/>
+<area shape="rect" id="node20" href="$board__state__calculator__registry_8hpp.html" title=" " alt="" coords="413,93,589,133"/>
+<area shape="rect" id="node21" href="$space__info__provider_8hpp.html" title=" " alt="" coords="150,181,305,221"/>
+<area shape="rect" id="node23" href="$single__board__state__provider_8hpp.html" title=" " alt="" coords="831,181,997,221"/>
+<area shape="rect" id="node3" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="339,357,513,397"/>
+<area shape="rect" id="node15" title=" " alt="" coords="703,277,781,302"/>
+<area shape="rect" id="node16" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="309,269,482,309"/>
+<area shape="rect" id="node4" title=" " alt="" coords="634,445,690,471"/>
+<area shape="rect" id="node5" title=" " alt="" coords="237,445,306,471"/>
+<area shape="rect" id="node6" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="5,445,212,471"/>
+<area shape="rect" id="node10" href="$integer__types_8hpp.html" title=" " alt="" coords="330,445,522,471"/>
+<area shape="rect" id="node12" title=" " alt="" coords="714,445,786,471"/>
+<area shape="rect" id="node13" title=" " alt="" coords="547,445,609,471"/>
+<area shape="rect" id="node7" title=" " alt="" coords="77,519,140,544"/>
+<area shape="rect" id="node8" title=" " alt="" coords="238,519,297,544"/>
+<area shape="rect" id="node9" title=" " alt="" coords="760,519,884,544"/>
+<area shape="rect" id="node11" title=" " alt="" coords="393,519,459,544"/>
+<area shape="rect" id="node17" href="$utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="707,365,895,390"/>
+<area shape="rect" id="node18" title=" " alt="" coords="810,445,895,471"/>
+<area shape="rect" id="node19" title=" " alt="" coords="920,445,1009,471"/>
+<area shape="rect" id="node22" title=" " alt="" coords="380,189,467,214"/>
+<area shape="rect" id="node24" title=" " alt="" coords="868,277,960,302"/>
+</map>

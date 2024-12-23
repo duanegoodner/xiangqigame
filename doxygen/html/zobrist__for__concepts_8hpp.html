@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: include/zobrist_for_concepts.hpp File Reference</title>
+  <title>Xiangiqgame: include/boardstate/zobrist_for_concepts.hpp File Reference</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -150,80 +150,82 @@ $(document).ready(function(){initNavTree('zobrist__for__concepts_8hpp.html','');
 <div class="contents">
 <div class="textblock"><code>#include &lt;array&gt;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
-<code>#include &lt;<a class="el" href="board__data__structs_8hpp_source.html">board_data_structs.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="board__data__structs_8hpp_source.html">gameboard/board_data_structs.hpp</a>&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
-<code>#include &lt;<a class="el" href="concept__multi__board__state__provider_8hpp_source.html">concept_multi_board_state_provider.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="concept__single__board__state__provider_8hpp_source.html">concept_single_board_state_provider.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="key__generator_8hpp_source.html">key_generator.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="multi__board__state__provider_8hpp_source.html">concepts/multi_board_state_provider.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="single__board__state__provider_8hpp_source.html">concepts/single_board_state_provider.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="evaluator__data__structs_8hpp_source.html">moveselection/evaluator_data_structs.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="key__generator_8hpp_source.html">boardstate/key_generator.hpp</a>&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
-<code>#include &lt;<a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="move__data__structs_8hpp_source.html">gameboard/move_data_structs.hpp</a>&gt;</code><br />
 <code>#include &lt;mutex&gt;</code><br />
 <code>#include &lt;optional&gt;</code><br />
 <code>#include &lt;random&gt;</code><br />
 <code>#include &lt;shared_mutex&gt;</code><br />
 <code>#include &lt;thread&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &lt;<a class="el" href="zobrist__calculator__for__concepts_8hpp_source.html">zobrist_calculator_for_concepts.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="zobrist__calculator__for__concepts_8hpp_source.html">boardstate/zobrist_calculator_for_concepts.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for zobrist_for_concepts.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="zobrist__for__concepts_8hpp__incl.png" border="0" usemap="#ainclude_2zobrist__for__concepts_8hpp" alt=""/></div>
-<map name="ainclude_2zobrist__for__concepts_8hpp" id="ainclude_2zobrist__for__concepts_8hpp">
-<area shape="rect" title=" " alt="" coords="1715,5,1858,45"/>
-<area shape="rect" title=" " alt="" coords="1255,416,1311,441"/>
-<area shape="rect" title=" " alt="" coords="2091,101,2157,126"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="1222,343,1397,368"/>
-<area shape="rect" title=" " alt="" coords="1804,416,1876,441"/>
-<area shape="rect" title=" " alt="" coords="1014,416,1077,441"/>
-<area shape="rect" title=" " alt="" coords="1448,189,1515,214"/>
-<area shape="rect" href="concept__multi__board__state__provider_8hpp.html" title=" " alt="" coords="1590,93,1749,133"/>
-<area shape="rect" href="concept__single__board__state__provider_8hpp.html" title=" " alt="" coords="1691,181,1853,221"/>
-<area shape="rect" title=" " alt="" coords="1448,269,1525,295"/>
-<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1266,101,1465,126"/>
-<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="1097,269,1271,295"/>
-<area shape="rect" href="key__generator_8hpp.html" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="1885,189,2027,214"/>
-<area shape="rect" title=" " alt="" coords="2181,101,2245,126"/>
-<area shape="rect" title=" " alt="" coords="2269,101,2344,126"/>
-<area shape="rect" title=" " alt="" coords="2368,101,2483,126"/>
-<area shape="rect" title=" " alt="" coords="2507,101,2571,126"/>
-<area shape="rect" href="zobrist__calculator__for__concepts_8hpp.html" title=" " alt="" coords="1875,93,2015,133"/>
-<area shape="rect" title=" " alt="" coords="1497,416,1567,441"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1101,416,1230,441"/>
-<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="1335,416,1473,441"/>
-<area shape="rect" title=" " alt="" coords="1134,489,1197,515"/>
-<area shape="rect" title=" " alt="" coords="385,489,444,515"/>
-<area shape="rect" title=" " alt="" coords="777,489,901,515"/>
-<area shape="rect" title=" " alt="" coords="1371,489,1437,515"/>
-<area shape="rect" title=" " alt="" coords="1600,269,1680,295"/>
-<area shape="rect" title=" " alt="" coords="1705,269,1797,295"/>
-<area shape="rect" title=" " alt="" coords="1272,189,1323,214"/>
-<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="507,189,669,214"/>
-<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="809,343,943,368"/>
-<area shape="rect" title=" " alt="" coords="739,416,824,441"/>
-<area shape="rect" title=" " alt="" coords="849,416,938,441"/>
-<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="5,343,192,368"/>
-<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="299,269,493,295"/>
-<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="752,269,971,295"/>
-<area shape="rect" title=" " alt="" coords="651,269,727,295"/>
-<area shape="rect" title=" " alt="" coords="318,343,391,368"/>
-<area shape="rect" title=" " alt="" coords="416,343,563,368"/>
-<area shape="rect" title=" " alt="" coords="2075,269,2133,295"/>
-<area shape="rect" title=" " alt="" coords="2157,269,2232,295"/>
-<area shape="rect" title=" " alt="" coords="1821,269,1901,295"/>
-<area shape="rect" title=" " alt="" coords="1925,269,2000,295"/>
+<div class="center"><img src="zobrist__for__concepts_8hpp__incl.png" border="0" usemap="#ainclude_2boardstate_2zobrist__for__concepts_8hpp" alt=""/></div>
+<map name="ainclude_2boardstate_2zobrist__for__concepts_8hpp" id="ainclude_2boardstate_2zobrist__for__concepts_8hpp">
+<area shape="rect" title=" " alt="" coords="1659,5,1847,45"/>
+<area shape="rect" title=" " alt="" coords="1283,445,1339,471"/>
+<area shape="rect" title=" " alt="" coords="2126,101,2193,126"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="1201,357,1374,397"/>
+<area shape="rect" title=" " alt="" coords="1818,445,1890,471"/>
+<area shape="rect" title=" " alt="" coords="965,445,1028,471"/>
+<area shape="rect" title=" " alt="" coords="1411,189,1478,214"/>
+<area shape="rect" href="multi__board__state__provider_8hpp.html" title=" " alt="" coords="1553,93,1715,133"/>
+<area shape="rect" href="single__board__state__provider_8hpp.html" title=" " alt="" coords="1655,181,1821,221"/>
+<area shape="rect" title=" " alt="" coords="1411,277,1489,302"/>
+<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1235,93,1419,133"/>
+<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="1062,269,1235,309"/>
+<area shape="rect" href="key__generator_8hpp.html" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="1846,189,2062,214"/>
+<area shape="rect" title=" " alt="" coords="2217,101,2281,126"/>
+<area shape="rect" title=" " alt="" coords="2305,101,2379,126"/>
+<area shape="rect" title=" " alt="" coords="2403,101,2518,126"/>
+<area shape="rect" title=" " alt="" coords="2542,101,2606,126"/>
+<area shape="rect" href="zobrist__calculator__for__concepts_8hpp.html" title=" " alt="" coords="1841,93,2051,133"/>
+<area shape="rect" title=" " alt="" coords="1579,445,1649,471"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1052,445,1259,471"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="1363,445,1555,471"/>
+<area shape="rect" title=" " alt="" coords="1124,519,1187,544"/>
+<area shape="rect" title=" " alt="" coords="337,519,395,544"/>
+<area shape="rect" title=" " alt="" coords="728,519,852,544"/>
+<area shape="rect" title=" " alt="" coords="1426,519,1493,544"/>
+<area shape="rect" title=" " alt="" coords="1563,277,1643,302"/>
+<area shape="rect" title=" " alt="" coords="1668,277,1760,302"/>
+<area shape="rect" title=" " alt="" coords="1235,189,1286,214"/>
+<area shape="rect" href="base__position__offset_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="481,181,672,221"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="735,365,923,390"/>
+<area shape="rect" title=" " alt="" coords="690,445,775,471"/>
+<area shape="rect" title=" " alt="" coords="800,445,889,471"/>
+<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="5,357,143,397"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="305,269,443,309"/>
+<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="740,269,923,309"/>
+<area shape="rect" title=" " alt="" coords="640,277,716,302"/>
+<area shape="rect" title=" " alt="" coords="269,365,343,390"/>
+<area shape="rect" title=" " alt="" coords="367,365,514,390"/>
+<area shape="rect" title=" " alt="" coords="2038,277,2097,302"/>
+<area shape="rect" title=" " alt="" coords="2121,277,2195,302"/>
+<area shape="rect" title=" " alt="" coords="1785,277,1865,302"/>
+<area shape="rect" title=" " alt="" coords="1889,277,1963,302"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="zobrist__for__concepts_8hpp__dep__incl.png" border="0" usemap="#ainclude_2zobrist__for__concepts_8hppdep" alt=""/></div>
-<map name="ainclude_2zobrist__for__concepts_8hppdep" id="ainclude_2zobrist__for__concepts_8hppdep">
-<area shape="rect" title=" " alt="" coords="183,5,326,45"/>
-<area shape="rect" href="builders_8hpp.html" title=" " alt="" coords="121,93,274,119"/>
-<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="219,167,405,192"/>
-<area shape="rect" href="game__factory_8hpp.html" title=" " alt="" coords="5,167,195,192"/>
-<area shape="rect" href="game__factory_8cpp.html" title=" " alt="" coords="17,240,183,280"/>
+<div class="center"><img src="zobrist__for__concepts_8hpp__dep__incl.png" border="0" usemap="#ainclude_2boardstate_2zobrist__for__concepts_8hppdep" alt=""/></div>
+<map name="ainclude_2boardstate_2zobrist__for__concepts_8hppdep" id="ainclude_2boardstate_2zobrist__for__concepts_8hppdep">
+<area shape="rect" title=" " alt="" coords="255,5,443,45"/>
+<area shape="rect" href="zobrist__factories_8hpp.html" title=" " alt="" coords="268,93,431,133"/>
+<area shape="rect" href="minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="124,181,356,221"/>
+<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="365,269,552,295"/>
+<area shape="rect" href="game__factory_8hpp.html" title=" " alt="" coords="110,269,341,295"/>
+<area shape="rect" href="game__runner_8hpp.html" title=" " alt="" coords="5,350,232,375"/>
+<area shape="rect" href="game__factory_8cpp.html" title=" " alt="" coords="256,343,411,383"/>
 </map>
 </div>
 </div>
@@ -260,8 +262,8 @@ Namespaces</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="zobrist__for__concepts_8hpp.html">zobrist_for_concepts.hpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:26 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_3c25bc696d7860d0b361b3de60d573c3.html">boardstate</a></li><li class="navelem"><a class="el" href="zobrist__for__concepts_8hpp.html">zobrist_for_concepts.hpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

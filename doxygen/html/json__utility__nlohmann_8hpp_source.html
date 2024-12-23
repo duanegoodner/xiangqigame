@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: include/json_utility_nlohmann.hpp Source File</title>
+  <title>Xiangiqgame: include/jsonio/json_utility_nlohmann.hpp Source File</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -150,9 +150,9 @@ $(document).ready(function(){initNavTree('json__utility__nlohmann_8hpp_source.ht
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="json__utility__interface_8hpp.html">json_utility_interface.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="json__utility__interface_8hpp.html">jsonio/json_utility_interface.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;nlohmann/json.hpp&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="piece__points__bpo_8hpp.html">piece_points_bpo.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="base__position__offset_8hpp.html">piecepoints/base_position_offset.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="namespacejsonio.html">   13</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacejsonio.html">jsonio</a> {</div>
@@ -186,6 +186,7 @@ $(document).ready(function(){initNavTree('json__utility__nlohmann_8hpp_source.ht
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>};</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>} <span class="comment">// namespace jsonio</span></div>
+<div class="ttc" id="abase__position__offset_8hpp_html"><div class="ttname"><a href="base__position__offset_8hpp.html">base_position_offset.hpp</a></div><div class="ttdoc">Definitions of classes used for storing piece points in Base Points Offset form.</div></div>
 <div class="ttc" id="aclassJsonUtility_html"><div class="ttname"><a href="classJsonUtility.html">JsonUtility</a></div><div class="ttdoc">CRTP interface with methods of importing / exporting objects from / to json files (concrete example =...</div><div class="ttdef"><b>Definition:</b> <a href="json__utility__interface_8hpp_source.html#l00017">json_utility_interface.hpp:17</a></div></div>
 <div class="ttc" id="aclassjsonio_1_1NlohmannJsonUtility_html"><div class="ttname"><a href="classjsonio_1_1NlohmannJsonUtility.html">jsonio::NlohmannJsonUtility</a></div><div class="ttdoc">Implements JsonUtility interface; imports / exports objects from / to json files using the Nlohmann j...</div><div class="ttdef"><b>Definition:</b> <a href="json__utility__nlohmann_8hpp_source.html#l00017">json_utility_nlohmann.hpp:17</a></div></div>
 <div class="ttc" id="aclassjsonio_1_1NlohmannJsonUtility_html_a2bdc53b0d81ed0ea9ec8a99fd84463ad"><div class="ttname"><a href="classjsonio_1_1NlohmannJsonUtility.html#a2bdc53b0d81ed0ea9ec8a99fd84463ad">jsonio::NlohmannJsonUtility::ImplementExport</a></div><div class="ttdeci">void ImplementExport(T &amp;object, const std::string file_path)</div><div class="ttdef"><b>Definition:</b> <a href="json__utility__nlohmann_8hpp_source.html#l00026">json_utility_nlohmann.hpp:26</a></div></div>
@@ -196,17 +197,16 @@ $(document).ready(function(){initNavTree('json__utility__nlohmann_8hpp_source.ht
 <div class="ttc" id="aclassjsonio_1_1NlohmannJsonUtility_html_aa6ee509fe467a915a56d48202747539b"><div class="ttname"><a href="classjsonio_1_1NlohmannJsonUtility.html#aa6ee509fe467a915a56d48202747539b">jsonio::NlohmannJsonUtility::ImplementExport</a></div><div class="ttdeci">void ImplementExport(piecepoints::BPOPointsSKeys &amp;bpo_points, const std::string file_path)</div></div>
 <div class="ttc" id="aclassjsonio_1_1NlohmannJsonUtility_html_aa85f79a226f1af80042c6cd861838d72"><div class="ttname"><a href="classjsonio_1_1NlohmannJsonUtility.html#aa85f79a226f1af80042c6cd861838d72">jsonio::NlohmannJsonUtility::ImplementImport</a></div><div class="ttdeci">void ImplementImport(T &amp;object, const std::string file_path)</div><div class="ttdef"><b>Definition:</b> <a href="json__utility__nlohmann_8hpp_source.html#l00020">json_utility_nlohmann.hpp:20</a></div></div>
 <div class="ttc" id="aclassjsonio_1_1NlohmannJsonUtility_html_ac58cffcc518fffbef2ce2dc319811e28"><div class="ttname"><a href="classjsonio_1_1NlohmannJsonUtility.html#ac58cffcc518fffbef2ce2dc319811e28">jsonio::NlohmannJsonUtility::Deserialize</a></div><div class="ttdeci">void Deserialize(nlohmann::json serialized_json, piecepoints::BPOPointsSKeys &amp;bpo_points)</div><div class="ttdef"><b>Definition:</b> <a href="json__utility__nlohmann_8cpp_source.html#l00042">json_utility_nlohmann.cpp:42</a></div></div>
-<div class="ttc" id="aclasspiecepoints_1_1BPOPointsSKeys_html"><div class="ttname"><a href="classpiecepoints_1_1BPOPointsSKeys.html">piecepoints::BPOPointsSKeys</a></div><div class="ttdoc">Piece Points spec in &quot;Base Points Offset&quot; form with string keys in member unordered_map objects for e...</div><div class="ttdef"><b>Definition:</b> <a href="piece__points__bpo_8hpp_source.html#l00028">piece_points_bpo.hpp:28</a></div></div>
+<div class="ttc" id="aclasspiecepoints_1_1BPOPointsSKeys_html"><div class="ttname"><a href="classpiecepoints_1_1BPOPointsSKeys.html">piecepoints::BPOPointsSKeys</a></div><div class="ttdoc">Piece Points spec in &quot;Base Points Offset&quot; form with string keys in member unordered_map objects for e...</div><div class="ttdef"><b>Definition:</b> <a href="base__position__offset_8hpp_source.html#l00028">base_position_offset.hpp:28</a></div></div>
 <div class="ttc" id="ajson__utility__interface_8hpp_html"><div class="ttname"><a href="json__utility__interface_8hpp.html">json_utility_interface.hpp</a></div><div class="ttdoc">Definition of JsonUtility CRTP interface.</div></div>
 <div class="ttc" id="anamespacejsonio_html"><div class="ttname"><a href="namespacejsonio.html">jsonio</a></div><div class="ttdoc">Importing / exporting objects from / to json files.</div><div class="ttdef"><b>Definition:</b> <a href="json__utility__nlohmann_8hpp_source.html#l00013">json_utility_nlohmann.hpp:13</a></div></div>
-<div class="ttc" id="apiece__points__bpo_8hpp_html"><div class="ttname"><a href="piece__points__bpo_8hpp.html">piece_points_bpo.hpp</a></div><div class="ttdoc">Definitions of classes used for storing piece points in Base Points Offset form.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="json__utility__nlohmann_8hpp.html">json_utility_nlohmann.hpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:25 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_859646b79cd10cbe078fef412815c635.html">jsonio</a></li><li class="navelem"><a class="el" href="json__utility__nlohmann_8hpp.html">json_utility_nlohmann.hpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

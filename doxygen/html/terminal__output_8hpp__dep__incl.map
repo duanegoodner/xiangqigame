@@ -1,6 +1,7 @@
-<map id="include/terminal_output.hpp" name="include/terminal_output.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="101,5,307,31"/>
-<area shape="rect" id="node2" href="$game__factory_8hpp.html" title=" " alt="" coords="5,86,195,111"/>
-<area shape="rect" id="node4" href="$terminal__output_8cpp.html" title=" " alt="" coords="219,79,400,119"/>
-<area shape="rect" id="node3" href="$game__factory_8cpp.html" title=" " alt="" coords="17,167,183,207"/>
+<map id="include/terminalout/terminal_output.hpp" name="include/terminalout/terminal_output.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="255,5,414,45"/>
+<area shape="rect" id="node2" href="$game__factory_8hpp.html" title=" " alt="" coords="110,101,341,126"/>
+<area shape="rect" id="node5" href="$terminal__output_8cpp.html" title=" " alt="" coords="365,93,523,133"/>
+<area shape="rect" id="node3" href="$game__runner_8hpp.html" title=" " alt="" coords="5,189,232,214"/>
+<area shape="rect" id="node4" href="$game__factory_8cpp.html" title=" " alt="" coords="256,181,411,221"/>
 </map>

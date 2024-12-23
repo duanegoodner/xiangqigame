@@ -1,0 +1,10 @@
+<map id="include/concepts/multi_board_state_provider.hpp" name="include/concepts/multi_board_state_provider.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="252,5,447,45"/>
+<area shape="rect" id="node2" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="255,93,443,133"/>
+<area shape="rect" id="node3" href="$zobrist__factories_8hpp.html" title=" " alt="" coords="268,181,431,221"/>
+<area shape="rect" id="node4" href="$minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="124,269,356,309"/>
+<area shape="rect" id="node8" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="365,357,552,383"/>
+<area shape="rect" id="node5" href="$game__factory_8hpp.html" title=" " alt="" coords="110,357,341,383"/>
+<area shape="rect" id="node6" href="$game__runner_8hpp.html" title=" " alt="" coords="5,438,232,463"/>
+<area shape="rect" id="node7" href="$game__factory_8cpp.html" title=" " alt="" coords="256,431,411,471"/>
+</map>

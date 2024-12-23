@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: src/core/move_evaluator_human_for_concepts/move_evaluator_human_for_concepts.cpp Source File</title>
+  <title>Xiangiqgame: src/core/moveselection/move_evaluator_human_for_concepts.cpp Source File</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -148,8 +148,8 @@ $(document).ready(function(){initNavTree('move__evaluator__human__for__concepts_
 <a href="move__evaluator__human__for__concepts_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator__human__for__concepts_8hpp.html">move_evaluator_human_for_concepts.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="move__translator_8hpp.html">move_translator.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator__human__for__concepts_8hpp.html">moveselection/move_evaluator_human_for_concepts.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="move__translator_8hpp.html">movetranslation/move_translator.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacemoveselection.html">moveselection</a> {</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
@@ -262,7 +262,7 @@ $(document).ready(function(){initNavTree('move__evaluator__human__for__concepts_
 <div class="ttc" id="amove__translator_8hpp_html"><div class="ttname"><a href="move__translator_8hpp.html">move_translator.hpp</a></div></div>
 <div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a></div><div class="ttdeci">PieceColor</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
 <div class="ttc" id="anamespacehumanplayerio_html"><div class="ttname"><a href="namespacehumanplayerio.html">humanplayerio</a></div><div class="ttdef"><b>Definition:</b> <a href="move__evaluator__human__for__concepts_8hpp_source.html#l00011">move_evaluator_human_for_concepts.hpp:11</a></div></div>
-<div class="ttc" id="anamespacemoveselection_html"><div class="ttname"><a href="namespacemoveselection.html">moveselection</a></div><div class="ttdoc">Selecting a move to execute.</div><div class="ttdef"><b>Definition:</b> <a href="builders_8hpp_source.html#l00116">builders.hpp:116</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html"><div class="ttname"><a href="namespacemoveselection.html">moveselection</a></div><div class="ttdoc">Selecting a move to execute.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00017">evaluator_data_structs.hpp:17</a></div></div>
 <div class="ttc" id="anamespacemovetranslation_html_a60ca116759f61eaddde95acbf2fbfbeb"><div class="ttname"><a href="namespacemovetranslation.html#a60ca116759f61eaddde95acbf2fbfbeb">movetranslation::IsValidAlgebraicMove</a></div><div class="ttdeci">bool IsValidAlgebraicMove(const std::vector&lt; std::string &gt; &amp;tokens)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00118">move_translator.cpp:118</a></div></div>
 <div class="ttc" id="anamespacemovetranslation_html_adbf378e0bb2b73ec98a7a83b63e584f2"><div class="ttname"><a href="namespacemovetranslation.html#adbf378e0bb2b73ec98a7a83b63e584f2">movetranslation::GetInput</a></div><div class="ttdeci">const std::string GetInput(std::istream &amp;input_stream)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00085">move_translator.cpp:85</a></div></div>
 <div class="ttc" id="anamespacemovetranslation_html_af6b25f6dad061c2a678b1dc00e62ac51"><div class="ttname"><a href="namespacemovetranslation.html#af6b25f6dad061c2a678b1dc00e62ac51">movetranslation::Tokenize</a></div><div class="ttdeci">const std::vector&lt; std::string &gt; Tokenize(const std::string &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00104">move_translator.cpp:104</a></div></div>
@@ -274,8 +274,8 @@ $(document).ready(function(){initNavTree('move__evaluator__human__for__concepts_
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="dir_f2433a039d00d1e886a983fb32c7071d.html">move_evaluator_human_for_concepts</a></li><li class="navelem"><a class="el" href="move__evaluator__human__for__concepts_8cpp.html">move_evaluator_human_for_concepts.cpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:25 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="dir_6bf50e5c038bba17f3ad8e4d67b5b53e.html">moveselection</a></li><li class="navelem"><a class="el" href="move__evaluator__human__for__concepts_8cpp.html">move_evaluator_human_for_concepts.cpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

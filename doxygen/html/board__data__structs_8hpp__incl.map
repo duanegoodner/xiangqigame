@@ -1,13 +1,13 @@
-<map id="include/board_data_structs.hpp" name="include/board_data_structs.hpp">
-<area shape="rect" id="node1" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="249,5,396,45"/>
+<map id="include/gameboard/board_data_structs.hpp" name="include/gameboard/board_data_structs.hpp">
+<area shape="rect" id="node1" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="301,5,489,45"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,93,61,119"/>
 <area shape="rect" id="node3" title=" " alt="" coords="85,93,155,119"/>
-<area shape="rect" id="node4" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="179,93,309,119"/>
-<area shape="rect" id="node8" href="$integer__types_8hpp.html" title=" " alt="" coords="333,93,472,119"/>
-<area shape="rect" id="node10" title=" " alt="" coords="496,93,568,119"/>
-<area shape="rect" id="node11" title=" " alt="" coords="593,93,655,119"/>
-<area shape="rect" id="node5" title=" " alt="" coords="89,167,151,192"/>
-<area shape="rect" id="node6" title=" " alt="" coords="176,167,235,192"/>
-<area shape="rect" id="node7" title=" " alt="" coords="259,167,383,192"/>
-<area shape="rect" id="node9" title=" " alt="" coords="408,167,475,192"/>
+<area shape="rect" id="node4" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="179,93,386,119"/>
+<area shape="rect" id="node8" href="$integer__types_8hpp.html" title=" " alt="" coords="411,93,603,119"/>
+<area shape="rect" id="node10" title=" " alt="" coords="627,93,699,119"/>
+<area shape="rect" id="node11" title=" " alt="" coords="723,93,786,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="159,167,222,192"/>
+<area shape="rect" id="node6" title=" " alt="" coords="247,167,305,192"/>
+<area shape="rect" id="node7" title=" " alt="" coords="330,167,454,192"/>
+<area shape="rect" id="node9" title=" " alt="" coords="479,167,545,192"/>
 </map>

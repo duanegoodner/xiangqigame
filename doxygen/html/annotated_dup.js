@@ -25,11 +25,14 @@ var annotated_dup =
       [ "EvaluatorFactoryRetriever", "classgame_1_1EvaluatorFactoryRetriever.html", "classgame_1_1EvaluatorFactoryRetriever" ],
       [ "Game", "classgame_1_1Game.html", "classgame_1_1Game" ],
       [ "GameFactory", "classgame_1_1GameFactory.html", "classgame_1_1GameFactory" ],
+      [ "GameRunner", "classgame_1_1GameRunner.html", "classgame_1_1GameRunner" ],
       [ "GameStatus", "structgame_1_1GameStatus.html", "structgame_1_1GameStatus" ],
       [ "GameSummary", "structgame_1_1GameSummary.html", "structgame_1_1GameSummary" ],
       [ "MinimaxTypeInfo", "structgame_1_1MinimaxTypeInfo.html", "structgame_1_1MinimaxTypeInfo" ],
       [ "MinimaxTypeInfoHash", "structgame_1_1MinimaxTypeInfoHash.html", "structgame_1_1MinimaxTypeInfoHash" ],
-      [ "PlayerSpec", "structgame_1_1PlayerSpec.html", "structgame_1_1PlayerSpec" ]
+      [ "PlayerInputTranslator", "classgame_1_1PlayerInputTranslator.html", "classgame_1_1PlayerInputTranslator" ],
+      [ "PlayerSpec", "structgame_1_1PlayerSpec.html", "structgame_1_1PlayerSpec" ],
+      [ "PlayerSpecBuilder", "classgame_1_1PlayerSpecBuilder.html", "classgame_1_1PlayerSpecBuilder" ]
     ] ],
     [ "gameboard", "namespacegameboard.html", [
       [ "BoardDirection", "structgameboard_1_1BoardDirection.html", "structgameboard_1_1BoardDirection" ],
@@ -59,7 +62,6 @@ var annotated_dup =
       [ "MinimaxMoveEvaluator", "classmoveselection_1_1MinimaxMoveEvaluator.html", "classmoveselection_1_1MinimaxMoveEvaluator" ],
       [ "MinimaxMoveEvaluatorFactory", "classmoveselection_1_1MinimaxMoveEvaluatorFactory.html", "classmoveselection_1_1MinimaxMoveEvaluatorFactory" ],
       [ "MinimaxMoveEvaluatorForConcepts", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts.html", "classmoveselection_1_1MinimaxMoveEvaluatorForConcepts" ],
-      [ "MinimaxTemplateSpecs", "structmoveselection_1_1MinimaxTemplateSpecs.html", "structmoveselection_1_1MinimaxTemplateSpecs" ],
       [ "PreSearchMoveSorter", "classmoveselection_1_1PreSearchMoveSorter.html", "classmoveselection_1_1PreSearchMoveSorter" ],
       [ "PreSearchMoveSorterForConcepts", "classmoveselection_1_1PreSearchMoveSorterForConcepts.html", "classmoveselection_1_1PreSearchMoveSorterForConcepts" ],
       [ "RandomMoveEvaluator", "classmoveselection_1_1RandomMoveEvaluator.html", "classmoveselection_1_1RandomMoveEvaluator" ],
@@ -82,9 +84,6 @@ var annotated_dup =
       [ "BPOPointsSKeys", "classpiecepoints_1_1BPOPointsSKeys.html", "classpiecepoints_1_1BPOPointsSKeys" ],
       [ "PiecePositionPoints", "structpiecepoints_1_1PiecePositionPoints.html", "structpiecepoints_1_1PiecePositionPoints" ],
       [ "PiecePositionPointsForConcepts", "structpiecepoints_1_1PiecePositionPointsForConcepts.html", "structpiecepoints_1_1PiecePositionPointsForConcepts" ]
-    ] ],
-    [ "std", "namespacestd.html", [
-      [ "hash< moveselection::MinimaxTemplateSpecs >", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4.html", "structstd_1_1hash_3_01moveselection_1_1MinimaxTemplateSpecs_01_4" ]
     ] ],
     [ "terminalout", "namespaceterminalout.html", [
       [ "BoardMapEncoder", "classterminalout_1_1BoardMapEncoder.html", "classterminalout_1_1BoardMapEncoder" ],
@@ -178,18 +177,15 @@ var annotated_dup =
         [ "TerminalStatusReporter", "classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter.html", "classxiangqipy_1_1terminal__output_1_1TerminalStatusReporter" ]
       ] ]
     ] ],
-    [ "AIPlayer", "classAIPlayer.html", "classAIPlayer" ],
     [ "BoardStateCoordinator", "classBoardStateCoordinator.html", "classBoardStateCoordinator" ],
     [ "Exception", "classException.html", null ],
     [ "GameReporterInterface", "classGameReporterInterface.html", "classGameReporterInterface" ],
-    [ "IllegalMoveException", "classIllegalMoveException.html", "classIllegalMoveException" ],
     [ "JsonUtility", "classJsonUtility.html", "classJsonUtility" ],
     [ "MoveEvaluator", "classMoveEvaluator.html", "classMoveEvaluator" ],
     [ "MoveEvaluatorBase", "classMoveEvaluatorBase.html", "classMoveEvaluatorBase" ],
     [ "MoveEvaluatorFactoryBase", "classMoveEvaluatorFactoryBase.html", "classMoveEvaluatorFactoryBase" ],
     [ "NullBoardStateCalculator", "classNullBoardStateCalculator.html", "classNullBoardStateCalculator" ],
     [ "PieceValueProvider", "classPieceValueProvider.html", "classPieceValueProvider" ],
-    [ "Player", "classPlayer.html", "classPlayer" ],
     [ "SpaceInfoProvider", "classSpaceInfoProvider.html", "classSpaceInfoProvider" ],
     [ "SpaceInfoProviderBase", "classSpaceInfoProviderBase.html", "classSpaceInfoProviderBase" ]
 ];

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: include/base_move_evaluator.hpp File Reference</title>
+  <title>Xiangiqgame: include/interfaces/base_move_evaluator.hpp File Reference</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -147,63 +147,65 @@ $(document).ready(function(){initNavTree('base__move__evaluator_8hpp.html',''); 
   <div class="headertitle"><div class="title">base_move_evaluator.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="evaluator__data__structs_8hpp_source.html">moveselection/evaluator_data_structs.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="move__data__structs_8hpp_source.html">gameboard/move_data_structs.hpp</a>&gt;</code><br />
 <code>#include &lt;optional&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for base_move_evaluator.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="base__move__evaluator_8hpp__incl.png" border="0" usemap="#ainclude_2base__move__evaluator_8hpp" alt=""/></div>
-<map name="ainclude_2base__move__evaluator_8hpp" id="ainclude_2base__move__evaluator_8hpp">
-<area shape="rect" title=" " alt="" coords="531,5,775,31"/>
-<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="418,79,617,104"/>
-<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="425,225,599,251"/>
-<area shape="rect" title=" " alt="" coords="691,79,765,104"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="425,299,599,324"/>
-<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="5,372,144,397"/>
-<area shape="rect" title=" " alt="" coords="424,152,491,177"/>
-<area shape="rect" title=" " alt="" coords="515,152,565,177"/>
-<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="835,152,997,177"/>
-<area shape="rect" title=" " alt="" coords="568,372,624,397"/>
-<area shape="rect" title=" " alt="" coords="424,372,493,397"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="219,372,349,397"/>
-<area shape="rect" title=" " alt="" coords="648,372,720,397"/>
-<area shape="rect" title=" " alt="" coords="745,372,807,397"/>
-<area shape="rect" title=" " alt="" coords="253,445,315,471"/>
-<area shape="rect" title=" " alt="" coords="1115,445,1173,471"/>
-<area shape="rect" title=" " alt="" coords="405,445,529,471"/>
-<area shape="rect" title=" " alt="" coords="41,445,108,471"/>
-<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="809,299,943,324"/>
-<area shape="rect" title=" " alt="" coords="996,372,1081,397"/>
-<area shape="rect" title=" " alt="" coords="831,372,921,397"/>
-<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="981,299,1168,324"/>
-<area shape="rect" title=" " alt="" coords="739,225,816,251"/>
-<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1092,225,1287,251"/>
-<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="131,225,349,251"/>
-<area shape="rect" title=" " alt="" coords="841,225,917,251"/>
-<area shape="rect" title=" " alt="" coords="1243,299,1317,324"/>
-<area shape="rect" title=" " alt="" coords="1341,299,1488,324"/>
+<div class="center"><img src="base__move__evaluator_8hpp__incl.png" border="0" usemap="#ainclude_2interfaces_2base__move__evaluator_8hpp" alt=""/></div>
+<map name="ainclude_2interfaces_2base__move__evaluator_8hpp" id="ainclude_2interfaces_2base__move__evaluator_8hpp">
+<area shape="rect" title=" " alt="" coords="673,5,871,45"/>
+<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="551,93,735,133"/>
+<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="549,269,723,309"/>
+<area shape="rect" title=" " alt="" coords="809,101,884,126"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="549,357,723,397"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="5,445,197,471"/>
+<area shape="rect" title=" " alt="" coords="543,189,609,214"/>
+<area shape="rect" title=" " alt="" coords="633,189,684,214"/>
+<area shape="rect" href="base__position__offset_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="905,181,1095,221"/>
+<area shape="rect" title=" " alt="" coords="699,445,755,471"/>
+<area shape="rect" title=" " alt="" coords="555,445,624,471"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="273,445,479,471"/>
+<area shape="rect" title=" " alt="" coords="779,445,851,471"/>
+<area shape="rect" title=" " alt="" coords="875,445,938,471"/>
+<area shape="rect" title=" " alt="" coords="345,519,407,544"/>
+<area shape="rect" title=" " alt="" coords="1245,519,1304,544"/>
+<area shape="rect" title=" " alt="" coords="515,519,639,544"/>
+<area shape="rect" title=" " alt="" coords="68,519,135,544"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="913,365,1101,390"/>
+<area shape="rect" title=" " alt="" coords="1127,445,1212,471"/>
+<area shape="rect" title=" " alt="" coords="962,445,1051,471"/>
+<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="1150,357,1287,397"/>
+<area shape="rect" title=" " alt="" coords="823,277,900,302"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1203,269,1341,309"/>
+<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="285,269,467,309"/>
+<area shape="rect" title=" " alt="" coords="925,277,1001,302"/>
+<area shape="rect" title=" " alt="" coords="1363,365,1437,390"/>
+<area shape="rect" title=" " alt="" coords="1461,365,1608,390"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="base__move__evaluator_8hpp__dep__incl.png" border="0" usemap="#ainclude_2base__move__evaluator_8hppdep" alt=""/></div>
-<map name="ainclude_2base__move__evaluator_8hppdep" id="ainclude_2base__move__evaluator_8hppdep">
-<area shape="rect" title=" " alt="" coords="463,5,707,31"/>
-<area shape="rect" href="base__evaluator__factory_8hpp.html" title=" " alt="" coords="437,79,610,119"/>
-<area shape="rect" href="game__factory_8hpp.html" title=" " alt="" coords="579,299,769,324"/>
-<area shape="rect" href="move__evaluator__human__for__concepts_8hpp.html" title=" " alt="" coords="170,181,362,221"/>
-<area shape="rect" href="move__evaluator__random__for__concepts_8hpp.html" title=" " alt="" coords="487,181,685,221"/>
-<area shape="rect" href="game_8hpp.html" title=" " alt="" coords="685,86,823,111"/>
-<area shape="rect" href="move__evaluator__minimax__for__concepts_8hpp.html" title=" " alt="" coords="990,79,1195,119"/>
-<area shape="rect" href="builders_8hpp.html" title=" " alt="" coords="760,189,913,214"/>
-<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="793,299,979,324"/>
-<area shape="rect" href="game__factory_8cpp.html" title=" " alt="" coords="591,387,757,427"/>
-<area shape="rect" href="move__evaluator__human__for__concepts_8cpp.html" title=" " alt="" coords="5,284,265,339"/>
-<area shape="rect" href="move__evaluator__random__for__concepts_8cpp.html" title=" " alt="" coords="289,284,555,339"/>
-<area shape="rect" href="game_8cpp.html" title=" " alt="" coords="937,189,1120,214"/>
-<area shape="rect" href="move__evaluator__minimax__for__concepts_8cpp.html" title=" " alt="" coords="1195,167,1393,236"/>
+<div class="center"><img src="base__move__evaluator_8hpp__dep__incl.png" border="0" usemap="#ainclude_2interfaces_2base__move__evaluator_8hppdep" alt=""/></div>
+<map name="ainclude_2interfaces_2base__move__evaluator_8hppdep" id="ainclude_2interfaces_2base__move__evaluator_8hppdep">
+<area shape="rect" title=" " alt="" coords="418,5,615,45"/>
+<area shape="rect" href="game_8hpp.html" title=" " alt="" coords="1298,108,1476,133"/>
+<area shape="rect" href="game__factory_8hpp.html" title=" " alt="" coords="544,401,774,427"/>
+<area shape="rect" href="base__evaluator__factory_8hpp.html" title=" " alt="" coords="484,101,690,141"/>
+<area shape="rect" href="move__evaluator__human__for__concepts_8hpp.html" title=" " alt="" coords="148,196,332,251"/>
+<area shape="rect" href="move__evaluator__random__for__concepts_8hpp.html" title=" " alt="" coords="356,196,546,251"/>
+<area shape="rect" href="move__evaluator__minimax__for__concepts_8hpp.html" title=" " alt="" coords="908,93,1106,148"/>
+<area shape="rect" href="game__runner_8hpp.html" title=" " alt="" coords="1087,482,1314,507"/>
+<area shape="rect" href="game_8cpp.html" title=" " alt="" coords="1232,211,1414,236"/>
+<area shape="rect" href="game__factory_8cpp.html" title=" " alt="" coords="582,475,736,515"/>
+<area shape="rect" href="zobrist__factories_8hpp.html" title=" " alt="" coords="722,203,884,243"/>
+<area shape="rect" href="minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="722,306,954,346"/>
+<area shape="rect" href="bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="848,401,1035,427"/>
+<area shape="rect" href="move__evaluator__human__for__concepts_8cpp.html" title=" " alt="" coords="47,299,231,353"/>
+<area shape="rect" href="move__evaluator__random__for__concepts_8cpp.html" title=" " alt="" coords="306,299,495,353"/>
+<area shape="rect" href="move__evaluator__minimax__for__concepts_8cpp.html" title=" " alt="" coords="908,196,1106,251"/>
 </map>
 </div>
 </div>
@@ -219,8 +221,8 @@ Classes</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="base__move__evaluator_8hpp.html">base_move_evaluator.hpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:25 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_b6a1b25c97174b03ee33ad89b32089b9.html">interfaces</a></li><li class="navelem"><a class="el" href="base__move__evaluator_8hpp.html">base_move_evaluator.hpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

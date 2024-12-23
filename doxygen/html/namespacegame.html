@@ -144,6 +144,7 @@ $(document).ready(function(){initNavTree('namespacegame.html',''); initResizable
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle"><div class="title">game Namespace Reference</div></div>
 </div><!--header-->
@@ -157,6 +158,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1GameFactory.html">GameFactory</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1GameRunner.html">GameRunner</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgame_1_1GameStatus.html">GameStatus</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgame_1_1GameSummary.html">GameSummary</a></td></tr>
@@ -165,8 +168,17 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgame_1_1MinimaxTypeInfoHash.html">MinimaxTypeInfoHash</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1PlayerInputTranslator.html">PlayerInputTranslator</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgame_1_1PlayerSpec.html">PlayerSpec</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1PlayerSpecBuilder.html">PlayerSpecBuilder</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:aa587b8756216edc19bb20ebb94227b14"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame.html#aa587b8756216edc19bb20ebb94227b14">PlayerInputType</a> = std::unordered_map&lt; std::string, std::variant&lt; std::string, size_t, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> &gt; &gt;</td></tr>
+<tr class="separator:aa587b8756216edc19bb20ebb94227b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -182,17 +194,34 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="separator:a8c93203a902146caddef660c90e21280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a559237671e2da77df194f7b85a0479d3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3">ZobristKeyType</a> : int { <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3a467539f86103f13554fdbc2541179eca">kNoKey</a> = 0
-, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3a5ae4e5ada916251cbff4fcd9e7e7a268">k032</a> = 1
-, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3acc6024343915ec58fdf48a7974e2d053">k064</a> = 2
-, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3ab2069f9b4644b6189edaa6d98adbf499">k128</a> = 3
+, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3a6156ba4a921ddcb8f14c4b8b1b707b41">k032BitKey</a> = 1
+, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3a34516666a0b377c7911b81681a3309cd">k064BitKey</a> = 2
+, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3a09f50d21b97df621b88303d9afe7a3ce">k128BitKey</a> = 3
  }</td></tr>
 <tr class="separator:a559237671e2da77df194f7b85a0479d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9dd5fc4285d36790679b0d273dd4a9b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9b">ZobristCalculatorCount</a> : int { <a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba63053a3d6fa02372ac0d1c6ef3a9b099">kNoZCalcs</a> = 0
-, <a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba95161ab1a70c8dc35305e62d666eb388">kOne</a> = 1
-, <a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba490016a830a434832c94c288ddca8ecf">kTwo</a> = 2
+, <a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba22197005fc28e410420a265e4f5b4c54">kOneZCalc</a> = 1
+, <a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba2009eb34a51ea02a8706bc04ff056809">kTwoZCalc</a> = 2
  }</td></tr>
 <tr class="separator:af9dd5fc4285d36790679b0d273dd4a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="aa587b8756216edc19bb20ebb94227b14" name="aa587b8756216edc19bb20ebb94227b14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa587b8756216edc19bb20ebb94227b14">&#9670;&#160;</a></span>PlayerInputType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="namespacegame.html#aa587b8756216edc19bb20ebb94227b14">game::PlayerInputType</a> = typedef std::unordered_map&lt; std::string, std::variant&lt;std::string, size_t, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="player__spec__builder_8hpp_source.html#l00015">15</a> of file <a class="el" href="player__spec__builder_8hpp_source.html">player_spec_builder.hpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a8c93203a902146caddef660c90e21280" name="a8c93203a902146caddef660c90e21280"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c93203a902146caddef660c90e21280">&#9670;&#160;</a></span>EvaluatorType</h2>
@@ -211,7 +240,7 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a8c93203a902146caddef660c90e21280a48b4378cee3ea91d98964996df4aaea5" name="a8c93203a902146caddef660c90e21280a48b4378cee3ea91d98964996df4aaea5"></a>kHuman&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="game__data__structs_8hpp_source.html#l00011">11</a> of file <a class="el" href="game__data__structs_8hpp_source.html">game_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__data__structs_8hpp_source.html#l00012">12</a> of file <a class="el" href="game__data__structs_8hpp_source.html">game_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -233,7 +262,7 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a397bae7c56aafd18e7ca3d06f16a864ea8b17ca6840cd49fe4d5946d85a47534a" name="a397bae7c56aafd18e7ca3d06f16a864ea8b17ca6840cd49fe4d5946d85a47534a"></a>kBlkWon&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="game__data__structs_8hpp_source.html#l00009">9</a> of file <a class="el" href="game__data__structs_8hpp_source.html">game_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__data__structs_8hpp_source.html#l00010">10</a> of file <a class="el" href="game__data__structs_8hpp_source.html">game_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -250,11 +279,11 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af9dd5fc4285d36790679b0d273dd4a9ba63053a3d6fa02372ac0d1c6ef3a9b099" name="af9dd5fc4285d36790679b0d273dd4a9ba63053a3d6fa02372ac0d1c6ef3a9b099"></a>kNoZCalcs&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af9dd5fc4285d36790679b0d273dd4a9ba95161ab1a70c8dc35305e62d666eb388" name="af9dd5fc4285d36790679b0d273dd4a9ba95161ab1a70c8dc35305e62d666eb388"></a>kOne&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="af9dd5fc4285d36790679b0d273dd4a9ba490016a830a434832c94c288ddca8ecf" name="af9dd5fc4285d36790679b0d273dd4a9ba490016a830a434832c94c288ddca8ecf"></a>kTwo&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af9dd5fc4285d36790679b0d273dd4a9ba22197005fc28e410420a265e4f5b4c54" name="af9dd5fc4285d36790679b0d273dd4a9ba22197005fc28e410420a265e4f5b4c54"></a>kOneZCalc&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="af9dd5fc4285d36790679b0d273dd4a9ba2009eb34a51ea02a8706bc04ff056809" name="af9dd5fc4285d36790679b0d273dd4a9ba2009eb34a51ea02a8706bc04ff056809"></a>kTwoZCalc&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="game__data__structs_8hpp_source.html#l00014">14</a> of file <a class="el" href="game__data__structs_8hpp_source.html">game_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__data__structs_8hpp_source.html#l00015">15</a> of file <a class="el" href="game__data__structs_8hpp_source.html">game_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -271,12 +300,12 @@ Enumerations</h2></td></tr>
 </div><div class="memdoc">
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a559237671e2da77df194f7b85a0479d3a467539f86103f13554fdbc2541179eca" name="a559237671e2da77df194f7b85a0479d3a467539f86103f13554fdbc2541179eca"></a>kNoKey&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a559237671e2da77df194f7b85a0479d3a5ae4e5ada916251cbff4fcd9e7e7a268" name="a559237671e2da77df194f7b85a0479d3a5ae4e5ada916251cbff4fcd9e7e7a268"></a>k032&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a559237671e2da77df194f7b85a0479d3acc6024343915ec58fdf48a7974e2d053" name="a559237671e2da77df194f7b85a0479d3acc6024343915ec58fdf48a7974e2d053"></a>k064&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a559237671e2da77df194f7b85a0479d3ab2069f9b4644b6189edaa6d98adbf499" name="a559237671e2da77df194f7b85a0479d3ab2069f9b4644b6189edaa6d98adbf499"></a>k128&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a559237671e2da77df194f7b85a0479d3a6156ba4a921ddcb8f14c4b8b1b707b41" name="a559237671e2da77df194f7b85a0479d3a6156ba4a921ddcb8f14c4b8b1b707b41"></a>k032BitKey&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a559237671e2da77df194f7b85a0479d3a34516666a0b377c7911b81681a3309cd" name="a559237671e2da77df194f7b85a0479d3a34516666a0b377c7911b81681a3309cd"></a>k064BitKey&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a559237671e2da77df194f7b85a0479d3a09f50d21b97df621b88303d9afe7a3ce" name="a559237671e2da77df194f7b85a0479d3a09f50d21b97df621b88303d9afe7a3ce"></a>k128BitKey&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="game__data__structs_8hpp_source.html#l00012">12</a> of file <a class="el" href="game__data__structs_8hpp_source.html">game_data_structs.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game__data__structs_8hpp_source.html#l00013">13</a> of file <a class="el" href="game__data__structs_8hpp_source.html">game_data_structs.hpp</a>.</p>
 
 </div>
 </div>
@@ -286,7 +315,7 @@ Enumerations</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacegame.html">game</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:26 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

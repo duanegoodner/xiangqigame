@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: src/core/move_evaluator_random_for_concepts/move_evaluator_random_for_concepts.cpp Source File</title>
+  <title>Xiangiqgame: src/core/moveselection/move_evaluator_random_for_concepts.cpp Source File</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -145,8 +145,8 @@ $(document).ready(function(){initNavTree('move__evaluator__random__for__concepts
   <div class="headertitle"><div class="title">move_evaluator_random_for_concepts.cpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="move__evaluator__random__for__concepts_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="integer__types_8hpp.html">integer_types.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator__random__for__concepts_8hpp.html">move_evaluator_random_for_concepts.hpp</a>&gt;</span></div>
+<a href="move__evaluator__random__for__concepts_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="integer__types_8hpp.html">utilities/integer_types.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator__random__for__concepts_8hpp.html">moveselection/move_evaluator_random_for_concepts.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacemoveselection.html">moveselection</a> {</div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
@@ -156,7 +156,7 @@ $(document).ready(function(){initNavTree('move__evaluator__random__for__concepts
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <a class="code hl_enumeration" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>)</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    : evaluating_player_{evaluating_player}</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    , prng_{<a class="code hl_namespace" href="namespacestd.html">std</a>::mt19937_64{<a class="code hl_namespace" href="namespacestd.html">std</a>::random_device{}()}} {}</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    , prng_{std::mt19937_64{std::random_device{}()}} {}</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classmoveselection_1_1RandomMoveEvaluatorForConcepts.html#a6597968a7a65d44d862cfdbd6b759dac">   14</a></span>std::unique_ptr&lt;RandomMoveEvaluatorForConcepts&gt; <a class="code hl_function" href="classmoveselection_1_1RandomMoveEvaluatorForConcepts.html#a6597968a7a65d44d862cfdbd6b759dac">RandomMoveEvaluatorForConcepts::Create</a>(</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_enumeration" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player</div>
@@ -197,8 +197,7 @@ $(document).ready(function(){initNavTree('move__evaluator__random__for__concepts
 <div class="ttc" id="ainteger__types_8hpp_html"><div class="ttname"><a href="integer__types_8hpp.html">integer_types.hpp</a></div></div>
 <div class="ttc" id="amove__evaluator__random__for__concepts_8hpp_html"><div class="ttname"><a href="move__evaluator__random__for__concepts_8hpp.html">move_evaluator_random_for_concepts.hpp</a></div></div>
 <div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a></div><div class="ttdeci">PieceColor</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
-<div class="ttc" id="anamespacemoveselection_html"><div class="ttname"><a href="namespacemoveselection.html">moveselection</a></div><div class="ttdoc">Selecting a move to execute.</div><div class="ttdef"><b>Definition:</b> <a href="builders_8hpp_source.html#l00116">builders.hpp:116</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition:</b> <a href="minimax__evaluator__factory_8hpp_source.html#l00019">minimax_evaluator_factory.hpp:19</a></div></div>
+<div class="ttc" id="anamespacemoveselection_html"><div class="ttname"><a href="namespacemoveselection.html">moveselection</a></div><div class="ttdoc">Selecting a move to execute.</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00017">evaluator_data_structs.hpp:17</a></div></div>
 <div class="ttc" id="astructgameboard_1_1MoveCollection_html"><div class="ttname"><a href="structgameboard_1_1MoveCollection.html">gameboard::MoveCollection</a></div><div class="ttdoc">A container for multiple gameboard::Move objects.</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00031">move_data_structs.hpp:31</a></div></div>
 <div class="ttc" id="astructgameboard_1_1MoveCollection_html_a40c1b1e41cb2452431b77b9c3cc0e4c1"><div class="ttname"><a href="structgameboard_1_1MoveCollection.html#a40c1b1e41cb2452431b77b9c3cc0e4c1">gameboard::MoveCollection::Size</a></div><div class="ttdeci">size_t Size() const</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00042">move_data_structs.hpp:42</a></div></div>
 <div class="ttc" id="astructgameboard_1_1MoveCollection_html_a93e7b00791f7e132e29bd3827f37c6e0"><div class="ttname"><a href="structgameboard_1_1MoveCollection.html#a93e7b00791f7e132e29bd3827f37c6e0">gameboard::MoveCollection::moves</a></div><div class="ttdeci">vector&lt; Move &gt; moves</div><div class="ttdef"><b>Definition:</b> <a href="move__data__structs_8hpp_source.html#l00032">move_data_structs.hpp:32</a></div></div>
@@ -208,8 +207,8 @@ $(document).ready(function(){initNavTree('move__evaluator__random__for__concepts
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="dir_0f1e4f656c92f9bf44ae8b43cfd8a53e.html">move_evaluator_random_for_concepts</a></li><li class="navelem"><a class="el" href="move__evaluator__random__for__concepts_8cpp.html">move_evaluator_random_for_concepts.cpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:25 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="dir_6bf50e5c038bba17f3ad8e4d67b5b53e.html">moveselection</a></li><li class="navelem"><a class="el" href="move__evaluator__random__for__concepts_8cpp.html">move_evaluator_random_for_concepts.cpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

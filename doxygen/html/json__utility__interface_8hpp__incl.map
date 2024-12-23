@@ -1,4 +1,4 @@
-<map id="include/json_utility_interface.hpp" name="include/json_utility_interface.hpp">
-<area shape="rect" id="node1" title="Definition of JsonUtility CRTP interface." alt="" coords="5,5,151,45"/>
-<area shape="rect" id="node2" title=" " alt="" coords="49,93,107,119"/>
+<map id="include/jsonio/json_utility_interface.hpp" name="include/jsonio/json_utility_interface.hpp">
+<area shape="rect" id="node1" title="Definition of JsonUtility CRTP interface." alt="" coords="5,5,165,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="56,93,115,119"/>
 </map>

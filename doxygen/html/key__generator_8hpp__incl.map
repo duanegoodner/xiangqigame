@@ -1,9 +1,9 @@
-<map id="include/key_generator.hpp" name="include/key_generator.hpp">
-<area shape="rect" id="node1" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="179,5,373,31"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,79,64,104"/>
-<area shape="rect" id="node3" title=" " alt="" coords="88,79,163,104"/>
-<area shape="rect" id="node4" title=" " alt="" coords="187,79,267,104"/>
-<area shape="rect" id="node5" title=" " alt="" coords="291,79,363,104"/>
-<area shape="rect" id="node6" title=" " alt="" coords="387,79,461,104"/>
-<area shape="rect" id="node7" title=" " alt="" coords="486,79,578,104"/>
+<map id="include/boardstate/key_generator.hpp" name="include/boardstate/key_generator.hpp">
+<area shape="rect" id="node1" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="203,5,349,45"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,93,64,119"/>
+<area shape="rect" id="node3" title=" " alt="" coords="88,93,163,119"/>
+<area shape="rect" id="node4" title=" " alt="" coords="187,93,267,119"/>
+<area shape="rect" id="node5" title=" " alt="" coords="291,93,363,119"/>
+<area shape="rect" id="node6" title=" " alt="" coords="387,93,461,119"/>
+<area shape="rect" id="node7" title=" " alt="" coords="486,93,578,119"/>
 </map>

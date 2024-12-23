@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: include/game_factory.hpp Source File</title>
+  <title>Xiangiqgame: include/game/game_factory.hpp Source File</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -147,21 +147,21 @@ $(document).ready(function(){initNavTree('game__factory_8hpp_source.html',''); i
 <div class="contents">
 <a href="game__factory_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="base__evaluator__factory_8hpp.html">base_evaluator_factory.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="base__move__evaluator_8hpp.html">base_move_evaluator.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="base__space__info__provider_8hpp.html">base_space_info_provider.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;<a class="code" href="builders_8hpp.html">builders.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="concept__composite__concepts_8hpp.html">concept_composite_concepts.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="concept__move__evaluator_8hpp.html">concept_move_evaluator.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="game_8hpp.html">game.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="game__board__for__concepts_8hpp.html">game_board_for_concepts.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="game__data__structs_8hpp.html">game_data_structs.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="interface__game__reporter_8hpp.html">interface_game_reporter.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator__human__for__concepts_8hpp.html">move_evaluator_human_for_concepts.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator__minimax__for__concepts_8hpp.html">move_evaluator_minimax_for_concepts.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator__random__for__concepts_8hpp.html">move_evaluator_random_for_concepts.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;<a class="code" href="terminal__output_8hpp.html">terminal_output.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;<a class="code" href="base__evaluator__factory_8hpp.html">interfaces/base_evaluator_factory.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="base__move__evaluator_8hpp.html">interfaces/base_move_evaluator.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="base__space__info__provider_8hpp.html">interfaces/base_space_info_provider.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;<a class="code" href="composite__concepts_8hpp.html">concepts/composite_concepts.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator_8hpp.html">concepts/move_evaluator.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="game_8hpp.html">game/game.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="game__board__for__concepts_8hpp.html">gameboard/game_board_for_concepts.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="game__data__structs_8hpp.html">game/game_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;<a class="code" href="interface__game__reporter_8hpp.html">interfaces/interface_game_reporter.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;<a class="code" href="minimax__evaluator__factory_8hpp.html">moveselection/minimax_evaluator_factory.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator__human__for__concepts_8hpp.html">moveselection/move_evaluator_human_for_concepts.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator__minimax__for__concepts_8hpp.html">moveselection/move_evaluator_minimax_for_concepts.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluator__random__for__concepts_8hpp.html">moveselection/move_evaluator_random_for_concepts.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;<a class="code" href="terminal__output_8hpp.html">terminalout/terminal_output.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacegame.html">game</a> {</div>
@@ -256,7 +256,6 @@ $(document).ready(function(){initNavTree('game__factory_8hpp_source.html',''); i
 <div class="ttc" id="abase__evaluator__factory_8hpp_html"><div class="ttname"><a href="base__evaluator__factory_8hpp.html">base_evaluator_factory.hpp</a></div></div>
 <div class="ttc" id="abase__move__evaluator_8hpp_html"><div class="ttname"><a href="base__move__evaluator_8hpp.html">base_move_evaluator.hpp</a></div></div>
 <div class="ttc" id="abase__space__info__provider_8hpp_html"><div class="ttname"><a href="base__space__info__provider_8hpp.html">base_space_info_provider.hpp</a></div></div>
-<div class="ttc" id="abuilders_8hpp_html"><div class="ttname"><a href="builders_8hpp.html">builders.hpp</a></div></div>
 <div class="ttc" id="aclassgame_1_1EvaluatorFactoryRetriever_html"><div class="ttname"><a href="classgame_1_1EvaluatorFactoryRetriever.html">game::EvaluatorFactoryRetriever</a></div><div class="ttdef"><b>Definition:</b> <a href="game__factory_8hpp_source.html#l00022">game_factory.hpp:22</a></div></div>
 <div class="ttc" id="aclassgame_1_1EvaluatorFactoryRetriever_html_a10c0e357ef4512ab262be04c11480282"><div class="ttname"><a href="classgame_1_1EvaluatorFactoryRetriever.html#a10c0e357ef4512ab262be04c11480282">game::EvaluatorFactoryRetriever::game_board_</a></div><div class="ttdeci">std::shared_ptr&lt; gameboard::GameBoardForConcepts &gt; game_board_</div><div class="ttdef"><b>Definition:</b> <a href="game__factory_8hpp_source.html#l00030">game_factory.hpp:30</a></div></div>
 <div class="ttc" id="aclassgame_1_1EvaluatorFactoryRetriever_html_a302ec54abb4bbdf57ef034d6aec92bdc"><div class="ttname"><a href="classgame_1_1EvaluatorFactoryRetriever.html#a302ec54abb4bbdf57ef034d6aec92bdc">game::EvaluatorFactoryRetriever::minimax_factories_</a></div><div class="ttdeci">std::unordered_map&lt; MinimaxTypeInfo, std::shared_ptr&lt; MoveEvaluatorFactoryBase &gt;, MinimaxTypeInfoHash &gt; minimax_factories_</div><div class="ttdef"><b>Definition:</b> <a href="game__factory_8hpp_source.html#l00027">game_factory.hpp:27</a></div></div>
@@ -274,12 +273,13 @@ $(document).ready(function(){initNavTree('game__factory_8hpp_source.html',''); i
 <div class="ttc" id="aclassgame_1_1GameFactory_html_aa1bab8a22ac1acbd1ed23dce1fd8be3a"><div class="ttname"><a href="classgame_1_1GameFactory.html#aa1bab8a22ac1acbd1ed23dce1fd8be3a">game::GameFactory::black_player_spec_</a></div><div class="ttdeci">PlayerSpec black_player_spec_</div><div class="ttdef"><b>Definition:</b> <a href="game__factory_8hpp_source.html#l00045">game_factory.hpp:45</a></div></div>
 <div class="ttc" id="aclassgameboard_1_1GameBoardFactory_html"><div class="ttname"><a href="classgameboard_1_1GameBoardFactory.html">gameboard::GameBoardFactory</a></div><div class="ttdef"><b>Definition:</b> <a href="game__board__for__concepts_8hpp_source.html#l00208">game_board_for_concepts.hpp:208</a></div></div>
 <div class="ttc" id="aclassgameboard_1_1GameBoardFactory_html_a9944fff6a6dc75f9cf2d1b1de60b4db1"><div class="ttname"><a href="classgameboard_1_1GameBoardFactory.html#a9944fff6a6dc75f9cf2d1b1de60b4db1">gameboard::GameBoardFactory::Create</a></div><div class="ttdeci">std::shared_ptr&lt; GameBoardForConcepts &gt; Create(const BoardMapInt_t &amp;starting_board=kStandardInitialBoard)</div><div class="ttdef"><b>Definition:</b> <a href="game__board__for__concepts_8hpp_source.html#l00210">game_board_for_concepts.hpp:210</a></div></div>
-<div class="ttc" id="aconcept__composite__concepts_8hpp_html"><div class="ttname"><a href="concept__composite__concepts_8hpp.html">concept_composite_concepts.hpp</a></div></div>
-<div class="ttc" id="aconcept__move__evaluator_8hpp_html"><div class="ttname"><a href="concept__move__evaluator_8hpp.html">concept_move_evaluator.hpp</a></div></div>
+<div class="ttc" id="acomposite__concepts_8hpp_html"><div class="ttname"><a href="composite__concepts_8hpp.html">composite_concepts.hpp</a></div></div>
 <div class="ttc" id="agame_8hpp_html"><div class="ttname"><a href="game_8hpp.html">game.hpp</a></div></div>
 <div class="ttc" id="agame__board__for__concepts_8hpp_html"><div class="ttname"><a href="game__board__for__concepts_8hpp.html">game_board_for_concepts.hpp</a></div></div>
 <div class="ttc" id="agame__data__structs_8hpp_html"><div class="ttname"><a href="game__data__structs_8hpp.html">game_data_structs.hpp</a></div></div>
 <div class="ttc" id="ainterface__game__reporter_8hpp_html"><div class="ttname"><a href="interface__game__reporter_8hpp.html">interface_game_reporter.hpp</a></div></div>
+<div class="ttc" id="aminimax__evaluator__factory_8hpp_html"><div class="ttname"><a href="minimax__evaluator__factory_8hpp.html">minimax_evaluator_factory.hpp</a></div></div>
+<div class="ttc" id="amove__evaluator_8hpp_html"><div class="ttname"><a href="move__evaluator_8hpp.html">move_evaluator.hpp</a></div></div>
 <div class="ttc" id="amove__evaluator__human__for__concepts_8hpp_html"><div class="ttname"><a href="move__evaluator__human__for__concepts_8hpp.html">move_evaluator_human_for_concepts.hpp</a></div></div>
 <div class="ttc" id="amove__evaluator__minimax__for__concepts_8hpp_html"><div class="ttname"><a href="move__evaluator__minimax__for__concepts_8hpp.html">move_evaluator_minimax_for_concepts.hpp</a></div></div>
 <div class="ttc" id="amove__evaluator__random__for__concepts_8hpp_html"><div class="ttname"><a href="move__evaluator__random__for__concepts_8hpp.html">move_evaluator_random_for_concepts.hpp</a></div></div>
@@ -287,17 +287,17 @@ $(document).ready(function(){initNavTree('game__factory_8hpp_source.html',''); i
 <div class="ttc" id="anamespacegameboard_html"><div class="ttname"><a href="namespacegameboard.html">gameboard</a></div><div class="ttdoc">Tracking piece positions and determining legal moves.</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00015">board_data_structs.hpp:15</a></div></div>
 <div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00">gameboard::kRed</a></div><div class="ttdeci">@ kRed</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
 <div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b">gameboard::kBlk</a></div><div class="ttdeci">@ kBlk</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
-<div class="ttc" id="astructgame_1_1MinimaxTypeInfoHash_html"><div class="ttname"><a href="structgame_1_1MinimaxTypeInfoHash.html">game::MinimaxTypeInfoHash</a></div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00033">game_data_structs.hpp:33</a></div></div>
-<div class="ttc" id="astructgame_1_1MinimaxTypeInfo_html"><div class="ttname"><a href="structgame_1_1MinimaxTypeInfo.html">game::MinimaxTypeInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00016">game_data_structs.hpp:16</a></div></div>
-<div class="ttc" id="astructgame_1_1PlayerSpec_html"><div class="ttname"><a href="structgame_1_1PlayerSpec.html">game::PlayerSpec</a></div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00042">game_data_structs.hpp:42</a></div></div>
+<div class="ttc" id="astructgame_1_1MinimaxTypeInfoHash_html"><div class="ttname"><a href="structgame_1_1MinimaxTypeInfoHash.html">game::MinimaxTypeInfoHash</a></div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00034">game_data_structs.hpp:34</a></div></div>
+<div class="ttc" id="astructgame_1_1MinimaxTypeInfo_html"><div class="ttname"><a href="structgame_1_1MinimaxTypeInfo.html">game::MinimaxTypeInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00017">game_data_structs.hpp:17</a></div></div>
+<div class="ttc" id="astructgame_1_1PlayerSpec_html"><div class="ttname"><a href="structgame_1_1PlayerSpec.html">game::PlayerSpec</a></div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00043">game_data_structs.hpp:43</a></div></div>
 <div class="ttc" id="aterminal__output_8hpp_html"><div class="ttname"><a href="terminal__output_8hpp.html">terminal_output.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="game__factory_8hpp.html">game_factory.hpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:25 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_f307a46daed1218fee22380d1eacedba.html">game</a></li><li class="navelem"><a class="el" href="game__factory_8hpp.html">game_factory.hpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

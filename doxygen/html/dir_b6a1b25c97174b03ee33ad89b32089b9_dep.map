@@ -1,0 +1,12 @@
+<map id="include/interfaces" name="include/interfaces">
+<area shape="rect" id="node1" href="dir_52b4106b6168f13dcdf82e33b1d195ee.html" title="utilities" alt="" coords="27,125,98,151"/>
+<area shape="rect" id="node2" href="dir_afec7296d8d9251d39c9fe056b795cea.html" title="moveselection" alt="" coords="122,125,241,151"/>
+<area shape="rect" id="node3" href="dir_f307a46daed1218fee22380d1eacedba.html" title="game" alt="" coords="264,125,323,151"/>
+<area shape="rect" id="node4" href="dir_fcfdf7ba212f1f1aa3a3d5955e1eb339.html" title="gameboard" alt="" coords="347,125,443,151"/>
+<area shape="rect" id="node5" href="dir_b6a1b25c97174b03ee33ad89b32089b9.html" title="interfaces" alt="" coords="194,52,281,77"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000011_000025.html" title="2" alt="" coords="107,119,116,133"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000011_000016.html" title="2" alt="" coords="204,109,213,124"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000011_000005.html" title="1" alt="" coords="275,98,284,113"/>
+<area shape="rect" id="edge4-headlabel" href="dir_000011_000007.html" title="8" alt="" coords="351,103,361,117"/>
+<area shape="rect" id="clust1" href="dir_d44c64559bbebec7f509842c48db8b23.html" title="include" alt="" coords="16,16,453,161"/>
+</map>

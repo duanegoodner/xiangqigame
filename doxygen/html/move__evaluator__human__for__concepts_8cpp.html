@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: src/core/move_evaluator_human_for_concepts/move_evaluator_human_for_concepts.cpp File Reference</title>
+  <title>Xiangiqgame: src/core/moveselection/move_evaluator_human_for_concepts.cpp File Reference</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -149,56 +149,56 @@ $(document).ready(function(){initNavTree('move__evaluator__human__for__concepts_
 <div class="contents">
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
-<code>#include &lt;<a class="el" href="move__evaluator__human__for__concepts_8hpp_source.html">move_evaluator_human_for_concepts.hpp</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="move__translator_8hpp_source.html">move_translator.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="move__evaluator__human__for__concepts_8hpp_source.html">moveselection/move_evaluator_human_for_concepts.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="move__translator_8hpp_source.html">movetranslation/move_translator.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for move_evaluator_human_for_concepts.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="move__evaluator__human__for__concepts_8cpp__incl.png" border="0" usemap="#asrc_2core_2move__evaluator__human__for__concepts_2move__evaluator__human__for__concepts_8cpp" alt=""/></div>
-<map name="asrc_2core_2move__evaluator__human__for__concepts_2move__evaluator__human__for__concepts_8cpp" id="asrc_2core_2move__evaluator__human__for__concepts_2move__evaluator__human__for__concepts_8cpp">
-<area shape="rect" title=" " alt="" coords="257,5,517,60"/>
-<area shape="rect" title=" " alt="" coords="240,577,320,603"/>
-<area shape="rect" title=" " alt="" coords="1213,577,1291,603"/>
-<area shape="rect" href="move__evaluator__human__for__concepts_8hpp.html" title=" " alt="" coords="1454,108,1634,148"/>
-<area shape="rect" href="move__translator_8hpp.html" title=" " alt="" coords="62,497,218,522"/>
-<area shape="rect" href="base__evaluator__factory_8hpp.html" title=" " alt="" coords="1373,196,1574,221"/>
-<area shape="rect" href="base__move__evaluator_8hpp.html" title=" " alt="" coords="1519,343,1713,368"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1374,724,1503,749"/>
-<area shape="rect" title=" " alt="" coords="1613,797,1672,823"/>
-<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="1014,577,1189,603"/>
-<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="709,724,848,749"/>
-<area shape="rect" href="game__board__for__concepts_8hpp.html" title=" " alt="" coords="1135,269,1356,295"/>
-<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1517,416,1715,441"/>
-<area shape="rect" title=" " alt="" coords="1793,416,1868,441"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="713,651,887,676"/>
-<area shape="rect" title=" " alt="" coords="1611,497,1677,522"/>
-<area shape="rect" title=" " alt="" coords="1384,497,1435,522"/>
-<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="1877,497,2040,522"/>
-<area shape="rect" title=" " alt="" coords="872,724,928,749"/>
-<area shape="rect" title=" " alt="" coords="616,724,685,749"/>
-<area shape="rect" title=" " alt="" coords="952,724,1024,749"/>
-<area shape="rect" title=" " alt="" coords="529,724,591,749"/>
-<area shape="rect" title=" " alt="" coords="1378,797,1441,823"/>
-<area shape="rect" title=" " alt="" coords="1465,797,1589,823"/>
-<area shape="rect" title=" " alt="" coords="745,797,812,823"/>
-<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="1175,651,1310,676"/>
-<area shape="rect" title=" " alt="" coords="1048,724,1133,749"/>
-<area shape="rect" title=" " alt="" coords="1158,724,1247,749"/>
-<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="2000,651,2187,676"/>
-<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1861,577,2056,603"/>
-<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="1568,577,1787,603"/>
-<area shape="rect" title=" " alt="" coords="1417,577,1493,603"/>
-<area shape="rect" title=" " alt="" coords="1681,651,1754,676"/>
-<area shape="rect" title=" " alt="" coords="1779,651,1925,676"/>
-<area shape="rect" href="base__space__info__provider_8hpp.html" title=" " alt="" coords="808,497,1027,522"/>
-<area shape="rect" href="concept__board__state__calculator_8hpp.html" title=" " alt="" coords="1051,489,1208,529"/>
-<area shape="rect" title=" " alt="" coords="1121,343,1207,368"/>
-<area shape="rect" href="move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="716,343,873,368"/>
-<area shape="rect" title=" " alt="" coords="909,577,989,603"/>
-<area shape="rect" title=" " alt="" coords="833,416,879,441"/>
-<area shape="rect" href="move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="446,416,655,441"/>
-<area shape="rect" href="piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="547,497,683,522"/>
-<area shape="rect" title=" " alt="" coords="5,577,64,603"/>
+<div class="center"><img src="move__evaluator__human__for__concepts_8cpp__incl.png" border="0" usemap="#asrc_2core_2moveselection_2move__evaluator__human__for__concepts_8cpp" alt=""/></div>
+<map name="asrc_2core_2moveselection_2move__evaluator__human__for__concepts_8cpp" id="asrc_2core_2moveselection_2move__evaluator__human__for__concepts_8cpp">
+<area shape="rect" title=" " alt="" coords="299,5,483,60"/>
+<area shape="rect" title=" " alt="" coords="240,658,320,683"/>
+<area shape="rect" title=" " alt="" coords="1291,658,1368,683"/>
+<area shape="rect" href="move__evaluator__human__for__concepts_8hpp.html" title=" " alt="" coords="1491,108,1659,163"/>
+<area shape="rect" href="move__translator_8hpp.html" title=" " alt="" coords="48,563,219,603"/>
+<area shape="rect" href="base__evaluator__factory_8hpp.html" title=" " alt="" coords="1411,211,1602,251"/>
+<area shape="rect" href="base__move__evaluator_8hpp.html" title=" " alt="" coords="1563,387,1730,427"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1325,827,1531,852"/>
+<area shape="rect" title=" " alt="" coords="1639,900,1697,925"/>
+<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="1093,651,1267,691"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="607,827,799,852"/>
+<area shape="rect" href="game__board__for__concepts_8hpp.html" title=" " alt="" coords="1188,299,1369,339"/>
+<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="1555,475,1739,515"/>
+<area shape="rect" title=" " alt="" coords="1821,482,1896,507"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="764,739,937,779"/>
+<area shape="rect" title=" " alt="" coords="1644,570,1711,595"/>
+<area shape="rect" title=" " alt="" coords="1417,570,1468,595"/>
+<area shape="rect" href="base__position__offset_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="1887,563,2078,603"/>
+<area shape="rect" title=" " alt="" coords="823,827,879,852"/>
+<area shape="rect" title=" " alt="" coords="513,827,583,852"/>
+<area shape="rect" title=" " alt="" coords="903,827,975,852"/>
+<area shape="rect" title=" " alt="" coords="426,827,489,852"/>
+<area shape="rect" title=" " alt="" coords="1397,900,1459,925"/>
+<area shape="rect" title=" " alt="" coords="1487,900,1611,925"/>
+<area shape="rect" title=" " alt="" coords="669,900,736,925"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="1114,746,1302,771"/>
+<area shape="rect" title=" " alt="" coords="999,827,1084,852"/>
+<area shape="rect" title=" " alt="" coords="1109,827,1198,852"/>
+<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="2029,739,2166,779"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1914,651,2051,691"/>
+<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="1646,651,1829,691"/>
+<area shape="rect" title=" " alt="" coords="1494,658,1570,683"/>
+<area shape="rect" title=" " alt="" coords="1709,746,1782,771"/>
+<area shape="rect" title=" " alt="" coords="1807,746,1953,771"/>
+<area shape="rect" href="base__space__info__provider_8hpp.html" title=" " alt="" coords="889,563,1055,603"/>
+<area shape="rect" href="board__state__calculator_8hpp.html" title=" " alt="" coords="1079,563,1241,603"/>
+<area shape="rect" title=" " alt="" coords="1154,394,1241,419"/>
+<area shape="rect" href="move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="733,394,968,419"/>
+<area shape="rect" title=" " alt="" coords="989,658,1069,683"/>
+<area shape="rect" title=" " alt="" coords="889,482,935,507"/>
+<area shape="rect" href="move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="453,475,661,515"/>
+<area shape="rect" href="piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="547,570,762,595"/>
+<area shape="rect" title=" " alt="" coords="5,658,64,683"/>
 </map>
 </div>
 </div>
@@ -217,8 +217,8 @@ Namespaces</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="dir_f2433a039d00d1e886a983fb32c7071d.html">move_evaluator_human_for_concepts</a></li><li class="navelem"><a class="el" href="move__evaluator__human__for__concepts_8cpp.html">move_evaluator_human_for_concepts.cpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:26 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="dir_6bf50e5c038bba17f3ad8e4d67b5b53e.html">moveselection</a></li><li class="navelem"><a class="el" href="move__evaluator__human__for__concepts_8cpp.html">move_evaluator_human_for_concepts.cpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

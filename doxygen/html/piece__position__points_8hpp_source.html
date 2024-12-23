@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: include/piece_position_points.hpp Source File</title>
+  <title>Xiangiqgame: include/piecepoints/piece_position_points.hpp Source File</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -149,12 +149,12 @@ $(document).ready(function(){initNavTree('piece__position__points_8hpp_source.ht
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;<a class="code" href="board__data__structs_8hpp.html">board_data_structs.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluators_8hpp.html">move_evaluators.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="piece__points__bpo_8hpp.html">piece_points_bpo.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;<a class="code" href="board__data__structs_8hpp.html">gameboard/board_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="move__evaluators_8hpp.html">moveselection/move_evaluators.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="base__position__offset_8hpp.html">piecepoints/base_position_offset.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacegameboard.html">gameboard</a>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacestd.html">std</a>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">using namespace </span>std;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacepiecepoints.html">piecepoints</a> {</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
@@ -181,10 +181,11 @@ $(document).ready(function(){initNavTree('piece__position__points_8hpp_source.ht
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>};</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>} <span class="comment">// namespace piecepoints</span></div>
+<div class="ttc" id="abase__position__offset_8hpp_html"><div class="ttname"><a href="base__position__offset_8hpp.html">base_position_offset.hpp</a></div><div class="ttdoc">Definitions of classes used for storing piece points in Base Points Offset form.</div></div>
 <div class="ttc" id="aboard__data__structs_8hpp_html"><div class="ttname"><a href="board__data__structs_8hpp.html">board_data_structs.hpp</a></div><div class="ttdoc">Constants, typedefs, and simple structs used by gameboard::GameBoard.</div></div>
 <div class="ttc" id="aclassPieceValueProvider_html"><div class="ttname"><a href="classPieceValueProvider.html">PieceValueProvider</a></div><div class="ttdoc">CRTP interface with method to retrieve points value for a specific gameboard::GamePiece at a specific...</div><div class="ttdef"><b>Definition:</b> <a href="piece__value__provider__interface_8hpp_source.html#l00014">piece_value_provider_interface.hpp:14</a></div></div>
-<div class="ttc" id="aclasspiecepoints_1_1BPOPointsEKeys_html"><div class="ttname"><a href="classpiecepoints_1_1BPOPointsEKeys.html">piecepoints::BPOPointsEKeys</a></div><div class="ttdoc">Piece Points spec in &quot;Base Points Offset&quot; form with PieceType enum keys in member unordered_map objec...</div><div class="ttdef"><b>Definition:</b> <a href="piece__points__bpo_8hpp_source.html#l00059">piece_points_bpo.hpp:59</a></div></div>
-<div class="ttc" id="aclasspiecepoints_1_1BPOPointsSKeys_html"><div class="ttname"><a href="classpiecepoints_1_1BPOPointsSKeys.html">piecepoints::BPOPointsSKeys</a></div><div class="ttdoc">Piece Points spec in &quot;Base Points Offset&quot; form with string keys in member unordered_map objects for e...</div><div class="ttdef"><b>Definition:</b> <a href="piece__points__bpo_8hpp_source.html#l00028">piece_points_bpo.hpp:28</a></div></div>
+<div class="ttc" id="aclasspiecepoints_1_1BPOPointsEKeys_html"><div class="ttname"><a href="classpiecepoints_1_1BPOPointsEKeys.html">piecepoints::BPOPointsEKeys</a></div><div class="ttdoc">Piece Points spec in &quot;Base Points Offset&quot; form with PieceType enum keys in member unordered_map objec...</div><div class="ttdef"><b>Definition:</b> <a href="base__position__offset_8hpp_source.html#l00059">base_position_offset.hpp:59</a></div></div>
+<div class="ttc" id="aclasspiecepoints_1_1BPOPointsSKeys_html"><div class="ttname"><a href="classpiecepoints_1_1BPOPointsSKeys.html">piecepoints::BPOPointsSKeys</a></div><div class="ttdoc">Piece Points spec in &quot;Base Points Offset&quot; form with string keys in member unordered_map objects for e...</div><div class="ttdef"><b>Definition:</b> <a href="base__position__offset_8hpp_source.html#l00028">base_position_offset.hpp:28</a></div></div>
 <div class="ttc" id="ainteger__types_8hpp_html_ae0b2510b92915b3c9045389358eedaea"><div class="ttname"><a href="integer__types_8hpp.html#ae0b2510b92915b3c9045389358eedaea">Points_t</a></div><div class="ttdeci">int Points_t</div><div class="ttdef"><b>Definition:</b> <a href="integer__types_8hpp_source.html#l00008">integer_types.hpp:8</a></div></div>
 <div class="ttc" id="amove__evaluators_8hpp_html"><div class="ttname"><a href="move__evaluators_8hpp.html">move_evaluators.hpp</a></div><div class="ttdoc">Definitions of concrete classes that implement the MoveEvaluator interface.</div></div>
 <div class="ttc" id="anamespacegameboard_html"><div class="ttname"><a href="namespacegameboard.html">gameboard</a></div><div class="ttdoc">Tracking piece positions and determining legal moves.</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00015">board_data_structs.hpp:15</a></div></div>
@@ -197,8 +198,6 @@ $(document).ready(function(){initNavTree('piece__position__points_8hpp_source.ht
 <div class="ttc" id="anamespacepiecepoints_html_aace87c2b0a72b8e1390974932eea0974"><div class="ttname"><a href="namespacepiecepoints.html#aace87c2b0a72b8e1390974932eea0974">piecepoints::GamePointsEMap_t</a></div><div class="ttdeci">unordered_map&lt; gameboard::PieceColor, TeamPointsEMap_t &gt; GamePointsEMap_t</div><div class="ttdef"><b>Definition:</b> <a href="piece__points__data__structs_8hpp_source.html#l00057">piece_points_data_structs.hpp:57</a></div></div>
 <div class="ttc" id="anamespacepiecepoints_html_ac9f72505daaa180dc8985a0a0f113bbe"><div class="ttname"><a href="namespacepiecepoints.html#ac9f72505daaa180dc8985a0a0f113bbe">piecepoints::TeamPointsArray_t</a></div><div class="ttdeci">array&lt; PiecePointsArray_t, gameboard::kNumPieceTypeVals &gt; TeamPointsArray_t</div><div class="ttdef"><b>Definition:</b> <a href="piece__points__data__structs_8hpp_source.html#l00039">piece_points_data_structs.hpp:39</a></div></div>
 <div class="ttc" id="anamespacepiecepoints_html_af83cc97d52c8bd385feedc7f66b4233c"><div class="ttname"><a href="namespacepiecepoints.html#af83cc97d52c8bd385feedc7f66b4233c">piecepoints::GamePointsSMap_t</a></div><div class="ttdeci">unordered_map&lt; string, TeamPointsSMap_t &gt; GamePointsSMap_t</div><div class="ttdef"><b>Definition:</b> <a href="piece__points__data__structs_8hpp_source.html#l00058">piece_points_data_structs.hpp:58</a></div></div>
-<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition:</b> <a href="minimax__evaluator__factory_8hpp_source.html#l00019">minimax_evaluator_factory.hpp:19</a></div></div>
-<div class="ttc" id="apiece__points__bpo_8hpp_html"><div class="ttname"><a href="piece__points__bpo_8hpp.html">piece_points_bpo.hpp</a></div><div class="ttdoc">Definitions of classes used for storing piece points in Base Points Offset form.</div></div>
 <div class="ttc" id="astructgameboard_1_1BoardSpace_html"><div class="ttname"><a href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a></div><div class="ttdoc">A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa...</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00051">board_data_structs.hpp:51</a></div></div>
 <div class="ttc" id="astructgameboard_1_1BoardSpace_html_a0c73cddc71742818833c39673adcd9a4"><div class="ttname"><a href="structgameboard_1_1BoardSpace.html#a0c73cddc71742818833c39673adcd9a4">gameboard::BoardSpace::file</a></div><div class="ttdeci">BoardIndexType file</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00053">board_data_structs.hpp:53</a></div></div>
 <div class="ttc" id="astructgameboard_1_1BoardSpace_html_a60ecf2b038e2e78993b4867f574cf890"><div class="ttname"><a href="structgameboard_1_1BoardSpace.html#a60ecf2b038e2e78993b4867f574cf890">gameboard::BoardSpace::rank</a></div><div class="ttdeci">BoardIndexType rank</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00053">board_data_structs.hpp:53</a></div></div>
@@ -214,8 +213,8 @@ $(document).ready(function(){initNavTree('piece__position__points_8hpp_source.ht
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="piece__position__points_8hpp.html">piece_position_points.hpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:25 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_475250b18ca042266cb03c6ae5b0bde6.html">piecepoints</a></li><li class="navelem"><a class="el" href="piece__position__points_8hpp.html">piece_position_points.hpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

@@ -1,8 +1,10 @@
-<map id="include/zobrist_calculator_for_concepts.hpp" name="include/zobrist_calculator_for_concepts.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="189,5,377,45"/>
-<area shape="rect" id="node2" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="157,93,299,133"/>
-<area shape="rect" id="node6" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="219,255,405,280"/>
-<area shape="rect" id="node3" href="$builders_8hpp.html" title=" " alt="" coords="95,181,249,207"/>
-<area shape="rect" id="node4" href="$game__factory_8hpp.html" title=" " alt="" coords="5,255,195,280"/>
-<area shape="rect" id="node5" href="$game__factory_8cpp.html" title=" " alt="" coords="17,328,183,368"/>
+<map id="include/boardstate/zobrist_calculator_for_concepts.hpp" name="include/boardstate/zobrist_calculator_for_concepts.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="353,5,495,60"/>
+<area shape="rect" id="node2" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="265,108,453,148"/>
+<area shape="rect" id="node8" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="365,372,552,397"/>
+<area shape="rect" id="node3" href="$zobrist__factories_8hpp.html" title=" " alt="" coords="259,196,421,236"/>
+<area shape="rect" id="node4" href="$minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="124,284,356,324"/>
+<area shape="rect" id="node5" href="$game__factory_8hpp.html" title=" " alt="" coords="110,372,341,397"/>
+<area shape="rect" id="node6" href="$game__runner_8hpp.html" title=" " alt="" coords="5,453,232,478"/>
+<area shape="rect" id="node7" href="$game__factory_8cpp.html" title=" " alt="" coords="256,445,411,485"/>
 </map>

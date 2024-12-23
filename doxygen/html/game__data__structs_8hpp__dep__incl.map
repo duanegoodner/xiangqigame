@@ -1,10 +1,13 @@
-<map id="include/game_data_structs.hpp" name="include/game_data_structs.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="207,5,432,31"/>
-<area shape="rect" id="node2" href="$game_8hpp.html" title=" " alt="" coords="81,167,219,192"/>
-<area shape="rect" id="node3" href="$game__factory_8hpp.html" title=" " alt="" coords="213,247,402,273"/>
-<area shape="rect" id="node6" href="$interface__game__reporter_8hpp.html" title=" " alt="" coords="295,79,469,119"/>
-<area shape="rect" id="node7" href="$terminal__output_8hpp.html" title=" " alt="" coords="387,167,593,192"/>
-<area shape="rect" id="node5" href="$game_8cpp.html" title=" " alt="" coords="5,247,188,273"/>
-<area shape="rect" id="node4" href="$game__factory_8cpp.html" title=" " alt="" coords="224,328,391,368"/>
-<area shape="rect" id="node8" href="$terminal__output_8cpp.html" title=" " alt="" coords="426,240,607,280"/>
+<map id="include/game/game_data_structs.hpp" name="include/game/game_data_structs.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="210,5,397,45"/>
+<area shape="rect" id="node2" href="$game_8hpp.html" title=" " alt="" coords="214,189,393,214"/>
+<area shape="rect" id="node3" href="$game__factory_8hpp.html" title=" " alt="" coords="396,277,627,302"/>
+<area shape="rect" id="node4" href="$game__runner_8hpp.html" title=" " alt="" coords="13,365,239,390"/>
+<area shape="rect" id="node7" href="$player__input__translator_8hpp.html" title=" " alt="" coords="41,93,200,133"/>
+<area shape="rect" id="node8" href="$player__spec__builder_8hpp.html" title=" " alt="" coords="35,181,190,221"/>
+<area shape="rect" id="node9" href="$interface__game__reporter_8hpp.html" title=" " alt="" coords="404,93,619,133"/>
+<area shape="rect" id="node10" href="$terminal__output_8hpp.html" title=" " alt="" coords="563,181,721,221"/>
+<area shape="rect" id="node6" href="$game_8cpp.html" title=" " alt="" coords="189,277,372,302"/>
+<area shape="rect" id="node5" href="$game__factory_8cpp.html" title=" " alt="" coords="434,357,589,397"/>
+<area shape="rect" id="node11" href="$terminal__output_8cpp.html" title=" " alt="" coords="651,269,809,309"/>
 </map>

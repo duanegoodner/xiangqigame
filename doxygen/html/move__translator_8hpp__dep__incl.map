@@ -1,6 +1,6 @@
-<map id="include/move_translator.hpp" name="include/move_translator.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="279,5,485,31"/>
-<area shape="rect" id="node2" href="$move__evaluator__human__for__concepts_8cpp.html" title=" " alt="" coords="5,79,265,133"/>
-<area shape="rect" id="node3" href="$move__translator_8cpp.html" title=" " alt="" coords="290,86,474,126"/>
-<area shape="rect" id="node4" href="$terminal__output_8cpp.html" title=" " alt="" coords="498,86,679,126"/>
+<map id="include/movetranslation/move_translator.hpp" name="include/movetranslation/move_translator.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="215,5,395,45"/>
+<area shape="rect" id="node2" href="$move__evaluator__human__for__concepts_8cpp.html" title=" " alt="" coords="5,93,189,148"/>
+<area shape="rect" id="node3" href="$move__translator_8cpp.html" title=" " alt="" coords="213,101,397,141"/>
+<area shape="rect" id="node4" href="$terminal__output_8cpp.html" title=" " alt="" coords="421,101,579,141"/>
 </map>

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: include/zobrist_for_concepts.hpp Source File</title>
+  <title>Xiangiqgame: include/boardstate/zobrist_for_concepts.hpp Source File</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -149,21 +149,21 @@ $(document).ready(function(){initNavTree('zobrist__for__concepts_8hpp_source.htm
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;array&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;atomic&gt;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="board__data__structs_8hpp.html">board_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="board__data__structs_8hpp.html">gameboard/board_data_structs.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;chrono&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="concept__multi__board__state__provider_8hpp.html">concept_multi_board_state_provider.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="concept__single__board__state__provider_8hpp.html">concept_single_board_state_provider.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="evaluator__data__structs_8hpp.html">evaluator_data_structs.hpp</a>&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="key__generator_8hpp.html">key_generator.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;<a class="code" href="multi__board__state__provider_8hpp.html">concepts/multi_board_state_provider.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="single__board__state__provider_8hpp.html">concepts/single_board_state_provider.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;<a class="code" href="evaluator__data__structs_8hpp.html">moveselection/evaluator_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;<a class="code" href="key__generator_8hpp.html">boardstate/key_generator.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="move__data__structs_8hpp.html">move_data_structs.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;<a class="code" href="move__data__structs_8hpp.html">gameboard/move_data_structs.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;shared_mutex&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;<a class="code" href="zobrist__calculator__for__concepts_8hpp.html">zobrist_calculator_for_concepts.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;<a class="code" href="zobrist__calculator__for__concepts_8hpp.html">boardstate/zobrist_calculator_for_concepts.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceboardstate.html">boardstate</a> {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
@@ -586,24 +586,24 @@ $(document).ready(function(){initNavTree('zobrist__for__concepts_8hpp_source.htm
 <div class="ttc" id="aclassmoveselection_1_1MinimaxCalcResult_html"><div class="ttname"><a href="classmoveselection_1_1MinimaxCalcResult.html">moveselection::MinimaxCalcResult</a></div><div class="ttdoc">Data structure that holds a moveselection::EqualScoreMoves and other search-related info obtained fro...</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00053">evaluator_data_structs.hpp:53</a></div></div>
 <div class="ttc" id="aclassmoveselection_1_1MinimaxCalcResult_html_a084ce31b66c61380ee16860dad45ed96"><div class="ttname"><a href="classmoveselection_1_1MinimaxCalcResult.html#a084ce31b66c61380ee16860dad45ed96">moveselection::MinimaxCalcResult::remaining_search_depth</a></div><div class="ttdeci">DepthType remaining_search_depth()</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00069">evaluator_data_structs.hpp:69</a></div></div>
 <div class="ttc" id="aclassmoveselection_1_1TranspositionTableSearchResult_html"><div class="ttname"><a href="classmoveselection_1_1TranspositionTableSearchResult.html">moveselection::TranspositionTableSearchResult</a></div><div class="ttdoc">Container for storing a moveselection::MinimaxCalcResult retrieved by a call to boardstate::SingleZob...</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00079">evaluator_data_structs.hpp:79</a></div></div>
-<div class="ttc" id="aconcept__multi__board__state__provider_8hpp_html"><div class="ttname"><a href="concept__multi__board__state__provider_8hpp.html">concept_multi_board_state_provider.hpp</a></div></div>
-<div class="ttc" id="aconcept__single__board__state__provider_8hpp_html"><div class="ttname"><a href="concept__single__board__state__provider_8hpp.html">concept_single_board_state_provider.hpp</a></div></div>
 <div class="ttc" id="aevaluator__data__structs_8hpp_html"><div class="ttname"><a href="evaluator__data__structs_8hpp.html">evaluator_data_structs.hpp</a></div><div class="ttdoc">Data structs used by moveselection::MinimaxEvaluator.</div></div>
 <div class="ttc" id="ainteger__types_8hpp_html_a5aee6946b59d86e8515dcc8e9114b06f"><div class="ttname"><a href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a></div><div class="ttdeci">uint16_t DepthType</div><div class="ttdef"><b>Definition:</b> <a href="integer__types_8hpp_source.html#l00005">integer_types.hpp:5</a></div></div>
 <div class="ttc" id="ainteger__types_8hpp_html_ab37d190616ce8869631f77f37db57f77"><div class="ttname"><a href="integer__types_8hpp.html#ab37d190616ce8869631f77f37db57f77">MoveCountType</a></div><div class="ttdeci">uint16_t MoveCountType</div><div class="ttdef"><b>Definition:</b> <a href="integer__types_8hpp_source.html#l00006">integer_types.hpp:6</a></div></div>
 <div class="ttc" id="akey__generator_8hpp_html"><div class="ttname"><a href="key__generator_8hpp.html">key_generator.hpp</a></div><div class="ttdoc">Declaration of boardstate::KeyGenerator and implementation of its template methods.</div></div>
 <div class="ttc" id="amove__data__structs_8hpp_html"><div class="ttname"><a href="move__data__structs_8hpp.html">move_data_structs.hpp</a></div><div class="ttdoc">Definitions and implementations of gameboard::Move and other move-related structs.</div></div>
-<div class="ttc" id="anamespaceboardstate_html"><div class="ttname"><a href="namespaceboardstate.html">boardstate</a></div><div class="ttdoc">Calculate / manage board state and associate Minimax results.</div><div class="ttdef"><b>Definition:</b> <a href="builders_8hpp_source.html#l00020">builders.hpp:20</a></div></div>
+<div class="ttc" id="amulti__board__state__provider_8hpp_html"><div class="ttname"><a href="multi__board__state__provider_8hpp.html">multi_board_state_provider.hpp</a></div></div>
+<div class="ttc" id="anamespaceboardstate_html"><div class="ttname"><a href="namespaceboardstate.html">boardstate</a></div><div class="ttdoc">Calculate / manage board state and associate Minimax results.</div><div class="ttdef"><b>Definition:</b> <a href="key__generator_8hpp_source.html#l00013">key_generator.hpp:13</a></div></div>
 <div class="ttc" id="anamespaceboardstate_html_add5893a9fca7208b917bf0f4b03bfa74"><div class="ttname"><a href="namespaceboardstate.html#add5893a9fca7208b917bf0f4b03bfa74">boardstate::IntToHexString</a></div><div class="ttdeci">std::string IntToHexString(IntType num)</div><div class="ttdef"><b>Definition:</b> <a href="key__generator_8hpp_source.html#l00070">key_generator.hpp:70</a></div></div>
 <div class="ttc" id="anamespacemoveselection_html_a58787b0a19fd66a2c3161f7e37fbee1d"><div class="ttname"><a href="namespacemoveselection.html#a58787b0a19fd66a2c3161f7e37fbee1d">moveselection::MinimaxResultType</a></div><div class="ttdeci">MinimaxResultType</div><div class="ttdef"><b>Definition:</b> <a href="evaluator__data__structs_8hpp_source.html#l00036">evaluator_data_structs.hpp:36</a></div></div>
+<div class="ttc" id="asingle__board__state__provider_8hpp_html"><div class="ttname"><a href="single__board__state__provider_8hpp.html">single_board_state_provider.hpp</a></div></div>
 <div class="ttc" id="azobrist__calculator__for__concepts_8hpp_html"><div class="ttname"><a href="zobrist__calculator__for__concepts_8hpp.html">zobrist_calculator_for_concepts.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="zobrist__for__concepts_8hpp.html">zobrist_for_concepts.hpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:25 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_3c25bc696d7860d0b361b3de60d573c3.html">boardstate</a></li><li class="navelem"><a class="el" href="zobrist__for__concepts_8hpp.html">zobrist_for_concepts.hpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

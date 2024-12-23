@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data_0',['data',['../classmoveselection_1_1ResultDepthCounts.html#aca9066cf4ae1c57f3b0644931b9f0f1f',1,'moveselection::ResultDepthCounts']]],
-  ['data_5f_1',['data_',['../classmoveselection_1_1ResultDepthCounts.html#a05a1d55c66c927066732315c46119b41',1,'moveselection::ResultDepthCounts::data_()'],['../classboardstate_1_1TranspositionTable.html#a47b6057e1e4a732d19d642493a250a6a',1,'boardstate::TranspositionTable::data_()'],['../classboardstate_1_1TranspositionTableForConcepts.html#a6f55198f06c567067727f50907aca7fe',1,'boardstate::TranspositionTableForConcepts::data_()']]],
+  ['data_5f_1',['data_',['../classboardstate_1_1TranspositionTable.html#a47b6057e1e4a732d19d642493a250a6a',1,'boardstate::TranspositionTable::data_()'],['../classboardstate_1_1TranspositionTableForConcepts.html#a6f55198f06c567067727f50907aca7fe',1,'boardstate::TranspositionTableForConcepts::data_()'],['../classmoveselection_1_1ResultDepthCounts.html#a05a1d55c66c927066732315c46119b41',1,'moveselection::ResultDepthCounts::data_()']]],
   ['data_5fcolumn_5fcolors_2',['data_column_colors',['../classxiangqipy_1_1game__summary__plotters_1_1SearchResultsByTypePlotter.html#ab53b83ac221c0c2710233b939056d0fa',1,'xiangqipy::game_summary_plotters::SearchResultsByTypePlotter']]],
   ['data_5fcolumns_3',['data_columns',['../classxiangqipy_1_1game__summary__plotters_1_1GameSummaryPlotter.html#a18a24e7e087764a41f6bb4234ee7b66a',1,'xiangqipy::game_summary_plotters::GameSummaryPlotter']]],
   ['dec_5fhook_4',['dec_hook',['../namespacexiangqipy_1_1game__summary__io.html#a7d882e81ad5f3acd948dbc2d1f862fae',1,'xiangqipy::game_summary_io']]],

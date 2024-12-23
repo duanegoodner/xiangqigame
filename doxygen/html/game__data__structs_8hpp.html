@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=11" />
   <meta name="generator" content="Doxygen 1.9.6" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Xiangiqgame: include/game_data_structs.hpp File Reference</title>
+  <title>Xiangiqgame: include/game/game_data_structs.hpp File Reference</title>
   <link href="tabs.css" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="dynsections.js"></script>
@@ -149,59 +149,63 @@ $(document).ready(function(){initNavTree('game__data__structs_8hpp.html',''); in
   <div class="headertitle"><div class="title">game_data_structs.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="evaluator__data__structs_8hpp_source.html">evaluator_data_structs.hpp</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="move__data__structs_8hpp_source.html">gameboard/move_data_structs.hpp</a>&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;<a class="el" href="move__data__structs_8hpp_source.html">move_data_structs.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="evaluator__data__structs_8hpp_source.html">moveselection/evaluator_data_structs.hpp</a>&gt;</code><br />
 <code>#include &lt;optional&gt;</code><br />
+<code>#include &lt;<a class="el" href="integer__types_8hpp_source.html">utilities/integer_types.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for game_data_structs.hpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="game__data__structs_8hpp__incl.png" border="0" usemap="#ainclude_2game__data__structs_8hpp" alt=""/></div>
-<map name="ainclude_2game__data__structs_8hpp" id="ainclude_2game__data__structs_8hpp">
-<area shape="rect" title=" " alt="" coords="546,5,771,31"/>
-<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="478,79,677,104"/>
-<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="465,225,639,251"/>
-<area shape="rect" title=" " alt="" coords="700,79,780,104"/>
-<area shape="rect" title=" " alt="" coords="804,79,879,104"/>
-<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="465,299,639,324"/>
-<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="5,372,144,397"/>
-<area shape="rect" title=" " alt="" coords="529,152,596,177"/>
-<area shape="rect" title=" " alt="" coords="620,152,671,177"/>
-<area shape="rect" href="piece__points__bpo_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="841,152,1004,177"/>
-<area shape="rect" title=" " alt="" coords="701,372,757,397"/>
-<area shape="rect" title=" " alt="" coords="424,372,493,397"/>
-<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="219,372,349,397"/>
-<area shape="rect" title=" " alt="" coords="517,372,589,397"/>
-<area shape="rect" title=" " alt="" coords="614,372,677,397"/>
-<area shape="rect" title=" " alt="" coords="238,445,301,471"/>
-<area shape="rect" title=" " alt="" coords="1116,445,1175,471"/>
-<area shape="rect" title=" " alt="" coords="325,445,449,471"/>
-<area shape="rect" title=" " alt="" coords="41,445,108,471"/>
-<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="678,299,813,324"/>
-<area shape="rect" title=" " alt="" coords="832,372,917,397"/>
-<area shape="rect" title=" " alt="" coords="993,372,1082,397"/>
-<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="1208,299,1395,324"/>
-<area shape="rect" title=" " alt="" coords="745,225,823,251"/>
-<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="999,225,1193,251"/>
-<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="221,225,440,251"/>
-<area shape="rect" title=" " alt="" coords="847,225,923,251"/>
-<area shape="rect" title=" " alt="" coords="1059,299,1133,324"/>
-<area shape="rect" title=" " alt="" coords="888,299,1035,324"/>
+<div class="center"><img src="game__data__structs_8hpp__incl.png" border="0" usemap="#ainclude_2game_2game__data__structs_8hpp" alt=""/></div>
+<map name="ainclude_2game_2game__data__structs_8hpp" id="ainclude_2game_2game__data__structs_8hpp">
+<area shape="rect" title=" " alt="" coords="593,5,780,45"/>
+<area shape="rect" href="move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="551,269,724,309"/>
+<area shape="rect" href="integer__types_8hpp.html" title=" " alt="" coords="5,445,197,471"/>
+<area shape="rect" title=" " alt="" coords="724,101,804,126"/>
+<area shape="rect" href="evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="465,93,649,133"/>
+<area shape="rect" title=" " alt="" coords="828,101,903,126"/>
+<area shape="rect" href="board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="553,357,727,397"/>
+<area shape="rect" href="game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="273,445,479,471"/>
+<area shape="rect" href="utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="789,365,977,390"/>
+<area shape="rect" title=" " alt="" coords="648,445,704,471"/>
+<area shape="rect" title=" " alt="" coords="555,445,624,471"/>
+<area shape="rect" title=" " alt="" coords="816,445,888,471"/>
+<area shape="rect" title=" " alt="" coords="729,445,791,471"/>
+<area shape="rect" title=" " alt="" coords="345,519,407,544"/>
+<area shape="rect" title=" " alt="" coords="1271,519,1329,544"/>
+<area shape="rect" title=" " alt="" coords="802,519,926,544"/>
+<area shape="rect" title=" " alt="" coords="68,519,135,544"/>
+<area shape="rect" title=" " alt="" coords="912,445,997,471"/>
+<area shape="rect" title=" " alt="" coords="1022,445,1111,471"/>
+<area shape="rect" title=" " alt="" coords="407,189,473,214"/>
+<area shape="rect" title=" " alt="" coords="548,189,599,214"/>
+<area shape="rect" href="base__position__offset_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="894,181,1085,221"/>
+<area shape="rect" href="json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="1373,357,1510,397"/>
+<area shape="rect" title=" " alt="" coords="748,277,825,302"/>
+<area shape="rect" href="json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="1105,269,1242,309"/>
+<area shape="rect" href="piece__points__data__structs_8hpp.html" title=" " alt="" coords="285,269,467,309"/>
+<area shape="rect" title=" " alt="" coords="850,277,926,302"/>
+<area shape="rect" title=" " alt="" coords="1053,365,1126,390"/>
+<area shape="rect" title=" " alt="" coords="1151,365,1297,390"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="game__data__structs_8hpp__dep__incl.png" border="0" usemap="#ainclude_2game__data__structs_8hppdep" alt=""/></div>
-<map name="ainclude_2game__data__structs_8hppdep" id="ainclude_2game__data__structs_8hppdep">
-<area shape="rect" title=" " alt="" coords="207,5,432,31"/>
-<area shape="rect" href="game_8hpp.html" title=" " alt="" coords="81,167,219,192"/>
-<area shape="rect" href="game__factory_8hpp.html" title=" " alt="" coords="213,247,402,273"/>
-<area shape="rect" href="interface__game__reporter_8hpp.html" title=" " alt="" coords="295,79,469,119"/>
-<area shape="rect" href="terminal__output_8hpp.html" title=" " alt="" coords="387,167,593,192"/>
-<area shape="rect" href="game_8cpp.html" title=" " alt="" coords="5,247,188,273"/>
-<area shape="rect" href="game__factory_8cpp.html" title=" " alt="" coords="224,328,391,368"/>
-<area shape="rect" href="terminal__output_8cpp.html" title=" " alt="" coords="426,240,607,280"/>
+<div class="center"><img src="game__data__structs_8hpp__dep__incl.png" border="0" usemap="#ainclude_2game_2game__data__structs_8hppdep" alt=""/></div>
+<map name="ainclude_2game_2game__data__structs_8hppdep" id="ainclude_2game_2game__data__structs_8hppdep">
+<area shape="rect" title=" " alt="" coords="210,5,397,45"/>
+<area shape="rect" href="game_8hpp.html" title=" " alt="" coords="214,189,393,214"/>
+<area shape="rect" href="game__factory_8hpp.html" title=" " alt="" coords="396,277,627,302"/>
+<area shape="rect" href="game__runner_8hpp.html" title=" " alt="" coords="13,365,239,390"/>
+<area shape="rect" href="player__input__translator_8hpp.html" title=" " alt="" coords="41,93,200,133"/>
+<area shape="rect" href="player__spec__builder_8hpp.html" title=" " alt="" coords="35,181,190,221"/>
+<area shape="rect" href="interface__game__reporter_8hpp.html" title=" " alt="" coords="404,93,619,133"/>
+<area shape="rect" href="terminal__output_8hpp.html" title=" " alt="" coords="563,181,721,221"/>
+<area shape="rect" href="game_8cpp.html" title=" " alt="" coords="189,277,372,302"/>
+<area shape="rect" href="game__factory_8cpp.html" title=" " alt="" coords="434,357,589,397"/>
+<area shape="rect" href="terminal__output_8cpp.html" title=" " alt="" coords="651,269,809,309"/>
 </map>
 </div>
 </div>
@@ -239,14 +243,14 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="separator:a8c93203a902146caddef660c90e21280"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a559237671e2da77df194f7b85a0479d3"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3">game::ZobristKeyType</a> : int { <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3a467539f86103f13554fdbc2541179eca">game::kNoKey</a> = 0
-, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3a5ae4e5ada916251cbff4fcd9e7e7a268">game::k032</a> = 1
-, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3acc6024343915ec58fdf48a7974e2d053">game::k064</a> = 2
-, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3ab2069f9b4644b6189edaa6d98adbf499">game::k128</a> = 3
+, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3a6156ba4a921ddcb8f14c4b8b1b707b41">game::k032BitKey</a> = 1
+, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3a34516666a0b377c7911b81681a3309cd">game::k064BitKey</a> = 2
+, <a class="el" href="namespacegame.html#a559237671e2da77df194f7b85a0479d3a09f50d21b97df621b88303d9afe7a3ce">game::k128BitKey</a> = 3
  }</td></tr>
 <tr class="separator:a559237671e2da77df194f7b85a0479d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9dd5fc4285d36790679b0d273dd4a9b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9b">game::ZobristCalculatorCount</a> : int { <a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba63053a3d6fa02372ac0d1c6ef3a9b099">game::kNoZCalcs</a> = 0
-, <a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba95161ab1a70c8dc35305e62d666eb388">game::kOne</a> = 1
-, <a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba490016a830a434832c94c288ddca8ecf">game::kTwo</a> = 2
+, <a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba22197005fc28e410420a265e4f5b4c54">game::kOneZCalc</a> = 1
+, <a class="el" href="namespacegame.html#af9dd5fc4285d36790679b0d273dd4a9ba2009eb34a51ea02a8706bc04ff056809">game::kTwoZCalc</a> = 2
  }</td></tr>
 <tr class="separator:af9dd5fc4285d36790679b0d273dd4a9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -255,8 +259,8 @@ Enumerations</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="game__data__structs_8hpp.html">game_data_structs.hpp</a></li>
-    <li class="footer">Generated on Fri Dec 20 2024 21:28:25 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_f307a46daed1218fee22380d1eacedba.html">game</a></li><li class="navelem"><a class="el" href="game__data__structs_8hpp.html">game_data_structs.hpp</a></li>
+    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>
