@@ -31,25 +31,27 @@ protected:
   DepthType search_depth_red_{3};
   DepthType search_depth_black_{3};
 
-  game::MinimaxTypeInfo minimax_type_info_red_{
-      game::ZobristKeyType::k064,
-      game::ZobristCalculatorCount::kTwo
-  };
-  game::MinimaxTypeInfo minimax_type_info_black_{
-      game::ZobristKeyType::k064,
-      game::ZobristCalculatorCount::kTwo
-  };
+//   game::MinimaxTypeInfo minimax_type_info_red_{
+//       game::ZobristKeyType::k064BitKey,
+//       game::ZobristCalculatorCount::kTwoZCalc
+//   };
+//   game::MinimaxTypeInfo minimax_type_info_black_{
+//       game::ZobristKeyType::k064BitKey,
+//       game::ZobristCalculatorCount::kTwoZCalc
+//   };
 
   game::PlayerSpec player_spec_red_{
       gameboard::PieceColor::kRed,
       game::EvaluatorType::kMinimax,
-      minimax_type_info_red_,
+      game::ZobristKeyType::k064BitKey,
+      game::ZobristCalculatorCount::kTwoZCalc,
       search_depth_red_
   };
   game::PlayerSpec player_spec_black_{
       gameboard::PieceColor::kBlk,
       game::EvaluatorType::kMinimax,
-      minimax_type_info_black_,
+      game::ZobristKeyType::k064BitKey,
+      game::ZobristCalculatorCount::kTwoZCalc,
       search_depth_black_
   };
 };

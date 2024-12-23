@@ -12,42 +12,42 @@ EvaluatorFactoryRetriever::EvaluatorFactoryRetriever(
     , input_stream_{input_stream}
     , minimax_factories_{} {
   minimax_factories_.emplace(
-      MinimaxTypeInfo{ZobristKeyType::k032, ZobristCalculatorCount::kOne},
+      MinimaxTypeInfo{ZobristKeyType::k032BitKey, ZobristCalculatorCount::kOneZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<uint32_t, 0>>(
           game_board_,
           player_spec.minimax_search_depth
       )
   );
   minimax_factories_.emplace(
-      MinimaxTypeInfo{ZobristKeyType::k064, ZobristCalculatorCount::kOne},
+      MinimaxTypeInfo{ZobristKeyType::k064BitKey, ZobristCalculatorCount::kOneZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<uint32_t, 0>>(
           game_board_,
           player_spec.minimax_search_depth
       )
   );
   minimax_factories_.emplace(
-      MinimaxTypeInfo{ZobristKeyType::k128, ZobristCalculatorCount::kOne},
+      MinimaxTypeInfo{ZobristKeyType::k128BitKey, ZobristCalculatorCount::kOneZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<__uint128_t, 0>>(
           game_board_,
           player_spec.minimax_search_depth
       )
   );
   minimax_factories_.emplace(
-      MinimaxTypeInfo{ZobristKeyType::k032, ZobristCalculatorCount::kTwo},
+      MinimaxTypeInfo{ZobristKeyType::k032BitKey, ZobristCalculatorCount::kTwoZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<uint32_t, 1>>(
           game_board_,
           player_spec.minimax_search_depth
       )
   );
   minimax_factories_.emplace(
-      MinimaxTypeInfo{ZobristKeyType::k064, ZobristCalculatorCount::kTwo},
+      MinimaxTypeInfo{ZobristKeyType::k064BitKey, ZobristCalculatorCount::kTwoZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<uint32_t, 1>>(
           game_board_,
           player_spec.minimax_search_depth
       )
   );
   minimax_factories_.emplace(
-      MinimaxTypeInfo{ZobristKeyType::k128, ZobristCalculatorCount::kOne},
+      MinimaxTypeInfo{ZobristKeyType::k128BitKey, ZobristCalculatorCount::kOneZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<__uint128_t, 0>>(
           game_board_,
           player_spec.minimax_search_depth
@@ -67,7 +67,8 @@ std::shared_ptr<MoveEvaluatorFactoryBase> EvaluatorFactoryRetriever::GetFactory(
     );
   }
   if (player_spec_.evaluator_type == EvaluatorType::kMinimax) {
-    factory = minimax_factories_.at(player_spec_.minimax_type_info);
+    MinimaxTypeInfo minimax_type_info{player_spec_.zobrist_key_type, player_spec_.zobrist_calculator_count};
+    factory = minimax_factories_.at(minimax_type_info);
   }
   return factory;
 }

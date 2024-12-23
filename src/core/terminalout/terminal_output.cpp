@@ -23,9 +23,9 @@ const std::unordered_map<game::EvaluatorType, std::string>
 
 const std::unordered_map<game::ZobristKeyType, std::string>
     PlayerReporter::key_type_strings_ = {
-        {game::ZobristKeyType::k032, "32"},
-        {game::ZobristKeyType::k064, "64"},
-        {game::ZobristKeyType::k128, "128"}
+        {game::ZobristKeyType::k032BitKey, "32"},
+        {game::ZobristKeyType::k064BitKey, "64"},
+        {game::ZobristKeyType::k128BitKey, "128"}
 };
 
 PlayerReporter::PlayerReporter(const game::PlayerSpec &player_spec)
@@ -45,7 +45,7 @@ std::string PlayerReporter::SearchDepthStr() {
 
 std::string PlayerReporter::ZobristKeySizeStr() {
   return "Zobrist Key Size = " +
-         key_type_strings_.at(player_spec_.minimax_type_info.zobrist_key_type);
+         key_type_strings_.at(player_spec_.zobrist_key_type);
 }
 
 std::string PlayerReporter::SummaryStr() {

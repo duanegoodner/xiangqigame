@@ -1,17 +1,17 @@
 #pragma once
 
-#include <moveselection/evaluator_data_structs.hpp>
-#include <iostream>
 #include <gameboard/move_data_structs.hpp>
+#include <iostream>
+#include <moveselection/evaluator_data_structs.hpp>
 #include <optional>
 
 namespace game {
 enum GameState : int { kUnfinished = 0, kDraw = 1, kRedWon = 2, kBlkWon = 3 };
 
 enum EvaluatorType : int { kRandom = 0, kMinimax = 1, kHuman };
-enum ZobristKeyType : int { kNoKey = 0, k032 = 1, k064 = 2, k128 = 3 };
+enum ZobristKeyType : int { kNoKey = 0, k032BitKey = 1, k064BitKey = 2, k128BitKey = 3 };
 
-enum ZobristCalculatorCount : int { kNoZCalcs = 0, kOne = 1, kTwo = 2 };
+enum ZobristCalculatorCount : int { kNoZCalcs = 0, kOneZCalc = 1, kTwoZCalc = 2 };
 
 struct MinimaxTypeInfo {
   ZobristKeyType zobrist_key_type;
@@ -42,20 +42,24 @@ struct MinimaxTypeInfoHash {
 struct PlayerSpec {
   gameboard::PieceColor color;
   EvaluatorType evaluator_type;
-  MinimaxTypeInfo minimax_type_info;
+  // MinimaxTypeInfo minimax_type_info;
+  ZobristKeyType zobrist_key_type;
+  ZobristCalculatorCount zobrist_calculator_count;
   size_t minimax_search_depth;
-  // std::istream &input_stream;
 
   PlayerSpec(
       gameboard::PieceColor color,
-      EvaluatorType evaluator_type,
-      MinimaxTypeInfo minimax_type_info = MinimaxTypeInfo{},
+      EvaluatorType evaluator_type = EvaluatorType::kMinimax,
+      ZobristKeyType zobrist_key_type = ZobristKeyType::k064BitKey,
+      ZobristCalculatorCount zobrist_calculator_count = ZobristCalculatorCount::kTwoZCalc,
+
+      // MinimaxTypeInfo minimax_type_info = MinimaxTypeInfo{},
       size_t minimax_search_depth = 0
-      // std::istream &input_stream = std::cin
   )
       : color{color}
-      , evaluator_type{evaluator_type} // , input_stream{input_stream}
-      , minimax_type_info{minimax_type_info}
+      , evaluator_type{evaluator_type} // , minimax_type_info{minimax_type_info}
+      , zobrist_key_type{zobrist_key_type}
+      , zobrist_calculator_count{zobrist_calculator_count}
       , minimax_search_depth{minimax_search_depth} {}
 };
 
