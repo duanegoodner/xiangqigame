@@ -11,6 +11,8 @@
 #include <chrono>
 #include <boardstate/key_generator.hpp>
 #include <gameboard/move_data_structs.hpp>
+#include <interfaces/board_state_summarizer_interface.hpp>
+#include <moveselection/evaluator_data_structs.hpp>
 #include <mutex>
 #include <optional>
 #include <random>
