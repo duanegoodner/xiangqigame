@@ -14,7 +14,7 @@
 namespace game {
 using PlayerInputType = std::unordered_map<
     std::string,
-    std::variant<std::string, size_t, DepthType>>;
+    std::variant<std::string, size_t, int64_t, DepthType>>;
 
 class PlayerSpecBuilder {
   gameboard::PieceColor color_;
