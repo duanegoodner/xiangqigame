@@ -44,15 +44,15 @@ protected:
   game::PlayerSpec player_spec_red_{
       gameboard::PieceColor::kRed,
       game::EvaluatorType::kMinimax,
-      game::ZobristKeyType::k064BitKey,
-      game::ZobristCalculatorCount::kTwoZCalc,
+      64,
+      2,
       search_depth_red_
   };
   game::PlayerSpec player_spec_black_{
       gameboard::PieceColor::kBlk,
       game::EvaluatorType::kMinimax,
-      game::ZobristKeyType::k064BitKey,
-      game::ZobristCalculatorCount::kTwoZCalc,
+      64,
+      2,
       search_depth_black_
   };
 };

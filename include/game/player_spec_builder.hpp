@@ -19,9 +19,7 @@ using PlayerInputType = std::unordered_map<
 class PlayerSpecBuilder {
   gameboard::PieceColor color_;
   EvaluatorType evaluator_type_;
-  // ZobristKeyType zobrist_key_type_;
   size_t zobrist_key_size_bits_;
-  // ZobristCalculatorCount zobrist_calculator_count_;
   size_t zobrist_calculator_count_;
   DepthType minimax_search_depth_;
   PlayerInputTranslator input_translator_;
@@ -54,9 +52,7 @@ public:
   PlayerSpecBuilder()
       : color_{gameboard::PieceColor::kNul}
       , evaluator_type_{EvaluatorType::kMinimax}
-      // , zobrist_key_type_{ZobristKeyType::k064BitKey}
       , zobrist_key_size_bits_{64}
-      // , zobrist_calculator_count_{ZobristCalculatorCount::kTwoZCalc}
       , zobrist_calculator_count_{2}
       , minimax_search_depth_{4} {}
 
