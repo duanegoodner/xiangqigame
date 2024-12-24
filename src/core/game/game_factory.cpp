@@ -62,12 +62,15 @@ std::shared_ptr<MoveEvaluatorFactoryBase> EvaluatorFactoryRetriever::GetFactory(
     factory = std::make_shared<moveselection::RandomMoveEvaluatorFactory>();
   }
   if (player_spec_.evaluator_type == EvaluatorType::kHuman) {
-    factory = std::make_shared<moveselection::HumanMoveEvaluatorFactory>(
-        input_stream_
-    );
+    factory = std::make_shared<moveselection::HumanMoveEvaluatorFactory>(input_stream_);
   }
   if (player_spec_.evaluator_type == EvaluatorType::kMinimax) {
-    MinimaxTypeInfo minimax_type_info{player_spec_.zobrist_key_type, player_spec_.zobrist_calculator_count};
+    MinimaxTypeInfo minimax_type_info{
+        zkey_bitcount_to_enum_.at(player_spec_.zobrist_key_size_bits),
+        num_zcalculators_to_enum_.at(player_spec_.zobrist_calculator_count)
+        // player_spec_.zobrist_key_type,
+        // player_spec_.zobrist_calculator_count
+    };
     factory = minimax_factories_.at(minimax_type_info);
   }
   return factory;

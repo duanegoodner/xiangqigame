@@ -15,7 +15,7 @@ TEST_F(PlayerSpecBuilderTest, BuildDefault) {
 
   EXPECT_EQ(player_spec.color, gameboard::PieceColor::kNul);
   EXPECT_EQ(player_spec.evaluator_type, game::EvaluatorType::kMinimax);
-  EXPECT_EQ(player_spec.zobrist_key_type, game::ZobristKeyType::k064BitKey);
+  EXPECT_EQ(player_spec.zobrist_key_size_bits, 64);
   EXPECT_EQ(
       player_spec.zobrist_calculator_count,
       game::ZobristCalculatorCount::kTwoZCalc
@@ -35,7 +35,7 @@ TEST_F(PlayerSpecBuilderTest, BuildFromPlayerInputType) {
   auto player_spec = player_spec_builder_.SetMultipleAttributes(input).Build();
   EXPECT_EQ(player_spec.color, gameboard::PieceColor::kBlk);
   EXPECT_EQ(player_spec.evaluator_type, game::EvaluatorType::kMinimax);
-  EXPECT_EQ(player_spec.zobrist_key_type, game::ZobristKeyType::k032BitKey);
+  EXPECT_EQ(player_spec.zobrist_key_size_bits, 32);
   EXPECT_EQ(player_spec.zobrist_calculator_count, game::ZobristCalculatorCount::kOneZCalc);
   EXPECT_EQ(player_spec.minimax_search_depth, 3);
 }

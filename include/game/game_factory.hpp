@@ -1,13 +1,13 @@
 #pragma once
 
-#include <interfaces/base_evaluator_factory.hpp>
-#include <interfaces/base_move_evaluator.hpp>
-#include <interfaces/base_space_info_provider.hpp>
 #include <concepts/composite_concepts.hpp>
 #include <concepts/move_evaluator.hpp>
 #include <game/game.hpp>
-#include <gameboard/game_board_for_concepts.hpp>
 #include <game/game_data_structs.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
+#include <interfaces/base_evaluator_factory.hpp>
+#include <interfaces/base_move_evaluator.hpp>
+#include <interfaces/base_space_info_provider.hpp>
 #include <interfaces/interface_game_reporter.hpp>
 #include <memory>
 #include <moveselection/minimax_evaluator_factory.hpp>
@@ -28,6 +28,19 @@ class EvaluatorFactoryRetriever {
   const PlayerSpec &player_spec_;
   std::istream &input_stream_;
   std::shared_ptr<gameboard::GameBoardForConcepts> game_board_;
+
+  inline static const std::unordered_map<size_t, ZobristKeyType> zkey_bitcount_to_enum_ =
+      {{0, ZobristKeyType::kNoKey},
+       {32, ZobristKeyType::k032BitKey},
+       {64, ZobristKeyType::k064BitKey},
+       {128, ZobristKeyType::k128BitKey}};
+
+  inline static const std::unordered_map<size_t, ZobristCalculatorCount>
+      num_zcalculators_to_enum_ = {
+          {0, ZobristCalculatorCount::kNoZCalcs},
+          {1, ZobristCalculatorCount::kOneZCalc},
+          {2, ZobristCalculatorCount::kTwoZCalc}
+  };
 
 public:
   EvaluatorFactoryRetriever(
@@ -64,12 +77,11 @@ public:
 
   std::unique_ptr<Game> Create() {
     auto game_board = game_board_factory_.Create();
-    
+
     std::unordered_map<gameboard::PieceColor, PlayerSpec> player_specs;
     player_specs.emplace(gameboard::PieceColor::kRed, red_player_spec_);
     player_specs.emplace(gameboard::PieceColor::kBlk, black_player_spec_);
 
-    
     std::unordered_map<gameboard::PieceColor, std::unique_ptr<MoveEvaluatorBase>>
         evaluators;
 

@@ -123,7 +123,7 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
 
   py::class_<game::PlayerSpec>(m, "PlayerSpec")
       .def_readonly("color", &game::PlayerSpec::color)
-      .def_readonly("zobrist_key_type", &game::PlayerSpec::zobrist_key_type)
+      .def_readonly("zobrist_key_size_bits", &game::PlayerSpec::zobrist_key_size_bits)
       .def_readonly(
           "zobrist_calculator_count",
           &game::PlayerSpec::zobrist_calculator_count
