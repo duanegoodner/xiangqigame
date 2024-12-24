@@ -1,8 +1,8 @@
 import sys
 from pathlib import Path
 from unittest.mock import patch
-import xiangqigame.app as app
-import xiangqigame.game_summary_io as gio
+import xiangqipy.app as app
+import xiangqipy.game_summary_io as gio
 
 
 def test_app_no_args():
