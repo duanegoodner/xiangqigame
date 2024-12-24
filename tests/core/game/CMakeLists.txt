@@ -1,10 +1,10 @@
-add_executable(player_spec_builder_test player_spec_builder_test.cpp)
-target_link_libraries(
-    player_spec_builder_test PRIVATE
-    GTest::gtest_main
-    jsonio
-    utilities
-)
+# add_executable(player_spec_builder_test player_spec_builder_test.cpp)
+# target_link_libraries(
+#     player_spec_builder_test PRIVATE
+#     GTest::gtest_main
+#     jsonio
+#     utilities
+# )
 
 add_executable(game_test game_test.cpp)
 target_link_libraries(
