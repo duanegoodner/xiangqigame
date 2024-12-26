@@ -13,13 +13,13 @@ namespace game {
 class GameRunner {
   // const game::PlayerInputType &red_player_input_;
   // const game::PlayerInputType &black_player_input_;
-  const game::PlayerSpec &red_player_spec_;
-  const game::PlayerSpec &black_player_spec_;
+  game::PlayerSpec red_player_spec_;
+  game::PlayerSpec black_player_spec_;
 
 public:
   GameRunner(
-      const game::PlayerSpec &red_player_spec,
-      game::PlayerSpec &black_player_spec
+      game::PlayerSpec red_player_spec,
+      game::PlayerSpec black_player_spec
   )
       : red_player_spec_{red_player_spec}
       , black_player_spec_{black_player_spec} {}
@@ -38,5 +38,8 @@ public:
 
     return game_summary;
   }
+
+  const game::PlayerSpec& red_player_spec() {return red_player_spec_; }
+  const game::PlayerSpec& black_player_spec() {return black_player_spec_;}
 };
 } // namespace game

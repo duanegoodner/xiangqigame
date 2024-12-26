@@ -139,11 +139,13 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
 
   py::class_<game::GameRunner>(m, "GameRunner")
       .def(
-          py::init<game::PlayerSpec &, game::PlayerSpec &>(),
+          py::init<game::PlayerSpec, game::PlayerSpec>(),
           "red_player_spec"_a,
           "black_player_spec"_a
       )
-      .def("run_game", &game::GameRunner::RunGame);
+      .def("run_game", &game::GameRunner::RunGame)
+      .def_property_readonly("red_player_spec", &game::GameRunner::red_player_spec)
+      .def_property_readonly("black_player_spec", &game::GameRunner::black_player_spec);
 
   // Define key types and their corresponding names as a tuple
   const std::tuple<std::string, size_t> key_types[] = {
