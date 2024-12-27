@@ -98,7 +98,7 @@ public:
     auto evalutor_factory_black = evaluator_factory_retriever_black.GetFactory();
     evaluators.emplace(
         gameboard::PieceColor::kBlk,
-        evalutor_factory_red->Create(gameboard::PieceColor::kBlk)
+        evalutor_factory_black->Create(gameboard::PieceColor::kBlk)
     );
 
     std::shared_ptr<GameReporterInterface> game_reporter =
