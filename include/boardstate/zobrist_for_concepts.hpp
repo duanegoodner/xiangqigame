@@ -28,7 +28,7 @@ class ZobristComponentForConcepts {
 
   std::shared_ptr<C> primary_calculator_;
   std::array<std::shared_ptr<C>, N> confirmation_calculators_;
-  std::optional<uint32_t> prng_seed_;
+  uint32_t prng_seed_;
 
 public:
   using KeyType = typename C::KeyType;
@@ -80,7 +80,7 @@ public:
   std::string primary_board_state_hex_str() const {
     return boardstate::IntToHexString(primary_calculator_->board_state());
   }
-  uint32_t prng_seed() { return prng_seed_.value_or(0); }
+  uint32_t prng_seed() { return prng_seed_; }
 
 private:
   //! Constructs ZobristComponentForConcepts from existing ZobristCalculatorForConcepts
