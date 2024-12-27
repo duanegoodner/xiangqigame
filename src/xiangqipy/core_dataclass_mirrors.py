@@ -129,7 +129,7 @@ class MoveCollection:
 @dataclass
 class EqualScoreMoves:
     """
-    A Ptyhon EqualScoreMoves.
+    A Python EqualScoreMoves.
     """
 
     shared_score: PointsT

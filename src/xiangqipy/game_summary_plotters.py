@@ -5,8 +5,9 @@ multiple subclasses that implement it.
 Each sub-class plots a different portion of data from a GameSummary.
 """
 
+import warnings
 from abc import ABC, abstractmethod
-from typing import Dict, Tuple, cast, List
+from typing import Dict, List, Tuple, cast
 
 import numpy as np
 import pandas as pd
@@ -21,6 +22,7 @@ class GameSummaryPlotter(ABC):
     Abstract base class for plotting data stored in pandas
     dataframes (one df for each player) to a numpy array of matplotlib Axes
     """
+
     evaluating_player_line_colors = {
         bindings.PieceColor.kRed: "red",
         bindings.PieceColor.kBlk: "black",
@@ -111,9 +113,15 @@ class GameSummaryPlotter(ABC):
         if self.num_players_with_data == 2:
             return {bindings.PieceColor.kRed: 0, bindings.PieceColor.kBlk: 1}
         elif self.has_data(player=bindings.PieceColor.kRed):
-            return {bindings.PieceColor.kRed: 0, bindings.PieceColor.kBlk: None}
+            return {
+                bindings.PieceColor.kRed: 0,
+                bindings.PieceColor.kBlk: None,
+            }
         elif self.has_data(player=bindings.PieceColor.kBlk):
-            return {bindings.PieceColor.kRed: None, bindings.PieceColor.kBlk: 0}
+            return {
+                bindings.PieceColor.kRed: None,
+                bindings.PieceColor.kBlk: 0,
+            }
 
     @property
     def data_columns(self) -> pd.Index:
@@ -151,9 +159,15 @@ class GameSummaryPlotter(ABC):
         for idx, ax in enumerate(self.axes[0, :]):
             ax = cast(plt.Axes, ax)
             if idx == self.player_plot_col[bindings.PieceColor.kRed]:
-                ax.set_title(self.player_text_labels[bindings.PieceColor.kRed], fontsize=16)
+                ax.set_title(
+                    self.player_text_labels[bindings.PieceColor.kRed],
+                    fontsize=16,
+                )
             if idx == self.player_plot_col[bindings.PieceColor.kBlk]:
-                ax.set_title(self.player_text_labels[bindings.PieceColor.kBlk], fontsize=16)
+                ax.set_title(
+                    self.player_text_labels[bindings.PieceColor.kBlk],
+                    fontsize=16,
+                )
 
     def plot(self):
         self.plot_data()
@@ -168,6 +182,7 @@ class SearchResultsByTypePlotter(GameSummaryPlotter):
     Implements GameSummaryPlotter, and produces stacked plots of Minimax
     search result counts grouped by MinimaxResultType.
     """
+
     def __init__(
         self,
         axes: np.ndarray,
@@ -187,7 +202,7 @@ class SearchResultsByTypePlotter(GameSummaryPlotter):
             log_scale_rows=log_scale_rows,
             red_data=red_data,
             black_data=black_data,
-            add_plot_column_titles=add_plot_column_titles
+            add_plot_column_titles=add_plot_column_titles,
         )
         self.cmap = plt.get_cmap(cmap_name)
 
@@ -208,12 +223,19 @@ class SearchResultsByTypePlotter(GameSummaryPlotter):
         sorted_colors = [
             self.data_column_colors[col] for col in df_sorted.columns
         ]
-        ax.stackplot(
-            df.index,
-            df_sorted.T,
-            labels=df_sorted.columns,
-            colors=sorted_colors,
-        )
+
+        with warnings.catch_warnings():
+            warnings.filterwarnings(
+                "ignore",
+                category=UserWarning,
+                message="Data has no positive values, and therefore cannot be log-scaled.",
+            )
+            ax.stackplot(
+                df.index,
+                df_sorted.T,
+                labels=df_sorted.columns,
+                colors=sorted_colors,
+            )
 
     def plot_player_data(self, player: bindings.PieceColor):
         for plot_row in range(2):
@@ -239,7 +261,7 @@ class SearchResultsByTypePlotter(GameSummaryPlotter):
             fontsize=14,
             title="Node Type",
             title_fontsize=15,
-            alignment="left"
+            alignment="left",
         )
 
     def plot_data(self):
@@ -255,6 +277,7 @@ class SearchTimePlotter(GameSummaryPlotter):
     Implements GameSummaryPlotter, and produces plots showing time spent
     by core MinimaxMoveEvaluator(s) evaluating nodes and selecting Moves.
     """
+
     search_stats_time_cols = ["search_time_s", "mean_time_per_node_ns"]
 
     def __init__(
@@ -274,7 +297,7 @@ class SearchTimePlotter(GameSummaryPlotter):
             log_scale_rows=log_scale_rows,
             red_data=red_data,
             black_data=black_data,
-            add_plot_column_titles=add_plot_column_titles
+            add_plot_column_titles=add_plot_column_titles,
         )
 
     def plot_player_search_times(self, player: bindings.PieceColor):
@@ -299,6 +322,7 @@ class EvalScorePlotter(GameSummaryPlotter):
     Implements GameSummaryPlotter, and plots evaluated score of each move of
     each Player using a Minimax algorithm in a Game.
     """
+
     def __init__(
         self,
         axes: np.ndarray,
@@ -313,7 +337,7 @@ class EvalScorePlotter(GameSummaryPlotter):
             log_scale_rows=log_scale_rows,
             red_data=red_data,
             black_data=black_data,
-            add_plot_column_titles=add_plot_column_titles
+            add_plot_column_titles=add_plot_column_titles,
         )
 
     @property

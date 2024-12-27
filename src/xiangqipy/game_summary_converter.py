@@ -96,7 +96,11 @@ class CoreToPyGameSummaryConverter:
 
     @property
     def py_move_log(self) -> list[xb.ExecutedMove]:
-        return self.core_game_summary.move_log
+        return [
+            cdm.ExecutedMove.from_core_executed_move(move)
+            for move in self.core_game_summary.move_log
+        ]
+        # return self.core_game_summary.move_log
 
     @property
     def py_player_summaries(self) -> pgs.PlayerSummaries:
