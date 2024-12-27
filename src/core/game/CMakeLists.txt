@@ -8,3 +8,12 @@ target_link_libraries(
     moveselection
     piecepoints
     )
+
+add_executable(run_game run_game.cpp)
+target_link_libraries(
+    run_game PRIVATE
+    game
+    jsonio
+    terminalout
+    utilities
+)
