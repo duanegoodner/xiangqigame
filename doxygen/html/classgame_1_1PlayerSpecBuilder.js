@@ -9,6 +9,6 @@ var classgame_1_1PlayerSpecBuilder =
     [ "evaluator_type_", "classgame_1_1PlayerSpecBuilder.html#a3377d641a10517ecf89d40c946cde756", null ],
     [ "input_translator_", "classgame_1_1PlayerSpecBuilder.html#a59731784c8fcee0282da3d36c8601ca3", null ],
     [ "minimax_search_depth_", "classgame_1_1PlayerSpecBuilder.html#acf10a32fde54ed8e3d179deb063f424d", null ],
-    [ "zobrist_calculator_count_", "classgame_1_1PlayerSpecBuilder.html#a30009eeec54c08369bf429e46454f679", null ],
-    [ "zobrist_key_type_", "classgame_1_1PlayerSpecBuilder.html#a8c97794798842e532dab25a8494d1cc0", null ]
+    [ "zobrist_calculator_count_", "classgame_1_1PlayerSpecBuilder.html#ae7624808b31b76ad37b42c3abc7b8ed9", null ],
+    [ "zobrist_key_size_bits_", "classgame_1_1PlayerSpecBuilder.html#a127f433ff634a5db7f8f57a2f8c53620", null ]
 ];

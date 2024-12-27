@@ -14,7 +14,6 @@ var searchData=
   ['moveevaluator_3c_20minimaxmoveevaluator_3c_20concretespaceinfoprovider_2c_20concreteboardstatecoordinator_2c_20concretepiecevalueprovider_20_3e_20_3e_11',['MoveEvaluator&lt; MinimaxMoveEvaluator&lt; ConcreteSpaceInfoProvider, ConcreteBoardStateCoordinator, ConcretePieceValueProvider &gt; &gt;',['../classMoveEvaluator.html',1,'']]],
   ['moveevaluator_3c_20randommoveevaluator_3c_20concretespaceinfoprovider_20_3e_20_3e_12',['MoveEvaluator&lt; RandomMoveEvaluator&lt; ConcreteSpaceInfoProvider &gt; &gt;',['../classMoveEvaluator.html',1,'']]],
   ['moveevaluatorbase_13',['MoveEvaluatorBase',['../classMoveEvaluatorBase.html',1,'']]],
-  ['moveevaluatorbuilder_14',['MoveEvaluatorBuilder',['../classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder.html',1,'xiangqipy::app_new']]],
-  ['moveevaluatorfactorybase_15',['MoveEvaluatorFactoryBase',['../classMoveEvaluatorFactoryBase.html',1,'']]],
-  ['movereporter_16',['MoveReporter',['../classterminalout_1_1MoveReporter.html',1,'terminalout::MoveReporter'],['../classxiangqipy_1_1game__interfaces_1_1MoveReporter.html',1,'xiangqipy.game_interfaces.MoveReporter']]]
+  ['moveevaluatorfactorybase_14',['MoveEvaluatorFactoryBase',['../classMoveEvaluatorFactoryBase.html',1,'']]],
+  ['movereporter_15',['MoveReporter',['../classterminalout_1_1MoveReporter.html',1,'terminalout::MoveReporter'],['../classxiangqipy_1_1game__interfaces_1_1MoveReporter.html',1,'xiangqipy.game_interfaces.MoveReporter']]]
 ];

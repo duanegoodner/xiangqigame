@@ -232,59 +232,58 @@ $(document).ready(function(){initNavTree('move__translator_8cpp_source.html','')
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="namespacemovetranslation.html#adbf378e0bb2b73ec98a7a83b63e584f2">   85</a></span><span class="keyword">const</span> std::string <a class="code hl_function" href="namespacemovetranslation.html#adbf378e0bb2b73ec98a7a83b63e584f2">GetInput</a>(std::istream &amp;input_stream) {</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  std::string user_input;</div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  std::getline(input_stream, user_input);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  input_stream &gt;&gt; user_input;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  <span class="keywordflow">return</span> user_input;</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="namespacemovetranslation.html#a7f67abf13d7fd18647e31f66579b0fb0">   93</a></span><span class="keyword">const</span> std::string <a class="code hl_function" href="namespacemovetranslation.html#a7f67abf13d7fd18647e31f66579b0fb0">Trim</a>(<span class="keyword">const</span> std::string &amp;str) {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>  <span class="keywordflow">if</span> (str.empty()) {</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">return</span> str;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>  }</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="keyword">auto</span> start = std::find_if_not(str.begin(), str.end(), ::isspace);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>  <span class="keyword">auto</span> end = std::find_if_not(str.rbegin(), str.rend(), ::isspace).base();</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>  <span class="keywordflow">return</span> std::string(start, end);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>}</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="namespacemovetranslation.html#af6b25f6dad061c2a678b1dc00e62ac51">  104</a></span><span class="keyword">const</span> std::vector&lt;std::string&gt; <a class="code hl_function" href="namespacemovetranslation.html#af6b25f6dad061c2a678b1dc00e62ac51">Tokenize</a>(<span class="keyword">const</span> std::string &amp;input) {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>  std::vector&lt;std::string&gt; tokens;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  std::stringstream stream(input);</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>  std::string segment;</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>  <span class="keywordflow">while</span> (std::getline(stream, segment, <span class="charliteral">&#39;,&#39;</span>)) {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keyword">auto</span> trimmed_segment = <a class="code hl_function" href="namespacemovetranslation.html#a7f67abf13d7fd18647e31f66579b0fb0">Trim</a>(segment);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    tokens.emplace_back(trimmed_segment);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>  }</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>  <span class="keywordflow">return</span> tokens;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>}</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="namespacemovetranslation.html#a60ca116759f61eaddde95acbf2fbfbeb">  118</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacemovetranslation.html#a60ca116759f61eaddde95acbf2fbfbeb">IsValidAlgebraicMove</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;tokens) {</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;token : tokens) {</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespacemovetranslation.html#a0793ef1346631ea23fb31ae9062dcf38">IsValidAlgebraicBoardSpace</a>(token)) {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>      std::cerr &lt;&lt; <span class="stringliteral">&quot;Token &#39;&quot;</span> + token + <span class="stringliteral">&quot;&#39; is not a valid algebraic board space.&quot;</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    }</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>  }</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>  <span class="keywordflow">if</span> (tokens.size() != 2) {</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    std::cerr &lt;&lt; <span class="stringliteral">&quot;AlgebraicMove consists of exactly 2 board spaces, but &quot;</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>              &lt;&lt; tokens.size() &lt;&lt; <span class="stringliteral">&quot; values provided&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>  }</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="namespacemovetranslation.html#a0793ef1346631ea23fb31ae9062dcf38">  135</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacemovetranslation.html#a0793ef1346631ea23fb31ae9062dcf38">IsValidAlgebraicBoardSpace</a>(<span class="keyword">const</span> std::string &amp;algebraic_space) {</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  std::regex pattern(<span class="stringliteral">&quot;^[a-i](?:10|[1-9])$&quot;</span>);</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>  <span class="keywordflow">return</span> std::regex_match(algebraic_space, pattern);</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>}</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>} <span class="comment">// namespace movetranslation</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  <span class="keywordflow">return</span> user_input;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="namespacemovetranslation.html#a7f67abf13d7fd18647e31f66579b0fb0">   92</a></span><span class="keyword">const</span> std::string <a class="code hl_function" href="namespacemovetranslation.html#a7f67abf13d7fd18647e31f66579b0fb0">Trim</a>(<span class="keyword">const</span> std::string &amp;str) {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  <span class="keywordflow">if</span> (str.empty()) {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">return</span> str;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  <span class="keyword">auto</span> start = std::find_if_not(str.begin(), str.end(), ::isspace);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  <span class="keyword">auto</span> end = std::find_if_not(str.rbegin(), str.rend(), ::isspace).base();</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>  <span class="keywordflow">return</span> std::string(start, end);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="namespacemovetranslation.html#af6b25f6dad061c2a678b1dc00e62ac51">  103</a></span><span class="keyword">const</span> std::vector&lt;std::string&gt; <a class="code hl_function" href="namespacemovetranslation.html#af6b25f6dad061c2a678b1dc00e62ac51">Tokenize</a>(<span class="keyword">const</span> std::string &amp;input) {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>  std::vector&lt;std::string&gt; tokens;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>  std::stringstream stream(input);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>  std::string segment;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>  <span class="keywordflow">while</span> (std::getline(stream, segment, <span class="charliteral">&#39;,&#39;</span>)) {</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keyword">auto</span> trimmed_segment = <a class="code hl_function" href="namespacemovetranslation.html#a7f67abf13d7fd18647e31f66579b0fb0">Trim</a>(segment);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    tokens.emplace_back(trimmed_segment);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>  }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>  <span class="keywordflow">return</span> tokens;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="namespacemovetranslation.html#a60ca116759f61eaddde95acbf2fbfbeb">  117</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacemovetranslation.html#a60ca116759f61eaddde95acbf2fbfbeb">IsValidAlgebraicMove</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt; &amp;tokens) {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>  <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;token : tokens) {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespacemovetranslation.html#a0793ef1346631ea23fb31ae9062dcf38">IsValidAlgebraicBoardSpace</a>(token)) {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>      std::cerr &lt;&lt; <span class="stringliteral">&quot;Token &#39;&quot;</span> + token + <span class="stringliteral">&quot;&#39; is not a valid algebraic board space.&quot;</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>                &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>      <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    }</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>  }</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>  <span class="keywordflow">if</span> (tokens.size() != 2) {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    std::cerr &lt;&lt; <span class="stringliteral">&quot;AlgebraicMove consists of exactly 2 board spaces, but &quot;</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>              &lt;&lt; tokens.size() &lt;&lt; <span class="stringliteral">&quot; values provided&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>  }</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>}</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="namespacemovetranslation.html#a0793ef1346631ea23fb31ae9062dcf38">  134</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="namespacemovetranslation.html#a0793ef1346631ea23fb31ae9062dcf38">IsValidAlgebraicBoardSpace</a>(<span class="keyword">const</span> std::string &amp;algebraic_space) {</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>  std::regex pattern(<span class="stringliteral">&quot;^[a-i](?:10|[1-9])$&quot;</span>);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>  <span class="keywordflow">return</span> std::regex_match(algebraic_space, pattern);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>}</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>} <span class="comment">// namespace movetranslation</span></div>
 <div class="ttc" id="aboard__data__structs_8hpp_html"><div class="ttname"><a href="board__data__structs_8hpp.html">board_data_structs.hpp</a></div><div class="ttdoc">Constants, typedefs, and simple structs used by gameboard::GameBoard.</div></div>
 <div class="ttc" id="aclassmovetranslation_1_1AlgebraicBoardSpace_html"><div class="ttname"><a href="classmovetranslation_1_1AlgebraicBoardSpace.html">movetranslation::AlgebraicBoardSpace</a></div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8hpp_source.html#l00024">move_translator.hpp:24</a></div></div>
 <div class="ttc" id="aclassmovetranslation_1_1AlgebraicBoardSpace_html_a044629cadd04b60d20272b87e06114cc"><div class="ttname"><a href="classmovetranslation_1_1AlgebraicBoardSpace.html#a044629cadd04b60d20272b87e06114cc">movetranslation::AlgebraicBoardSpace::operator==</a></div><div class="ttdeci">bool operator==(const AlgebraicBoardSpace &amp;other) const</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00039">move_translator.cpp:39</a></div></div>
@@ -304,11 +303,11 @@ $(document).ready(function(){initNavTree('move__translator_8cpp_source.html','')
 <div class="ttc" id="aclassmovetranslation_1_1InvalidVectorSizeException_html"><div class="ttname"><a href="classmovetranslation_1_1InvalidVectorSizeException.html">movetranslation::InvalidVectorSizeException</a></div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8hpp_source.html#l00018">move_translator.hpp:18</a></div></div>
 <div class="ttc" id="amove__translator_8hpp_html"><div class="ttname"><a href="move__translator_8hpp.html">move_translator.hpp</a></div></div>
 <div class="ttc" id="anamespacemovetranslation_html"><div class="ttname"><a href="namespacemovetranslation.html">movetranslation</a></div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8hpp_source.html#l00010">move_translator.hpp:10</a></div></div>
-<div class="ttc" id="anamespacemovetranslation_html_a0793ef1346631ea23fb31ae9062dcf38"><div class="ttname"><a href="namespacemovetranslation.html#a0793ef1346631ea23fb31ae9062dcf38">movetranslation::IsValidAlgebraicBoardSpace</a></div><div class="ttdeci">bool IsValidAlgebraicBoardSpace(const std::string &amp;algebraic_space)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00135">move_translator.cpp:135</a></div></div>
-<div class="ttc" id="anamespacemovetranslation_html_a60ca116759f61eaddde95acbf2fbfbeb"><div class="ttname"><a href="namespacemovetranslation.html#a60ca116759f61eaddde95acbf2fbfbeb">movetranslation::IsValidAlgebraicMove</a></div><div class="ttdeci">bool IsValidAlgebraicMove(const std::vector&lt; std::string &gt; &amp;tokens)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00118">move_translator.cpp:118</a></div></div>
-<div class="ttc" id="anamespacemovetranslation_html_a7f67abf13d7fd18647e31f66579b0fb0"><div class="ttname"><a href="namespacemovetranslation.html#a7f67abf13d7fd18647e31f66579b0fb0">movetranslation::Trim</a></div><div class="ttdeci">const std::string Trim(const std::string &amp;str)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00093">move_translator.cpp:93</a></div></div>
+<div class="ttc" id="anamespacemovetranslation_html_a0793ef1346631ea23fb31ae9062dcf38"><div class="ttname"><a href="namespacemovetranslation.html#a0793ef1346631ea23fb31ae9062dcf38">movetranslation::IsValidAlgebraicBoardSpace</a></div><div class="ttdeci">bool IsValidAlgebraicBoardSpace(const std::string &amp;algebraic_space)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00134">move_translator.cpp:134</a></div></div>
+<div class="ttc" id="anamespacemovetranslation_html_a60ca116759f61eaddde95acbf2fbfbeb"><div class="ttname"><a href="namespacemovetranslation.html#a60ca116759f61eaddde95acbf2fbfbeb">movetranslation::IsValidAlgebraicMove</a></div><div class="ttdeci">bool IsValidAlgebraicMove(const std::vector&lt; std::string &gt; &amp;tokens)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00117">move_translator.cpp:117</a></div></div>
+<div class="ttc" id="anamespacemovetranslation_html_a7f67abf13d7fd18647e31f66579b0fb0"><div class="ttname"><a href="namespacemovetranslation.html#a7f67abf13d7fd18647e31f66579b0fb0">movetranslation::Trim</a></div><div class="ttdeci">const std::string Trim(const std::string &amp;str)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00092">move_translator.cpp:92</a></div></div>
 <div class="ttc" id="anamespacemovetranslation_html_adbf378e0bb2b73ec98a7a83b63e584f2"><div class="ttname"><a href="namespacemovetranslation.html#adbf378e0bb2b73ec98a7a83b63e584f2">movetranslation::GetInput</a></div><div class="ttdeci">const std::string GetInput(std::istream &amp;input_stream)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00085">move_translator.cpp:85</a></div></div>
-<div class="ttc" id="anamespacemovetranslation_html_af6b25f6dad061c2a678b1dc00e62ac51"><div class="ttname"><a href="namespacemovetranslation.html#af6b25f6dad061c2a678b1dc00e62ac51">movetranslation::Tokenize</a></div><div class="ttdeci">const std::vector&lt; std::string &gt; Tokenize(const std::string &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00104">move_translator.cpp:104</a></div></div>
+<div class="ttc" id="anamespacemovetranslation_html_af6b25f6dad061c2a678b1dc00e62ac51"><div class="ttname"><a href="namespacemovetranslation.html#af6b25f6dad061c2a678b1dc00e62ac51">movetranslation::Tokenize</a></div><div class="ttdeci">const std::vector&lt; std::string &gt; Tokenize(const std::string &amp;input)</div><div class="ttdef"><b>Definition:</b> <a href="move__translator_8cpp_source.html#l00103">move_translator.cpp:103</a></div></div>
 <div class="ttc" id="astructgameboard_1_1BoardSpace_html"><div class="ttname"><a href="structgameboard_1_1BoardSpace.html">gameboard::BoardSpace</a></div><div class="ttdoc">A pair of coordinate (rank, and file) with properties determined by comparison with values of gameboa...</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00051">board_data_structs.hpp:51</a></div></div>
 <div class="ttc" id="astructgameboard_1_1BoardSpace_html_a0c73cddc71742818833c39673adcd9a4"><div class="ttname"><a href="structgameboard_1_1BoardSpace.html#a0c73cddc71742818833c39673adcd9a4">gameboard::BoardSpace::file</a></div><div class="ttdeci">BoardIndexType file</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00053">board_data_structs.hpp:53</a></div></div>
 <div class="ttc" id="astructgameboard_1_1BoardSpace_html_a60ecf2b038e2e78993b4867f574cf890"><div class="ttname"><a href="structgameboard_1_1BoardSpace.html#a60ecf2b038e2e78993b4867f574cf890">gameboard::BoardSpace::rank</a></div><div class="ttdeci">BoardIndexType rank</div><div class="ttdef"><b>Definition:</b> <a href="board__data__structs_8hpp_source.html#l00053">board_data_structs.hpp:53</a></div></div>
@@ -321,7 +320,7 @@ $(document).ready(function(){initNavTree('move__translator_8cpp_source.html','')
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="dir_a968445c9081820a8fda8ce1b17b0c4a.html">movetranslation</a></li><li class="navelem"><a class="el" href="move__translator_8cpp.html">move_translator.cpp</a></li>
-    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Dec 27 2024 15:30:50 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

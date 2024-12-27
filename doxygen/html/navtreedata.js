@@ -140,18 +140,18 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____init_____8py.html",
-"classboardstate_1_1TranspositionTablePruner.html#a87ad626687395271c07b9225fdee2be4",
-"classboardstate_1_1ZobristCoordinator.html#afd4006b2ff13a627eb719c3d5421af63",
-"classgameboard_1_1GameBoardForConcepts.html#a6baf7e6d5d716702318b82283052dcee",
-"classmoveselection_1_1MinimaxMoveEvaluatorFactory.html",
-"classmoveselection_1_1TranspositionTableSearchResult.html#af623237380b07e2c786d08341d6622c9",
-"classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html#a794ae949ce28e00580a45b2f41944e5f",
-"classxiangqipy_1_1game__interfaces_1_1MoveReporter.html#ace2963ee4e3442dd85fdb27862fab31d",
-"classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a122ccb24a667bc628478c88326fa2da7",
-"functions_func_n.html",
-"move__calculator__details_8hpp.html",
-"namespacexiangqipy_1_1handlers_1_1errors.html",
-"structgameboard_1_1MoveCollection.html#a40c1b1e41cb2452431b77b9c3cc0e4c1"
+"classboardstate_1_1TranspositionTablePruner.html#a7933b8757c6de58efd5089b7f6832534",
+"classboardstate_1_1ZobristCoordinator.html#afab290ab29729926a67bd337737f5338",
+"classgameboard_1_1GameBoardForConcepts.html#a69a036150637b77b2c11b48ccfe7652d",
+"classmoveselection_1_1MinimaxMoveEvaluator.html#af844893fcc25facf7313df2da0427485",
+"classmoveselection_1_1TranspositionTableSearchResult.html#ac114144f2298af777998ef0cae6f34a6",
+"classxiangqipy_1_1command__input_1_1RawPlayerInput.html#acf2031165f2603bca677c84222f82a8b",
+"classxiangqipy_1_1game__interfaces_1_1Player.html#af809df1b19d3212d4b074fb331ec1391",
+"classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html#a3505fd0a96abdbf6c8522a6fb6505974",
+"files.html",
+"md_docs_06_minimax_details.html#autotoc_md40",
+"namespacexiangqipy_1_1app__simple.html#a94a582522eeb515e233d3f63949e10ce",
+"structgameboard_1_1GamePiece.html#aafe4abdcc60240f0c2e8e31c244b95dc"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

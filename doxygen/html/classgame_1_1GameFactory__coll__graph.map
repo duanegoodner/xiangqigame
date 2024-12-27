@@ -1,12 +1,11 @@
 <map id="game::GameFactory" name="game::GameFactory">
-<area shape="rect" id="node1" title=" " alt="" coords="319,344,472,436"/>
-<area shape="rect" id="node2" href="$classgameboard_1_1GameBoardFactory.html" title=" " alt="" coords="5,160,233,237"/>
-<area shape="rect" id="node3" href="$structgame_1_1PlayerSpec.html" title=" " alt="" coords="258,160,397,237"/>
-<area shape="rect" id="node4" title=" " alt="" coords="11,5,102,83"/>
-<area shape="rect" id="node5" title=" " alt="" coords="126,5,241,83"/>
-<area shape="rect" id="node6" title=" " alt="" coords="265,5,387,83"/>
-<area shape="rect" id="node7" title=" " alt="" coords="412,5,584,83"/>
-<area shape="rect" id="node8" title=" " alt="" coords="615,5,690,83"/>
-<area shape="rect" id="node9" title=" " alt="" coords="432,160,519,237"/>
-<area shape="rect" id="node10" title=" " alt="" coords="614,160,665,237"/>
+<area shape="rect" id="node1" title=" " alt="" coords="319,359,472,451"/>
+<area shape="rect" id="node2" href="$classgameboard_1_1GameBoardFactory.html" title=" " alt="" coords="5,175,233,252"/>
+<area shape="rect" id="node3" href="$structgame_1_1PlayerSpec.html" title=" " alt="" coords="258,175,397,252"/>
+<area shape="rect" id="node4" title=" " alt="" coords="83,5,174,83"/>
+<area shape="rect" id="node5" title=" " alt="" coords="198,5,313,83"/>
+<area shape="rect" id="node6" title=" " alt="" coords="369,5,429,83"/>
+<area shape="rect" id="node7" title=" " alt="" coords="542,5,617,83"/>
+<area shape="rect" id="node8" title=" " alt="" coords="432,175,519,252"/>
+<area shape="rect" id="node9" title=" " alt="" coords="614,175,665,252"/>
 </map>

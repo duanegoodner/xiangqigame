@@ -13,7 +13,7 @@ var searchData=
   ['evaluator_5fname_5fto_5fenum_5f_10',['evaluator_name_to_enum_',['../classgame_1_1PlayerInputTranslator.html#a1b340bf5a11db0e72fe3efe209b1d33d',1,'game::PlayerInputTranslator']]],
   ['evaluator_5fnames_5f_11',['evaluator_names_',['../classterminalout_1_1PlayerReporter.html#ad5d5053930e5574e4ed0fd72738e9108',1,'terminalout::PlayerReporter']]],
   ['evaluator_5fto_5fplayer_5ftype_5f_12',['evaluator_to_player_type_',['../classterminalout_1_1PlayerReporter.html#ae5c3ef9e0d748eb6c70d0fc898eafb48',1,'terminalout::PlayerReporter']]],
-  ['evaluator_5ftype_13',['evaluator_type',['../structgame_1_1PlayerSpec.html#a0b89ceacabb577a8fc88734f8f43cc09',1,'game::PlayerSpec::evaluator_type()'],['../classxiangqipy_1_1app__new_1_1PlayerInputNew.html#af9eee5318d180b7a9bdfe9f5861ded19',1,'xiangqipy.app_new.PlayerInputNew.evaluator_type()']]],
+  ['evaluator_5ftype_13',['evaluator_type',['../structgame_1_1PlayerSpec.html#a0b89ceacabb577a8fc88734f8f43cc09',1,'game::PlayerSpec::evaluator_type()'],['../classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a8d43feb25f34c231029f4456bb28afa5',1,'xiangqipy.command_input.RawPlayerInput.evaluator_type()']]],
   ['evaluator_5ftype_5f_14',['evaluator_type_',['../classgame_1_1PlayerSpecBuilder.html#a3377d641a10517ecf89d40c946cde756',1,'game::PlayerSpecBuilder']]],
   ['evaluatorloses_15',['EvaluatorLoses',['../classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#a176c899e93c8adfbd9cb1b00c75c7935',1,'xiangqipy::core_dataclass_mirrors::MinimaxResultTypePy']]],
   ['evaluatorwins_16',['EvaluatorWins',['../classxiangqipy_1_1core__dataclass__mirrors_1_1MinimaxResultTypePy.html#acf7da36d1a29bb5c195d4756e31d1b0c',1,'xiangqipy::core_dataclass_mirrors::MinimaxResultTypePy']]],

@@ -10,7 +10,7 @@ var classxiangqipy_1_1player__summary_1_1PlayerSummary =
     [ "tr_table_size_end_game", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a5d2c6d6469a75f06ef5bb20d27451b9d", null ],
     [ "tr_table_size_first_illegal_move_request", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a25e7b21f128be16b20255d41281558a3", null ],
     [ "tr_table_sizes_at_events", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a23c8e410a65a9a53a923020f7722a929", null ],
-    [ "color", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aed7001413f156056645e9a5e7be0b50b", null ],
+    [ "color", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aa67e069c6e5d6402210c2c1fa233804b", null ],
     [ "color", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a5270ede5cae30217a56a5869ff72248c", null ],
     [ "max_search_depth", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a122ccb24a667bc628478c88326fa2da7", null ],
     [ "move_evaluator_type", "classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aa48f54b0d1d247c430064fad8d10a03a", null ],

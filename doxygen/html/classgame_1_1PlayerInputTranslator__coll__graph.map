@@ -1,7 +1,5 @@
 <map id="game::PlayerInputTranslator" name="game::PlayerInputTranslator">
-<area shape="rect" id="node1" title=" " alt="" coords="285,189,518,325"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,13,171,105"/>
-<area shape="rect" id="node3" title=" " alt="" coords="195,13,402,105"/>
-<area shape="rect" id="node4" title=" " alt="" coords="426,5,585,112"/>
-<area shape="rect" id="node5" title=" " alt="" coords="609,13,791,105"/>
+<area shape="rect" id="node1" title=" " alt="" coords="65,189,299,281"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,164,112"/>
+<area shape="rect" id="node3" title=" " alt="" coords="188,13,371,105"/>
 </map>

@@ -1,13 +1,15 @@
 <map id="include/game/game_data_structs.hpp" name="include/game/game_data_structs.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="210,5,397,45"/>
-<area shape="rect" id="node2" href="$game_8hpp.html" title=" " alt="" coords="214,189,393,214"/>
-<area shape="rect" id="node3" href="$game__factory_8hpp.html" title=" " alt="" coords="396,277,627,302"/>
-<area shape="rect" id="node4" href="$game__runner_8hpp.html" title=" " alt="" coords="13,365,239,390"/>
-<area shape="rect" id="node7" href="$player__input__translator_8hpp.html" title=" " alt="" coords="41,93,200,133"/>
-<area shape="rect" id="node8" href="$player__spec__builder_8hpp.html" title=" " alt="" coords="35,181,190,221"/>
-<area shape="rect" id="node9" href="$interface__game__reporter_8hpp.html" title=" " alt="" coords="404,93,619,133"/>
-<area shape="rect" id="node10" href="$terminal__output_8hpp.html" title=" " alt="" coords="563,181,721,221"/>
-<area shape="rect" id="node6" href="$game_8cpp.html" title=" " alt="" coords="189,277,372,302"/>
-<area shape="rect" id="node5" href="$game__factory_8cpp.html" title=" " alt="" coords="434,357,589,397"/>
-<area shape="rect" id="node11" href="$terminal__output_8cpp.html" title=" " alt="" coords="651,269,809,309"/>
+<area shape="rect" id="node1" title=" " alt="" coords="544,5,731,45"/>
+<area shape="rect" id="node2" href="$game_8hpp.html" title=" " alt="" coords="276,189,455,214"/>
+<area shape="rect" id="node3" href="$game__factory_8hpp.html" title=" " alt="" coords="403,277,634,302"/>
+<area shape="rect" id="node4" href="$game__runner_8hpp.html" title=" " alt="" coords="228,365,455,390"/>
+<area shape="rect" id="node5" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="13,445,200,471"/>
+<area shape="rect" id="node6" href="$run__game_8cpp.html" title=" " alt="" coords="248,445,459,471"/>
+<area shape="rect" id="node9" href="$player__input__translator_8hpp.html" title=" " alt="" coords="891,93,1050,133"/>
+<area shape="rect" id="node10" href="$player__spec__builder_8hpp.html" title=" " alt="" coords="952,181,1107,221"/>
+<area shape="rect" id="node11" href="$interface__game__reporter_8hpp.html" title=" " alt="" coords="530,93,745,133"/>
+<area shape="rect" id="node12" href="$terminal__output_8hpp.html" title=" " alt="" coords="638,181,797,221"/>
+<area shape="rect" id="node8" href="$game_8cpp.html" title=" " alt="" coords="145,277,327,302"/>
+<area shape="rect" id="node7" href="$game__factory_8cpp.html" title=" " alt="" coords="479,357,633,397"/>
+<area shape="rect" id="node13" href="$terminal__output_8cpp.html" title=" " alt="" coords="659,269,816,309"/>
 </map>

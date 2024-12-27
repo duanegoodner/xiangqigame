@@ -6,7 +6,11 @@ var namespacexiangqipy =
     [ "app", "namespacexiangqipy_1_1app.html", [
       [ "run", "namespacexiangqipy_1_1app.html#ac09777385f4e43af5903c4c664c70ae4", null ]
     ] ],
-    [ "app_new", "namespacexiangqipy_1_1app__new.html", "namespacexiangqipy_1_1app__new" ],
+    [ "app_simple", "namespacexiangqipy_1_1app__simple.html", [
+      [ "run", "namespacexiangqipy_1_1app__simple.html#a19ba4a1c6949571706f2a19ab212b0a2", null ],
+      [ "black_algo", "namespacexiangqipy_1_1app__simple.html#ab841a8493d07f071182ab7f820429631", null ],
+      [ "red_player_type", "namespacexiangqipy_1_1app__simple.html#a94a582522eeb515e233d3f63949e10ce", null ]
+    ] ],
     [ "command_input", "namespacexiangqipy_1_1command__input.html", "namespacexiangqipy_1_1command__input" ],
     [ "core_dataclass_mirrors", "namespacexiangqipy_1_1core__dataclass__mirrors.html", "namespacexiangqipy_1_1core__dataclass__mirrors" ],
     [ "enums", "namespacexiangqipy_1_1enums.html", "namespacexiangqipy_1_1enums" ],
@@ -14,6 +18,7 @@ var namespacexiangqipy =
     [ "game_interfaces", "namespacexiangqipy_1_1game__interfaces.html", "namespacexiangqipy_1_1game__interfaces" ],
     [ "game_output_generator", "namespacexiangqipy_1_1game__output__generator.html", "namespacexiangqipy_1_1game__output__generator" ],
     [ "game_summary", "namespacexiangqipy_1_1game__summary.html", "namespacexiangqipy_1_1game__summary" ],
+    [ "game_summary_converter", "namespacexiangqipy_1_1game__summary__converter.html", "namespacexiangqipy_1_1game__summary__converter" ],
     [ "game_summary_io", "namespacexiangqipy_1_1game__summary__io.html", [
       [ "dec_hook", "namespacexiangqipy_1_1game__summary__io.html#a7d882e81ad5f3acd948dbc2d1f862fae", null ],
       [ "enc_hook", "namespacexiangqipy_1_1game__summary__io.html#a41ff5f9044c6f215390ddac59120057b", null ],
@@ -38,10 +43,6 @@ var namespacexiangqipy =
     [ "piece_info_extractor", "namespacexiangqipy_1_1piece__info__extractor.html", "namespacexiangqipy_1_1piece__info__extractor" ],
     [ "piece_points", "namespacexiangqipy_1_1piece__points.html", "namespacexiangqipy_1_1piece__points" ],
     [ "player_builder", "namespacexiangqipy_1_1player__builder.html", "namespacexiangqipy_1_1player__builder" ],
-    [ "player_builder_new", "namespacexiangqipy_1_1player__builder__new.html", [
-      [ "build_xiangqi_command_new", "namespacexiangqipy_1_1player__builder__new.html#a2dea2af6515843eb7815db8fd4bbd41c", null ],
-      [ "collect_items_if_key_startswith", "namespacexiangqipy_1_1player__builder__new.html#a6ae81643c208265b2a3806580e81c0f6", null ]
-    ] ],
     [ "player_summary", "namespacexiangqipy_1_1player__summary.html", "namespacexiangqipy_1_1player__summary" ],
     [ "players", "namespacexiangqipy_1_1players.html", "namespacexiangqipy_1_1players" ],
     [ "terminal_output", "namespacexiangqipy_1_1terminal__output.html", "namespacexiangqipy_1_1terminal__output" ]

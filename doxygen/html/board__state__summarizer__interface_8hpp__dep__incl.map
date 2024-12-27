@@ -1,10 +1,11 @@
 <map id="include/interfaces/board_state_summarizer_interface.hpp" name="include/interfaces/board_state_summarizer_interface.hpp">
-<area shape="rect" id="node1" title="Definition of BoardStateCoordinator." alt="" coords="247,5,435,60"/>
-<area shape="rect" id="node2" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="256,108,425,148"/>
-<area shape="rect" id="node3" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="48,196,236,236"/>
-<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="181,291,367,317"/>
-<area shape="rect" id="node6" href="$piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="311,196,506,236"/>
-<area shape="rect" id="node8" href="$move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="530,196,703,236"/>
-<area shape="rect" id="node5" href="$gameboard_8cpp.html" title=" " alt="" coords="5,284,156,324"/>
-<area shape="rect" id="node7" href="$piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="391,284,586,324"/>
+<area shape="rect" id="node1" title="Definition of BoardStateCoordinator." alt="" coords="430,5,618,60"/>
+<area shape="rect" id="node2" href="$zobrist_8hpp.html" title="Contains implementaion of BoardStateTracker interface as a boardstate::ZobristTracker and supporting ..." alt="" coords="585,108,727,148"/>
+<area shape="rect" id="node4" href="$move__evaluators_8hpp.html" title="Definitions of concrete classes that implement the MoveEvaluator interface." alt="" coords="350,108,519,148"/>
+<area shape="rect" id="node3" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="341,291,528,317"/>
+<area shape="rect" id="node5" href="$game__board_8hpp.html" title="Definition of gameboard::GameBoard class." alt="" coords="473,196,661,236"/>
+<area shape="rect" id="node7" href="$piece__position__points_8hpp.html" title="Definition of piecepoints::PiecePositionPoints." alt="" coords="5,196,200,236"/>
+<area shape="rect" id="node9" href="$move__evaluators_8cpp.html" title="Linkage point for .hpp and .tpp files where template&#45;heavy concrete MoveEvaluators are implemented." alt="" coords="224,196,397,236"/>
+<area shape="rect" id="node6" href="$gameboard_8cpp.html" title=" " alt="" coords="553,284,703,324"/>
+<area shape="rect" id="node8" href="$piece__position__points_8cpp.html" title="Implementation of piecepoints::PiecePositionPoints." alt="" coords="5,284,200,324"/>
 </map>

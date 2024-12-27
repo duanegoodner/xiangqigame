@@ -11,7 +11,7 @@ var namespacegame =
     [ "PlayerInputTranslator", "classgame_1_1PlayerInputTranslator.html", "classgame_1_1PlayerInputTranslator" ],
     [ "PlayerSpec", "structgame_1_1PlayerSpec.html", "structgame_1_1PlayerSpec" ],
     [ "PlayerSpecBuilder", "classgame_1_1PlayerSpecBuilder.html", "classgame_1_1PlayerSpecBuilder" ],
-    [ "PlayerInputType", "namespacegame.html#aa587b8756216edc19bb20ebb94227b14", null ],
+    [ "PlayerInputType", "namespacegame.html#a6aba715aea9a267cfc69b519f15f8d46", null ],
     [ "EvaluatorType", "namespacegame.html#a8c93203a902146caddef660c90e21280", [
       [ "kRandom", "namespacegame.html#a8c93203a902146caddef660c90e21280adbb7c37a1a3b50bc322b3bb1a8654e9d", null ],
       [ "kMinimax", "namespacegame.html#a8c93203a902146caddef660c90e21280a44f1478de1e9660318efbe807ee753d1", null ],

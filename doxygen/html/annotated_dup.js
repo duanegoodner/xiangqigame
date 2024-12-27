@@ -93,16 +93,11 @@ var annotated_dup =
       [ "TerminalGameReporter", "classterminalout_1_1TerminalGameReporter.html", "classterminalout_1_1TerminalGameReporter" ]
     ] ],
     [ "xiangqipy", "namespacexiangqipy.html", [
-      [ "app_new", "namespacexiangqipy_1_1app__new.html", [
-        [ "MoveEvaluatorBuilder", "classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder.html", "classxiangqipy_1_1app__new_1_1MoveEvaluatorBuilder" ],
-        [ "PlayerInputNew", "classxiangqipy_1_1app__new_1_1PlayerInputNew.html", "classxiangqipy_1_1app__new_1_1PlayerInputNew" ],
-        [ "PlayerRunArgs", "classxiangqipy_1_1app__new_1_1PlayerRunArgs.html", "classxiangqipy_1_1app__new_1_1PlayerRunArgs" ],
-        [ "RunKwargsInterpreterNew", "classxiangqipy_1_1app__new_1_1RunKwargsInterpreterNew.html", "classxiangqipy_1_1app__new_1_1RunKwargsInterpreterNew" ],
-        [ "XiangqiGameCommandNew", "classxiangqipy_1_1app__new_1_1XiangqiGameCommandNew.html", "classxiangqipy_1_1app__new_1_1XiangqiGameCommandNew" ]
-      ] ],
       [ "command_input", "namespacexiangqipy_1_1command__input.html", [
+        [ "OutputFileInfo", "classxiangqipy_1_1command__input_1_1OutputFileInfo.html", "classxiangqipy_1_1command__input_1_1OutputFileInfo" ],
         [ "PlayerCommandInterpreter", "classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter.html", "classxiangqipy_1_1command__input_1_1PlayerCommandInterpreter" ],
         [ "PlayerInput", "classxiangqipy_1_1command__input_1_1PlayerInput.html", "classxiangqipy_1_1command__input_1_1PlayerInput" ],
+        [ "RawPlayerInput", "classxiangqipy_1_1command__input_1_1RawPlayerInput.html", "classxiangqipy_1_1command__input_1_1RawPlayerInput" ],
         [ "RunKwargsInterpreter", "classxiangqipy_1_1command__input_1_1RunKwargsInterpreter.html", "classxiangqipy_1_1command__input_1_1RunKwargsInterpreter" ],
         [ "XiangqiGameCommand", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand.html", "classxiangqipy_1_1command__input_1_1XiangqiGameCommand" ],
         [ "XiangqiGameCommandLine", "classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine.html", "classxiangqipy_1_1command__input_1_1XiangqiGameCommandLine" ]
@@ -139,6 +134,10 @@ var annotated_dup =
       [ "game_summary", "namespacexiangqipy_1_1game__summary.html", [
         [ "GameSummary", "classxiangqipy_1_1game__summary_1_1GameSummary.html", "classxiangqipy_1_1game__summary_1_1GameSummary" ],
         [ "PlayerSummaries", "classxiangqipy_1_1game__summary_1_1PlayerSummaries.html", "classxiangqipy_1_1game__summary_1_1PlayerSummaries" ]
+      ] ],
+      [ "game_summary_converter", "namespacexiangqipy_1_1game__summary__converter.html", [
+        [ "CorePlayerSpecToPyPlayerSummaryConverter", "classxiangqipy_1_1game__summary__converter_1_1CorePlayerSpecToPyPlayerSummaryConverter.html", "classxiangqipy_1_1game__summary__converter_1_1CorePlayerSpecToPyPlayerSummaryConverter" ],
+        [ "CoreToPyGameSummaryConverter", "classxiangqipy_1_1game__summary__converter_1_1CoreToPyGameSummaryConverter.html", "classxiangqipy_1_1game__summary__converter_1_1CoreToPyGameSummaryConverter" ]
       ] ],
       [ "game_summary_plot_manager", "namespacexiangqipy_1_1game__summary__plot__manager.html", [
         [ "GameSummaryPlotManager", "classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager.html", "classxiangqipy_1_1game__summary__plot__manager_1_1GameSummaryPlotManager" ]

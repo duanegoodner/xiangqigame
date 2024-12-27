@@ -14,8 +14,9 @@ var searchData=
   ['game_5fpiece_2ehpp_11',['game_piece.hpp',['../game__piece_8hpp.html',1,'']]],
   ['game_5frunner_2ehpp_12',['game_runner.hpp',['../game__runner_8hpp.html',1,'']]],
   ['game_5fsummary_2epy_13',['game_summary.py',['../game__summary_8py.html',1,'']]],
-  ['game_5fsummary_5fio_2epy_14',['game_summary_io.py',['../game__summary__io_8py.html',1,'']]],
-  ['game_5fsummary_5fplot_5fmanager_2epy_15',['game_summary_plot_manager.py',['../game__summary__plot__manager_8py.html',1,'']]],
-  ['game_5fsummary_5fplotters_2epy_16',['game_summary_plotters.py',['../game__summary__plotters_8py.html',1,'']]],
-  ['gameboard_2ecpp_17',['gameboard.cpp',['../gameboard_8cpp.html',1,'']]]
+  ['game_5fsummary_5fconverter_2epy_14',['game_summary_converter.py',['../game__summary__converter_8py.html',1,'']]],
+  ['game_5fsummary_5fio_2epy_15',['game_summary_io.py',['../game__summary__io_8py.html',1,'']]],
+  ['game_5fsummary_5fplot_5fmanager_2epy_16',['game_summary_plot_manager.py',['../game__summary__plot__manager_8py.html',1,'']]],
+  ['game_5fsummary_5fplotters_2epy_17',['game_summary_plotters.py',['../game__summary__plotters_8py.html',1,'']]],
+  ['gameboard_2ecpp_18',['gameboard.cpp',['../gameboard_8cpp.html',1,'']]]
 ];

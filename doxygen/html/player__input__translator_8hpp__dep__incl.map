@@ -1,5 +1,4 @@
 <map id="include/game/player_input_translator.hpp" name="include/game/player_input_translator.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="39,5,198,45"/>
-<area shape="rect" id="node2" href="$player__spec__builder_8hpp.html" title=" " alt="" coords="41,93,196,133"/>
-<area shape="rect" id="node3" href="$game__runner_8hpp.html" title=" " alt="" coords="5,181,232,207"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,164,45"/>
+<area shape="rect" id="node2" href="$player__spec__builder_8hpp.html" title=" " alt="" coords="7,93,162,133"/>
 </map>

@@ -1,7 +1,9 @@
 <map id="include/game/game.hpp" name="include/game/game.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="183,5,361,31"/>
-<area shape="rect" id="node2" href="$game__factory_8hpp.html" title=" " alt="" coords="157,79,387,104"/>
+<area shape="rect" id="node1" title=" " alt="" coords="281,5,460,31"/>
+<area shape="rect" id="node2" href="$game__factory_8hpp.html" title=" " alt="" coords="179,79,410,104"/>
 <area shape="rect" id="node3" href="$game__runner_8hpp.html" title=" " alt="" coords="5,159,232,185"/>
-<area shape="rect" id="node5" href="$game_8cpp.html" title=" " alt="" coords="411,79,594,104"/>
-<area shape="rect" id="node4" href="$game__factory_8cpp.html" title=" " alt="" coords="256,152,411,192"/>
+<area shape="rect" id="node4" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="301,240,488,265"/>
+<area shape="rect" id="node7" href="$game_8cpp.html" title=" " alt="" coords="486,79,669,104"/>
+<area shape="rect" id="node6" href="$game__factory_8cpp.html" title=" " alt="" coords="256,152,411,192"/>
+<area shape="rect" id="node5" href="$run__game_8cpp.html" title=" " alt="" coords="13,240,224,265"/>
 </map>

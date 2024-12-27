@@ -1,11 +1,12 @@
 <map id="include/concepts/composite_concepts.hpp" name="include/concepts/composite_concepts.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="280,5,483,45"/>
-<area shape="rect" id="node2" href="$zobrist__factories_8hpp.html" title=" " alt="" coords="147,93,309,133"/>
-<area shape="rect" id="node4" href="$game__factory_8hpp.html" title=" " alt="" coords="239,269,470,295"/>
-<area shape="rect" id="node8" href="$game_8hpp.html" title=" " alt="" coords="419,189,597,214"/>
-<area shape="rect" id="node3" href="$minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="112,181,344,221"/>
-<area shape="rect" id="node7" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="5,269,192,295"/>
-<area shape="rect" id="node5" href="$game__runner_8hpp.html" title=" " alt="" coords="395,350,621,375"/>
-<area shape="rect" id="node6" href="$game__factory_8cpp.html" title=" " alt="" coords="216,343,371,383"/>
-<area shape="rect" id="node9" href="$game_8cpp.html" title=" " alt="" coords="546,269,729,295"/>
+<area shape="rect" id="node1" title=" " alt="" coords="191,5,394,45"/>
+<area shape="rect" id="node2" href="$zobrist__factories_8hpp.html" title=" " alt="" coords="58,93,221,133"/>
+<area shape="rect" id="node4" href="$game__factory_8hpp.html" title=" " alt="" coords="125,269,356,295"/>
+<area shape="rect" id="node9" href="$game_8hpp.html" title=" " alt="" coords="330,189,509,214"/>
+<area shape="rect" id="node3" href="$minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="23,181,255,221"/>
+<area shape="rect" id="node6" href="$bindings_8cpp.html" title="Implements Pybind11 module xiangqi_bindings, exposing C++ classes and methods to Python." alt="" coords="102,431,289,456"/>
+<area shape="rect" id="node5" href="$game__runner_8hpp.html" title=" " alt="" coords="411,350,638,375"/>
+<area shape="rect" id="node8" href="$game__factory_8cpp.html" title=" " alt="" coords="163,343,318,383"/>
+<area shape="rect" id="node7" href="$run__game_8cpp.html" title=" " alt="" coords="419,431,630,456"/>
+<area shape="rect" id="node10" href="$game_8cpp.html" title=" " alt="" coords="483,269,665,295"/>
 </map>

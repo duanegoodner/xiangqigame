@@ -1,0 +1,5 @@
+var namespacexiangqipy_1_1game__summary__converter =
+[
+    [ "CorePlayerSpecToPyPlayerSummaryConverter", "classxiangqipy_1_1game__summary__converter_1_1CorePlayerSpecToPyPlayerSummaryConverter.html", "classxiangqipy_1_1game__summary__converter_1_1CorePlayerSpecToPyPlayerSummaryConverter" ],
+    [ "CoreToPyGameSummaryConverter", "classxiangqipy_1_1game__summary__converter_1_1CoreToPyGameSummaryConverter.html", "classxiangqipy_1_1game__summary__converter_1_1CoreToPyGameSummaryConverter" ]
+];

@@ -158,14 +158,14 @@ Collaboration diagram for xiangqipy.player_summary.PlayerSummary:</div>
 <div class="dyncontent">
 <div class="center"><img src="classxiangqipy_1_1player__summary_1_1PlayerSummary__coll__graph.png" border="0" usemap="#axiangqipy_8player__summary_8PlayerSummary_coll__map" alt="Collaboration graph"/></div>
 <map name="axiangqipy_8player__summary_8PlayerSummary_coll__map" id="axiangqipy_8player__summary_8PlayerSummary_coll__map">
-<area shape="rect" title="Data container for data from one xiangqipy.game_interfaces.Player in a Game." alt="" coords="359,344,567,597"/>
-<area shape="rect" title=" " alt="" coords="5,175,83,252"/>
-<area shape="rect" href="classxiangqipy_1_1enums_1_1PlayerType.html" title="Enum indicating type of player: Human, AI, or Scripted." alt="" coords="359,175,566,252"/>
-<area shape="rect" title=" " alt="" coords="236,5,295,83"/>
-<area shape="rect" href="classxiangqipy_1_1enums_1_1EvaluatorType.html" title="Enum indicating type of core MoveEvaluator used for a Player." alt="" coords="107,175,335,252"/>
-<area shape="rect" title=" " alt="" coords="363,5,413,83"/>
-<area shape="rect" title=" " alt="" coords="590,175,629,252"/>
-<area shape="rect" title=" " alt="" coords="741,175,792,252"/>
+<area shape="rect" title="Data container for data from one xiangqipy.game_interfaces.Player in a Game." alt="" coords="319,344,527,597"/>
+<area shape="rect" title=" " alt="" coords="5,175,44,252"/>
+<area shape="rect" href="classxiangqipy_1_1enums_1_1PlayerType.html" title="Enum indicating type of player: Human, AI, or Scripted." alt="" coords="320,175,527,252"/>
+<area shape="rect" title=" " alt="" coords="197,5,255,83"/>
+<area shape="rect" href="classxiangqipy_1_1enums_1_1EvaluatorType.html" title="Enum indicating type of core MoveEvaluator used for a Player." alt="" coords="68,175,296,252"/>
+<area shape="rect" title=" " alt="" coords="323,5,374,83"/>
+<area shape="rect" title=" " alt="" coords="551,175,589,252"/>
+<area shape="rect" title=" " alt="" coords="702,175,753,252"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -181,10 +181,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa84f60230af3ea395ccf32bb34ebefff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts Players' move numbers in to overall Game Move numbers (red = odd ints, black = even ints).  <br /></td></tr>
 <tr class="separator:aa84f60230af3ea395ccf32bb34ebefff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaabc9f880df652efc9e2d05ff0d70e76"><td class="memItemLeft" align="right" valign="top">Dict[str, pd.DataFrame]|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aaabc9f880df652efc9e2d05ff0d70e76">first_searches_by_type_and_depth</a> (self)</td></tr>
-<tr class="memdesc:aaabc9f880df652efc9e2d05ff0d70e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionary with strings corresponding to xiangqi_bindings.MinimaxResultType values as keys, and DataFrame of result type counts as values.  <br /></td></tr>
+<tr class="memdesc:aaabc9f880df652efc9e2d05ff0d70e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionary with strings corresponding to xiangqi_xb.MinimaxResultType values as keys, and DataFrame of result type counts as values.  <br /></td></tr>
 <tr class="separator:aaabc9f880df652efc9e2d05ff0d70e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84715e2b24d1eb7fcec28c15bfa89f1e"><td class="memItemLeft" align="right" valign="top">pd.DataFrame|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a84715e2b24d1eb7fcec28c15bfa89f1e">first_searches_by_type</a> (self)</td></tr>
-<tr class="memdesc:a84715e2b24d1eb7fcec28c15bfa89f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dataframe with row -&gt; move number, col -&gt; xiangqi_bindings.MinimaxResultType.  <br /></td></tr>
+<tr class="memdesc:a84715e2b24d1eb7fcec28c15bfa89f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dataframe with row -&gt; move number, col -&gt; xiangqi_xb.MinimaxResultType.  <br /></td></tr>
 <tr class="separator:a84715e2b24d1eb7fcec28c15bfa89f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25e7b21f128be16b20255d41281558a3"><td class="memItemLeft" align="right" valign="top">int|None&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a25e7b21f128be16b20255d41281558a3">tr_table_size_first_illegal_move_request</a> (self)</td></tr>
 <tr class="memdesc:a25e7b21f128be16b20255d41281558a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transposition table size the first time any illegal move was returned by first search.  <br /></td></tr>
@@ -209,8 +209,8 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:aed7001413f156056645e9a5e7be0b50b"><td class="memItemLeft" align="right" valign="top">bindings&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aed7001413f156056645e9a5e7be0b50b">color</a> .PieceColor</td></tr>
-<tr class="separator:aed7001413f156056645e9a5e7be0b50b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa67e069c6e5d6402210c2c1fa233804b"><td class="memItemLeft" align="right" valign="top">xb&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aa67e069c6e5d6402210c2c1fa233804b">color</a> .PieceColor</td></tr>
+<tr class="separator:aa67e069c6e5d6402210c2c1fa233804b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a706b1ba5cede528a00dc0634bed0e3b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classxiangqipy_1_1enums_1_1PlayerType.html">PlayerType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#a706b1ba5cede528a00dc0634bed0e3b3">player_type</a></td></tr>
 <tr class="separator:a706b1ba5cede528a00dc0634bed0e3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa48f54b0d1d247c430064fad8d10a03a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classxiangqipy_1_1enums_1_1EvaluatorType.html">EvaluatorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html#aa48f54b0d1d247c430064fad8d10a03a">move_evaluator_type</a> = <a class="el" href="classxiangqipy_1_1enums_1_1EvaluatorType.html#a40386eb4edde7f36d3534e324df37528">EvaluatorType.NULL</a></td></tr>
@@ -228,7 +228,7 @@ Static Public Attributes</h2></td></tr>
 <div class="textblock"><p>Data container for data from one <a class="el" href="classxiangqipy_1_1game__interfaces_1_1Player.html" title="Can take a turn in a Game.">xiangqipy.game_interfaces.Player</a> in a Game. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">color</td><td>xiangi_bindings.PieceColoar: color of Player the summary belongs to. </td></tr>
+    <tr><td class="paramname">color</td><td>xiangi_xb.PieceColoar: color of Player the summary belongs to. </td></tr>
     <tr><td class="paramname">player_type</td><td>xiangipy.enums.PlayerType: type of the Player. </td></tr>
     <tr><td class="paramname">move_evaluator_type</td><td><a class="el" href="classxiangqipy_1_1enums_1_1EvaluatorType.html" title="Enum indicating type of core MoveEvaluator used for a Player.">xiangqipy.enums.EvaluatorType</a>: type of Player's move evaluator. </td></tr>
     <tr><td class="paramname">max_search_depth</td><td>int: maximum depth that a Minimax move evaluator will search. </td></tr>
@@ -277,7 +277,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Dataframe with row -&gt; move number, col -&gt; xiangqi_bindings.MinimaxResultType. </p>
+<p>Dataframe with row -&gt; move number, col -&gt; xiangqi_xb.MinimaxResultType. </p>
 <p>Named 'first_searches...' in constrast to 'extra_searches...' or 'second_searches...' which would occur if first_search of MinimaxMoveEvaluator.select_move returns an illegal move. After fixing bug that was allowing moves that violated repeated move rule to be returned by first search, have never recorded any second searches. </p>
 
 <p class="definition">Definition at line <a class="el" href="player__summary_8py_source.html#l00098">98</a> of file <a class="el" href="player__summary_8py_source.html">player_summary.py</a>.</p>
@@ -300,7 +300,7 @@ Static Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Dictionary with strings corresponding to xiangqi_bindings.MinimaxResultType values as keys, and DataFrame of result type counts as values. </p>
+<p>Dictionary with strings corresponding to xiangqi_xb.MinimaxResultType values as keys, and DataFrame of result type counts as values. </p>
 <p>Each row of data frame -&gt; move number, each col -&gt; a value of remaining search depth when result was obtained. </p>
 
 <p class="definition">Definition at line <a class="el" href="player__summary_8py_source.html#l00066">66</a> of file <a class="el" href="player__summary_8py_source.html">player_summary.py</a>.</p>
@@ -464,8 +464,8 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aed7001413f156056645e9a5e7be0b50b" name="aed7001413f156056645e9a5e7be0b50b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed7001413f156056645e9a5e7be0b50b">&#9670;&#160;</a></span>color <span class="overload">[1/2]</span></h2>
+<a id="aa67e069c6e5d6402210c2c1fa233804b" name="aa67e069c6e5d6402210c2c1fa233804b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa67e069c6e5d6402210c2c1fa233804b">&#9670;&#160;</a></span>color <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -474,7 +474,7 @@ Static Public Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bindings xiangqipy.player_summary.PlayerSummary.color .PieceColor</td>
+          <td class="memname">xb xiangqipy.player_summary.PlayerSummary.color .PieceColor</td>
         </tr>
       </table>
   </td>
@@ -657,7 +657,7 @@ Static Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacexiangqipy.html">xiangqipy</a></li><li class="navelem"><a class="el" href="namespacexiangqipy_1_1player__summary.html">player_summary</a></li><li class="navelem"><a class="el" href="classxiangqipy_1_1player__summary_1_1PlayerSummary.html">PlayerSummary</a></li>
-    <li class="footer">Generated on Mon Dec 23 2024 23:09:54 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Fri Dec 27 2024 15:30:50 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

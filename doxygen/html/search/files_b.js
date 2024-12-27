@@ -13,9 +13,8 @@ var searchData=
   ['piece_5fvalue_5fprovider_2ehpp_10',['piece_value_provider.hpp',['../piece__value__provider_8hpp.html',1,'']]],
   ['piece_5fvalue_5fprovider_5finterface_2ehpp_11',['piece_value_provider_interface.hpp',['../piece__value__provider__interface_8hpp.html',1,'']]],
   ['player_5fbuilder_2epy_12',['player_builder.py',['../player__builder_8py.html',1,'']]],
-  ['player_5fbuilder_5fnew_2epy_13',['player_builder_new.py',['../player__builder__new_8py.html',1,'']]],
-  ['player_5finput_5ftranslator_2ehpp_14',['player_input_translator.hpp',['../player__input__translator_8hpp.html',1,'']]],
-  ['player_5fspec_5fbuilder_2ehpp_15',['player_spec_builder.hpp',['../player__spec__builder_8hpp.html',1,'']]],
-  ['player_5fsummary_2epy_16',['player_summary.py',['../player__summary_8py.html',1,'']]],
-  ['players_2epy_17',['players.py',['../players_8py.html',1,'']]]
+  ['player_5finput_5ftranslator_2ehpp_13',['player_input_translator.hpp',['../player__input__translator_8hpp.html',1,'']]],
+  ['player_5fspec_5fbuilder_2ehpp_14',['player_spec_builder.hpp',['../player__spec__builder_8hpp.html',1,'']]],
+  ['player_5fsummary_2epy_15',['player_summary.py',['../player__summary_8py.html',1,'']]],
+  ['players_2epy_16',['players.py',['../players_8py.html',1,'']]]
 ];

@@ -1,8 +1,7 @@
 <map id="game::PlayerSpec" name="game::PlayerSpec">
-<area shape="rect" id="node1" title=" " alt="" coords="252,160,391,237"/>
+<area shape="rect" id="node1" title=" " alt="" coords="180,175,319,252"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,5,96,83"/>
 <area shape="rect" id="node3" title=" " alt="" coords="120,5,235,83"/>
-<area shape="rect" id="node4" title=" " alt="" coords="260,5,383,83"/>
-<area shape="rect" id="node5" title=" " alt="" coords="407,5,579,83"/>
-<area shape="rect" id="node6" title=" " alt="" coords="611,5,685,83"/>
+<area shape="rect" id="node4" title=" " alt="" coords="291,5,351,83"/>
+<area shape="rect" id="node5" title=" " alt="" coords="464,5,539,83"/>
 </map>

@@ -1,0 +1,5 @@
+var game__summary__converter_8py =
+[
+    [ "xiangqipy.game_summary_converter.CorePlayerSpecToPyPlayerSummaryConverter", "classxiangqipy_1_1game__summary__converter_1_1CorePlayerSpecToPyPlayerSummaryConverter.html", "classxiangqipy_1_1game__summary__converter_1_1CorePlayerSpecToPyPlayerSummaryConverter" ],
+    [ "xiangqipy.game_summary_converter.CoreToPyGameSummaryConverter", "classxiangqipy_1_1game__summary__converter_1_1CoreToPyGameSummaryConverter.html", "classxiangqipy_1_1game__summary__converter_1_1CoreToPyGameSummaryConverter" ]
+];
