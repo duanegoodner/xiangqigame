@@ -107,6 +107,19 @@ def build_game_runner(run_kwargs: dict[str, Any]) -> xb.GameRunner:
 
 
 @dataclass
+class OutputFileInfo:
+    save_summary: bool = False
+    output_dir_suffix: str = ""
+
+
+def get_output_file_info(run_kwargs: dict[str, Any]) -> OutputFileInfo:
+    return OutputFileInfo(
+        save_summary=run_kwargs["save_summary"],
+        output_dir_suffix=run_kwargs["output_dir_suffix"],
+    )
+
+
+@dataclass
 class PlayerInput:
     """
     Container for info collected from command line for specific player.

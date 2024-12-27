@@ -2,13 +2,20 @@ from pathlib import Path
 
 import xiangqi_bindings as xb
 
-from xiangqipy.command_input import XiangqiGameCommandLine, build_game_runner
+from xiangqipy.command_input import (
+    XiangqiGameCommandLine,
+    build_game_runner,
+    get_output_file_info,
+)
+from xiangqipy.game_output_generator import GameOutputGenerator
 from xiangqipy.game_summary_converter import CoreToPyGameSummaryConverter
 
 
-def run(custom_output_root: Path = None, **kwargs) -> xb.GameSummary:
+def run(custom_output_root: Path = None, **kwargs):
     command_line_kwargs = XiangqiGameCommandLine().get_args()
     run_kwargs = {**command_line_kwargs, **kwargs}
+
+    output_file_info = get_output_file_info(run_kwargs)
     game_runner = build_game_runner(run_kwargs)
 
     core_game_summary = game_runner.run_game()
@@ -16,13 +23,14 @@ def run(custom_output_root: Path = None, **kwargs) -> xb.GameSummary:
         core_game_summary=core_game_summary
     ).convert()
 
-    return py_game_summary
+    if output_file_info.save_summary:
+        output_generator = GameOutputGenerator(
+            game_summary=py_game_summary,
+            output_dir_suffix=output_file_info.output_dir_suffix,
+            custom_output_root=custom_output_root,
+        )
+        output_generator.generate_output()
 
 
 if __name__ == "__main__":
-    result = run(
-        red_algo="minimax",
-        red_strength=3,
-        black_algo="minimax",
-        black_strength=2,
-    )
+    run(red_strength=4, black_algo="random")

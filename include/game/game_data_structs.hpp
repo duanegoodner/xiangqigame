@@ -52,7 +52,7 @@ struct PlayerSpec {
       EvaluatorType evaluator_type = EvaluatorType::kMinimax,
       size_t zobrist_key_size_bits = 64,
       size_t zobrist_calculator_count = 2,
-      DepthType minimax_search_depth = 0
+      DepthType minimax_search_depth = 3
   )
       : color{color}
       , evaluator_type{evaluator_type}

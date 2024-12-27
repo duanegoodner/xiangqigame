@@ -8,7 +8,7 @@
 
 class GameRunnerTest : public ::testing::Test {
 protected:
-//   game::PlayerSpecBuilder player_spec_builder_;
+  //   game::PlayerSpecBuilder player_spec_builder_;
 };
 
 TEST_F(GameRunnerTest, BuildAndRunGameBasedOnPlayerInput) {
@@ -31,4 +31,23 @@ TEST_F(GameRunnerTest, BuildAndRunGameBasedOnPlayerInput) {
 
   game::GameRunner game_runner{red_player_spec, black_player_spec};
   auto game_summary = game_runner.RunGame();
+}
+
+TEST_F(GameRunnerTest, RandomVsRandomEvaluators) {
+    game::PlayerSpec red_player_spec{
+        gameboard::PieceColor::kRed,
+        game::EvaluatorType::kRandom
+    };
+    game::PlayerSpec black_player_spec{
+        gameboard::PieceColor::kBlk,
+        game::EvaluatorType::kRandom
+    };
+
+    game::GameRunner game_runner{red_player_spec, black_player_spec};
+    auto game_summary = game_runner.RunGame();
+}
+
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
