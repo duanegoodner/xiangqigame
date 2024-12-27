@@ -44,6 +44,7 @@ repository = "https://github.com/duanegoodner/xiangqigame"
 
 [project.scripts]
 play_xiangqi = "xiangqipy.__main__:main"
+play_xiangqi_new = "xiangqipy.app_simple:run"
 
 [tool.scikit-build.wheel.packages]
 "xiangqipy" = "src/xiangqipy"

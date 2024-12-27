@@ -2,6 +2,7 @@
 #include <gameboard/game_board_for_concepts.hpp>
 #include <gameboard/game_piece.hpp>
 #include <movetranslation/move_translator.hpp>
+#include <string>
 #include <terminalout/terminal_output.hpp>
 
 namespace terminalout {
@@ -44,8 +45,10 @@ std::string PlayerReporter::SearchDepthStr() {
 }
 
 std::string PlayerReporter::ZobristKeySizeStr() {
-  return "Zobrist Key Size = " +
-         key_type_strings_.at(player_spec_.zobrist_key_type);
+  // return "Zobrist Key Size = " +
+  //        key_type_strings_.at(player_spec_.zobrist_key_type);
+
+  return "Zobrist Key Size = " + std::to_string(player_spec_.zobrist_key_size_bits);
 }
 
 std::string PlayerReporter::SummaryStr() {

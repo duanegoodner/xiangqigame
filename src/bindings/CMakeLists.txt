@@ -4,9 +4,11 @@
 pybind11_add_module(xiangqi_bindings bindings.cpp)
 target_link_libraries(
     xiangqi_bindings PRIVATE
+    game
     gameboard
     moveselection
     piecepoints
+    terminalout
     utilities
     )
 

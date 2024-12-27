@@ -5,17 +5,118 @@ Game.
 """
 
 import argparse
-import numpy as np
 from dataclasses import dataclass
-from typing import Any, Dict
+from typing import Any, Literal
 
-from xiangqi_bindings import (
-    MinimaxMoveEvaluator32,
-    MinimaxMoveEvaluator64,
-    MinimaxMoveEvaluator128,
-)
+import xiangqi_bindings as xb
 
-from xiangqipy.enums import EvaluatorType, PlayerType, EvaluatorTypeNew
+from xiangqipy.enums import EvaluatorType, PlayerType
+
+
+@dataclass
+class RawPlayerInput:
+    color: xb.PieceColor
+    player_type: Literal[None, "ai", "person"]
+    algo: Literal[None, "minimax", "random"]
+    strength: int = None
+    key_size: int = None
+    number_zobrist_states: int = None
+    zkeys_seed: int = None
+
+    @property
+    def evaluator_type(self) -> xb.EvaluatorType:
+        if self.player_type in [None, "ai"]:
+            if self.algo in ["minimax", None]:
+                return xb.EvaluatorType.kMinimax
+            if self.algo == "random":
+                return xb.EvaluatorType.kRandom
+        else:
+            return xb.EvaluatorType.kHuman
+
+    @property
+    def minimax_search_depth(self) -> int:
+        if self.evaluator_type in [
+            xb.EvaluatorType.kRandom,
+            xb.EvaluatorType.kHuman,
+        ]:
+            return 0
+        elif self.evaluator_type == xb.EvaluatorType.kMinimax:
+            if self.strength is None:
+                return 4
+            else:
+                return self.strength
+
+    @property
+    def zobrist_key_size_bits(self) -> int:
+        if self.evaluator_type in [
+            xb.EvaluatorType.kRandom,
+            xb.EvaluatorType.kHuman,
+        ]:
+            return 0
+        elif self.evaluator_type == xb.EvaluatorType.kMinimax:
+            return self.key_size if self.key_size else 64
+
+    @property
+    def zobrist_calculator_count(self) -> int:
+        if self.evaluator_type in [
+            xb.EvaluatorType.kRandom,
+            xb.EvaluatorType.kHuman,
+        ]:
+            return 0
+        elif self.evaluator_type == xb.EvaluatorType.kMinimax:
+            return (
+                self.number_zobrist_states if self.number_zobrist_states else 2
+            )
+
+    def to_player_spec(self) -> xb.PlayerSpec:
+        return xb.PlayerSpec(
+            color=self.color,
+            evaluator_type=self.evaluator_type,
+            zobrist_key_size_bits=self.zobrist_key_size_bits,
+            zobrist_calculator_count=self.zobrist_calculator_count,
+            minimax_search_depth=self.minimax_search_depth,
+        )
+
+def build_player_spec(
+    run_kwargs: dict[str, Any], color_enum: xb.PieceColor, color_prefix: str
+) -> xb.PlayerSpec:
+    player_info = {"color": color_enum} | {
+        key.removeprefix(color_prefix): val
+        for key, val in run_kwargs.items()
+        if key.startswith(color_prefix)
+    }
+    return RawPlayerInput(**player_info).to_player_spec()
+
+def build_game_runner(run_kwargs: dict[str, Any]) -> xb.GameRunner:
+    red_player_spec = build_player_spec(
+        run_kwargs=run_kwargs,
+        color_enum=xb.PieceColor.kRed,
+        color_prefix="red_",
+    )
+    black_player_spec = build_player_spec(
+        run_kwargs=run_kwargs,
+        color_enum=xb.PieceColor.kBlk,
+        color_prefix="black_",
+    )
+
+    game_runner = xb.GameRunner(
+        red_player_spec=red_player_spec, black_player_spec=black_player_spec
+    )
+
+    return game_runner
+
+
+@dataclass
+class OutputFileInfo:
+    save_summary: bool = False
+    output_dir_suffix: str = ""
+
+
+def get_output_file_info(run_kwargs: dict[str, Any]) -> OutputFileInfo:
+    return OutputFileInfo(
+        save_summary=run_kwargs["save_summary"],
+        output_dir_suffix=run_kwargs["output_dir_suffix"],
+    )
 
 
 @dataclass
@@ -23,13 +124,13 @@ class PlayerInput:
     """
     Container for info collected from command line for specific player.
     """
+
     player_type: PlayerType
     algo: EvaluatorType
     strength: int
     key_size: int
     num_zobrist_states: int
     zkeys_seed: int | None = None
-
 
 
 class PlayerCommandInterpreter:
@@ -44,9 +145,9 @@ class PlayerCommandInterpreter:
     }
 
     _minimax_key_size_dispatch = {
-        32: MinimaxMoveEvaluator32,
-        64: MinimaxMoveEvaluator64,
-        128: MinimaxMoveEvaluator128,
+        32: xb.MinimaxMoveEvaluator32,
+        64: xb.MinimaxMoveEvaluator64,
+        128: xb.MinimaxMoveEvaluator128,
     }
 
     _default_key_size = 64
@@ -122,6 +223,7 @@ class XiangqiGameCommand:
     black_player_input: PlayerInput
     save_summary: bool = False
     output_dir_suffix: str = ""
+
 
 @dataclass
 class RunKwargsInterpreter:

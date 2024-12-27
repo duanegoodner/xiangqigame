@@ -85,7 +85,6 @@ const gameboard::Move AlgebraicMove::ToGameBoardMove() {
 const std::string GetInput(std::istream &input_stream) {
   std::string user_input;
   std::getline(input_stream, user_input);
-  input_stream >> user_input;
 
   return user_input;
 }

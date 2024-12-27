@@ -14,13 +14,13 @@
 namespace game {
 using PlayerInputType = std::unordered_map<
     std::string,
-    std::variant<std::string, size_t, DepthType>>;
+    std::variant<std::string, size_t, int64_t, DepthType>>;
 
 class PlayerSpecBuilder {
   gameboard::PieceColor color_;
   EvaluatorType evaluator_type_;
-  ZobristKeyType zobrist_key_type_;
-  ZobristCalculatorCount zobrist_calculator_count_;
+  size_t zobrist_key_size_bits_;
+  size_t zobrist_calculator_count_;
   DepthType minimax_search_depth_;
   PlayerInputTranslator input_translator_;
 
@@ -52,8 +52,8 @@ public:
   PlayerSpecBuilder()
       : color_{gameboard::PieceColor::kNul}
       , evaluator_type_{EvaluatorType::kMinimax}
-      , zobrist_key_type_{ZobristKeyType::k064BitKey}
-      , zobrist_calculator_count_{ZobristCalculatorCount::kTwoZCalc}
+      , zobrist_key_size_bits_{64}
+      , zobrist_calculator_count_{2}
       , minimax_search_depth_{4} {}
 
   PlayerSpecBuilder &SetMultipleAttributes(const PlayerInputType &player_input) {
@@ -87,15 +87,17 @@ public:
     );
 
     TrySetAttribute<size_t>(player_input, "key_size_bits", [this](auto key_size_bits) {
-      zobrist_key_type_ = input_translator_.GetZobristKeyTypeFromInt(key_size_bits);
+      zobrist_key_size_bits_ = key_size_bits;
+      // zobrist_key_type_ = input_translator_.GetZobristKeyTypeFromInt(key_size_bits);
     });
 
     TrySetAttribute<size_t>(
         player_input,
         "num_zobrist_calculators",
         [this](auto num_calculators) {
-          zobrist_calculator_count_ =
-              input_translator_.GetZobristCalculatorCountFromInt(num_calculators);
+          zobrist_calculator_count_ = num_calculators;
+          // zobrist_calculator_count_ =
+          //     input_translator_.GetZobristCalculatorCountFromInt(num_calculators);
         }
     );
 
@@ -110,7 +112,7 @@ public:
     return PlayerSpec{
         color_,
         evaluator_type_,
-        zobrist_key_type_,
+        zobrist_key_size_bits_,
         zobrist_calculator_count_,
         minimax_search_depth_
     };

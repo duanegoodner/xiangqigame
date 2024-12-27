@@ -43,20 +43,20 @@ struct MinimaxTypeInfoHash {
 struct PlayerSpec {
   gameboard::PieceColor color;
   EvaluatorType evaluator_type;
-  ZobristKeyType zobrist_key_type;
-  ZobristCalculatorCount zobrist_calculator_count;
+  size_t zobrist_key_size_bits;
+  size_t zobrist_calculator_count;
   DepthType minimax_search_depth;
 
   PlayerSpec(
       gameboard::PieceColor color,
       EvaluatorType evaluator_type = EvaluatorType::kMinimax,
-      ZobristKeyType zobrist_key_type = ZobristKeyType::k064BitKey,
-      ZobristCalculatorCount zobrist_calculator_count = ZobristCalculatorCount::kTwoZCalc,
-      DepthType minimax_search_depth = 0
+      size_t zobrist_key_size_bits = 64,
+      size_t zobrist_calculator_count = 2,
+      DepthType minimax_search_depth = 4
   )
       : color{color}
       , evaluator_type{evaluator_type}
-      , zobrist_key_type{zobrist_key_type}
+      , zobrist_key_size_bits{zobrist_key_size_bits}
       , zobrist_calculator_count{zobrist_calculator_count}
       , minimax_search_depth{minimax_search_depth} {}
 };
