@@ -7,7 +7,7 @@ from typing import Dict, List
 
 import numpy as np
 import pandas as pd
-import xiangqi_bindings as bindings
+import xiangqi_bindings as xb
 
 import xiangqipy.core_dataclass_mirrors as cdm
 from xiangqipy.enums import PlayerType, EvaluatorType
@@ -19,7 +19,7 @@ class PlayerSummary:
     """
     Data container for data from one xiangqipy.game_interfaces.Player in a Game.
 
-    @param color xiangi_bindings.PieceColoar: color of Player the summary belongs to.
+    @param color xiangi_xb.PieceColoar: color of Player the summary belongs to.
     @param player_type xiangipy.enums.PlayerType: type of the Player.
     @param move_evaluator_type xiangqipy.enums.EvaluatorType: type of Player's move evaluator.
     @param max_search_depth int: maximum depth that a Minimax move evaluator will search.
@@ -27,7 +27,7 @@ class PlayerSummary:
     container with summary data of each Move selected by Player.
     """
 
-    color: bindings.PieceColor
+    color: xb.PieceColor
     player_type: PlayerType
     move_evaluator_type: EvaluatorType = EvaluatorType.NULL
     max_search_depth: int = None
@@ -57,9 +57,9 @@ class PlayerSummary:
         Converts Players' move numbers in to overall Game Move numbers
         (red = odd ints, black = even ints).
         """
-        if self.color == bindings.PieceColor.kRed:
+        if self.color == xb.PieceColor.kRed:
             return list(range(1, 2 * self.player_move_count, 2))
-        if self.color == bindings.PieceColor.kBlk:
+        if self.color == xb.PieceColor.kBlk:
             return list(range(2, 2 * self.player_move_count + 1, 2))
 
     @property
@@ -68,7 +68,7 @@ class PlayerSummary:
     ) -> Dict[str, pd.DataFrame] | None:
         """
         Dictionary with strings corresponding to
-        xiangqi_bindings.MinimaxResultType values as keys, and DataFrame of
+        xiangqi_xb.MinimaxResultType values as keys, and DataFrame of
         result type counts as values.
 
         Each row of data frame -> move number, each col -> a value of
@@ -77,7 +77,7 @@ class PlayerSummary:
         if not self.has_search_summaries:
             return None
         result = {}
-        for name, value in bindings.MinimaxResultType.__members__.items():
+        for name, value in xb.MinimaxResultType.__members__.items():
             new_df = pd.DataFrame(
                 [
                     search_summary.result_depth_counts[value, :]
@@ -97,7 +97,7 @@ class PlayerSummary:
     @property
     def first_searches_by_type(self) -> pd.DataFrame | None:
         """
-        Dataframe with row -> move number, col -> xiangqi_bindings.MinimaxResultType.
+        Dataframe with row -> move number, col -> xiangqi_xb.MinimaxResultType.
 
         Named 'first_searches...' in constrast to 'extra_searches...' or
         'second_searches...' which would occur if first_search of
@@ -109,7 +109,7 @@ class PlayerSummary:
             return None
 
         # Get the list of MinimaxResultType names
-        result_type_names = list(bindings.MinimaxResultType.__members__.keys())
+        result_type_names = list(xb.MinimaxResultType.__members__.keys())
         num_result_types = len(result_type_names)
 
         # Preallocate the DataFrame with zeros (dtype=int64)
@@ -125,7 +125,7 @@ class PlayerSummary:
 
         # Populate the DataFrame by itescore over result types
         for idx, (name, value) in enumerate(
-            bindings.MinimaxResultType.__members__.items()
+            xb.MinimaxResultType.__members__.items()
         ):
             for search_idx, search_summary in enumerate(
                 self.search_summaries.first_searches

@@ -3,6 +3,7 @@ from pathlib import Path
 import xiangqi_bindings as xb
 
 from xiangqipy.command_input import XiangqiGameCommandLine, build_game_runner
+from xiangqipy.game_summary_converter import CoreToPyGameSummaryConverter
 
 
 def run(custom_output_root: Path = None, **kwargs) -> xb.GameSummary:
@@ -10,9 +11,12 @@ def run(custom_output_root: Path = None, **kwargs) -> xb.GameSummary:
     run_kwargs = {**command_line_kwargs, **kwargs}
     game_runner = build_game_runner(run_kwargs)
 
-    game_summary = game_runner.run_game()
+    core_game_summary = game_runner.run_game()
+    py_game_summary = CoreToPyGameSummaryConverter(
+        core_game_summary=core_game_summary
+    ).convert()
 
-    return game_summary
+    return py_game_summary
 
 
 if __name__ == "__main__":
