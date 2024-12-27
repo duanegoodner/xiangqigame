@@ -15,42 +15,48 @@ EvaluatorFactoryRetriever::EvaluatorFactoryRetriever(
       MinimaxTypeInfo{ZobristKeyType::k032BitKey, ZobristCalculatorCount::kOneZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<uint32_t, 0>>(
           game_board_,
-          player_spec.minimax_search_depth
+          player_spec.minimax_search_depth,
+          player_spec.zkeys_seed
       )
   );
   minimax_factories_.emplace(
       MinimaxTypeInfo{ZobristKeyType::k064BitKey, ZobristCalculatorCount::kOneZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<uint32_t, 0>>(
           game_board_,
-          player_spec.minimax_search_depth
+          player_spec.minimax_search_depth,
+          player_spec.zkeys_seed
       )
   );
   minimax_factories_.emplace(
       MinimaxTypeInfo{ZobristKeyType::k128BitKey, ZobristCalculatorCount::kOneZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<__uint128_t, 0>>(
           game_board_,
-          player_spec.minimax_search_depth
+          player_spec.minimax_search_depth,
+          player_spec.zkeys_seed
       )
   );
   minimax_factories_.emplace(
       MinimaxTypeInfo{ZobristKeyType::k032BitKey, ZobristCalculatorCount::kTwoZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<uint32_t, 1>>(
           game_board_,
-          player_spec.minimax_search_depth
+          player_spec.minimax_search_depth,
+          player_spec.zkeys_seed
       )
   );
   minimax_factories_.emplace(
       MinimaxTypeInfo{ZobristKeyType::k064BitKey, ZobristCalculatorCount::kTwoZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<uint32_t, 1>>(
           game_board_,
-          player_spec.minimax_search_depth
+          player_spec.minimax_search_depth,
+          player_spec.zkeys_seed
       )
   );
   minimax_factories_.emplace(
       MinimaxTypeInfo{ZobristKeyType::k128BitKey, ZobristCalculatorCount::kOneZCalc},
       std::make_shared<moveselection::MinimaxMoveEvaluatorFactory<__uint128_t, 0>>(
           game_board_,
-          player_spec.minimax_search_depth
+          player_spec.minimax_search_depth,
+          player_spec.zkeys_seed
       )
   );
 }
