@@ -18,17 +18,20 @@ class MinimaxMoveEvaluatorFactory : public MoveEvaluatorFactoryBase {
   Z zobrist_coordinator_factory_;
   std::shared_ptr<G> game_board_;
   DepthType search_depth_;
+  uint32_t zkeys_seed_;
   const std::string &json_file_;
 
 public:
   MinimaxMoveEvaluatorFactory(
       std::shared_ptr<G> game_board,
       DepthType search_depth,
+      uint32_t zkeys_seed = std::random_device{}(),
       const std::string &json_file = piecepoints::kICGABPOPath
   )
       : zobrist_coordinator_factory_{Z{}}
       , game_board_{game_board}
       , search_depth_{search_depth}
+      , zkeys_seed_{zkeys_seed}
       , json_file_{json_file} {}
 
   using ZobristCoordinatorType = typename boardstate::
@@ -39,8 +42,10 @@ public:
 
   std::unique_ptr<MoveEvaluatorBase> Create(gameboard::PieceColor evaluating_player
   ) override {
-    auto zobrist_coordinator =
-        zobrist_coordinator_factory_.CreateRegisteredCoordinator(game_board_);
+    auto zobrist_coordinator = zobrist_coordinator_factory_.CreateRegisteredCoordinator(
+        game_board_,
+        zkeys_seed_
+    );
 
     auto game_position_points = P::Create();
     return std::make_unique<MoveEvaluatorType>(
