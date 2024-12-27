@@ -1,4 +1,6 @@
+#include <boardstate/zobrist_calculator_for_concepts.hpp>
 #include <boardstate/zobrist_factories.hpp>
+#include <boardstate/zobrist_for_concepts.hpp>
 #include <concepts/board_state_coordinator.hpp>
 #include <concepts/single_board_state_provider.hpp>
 #include <concepts>
@@ -8,14 +10,13 @@
 #include <string>
 #include <type_traits>
 #include <vector>
-#include <boardstate/zobrist_calculator_for_concepts.hpp>
-#include <boardstate/zobrist_for_concepts.hpp>
 
 class ZobristCoordinatorTestSuiteBase {
 public:
   virtual void TestSatisfiesBoardStateCoordinatorConcept() = 0;
   virtual void TestCreateFromExistingComponent() = 0;
   virtual void TestCreateWithFactory() = 0;
+  virtual void TestCreateWithFactorySpecifySeed() = 0;
   virtual void TestExecuteMove() = 0;
   virtual void TestRecordAndReadData() = 0;
   virtual ~ZobristCoordinatorTestSuiteBase() = default;
@@ -72,6 +73,21 @@ public:
     // coorinator state should be nonzero due to to initialization performed by
     // Factory.Create()
     EXPECT_NE(coordinator_state, 0);
+  }
+
+  void TestCreateWithFactorySpecifySeed() {
+    auto zobrist_coordinator_a =
+        CoordinatorFactoryType().CreateRegisteredCoordinator(starting_game_board_, 1234);
+    auto zobrist_coordinator_b =
+        CoordinatorFactoryType().CreateRegisteredCoordinator(starting_game_board_, 1234);
+    auto zobrist_coordinator_c =
+        CoordinatorFactoryType().CreateRegisteredCoordinator(starting_game_board_, 2468);
+
+    EXPECT_EQ(zobrist_coordinator_a->GetState(), zobrist_coordinator_b->GetState());
+    EXPECT_NE(zobrist_coordinator_a->GetState(), zobrist_coordinator_c->GetState());
+
+    EXPECT_EQ(zobrist_coordinator_a->zkeys_seed(), zobrist_coordinator_b->zkeys_seed());
+    EXPECT_NE(zobrist_coordinator_a->zkeys_seed(), zobrist_coordinator_c->zkeys_seed());
   }
 
   void TestExecuteMove() {
@@ -146,6 +162,12 @@ TEST_F(ZobristCoordinatorConceptTest, TestCreateFromExistingComponent) {
 TEST_F(ZobristCoordinatorConceptTest, TestCreateWithFactory) {
   for (auto &suite : test_suites_) {
     suite->TestCreateWithFactory();
+  }
+}
+
+TEST_F(ZobristCoordinatorConceptTest, TestCreateWithFactorySpecifySeed) {
+  for (auto &suite : test_suites_) {
+    suite->TestCreateWithFactorySpecifySeed();
   }
 }
 

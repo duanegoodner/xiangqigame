@@ -1,6 +1,8 @@
 #pragma once
 
 #include <boardstate/key_generator.hpp>
+#include <gameboard/board_data_structs.hpp>
+#include <gameboard/move_data_structs.hpp>
 #include <memory>
 
 namespace boardstate {

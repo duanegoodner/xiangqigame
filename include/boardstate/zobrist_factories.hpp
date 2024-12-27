@@ -79,7 +79,11 @@ public:
       ConfCalculatorsArrayType confirmation_calculators,
       uint32_t prng_seed = 0
   ) {
-    ZobristComponentType::Create(primary_calculator, confirmation_calculators, prng_seed);
+    ZobristComponentType::Create(
+        primary_calculator,
+        confirmation_calculators,
+        prng_seed
+    );
   }
 
   std::shared_ptr<ZobristComponentType> CreateUnregisteredComponent(
@@ -87,14 +91,19 @@ public:
   ) {
     std::mt19937 prng{prng_seed};
 
-    auto primary_calculator = zobrist_calculator_factory_.CreateUnregistereCalculator(prng());
+    auto primary_calculator =
+        zobrist_calculator_factory_.CreateUnregistereCalculator(prng());
     std::array<std::shared_ptr<ZobristCalculatorType>, NumConfKeys>
         confirmation_calculators;
     for (auto idx = 0; idx < NumConfKeys; ++idx) {
       confirmation_calculators[idx] =
           zobrist_calculator_factory_.CreateUnregistereCalculator(prng());
     }
-    return ZobristComponentType::Create(primary_calculator, confirmation_calculators, prng_seed);
+    return ZobristComponentType::Create(
+        primary_calculator,
+        confirmation_calculators,
+        prng_seed
+    );
   }
 
 private:
@@ -111,11 +120,14 @@ public:
   using ZobristCoordinatorType = ZobristCoordinatorForConcepts<ZobristComponentType>;
 
   std::shared_ptr<ZobristCoordinatorType> CreateRegisteredCoordinator(
-      std::shared_ptr<G> game_board
+      std::shared_ptr<G> game_board,
+      uint32_t zobrist_component_seed = std::random_device{}()
   ) {
 
-    auto zobrist_component =
-        zobrist_component_factory_.CreateRegisteredComponent(game_board);
+    auto zobrist_component = zobrist_component_factory_.CreateRegisteredComponent(
+        game_board,
+        zobrist_component_seed
+    );
 
     return ZobristCoordinatorType::Create(zobrist_component);
   }

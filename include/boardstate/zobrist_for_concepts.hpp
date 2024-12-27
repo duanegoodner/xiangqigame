@@ -307,7 +307,6 @@ class ZobristCoordinatorForConcepts {
 public:
   using KeyType = typename M::KeyType;
   static size_t constexpr NumConfKeys = M::NumConfKeys;
-  // using NumConfKeys = M::NumConfKeys;
 
 private:
   std::shared_ptr<M> zobrist_component_;
@@ -316,9 +315,6 @@ private:
   TranspositionTablePrunerForConcepts<KeyType, M::NumConfKeys> tr_table_pruner_;
 
 public:
-  // ZobristCoordinatorForConcepts(const ZobristCoordinatorForConcepts &) = delete;
-  // ZobristCoordinatorForConcepts &operator=(const ZobristCoordinatorForConcepts &) =
-  //     delete;
 
   static std::shared_ptr<ZobristCoordinatorForConcepts<M>> Create(
       std::shared_ptr<M> zobrist_component
