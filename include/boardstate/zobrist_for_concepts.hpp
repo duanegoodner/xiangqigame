@@ -58,12 +58,14 @@ public:
 
   static std::shared_ptr<ZobristComponentForConcepts<C, N>> Create(
       std::shared_ptr<C> primary_calculator,
-      std::array<std::shared_ptr<C>, N> confirmation_calculators
+      std::array<std::shared_ptr<C>, N> confirmation_calculators,
+      std::uint32_t prng_seed = 0
   ) {
     return std::shared_ptr<ZobristComponentForConcepts<C, N>>(
         new ZobristComponentForConcepts<C, N>(
             primary_calculator,
-            confirmation_calculators
+            confirmation_calculators,
+            prng_seed
         )
     );
   }

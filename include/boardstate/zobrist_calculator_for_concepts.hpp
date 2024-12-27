@@ -1,6 +1,7 @@
 #pragma once
 
 #include <boardstate/key_generator.hpp>
+#include <memory>
 
 namespace boardstate {
 //! Uses Zobrist hashing to calculate a "reasonably unique" integer value
