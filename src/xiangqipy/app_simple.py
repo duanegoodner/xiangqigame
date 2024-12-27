@@ -33,4 +33,4 @@ def run(custom_output_root: Path = None, **kwargs):
 
 
 if __name__ == "__main__":
-    run(red_strength=4, black_algo="random")
+    run(red_algo="random", black_algo="random")

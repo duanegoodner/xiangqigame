@@ -51,9 +51,10 @@ class CorePlayerSpecToPyPlayerSummaryConverter:
 
     @property
     def py_search_summaries(self) -> cdm.SearchSummaries:
-        return cdm.SearchSummaries.from_core_search_summaries(
-            core_search_summaries=self.core_search_summaries
-        )
+        if self.core_search_summaries is not None:
+            return cdm.SearchSummaries.from_core_search_summaries(
+                core_search_summaries=self.core_search_summaries
+            )
 
     def convert(self) -> pps.PlayerSummary:
         return pps.PlayerSummary(
@@ -104,17 +105,17 @@ class CoreToPyGameSummaryConverter:
                 core_player_spec=self.core_game_summary.player_specs[
                     xb.PieceColor.kRed
                 ],
-                core_search_summaries=self.core_game_summary.search_summaries[
+                core_search_summaries=self.core_game_summary.search_summaries.get(
                     xb.PieceColor.kRed
-                ],
+                ),
             ).convert(),
             kBlk=CorePlayerSpecToPyPlayerSummaryConverter(
                 core_player_spec=self.core_game_summary.player_specs[
                     xb.PieceColor.kBlk
                 ],
-                core_search_summaries=self.core_game_summary.search_summaries[
+                core_search_summaries=self.core_game_summary.search_summaries.get(
                     xb.PieceColor.kBlk
-                ],
+                ),
             ).convert(),
         )
 
