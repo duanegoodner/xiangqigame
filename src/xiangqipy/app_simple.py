@@ -1,17 +1,16 @@
 from pathlib import Path
 
-import xiangqi_bindings as xb
-
-from xiangqipy.command_input import (
-    XiangqiGameCommandLine,
-    build_game_runner,
-    get_output_file_info,
-)
+from xiangqipy.command_input import (XiangqiGameCommandLine, build_game_runner,
+                                     get_output_file_info)
 from xiangqipy.game_output_generator import GameOutputGenerator
 from xiangqipy.game_summary_converter import CoreToPyGameSummaryConverter
 
 
 def run(custom_output_root: Path = None, **kwargs):
+    """
+    Creates xiangqi_bindings.PlayerSpec objects for each player, and runs a
+    xiangqi_bindings.Game
+    """
     command_line_kwargs = XiangqiGameCommandLine().get_args()
     run_kwargs = {**command_line_kwargs, **kwargs}
 
