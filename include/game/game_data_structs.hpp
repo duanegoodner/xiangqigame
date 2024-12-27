@@ -80,6 +80,6 @@ struct GameSummary {
   std::unordered_map<gameboard::PieceColor, PlayerSpec> player_specs;
   std::unordered_map<gameboard::PieceColor, moveselection::SearchSummaries>
       search_summaries;
-};
+  };
 
 } // namespace game

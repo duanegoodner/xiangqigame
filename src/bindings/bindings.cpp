@@ -114,12 +114,13 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
 
   py::class_<game::PlayerSpec>(m, "PlayerSpec")
       .def(
-          py::init<PieceColor, game::EvaluatorType, size_t, size_t, DepthType>(),
+          py::init<PieceColor, game::EvaluatorType, size_t, size_t, DepthType, uint32_t>(),
           py::arg("color"),
           py::arg("evaluator_type") = game::EvaluatorType::kMinimax,
           py::arg("zobrist_key_size_bits") = 64,
           py::arg("zobrist_calculator_count") = 2,
-          py::arg("minimax_search_depth") = 4
+          py::arg("minimax_search_depth") = 4,
+          py::arg("zkeys_seed") = std::random_device{}()
       )
       .def_readonly("color", &game::PlayerSpec::color)
       .def_readonly("evaluator_type", &game::PlayerSpec::evaluator_type)
@@ -128,7 +129,8 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
           "zobrist_calculator_count",
           &game::PlayerSpec::zobrist_calculator_count
       )
-      .def_readonly("minimax_search_depth", &game::PlayerSpec::minimax_search_depth);
+      .def_readonly("minimax_search_depth", &game::PlayerSpec::minimax_search_depth)
+      .def_readonly("zkeys_seed", &game::PlayerSpec::zkeys_seed);
 
   py::class_<game::GameSummary>(m, "GameSummary")
       .def_readonly("game_id", &game::GameSummary::game_id)
