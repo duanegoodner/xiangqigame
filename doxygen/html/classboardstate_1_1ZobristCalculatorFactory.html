@@ -167,11 +167,11 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5dcb52153a015d099ea79a991ec99181"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html#a2b7129a8b0e0cfe73b4f47a0341e992b">ZobristCalculatorType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html#a5dcb52153a015d099ea79a991ec99181">CreateRegisteredCalculator</a> (std::shared_ptr&lt; G &gt; game_board)</td></tr>
-<tr class="memdesc:a5dcb52153a015d099ea79a991ec99181"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classboardstate_1_1ZobristCalculator.html" title="Uses Zobrist hashing to calculate a &quot;reasonably unique&quot; integer value for each board configuration en...">ZobristCalculator</a>, initializes its state using pre-existing GameBoard, and registers it with the GameBoard.  <br /></td></tr>
-<tr class="separator:a5dcb52153a015d099ea79a991ec99181"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7195cec256f50e20e1b9e75065d3d617"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html#a2b7129a8b0e0cfe73b4f47a0341e992b">ZobristCalculatorType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html#a7195cec256f50e20e1b9e75065d3d617">CreateUnregistereCalculator</a> ()</td></tr>
-<tr class="separator:a7195cec256f50e20e1b9e75065d3d617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae78dc07997f6798aee5758d94be457e8"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html#a2b7129a8b0e0cfe73b4f47a0341e992b">ZobristCalculatorType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html#ae78dc07997f6798aee5758d94be457e8">CreateRegisteredCalculator</a> (std::shared_ptr&lt; G &gt; game_board, uint32_t prng_seed=std::random_device{}())</td></tr>
+<tr class="memdesc:ae78dc07997f6798aee5758d94be457e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new <a class="el" href="classboardstate_1_1ZobristCalculator.html" title="Uses Zobrist hashing to calculate a &quot;reasonably unique&quot; integer value for each board configuration en...">ZobristCalculator</a>, initializes its state using pre-existing GameBoard, and registers it with the GameBoard.  <br /></td></tr>
+<tr class="separator:ae78dc07997f6798aee5758d94be457e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a063ee90b4c894f7f41694c1286609f3a"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html#a2b7129a8b0e0cfe73b4f47a0341e992b">ZobristCalculatorType</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html#a063ee90b4c894f7f41694c1286609f3a">CreateUnregistereCalculator</a> (uint32_t prng_seed=std::random_device{}())</td></tr>
+<tr class="separator:a063ee90b4c894f7f41694c1286609f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename KeyType, <a class="el" href="conceptBoardStateCalculatorRegistryConcept.html">BoardStateCalculatorRegistryConcept</a> G&gt;<br />
@@ -197,8 +197,8 @@ template&lt;typename KeyType , <a class="el" href="conceptBoardStateCalculatorRe
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5dcb52153a015d099ea79a991ec99181" name="a5dcb52153a015d099ea79a991ec99181"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dcb52153a015d099ea79a991ec99181">&#9670;&#160;</a></span>CreateRegisteredCalculator()</h2>
+<a id="ae78dc07997f6798aee5758d94be457e8" name="ae78dc07997f6798aee5758d94be457e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae78dc07997f6798aee5758d94be457e8">&#9670;&#160;</a></span>CreateRegisteredCalculator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -212,8 +212,18 @@ template&lt;typename KeyType , <a class="el" href="conceptBoardStateCalculatorRe
           <td class="memname">std::shared_ptr&lt; <a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html#a2b7129a8b0e0cfe73b4f47a0341e992b">ZobristCalculatorType</a> &gt; <a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html">boardstate::ZobristCalculatorFactory</a>&lt; KeyType, G &gt;::CreateRegisteredCalculator </td>
           <td>(</td>
           <td class="paramtype">std::shared_ptr&lt; G &gt;&#160;</td>
-          <td class="paramname"><em>game_board</em></td><td>)</td>
+          <td class="paramname"><em>game_board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>prng_seed</em> = <code>std::random_device{}()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -229,8 +239,8 @@ template&lt;typename KeyType , <a class="el" href="conceptBoardStateCalculatorRe
 
 </div>
 </div>
-<a id="a7195cec256f50e20e1b9e75065d3d617" name="a7195cec256f50e20e1b9e75065d3d617"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7195cec256f50e20e1b9e75065d3d617">&#9670;&#160;</a></span>CreateUnregistereCalculator()</h2>
+<a id="a063ee90b4c894f7f41694c1286609f3a" name="a063ee90b4c894f7f41694c1286609f3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a063ee90b4c894f7f41694c1286609f3a">&#9670;&#160;</a></span>CreateUnregistereCalculator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -243,7 +253,8 @@ template&lt;typename KeyType , <a class="el" href="conceptBoardStateCalculatorRe
         <tr>
           <td class="memname">std::shared_ptr&lt; <a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html#a2b7129a8b0e0cfe73b4f47a0341e992b">ZobristCalculatorType</a> &gt; <a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html">boardstate::ZobristCalculatorFactory</a>&lt; KeyType, G &gt;::CreateUnregistereCalculator </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>prng_seed</em> = <code>std::random_device{}()</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -254,7 +265,7 @@ template&lt;typename KeyType , <a class="el" href="conceptBoardStateCalculatorRe
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist__factories_8hpp_source.html#l00039">39</a> of file <a class="el" href="zobrist__factories_8hpp_source.html">zobrist_factories.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist__factories_8hpp_source.html#l00040">40</a> of file <a class="el" href="zobrist__factories_8hpp_source.html">zobrist_factories.hpp</a>.</p>
 
 </div>
 </div>
@@ -267,7 +278,7 @@ template&lt;typename KeyType , <a class="el" href="conceptBoardStateCalculatorRe
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceboardstate.html">boardstate</a></li><li class="navelem"><a class="el" href="classboardstate_1_1ZobristCalculatorFactory.html">ZobristCalculatorFactory</a></li>
-    <li class="footer">Generated on Fri Dec 27 2024 15:30:50 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Dec 28 2024 04:50:23 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

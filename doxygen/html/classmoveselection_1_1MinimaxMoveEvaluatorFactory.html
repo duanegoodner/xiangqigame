@@ -158,7 +158,7 @@ Inheritance diagram for moveselection::MinimaxMoveEvaluatorFactory&lt; KeyType, 
 <div class="dyncontent">
 <div class="center"><img src="classmoveselection_1_1MinimaxMoveEvaluatorFactory__inherit__graph.png" border="0" usemap="#amoveselection_1_1MinimaxMoveEvaluatorFactory_3_01KeyType_00_01NumConfKeys_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="amoveselection_1_1MinimaxMoveEvaluatorFactory_3_01KeyType_00_01NumConfKeys_01_4_inherit__map" id="amoveselection_1_1MinimaxMoveEvaluatorFactory_3_01KeyType_00_01NumConfKeys_01_4_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,145,255,325"/>
+<area shape="rect" title=" " alt="" coords="5,145,255,340"/>
 <area shape="rect" href="classMoveEvaluatorFactoryBase.html" title=" " alt="" coords="13,5,247,97"/>
 </map>
 </div>
@@ -167,12 +167,13 @@ Collaboration diagram for moveselection::MinimaxMoveEvaluatorFactory&lt; KeyType
 <div class="dyncontent">
 <div class="center"><img src="classmoveselection_1_1MinimaxMoveEvaluatorFactory__coll__graph.png" border="0" usemap="#amoveselection_1_1MinimaxMoveEvaluatorFactory_3_01KeyType_00_01NumConfKeys_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="amoveselection_1_1MinimaxMoveEvaluatorFactory_3_01KeyType_00_01NumConfKeys_01_4_coll__map" id="amoveselection_1_1MinimaxMoveEvaluatorFactory_3_01KeyType_00_01NumConfKeys_01_4_coll__map">
-<area shape="rect" title=" " alt="" coords="489,175,738,296"/>
+<area shape="rect" title=" " alt="" coords="553,175,802,296"/>
 <area shape="rect" href="classMoveEvaluatorFactoryBase.html" title=" " alt="" coords="5,5,240,97"/>
 <area shape="rect" title=" " alt="" coords="264,5,488,97"/>
 <area shape="rect" title=" " alt="" coords="512,5,715,97"/>
 <area shape="rect" title=" " alt="" coords="739,13,813,90"/>
-<area shape="rect" title=" " alt="" coords="857,13,930,90"/>
+<area shape="rect" title=" " alt="" coords="839,13,913,90"/>
+<area shape="rect" title=" " alt="" coords="962,13,1035,90"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -185,8 +186,8 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aee19909791aa2c921b1383428ca68b07"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#aee19909791aa2c921b1383428ca68b07">MinimaxMoveEvaluatorFactory</a> (std::shared_ptr&lt; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#a76f219a87d77158b8692c187ee38fc5d">G</a> &gt; game_board, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> search_depth, const std::string &amp;json_file=<a class="el" href="namespacepiecepoints.html#a99b2c4db412194b36a5c252303e69d06">piecepoints::kICGABPOPath</a>)</td></tr>
-<tr class="separator:aee19909791aa2c921b1383428ca68b07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8709d1eedf455aebc33dae16fe4a61b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#a8709d1eedf455aebc33dae16fe4a61b4">MinimaxMoveEvaluatorFactory</a> (std::shared_ptr&lt; <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#a76f219a87d77158b8692c187ee38fc5d">G</a> &gt; game_board, <a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a> search_depth, uint32_t zkeys_seed=std::random_device{}(), const std::string &amp;json_file=<a class="el" href="namespacepiecepoints.html#a99b2c4db412194b36a5c252303e69d06">piecepoints::kICGABPOPath</a>)</td></tr>
+<tr class="separator:a8709d1eedf455aebc33dae16fe4a61b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc054042d3d0659ff3f22e9d00aa9029"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classMoveEvaluatorBase.html">MoveEvaluatorBase</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#afc054042d3d0659ff3f22e9d00aa9029">Create</a> (<a class="el" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142">gameboard::PieceColor</a> evaluating_player) override</td></tr>
 <tr class="separator:afc054042d3d0659ff3f22e9d00aa9029"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMoveEvaluatorFactoryBase"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMoveEvaluatorFactoryBase')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMoveEvaluatorFactoryBase.html">MoveEvaluatorFactoryBase</a></td></tr>
@@ -212,6 +213,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a05132d6f5cb130bf20685ae7beff4e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab68f00658812a211a5863b6f1bf0cd8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="integer__types_8hpp.html#a5aee6946b59d86e8515dcc8e9114b06f">DepthType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#ab68f00658812a211a5863b6f1bf0cd8e">search_depth_</a></td></tr>
 <tr class="separator:ab68f00658812a211a5863b6f1bf0cd8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad25ad9ab2c9abe20b1c883bb22d68dd5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#ad25ad9ab2c9abe20b1c883bb22d68dd5">zkeys_seed_</a></td></tr>
+<tr class="separator:ad25ad9ab2c9abe20b1c883bb22d68dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2d8a687da996665902cff8083ebfc4e"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorFactory.html#ae2d8a687da996665902cff8083ebfc4e">json_file_</a></td></tr>
 <tr class="separator:ae2d8a687da996665902cff8083ebfc4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -260,7 +263,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00037">37</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00040">40</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -330,13 +333,13 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00034">34</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00037">37</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aee19909791aa2c921b1383428ca68b07" name="aee19909791aa2c921b1383428ca68b07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee19909791aa2c921b1383428ca68b07">&#9670;&#160;</a></span>MinimaxMoveEvaluatorFactory()</h2>
+<a id="a8709d1eedf455aebc33dae16fe4a61b4" name="a8709d1eedf455aebc33dae16fe4a61b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8709d1eedf455aebc33dae16fe4a61b4">&#9670;&#160;</a></span>MinimaxMoveEvaluatorFactory()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -361,6 +364,12 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>zkeys_seed</em> = <code>std::random_device{}()</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>json_file</em> = <code><a class="el" href="namespacepiecepoints.html#a99b2c4db412194b36a5c252303e69d06">piecepoints::kICGABPOPath</a></code>&#160;</td>
         </tr>
@@ -377,7 +386,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00024">24</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00025">25</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -410,7 +419,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 
 <p>Implements <a class="el" href="classMoveEvaluatorFactoryBase.html#af9c8f341e2ed47dca0d89e19355c60e4">MoveEvaluatorFactoryBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00040">40</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00043">43</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -463,7 +472,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00021">21</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00022">22</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -490,6 +499,32 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00020">20</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad25ad9ab2c9abe20b1c883bb22d68dd5" name="ad25ad9ab2c9abe20b1c883bb22d68dd5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad25ad9ab2c9abe20b1c883bb22d68dd5">&#9670;&#160;</a></span>zkeys_seed_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t <a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorFactory.html">moveselection::MinimaxMoveEvaluatorFactory</a>&lt; KeyType, NumConfKeys &gt;::zkeys_seed_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="minimax__evaluator__factory_8hpp_source.html#l00021">21</a> of file <a class="el" href="minimax__evaluator__factory_8hpp_source.html">minimax_evaluator_factory.hpp</a>.</p>
 
 </div>
 </div>
@@ -528,7 +563,7 @@ template&lt;typename KeyType , size_t NumConfKeys&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemoveselection.html">moveselection</a></li><li class="navelem"><a class="el" href="classmoveselection_1_1MinimaxMoveEvaluatorFactory.html">MinimaxMoveEvaluatorFactory</a></li>
-    <li class="footer">Generated on Fri Dec 27 2024 15:30:50 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Dec 28 2024 04:50:23 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

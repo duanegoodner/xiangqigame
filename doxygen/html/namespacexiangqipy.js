@@ -8,8 +8,8 @@ var namespacexiangqipy =
     ] ],
     [ "app_simple", "namespacexiangqipy_1_1app__simple.html", [
       [ "run", "namespacexiangqipy_1_1app__simple.html#a19ba4a1c6949571706f2a19ab212b0a2", null ],
-      [ "black_algo", "namespacexiangqipy_1_1app__simple.html#ab841a8493d07f071182ab7f820429631", null ],
-      [ "red_player_type", "namespacexiangqipy_1_1app__simple.html#a94a582522eeb515e233d3f63949e10ce", null ]
+      [ "black_strength", "namespacexiangqipy_1_1app__simple.html#a277adf2b6fcb8ef4a678979aaf22579a", null ],
+      [ "red_strength", "namespacexiangqipy_1_1app__simple.html#aded0f277b7b4790914500d94b86326c2", null ]
     ] ],
     [ "command_input", "namespacexiangqipy_1_1command__input.html", "namespacexiangqipy_1_1command__input" ],
     [ "core_dataclass_mirrors", "namespacexiangqipy_1_1core__dataclass__mirrors.html", "namespacexiangqipy_1_1core__dataclass__mirrors" ],

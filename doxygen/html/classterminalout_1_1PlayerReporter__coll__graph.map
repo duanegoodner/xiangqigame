@@ -1,10 +1,11 @@
 <map id="terminalout::PlayerReporter" name="terminalout::PlayerReporter">
-<area shape="rect" id="node1" title=" " alt="" coords="329,373,532,524"/>
-<area shape="rect" id="node2" href="$structgame_1_1PlayerSpec.html" title=" " alt="" coords="180,189,319,267"/>
+<area shape="rect" id="node1" title=" " alt="" coords="401,373,604,524"/>
+<area shape="rect" id="node2" href="$structgame_1_1PlayerSpec.html" title=" " alt="" coords="252,189,391,267"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,5,96,83"/>
 <area shape="rect" id="node4" title=" " alt="" coords="120,5,235,83"/>
 <area shape="rect" id="node5" title=" " alt="" coords="291,5,351,83"/>
 <area shape="rect" id="node6" title=" " alt="" coords="464,5,539,83"/>
-<area shape="rect" id="node7" title=" " alt="" coords="343,175,519,281"/>
-<area shape="rect" id="node8" title=" " alt="" coords="543,175,719,281"/>
+<area shape="rect" id="node7" title=" " alt="" coords="663,5,737,83"/>
+<area shape="rect" id="node8" title=" " alt="" coords="415,175,591,281"/>
+<area shape="rect" id="node9" title=" " alt="" coords="615,175,791,281"/>
 </map>

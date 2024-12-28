@@ -4,6 +4,6 @@ var classboardstate_1_1ZobristCoordinatorFactory =
     [ "ZobristComponentFactoryType", "classboardstate_1_1ZobristCoordinatorFactory.html#aeb9628fbf696677d90a517c3a240ae78", null ],
     [ "ZobristComponentType", "classboardstate_1_1ZobristCoordinatorFactory.html#ae546efeadbb25ca79a23265fc26cff6b", null ],
     [ "ZobristCoordinatorType", "classboardstate_1_1ZobristCoordinatorFactory.html#a55dc27d7a530a523494715c063131b6c", null ],
-    [ "CreateRegisteredCoordinator", "classboardstate_1_1ZobristCoordinatorFactory.html#a216c50998b06aa316402fa84c19da05e", null ],
+    [ "CreateRegisteredCoordinator", "classboardstate_1_1ZobristCoordinatorFactory.html#a01959bdc1a0cdd1be02f2f1909f56cc0", null ],
     [ "zobrist_component_factory_", "classboardstate_1_1ZobristCoordinatorFactory.html#a4db75ed57f9306634675dd0550610edd", null ]
 ];

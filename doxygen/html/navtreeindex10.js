@@ -1,5 +1,9 @@
 var NAVTREEINDEX10 =
 {
+"md_docs_05_components.html#autotoc_md36":[4,1,2],
+"md_docs_05_components.html#autotoc_md37":[4,1,3],
+"md_docs_05_components.html#autotoc_md38":[4,1,4],
+"md_docs_06_minimax_details.html":[5],
 "md_docs_06_minimax_details.html#autotoc_md40":[5,0],
 "md_docs_06_minimax_details.html#autotoc_md41":[5,1],
 "md_docs_06_minimax_details.html#autotoc_md42":[5,2],
@@ -245,9 +249,5 @@ var NAVTREEINDEX10 =
 "namespaceutility__functs.html#ae8dd90e2e426dd1bdc0e106beea322d1":[9,0,9,11],
 "namespacexiangqipy.html":[9,0,10],
 "namespacexiangqipy_1_1____main____.html":[9,0,10,0],
-"namespacexiangqipy_1_1____main____.html#a3a577eed050a8195b77c71161bf465aa":[9,0,10,0,0],
-"namespacexiangqipy_1_1app.html":[9,0,10,1],
-"namespacexiangqipy_1_1app.html#ac09777385f4e43af5903c4c664c70ae4":[9,0,10,1,0],
-"namespacexiangqipy_1_1app__simple.html":[9,0,10,2],
-"namespacexiangqipy_1_1app__simple.html#a19ba4a1c6949571706f2a19ab212b0a2":[9,0,10,2,0]
+"namespacexiangqipy_1_1____main____.html#a3a577eed050a8195b77c71161bf465aa":[9,0,10,0,0]
 };

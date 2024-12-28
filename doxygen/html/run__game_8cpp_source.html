@@ -153,11 +153,11 @@ $(document).ready(function(){initNavTree('run__game_8cpp_source.html',''); initR
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>  <a class="code hl_struct" href="structgame_1_1PlayerSpec.html">game::PlayerSpec</a> red_player_spec{</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>      <a class="code hl_enumvalue" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00">gameboard::PieceColor::kRed</a>,</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>      <a class="code hl_enumvalue" href="namespacegame.html#a8c93203a902146caddef660c90e21280a48b4378cee3ea91d98964996df4aaea5">game::EvaluatorType::kHuman</a></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>      <a class="code hl_enumvalue" href="namespacegame.html#a8c93203a902146caddef660c90e21280a44f1478de1e9660318efbe807ee753d1">game::EvaluatorType::kMinimax</a></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  };</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  <a class="code hl_struct" href="structgame_1_1PlayerSpec.html">game::PlayerSpec</a> black_player_spec{</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>      <a class="code hl_enumvalue" href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b">gameboard::PieceColor::kBlk</a>,</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>      <a class="code hl_enumvalue" href="namespacegame.html#a8c93203a902146caddef660c90e21280a48b4378cee3ea91d98964996df4aaea5">game::EvaluatorType::kHuman</a></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>      <a class="code hl_enumvalue" href="namespacegame.html#a8c93203a902146caddef660c90e21280a44f1478de1e9660318efbe807ee753d1">game::EvaluatorType::kMinimax</a></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  };</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  <a class="code hl_class" href="classgame_1_1GameRunner.html">game::GameRunner</a> game_runner{red_player_spec, black_player_spec};</div>
@@ -170,18 +170,18 @@ $(document).ready(function(){initNavTree('run__game_8cpp_source.html',''); initR
 <div class="ttc" id="agame__data__structs_8hpp_html"><div class="ttname"><a href="game__data__structs_8hpp.html">game_data_structs.hpp</a></div></div>
 <div class="ttc" id="agame__piece_8hpp_html"><div class="ttname"><a href="game__piece_8hpp.html">game_piece.hpp</a></div><div class="ttdoc">Defines GamePiece and supporting constants and free functions.</div></div>
 <div class="ttc" id="agame__runner_8hpp_html"><div class="ttname"><a href="game__runner_8hpp.html">game_runner.hpp</a></div></div>
-<div class="ttc" id="anamespacegame_html_a8c93203a902146caddef660c90e21280a48b4378cee3ea91d98964996df4aaea5"><div class="ttname"><a href="namespacegame.html#a8c93203a902146caddef660c90e21280a48b4378cee3ea91d98964996df4aaea5">game::kHuman</a></div><div class="ttdeci">@ kHuman</div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00012">game_data_structs.hpp:12</a></div></div>
+<div class="ttc" id="anamespacegame_html_a8c93203a902146caddef660c90e21280a44f1478de1e9660318efbe807ee753d1"><div class="ttname"><a href="namespacegame.html#a8c93203a902146caddef660c90e21280a44f1478de1e9660318efbe807ee753d1">game::kMinimax</a></div><div class="ttdeci">@ kMinimax</div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00013">game_data_structs.hpp:13</a></div></div>
 <div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a35719ee5c61d00283f025f63f44fbc00">gameboard::kRed</a></div><div class="ttdeci">@ kRed</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
 <div class="ttc" id="anamespacegameboard_html_aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b"><div class="ttname"><a href="namespacegameboard.html#aae01851261ebf0d4dc64b2157179e142a492439a5469ee8f9c1bc2c1d104ab57b">gameboard::kBlk</a></div><div class="ttdeci">@ kBlk</div><div class="ttdef"><b>Definition:</b> <a href="game__piece_8hpp_source.html#l00038">game_piece.hpp:38</a></div></div>
 <div class="ttc" id="arun__game_8cpp_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="run__game_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="run__game_8cpp_source.html#l00005">run_game.cpp:5</a></div></div>
-<div class="ttc" id="astructgame_1_1PlayerSpec_html"><div class="ttname"><a href="structgame_1_1PlayerSpec.html">game::PlayerSpec</a></div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00043">game_data_structs.hpp:43</a></div></div>
+<div class="ttc" id="astructgame_1_1PlayerSpec_html"><div class="ttname"><a href="structgame_1_1PlayerSpec.html">game::PlayerSpec</a></div><div class="ttdef"><b>Definition:</b> <a href="game__data__structs_8hpp_source.html#l00044">game_data_structs.hpp:44</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="dir_0130927f3d1a7a08b11c8881127d3514.html">game</a></li><li class="navelem"><a class="el" href="run__game_8cpp.html">run_game.cpp</a></li>
-    <li class="footer">Generated on Fri Dec 27 2024 15:30:50 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Dec 28 2024 04:50:23 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>

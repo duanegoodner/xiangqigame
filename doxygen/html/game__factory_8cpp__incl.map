@@ -1,73 +1,73 @@
 <map id="src/core/game/game_factory.cpp" name="src/core/game/game_factory.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="1807,5,1961,45"/>
-<area shape="rect" id="node2" href="$game__factory_8hpp.html" title=" " alt="" coords="1795,93,1973,119"/>
-<area shape="rect" id="node3" href="$composite__concepts_8hpp.html" title=" " alt="" coords="4115,548,4267,588"/>
-<area shape="rect" id="node11" title=" " alt="" coords="1381,1061,1505,1087"/>
-<area shape="rect" id="node17" title=" " alt="" coords="2737,819,2815,845"/>
-<area shape="rect" id="node27" href="$move__evaluator_8hpp.html" title=" " alt="" coords="2249,460,2466,485"/>
-<area shape="rect" id="node28" href="$game_8hpp.html" title=" " alt="" coords="1873,365,2001,390"/>
-<area shape="rect" id="node29" href="$base__move__evaluator_8hpp.html" title=" " alt="" coords="1561,548,1727,588"/>
-<area shape="rect" id="node41" href="$base__space__info__provider_8hpp.html" title=" " alt="" coords="1905,548,2071,588"/>
-<area shape="rect" id="node43" href="$game__data__structs_8hpp.html" title=" " alt="" coords="966,555,1181,581"/>
-<area shape="rect" id="node45" href="$interface__game__reporter_8hpp.html" title=" " alt="" coords="1080,453,1232,493"/>
-<area shape="rect" id="node46" href="$game__board__for__concepts_8hpp.html" title=" " alt="" coords="2928,453,3109,493"/>
-<area shape="rect" id="node51" href="$base__evaluator__factory_8hpp.html" title=" " alt="" coords="1529,357,1719,397"/>
-<area shape="rect" id="node52" href="$minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="2694,167,2874,207"/>
-<area shape="rect" id="node54" href="$move__evaluator__minimax__for__concepts_8hpp.html" title=" " alt="" coords="2660,445,2841,500"/>
-<area shape="rect" id="node69" href="$move__evaluator__human__for__concepts_8hpp.html" title=" " alt="" coords="1216,255,1384,309"/>
-<area shape="rect" id="node70" href="$move__evaluator__random__for__concepts_8hpp.html" title=" " alt="" coords="1451,255,1624,309"/>
-<area shape="rect" id="node71" href="$terminal__output_8hpp.html" title=" " alt="" coords="933,357,1091,397"/>
-<area shape="rect" id="node4" href="$board__state__calculator_8hpp.html" title=" " alt="" coords="3739,724,3901,764"/>
-<area shape="rect" id="node16" title=" " alt="" coords="3949,819,4029,845"/>
-<area shape="rect" id="node22" href="$board__state__calculator__registry_8hpp.html" title=" " alt="" coords="3555,636,3731,676"/>
-<area shape="rect" id="node23" href="$space__info__provider_8hpp.html" title=" " alt="" coords="3560,724,3715,764"/>
-<area shape="rect" id="node25" href="$single__board__state__provider_8hpp.html" title=" " alt="" coords="4791,724,4958,764"/>
-<area shape="rect" id="node5" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="3044,900,3217,940"/>
-<area shape="rect" id="node18" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="2045,812,2219,852"/>
-<area shape="rect" id="node6" title=" " alt="" coords="5609,988,5665,1013"/>
-<area shape="rect" id="node7" title=" " alt="" coords="3051,988,3120,1013"/>
-<area shape="rect" id="node8" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1525,988,1731,1013"/>
-<area shape="rect" id="node12" href="$integer__types_8hpp.html" title=" " alt="" coords="315,988,507,1013"/>
-<area shape="rect" id="node14" title=" " alt="" coords="5100,988,5172,1013"/>
-<area shape="rect" id="node15" title=" " alt="" coords="3145,988,3207,1013"/>
-<area shape="rect" id="node9" title=" " alt="" coords="1597,1061,1659,1087"/>
-<area shape="rect" id="node10" title=" " alt="" coords="645,1061,704,1087"/>
-<area shape="rect" id="node13" title=" " alt="" coords="377,1061,444,1087"/>
-<area shape="rect" id="node19" href="$utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="2831,907,3019,933"/>
-<area shape="rect" id="node20" title=" " alt="" coords="2843,988,2928,1013"/>
-<area shape="rect" id="node21" title=" " alt="" coords="2729,988,2818,1013"/>
-<area shape="rect" id="node24" title=" " alt="" coords="4129,731,4215,757"/>
-<area shape="rect" id="node26" title=" " alt="" coords="5174,819,5266,845"/>
-<area shape="rect" id="node42" href="$board__state__coordinator_8hpp.html" title=" " alt="" coords="2253,548,2414,588"/>
-<area shape="rect" id="node30" href="$evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="2091,636,2275,676"/>
-<area shape="rect" id="node40" title=" " alt="" coords="1607,643,1681,669"/>
-<area shape="rect" id="node31" title=" " alt="" coords="2571,731,2637,757"/>
-<area shape="rect" id="node32" title=" " alt="" coords="2395,731,2445,757"/>
-<area shape="rect" id="node33" href="$base__position__offset_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="827,724,1018,764"/>
-<area shape="rect" id="node34" href="$json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="499,900,637,940"/>
-<area shape="rect" id="node35" href="$json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="714,812,851,852"/>
-<area shape="rect" id="node38" href="$piece__points__data__structs_8hpp.html" title=" " alt="" coords="1130,812,1313,852"/>
-<area shape="rect" id="node39" title=" " alt="" coords="1337,819,1413,845"/>
-<area shape="rect" id="node36" title=" " alt="" coords="763,907,837,933"/>
-<area shape="rect" id="node37" title=" " alt="" coords="861,907,1008,933"/>
-<area shape="rect" id="node44" title=" " alt="" coords="255,819,335,845"/>
-<area shape="rect" id="node47" href="$move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="3185,555,3420,581"/>
-<area shape="rect" id="node48" title=" " alt="" coords="3281,643,3327,669"/>
-<area shape="rect" id="node49" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="3856,636,4064,676"/>
-<area shape="rect" id="node50" href="$piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="3219,731,3434,757"/>
-<area shape="rect" id="node53" href="$zobrist__factories_8hpp.html" title=" " alt="" coords="3906,262,4046,302"/>
-<area shape="rect" id="node58" href="$piece__position__points__for__concepts_8hpp.html" title=" " alt="" coords="877,636,1072,676"/>
-<area shape="rect" id="node59" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="4647,548,4787,588"/>
-<area shape="rect" id="node55" href="$piece__value__provider_8hpp.html" title=" " alt="" coords="1347,724,1509,764"/>
-<area shape="rect" id="node56" title=" " alt="" coords="4443,643,4509,669"/>
-<area shape="rect" id="node57" title=" " alt="" coords="2643,555,2701,581"/>
-<area shape="rect" id="node60" href="$multi__board__state__provider_8hpp.html" title=" " alt="" coords="5101,636,5264,676"/>
-<area shape="rect" id="node61" href="$key__generator_8hpp.html" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="5248,731,5464,757"/>
-<area shape="rect" id="node65" title=" " alt="" coords="4773,643,4837,669"/>
-<area shape="rect" id="node66" title=" " alt="" coords="4912,643,5027,669"/>
-<area shape="rect" id="node67" title=" " alt="" coords="4685,643,4749,669"/>
-<area shape="rect" id="node68" href="$zobrist__calculator__for__concepts_8hpp.html" title=" " alt="" coords="5339,636,5549,676"/>
-<area shape="rect" id="node62" title=" " alt="" coords="5440,819,5499,845"/>
-<area shape="rect" id="node63" title=" " alt="" coords="5341,819,5416,845"/>
-<area shape="rect" id="node64" title=" " alt="" coords="4351,819,4425,845"/>
+<area shape="rect" id="node1" title=" " alt="" coords="2199,5,2353,45"/>
+<area shape="rect" id="node2" href="$game__factory_8hpp.html" title=" " alt="" coords="2187,93,2365,119"/>
+<area shape="rect" id="node3" href="$composite__concepts_8hpp.html" title=" " alt="" coords="1192,548,1344,588"/>
+<area shape="rect" id="node11" title=" " alt="" coords="5034,1061,5158,1087"/>
+<area shape="rect" id="node17" title=" " alt="" coords="3033,819,3111,845"/>
+<area shape="rect" id="node27" href="$move__evaluator_8hpp.html" title=" " alt="" coords="705,460,922,485"/>
+<area shape="rect" id="node28" href="$game_8hpp.html" title=" " alt="" coords="1520,365,1648,390"/>
+<area shape="rect" id="node29" href="$base__move__evaluator_8hpp.html" title=" " alt="" coords="2161,548,2327,588"/>
+<area shape="rect" id="node41" href="$base__space__info__provider_8hpp.html" title=" " alt="" coords="939,548,1106,588"/>
+<area shape="rect" id="node43" href="$game__data__structs_8hpp.html" title=" " alt="" coords="1861,555,2075,581"/>
+<area shape="rect" id="node45" href="$interface__game__reporter_8hpp.html" title=" " alt="" coords="1875,453,2027,493"/>
+<area shape="rect" id="node46" href="$game__board__for__concepts_8hpp.html" title=" " alt="" coords="3605,453,3787,493"/>
+<area shape="rect" id="node51" href="$base__evaluator__factory_8hpp.html" title=" " alt="" coords="2431,357,2622,397"/>
+<area shape="rect" id="node52" href="$minimax__evaluator__factory_8hpp.html" title=" " alt="" coords="3199,167,3379,207"/>
+<area shape="rect" id="node65" href="$move__evaluator__minimax__for__concepts_8hpp.html" title=" " alt="" coords="2456,445,2637,500"/>
+<area shape="rect" id="node69" href="$move__evaluator__human__for__concepts_8hpp.html" title=" " alt="" coords="2253,255,2421,309"/>
+<area shape="rect" id="node70" href="$move__evaluator__random__for__concepts_8hpp.html" title=" " alt="" coords="221,255,395,309"/>
+<area shape="rect" id="node71" href="$terminal__output_8hpp.html" title=" " alt="" coords="2951,357,3108,397"/>
+<area shape="rect" id="node4" href="$board__state__calculator_8hpp.html" title=" " alt="" coords="1827,724,1989,764"/>
+<area shape="rect" id="node16" title=" " alt="" coords="1699,819,1779,845"/>
+<area shape="rect" id="node22" href="$board__state__calculator__registry_8hpp.html" title=" " alt="" coords="1496,636,1672,676"/>
+<area shape="rect" id="node23" href="$space__info__provider_8hpp.html" title=" " alt="" coords="1445,724,1600,764"/>
+<area shape="rect" id="node25" href="$single__board__state__provider_8hpp.html" title=" " alt="" coords="2970,724,3137,764"/>
+<area shape="rect" id="node5" href="$board__data__structs_8hpp.html" title="Constants, typedefs, and simple structs used by gameboard::GameBoard." alt="" coords="2295,900,2468,940"/>
+<area shape="rect" id="node18" href="$move__data__structs_8hpp.html" title="Definitions and implementations of gameboard::Move and other move&#45;related structs." alt="" coords="1281,812,1455,852"/>
+<area shape="rect" id="node6" title=" " alt="" coords="4944,988,5000,1013"/>
+<area shape="rect" id="node7" title=" " alt="" coords="2309,988,2379,1013"/>
+<area shape="rect" id="node8" href="$game__piece_8hpp.html" title="Defines GamePiece and supporting constants and free functions." alt="" coords="1345,988,1551,1013"/>
+<area shape="rect" id="node12" href="$integer__types_8hpp.html" title=" " alt="" coords="289,988,481,1013"/>
+<area shape="rect" id="node14" title=" " alt="" coords="2139,988,2211,1013"/>
+<area shape="rect" id="node15" title=" " alt="" coords="2403,988,2466,1013"/>
+<area shape="rect" id="node9" title=" " alt="" coords="1417,1061,1479,1087"/>
+<area shape="rect" id="node10" title=" " alt="" coords="4144,1061,4203,1087"/>
+<area shape="rect" id="node13" title=" " alt="" coords="352,1061,419,1087"/>
+<area shape="rect" id="node19" href="$utility__functs_8hpp.html" title="Defiition of miscellaneous free functions (and implementation of those that are templates)." alt="" coords="1813,907,2001,933"/>
+<area shape="rect" id="node20" title=" " alt="" coords="1864,988,1949,1013"/>
+<area shape="rect" id="node21" title=" " alt="" coords="1974,988,2063,1013"/>
+<area shape="rect" id="node24" title=" " alt="" coords="5097,731,5183,757"/>
+<area shape="rect" id="node26" title=" " alt="" coords="3726,819,3818,845"/>
+<area shape="rect" id="node42" href="$board__state__coordinator_8hpp.html" title=" " alt="" coords="1623,548,1785,588"/>
+<area shape="rect" id="node30" href="$evaluator__data__structs_8hpp.html" title="Data structs used by moveselection::MinimaxEvaluator." alt="" coords="2152,636,2336,676"/>
+<area shape="rect" id="node40" title=" " alt="" coords="2411,643,2485,669"/>
+<area shape="rect" id="node31" title=" " alt="" coords="2587,731,2653,757"/>
+<area shape="rect" id="node32" title=" " alt="" coords="3161,731,3212,757"/>
+<area shape="rect" id="node33" href="$base__position__offset_8hpp.html" title="Definitions of classes used for storing piece points in Base Points Offset form." alt="" coords="4134,724,4325,764"/>
+<area shape="rect" id="node34" href="$json__utility__interface_8hpp.html" title="Definition of JsonUtility CRTP interface." alt="" coords="4531,900,4669,940"/>
+<area shape="rect" id="node35" href="$json__utility__nlohmann_8hpp.html" title="Declaration and implementation of templated portions of jsonio::NlohmannJsonUtility." alt="" coords="4481,812,4618,852"/>
+<area shape="rect" id="node38" href="$piece__points__data__structs_8hpp.html" title=" " alt="" coords="3519,812,3702,852"/>
+<area shape="rect" id="node39" title=" " alt="" coords="3894,819,3970,845"/>
+<area shape="rect" id="node36" title=" " alt="" coords="4382,907,4455,933"/>
+<area shape="rect" id="node37" title=" " alt="" coords="4211,907,4357,933"/>
+<area shape="rect" id="node44" title=" " alt="" coords="2419,819,2499,845"/>
+<area shape="rect" id="node47" href="$move__calculator_8hpp.html" title="Definition of gameboard::MoveCalculator." alt="" coords="4657,555,4892,581"/>
+<area shape="rect" id="node48" title=" " alt="" coords="4619,643,4666,669"/>
+<area shape="rect" id="node49" href="$move__calculator__details_8hpp.html" title="Typedefs and data struct used by gameboard::MoveCalculator to select appropriate method from gameboar..." alt="" coords="4741,636,4949,676"/>
+<area shape="rect" id="node50" href="$piece__moves_8hpp.html" title="Definition of gameboard::PieceMoves and related constants." alt="" coords="3895,731,4110,757"/>
+<area shape="rect" id="node53" href="$zobrist__factories_8hpp.html" title=" " alt="" coords="3219,262,3359,302"/>
+<area shape="rect" id="node54" href="$zobrist__for__concepts_8hpp.html" title=" " alt="" coords="3219,548,3359,588"/>
+<area shape="rect" id="node68" href="$piece__position__points__for__concepts_8hpp.html" title=" " alt="" coords="4248,636,4443,676"/>
+<area shape="rect" id="node55" title=" " alt="" coords="2661,643,2728,669"/>
+<area shape="rect" id="node56" href="$multi__board__state__provider_8hpp.html" title=" " alt="" coords="3107,636,3269,676"/>
+<area shape="rect" id="node57" href="$key__generator_8hpp.html" title="Declaration of boardstate::KeyGenerator and implementation of its template methods." alt="" coords="4400,731,4616,757"/>
+<area shape="rect" id="node61" title=" " alt="" coords="3293,643,3357,669"/>
+<area shape="rect" id="node62" title=" " alt="" coords="3381,643,3496,669"/>
+<area shape="rect" id="node63" title=" " alt="" coords="3520,643,3584,669"/>
+<area shape="rect" id="node64" href="$zobrist__calculator__for__concepts_8hpp.html" title=" " alt="" coords="3912,636,4123,676"/>
+<area shape="rect" id="node58" title=" " alt="" coords="4096,819,4155,845"/>
+<area shape="rect" id="node59" title=" " alt="" coords="4179,819,4253,845"/>
+<area shape="rect" id="node60" title=" " alt="" coords="4795,819,4869,845"/>
+<area shape="rect" id="node66" href="$piece__value__provider_8hpp.html" title=" " alt="" coords="600,724,763,764"/>
+<area shape="rect" id="node67" title=" " alt="" coords="2508,555,2567,581"/>
 </map>

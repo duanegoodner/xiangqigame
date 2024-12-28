@@ -5,6 +5,7 @@ var classxiangqipy_1_1command__input_1_1RawPlayerInput =
     [ "to_player_spec", "classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a49abc7e461e977c853405b14826fd53c", null ],
     [ "zobrist_calculator_count", "classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a4d31c4b84f3e066fa2cfd4ee98221531", null ],
     [ "zobrist_key_size_bits", "classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a5def923de3adbe0066f41d5fe6e24438", null ],
+    [ "zobrist_seed", "classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a104d0ec75788f17612b8f710b09f8088", null ],
     [ "algo", "classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a6ac778a6a74c2838c58d1b687dfc026d", null ],
     [ "algo", "classxiangqipy_1_1command__input_1_1RawPlayerInput.html#aee4f82e1e92cfe9530e10df305a61f67", null ],
     [ "color", "classxiangqipy_1_1command__input_1_1RawPlayerInput.html#aeb0ab065fcdbb24e8e42bede8d24b035", null ],

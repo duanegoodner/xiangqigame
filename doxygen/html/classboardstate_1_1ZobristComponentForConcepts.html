@@ -166,8 +166,8 @@ Collaboration diagram for boardstate::ZobristComponentForConcepts&lt; C, N &gt;:
 <area shape="rect" title="Container for one or more boardstate::ZobristCalculatorForConcepts objects." alt="" coords="223,160,465,487"/>
 <area shape="rect" title=" " alt="" coords="5,13,136,90"/>
 <area shape="rect" title=" " alt="" coords="169,5,311,97"/>
-<area shape="rect" title=" " alt="" coords="369,13,527,90"/>
-<area shape="rect" title=" " alt="" coords="552,13,720,90"/>
+<area shape="rect" title=" " alt="" coords="411,13,485,90"/>
+<area shape="rect" title=" " alt="" coords="509,13,677,90"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -195,8 +195,8 @@ Public Member Functions</h2></td></tr>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:acdc45c0ec8aeb340e7ce62d7745cf850"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html">ZobristComponentForConcepts</a>&lt; C, N &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html#acdc45c0ec8aeb340e7ce62d7745cf850">Create</a> (uint32_t <a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html#ab7f506004dbcd45a1ff465e440dd1a84">prng_seed</a>=std::random_device{}())</td></tr>
 <tr class="separator:acdc45c0ec8aeb340e7ce62d7745cf850"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cb15f014cfef70a57809bc23332cf62"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html">ZobristComponentForConcepts</a>&lt; C, N &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html#a0cb15f014cfef70a57809bc23332cf62">Create</a> (std::shared_ptr&lt; C &gt; primary_calculator, std::array&lt; std::shared_ptr&lt; C &gt;, N &gt; confirmation_calculators)</td></tr>
-<tr class="separator:a0cb15f014cfef70a57809bc23332cf62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef4629b725a9a2592fc07f7eb7646b2f"><td class="memItemLeft" align="right" valign="top">static std::shared_ptr&lt; <a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html">ZobristComponentForConcepts</a>&lt; C, N &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html#aef4629b725a9a2592fc07f7eb7646b2f">Create</a> (std::shared_ptr&lt; C &gt; primary_calculator, std::array&lt; std::shared_ptr&lt; C &gt;, N &gt; confirmation_calculators, std::uint32_t <a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html#ab7f506004dbcd45a1ff465e440dd1a84">prng_seed</a>=0)</td></tr>
+<tr class="separator:aef4629b725a9a2592fc07f7eb7646b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -219,8 +219,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a3d12e3415cb1b3bdc0d829eeaeb532ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a341fb39ee21f6e9ed3ad2469f0f19482"><td class="memItemLeft" align="right" valign="top">std::array&lt; std::shared_ptr&lt; C &gt;, N &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html#a341fb39ee21f6e9ed3ad2469f0f19482">confirmation_calculators_</a></td></tr>
 <tr class="separator:a341fb39ee21f6e9ed3ad2469f0f19482"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6906e457ddb323df2d60f1d16ea0a5ad"><td class="memItemLeft" align="right" valign="top">std::optional&lt; uint32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html#a6906e457ddb323df2d60f1d16ea0a5ad">prng_seed_</a></td></tr>
-<tr class="separator:a6906e457ddb323df2d60f1d16ea0a5ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0698c03d421b9d3eedb68b9237cae9ac"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html#a0698c03d421b9d3eedb68b9237cae9ac">prng_seed_</a></td></tr>
+<tr class="separator:a0698c03d421b9d3eedb68b9237cae9ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">SingleBoardStateProviderConcept</a> C, size_t N&gt;<br />
@@ -292,7 +292,7 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
 
 <p>Constructs <a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html" title="Container for one or more boardstate::ZobristCalculatorForConcepts objects.">ZobristComponentForConcepts</a> from existing <a class="el" href="classboardstate_1_1ZobristCalculatorForConcepts.html" title="Uses Zobrist hashing to calculate a &quot;reasonably unique&quot; integer value for each board configuration en...">ZobristCalculatorForConcepts</a> objects. </p>
 
-<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00088">88</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00090">90</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -322,7 +322,7 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00073">73</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00075">75</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -351,7 +351,7 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00098">98</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00100">100</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -380,7 +380,7 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00077">77</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00079">79</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -409,12 +409,12 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00106">106</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00108">108</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a0cb15f014cfef70a57809bc23332cf62" name="a0cb15f014cfef70a57809bc23332cf62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0cb15f014cfef70a57809bc23332cf62">&#9670;&#160;</a></span>Create() <span class="overload">[1/2]</span></h2>
+<a id="aef4629b725a9a2592fc07f7eb7646b2f" name="aef4629b725a9a2592fc07f7eb7646b2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef4629b725a9a2592fc07f7eb7646b2f">&#9670;&#160;</a></span>Create() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -434,7 +434,13 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::array&lt; std::shared_ptr&lt; C &gt;, N &gt;&#160;</td>
-          <td class="paramname"><em>confirmation_calculators</em>&#160;</td>
+          <td class="paramname"><em>confirmation_calculators</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::uint32_t&#160;</td>
+          <td class="paramname"><em>prng_seed</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -508,7 +514,7 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00072">72</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00074">74</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -537,7 +543,7 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00080">80</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00082">82</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -566,7 +572,7 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00076">76</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00078">78</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -595,7 +601,7 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00083">83</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="zobrist__for__concepts_8hpp_source.html#l00085">85</a> of file <a class="el" href="zobrist__for__concepts_8hpp_source.html">zobrist_for_concepts.hpp</a>.</p>
 
 </div>
 </div>
@@ -678,8 +684,8 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
 
 </div>
 </div>
-<a id="a6906e457ddb323df2d60f1d16ea0a5ad" name="a6906e457ddb323df2d60f1d16ea0a5ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6906e457ddb323df2d60f1d16ea0a5ad">&#9670;&#160;</a></span>prng_seed_</h2>
+<a id="a0698c03d421b9d3eedb68b9237cae9ac" name="a0698c03d421b9d3eedb68b9237cae9ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0698c03d421b9d3eedb68b9237cae9ac">&#9670;&#160;</a></span>prng_seed_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -690,7 +696,7 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::optional&lt;uint32_t&gt; <a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html">boardstate::ZobristComponentForConcepts</a>&lt; C, N &gt;::prng_seed_</td>
+          <td class="memname">uint32_t <a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html">boardstate::ZobristComponentForConcepts</a>&lt; C, N &gt;::prng_seed_</td>
         </tr>
       </table>
   </td>
@@ -713,7 +719,7 @@ template&lt;<a class="el" href="conceptSingleBoardStateProviderConcept.html">Sin
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceboardstate.html">boardstate</a></li><li class="navelem"><a class="el" href="classboardstate_1_1ZobristComponentForConcepts.html">ZobristComponentForConcepts</a></li>
-    <li class="footer">Generated on Fri Dec 27 2024 15:30:50 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Dec 28 2024 04:50:23 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>
