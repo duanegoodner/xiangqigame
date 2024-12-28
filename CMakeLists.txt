@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.21)
 message(STATUS "Using CMake version ${CMAKE_VERSION}")
 
-project(xiangqigame LANGUAGES CXX VERSION 1.1.0)
+project(xiangqigame LANGUAGES CXX VERSION 1.2.0)
 message(STATUS "Project name: ${PROJECT_NAME}")
 message(STATUS "Project version: ${PROJECT_VERSION}")
 
