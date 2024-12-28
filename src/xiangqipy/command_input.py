@@ -5,6 +5,7 @@ Game.
 """
 
 import argparse
+import random
 from dataclasses import dataclass
 from typing import Any, Literal
 
@@ -68,6 +69,13 @@ class RawPlayerInput:
                 self.number_zobrist_states if self.number_zobrist_states else 2
             )
 
+    @property
+    def zobrist_seed(self) -> int:
+        if self.zkeys_seed is not None:
+            return self.zkeys_seed
+        else:
+            return random.randint(a=0, b=2**32 -1)
+
     def to_player_spec(self) -> xb.PlayerSpec:
         return xb.PlayerSpec(
             color=self.color,
@@ -75,7 +83,9 @@ class RawPlayerInput:
             zobrist_key_size_bits=self.zobrist_key_size_bits,
             zobrist_calculator_count=self.zobrist_calculator_count,
             minimax_search_depth=self.minimax_search_depth,
+            zkeys_seed=self.zobrist_seed,
         )
+
 
 def build_player_spec(
     run_kwargs: dict[str, Any], color_enum: xb.PieceColor, color_prefix: str
@@ -86,6 +96,7 @@ def build_player_spec(
         if key.startswith(color_prefix)
     }
     return RawPlayerInput(**player_info).to_player_spec()
+
 
 def build_game_runner(run_kwargs: dict[str, Any]) -> xb.GameRunner:
     red_player_spec = build_player_spec(

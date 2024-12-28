@@ -1,14 +1,14 @@
 #include <array>
 #include <board_map_fixture.hpp>
+#include <boardstate/zobrist_calculator_for_concepts.hpp>
 #include <boardstate/zobrist_factories.hpp>
+#include <boardstate/zobrist_for_concepts.hpp>
 #include <concepts/multi_board_state_provider.hpp>
 #include <concepts/single_board_state_provider.hpp>
 #include <gameboard/game_board_for_concepts.hpp>
 #include <gtest/gtest.h>
 #include <memory>
 #include <vector>
-#include <boardstate/zobrist_calculator_for_concepts.hpp>
-#include <boardstate/zobrist_for_concepts.hpp>
 
 //! Base class that test suite class template will inherit from, so we can put
 //! references/pointers to multiple instances in a conatainer to iterate over inside
@@ -17,6 +17,9 @@ class ZobristComponentTestSuiteBase {
 public:
   virtual void CheckComplianceWithMultiBoardStateProviderConcept() = 0;
   virtual void TestCreateFromSeed() = 0;
+  virtual void TestConfirmComponentsWithSameSeedMatch() = 0;
+  virtual void TestConfirmComponentsWithDifferentSeedsMismatch() = 0;
+  virtual void TestConfirmComponentsWithoutSpecifiedSeedsMismatch() = 0;
   virtual void TestCreateFromExistingCalculators() = 0;
   virtual void TestCreateWithBuilder() = 0;
   virtual void TestGetters() = 0;
@@ -38,10 +41,12 @@ class ZobristComponentTestSuite : public ZobristComponentTestSuiteBase {
 public:
   using ZobristCalculatorFactoryType =
       boardstate::ZobristCalculatorFactory<KeyType, gameboard::GameBoardForConcepts>;
-  using ZobristCalculatorType = typename ZobristCalculatorFactoryType::ZobristCalculatorType;
+  using ZobristCalculatorType =
+      typename ZobristCalculatorFactoryType::ZobristCalculatorType;
   using ZobristComponentFactoryType = boardstate::
       ZobristComponentFactory<KeyType, NumConfKeys, gameboard::GameBoardForConcepts>;
-  using ZobristComponentType = typename ZobristComponentFactoryType::ZobristComponentType;
+  using ZobristComponentType =
+      typename ZobristComponentFactoryType::ZobristComponentType;
 
   ZobristCalculatorFactoryType zobrist_calculator_factory_;
   ZobristComponentFactoryType zobrist_component_factory_;
@@ -75,6 +80,44 @@ public:
   void TestCreateWithBuilder() {
     auto zobrist_component =
         zobrist_component_factory_.CreateRegisteredComponent(game_board_);
+  }
+
+  void TestConfirmComponentsWithSameSeedMatch() {
+    auto zobrist_component_a =
+        zobrist_component_factory_.CreateRegisteredComponent(game_board_, 1234);
+    auto zobrist_component_b =
+        zobrist_component_factory_.CreateRegisteredComponent(game_board_, 1234);
+
+    EXPECT_EQ(
+        zobrist_component_a->primary_board_state(),
+        zobrist_component_b->primary_board_state()
+    );
+  }
+
+  void TestConfirmComponentsWithDifferentSeedsMismatch() {
+    auto zobrist_component_c =
+        zobrist_component_factory_.CreateRegisteredComponent(game_board_, 2468);
+    auto zobrist_component_d =
+        zobrist_component_factory_.CreateRegisteredComponent(game_board_, 1357);
+
+    EXPECT_NE(
+        zobrist_component_c->primary_board_state(),
+        zobrist_component_d->primary_board_state()
+    );
+  }
+
+  void TestConfirmComponentsWithoutSpecifiedSeedsMismatch() {
+    auto zobrist_component_e =
+        zobrist_component_factory_.CreateRegisteredComponent(game_board_);
+    auto zobrist_component_f =
+        zobrist_component_factory_.CreateRegisteredComponent(game_board_);
+
+    EXPECT_NE(
+        zobrist_component_e->primary_board_state(),
+        zobrist_component_f->primary_board_state()
+    );
+
+    EXPECT_NE(zobrist_component_e->prng_seed(), zobrist_component_f->prng_seed());
   }
 
   void TestGetters() {
@@ -235,6 +278,24 @@ TEST_F(ZobristComponentConceptTest, CheckComplianceWithMultiBoardStateProviderCo
 TEST_F(ZobristComponentConceptTest, TestCreateFromSeed) {
   for (auto &suite : test_suites_) {
     suite->TestCreateFromSeed();
+  }
+}
+
+TEST_F(ZobristComponentConceptTest, TestConfirmComponentsWithSameSeedMatch) {
+  for (auto &suite : test_suites_) {
+    suite->TestConfirmComponentsWithSameSeedMatch();
+  }
+}
+
+TEST_F(ZobristComponentConceptTest, TestConfirmComponentsWithDifferentSeedsMismatch) {
+  for (auto &suite : test_suites_) {
+    suite->TestConfirmComponentsWithDifferentSeedsMismatch();
+  }
+}
+
+TEST_F(ZobristComponentConceptTest, TestConfirmComponentsWithoutSpecifiedSeedsMismatch) {
+  for (auto &suite : test_suites_) {
+    suite->TestConfirmComponentsWithoutSpecifiedSeedsMismatch();
   }
 }
 

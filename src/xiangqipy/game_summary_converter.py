@@ -46,8 +46,8 @@ class CorePlayerSpecToPyPlayerSummaryConverter:
         return self.core_player_spec.zobrist_key_size_bits
 
     @property
-    def py_zkeys_seed(self) -> int | None:
-        return None
+    def py_zkeys_seed(self) -> int:
+        return self.core_player_spec.zkeys_seed
 
     @property
     def py_search_summaries(self) -> cdm.SearchSummaries:

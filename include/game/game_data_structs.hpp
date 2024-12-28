@@ -4,6 +4,7 @@
 #include <iostream>
 #include <moveselection/evaluator_data_structs.hpp>
 #include <optional>
+#include <random>
 #include <utilities/integer_types.hpp>
 
 namespace game {
@@ -46,19 +47,22 @@ struct PlayerSpec {
   size_t zobrist_key_size_bits;
   size_t zobrist_calculator_count;
   DepthType minimax_search_depth;
+  uint32_t zkeys_seed;
 
   PlayerSpec(
       gameboard::PieceColor color,
       EvaluatorType evaluator_type = EvaluatorType::kMinimax,
       size_t zobrist_key_size_bits = 64,
       size_t zobrist_calculator_count = 2,
-      DepthType minimax_search_depth = 4
+      DepthType minimax_search_depth = 4,
+      uint32_t zkeys_seed = std::random_device{}()
   )
       : color{color}
       , evaluator_type{evaluator_type}
       , zobrist_key_size_bits{zobrist_key_size_bits}
       , zobrist_calculator_count{zobrist_calculator_count}
-      , minimax_search_depth{minimax_search_depth} {}
+      , minimax_search_depth{minimax_search_depth}
+      , zkeys_seed{zkeys_seed} {}
 };
 
 struct GameStatus {
@@ -76,6 +80,6 @@ struct GameSummary {
   std::unordered_map<gameboard::PieceColor, PlayerSpec> player_specs;
   std::unordered_map<gameboard::PieceColor, moveselection::SearchSummaries>
       search_summaries;
-};
+  };
 
 } // namespace game
