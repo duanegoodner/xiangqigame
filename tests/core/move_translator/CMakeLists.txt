@@ -11,7 +11,7 @@ add_custom_command(
     COMMAND ${CMAKE_COMMAND} -E make_directory ${TEST_DATA_DESTINATION_DIR} &&
             ${CMAKE_COMMAND} -E copy ${ALGEBRAIC_MOVES_FILE_SOURCE} ${ALGEBRAIC_MOVES_FILE_DEST}
     DEPENDS ${ALGEBRAIC_MOVES_FILE_SOURCE}
-    COMMENT "Preparing test data: ensuring directory exists and copying algebraic_moves.txt"
+    COMMENT "Preparing test data: ensuring ${TEST_DATA_DESTINATION_DIR} exists and copying algebraic_moves.txt"
 )
 
 # Add a single custom target for both steps

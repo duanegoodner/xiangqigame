@@ -1,16 +1,13 @@
 #include <cerrno>
-#include <config.hpp>
-#include <cstdlib>
 #include <cstring>
-#include <filesystem>
 #include <fstream>
 #include <gameboard/board_data_structs.hpp>
 #include <gtest/gtest.h>
 #include <iostream>
 #include <movetranslation/move_translator.hpp>
-#include <ranges>
 #include <sstream>
 #include <string>
+#include <vector>
 
 class MoveTranslatorTest : public ::testing::Test {
 protected:
@@ -27,6 +24,12 @@ protected:
   gameboard::BoardSpace board_space_a_end_{7, 2};
   gameboard::Move move_a_{board_space_a_start_, board_space_a_end_};
 
+  std::string alg_moves_file_{
+      std::string(TEST_DATA_DIR) + "/" + "algebraic_moves.txt"
+  };
+
+  std::ifstream alg_moves_file_stream_{alg_moves_file_};
+
   void SetUp() override {
 
     good_input_stream_.str(good_input_string_); // Set the input content
@@ -35,18 +38,51 @@ protected:
 };
 
 TEST_F(MoveTranslatorTest, ReadSingleAlgebraicMove) {
-  auto algebraic_moves_file =
-      std::string("/home/duane/workspace/build/test_data") + "/" + "algebraic_moves.txt";
-  std::ifstream input_file(
-      "/home/duane/workspace/build/tests/core/move_translator/algebraic_moves.txt"
-  );
-  if (!input_file.is_open()) {
+  if (!alg_moves_file_stream_.is_open()) {
     std::cerr << "Failed to open the file: " << std::strerror(errno) << std::endl;
-    std::system("ls -l");
   }
-  std::string first_line = movetranslation::GetInput(input_file);
+  std::string first_line = movetranslation::GetInput(alg_moves_file_stream_);
   std::cout << first_line << std::endl;
 }
+
+TEST_F(MoveTranslatorTest, ConvertFileInputLineToAlgebraicMove) {
+  if (!alg_moves_file_stream_.is_open()) {
+    std::cerr << "Failed to open the file: " << std::strerror(errno) << std::endl;
+  }
+  std::string first_line = movetranslation::GetInput(alg_moves_file_stream_);
+  auto tokens = movetranslation::Tokenize(first_line);
+  auto algebraic_move = movetranslation::AlgebraicMove::Create(tokens);
+  
+  auto expected_move_start = algebraic_move.start();
+  auto expected_move_start_str = expected_move_start.value();
+  auto expected_move_end = algebraic_move.end();
+  auto expected_move_end_str = expected_move_end.value();
+  
+  EXPECT_EQ(expected_move_start_str, "a4");
+  EXPECT_EQ(expected_move_end_str, "a5");
+}
+
+TEST_F(MoveTranslatorTest, ReadFullAlgMoveInputFile) {
+  if (!alg_moves_file_stream_.is_open()) {
+    std::cerr << "Failed to open the file: " << std::strerror(errno) << std::endl;
+  }
+  
+  size_t num_lines_read{0};
+
+  while (alg_moves_file_stream_) {
+    std::string cur_line = movetranslation::GetInput(alg_moves_file_stream_);
+    if (cur_line.empty()) {
+      break;
+    }
+    auto cur_tokens = movetranslation::Tokenize(cur_line);
+    auto cur_algebraic_move = movetranslation::AlgebraicMove::Create(cur_tokens);
+    auto cur_gameboard_move = cur_algebraic_move.ToGameBoardMove();
+    num_lines_read++;
+  }
+  EXPECT_EQ(num_lines_read, 25);
+}
+
+TEST_F(MoveTranslatorTest, ReadFullFileOfAlgebraicMoves) {}
 
 TEST_F(MoveTranslatorTest, TestGetInput) {
   auto valid_input = movetranslation::GetInput(good_input_stream_);
