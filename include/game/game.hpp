@@ -1,15 +1,18 @@
 #pragma once
 
-#include <interfaces/base_move_evaluator.hpp>
-#include <interfaces/base_space_info_provider.hpp>
-#include <gameboard/board_data_structs.hpp>
+#include <atomic>
 #include <concepts/board_state_coordinator.hpp>
 #include <concepts/composite_concepts.hpp>
 #include <concepts/move_evaluator.hpp>
 #include <game/game_data_structs.hpp>
+#include <gameboard/board_data_structs.hpp>
 #include <gameboard/game_piece.hpp>
+#include <interfaces/base_move_evaluator.hpp>
+#include <interfaces/base_space_info_provider.hpp>
 #include <interfaces/interface_game_reporter.hpp>
+#include <iostream>
 #include <memory>
+#include <optional>
 #include <string>
 #include <unordered_map>
 
@@ -25,7 +28,8 @@ class Game {
   std::vector<gameboard::ExecutedMove> move_log_;
   bool report_during_game_;
   std::string game_id_;
-
+  std::atomic_bool stop_requested_;
+  std::optional<int> stop_signal_received_;
 
 public:
   Game(
@@ -39,6 +43,8 @@ public:
   );
 
   GameSummary Play();
+  void RequestStop(int signal);
+  std::optional<int> stop_signal_received();
 
 private:
   std::string GenerateGameID();

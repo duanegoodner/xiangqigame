@@ -1,6 +1,8 @@
 #include <chrono>
+#include <cstring>
 #include <game/game.hpp>
 #include <gameboard/game_board_for_concepts.hpp>
+#include <iostream>
 #include <memory>
 #include <moveselection/move_evaluator_minimax_for_concepts.hpp>
 #include <sstream>
@@ -24,7 +26,9 @@ Game::Game(
     , game_state_{GameState::kUnfinished}
     , whose_turn_{whose_turn}
     , move_log_{}
-    , game_id_{GenerateGameID()} {}
+    , game_id_{GenerateGameID()}
+    , stop_requested_{false}
+    , stop_signal_received_{std::nullopt} {}
 
 void Game::ChangeWhoseTurn() { whose_turn_ = opponent_of(whose_turn_); }
 
@@ -96,8 +100,19 @@ GameSummary Game::GenerateGameSummary() {
   return game_summary;
 }
 
+void Game::RequestStop(int signal) {
+  stop_requested_ = true;
+  stop_signal_received_ = signal;
+}
+
+std::optional<int> Game::stop_signal_received() { return stop_signal_received_; }
+
 GameSummary Game::Play() {
   while (game_state_ == GameState::kUnfinished) {
+    if (stop_requested_) {
+      break;
+    }
+
     bool is_in_check = game_board_->IsInCheck(whose_turn_);
     game::GameStatus cur_game_status{
         game_state_,
@@ -131,6 +146,15 @@ GameSummary Game::Play() {
       game_board_->map()
   };
   game_reporter_->ReportGameInfo(final_game_status);
+
+  if (stop_requested_) {
+    if (stop_signal_received_) {
+      std::cout << "Game terminated early due to signal: " << *stop_signal_received_
+                << " (" << strsignal(*stop_signal_received_) << ")" << std::endl;
+    } else {
+      std::cout << "Game terminated early." << std::endl;
+    }
+  }
 
   return GenerateGameSummary();
 }
