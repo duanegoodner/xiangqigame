@@ -2,11 +2,11 @@
 
 #include <any>
 #include <csignal>
-#include <iostream>
 #include <functional>
 #include <game/game.hpp>
 #include <game/game_data_structs.hpp>
 #include <game/game_factory.hpp>
+#include <iostream>
 // #include <game/player_spec_builder.hpp>
 #include <string>
 #include <unordered_map>
@@ -28,11 +28,11 @@ public:
     auto game = game_factory.Create();
 
     // Register signal handlers
-    RegisterSignalHandlers([&game]() {
-      if (game) {
-        game->RequestStop();
-      }
-    });
+    RegisterSignalHandlers([&game](int signal) {
+    if (game) {
+        game->RequestStop(signal);
+    }
+});
 
     auto game_summary = game->Play();
 
@@ -43,18 +43,18 @@ public:
   const game::PlayerSpec &black_player_spec() { return black_player_spec_; }
 
 private:
-  void RegisterSignalHandlers(std::function<void()> stop_callback) {
-    static std::function<void()> stop_handler = stop_callback;
+  void RegisterSignalHandlers(std::function<void(int)> stop_callback) {
+    static std::function<void(int)> stop_handler = stop_callback;
 
-    std::signal(SIGINT, [](int) {
+    std::signal(SIGINT, [](int sig) {
       if (stop_handler) {
-        stop_handler();
+        stop_handler(sig);
       }
     });
 
-    std::signal(SIGTERM, [](int) {
+    std::signal(SIGTERM, [](int sig) {
       if (stop_handler) {
-        stop_handler();
+        stop_handler(sig);
       }
     });
   }

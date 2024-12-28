@@ -12,6 +12,7 @@
 #include <interfaces/interface_game_reporter.hpp>
 #include <iostream>
 #include <memory>
+#include <optional>
 #include <string>
 #include <unordered_map>
 
@@ -28,6 +29,7 @@ class Game {
   bool report_during_game_;
   std::string game_id_;
   std::atomic_bool stop_requested_;
+  std::optional<int> stop_signal_received_;
 
 public:
   Game(
@@ -41,7 +43,8 @@ public:
   );
 
   GameSummary Play();
-  void RequestStop();
+  void RequestStop(int signal);
+  std::optional<int> stop_signal_received();
 
 private:
   std::string GenerateGameID();

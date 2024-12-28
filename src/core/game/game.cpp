@@ -1,4 +1,5 @@
 #include <chrono>
+#include <cstring>
 #include <game/game.hpp>
 #include <gameboard/game_board_for_concepts.hpp>
 #include <iostream>
@@ -26,7 +27,8 @@ Game::Game(
     , whose_turn_{whose_turn}
     , move_log_{}
     , game_id_{GenerateGameID()}
-    , stop_requested_{false} {}
+    , stop_requested_{false}
+    , stop_signal_received_{std::nullopt} {}
 
 void Game::ChangeWhoseTurn() { whose_turn_ = opponent_of(whose_turn_); }
 
@@ -98,7 +100,12 @@ GameSummary Game::GenerateGameSummary() {
   return game_summary;
 }
 
-void Game::RequestStop() { stop_requested_ = true; }
+void Game::RequestStop(int signal) {
+  stop_requested_ = true;
+  stop_signal_received_ = signal;
+}
+
+std::optional<int> Game::stop_signal_received() { return stop_signal_received_; }
 
 GameSummary Game::Play() {
   while (game_state_ == GameState::kUnfinished) {
@@ -140,7 +147,14 @@ GameSummary Game::Play() {
   };
   game_reporter_->ReportGameInfo(final_game_status);
 
-
+  if (stop_requested_) {
+    if (stop_signal_received_) {
+      std::cout << "Game terminated early due to signal: " << *stop_signal_received_
+                << " (" << strsignal(*stop_signal_received_) << ")" << std::endl;
+    } else {
+      std::cout << "Game terminated early." << std::endl;
+    }
+  }
 
   return GenerateGameSummary();
 }
