@@ -4,7 +4,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "xiangqigame"
-version = "1.0.0"
+version = "1.1.0"
 description = "Xiangqi (Chinese Chess) for human and/or AI players"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -16,10 +16,9 @@ authors = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Programming Language :: Python :: 3",
+    "Programming Language :: C++",
     "License :: OSI Approved :: MIT License",
-    "Operating System :: MacOS :: MacOS X",
-    "Operating System :: POSIX"
-
+    "Topic :: Games/Entertainment :: Turn Based Strategy"
 ]
 dependencies = [
     "colorama",

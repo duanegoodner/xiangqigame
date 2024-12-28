@@ -6,11 +6,11 @@ int main() {
 
   game::PlayerSpec red_player_spec{
       gameboard::PieceColor::kRed,
-      game::EvaluatorType::kHuman
+      game::EvaluatorType::kMinimax
   };
   game::PlayerSpec black_player_spec{
       gameboard::PieceColor::kBlk,
-      game::EvaluatorType::kHuman
+      game::EvaluatorType::kMinimax
   };
 
   game::GameRunner game_runner{red_player_spec, black_player_spec};

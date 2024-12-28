@@ -32,4 +32,4 @@ def run(custom_output_root: Path = None, **kwargs):
 
 
 if __name__ == "__main__":
-    run(red_player_type="person", black_algo="random")
+    run(red_strength=2, black_strength=3)

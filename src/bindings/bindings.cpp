@@ -114,13 +114,14 @@ PYBIND11_MODULE(xiangqi_bindings, m) {
 
   py::class_<game::PlayerSpec>(m, "PlayerSpec")
       .def(
-          py::init<PieceColor, game::EvaluatorType, size_t, size_t, DepthType, uint32_t>(),
+          py::init<PieceColor, game::EvaluatorType, size_t, size_t, DepthType, uint32_t>(
+          ),
           py::arg("color"),
-          py::arg("evaluator_type") = game::EvaluatorType::kMinimax,
-          py::arg("zobrist_key_size_bits") = 64,
-          py::arg("zobrist_calculator_count") = 2,
-          py::arg("minimax_search_depth") = 4,
-          py::arg("zkeys_seed") = std::random_device{}()
+          py::arg("evaluator_type"),
+          py::arg("zobrist_key_size_bits"),
+          py::arg("zobrist_calculator_count"),
+          py::arg("minimax_search_depth"),
+          py::arg("zkeys_seed")
       )
       .def_readonly("color", &game::PlayerSpec::color)
       .def_readonly("evaluator_type", &game::PlayerSpec::evaluator_type)
