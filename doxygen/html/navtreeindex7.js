@@ -1,5 +1,15 @@
 var NAVTREEINDEX7 =
 {
+"classxiangqipy_1_1game__interfaces_1_1Player.html#aa9fccc09061f8d0271852829d4ba1df0":[11,0,9,4,1,10],
+"classxiangqipy_1_1game__interfaces_1_1Player.html#ab0de4b6c9ae93635a3b8c96427824011":[9,0,10,7,1,8],
+"classxiangqipy_1_1game__interfaces_1_1Player.html#ab0de4b6c9ae93635a3b8c96427824011":[11,0,9,4,1,8],
+"classxiangqipy_1_1game__interfaces_1_1Player.html#ab3cf4adcfc1b82352679e4db30b9b2dc":[9,0,10,7,1,6],
+"classxiangqipy_1_1game__interfaces_1_1Player.html#ab3cf4adcfc1b82352679e4db30b9b2dc":[11,0,9,4,1,6],
+"classxiangqipy_1_1game__interfaces_1_1Player.html#ace53222f037c754e9084ab6d802db822":[9,0,10,7,1,1],
+"classxiangqipy_1_1game__interfaces_1_1Player.html#ace53222f037c754e9084ab6d802db822":[11,0,9,4,1,1],
+"classxiangqipy_1_1game__interfaces_1_1Player.html#ae03eeaf15c3d1a89d141c1954ee093fe":[11,0,9,4,1,7],
+"classxiangqipy_1_1game__interfaces_1_1Player.html#ae03eeaf15c3d1a89d141c1954ee093fe":[9,0,10,7,1,7],
+"classxiangqipy_1_1game__interfaces_1_1Player.html#ae4802081d25f3a5929bc9a7bf68efb69":[11,0,9,4,1,5],
 "classxiangqipy_1_1game__interfaces_1_1Player.html#ae4802081d25f3a5929bc9a7bf68efb69":[9,0,10,7,1,5],
 "classxiangqipy_1_1game__interfaces_1_1Player.html#af19bfd9c54d09a86a75ace00fcd29373":[11,0,9,4,1,4],
 "classxiangqipy_1_1game__interfaces_1_1Player.html#af19bfd9c54d09a86a75ace00fcd29373":[9,0,10,7,1,4],
@@ -239,15 +249,5 @@ var NAVTREEINDEX7 =
 "classxiangqipy_1_1piece__points_1_1PositionPts.html#a1a1fb2e8d5aebfb2e5aa1ab371b98400":[9,0,10,17,1,2],
 "classxiangqipy_1_1piece__points_1_1PositionPts.html#a4ea9e077f0ff374e62f2fd84b804a185":[9,0,10,17,1,1],
 "classxiangqipy_1_1piece__points_1_1PositionPts.html#a4ea9e077f0ff374e62f2fd84b804a185":[11,0,9,11,1,1],
-"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html":[9,0,10,18,0],
-"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html":[11,0,9,12,0],
-"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#a74e9480dfea1a57479ee951d42587ec8":[9,0,10,18,0,3],
-"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#a74e9480dfea1a57479ee951d42587ec8":[11,0,9,12,0,3],
-"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#a981bc2b18ae8720c749fe6f29d49654a":[11,0,9,12,0,0],
-"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#a981bc2b18ae8720c749fe6f29d49654a":[9,0,10,18,0,0],
-"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#aaacfb357b75164fc7478ca770b6846ea":[9,0,10,18,0,1],
-"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#aaacfb357b75164fc7478ca770b6846ea":[11,0,9,12,0,1],
-"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#ae041f7a3517a849b8ef1a9324a5947d7":[11,0,9,12,0,2],
-"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#ae041f7a3517a849b8ef1a9324a5947d7":[9,0,10,18,0,2],
-"classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html":[9,0,10,18,1]
+"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html":[9,0,10,18,0]
 };

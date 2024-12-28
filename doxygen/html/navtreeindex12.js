@@ -1,5 +1,15 @@
 var NAVTREEINDEX12 =
 {
+"structgameboard_1_1ExecutedMove.html#a44ceb980865ffab0c3bdef27feb1ef61":[11,0,2,3,3],
+"structgameboard_1_1ExecutedMove.html#a44ceb980865ffab0c3bdef27feb1ef61":[9,0,2,3,3],
+"structgameboard_1_1ExecutedMove.html#ad692495d0c5ef30a83bab6a9eaef3b2c":[11,0,2,3,2],
+"structgameboard_1_1ExecutedMove.html#ad692495d0c5ef30a83bab6a9eaef3b2c":[9,0,2,3,2],
+"structgameboard_1_1ExecutedMove.html#ad743903083a23162f8d8f2fda800b6e7":[11,0,2,3,4],
+"structgameboard_1_1ExecutedMove.html#ad743903083a23162f8d8f2fda800b6e7":[9,0,2,3,4],
+"structgameboard_1_1ExecutedMove.html#ae69400c9b93b659d6cfb904f6dc68c7c":[9,0,2,3,1],
+"structgameboard_1_1ExecutedMove.html#ae69400c9b93b659d6cfb904f6dc68c7c":[11,0,2,3,1],
+"structgameboard_1_1ExecutedMove.html#afed89c09a06f232abe4c1abc3acc6f42":[9,0,2,3,0],
+"structgameboard_1_1ExecutedMove.html#afed89c09a06f232abe4c1abc3acc6f42":[11,0,2,3,0],
 "structgameboard_1_1GamePiece.html":[9,0,2,7],
 "structgameboard_1_1GamePiece.html":[11,0,2,7],
 "structgameboard_1_1GamePiece.html#a00f15b8737acf0bc8055c05df0ac8855":[11,0,2,7,2],

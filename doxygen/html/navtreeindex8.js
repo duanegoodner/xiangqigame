@@ -1,5 +1,15 @@
 var NAVTREEINDEX8 =
 {
+"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html":[11,0,9,12,0],
+"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#a74e9480dfea1a57479ee951d42587ec8":[9,0,10,18,0,3],
+"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#a74e9480dfea1a57479ee951d42587ec8":[11,0,9,12,0,3],
+"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#a981bc2b18ae8720c749fe6f29d49654a":[11,0,9,12,0,0],
+"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#a981bc2b18ae8720c749fe6f29d49654a":[9,0,10,18,0,0],
+"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#aaacfb357b75164fc7478ca770b6846ea":[9,0,10,18,0,1],
+"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#aaacfb357b75164fc7478ca770b6846ea":[11,0,9,12,0,1],
+"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#ae041f7a3517a849b8ef1a9324a5947d7":[11,0,9,12,0,2],
+"classxiangqipy_1_1player__builder_1_1RedAndBlackPlayersBuilder.html#ae041f7a3517a849b8ef1a9324a5947d7":[9,0,10,18,0,2],
+"classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html":[9,0,10,18,1],
 "classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html":[11,0,9,12,1],
 "classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html#a2d9715fd851b8bbff44cbb6e65b2ddf8":[11,0,9,12,1,1],
 "classxiangqipy_1_1player__builder_1_1SinglePlayerBuilder.html#a2d9715fd851b8bbff44cbb6e65b2ddf8":[9,0,10,18,1,1],
@@ -239,15 +249,5 @@ var NAVTREEINDEX8 =
 "errors_8py.html#a300ecaa8799799759551621bdfce3ed2":[12,0,2,2,0,1,0],
 "errors_8py_source.html":[12,0,2,2,0,1],
 "evaluator__data__structs_8hpp.html":[12,0,1,7,0],
-"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1d":[12,0,1,7,0,8],
-"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da0c1922f53a20c3978b37b675895a49aa":[12,0,1,7,0,8,8],
-"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da0fe64a6e73a77fefbfe91370bb0652d5":[12,0,1,7,0,8,3],
-"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da1ceae30bbee1b637dc47a380d0e4ad36":[12,0,1,7,0,8,9],
-"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da39391e47fa69eaa70726091d4f4e2298":[12,0,1,7,0,8,4],
-"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da552dd3cbc3a757459c0df9b2ae2edd27":[12,0,1,7,0,8,1],
-"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da5fdab859498d9e51a5300bb6fe535a60":[12,0,1,7,0,8,5],
-"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da65b563cc5a2a595f6f19adea98b99fa9":[12,0,1,7,0,8,6],
-"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da71f7c72c022ad1322f406bdd0ca7be25":[12,0,1,7,0,8,7],
-"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1dacf13d4e4d1a33bcd701f870b4d5103f3":[12,0,1,7,0,8,2],
-"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1dadef73b774725d74259cc49e9fe97e6dd":[12,0,1,7,0,8,0]
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1d":[12,0,1,7,0,8]
 };

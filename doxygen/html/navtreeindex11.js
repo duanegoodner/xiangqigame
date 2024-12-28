@@ -1,5 +1,15 @@
 var NAVTREEINDEX11 =
 {
+"namespaceutility__functs.html#a87a199fecea5b435e932deea62d1e0d1":[9,0,9,7],
+"namespaceutility__functs.html#a991fee6c060b152f519b14b7a16e57ed":[9,0,9,0],
+"namespaceutility__functs.html#aaa7d8709c87577a43bb7bd9484dba548":[9,0,9,8],
+"namespaceutility__functs.html#aae76ff892c89c429d4ef7bf31fdbbc02":[9,0,9,10],
+"namespaceutility__functs.html#ab6b690b5028447413647af99fb320e70":[9,0,9,4],
+"namespaceutility__functs.html#ae16b7735beff90e61d39f48456d9a067":[9,0,9,2],
+"namespaceutility__functs.html#ae8dd90e2e426dd1bdc0e106beea322d1":[9,0,9,11],
+"namespacexiangqipy.html":[9,0,10],
+"namespacexiangqipy_1_1____main____.html":[9,0,10,0],
+"namespacexiangqipy_1_1____main____.html#a3a577eed050a8195b77c71161bf465aa":[9,0,10,0,0],
 "namespacexiangqipy_1_1app.html":[9,0,10,1],
 "namespacexiangqipy_1_1app.html#ac09777385f4e43af5903c4c664c70ae4":[9,0,10,1,0],
 "namespacexiangqipy_1_1app__simple.html":[9,0,10,2],
@@ -239,15 +249,5 @@ var NAVTREEINDEX11 =
 "structgameboard_1_1CastleEdges.html#afca9ad1b03d86f0293edb3e54520e745":[11,0,2,2,0],
 "structgameboard_1_1CastleEdges.html#afca9ad1b03d86f0293edb3e54520e745":[9,0,2,2,0],
 "structgameboard_1_1ExecutedMove.html":[9,0,2,3],
-"structgameboard_1_1ExecutedMove.html":[11,0,2,3],
-"structgameboard_1_1ExecutedMove.html#a44ceb980865ffab0c3bdef27feb1ef61":[11,0,2,3,3],
-"structgameboard_1_1ExecutedMove.html#a44ceb980865ffab0c3bdef27feb1ef61":[9,0,2,3,3],
-"structgameboard_1_1ExecutedMove.html#ad692495d0c5ef30a83bab6a9eaef3b2c":[11,0,2,3,2],
-"structgameboard_1_1ExecutedMove.html#ad692495d0c5ef30a83bab6a9eaef3b2c":[9,0,2,3,2],
-"structgameboard_1_1ExecutedMove.html#ad743903083a23162f8d8f2fda800b6e7":[11,0,2,3,4],
-"structgameboard_1_1ExecutedMove.html#ad743903083a23162f8d8f2fda800b6e7":[9,0,2,3,4],
-"structgameboard_1_1ExecutedMove.html#ae69400c9b93b659d6cfb904f6dc68c7c":[9,0,2,3,1],
-"structgameboard_1_1ExecutedMove.html#ae69400c9b93b659d6cfb904f6dc68c7c":[11,0,2,3,1],
-"structgameboard_1_1ExecutedMove.html#afed89c09a06f232abe4c1abc3acc6f42":[9,0,2,3,0],
-"structgameboard_1_1ExecutedMove.html#afed89c09a06f232abe4c1abc3acc6f42":[11,0,2,3,0]
+"structgameboard_1_1ExecutedMove.html":[11,0,2,3]
 };

@@ -1,5 +1,15 @@
 var NAVTREEINDEX9 =
 {
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da0c1922f53a20c3978b37b675895a49aa":[12,0,1,7,0,8,8],
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da0fe64a6e73a77fefbfe91370bb0652d5":[12,0,1,7,0,8,3],
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da1ceae30bbee1b637dc47a380d0e4ad36":[12,0,1,7,0,8,9],
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da39391e47fa69eaa70726091d4f4e2298":[12,0,1,7,0,8,4],
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da552dd3cbc3a757459c0df9b2ae2edd27":[12,0,1,7,0,8,1],
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da5fdab859498d9e51a5300bb6fe535a60":[12,0,1,7,0,8,5],
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da65b563cc5a2a595f6f19adea98b99fa9":[12,0,1,7,0,8,6],
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1da71f7c72c022ad1322f406bdd0ca7be25":[12,0,1,7,0,8,7],
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1dacf13d4e4d1a33bcd701f870b4d5103f3":[12,0,1,7,0,8,2],
+"evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1dadef73b774725d74259cc49e9fe97e6dd":[12,0,1,7,0,8,0],
 "evaluator__data__structs_8hpp.html#a58787b0a19fd66a2c3161f7e37fbee1daf54182497e4f5d7092bee94582bf3f79":[12,0,1,7,0,8,10],
 "evaluator__data__structs_8hpp.html#a8d733843490cc4ef7c9db62d506b5a07":[12,0,1,7,0,9],
 "evaluator__data__structs_8hpp.html#aa4c456c3f118a94017483880ff42991b":[12,0,1,7,0,7],
@@ -239,15 +249,5 @@ var NAVTREEINDEX9 =
 "md_docs_04_notation.html":[3],
 "md_docs_04_notation.html#autotoc_md23":[3,0],
 "md_docs_04_notation.html#autotoc_md24":[0],
-"md_docs_04_notation.html#autotoc_md25":[1],
-"md_docs_04_notation.html#autotoc_md26":[3,0,0],
-"md_docs_04_notation.html#autotoc_md27":[3,0,1],
-"md_docs_04_notation.html#autotoc_md28":[3,0,2],
-"md_docs_04_notation.html#autotoc_md29":[3,0,2,2],
-"md_docs_04_notation.html#autotoc_md30":[3,0,2,3],
-"md_docs_05_components.html":[4],
-"md_docs_05_components.html#autotoc_md32":[4,0],
-"md_docs_05_components.html#autotoc_md33":[4,1],
-"md_docs_05_components.html#autotoc_md34":[4,1,0],
-"md_docs_05_components.html#autotoc_md35":[4,1,1]
+"md_docs_04_notation.html#autotoc_md25":[1]
 };

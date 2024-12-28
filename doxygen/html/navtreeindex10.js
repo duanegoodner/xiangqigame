@@ -1,5 +1,15 @@
 var NAVTREEINDEX10 =
 {
+"md_docs_04_notation.html#autotoc_md26":[3,0,0],
+"md_docs_04_notation.html#autotoc_md27":[3,0,1],
+"md_docs_04_notation.html#autotoc_md28":[3,0,2],
+"md_docs_04_notation.html#autotoc_md29":[3,0,2,2],
+"md_docs_04_notation.html#autotoc_md30":[3,0,2,3],
+"md_docs_05_components.html":[4],
+"md_docs_05_components.html#autotoc_md32":[4,0],
+"md_docs_05_components.html#autotoc_md33":[4,1],
+"md_docs_05_components.html#autotoc_md34":[4,1,0],
+"md_docs_05_components.html#autotoc_md35":[4,1,1],
 "md_docs_05_components.html#autotoc_md36":[4,1,2],
 "md_docs_05_components.html#autotoc_md37":[4,1,3],
 "md_docs_05_components.html#autotoc_md38":[4,1,4],
@@ -239,15 +249,5 @@ var NAVTREEINDEX10 =
 "namespaceutility__functs.html#a4396865a16ca27ed743dc29ea27cf7db":[9,0,9,5],
 "namespaceutility__functs.html#a754117eda4e493add56b6ce4899826a9":[9,0,9,6],
 "namespaceutility__functs.html#a76030e832abd25bf223040fc3b59945b":[9,0,9,1],
-"namespaceutility__functs.html#a81ab3698fe7c8de1bafb34d42ee22757":[9,0,9,3],
-"namespaceutility__functs.html#a87a199fecea5b435e932deea62d1e0d1":[9,0,9,7],
-"namespaceutility__functs.html#a991fee6c060b152f519b14b7a16e57ed":[9,0,9,0],
-"namespaceutility__functs.html#aaa7d8709c87577a43bb7bd9484dba548":[9,0,9,8],
-"namespaceutility__functs.html#aae76ff892c89c429d4ef7bf31fdbbc02":[9,0,9,10],
-"namespaceutility__functs.html#ab6b690b5028447413647af99fb320e70":[9,0,9,4],
-"namespaceutility__functs.html#ae16b7735beff90e61d39f48456d9a067":[9,0,9,2],
-"namespaceutility__functs.html#ae8dd90e2e426dd1bdc0e106beea322d1":[9,0,9,11],
-"namespacexiangqipy.html":[9,0,10],
-"namespacexiangqipy_1_1____main____.html":[9,0,10,0],
-"namespacexiangqipy_1_1____main____.html#a3a577eed050a8195b77c71161bf465aa":[9,0,10,0,0]
+"namespaceutility__functs.html#a81ab3698fe7c8de1bafb34d42ee22757":[9,0,9,3]
 };

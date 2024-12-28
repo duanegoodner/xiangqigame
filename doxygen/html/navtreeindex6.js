@@ -1,5 +1,15 @@
 var NAVTREEINDEX6 =
 {
+"classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a5cb213845eaba579ef3b2670502e0aec":[11,0,9,0,3,14],
+"classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a5def923de3adbe0066f41d5fe6e24438":[9,0,10,3,3,4],
+"classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a5def923de3adbe0066f41d5fe6e24438":[11,0,9,0,3,4],
+"classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a6ac778a6a74c2838c58d1b687dfc026d":[9,0,10,3,3,6],
+"classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a6ac778a6a74c2838c58d1b687dfc026d":[11,0,9,0,3,6],
+"classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a881339643df7cb43716a03eaf51eb527":[9,0,10,3,3,0],
+"classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a881339643df7cb43716a03eaf51eb527":[11,0,9,0,3,0],
+"classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a8d43feb25f34c231029f4456bb28afa5":[9,0,10,3,3,9],
+"classxiangqipy_1_1command__input_1_1RawPlayerInput.html#a8d43feb25f34c231029f4456bb28afa5":[11,0,9,0,3,9],
+"classxiangqipy_1_1command__input_1_1RawPlayerInput.html#aa305f63f778e15087947514b0cfed22e":[11,0,9,0,3,12],
 "classxiangqipy_1_1command__input_1_1RawPlayerInput.html#aa305f63f778e15087947514b0cfed22e":[9,0,10,3,3,12],
 "classxiangqipy_1_1command__input_1_1RawPlayerInput.html#aaf1ff28734d743b3ae868ad41b0625bc":[11,0,9,0,3,13],
 "classxiangqipy_1_1command__input_1_1RawPlayerInput.html#aaf1ff28734d743b3ae868ad41b0625bc":[9,0,10,3,3,13],
@@ -239,15 +249,5 @@ var NAVTREEINDEX6 =
 "classxiangqipy_1_1game__interfaces_1_1Player.html#a7b591251c8390aef9e279ddeebc625de":[11,0,9,4,1,9],
 "classxiangqipy_1_1game__interfaces_1_1Player.html#a803f419269cdc649f9dcbe4a75b34d9d":[11,0,9,4,1,0],
 "classxiangqipy_1_1game__interfaces_1_1Player.html#a803f419269cdc649f9dcbe4a75b34d9d":[9,0,10,7,1,0],
-"classxiangqipy_1_1game__interfaces_1_1Player.html#aa9fccc09061f8d0271852829d4ba1df0":[9,0,10,7,1,10],
-"classxiangqipy_1_1game__interfaces_1_1Player.html#aa9fccc09061f8d0271852829d4ba1df0":[11,0,9,4,1,10],
-"classxiangqipy_1_1game__interfaces_1_1Player.html#ab0de4b6c9ae93635a3b8c96427824011":[9,0,10,7,1,8],
-"classxiangqipy_1_1game__interfaces_1_1Player.html#ab0de4b6c9ae93635a3b8c96427824011":[11,0,9,4,1,8],
-"classxiangqipy_1_1game__interfaces_1_1Player.html#ab3cf4adcfc1b82352679e4db30b9b2dc":[9,0,10,7,1,6],
-"classxiangqipy_1_1game__interfaces_1_1Player.html#ab3cf4adcfc1b82352679e4db30b9b2dc":[11,0,9,4,1,6],
-"classxiangqipy_1_1game__interfaces_1_1Player.html#ace53222f037c754e9084ab6d802db822":[9,0,10,7,1,1],
-"classxiangqipy_1_1game__interfaces_1_1Player.html#ace53222f037c754e9084ab6d802db822":[11,0,9,4,1,1],
-"classxiangqipy_1_1game__interfaces_1_1Player.html#ae03eeaf15c3d1a89d141c1954ee093fe":[11,0,9,4,1,7],
-"classxiangqipy_1_1game__interfaces_1_1Player.html#ae03eeaf15c3d1a89d141c1954ee093fe":[9,0,10,7,1,7],
-"classxiangqipy_1_1game__interfaces_1_1Player.html#ae4802081d25f3a5929bc9a7bf68efb69":[11,0,9,4,1,5]
+"classxiangqipy_1_1game__interfaces_1_1Player.html#aa9fccc09061f8d0271852829d4ba1df0":[9,0,10,7,1,10]
 };

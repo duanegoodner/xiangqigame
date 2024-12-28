@@ -157,7 +157,7 @@ Collaboration diagram for game::Game:</div>
 <div class="dyncontent">
 <div class="center"><img src="classgame_1_1Game__coll__graph.png" border="0" usemap="#agame_1_1Game_coll__map" alt="Collaboration graph"/></div>
 <map name="agame_1_1Game_coll__map" id="agame_1_1Game_coll__map">
-<area shape="rect" title=" " alt="" coords="881,175,1084,355"/>
+<area shape="rect" title=" " alt="" coords="1052,175,1255,384"/>
 <area shape="rect" title=" " alt="" coords="5,13,229,105"/>
 <area shape="rect" title=" " alt="" coords="254,13,493,105"/>
 <area shape="rect" title=" " alt="" coords="517,5,739,112"/>
@@ -166,7 +166,9 @@ Collaboration diagram for game::Game:</div>
 <area shape="rect" title=" " alt="" coords="1108,20,1199,97"/>
 <area shape="rect" title=" " alt="" coords="1223,13,1383,105"/>
 <area shape="rect" title=" " alt="" coords="1407,20,1457,97"/>
-<area shape="rect" title=" " alt="" coords="1572,20,1631,97"/>
+<area shape="rect" title=" " alt="" coords="1537,20,1596,97"/>
+<area shape="rect" title=" " alt="" coords="1621,20,1723,97"/>
+<area shape="rect" title=" " alt="" coords="1757,20,1880,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -176,6 +178,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af58f5778fcd36c7d3d1f3c4ea0ce3cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3e9338e66ec306d8c5c925ce6cbebdb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structgame_1_1GameSummary.html">GameSummary</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#ac3e9338e66ec306d8c5c925ce6cbebdb">Play</a> ()</td></tr>
 <tr class="separator:ac3e9338e66ec306d8c5c925ce6cbebdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2b0e526adcad96925ec54ba3b37554b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#af2b0e526adcad96925ec54ba3b37554b">RequestStop</a> (int signal)</td></tr>
+<tr class="separator:af2b0e526adcad96925ec54ba3b37554b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7965d119be5f9689b8a280a01735b24"><td class="memItemLeft" align="right" valign="top">std::optional&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#aa7965d119be5f9689b8a280a01735b24">stop_signal_received</a> ()</td></tr>
+<tr class="separator:aa7965d119be5f9689b8a280a01735b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -212,10 +218,14 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a5bb25da35b48072c8a21227d5a69d4af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abebb9928f3bd62e72fa6c7b71f356ee2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#abebb9928f3bd62e72fa6c7b71f356ee2">game_id_</a></td></tr>
 <tr class="separator:abebb9928f3bd62e72fa6c7b71f356ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2b917199b2dbffe4dfe83efad8a30d8"><td class="memItemLeft" align="right" valign="top">std::atomic_bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#ab2b917199b2dbffe4dfe83efad8a30d8">stop_requested_</a></td></tr>
+<tr class="separator:ab2b917199b2dbffe4dfe83efad8a30d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91a543015e8d9695425afa56d31956df"><td class="memItemLeft" align="right" valign="top">std::optional&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgame_1_1Game.html#a91a543015e8d9695425afa56d31956df">stop_signal_received_</a></td></tr>
+<tr class="separator:a91a543015e8d9695425afa56d31956df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00017">17</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00020">20</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af58f5778fcd36c7d3d1f3c4ea0ce3cc1" name="af58f5778fcd36c7d3d1f3c4ea0ce3cc1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af58f5778fcd36c7d3d1f3c4ea0ce3cc1">&#9670;&#160;</a></span>Game()</h2>
@@ -267,7 +277,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00010">10</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00012">12</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
 
 </div>
 </div>
@@ -295,7 +305,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00029">29</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00033">33</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
 
 </div>
 </div>
@@ -322,7 +332,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00039">39</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00043">43</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
 
 </div>
 </div>
@@ -349,7 +359,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00076">76</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00080">80</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
 
 </div>
 </div>
@@ -377,7 +387,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00053">53</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00057">57</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
 
 </div>
 </div>
@@ -396,7 +406,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00099">99</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00110">110</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
 
 </div>
 </div>
@@ -424,7 +434,27 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00070">70</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00074">74</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+
+</div>
+</div>
+<a id="af2b0e526adcad96925ec54ba3b37554b" name="af2b0e526adcad96925ec54ba3b37554b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2b0e526adcad96925ec54ba3b37554b">&#9670;&#160;</a></span>RequestStop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void game::Game::RequestStop </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>signal</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00103">103</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
 
 </div>
 </div>
@@ -452,7 +482,26 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00031">31</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00035">35</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
+
+</div>
+</div>
+<a id="aa7965d119be5f9689b8a280a01735b24" name="aa7965d119be5f9689b8a280a01735b24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7965d119be5f9689b8a280a01735b24">&#9670;&#160;</a></span>stop_signal_received()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; int &gt; game::Game::stop_signal_received </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game_8cpp_source.html#l00108">108</a> of file <a class="el" href="game_8cpp_source.html">game.cpp</a>.</p>
 
 </div>
 </div>
@@ -477,7 +526,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00018">18</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00021">21</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 
 </div>
 </div>
@@ -501,7 +550,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00027">27</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00030">30</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 
 </div>
 </div>
@@ -525,7 +574,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00023">23</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00026">26</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 
 </div>
 </div>
@@ -549,7 +598,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00022">22</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00025">25</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 
 </div>
 </div>
@@ -573,7 +622,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00021">21</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00024">24</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 
 </div>
 </div>
@@ -597,7 +646,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00025">25</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00028">28</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 
 </div>
 </div>
@@ -621,7 +670,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00019">19</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00022">22</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 
 </div>
 </div>
@@ -645,7 +694,55 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00026">26</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00029">29</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ab2b917199b2dbffe4dfe83efad8a30d8" name="ab2b917199b2dbffe4dfe83efad8a30d8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2b917199b2dbffe4dfe83efad8a30d8">&#9670;&#160;</a></span>stop_requested_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::atomic_bool game::Game::stop_requested_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00031">31</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+
+</div>
+</div>
+<a id="a91a543015e8d9695425afa56d31956df" name="a91a543015e8d9695425afa56d31956df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91a543015e8d9695425afa56d31956df">&#9670;&#160;</a></span>stop_signal_received_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt;int&gt; game::Game::stop_signal_received_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00032">32</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 
 </div>
 </div>
@@ -669,7 +766,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00024">24</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="game_8hpp_source.html#l00027">27</a> of file <a class="el" href="game_8hpp_source.html">game.hpp</a>.</p>
 
 </div>
 </div>
@@ -683,7 +780,7 @@ Private Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacegame.html">game</a></li><li class="navelem"><a class="el" href="classgame_1_1Game.html">Game</a></li>
-    <li class="footer">Generated on Sat Dec 28 2024 04:50:23 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+    <li class="footer">Generated on Sat Dec 28 2024 07:48:27 for Xiangiqgame by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>
 </body>
