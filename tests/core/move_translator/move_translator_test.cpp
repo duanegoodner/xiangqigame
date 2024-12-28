@@ -1,8 +1,16 @@
+#include <cerrno>
+#include <config.hpp>
+#include <cstdlib>
+#include <cstring>
+#include <filesystem>
+#include <fstream>
 #include <gameboard/board_data_structs.hpp>
 #include <gtest/gtest.h>
+#include <iostream>
 #include <movetranslation/move_translator.hpp>
 #include <ranges>
 #include <sstream>
+#include <string>
 
 class MoveTranslatorTest : public ::testing::Test {
 protected:
@@ -20,10 +28,25 @@ protected:
   gameboard::Move move_a_{board_space_a_start_, board_space_a_end_};
 
   void SetUp() override {
+
     good_input_stream_.str(good_input_string_); // Set the input content
     bad_input_stream_.str(bad_input_string_);
   }
 };
+
+TEST_F(MoveTranslatorTest, ReadSingleAlgebraicMove) {
+  auto algebraic_moves_file =
+      std::string("/home/duane/workspace/build/test_data") + "/" + "algebraic_moves.txt";
+  std::ifstream input_file(
+      "/home/duane/workspace/build/tests/core/move_translator/algebraic_moves.txt"
+  );
+  if (!input_file.is_open()) {
+    std::cerr << "Failed to open the file: " << std::strerror(errno) << std::endl;
+    std::system("ls -l");
+  }
+  std::string first_line = movetranslation::GetInput(input_file);
+  std::cout << first_line << std::endl;
+}
 
 TEST_F(MoveTranslatorTest, TestGetInput) {
   auto valid_input = movetranslation::GetInput(good_input_stream_);

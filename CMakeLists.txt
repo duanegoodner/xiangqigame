@@ -43,11 +43,7 @@ message(STATUS "Python site-packages dir: ${Python_SITELIB}")
 # For now, just informational to compare with values set in CMAKE
 include("${CMAKE_UTIL_DIR}/read_pyproject_toml.cmake")
 
-# if (NOT SKBUILD)
-#   set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME})
-# endif()  
-
-
+# set location for data files needed when running app
 if (SKBUILD)
   if(SKBUILD_STATE STREQUAL "editable")
     set(DATA_DESTINATION_DIR ${DATA_SOURCE_DIR})
@@ -58,6 +54,10 @@ else()
   SET(DATA_DESTINATION_DIR ${CMAKE_BINARY_DIR}/data)
 endif()
 message(STATUS "DATA_DESTINATION_DIR = ${DATA_DESTINATION_DIR}")
+
+# set location for data files need for tests
+SET(TEST_DATA_DESTINATION_DIR ${CMAKE_BINARY_DIR}/test_data)
+message(STATUS "TEST_DATA_DESTINATION_DIR = ${TEST_DATA_DESTINATION_DIR}")
 
 message(STATUS "CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
 message(STATUS "CMAKE_INSTALL_PREFIX = ${CMAKE_INSTALL_PREFIX}")
