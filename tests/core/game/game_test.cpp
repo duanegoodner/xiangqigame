@@ -1,13 +1,15 @@
+#include <boardstate/zobrist_factories.hpp>
+#include <boardstate/zobrist_for_concepts.hpp>
+#include <config.hpp>
+#include <fstream>
+#include <game/game.hpp>
+#include <game/game_factory.hpp>
+#include <gameboard/game_board_for_concepts.hpp>
+#include <gameboard/game_piece.hpp>
+#include <gtest/gtest.h>
 #include <interfaces/base_evaluator_factory.hpp>
 #include <interfaces/base_move_evaluator.hpp>
 #include <interfaces/base_space_info_provider.hpp>
-#include <boardstate/zobrist_factories.hpp>
-#include <game/game.hpp>
-#include <gameboard/game_board_for_concepts.hpp>
-#include <game/game_factory.hpp>
-#include <gameboard/game_piece.hpp>
-#include <gtest/gtest.h>
-#include <utilities/integer_types.hpp>
 #include <interfaces/interface_game_reporter.hpp>
 #include <iostream>
 #include <memory>
@@ -17,11 +19,11 @@
 #include <moveselection/move_evaluator_random_for_concepts.hpp>
 #include <optional>
 #include <piecepoints/piece_position_points_for_concepts.hpp>
+#include <string>
 #include <terminalout/terminal_output.hpp>
 #include <unordered_map>
+#include <utilities/integer_types.hpp>
 #include <vector>
-#include <boardstate/zobrist_for_concepts.hpp>
-
 
 class GameTest : public ::testing::Test {
 protected:
@@ -31,15 +33,6 @@ protected:
 
   DepthType search_depth_red_{3};
   DepthType search_depth_black_{3};
-
-//   game::MinimaxTypeInfo minimax_type_info_red_{
-//       game::ZobristKeyType::k064BitKey,
-//       game::ZobristCalculatorCount::kTwoZCalc
-//   };
-//   game::MinimaxTypeInfo minimax_type_info_black_{
-//       game::ZobristKeyType::k064BitKey,
-//       game::ZobristCalculatorCount::kTwoZCalc
-//   };
 
   game::PlayerSpec player_spec_red_{
       gameboard::PieceColor::kRed,
@@ -55,6 +48,16 @@ protected:
       2,
       search_depth_black_
   };
+
+  std::string scripted_moves_file_red_{
+      std::string(TEST_DATA_DIR) + "/" + "scripted_game_red_moves.txt"
+  };
+  std::string scripted_moves_file_black_{
+      std::string(TEST_DATA_DIR) + "/" + "scripted_game_black_moves.txt"
+  };
+
+  std::ifstream scripted_moves_filestream_red_{scripted_moves_file_red_};
+  std::ifstream scripted_moves_filestreadm_black_{scripted_moves_file_black_};
 };
 
 TEST_F(GameTest, GameOnStack) {
@@ -97,6 +100,35 @@ TEST_F(GameTest, GameOnStack) {
 
 TEST_F(GameTest, GameInHeap) {
   auto game_factory = game::GameFactory(player_spec_red_, player_spec_black_);
+  auto game = game_factory.Create();
+  auto game_summary = game->Play();
+}
+
+TEST_F(GameTest, ScriptedGame) {
+  game::PlayerSpec human_player_spec_red{
+      gameboard::PieceColor::kRed,
+      game::EvaluatorType::kHuman,
+      0,
+      0,
+      0,
+      0
+  };
+  game::PlayerSpec human_player_spec_black{
+      gameboard::PieceColor::kBlk,
+      game::EvaluatorType::kHuman,
+      0,
+      0,
+      0,
+      0
+  };
+
+  auto game_factory = game::GameFactory(
+      human_player_spec_red,
+      human_player_spec_black,
+      scripted_moves_filestream_red_,
+      scripted_moves_filestreadm_black_
+  );
+
   auto game = game_factory.Create();
   auto game_summary = game->Play();
 }

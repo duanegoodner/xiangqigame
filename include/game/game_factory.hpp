@@ -86,7 +86,7 @@ public:
         evaluators;
 
     auto evaluator_factory_retriever_red =
-        EvaluatorFactoryRetriever{red_player_spec_, game_board};
+        EvaluatorFactoryRetriever{red_player_spec_, game_board, red_player_input_stream_};
     auto evalutor_factory_red = evaluator_factory_retriever_red.GetFactory();
     evaluators.emplace(
         gameboard::PieceColor::kRed,
@@ -94,7 +94,7 @@ public:
     );
 
     auto evaluator_factory_retriever_black =
-        EvaluatorFactoryRetriever{black_player_spec_, game_board};
+        EvaluatorFactoryRetriever{black_player_spec_, game_board, black_player_input_stream_};
     auto evalutor_factory_black = evaluator_factory_retriever_black.GetFactory();
     evaluators.emplace(
         gameboard::PieceColor::kBlk,
