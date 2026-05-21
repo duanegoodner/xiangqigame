@@ -2,10 +2,19 @@ name: Mirror to GitLab
 on:
   push:
     branches: [main]
+concurrency:
+  group: gitlab-mirror
+  cancel-in-progress: true
 jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
+      - name: Check for GitLab token
+        run: |
+          if [ -z "${{ secrets.GITLAB_MIRROR_TOKEN }}" ]; then
+            echo "::error::GITLAB_MIRROR_TOKEN secret is not set"
+            exit 1
+          fi
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -17,7 +26,7 @@ jobs:
             GITLAB_NS="${{ github.repository_owner }}"
           fi
           REPO_NAME="${{ github.event.repository.name }}"
-          git push --force \
-            "https://oauth2:${GITLAB_TOKEN}@gitlab.com/${GITLAB_NS}/${REPO_NAME}.git" main
+          git -c credential.helper='!f() { echo "username=oauth2"; echo "password=${GITLAB_TOKEN}"; }; f' \
+            push --force "https://gitlab.com/${GITLAB_NS}/${REPO_NAME}.git" main
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_MIRROR_TOKEN }}
