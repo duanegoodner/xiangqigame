@@ -28,6 +28,13 @@ jobs:
           # git-lfs rejects the push ("missing or corrupt local objects"), so
           # an LFS repo can never mirror. A no-op for repos that don't use LFS.
           lfs: true
+      - name: Fetch all LFS objects
+        # checkout's `lfs: true` only fetches objects reachable from the
+        # checked-out ref, but we push the whole history, and git-lfs insists on
+        # uploading every object that history references. One blob deleted from
+        # HEAD long ago was enough to fail ehr_adversarial_attack's mirror
+        # forever. --all covers every ref; it is a fast no-op without LFS.
+        run: git lfs fetch --all origin
       - name: Push to GitLab
         run: |
           if [ "${{ github.repository_owner }}" = "duanegoodner" ]; then
