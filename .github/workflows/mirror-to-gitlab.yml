@@ -26,7 +26,27 @@ jobs:
             GITLAB_NS="${{ github.repository_owner }}"
           fi
           REPO_NAME="${{ github.event.repository.name }}"
-          git -c credential.helper='!f() { echo "username=oauth2"; echo "password=${GITLAB_TOKEN}"; }; f' \
-            push --force "https://gitlab.com/${GITLAB_NS}/${REPO_NAME}.git" main
+          URL="https://gitlab.com/${GITLAB_NS}/${REPO_NAME}.git"
+
+          # GitLab returns transient 5xx (observed: 503). Without a retry, a
+          # seconds-long outage fails the job and leaves the mirror stale until
+          # the next push to main. Each attempt is bounded by `timeout` so a
+          # hung connection falls through to the next attempt instead of
+          # stalling the job.
+          for attempt in 1 2 3 4 5; do
+            if timeout 180 git \
+                 -c credential.helper='!f() { echo "username=oauth2"; echo "password=${GITLAB_TOKEN}"; }; f' \
+                 push --force "$URL" main; then
+              echo "Mirrored on attempt ${attempt}"
+              exit 0
+            fi
+            if [ "${attempt}" -lt 5 ]; then
+              delay=$((attempt * 20))
+              echo "::warning::push to GitLab failed (attempt ${attempt}/5), retrying in ${delay}s"
+              sleep "${delay}"
+            fi
+          done
+          echo "::error::push to GitLab failed after 5 attempts"
+          exit 1
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_MIRROR_TOKEN }}
